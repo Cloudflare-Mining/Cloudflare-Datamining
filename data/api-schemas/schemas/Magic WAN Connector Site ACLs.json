@@ -1,0 +1,2186 @@
+{
+	"DELETE /accounts/{account_identifier}/magic/sites/{site_identifier}/acls/{acl_identifier}": {
+		"description": "Remove a specific Site ACL.",
+		"operationId": "magic-site-acls-delete-acl",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "site_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "acl_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deleted": {
+													"example": true,
+													"type": "boolean"
+												},
+												"deleted_acl": {
+													"description": "Bidirectional ACL policy for local network traffic within a site.",
+													"properties": {
+														"description": {
+															"description": "Description for the ACL.",
+															"example": "Allows local traffic between PIN pads and cash register.",
+															"type": "string"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"lan_1": {
+															"properties": {
+																"lan_id": {
+																	"description": "The identifier for the LAN you want to create an ACL policy with.",
+																	"type": "string"
+																},
+																"lan_name": {
+																	"description": "The name of the LAN based on the provided lan_id.",
+																	"type": "string"
+																},
+																"ports": {
+																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																	"items": {
+																		"example": 1,
+																		"type": "integer"
+																	},
+																	"type": "array"
+																},
+																"subnets": {
+																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																	"items": {
+																		"oneOf": [
+																			{
+																				"description": "A valid IPv4 address.",
+																				"example": "192.0.2.1",
+																				"type": "string"
+																			},
+																			{
+																				"description": "A valid CIDR notation representing an IP range.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"lan_id"
+															],
+															"type": "object"
+														},
+														"lan_2": {
+															"properties": {
+																"lan_id": {
+																	"description": "The identifier for the LAN you want to create an ACL policy with.",
+																	"type": "string"
+																},
+																"lan_name": {
+																	"description": "The name of the LAN based on the provided lan_id.",
+																	"type": "string"
+																},
+																"ports": {
+																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																	"items": {
+																		"example": 1,
+																		"type": "integer"
+																	},
+																	"type": "array"
+																},
+																"subnets": {
+																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																	"items": {
+																		"oneOf": [
+																			{
+																				"description": "A valid IPv4 address.",
+																				"example": "192.0.2.1",
+																				"type": "string"
+																			},
+																			{
+																				"description": "A valid CIDR notation representing an IP range.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"lan_id"
+															],
+															"type": "object"
+														},
+														"name": {
+															"description": "The name of the ACL.",
+															"example": "PIN Pad - Cash Register",
+															"type": "string"
+														},
+														"protocols": {
+															"items": {
+																"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+																"enum": [
+																	"tcp",
+																	"udp",
+																	"icmp"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Site ACL response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Site ACL response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Site ACL",
+		"tags": [
+			"Magic WAN Connector Site ACLs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_identifier}/magic/sites/{site_identifier}/acls": {
+		"description": "Lists Site ACLs associated with an account.",
+		"operationId": "magic-site-acls-list-acls",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "site_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"acls": {
+													"items": {
+														"description": "Bidirectional ACL policy for local network traffic within a site.",
+														"properties": {
+															"description": {
+																"description": "Description for the ACL.",
+																"example": "Allows local traffic between PIN pads and cash register.",
+																"type": "string"
+															},
+															"id": {
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"lan_1": {
+																"properties": {
+																	"lan_id": {
+																		"description": "The identifier for the LAN you want to create an ACL policy with.",
+																		"type": "string"
+																	},
+																	"lan_name": {
+																		"description": "The name of the LAN based on the provided lan_id.",
+																		"type": "string"
+																	},
+																	"ports": {
+																		"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																		"items": {
+																			"example": 1,
+																			"type": "integer"
+																		},
+																		"type": "array"
+																	},
+																	"subnets": {
+																		"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																		"items": {
+																			"oneOf": [
+																				{
+																					"description": "A valid IPv4 address.",
+																					"example": "192.0.2.1",
+																					"type": "string"
+																				},
+																				{
+																					"description": "A valid CIDR notation representing an IP range.",
+																					"example": "192.0.2.0/24",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"lan_id"
+																],
+																"type": "object"
+															},
+															"lan_2": {
+																"properties": {
+																	"lan_id": {
+																		"description": "The identifier for the LAN you want to create an ACL policy with.",
+																		"type": "string"
+																	},
+																	"lan_name": {
+																		"description": "The name of the LAN based on the provided lan_id.",
+																		"type": "string"
+																	},
+																	"ports": {
+																		"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																		"items": {
+																			"example": 1,
+																			"type": "integer"
+																		},
+																		"type": "array"
+																	},
+																	"subnets": {
+																		"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																		"items": {
+																			"oneOf": [
+																				{
+																					"description": "A valid IPv4 address.",
+																					"example": "192.0.2.1",
+																					"type": "string"
+																				},
+																				{
+																					"description": "A valid CIDR notation representing an IP range.",
+																					"example": "192.0.2.0/24",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"lan_id"
+																],
+																"type": "object"
+															},
+															"name": {
+																"description": "The name of the ACL.",
+																"example": "PIN Pad - Cash Register",
+																"type": "string"
+															},
+															"protocols": {
+																"items": {
+																	"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+																	"enum": [
+																		"tcp",
+																		"udp",
+																		"icmp"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Site ACLs response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Site ACLs response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Site ACLs",
+		"tags": [
+			"Magic WAN Connector Site ACLs"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_identifier}/magic/sites/{site_identifier}/acls/{acl_identifier}": {
+		"description": "Get a specific Site ACL.",
+		"operationId": "magic-site-acls-acl-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "site_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "acl_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"acl": {
+													"description": "Bidirectional ACL policy for local network traffic within a site.",
+													"properties": {
+														"description": {
+															"description": "Description for the ACL.",
+															"example": "Allows local traffic between PIN pads and cash register.",
+															"type": "string"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"lan_1": {
+															"properties": {
+																"lan_id": {
+																	"description": "The identifier for the LAN you want to create an ACL policy with.",
+																	"type": "string"
+																},
+																"lan_name": {
+																	"description": "The name of the LAN based on the provided lan_id.",
+																	"type": "string"
+																},
+																"ports": {
+																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																	"items": {
+																		"example": 1,
+																		"type": "integer"
+																	},
+																	"type": "array"
+																},
+																"subnets": {
+																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																	"items": {
+																		"oneOf": [
+																			{
+																				"description": "A valid IPv4 address.",
+																				"example": "192.0.2.1",
+																				"type": "string"
+																			},
+																			{
+																				"description": "A valid CIDR notation representing an IP range.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"lan_id"
+															],
+															"type": "object"
+														},
+														"lan_2": {
+															"properties": {
+																"lan_id": {
+																	"description": "The identifier for the LAN you want to create an ACL policy with.",
+																	"type": "string"
+																},
+																"lan_name": {
+																	"description": "The name of the LAN based on the provided lan_id.",
+																	"type": "string"
+																},
+																"ports": {
+																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																	"items": {
+																		"example": 1,
+																		"type": "integer"
+																	},
+																	"type": "array"
+																},
+																"subnets": {
+																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																	"items": {
+																		"oneOf": [
+																			{
+																				"description": "A valid IPv4 address.",
+																				"example": "192.0.2.1",
+																				"type": "string"
+																			},
+																			{
+																				"description": "A valid CIDR notation representing an IP range.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"lan_id"
+															],
+															"type": "object"
+														},
+														"name": {
+															"description": "The name of the ACL.",
+															"example": "PIN Pad - Cash Register",
+															"type": "string"
+														},
+														"protocols": {
+															"items": {
+																"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+																"enum": [
+																	"tcp",
+																	"udp",
+																	"icmp"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Site ACL Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Site ACL Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Site ACL Details",
+		"tags": [
+			"Magic WAN Connector Site ACLs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_identifier}/magic/sites/{site_identifier}/acls": {
+		"description": "Creates a new Site ACL.",
+		"operationId": "magic-site-acls-create-site-acl",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "site_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Bidirectional ACL policy for local network traffic within a site.",
+						"properties": {
+							"acl": {
+								"properties": {
+									"description": {
+										"description": "Description for the ACL.",
+										"example": "Allows local traffic between PIN pads and cash register.",
+										"type": "string"
+									},
+									"lan_1": {
+										"properties": {
+											"lan_id": {
+												"description": "The identifier for the LAN you want to create an ACL policy with.",
+												"type": "string"
+											},
+											"lan_name": {
+												"description": "The name of the LAN based on the provided lan_id.",
+												"type": "string"
+											},
+											"ports": {
+												"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+												"items": {
+													"example": 1,
+													"type": "integer"
+												},
+												"type": "array"
+											},
+											"subnets": {
+												"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+												"items": {
+													"oneOf": [
+														{
+															"description": "A valid IPv4 address.",
+															"example": "192.0.2.1",
+															"type": "string"
+														},
+														{
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
+															"type": "string"
+														}
+													]
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"lan_id"
+										],
+										"type": "object"
+									},
+									"lan_2": {
+										"properties": {
+											"lan_id": {
+												"description": "The identifier for the LAN you want to create an ACL policy with.",
+												"type": "string"
+											},
+											"lan_name": {
+												"description": "The name of the LAN based on the provided lan_id.",
+												"type": "string"
+											},
+											"ports": {
+												"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+												"items": {
+													"example": 1,
+													"type": "integer"
+												},
+												"type": "array"
+											},
+											"subnets": {
+												"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+												"items": {
+													"oneOf": [
+														{
+															"description": "A valid IPv4 address.",
+															"example": "192.0.2.1",
+															"type": "string"
+														},
+														{
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
+															"type": "string"
+														}
+													]
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"lan_id"
+										],
+										"type": "object"
+									},
+									"name": {
+										"description": "The name of the ACL.",
+										"example": "PIN Pad - Cash Register",
+										"type": "string"
+									},
+									"protocols": {
+										"items": {
+											"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+											"enum": [
+												"tcp",
+												"udp",
+												"icmp"
+											],
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"name",
+									"lan_1",
+									"lan_2"
+								],
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"acls": {
+													"items": {
+														"description": "Bidirectional ACL policy for local network traffic within a site.",
+														"properties": {
+															"description": {
+																"description": "Description for the ACL.",
+																"example": "Allows local traffic between PIN pads and cash register.",
+																"type": "string"
+															},
+															"id": {
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"lan_1": {
+																"properties": {
+																	"lan_id": {
+																		"description": "The identifier for the LAN you want to create an ACL policy with.",
+																		"type": "string"
+																	},
+																	"lan_name": {
+																		"description": "The name of the LAN based on the provided lan_id.",
+																		"type": "string"
+																	},
+																	"ports": {
+																		"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																		"items": {
+																			"example": 1,
+																			"type": "integer"
+																		},
+																		"type": "array"
+																	},
+																	"subnets": {
+																		"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																		"items": {
+																			"oneOf": [
+																				{
+																					"description": "A valid IPv4 address.",
+																					"example": "192.0.2.1",
+																					"type": "string"
+																				},
+																				{
+																					"description": "A valid CIDR notation representing an IP range.",
+																					"example": "192.0.2.0/24",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"lan_id"
+																],
+																"type": "object"
+															},
+															"lan_2": {
+																"properties": {
+																	"lan_id": {
+																		"description": "The identifier for the LAN you want to create an ACL policy with.",
+																		"type": "string"
+																	},
+																	"lan_name": {
+																		"description": "The name of the LAN based on the provided lan_id.",
+																		"type": "string"
+																	},
+																	"ports": {
+																		"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																		"items": {
+																			"example": 1,
+																			"type": "integer"
+																		},
+																		"type": "array"
+																	},
+																	"subnets": {
+																		"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																		"items": {
+																			"oneOf": [
+																				{
+																					"description": "A valid IPv4 address.",
+																					"example": "192.0.2.1",
+																					"type": "string"
+																				},
+																				{
+																					"description": "A valid CIDR notation representing an IP range.",
+																					"example": "192.0.2.0/24",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"lan_id"
+																],
+																"type": "object"
+															},
+															"name": {
+																"description": "The name of the ACL.",
+																"example": "PIN Pad - Cash Register",
+																"type": "string"
+															},
+															"protocols": {
+																"items": {
+																	"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+																	"enum": [
+																		"tcp",
+																		"udp",
+																		"icmp"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Site ACL response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create Site ACL response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new Site ACL",
+		"tags": [
+			"Magic WAN Connector Site ACLs"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /accounts/{account_identifier}/magic/sites/{site_identifier}/acls/{acl_identifier}": {
+		"description": "Update a specific Site ACL.",
+		"operationId": "magic-site-acls-update-acl",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "site_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "acl_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"acl": {
+								"properties": {
+									"description": {
+										"description": "Description for the ACL.",
+										"example": "Allows local traffic between PIN pads and cash register.",
+										"type": "string"
+									},
+									"lan_1": {
+										"properties": {
+											"lan_id": {
+												"description": "The identifier for the LAN you want to create an ACL policy with.",
+												"type": "string"
+											},
+											"lan_name": {
+												"description": "The name of the LAN based on the provided lan_id.",
+												"type": "string"
+											},
+											"ports": {
+												"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+												"items": {
+													"example": 1,
+													"type": "integer"
+												},
+												"type": "array"
+											},
+											"subnets": {
+												"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+												"items": {
+													"oneOf": [
+														{
+															"description": "A valid IPv4 address.",
+															"example": "192.0.2.1",
+															"type": "string"
+														},
+														{
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
+															"type": "string"
+														}
+													]
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"lan_id"
+										],
+										"type": "object"
+									},
+									"lan_2": {
+										"properties": {
+											"lan_id": {
+												"description": "The identifier for the LAN you want to create an ACL policy with.",
+												"type": "string"
+											},
+											"lan_name": {
+												"description": "The name of the LAN based on the provided lan_id.",
+												"type": "string"
+											},
+											"ports": {
+												"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+												"items": {
+													"example": 1,
+													"type": "integer"
+												},
+												"type": "array"
+											},
+											"subnets": {
+												"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+												"items": {
+													"oneOf": [
+														{
+															"description": "A valid IPv4 address.",
+															"example": "192.0.2.1",
+															"type": "string"
+														},
+														{
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
+															"type": "string"
+														}
+													]
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"lan_id"
+										],
+										"type": "object"
+									},
+									"name": {
+										"description": "The name of the ACL.",
+										"example": "PIN Pad - Cash Register",
+										"type": "string"
+									},
+									"protocols": {
+										"items": {
+											"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+											"enum": [
+												"tcp",
+												"udp",
+												"icmp"
+											],
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"acl": {
+													"description": "Bidirectional ACL policy for local network traffic within a site.",
+													"properties": {
+														"description": {
+															"description": "Description for the ACL.",
+															"example": "Allows local traffic between PIN pads and cash register.",
+															"type": "string"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"lan_1": {
+															"properties": {
+																"lan_id": {
+																	"description": "The identifier for the LAN you want to create an ACL policy with.",
+																	"type": "string"
+																},
+																"lan_name": {
+																	"description": "The name of the LAN based on the provided lan_id.",
+																	"type": "string"
+																},
+																"ports": {
+																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																	"items": {
+																		"example": 1,
+																		"type": "integer"
+																	},
+																	"type": "array"
+																},
+																"subnets": {
+																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																	"items": {
+																		"oneOf": [
+																			{
+																				"description": "A valid IPv4 address.",
+																				"example": "192.0.2.1",
+																				"type": "string"
+																			},
+																			{
+																				"description": "A valid CIDR notation representing an IP range.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"lan_id"
+															],
+															"type": "object"
+														},
+														"lan_2": {
+															"properties": {
+																"lan_id": {
+																	"description": "The identifier for the LAN you want to create an ACL policy with.",
+																	"type": "string"
+																},
+																"lan_name": {
+																	"description": "The name of the LAN based on the provided lan_id.",
+																	"type": "string"
+																},
+																"ports": {
+																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																	"items": {
+																		"example": 1,
+																		"type": "integer"
+																	},
+																	"type": "array"
+																},
+																"subnets": {
+																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																	"items": {
+																		"oneOf": [
+																			{
+																				"description": "A valid IPv4 address.",
+																				"example": "192.0.2.1",
+																				"type": "string"
+																			},
+																			{
+																				"description": "A valid CIDR notation representing an IP range.",
+																				"example": "192.0.2.0/24",
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"lan_id"
+															],
+															"type": "object"
+														},
+														"name": {
+															"description": "The name of the ACL.",
+															"example": "PIN Pad - Cash Register",
+															"type": "string"
+														},
+														"protocols": {
+															"items": {
+																"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+																"enum": [
+																	"tcp",
+																	"udp",
+																	"icmp"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Site ACL response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update Site ACL response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Site ACL",
+		"tags": [
+			"Magic WAN Connector Site ACLs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}
