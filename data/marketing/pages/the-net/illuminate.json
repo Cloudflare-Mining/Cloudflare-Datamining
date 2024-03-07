@@ -37,7 +37,18 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "theNET |  Illuminate: Perspectives from technology leaders",
+					"metaDescription": "The Illuminate series features opinions and personal insights from global executives: Security and IT, digital experts, and other technical professionals from some of the world's leading companies. These short reads will provide you with new and enlightening approaches to tackling universal security and IT challenges.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7pivvdaTuyH0RfpKxDAq2Y/4cc2f7925bf6f4255be444f1caddd570/illuminateperspectivesfromtechnologyleaders.png"
+						},
+						"description": ""
+					},
+					"facebookCustomImage": null
+				},
 				"contentfulId": "3rrwJQMer6iiLzD6y3TaGo",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
@@ -344,10 +355,138 @@
 						"htmlId": "theNETBanner"
 					},
 					{
+						"contentTypeId": "bladeHalfWidthHero",
+						"contentfulId": "7yIigKjCtAqHlADQztRIAt",
+						"entityTitle": "theNET -  Illuminate: Perspectives from technology leaders - series - Hero",
+						"leftHalf": {
+							"contentTypeId": "elementHalfWidthHeroContent",
+							"contentfulId": "4S1JuOiS2wHAcgcdWpzxRm",
+							"entityTitle": "Illuminate - hero title",
+							"title": " Illuminate: Perspectives from technology leaders",
+							"eyebrow": null,
+							"copy": "\nThe Illuminate series features opinions and personal insights from global executives: Security and IT, digital experts, and other technical professionals from some of the world's leading companies. These short reads will provide you with new and enlightening approaches to tackling universal security and IT challenges.",
+							"primaryCta": null,
+							"secondaryCta": null,
+							"tertiaryCta": null
+						},
+						"rightHalf": {
+							"contentTypeId": "elementHalfWidthHeroImage",
+							"contentfulId": "4dDpAUKzwG0gYcQ7dzuoyV",
+							"entityTitle": "Illuminate - hero image",
+							"imageAsset": {
+								"id": "864072f4-d48e-5824-8382-af5227d6f9c2",
+								"altText": null,
+								"title": "theNET -  Illuminate: Perspectives from Technology Leaders - series - Image",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7pivvdaTuyH0RfpKxDAq2Y/4cc2f7925bf6f4255be444f1caddd570/illuminateperspectivesfromtechnologyleaders.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						},
+						"promotionalBanner": null,
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
 						"contentfulId": "3xHXpajzdHR62W8aPqece8",
 						"contentTypeId": "bladePadding",
 						"height": 4,
 						"backgroundColor": "white"
+					},
+					{
+						"contentfulId": "5wFSFtYKT1PzoVwoA3bqVY",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "Articles in this series",
+						"bladeStyle": "Feature Blocks - 4 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "vupC2AiR2fbvM1X1fTFml",
+								"title": "Staying ahead of scammers: Fighting phishing through smart cyber security",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "The \"human element\" is still a factor in 3 out of every 4 breaches. Daragh Mahon, CIO of Werner Enterprises discusses how to balance training, penetration testing, and solutions to stay ahead",
+								"learnMoreUrl": "https://www.cloudflare.com/the-net/illuminate/fighting-phishing/",
+								"learnMoreText": "Read (5 min)",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "70424ddd-31b6-5c01-8e56-1d17085b5d5f",
+									"altText": "Illuminate series - Daragh Mahon",
+									"title": "Illuminate series - Daragh Mahon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7y7LUZpbJn9bUadXaLbtsf/5a6dd65639151ad9f35cf289078c488a/Illuminate-series-Daragh-Mahon__1_.png"
+										},
+										"description": "Illuminate series - Daragh Mahon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1djIHFTBam81797pghwE2a",
+								"title": "Security without stagnation: What I've learned from mentoring startups",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "I make room for mentoring because I believe it serves a greater good and helps drive continuous innovation in cyber security. Here are 3 questions CSO's should ask before embarking on a mentorship relationship",
+								"learnMoreUrl": "https://www.cloudflare.com/the-net/illuminate/mentoring-startups/",
+								"learnMoreText": "Read (5 min)",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "f97eb73c-55aa-5eba-99a5-ca2bd2203b9d",
+									"altText": "Security without stagnation: What I've learned from mentoring startups",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gwzObQTjkoSOKeCUQZIHS/8bb5293f31ddc2314b5b50a7bc88178c/tomparker.png"
+										},
+										"description": "Security without stagnation: What I've learned from mentoring startups"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
