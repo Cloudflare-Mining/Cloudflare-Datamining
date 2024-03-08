@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/media-manager",
 	"dist-tags": {
-		"latest": "0.0.20"
+		"latest": "0.0.21"
 	},
 	"versions": {
 		"0.0.10": {
@@ -194,6 +194,47 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQD6E+t6FWXfVd+ZSkn0rdv0cD5jdtNbGL74iB5hOLgnHgIhANzPJvqm/qmb5onNfL/vWNQ5oJsWLQJKaJtBTCT40ivT"
+					}
+				]
+			}
+		},
+		"0.0.21": {
+			"name": "@cloudflare/media-manager",
+			"version": "0.0.21",
+			"dependencies": {
+				"@uppy/aws-s3": "^3.6.2",
+				"@uppy/core": "^3.8.0",
+				"@uppy/thumbnail-generator": "^3.0.6",
+				"@uppy/utils": "^2.4.3",
+				"classnames": "^2.5.1",
+				"lodash": "^4.17.21",
+				"nanoid": "^4.0.0",
+				"preact": "^10.5.13"
+			},
+			"devDependencies": {
+				"@preact/preset-vite": "^2.8.1",
+				"@types/lodash": "^4.14.202",
+				"autoprefixer": "^10.4.17",
+				"postcss": "^8.4.33",
+				"postcss-dir-pseudo-class": "^6.0.0",
+				"postcss-logical": "^5.0.0",
+				"sass": "^1.69.7",
+				"tailwindcss": "^3.4.1",
+				"typescript": "^5.4.2",
+				"vite": "^5.0.11",
+				"vite-plugin-dts": "^3.7.2",
+				"wrangler": "^3.22.1"
+			},
+			"dist": {
+				"integrity": "sha512-jLoTpy/+RJUOvs6F43N/MhzAra02HS/lRWL1CW2hpUlS96LIbLIWmDqZB0Por0uJqCXeH0mBOyKvfyyssNktgw==",
+				"shasum": "fd7c25f56320324f6ec76b2217abe3a866a7af82",
+				"tarball": "https://registry.npmjs.org/@cloudflare/media-manager/-/media-manager-0.0.21.tgz",
+				"fileCount": 8,
+				"unpackedSize": 2661599,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAtwzYh8pMTphvH89Z/IgZQK71d8KMF0zB7tBv4GvfPXAiEA2vHNpP6rGwXcQbX5GV0/PbMXiP0G3/A7eAfTVLOg6+U="
 					}
 				]
 			}
