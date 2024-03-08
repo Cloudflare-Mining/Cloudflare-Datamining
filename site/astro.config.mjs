@@ -28,7 +28,7 @@ export default defineConfig({
 	adapter: cloudflare(),
 	vite: {
 		build: {
-			assetsInlineLimit: '0',
+			assetsInlineLimit: 0,
 			cssCodeSplit: false,
 		},
 	},

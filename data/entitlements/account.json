@@ -960,6 +960,18 @@
 		}
 	},
 	{
+		"id": "dlp.datasets_max_cells",
+		"feature": {
+			"feature_set": "access",
+			"id": 1387,
+			"key": "dlp.datasets_max_cells",
+			"name": "DLP - Maximum Datasets Cell Count"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "dlp.dlp_enabled",
 		"feature": {
 			"feature_set": "access",
@@ -1830,6 +1842,18 @@
 			"id": 1001,
 			"key": "r2.enabled",
 			"name": "R2 - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "r2.fedramp",
+		"feature": {
+			"feature_set": "r2",
+			"id": 1314,
+			"key": "r2.fedramp",
+			"name": "R2 - FedRAMP Enabled"
 		},
 		"allocation": {
 			"type": "bool"
