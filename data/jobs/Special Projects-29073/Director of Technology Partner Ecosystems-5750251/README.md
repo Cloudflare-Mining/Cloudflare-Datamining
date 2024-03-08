@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: US Remote</strong></p>
 <p><strong>About the Department</strong></p>
 <p>Cloudflare’s Special Projects team oversees a wide range of strategic and technical partnership projects that are critical to the operations and long-term development of Cloudflare. The Special Projects team works closely with Product and Engineering to bring new and innovative ideas to life. These range from launching cutting edge consumer privacy protection services, innovative channel partnerships, unique distribution deals, and developing new products and technologies. Overall, we look for a technically minded, big-picture thinker who can build strong relationships, grow strategic partner opportunities, and drive Cloudflare’s business strategy and development globally.</p>
 <p><br><strong>What You'll Do</strong></p>
@@ -29,6 +30,43 @@
 	<li>The role can be remote based in the United States</li>
 	<li>A natural curiosity and eagerness to do whatever it takes, no task is beneath you, is a must. We are a scrappy team that works hard to accomplish ideas that others say can’t be done.&nbsp;</li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado-based hires: Estimated annual salary of $186,000 - $228,000</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $209,000 - $255,000</li>
+	<li>For Bay Area-based hires: Estimated annual salary of&nbsp; $220,000 - $268,000</li>
+</ul>
+<p></p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p></p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
