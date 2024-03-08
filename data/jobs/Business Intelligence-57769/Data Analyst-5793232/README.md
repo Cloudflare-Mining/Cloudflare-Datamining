@@ -5,32 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: Remote Mexico</h4>
-<h4>What you'll do</h4>
-<p>We are looking for a strong leader to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Tooling &amp; Strategy.</p>
-<p><strong>Responsibilities</strong></p>
+<p>&nbsp;</p>
+<p><strong>Locations -&nbsp;</strong>Austin or Remote US</p>
+<hr>
+<p><strong>About the department</strong></p>
+<p>Cloudflare is looking to build and grow our data analytics/business intelligence team that will be responsible for building a large-scale enterprise modern data lake and EDW that combines massive petabyte scale traffic logs with data from various business systems supporting product, marketing, customer support, sales, finance etc. and enabling easier consumption of that data using tools to drive standard reporting, adhoc/exploratory analytics and advanced insights using data science models.</p>
+<p><strong>About the role</strong></p>
+<p>As part of this initiative, we are looking for a strong data analyst to come join Cloudflare and help us drive analytic insights and best practices at scale from the ground up. Success in this role comes from marrying a strong data background with acute product and business acumen to deliver highly strategic and compelling insights that accelerate our business growth and influence our product decisions within Cloudflare.&nbsp;</p>
+<p>What we look for: Data analysis, Business Analysis, Storytelling, Strong Business &amp; Product Acumen, Cross-functional Collaboration, Creative Problem Solving, Agile</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Lead Strategic Direction, Product Vision, Customer Discovery, Feature Prioritization &amp; Cross-functional alignment for Cloudflare’s Commission Tech Stack</li>
-	<li>Identify &amp; implement leading practice architecture and build techniques, optimizing for scalability, flexibility and analytical intelligence</li>
-	<li>Own &amp; coordinate managed services resources, leveraging to execute and implement builds, enhancements and testing</li>
-	<li>Implement&nbsp; robust and thorough change management processes and&nbsp; testing framework</li>
-	<li>Employ a ‘business-focused’ approach to technical work; learn, understand and speak the language of key stakeholders and business partners</li>
-	<li>Build extensive documentation and enablement infrastructure, scaling consistent practices, documentation and desktop procedures for tool functionality</li>
-	<li>Build deep knowledge around and leverage relationships to influence outcomes and prioritization of upstream system enhancements which directly impact ICM practice (eg. HCM, CRM, etc.)</li>
-	<li>Implement appropriate SOX Controls, partnering closely with the Controllership and Internal Audit Organizations</li>
+	<li>Fundamental understanding of the data landscape i.e tooling, tech stack, source systems etc. and work closely with the Data Engineering team to improve the data collection and quality.</li>
+	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.</li>
+	<li>Audience focused presentation and storytelling skills focused on key takeaways and recommendations in a crisp and concise manner.</li>
+	<li>Ability to define and spot macro and micro levels trends with statistical significance on a regular basis and understand key drivers driving those trends.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>8+ years of Product Management, Technical Project Management, Consulting, or Incentive Compensation Administration; experience with a Saas business model preferred</li>
-	<li>Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</li>
-	<li>Experience or understanding of commissions-specific SOX Controls</li>
-	<li>Experience with Varicent, Anaplan ICM, Xactly, Calidus or a similar ICM tool</li>
-	<li>Experience with SQL platforms and queries</li>
-	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
-	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
-	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
+	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required.</li>
+	<li>3+ years of data analyst experience with 1+ years of proven industry experience in a large scale environment(PBs scale, globally distributed teams).</li>
+	<li>Proven results oriented analysis that helped support positive change in the business strategy.</li>
+	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
+	<li>Strong experience in Python, R, SQL, Tableau, Google Analytics, Hive and BigQuery (or any other Big data/Cloud equivalent) etc.</li>
+	<li>Capable of working closely with business including but not limited to, Engineering, Sales, Marketing, and Product teams to ensure data initiatives are aligned with business needs and is of high quality.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

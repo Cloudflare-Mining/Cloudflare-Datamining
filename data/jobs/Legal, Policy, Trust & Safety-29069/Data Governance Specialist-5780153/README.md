@@ -5,34 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: Remote Mexico</h4>
-<h4>About the role</h4>
-<p>We are looking for a strong leader to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Program &amp; Strategy.</p>
+<h4>Available Locations: Austin, TX or Washington, D.C.</h4>
+<h4>About the department</h4>
+<p>Ensuring the privacy of personal information is core to Cloudflare’s mission to help build a better Internet, and we’re looking for a Data Governance Analyst to help Cloudflare navigate the complicated challenges of processing personal data amid an ever-changing regulatory landscape. Our legal team helps the company deal with complex matters by anticipating complications and distractions, and guiding the company around those obstacles. Our new Data Governance team member will help foster our unique corporate philosophy and approach, in which the security and privacy of our customers’ data are paramount. We are looking for an exceptionally talented, energetic and friendly Data Governance Analyst&nbsp; to join our legal team in either Austin or Washington, DC. You will report to the Senior Manager, Data and Privacy Operations. This role is ideal for someone who is a proactive self-starter with exceptional organizational abilities and who has experience working cross functionally with a variety of business teams and roles.&nbsp;</p>
 <h4>What you'll do</h4>
 <ul>
-	<li>Support accuracy and timely distribution of commission payments and statements for the Cloudflare Sales Team&nbsp;</li>
-	<li>Help to drive Cloudflare’s Incentive Compensation Management (ICM) Tool strategy, operations, configuration and enhancement</li>
-	<li>Drive alignment amongst cross-functional stakeholders and project manage timely assignment of commissions calculation inputs</li>
-	<li>Own sales performance analytics for the Cloudflare Sales Team, surfacing key findings and expanding systematic visibility for leadership and business partners</li>
-	<li>Scale consistent practices, documentation and desktop procedures for all commissions processes</li>
-	<li>Implement appropriate SOX Controls, partnering closely with the Controllership and Internal Audit Organizations</li>
-	<li>Partner with the Sales Compensation Design Team to ensure feasibility and timely implementation of compensation plan changes</li>
+	<li>Maintain and grow Cloudflare’s data governance program, including overseeing data inventory, classification, and retention.</li>
+	<li>Collaborate with internal stakeholders to document and inventory data elements, ensuring a clear understanding of data flows and dependencies.&nbsp;&nbsp;</li>
+	<li>Take part in the vendor review process to understand and document the data flows between Cloudflare and third party vendors.&nbsp;</li>
+	<li>Work with business teams to classify and categorize data based on the data classification policy.&nbsp;</li>
+	<li>Make continuous improvements to data inventory, data flows and maps across the enterprise.</li>
+	<li>Develop and maintain governance policies, standards, toolkits and guidelines that can be leveraged by Cloudflare team as they implement the data risk management requirements.&nbsp;</li>
+	<li>Own data governance programs and develop processes/controls/procedures to operationalize them.&nbsp;</li>
+	<li>Foster a culture of data governance awareness and provide training as needed.&nbsp;</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Minimum 8 years of FP&amp;A, Consulting, Incentive Compensation Administration or Commissions Finance experience; experience with a Saas business model preferred</li>
-	<li>Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</li>
-	<li>Experience with commissions-specific SOX Controls</li>
-	<li>Highly proficient in Excel / GoogleSheets&nbsp;</li>
-	<li>Experience with SQL platforms and queries is a plus</li>
-	<li>Experience with sales compensation software and systems</li>
-	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
-	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
-	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
-	<li>Bi-lingual Spanish and English required, written and verbal.</li>
+	<li>Bachelor's degree in a related field and 3+ years of experience with data management and governance policies, standards, metrics, controls, and processes.</li>
+	<li>Experience working with data management tools.&nbsp;</li>
+	<li>Strong partnership and collaboration skills, including the ability to work in a cross-functional manner with business and technology stakeholders.</li>
+	<li>Experience creating and automating data flows diagrams.&nbsp;</li>
+	<li>Strong problem-solving skills with a knack for troubleshooting process-related issues.</li>
+	<li>Familiarity with data structures and databases.</li>
+	<li>Experience driving compliance with data privacy standards or policies.</li>
+	<li>Experience with GDPR, CCPA/CPRA and other privacy laws and regulations is a plus.&nbsp;</li>
+	<li>CIPP/US/E/CIPM or CIPT or other privacy or risk and compliance related certifications is a plus.</li>
+	<li>Technical expertise and an understanding of the way that the Internet, and companies like Cloudflare, operate is a plus.</li>
 </ul>
-<p>&nbsp;</p>
-<h4><strong>**This position is based in&nbsp;<span style="text-decoration: underline;">Mexico and is applicable only to Mexican Citizens</span>**</strong></h4>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
