@@ -594,7 +594,7 @@
 		"enabled": true
 	},
 	"queues-http-pull-consumer-config": {
-		"enabled": false
+		"enabled": true
 	},
 	"queues-send-from-dash": {
 		"enabled": true
@@ -656,6 +656,9 @@
 	},
 	"security-analytics": {
 		"enabled": true
+	},
+	"security-analytics-account-takeover": {
+		"enabled": false
 	},
 	"security-analytics-ai": {
 		"enabled": true
