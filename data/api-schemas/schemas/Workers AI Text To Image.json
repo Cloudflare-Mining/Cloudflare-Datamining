@@ -14,10 +14,42 @@
 		],
 		"requestBody": {
 			"content": {
-				"application/octet-stream": {
+				"application/json": {
 					"schema": {
-						"format": "binary",
-						"type": "string"
+						"properties": {
+							"guidance": {
+								"default": 7.5,
+								"type": "number"
+							},
+							"image": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"mask": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"num_steps": {
+								"default": 20,
+								"maximum": 20,
+								"type": "integer"
+							},
+							"prompt": {
+								"type": "string"
+							},
+							"strength": {
+								"default": 1,
+								"type": "number"
+							}
+						},
+						"required": [
+							"prompt"
+						],
+						"type": "object"
 					}
 				}
 			}
@@ -125,10 +157,42 @@
 		],
 		"requestBody": {
 			"content": {
-				"application/octet-stream": {
+				"application/json": {
 					"schema": {
-						"format": "binary",
-						"type": "string"
+						"properties": {
+							"guidance": {
+								"default": 7.5,
+								"type": "number"
+							},
+							"image": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"mask": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"num_steps": {
+								"default": 20,
+								"maximum": 20,
+								"type": "integer"
+							},
+							"prompt": {
+								"type": "string"
+							},
+							"strength": {
+								"default": 1,
+								"type": "number"
+							}
+						},
+						"required": [
+							"prompt"
+						],
+						"type": "object"
 					}
 				}
 			}
@@ -236,10 +300,42 @@
 		],
 		"requestBody": {
 			"content": {
-				"application/octet-stream": {
+				"application/json": {
 					"schema": {
-						"format": "binary",
-						"type": "string"
+						"properties": {
+							"guidance": {
+								"default": 7.5,
+								"type": "number"
+							},
+							"image": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"mask": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"num_steps": {
+								"default": 20,
+								"maximum": 20,
+								"type": "integer"
+							},
+							"prompt": {
+								"type": "string"
+							},
+							"strength": {
+								"default": 1,
+								"type": "number"
+							}
+						},
+						"required": [
+							"prompt"
+						],
+						"type": "object"
 					}
 				}
 			}
@@ -347,10 +443,42 @@
 		],
 		"requestBody": {
 			"content": {
-				"application/octet-stream": {
+				"application/json": {
 					"schema": {
-						"format": "binary",
-						"type": "string"
+						"properties": {
+							"guidance": {
+								"default": 7.5,
+								"type": "number"
+							},
+							"image": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"mask": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"num_steps": {
+								"default": 20,
+								"maximum": 20,
+								"type": "integer"
+							},
+							"prompt": {
+								"type": "string"
+							},
+							"strength": {
+								"default": 1,
+								"type": "number"
+							}
+						},
+						"required": [
+							"prompt"
+						],
+						"type": "object"
 					}
 				}
 			}
@@ -458,10 +586,42 @@
 		],
 		"requestBody": {
 			"content": {
-				"application/octet-stream": {
+				"application/json": {
 					"schema": {
-						"format": "binary",
-						"type": "string"
+						"properties": {
+							"guidance": {
+								"default": 7.5,
+								"type": "number"
+							},
+							"image": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"mask": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"num_steps": {
+								"default": 20,
+								"maximum": 20,
+								"type": "integer"
+							},
+							"prompt": {
+								"type": "string"
+							},
+							"strength": {
+								"default": 1,
+								"type": "number"
+							}
+						},
+						"required": [
+							"prompt"
+						],
+						"type": "object"
 					}
 				}
 			}
