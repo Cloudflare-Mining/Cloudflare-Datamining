@@ -11,7 +11,7 @@
 <h4>About the department</h4>
 <p>We’re an engineering team focused on building scalable and paradigm-shifting security platforms for production systems.&nbsp; We are still a small team, well-funded, growing quickly and focused on building an extraordinary company. This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows.</p>
 <p><strong>What you'll do</strong></p>
-<p>The team is working on a number of large projects in 2022. Below is a sample of initiatives:</p>
+<p>The team is working on a number of large projects in 2024. Below is a sample of initiatives:</p>
 <ul>
 	<li>
 		<p>Secrets Management -- We’re currently using Vault as trusted execution environment, and we’re continuing to our work integrating it with other platforms</p>
