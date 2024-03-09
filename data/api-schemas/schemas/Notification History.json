@@ -253,7 +253,8 @@
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"mechanism": {
 														"description": "The mechanism to which the notification has been dispatched.",
@@ -506,7 +507,8 @@
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"mechanism": {
 																"description": "The mechanism to which the notification has been dispatched.",

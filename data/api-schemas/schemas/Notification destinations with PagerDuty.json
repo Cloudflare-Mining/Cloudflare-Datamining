@@ -509,7 +509,8 @@
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the pagerduty service.",
@@ -660,7 +661,8 @@
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the pagerduty service.",
@@ -808,7 +810,7 @@
 				"name": "token_id",
 				"required": true,
 				"schema": {
-					"description": "The token id",
+					"description": "The token integration key",
 					"example": "8c71e667571b4f61b94d9e4b12158038",
 					"maxLength": 32,
 					"readOnly": true,
@@ -927,7 +929,8 @@
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1052,7 +1055,8 @@
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1290,8 +1294,8 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "UUID",
-													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"description": "token in form of UUID",
+													"example": "a313ba7d-3e46-4c0e-a408-08fafbc3816a",
 													"maxLength": 36,
 													"readOnly": true,
 													"type": "string"
@@ -1419,7 +1423,8 @@
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

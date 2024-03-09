@@ -568,6 +568,7 @@
 															"secondary_dns_zone_validation_warning",
 															"sentinel_alert",
 															"stream_live_notifications",
+															"traffic_anomalies_alert",
 															"tunnel_health_event",
 															"tunnel_update_event",
 															"universal_ssl_event_type",
@@ -617,7 +618,8 @@
 																"type": "array"
 															},
 															"affected_components": {
-																"description": "Used for configuring incident_alert",
+																"description": "Used for configuring incident_alert. A list of identifiers for each component to monitor.",
+																"example": "4c231tkdlpcl",
 																"items": {
 																	"type": "string"
 																},
@@ -929,7 +931,8 @@
 																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																				"maxLength": 36,
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			{
 																				"description": "The email address",
@@ -1164,6 +1167,7 @@
 																	"secondary_dns_zone_validation_warning",
 																	"sentinel_alert",
 																	"stream_live_notifications",
+																	"traffic_anomalies_alert",
 																	"tunnel_health_event",
 																	"tunnel_update_event",
 																	"universal_ssl_event_type",
@@ -1213,7 +1217,8 @@
 																		"type": "array"
 																	},
 																	"affected_components": {
-																		"description": "Used for configuring incident_alert",
+																		"description": "Used for configuring incident_alert. A list of identifiers for each component to monitor.",
+																		"example": "4c231tkdlpcl",
 																		"items": {
 																			"type": "string"
 																		},
@@ -1525,7 +1530,8 @@
 																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																						"maxLength": 36,
 																						"readOnly": true,
-																						"type": "string"
+																						"type": "string",
+																						"x-auditable": true
 																					},
 																					{
 																						"description": "The email address",
@@ -1870,6 +1876,7 @@
 														"secondary_dns_zone_validation_warning",
 														"sentinel_alert",
 														"stream_live_notifications",
+														"traffic_anomalies_alert",
 														"tunnel_health_event",
 														"tunnel_update_event",
 														"universal_ssl_event_type",
@@ -1919,7 +1926,8 @@
 															"type": "array"
 														},
 														"affected_components": {
-															"description": "Used for configuring incident_alert",
+															"description": "Used for configuring incident_alert. A list of identifiers for each component to monitor.",
+															"example": "4c231tkdlpcl",
 															"items": {
 																"type": "string"
 															},
@@ -2231,7 +2239,8 @@
 																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																			"maxLength": 36,
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		{
 																			"description": "The email address",
@@ -2445,6 +2454,7 @@
 																"secondary_dns_zone_validation_warning",
 																"sentinel_alert",
 																"stream_live_notifications",
+																"traffic_anomalies_alert",
 																"tunnel_health_event",
 																"tunnel_update_event",
 																"universal_ssl_event_type",
@@ -2494,7 +2504,8 @@
 																	"type": "array"
 																},
 																"affected_components": {
-																	"description": "Used for configuring incident_alert",
+																	"description": "Used for configuring incident_alert. A list of identifiers for each component to monitor.",
+																	"example": "4c231tkdlpcl",
 																	"items": {
 																		"type": "string"
 																	},
@@ -2806,7 +2817,8 @@
 																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																					"maxLength": 36,
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				{
 																					"description": "The email address",
@@ -3036,6 +3048,7 @@
 									"secondary_dns_zone_validation_warning",
 									"sentinel_alert",
 									"stream_live_notifications",
+									"traffic_anomalies_alert",
 									"tunnel_health_event",
 									"tunnel_update_event",
 									"universal_ssl_event_type",
@@ -3079,7 +3092,8 @@
 										"type": "array"
 									},
 									"affected_components": {
-										"description": "Used for configuring incident_alert",
+										"description": "Used for configuring incident_alert. A list of identifiers for each component to monitor.",
+										"example": "4c231tkdlpcl",
 										"items": {
 											"type": "string"
 										},
@@ -3384,7 +3398,8 @@
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													{
 														"description": "The email address",
@@ -3545,7 +3560,8 @@
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3670,7 +3686,8 @@
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -3870,6 +3887,7 @@
 									"secondary_dns_zone_validation_warning",
 									"sentinel_alert",
 									"stream_live_notifications",
+									"traffic_anomalies_alert",
 									"tunnel_health_event",
 									"tunnel_update_event",
 									"universal_ssl_event_type",
@@ -3913,7 +3931,8 @@
 										"type": "array"
 									},
 									"affected_components": {
-										"description": "Used for configuring incident_alert",
+										"description": "Used for configuring incident_alert. A list of identifiers for each component to monitor.",
+										"example": "4c231tkdlpcl",
 										"items": {
 											"type": "string"
 										},
@@ -4218,7 +4237,8 @@
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													{
 														"description": "The email address",
@@ -4373,7 +4393,8 @@
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4498,7 +4519,8 @@
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"

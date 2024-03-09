@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/audit_logs": {
+	"GET /accounts/{account_id}/audit_logs": {
 		"description": "Gets a list of audit logs for an account. Can be filtered by who made the change, on which zone, and the timeframe of the change.",
 		"operationId": "audit-logs-get-account-audit-logs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -687,14 +687,14 @@
 			"pro": true
 		}
 	},
-	"GET /organizations/{organization_identifier}/audit_logs": {
+	"GET /organizations/{organization_id}/audit_logs": {
 		"deprecated": true,
 		"description": "Gets a list of audit logs for an organization. Can be filtered by who made the change, on which zone, and the timeframe of the change.",
 		"operationId": "audit-logs-get-organization-audit-logs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
