@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.1.0
+
+### Minor Changes
+
+- 411d8781bb: downgrade mapbox-gl to a less expensive version
+
 ## 8.0.8
 
 ### Patch Changes

@@ -2,6 +2,12 @@
 
 > Cloudflare map presentational components
 
+## WARNING!
+Upgrading mapbox-gl in this package will cost up to an additional $10,000 a month!
+See: https://github.com/mapbox/mapbox-gl-js/releases/tag/v2.0.0
+
+This package has been patched to add referrerPolicy support via yarn patch-commit.
+
 ## Installation
 Installation with yarn is recommended
 
