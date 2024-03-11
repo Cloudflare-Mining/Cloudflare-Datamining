@@ -1324,6 +1324,17 @@
 																			},
 																			"type": "object"
 																		},
+																		"browsers": {
+																			"description": "Browser bindings used for Pages Functions.",
+																			"nullable": true,
+																			"properties": {
+																				"BROWSER": {
+																					"description": "Browser binding.",
+																					"type": "object"
+																				}
+																			},
+																			"type": "object"
+																		},
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"example": "2022-01-01",
@@ -1408,6 +1419,26 @@
 																			},
 																			"type": "object"
 																		},
+																		"hyperdrive_bindings": {
+																			"description": "Hyperdrive bindings used for Pages Functions.",
+																			"nullable": true,
+																			"properties": {
+																				"HYPERDRIVE": {
+																					"description": "Hyperdrive binding.",
+																					"example": {
+																						"id": "a76a99bc342644deb02c38d66082262a"
+																					},
+																					"properties": {
+																						"id": {
+																							"example": "a76a99bc342644deb02c38d66082262a",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"type": "object"
+																		},
 																		"kv_namespaces": {
 																			"description": "KV namespaces used for Pages Functions.",
 																			"properties": {
@@ -1420,6 +1451,26 @@
 																						"namespace_id": {
 																							"description": "ID of the KV namespace.",
 																							"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"mtls_certificates": {
+																			"description": "mTLS bindings used for Pages Functions.",
+																			"nullable": true,
+																			"properties": {
+																				"MTLS": {
+																					"description": "mTLS binding.",
+																					"example": {
+																						"certificate_id": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e"
+																					},
+																					"properties": {
+																						"certificate_id": {
+																							"example": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
 																							"type": "string"
 																						}
 																					},
@@ -1485,7 +1536,7 @@
 																			},
 																			"type": "object"
 																		},
-																		"service_bindings": {
+																		"services": {
 																			"description": "Services used for Pages Functions.",
 																			"nullable": true,
 																			"properties": {
@@ -1502,6 +1553,26 @@
 																						},
 																						"service": {
 																							"description": "The Service name.",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"vectorize_bindings": {
+																			"description": "Vectorize bindings used for Pages Functions.",
+																			"nullable": true,
+																			"properties": {
+																				"VECTORIZE": {
+																					"description": "Vectorize binding.",
+																					"example": {
+																						"index_name": "my_index"
+																					},
+																					"properties": {
+																						"index_name": {
+																							"example": "my_index",
 																							"type": "string"
 																						}
 																					},
@@ -1557,6 +1628,17 @@
 																			},
 																			"type": "object"
 																		},
+																		"browsers": {
+																			"description": "Browser bindings used for Pages Functions.",
+																			"nullable": true,
+																			"properties": {
+																				"BROWSER": {
+																					"description": "Browser binding.",
+																					"type": "object"
+																				}
+																			},
+																			"type": "object"
+																		},
 																		"compatibility_date": {
 																			"description": "Compatibility date used for Pages Functions.",
 																			"example": "2022-01-01",
@@ -1641,6 +1723,26 @@
 																			},
 																			"type": "object"
 																		},
+																		"hyperdrive_bindings": {
+																			"description": "Hyperdrive bindings used for Pages Functions.",
+																			"nullable": true,
+																			"properties": {
+																				"HYPERDRIVE": {
+																					"description": "Hyperdrive binding.",
+																					"example": {
+																						"id": "a76a99bc342644deb02c38d66082262a"
+																					},
+																					"properties": {
+																						"id": {
+																							"example": "a76a99bc342644deb02c38d66082262a",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"type": "object"
+																		},
 																		"kv_namespaces": {
 																			"description": "KV namespaces used for Pages Functions.",
 																			"properties": {
@@ -1653,6 +1755,26 @@
 																						"namespace_id": {
 																							"description": "ID of the KV namespace.",
 																							"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"mtls_certificates": {
+																			"description": "mTLS bindings used for Pages Functions.",
+																			"nullable": true,
+																			"properties": {
+																				"MTLS": {
+																					"description": "mTLS binding.",
+																					"example": {
+																						"certificate_id": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e"
+																					},
+																					"properties": {
+																						"certificate_id": {
+																							"example": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
 																							"type": "string"
 																						}
 																					},
@@ -1718,7 +1840,7 @@
 																			},
 																			"type": "object"
 																		},
-																		"service_bindings": {
+																		"services": {
 																			"description": "Services used for Pages Functions.",
 																			"nullable": true,
 																			"properties": {
@@ -1735,6 +1857,26 @@
 																						},
 																						"service": {
 																							"description": "The Service name.",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"vectorize_bindings": {
+																			"description": "Vectorize bindings used for Pages Functions.",
+																			"nullable": true,
+																			"properties": {
+																				"VECTORIZE": {
+																					"description": "Vectorize binding.",
+																					"example": {
+																						"index_name": "my_index"
+																					},
+																					"properties": {
+																						"index_name": {
+																							"example": "my_index",
 																							"type": "string"
 																						}
 																					},
@@ -2387,6 +2529,17 @@
 																					},
 																					"type": "object"
 																				},
+																				"browsers": {
+																					"description": "Browser bindings used for Pages Functions.",
+																					"nullable": true,
+																					"properties": {
+																						"BROWSER": {
+																							"description": "Browser binding.",
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				},
 																				"compatibility_date": {
 																					"description": "Compatibility date used for Pages Functions.",
 																					"example": "2022-01-01",
@@ -2471,6 +2624,26 @@
 																					},
 																					"type": "object"
 																				},
+																				"hyperdrive_bindings": {
+																					"description": "Hyperdrive bindings used for Pages Functions.",
+																					"nullable": true,
+																					"properties": {
+																						"HYPERDRIVE": {
+																							"description": "Hyperdrive binding.",
+																							"example": {
+																								"id": "a76a99bc342644deb02c38d66082262a"
+																							},
+																							"properties": {
+																								"id": {
+																									"example": "a76a99bc342644deb02c38d66082262a",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				},
 																				"kv_namespaces": {
 																					"description": "KV namespaces used for Pages Functions.",
 																					"properties": {
@@ -2483,6 +2656,26 @@
 																								"namespace_id": {
 																									"description": "ID of the KV namespace.",
 																									"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"mtls_certificates": {
+																					"description": "mTLS bindings used for Pages Functions.",
+																					"nullable": true,
+																					"properties": {
+																						"MTLS": {
+																							"description": "mTLS binding.",
+																							"example": {
+																								"certificate_id": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e"
+																							},
+																							"properties": {
+																								"certificate_id": {
+																									"example": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
 																									"type": "string"
 																								}
 																							},
@@ -2548,7 +2741,7 @@
 																					},
 																					"type": "object"
 																				},
-																				"service_bindings": {
+																				"services": {
 																					"description": "Services used for Pages Functions.",
 																					"nullable": true,
 																					"properties": {
@@ -2565,6 +2758,26 @@
 																								},
 																								"service": {
 																									"description": "The Service name.",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"vectorize_bindings": {
+																					"description": "Vectorize bindings used for Pages Functions.",
+																					"nullable": true,
+																					"properties": {
+																						"VECTORIZE": {
+																							"description": "Vectorize binding.",
+																							"example": {
+																								"index_name": "my_index"
+																							},
+																							"properties": {
+																								"index_name": {
+																									"example": "my_index",
 																									"type": "string"
 																								}
 																							},
@@ -2620,6 +2833,17 @@
 																					},
 																					"type": "object"
 																				},
+																				"browsers": {
+																					"description": "Browser bindings used for Pages Functions.",
+																					"nullable": true,
+																					"properties": {
+																						"BROWSER": {
+																							"description": "Browser binding.",
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				},
 																				"compatibility_date": {
 																					"description": "Compatibility date used for Pages Functions.",
 																					"example": "2022-01-01",
@@ -2704,6 +2928,26 @@
 																					},
 																					"type": "object"
 																				},
+																				"hyperdrive_bindings": {
+																					"description": "Hyperdrive bindings used for Pages Functions.",
+																					"nullable": true,
+																					"properties": {
+																						"HYPERDRIVE": {
+																							"description": "Hyperdrive binding.",
+																							"example": {
+																								"id": "a76a99bc342644deb02c38d66082262a"
+																							},
+																							"properties": {
+																								"id": {
+																									"example": "a76a99bc342644deb02c38d66082262a",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				},
 																				"kv_namespaces": {
 																					"description": "KV namespaces used for Pages Functions.",
 																					"properties": {
@@ -2716,6 +2960,26 @@
 																								"namespace_id": {
 																									"description": "ID of the KV namespace.",
 																									"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"mtls_certificates": {
+																					"description": "mTLS bindings used for Pages Functions.",
+																					"nullable": true,
+																					"properties": {
+																						"MTLS": {
+																							"description": "mTLS binding.",
+																							"example": {
+																								"certificate_id": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e"
+																							},
+																							"properties": {
+																								"certificate_id": {
+																									"example": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
 																									"type": "string"
 																								}
 																							},
@@ -2781,7 +3045,7 @@
 																					},
 																					"type": "object"
 																				},
-																				"service_bindings": {
+																				"services": {
 																					"description": "Services used for Pages Functions.",
 																					"nullable": true,
 																					"properties": {
@@ -2798,6 +3062,26 @@
 																								},
 																								"service": {
 																									"description": "The Service name.",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"vectorize_bindings": {
+																					"description": "Vectorize bindings used for Pages Functions.",
+																					"nullable": true,
+																					"properties": {
+																						"VECTORIZE": {
+																							"description": "Vectorize binding.",
+																							"example": {
+																								"index_name": "my_index"
+																							},
+																							"properties": {
+																								"index_name": {
+																									"example": "my_index",
 																									"type": "string"
 																								}
 																							},
@@ -3822,6 +4106,17 @@
 														},
 														"type": "object"
 													},
+													"browsers": {
+														"description": "Browser bindings used for Pages Functions.",
+														"nullable": true,
+														"properties": {
+															"BROWSER": {
+																"description": "Browser binding.",
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
 													"compatibility_date": {
 														"description": "Compatibility date used for Pages Functions.",
 														"example": "2022-01-01",
@@ -3906,6 +4201,26 @@
 														},
 														"type": "object"
 													},
+													"hyperdrive_bindings": {
+														"description": "Hyperdrive bindings used for Pages Functions.",
+														"nullable": true,
+														"properties": {
+															"HYPERDRIVE": {
+																"description": "Hyperdrive binding.",
+																"example": {
+																	"id": "a76a99bc342644deb02c38d66082262a"
+																},
+																"properties": {
+																	"id": {
+																		"example": "a76a99bc342644deb02c38d66082262a",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
 													"kv_namespaces": {
 														"description": "KV namespaces used for Pages Functions.",
 														"properties": {
@@ -3918,6 +4233,26 @@
 																	"namespace_id": {
 																		"description": "ID of the KV namespace.",
 																		"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"mtls_certificates": {
+														"description": "mTLS bindings used for Pages Functions.",
+														"nullable": true,
+														"properties": {
+															"MTLS": {
+																"description": "mTLS binding.",
+																"example": {
+																	"certificate_id": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e"
+																},
+																"properties": {
+																	"certificate_id": {
+																		"example": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
 																		"type": "string"
 																	}
 																},
@@ -3983,7 +4318,7 @@
 														},
 														"type": "object"
 													},
-													"service_bindings": {
+													"services": {
 														"description": "Services used for Pages Functions.",
 														"nullable": true,
 														"properties": {
@@ -4000,6 +4335,26 @@
 																	},
 																	"service": {
 																		"description": "The Service name.",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"vectorize_bindings": {
+														"description": "Vectorize bindings used for Pages Functions.",
+														"nullable": true,
+														"properties": {
+															"VECTORIZE": {
+																"description": "Vectorize binding.",
+																"example": {
+																	"index_name": "my_index"
+																},
+																"properties": {
+																	"index_name": {
+																		"example": "my_index",
 																		"type": "string"
 																	}
 																},
@@ -4055,6 +4410,17 @@
 														},
 														"type": "object"
 													},
+													"browsers": {
+														"description": "Browser bindings used for Pages Functions.",
+														"nullable": true,
+														"properties": {
+															"BROWSER": {
+																"description": "Browser binding.",
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
 													"compatibility_date": {
 														"description": "Compatibility date used for Pages Functions.",
 														"example": "2022-01-01",
@@ -4139,6 +4505,26 @@
 														},
 														"type": "object"
 													},
+													"hyperdrive_bindings": {
+														"description": "Hyperdrive bindings used for Pages Functions.",
+														"nullable": true,
+														"properties": {
+															"HYPERDRIVE": {
+																"description": "Hyperdrive binding.",
+																"example": {
+																	"id": "a76a99bc342644deb02c38d66082262a"
+																},
+																"properties": {
+																	"id": {
+																		"example": "a76a99bc342644deb02c38d66082262a",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
 													"kv_namespaces": {
 														"description": "KV namespaces used for Pages Functions.",
 														"properties": {
@@ -4151,6 +4537,26 @@
 																	"namespace_id": {
 																		"description": "ID of the KV namespace.",
 																		"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"mtls_certificates": {
+														"description": "mTLS bindings used for Pages Functions.",
+														"nullable": true,
+														"properties": {
+															"MTLS": {
+																"description": "mTLS binding.",
+																"example": {
+																	"certificate_id": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e"
+																},
+																"properties": {
+																	"certificate_id": {
+																		"example": "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
 																		"type": "string"
 																	}
 																},
@@ -4216,7 +4622,7 @@
 														},
 														"type": "object"
 													},
-													"service_bindings": {
+													"services": {
 														"description": "Services used for Pages Functions.",
 														"nullable": true,
 														"properties": {
@@ -4233,6 +4639,26 @@
 																	},
 																	"service": {
 																		"description": "The Service name.",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"vectorize_bindings": {
+														"description": "Vectorize bindings used for Pages Functions.",
+														"nullable": true,
+														"properties": {
+															"VECTORIZE": {
+																"description": "Vectorize binding.",
+																"example": {
+																	"index_name": "my_index"
+																},
+																"properties": {
+																	"index_name": {
+																		"example": "my_index",
 																		"type": "string"
 																	}
 																},
