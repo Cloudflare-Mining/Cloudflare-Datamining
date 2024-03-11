@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/blindrsa-ts",
 	"dist-tags": {
-		"latest": "0.3.2"
+		"latest": "0.4.0"
 	},
 	"versions": {
 		"0.1.0": {
@@ -197,6 +197,46 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQCIUO8xDYSykRZRvboTx4lJN7X5pnGApypARLzAI4/HgAIgU7ggg4J0+CQ3vB6Jx7k/xkLKkc554oysM7X/Grugdds="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"0.4.0": {
+			"name": "@cloudflare/blindrsa-ts",
+			"version": "0.4.0",
+			"dependencies": {
+				"sjcl": "1.0.8"
+			},
+			"devDependencies": {
+				"@types/benchmark": "2.1.5",
+				"@types/jest": "29.5.12",
+				"@typescript-eslint/eslint-plugin": "7.2.0",
+				"@typescript-eslint/parser": "7.2.0",
+				"benchmark": "2.1.4",
+				"eslint": "8.57.0",
+				"eslint-config-prettier": "9.1.0",
+				"eslint-plugin-jest": "27.9.0",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-plugin-prettier": "5.1.3",
+				"eslint-plugin-security": "2.1.1",
+				"jest": "29.7.0",
+				"prettier": "3.2.5",
+				"rimraf": "5.0.5",
+				"typescript": "5.4.2"
+			},
+			"dist": {
+				"integrity": "sha512-LcxbbufPbwCF7KyauLEho5l3aLo0ecYbDpWd/LaF4RB02fWVhtMFD5gd865DXiSXxMAUkurqGJgtN75vthSLFw==",
+				"shasum": "b06c06cd5d9666ddc8368b38ab71607909443af0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/blindrsa-ts/-/blindrsa-ts-0.4.0.tgz",
+				"fileCount": 24,
+				"unpackedSize": 196983,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIApRe5ESrWHewzm/YNIiDhkgzaAsiVvUmZw8uC9RW4T8AiEA2QFzgWHITItlW1lasSMIuSJxC06ZzdwvIiuuhJWnk44="
 					}
 				]
 			},
