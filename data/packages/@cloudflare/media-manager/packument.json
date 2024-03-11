@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/media-manager",
 	"dist-tags": {
-		"latest": "0.0.22"
+		"latest": "0.0.23"
 	},
 	"versions": {
 		"0.0.10": {
@@ -276,6 +276,55 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQC15f1/h8xMBZLLYny/0Y95k+O0LcJWzHrZzo8sBA7cIAIhAP+5o86ZLtTpq6cGlyFWmNnNaOO5CZtpOMs48SlBiW5E"
+					}
+				]
+			}
+		},
+		"0.0.23": {
+			"name": "@cloudflare/media-manager",
+			"version": "0.0.23",
+			"dependencies": {
+				"@uppy/aws-s3": "^3.6.2",
+				"@uppy/core": "^3.8.0",
+				"@uppy/thumbnail-generator": "^3.0.6",
+				"@uppy/utils": "^2.4.3",
+				"classnames": "^2.5.1",
+				"lodash": "^4.17.21",
+				"nanoid": "^4.0.0",
+				"preact": "^10.5.13"
+			},
+			"devDependencies": {
+				"@preact/preset-vite": "^2.8.1",
+				"@rollup/plugin-commonjs": "^25.0.7",
+				"@rollup/plugin-json": "^6.1.0",
+				"@rollup/plugin-node-resolve": "^15.2.3",
+				"@rollup/plugin-terser": "^0.4.4",
+				"@types/lodash": "^4.14.202",
+				"autoprefixer": "^10.4.17",
+				"glob": "^10.3.10",
+				"postcss": "^8.4.33",
+				"postcss-cli": "^11.0.0",
+				"postcss-dir-pseudo-class": "^6.0.0",
+				"postcss-logical": "^5.0.0",
+				"rollup": "^4.12.1",
+				"rollup-plugin-postcss": "^4.0.2",
+				"sass": "^1.69.7",
+				"tailwindcss": "^3.4.1",
+				"typescript": "^5.4.2",
+				"vite": "^5.0.11",
+				"vite-plugin-dts": "^3.7.2",
+				"wrangler": "^3.22.1"
+			},
+			"dist": {
+				"integrity": "sha512-bMG8MWEyaS0jnqCE50PSDqHTkh1oK28gp4CFwUGlGn7IHtusp46E6tiueR6izQDGpbPVopiSVg4C9KJi6TQpSQ==",
+				"shasum": "78f2e03561544faf3f37e641ef1691ef512d8b41",
+				"tarball": "https://registry.npmjs.org/@cloudflare/media-manager/-/media-manager-0.0.23.tgz",
+				"fileCount": 68,
+				"unpackedSize": 478291,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDdQMRtklSMws9x/GSmDFaltqz+1mWSCbvII3jst/FmNQIgJOItW4TZS1QFI60JCjBZBeMFTGS5shZofEe5y54iew0="
 					}
 				]
 			}
