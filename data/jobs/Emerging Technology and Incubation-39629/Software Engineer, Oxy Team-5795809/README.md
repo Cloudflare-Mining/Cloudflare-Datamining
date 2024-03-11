@@ -5,46 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
-<p>Cloudflare’s IT Enterprise Applications Team is a crucial pillar of the CIO Organization. The team operates Cloudflare’s enterprise systems end-to-end, providing process cohesiveness across the functional business areas.</p>
-<h4>What you'll do</h4>
-<p>Cloudflare’s Enterprise Applications Team is seeking a highly skilled and motivated Business Systems Analyst with a specialization in Data Integrity to join our team. As a key contributor to our organization, you will play a crucial role in ensuring the Integrity, reliability, and efficiency of Cloudflare’ data and its supporting processes. The ideal candidate will possess a strong background in best practices for data management, has experience creating comprehensive Data Flow Diagrams, and is adept at analyzing data architecture and integrations with a focus on Salesforce CRM and other key business systems platforms.</p>
-<p>&nbsp;</p>
-<p><strong>Key Responsibilities:</strong></p>
+<p><strong>About the department</strong></p>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p><strong>What you’ll do</strong></p>
+<p>You will be an engineer on the Oxy team. Oxy is a proxy framework, developed using the Rust programming language. Oxy is a foundation of several Cloudflare projects, including the<a href="https://www.cloudflare.com/en-gb/products/zero-trust/gateway/"> Zero Trust Gateway</a>, the iCloud Private Relay<a href="https://blog.cloudflare.com/icloud-private-relay/"> second hop proxy</a>, and the internal<a href="https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore/"> egress routing service</a>. Oxy leverages our years of experience building high-load proxies to implement the latest communication protocols, enabling us to effortlessly build sophisticated services that can accommodate massive amounts of daily traffic. Providing the ability to programmatically control every aspect of the proxying: protocol decapsulation, traffic analysis, routing, tunneling logic, DNS resolution, and more.</p>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>Develop and implement best practices for data management to ensure data accuracy, consistency, and reliability.</li>
-	<li>Gain expertise in the complex data flows across Cloudflare systems, serving as a subject matter expert on data integrity of the GTM Platform ecosystem.</li>
-	<li>Maintain a thorough record of how data is gathered, stored &amp; accessed, including the accuracy, consistency and reliability of Cloudflare’s organizational data.</li>
-	<li>Create and maintain detailed Data Flow Diagrams (DFDs) to provide insights into the company's data architecture and integrations with a particular emphasis on Salesforce CRM and other critical business systems platforms.</li>
-	<li>Identify opportunities to streamline and reduce redundancy in data transit, ensuring optimal utilization of CRM &amp; other sales GTM platform resources.</li>
-	<li>In partnership with management, identify areas for process improvement related to data integrity and collaborate with respective departments to implement enhancements as needed.</li>
-	<li>Maintain detailed documentation of data quality issues, corrective actions and preventive measures.</li>
-	<li>Working closely with various departments to support and coordinate the creation of data integrity processes and protocols and be a trusted advisor to business stakeholders to establish data governance policies .</li>
-	<li>Provide strategic insights into data usage and recommend improvements to align with business objectives.</li>
-	<li>Possess excellent communication skills to interact effectively with senior leadership, cross-functional teams, and stakeholders to understand business needs and align data management strategies accordingly.</li>
-	<li>Conduct data-cleansing procedures to rectify errors and inconsistencies in datasets.</li>
-	<li>The nature of the work will require perseverance, accountability, attention to detail and the ability to react to ever changing business needs.</li>
+	<li>Minimum 1 years of experience building high performance distributed systems</li>
+	<li>Solid foundation in computer science and software engineering with strong competencies in software design and distributed systems</li>
+	<li>Excellent understanding of internet technologies such as TCP, UDP, DNS, HTTP/S</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>Ability to scope, work on and deliver initiatives independently</li>
+	<li>You feel that documenting your work is just as important as delivering the code</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Bachelor's degree in Computer Science, Information Systems Management, or related field.</li>
-	<li>Proven experience as a Business Systems Analyst, with a focus on database management and integrations.</li>
-	<li>Strong understanding of best practices in Data Integrity &amp; governance, Data quality, and Data security.</li>
-	<li>Proficient in creating Data Flow Diagrams (DFDs) and conducting Data analysis.</li>
-	<li>Extensive experience working with Salesforce CRM and other key business systems platforms (Big Query, Netsuite, Marketo, Gainsight, Zendesk &amp; GTM Tools)</li>
-	<li>Excellent communication skills with the ability to convey complex technical concepts to non-technical stakeholders.</li>
-	<li>Strong analytical and problem-solving skills.</li>
+	<li>Working hands-on with your team and our customers to ship production ready, industry-standard, secure code.</li>
+	<li>Collaborating with engineers, researchers, product managers, designers, and other stakeholders.</li>
+	<li>Advocating for end-user privacy in the applications and services you build and contribute to maintaining a high degree of reliability and stability for the applications we ship.</li>
+	<li>Communicating effectively across the team.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Bonus Skills:</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Salesforce certification (e.g., Salesforce Administrator) is a big plus.</li>
-	<li>Experience with CRM &amp; GTM platform enhancements and optimization.</li>
-	<li>Extensive with data reduction and platform resource conservation strategies.</li>
-	<li>Extensive experience with DFD Tooling (Lucid Chart, Miro, MS Visio, Etc.)&nbsp;</li>
+	<li>Past experience contributing to a major browser, web framework, proxy or distributed project</li>
+	<li>Past experience in the CDN industry and/or writing code for a bare metal backend cloud provider</li>
+	<li>Contributions to open source projects (Rust projects double bonus points)</li>
+	<li>Delivered proven improvements to a product and/or service by debugging and resolving network level and application level performance bottlenecks</li>
+	<li>Understanding of cryptographic concepts, such as public-key encryption, digital signatures, hash functions, etc.</li>
+	<li>An interest in collaborating on new Internet standards surrounding privacy and security.</li>
+	<li>Fluent in Rust (double bonus points for async Rust)</li>
+	<li>Able to work in Go</li>
 </ul>
-<p><br><br></p>
-<p>&nbsp;</p>
+<p><strong>Available Locations:&nbsp;</strong>London, Lisbon, Amsterdam, Paris, Munich</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

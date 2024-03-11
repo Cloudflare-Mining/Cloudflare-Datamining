@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: Austin, TX or Washington, D.C.</h4>
+<h4>Available Locations: Washington, D.C.</h4>
 <h4>About the role</h4>
 <p>We are seeking a dynamic and experienced professional to join our team as the State and Local Public Policy Manager. This role presents a unique opportunity to shape policies that foster cloud computing, innovation, cybersecurity, and robust internet infrastructure at the state and local levels. This individual will be responsible for developing, prioritizing, tracking, and communicating Cloudflare’s public policy priorities at the state and local level.&nbsp;&nbsp;</p>
 <h4>What you'll do</h4>
@@ -64,7 +64,7 @@
 	<li>Demonstrated ability to build and maintain relationships with government officials and external stakeholders.</li>
 	<li>Strategic thinker with a proactive and results-oriented approach.</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
@@ -100,7 +100,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

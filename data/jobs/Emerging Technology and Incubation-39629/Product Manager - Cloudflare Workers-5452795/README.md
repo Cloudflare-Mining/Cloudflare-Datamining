@@ -6,30 +6,28 @@
 	</div>
 </div>
 <p><strong>About The Role</strong></p>
-<p>We announced Cloudflare Workers in 2017 &nbsp;— since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support.<br>Over the past few years, Workers has grown from a simple functions-as-a-service option into a complete full-stack platform. We’re growing this platform in new ways, and looking for a Product Manager to drive challenging initiatives, working directly with engineering teams across AI and GPU-based workloads, integrations with external tools and services, to new APIs and observability tooling for Cloudflare Workers.</p>
+<p>We announced Cloudflare Workers in 2017&nbsp; — since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support.</p>
+<p>Workers has grown from a simple functions-as-a-service option into a complete full-stack platform — and with this comes the need to support a broader set of <a href="https://developers.cloudflare.com/workers/runtime-apis/">Runtime APIs</a>. This spans a wide range, from TC39 standards, to Node.js APIs, to web standards. We played a key role in forming <a href="https://wintercg.org/">WinterCG</a>, and there’s still much work to do to grow a shared base of APIs across runtimes — to push forward the ecosystem and ease the burden on open-source maintainers of supporting multiple runtimes.</p>
 <p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Drive the strategy, roadmap &amp; represent your products across the organization</li>
-	<li>Lead projects from ideation through launch, and continuing through ongoing maintenance and support</li>
-	<li>Develop and nurture relationships with engineering and coordinate closely to ensure successful delivery of product</li>
+	<li>Drive the strategy and roadmap for JavaScript APIs in the Cloudflare Workers Runtime</li>
+	<li>Lead new APIs from ideation through launch, and continuing through ongoing maintenance and support</li>
+	<li>Guide teams both internal and external on developing new JavaScript APIs in Workers, including first-party Cloudflare products and external libraries seeking to increase compatibility</li>
+	<li>Develop and nurture key external relationships with open-source maintainers, and ensure their needs are heard and acted on</li>
 	<li>Partner with other departments such as Product Marketing, Marketing, Community &amp; developer advocacy, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
 	<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</li>
-	<li>Represent the company externally as needed, including meetings with customers and prospects and analysis</li>
-	<li>Delve into market research to drive new investments opportunities</li>
+	<li>Represent the company externally as needed, including meetings with customers and prospects and analysis&nbsp;</li>
 </ul>
 <p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
 <p>The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment.&nbsp;</p>
 <p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</p>
 <ul>
 	<li>Proven track record of shipping developer-facing products from ideation to launch</li>
+	<li>Strong knowledge of JavaScript, the NPM ecosystem, and web standards. You have built things in JavaScript and enjoy immersing yourself in the JavaScript community, engaging with new standards, libraries, and frameworks</li>
 	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
-	<li>BS/MS in a technology field.&nbsp;</li>
-	<li>Professional product management experience min 3 years</li>
 	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
 	<li>A desire to sweat the details and ship great developer experiences</li>
-	<li>Experience using developer tools (such as source-control management tools, CLIs, etc)</li>
 	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
-	<li>Scripting/programming experience (Javascript, Rust, Go, etc.) and/or experience with query languages.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
