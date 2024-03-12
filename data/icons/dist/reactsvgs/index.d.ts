@@ -23,6 +23,8 @@ declare const _default: {
     'case-study': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     chart: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     clipboard: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'cloud-internet': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'cloud-multi': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-access': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-dex': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-magic-wan': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

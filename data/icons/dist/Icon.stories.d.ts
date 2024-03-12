@@ -1,7 +1,6 @@
 import React from 'react';
-import IconComponents from './reactsvgs';
-export declare type IconType = keyof typeof IconComponents;
-declare const _default: React.ComponentType<{
+import { ComponentMeta } from '@storybook/react';
+declare const _default: ComponentMeta<React.ComponentType<{
     type: "search" | "link" | "code" | "script" | "time" | "filter" | "image" | "right" | "none" | "download" | "list" | "version" | "key" | "left" | "revert" | "copy" | "help" | "add" | "subtract" | "pause" | "dlp" | "account-analytics-logo" | "add-member" | "api-security" | "api" | "applications" | "arrow-external-link" | "backward" | "bolt" | "byoip" | "calendar" | "calls" | "carbon" | "caret-double-left" | "caret-double-right" | "caret-down" | "caret-left" | "caret-right" | "caret-up" | "case-study" | "chart" | "clipboard" | "cloud-internet" | "cloud-multi" | "cloudflare-access" | "cloudflare-dex" | "cloudflare-magic-wan" | "cloudflare-security-application" | "cloudflare-security-network" | "cloudflare-zero-trust" | "credit-card" | "d1" | "ddos-attack" | "device-desktop" | "device-laptop" | "device-mobile" | "device-tablet" | "discord" | "discover" | "documentation" | "drive" | "edgeworker" | "edit" | "email-forwarding" | "exclamation-sign" | "expand" | "external-link" | "eye" | "facebook" | "file" | "firewall-rules" | "flowchart" | "folder" | "forward" | "funnel" | "garbage" | "gateway" | "gear" | "git-branch" | "github" | "globe" | "hamburger" | "hide-eye" | "home" | "info-sign" | "internet-browser" | "leaf" | "linkedin" | "lock" | "logs" | "magic-firewall" | "magic-transit-logo" | "mail" | "minus" | "more" | "network-analytics-logo" | "network-security" | "network" | "notifications" | "office-branch" | "ok-sign" | "ok" | "optimization-scale" | "pages-logo" | "platform-apps" | "plus" | "printer" | "processing" | "product-security-center" | "pub-sub" | "pull-request" | "queues" | "r2" | "refresh" | "registrar-logo" | "reliability-dns" | "reliability-load-balancer" | "remove" | "reorder" | "resize-horizontal" | "retarget" | "security-bots" | "security-waf" | "server-origin" | "shield" | "spectrum" | "speech" | "star-outline" | "star" | "stream" | "tail-worker" | "teams" | "terraform" | "timer" | "trace" | "traffic-attack-browser" | "turnstile" | "twitter" | "two-way" | "unlock-outline" | "upload" | "user-multi" | "user-outline" | "user" | "waiting-room" | "web-analytics-logo" | "web3" | "workers-bundled" | "workers-constellation" | "workers-durable-objects" | "workers-for-platforms" | "workers-kv" | "workers-pages" | "workers-unbound" | "wrangler" | "wrench" | "youtube" | "zaraz" | "zero-trust-risk-scoring" | "zerotrust-casb-logo" | "zerotrust-networks-logo";
     className?: string | undefined;
     ariaLabel?: string | undefined;
@@ -84,5 +83,17 @@ declare const _default: React.ComponentType<{
     gridRowPad?: number | number[] | undefined;
     gridAlign?: ("start" | "end" | "center" | "stretch") | undefined;
     gridJustify?: ("start" | "end" | "center" | "stretch") | undefined;
-}>;
+}>>;
 export default _default;
+export declare const CloudMulti: {
+    (): JSX.Element;
+    decorators: ((Story: any) => JSX.Element)[];
+};
+export declare const CloudInternet: {
+    (): JSX.Element;
+    decorators: ((Story: any) => JSX.Element)[];
+};
+export declare const Spectrum: {
+    (): JSX.Element;
+    decorators: ((Story: any) => JSX.Element)[];
+};

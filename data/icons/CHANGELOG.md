@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.4.0
+
+### Minor Changes
+
+- 829b74e8cc: Adds new "CloudInternet" and "CloudMulti" icons
+
 ## 12.3.0
 
 ### Minor Changes

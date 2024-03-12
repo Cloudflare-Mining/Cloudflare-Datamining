@@ -21,6 +21,8 @@ import CaretUp from './CaretUp';
 import CaseStudy from './CaseStudy';
 import Chart from './Chart';
 import Clipboard from './Clipboard';
+import CloudInternet from './CloudInternet';
+import CloudMulti from './CloudMulti';
 import CloudflareAccess from './CloudflareAccess';
 import CloudflareDex from './CloudflareDex';
 import CloudflareMagicWan from './CloudflareMagicWan';
@@ -181,6 +183,8 @@ export default {
   'case-study': CaseStudy,
   chart: Chart,
   clipboard: Clipboard,
+  'cloud-internet': CloudInternet,
+  'cloud-multi': CloudMulti,
   'cloudflare-access': CloudflareAccess,
   'cloudflare-dex': CloudflareDex,
   'cloudflare-magic-wan': CloudflareMagicWan,
