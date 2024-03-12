@@ -308,6 +308,7 @@ declare interface TestController {}
 declare interface ExecutionContext {
   waitUntil(promise: Promise<any>): void;
   passThroughOnException(): void;
+  abort(reason?: any): void;
 }
 declare type ExportedHandlerFetchHandler<
   Env = unknown,
@@ -380,6 +381,10 @@ declare abstract class Navigator {
 declare interface Performance {
   readonly timeOrigin: number;
   now(): number;
+}
+declare interface AlarmInvocationInfo {
+  readonly isRetry: boolean;
+  readonly retryCount: number;
 }
 declare interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
@@ -651,9 +656,9 @@ declare interface SchedulerWaitOptions {
 declare abstract class ExtendableEvent extends Event {
   waitUntil(promise: Promise<any>): void;
 }
-declare class CustomEvent extends Event {
+declare class CustomEvent<T = any> extends Event {
   constructor(type: string, init?: CustomEventCustomEventInit);
-  get detail(): any | undefined;
+  get detail(): T;
 }
 declare interface CustomEventCustomEventInit {
   bubbles?: boolean;
@@ -1144,11 +1149,7 @@ declare abstract class Fetcher {
     messages: ServiceBindingQueueMessage[]
   ): Promise<FetcherQueueResult>;
   scheduled(options?: FetcherScheduledOptions): Promise<FetcherScheduledResult>;
-  getRpcMethodForTestOnly(name: string): (() => any | Promise<any>) | null;
-}
-declare interface FetcherPutOptions {
-  expiration?: number;
-  expirationTtl?: number;
+  getRpcMethodForTestOnly(name: string): JsRpcProperty | null;
 }
 declare interface FetcherScheduledOptions {
   scheduledTime?: Date;
@@ -1160,10 +1161,10 @@ declare interface FetcherScheduledResult {
 }
 declare interface FetcherQueueResult {
   outcome: string;
-  retryAll: boolean;
   ackAll: boolean;
-  explicitRetries: string[];
+  retryBatch: QueueRetryBatch;
   explicitAcks: string[];
+  retryMessages: QueueRetryMessage[];
 }
 declare type ServiceBindingQueueMessage<Body = unknown> = {
   id: string;
@@ -1289,32 +1290,51 @@ declare interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
 declare type QueueContentType = "text" | "bytes" | "json" | "v8";
 declare interface Queue<Body = unknown> {
   send(message: Body, options?: QueueSendOptions): Promise<void>;
-  sendBatch(messages: Iterable<MessageSendRequest<Body>>): Promise<void>;
+  sendBatch(
+    messages: Iterable<MessageSendRequest<Body>>,
+    options?: QueueSendBatchOptions
+  ): Promise<void>;
 }
 declare interface QueueSendOptions {
   contentType?: QueueContentType;
+  delaySeconds?: number;
+}
+declare interface QueueSendBatchOptions {
+  delaySeconds?: number;
 }
 declare interface MessageSendRequest<Body = unknown> {
   body: Body;
   contentType?: QueueContentType;
+  delaySeconds?: number;
+}
+declare interface QueueRetryBatch {
+  retry: boolean;
+  delaySeconds?: number;
+}
+declare interface QueueRetryMessage {
+  msgId: string;
+  delaySeconds?: number;
+}
+declare interface QueueRetryOptions {
+  delaySeconds?: number;
 }
 declare interface Message<Body = unknown> {
   readonly id: string;
   readonly timestamp: Date;
   readonly body: Body;
-  retry(): void;
+  retry(options?: QueueRetryOptions): void;
   ack(): void;
 }
 declare interface QueueEvent<Body = unknown> extends ExtendableEvent {
   readonly messages: readonly Message<Body>[];
   readonly queue: string;
-  retryAll(): void;
+  retryAll(options?: QueueRetryOptions): void;
   ackAll(): void;
 }
 declare interface MessageBatch<Body = unknown> {
   readonly messages: readonly Message<Body>[];
   readonly queue: string;
-  retryAll(): void;
+  retryAll(options?: QueueRetryOptions): void;
   ackAll(): void;
 }
 declare interface R2Error extends Error {
@@ -1480,6 +1500,11 @@ declare type R2Objects = {
       truncated: false;
     }
 );
+declare interface JsRpcProperty {
+  then(handler: Function, errorHandler?: Function): any;
+  catch(errorHandler: Function): any;
+  finally(onFinally: Function): any;
+}
 declare abstract class ScheduledEvent extends ExtendableEvent {
   readonly scheduledTime: number;
   readonly cron: string;
@@ -1865,30 +1890,30 @@ declare interface UnsafeTraceMetrics {
 }
 declare class URL {
   constructor(url: string | URL, base?: string | URL);
-  get origin(): string;
-  get href(): string;
-  set href(value: string);
-  get protocol(): string;
-  set protocol(value: string);
-  get username(): string;
-  set username(value: string);
-  get password(): string;
-  set password(value: string);
-  get host(): string;
-  set host(value: string);
-  get hostname(): string;
-  set hostname(value: string);
-  get port(): string;
-  set port(value: string);
-  get pathname(): string;
-  set pathname(value: string);
-  get search(): string;
-  set search(value: string);
-  get hash(): string;
-  set hash(value: string);
+  get origin(): ArrayBuffer;
+  get href(): ArrayBufferView;
+  set href(value: ArrayBufferView);
+  get protocol(): ArrayBufferView;
+  set protocol(value: ArrayBufferView);
+  get username(): ArrayBufferView;
+  set username(value: ArrayBufferView);
+  get password(): ArrayBufferView;
+  set password(value: ArrayBufferView);
+  get host(): ArrayBufferView;
+  set host(value: ArrayBufferView);
+  get hostname(): ArrayBufferView;
+  set hostname(value: ArrayBufferView);
+  get port(): ArrayBufferView;
+  set port(value: ArrayBufferView);
+  get pathname(): ArrayBufferView;
+  set pathname(value: ArrayBufferView);
+  get search(): ArrayBufferView;
+  set search(value: ArrayBufferView);
+  get hash(): ArrayBufferView;
+  set hash(value: ArrayBufferView);
   get searchParams(): URLSearchParams;
-  toJSON(): string;
-  toString(): string;
+  toJSON(): ArrayBufferView;
+  toString(): ArrayBufferView;
   static canParse(url: string, base?: string): boolean;
 }
 declare class URLSearchParams {
@@ -1898,14 +1923,14 @@ declare class URLSearchParams {
   get size(): number;
   append(name: string, value: string): void;
   delete(name: string, value?: string): void;
-  get(name: string): string | null;
-  getAll(name: string): string[];
+  get(name: string): ArrayBufferView | null;
+  getAll(name: string): ArrayBufferView[];
   has(name: string, value?: string): boolean;
   set(name: string, value: string): void;
   sort(): void;
   entries(): IterableIterator<[key: string, value: string]>;
-  keys(): IterableIterator<string>;
-  values(): IterableIterator<string>;
+  keys(): IterableIterator<ArrayBufferView>;
+  values(): IterableIterator<ArrayBufferView>;
   forEach<This = unknown>(
     callback: (
       this: This,
@@ -1919,7 +1944,11 @@ declare class URLSearchParams {
   [Symbol.iterator](): IterableIterator<[key: string, value: string]>;
 }
 declare class URLPattern {
-  constructor(input?: string | URLPatternURLPatternInit, baseURL?: string);
+  constructor(
+    input?: string | URLPatternURLPatternInit,
+    baseURL?: string,
+    patternOptions?: URLPatternURLPatternOptions
+  );
   get protocol(): string;
   get username(): string;
   get password(): string;
@@ -1959,6 +1988,9 @@ declare interface URLPatternURLPatternResult {
   pathname: URLPatternURLPatternComponentResult;
   search: URLPatternURLPatternComponentResult;
   hash: URLPatternURLPatternComponentResult;
+}
+declare interface URLPatternURLPatternOptions {
+  ignoreCase?: boolean;
 }
 declare class CloseEvent extends Event {
   constructor(type: string, initializer: CloseEventInit);
@@ -2136,9 +2168,9 @@ declare interface gpuGPUBuffer {
   unmap(): void;
   destroy(): void;
   mapAsync(
-    mode: number,
-    offset?: number | bigint,
-    size?: number | bigint
+    offset: number,
+    size?: number | bigint,
+    param3?: number | bigint
   ): Promise<void>;
   get size(): number | bigint;
   get usage(): number;

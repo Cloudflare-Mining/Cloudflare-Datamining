@@ -383,6 +383,10 @@ export interface Performance {
   readonly timeOrigin: number;
   now(): number;
 }
+export interface AlarmInvocationInfo {
+  readonly isRetry: boolean;
+  readonly retryCount: number;
+}
 export interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
   alarm?(): void | Promise<void>;
@@ -644,9 +648,9 @@ export interface SchedulerWaitOptions {
 export declare abstract class ExtendableEvent extends Event {
   waitUntil(promise: Promise<any>): void;
 }
-export declare class CustomEvent extends Event {
+export declare class CustomEvent<T = any> extends Event {
   constructor(type: string, init?: CustomEventCustomEventInit);
-  get detail(): any | undefined;
+  get detail(): T;
 }
 export interface CustomEventCustomEventInit {
   bubbles?: boolean;
@@ -1250,32 +1254,43 @@ export interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
 export type QueueContentType = "text" | "bytes" | "json" | "v8";
 export interface Queue<Body = unknown> {
   send(message: Body, options?: QueueSendOptions): Promise<void>;
-  sendBatch(messages: Iterable<MessageSendRequest<Body>>): Promise<void>;
+  sendBatch(
+    messages: Iterable<MessageSendRequest<Body>>,
+    options?: QueueSendBatchOptions
+  ): Promise<void>;
 }
 export interface QueueSendOptions {
   contentType?: QueueContentType;
+  delaySeconds?: number;
+}
+export interface QueueSendBatchOptions {
+  delaySeconds?: number;
 }
 export interface MessageSendRequest<Body = unknown> {
   body: Body;
   contentType?: QueueContentType;
+  delaySeconds?: number;
+}
+export interface QueueRetryOptions {
+  delaySeconds?: number;
 }
 export interface Message<Body = unknown> {
   readonly id: string;
   readonly timestamp: Date;
   readonly body: Body;
-  retry(): void;
+  retry(options?: QueueRetryOptions): void;
   ack(): void;
 }
 export interface QueueEvent<Body = unknown> extends ExtendableEvent {
   readonly messages: readonly Message<Body>[];
   readonly queue: string;
-  retryAll(): void;
+  retryAll(options?: QueueRetryOptions): void;
   ackAll(): void;
 }
 export interface MessageBatch<Body = unknown> {
   readonly messages: readonly Message<Body>[];
   readonly queue: string;
-  retryAll(): void;
+  retryAll(options?: QueueRetryOptions): void;
   ackAll(): void;
 }
 export interface R2Error extends Error {
@@ -1829,30 +1844,30 @@ export interface UnsafeTraceMetrics {
 }
 export declare class URL {
   constructor(url: string | URL, base?: string | URL);
-  get origin(): string;
-  get href(): string;
-  set href(value: string);
-  get protocol(): string;
-  set protocol(value: string);
-  get username(): string;
-  set username(value: string);
-  get password(): string;
-  set password(value: string);
-  get host(): string;
-  set host(value: string);
-  get hostname(): string;
-  set hostname(value: string);
-  get port(): string;
-  set port(value: string);
-  get pathname(): string;
-  set pathname(value: string);
-  get search(): string;
-  set search(value: string);
-  get hash(): string;
-  set hash(value: string);
+  get origin(): ArrayBuffer;
+  get href(): ArrayBufferView;
+  set href(value: ArrayBufferView);
+  get protocol(): ArrayBufferView;
+  set protocol(value: ArrayBufferView);
+  get username(): ArrayBufferView;
+  set username(value: ArrayBufferView);
+  get password(): ArrayBufferView;
+  set password(value: ArrayBufferView);
+  get host(): ArrayBufferView;
+  set host(value: ArrayBufferView);
+  get hostname(): ArrayBufferView;
+  set hostname(value: ArrayBufferView);
+  get port(): ArrayBufferView;
+  set port(value: ArrayBufferView);
+  get pathname(): ArrayBufferView;
+  set pathname(value: ArrayBufferView);
+  get search(): ArrayBufferView;
+  set search(value: ArrayBufferView);
+  get hash(): ArrayBufferView;
+  set hash(value: ArrayBufferView);
   get searchParams(): URLSearchParams;
-  toJSON(): string;
-  toString(): string;
+  toJSON(): ArrayBufferView;
+  toString(): ArrayBufferView;
   static canParse(url: string, base?: string): boolean;
 }
 export declare class URLSearchParams {
@@ -1862,14 +1877,14 @@ export declare class URLSearchParams {
   get size(): number;
   append(name: string, value: string): void;
   delete(name: string): void;
-  get(name: string): string | null;
-  getAll(name: string): string[];
+  get(name: string): ArrayBufferView | null;
+  getAll(name: string): ArrayBufferView[];
   has(name: string): boolean;
   set(name: string, value: string): void;
   sort(): void;
   entries(): IterableIterator<[key: string, value: string]>;
-  keys(): IterableIterator<string>;
-  values(): IterableIterator<string>;
+  keys(): IterableIterator<ArrayBufferView>;
+  values(): IterableIterator<ArrayBufferView>;
   forEach<This = unknown>(
     callback: (
       this: This,
@@ -1883,7 +1898,11 @@ export declare class URLSearchParams {
   [Symbol.iterator](): IterableIterator<[key: string, value: string]>;
 }
 export declare class URLPattern {
-  constructor(input?: string | URLPatternURLPatternInit, baseURL?: string);
+  constructor(
+    input?: string | URLPatternURLPatternInit,
+    baseURL?: string,
+    patternOptions?: URLPatternURLPatternOptions
+  );
   get protocol(): string;
   get username(): string;
   get password(): string;
@@ -1923,6 +1942,9 @@ export interface URLPatternURLPatternResult {
   pathname: URLPatternURLPatternComponentResult;
   search: URLPatternURLPatternComponentResult;
   hash: URLPatternURLPatternComponentResult;
+}
+export interface URLPatternURLPatternOptions {
+  ignoreCase?: boolean;
 }
 export declare class CloseEvent extends Event {
   constructor(type: string, initializer: CloseEventInit);
@@ -2083,9 +2105,9 @@ export interface gpuGPUBuffer {
   unmap(): void;
   destroy(): void;
   mapAsync(
-    mode: number,
-    offset?: number | bigint,
-    size?: number | bigint
+    offset: number,
+    size?: number | bigint,
+    param3?: number | bigint
   ): Promise<void>;
   get size(): number | bigint;
   get usage(): number;

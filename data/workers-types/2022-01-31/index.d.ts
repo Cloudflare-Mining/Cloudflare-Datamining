@@ -360,6 +360,10 @@ declare interface Performance {
   readonly timeOrigin: number;
   now(): number;
 }
+declare interface AlarmInvocationInfo {
+  readonly isRetry: boolean;
+  readonly retryCount: number;
+}
 declare interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
   alarm?(): void | Promise<void>;
@@ -621,9 +625,9 @@ declare interface SchedulerWaitOptions {
 declare abstract class ExtendableEvent extends Event {
   waitUntil(promise: Promise<any>): void;
 }
-declare class CustomEvent extends Event {
+declare class CustomEvent<T = any> extends Event {
   constructor(type: string, init?: CustomEventCustomEventInit);
-  get detail(): any | undefined;
+  get detail(): T;
 }
 declare interface CustomEventCustomEventInit {
   bubbles?: boolean;
@@ -1226,32 +1230,43 @@ declare interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
 declare type QueueContentType = "text" | "bytes" | "json" | "v8";
 declare interface Queue<Body = unknown> {
   send(message: Body, options?: QueueSendOptions): Promise<void>;
-  sendBatch(messages: Iterable<MessageSendRequest<Body>>): Promise<void>;
+  sendBatch(
+    messages: Iterable<MessageSendRequest<Body>>,
+    options?: QueueSendBatchOptions
+  ): Promise<void>;
 }
 declare interface QueueSendOptions {
   contentType?: QueueContentType;
+  delaySeconds?: number;
+}
+declare interface QueueSendBatchOptions {
+  delaySeconds?: number;
 }
 declare interface MessageSendRequest<Body = unknown> {
   body: Body;
   contentType?: QueueContentType;
+  delaySeconds?: number;
+}
+declare interface QueueRetryOptions {
+  delaySeconds?: number;
 }
 declare interface Message<Body = unknown> {
   readonly id: string;
   readonly timestamp: Date;
   readonly body: Body;
-  retry(): void;
+  retry(options?: QueueRetryOptions): void;
   ack(): void;
 }
 declare interface QueueEvent<Body = unknown> extends ExtendableEvent {
   readonly messages: readonly Message<Body>[];
   readonly queue: string;
-  retryAll(): void;
+  retryAll(options?: QueueRetryOptions): void;
   ackAll(): void;
 }
 declare interface MessageBatch<Body = unknown> {
   readonly messages: readonly Message<Body>[];
   readonly queue: string;
-  retryAll(): void;
+  retryAll(options?: QueueRetryOptions): void;
   ackAll(): void;
 }
 declare interface R2Error extends Error {
@@ -1859,7 +1874,11 @@ declare class URLSearchParams {
   [Symbol.iterator](): IterableIterator<[key: string, value: string]>;
 }
 declare class URLPattern {
-  constructor(input?: string | URLPatternURLPatternInit, baseURL?: string);
+  constructor(
+    input?: string | URLPatternURLPatternInit,
+    baseURL?: string,
+    patternOptions?: URLPatternURLPatternOptions
+  );
   get protocol(): string;
   get username(): string;
   get password(): string;
@@ -1899,6 +1918,9 @@ declare interface URLPatternURLPatternResult {
   pathname: URLPatternURLPatternComponentResult;
   search: URLPatternURLPatternComponentResult;
   hash: URLPatternURLPatternComponentResult;
+}
+declare interface URLPatternURLPatternOptions {
+  ignoreCase?: boolean;
 }
 declare class CloseEvent extends Event {
   constructor(type: string, initializer: CloseEventInit);
@@ -2054,9 +2076,9 @@ declare interface gpuGPUBuffer {
   unmap(): void;
   destroy(): void;
   mapAsync(
-    mode: number,
-    offset?: number | bigint,
-    size?: number | bigint
+    offset: number,
+    size?: number | bigint,
+    param3?: number | bigint
   ): Promise<void>;
   get size(): number | bigint;
   get usage(): number;
