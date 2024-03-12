@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/challenges/widgets/{sitekey}": {
+	"DELETE /accounts/{account_id}/challenges/widgets/{sitekey}": {
 		"description": "Destroy a Turnstile Widget.",
 		"operationId": "accounts-turnstile-widget-delete",
 		"responses": {
@@ -72,7 +72,7 @@
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-													"example": true,
+													"example": false,
 													"type": "boolean"
 												},
 												"clearance_level": {
@@ -133,7 +133,7 @@
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-													"example": true,
+													"example": false,
 													"type": "boolean"
 												},
 												"region": {
@@ -279,7 +279,7 @@
 			"Turnstile"
 		]
 	},
-	"GET /accounts/{account_identifier}/challenges/widgets": {
+	"GET /accounts/{account_id}/challenges/widgets": {
 		"description": "Lists all turnstile widgets of an account.",
 		"operationId": "accounts-turnstile-widgets-list",
 		"responses": {
@@ -388,7 +388,7 @@
 												"properties": {
 													"bot_fight_mode": {
 														"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-														"example": true,
+														"example": false,
 														"type": "boolean"
 													},
 													"clearance_level": {
@@ -449,7 +449,7 @@
 													},
 													"offlabel": {
 														"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-														"example": true,
+														"example": false,
 														"type": "boolean"
 													},
 													"region": {
@@ -591,7 +591,7 @@
 			"Turnstile"
 		]
 	},
-	"GET /accounts/{account_identifier}/challenges/widgets/{sitekey}": {
+	"GET /accounts/{account_id}/challenges/widgets/{sitekey}": {
 		"description": "Show a single challenge widget configuration.",
 		"operationId": "accounts-turnstile-widget-get",
 		"responses": {
@@ -664,7 +664,7 @@
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-													"example": true,
+													"example": false,
 													"type": "boolean"
 												},
 												"clearance_level": {
@@ -725,7 +725,7 @@
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-													"example": true,
+													"example": false,
 													"type": "boolean"
 												},
 												"region": {
@@ -871,7 +871,7 @@
 			"Turnstile"
 		]
 	},
-	"POST /accounts/{account_identifier}/challenges/widgets": {
+	"POST /accounts/{account_id}/challenges/widgets": {
 		"description": "Lists challenge widgets.",
 		"operationId": "accounts-turnstile-widget-create",
 		"requestBody": {
@@ -881,7 +881,7 @@
 						"properties": {
 							"bot_fight_mode": {
 								"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-								"example": true,
+								"example": false,
 								"type": "boolean"
 							},
 							"clearance_level": {
@@ -928,7 +928,7 @@
 							},
 							"offlabel": {
 								"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-								"example": true,
+								"example": false,
 								"type": "boolean"
 							},
 							"region": {
@@ -1055,7 +1055,7 @@
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-													"example": true,
+													"example": false,
 													"type": "boolean"
 												},
 												"clearance_level": {
@@ -1116,7 +1116,7 @@
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-													"example": true,
+													"example": false,
 													"type": "boolean"
 												},
 												"region": {
@@ -1262,7 +1262,7 @@
 			"Turnstile"
 		]
 	},
-	"POST /accounts/{account_identifier}/challenges/widgets/{sitekey}/rotate_secret": {
+	"POST /accounts/{account_id}/challenges/widgets/{sitekey}/rotate_secret": {
 		"description": "Generate a new secret key for this widget. If `invalidate_immediately`\nis set to `false`, the previous secret remains valid for 2 hours.\n\nNote that secrets cannot be rotated again during the grace period.\n",
 		"operationId": "accounts-turnstile-widget-rotate-secret",
 		"requestBody": {
@@ -1351,7 +1351,7 @@
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-													"example": true,
+													"example": false,
 													"type": "boolean"
 												},
 												"clearance_level": {
@@ -1412,7 +1412,7 @@
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-													"example": true,
+													"example": false,
 													"type": "boolean"
 												},
 												"region": {
@@ -1558,7 +1558,7 @@
 			"Turnstile"
 		]
 	},
-	"PUT /accounts/{account_identifier}/challenges/widgets/{sitekey}": {
+	"PUT /accounts/{account_id}/challenges/widgets/{sitekey}": {
 		"description": "Update the configuration of a widget.",
 		"operationId": "accounts-turnstile-widget-update",
 		"requestBody": {
@@ -1568,7 +1568,7 @@
 						"properties": {
 							"bot_fight_mode": {
 								"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-								"example": true,
+								"example": false,
 								"type": "boolean"
 							},
 							"clearance_level": {
@@ -1615,7 +1615,7 @@
 							},
 							"offlabel": {
 								"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-								"example": true,
+								"example": false,
 								"type": "boolean"
 							}
 						},
@@ -1699,7 +1699,7 @@
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-													"example": true,
+													"example": false,
 													"type": "boolean"
 												},
 												"clearance_level": {
@@ -1760,7 +1760,7 @@
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-													"example": true,
+													"example": false,
 													"type": "boolean"
 												},
 												"region": {

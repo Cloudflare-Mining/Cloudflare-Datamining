@@ -1,8 +1,8 @@
 {
-	"PARAMETERS /accounts/{account_identifier}/challenges/widgets": [
+	"PARAMETERS /accounts/{account_id}/challenges/widgets": [
 		{
 			"in": "path",
-			"name": "account_identifier",
+			"name": "account_id",
 			"required": true,
 			"schema": {
 				"description": "Identifier",
@@ -61,10 +61,10 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_identifier}/challenges/widgets/{sitekey}": [
+	"PARAMETERS /accounts/{account_id}/challenges/widgets/{sitekey}": [
 		{
 			"in": "path",
-			"name": "account_identifier",
+			"name": "account_id",
 			"required": true,
 			"schema": {
 				"description": "Identifier",
@@ -86,10 +86,10 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_identifier}/challenges/widgets/{sitekey}/rotate_secret": [
+	"PARAMETERS /accounts/{account_id}/challenges/widgets/{sitekey}/rotate_secret": [
 		{
 			"in": "path",
-			"name": "account_identifier",
+			"name": "account_id",
 			"required": true,
 			"schema": {
 				"description": "Identifier",
