@@ -5,41 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
-<p>Want to make the internet better? Love research, organizing data, running fast, and helping to build products that people love?&nbsp;</p>
-<p>Cloudflare is looking for a <strong>UX Content Analyst</strong> to help drive the vision of our growing Product Content Experience Team. As a Content Analyst, you will focus on building and maintaining our research practices, analyzing existing data to help plan future initiatives, and perform research to help us better understand and meet our users’ needs. We are looking for a creative and innovative individual who is passionate about helping people and building a better internet.&nbsp;</p>
-<p><strong>Responsibilities</strong>&nbsp;</p>
-<p><strong>Perform and analyze research</strong></p>
+<h3>About the Department</h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p>The Workers organization makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the technology that executes trillions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
+<h3>About the Team</h3>
+<p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the developer platform that executes trillions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to. The Workers team is split into several groups, this group is focused on how we bring state to the edge.</p>
+<h3>What you'll do</h3>
+<p>In this role, you'll help design and build <a href="https://developers.cloudflare.com/workers/learning/how-kv-works/">Workers KV</a>, a global low-latency key-value data store for the <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022/">Supercloud</a>. You'll be part of a top-notch engineering team keeping KV running smoothly at global scale while implementing new features, ensuring reliability, and improving performance.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how KV processes and stores data, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust, and C++.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Lead research efforts for the Product Content Experience Team that align with broader business goals</li>
-	<li>Assess and improve current product research to build valuable/actionable insights that guide product content development</li>
-	<li>Collect and consolidate metrics, data, design research, user testing, customer support insights, and more to support the Product Content Experience Team</li>
+	<li>4+ years of experience with (and love for) distributed systems and data</li>
+	<li>Willing and eager to share knowledge, and mentorGreat oral and written communications skills, especially concisely documenting complex concepts</li>
+	<li>Solid understanding of Go and JavaScript, including asynchronous programming in both</li>
+	<li>Strong systems level programming skillsUnderstanding of security issues and responsibilities</li>
+	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
+	<li>Solid Linux experience</li>
+	<li>Fluent in analyses of data sets such as logs</li>
+	<li>Designing and building APIs</li>
+	<li>A desire for continuous learning and improvement</li>
 </ul>
-<p><strong>Defining and maintain team processes</strong></p>
-<ul>
-	<li>Recommend workflows, governance models, and processes the Product Content team</li>
-	<li>Guide team research efforts, including user interviews, journey tracking, A/B tests, surveys, content evaluations, and any other research practice you deem necessary</li>
-	<li>Develop and share best practices, strategies, and process to enable Content team research projects</li>
-</ul>
-<p><strong>Collaboration and support product initiatives</strong></p>
-<ul>
-	<li>Collaborate product leaders and other research teams as an advocate for unified, seamless user experience&nbsp;</li>
-	<li>Focus research efforts on broader initiatives of increasing product adoption, decrease churn, and discover recommendation opportunities across the user journey</li>
-	<li>Socialize research findings with key stakeholders&nbsp;</li>
-	<li>Advocate and drive adoption of standard methodologies which demonstrates a strong bias for proven, unbiased research practices</li>
-</ul>
-<p><strong>Requirements</strong></p>
-<ul>
-	<li>2+ years of experience working as an UX Researcher, UX Analyst, Product Researcher or related field</li>
-	<li>4+ years of experience working in a related field as a Content Designer, Product Designer, Taxonomist, or Business Analyst&nbsp;</li>
-	<li>Previous experience working on a Content or UX Design team in all phases of the design process: qualitative and quantitative research, building a strategy, and executing.</li>
-	<li>Familiarity with a variety of research methodologies and working with large datasets</li>
-	<li>Experience engaging with a wide range of stakeholders across a company, its customers, and/or open-source communities.</li>
-	<li>Comfortability working with and presenting to leadership teams</li>
-	<li>Strong interest and comfort with technical subject matter</li>
-	<li>A portfolio demonstrating experience with product research</li>
-</ul>
-<p><br><br></p>
+<p><strong>Available Locations</strong>: Amsterdam or Remote Netherlands, London or Remote UK, Lisbon or Remote Portugal</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

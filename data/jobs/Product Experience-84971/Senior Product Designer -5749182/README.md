@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Remote - US</p>
+<p><strong>Available Locations:&nbsp;</strong>Remote - US (except for the Bay Area)</p>
 <h4><strong>About the Product Experience (PX) team:</strong></h4>
 <p>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Senior Product Designer to join our team.</p>
 <p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Senior Product Designer on the Platform team, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Senior Product Designers to lead by example and coach the team into doing their best work.</p>
