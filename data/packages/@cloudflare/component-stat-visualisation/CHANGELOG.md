@@ -1,5 +1,13 @@
 # Change Log
 
+## 4.0.9
+
+### Patch Changes
+
+- Updated dependencies [0d66b430a2]
+  - @cloudflare/elements@3.0.4
+  - @cloudflare/component-legend@6.0.9
+
 ## 4.0.8
 
 ### Patch Changes

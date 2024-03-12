@@ -1,5 +1,15 @@
 # Change Log
 
+## 6.0.9
+
+### Patch Changes
+
+- Updated dependencies [0d66b430a2]
+  - @cloudflare/elements@3.0.4
+  - @cloudflare/component-button@8.3.1
+  - @cloudflare/component-loading@6.1.3
+  - @cloudflare/component-tooltip@4.4.1
+
 ## 6.0.8
 
 ### Patch Changes

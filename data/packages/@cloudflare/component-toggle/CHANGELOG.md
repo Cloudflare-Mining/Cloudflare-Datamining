@@ -1,5 +1,12 @@
 # Change Log
 
+## 10.0.6
+
+### Patch Changes
+
+- Updated dependencies [0d66b430a2]
+  - @cloudflare/elements@3.0.4
+
 ## 10.0.5
 
 ## 10.0.4

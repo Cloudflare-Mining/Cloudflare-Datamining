@@ -1,5 +1,14 @@
 # Change Log
 
+## 6.0.2
+
+### Patch Changes
+
+- Updated dependencies [0d66b430a2]
+  - @cloudflare/elements@3.0.4
+  - @cloudflare/component-button@8.3.1
+  - @cloudflare/component-loading@6.1.3
+
 ## 6.0.1
 
 ## 6.0.0

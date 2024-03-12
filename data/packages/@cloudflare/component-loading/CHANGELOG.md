@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.1.3
+
+### Patch Changes
+
+- Updated dependencies [0d66b430a2]
+  - @cloudflare/elements@3.0.4
+  - @cloudflare/component-visually-hidden@1.0.87
+
 ## 6.1.2
 
 ### Patch Changes

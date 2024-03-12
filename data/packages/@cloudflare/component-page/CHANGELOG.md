@@ -1,5 +1,13 @@
 # Change Log
 
+## 9.1.1
+
+### Patch Changes
+
+- Updated dependencies [0d66b430a2]
+  - @cloudflare/elements@3.0.4
+  - @cloudflare/component-link@8.0.8
+
 ## 9.1.0
 
 ### Minor Changes

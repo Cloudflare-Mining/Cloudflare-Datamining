@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.1.1
+
+### Patch Changes
+
+- Updated dependencies [0d66b430a2]
+  - @cloudflare/elements@3.0.4
+
 ## 5.1.0
 
 ### Minor Changes

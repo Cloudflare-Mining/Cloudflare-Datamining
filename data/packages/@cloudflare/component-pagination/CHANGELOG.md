@@ -1,5 +1,11 @@
 # Change Log
 
+## 10.0.6
+
+### Patch Changes
+
+- @cloudflare/component-loading@6.1.3
+
 ## 10.0.5
 
 ## 10.0.4

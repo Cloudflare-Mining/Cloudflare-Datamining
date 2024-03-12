@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.4
+
+### Patch Changes
+
+- 0d66b430a2: Add missing HTML attributes (e.g. `role`, `id`) to Elements' props interfaces
+
 ## 3.0.3
 
 ### Patch Changes

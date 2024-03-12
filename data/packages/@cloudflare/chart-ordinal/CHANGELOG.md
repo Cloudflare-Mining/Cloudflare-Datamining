@@ -1,5 +1,12 @@
 # Change Log
 
+## 7.0.6
+
+### Patch Changes
+
+- @cloudflare/util-responsive@2.0.6
+- @cloudflare/component-visually-hidden@1.0.87
+
 ## 7.0.5
 
 ### Patch Changes
