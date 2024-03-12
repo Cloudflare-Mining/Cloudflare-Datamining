@@ -14,5 +14,12 @@
 	"account_home.product_news.tooltip": "The most recent product news from the Cloudflare blog.",
 	"account_home.product_news.empty_state.cta_text": "Go to blog.cloudflare.com",
 	"account_home.system_status.title": "Cloudflare status",
-	"account_home.system_status.tooltip": "System status for Cloudflare's global network and dashboard/APIs."
+	"account_home.system_status.tooltip": "System status for Cloudflare's global network and dashboard/APIs.",
+	"account_home.system_status.empty_state.text": "No active incidents or maintenance.",
+	"account_home.system_status.empty_state.cta_text": "Go to cloudflarestatus.com",
+	"account_home.system_status.incident_maintenance.action.view": "View details",
+	"account_home.system_status.incident_maintenance.action.subscribe": "Send updates to email",
+	"account_home.system_status.incident_maintenance.subscribe_toast.succcess": "Subscribed to email updates for event _%{title}_.",
+	"account_home.system_status.incident_maintenance.subscribe_toast.failure": "Failed to subscribe. Try again later.",
+	"account_home.system_status.active_events": "%{smart_count} active event |||| %{smart_count} active events"
 }

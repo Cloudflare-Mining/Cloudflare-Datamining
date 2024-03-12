@@ -13,6 +13,6 @@
 	},
 	streamTable: {
 		tableHeadings: "<0>Status</0><1>Trigger</1><2>URL</2><3>Time</3>",
-		noLogs: "Not currently listening for events."
+		noLogs: "View the console.log output and errors from your current deployment"
 	}
 }
