@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/megaphone@0.3.1...@cloudflare/megaphone@0.3.2) (2024-03-12)
+
+**Note:** Version bump only for package @cloudflare/megaphone
+
+
+
+
+
 ## [0.3.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/megaphone@0.3.0...@cloudflare/megaphone@0.3.1) (2023-08-30)
 
 
