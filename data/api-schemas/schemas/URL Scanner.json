@@ -94,6 +94,15 @@
 			},
 			{
 				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Filter scans by Autonomous System Number (ASN) of _any_ request made by the webpage.",
+					"example": "13335",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "page_url",
 				"schema": {
 					"description": "Filter scans by exact match to scanned URL (_after redirects_)",
@@ -118,6 +127,14 @@
 			},
 			{
 				"in": "query",
+				"name": "page_asn",
+				"schema": {
+					"description": "Filter scans by main page Autonomous System Number (ASN).",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "page_ip",
 				"schema": {
 					"description": "Filter scans by  main page IP address (IPv4 or IPv6).",
@@ -129,6 +146,14 @@
 				"name": "account_scans",
 				"schema": {
 					"description": "Return only scans created by account.",
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "is_malicious",
+				"schema": {
+					"description": "Filter scans by malicious verdict.",
 					"type": "boolean"
 				}
 			}
