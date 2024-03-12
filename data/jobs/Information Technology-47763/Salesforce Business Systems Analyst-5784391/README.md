@@ -5,43 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>London, United Kingdom or Remote UK</p>
-<p><strong>About the team</strong></p>
-<p>Cloudflare’s mission is to help build a better internet and the Trust &amp; Safety Engineering (TSENG) team lives at the core of that effort. The team empowers customers with products and services to combat abuse, enables deeper coordination with our external industry anti-abuse partners, and ensures that teams in the company can respond to the quickly changing legal landscape of the internet with scalable tools and services. This includes services that have a direct impact on efforts to stop the spread of CSAM (child sexual abuse material) across the internet. Read more about our CSAM Scanning tool<a href="https://blog.cloudflare.com/cloudflares-response-to-csam-online/"> here</a>.</p>
-<p><strong>About the Role</strong></p>
-<p>Engineers on the Trust &amp; Safety Engineering team are responsible for the entire software development lifecycle for our products and services which include both internal and customer-facing software. Whether closing gaps in our abuse processing pipeline, extending our Trust &amp; Safety platform or road mapping the future of Trust &amp; Safety solutions, software engineers on the Trust &amp; Safety Engineering team are critical to Cloudflare’s ability to help make the internet a better place.&nbsp;</p>
-<p>This role will be based out of our London office.</p>
-<p><strong>What you'll do</strong></p>
-<p>While the majority of our services are now written in Golang, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Airflow, Temporal and PostgresSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
-<p><strong>Responsibilities include</strong></p>
+<h4>About the department</h4>
+<p>Cloudflare’s Enterprise Applications Team builds and runs our enterprise systems that enable Cloudflare internal teams to operate efficiently and enable our customers and partners to do business with us. Enterprise Applications Team is part of the CIO organization.&nbsp;&nbsp;</p>
+<p>Within the Enterprise Applications Team is a Go-To-Market team whose main responsibility is to manage our Salesforce platform (Marketing, Sales, Service/Success) in addition to other platforms that support our CRM functional areas.&nbsp;</p>
+<h4>What you'll do</h4>
+<p>As a Sr Business Systems Analyst, you are expected to be an advanced professional in the systems &amp; process design and implementation space with strong Service/Success business process knowledge. The Business Systems Analyst will elicit, understand, and document the internal customer's business requirements, processes and workflows developing both written and visual depictions of requirements and process flows. You will also work with developers to create the functional specifications that meet those requirements, serve as a subject matter expert to the developers building those functions, and test the developed functionality. This role works closely with other Business SMEs, Developers, and Production Support through each stage of the software development lifecycle and also demonstrates both existing and new functionality to the customer stakeholders.&nbsp;</p>
+<p>This job requires an experienced analyst who can partner effectively with all levels of the organization, lead others, drive results, proactively identify and resolve problems, and make challenging decisions.&nbsp; You will also be responsible for recommending and instituting business analysis best practices, tools and methodology towards standardization of BA deliverables and procedures.</p>
+<p>This is a senior individual contributor role; as a trusted advisor to the team, you will apply your technical expertise to the realization of meaningful business process improvements across the enterprise, and you must be confident in your ability to do so. You will lead discovery and analysis sessions with stakeholders and help business teams derive unambiguous business rules and requirements that can be translated into actionable specifications for development teams. You will be responsible for partnering with application developers, business stakeholders and application administrators. A team player with a collaborative mindset is essential.</p>
 <ul>
-	<li>Designing, building, running and scaling tools and services that support Trust and Safety efforts</li>
-	<li>Analyzing and communicating complex technical requirements and concepts, able to identify the highest priority areas and carve a path to deliver</li>
-	<li>Collaborating with T&amp;S, legal and product teams to understand goals and develop robust and scalable solutions.</li>
-	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance and anti-abuse services</li>
-	<li>Ongoing monitoring and maintenance of production services, including participation in on call rotations</li>
-	<li>Working closely with Cloudflare's Trust and Safety team to help make the internet a safer place</li>
-	<li>Mentoring and guiding developers in the Trust and Safety Engineering team to help build collective knowledge and technical expertise</li>
+	<li>Primary Business Systems liaison to the Customer success, Support, and product teams acting as the consultative partner to providing timely remediation, support, and strategic mentorship to ensure business objectives are met</li>
+	<li>Responsible for end to end solution design and delivery – from requirements gathering, testing, through deployment – to ensure effective business system tools design and implementation</li>
+	<li>Provide incident management support for key business applications and coordinate support with our vendors and key partners in internal groups. Partner with Support/Success Product manager to develop Support/Success Systems roadmap – short term to 12+ months</li>
+	<li>Serve as main point of contact and project coordinator for Business Applications, Process and corresponding enhancements</li>
+	<li>Manage multiple competing priorities through effective organization and communication</li>
 </ul>
-<p><strong>Desirable skills and experience</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Minimum 5 years of experience building large-scale software applications, preferably distributed systems</li>
-	<li>Experience designing and integrating RESTful APIs and/or gRPC services</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
-	<li>Prior experience working with Go or Rust</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Expertise in writing well tested code</li>
-	<li>Interest in opportunities to be a technical mentor for teammates</li>
+	<li>Bachelor's Degree or higher in technology-related field or relevant experience in implementing Business systems</li>
+	<li>5+ years of experience in implementations and ongoing operations of a Salesforce org in a Business systems analyst role</li>
+	<li>An understanding of Post Sales Service/Success business processes&nbsp;</li>
+	<li>5+ years of experience working with business applications (Salesforce Service Cloud, Chat, knowledge base, Survey tools)</li>
+	<li>Extraordinary problem solver with the ability to cross between detailed data and high-level insights.</li>
+	<li>Ability to communicate effectively cross functionally with both executive management and end users.</li>
+	<li>Experience in building strong working relationships with business partners, application users, project managers, internal IT team, external application consultants</li>
 </ul>
-<p><strong>Bonus</strong></p>
-<p>(Relevant but not required - we love to learn on the job!)</p>
 <ul>
-	<li>Deep understanding of DNS, TLS/SSL and HTTP</li>
-	<li>Expertise in web security issues and industry standards for access control</li>
-	<li>Experience with Kafka</li>
-	<li>Experience building web applications using React</li>
-	<li>Experience with Kubernetes</li>
-	<li>Experience with Redis</li>
+	<li>Demonstrated ability to deliver on Salesforce project requirements and lead operations support, by working with development, integration and admin team.&nbsp;</li>
+	<li>Experience implementing and managing large Salesforce projects such as transitioning to Salesforce Lightning, implementation of Service Cloud, variety of different support channels and case routing rules</li>
+	<li>Experience with sensitive data and creating systems that meet the security and compliance needs that come with the management/ownership of sensitive data</li>
+	<li>Highly organized, results-driven, with exceptional attention to detail with great end-to-end program management</li>
+	<li>Has expertise in developing and preparing use cases, functional specifications, and technical requirements</li>
+	<li>Ability to understand and represent the needs of the end user in a software development environment</li>
+	<li>Experienced in implementing and sustaining best of breed SaaS applications implementations in an enterprise environment</li>
+	<li>Strong consultative and advisory skills</li>
+	<li>Excellent written and verbal communications</li>
+	<li>Experienced in working with both internal and system integrator teams for development</li>
+	<li>Experience with Jira and Google Suite</li>
+	<li>Experience in supporting internal and external auditors with SOX ITGC, SOD</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
