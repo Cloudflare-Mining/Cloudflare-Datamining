@@ -16,13 +16,14 @@
 	<li>Develop and nurture key external relationships with open-source maintainers, and ensure their needs are heard and acted on</li>
 	<li>Partner with other departments such as Product Marketing, Marketing, Community &amp; developer advocacy, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
 	<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</li>
-	<li>Represent the company externally as needed, including meetings with customers and prospects and analysis&nbsp;</li>
+	<li>Represent the company externally as needed, including meetings with customers, speaking at external events, participating in WinterCG and more.</li>
+	<li>&nbsp;</li>
 </ul>
 <p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
 <p>The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment.&nbsp;</p>
 <p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</p>
 <ul>
-	<li>Proven track record of shipping developer-facing products from ideation to launch</li>
+	<li>Proven track record of shipping developer-facing products from ideation to launch, 3+ years of professional experience working on technology products</li>
 	<li>Strong knowledge of JavaScript, the NPM ecosystem, and web standards. You have built things in JavaScript and enjoy immersing yourself in the JavaScript community, engaging with new standards, libraries, and frameworks</li>
 	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
 	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
