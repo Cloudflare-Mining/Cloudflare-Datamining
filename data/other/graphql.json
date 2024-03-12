@@ -411,65 +411,6 @@
 	"AccountAiInferenceAdaptiveOrderBy": {
 		"__description": ""
 	},
-	"AccountBrowserRenderingEventsAdaptive": {
-		"__description": "Browser Rendering events with adaptive sampling",
-		"browserCloseReason": "Browser session close code. Enum (-1, N/A) (0, Unknown) (1, NormalClosure) (2, BrowserIdle) (3, ClientClosedEarly) (4, ChromiumChrashed) (5, ClientAbnormalClosure) (6, ServerAbnormalClosure) (7, ClientError) (8, ServerError) (9, WorkerError) (10, ClientNeverConnected) (11, BrowserSessionEvicted)\n",
-		"browserEndTime": "Browser session end time",
-		"browserStartTime": "Browser session start time",
-		"connectionEndTime": "When worker ended devtools connection to browser session",
-		"connectionId": "Worker connection ID, when available",
-		"connectionStartTime": "When worker started devtools connection to browser session",
-		"datetime": "The time of the event",
-		"sampleInterval": "ABR sample interval",
-		"scriptName": "Name of worker who initiated the request",
-		"sessionId": "Browser session ID"
-	},
-	"AccountBrowserRenderingEventsAdaptiveFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountBrowserRenderingEventsAdaptiveGroups": {
-		"__description": "Aggregated Browser Rendering events with adaptive sampling",
-		"count": "Total number of events for an account",
-		"dimensions": "List of dimensions to group by",
-		"max": "The maximum value for a metric per dimension",
-		"min": "The minimum value for a metric per dimension",
-		"uniq": ""
-	},
-	"AccountBrowserRenderingEventsAdaptiveGroupsDimensions": {
-		"__description": "",
-		"browserCloseReason": "Browser session close code. Enum (-1, N/A) (0, Unknown) (1, NormalClosure) (2, BrowserIdle) (3, ClientClosedEarly) (4, ChromiumChrashed) (5, ClientAbnormalClosure) (6, ServerAbnormalClosure) (7, ClientError) (8, ServerError) (9, WorkerError) (10, ClientNeverConnected) (11, BrowserSessionEvicted)\n",
-		"connectionId": "Worker connection ID, when available",
-		"date": "The date of the event",
-		"datetimeFifteenMinutes": "The date and time of the event truncated to fifteen minutes",
-		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
-		"datetimeHour": "The date and time of the event truncated to the hour",
-		"datetimeMinute": "The date and time of the event truncated to the minute",
-		"scriptName": "Name of worker who initiated the request",
-		"sessionId": "Browser session ID"
-	},
-	"AccountBrowserRenderingEventsAdaptiveGroupsFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountBrowserRenderingEventsAdaptiveGroupsMax": {
-		"__description": "",
-		"finalBrowserCloseReason": "Browser close reason",
-		"latestBrowserEndTime": "Browser end time"
-	},
-	"AccountBrowserRenderingEventsAdaptiveGroupsMin": {
-		"__description": "",
-		"earliestBrowserStartTime": "Browser start time"
-	},
-	"AccountBrowserRenderingEventsAdaptiveGroupsOrderBy": {
-		"__description": ""
-	},
-	"AccountBrowserRenderingEventsAdaptiveGroupsUniq": {
-		"__description": "",
-		"connectionIdCount": "Unique worker connections",
-		"sessionIdCount": "Unique browser sessions"
-	},
-	"AccountBrowserRenderingEventsAdaptiveOrderBy": {
-		"__description": ""
-	},
 	"AccountCallsStatusAdaptive": {
 		"__description": "(TESTING ONLY, NOT FOR PRODUCTION) Raw Calls events with adaptive sampling",
 		"appId": "The appId that generated traffic",
@@ -2820,37 +2761,6 @@
 	"AccountOhttpMetricsAdaptiveFilter_InputObject": {
 		"__description": ""
 	},
-	"AccountOhttpMetricsAdaptiveGroups": {
-		"__description": "Aggregated oHTTP request metrics with adaptive sampling",
-		"count": "",
-		"dimensions": "List of dimensions to group by",
-		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountOhttpMetricsAdaptiveGroupsDimensions": {
-		"__description": "",
-		"colo": "The airport code of the Cloudflare datacenter that served this request",
-		"date": "Ohttp requests metrics date",
-		"datetimeFifteenMinutes": "Ohttp requests metrics timestamp, truncated to fifteen minutes",
-		"datetimeFiveMinutes": "Ohttp requests metrics timestamp, truncated to five minutes",
-		"datetimeHour": "Ohttp requests metrics timestamp, truncated to the hour",
-		"datetimeMinute": "Ohttp requests metrics timestamp, truncated to the minute",
-		"endpoint": "The appId that generated traffic",
-		"gatewayStatusCode": "Status code returned by the gateway",
-		"relayStatusCode": "Status code returned by the relay"
-	},
-	"AccountOhttpMetricsAdaptiveGroupsFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountOhttpMetricsAdaptiveGroupsOrderBy": {
-		"__description": ""
-	},
-	"AccountOhttpMetricsAdaptiveGroupsSum": {
-		"__description": "",
-		"bytesToClient": "The total bytes sent from gateway to client, observed over the queried time period",
-		"bytesToGateway": "The total bytes from client to gateway, observed over the queried time period",
-		"clientRequestErrors": "The total number of client request errors, observed over the queried time period",
-		"gatewayResponseErrors": "The total number of gateway response errors, observed over the queried time period"
-	},
 	"AccountOhttpMetricsAdaptiveOrderBy": {
 		"__description": ""
 	},
@@ -3352,8 +3262,6 @@
 		"aiGatewayRequestsAdaptiveGroups": "",
 		"aiInferenceAdaptive": "",
 		"aiInferenceAdaptiveGroups": "",
-		"browserRenderingEventsAdaptive": "",
-		"browserRenderingEventsAdaptiveGroups": "",
 		"callsStatusAdaptive": "",
 		"callsUsageAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
@@ -3396,7 +3304,6 @@
 		"mnmFlowDataAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
 		"ohttpMetricsAdaptive": "",
-		"ohttpMetricsAdaptiveGroups": "",
 		"pagesFunctionsInvocationsAdaptiveGroups": "",
 		"queueBacklogAdaptiveGroups": "",
 		"queueConsumerMetricsAdaptiveGroups": "",
@@ -5897,8 +5804,6 @@
 		"aiGatewayRequestsAdaptiveGroups": "AI Gateway Requests",
 		"aiInferenceAdaptive": "AI Inference logs with adaptive sampling",
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
-		"browserRenderingEventsAdaptive": "Browser Rendering events with adaptive sampling",
-		"browserRenderingEventsAdaptiveGroups": "Aggregated Browser Rendering events with adaptive sampling",
 		"callsStatusAdaptive": "(TESTING ONLY, NOT FOR PRODUCTION) Raw Calls events with adaptive sampling",
 		"callsUsageAdaptiveGroups": "Beta. Aggregated Calls bandwidth usage with adaptive sampling",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
@@ -5941,7 +5846,6 @@
 		"mnmFlowDataAdaptiveGroups": "Flow data collected through Magic Network Monitoring",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
 		"ohttpMetricsAdaptive": "oHTTP request metrics with adaptive sampling",
-		"ohttpMetricsAdaptiveGroups": "Aggregated oHTTP request metrics with adaptive sampling",
 		"pagesFunctionsInvocationsAdaptiveGroups": "Pages Functions invocations with adaptive sampling",
 		"queueBacklogAdaptiveGroups": "Beta. Queue backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
 		"queueConsumerMetricsAdaptiveGroups": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
