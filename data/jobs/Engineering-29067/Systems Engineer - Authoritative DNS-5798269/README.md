@@ -6,8 +6,8 @@
 	</div>
 </div>
 <p><strong>About the role and the team</strong></p>
-<p>Cloudflare runs one of the largest DNS infrastructures in the world. We run DNS for millions of Internet properties globally.&nbsp; We also operate the privacy and performance-focused public DNS resolver 1.1.1.1 service. Aggregated we handle around 3 trillion DNS queries per day</p>
-<p>Many of our DNS systems are custom-built internally, so we’ve developed a lot of proprietary technology that operates at scale, and we are iterating constantly to meet new scaling and reliability requirements.</p>
+<p>Cloudflare runs one of the largest DNS infrastructures in the world. We run DNS for millions of Internet properties globally.&nbsp; We also operate the privacy and performance focused public DNS resolver 1.1.1.1 service. Aggregated we handle around 3 trillion DNS queries per day</p>
+<p>Many of our DNS systems are custom built internally, so we’ve developed a lot of proprietary technology that operates at scale, and we are iterating constantly to meet new scaling and reliability requirements.</p>
 <p>In this role, you will be part of a small elite team that builds and maintains one of the core Cloudflare systems. You will maintain and expand our DNS infrastructure and implement features for our customers. We like to think outside the box and come up with novel approaches and solutions.</p>
 <p><strong>Job Description</strong></p>
 <ul>

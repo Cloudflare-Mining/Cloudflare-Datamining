@@ -5,28 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
-<p><span style="font-weight: 400;">Cloudflare runs one of the largest DNS infrastructures in the world. We run DNS for over 25 million Internet properties globally.&nbsp; We also operate the privacy and performance focused public DNS resolver 1.1.1.1 service. Many of our DNS systems are custom built internally, so we’ve developed a lot of proprietary technology that operates at scale, and we are iterating constantly to meet new scaling and reliability requirements.</span></p>
-<p><span style="font-weight: 400;">In this role, you will be part of a small elite team that builds and maintains one of the core Cloudflare systems. You will maintain and expand our DNS infrastructure and implement features for our customers. We like to think outside the box and come up with novel approaches.</span></p>
-<p><strong>Job description<br></strong></p>
+<p><strong>About the role and the team</strong></p>
+<p>Cloudflare runs one of the largest DNS infrastructures in the world. We run DNS for millions of Internet properties globally.&nbsp; We also operate the privacy and performance focused public DNS resolver 1.1.1.1 service. Aggregated we handle around 3 trillion DNS queries per day</p>
+<p>Many of our DNS systems are custom built internally, so we’ve developed a lot of proprietary technology that operates at scale, and we are iterating constantly to meet new scaling and reliability requirements.</p>
+<p>In this role, you will be part of a small elite team that builds and maintains one of the core Cloudflare systems. You will maintain and expand our DNS infrastructure and implement features for our customers. We like to think outside the box and come up with novel approaches and solutions.</p>
+<p><strong>Job Description</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be required to research and implement various DNS RFCs</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">As part of the job you will be researching new tools and&nbsp; technologies to&nbsp; elegantly and efficiently solve problems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be responsible for creating and maintaining documentation on software installations, tools, and procedures</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be working mainly with systems programming languages like Rust, Golang, C, C++ etc</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are expected to be versed in TCP/IP and Internet routing</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be involved in designing and operating highly scalable distributed systems that power Cloudflare products</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You will participate in open source projects that benefit the internet community</span></li>
+	<li>You will be required to research and implement various DNS RFC</li>
+	<li>As part of the job you will be researching new tools and&nbsp; technologies to&nbsp; elegantly and efficiently solve problems at scale</li>
+	<li>You will be responsible for creating and maintaining documentation on software installations, tools, and procedures</li>
+	<li>You will be working mainly with systems languages like Rust, Golang, C, etc</li>
+	<li>You are expected to be versed in TCP/IP and Internet routing</li>
+	<li>You will be involved in designing and operating highly scalable distributed systems that power Cloudflare products</li>
+	<li>You will participate in open source projects that benefit the internet community</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Open source contributions is a big bonus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of DNSSEC and various security extensions to DNS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of HTTP, TLS and CDN Networks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of building Data Analytics pipeline</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building Distributed Systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with large scale Monitoring Systems including metric collection, metric pipeline, visualization, trend/statistical analysis etc</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good communicator, we work with many other groups and like to tell others about what we do in blogs, talks, and meetups</span></li>
+	<li>Open source contributions is a big bonus</li>
+	<li>Knowledge of DNSSEC and various security extensions to DNS</li>
+	<li>Knowledge of HTTP, TLS and CDN Networks</li>
+	<li>Knowledge of building Data Analytics pipeline</li>
+	<li>Experience building Distributed Systems</li>
+	<li>Experience with large scale Monitoring Systems including metric collection, metric pipeline, visualization, trend/statistical analysis etc</li>
+	<li>Good communicator, we work with many other groups and like to tell others about what we do in blogs, talks, and meetups</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
