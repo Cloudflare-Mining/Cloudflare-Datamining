@@ -1,5 +1,7 @@
 <div class="mb2 gray5 ">9 min read</div>
-<div class="post-content lh-copy gray1">
+<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/d1-open-beta-is-here-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/d1-open-beta-is-here-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/d1-open-beta-is-here-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/d1-open-beta-is-here-ko-kr">한국어</a>.</small></p>
+	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-37.png" class="kg-image" alt="D1: open beta is here" loading="lazy" width="1999" height="1126"></figure>
 	<p><strong>D1 is now in open beta</strong>, and the theme is “scale”: with higher per-database storage limits <em>and</em> the ability to create more databases, we’re unlocking the ability for developers to build production-scale applications on D1. Any developers with an existing paid Workers plan don’t need to lift a finger to benefit: we’ve retroactively applied this to all existing D1 databases.</p>
 	<p>If you missed the <a href="https://blog.cloudflare.com/d1-turning-it-up-to-11">last D1 update</a> back during Developer Week, the <a href="https://developers.cloudflare.com/d1/changelog">multitude of updates in the changelog</a>, or are just new to D1 in general: read on.</p>
@@ -124,7 +126,7 @@
 	<p>Instead of spinning up and managing countless traditional database instances, RONIN uses D1 for Platforms to offer automatic infinite scalability at the edge. This allows RONIN to focus on providing an intuitive editing experience for your content.</p>
 	<p>When it comes to enabling “D1 for Platforms”, we’ve thought about this in a few ways from the very beginning:</p>
 	<ul>
-		<li><strong><strong><strong>Support for more than 100,000+ databases for Workers for Platforms users </strong></strong>— <strong><strong>there’s no limit, but if we said “unlimited” you might not believe us</strong></strong> —&nbsp;</strong><strong><strong>on top of the 50,000 databases per account that D1 already enables</strong>.</strong></li>
+		<li><strong><strong><strong>Support for more than 100,000+ databases for Workers for Platforms users </strong></strong>— <strong><strong>there’s no limit, but if we said “unlimited” you might not believe us</strong></strong> —&nbsp;<strong>on top of the 50,000 databases per account that D1 already enables</strong>.</strong></li>
 		<li>D1’s pricing - you don’t pay per-database or for “idle databases”. If you have a range of users, from thousands of QPS down to 1-2 every 10 minutes — you aren’t paying more for “database hours” on the less trafficked databases, or having to plan around spiky workloads across your user-base.</li>
 		<li>The ability to programmatically configure more databases via <a href="https://developers.cloudflare.com/api/operations/cloudflare-d1-create-database">D1’s HTTP API</a> <em>and </em><a href="https://developers.cloudflare.com/api/operations/worker-script-patch-settings">attach them to your Worker</a> without re-deploying. There’s no “provisioning” delay, either: you create the database, and it’s immediately ready to query by you or your users.</li>
 		<li>Detailed <a href="https://developers.cloudflare.com/d1/platform/metrics-analytics">per-database analytics</a>, so you can understand which databases are being used and how they’re being queried via D1’s GraphQL analytics API.</li>
