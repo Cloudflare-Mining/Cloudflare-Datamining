@@ -5,31 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About Product Experience (PX) team</strong></p>
-<p>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Senior Product Designer to join our team.</p>
-<p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Senior Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Senior Product Designers to lead by example and coach the team into doing their best work.</p>
-<p>If you're a systems-thinking Senior Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Locations:</strong> Lisbon or Remote Portugal, London or Remote UK.</p>
+<p><strong>About the Department</strong></p>
+<p>As part of the Cloudflare Infrastructure Engineering organization, our platform SREs are primarily responsible for production reliability. SREs are based&nbsp; in locations in Asia, Europe and the US enabling follow the sun coverage during daytime hours.</p>
+<p>SREs are supported by all engineering teams at Cloudflare who participate in on call schedules for their services. The SRE teams facilitate remediation and follow up of production issues and mature the tooling to enable all engineering teams to self-service on production. Incident follow up work across all engineering teams is prioritized above product innovation and the impact of production incidents influences the priority.&nbsp;</p>
+<p>SREs support two main environments: Edge SRE are focused on edge distribution where most client traffic is served. Core SRE are focused on the core services like control plane, data pipeline and other supporting supporting services&nbsp;&nbsp;</p>
+<h4><strong>Who you are</strong></h4>
 <ul>
-	<li>Demonstrate talent and passion for designing end-to-end user experiences.</li>
-	<li>Distill complex problems into approachable steps through researching, sketching, and sharing ideas with your cross-functional team.</li>
-	<li>Creation of low and high fidelity user interface designs and prototypes using Figma.</li>
-	<li>Partner with product managers and engineering leaders to work through technical tradeoffs that affect product roadmaps.</li>
-	<li>Partner with other designers to collaborate on shared patterns, product vision, and design goals.</li>
-	<li>Facilitate design reviews with cross-functional teams.</li>
-	<li>Influence and contribute to the internal design process and team culture</li>
-	<li>Make time to mentor other designers on the team and share your craft, learning as you teach.</li>
-	<li>Find ways to grow design's impact, spending time to share design decisions throughout the organisation.</li>
+	<li>You have 5+ years of software engineering, reliability, or operations experience in a customer-focused environment.</li>
+	<li>You have 2+ years experience managing a team of 5 or more engineers on projects in the areas of: distributed systems, tooling, Linux, Internetworking, infrastructure security or infrastructure management</li>
+	<li>You are comfortable collaborating and co-ordinating on cross-team projects and workflows</li>
+	<li>You can provide a strong technical vision for systems and infrastructure teams</li>
+	<li>You have experience building services and systems, have successfully taken projects from inception to production, and are comfortable diving in to provide leadership for major projects when needed</li>
+	<li>You are capable of leading a discussion with upper management, and are able to tailor the level of technical detail to suit your audience</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<h4><strong>What you'll do</strong></h4>
+<p>We are looking for an Engineering Manager to lead the Edge SRE team in London. You will lead and develop a team of SREs that are responsible for Cloudflare edge production and building the tools for all teams to understand and interact with it. You will play a lead role in driving our Platform initiatives for edge services and will be tasked with leading engineers who build tools and best practices for engineering teams to debug in production, measure availability and performance indicators, track and report on thresholds.&nbsp;</p>
+<p>Key responsibilities</p>
 <ul>
-	<li>Deep understanding of human-centered design.</li>
-	<li>8+ years working in professional UX or product design roles.</li>
-	<li>Effective visual, written, and verbal communication skills.</li>
-	<li>Technical expertise and an understanding of network services/developer tools are a plus.</li>
-	<li>If possible, please submit a 1-2 case studies or portfolio with your applicaion</li>
+	<li>Lead a team of engineers who are working to keep the Cloudflare edge reliable and scalable</li>
+	<li>Mentor, grow, and empower your team by giving them the skills, confidence and motivation to make decisions</li>
+	<li>Help the individuals on your team to build and execute personal development plans that align with Cloudflare’s goals and objectives</li>
+	<li>Take an active role in prioritizing the roadmap for the SRE Org</li>
+	<li>Drive cross-team and cross-org alignment in engineering, infrastructure and product teams</li>
+	<li>Partner with other Engineering Managers across Cloudflare to achieve reliability outcomes for their services</li>
+	<li>Participate in deep technical design discussions within your team, and across partner teams, and ensure that we're building the right systems and keeping the quality high</li>
 </ul>
-<p><strong>Available Locations:&nbsp;</strong>Lisbon or Remote Portugal, and London or Remote UK</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>Hands-on experience with software or reliability engineering</li>
+	<li>Experience leading and hiring a team that builds and runs tools and platforms</li>
+	<li>Excel at planning and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Incident root cause analysis and follow-ups</li>
+	<li>Incident management</li>
+	<li>Comfortable managing teams/projections with deadlines and short release cycles</li>
+	<li>Experience using observability tools such as Jaeger, OpenTracing, ELK, Prometheus, Thanos, Grafana, Clickhouse</li>
+	<li>Experience running and maturing distributed systems</li>
+	<li>Familiarity working with Proxies, DNS, Databases, Internet and Security</li>
+	<li>Experience developing tools and APIs</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

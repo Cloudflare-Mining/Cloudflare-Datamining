@@ -24,7 +24,7 @@
 	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
 	<li>Expertise in data analysis and troubleshooting large-scale distributed systems</li>
 </ul>
-<p><strong>Available Locations:&nbsp;</strong>London or Remote UK, and Lisbon or Remote Portugal</p>
+<p><strong>Available Locations:&nbsp;</strong>London or Remote UK, and Lisbon or Remote Portugal, Munich or Remote Germany, Amsterdam or Remote Netherlands</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
