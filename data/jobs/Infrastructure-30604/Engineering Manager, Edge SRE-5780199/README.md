@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon or Remote Portugal, London or Remote UK.</p>
+<p><strong>Available Locations:</strong> London</p>
 <p><strong>About the Department</strong></p>
 <p>As part of the Cloudflare Infrastructure Engineering organization, our platform SREs are primarily responsible for production reliability. SREs are based&nbsp; in locations in Asia, Europe and the US enabling follow the sun coverage during daytime hours.</p>
 <p>SREs are supported by all engineering teams at Cloudflare who participate in on call schedules for their services. The SRE teams facilitate remediation and follow up of production issues and mature the tooling to enable all engineering teams to self-service on production. Incident follow up work across all engineering teams is prioritized above product innovation and the impact of production incidents influences the priority.&nbsp;</p>
