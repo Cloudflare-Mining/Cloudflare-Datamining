@@ -657,7 +657,7 @@ const navigation = {
 		hasPermission: C => {
 			const F = (0, l.nA)(C);
 			if ((0, d.yD)(C) || !(0, a.wB)(C, "zone_settings", "spectrum.app") || !F) return !1;
-			const ee = !!((0, M.l8)(C) || (0, l.DQ)(C)),
+			const ee = !!((0, _.l8)(C) || (0, l.DQ)(C)),
 				J = !!(0, l.ZB)(C, "spectrum", "enabled"),
 				fe = !!(0, l.Ns)(F);
 			return J || ee || !fe
