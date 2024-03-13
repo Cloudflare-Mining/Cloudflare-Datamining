@@ -1,4 +1,4 @@
-<div class="mb2 gray5 ">5 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>Two weeks ago CloudFlare announced that it was supporting <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2">HTTP/2 Server</a> Push for all our customers. By simply adding a <code>Link</code> header to an HTTP response specifying <code>preload</code> CloudFlare would automatically push items to web browsers that support Server Push.</p>
 	<p>To illustrate how easy this is I create a small PHP page that uses the PHP <a href="https://secure.php.net/manual/en/function.header.php"><code>header</code></a> function to insert appropriate <code>Link</code> headers to push images to the web browser via CloudFlare. The web page looks like this when loaded:</p>

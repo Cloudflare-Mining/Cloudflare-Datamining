@@ -1,4 +1,4 @@
-<div class="mb2 gray5 ">8 min read</div>
+<div class="mb2 gray5">8 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p><img alt="" src="https://blog.cloudflare.com/content/images/image_0_1.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/image_0_1.png"></noscript></p>
 	<p>This post is about a new feature we've been quietly rolling out over the last few months. Last week we began enabling it for everyone by default. It's called CNAME Flattening and it's a bit geeky, but very useful and important if you’re using cloud-based services and you hate having a “www” subdomain. The gist is: you can now safely use a <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-cname-record">CNAME record</a>, as opposed to an A record that points to a fixed IP address, as your root record in <a href="https://www.cloudflare.com/dns">CloudFlare DNS</a> without triggering a number of edge case error conditions because you’re violating the DNS spec. Geeky, I know, so before asking you to wade through why this is cool, here are some of our customers singing the feature’s praises:</p>

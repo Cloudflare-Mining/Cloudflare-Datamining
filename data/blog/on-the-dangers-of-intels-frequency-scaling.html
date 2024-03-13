@@ -1,4 +1,4 @@
-<div class="mb2 gray5 ">5 min read</div>
+<div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>While I was writing the post <a href="https://blog.cloudflare.com/arm-takes-wing">comparing the new Qualcomm server chip, Centriq, to our current stock of Intel Skylake-based Xeons</a>, I noticed a disturbing phenomena.</p>
 	<p>When benchmarking OpenSSL 1.1.1dev, I discovered that the performance of the cipher <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography">ChaCha20-Poly1305</a> does not scale very well. On a single thread, it performed at the speed of approximately 2.89GB/s, whereas on 24 cores, and 48 threads it performed at just over 35 GB/s.</p>
