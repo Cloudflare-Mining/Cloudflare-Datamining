@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/4699512?gh_jid=4699512",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5777492?gh_jid=5777492",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -9,68 +9,72 @@
 			"retention_period": null
 		}
 	],
-	"internal_job_id": 2403655,
+	"internal_job_id": 2816171,
 	"location": {
-		"name": "Lisbon, Portugal"
+		"name": "Calgary, AB"
 	},
 	"metadata": [
 		{
 			"id": 164993,
 			"name": "Cross-post department",
-			"value": null,
+			"value": "Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4100 - Infrastructure",
+			"value": "4300 - Systems Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Lisbon, Portugal",
-				"London, UK",
 				"Portugal",
-				"UK"
+				"US"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 4699512,
-	"updated_at": "2024-02-16T12:55:36-05:00",
+	"id": 5777492,
+	"updated_at": "2024-03-13T13:31:01-04:00",
 	"requisition_id": null,
-	"title": "Network Deployment Engineer",
+	"title": "Engineering Manager in Test - Zero Trust Client Automation",
 	"departments": [
 		{
-			"id": 30604,
-			"name": "Infrastructure",
+			"id": 29067,
+			"name": "Engineering",
 			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
-			"id": 19983,
-			"name": "Austin, TX",
-			"location": "Austin, TX, United States",
-			"child_ids": [],
-			"parent_id": 48752
-		},
-		{
-			"id": 19988,
-			"name": "London, United Kingdom",
-			"location": "London, United Kingdom",
-			"child_ids": [],
-			"parent_id": 74843
-		},
-		{
 			"id": 75375,
 			"name": "Remote US",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 75883,
+			"name": "Canada",
+			"location": null,
+			"child_ids": [
+				73335,
+				75596,
+				75884,
+				75885,
+				75886
+			],
+			"parent_id": 48752
+		},
+		{
+			"id": 82455,
+			"name": "Remote Portugal",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
 		}
 	]
 }

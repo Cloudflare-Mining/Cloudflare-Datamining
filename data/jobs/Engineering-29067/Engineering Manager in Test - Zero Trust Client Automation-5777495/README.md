@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2>Engineering Manager in Test - Zero Trust Client SDET</h2>
+<h2>Engineering Manager in Test - Zero Trust Client Automation</h2>
 <h3>What you’ll do</h3>
 <p>We are looking for an <strong>Engineering Manager</strong> in Test to lead our <a href="https://www.cloudflare.com/zero-trust/">Zero Trust</a> QA/SDET team and grow our <strong>desktop client automation</strong> and testing.</p>
 <p>As the Engineering Manager in Test, you and your team will own, improve, and maintain our&nbsp;<strong>end-to-end (E2E) testing automation</strong> frameworks &amp; processes that enables all engineers to write E2E tests to <strong>guarantee the quality and reliability</strong> of the clients. You and your team will work closely with our client teams to define and refine our <strong>approach to testing</strong> (automated and manual), and drive the direction of our testing strategy to ensure the reliable and scalable testing of our software.</p>
