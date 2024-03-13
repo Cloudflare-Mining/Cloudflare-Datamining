@@ -2484,6 +2484,14 @@
 						"compatEnableDate": "2024-03-26",
 						"compatEnableFlag": "fetcher_no_get_put_delete"
 					}
+				},
+				{
+					"name": "unwrapCustomThenables",
+					"annotations": {
+						"compatDisableFlag": "no_unwrap_custom_thenables",
+						"compatEnableDate": "2024-04-01",
+						"compatEnableFlag": "unwrap_custom_thenables"
+					}
 				}
 			]
 		},
