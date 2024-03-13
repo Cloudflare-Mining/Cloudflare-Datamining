@@ -2451,6 +2451,9 @@
 													"added_at": {
 														"example": "2021-08-18T10:51:10.09615Z"
 													},
+													"dataflow_score": {
+														"example": 10
+													},
 													"domain_reported_malicious": {
 														"example": false
 													},
@@ -2477,6 +2480,9 @@
 													},
 													"last_seen_at": {
 														"example": "2021-09-02T09:57:54Z"
+													},
+													"obfuscation_score": {
+														"example": 20
 													},
 													"page_urls": {
 														"example": [
@@ -2657,6 +2663,9 @@
 															"added_at": {
 																"example": "2021-08-18T10:51:10.09615Z"
 															},
+															"dataflow_score": {
+																"example": 10
+															},
 															"domain_reported_malicious": {
 																"example": false
 															},
@@ -2683,6 +2692,9 @@
 															},
 															"last_seen_at": {
 																"example": "2021-09-02T09:57:54Z"
+															},
+															"obfuscation_score": {
+																"example": 20
 															},
 															"page_urls": {
 																"example": [
@@ -2878,6 +2890,9 @@
 										"added_at": {
 											"example": "2021-08-18T10:51:10.09615Z"
 										},
+										"dataflow_score": {
+											"example": 10
+										},
 										"domain_reported_malicious": {
 											"example": false
 										},
@@ -2905,6 +2920,9 @@
 										"last_seen_at": {
 											"example": "2021-09-02T09:57:54Z"
 										},
+										"obfuscation_score": {
+											"example": 20
+										},
 										"page_urls": {
 											"example": [
 												"blog.cloudflare.com/page1",
@@ -2924,14 +2942,23 @@
 										"versions": {
 											"example": [
 												{
+													"dataflow_score": 2,
 													"fetched_at": "2021-08-18T10:51:08Z",
 													"hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b423",
-													"js_integrity_score": 2
+													"js_integrity_score": 2,
+													"obfuscation_score": 10
 												}
 											],
 											"items": {
 												"description": "The version of the analyzed script.",
 												"properties": {
+													"dataflow_score": {
+														"description": "The dataflow score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
+													},
 													"fetched_at": {
 														"description": "The timestamp of when the script was last fetched.",
 														"nullable": true,
@@ -2946,6 +2973,13 @@
 													},
 													"js_integrity_score": {
 														"description": "The integrity score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
+													},
+													"obfuscation_score": {
+														"description": "The obfuscation score of the JavaScript content.",
 														"maximum": 99,
 														"minimum": 1,
 														"nullable": true,
@@ -2977,6 +3011,9 @@
 												"added_at": {
 													"example": "2021-08-18T10:51:10.09615Z"
 												},
+												"dataflow_score": {
+													"example": 10
+												},
 												"domain_reported_malicious": {
 													"example": false
 												},
@@ -3004,6 +3041,9 @@
 												"last_seen_at": {
 													"example": "2021-09-02T09:57:54Z"
 												},
+												"obfuscation_score": {
+													"example": 20
+												},
 												"page_urls": {
 													"example": [
 														"blog.cloudflare.com/page1",
@@ -3023,14 +3063,23 @@
 												"versions": {
 													"example": [
 														{
+															"dataflow_score": 2,
 															"fetched_at": "2021-08-18T10:51:08Z",
 															"hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b423",
-															"js_integrity_score": 2
+															"js_integrity_score": 2,
+															"obfuscation_score": 10
 														}
 													],
 													"items": {
 														"description": "The version of the analyzed script.",
 														"properties": {
+															"dataflow_score": {
+																"description": "The dataflow score of the JavaScript content.",
+																"maximum": 99,
+																"minimum": 1,
+																"nullable": true,
+																"type": "integer"
+															},
 															"fetched_at": {
 																"description": "The timestamp of when the script was last fetched.",
 																"nullable": true,
@@ -3045,6 +3094,13 @@
 															},
 															"js_integrity_score": {
 																"description": "The integrity score of the JavaScript content.",
+																"maximum": 99,
+																"minimum": 1,
+																"nullable": true,
+																"type": "integer"
+															},
+															"obfuscation_score": {
+																"description": "The obfuscation score of the JavaScript content.",
 																"maximum": 99,
 																"minimum": 1,
 																"nullable": true,
