@@ -1,7 +1,7 @@
 {
 	"name": "workerd",
 	"dist-tags": {
-		"latest": "1.20240312.0",
+		"latest": "1.20240314.0",
 		"beta": "0.20231030.1"
 	},
 	"versions": {
@@ -2168,6 +2168,29 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQD+mGwyDQvI/NlO7XVDJzqTK7g7iu6jYZ50UWcNX+6ZRwIgUhBTx/vC4J19OJDHN37Rgf2JWaPf6LoMoMO8f81mw8k="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20240314.0": {
+			"name": "workerd",
+			"version": "1.20240314.0",
+			"bin": {
+				"workerd": "bin/workerd"
+			},
+			"dist": {
+				"integrity": "sha512-5vXqDe6vJTMpfPVW8Vtcy2zcVIBnOIMv0D+Z0gVPMPq++KwEyQWzCIVLpIyc28EUc5bW3gEO49E8BN1PQebgfw==",
+				"shasum": "30e689d2a1225fc3b6864978501c1e9d0b3f93a5",
+				"tarball": "https://registry.npmjs.org/workerd/-/workerd-1.20240314.0.tgz",
+				"fileCount": 6,
+				"unpackedSize": 62661,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC7COevT4kphj12O3rV5CVdQ4jn4jgS7TnNjIJqdHqQlQIgc6g7HIDLAZhvJURf4McashYxbeNos0po4LeAdJRkU04="
 					}
 				]
 			},
