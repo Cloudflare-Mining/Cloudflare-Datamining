@@ -89,6 +89,7 @@
 	"api_rules.jwt_validation.add_configuration.configuration_name": "Configuration name",
 	"api_rules.jwt_validation.add_configuration.error_message.multiple_items": "%{name_field} field must have at least 1 item",
 	"api_rules.jwt_validation.add_configuration.error_message.max_length": "Configuration name must be under 50 characters long.",
+	"api_rules.jwt_validation.add_configuration.error_message.max_allowed": "The Token Location Field must contain a maximum of %{max} items.",
 	"api_rules.jwt_validation.add_configuration.error_message.special_character": "Please enter a valid name. Special characters such as ;|&().,<> cannot be used.",
 	"api_rules.jwt_validation.add_configuration.expression.title": "Token location",
 	"api_rules.jwt_validation.add_configuration.expression.description": "Specify where the token is found within a request. You can set multiple locations if needed.",

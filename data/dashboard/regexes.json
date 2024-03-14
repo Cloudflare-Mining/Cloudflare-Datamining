@@ -69,7 +69,7 @@
 	"/@cloudflare\\.com$/",
 	"/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i",
 	"/DELETE/",
-	"/FROM\\s+(\\w+)\\s+WHERE/i",
+	"/FROM\\s+(\\w+)\\s+WHERE/gi",
 	"/MSIE |Trident\\/|Edge\\//",
 	"/Mac/",
 	"/Version\\/[\\d\\.]+.*Safari/",
