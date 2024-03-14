@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.5.0
+
+### Minor Changes
+
+- 04083908a0: Add componentRef prop to allow a ref to the element from the parent
+
 ## 4.4.1
 
 ### Patch Changes

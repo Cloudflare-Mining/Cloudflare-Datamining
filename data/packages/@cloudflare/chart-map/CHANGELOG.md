@@ -1,10 +1,21 @@
 # Change Log
 
+## 8.1.1
+
+### Patch Changes
+
+- Updated dependencies [04083908a0]
+  - @cloudflare/component-tooltip@4.5.0
+
 ## 8.1.0
 
 ### Minor Changes
 
 - 411d8781bb: downgrade mapbox-gl to a less expensive version
+
+### Patch Changes
+
+- @cloudflare/component-tooltip@4.4.1
 
 ## 8.0.8
 

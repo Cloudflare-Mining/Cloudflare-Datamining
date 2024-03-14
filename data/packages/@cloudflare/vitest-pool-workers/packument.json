@@ -1,0 +1,48 @@
+{
+	"name": "@cloudflare/vitest-pool-workers",
+	"dist-tags": {
+		"latest": "0.1.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@cloudflare/vitest-pool-workers",
+			"version": "0.1.0",
+			"dependencies": {
+				"birpc": "0.2.14",
+				"cjs-module-lexer": "^1.2.3",
+				"devalue": "^4.3.0",
+				"esbuild": "0.17.19",
+				"zod": "^3.20.6",
+				"miniflare": "3.20240304.1",
+				"wrangler": "3.34.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20231121.0",
+				"@types/node": "20.8.3",
+				"capnp-ts": "^0.7.0",
+				"capnpc-ts": "^0.7.0",
+				"undici": "5.28.3",
+				"@cloudflare/eslint-config-worker": "1.1.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"peerDependencies": {
+				"@vitest/runner": "1.3.0",
+				"@vitest/snapshot": "1.3.0",
+				"vitest": "1.3.0"
+			},
+			"dist": {
+				"integrity": "sha512-bOXKEFh/dQ0vDLZRfp1maH9hrGllwXXVQ6v/1kLm9SyXsXGPInrV0/6jQb8V9iqbbVwliyAQ7slh1Hd8KC15kw==",
+				"shasum": "10f303da1b4a6b3f1d9c79f9e7b6d9c4ee8a4036",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.1.0.tgz",
+				"fileCount": 55,
+				"unpackedSize": 330505,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDt1LrTU7xA4L4dLfauLC0P619uB5b1su5QRnWRbUW1xgIgQOya1wAI+JlMlkiSQJfq5+HYNfJ3xF+B3ntAdW2fDhw="
+					}
+				]
+			}
+		}
+	}
+}

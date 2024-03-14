@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.4.1
+
+### Patch Changes
+
+- 04083908a0: Fix key warning in Icon example
+
 ## 12.4.0
 
 ### Minor Changes
