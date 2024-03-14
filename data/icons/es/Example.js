@@ -21,7 +21,8 @@ export var Example = () => /*#__PURE__*/React.createElement(Div, {
   justifyContent: "center",
   alignItems: "center",
   px: 0,
-  py: 2
+  py: 2,
+  key: t
 }, /*#__PURE__*/React.createElement(Icon, {
   size: 32,
   type: t
