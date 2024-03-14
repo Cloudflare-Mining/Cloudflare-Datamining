@@ -1,5 +1,16 @@
 # @cloudflare/component-code-block
 
+## 5.0.11
+
+### Patch Changes
+
+- 644ec8477f: Previously the displayed option was stored in state, meaning if the
+  options changed, but the component did not unmount and then remount, the
+  old tab that was selected would still be displayed.
+
+  Now, we grab the active option on every render, and reset when the
+  selected tab is no longer an option.
+
 ## 5.0.10
 
 ### Patch Changes
