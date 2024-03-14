@@ -1844,30 +1844,30 @@ export interface UnsafeTraceMetrics {
 }
 export declare class URL {
   constructor(url: string | URL, base?: string | URL);
-  get origin(): ArrayBuffer;
-  get href(): ArrayBufferView;
-  set href(value: ArrayBufferView);
-  get protocol(): ArrayBufferView;
-  set protocol(value: ArrayBufferView);
-  get username(): ArrayBufferView;
-  set username(value: ArrayBufferView);
-  get password(): ArrayBufferView;
-  set password(value: ArrayBufferView);
-  get host(): ArrayBufferView;
-  set host(value: ArrayBufferView);
-  get hostname(): ArrayBufferView;
-  set hostname(value: ArrayBufferView);
-  get port(): ArrayBufferView;
-  set port(value: ArrayBufferView);
-  get pathname(): ArrayBufferView;
-  set pathname(value: ArrayBufferView);
-  get search(): ArrayBufferView;
-  set search(value: ArrayBufferView);
-  get hash(): ArrayBufferView;
-  set hash(value: ArrayBufferView);
+  get origin(): string;
+  get href(): string;
+  set href(value: string);
+  get protocol(): string;
+  set protocol(value: string);
+  get username(): string;
+  set username(value: string);
+  get password(): string;
+  set password(value: string);
+  get host(): string;
+  set host(value: string);
+  get hostname(): string;
+  set hostname(value: string);
+  get port(): string;
+  set port(value: string);
+  get pathname(): string;
+  set pathname(value: string);
+  get search(): string;
+  set search(value: string);
+  get hash(): string;
+  set hash(value: string);
   get searchParams(): URLSearchParams;
-  toJSON(): ArrayBufferView;
-  toString(): ArrayBufferView;
+  toJSON(): string;
+  toString(): string;
   static canParse(url: string, base?: string): boolean;
 }
 export declare class URLSearchParams {
@@ -1877,14 +1877,14 @@ export declare class URLSearchParams {
   get size(): number;
   append(name: string, value: string): void;
   delete(name: string, value?: string): void;
-  get(name: string): ArrayBufferView | null;
-  getAll(name: string): ArrayBufferView[];
+  get(name: string): string | null;
+  getAll(name: string): string[];
   has(name: string, value?: string): boolean;
   set(name: string, value: string): void;
   sort(): void;
   entries(): IterableIterator<[key: string, value: string]>;
-  keys(): IterableIterator<ArrayBufferView>;
-  values(): IterableIterator<ArrayBufferView>;
+  keys(): IterableIterator<string>;
+  values(): IterableIterator<string>;
   forEach<This = unknown>(
     callback: (
       this: This,
