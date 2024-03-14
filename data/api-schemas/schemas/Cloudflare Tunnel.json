@@ -2097,6 +2097,7 @@
 				"name": "per_page",
 				"schema": {
 					"description": "Number of results to display.",
+					"maximum": 1000,
 					"minimum": 1,
 					"type": "number"
 				}
@@ -5325,6 +5326,7 @@
 				"name": "per_page",
 				"schema": {
 					"description": "Number of results to display.",
+					"maximum": 1000,
 					"minimum": 1,
 					"type": "number"
 				}
@@ -6314,6 +6316,7 @@
 				"name": "per_page",
 				"schema": {
 					"description": "Number of results to display.",
+					"maximum": 1000,
 					"minimum": 1,
 					"type": "number"
 				}
