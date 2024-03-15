@@ -37,7 +37,6 @@
 	<li>Self-starter with the ability to learn in a fast-paced environment with minimal supervision</li>
 	<li>An ambitious mindset that enables you to successfully work independently with little guidance, but also to use good judgment and call out issues when needed.</li>
 	<li>Experience delivering in-person and/or virtual trainings and workshops</li>
-	<li>Fluency in Japanese, Chinese (Mandarin), or Korean preferred, to work with teams within APJC region</li>
 </ul>
 <p><br><br></p>
 <div class="content-conclusion">
