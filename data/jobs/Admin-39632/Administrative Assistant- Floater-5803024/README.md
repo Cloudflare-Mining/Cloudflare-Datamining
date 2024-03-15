@@ -5,72 +5,60 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin Texas</p>
-<p><strong>About the Department</strong></p>
-<p>Security at Cloudflare is a diverse, focused team committed to helping secure both Cloudflare and our customers.&nbsp; And the Technical Program Management team is the group that helps connect the dots between threats, risk, business needs, and innovation to execute on reducing risk at Cloudflare while partnering to build the best solutions for our customers.&nbsp;&nbsp;&nbsp;</p>
-<p><strong>About the Role</strong></p>
-<p>We need to solve big security challenges at scale.&nbsp; As a Technical Program Manager on the security team, you will:</p>
+<p><strong>Available Locations: </strong>Austin, TX</p>
+<p><strong>About the role:</strong></p>
+<p>We are currently seeking a highly skilled Floating Administrative Assistant to join our team. This individual will provide comprehensive backup administrative support to executives across various organizations as needed. The ideal candidate will possess a dynamic and adaptable personality, demonstrating a genuine enthusiasm for engaging with various individuals, departments, and facets of our organization. With a minimum of 3-5 years of experience in supporting VP-level executives, the successful candidate will play a pivotal role in ensuring seamless operations and providing invaluable assistance across diverse functions.<br><br><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Work with Security, IT, engineering, infrastructure, and people teams to discover, define, and execute on security programs to reduce risk at Cloudflare</li>
-	<li>Develop an objective and innovative approach to identifying and solving our highest priority security initiatives&nbsp;</li>
-	<li>Build relationships across Cloudflare’s many teams, be an expert with communication issues, and maintain alignment to ensure decisions get made that drive our security vision forward</li>
-	<li>Generate cadenced program updates, reports, and metrics that provide executive and board level summaries&nbsp;</li>
-	<li>Synthesize ideas and concepts into executable program / project plans (technical design specifications, roadmaps, budgets, resource planning, etc)</li>
-	<li>Lead conversations with key internal and external stakeholders to make tough decisions, prioritize requirements, estimate work efforts, define milestones, identify dependencies, evaluate and mitigate risks, triage and debug issues large and small</li>
-	<li>Guide and develop understanding of architectural solutions, the impact to our teams and products, and drive the key communication ensure the program initiatives move forward and maintain momentum</li>
-	<li>Understand our products deeply from a technical and business perspective; developing broad domain and technical knowledge setting&nbsp; us to be customer zero at Cloudflare</li>
-	<li>Balance the focus on long term vision and roadmap versus addressing high risk tactical security issues</li>
+	<li>Provide comprehensive backup administrative support to executives, demonstrating proficiency in calendar management, travel arrangements (both domestic and international), and handling confidential information with utmost discretion.</li>
+	<li>Exhibit exceptional multitasking abilities and adeptness in prioritizing tasks within a fast-paced environment, while maintaining meticulous attention to detail, accuracy, and adherence to deadlines.</li>
+	<li>Serve as a liaison between executives and internal/external stakeholders, facilitating effective communication and collaboration across all levels of the organization.</li>
+	<li>Contribute to the efficiency of office operations by anticipating needs, proactively identifying solutions, and implementing streamlined processes as necessary.</li>
+	<li>Handle ad hoc projects and assignments with professionalism and efficiency, demonstrating flexibility and resourcefulness in addressing evolving priorities.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>6+ years of experience in technical program management, ideally with a focus on security</li>
-	<li>Impeccable change management and communication skills&nbsp;</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity</li>
-	<li>Exceptional communication, presentation, organizational, and analytical skills</li>
-	<li>Experience building out programs globally and from the ground up</li>
-	<li>Highly experienced at cross functional dependency identification and coordination</li>
-	<li>A knack for ensuring team(s) and stakeholders are always executing toward the outcome</li>
-	<li>Ability to effectively prioritize and advance a large number of projects simultaneously</li>
-	<li>Ability to speak with ease to both engineers and executives</li>
-	<li>Foresight to understand and plan around the technical dependencies and impacts to other teams and projects&nbsp;</li>
-	<li>Equally adept at strategy formulation and tactical execution</li>
-	<li>Principled decision making based off of deep understanding of where the business is heading</li>
-	<li>Ability to influence and motivate people across a broad variety of job functions</li>
-	<li>Experience in or desire to work with multiple time zones and with multiple cross functional teams, including travel as needed</li>
+	<li>3-5+ years of experience as an Administrative Assistant</li>
+	<li>Strong written and verbal communication skills</li>
+	<li>Detail oriented</li>
+	<li>Strong sense of urgency and proactiveness</li>
+	<li>Strong organizational skills</li>
 </ul>
+<p></p>
 <p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span style="font-weight: 400;">For Texas-based hires: Estimated annual salary of $147,000 - $163,000</span></li>
+	<li>For Colorado-based hires: Estimated annual salary of $81,000 - $99,000</li>
 </ul>
 <p><strong>Equity</strong></p>
-<p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
-<p><span style="font-weight: 400;">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</span></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Medical/Rx Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Dental Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Vision Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Commuter Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fertility &amp; Family Forming Benefits</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">On-demand mental health support and Employee Assistance Program</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Global Travel Medical Insurance</span></li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
 <p><strong>Financial Benefits</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Short and Long Term Disability Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Life &amp; Accident Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">401(k) Retirement Savings Plan</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee Stock Participation Plan</span></li>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
 </ul>
 <p><strong>Time Off</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
+<p></p>
+<p></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

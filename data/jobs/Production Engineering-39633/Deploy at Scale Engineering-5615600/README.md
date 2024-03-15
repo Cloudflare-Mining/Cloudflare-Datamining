@@ -5,27 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the department</strong></p>
-<p>Cloudflare’s Billing Services Engineering Team built and maintains key billing related services. This is a vital team relevant to customer journey, campaign or any initiative Cloudflare undertakes. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
-<p>Billing Services Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.</p>
-<h4>What you'll do</h4>
-<p>You will lead a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites. You will play an active part in shaping the product and team that will build core infrastructure. You will make sure our company hits our ambitious engineering goals.&nbsp; You will change the way people build applications.</p>
-<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel at understanding how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h3><strong>About the Department</strong></h3>
+<p>Cloudflare’s Production Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month, representing over 20% of global Internet traffic. Production Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
+<p>The Release Manager Team within the Production Engineering organization is responsible for&nbsp; ensuring that we can deliver new features to production in a manner that supports both rapid innovation and safe change at scale to provide the speed and reliability that Cloudflare is known for.</p>
+<p><strong>Available Location</strong>: Remote US</p>
+<h3><strong>What you’ll do</strong></h3>
+<p>In this role you’ll help us build the deployment mechanisms that allow speed of innovation and safety through health meditation.&nbsp; You will be joining a<a href="https://blog.cloudflare.com/cloudflares-first-year-in-lisbon/"> global team</a> of bright, hard-working, and supportive engineers who really care about their craft and will be accelerating innovation across all products that Cloudflare offers.<br><br>Technologies we use:</p>
 <ul>
-	<li>Experience leading a teamComfortable leading and hiring a team that builds the backend bits and frontend widgets</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Comfortable building developer-loved APIs that scale</li>
-	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development</li>
-	<li>You inspire your team to reach higher</li>
-	<li>You’re as good as explaining “why” as you are “how”Experience implementing tools, process, internal instrumentation, methodologies and resolving blockagesComfortable managing teams/projections with tight deadlines and short release cycles</li>
+	<li>Salt</li>
+	<li>Go</li>
+	<li>Postgres</li>
+	<li>Temporal</li>
+	<li>Kubernetes</li>
+	<li>For service monitoring we use Prometheus, Grafana and Sentry.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p>Because you’ll be<a href="https://blog.cloudflare.com/gateway-swg/"> solving problems of massive scale and significance</a>, and<a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"> shaping the future of the Internet</a>, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p>As an ideal candidate for this position, you are curious, hard-working, and passionate.</p>
+<p>A rough list of the skills we would love to see you bring:</p>
 <ul>
-	<li>Experience building massive distributed systems</li>
-	<li>Experience leading teams using any of the following: modern JavaScript, Web Assembly. Rust or Go&nbsp;</li>
+	<li>A degree in Computer Science, Engineering, Mathematics, Statistics or related field; OR have relevant background/experience to the field.</li>
+	<li>Programming experience in Go, or similar languages</li>
+	<li>Experience in designing and implementing secure and highly-available distributed systems</li>
+	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
+	<li>Experience with continuous delivery and deployment of a k8s hosted application</li>
+	<li>​​Understanding of security issues and responsibilities</li>
+	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
+	<li>Fluent in analyses of data sets such as logs</li>
+	<li>Strong English language oral and written communications skills</li>
+	<li>Designing and building APIs</li>
 </ul>
-<p><strong>Locations</strong>: Lisbon or Remote Portugal</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
