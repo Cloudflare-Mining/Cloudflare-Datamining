@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5813231?gh_jid=5813231",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5803498?gh_jid=5803498",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -9,52 +9,59 @@
 			"retention_period": null
 		}
 	],
-	"education": "education_optional",
-	"internal_job_id": 2689360,
+	"internal_job_id": 2825635,
 	"location": {
-		"name": "Remote US"
+		"name": "Austin, TX"
 	},
 	"metadata": [
 		{
 			"id": 164993,
 			"name": "Cross-post department",
-			"value": null,
+			"value": "Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "5700 - Customer Support",
+			"value": "4100 - Infrastructure",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Mexico"
+				"Austin, US",
+				"US"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 5813231,
-	"updated_at": "2024-03-14T13:23:09-04:00",
-	"requisition_id": "295",
-	"title": "Technical Support Engineer - Zero Trust Focused",
+	"id": 5803498,
+	"updated_at": "2024-03-15T15:07:00-04:00",
+	"requisition_id": "382",
+	"title": "Core Systems Reliability Engineer",
 	"departments": [
 		{
-			"id": 29101,
-			"name": "Customer Support",
+			"id": 29067,
+			"name": "Engineering",
 			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
-			"id": 84342,
-			"name": "Remote Mexico",
-			"location": "Mexico City, Mexico City, Mexico",
+			"id": 19983,
+			"name": "Austin, TX",
+			"location": "Austin, TX, United States",
 			"child_ids": [],
-			"parent_id": 87170
+			"parent_id": 48752
+		},
+		{
+			"id": 75375,
+			"name": "Remote US",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
 		}
 	]
 }

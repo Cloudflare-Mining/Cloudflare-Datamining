@@ -5,39 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location(s) Available: Remote US; Austin, US</strong></p>
-<p><strong>About the Team</strong></p>
-<p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
-<p><strong>About the Role</strong></p>
-<p>As an intern on the Internal Audit (IA) team, you will support the IA team in executing all aspects of Cloudflare’s IT &amp; Cybersecurity Audits, as well as testing of IT internal controls (SOX), as deemed necessary.&nbsp;</p>
-<p><strong>What you'll do</strong></p>
+<h4>Available Locations: Remote Mexico or Remote US</h4>
+<h4>What you'll do</h4>
+<p>We are looking for a strong leader to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Tooling &amp; Strategy.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Assist in executing the Internal Audit plan under the supervision of an IA IT Audit Manager. This includes IT audit planning, risk assessment, fieldwork, issues validation, and reporting</li>
-	<li>Execute operational audits in accordance with department and professional standards (for example; Detection/Response, Security and Asset Management), and complete assignments timely in an efficient manner</li>
-	<li>Help design testing procedures relevant to risk and test objectives</li>
-	<li>Prepare cybersecurity audit workpapers and reports with direct supervision.</li>
-	<li>Build relationships with key stakeholders and business owners.</li>
-	<li>Execute test of design and operating effectiveness for IT internal controls (SOX), as deemed necessary</li>
-	<li>Document all Cybersecurity Internal Audit work in the AuditBoard tool</li>
-	<li>Reports to an IA Cybersecurity Audit Manager based</li>
-	<li>Be assigned a mentor to guide you through the internship and help with career goals</li>
-	<li>Make friends across the company through our Buddy Program, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
-	<li>Present your project to the entire company at the end of the internship.</li>
-	<li>Get direct access to our executives and leadership team including our co-founders.</li>
+	<li>Lead Strategic Direction, Product Vision, Customer Discovery, Feature Prioritization &amp; Cross-functional alignment for Cloudflare’s Commission Tech Stack</li>
+	<li>Identify &amp; implement leading practice architecture and build techniques, optimizing for scalability, flexibility and analytical intelligence</li>
+	<li>Own &amp; coordinate managed services resources, leveraging to execute and implement builds, enhancements and testing</li>
+	<li>Implement&nbsp; robust and thorough change management processes and&nbsp; testing framework</li>
+	<li>Employ a ‘business-focused’ approach to technical work; learn, understand and speak the language of key stakeholders and business partners</li>
+	<li>Build extensive documentation and enablement infrastructure, scaling consistent practices, documentation and desktop procedures for tool functionality</li>
+	<li>Build deep knowledge around and leverage relationships to influence outcomes and prioritization of upstream system enhancements which directly impact ICM practice (eg. HCM, CRM, etc.)</li>
+	<li>Implement appropriate SOX Controls, partnering closely with the Controllership and Internal Audit Organizations</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Computer Science, Data Analytics, Management Information Systems, Engineering, major/minor preferred</li>
-	<li>Effective communicator, ability to build relations &amp; manage expectations&nbsp;</li>
-	<li>Time management skills and ability to plan and prioritize effectively</li>
+	<li>8+ years of Product Management, Technical Project Management, Consulting, or Incentive Compensation Administration; experience with a Saas business model preferred</li>
+	<li>Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</li>
+	<li>Experience or understanding of commissions-specific SOX Controls</li>
+	<li>Experience with Varicent, Anaplan ICM, Xactly, Calidus or a similar ICM tool</li>
+	<li>Experience with SQL platforms and queries</li>
+	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
+	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
 </ul>
-<ul>
-	<li>Ability to work effectively in a team environment</li>
-</ul>
-<ul>
-	<li>Critical thinking &amp; decision making/problem solving skills</li>
-	<li>Curious mindset &amp; initiative</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

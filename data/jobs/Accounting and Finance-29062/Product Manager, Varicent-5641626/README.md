@@ -5,60 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>To the attention of candidates (Mexico City):&nbsp;</strong></p>
-<p><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in Mexico.&nbsp;&nbsp;</strong><strong>Visa sponsorship is NOT provided for this position</strong><strong>.</strong></p>
-<h4><strong>About the Department</strong></h4>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h4><strong>What You’ll Do</strong></h4>
-<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for our Content Delivery products: Zero Trust, Workers, Speed, Images, Stream, CDN and others.</p>
+<h4>Available Locations: Remote US OR Remote Mexico</h4>
+<h4>What you'll do</h4>
+<p>We are looking for a strong leader to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Tooling &amp; Strategy.</p>
+<p><strong>Responsibilities</strong></p>
+<ul>
+	<li>Lead Strategic Direction, Product Vision, Customer Discovery, Feature Prioritization &amp; Cross-functional alignment for Cloudflare’s Commission Tech Stack</li>
+	<li>Identify &amp; implement leading practice architecture and build techniques, optimizing for scalability, flexibility and analytical intelligence</li>
+	<li>Own &amp; coordinate managed services resources, leveraging to execute and implement builds, enhancements and testing</li>
+	<li>Implement&nbsp; robust and thorough change management processes and&nbsp; testing framework</li>
+	<li>Employ a ‘business-focused’ approach to technical work; learn, understand and speak the language of key stakeholders and business partners</li>
+	<li>Build extensive documentation and enablement infrastructure, scaling consistent practices, documentation and desktop procedures for tool functionality</li>
+	<li>Build deep knowledge around and leverage relationships to influence outcomes and prioritization of upstream system enhancements which directly impact ICM practice (eg. HCM, CRM, etc.)</li>
+	<li>Implement appropriate SOX Controls, partnering closely with the Controllership and Internal Audit Organizations</li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>You have previous experience working as part of a team in a customer-facing role</li>
-	<li>You have experience solving DNS and other networking-related problems</li>
-	<li>You understand how the Internet works</li>
-	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
-	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
-	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
-	<li>You are comfortable communicating through various support channels and always put the customer first</li>
-	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
-	<li>Flexibility to work holidays and rotational weekend shifts</li>
+	<li>8+ years of Product Management, Technical Project Management, Consulting, or Incentive Compensation Administration; experience with a Saas business model preferred</li>
+	<li>Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</li>
+	<li>Experience or understanding of commissions-specific SOX Controls</li>
+	<li>Experience with Varicent, Anaplan ICM, Xactly, Calidus or a similar ICM tool</li>
+	<li>Experience with SQL platforms and queries</li>
+	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
+	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>You are fluent in English, Spanish, Portuguese, German, Japanese, French or Mandarin</li>
-	<li>You are familiar with Cloudflare Zero Trust products (Zero Trust / Access / Gateway / Tunnel, WARP client) and have a site actively using our platform</li>
-	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
-	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
-	<li>You are committed to gaining a deeper understanding of the following technologies: Zero Trust / Secure Web Gateway policies / Endpoint protections / security best practices (Certificates, Zero Trust, least privileged access etc)</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
