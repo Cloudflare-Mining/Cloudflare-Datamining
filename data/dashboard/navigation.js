@@ -1,8 +1,14 @@
 const navigation = {
 	root: [{
+		title: "navigation.root.organizations",
+		url: "/organizations",
+		labels: ["new"],
+		iconType: "cloud-multi",
+		hasPermission: z => !!(0, n.z1)("control-plane-large-orgs")(z)
+	}, {
 		title: "navigation.root.accounts",
 		url: "/",
-		iconType: "user-multi"
+		iconType: "cloud-internet"
 	}, {
 		title: "navigation.root.websites",
 		url: "/zones",
@@ -597,7 +603,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: z => !!(0, F.V)(z)
+			hasPermission: z => !!(0, K.V)(z)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",

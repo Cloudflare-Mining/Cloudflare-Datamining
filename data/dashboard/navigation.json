@@ -1,9 +1,18 @@
 {
 	"root": [
 		{
+			"title": "navigation.root.organizations",
+			"url": "/organizations",
+			"labels": [
+				"new"
+			],
+			"iconType": "cloud-multi",
+			"hasPermission": null
+		},
+		{
 			"title": "navigation.root.accounts",
 			"url": "/",
-			"iconType": "user-multi"
+			"iconType": "cloud-internet"
 		},
 		{
 			"title": "navigation.root.websites",
