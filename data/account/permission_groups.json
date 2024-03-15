@@ -11908,13 +11908,13 @@
 		"name": "Domain Administrator",
 		"status": "V",
 		"meta": {
-			"description": "Grants full access to domains in an account, and read-only access to account-wide Firewall, Access, and Worker resources.",
+			"description": "Grants full access to domains in an account, as well as account-wide Firewall, Access, and Worker resources.",
 			"editable": "false",
 			"label": "domain_admin",
 			"scopes": "com.cloudflare.api.account.zone"
 		},
 		"created_on": "2020-10-13T12:42:59.660479Z",
-		"modified_on": "2022-03-23T17:02:33.91756Z",
+		"modified_on": "2024-03-13T22:28:10.996505Z",
 		"permissions": [
 			{
 				"id": "4555308b9da4483d89cf61bc55f67c3c",
@@ -12766,13 +12766,13 @@
 		"name": "Domain Administrator Read Only",
 		"status": "V",
 		"meta": {
-			"description": "Grants read-only access to domains in an account, as well as account-wide Firewall, Access, and Worker resources.",
+			"description": "Grants read-only access to domains in an account, and read-only access to account-wide Firewall, Access, and Worker resources.",
 			"editable": "false",
 			"label": "domain_admin_readonly",
 			"scopes": "com.cloudflare.api.account.zone"
 		},
 		"created_on": "2020-10-13T12:42:59.660479Z",
-		"modified_on": "2022-03-23T17:02:33.91756Z",
+		"modified_on": "2024-03-13T22:28:10.996505Z",
 		"permissions": [
 			{
 				"id": "73855bf01fff4b23af31ae6e098e359f",
