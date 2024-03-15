@@ -960,7 +960,7 @@
 		}
 	},
 	"GET /radar/bgp/routes/pfx2as": {
-		"description": "Lookup prefix-to-origin mapping on global routing tables.",
+		"description": "Lookup prefix-to-ASN mapping on global routing tables.",
 		"operationId": "radar-get-bgp-pfx2as",
 		"parameters": [
 			{
@@ -975,7 +975,7 @@
 				"in": "query",
 				"name": "prefix",
 				"schema": {
-					"description": "Lookup origins of the given prefix",
+					"description": "Lookup origin ASNs of the given prefix",
 					"example": "1.1.1.0/24",
 					"type": "string"
 				}
@@ -992,6 +992,15 @@
 					],
 					"example": "INVALID",
 					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "longestPrefixMatch",
+				"schema": {
+					"description": "Return only results with the longest prefix match for the given prefix. For example, specify a /32 prefix to lookup the origin ASN for an IPv4 address.",
+					"example": "true",
+					"type": "boolean"
 				}
 			},
 			{
@@ -1129,7 +1138,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get prefix-to-origin mapping",
+		"summary": "Get prefix-to-ASN mapping",
 		"tags": [
 			"Radar BGP"
 		],
