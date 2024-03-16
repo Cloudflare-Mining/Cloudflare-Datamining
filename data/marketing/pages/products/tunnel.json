@@ -2719,71 +2719,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "5mlZGIaBSEWG6ecY4OyOQ8",
-						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Tunnel",
-						"titleSize": null,
-						"subtitle": "Protect your web servers from direct attack",
-						"subtitleSize": null,
-						"copy": "From the moment an application is deployed, developers and IT spend time locking it down — configuring ACLs, rotating IP addresses, and using clunky solutions like GRE tunnels.\n\nThere's a simpler and more secure way to protect your applications and web servers from direct attacks: Cloudflare Tunnel.\n\nEnsure your server is safe, no matter where it's running: public cloud, private cloud, Kubernetes cluster, or even a Mac mini under your TV.",
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"buttonText1": "Sign up",
-						"buttonText1LoggedIn": "View in Dashboard",
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
-						"buttonUrl1LoggedIn": "https://one.dash.cloudflare.com/?to=/:account/access/tunnels",
-						"button1ExtraClass": null,
-						"buttonText2": "Contact Sales",
-						"buttonText2LoggedIn": "Looking for enterprise-grade solutions?",
-						"buttonUrl2": "#",
-						"button2ExtraClass": "argo-tunnel-product-contact-sales",
-						"bladeBorder": "border-bottom",
-						"htmlId": null,
-						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": "795b7cb6b98e1d05a4c1fa4123924ea6",
-						"streamOptions": [
-							"autoplay",
-							"loop",
-							"muted"
-						],
-						"streamCaptions": null,
-						"popupStreamId": null,
-						"popupText": null,
-						"button1OpenInNewTab": true,
-						"button2OpenInNewTab": null,
-						"streamThumbnails": null,
-						"sectionPadding": null,
-						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": "Medium",
-						"imagePosition": null,
-						"leftLinkUrl": null,
-						"leftLink": null,
-						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "hide",
-						"backgroundColor": "white",
-						"textlayoutMode": null,
-						"backgroundAssetFile": null,
-						"imageLayout": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "75264354-21a6-57d5-9e0a-7988100466fb",
-							"altText": "Cloudflare Tunnel",
-							"title": "Cloudflare Tunnel",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yPC24VMmlijkEvr4iIqOl/7f4c0d8aca6f26631751e1a3e8c926a7/tunnel-hero-illustration.svg"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
-					},
-					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "4J4S9Fa1BJVjubRNnWwKdU",
 						"menuTitle": null,
@@ -3497,62 +3432,6 @@
 						]
 					},
 					{
-						"contentfulId": "2Ar9nmRdp6Y66QSmoSS6KK",
-						"title": "Protect web servers from direct attacks",
-						"copy": "Tunnel works with Cloudflare DDoS Protection and Web Application Firewall (WAF) to defend your web properties from attacks.\n\nOnce you deploy the Tunnel daemon and lock down your firewall, all inbound web traffic is filtered through Cloudflare's network.\n\nNow, your web server's firewall can block volumetric DDoS attacks and data breach attempts from reaching your application's origin servers.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3uOr1VUzVYcM88qkYmE4iO/5339ab8bf2c30527ddd689246b81d36b/argo-tunnel-protect-web-server.svg"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "bc1dee80-1638-596e-8e2d-0446338afc87",
-							"altText": "Argo tunnel diagram 2",
-							"title": "Argo tunnel diagram 2",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uLXEYIlWL2EyMuugX2H4U/916ebdad56ed34cdb3161bd471e95ec5/argo-tunnel-diagram.svg"
-								},
-								"description": "Argo tunnel diagram "
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
 						"contentfulId": "2fKOVhQxYIg226eyQCkY2",
 						"title": "Secure access to internal applications",
 						"copy": "Tunnel allows you to quickly deploy infrastructure in a [Zero Trust environment](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/), so all requests to your resources first pass through Cloudflare's robust security filters.\n\nWhen  Tunnel is combined with Cloudflare Access, our comprehensive [Zero Trust access solution](https://www.cloudflare.com/teams/access/), users are authenticated by major identity providers (like Gsuite and Okta) without the help of a VPN.\n\nApplications once accessible to anyone through the origin IP are now only accessible to authenticated users through Cloudflare's network.\n\nAnd you can restrict access to internal applications (including those in development environments) that you'd like to make externally facing.\n\nLearn more about how Cloudflare enables [Zero Trust security](https://www.cloudflare.com/teams/).",
@@ -3662,44 +3541,6 @@
 						"imageSize": "large",
 						"imageTextAlignment": null,
 						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "5BJLs1rVCg2u8OoOYYeMse",
-						"quote": "\"With Cloudflare, I've been able to reduce the administrative overhead of firewalls, reduce the attack surface, and get the added benefit of higher performance through the tunnel.\"",
-						"quoteAuthor": "Johan Bergström",
-						"quoteTitle": "Co-Founder and CTO at Netwrk",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/29Z6Um4cJyKMmUCqwcusKS/33cdfe77fdf357f71fadc1275673a729/logo-netwrk.png"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "9325199d-7c5f-5c87-a522-12b3ef2bfb14",
-							"altText": "logo-netwrk",
-							"title": "logo-netwrk",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/29Z6Um4cJyKMmUCqwcusKS/33cdfe77fdf357f71fadc1275673a729/logo-netwrk.png"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
 					},
 					{
 						"contentfulId": "45Mu732vBmkEoUMqACicou",
