@@ -5,26 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Position Locations: Austin, TX | Remote US</strong></h3>
-<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>Available Locations</strong>: Austin, Texas</p>
-<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>The Durable Objects (DO) and D1 team is responsible for DO, Cloudflare's&nbsp;distributed coordination API with strongly consistent storage, and D1, Cloudflare's first SQL database optimized for the edge. In this role, you will work with a top-notch engineering team to expand Cloudflare's capabilities by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
-<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
-<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><strong>Location: US Remote</strong></p>
+<p><strong>About Cloudflare’s content marketing team</strong></p>
+<p>The content marketing team writes, edits, and manages content for use in marketing and sales campaigns — articles, event presentations, videos, promotional copy, and more. We work most closely with designers, web producers, product marketers, campaign managers, and event planners, but also collaborate as needed with people across the entire organization.</p>
+<p>&nbsp;</p>
+<p><strong>About the Sr. Manager of Content Marketing role</strong></p>
+<p>The Sr. Manager of Content Marketing will lead a team of writers who create a variety of content used in multi-channel marketing campaigns. This is a “player/coach” role, which will require a mixture of strategic planning, team management, and hands-on writing and editing.&nbsp;</p>
+<p><strong>The role’s primary responsibilities are:</strong></p>
 <ul>
-	<li>Min 5 years experience working with distributed systems or developing on cloud platforms.</li>
-	<li>Experience managing high volume software applications.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Java, C#, Rust, or C++.</li>
+	<li>Managing Cloudflare’s content development pipeline: fielding requests, assigning projects, keeping track of progress, and removing blockers</li>
+	<li>Working with marketing colleagues to create quarterly and yearly content marketing plans</li>
+	<li>Establishing and managing relationships with third-party writing resources (e.g. freelancers + agencies)</li>
+	<li>Running content strategy and development for global events</li>
+	<li>Working with the SEO team on web content strategy and development</li>
+	<li>Writing content for high-priority marketing campaigns</li>
+	<li>Editing content written by the content team and other marketing colleagues</li>
+	<li>Establishing and maintaining a content taxonomy</li>
+	<li>Advising and training colleagues on Cloudflare messaging and brand style</li>
 </ul>
-<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-BonusPoints"><strong>Bonus Points</strong></h3>
+<p>&nbsp;</p>
+<p><strong>Who we’re looking for in a candidate:</strong></p>
+<p>The ideal candidate is someone with 8+ years' full-time experience in content marketing, including 3+ years’ leading a content team. Prior experience in enterprise technology / software is required, and IT or cybersecurity experience is highly desirable.&nbsp;</p>
+<p><strong>Based on this experience, we expect the ideal candidate to be:</strong></p>
 <ul>
-	<li>Previous experience working on database internals such as a SQL query planner.&nbsp;</li>
-	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly.</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;a large-scale Linux-based distributed system.</li>
+	<li>A capable marketer, who has a deep understanding of how content powers multi-channel demand generation campaigns, events, organic search efforts, PR launches, and other marketing activities</li>
+	<li>A creative strategist, who can help colleagues ideate unique and compelling content concepts</li>
+	<li>An excellent writer, who is capable of clear, concise, persuasive communication</li>
+	<li>A thoughtful editor, who can improve a written piece’s grammar and structure to increase clarity and impact&nbsp;</li>
+	<li>A determined project manager, who can manage a complex content production pipeline and anticipate/remove blockers</li>
+	<li>An empathetic mentor, who can apply their deep knowledge of professional writing processes to coach and support other writers</li>
+	<li>Sincerely interested in the deep technical details of how the Internet and related technologies work — and healthily skeptical about buzzwords, jargon, and flimsy business logic</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
