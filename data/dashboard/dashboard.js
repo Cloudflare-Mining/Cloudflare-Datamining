@@ -987,10 +987,10 @@
 				n.g.build = Cn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "eb1c1cc60776e0579fb96ce955bf9bbbbdc6e1ba",
+					commit: "db8cfad26ce226e4198345257b3dc263eca0b8b2",
 					env: "production",
-					builtAt: 1710539285961,
-					dashVersion: "4da4735dfa2cc66b4922d94a2e63bdce32c955d7",
+					builtAt: 1710776724073,
+					dashVersion: "777767b93b094b7c394244c3d2a21d1436a8da8d",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",
@@ -10050,7 +10050,8 @@
 						dispatchNamespaces: "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/platform/outbound-workers",
 						invalidCORSPolicy: "https://developers.cloudflare.com/r2/buckets/cors/#common-issues",
 						createCloudflare: "https://www.npmjs.com/package/create-cloudflare",
-						userCpuLimits: "https://developers.cloudflare.com/workers/platform/pricing/#standard-usage-model"
+						userCpuLimits: "https://developers.cloudflare.com/workers/platform/pricing/#standard-usage-model",
+						versions: "https://b5dfb245.cloudflare-docs-7ou.pages.dev/workers/configuration/versions-and-deployments/"
 					},
 					serverlist: "https://blog.cloudflare.com/tag/serverlist/",
 					discord: "https://discord.gg/cloudflaredev",

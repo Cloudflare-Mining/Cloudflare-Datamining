@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: z => (0, n.z1)(y.Mr)(z) && (0, G.z7)(z) && !!(0, G.z$)(z).length
+		hasPermission: z => (0, n.z1)(y.Mr)(z) && (0, K.z7)(z) && !!(0, K.z$)(z).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -176,7 +176,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: H.T
+		hasPermission: V.T
 	}, {
 		title: "navigation.account.group_title.application_services",
 		url: "/",
@@ -237,8 +237,8 @@ const navigation = {
 		url: "/network-security/ddos",
 		iconType: "cloudflare-security-network",
 		hasPermission: z => {
-			const V = !!(0, a.Wq)(z) && !!(0, a.fO)(z);
-			return !!(0, a.Tk)(z) || V
+			const X = !!(0, a.Wq)(z) && !!(0, a.fO)(z);
+			return !!(0, a.Tk)(z) || X
 		},
 		tabs: O.Dn
 	}, {
@@ -264,8 +264,8 @@ const navigation = {
 		title: "navigation.account.zero_trust",
 		url: () => {
 			const z = (0, o.e1)(),
-				V = "https://one.dash.cloudflare.com";
-			return z ? `${V}/${z}/` : V
+				X = "https://one.dash.cloudflare.com";
+			return z ? `${X}/${z}/` : X
 		},
 		iconType: "cloudflare-zero-trust",
 		labels: z => (0, n.z1)("zt-sidebar")(z) ? [] : ["external-link"],
@@ -377,8 +377,8 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: z => {
-				const V = (0, v.tJ)(z);
-				return !(0, i.ky)(V, [A.uD.EnterpriseTrial])
+				const X = (0, v.tJ)(z);
+				return !(0, i.ky)(X, [A.uD.EnterpriseTrial])
 			}
 		}]
 	}, {
@@ -568,16 +568,16 @@ const navigation = {
 			url: "/analytics/originReachability",
 			navigationType: "global-settings",
 			hasPermission: z => {
-				const V = (0, l.nA)(z);
-				return V ? !!(!(0, d.yD)(z) && !!(0, l.ZB)(z, "origin_reachability_dash", "dash_view") && (0, l.tU)(V, "enterprise") && !!(0, f.Ek)(z, "httpRequestsAdaptiveGroups")) : !1
+				const X = (0, l.nA)(z);
+				return X ? !!(!(0, d.yD)(z) && !!(0, l.ZB)(z, "origin_reachability_dash", "dash_view") && (0, l.tU)(X, "enterprise") && !!(0, p.Ek)(z, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
 			url: "/analytics/edgeReachability",
 			navigationType: "global-settings",
 			hasPermission: z => {
-				const V = (0, l.nA)(z);
-				return V ? !!(!(0, d.yD)(z) && !!(0, l.ZB)(z, "edge_reachability_dash", "dash_view") && (0, l.tU)(V, "enterprise") && !!(0, f.Ek)(z, "nelReportsAdaptiveGroups")) : !1
+				const X = (0, l.nA)(z);
+				return X ? !!(!(0, d.yD)(z) && !!(0, l.ZB)(z, "edge_reachability_dash", "dash_view") && (0, l.tU)(X, "enterprise") && !!(0, p.Ek)(z, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -603,7 +603,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: z => !!(0, K.V)(z)
+			hasPermission: z => !!(0, Y.V)(z)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -611,7 +611,7 @@ const navigation = {
 		navigationType: "both",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: S.bB,
+		tabs: j.bB,
 		hasPermission: z => !(0, d.yD)(z) && (0, E.m7)(z)
 	}, {
 		title: "navigation.zone.dns",
@@ -661,12 +661,12 @@ const navigation = {
 		iconType: "spectrum",
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: z => {
-			const V = (0, l.nA)(z);
-			if ((0, d.yD)(z) || !(0, a.wB)(z, "zone_settings", "spectrum.app") || !V) return !1;
+			const X = (0, l.nA)(z);
+			if ((0, d.yD)(z) || !(0, a.wB)(z, "zone_settings", "spectrum.app") || !X) return !1;
 			const oe = !!((0, _.l8)(z) || (0, l.DQ)(z)),
-				J = !!(0, l.ZB)(z, "spectrum", "enabled"),
-				ve = !!(0, l.Ns)(V);
-			return J || oe || !ve
+				q = !!(0, l.ZB)(z, "spectrum", "enabled"),
+				pe = !!(0, l.Ns)(X);
+			return q || oe || !pe
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -747,8 +747,8 @@ const navigation = {
 			labels: ["new"],
 			navigationType: "version",
 			hasPermission: z => {
-				const V = (0, l.nA)(z);
-				return V ? !!(0, l.ZB)(z, "firewall", "api_shield_tab") && (0, l.tU)(V, "business") && (0, a.$n)(z, "waf", "firewall.rule") : !1
+				const X = (0, l.nA)(z);
+				return X ? !!(0, l.ZB)(z, "firewall", "api_shield_tab") && (0, l.tU)(X, "business") && (0, a.$n)(z, "waf", "firewall.rule") : !1
 			},
 			tabs: h.Dw
 		}, {
@@ -798,7 +798,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: Q
+			tabs: F
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -842,7 +842,7 @@ const navigation = {
 			url: "/rules/snippets",
 			labels: ["alpha"],
 			navigationType: "version",
-			hasPermission: z => !!(0, U.GM)(z) && (0, a.$n)(z, "waf", "page-rule", "read")
+			hasPermission: z => !!(0, Z.GM)(z) && (0, a.$n)(z, "waf", "page-rule", "read")
 		}, {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
@@ -911,7 +911,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
-			hasPermission: z => !(0, d.yD)(z) && !!(0, f.Ek)(z, "healthCheckEventsAdaptiveGroups")
+			hasPermission: z => !(0, d.yD)(z) && !!(0, p.Ek)(z, "healthCheckEventsAdaptiveGroups")
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",
@@ -975,8 +975,8 @@ const navigation = {
 		navigationType: "global-settings",
 		iconType: "web3",
 		hasPermission: z => {
-			const V = (0, r.uF)(z);
-			return ((V == null ? void 0 : V.roles) || []).includes("Trust and Safety") ? !1 : !(0, d.yD)(z)
+			const X = (0, r.uF)(z);
+			return ((X == null ? void 0 : X.roles) || []).includes("Trust and Safety") ? !1 : !(0, d.yD)(z)
 		}
 	}],
 	zeroTrust: [{
@@ -1008,5 +1008,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: X.G
+	support: J.G
 }
