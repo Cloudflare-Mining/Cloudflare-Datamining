@@ -443,8 +443,9 @@
 				"schema": {
 					"default": 100,
 					"description": "Number of DNS records per page.",
-					"maximum": 50000,
-					"minimum": 5,
+					"example": 5,
+					"maximum": 5000000,
+					"minimum": 1,
 					"type": "number"
 				}
 			},
