@@ -5,34 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, Remote US, London, Remote UK</strong></h3>
-<h3><strong>About the Team</strong></h3>
-<p>At Cloudflare, our engineering and research team combines the expertise of some of the industry’s most talented professionals in both software engineering and advanced research. Our <a href="https://www.cloudflare.com/application-services/products/bot-management/">Bot and Fraud Detection</a> Research and Development team focuses on innovating and developing leading-edge solutions to combat online fraud and bot activities, thereby ensuring the highest levels of security and integrity for online platforms. Collaborating closely with product development and engineering groups, our researchers play a crucial role in advancing our fraud detection products through identification of new signals and refining our bot detection algorithms.</p>
-<h2><strong>What You'll Do</strong></h2>
-<p>During the 12-16 weeks of internship, as a researcher intern in our bot and fraud detection team, you will do one or more of the following:</p>
+<p>Job Location: US Remote</p>
+<hr>
+<h3><strong>What you'll do</strong></h3>
+<p>Cloudflare is committed to using Health Mediated Deployment (HMD) to make production changes quickly and safely to bring our customers the availability and features that matter the most across our 1000+ data centers worldwide. As the HMD architect you will collaborate with our internal customers and the Deploy at Scale and Observability engineering teams to refine and expand our architecture to support this vision and to scale along with the business. &nbsp; Along the way you will have the opportunity to write code to bring this design to fruition as well as to mentor high-potential engineers on their distributed system journey.</p>
+<p>You will be working alongside engineers who have presented at Config Management Camp 2024, Monitorama, OSMC, Kubecon and Promcon. &nbsp; Together you will deliver on the key Health Mediated Deployment projects that are being tracked through senior leadership of Cloudflare up to the founders.&nbsp;&nbsp;&nbsp;</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Engage in cutting-edge research to design, develop, and enhance our fraud detection products;</li>
-	<li>Apply your knowledge in data science and machine learning to analyze and interpret vast datasets, contributing to the fight against sophisticated online attackers;</li>
-	<li>Collaborate with cross-functional teams to integrate research findings into practical, scalable solutions;</li>
-	<li>Utilize and improve upon our technology stack, which includes Python, Rust, Kafka, Kubernetes, PostgreSQL, and Clickhouse;</li>
-	<li>Make significant contributions to the field of bot and fraud detection, impacting the security of online applications globally.</li>
+	<li>Minimum 15 years of experience working with distributed systems.</li>
+	<li>Experience designing, building and managing high volume software applications.</li>
+	<li>Expert in at least one modern strongly-typed programming language</li>
+	<li>Experience debugging, measuring, optimizing and identifying failure modes in a large-scale distributed system.</li>
+	<li>Excellent collaboration skills</li>
+	<li>Proven ability to convey ideas effectively through verbal and written communication</li>
+	<li>Ability to translate business needs into requirements, design documents and technical solutions</li>
+	<li>Knowledge of API design standards, patterns and best practices</li>
+	<li>Proven ability to use data to drive business outcomes</li>
+	<li>Proven experience in developing architects and lead engineers</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
 </ul>
-<h2><strong>What Are We Looking For?</strong></h2>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Current full-time Ph.D. candidate in the fields of Computer Science, Data Science, or Cybersecurity.</li>
-	<li>Proven track record of research in academia or industry, preferably in areas related to cybersecurity, bot detection, browser fingerprinting, fraud detection, or machine learning.</li>
-	<li>Expertise in web security, network protocols, and web application architectures.</li>
-	<li>Demonstrated ability to work with large-scale datasets and distributed computing.</li>
-</ul>
-<h3><strong>Bonus points</strong></h3>
-<ul>
-	<li>Experience in developing and implementing bot detection and fraud prevention strategies.</li>
-	<li>Publication record in peer-reviewed venues or industry conferences in relevant fields.</li>
-	<li>Familiarity with cloud computing environments and big data technologies.</li>
-	<li>Experience with productionizing machine learning models.</li>
-	<li>Experience with technologies such as Docker, Kubernetes, Salt.</li>
-	<li>Familiarity with writing and optimizing advanced SQL queries.</li>
-	<li>Experience with columnar databases such as Clickhouse.</li>
+	<li>Experience with telemetry pipelines (Metrics/Traces) and a very good understanding of modern observability platforms&nbsp;</li>
+	<li>Direct experience designing, building and managing high volume deployment systems.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
