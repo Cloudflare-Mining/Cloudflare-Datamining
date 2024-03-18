@@ -5,33 +5,24 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>London or Remote UK, Munich or Remote Germany, Amsterdam or Remote Netherlands</p>
-<p><strong>About The Team</strong></p>
-<p>We build security products for our customers and work mostly in Go and Rust. One of our challenges is designing architecture that can withstand a huge scale of 50 million peak requests per second. Our flagship products are Managed Rules, Firewall Rules, Rate Limiting and Analytics.&nbsp;</p>
-<p>Software engineers will work with our Product Managers and Security Analysts to define managed protection products which aim to protect customers against application and network vulnerabilities (at L3 and L7), by analysing data passing through our network. We also build systems to help customers understand this data themselves.</p>
-<p><strong>What you'll do</strong></p>
-<p>Working in the security portfolio, that includes the Firewall and Managed Rules, you will take a cross-functional role to ensure we protect our customers from L3-L7 attacks on a variety of levels.</p>
+<h4>Available Locations: <strong>Lisbon, Portugal; London, UK</strong><br><br></h4>
+<h4><strong>About Cloudflare’s Product Management teams</strong></h4>
+<p>We are looking for a Product Manager intern to join our Product Management team, focusing on our Threat Intelligence Data Platform.&nbsp;</p>
+<p>The Product Management team at Cloudflare sits at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software. Cloudflare customers range from individual consumers to large multinational corporations and they use a wide range of products that help them make their sites and apps faster and more secure.&nbsp;</p>
+<p><strong>About the internship program</strong></p>
+<p>Interns at Cloudflare get to explore and work with some of the newest and most innovative advances in security, networking and performance. You will work closely with Software Engineers and designers to discover, invent, and build at the largest scale. You will be exploring challenges in data mining, machine learning,&nbsp; privacy and security, networking, storage, data management, and much more. You will be working in a fast-paced environment where you will be expected to take ownership of one or multiple features or products.&nbsp;</p>
+<p>PMs at Cloudflare are very technical. You will need a background in engineering, computer science, mathematics or statistics and are looking to explore a role that is very customer and business focused. You enjoy wearing multiple hats and have an entrepreneurial mindset.</p>
+<p>Aside from working on impactful projects, you will network and meet with our executives including our co-founders. All interns are paired with a mentor on the team to ramp up quickly and also with a buddy to connect with other folks across the company. Interns will present on their project to the company at the end of the summer.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Prior commercial software development experience</li>
-	<li>Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</li>
-	<li>Proven experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</li>
-	<li>Experience of working with Product teams to balance technical agenda, operation of existing systems and new product development</li>
-	<li>Can analyse and communicate complex technical requirements and concepts, identify the highest priority areas, and carve a path to deliver</li>
-	<li>Driving communication and consensus across teams</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>A drive for continuous improvement when it comes to both operations and new product development</li>
+	<li>Currently pursuing a degree in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</li>
+	<li>Demonstrated critical thinking skills and drive to learn and adapt to new technologies.</li>
+	<li>Solid interpersonal and organizational skills, with the ability to drive and implement ideas in a changing environment.</li>
+	<li>Analytical skills, and ability to solve highly strategic and difficult business problems</li>
+	<li>Exceptional people skills and empathy.</li>
+	<li>Interest and understanding of technical subjects and the internet.</li>
+	<li>Ability to commit to a 12 week (summer) internship.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<p>These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</p>
-<ul>
-	<li>Deep knowledge of web servers and web protocols</li>
-	<li>Distributed systems</li>
-	<li>Logging pipelines</li>
-	<li>Production API design</li>
-	<li>Web security issues and industry standards</li>
-</ul>
-<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
