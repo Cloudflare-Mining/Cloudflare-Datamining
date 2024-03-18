@@ -103,6 +103,14 @@
 			},
 			{
 				"in": "query",
+				"name": "hash",
+				"schema": {
+					"description": "Filter scans by hash of any html/js/css request made by the webpage.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "page_url",
 				"schema": {
 					"description": "Filter scans by exact match to scanned URL (_after redirects_)",
