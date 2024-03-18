@@ -795,6 +795,8 @@
 	"custom-rules.templates.rule.mtls_access.helper": "Enter one or more URI paths where you wish to enforce mTLS authentication.",
 	"custom-rules.templates.rule.zone_lockdown.name": "Zone lockdown",
 	"custom-rules.templates.rule.zone_lockdown.wafRulesOverview": "Allow only specific IP addresses to access certain URLs such as an admin or protected area on your website.<br />Create a <0>custom list</0> with the allowed IP addresses, or enter the allowed IPs in the custom rule.",
+	"custom-rules.templates.rule.disposable_email.name": "Disposable email checks",
+	"custom-rules.templates.rule.disposable_email.wafRulesOverview": "Use this rule template to check the validity of an email.",
 	"custom-rules.templates.rule.zone_lockdown.helper": "Enter one or more URI paths where you wish to enforce lockdown based on a pre-defined IP list.",
 	"detections.custom_count": "%{smart_count} custom detection |||| %{smart_count} custom detections",
 	"detections.title": "Incoming traffic detections",
