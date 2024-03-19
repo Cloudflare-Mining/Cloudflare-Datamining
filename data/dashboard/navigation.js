@@ -569,7 +569,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: z => {
 				const q = (0, l.nA)(z);
-				return q ? !!(!(0, d.yD)(z) && !!(0, l.ZB)(z, "origin_reachability_dash", "dash_view") && (0, l.tU)(q, "enterprise") && !!(0, p.Ek)(z, "httpRequestsAdaptiveGroups")) : !1
+				return q ? !!(!(0, d.yD)(z) && !!(0, l.ZB)(z, "origin_reachability_dash", "dash_view") && (0, l.tU)(q, "enterprise") && !!(0, g.Ek)(z, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
@@ -577,7 +577,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: z => {
 				const q = (0, l.nA)(z);
-				return q ? !!(!(0, d.yD)(z) && !!(0, l.ZB)(z, "edge_reachability_dash", "dash_view") && (0, l.tU)(q, "enterprise") && !!(0, p.Ek)(z, "nelReportsAdaptiveGroups")) : !1
+				return q ? !!(!(0, d.yD)(z) && !!(0, l.ZB)(z, "edge_reachability_dash", "dash_view") && (0, l.tU)(q, "enterprise") && !!(0, g.Ek)(z, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -785,7 +785,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: R.x
+			tabs: k.x
 		}]
 	}, {
 		title: "navigation.zone.caching",
@@ -911,7 +911,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
-			hasPermission: z => !(0, d.yD)(z) && !!(0, p.Ek)(z, "healthCheckEventsAdaptiveGroups")
+			hasPermission: z => !(0, d.yD)(z) && !!(0, g.Ek)(z, "healthCheckEventsAdaptiveGroups")
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",
@@ -951,7 +951,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: g.az
+			tabs: p.az
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			navigationType: "global-settings",

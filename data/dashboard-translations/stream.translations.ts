@@ -638,6 +638,7 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	copy_from_player: "Copy from player",
 	default_text_track: "Default Text Track",
 	ingress_bitrate: "Ingress bitrate",
+	ingest_protocol: "Protocol",
 	encoding_video_bitrate: "Encoding video bitrate",
 	encoding_audio_bitrate: "Encoding audio bitrate",
 	fps: "FPS",
