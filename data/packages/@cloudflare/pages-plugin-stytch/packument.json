@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-plugin-stytch",
 	"dist-tags": {
-		"latest": "1.0.1"
+		"latest": "1.0.2"
 	},
 	"versions": {
 		"1.0.0": {
@@ -44,6 +44,26 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj2oKMACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqXzw//elQV9sd0gnIaD7HTJLF4BdX05zUoRk2ryyCtfTETDuWWcnqJ\r\nLSJJ1BovQncMgW20SuyEeFIGD+ASTx3kLGTBGngxAHAXx3mLwUZDZ4H/XKU0\r\nqS95ckS/BD7Bc2cLLiutXz9ylQGLa+RNBbsGzWgwk8SK52p+HKEPqdMLSnEE\r\nsBynIhJt6cHyXTTAAmgyMl6i0QVnJdPaf6kXum6/WtTQdWOJxxFp6ybZUpj7\r\n60G/Zvmawtvddw6GZbHmGa6h4QXnZLe+e6ldOp3tydcNL4/WXSrfnx5T8Flg\r\nijmJEIWgKFQZVylZxZ+j/LQWrhFPRL9A7SJ3S7RrAlPn8UsqNfrYDMcqRtXW\r\n6u2nEy7fnnp6d/Vvm2LXYlAwrlSOJ8DHX44DzSjowGRwYJ0Nvhr2EEr77M+s\r\nTjK5cBJS+XbBaTQ8ektK3aAjnmkd/6e2q4ltW/1g97czeSf9flPEa2YSBLmT\r\njGnO/ctIeDmHv/vExKsAD5mQvGRAIxKdq6G2JkyaK5KPul/zsy+nCDMXgWE5\r\n4wMEdiwdyZvY+sULIeAaNRFQQXg61+01jymXPQSKNYOSmTwRHEyvX3khj/cm\r\n6NkTFbOF3mn0gdvHYYTHZ87nszS6LXrsWxg6v4TxQJ03657pWrlGTcXRYY8L\r\nmc5nYrid+b5rOnaBDGCAmVejhNOeXA6vOZo=\r\n=lGwx\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.2": {
+			"name": "@cloudflare/pages-plugin-stytch",
+			"version": "1.0.2",
+			"devDependencies": {
+				"cookie": "^0.5.0"
+			},
+			"dist": {
+				"integrity": "sha512-2aBcWH1KCPDICNO3iP0nW6pg5Tiqzi3hEb96y7FXx3rMO5d8BaaYW+DQ4fIhz85w+GuknaVzDRi2OZ7rNhUaEg==",
+				"shasum": "36984c4f175002c32c2bbeb0aa6408c67434bc5f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-plugin-stytch/-/pages-plugin-stytch-1.0.2.tgz",
+				"fileCount": 11,
+				"unpackedSize": 80564,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDs88lOK8PWZLGt/9sRkffaUSlEGTnG0Me0v3NvOP0QVwIgAkdHLoKTrVW+sl+mupwhGShC6cto/0NJtlaS4MUIv1o="
+					}
+				]
 			}
 		}
 	}

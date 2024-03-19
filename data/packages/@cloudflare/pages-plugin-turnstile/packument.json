@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-plugin-turnstile",
 	"dist-tags": {
-		"latest": "1.0.0"
+		"latest": "1.0.1"
 	},
 	"versions": {
 		"1.0.0": {
@@ -17,6 +17,23 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIDH5yKfHexQFo+/mUamPjSOOzLYR+NC8bQAHB2/m77HaAiBGR3ouRjUpXIubl8ew/qwhUFm9AnHWls3Ys+AwC5onPA=="
+					}
+				]
+			}
+		},
+		"1.0.1": {
+			"name": "@cloudflare/pages-plugin-turnstile",
+			"version": "1.0.1",
+			"dist": {
+				"integrity": "sha512-lFDMbRFJUNNfVnn9VpLhozCE8NaXvZM1L2jPmavEV0jE8yO6UcVMW9bMlbUb1WRfEwh0ygeD0uxpuByo3/kCyA==",
+				"shasum": "749e15222c3793aa8c640271c2be110fadf7b6a8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-plugin-turnstile/-/pages-plugin-turnstile-1.0.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 52992,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEXjwT6RLFlrT2tMsBnCwL0xxYdj1gPRtqUQWRttXjmEAiEAgNLRobXbNPhQP8FtFKP0epGVJ8fNynQ/zP/ohzNryus="
 					}
 				]
 			}

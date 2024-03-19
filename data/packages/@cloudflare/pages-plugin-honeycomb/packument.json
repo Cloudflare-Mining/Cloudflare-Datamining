@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-plugin-honeycomb",
 	"dist-tags": {
-		"latest": "1.0.2"
+		"latest": "1.0.3"
 	},
 	"versions": {
 		"1.0.0": {
@@ -65,6 +65,26 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj2oJOACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqSbBAAkR1kfJZncYYIkeF5Of11f/T+Jy8rd+ZdkvIorhzbo1/DNDr0\r\nknrwMj4hY+/RHM3t7EX/NAO2zNjYXCwWlF+U2rXh2akVbRAxLDKyZK1sGFMP\r\nc0Tq02sRYFGLSxTNyV6Adt7zkpmtPiIYS/k7tJI6EH6D9rPu72Lrh8EP2Gj0\r\nvU8+Z2OeE48zfHLyWRYGtxeZ4xxdDZiVhYI7xYvubly7kOcActhkjNiSeJYI\r\nPxufgcnYqsRDOcgMZJi6Y6uLx2lMx6w8MP1oUnLFm3chWM3RVvbstwiGu6VP\r\nR/fEeyNV3dR2BsyEGdXqL2Onv3aP3359bPZ7yA8zZbjj3K7dnwvUSXK6qdr7\r\na1j8vRgFsXtzwcYhNlD/nWjB/Bt+iGL1AFmjRtmkyVKiLDqv3eGOQ0W6S4qP\r\nZSIBn6dXrKtGLy1CXPiBSrxLSRox+KenDlciQiU4r62InvIFwAAIMcTKEs2u\r\nP8a3tm0sNo+mYisixcDQeiP2tkfChPGM8uNgEHjL+XzdojJxkY/tMUTRs+e6\r\nhj0YkfeXu8x+L8yZPTTwMRg4vKMGcR9eV4QNoyhI0C4f/3UdYBrNZuqnx/Jv\r\nmZ+318B79iyHL6upsXHbV2c0CTVF7sYJiFuqn/Kcyati00wd6wRadq/+x3GD\r\nkNMP3P6Gj/Er7R9ZOaLcxYS/2zs8avAtNEk=\r\n=LMML\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.3": {
+			"name": "@cloudflare/pages-plugin-honeycomb",
+			"version": "1.0.3",
+			"devDependencies": {
+				"@cloudflare/workers-honeycomb-logger": "^2.3.3"
+			},
+			"dist": {
+				"integrity": "sha512-Kvsh4ghrEDS3YQqfNMukHEcB/sPeuceQFmpyBH7PVzvFmk8x6kPFMm/q3VGEFxOm9j1qgTJPELdaaWE5NDfHrg==",
+				"shasum": "4687e9995fffd18a7897b919c45001f06b805ece",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-plugin-honeycomb/-/pages-plugin-honeycomb-1.0.3.tgz",
+				"fileCount": 6,
+				"unpackedSize": 134404,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDOmyA5hZ8vHu8MkIf9DerVakVCaWYE44z8BXnRSpk/VwIhAJ4kZbtUUexWOIRWCtWcH1MP0O/LsK9t5Es1Me/hJSle"
+					}
+				]
 			}
 		}
 	}
