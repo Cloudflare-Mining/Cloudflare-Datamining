@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/magic/gre_tunnels/{tunnel_identifier}": {
+	"DELETE /accounts/{account_id}/magic/gre_tunnels/{tunnel_identifier}": {
 		"description": "Disables and removes a specific static GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"operationId": "magic-gre-tunnels-delete-gre-tunnel",
 		"parameters": [
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -385,13 +385,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/magic/gre_tunnels": {
+	"GET /accounts/{account_id}/magic/gre_tunnels": {
 		"description": "Lists GRE tunnels associated with an account.",
 		"operationId": "magic-gre-tunnels-list-gre-tunnels",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -973,7 +973,7 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/magic/gre_tunnels/{tunnel_identifier}": {
+	"GET /accounts/{account_id}/magic/gre_tunnels/{tunnel_identifier}": {
 		"description": "Lists informtion for a specific GRE tunnel.",
 		"operationId": "magic-gre-tunnels-list-gre-tunnel-details",
 		"parameters": [
@@ -991,7 +991,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1345,13 +1345,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/magic/gre_tunnels": {
+	"POST /accounts/{account_id}/magic/gre_tunnels": {
 		"description": "Creates new GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"operationId": "magic-gre-tunnels-create-gre-tunnels",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1948,13 +1948,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/magic/gre_tunnels": {
+	"PUT /accounts/{account_id}/magic/gre_tunnels": {
 		"description": "Updates multiple GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"operationId": "magic-gre-tunnels-update-multiple-gre-tunnels",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2556,7 +2556,7 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/magic/gre_tunnels/{tunnel_identifier}": {
+	"PUT /accounts/{account_id}/magic/gre_tunnels/{tunnel_identifier}": {
 		"description": "Updates a specific GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"operationId": "magic-gre-tunnels-update-gre-tunnel",
 		"parameters": [
@@ -2574,7 +2574,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

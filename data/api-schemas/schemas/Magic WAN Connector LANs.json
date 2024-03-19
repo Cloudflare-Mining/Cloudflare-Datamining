@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/magic/sites/{site_identifier}/lans/{lan_identifier}": {
+	"DELETE /accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}": {
 		"description": "Remove a specific LAN.",
 		"operationId": "magic-wan-connectors-lans-delete-lan",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -29,7 +29,7 @@
 			},
 			{
 				"in": "path",
-				"name": "lan_identifier",
+				"name": "lan_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -427,13 +427,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/magic/sites/{site_identifier}/lans": {
+	"GET /accounts/{account_id}/magic/sites/{site_id}/lans": {
 		"description": "Lists LANs associated with an account and site.",
 		"operationId": "magic-wan-connectors-lans-list-lans",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -445,7 +445,7 @@
 			},
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -831,13 +831,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/magic/sites/{site_identifier}/lans/{lan_identifier}": {
+	"GET /accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}": {
 		"description": "Get a specific LAN.",
 		"operationId": "magic-wan-connectors-lans-lan-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -849,7 +849,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -861,7 +861,7 @@
 			},
 			{
 				"in": "path",
-				"name": "lan_identifier",
+				"name": "lan_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1249,13 +1249,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/magic/sites/{site_identifier}/lans": {
+	"POST /accounts/{account_id}/magic/sites/{site_id}/lans": {
 		"description": "Creates a new LAN. If the site is in high availability mode, static_addressing is required along with secondary and virtual address.",
 		"operationId": "magic-wan-connectors-lans-create-lan",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1267,7 +1267,7 @@
 			},
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1802,13 +1802,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/magic/sites/{site_identifier}/lans/{lan_identifier}": {
+	"PUT /accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}": {
 		"description": "Update a specific LAN.",
 		"operationId": "magic-wan-connectors-lans-update-lan",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1820,7 +1820,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1832,7 +1832,7 @@
 			},
 			{
 				"in": "path",
-				"name": "lan_identifier",
+				"name": "lan_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

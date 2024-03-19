@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/magic/sites/{site_identifier}": {
+	"DELETE /accounts/{account_id}/magic/sites/{site_id}": {
 		"description": "Remove a specific Site.",
 		"operationId": "magic-sites-delete-site",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -319,13 +319,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/magic/sites": {
+	"GET /accounts/{account_id}/magic/sites": {
 		"description": "Lists Sites associated with an account. Use connector_identifier query param to return sites where connector_identifier matches either site.ConnectorID or site.SecondaryConnectorID.",
 		"operationId": "magic-wan-sites-list-sites",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -626,13 +626,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/magic/sites/{site_identifier}": {
+	"GET /accounts/{account_id}/magic/sites/{site_id}": {
 		"description": "Get a specific Site.",
 		"operationId": "magic-sites-site-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -644,7 +644,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -936,13 +936,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/magic/sites": {
+	"POST /accounts/{account_id}/magic/sites": {
 		"description": "Creates a new Site",
 		"operationId": "magic-sites-create-site",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1288,13 +1288,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/magic/sites/{site_identifier}": {
+	"PUT /accounts/{account_id}/magic/sites/{site_id}": {
 		"description": "Update a specific Site.",
 		"operationId": "magic-sites-update-site",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1306,7 +1306,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/magic/cf_interconnects": {
+	"GET /accounts/{account_id}/magic/cf_interconnects": {
 		"description": "Lists interconnects associated with an account.",
 		"operationId": "magic-interconnects-list-interconnects",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -557,7 +557,7 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/magic/cf_interconnects/{tunnel_identifier}": {
+	"GET /accounts/{account_id}/magic/cf_interconnects/{tunnel_identifier}": {
 		"description": "Lists details for a specific interconnect.",
 		"operationId": "magic-interconnects-list-interconnect-details",
 		"parameters": [
@@ -575,7 +575,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -929,13 +929,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/magic/cf_interconnects": {
+	"PUT /accounts/{account_id}/magic/cf_interconnects": {
 		"description": "Updates multiple interconnects associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"operationId": "magic-interconnects-update-multiple-interconnects",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1507,7 +1507,7 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/magic/cf_interconnects/{tunnel_identifier}": {
+	"PUT /accounts/{account_id}/magic/cf_interconnects/{tunnel_identifier}": {
 		"description": "Updates a specific interconnect associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"operationId": "magic-interconnects-update-interconnect",
 		"parameters": [
@@ -1525,7 +1525,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

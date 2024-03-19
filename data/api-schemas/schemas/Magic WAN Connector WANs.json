@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/magic/sites/{site_identifier}/wans/{wan_identifier}": {
+	"DELETE /accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}": {
 		"description": "Remove a specific WAN.",
 		"operationId": "magic-wan-connectors-delete-wan",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -29,7 +29,7 @@
 			},
 			{
 				"in": "path",
-				"name": "wan_identifier",
+				"name": "wan_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -340,13 +340,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/magic/sites/{site_identifier}/wans": {
+	"GET /accounts/{account_id}/magic/sites/{site_id}/wans": {
 		"description": "Lists WANs associated with an account and site.",
 		"operationId": "magic-wan-connectors-list-wans",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -358,7 +358,7 @@
 			},
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -657,13 +657,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/magic/sites/{site_identifier}/wans/{wan_identifier}": {
+	"GET /accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}": {
 		"description": "Get a specific WAN.",
 		"operationId": "magic-wan-connectors-wan-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -675,7 +675,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -687,7 +687,7 @@
 			},
 			{
 				"in": "path",
-				"name": "wan_identifier",
+				"name": "wan_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -988,13 +988,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/magic/sites/{site_identifier}/wans": {
+	"POST /accounts/{account_id}/magic/sites/{site_id}/wans": {
 		"description": "Creates a new WAN.",
 		"operationId": "magic-wan-connectors-create-wan",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1006,7 +1006,7 @@
 			},
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1366,13 +1366,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/magic/sites/{site_identifier}/wans/{wan_identifier}": {
+	"PUT /accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}": {
 		"description": "Update a specific WAN.",
 		"operationId": "magic-wan-connectors-update-wan",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1384,7 +1384,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1396,7 +1396,7 @@
 			},
 			{
 				"in": "path",
-				"name": "wan_identifier",
+				"name": "wan_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

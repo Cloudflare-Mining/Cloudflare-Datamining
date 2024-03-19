@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/magic/sites/{site_identifier}/acls/{acl_identifier}": {
+	"DELETE /accounts/{account_id}/magic/sites/{site_id}/acls/{acl_identifier}": {
 		"description": "Remove a specific Site ACL.",
 		"operationId": "magic-site-acls-delete-acl",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -399,13 +399,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/magic/sites/{site_identifier}/acls": {
+	"GET /accounts/{account_id}/magic/sites/{site_id}/acls": {
 		"description": "Lists Site ACLs associated with an account.",
 		"operationId": "magic-site-acls-list-acls",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -417,7 +417,7 @@
 			},
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -775,13 +775,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/magic/sites/{site_identifier}/acls/{acl_identifier}": {
+	"GET /accounts/{account_id}/magic/sites/{site_id}/acls/{acl_identifier}": {
 		"description": "Get a specific Site ACL.",
 		"operationId": "magic-site-acls-acl-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -793,7 +793,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1165,13 +1165,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/magic/sites/{site_identifier}/acls": {
+	"POST /accounts/{account_id}/magic/sites/{site_id}/acls": {
 		"description": "Creates a new Site ACL.",
 		"operationId": "magic-site-acls-create-site-acl",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1183,7 +1183,7 @@
 			},
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1670,13 +1670,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/magic/sites/{site_identifier}/acls/{acl_identifier}": {
+	"PUT /accounts/{account_id}/magic/sites/{site_id}/acls/{acl_identifier}": {
 		"description": "Update a specific Site ACL.",
 		"operationId": "magic-site-acls-update-acl",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1688,7 +1688,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
