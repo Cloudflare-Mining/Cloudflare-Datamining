@@ -2492,6 +2492,14 @@
 						"compatEnableDate": "2024-04-01",
 						"compatEnableFlag": "unwrap_custom_thenables"
 					}
+				},
+				{
+					"name": "fetcherRpc",
+					"annotations": {
+						"compatDisableFlag": "no_rpc",
+						"compatEnableDate": "2024-04-03",
+						"compatEnableFlag": "rpc"
+					}
 				}
 			]
 		},
