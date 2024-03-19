@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/healthchecks/{identifier}": {
+	"DELETE /zones/{zone_id}/healthchecks/{healthcheck_id}": {
 		"description": "Delete a health check.",
 		"operationId": "health-checks-delete-health-check",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "healthcheck_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -386,13 +386,13 @@
 			"pro": true
 		}
 	},
-	"DELETE /zones/{zone_identifier}/healthchecks/preview/{identifier}": {
+	"DELETE /zones/{zone_id}/healthchecks/preview/{healthcheck_id}": {
 		"description": "Delete a health check.",
 		"operationId": "health-checks-delete-preview-health-check",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "healthcheck_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -404,7 +404,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -773,13 +773,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/healthchecks": {
+	"GET /zones/{zone_id}/healthchecks": {
 		"description": "List configured health checks.",
 		"operationId": "health-checks-list-health-checks",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1584,13 +1584,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/healthchecks/{identifier}": {
+	"GET /zones/{zone_id}/healthchecks/{healthcheck_id}": {
 		"description": "Fetch a single configured health check.",
 		"operationId": "health-checks-health-check-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "healthcheck_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1602,7 +1602,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2361,13 +2361,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/healthchecks/preview/{identifier}": {
+	"GET /zones/{zone_id}/healthchecks/preview/{healthcheck_id}": {
 		"description": "Fetch a single configured health check preview.",
 		"operationId": "health-checks-health-check-preview-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "healthcheck_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2379,7 +2379,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3138,13 +3138,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/healthchecks/{identifier}": {
+	"PATCH /zones/{zone_id}/healthchecks/{healthcheck_id}": {
 		"description": "Patch a configured health check.",
 		"operationId": "health-checks-patch-health-check",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "healthcheck_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3156,7 +3156,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4099,13 +4099,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/healthchecks": {
+	"POST /zones/{zone_id}/healthchecks": {
 		"description": "Create a new health check.",
 		"operationId": "health-checks-create-health-check",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5048,13 +5048,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/healthchecks/preview": {
+	"POST /zones/{zone_id}/healthchecks/preview": {
 		"description": "Create a new preview health check.",
 		"operationId": "health-checks-create-preview-health-check",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5997,13 +5997,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/healthchecks/{identifier}": {
+	"PUT /zones/{zone_id}/healthchecks/{healthcheck_id}": {
 		"description": "Update a configured health check.",
 		"operationId": "health-checks-update-health-check",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "healthcheck_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6015,7 +6015,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
