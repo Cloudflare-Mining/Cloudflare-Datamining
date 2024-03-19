@@ -1,11 +1,11 @@
 {
-	"GET /zones/{identifier}/dns_analytics/report": {
+	"GET /zones/{zone_id}/dns_analytics/report": {
 		"description": "Retrieves a list of summarised aggregate metrics over a given time period.\n\nSee [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters.",
 		"operationId": "dns-analytics-table",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -730,13 +730,13 @@
 			]
 		}
 	},
-	"GET /zones/{identifier}/dns_analytics/report/bytime": {
+	"GET /zones/{zone_id}/dns_analytics/report/bytime": {
 		"description": "Retrieves a list of aggregate metrics grouped by time interval.\n\nSee [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters.",
 		"operationId": "dns-analytics-by-time",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

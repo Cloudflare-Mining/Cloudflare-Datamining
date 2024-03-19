@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/dns_firewall/{identifier}/dns_analytics/report": {
+	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report": {
 		"description": "Retrieves a list of summarised aggregate metrics over a given time period.\n\nSee [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters.",
 		"operationId": "dns-firewall-analytics-table",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "dns_firewall_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -742,13 +742,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dns_firewall/{identifier}/dns_analytics/report/bytime": {
+	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report/bytime": {
 		"description": "Retrieves a list of aggregate metrics grouped by time interval.\n\nSee [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters.",
 		"operationId": "dns-firewall-analytics-by-time",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "dns_firewall_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -760,7 +760,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
