@@ -379,21 +379,7 @@
 										"openInNewTab": true,
 										"locale": "en-US"
 									},
-									"image": {
-										"id": "d7c02945-debf-5cad-925e-e8e6a156a087",
-										"altText": "Cloudflare technical blog",
-										"title": "Technical blog thumbnail",
-										"activeAsset": "Contentful Asset",
-										"locale": "en-US",
-										"contentfulAsset": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6auDkwlHhXiPQaGJG6loHe/1a016099ac2b17e8ed632e51e5d234ef/tech-blog-thumbnail.svg"
-											},
-											"description": ""
-										},
-										"brandfolderAsset": null,
-										"brandfolderAssetMobile": null
-									}
+									"image": null
 								},
 								{
 									"contentTypeId": "elementResourceCard",
@@ -525,100 +511,6 @@
 							"contentTypeId": "bladePadding",
 							"height": 5,
 							"backgroundColor": null
-						},
-						{
-							"contentfulId": "1PcLvYVZIaH6wtDCfIqTFU",
-							"contentTypeId": "bladeMultipleColumnsLayout",
-							"title": "How Cloudflare protected customers from this attack",
-							"eyebrowHeading": null,
-							"description": null,
-							"textLayout": "left",
-							"columnsLayout": "Three Columns",
-							"columnContent": [
-								{
-									"contentTypeId": "feature",
-									"contentfulId": "1PYIL0kXzlVpb41cEAhcEz",
-									"title": "Helped discover HTTP/2 flaw",
-									"makeTitleLink": false,
-									"titleUrl": null,
-									"titleSize": "medium",
-									"description": "With industry peers, Cloudflare helped discover the underlying flaw in late August, 2023. We worked with governments and industry groups to responsibly disclose the vulnerability and attack campaign.",
-									"learnMoreUrl": null,
-									"learnMoreText": null,
-									"displayBorder": false,
-									"openLinkInNewTab": null,
-									"removeCardBorder": false,
-									"icon": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OI2U1GBOp3QHAlfKBzLV1/1a7b865b3f553a0b91656d1c88612ba3/target__1_.svg"
-										},
-										"description": "Reticule icon"
-									},
-									"iconAssetFile": null,
-									"imageOverlaySuperheader": null,
-									"imageOverlayText": null,
-									"imageAssetFile": null,
-									"streamId": null,
-									"streamThumbnail": null,
-									"streamThumbnailAssetFile": null
-								},
-								{
-									"contentTypeId": "feature",
-									"contentfulId": "5uXULmFqtT3zyTwdPWl3ZF",
-									"title": "Real time mitigation",
-									"makeTitleLink": false,
-									"titleUrl": null,
-									"titleSize": "medium",
-									"description": "Cloudflare DDoS Protection helps every organization with applications behind Cloudflare, including free customers. Less than 0.0001% of requests served during the attack campaign resulted in errors.",
-									"learnMoreUrl": null,
-									"learnMoreText": null,
-									"displayBorder": false,
-									"openLinkInNewTab": null,
-									"removeCardBorder": false,
-									"icon": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
-										},
-										"description": null
-									},
-									"iconAssetFile": null,
-									"imageOverlaySuperheader": null,
-									"imageOverlayText": null,
-									"imageAssetFile": null,
-									"streamId": null,
-									"streamThumbnail": null,
-									"streamThumbnailAssetFile": null
-								},
-								{
-									"contentTypeId": "feature",
-									"contentfulId": "b26M2vj1OzXIwTybzDMHX",
-									"title": "Patched HTTP/2 at our edge",
-									"makeTitleLink": false,
-									"titleUrl": null,
-									"titleSize": "medium",
-									"description": "Cloudflare patched our implementation of HTTP/2 to reduce the impact of the exploit on our customers' applications.",
-									"learnMoreUrl": null,
-									"learnMoreText": null,
-									"displayBorder": false,
-									"openLinkInNewTab": null,
-									"removeCardBorder": false,
-									"icon": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JMg4D04kEvWkrEuZdpovM/abbf6c3202730a1f12c30c8ec2107591/performance-wrench.svg"
-										},
-										"description": ""
-									},
-									"iconAssetFile": null,
-									"imageOverlaySuperheader": null,
-									"imageOverlayText": null,
-									"imageAssetFile": null,
-									"streamId": null,
-									"streamThumbnail": null,
-									"streamThumbnailAssetFile": null
-								}
-							],
-							"sectionPadding": "tile--no-bottom-padding",
-							"htmlId": "httpresponse"
 						},
 						{
 							"contentfulId": "6zAaLIXfrazW0rqOdFmmB",
