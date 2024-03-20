@@ -1,5 +1,13 @@
 # Change Log
 
+## 8.3.3
+
+### Patch Changes
+
+- 48cd0bded9: Buttons now space their children elements using `gap` instead of `margin-left` or `margin-right`.
+
+  Previously, when including an icon in a button with no children via the `iconType` prop there would be an extraneous margin. Now with `gap`, the space is only present when there label text is also included.
+
 ## 8.3.2
 
 ## 8.3.1
