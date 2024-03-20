@@ -245,7 +245,21 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "0b88acd0-b310-56d5-a720-1c3c39d7d9f1",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Why5MUXzeVAnNV0Teig3u/ef203c717326c31417f3a766cf83e3e0/Group_94124.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
@@ -264,9 +278,9 @@
 						"contentTypeId": "bladeFeatureList",
 						"title": null,
 						"bladeBorder": "border-bottom",
-						"backgroundColor": "blue",
+						"backgroundColor": "white",
 						"subtitle": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"htmlId": null,
 						"featureLists": [
 							{
@@ -366,7 +380,7 @@
 								"contentTypeId": "featureList",
 								"contentfulId": "1XceRmUfKovaPLzGtrGxTH",
 								"title": "Leadership Gender Identity",
-								"description": "Leadership: all director level and above positions.",
+								"description": "*Director level and above*",
 								"features": [
 									{
 										"contentTypeId": "feature",
@@ -462,7 +476,7 @@
 						"contentTypeId": "bladeFeatureList",
 						"title": null,
 						"bladeBorder": "border-bottom",
-						"backgroundColor": "blue",
+						"backgroundColor": "white",
 						"subtitle": null,
 						"sectionPadding": null,
 						"htmlId": null,
