@@ -625,7 +625,7 @@
 
 	function Qt(e, r) {
 		var t, a = it(r.params, te),
-			u = "h/".concat("g", "/"),
+			u = "h/".concat("b", "/"),
 			s = "".concat(a, "/cdn-cgi/challenge-platform/").concat(u, "feedback-reports/").concat(pe(e)),
 			g = document.getElementById(e);
 		g || v("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
@@ -774,7 +774,7 @@
 					switch (R.label) {
 						case 0:
 							if (i = l.params.sitekey, p = Zt(), !p) return b("Cannot determine Turnstile's embedded location, aborting clearance redemption."), a(l, o, !1), [2];
-							x = "h/".concat("g", "/"), E = new URL(p), d = "https", w = "", O = "".concat(d, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(x, "rc/").concat(c).concat(w), R.label = 1;
+							x = "h/".concat("b", "/"), E = new URL(p), d = "https", w = "", O = "".concat(d, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(x, "rc/").concat(c).concat(w), R.label = 1;
 						case 1:
 							return R.trys.push([1, 6, , 7]), [4, fetch(O, {
 								method: "POST",
@@ -988,7 +988,7 @@
 								cData: i.cData,
 								chlPageData: i.chlPageData,
 								rcV: i.rcV,
-								ch: "956dacbeead0",
+								ch: "de9364586261",
 								url: Zt(),
 								retry: i.params.retry,
 								"expiry-interval": i.params["expiry-interval"],
@@ -1087,7 +1087,7 @@
 					i = document.querySelector("#".concat(c));
 				(!c || !i) && v("Widget ".concat(o, " to reset was not found."), 3330), n.params.appearance === z.INTERACTION_ONLY && Jt(i), n.params.sitekey === null && v("Unexpected Error: Sitekey is null", 3347);
 				var p;
-				i.src = ot(o, n.params.sitekey, n.params, (p = n.rcV) !== null && p !== void 0 ? p : W, te, "g", at(n)), ut(c), n.retryTimeout && window.clearTimeout(n.retryTimeout)
+				i.src = ot(o, n.params.sitekey, n.params, (p = n.rcV) !== null && p !== void 0 ? p : W, te, "b", at(n)), ut(c), n.retryTimeout && window.clearTimeout(n.retryTimeout)
 			} else v("Widget ".concat(o, " to reset was not found."), 3331)
 		}
 
@@ -1189,7 +1189,7 @@
 						widgetInitStartTimeMs: 0
 					})), rt(_, te);
 					var vt = _.widgetMap.get(J);
-					vt || v("Turnstile Initialization Error ", 3606), L.style.display = "none", L.style.border = "none", L.style.overflow = "hidden", L.setAttribute("src", ot(J, C, d, W, te, "g", at(vt)));
+					vt || v("Turnstile Initialization Error ", 3606), L.style.display = "none", L.style.border = "none", L.style.overflow = "hidden", L.setAttribute("src", ot(J, C, d, W, te, "b", at(vt)));
 					var mt = ["cross-origin-isolated", "fullscreen"],
 						De;
 					D((De = (c = document.featurePolicy) === null || c === void 0 || (n = c.features) === null || n === void 0 ? void 0 : n.call(c)) !== null && De !== void 0 ? De : [], et) && mt.push(et), L.setAttribute("allow", mt.join("; ")), L.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), L.id = V;
