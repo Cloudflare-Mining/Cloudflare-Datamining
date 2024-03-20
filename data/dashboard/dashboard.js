@@ -809,7 +809,7 @@
 			var en = n("../react/app/components/Persistence/index.tsx"),
 				tn = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				nn = n("../react/app/components/LoadingSuspense.tsx");
-			const on = oe().lazy(() => Promise.all([n.e(2480), n.e(14273), n.e(4616), n.e(48337), n.e(98283), n.e(76725), n.e(43351), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const on = oe().lazy(() => Promise.all([n.e(2480), n.e(14273), n.e(4616), n.e(16574), n.e(98283), n.e(76725), n.e(43351), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var rn = () => oe().createElement(nn.Z, null, oe().createElement(on, null));
 			const an = () => (ae.useEffect(() => q, []), null);
 			var sn = n("../../../../node_modules/moment/moment.js"),
@@ -863,7 +863,7 @@
 						}
 					}, [v.search])
 				},
-				mn = oe().lazy(() => Promise.all([n.e(2480), n.e(14273), n.e(4616), n.e(48337), n.e(81778), n.e(72019), n.e(26976), n.e(76725), n.e(43351), n.e(47261), n.e(35812), n.e(77637), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				mn = oe().lazy(() => Promise.all([n.e(2480), n.e(14273), n.e(4616), n.e(16574), n.e(81778), n.e(72019), n.e(26976), n.e(76725), n.e(43351), n.e(47261), n.e(35812), n.e(77637), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				gn = oe().lazy(() => Promise.all([n.e(14273), n.e(81778), n.e(76725), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var fn = ({
 					userIsAuthed: v
@@ -987,10 +987,10 @@
 				n.g.build = Cn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "95ea06b6888f849d4870f0ca2cea425e7f011b84",
+					commit: "104eaca44f54f9f62dc01ee052f16a971bfb2085",
 					env: "production",
-					builtAt: 1710878151677,
-					dashVersion: "481fe69be134f3c16001eeb491ac12c8500b37ec",
+					builtAt: 1710961715904,
+					dashVersion: "105ef8e09559fe24da6c71c932bc3495661ea9b2",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",

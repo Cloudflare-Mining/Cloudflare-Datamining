@@ -134,7 +134,6 @@
 	"queues.settings_tab.consumer_details.consumer_type": "Consumer type",
 	"queues.settings_tab.consumer_details.consumer_type.worker": "Worker",
 	"queues.settings_tab.consumer_details.consumer_type.http_pull": "HTTP Pull",
-	"queues.settings_tab.consumer_details.consumer_type.http_pull_url": "curl -H 'X-Auth-Email: %{authEmail}' -H 'X-Auth-Key: ${CLOUDFLARE_API_KEY}' 'https://api.cloudflare.com/client/v4/accounts/%{accountTag}/queues/%{queueID}/pull' -XPOST  --data '{ \"visibilityTimeout\": 10000, \"batchSize\": 100 }",
 	"queues.settings_tab.consumer_details.consumer_type.change_to_http_pull_warning": "This will unbind your current Worker consumer.",
 	"queues.settings_tab.consumer_details.retry_delay": "Retry delay:",
 	"queues.settings_tab.consumer_details.retry_delay_value": "%{seconds} seconds",
