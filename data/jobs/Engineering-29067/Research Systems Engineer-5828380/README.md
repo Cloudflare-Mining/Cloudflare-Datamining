@@ -5,29 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>&nbsp;</p>
-<p><strong>Locations -&nbsp;</strong>Austin or Remote US</p>
-<hr>
-<p><strong>About the department</strong></p>
-<p>Cloudflare is looking to build and grow our data analytics/business intelligence team that will be responsible for building a large-scale enterprise modern data lake and EDW that combines massive petabyte scale traffic logs with data from various business systems supporting product, marketing, customer support, sales, finance etc. and enabling easier consumption of that data using tools to drive standard reporting, adhoc/exploratory analytics and advanced insights using data science models.</p>
-<p><strong>About the role</strong></p>
-<p>As part of this initiative, we are looking for a strong data analyst to come join Cloudflare and help us drive analytic insights and best practices at scale from the ground up. Success in this role comes from marrying a strong data background with acute product and business acumen to deliver highly strategic and compelling insights that accelerate our business growth and influence our product decisions within Cloudflare.&nbsp;</p>
-<p>What we look for: Data analysis, Business Analysis, Storytelling, Strong Business &amp; Product Acumen, Cross-functional Collaboration, Creative Problem Solving, Agile</p>
-<h4><strong>What you'll do</strong></h4>
+<p><strong>Location: US Remote</strong></p>
+<p><strong>About the Department</strong></p>
+<p>Cloudflare Research is involved with building the future of Cloudflare by tackling strategic projects that have a large impact on Cloudflare systems and the Internet at large. Team members<strong> independently drive greenfield projects</strong>, work closely with Cloudflare product and engineering teams on shared objectives, and build strong collaborations with both external organizations and other organizations within Cloudflare to achieve common goals.</p>
+<p>Cloudflare Research embarks upon projects that help shape the future of the Internet at large, and the systems that drive it. We design, develop, and deploy these projects into Cloudflare systems to demonstrate their impact, and to share that knowledge with the wider standards and research communities -- often in collaboration with university or other industry labs. A sample of our recent high-profile works include Constellation AI, Encrypted Client Hello (ECH), Post Quantum Encryption, CAP, ZKP for browsers, and Addressing Agility. Our current research directions include applied cryptography, privacy, network protocols and architecture, scalable telemetry and performance evaluation, systems for AI, and general distributed systems optimization.&nbsp; We are open to researchers in all of these areas, and particularly solicit applications from researchers with backgrounds in Formal Methods, Formal Analysis, Distributed Cache and Storage Systems, and Systems for ML.&nbsp; Particular attention will be paid to candidates with a background in formal analysis and storage or network optimization.&nbsp;</p>
+<p>More information about Cloudflare's approach to research can be found<a href="https://research.cloudflare.com/approach/"> here</a>.</p>
+<p><strong>About the Role&nbsp;&nbsp;</strong></p>
+<p>Cloudflare Research is looking for a systems researcher who is eager to help define and pursue research in systems and formal analysis that Cloudflare is uniquely poised to build and benefit from, with attention to scalability, resiliency, observability, and dynamic adaptation.&nbsp; Researchers and engineers across the Research Teams investigate new ideas, build new technologies, inform and execute telemetry, engage with global communities, and even dive into existing codebases to make meaningful changes in production environments. Prioritization and planning are key elements as the nature of the team’s research necessarily shifts between putting ideas into practice and onto paper, while ensuring rigorous evaluations of performance, correctness, or impact. The successful candidate will have a proven track record of success driving streams of investigation to completion.</p>
+<p><strong>General Requirements</strong></p>
 <ul>
-	<li>Fundamental understanding of the data landscape i.e tooling, tech stack, source systems etc. and work closely with the Data Engineering team to improve the data collection and quality.</li>
-	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.</li>
-	<li>Audience focused presentation and storytelling skills focused on key takeaways and recommendations in a crisp and concise manner.</li>
-	<li>Ability to define and spot macro and micro levels trends with statistical significance on a regular basis and understand key drivers driving those trends.</li>
+	<li>Demonstrated track record of design and follow-through on large-scale systems projects</li>
+	<li>Must have a proven record of peer-reviewed research, standards, or equivalent in venues held by but not limited to ACM, USENIX, or IEEE, with publicly accessible paper artifacts where appropriate.</li>
+	<li>Solid foundation in computer science, with specialization in distributed systems and one or more Cloudflare-relevant areas such as machine learning, storage, operating systems, networks, privacy, or telemetry.</li>
+	<li>Proficiency in one or more the following languages - Go, Rust, Typescript, C and/or Lua</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required.</li>
-	<li>3+ years of data analyst experience with 1+ years of proven industry experience in a large scale environment(PBs scale, globally distributed teams).</li>
-	<li>Proven results oriented analysis that helped support positive change in the business strategy.</li>
-	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
-	<li>Strong experience in Python, R, SQL, Tableau, Google Analytics, Hive and BigQuery (or any other Big data/Cloud equivalent) etc.</li>
-	<li>Capable of working closely with business including but not limited to, Engineering, Sales, Marketing, and Product teams to ensure data initiatives are aligned with business needs and is of high quality.</li>
+	<li>Excel at planning, working independently and multi-functionally, leading execution across teams to meet commitments, and deliver with predictability</li>
+	<li>Demonstrate a track record of <strong>strong communication</strong> and technical influence. You’re as good as explaining “why” as you are “how.”</li>
+	<li>Experience implementing tools, processes, internal instrumentation, methodologies, and resolving blockages</li>
+	<li>Comfortable working on teams/projects with tight deadlines and short release cycles</li>
+</ul>
+<h3><strong>Bonus Points</strong></h3>
+<ul>
+	<li>Have completed a PhD or equivalent graduate research program in Computer Science, Computer Engineering, or a related STEM field&nbsp;</li>
+	<li>Familiarity with Kafka, Postgres, ClickHouse, Kubernetes, Prometheus, and tools such as Cloudflare’s Workers platform</li>
+	<li>Demonstrated excellence in broad-audience technical communication (e.g. highly cited blogs, textbooks)</li>
+	<li>Strong connections with the broader scientific community (arXiv presence, program committees, etc.)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

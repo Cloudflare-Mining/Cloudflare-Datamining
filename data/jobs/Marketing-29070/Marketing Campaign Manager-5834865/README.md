@@ -5,40 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="text-decoration: underline;"><strong>Available</strong><strong> <em>US Remote or SF or Austin</em></strong></span></p>
-<p><strong>What you'll do</strong></p>
+<p><strong>About the Role</strong></p>
+<p>Process-oriented Campaign Manager and leader responsible for driving strategy, development, and execution for the Cloudflare Marketing Programs team. Specific experience in working with XDR’s (business development representatives or inside sales representatives) and Account Executives.</p>
+<p>The Campaign Manager is responsible for the strategy, development, execution, reporting and optimization of marketing programs - working with internal stakeholders including Product Marketing, Field Marketing, and Business Development as well as external agencies and third-party appointment setting vendors.</p>
+<p>The ideal candidate will be able to manage multiple programs at one time, have a proven track record executing integrated lead generation campaigns from ideation through launch that acquire new leads and expand awareness around Cloudflare products, services and solutions.</p>
+<p><strong>Available: Austin or Remote, US</strong></p>
+<p><strong>What you’ll do</strong></p>
 <ul>
-	<li>Assist with the preparation of the Company’s annual and quarterly tax provision (ASC 740), including but not limited to calculating book/tax differences and reconciling ending deferred balances</li>
-	<li>Assist with the preparation of the U.S. federal and state income tax returns and quarterly estimated tax payments. Responsibilities include both U.S. domestic and international aspects of the preparation</li>
-	<li>Proactively manage and maintain provision and compliance calendars and deadlines</li>
-	<li>Prepare monthly, quarterly and annual journal entries and account reconciliations</li>
-	<li>Analyze and effectively communicate tax law changes</li>
-	<li>Assist and support other team members with special projects as needed</li>
-	<li>Manage and respond to tax notices</li>
-	<li>Assist with tax related audits</li>
-	<li>Ensure all supporting documents are complete for record keeping</li>
-	<li>Support tax process documentation and SOX controls</li>
-	<li>Build collaborative working relationships across the organization&nbsp;</li>
+	<li>Reduce prospecting cycle for high-priority accounts with additional insight on pain points and solution interest. Enable and work alongside Mid Market, Enterprise, Public Sector and Strategic sales teams.</li>
+	<li>Develop appointment setting program messaging, call scripts and targeted account lists. Manage several appointment setting campaigns and vendors at one time. Collect feedback from programs, monitor meeting count, warm lead handoff process and updated account lists across various sales regions and segments.&nbsp;</li>
+	<li>Execute campaigns utilizing a variety of channels including email, direct mail, content syndication, executive events, display, LinkedIn advertising and webinars.</li>
+	<li>Use internal tools to stand up campaign components including email nurture and audience targeting in Marketo, Salesforce to create target account lists (TAL’s) for sales teams, SalesLoft cadence creation, Contentful and Folloze for landing page development.</li>
+	<li>Define campaign objectives, tactics, assets and channels; identify target prospects in Fortune 1000 and Global 2000 enterprise segments.</li>
+	<li>Develop messaging appropriate for targeted personas.</li>
+	<li>Manage campaign launch and timeline, ROI, and data-driven improvements through optimization.</li>
+	<li>Measure and achieve MQL and pipeline targets leveraging Salesforce (SFDC) and Tableau reporting.</li>
+	<li>Communicate campaign results to key stakeholders in the sales and marketing organization.</li>
+	<li>Manage budget and suggest where budget should be allocated&nbsp; across various marketing channels based on pipeline generation and ROI.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>3+ years of applicable income tax experience in corporate tax department or public accounting firm&nbsp;</li>
-	<li>Bachelor’s degree in accounting, economics, or finance related field</li>
-	<li>Experience and proficiency preparing tax workpapers supporting federal and state income and non-income tax filings</li>
-	<li>Have excellent analytical skills, ensure results are accurate and able to communicate findings in a precise and simple manner</li>
-	<li>Ability to work independently in a fast-paced environment with strong ownership of his/her function</li>
-	<li>Results driven with a high level of initiative, teamwork, urgency, accountability and integrity</li>
-	<li>Demonstrates hands-on willingness to accept challenging projects outside areas of experience</li>
-	<li>Hard working, quick learner with a positive ‘can do' attitude</li>
-	<li>Ability to prioritize and manage time effectively</li>
-	<li>Excellent organizational, technical, analytical, problem solving skills and attention to detail</li>
-	<li>Problem solving skills, and are an independent thinker and self-starter</li>
-	<li>Excellent oral and written communication skills</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Certified Public Accountant</li>
-	<li>Experience with OneSource or Corptax</li>
+	<li>Must have 5+ years of proven experience in B2B marketing (enterprise software, SaaS, Security, etc.).</li>
+	<li>Must be comfortable with reporting and communicating marketing impact across the organization.</li>
+	<li>Analytically inclined, exceptional organizational skills, with rigorous attention to detail.</li>
+	<li>Ability to work effectively in a fast-paced and ever-changing environment with tight deadlines.</li>
+	<li>Prior marketing experience in a high growth company in the SaaS, security, or network space, combined with knowledge of how the Internet works is a plus.</li>
+	<li>Experience delivering, accelerating, and expanding sales pipeline through marketing campaigns</li>
+	<li>Understanding of the customer journey and the best marketing approaches by stage</li>
+	<li>Hands-on experience with Salesforce, Marketo,, Demandbase, Folloze, and Tableau (or other marketing automation and analytics tools).</li>
+	<li>Analytically inclined and metrics-driven with rigorous attention to detail; great at solving complex problems with curious and creative mindset</li>
+	<li>Team player with exceptional organizational skills, and the ability to work strategically and tactically.&nbsp;</li>
+	<li>Ability to execute multiple projects simultaneously in a fast-paced and changing environment with tight deadlines</li>
+	<li>Excellent writing and presentation skills</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

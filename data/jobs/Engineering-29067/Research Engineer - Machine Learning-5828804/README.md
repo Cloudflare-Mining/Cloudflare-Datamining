@@ -5,40 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="text-decoration: underline;"><strong>Available</strong><strong> <em>US Remote or SF or Austin</em></strong></span></p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Location: US Remote</strong></p>
+<p><strong>About the Department</strong></p>
+<p>Cloudflare Research is involved with building the future of Cloudflare by tackling strategic projects that have a large impact on Cloudflare systems and the Internet at large. Team members<strong> independently drive greenfield projects</strong>, work closely with Cloudflare product and engineering teams on shared objectives, and build strong collaborations with both external organizations and other organizations within Cloudflare to achieve common goals.</p>
+<p>Cloudflare Research embarks upon projects that help shape the future of the Internet at large, and the systems that drive it. We design, develop, and deploy these projects into Cloudflare systems to demonstrate their impact, and to share that knowledge with the wider standards and research communities -- often in collaboration with university or other industry labs. A sample of our recent high-profile works include Constellation AI, Encrypted Client Hello (ECH), Post Quantum Encryption, CAP, ZKP for browsers, and Addressing Agility. Our current research directions include applied cryptography, privacy, network protocols and architecture, measurement and performance evaluation, AI and ML for systems, systems for AI, and general distributed systems optimization.&nbsp; We are open to researchers in all of these areas, and particularly solicit applications from researchers with backgrounds in ML for Systems or Systems for ML.&nbsp; Particular attention will be paid to candidates with a background in ML and storage or network optimization.&nbsp;</p>
+<p>More information about Cloudflare's approach to research can be found<a href="https://research.cloudflare.com/approach/"> here</a>.</p>
+<p><strong>About the Role&nbsp;&nbsp;</strong></p>
+<p>Cloudflare Research is looking for a senior ML researcher who is eager to help define and identify projects in the AI/ML space that Cloudflare is uniquely poised to build and benefit from.&nbsp; Researchers and engineers across the Research Teams investigate new ideas, build new technologies, inform and execute telemetry, engage with global communities, and even dive into existing codebases to make meaningful changes in production environments. Prioritization and planning are key elements as the nature of the team’s research necessarily shifts between putting ideas into practice and onto paper, while ensuring rigorous evaluations of performance, correctness, or impact. The successful candidate will have a proven track record of success driving streams of investigation to completion.</p>
+<p><strong>General Requirements</strong></p>
 <ul>
-	<li>Assist with the preparation of the Company’s annual and quarterly tax provision (ASC 740), including but not limited to calculating book/tax differences and reconciling ending deferred balances</li>
-	<li>Assist with the preparation of the U.S. federal and state income tax returns and quarterly estimated tax payments. Responsibilities include both U.S. domestic and international aspects of the preparation</li>
-	<li>Proactively manage and maintain provision and compliance calendars and deadlines</li>
-	<li>Prepare monthly, quarterly and annual journal entries and account reconciliations</li>
-	<li>Analyze and effectively communicate tax law changes</li>
-	<li>Assist and support other team members with special projects as needed</li>
-	<li>Manage and respond to tax notices</li>
-	<li>Assist with tax related audits</li>
-	<li>Ensure all supporting documents are complete for record keeping</li>
-	<li>Support tax process documentation and SOX controls</li>
-	<li>Build collaborative working relationships across the organization&nbsp;</li>
+	<li>Demonstrated track record of design and follow-through on large-scale ML projects</li>
+	<li>Have completed a PhD or equivalent graduate research program in Computer Science, Mathematics, or related STEM field&nbsp;</li>
+	<li>Must have a proven record of peer-reviewed research, standards, or equivalent in venues held by but not limited to ACM, USENIX, or IEEE, with publicly accessible paper artifacts where appropriate.</li>
+	<li>Solid foundation in computer science, with specialization in machine learning and one or more Cloudflare-relevant areas such as distributed systems, storage, operating systems, networks, privacy, or telemetry.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>3+ years of applicable income tax experience in corporate tax department or public accounting firm&nbsp;</li>
-	<li>Bachelor’s degree in accounting, economics, or finance related field</li>
-	<li>Experience and proficiency preparing tax workpapers supporting federal and state income and non-income tax filings</li>
-	<li>Have excellent analytical skills, ensure results are accurate and able to communicate findings in a precise and simple manner</li>
-	<li>Ability to work independently in a fast-paced environment with strong ownership of his/her function</li>
-	<li>Results driven with a high level of initiative, teamwork, urgency, accountability and integrity</li>
-	<li>Demonstrates hands-on willingness to accept challenging projects outside areas of experience</li>
-	<li>Hard working, quick learner with a positive ‘can do' attitude</li>
-	<li>Ability to prioritize and manage time effectively</li>
-	<li>Excellent organizational, technical, analytical, problem solving skills and attention to detail</li>
-	<li>Problem solving skills, and are an independent thinker and self-starter</li>
-	<li>Excellent oral and written communication skills</li>
+	<li>Excel at planning, working independently and multi-functionally, leading execution across teams to meet commitments, and deliver with predictability</li>
+	<li>Demonstrate a track record of <strong>strong communication</strong> and technical influence. You’re as good as explaining “why” as you are “how.”</li>
+	<li>Experience implementing tools, processes, internal instrumentation, methodologies, and resolving blockages</li>
+	<li>Comfortable working on teams/projects with tight deadlines and short release cycles</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Certified Public Accountant</li>
-	<li>Experience with OneSource or Corptax</li>
+	<li>Proficiency in one or more the following languages - Go, Rust, Typescript, C and/or Lua</li>
+	<li>Familiarity with Kafka, Postgres, ClickHouse, Kubernetes, Prometheus, and tools such as Cloudflare’s Workers platform</li>
+	<li>Demonstrated excellence in broad-audience technical communication (e.g. highly cited blogs, textbooks)</li>
+	<li>Strong connections with the broader scientific community (arXiv presence, program committees, etc.)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
