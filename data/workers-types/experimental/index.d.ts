@@ -1560,7 +1560,8 @@ declare interface Transformer<I = any, O = any> {
   flush?: (
     controller: TransformStreamDefaultController<O>
   ) => void | Promise<void>;
-  expectedLength?: number | bigint;
+  cancel?: (reason: any) => void | Promise<void>;
+  expectedLength?: number;
 }
 declare interface StreamPipeOptions {
   /**
@@ -1993,7 +1994,7 @@ declare interface URLPatternURLPatternOptions {
   ignoreCase?: boolean;
 }
 declare class CloseEvent extends Event {
-  constructor(type: string, initializer: CloseEventInit);
+  constructor(type: string, initializer?: CloseEventInit);
   /** Returns the WebSocket connection close code provided by the server. */
   readonly code: number;
   /** Returns the WebSocket connection close reason provided by the server. */
@@ -2056,6 +2057,7 @@ declare const WebSocketPair: {
 declare interface SqlStorage {
   exec(query: string, ...bindings: any[]): SqlStorageCursor;
   prepare(query: string): SqlStorageStatement;
+  ingest(query: string): string;
   get databaseSize(): number;
   Cursor: typeof SqlStorageCursor;
   Statement: typeof SqlStorageStatement;
