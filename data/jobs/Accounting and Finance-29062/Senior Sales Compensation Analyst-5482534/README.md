@@ -5,44 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong><strong><br></strong>Cloudflare is seeking an innovative EMEA Content and Campaigns Manager to join our growing marketing team. You will own the strategy and execution of content and campaigns across EMEA, measuring effectiveness and optimizing programs to fuel our regional growth.</p>
-<p>In this cross-functional role, you will collaborate with stakeholders across sales, marketing, and local teams to support the usage and production of content that engages prospects and progresses them through the funnel. You will also be responsible for owning the strategy and execution of key lead generation and content syndication campaigns that drive Enterprise-level marketing qualified leads and sales pipeline for the EMEA business. If you’re passionate about leading pipeline-driving marketing campaigns and want to level up your expertise with a trailblazing brand - this is the perfect opportunity.<br><br></p>
-<p><strong>Responsibilities</strong></p>
+<h4>Available Locations: Remote Mexico</h4>
+<h4>About the role</h4>
+<p>We are looking for a strong leader to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Program &amp; Strategy.</p>
+<h4>What you'll do</h4>
 <ul>
-	<li>Build and manage the EMEA campaigns content plan in alignment with the EMEA Field Marketers, Localisation team, and the Global Content and Campaigns teams&nbsp;</li>
-	<li>Liaise with EMEA Field Marketers to coordinate and manage content requests from local markets&nbsp;</li>
-	<li>Collaborate with fellow EMEA digital channel owners to build a cohesive content distribution strategy&nbsp;</li>
-	<li>Plan and manage EMEA-wide content syndication campaigns across 1:many and 1:few ABM campaigns, and partner with regional managers to support localised in-country content syndication initiatives&nbsp;</li>
-	<li>Own budget, metrics, and reporting for the EMEA content syndication channel (inc. engagement, MQLs, and marketing-influenced pipeline)&nbsp;</li>
-	<li>Inform the nurture strategy for leads from EMEA paid campaigns and work with Global Campaigns and Marketing Operations teams to optimise and drive MQLs</li>
-	<li>Define target account lists for your campaigns in alignment with sales, EMEA Field Marketers, MOPS &amp; Global Campaigns&nbsp;&nbsp;</li>
-	<li>Collaborate with BDR and sales teams to ensure alignment on campaign plans and follow up actions&nbsp;</li>
-	<li>Evaluate and manage local vendors for EMEA campaigns&nbsp;</li>
-	<li>Run regular analysis on content and campaign performance and communicate results to key stakeholders<br><br></li>
+	<li>Support accuracy and timely distribution of commission payments and statements for the Cloudflare Sales Team&nbsp;</li>
+	<li>Help to drive Cloudflare’s Incentive Compensation Management (ICM) Tool strategy, operations, configuration and enhancement</li>
+	<li>Drive alignment amongst cross-functional stakeholders and project manage timely assignment of commissions calculation inputs</li>
+	<li>Own sales performance analytics for the Cloudflare Sales Team, surfacing key findings and expanding systematic visibility for leadership and business partners</li>
+	<li>Scale consistent practices, documentation and desktop procedures for all commissions processes</li>
+	<li>Implement appropriate SOX Controls, partnering closely with the Controllership and Internal Audit Organizations</li>
+	<li>Partner with the Sales Compensation Design Team to ensure feasibility and timely implementation of compensation plan changes</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Must have 4+ years of proven demand generation and campaign management experience within B2B technology</li>
-	<li>Ability to effectively align content to funnel stages and build plans for nurture campaigns&nbsp;</li>
-	<li>Full understanding of marketing funnel and opportunity/campaign ROI tracking</li>
-	<li>Knowledge of account based marketing fundamentals and some ABM experience preferred&nbsp;</li>
-	<li>Hands-on experience with Excel, Salesforce, Marketo, HubSpot, Eloqua, Tableau (or other marketing automation/CRM and reporting tools)</li>
-	<li>Proven success managing time and multiple projects in a high growth environment with tight deadlines</li>
-	<li>Must be comfortable with reporting and communicating campaign efforts and impact across the organization</li>
-	<li>Analytically inclined, exceptional organizational skills with rigorous attention to detail</li>
-	<li>Excellent written and stellar presentation skills</li>
-	<li>Budget and vendor management skills&nbsp;</li>
-	<li>Having a strong sense of curiosity and passion for learning&nbsp;</li>
-	<li>Positive and flexible attitude for working in a fast-paced environment and being able to build strong relationships across various departments and functions</li>
-	<li>Ability to work effectively cross-functionally with a variety of roles, from executives to campaign managers and sales development teams</li>
+	<li>Minimum 8 years of FP&amp;A, Consulting, Incentive Compensation Administration or Commissions Finance experience; experience with a Saas business model preferred</li>
+	<li>Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</li>
+	<li>Experience with commissions-specific SOX Controls</li>
+	<li>Highly proficient in Excel / GoogleSheets&nbsp;</li>
+	<li>Experience with SQL platforms and queries is a plus</li>
+	<li>Experience with sales compensation software and systems</li>
+	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
+	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
+	<li>Bi-lingual Spanish and English required, written and verbal.</li>
 </ul>
-<p><strong>Bonus points</strong></p>
-<ul>
-	<li>Prior demand generation experience in a high growth company in the SaaS, security, or network space (or work with an agency supporting clients in that space)</li>
-	<li>Experience with various marketing technology tools like ON24, Demandbase, Reachdesk, TechTarget, Folloze, Google Analytics&nbsp;</li>
-	<li>Knowledge of how the Internet works</li>
-	<li>Bilingual Spanish, French, German or Polish</li>
-</ul>
+<p>&nbsp;</p>
+<h4><strong>**This position is based in&nbsp;<span style="text-decoration: underline;">Mexico and is applicable only to Mexican Citizens</span>**</strong></h4>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
