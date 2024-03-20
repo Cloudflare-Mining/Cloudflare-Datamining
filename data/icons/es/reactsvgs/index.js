@@ -41,6 +41,7 @@ import DeviceTablet from './DeviceTablet';
 import Discord from './Discord';
 import Discover from './Discover';
 import Documentation from './Documentation';
+import Down from './Down';
 import Download from './Download';
 import Drive from './Drive';
 import Edgeworker from './Edgeworker';
@@ -203,6 +204,7 @@ export default {
   discord: Discord,
   discover: Discover,
   documentation: Documentation,
+  down: Down,
   download: Download,
   drive: Drive,
   edgeworker: Edgeworker,

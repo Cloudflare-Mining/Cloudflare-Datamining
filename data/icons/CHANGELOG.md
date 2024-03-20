@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.5.0
+
+### Minor Changes
+
+- db0d7a36c4: Add Down arrow icon
+
 ## 12.4.1
 
 ### Patch Changes

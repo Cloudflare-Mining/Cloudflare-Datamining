@@ -43,6 +43,7 @@ declare const _default: {
     discord: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     discover: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     documentation: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    down: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     download: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     drive: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     edgeworker: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
