@@ -1,5 +1,14 @@
 # @cloudflare/component-code-block
 
+## 5.0.13
+
+### Patch Changes
+
+- @cloudflare/component-button@8.3.4
+- @cloudflare/component-tooltip@4.5.1
+- @cloudflare/component-visually-hidden@1.0.88
+- @cloudflare/elements@3.0.5
+
 ## 5.0.12
 
 ### Patch Changes

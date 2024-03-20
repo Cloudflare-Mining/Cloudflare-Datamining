@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.4
+
+### Patch Changes
+
+- @cloudflare/component-input@8.1.3
+
 ## 5.0.3
 
 ### Patch Changes

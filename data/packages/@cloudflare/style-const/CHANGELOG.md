@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.8.0
+
+### Minor Changes
+
+- 8b74c1f353: Update color of input placeholder text
+
 ## 5.7.3
 
 ### Patch Changes

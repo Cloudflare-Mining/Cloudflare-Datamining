@@ -1,5 +1,14 @@
 # Change Log
 
+## 6.0.5
+
+### Patch Changes
+
+- @cloudflare/component-box@4.0.3
+- @cloudflare/component-button@8.3.4
+- @cloudflare/component-loading@6.1.4
+- @cloudflare/elements@3.0.5
+
 ## 6.0.4
 
 ### Patch Changes

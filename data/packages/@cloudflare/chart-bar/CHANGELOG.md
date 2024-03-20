@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.1.2
+
+### Patch Changes
+
+- @cloudflare/component-text@4.0.3
+- @cloudflare/elements@3.0.5
+
 ## 5.1.1
 
 ### Patch Changes

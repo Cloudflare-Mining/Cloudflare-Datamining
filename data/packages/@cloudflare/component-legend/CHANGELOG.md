@@ -1,5 +1,14 @@
 # Change Log
 
+## 6.0.12
+
+### Patch Changes
+
+- @cloudflare/component-button@8.3.4
+- @cloudflare/component-loading@6.1.4
+- @cloudflare/component-tooltip@4.5.1
+- @cloudflare/elements@3.0.5
+
 ## 6.0.11
 
 ### Patch Changes

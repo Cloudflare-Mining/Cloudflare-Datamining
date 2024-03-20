@@ -1,5 +1,23 @@
 # Change Log
 
+## 6.0.11
+
+### Patch Changes
+
+- @cloudflare/component-button@8.3.4
+- @cloudflare/component-checkbox@5.3.4
+- @cloudflare/component-grid@3.0.8
+- @cloudflare/component-input@8.1.3
+- @cloudflare/component-listbox@2.0.8
+- @cloudflare/component-radio@5.0.3
+- @cloudflare/component-search@8.0.8
+- @cloudflare/component-select-2@7.0.8
+- @cloudflare/component-textarea@4.1.3
+- @cloudflare/component-time-period-picker@6.0.8
+- @cloudflare/component-toast@5.1.3
+- @cloudflare/elements@3.0.5
+- @cloudflare/util-responsive@2.0.8
+
 ## 6.0.10
 
 ### Patch Changes

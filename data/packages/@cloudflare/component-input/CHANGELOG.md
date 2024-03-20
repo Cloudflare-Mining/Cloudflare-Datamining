@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.1.3
+
+### Patch Changes
+
+- @cloudflare/component-box@4.0.3
+
 ## 8.1.2
 
 ### Patch Changes

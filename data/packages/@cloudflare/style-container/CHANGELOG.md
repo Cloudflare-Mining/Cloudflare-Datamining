@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.13.0
+
+### Minor Changes
+
+- 44d9b08ceb: Fix Button borderBottomRightRadius property
+
 ## 7.12.2
 
 ## 7.12.1

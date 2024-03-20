@@ -1,5 +1,14 @@
 # Change Log
 
+## 8.1.2
+
+### Patch Changes
+
+- @cloudflare/chart-color-legend@5.0.3
+- @cloudflare/component-box@4.0.3
+- @cloudflare/component-text@4.0.3
+- @cloudflare/component-tooltip@4.5.1
+
 ## 8.1.1
 
 ### Patch Changes
