@@ -25,7 +25,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Minimum 8 years working in professional UX / product design roles.</li>
+	<li>Minimum 10 years working in professional UX / product design roles.</li>
 	<li>Deep understanding of human-centered design.</li>
 	<li>Excellent visual, written, and verbal communication skills.</li>
 	<li>Experience designing for Salesforce is a plus.</li>
