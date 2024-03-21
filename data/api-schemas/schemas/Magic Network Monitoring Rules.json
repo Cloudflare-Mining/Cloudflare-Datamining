@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/mnm/rules/{rule_identifier}": {
+	"DELETE /accounts/{account_id}/mnm/rules/{rule_id}": {
 		"description": "Delete a network monitoring rule for account.",
 		"operationId": "magic-network-monitoring-rules-delete-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_identifier",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
@@ -13,7 +13,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
@@ -455,13 +455,13 @@
 			"Magic Network Monitoring Rules"
 		]
 	},
-	"GET /accounts/{account_identifier}/mnm/rules": {
+	"GET /accounts/{account_id}/mnm/rules": {
 		"description": "Lists network monitoring rules for account.",
 		"operationId": "magic-network-monitoring-rules-list-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
@@ -939,13 +939,13 @@
 			"Magic Network Monitoring Rules"
 		]
 	},
-	"GET /accounts/{account_identifier}/mnm/rules/{rule_identifier}": {
+	"GET /accounts/{account_id}/mnm/rules/{rule_id}": {
 		"description": "List a single network monitoring rule for account.",
 		"operationId": "magic-network-monitoring-rules-get-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_identifier",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
@@ -953,7 +953,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
@@ -1389,13 +1389,13 @@
 			"Magic Network Monitoring Rules"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/mnm/rules/{rule_identifier}": {
+	"PATCH /accounts/{account_id}/mnm/rules/{rule_id}": {
 		"description": "Update a network monitoring rule for account.",
 		"operationId": "magic-network-monitoring-rules-update-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_identifier",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
@@ -1403,7 +1403,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
@@ -1845,13 +1845,13 @@
 			"Magic Network Monitoring Rules"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/mnm/rules/{rule_identifier}/advertisement": {
+	"PATCH /accounts/{account_id}/mnm/rules/{rule_id}/advertisement": {
 		"description": "Update advertisement for rule.",
 		"operationId": "magic-network-monitoring-rules-update-advertisement-for-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "rule_identifier",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
@@ -1859,7 +1859,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
@@ -2227,13 +2227,13 @@
 			"Magic Network Monitoring Rules"
 		]
 	},
-	"POST /accounts/{account_identifier}/mnm/rules": {
+	"POST /accounts/{account_id}/mnm/rules": {
 		"description": "Create network monitoring rules for account. Currently only supports creating a single rule per API request.",
 		"operationId": "magic-network-monitoring-rules-create-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
@@ -2675,13 +2675,13 @@
 			"Magic Network Monitoring Rules"
 		]
 	},
-	"PUT /accounts/{account_identifier}/mnm/rules": {
+	"PUT /accounts/{account_id}/mnm/rules": {
 		"description": "Update network monitoring rules for account.",
 		"operationId": "magic-network-monitoring-rules-update-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"

@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/mnm/config": {
+	"DELETE /accounts/{account_id}/mnm/config": {
 		"description": "Delete an existing network monitoring configuration.",
 		"operationId": "magic-network-monitoring-configuration-delete-account-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
@@ -401,13 +401,13 @@
 			"Magic Network Monitoring Configuration"
 		]
 	},
-	"GET /accounts/{account_identifier}/mnm/config": {
+	"GET /accounts/{account_id}/mnm/config": {
 		"description": "Lists default sampling and router IPs for account.",
 		"operationId": "magic-network-monitoring-configuration-list-account-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
@@ -797,13 +797,13 @@
 			"Magic Network Monitoring Configuration"
 		]
 	},
-	"GET /accounts/{account_identifier}/mnm/config/full": {
+	"GET /accounts/{account_id}/mnm/config/full": {
 		"description": "Lists default sampling, router IPs, and rules for account.",
 		"operationId": "magic-network-monitoring-configuration-list-rules-and-account-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
@@ -1193,13 +1193,13 @@
 			"Magic Network Monitoring Configuration"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/mnm/config": {
+	"PATCH /accounts/{account_id}/mnm/config": {
 		"description": "Update fields in an existing network monitoring configuration.",
 		"operationId": "magic-network-monitoring-configuration-update-account-configuration-fields",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
@@ -1595,13 +1595,13 @@
 			"Magic Network Monitoring Configuration"
 		]
 	},
-	"POST /accounts/{account_identifier}/mnm/config": {
+	"POST /accounts/{account_id}/mnm/config": {
 		"description": "Create a new network monitoring configuration.",
 		"operationId": "magic-network-monitoring-configuration-create-account-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
@@ -1997,13 +1997,13 @@
 			"Magic Network Monitoring Configuration"
 		]
 	},
-	"PUT /accounts/{account_identifier}/mnm/config": {
+	"PUT /accounts/{account_id}/mnm/config": {
 		"description": "Update an existing network monitoring configuration, requires the entire configuration to be updated at once.",
 		"operationId": "magic-network-monitoring-configuration-update-an-entire-account-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "6f91088a406011ed95aed352566e8d4c"
