@@ -1,0 +1,159 @@
+{
+	"alias": "xata-for-workers",
+	"assets": [],
+	"category": "workers-databases",
+	"description": "A fully managed Postgres platform with built-in search, branching, file attachments and more.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/xata",
+	"flags": [],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/e73e630d-98e8-484b-4dae-80585a74ee00/public",
+	"install_target": "worker",
+	"name": "Xata",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Workers Scripts Write",
+					"reason": "Needed for adding secrets to your Worker."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Connect to Xata",
+			"type": "oauth",
+			"provider": "xata",
+			"client_id": "f94v6eq9sd7ndd0igfphunmf3s",
+			"authorize_url": "https://app.xata.io/integrations/oauth/authorize",
+			"grant_type": "authorization_code",
+			"pkce": false,
+			"scope": "",
+			"submit_action": "submit-xata-oauth"
+		},
+		{
+			"title": "Select a workspace",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "workspaceId",
+					"label": "Workspace",
+					"description": "Workspaces linked to your Xata account are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-xata-workspaces"
+					}
+				}
+			],
+			"submit_action": "submit-xata-workspace"
+		},
+		{
+			"title": "Select a database",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "databaseName",
+					"label": "Database",
+					"description": "Your Xata databases are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-xata-databases"
+					}
+				}
+			],
+			"submit_action": "submit-xata-database"
+		},
+		{
+			"title": "Select a branch",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "branchName",
+					"label": "Branches",
+					"description": "Branches for the selected database are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-xata-branches"
+					}
+				}
+			],
+			"submit_action": "submit-xata-branch"
+		},
+		{
+			"title": "Configure secrets",
+			"type": "form",
+			"components": [
+				{
+					"type": "mapping_input",
+					"name": "secretsMap",
+					"label": "Secrets",
+					"description": "These Secrets will be added to the existing Environment Variables of this Worker.",
+					"required": true,
+					"left_label": "Secret Name",
+					"right_label": "Database Credential",
+					"rows": {
+						"type": "static",
+						"content": [
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "xataDatabaseURLSecretName",
+									"required": true,
+									"default_value": "XATA_DATABASE_URL"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "data_driven",
+										"data_name": "xataDatabaseURL"
+									}
+								}
+							},
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "xataBranchSecretName",
+									"required": true,
+									"default_value": "XATA_BRANCH"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "data_driven",
+										"data_name": "xataBranch"
+									}
+								}
+							},
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "xataAPIKeySecretName",
+									"required": true,
+									"default_value": "XATA_API_KEY"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "static",
+										"static": "xxxxxxxxxxxx"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-secrets-map"
+		}
+	],
+	"templates": [],
+	"uninstall_action": "uninstall",
+	"version": "0.0.4"
+}
