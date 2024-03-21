@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: z => (0, n.z1)(y.Mr)(z) && (0, Q.z7)(z) && !!(0, Q.z$)(z).length
+		hasPermission: z => (0, n.z1)(y.Mr)(z) && (0, G.z7)(z) && !!(0, G.z$)(z).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -111,7 +111,7 @@ const navigation = {
 			title: "navigation.account.logs",
 			url: "/logs",
 			labels: ["new"],
-			hasPermission: z => (0, a.iY)(z) && (0, I.S6)(z) && !!(0, n.z1)("account-logpush")(z)
+			hasPermission: z => (0, a.iY)(z) && (0, D.S6)(z) && !!(0, n.z1)("account-logpush")(z)
 		}, {
 			title: "navigation.account.carbon",
 			url: "/carbon",
@@ -176,7 +176,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: V.T
+		hasPermission: Y.T
 	}, {
 		title: "navigation.account.group_title.application_services",
 		url: "/",
@@ -218,7 +218,7 @@ const navigation = {
 		pages: [{
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-transit/configuration",
-			tabs: D.Lx.concat(D.SF, D.Jg)
+			tabs: I.Lx.concat(I.SF, I.Jg)
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-transit/tunnel-healthchecks"
@@ -283,7 +283,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.magic_connectors.configuration",
 			url: "/magic-wan/configuration",
-			tabs: D.SF.concat(D.Jg)
+			tabs: I.SF.concat(I.Jg)
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-wan/tunnel-healthchecks"
@@ -592,7 +592,7 @@ const navigation = {
 			title: "navigation.zone.analytics.logs",
 			url: "/analytics/logs",
 			navigationType: "both",
-			hasPermission: z => (0, I.Xu)(z)
+			hasPermission: z => (0, D.Xu)(z)
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
 			url: "/analytics/instant-logs",
@@ -603,7 +603,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: z => !!(0, G.V)(z)
+			hasPermission: z => !!(0, F.V)(z)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -611,7 +611,7 @@ const navigation = {
 		navigationType: "both",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: j.bB,
+		tabs: S.bB,
 		hasPermission: z => !(0, d.yD)(z) && (0, E.m7)(z)
 	}, {
 		title: "navigation.zone.dns",
@@ -663,10 +663,10 @@ const navigation = {
 		hasPermission: z => {
 			const J = (0, l.nA)(z);
 			if ((0, d.yD)(z) || !(0, a.wB)(z, "zone_settings", "spectrum.app") || !J) return !1;
-			const se = !!((0, _.l8)(z) || (0, l.DQ)(z)),
-				$ = !!(0, l.ZB)(z, "spectrum", "enabled"),
-				pe = !!(0, l.Ns)(J);
-			return $ || se || !pe
+			const ee = !!((0, _.l8)(z) || (0, l.DQ)(z)),
+				q = !!(0, l.ZB)(z, "spectrum", "enabled"),
+				me = !!(0, l.Ns)(J);
+			return q || ee || !me
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -785,7 +785,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: k.x
+			tabs: Z.x
 		}]
 	}, {
 		title: "navigation.zone.caching",
@@ -798,7 +798,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: Z
+			tabs: U
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -951,7 +951,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: p.az
+			tabs: f.az
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			navigationType: "global-settings",
@@ -1008,5 +1008,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: q.G
+	support: K.G
 }

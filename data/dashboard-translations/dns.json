@@ -138,6 +138,8 @@
 	"dns.records.api.title.get_details": "DNS record details",
 	"dns.records.api.title.update": "Update DNS record",
 	"dns.records.api.title.delete": "Delete DNS record",
+	"dns.records.page.nameservers": "Nameservers",
+	"dns.records.page.nameservers.description": "To use Cloudflare DNS and other L7 services, update your domain registrar to list your Cloudflare nameservers or custom nameservers as authoritative. If %{zoneName} is a subdomain, or you do not know its registrar, refer to <0>how to update your nameservers.</0>",
 	"dns.partial.partial_suffix_card.title": "Partial Zone Suffix",
 	"dns.partial.partial_suffix_card.description": "Append the partial zone suffix to the hostname of your domain that you want to proxy to Cloudflare and use the resulting name as CNAME destination in your authoritative DNS.",
 	"dns.partial.partial_suffix_card.help_info": "#### What is a partial zone suffix? \n\n The partial zone suffix is the static last part of the CNAME destination used for any domains you want to proxy to Cloudflare. The CNAME destination always starts with the specific hostname that should be proxied (e.g. `www.%{zone}`) and ends in the partial zone suffix `%{suffix}`. By pointing a hostname to this CNAME destination, you ensure the DNS lookup for this hostname eventually resolves to Cloudflare IPs. This action directs hostname traffic to Cloudflare's edge network and applies proxy settings (e.g., WAF, CDN) configured for this hostname.\n\n#### How to use the partial zone suffix? \n\n If you want to proxy traffic for `www.%{zone}` to Cloudflare,\n\n1. Create an A, AAAA or CNAME record on the name `www` in the Cloudflare DNS app and change the Proxy Status to Proxied. \n2. Then add a CNAME record on `www.%{zone}` in your authoritative DNS and point it to `www.%{zone}.%{suffix}`.\n\nRepeat this for other subdomains of `%{zone}` that you want to proxy to Cloudflare.\n\nFor more details, see [Understanding a CNAME Setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup).",
@@ -577,5 +579,7 @@
 	"dns.setup.secondary.tooltip.list.1": "Cloudflare authoritatively answers all DNS queries",
 	"dns.setup.secondary.tooltip.learn_more": "Learn more about <0>secondary DNS setup</0><1></1>",
 	"dns.setup.partial.tooltip.summary": "Cloudflare is not your authoritative DNS provider, but the subdomains you have specified can be <0>proxied</0><1></1> through Cloudflare via a CNAME record at your authoritative DNS provider. Check your authoritative DNS provider to find out which records are resolving to Cloudflare.",
-	"dns.setup.partial.tooltip.learn_more": "Learn more about <0>partial (CNAME) setup</0><1></1>"
+	"dns.setup.partial.tooltip.learn_more": "Learn more about <0>partial (CNAME) setup</0><1></1>",
+	"dns.verification.card.subhead": "Advanced nameservers",
+	"dns.verification.card.description": "Get your set of <0>Foundation DNS advanced nameservers</0>. Then, <1>update your domain registrar</1> with the new pair."
 }
