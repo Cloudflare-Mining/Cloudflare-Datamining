@@ -5,36 +5,61 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers.&nbsp;</span></p>
-<h4><strong>About The Team</strong></h4>
-<p>Cloudflare helps build the future of the Internet. The Emerging Technology and Incubation (ETI) team invents, launches, and brings to market the technologies required to reach that goal. ETI ships software that changes the Internet. The world's fastest DNS resolver, 1.1.1.1, Cloudflare WARP, Cloudflare One, Cloudflare Workers, D1, R2, and Workers AI are examples of our launches.</p>
-<p>The team members in ETI make this possible. The group consists of engineers, product managers, developer advocates and researchers who share a common passion for helping build a better Internet. The ETI organization encourages individual team members to be ambitious and bold in how we find and solve problems. We move quickly and shape our products based on customer usage and feedback, while leveraging the massive scale and reliability of our global network.</p>
-<p>ETI also helps drive our Innovation Weeks at Cloudflare and contributes with new products, features, and visions for helping build a better Internet. Doing that requires all of ETI to execute on releases that customers will use today, tell our story as part of Cloudflare’s larger mission, and to build products that allow Cloudflare’s customers to realize that 1+1 can equal 3 when using all of these features together.</p>
-<p>We are looking for a Frontend Engineer to join our team. You will work with a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product features based on what’s technically possible. Furthermore, you will make sure our company hits our ambitious goals from an engineering standpoint.</p>
-<p>You bring a passion for meeting business needs while building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment.</p>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<h4><strong>About the Team</strong></h4>
+<p>In this role, you will be focused on the build out and expansion of our global infrastructure. You'll work closely with Cloudflare’s SRE (Site Reliability Engineering) team, Network Engineering team, Infrastructure Engineering team, Project Managers and with various vendors and partners (including hardware vendors, logistics, datacenter and network providers, and ISPs). You will further be responsible for the development and implementation of consistent processes and visibility measurements for consistent and effective management of our infrastructure. This is a highly visible position that requires deep technical understanding of datacenter infrastructure, physical and logical networking, linux, and basic experience with data analysis and project management.</p>
+<p>To be successful in this position, you should have excellent technical skills, communication skills, and be able to navigate a range of challenges and constraints (e.g. schedule adherence, time zones, and cultures). You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
+<p><strong>Other Responsibilities May Include</strong></p>
 <ul>
-	<li>A minimum of 5 years experience in software development, with a strong focus on TypeScript programming language, Vue, React and Redux;</li>
-	<li>Bachelor's degree in Computer Science, Engineering, or a related field;</li>
-	<li>Proven experience in software development, with a strong focus on TypeScript, React and Redux programming language;</li>
-	<li>Experience frontend frameworks and tools;</li>
-	<li>Good understanding of CSS, HTML and how to work with product design teams;</li>
-	<li>Solid understanding of systems engineering principles and practices;</li>
-	<li>Experience with version control systems such as Git;</li>
-	<li>Strong problem-solving skills and attention to detail;</li>
-	<li>Excellent communication and interpersonal skills, with the ability to work effectively in a team environment;</li>
-	<li>Passion for learning and exploring new technologies;</li>
-	<li>Creative thinker with the ability to propose innovative solutions to complex problems;</li>
-	<li>An operational mindset - we don't just write code, we also own it in production;</li>
-	<li>Previous experience working in an Agile environment is a plus;</li>
-	<li>Good understanding of how Browsers and how their underlying technologies work;</li>
-	<li>Experience with WebAssembly and / or Rust is a bonus.</li>
+	<li>Provisioning, monitoring and maintaining hardware, software, and network in new Cloudflare data centers.</li>
+	<li>Creating documentation and managing remote contractors to complete datacenter installations and upgrades (rack and stack), including hardware manufacturers, datacenter and network providers, logistics partners and other service providers in support of our 275+ growing datacenter locations</li>
+	<li>Aggressively seek opportunities to introduce cutting-edge technology and automation solutions that are effective, efficient and scalable in order to improve our ability to deploy and maintain our global infrastructure.</li>
+	<li>Planning and implementing network and server installations, including in the areas of facility power (AC/DC), cooling, security/access, rack layout and cable management.</li>
+	<li>Providing technical leadership and guidance during deployment activities.</li>
+	<li>Creating and maintaining documentation, plans, SOP’s, MOP’s etc.</li>
+	<li>Collaborating with internal teams (infrastructure engineering, network engineering and SRE) for day to day activities.&nbsp;</li>
+	<li>Coordinating installation of cross-connects globally in support of physical network expansion.</li>
+	<li>Assisting with the definition, documentation and implementation of consistent processes across all regions.</li>
+	<li>Limited travel</li>
 </ul>
-<p><strong>Bonus Points:</strong></p>
+<p><strong>Required Experience</strong></p>
 <ul>
-	<li>Experience building high performance distributed systems;</li>
-	<li>Contributions to large open source projects.</li>
+	<li>Minimum of 3 years of prior relevant experience in Data Center Operations, Site Reliability Engineering, Linux systems administration, Network Engineering, and/or DevOps experience</li>
+	<li>Familiarity with day-to-day tasks and projects common in Data Center Operations.</li>
+	<li>Experience with optical transport technologies such as CWDM/DWDM</li>
+	<li>Configuration management tool experience like Saltstack, Chef, Puppet or Ansible</li>
+	<li>Network hardware administration.</li>
+	<li>Knowledge and exposure to Network Protocols, Topologies and Enterprise architecture.&nbsp;</li>
+	<li>Experience writing network configuration and design documentation.</li>
+	<li>Experience solving problems through automation.</li>
+	<li>Ability to write scripts for internal tools.</li>
+	<li>Experience running and improving operational processes in a rapidly changing environment.</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>Bachelor’s degree, technical background in engineering, computer science, or MIS a plus.</li>
+	<li>Direct experience executing on datacenter / infrastructure projects with many moving parts.</li>
+	<li>Previous experience installing / maintaining datacenter (and other IT) infrastructure and DCIM tools.</li>
+	<li>Experience running and improving operational processes in a rapidly changing environment.</li>
+	<li>Strong understanding of BGP and anycast routing</li>
+	<li>Professional level network certification(s) (JNCIP, CCNP, etc) or higher</li>
+	<li>Good working knowledge of Juniper Junos, Cisco IOS, Cisco NX-OS and Arista EOS</li>
+	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Apache</li>
+	<li>Proficient in one or more programming languages and willing to learn new ones when required</li>
+	<li>Strong verbal and written communication skills, problem-solving skills, attention to detail, and interpersonal skills.</li>
+	<li>Must be proactive with proven ability to learn fast and execute on multiple tasks simultaneously.</li>
+	<li>Ability to manage MS excel and Google spreadsheets.</li>
+	<li>Comfortable handling basic program management responsibilities (prioritization, planning, scheduling, status reporting) such as JIRA</li>
+	<li>Experience managing remote contractors</li>
+	<li>Must be a team player.</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Multi-lingual; experience working with infrastructure in multiple countries.</li>
+	<li>Experience with continuous / rapid deployment</li>
+	<li>Experience working in a 24/7/365 mission-critical service environment</li>
+	<li>Comfortable with remote “lights-out” and out-of-band access to data center resources</li>
+	<li>Linux certifications.</li>
+	<li>Knowledge of the OSI-model and experience isolating network, hardware and software issues.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
