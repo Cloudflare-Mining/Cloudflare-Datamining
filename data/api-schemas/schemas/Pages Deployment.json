@@ -199,6 +199,19 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "env",
+				"schema": {
+					"description": "What type of deployments to fetch.",
+					"enum": [
+						"production",
+						"preview"
+					],
+					"example": "preview",
+					"type": "string"
+				}
 			}
 		],
 		"responses": {

@@ -455,6 +455,11 @@
 														"example": "my-dispatch-namespace",
 														"pattern": "^.+$",
 														"type": "string"
+													},
+													"script_count": {
+														"description": "The current number of scripts in this Dispatch Namespace",
+														"example": 800,
+														"type": "integer"
 													}
 												}
 											},
@@ -722,6 +727,11 @@
 													"example": "my-dispatch-namespace",
 													"pattern": "^.+$",
 													"type": "string"
+												},
+												"script_count": {
+													"description": "The current number of scripts in this Dispatch Namespace",
+													"example": 800,
+													"type": "integer"
 												}
 											}
 										}
@@ -4094,6 +4104,11 @@
 													"example": "my-dispatch-namespace",
 													"pattern": "^.+$",
 													"type": "string"
+												},
+												"script_count": {
+													"description": "The current number of scripts in this Dispatch Namespace",
+													"example": 800,
+													"type": "integer"
 												}
 											}
 										}

@@ -1543,10 +1543,16 @@
 																				"SERVICE_BINDING": {
 																					"description": "Service binding.",
 																					"example": {
+																						"entrypoint": "MyHandler",
 																						"environment": "production",
 																						"service": "example-worker"
 																					},
 																					"properties": {
+																						"entrypoint": {
+																							"description": "The entrypoint to bind to.",
+																							"nullable": true,
+																							"type": "string"
+																						},
 																						"environment": {
 																							"description": "The Service environment.",
 																							"type": "string"
@@ -1847,10 +1853,16 @@
 																				"SERVICE_BINDING": {
 																					"description": "Service binding.",
 																					"example": {
+																						"entrypoint": "MyHandler",
 																						"environment": "production",
 																						"service": "example-worker"
 																					},
 																					"properties": {
+																						"entrypoint": {
+																							"description": "The entrypoint to bind to.",
+																							"nullable": true,
+																							"type": "string"
+																						},
 																						"environment": {
 																							"description": "The Service environment.",
 																							"type": "string"
@@ -2748,10 +2760,16 @@
 																						"SERVICE_BINDING": {
 																							"description": "Service binding.",
 																							"example": {
+																								"entrypoint": "MyHandler",
 																								"environment": "production",
 																								"service": "example-worker"
 																							},
 																							"properties": {
+																								"entrypoint": {
+																									"description": "The entrypoint to bind to.",
+																									"nullable": true,
+																									"type": "string"
+																								},
 																								"environment": {
 																									"description": "The Service environment.",
 																									"type": "string"
@@ -3052,10 +3070,16 @@
 																						"SERVICE_BINDING": {
 																							"description": "Service binding.",
 																							"example": {
+																								"entrypoint": "MyHandler",
 																								"environment": "production",
 																								"service": "example-worker"
 																							},
 																							"properties": {
+																								"entrypoint": {
+																									"description": "The entrypoint to bind to.",
+																									"nullable": true,
+																									"type": "string"
+																								},
 																								"environment": {
 																									"description": "The Service environment.",
 																									"type": "string"
@@ -4325,10 +4349,16 @@
 															"SERVICE_BINDING": {
 																"description": "Service binding.",
 																"example": {
+																	"entrypoint": "MyHandler",
 																	"environment": "production",
 																	"service": "example-worker"
 																},
 																"properties": {
+																	"entrypoint": {
+																		"description": "The entrypoint to bind to.",
+																		"nullable": true,
+																		"type": "string"
+																	},
 																	"environment": {
 																		"description": "The Service environment.",
 																		"type": "string"
@@ -4629,10 +4659,16 @@
 															"SERVICE_BINDING": {
 																"description": "Service binding.",
 																"example": {
+																	"entrypoint": "MyHandler",
 																	"environment": "production",
 																	"service": "example-worker"
 																},
 																"properties": {
+																	"entrypoint": {
+																		"description": "The entrypoint to bind to.",
+																		"nullable": true,
+																		"type": "string"
+																	},
 																	"environment": {
 																		"description": "The Service environment.",
 																		"type": "string"
