@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5793207?gh_jid=5793207",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5835465?gh_jid=5835465",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -9,7 +9,7 @@
 			"retention_period": null
 		}
 	],
-	"internal_job_id": 2822209,
+	"internal_job_id": 2834620,
 	"location": {
 		"name": "Austin or Remote US"
 	},
@@ -23,45 +23,59 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "6310 - Business Intelligence",
+			"value": "4100 - Infrastructure",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US",
+				"Mexico City, Mexico",
+				"Ontario, Canada",
 				"US"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 5793207,
-	"updated_at": "2024-03-11T16:16:27-04:00",
-	"requisition_id": "TBH#15911",
-	"title": "Data Engineer",
+	"id": 5835465,
+	"updated_at": "2024-03-22T14:04:07-04:00",
+	"requisition_id": "392",
+	"title": "Systems Engineer - Orpheus / Argo Smart Routing",
 	"departments": [
 		{
-			"id": 57769,
-			"name": "Business Intelligence",
+			"id": 29067,
+			"name": "Engineering",
 			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
-			"id": 19983,
-			"name": "Austin, TX",
-			"location": "Austin, TX, United States",
-			"child_ids": [],
-			"parent_id": 48752
-		},
-		{
 			"id": 75375,
 			"name": "Remote US",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 75883,
+			"name": "Canada",
+			"location": null,
+			"child_ids": [
+				73335,
+				75596,
+				75884,
+				75885,
+				75886
+			],
+			"parent_id": 48752
+		},
+		{
+			"id": 112096,
+			"name": "Mexico City, MX",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 87170
 		}
 	]
 }

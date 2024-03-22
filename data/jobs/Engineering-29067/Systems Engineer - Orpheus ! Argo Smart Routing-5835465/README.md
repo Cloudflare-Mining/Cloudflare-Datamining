@@ -5,33 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p></p>
-<p><strong>Locations -&nbsp;</strong>Austin or Remote US</p>
-<hr>
-<p><strong>About the team&nbsp;&nbsp;</strong></p>
-<p>The BI team at Cloudflare is responsible for building and managing the cloud data analytics platform. Our focus is on developing a centralized cloud data analytics platform using open source technologies for internal Business Partners and Machine Learning teams. The team aims to make data more accessible, meet Cloudflare's critical business needs, and provide self-service reporting and analytics tools to support current and new business initiatives.</p>
-<p><strong>About the role</strong></p>
-<p>In the role of Data Engineer, the primary responsibility is to contribute to building and improving a scalable petabyte-scale data lake and Cloud Enterprise Data Warehouse. This involves utilizing a modern tech stack from scratch with open source technologies. Success in this position requires a strong background in data engineering, combined with product and business acumen, to deliver scalable data pipelines and analytics solutions that empower advanced analytics through a user-friendly self-service interface.</p>
-<p><strong>What you will do</strong></p>
+<p><strong>Available Locations: US Remote, Canada, Mexico City</strong></p>
+<p><strong>What You’ll Do</strong></p>
+<p>The Orpheus team was formed to own a very important aspect of Cloudflare's systems: enable more reliable network connectivity for Cloudflare’s products than the Internet itself provides.<br><br>Almost all products in Cloudflare’s portfolio are or will be powered by Orpheus technology, including CDN, Spectrum, Magic Transit, Stream, Workers, Workers AI, R2, WARP, and more. As a member of the Orpheus team, you’ll be a key technical contributor to the cutting edge network software infrastructure used by those products.</p>
+<p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
+<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more.</p>
+<p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
+<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li>Partner closely with internal stakeholders to gain a strong understanding of business and product data needs</li>
-	<li>Design, build and support scalable and reliable data solutions that can enable self-service reporting and advanced analytics using open source technologies</li>
-	<li>Develop technical tools and programming that leverage machine learning and big-data techniques to cleanse, organize and transform data and to maintain and update data structures and integrity on an automated basis</li>
-	<li>Design application components and evolve architecture: API/Services, data access, integration, application components, etc.</li>
-	<li>Analyze and support platform requirements for Data Science team</li>
-	<li>Implement automation tools and frameworks (CI/CD pipelines)</li>
-	<li>Build tools to automate the monitoring or workload and take proactive measure to scale the platform or to fix the problem&nbsp;</li>
-	<li>Mentor junior data engineers</li>
+	<li>Systems-level programming experience in Go, Rust, C, or C++. We use Rust extensively, and while experience with the language isn't required a willingness to learn it is.</li>
+	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
+	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
+	<li>Experience in implementing secure and highly-available distributed systems.</li>
+	<li>Strong ability to debug issues in complex systems.</li>
+	<li>Strong collaboration and communication skills.</li>
+	<li>Experience/interest in HTTP networking and VPN technologies.</li>
+	<li>Experience/interest in network performance monitoring and tuning</li>
 </ul>
-<p><strong>Examples of desired skills, knowledge, and experience&nbsp;</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Proven ability to work closely with business and product teams to ensure data solutions are aligned with business initiatives and are of high quality</li>
-	<li>2-5 years of development experience in Big Data space working with Petabytes of data and building large scale data solutions using any Cloud Platform, Apache Spark, Airflow, Scala, Golang, Python, etc</li>
-	<li>Experience with API design and development of RESTful web services or GraphQL is a plus</li>
-	<li>Working experience in Kubernetes, Docker etc. is a plus</li>
-	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required</li>
+	<li>Knowledge of TCP/IP and Internet routing.</li>
+	<li>Professional systems-level programming experience in Rust.</li>
+	<li>Working knowledge of statistical-analysis techniques and control theory.</li>
+	<li>Experience building tools and APIs.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
+<p>Blogs to link to!</p>
+<p><a href="https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed/">https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed/</a></p>
+<p>https://blog.cloudflare.com/orpheus/</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
