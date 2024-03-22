@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 3460,
+	"version": "2024.3.237.1",
+	"short_version": "",
+	"size": 116310016,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "e7a2927a5131ea153ea29a0aeca66922",
+	"fingerprint": "d3a9dccf2b5ca5359ba5f3b7df0816ba",
+	"uploaded_at": "2024-03-22T17:08:06.556Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains no new features and is focused exclusively on improvements.\r\n\r\n## Notable updates\r\n- Windows client downloads will now contain version numbers in the file name to allow easy identification.\r\n- Enabled re-authentication and other notifications to always be shown (without sound) regardless of Windows Focus Assist settings.\r\n- Suppressed the GUI certificate error message \"Limited connectivity: A certificate missing; please contact your administrator\" for a scenario where it was not needed.\r\n- Improved the re-connection logic to minimize impact to existing tunneled TCP sessions.\r\n- Corrected an issue where the DNS server information was being improperly persisted across network changes.\r\n- Increased the data collected by warp-diag to improve debugging capabilities.\r\n\r\n## Known issues\r\n- When `Install CA to system certificate store` is enabled, the certificate is not always properly left behind in `%ProgramData%\\Cloudflare\\installed_cert.pem`. This issue will be fixed in a future release.\r\n\r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp  \r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"382b0994ffdce1297aef6aa1ac29b14d3c1f80263c3ff601e258ab824128fce0"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

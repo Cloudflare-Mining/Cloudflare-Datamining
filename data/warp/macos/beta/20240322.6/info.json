@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 3131,
+	"version": "20240322.6",
+	"short_version": "2024.3.236.1",
+	"size": 73484898,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "cbacc95c7b82769d2e46aa5db1943a1b",
+	"fingerprint": "d07653cb8faacd7be4154b7e2b292b2f",
+	"uploaded_at": "2024-03-22T16:46:20.328Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This release contains no new features and is focused exclusively on improvements.\n\n## Notable updates\n- macOS client downloads will now contain version numbers in the file name to allow easy identification.\n- Improved the re-connection logic to minimize impact to existing tunneled TCP sessions.\n- Increased the data collected by warp-diag to improve debugging capabilities.\n- Improved compatibility with multicast DNS (mDNS) systems.\n   \n## Known issues\n - No known issues.\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp  \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
