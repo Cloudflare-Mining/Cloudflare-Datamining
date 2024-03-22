@@ -6,6 +6,7 @@
 	</div>
 </div>
 <p><strong>Position Location: Lisbon, Portugal</strong></p>
+<p></p>
 <p><strong>About the Role</strong></p>
 <p>Our team’s core mission is to enable developers to do what they do best — build powerful applications.&nbsp; We believe they should be able to do this without having to think or worry about infrastructure, scaling, or performance. While Cloudflare Workers, Cloudflare’s solution to serverless computing, handles the infrastructure part, there’s so much more that goes into enabling developers to do their jobs. In this role you will work on a wide range of projects that enable our platform to integrate seamlessly with the existing Web development ecosystem, including developing and improving integration with full stack web frameworks, developer tools for bundling, transpiling, and performance optimizations. You’ll also be exposed to JS API design and standardization work, and development or integration of backwards/forwards compatibility API layers for Web and Node.js APIs. If this excites you, come join our team of talented engineers that enables developers all around the world to build low-latency planet-scale applications for the Internet and the Web!&nbsp;&nbsp;</p>
 <p><strong>About the Department</strong></p>
@@ -14,14 +15,16 @@
 <p>As a member of the Frameworks &amp; JS APIs team, you will put yourself in the shoes of developers using our development platform and make them successful in building their applications and deploying them on to our platform by creating and improving integrations with popular web frameworks, libraries, and tools. Along the way you’ll influence the JavaScript ecosystem by participating in designing JavaScript APIs, defining design patterns and architectures, as well as surfacing optimizations, that allow developers to build applications that take full advantage of our globally distributed, low latency network.</p>
 <p><strong>To this end, you will:</strong></p>
 <ul>
-	<li>Collaborate closely with JavaScript web frameworks teams and tooling teams across the industry to ensure smooth development and production interoperability with our platform. Examples include Angular, Astro, Nuxt, Qwik, Remix, Solid, SvelteKit, as well as Vite, Rollup, and many others.</li>
+	<li>Collaborate closely with JavaScript web frameworks teams and tooling teams across the industry to ensure smooth development and production interoperability with our platform. Examples include Angular, Astro, Next, Nuxt, Qwik, Remix, Solid, SvelteKit, as well as Vite, Rollup, and many others.</li>
 	<li>Surface requirements and collaborate with internal teams to build features to support ecosystem integrations.</li>
 	<li>Contribute to open source projects across the web ecosystem in order to add features, fix issues, and improve integrations.</li>
-	<li>Build and improve libraries, and tools that improve ecosystem compatibility, and the getting started experience, like C3 (create-cloudflare CLI).</li>
+	<li>Build and improve libraries, and tools that improve ecosystem compatibility, and the getting started experience, like C3 (create-cloudflare CLI) and next-on-pages CLI.</li>
 	<li>Build demo applications, starter kits, and templates that enable developers to learn about our platform and get started using frameworks and libraries they are familiar with.</li>
 	<li>Participate in JavaScript API design efforts evolving our platform, as well as JavaScript standards.</li>
 	<li>Evaluate compatibility gaps between our workerd JavaScript runtime and Node.js, implement compatibility layers and polyfills to reduce developer friction when using existing libraries with our platform.</li>
 	<li>Contribute to internal and public-facing technical documentation, and author blog posts.</li>
+</ul>
+<ul>
 	<li>If applicable to ongoing projects, support the health and availability of services by being part of an on-call rotation.</li>
 	<li>Collaborate with engineers across Cloudflare, and contribute at many layers of the stack.</li>
 	<li>Leverage your creativity and developer prowess to seek out new ways to improve the platform.</li>
@@ -45,6 +48,7 @@
 	<li>Experience contributing to OSS software development or maintaining OSS projects</li>
 	<li>Public speaking or developer relations skills</li>
 </ul>
+<p></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -14,14 +14,16 @@
 <p>As a member of the Frameworks &amp; JS APIs team, you will put yourself in the shoes of developers using our development platform and make them successful in building their applications and deploying them on to our platform by creating and improving integrations with popular web frameworks, libraries, and tools. Along the way you’ll influence the JavaScript ecosystem by participating in designing JavaScript APIs, defining design patterns and architectures, as well as surfacing optimizations, that allow developers to build applications that take full advantage of our globally distributed, low latency network.</p>
 <p><strong>To this end, you will:</strong></p>
 <ul>
-	<li>Collaborate closely with JavaScript web frameworks teams and tooling teams across the industry to ensure smooth development and production interoperability with our platform. Examples include Angular, Astro, Nuxt, Qwik, Remix, Solid, SvelteKit, as well as Vite, Rollup, and many others.</li>
+	<li>Collaborate closely with JavaScript web frameworks teams and tooling teams across the industry to ensure smooth development and production interoperability with our platform. Examples include Angular, Astro, Next, Nuxt, Qwik, Remix, Solid, SvelteKit, as well as Vite, Rollup, and many others.</li>
 	<li>Surface requirements and collaborate with internal teams to build features to support ecosystem integrations.</li>
 	<li>Contribute to open source projects across the web ecosystem in order to add features, fix issues, and improve integrations.</li>
-	<li>Build and improve libraries, and tools that improve ecosystem compatibility, and the getting started experience, like C3 (create-cloudflare CLI).</li>
+	<li>Build and improve libraries, and tools that improve ecosystem compatibility, and the getting started experience, like C3 (create-cloudflare CLI) and next-on-pages CLI.</li>
 	<li>Build demo applications, starter kits, and templates that enable developers to learn about our platform and get started using frameworks and libraries they are familiar with.</li>
 	<li>Participate in JavaScript API design efforts evolving our platform, as well as JavaScript standards.</li>
 	<li>Evaluate compatibility gaps between our workerd JavaScript runtime and Node.js, implement compatibility layers and polyfills to reduce developer friction when using existing libraries with our platform.</li>
 	<li>Contribute to internal and public-facing technical documentation, and author blog posts.</li>
+</ul>
+<ul>
 	<li>If applicable to ongoing projects, support the health and availability of services by being part of an on-call rotation.</li>
 	<li>Collaborate with engineers across Cloudflare, and contribute at many layers of the stack.</li>
 	<li>Leverage your creativity and developer prowess to seek out new ways to improve the platform.</li>
