@@ -29,7 +29,7 @@
 	<li>5+ years of experience in a DevOps role, preferably in a distributed cloud-based environment</li>
 	<li>Experience automating deployment and maintaining large-scale, reliable, highly distributed systems</li>
 	<li>Experience with containerization technologies such as Docker and orchestration tools like Kubernetes</li>
-	<li>Knowledge of configuration and management of cloud resources using tools such as Terraform, Ansible, or similar technologies</li>
+	<li>Knowledge of configuration and management of cloud resources using tools such as Terraform, SaltStack, or similar technologies</li>
 	<li>Strong proficiency in Linux system administration and shell scripting</li>
 	<li>Strong experience building CI/CD pipelines with technologies like Gitlab CI/CD, Github Actions, Teamcity, etc</li>
 	<li>Experience with monitoring tools such as Prometheus, Grafana, otel, etc</li>
