@@ -52,7 +52,12 @@
 				},
 				"contentfulId": "25N5MNrKXZSTSIkS9MX5vv",
 				"contentTypeId": "page",
-				"promotionalBanner": null,
+				"promotionalBanner": {
+					"pillText": "Analyst report",
+					"linkText": "Read the report",
+					"linkUrl": "/lp/idc-marketscape-ztna-2023/",
+					"desktopText": "Cloudflare named a Leader in the 2023 IDC MarketScape for Zero Trust Network Access (ZTNA)"
+				},
 				"psaBanner": null,
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
@@ -3290,6 +3295,58 @@
 						],
 						"sectionPadding": null,
 						"htmlId": "ztfeatures"
+					},
+					{
+						"contentfulId": "0mH6CDAC1Pwzbt9qGNzAJ",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": "Learn More",
+						"description": "Elevating organizational trust with Zero Trust and a step-by-step roadmap to Zero Trust architecture.",
+						"variant": "full-width",
+						"htmlId": null,
+						"sectionPadding": null,
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "7I2GKH2uHw5hsr7FKPlLcI",
+							"elementName": "CTA - /the-net/zero-trust-organization/",
+							"standardText": null,
+							"text": "Read the article",
+							"url": "/the-net/zero-trust-organization/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2jUy34HlF0Pyf1LK2guCjR",
+							"elementName": "CTA - /lp/zero-trust-roadmap/",
+							"standardText": null,
+							"text": "Read analyst report",
+							"url": "/lp/zero-trust-roadmap/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						}
 					},
 					{
 						"contentTypeId": "bladeTrustedBy",
