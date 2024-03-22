@@ -9,11 +9,11 @@
 	},
 	api_spec: "API Spec",
 	api_spec_description: "Review the Workers AI API spec to build your application using the REST API",
-	beta_banner: (0, e.d)`Workers AI will start billing on April 1st, 2024, learn more about plans and pricing <0>here</0>`,
+	beta_banner: (0, e.d)`Workers AI is now generally available! Learn more about our plans and pricing <0>here</0>`,
 	browse_model_catalog: "Browse Model Catalog",
 	build_your_first_ai_application: "Build your first AI application",
-	binding_workers_ai_to_a_worker: "Binding Workers AI to a Worker",
-	binding_workers_ai_to_a_worker_description: "Learn how to access the Workers AI catalogue from a Worker by creating a binding",
+	browse_model_catalogue: "Browse Model Catalogue",
+	browse_model_catalogue_description: "Browse all models available through Workers AI via Workers, Pages or REST API ",
 	charts: {
 		units: {
 			cost: "Cost",
@@ -82,7 +82,9 @@
 			clear: "Clear",
 			all_provideres: "All Providers",
 			all_authors: "All Authors",
-			all_types: "All Types"
+			all_types: "All Types",
+			all_models: "All Models",
+			all_active_models: "Active Models (Last 30 days)"
 		}
 	},
 	create_ai_worker: "Create an AI Model Worker",
@@ -96,8 +98,8 @@
 	make_your_first_inference_call: "Make your first inference call",
 	make_your_first_inference_call_description: "Substitute your Workers AI API token into the example below to make your first Worker AI API call.",
 	menu: {
-		analytics: "Analytics",
-		models: "Models"
+		models: "Models",
+		usage: "Usage"
 	},
 	model_catalog: "Model Catalog",
 	using_workers_ai_rest_api: "Using Workers AI REST API",
@@ -108,7 +110,7 @@
 	reserve_a_full_access_seat: "Reserve spot on waitlist",
 	reserve_a_full_access_seat_description: "Join the waitlist for access to production scale Workers AI ",
 	something_went_wrong: "Something went wrong.",
-	tagline: "Run predictive and generative AI models with the performance and reliability of Workers",
+	tagline: "Run LLM and AI inference models with the performance and reliability of Workers",
 	template_types: {
 		speech_to_text_app: {
 			title: "Speech to text app",
@@ -145,7 +147,7 @@
 	workers_ai_docs_allmodels: "Browse All Models",
 	workers_ai_examples: "Workers AI Examples",
 	workers_ai_examples_description: "Get inspired by projects build by the Cloudflare developer community ",
-	workers_ai_workers_templates: "Workers AI Workers Templates",
+	workers_ai_workers_templates: "Create from a Worker Template",
 	workers_ai_workers_templates_description: "Select from a set of model or task specific templates to deploy a Workers AI Worker",
 	use_rest_api: "Use REST API",
 	using_edge_ai_api: "Using Workers AI API ",
