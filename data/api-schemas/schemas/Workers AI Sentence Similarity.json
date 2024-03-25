@@ -19,11 +19,13 @@
 						"properties": {
 							"sentences": {
 								"items": {
+									"minLength": 1,
 									"type": "string"
 								},
 								"type": "array"
 							},
 							"source": {
+								"minLength": 1,
 								"type": "string"
 							}
 						},

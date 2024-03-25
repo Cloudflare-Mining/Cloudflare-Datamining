@@ -18,6 +18,7 @@
 					"schema": {
 						"properties": {
 							"input_text": {
+								"minLength": 1,
 								"type": "string"
 							},
 							"max_length": {

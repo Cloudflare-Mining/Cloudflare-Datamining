@@ -29,6 +29,7 @@
 							{
 								"properties": {
 									"text": {
+										"minLength": 1,
 										"type": "string"
 									}
 								},
@@ -62,6 +63,7 @@
 										"type": "integer"
 									},
 									"prompt": {
+										"minLength": 1,
 										"type": "string"
 									},
 									"strength": {
@@ -79,11 +81,13 @@
 								"properties": {
 									"sentences": {
 										"items": {
+											"minLength": 1,
 											"type": "string"
 										},
 										"type": "array"
 									},
 									"source": {
+										"minLength": 1,
 										"type": "string"
 									}
 								},
@@ -99,10 +103,12 @@
 									"text": {
 										"oneOf": [
 											{
+												"minLength": 1,
 												"type": "string"
 											},
 											{
 												"items": {
+													"minLength": 1,
 													"type": "string"
 												},
 												"maxItems": 100,
@@ -193,6 +199,7 @@
 											},
 											"prompt": {
 												"maxLength": 6144,
+												"minLength": 1,
 												"type": "string"
 											},
 											"raw": {
@@ -256,6 +263,7 @@
 										"type": "string"
 									},
 									"text": {
+										"minLength": 1,
 										"type": "string"
 									}
 								},
@@ -269,6 +277,7 @@
 							{
 								"properties": {
 									"input_text": {
+										"minLength": 1,
 										"type": "string"
 									},
 									"max_length": {
@@ -375,6 +384,9 @@
 										{
 											"properties": {
 												"text": {
+													"type": "string"
+												},
+												"vtt": {
 													"type": "string"
 												},
 												"word_count": {

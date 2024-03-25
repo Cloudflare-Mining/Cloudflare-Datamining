@@ -20,10 +20,12 @@
 							"text": {
 								"oneOf": [
 									{
+										"minLength": 1,
 										"type": "string"
 									},
 									{
 										"items": {
+											"minLength": 1,
 											"type": "string"
 										},
 										"maxItems": 100,
@@ -165,10 +167,12 @@
 							"text": {
 								"oneOf": [
 									{
+										"minLength": 1,
 										"type": "string"
 									},
 									{
 										"items": {
+											"minLength": 1,
 											"type": "string"
 										},
 										"maxItems": 100,
@@ -310,10 +314,12 @@
 							"text": {
 								"oneOf": [
 									{
+										"minLength": 1,
 										"type": "string"
 									},
 									{
 										"items": {
+											"minLength": 1,
 											"type": "string"
 										},
 										"maxItems": 100,
@@ -455,10 +461,12 @@
 							"text": {
 								"oneOf": [
 									{
+										"minLength": 1,
 										"type": "string"
 									},
 									{
 										"items": {
+											"minLength": 1,
 											"type": "string"
 										},
 										"maxItems": 100,

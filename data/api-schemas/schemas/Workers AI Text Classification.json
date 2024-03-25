@@ -18,6 +18,7 @@
 					"schema": {
 						"properties": {
 							"text": {
+								"minLength": 1,
 								"type": "string"
 							}
 						},
@@ -146,6 +147,7 @@
 					"schema": {
 						"properties": {
 							"text": {
+								"minLength": 1,
 								"type": "string"
 							}
 						},
@@ -274,6 +276,7 @@
 					"schema": {
 						"properties": {
 							"text": {
+								"minLength": 1,
 								"type": "string"
 							}
 						},
