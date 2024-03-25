@@ -5,36 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</p>
-<h4><strong>About the team</strong></h4>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
+<h4>About the department</h4>
+<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives. Our team currently has Data Engineers, Data Analysts, and Data Scientists, Machine Learning Engineers, DevOps and Full Stack Engineers.</p>
 <h4><strong>About the role</strong></h4>
-<p>We are looking for a Systems Engineer to join our Lisbon team to scale our development efforts on network availability insights initiatives. You will work on building full stack data applications which empowers our Product and Engineering team. As all the applications we build are self initiated by the team, you will have the opportunity to get involved from designing features all the way to implementation. In addition, you will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, and Clickhouse.</p>
-<p>&nbsp;</p>
-<p><strong>What you'll do</strong></p>
+<p>Cloudflare’s internship program is comprehensive - you will not only learn and build on technical skills but also get to know the company and business and do impactful work. As all the applications we build are self initiated by the team, you will have the opportunity to get involved from designing features all the way to implementation. In addition, you will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, and Clickhouse.</p>
+<p><em>* This is a 12 week internship and will ideally happen during the summer, when our internship program is happening globally. You will be expected to work full-time (eg. 40 hours per week). In case you would prefer to have a part-time internship during the school year, this can be discussed with the team as well.</em></p>
+<h4>What you'll do</h4>
 <ul>
-	<li>Design and implement key features of our internal applications</li>
-	<li>Work closely with a cross functional team to design features and solutions that solve critical business problems</li>
+	<li>Contribute to key features of our internal applications</li>
+	<li>Work closely with a cross functional team to design features and solutions that solve real business problems</li>
 	<li>Contribute in improving an evolving platform architecture for scalability, observability and reliability</li>
-	<li>Continuously involved in knowledge sharing and mentorship</li>
 </ul>
-<h4>&nbsp;</h4>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</li>
+	<li>Currently enrolled in M.S, or Ph.D program in Computer Science, Engineering or related STEM field (exceptional senior year B.S may be considered with commensurate experience and evidence of contributions)</li>
+	<li>Expected graduation date between Dec 2024 - June 2025</li>
 	<li>Experience working with Go, Python, Java, or equivalent programming languages</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
-	<li>Experience with Javascript, Typescript, and React</li>
-	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
-	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
+	<li>Hands on experience in full stack application development</li>
+	<li>Have or able to obtain authorization to work in Portugal</li>
+	<li>Ability and interest to learn new skills and technologies quickly</li>
+	<li>Excellent communication and problem solving skills</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p>&nbsp;&nbsp;<strong>Bonus Points:</strong></p>
 <ul>
-	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
-	<li>Familiarity with Google Cloud Platform or something similar</li>
+	<li>Familiarity with container based deployments such as Docker and Kubernetes</li>
+	<li>Experience with Javascript, Typescript, React and G</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

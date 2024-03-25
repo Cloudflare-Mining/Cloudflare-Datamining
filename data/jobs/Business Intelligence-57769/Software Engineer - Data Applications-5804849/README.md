@@ -5,40 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</p>
+<h4><strong>About the team</strong></h4>
+<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for a Software Engineer to join our Lisbon team to scale our development efforts on network availability insights initiatives. You will work on building full stack data applications which empowers our Product and Engineering team. As all the applications we build are self initiated by the team, you will have the opportunity to get involved from designing features all the way to implementation. In addition, you will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, and Clickhouse.</p>
 <p>&nbsp;</p>
-<p><strong>Avaialable Locations - </strong>PST time zones and Denver/Arizona/California remote.</p>
-<p><strong>Senior Field Marketing Manager, Enterprise, West Region</strong></p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for an experienced, enthusiastic and highly-motivated Senior Field Marketing Manager, Enterprise, West Region who will be responsible for building the growth marketing strategy and managing field initiatives from end-to-end marketing to the Enterprise segment in the US.</p>
-<p>You will build the marketing plan for the region, integrating field campaigns and events, ABM initiatives, and partner marketing activities in order to grow Cloudflare’s customer base.&nbsp; You have a natural inclination to measure the effectiveness of marketing activities, show strong project management skills and are able to think strategically while orchestrating many moving parts. The programs you oversee will ultimately amplify campaign and event initiatives to drive demand and pipeline in the Americas West Enterprise region.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Build the marketing plan for the region, integrating field events, ABM campaigns, and partner marketing activities in order to grow our customer base and drive demand for Cloudflare.&nbsp;</li>
-	<li>Identify opportunities to drive various hosted event formats such as: CxO events, customer-led panels, fireside chats, roundtables, webinars, Executive Briefings, and other bespoke experiences.</li>
-	<li>Work with cross-functional team members (Sales, BDRs, MarkOps, MarTech, SalesOps, ABM Marketing, Product Marketing, Partner Marketing, etc.) to support the orchestration of high-impact marketing campaigns and programs.</li>
-	<li>Ensure that your accounts get the right share of corporate and regional resources that provide marketing aircover (Branding, PR, ABM, Pay Per Click, Social, Advertising, Outbound Campaigns, etc).&nbsp;</li>
-	<li>Help evaluate and manage external vendors and third-party event sponsorship opportunities based on market reach and audience relevance.&nbsp;</li>
-	<li>Track spend within the allocated budget, and build effective reports to determine performance and ROI (efficiency) of marketing initiatives.</li>
-	<li>Own the lead lifecycle and constantly drive to accelerate funnel velocity to maximize conversions and help drive the revenue goal in your region.</li>
-	<li>Be responsible for communications to regional stakeholders on results, issue management, and feedback loops.&nbsp;</li>
+	<li>Design and implement key features of our internal applications</li>
+	<li>Work closely with a cross functional team to design features and solutions that solve critical business problems</li>
+	<li>Contribute in improving an evolving platform architecture for scalability, observability and reliability</li>
+	<li>Continuously involved in knowledge sharing and mentorship</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h4>&nbsp;</h4>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Must have 8+ years of proven experience in B2B marketing (enterprise software, SaaS, Security, etc.).</li>
-	<li>Must be comfortable with reporting and communicating marketing impact across the organization.</li>
-	<li>Analytically inclined, exceptional organizational skills, with rigorous attention to detail.</li>
-	<li>Ability to work effectively in a fast-paced and ever-changing environment with tight deadlines.</li>
-	<li>Prior marketing experience in a high growth company in the SaaS, security, or network space, combined with knowledge of how the Internet works is a plus.</li>
-	<li>Experience delivering, accelerating, and expanding sales pipeline through regional field marketing initiatives executed under an integrated ABM strategy</li>
-	<li>Understanding of the customer journey and the best marketing approaches by stage</li>
-	<li>Hands-on experience with Salesforce, Marketo, Tableau (or other marketing automation and analytics tools).</li>
-	<li>Analytically inclined and metrics-driven with rigorous attention to detail; great at solving complex problems with curious and creative mindset</li>
-	<li>Team player with exceptional organizational skills, and the ability to work strategically and tactically.&nbsp;</li>
-	<li>Ability to execute multiple projects simultaneously in a fast-paced and changing environment with tight deadlines</li>
-	<li>Excellent writing and presentation skills</li>
-	<li>Ability to travel when needed (30-40%)</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</li>
+	<li>Experience working with Go, Python, Java, or equivalent programming languages</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
+	<li>Experience with Javascript, Typescript, and React</li>
+	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
+	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
+	<li>Familiarity with Google Cloud Platform or something similar</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
