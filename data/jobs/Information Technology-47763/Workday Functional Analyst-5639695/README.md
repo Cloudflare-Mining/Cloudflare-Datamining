@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>Workday Functional Analyst</strong></p>
-<p><strong>Lisbon or Remote Portugal</strong></p>
+<p><strong>Remote US</strong></p>
 <h4><strong>About the department</strong></h4>
 <p><strong>Cloudflare’s Enterprise Applications Team builds and runs Enterprise systems to enable Cloudflare internal teams to operate efficiently and enable our customers and partners to do business with us. Enterprise Applications Team is part of the CIO organization.&nbsp; Within the Enterprise Applications Team is a technical team whose main responsibility is to manage our Workday platform instance.</strong></p>
 <p><strong>This team is responsible for the performance and maintenance of the company's Human Resources Information System (HRIS) associated with the collection, retrieval, accessibility, and usage of employee information for the Human Resources department planning and related activities. The team documents and analyzes the company's HR data system's needs and develops solutions to support the department.&nbsp; They also collaborate with other departments relative to the interface of HR systems with other critical enterprise systems (i.e. compensation, payroll, time and attendance, benefits, finance, etc.).</strong></p>
