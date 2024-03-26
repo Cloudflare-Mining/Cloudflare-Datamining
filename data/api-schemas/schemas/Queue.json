@@ -1,4 +1,820 @@
 {
+	"DELETE /accounts/{account_id}/queues/{queue_id}": {
+		"description": "Deletes a queue.",
+		"operationId": "queue-v2-delete-queue",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Queue response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Queue response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete Queue",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.delete"
+			]
+		}
+	},
+	"DELETE /accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}": {
+		"description": "Deletes the consumer for a queue.",
+		"operationId": "queue-v2-delete-queue-consumer",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "consumer_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Queue Consumer response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Queue Consumer response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete Queue Consumer",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.delete"
+			]
+		}
+	},
 	"DELETE /accounts/{account_id}/workers/queues/{name}": {
 		"description": "Deletes a queue.",
 		"operationId": "queue-delete-queue",
@@ -834,25 +1650,13 @@
 			]
 		}
 	},
-	"DELETE /accounts/{account_identifier}/queues/{queue_identifier}": {
-		"description": "Deletes a queue.",
-		"operationId": "queue-v2-delete-queue",
+	"GET /accounts/{account_id}/queues": {
+		"description": "Returns the queues owned by an account.",
+		"operationId": "queue-v2-list-queues",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "queue_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -863,12 +1667,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -991,14 +1789,92 @@
 								},
 								{
 									"properties": {
-										"result": {}
+										"errors": {}
 									}
+								},
+								{
+									"properties": {
+										"messages": {}
+									}
+								},
+								{
+									"properties": {
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 1
+												},
+												"page": {
+													"example": 1
+												},
+												"per_page": {
+													"example": 100
+												},
+												"total_count": {
+													"example": 1
+												},
+												"total_pages": {
+													"example": 1
+												}
+											},
+											"type": "object"
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"consumers": {
+														"readOnly": true
+													},
+													"consumers_total_count": {
+														"readOnly": true
+													},
+													"created_on": {
+														"readOnly": true
+													},
+													"modified_on": {
+														"readOnly": true
+													},
+													"producers": {
+														"readOnly": true
+													},
+													"producers_total_count": {
+														"readOnly": true
+													},
+													"queue_id": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"queue_name": {
+														"example": "example-queue",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"queue_id",
+										"queue_name",
+										"created_on",
+										"modified_on",
+										"producers_total_count",
+										"producers",
+										"consumers_total_count",
+										"consumers"
+									],
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete Queue response"
+				"description": "List Queues response"
 			},
 			"4XX": {
 				"content": {
@@ -1123,8 +1999,86 @@
 										},
 										{
 											"properties": {
-												"result": {}
+												"errors": {}
 											}
+										},
+										{
+											"properties": {
+												"messages": {}
+											}
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"example": 1
+														},
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 100
+														},
+														"total_count": {
+															"example": 1
+														},
+														"total_pages": {
+															"example": 1
+														}
+													},
+													"type": "object"
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"consumers": {
+																"readOnly": true
+															},
+															"consumers_total_count": {
+																"readOnly": true
+															},
+															"created_on": {
+																"readOnly": true
+															},
+															"modified_on": {
+																"readOnly": true
+															},
+															"producers": {
+																"readOnly": true
+															},
+															"producers_total_count": {
+																"readOnly": true
+															},
+															"queue_id": {
+																"readOnly": true,
+																"type": "string"
+															},
+															"queue_name": {
+																"example": "example-queue",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"queue_id",
+												"queue_name",
+												"created_on",
+												"modified_on",
+												"producers_total_count",
+												"producers",
+												"consumers_total_count",
+												"consumers"
+											],
+											"type": "object"
 										}
 									]
 								},
@@ -1216,7 +2170,7 @@
 						}
 					}
 				},
-				"description": "Delete Queue response failure"
+				"description": "List Queues response failure"
 			}
 		},
 		"security": [
@@ -1226,23 +2180,23 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Queue",
+		"summary": "List Queues",
 		"tags": [
 			"Queue"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.queue.delete"
+				"com.cloudflare.edge.worker.queue.list"
 			]
 		}
 	},
-	"DELETE /accounts/{account_identifier}/queues/{queue_identifier}/consumers/{consumer_identifier}": {
-		"description": "Deletes the consumer for a queue.",
-		"operationId": "queue-v2-delete-queue-consumer",
+	"GET /accounts/{account_id}/queues/{queue_id}": {
+		"description": "Get information about a specific queue.",
+		"operationId": "queue-v2-queue-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "consumer_identifier",
+				"name": "queue_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1254,19 +2208,7 @@
 			},
 			{
 				"in": "path",
-				"name": "queue_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1277,12 +2219,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -1405,14 +2341,56 @@
 								},
 								{
 									"properties": {
-										"result": {}
-									}
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"consumers": {
+															"readOnly": true
+														},
+														"consumers_total_count": {
+															"readOnly": true
+														},
+														"created_on": {
+															"readOnly": true
+														},
+														"modified_on": {
+															"readOnly": true
+														},
+														"producers": {
+															"readOnly": true
+														},
+														"producers_total_count": {
+															"readOnly": true
+														},
+														"queue_id": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"queue_name": {
+															"example": "example-queue",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"queue_id",
+										"queue_name",
+										"created_on",
+										"modified_on"
+									],
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Delete Queue Consumer response"
+				"description": "Queue Details response"
 			},
 			"4XX": {
 				"content": {
@@ -1537,8 +2515,50 @@
 										},
 										{
 											"properties": {
-												"result": {}
-											}
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"consumers": {
+																	"readOnly": true
+																},
+																"consumers_total_count": {
+																	"readOnly": true
+																},
+																"created_on": {
+																	"readOnly": true
+																},
+																"modified_on": {
+																	"readOnly": true
+																},
+																"producers": {
+																	"readOnly": true
+																},
+																"producers_total_count": {
+																	"readOnly": true
+																},
+																"queue_id": {
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"queue_name": {
+																	"example": "example-queue",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"queue_id",
+												"queue_name",
+												"created_on",
+												"modified_on"
+											],
+											"type": "object"
 										}
 									]
 								},
@@ -1630,7 +2650,7 @@
 						}
 					}
 				},
-				"description": "Delete Queue Consumer response failure"
+				"description": "Queue Details response failure"
 			}
 		},
 		"security": [
@@ -1640,13 +2660,563 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Queue Consumer",
+		"summary": "Queue Details",
 		"tags": [
 			"Queue"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.queue.delete"
+				"com.cloudflare.edge.worker.queue.read"
+			]
+		}
+	},
+	"GET /accounts/{account_id}/queues/{queue_id}/consumers": {
+		"description": "Returns the consumers for a queue.",
+		"operationId": "queue-v2-list-queue-consumers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {}
+									}
+								},
+								{
+									"properties": {
+										"messages": {}
+									}
+								},
+								{
+									"properties": {
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 1
+												},
+												"page": {
+													"example": 1
+												},
+												"per_page": {
+													"example": 100
+												},
+												"total_count": {
+													"example": 1
+												},
+												"total_pages": {
+													"example": 1
+												}
+											},
+											"type": "object"
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created_on": {
+														"readOnly": true
+													},
+													"environment": {
+														"readOnly": true
+													},
+													"queue_name": {
+														"readOnly": true
+													},
+													"service": {
+														"readOnly": true
+													},
+													"settings": {
+														"properties": {
+															"batch_size": {
+																"description": "The maximum number of messages to include in a batch",
+																"example": 10,
+																"type": "number"
+															},
+															"max_retries": {
+																"example": 3,
+																"type": "number"
+															},
+															"max_wait_time_ms": {
+																"example": 5000,
+																"type": "number"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"queue_name",
+										"created_on",
+										"settings"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Queue Consumers response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"errors": {}
+											}
+										},
+										{
+											"properties": {
+												"messages": {}
+											}
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"example": 1
+														},
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 100
+														},
+														"total_count": {
+															"example": 1
+														},
+														"total_pages": {
+															"example": 1
+														}
+													},
+													"type": "object"
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"created_on": {
+																"readOnly": true
+															},
+															"environment": {
+																"readOnly": true
+															},
+															"queue_name": {
+																"readOnly": true
+															},
+															"service": {
+																"readOnly": true
+															},
+															"settings": {
+																"properties": {
+																	"batch_size": {
+																		"description": "The maximum number of messages to include in a batch",
+																		"example": 10,
+																		"type": "number"
+																	},
+																	"max_retries": {
+																		"example": 3,
+																		"type": "number"
+																	},
+																	"max_wait_time_ms": {
+																		"example": 5000,
+																		"type": "number"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"queue_name",
+												"created_on",
+												"settings"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Queue Consumers response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List Queue Consumers",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.list"
 			]
 		}
 	},
@@ -3246,13 +4816,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/queues": {
-		"description": "Returns the queues owned by an account.",
-		"operationId": "queue-v2-list-queues",
+	"POST /accounts/{account_id}/queues": {
+		"description": "Creates a new queue.",
+		"operationId": "queue-v2-create-queue",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3263,558 +4833,18 @@
 				}
 			}
 		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"errors": {}
-									}
-								},
-								{
-									"properties": {
-										"messages": {}
-									}
-								},
-								{
-									"properties": {
-										"result_info": {
-											"properties": {
-												"count": {
-													"example": 1
-												},
-												"page": {
-													"example": 1
-												},
-												"per_page": {
-													"example": 100
-												},
-												"total_count": {
-													"example": 1
-												},
-												"total_pages": {
-													"example": 1
-												}
-											},
-											"type": "object"
-										}
-									}
-								},
-								{
-									"properties": {
-										"result": {
-											"items": {
-												"properties": {
-													"consumers": {
-														"readOnly": true
-													},
-													"consumers_total_count": {
-														"readOnly": true
-													},
-													"created_on": {
-														"readOnly": true
-													},
-													"modified_on": {
-														"readOnly": true
-													},
-													"producers": {
-														"readOnly": true
-													},
-													"producers_total_count": {
-														"readOnly": true
-													},
-													"queue_id": {
-														"readOnly": true,
-														"type": "string"
-													},
-													"queue_name": {
-														"example": "example-queue",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"queue_id",
-										"queue_name",
-										"created_on",
-										"modified_on",
-										"producers_total_count",
-										"producers",
-										"consumers_total_count",
-										"consumers"
-									],
-									"type": "object"
-								}
-							]
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": {
+							"queue_name": "example-queue"
 						}
 					}
-				},
-				"description": "List Queues response"
+				}
 			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"errors": {}
-											}
-										},
-										{
-											"properties": {
-												"messages": {}
-											}
-										},
-										{
-											"properties": {
-												"result_info": {
-													"properties": {
-														"count": {
-															"example": 1
-														},
-														"page": {
-															"example": 1
-														},
-														"per_page": {
-															"example": 100
-														},
-														"total_count": {
-															"example": 1
-														},
-														"total_pages": {
-															"example": 1
-														}
-													},
-													"type": "object"
-												}
-											}
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"properties": {
-															"consumers": {
-																"readOnly": true
-															},
-															"consumers_total_count": {
-																"readOnly": true
-															},
-															"created_on": {
-																"readOnly": true
-															},
-															"modified_on": {
-																"readOnly": true
-															},
-															"producers": {
-																"readOnly": true
-															},
-															"producers_total_count": {
-																"readOnly": true
-															},
-															"queue_id": {
-																"readOnly": true,
-																"type": "string"
-															},
-															"queue_name": {
-																"example": "example-queue",
-																"type": "string"
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
-												}
-											},
-											"required": [
-												"queue_id",
-												"queue_name",
-												"created_on",
-												"modified_on",
-												"producers_total_count",
-												"producers",
-												"consumers_total_count",
-												"consumers"
-											],
-											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "List Queues response failure"
-			}
+			"required": true
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": [],
-				"api_token": []
-			}
-		],
-		"summary": "List Queues",
-		"tags": [
-			"Queue"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.queue.list"
-			]
-		}
-	},
-	"GET /accounts/{account_identifier}/queues/{queue_identifier}": {
-		"description": "Get information about a specific queue.",
-		"operationId": "queue-v2-queue-details",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "queue_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "account_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			}
-		],
 		"responses": {
 			"200": {
 				"content": {
@@ -3941,27 +4971,14 @@
 											"allOf": [
 												{
 													"properties": {
-														"consumers": {
-															"readOnly": true
-														},
-														"consumers_total_count": {
-															"readOnly": true
-														},
 														"created_on": {
 															"readOnly": true
 														},
 														"modified_on": {
 															"readOnly": true
 														},
-														"producers": {
-															"readOnly": true
-														},
-														"producers_total_count": {
-															"readOnly": true
-														},
 														"queue_id": {
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"queue_name": {
 															"example": "example-queue",
@@ -3986,7 +5003,7 @@
 						}
 					}
 				},
-				"description": "Queue Details response"
+				"description": "Create Queue response"
 			},
 			"4XX": {
 				"content": {
@@ -4115,27 +5132,14 @@
 													"allOf": [
 														{
 															"properties": {
-																"consumers": {
-																	"readOnly": true
-																},
-																"consumers_total_count": {
-																	"readOnly": true
-																},
 																"created_on": {
 																	"readOnly": true
 																},
 																"modified_on": {
 																	"readOnly": true
 																},
-																"producers": {
-																	"readOnly": true
-																},
-																"producers_total_count": {
-																	"readOnly": true
-																},
 																"queue_id": {
-																	"readOnly": true,
-																	"type": "string"
+																	"readOnly": true
 																},
 																"queue_name": {
 																	"example": "example-queue",
@@ -4246,7 +5250,7 @@
 						}
 					}
 				},
-				"description": "Queue Details response failure"
+				"description": "Create Queue response failure"
 			}
 		},
 		"security": [
@@ -4256,23 +5260,23 @@
 				"api_token": []
 			}
 		],
-		"summary": "Queue Details",
+		"summary": "Create Queue",
 		"tags": [
 			"Queue"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.queue.read"
+				"com.cloudflare.edge.worker.queue.create"
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/queues/{queue_identifier}/consumers": {
-		"description": "Returns the consumers for a queue.",
-		"operationId": "queue-v2-list-queue-consumers",
+	"POST /accounts/{account_id}/queues/{queue_id}/consumers": {
+		"description": "Creates a new consumer for a queue.",
+		"operationId": "queue-v2-create-queue-consumer",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "queue_identifier",
+				"name": "queue_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4284,7 +5288,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4295,6 +5299,25 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": {
+							"dead_letter_queue": "example-dlq",
+							"environment": "production",
+							"script_name": "example-consumer",
+							"settings": {
+								"batch_size": 10,
+								"max_retries": 3,
+								"max_wait_time_ms": 5000
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
 		"responses": {
 			"200": {
 				"content": {
@@ -4417,83 +5440,57 @@
 								},
 								{
 									"properties": {
-										"errors": {}
-									}
-								},
-								{
-									"properties": {
-										"messages": {}
-									}
-								},
-								{
-									"properties": {
-										"result_info": {
-											"properties": {
-												"count": {
-													"example": 1
-												},
-												"page": {
-													"example": 1
-												},
-												"per_page": {
-													"example": 100
-												},
-												"total_count": {
-													"example": 1
-												},
-												"total_pages": {
-													"example": 1
-												}
-											},
-											"type": "object"
-										}
-									}
-								},
-								{
-									"properties": {
 										"result": {
-											"items": {
-												"properties": {
-													"created_on": {
-														"readOnly": true
-													},
-													"environment": {
-														"readOnly": true
-													},
-													"queue_name": {
-														"readOnly": true
-													},
-													"service": {
-														"readOnly": true
-													},
-													"settings": {
-														"properties": {
-															"batch_size": {
-																"description": "The maximum number of messages to include in a batch",
-																"example": 10,
-																"type": "number"
-															},
-															"max_retries": {
-																"example": 3,
-																"type": "number"
-															},
-															"max_wait_time_ms": {
-																"example": 5000,
-																"type": "number"
-															}
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"readOnly": true
 														},
-														"type": "object"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+														"dead_letter_queue": {
+															"example": "example-dlq",
+															"type": "string"
+														},
+														"environment": {
+															"readOnly": true
+														},
+														"queue_name": {
+															"readOnly": true
+														},
+														"script_name": {
+															"readOnly": true
+														},
+														"settings": {
+															"properties": {
+																"batch_size": {
+																	"description": "The maximum number of messages to include in a batch",
+																	"example": 10,
+																	"type": "number"
+																},
+																"max_retries": {
+																	"example": 3,
+																	"type": "number"
+																},
+																"max_wait_time_ms": {
+																	"example": 5000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
 										}
 									},
 									"required": [
 										"queue_name",
-										"created_on",
-										"settings"
+										"script_name",
+										"settings",
+										"dead_letter_queue",
+										"created_on"
 									],
 									"type": "object"
 								}
@@ -4501,7 +5498,7 @@
 						}
 					}
 				},
-				"description": "List Queue Consumers response"
+				"description": "Create Queue Consumer response"
 			},
 			"4XX": {
 				"content": {
@@ -4626,83 +5623,57 @@
 										},
 										{
 											"properties": {
-												"errors": {}
-											}
-										},
-										{
-											"properties": {
-												"messages": {}
-											}
-										},
-										{
-											"properties": {
-												"result_info": {
-													"properties": {
-														"count": {
-															"example": 1
-														},
-														"page": {
-															"example": 1
-														},
-														"per_page": {
-															"example": 100
-														},
-														"total_count": {
-															"example": 1
-														},
-														"total_pages": {
-															"example": 1
-														}
-													},
-													"type": "object"
-												}
-											}
-										},
-										{
-											"properties": {
 												"result": {
-													"items": {
-														"properties": {
-															"created_on": {
-																"readOnly": true
-															},
-															"environment": {
-																"readOnly": true
-															},
-															"queue_name": {
-																"readOnly": true
-															},
-															"service": {
-																"readOnly": true
-															},
-															"settings": {
-																"properties": {
-																	"batch_size": {
-																		"description": "The maximum number of messages to include in a batch",
-																		"example": 10,
-																		"type": "number"
-																	},
-																	"max_retries": {
-																		"example": 3,
-																		"type": "number"
-																	},
-																	"max_wait_time_ms": {
-																		"example": 5000,
-																		"type": "number"
-																	}
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"readOnly": true
 																},
-																"type": "object"
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+																"dead_letter_queue": {
+																	"example": "example-dlq",
+																	"type": "string"
+																},
+																"environment": {
+																	"readOnly": true
+																},
+																"queue_name": {
+																	"readOnly": true
+																},
+																"script_name": {
+																	"readOnly": true
+																},
+																"settings": {
+																	"properties": {
+																		"batch_size": {
+																			"description": "The maximum number of messages to include in a batch",
+																			"example": 10,
+																			"type": "number"
+																		},
+																		"max_retries": {
+																			"example": 3,
+																			"type": "number"
+																		},
+																		"max_wait_time_ms": {
+																			"example": 5000,
+																			"type": "number"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"type": "object"
 												}
 											},
 											"required": [
 												"queue_name",
-												"created_on",
-												"settings"
+												"script_name",
+												"settings",
+												"dead_letter_queue",
+												"created_on"
 											],
 											"type": "object"
 										}
@@ -4796,7 +5767,7 @@
 						}
 					}
 				},
-				"description": "List Queue Consumers response failure"
+				"description": "Create Queue Consumer response failure"
 			}
 		},
 		"security": [
@@ -4806,13 +5777,929 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Queue Consumers",
+		"summary": "Create Queue Consumer",
 		"tags": [
 			"Queue"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.queue.list"
+				"com.cloudflare.edge.worker.queue.create"
+			]
+		}
+	},
+	"POST /accounts/{account_id}/queues/{queue_id}/messages/ack": {
+		"description": "Acknowledge + Retry messages from a Queue.",
+		"operationId": "queue-v2-messages-ack",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"acks": {
+								"items": {
+									"properties": {
+										"lease_id": {
+											"description": "Lease ID for a message to acknowledge.",
+											"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"retries": {
+								"items": {
+									"properties": {
+										"delay_seconds": {
+											"description": "The number of seconds to delay before making the message available for another attempt.",
+											"example": 10,
+											"type": "number"
+										},
+										"lease_id": {
+											"description": "Lease ID for a message to retry.",
+											"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"ackCount": {
+													"description": "The number of messages that were succesfully acknowledged",
+													"example": 5,
+													"type": "number"
+												},
+												"retryCount": {
+													"description": "The number of messages that were succesfully retried",
+													"example": 5,
+													"type": "number"
+												},
+												"warnings": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Acknoweldge Queue Messages response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Acknoweldge Queue Messages response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Acknowledge + Retry Queue Messages",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.update"
+			]
+		}
+	},
+	"POST /accounts/{account_id}/queues/{queue_id}/messages/pull": {
+		"description": "Pull a batch of messages from a Queue.",
+		"operationId": "queue-v2-messages-pull",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"batch_size": {
+								"description": "The maximum number of messages to include in a batch",
+								"example": 10,
+								"type": "number"
+							},
+							"visibility_timeout_ms": {
+								"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
+								"example": 1000,
+								"type": "number"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"attempts": {
+														"example": 1,
+														"readOnly": true,
+														"type": "number"
+													},
+													"body": {
+														"example": "hello world",
+														"readOnly": true,
+														"type": "string"
+													},
+													"id": {
+														"example": "b01b5594f784d0165c2985833f5660dd",
+														"readOnly": true,
+														"type": "string"
+													},
+													"lease_id": {
+														"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
+														"readOnly": true,
+														"type": "string"
+													},
+													"metadata": {
+														"example": {
+															"CF-Content-Type": "text"
+														},
+														"readOnly": true,
+														"type": "object"
+													},
+													"timestamp_ms": {
+														"example": 1710950954154,
+														"readOnly": true,
+														"type": "number"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Pull Queue Messages response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Pull Queue Messages response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Pull Queue Messages",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.update"
 			]
 		}
 	},
@@ -5786,13 +7673,25 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/queues": {
-		"description": "Creates a new queue.",
-		"operationId": "queue-v2-create-queue",
+	"PUT /accounts/{account_id}/queues/{queue_id}": {
+		"description": "Updates a queue.",
+		"operationId": "queue-v2-update-queue",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5808,7 +7707,7 @@
 				"application/json": {
 					"schema": {
 						"example": {
-							"queue_name": "example-queue"
+							"queue_name": "renamed-example-queue"
 						}
 					}
 				}
@@ -5951,7 +7850,7 @@
 															"readOnly": true
 														},
 														"queue_name": {
-															"example": "example-queue",
+															"example": "renamed-example-queue",
 															"type": "string"
 														}
 													},
@@ -5973,7 +7872,7 @@
 						}
 					}
 				},
-				"description": "Create Queue response"
+				"description": "Update Queue response"
 			},
 			"4XX": {
 				"content": {
@@ -6112,7 +8011,7 @@
 																	"readOnly": true
 																},
 																"queue_name": {
-																	"example": "example-queue",
+																	"example": "renamed-example-queue",
 																	"type": "string"
 																}
 															},
@@ -6220,7 +8119,7 @@
 						}
 					}
 				},
-				"description": "Create Queue response failure"
+				"description": "Update Queue response failure"
 			}
 		},
 		"security": [
@@ -6230,23 +8129,23 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create Queue",
+		"summary": "Update Queue",
 		"tags": [
 			"Queue"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.queue.create"
+				"com.cloudflare.edge.worker.queue.update"
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/queues/{queue_identifier}/consumers": {
-		"description": "Creates a new consumer for a queue.",
-		"operationId": "queue-v2-create-queue-consumer",
+	"PUT /accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}": {
+		"description": "Updates the consumer for a queue, or creates one if it does not exist.",
+		"operationId": "queue-v2-update-queue-consumer",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "queue_identifier",
+				"name": "consumer_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6258,7 +8157,19 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "queue_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6274,13 +8185,11 @@
 				"application/json": {
 					"schema": {
 						"example": {
-							"dead_letter_queue": "example-dlq",
+							"dead_letter_queue": "updated-example-dlq",
 							"environment": "production",
 							"script_name": "example-consumer",
 							"settings": {
-								"batch_size": 10,
-								"max_retries": 3,
-								"max_wait_time_ms": 5000
+								"batch_size": 100
 							}
 						}
 					}
@@ -6418,8 +8327,7 @@
 															"readOnly": true
 														},
 														"dead_letter_queue": {
-															"example": "example-dlq",
-															"type": "string"
+															"example": "updated-example-dlq"
 														},
 														"environment": {
 															"readOnly": true
@@ -6433,8 +8341,7 @@
 														"settings": {
 															"properties": {
 																"batch_size": {
-																	"description": "The maximum number of messages to include in a batch",
-																	"example": 10,
+																	"example": 100,
 																	"type": "number"
 																},
 																"max_retries": {
@@ -6468,7 +8375,7 @@
 						}
 					}
 				},
-				"description": "Create Queue Consumer response"
+				"description": "Update Queue Consumer response"
 			},
 			"4XX": {
 				"content": {
@@ -6601,8 +8508,7 @@
 																	"readOnly": true
 																},
 																"dead_letter_queue": {
-																	"example": "example-dlq",
-																	"type": "string"
+																	"example": "updated-example-dlq"
 																},
 																"environment": {
 																	"readOnly": true
@@ -6616,8 +8522,7 @@
 																"settings": {
 																	"properties": {
 																		"batch_size": {
-																			"description": "The maximum number of messages to include in a batch",
-																			"example": 10,
+																			"example": 100,
 																			"type": "number"
 																		},
 																		"max_retries": {
@@ -6737,7 +8642,7 @@
 						}
 					}
 				},
-				"description": "Create Queue Consumer response failure"
+				"description": "Update Queue Consumer response failure"
 			}
 		},
 		"security": [
@@ -6747,923 +8652,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create Queue Consumer",
-		"tags": [
-			"Queue"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.queue.create"
-			]
-		}
-	},
-	"POST /accounts/{account_identifier}/queues/{queue_identifier}/messages/ack": {
-		"description": "Acknowledge + Retry messages from a Queue.",
-		"operationId": "queue-v2-messages-ack",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "queue_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "account_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"acks": {
-								"items": {
-									"properties": {
-										"lease_id": {
-											"description": "Lease ID for a message to acknowledge.",
-											"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
-											"type": "string"
-										}
-									},
-									"type": "object"
-								},
-								"type": "array"
-							},
-							"retries": {
-								"items": {
-									"properties": {
-										"delay_seconds": {
-											"description": "The number of seconds to delay before making the message available for another attempt.",
-											"example": 10,
-											"type": "number"
-										},
-										"lease_id": {
-											"description": "Lease ID for a message to retry.",
-											"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
-											"type": "string"
-										}
-									},
-									"type": "object"
-								},
-								"type": "array"
-							}
-						},
-						"type": "object"
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"ackCount": {
-													"description": "The number of messages that were succesfully acknowledged",
-													"example": 5,
-													"type": "number"
-												},
-												"retryCount": {
-													"description": "The number of messages that were succesfully retried",
-													"example": 5,
-													"type": "number"
-												},
-												"warnings": {
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												}
-											},
-											"type": "object"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "Acknoweldge Queue Messages response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {}
-											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Acknoweldge Queue Messages response failure"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": [],
-				"api_token": []
-			}
-		],
-		"summary": "Acknowledge + Retry Queue Messages",
-		"tags": [
-			"Queue"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.queue.update"
-			]
-		}
-	},
-	"POST /accounts/{account_identifier}/queues/{queue_identifier}/messages/pull": {
-		"description": "Pull a batch of messages from a Queue.",
-		"operationId": "queue-v2-messages-pull",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "queue_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "account_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"batch_size": {
-								"description": "The maximum number of messages to include in a batch",
-								"example": 10,
-								"type": "number"
-							},
-							"visibility_timeout_ms": {
-								"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
-								"example": 1000,
-								"type": "number"
-							}
-						},
-						"type": "object"
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"items": {
-												"properties": {
-													"attempts": {
-														"example": 1,
-														"readOnly": true,
-														"type": "number"
-													},
-													"body": {
-														"example": "hello world",
-														"readOnly": true,
-														"type": "string"
-													},
-													"id": {
-														"example": "b01b5594f784d0165c2985833f5660dd",
-														"readOnly": true,
-														"type": "string"
-													},
-													"lease_id": {
-														"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
-														"readOnly": true,
-														"type": "string"
-													},
-													"metadata": {
-														"example": {
-															"CF-Content-Type": "text"
-														},
-														"readOnly": true,
-														"type": "object"
-													},
-													"timestamp_ms": {
-														"example": 1710950954154,
-														"readOnly": true,
-														"type": "number"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "Pull Queue Messages response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {}
-											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Pull Queue Messages response failure"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": [],
-				"api_token": []
-			}
-		],
-		"summary": "Pull Queue Messages",
+		"summary": "Update Queue Consumer",
 		"tags": [
 			"Queue"
 		],
@@ -8645,995 +9634,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			}
-		],
-		"summary": "Update Queue Consumer",
-		"tags": [
-			"Queue"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.queue.update"
-			]
-		}
-	},
-	"PUT /accounts/{account_identifier}/queues/{queue_identifier}": {
-		"description": "Updates a queue.",
-		"operationId": "queue-v2-update-queue",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "queue_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "account_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"example": {
-							"queue_name": "renamed-example-queue"
-						}
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"allOf": [
-												{
-													"properties": {
-														"created_on": {
-															"readOnly": true
-														},
-														"modified_on": {
-															"readOnly": true
-														},
-														"queue_id": {
-															"readOnly": true
-														},
-														"queue_name": {
-															"example": "renamed-example-queue",
-															"type": "string"
-														}
-													},
-													"type": "object"
-												}
-											],
-											"type": "object"
-										}
-									},
-									"required": [
-										"queue_id",
-										"queue_name",
-										"created_on",
-										"modified_on"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Update Queue response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"allOf": [
-														{
-															"properties": {
-																"created_on": {
-																	"readOnly": true
-																},
-																"modified_on": {
-																	"readOnly": true
-																},
-																"queue_id": {
-																	"readOnly": true
-																},
-																"queue_name": {
-																	"example": "renamed-example-queue",
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														}
-													],
-													"type": "object"
-												}
-											},
-											"required": [
-												"queue_id",
-												"queue_name",
-												"created_on",
-												"modified_on"
-											],
-											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Update Queue response failure"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": [],
-				"api_token": []
-			}
-		],
-		"summary": "Update Queue",
-		"tags": [
-			"Queue"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.queue.update"
-			]
-		}
-	},
-	"PUT /accounts/{account_identifier}/queues/{queue_identifier}/consumers/{consumer_identifier}": {
-		"description": "Updates the consumer for a queue, or creates one if it does not exist.",
-		"operationId": "queue-v2-update-queue-consumer",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "consumer_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "queue_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "account_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"example": {
-							"dead_letter_queue": "updated-example-dlq",
-							"environment": "production",
-							"script_name": "example-consumer",
-							"settings": {
-								"batch_size": 100
-							}
-						}
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"allOf": [
-												{
-													"properties": {
-														"created_on": {
-															"readOnly": true
-														},
-														"dead_letter_queue": {
-															"example": "updated-example-dlq"
-														},
-														"environment": {
-															"readOnly": true
-														},
-														"queue_name": {
-															"readOnly": true
-														},
-														"script_name": {
-															"readOnly": true
-														},
-														"settings": {
-															"properties": {
-																"batch_size": {
-																	"example": 100,
-																	"type": "number"
-																},
-																"max_retries": {
-																	"example": 3,
-																	"type": "number"
-																},
-																"max_wait_time_ms": {
-																	"example": 5000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													},
-													"type": "object"
-												}
-											],
-											"type": "object"
-										}
-									},
-									"required": [
-										"queue_name",
-										"script_name",
-										"settings",
-										"dead_letter_queue",
-										"created_on"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Update Queue Consumer response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"allOf": [
-														{
-															"properties": {
-																"created_on": {
-																	"readOnly": true
-																},
-																"dead_letter_queue": {
-																	"example": "updated-example-dlq"
-																},
-																"environment": {
-																	"readOnly": true
-																},
-																"queue_name": {
-																	"readOnly": true
-																},
-																"script_name": {
-																	"readOnly": true
-																},
-																"settings": {
-																	"properties": {
-																		"batch_size": {
-																			"example": 100,
-																			"type": "number"
-																		},
-																		"max_retries": {
-																			"example": 3,
-																			"type": "number"
-																		},
-																		"max_wait_time_ms": {
-																			"example": 5000,
-																			"type": "number"
-																		}
-																	},
-																	"type": "object"
-																}
-															},
-															"type": "object"
-														}
-													],
-													"type": "object"
-												}
-											},
-											"required": [
-												"queue_name",
-												"script_name",
-												"settings",
-												"dead_letter_queue",
-												"created_on"
-											],
-											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Update Queue Consumer response failure"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": [],
-				"api_token": []
 			}
 		],
 		"summary": "Update Queue Consumer",
