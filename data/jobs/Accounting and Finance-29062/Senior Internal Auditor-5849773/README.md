@@ -6,35 +6,41 @@
 	</div>
 </div>
 <p><strong>About the Department</strong></p>
-<p>Cloudflare Research is involved with building the future of Cloudflare by tackling strategic projects that have a large impact on Cloudflare systems and the Internet at large. Team members<strong> independently drive greenfield projects</strong>, work closely with Cloudflare product and engineering teams on shared objectives, and build strong collaborations with both external organizations and other organizations within Cloudflare to achieve common goals.</p>
-<p>Cloudflare Research embarks upon projects that help shape the future of the Internet at large, and the systems that drive it. We design, develop, and deploy these projects into Cloudflare systems to demonstrate their impact, and to share that knowledge with the wider standards and research communities -- often in collaboration with university or other industry labs. A sample of our recent high-profile works include Constellation AI, Encrypted Client Hello (ECH), Post Quantum Encryption, CAP, ZKP for browsers, and Addressing Agility. Our current research directions include applied cryptography, privacy, network protocols and architecture, measurement and performance evaluation, AI and ML for systems, systems for AI, and general distributed systems optimization.&nbsp; We are open to researchers in all of these areas, and particularly solicit applications from researchers with a background in privacy.&nbsp; Particular attention will be paid to candidates with experience in usability research.&nbsp;</p>
-<p>More information about Cloudflare's approach to research can be found<a href="https://research.cloudflare.com/about/approach/" target="_blank"> here</a>.</p>
-<p><strong>About the Role&nbsp;&nbsp;</strong></p>
-<p>Researchers and engineers in the Research Team investigate new ideas, build new technologies, inform and execute measurement practices, and even dive into existing codebases to make meaningful changes in production environments. Prioritization and planning are key elements as the nature of the team’s research necessarily shifts between putting ideas into practice and onto paper, while ensuring rigorous evaluations of performance, correctness, or impact. The successful candidate will have a proven track record of success driving streams of investigation to completion.</p>
-<p><strong>General Requirements</strong></p>
+<h4>&nbsp;</h4>
+<p>The&nbsp;Internal Audit&nbsp;(IA)&nbsp;organization is responsible for delivering high quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the&nbsp;function&nbsp;is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate.&nbsp;</p>
+<p>&nbsp;</p>
+<p>The Senior Internal Auditor will support the Internal Audit Senior Manager and Manager in executing all aspects of Cloudflare’s Operational Audits. This includes supporting and contributing to scoping and risk assessment, risk-based testing of both design and operational effectiveness, issue validation, reporting, and coordination of issue remediation and closure. The Senior Internal Auditor may also assist in assessing the design and operating effectiveness of the Company’s internal control.</p>
+<h4>&nbsp;</h4>
+<p><strong>What&nbsp; you’ll do</strong></p>
 <ul>
-	<li>Proficiency in software development</li>
-	<li>Must have a proven record of peer-reviewed research, standards, or equivalent in venues held by but not limited to ACM, USENIX, or IEEE.</li>
-	<li>Solid foundation in computer science, with additional specialization in privacy and one or more Cloudflare-relevant areas such as usability, human-computer interaction, networking, distributed systems, storage, operating systems, or machine learning for systems.</li>
+	<li>Assist in executing the Internal Audit plan under the supervision of an Internal Auditor Senior Manager and/or Manager. This includes operational audit planning, risk assessment, fieldwork, issues validation, and reporting</li>
+	<li>Deliver high quality, efficient and timely audit work in accordance with the Internal Audit charter, IIA standards and professional best practices&nbsp;</li>
+	<li>Design testing procedures relevant to risk and test objectives</li>
+	<li>Identify and document operational audit processes, risks, and controls</li>
+	<li>Provide effective and timely reporting to IA Management on project status, roadblocks and assist in creating plans to remove roadblocks</li>
+	<li>Make improvement recommendations of the control environment through audits and/or project participation</li>
+	<li>Participate in presenting audit findings to various levels of stakeholders</li>
+	<li>Assist in creation of actions to remediate identified issues and risk mitigation plan with stakeholders</li>
+	<li>Serve as a business partner to key stakeholders to advise on process, internal control, risk, and compliance activities</li>
+	<li>Document all Internal Audit work in the AuditBoard tool</li>
+	<li>Assist with SOX control testing, as needed</li>
+	<li>Drive personal professional development, including benchmarking, training and certification</li>
+	<li>May perform other duties and responsibilities as assigned</li>
+	<li>Report to the Internal Audit Senior Manager</li>
 </ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Excel at planning, working independently and multi-functionally, leading execution across teams to meet commitments, and deliver with predictability</li>
-	<li>Demonstrate a track record of <strong>strong communication</strong> and technical influence. You’re as good as explaining “why” as you are “how.”</li>
-	<li>Experience implementing tools, processes, internal instrumentation, methodologies, and resolving blockages</li>
-	<li>Comfortable working on teams/projects with tight deadlines and short release cycles</li>
+	<li>3-4+ years of auditing, accounting, or finance experience</li>
+	<li>Good knowledge of and skill in applying internal auditing and accounting principles and practices, specifically audit methodologies, risk assessment, sampling techniques, audit documentation and report writing</li>
+	<li>Knowledge of internal controls and experience in execution of SOX testing&nbsp;</li>
+	<li>Excellent analytical skills and critical mindset</li>
+	<li>Comfortable with ambiguity with the ability to take unclear and uncertain results and work with others to resolution</li>
+	<li>Ability to coordinate and support multiple projects under deadlines</li>
+	<li>Effective communicator, ability to build relations and manage expectations &nbsp;</li>
+	<li>CPA, CIA preferred</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>Have completed a PhD or equivalent graduate research program in Computer Science, Mathematics, or related STEM field&nbsp;</li>
-	<li>Strong ties to and participation in standards bodies such as IETF, W3C, and others.</li>
-	<li>Experience in differential privacy or multi-party computation</li>
-	<li>Proficiency in one or more the following languages - Go, Rust, Typescript, C and/or Lua</li>
-	<li>Experience designing and conducting user studies</li>
-	<li>Familiarity with Kafka, Postgres, ClickHouse, Kubernetes, Prometheus, and tools such as Cloudflare’s Workers platform</li>
-	<li>Demonstrated excellence in broad-audience technical communication (e.g. highly cited blogs, textbooks)</li>
-	<li>Strong connections with the broader scientific community (arXiv presence, program committees, etc.)</li>
-</ul>
-<p><strong>Available Locations</strong>: Lisbon or Remote Portugal, London or Remote UK, Amsterdam or Remote Netherlands, Munich or Remote Germany</p>
+<h4><br><br></h4>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
