@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.1.0
+
+### Minor Changes
+
+- c407ae7b98: Support new property `ignoreLabelTranslation` on filterDefinitions to use filter labels as-is
+
 ## 7.0.11
 
 ### Patch Changes
