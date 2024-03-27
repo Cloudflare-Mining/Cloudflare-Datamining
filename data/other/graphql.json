@@ -1522,6 +1522,39 @@
 	"AccountGatewayResolverByCategoryAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountGatewayResolverByCustomResolverGroups": {
+		"__description": "Stats on dns custom resolvers",
+		"avg": "The average value for a metric",
+		"count": "The number of Gateway Resolver queries",
+		"dimensions": "List of dimensions to group by",
+		"max": "Maximum response time"
+	},
+	"AccountGatewayResolverByCustomResolverGroupsAvg": {
+		"__description": "",
+		"customResolverTimeInMs": "Average latency",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountGatewayResolverByCustomResolverGroupsDimensions": {
+		"__description": "",
+		"cacheStatus": "whether the response was cached or not",
+		"customResolverAddress": "address at which custom resolver query was resolved at",
+		"customResolverResponseCode": "Response code recieved from the custom resolver 0 => unknown 27 => dnsFirewallSuccess 29 => dnsFirewallCustomerRatelimit 31 => dnsFirewallUpstreamFailure 32 => dnsFirewallUpstreamServfail\n",
+		"customResolverTimeInMs": "time took for custom resolver to respond",
+		"datetime": "The date and time the DNS query was resolved",
+		"locationId": "The uuid identifying the customer Location used when resolving",
+		"queryName": "Name of the query, e.g. one.dash.cloudflare.com",
+		"resolverDecision": "Enum identifier for the decision made by gateway-resolver, one of: (0, unknown) (1, allowedByQueryName) (2, blockedByQueryName) (3, blockedByCategory) (4, allowedOnNoLocation) (5, allowedOnNoPolicyMatch) (6, blockedAlwaysCategory) (7, overrideForSafeSearch) (8, overrideApplied) (9, blockedRule) (10, allowedRule)\n"
+	},
+	"AccountGatewayResolverByCustomResolverGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountGatewayResolverByCustomResolverGroupsMax": {
+		"__description": "",
+		"customResolverTimeInMs": "Maximum response time"
+	},
+	"AccountGatewayResolverByCustomResolverGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroups": {
 		"__description": "Total time spent on executing firewall rules at the edge",
 		"avg": "The average value for a metric per dimension",
@@ -3403,6 +3436,7 @@
 		"gatewayL4UpstreamSessionsAdaptiveGroups": "",
 		"gatewayL7RequestsAdaptiveGroups": "",
 		"gatewayResolverByCategoryAdaptiveGroups": "",
+		"gatewayResolverByCustomResolverGroups": "",
 		"gatewayResolverByRuleExecutionPerformanceAdaptiveGroups": "",
 		"gatewayResolverQueriesAdaptiveGroups": "",
 		"httpRequests1dGroups": "",
@@ -5951,6 +5985,7 @@
 		"gatewayL4UpstreamSessionsAdaptiveGroups": "Aggregated metrics about upstream (edge to client) L4 Gateway Sessions. Metrics are reported on TCP, QUIC or UDP session close",
 		"gatewayL7RequestsAdaptiveGroups": "BETA - Aggregate counts of Gateway L7 requests with adaptive sampling",
 		"gatewayResolverByCategoryAdaptiveGroups": "BETA - Aggregate counts of Gateway Resolver queries by category with adaptive sampling",
+		"gatewayResolverByCustomResolverGroups": "Stats on dns custom resolvers",
 		"gatewayResolverByRuleExecutionPerformanceAdaptiveGroups": "Total time spent on executing firewall rules at the edge",
 		"gatewayResolverQueriesAdaptiveGroups": "BETA - Aggregate counts of Gateway Resolver queries with adaptive sampling",
 		"httpRequests1dGroups": "Daily rollups of request data",
