@@ -177,6 +177,7 @@
 	"zaraz.select.field": "Select field",
 	"zaraz.choose.file": "Choose file",
 	"zaraz.no.file": "No file chosen",
+	"zaraz.delete_confirm": "Are you sure you want to delete",
 	"zaraz.trigger.delete_modal.title": "Delete trigger",
 	"zaraz.trigger.delete_modal.description": "Are you sure you want to delete this trigger?",
 	"zaraz.trigger.delete.tooltip": "Triggers can't be deleted while still in use",
@@ -650,5 +651,16 @@
 	"zaraz.feedback.link": "Share your feedback",
 	"zaraz.feedback.success": "Your feedback has been sent successfully!",
 	"zaraz.feedback.error": "Something went wrong, your feedback has not been sent. Please try again.",
-	"zaraz.save.error": "Something went wrong, we failed to save changes. Please try again."
+	"zaraz.save.error": "Something went wrong, we failed to save changes. Please try again.",
+	"zaraz.cookies": "Cookies",
+	"zaraz.cookies.title": "Cookies usage",
+	"zaraz.cookies.firstparty": "First-party Cookies",
+	"zaraz.cookies.thirdparty": "Third-party Cookies",
+	"zaraz.cookies.firstparty.description": "%{name} can use the following first-party cookies on your website:",
+	"zaraz.cookies.name": "Cookie name:",
+	"zaraz.cookies.firstparty.scripts": "%{name} was granted the permission to run JavaScript code in your website, so it can create cookies outside of Zaraz.",
+	"zaraz.cookies.firstparty.none": "%{name} cannot create any first-party cookies on your website.",
+	"zaraz.cookies.thirdparty.scripts": "%{name} was granted the permission to run JavaScript code in your website, so it can make client-side requests that utilize third-party cookies.",
+	"zaraz.cookies.thirdparty.requests": "%{name} was granted the permission to make client-side network requests. These requests are going to a third-party server and could be using third-party cookies, depending on the destination server.",
+	"zaraz.cookies.thirdparty.none": "%{name} cannot use any third-party cookies on your website."
 }
