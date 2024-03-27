@@ -15,7 +15,7 @@
 	<pre><code>$ dig txt mail.zendesk.com
 "v=spf1 ip4:192.161.144.0/20 ip4:185.12.80.0/22 ip4:96.46.150.192/27 ip4:174.137.46.0/24 ip4:188.172.128.0/20 ip4:216.198.0.0/18 ~all"
 </code></pre>
-	<p>Additional methods for securing email were created after SPF. SPF only validates the email sender but doesn’t do anything about verifying the content of the email. (While SMTP can be sent over an encrypted connection, SMTP is <a href="https://blog.filippo.io/the-sad-state-of-smtp-encryption">notoriously easy to downgrade</a> to plaintext with an on-path attacker.)</p>
+	<p>Additional methods for <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services">securing email</a> were created after SPF. SPF only validates the email sender but doesn’t do anything about verifying the content of the email. (While SMTP can be sent over an encrypted connection, SMTP is <a href="https://blog.filippo.io/the-sad-state-of-smtp-encryption">notoriously easy to downgrade</a> to plaintext with an on-path attacker.)</p>
 	<p>To verify the content, domain owners can sign email messages using DKIM. The email sender includes the message signature in an email header called DKIM-Signature and stores the key in a DNS TXT record.</p>
 	<pre><code>$ dig txt smtpapi._domainkey.cloudflare.com
 "k=rsa\; t=s\; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPtW5iwpXVPiH5FzJ7Nrl8USzuY9zqqzjE0D1r04xDN6qwziDnmgcFNNfMewVKN2D1O+2J9N14hRprzByFwfQW76yojh54Xu3uSbQ3JP0A7k8o8GutRF8zbFUA8n0ZH2y0cIEjMliXY4W4LwPA7m4q0ObmvSjhd63O9d8z1XkUBwIDAQAB"
