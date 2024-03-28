@@ -279,6 +279,9 @@
 																	},
 																	"description": "Object where keys are purpose alpha-numeric IDs",
 																	"type": "object"
+																},
+																"tcfCompliant": {
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -1027,6 +1030,14 @@
 																							"name": {
 																								"description": "Tool's name defined by the user",
 																								"type": "string"
+																							},
+																							"vendorName": {
+																								"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
+																							},
+																							"vendorPolicyUrl": {
+																								"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
 																							}
 																						},
 																						"required": [
@@ -1201,6 +1212,14 @@
 																							},
 																							"name": {
 																								"description": "Tool's name defined by the user",
+																								"type": "string"
+																							},
+																							"vendorName": {
+																								"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
+																							},
+																							"vendorPolicyUrl": {
+																								"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
 																								"type": "string"
 																							}
 																						},
@@ -1764,6 +1783,9 @@
 																	},
 																	"description": "Object where keys are purpose alpha-numeric IDs",
 																	"type": "object"
+																},
+																"tcfCompliant": {
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -2512,6 +2534,14 @@
 																							"name": {
 																								"description": "Tool's name defined by the user",
 																								"type": "string"
+																							},
+																							"vendorName": {
+																								"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
+																							},
+																							"vendorPolicyUrl": {
+																								"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
 																							}
 																						},
 																						"required": [
@@ -2686,6 +2716,14 @@
 																							},
 																							"name": {
 																								"description": "Tool's name defined by the user",
+																								"type": "string"
+																							},
+																							"vendorName": {
+																								"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
+																							},
+																							"vendorPolicyUrl": {
+																								"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
 																								"type": "string"
 																							}
 																						},
@@ -3187,6 +3225,9 @@
 													},
 													"description": "Object where keys are purpose alpha-numeric IDs",
 													"type": "object"
+												},
+												"tcfCompliant": {
+													"type": "boolean"
 												}
 											},
 											"required": [
@@ -3935,6 +3976,14 @@
 																			"name": {
 																				"description": "Tool's name defined by the user",
 																				"type": "string"
+																			},
+																			"vendorName": {
+																				"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																				"type": "string"
+																			},
+																			"vendorPolicyUrl": {
+																				"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																				"type": "string"
 																			}
 																		},
 																		"required": [
@@ -4109,6 +4158,14 @@
 																			},
 																			"name": {
 																				"description": "Tool's name defined by the user",
+																				"type": "string"
+																			},
+																			"vendorName": {
+																				"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																				"type": "string"
+																			},
+																			"vendorPolicyUrl": {
+																				"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
 																				"type": "string"
 																			}
 																		},
@@ -5034,6 +5091,9 @@
 																						},
 																						"description": "Object where keys are purpose alpha-numeric IDs",
 																						"type": "object"
+																					},
+																					"tcfCompliant": {
+																						"type": "boolean"
 																					}
 																				},
 																				"required": [
@@ -5782,6 +5842,14 @@
 																												"name": {
 																													"description": "Tool's name defined by the user",
 																													"type": "string"
+																												},
+																												"vendorName": {
+																													"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																													"type": "string"
+																												},
+																												"vendorPolicyUrl": {
+																													"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																													"type": "string"
 																												}
 																											},
 																											"required": [
@@ -5956,6 +6024,14 @@
 																												},
 																												"name": {
 																													"description": "Tool's name defined by the user",
+																													"type": "string"
+																												},
+																												"vendorName": {
+																													"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																													"type": "string"
+																												},
+																												"vendorPolicyUrl": {
+																													"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
 																													"type": "string"
 																												}
 																											},
@@ -6973,6 +7049,9 @@
 												},
 												"description": "Object where keys are purpose alpha-numeric IDs",
 												"type": "object"
+											},
+											"tcfCompliant": {
+												"type": "boolean"
 											}
 										},
 										"required": [
@@ -7719,6 +7798,14 @@
 																"name": {
 																	"description": "Tool's name defined by the user",
 																	"type": "string"
+																},
+																"vendorName": {
+																	"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																	"type": "string"
+																},
+																"vendorPolicyUrl": {
+																	"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																	"type": "string"
 																}
 															},
 															"required": [
@@ -7820,6 +7907,14 @@
 																		},
 																		"name": {
 																			"description": "Tool's name defined by the user",
+																			"type": "string"
+																		},
+																		"vendorName": {
+																			"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																			"type": "string"
+																		},
+																		"vendorPolicyUrl": {
+																			"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
 																			"type": "string"
 																		}
 																	},
@@ -7995,6 +8090,14 @@
 																		},
 																		"name": {
 																			"description": "Tool's name defined by the user",
+																			"type": "string"
+																		},
+																		"vendorName": {
+																			"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																			"type": "string"
+																		},
+																		"vendorPolicyUrl": {
+																			"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
 																			"type": "string"
 																		}
 																	},
@@ -8426,6 +8529,9 @@
 																	},
 																	"description": "Object where keys are purpose alpha-numeric IDs",
 																	"type": "object"
+																},
+																"tcfCompliant": {
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -9174,6 +9280,14 @@
 																							"name": {
 																								"description": "Tool's name defined by the user",
 																								"type": "string"
+																							},
+																							"vendorName": {
+																								"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
+																							},
+																							"vendorPolicyUrl": {
+																								"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
 																							}
 																						},
 																						"required": [
@@ -9348,6 +9462,14 @@
 																							},
 																							"name": {
 																								"description": "Tool's name defined by the user",
+																								"type": "string"
+																							},
+																							"vendorName": {
+																								"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
+																							},
+																							"vendorPolicyUrl": {
+																								"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
 																								"type": "string"
 																							}
 																						},
@@ -9924,6 +10046,9 @@
 																	},
 																	"description": "Object where keys are purpose alpha-numeric IDs",
 																	"type": "object"
+																},
+																"tcfCompliant": {
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -10672,6 +10797,14 @@
 																							"name": {
 																								"description": "Tool's name defined by the user",
 																								"type": "string"
+																							},
+																							"vendorName": {
+																								"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
+																							},
+																							"vendorPolicyUrl": {
+																								"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
 																							}
 																						},
 																						"required": [
@@ -10846,6 +10979,14 @@
 																							},
 																							"name": {
 																								"description": "Tool's name defined by the user",
+																								"type": "string"
+																							},
+																							"vendorName": {
+																								"description": "Vendor name for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
+																								"type": "string"
+																							},
+																							"vendorPolicyUrl": {
+																								"description": "Vendor's Privacy Policy URL for TCF compliant consent modal, required for Custom Managed Components and Custom HTML tool with a defaultPurpose assigned",
 																								"type": "string"
 																							}
 																						},
