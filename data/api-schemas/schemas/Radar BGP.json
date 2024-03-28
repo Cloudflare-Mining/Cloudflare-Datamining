@@ -1441,6 +1441,15 @@
 			},
 			{
 				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Location Alpha2 code.",
+					"example": "US",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "format",
 				"schema": {
 					"description": "Format results are returned in.",
