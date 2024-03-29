@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 69,
+	"version": "2024.3.409.0",
+	"short_version": "",
+	"size": 116297728,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "47bda3d397eacd18789368d5bd965908",
+	"fingerprint": "3d125c3afa3435b01177cbaaf1dfbadb",
+	"uploaded_at": "2024-03-29T22:35:59.309Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains no new features and is focused exclusively on improvements.\r\n\r\n## Notable updates\r\n- Windows client downloads will now contain version numbers in the file name to allow easy identification.\r\n- Enabled re-authentication and other notifications to always be shown (without sound) regardless of Windows Focus Assist settings.\r\n- Suppressed the GUI certificate error message \"Limited connectivity: A certificate missing; please contact your administrator\" for a scenario where it was not needed.\r\n- Improved the re-connection logic to minimize impact to existing tunneled TCP sessions.\r\n- Corrected an issue where the DNS server information was being improperly persisted across network changes.\r\n- Increased the data collected by warp-diag to improve debugging capabilities.\r\n\r\n## Known issues\r\n- When `Install CA to system certificate store` is enabled, the certificate is not always properly left behind in `%ProgramData%\\Cloudflare\\installed_cert.pem`. This issue will be fixed in a future release.\r\n\r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"71eba7b203f3f535ffbb3ed025215e1327b1b3c761181ac6ff2d766487ed4f22"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}
