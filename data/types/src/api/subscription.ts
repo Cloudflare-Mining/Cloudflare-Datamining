@@ -62,6 +62,7 @@ export const SubscriptionComponentName = eg.union([
   eg.literal('rate_limiting_requests'),
   eg.literal('stream_storage_thousand_minutes'),
   eg.literal('images_storage_per_hundred_thousand'),
+  eg.literal('images_unique_transformations'),
   eg.literal('page_rules'),
   eg.literal('spectrum_bytes_transferred'),
   eg.literal('zones'),
@@ -215,7 +216,8 @@ export const Subscription = eg.object({
   }).optional,
   payment_method_id: eg.union([eg.number, eg.string]).optional, // BILL-17536
   created_date: eg.string.optional,
-  deleted_date: eg.string.optional
+  deleted_date: eg.string.optional,
+  downgrade_date: eg.string.optional
 });
 
 export type Subscription = TypeFromCodec<typeof Subscription>;

@@ -91,6 +91,11 @@ export const ZoneFlags = eg.union([
       allowedTunnels: eg.number.optional,
       enabled: eg.boolean.optional,
       maxConnectionsPerHostname: eg.number.optional
+    }).optional,
+    waitingroomaccessfeatureflipper: eg.object({
+      analytics: eg.boolean.optional,
+      waiting_rooms_ga: eg.boolean.optional,
+      waiting_rooms_survey: eg.boolean.optional
     }).optional
   })
 ]);

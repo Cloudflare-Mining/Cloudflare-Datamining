@@ -10,6 +10,7 @@ export type PermValue = TypeFromCodec<typeof PermValue>;
 export const Permissions = eg.object({
   access: PermValue,
   analytics: PermValue,
+  api_gateway: PermValue,
   app: PermValue,
   auditlogs: PermValue,
   billing: PermValue,

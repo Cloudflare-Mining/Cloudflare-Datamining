@@ -13,7 +13,6 @@ export const DNSRecordMeta = eg.object({
   managed_cname: eg.boolean.optional,
   read_only: eg.boolean.optional,
   shopify: eg.boolean.optional,
-  source: eg.string.optional,
   origin_worker_id: eg.string.optional,
   r2_bucket: eg.string.optional
 });

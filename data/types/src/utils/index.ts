@@ -238,7 +238,7 @@ export type ReadonlyKeys<T, K extends keyof T = keyof T> = Omit<T, K> & {
  *  const Locations = { "Cina": "Austin", "John": "Austin", "Kevin": "Austin", "Nicky": "San Francisco", "Robert": "San Francisco" }
  *  const KeysFromLocations = objectKeys(Locations)
  */
-export function objectKeys<T>(t: T) {
+export function objectKeys<T extends {}>(t: T) {
   return Object.keys(t) as (keyof T)[];
 }
 

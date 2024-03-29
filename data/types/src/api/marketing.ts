@@ -9,6 +9,7 @@ export type NotificationScope = TypeFromCodec<typeof NotificationScope>;
 
 export const Notification = eg.object({
   id: eg.string,
+  type: eg.string.optional,
   title: eg.string,
   body: eg.string.optional,
   footerText: eg.string.optional,

@@ -100,7 +100,7 @@ export const Zone = eg.object({
     enabled: eg.boolean,
     isRoot: eg.boolean,
     version: eg.number,
-    rootZoneId : eg.string,
+    rootZoneId: eg.string
   }).optional,
   status: eg.union([
     eg.literal('active'),
@@ -111,7 +111,7 @@ export const Zone = eg.object({
     eg.literal('initializing')
   ]),
   paused: eg.boolean,
-  type: ZoneType,
+  type: ZoneType.optional,
   development_mode: eg.number,
   name_servers: eg.array(eg.string),
   original_name_servers: eg.array(eg.string),

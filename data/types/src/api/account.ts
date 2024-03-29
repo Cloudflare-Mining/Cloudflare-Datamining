@@ -3,6 +3,10 @@ import { Permissions } from './permissions';
 import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
 import { MembershipsPolicy } from './policy';
 
+export type ElementType<T> =
+  // is type T an array of elements of type U? If so, return U. Otherwise, return the "never" type (the input is not an array).
+  T extends (infer U)[] ? U : never;
+
 export const AccountSettings = eg.object({
   access_approval_expiry: eg.union([eg.string, eg.null]),
   enforce_twofactor: eg.boolean,
@@ -38,7 +42,6 @@ export type AccountLegacyFlagEnterpriseZoneQuota = TypeFromCodec<
 >;
 
 export const AccountLegacyFlags = eg.object({
-  railgun: AccountLegacyFlagStatus,
   dns_firewall: AccountLegacyFlagStatus,
   china_network_visible: AccountLegacyFlagStatus,
   china_private_key_network_deployment: AccountLegacyFlagStatus,
@@ -543,6 +546,10 @@ export type AccountRateLimitingRuleset = TypeFromCodec<
   typeof AccountRateLimitingRuleset
 >;
 
+export type AccountRateLimitingRule = ElementType<
+  AccountRateLimitingRuleset['rules']
+>;
+
 const AccountIDSRuleset = eg.intersection([
   BaseRuleset,
   eg.object({
@@ -587,18 +594,40 @@ const AccountIDSEntrypoint = eg.intersection([
 export type AccountIDSRuleset = TypeFromCodec<typeof AccountIDSRuleset>;
 export type AccountIDSEntrypoint = TypeFromCodec<typeof AccountIDSEntrypoint>;
 
+const AccountRedirectRuleset = eg.intersection([
+  BaseRuleset,
+  eg.object({
+    kind: eg.literal('root'),
+    phase: eg.literal('http_request_redirect'),
+    rules: eg.array(
+      eg.object({
+        ...baseRuleProperties,
+        action: eg.literal('redirect'),
+        action_parameters: eg.object({
+          id: eg.string,
+          from_list: eg.object({
+            key: eg.string,
+            name: eg.string
+          })
+        })
+      })
+    )
+  })
+]);
+
+export type AccountRedirectRuleset = TypeFromCodec<
+  typeof AccountRedirectRuleset
+>;
+
 const GenericRuleset = eg.union([
   AccountRateLimitingRuleset,
   AccountCustomRulesetEntrypoint,
   AccountCustomRuleset,
   AccountIDSRuleset,
   AccountManagedEntrypoint,
-  AccountIDSEntrypoint
+  AccountIDSEntrypoint,
+  AccountRedirectRuleset
 ]);
-
-type ElementType<T> =
-  // is type T an array of elements of type U? If so, return U. Otherwise, return the "never" type (the input is not an array).
-  T extends (infer U)[] ? U : never;
 
 export type GenericRulesetType = TypeFromCodec<typeof GenericRuleset>;
 export type BaseRule = ElementType<
