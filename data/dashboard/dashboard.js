@@ -759,7 +759,7 @@
 			var Vt = n("../react/app/components/Persistence/index.tsx"),
 				Yt = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				Jt = n("../react/app/components/LoadingSuspense.tsx");
-			const Qt = fe().lazy(() => Promise.all([n.e(2480), n.e(14273), n.e(4616), n.e(16574), n.e(98283), n.e(76725), n.e(43351), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Qt = fe().lazy(() => Promise.all([n.e(2480), n.e(57496), n.e(4616), n.e(16574), n.e(98283), n.e(76725), n.e(43351), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Xt = () => fe().createElement(Jt.Z, null, fe().createElement(Qt, null));
 			const qt = () => (Le.useEffect(() => ee, []), null);
 			var en = n("../../../../node_modules/moment/moment.js"),
@@ -813,8 +813,8 @@
 						}
 					}, [_.search])
 				},
-				sn = fe().lazy(() => Promise.all([n.e(2480), n.e(14273), n.e(4616), n.e(16574), n.e(81778), n.e(72019), n.e(26976), n.e(76725), n.e(43351), n.e(47261), n.e(35812), n.e(77637), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
-				cn = fe().lazy(() => Promise.all([n.e(14273), n.e(81778), n.e(76725), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
+				sn = fe().lazy(() => Promise.all([n.e(2480), n.e(57496), n.e(4616), n.e(16574), n.e(81778), n.e(72019), n.e(20270), n.e(76725), n.e(43351), n.e(47261), n.e(35812), n.e(77637), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				cn = fe().lazy(() => Promise.all([n.e(57496), n.e(81778), n.e(76725), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var ln = ({
 					userIsAuthed: _
 				}) => {
@@ -937,10 +937,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "414e9352eab4fddbb5aed170d50092eb96f211b6",
+					commit: "99df2d82bcc692c5cf54694d7a7d68a33464e9cb",
 					env: "production",
-					builtAt: 1711731898611,
-					dashVersion: "9d88f36e58aaa6e13d39363886fd765da0c39169",
+					builtAt: 1711733932360,
+					dashVersion: "8c0657a545d4d268bfccf089ce1426e3b197b99c",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",
@@ -10010,7 +10010,9 @@
 						invalidCORSPolicy: "https://developers.cloudflare.com/r2/buckets/cors/#common-issues",
 						createCloudflare: "https://www.npmjs.com/package/create-cloudflare",
 						userCpuLimits: "https://developers.cloudflare.com/workers/platform/pricing/#standard-usage-model",
-						versions: "https://b5dfb245.cloudflare-docs-7ou.pages.dev/workers/configuration/versions-and-deployments/"
+						versions: "https://developers.cloudflare.com/workers/configuration/versions-and-deployments",
+						gradualRollouts: "https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments",
+						rollbacks: "https://developers.cloudflare.com/workers/configuration/versions-and-deployments/rollbacks"
 					},
 					serverlist: "https://blog.cloudflare.com/tag/serverlist/",
 					discord: "https://discord.cloudflare.com/",
