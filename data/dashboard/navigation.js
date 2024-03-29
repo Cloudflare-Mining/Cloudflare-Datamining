@@ -360,8 +360,7 @@ const navigation = {
 			testId: "sidenav-queues-link"
 		}, {
 			title: "navigation.account.workers.d1",
-			url: "/workers/d1",
-			labels: ["beta"]
+			url: "/workers/d1"
 		}, {
 			title: "navigation.account.workers.constellation",
 			url: "/workers/constellation",
@@ -370,7 +369,6 @@ const navigation = {
 		}, {
 			title: "navigation.account.workers.hyperdrive",
 			url: "/workers/hyperdrive",
-			labels: ["beta"],
 			hasPermission: T => !!(0, n.z1)("hyperdrive-ui")(T)
 		}, {
 			title: "navigation.account.workers.plans",
