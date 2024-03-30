@@ -12,11 +12,11 @@
 <p>Engineers on the Trust &amp; Safety Engineering team are responsible for the entire software development lifecycle for our products and services which include both internal and customer-facing software. Whether closing gaps in our abuse processing pipeline, extending our Trust &amp; Safety platform or road mapping the future of Trust &amp; Safety solutions, software engineers on the Trust &amp; Safety Engineering team are critical to Cloudflare’s ability to help make the internet a better place.&nbsp;</p>
 <p>This role will be based out of our London office.</p>
 <p><strong>What you'll do</strong></p>
-<p>While the majority of our services are now written in Golang, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Airflow, Temporal and PostgresSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
+<p>While the majority of our services are now written in Golang, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgreSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
 <p><strong>Responsibilities include</strong></p>
 <ul>
 	<li>Designing, building, running and scaling tools and services that support Trust and Safety efforts</li>
-	<li>Analyzing and communicating complex technical requirements and concepts, able to identify the highest priority areas and carve a path to deliver</li>
+	<li>Analysing and communicating complex technical requirements and concepts, able to identify the highest priority areas and carve a path to deliver</li>
 	<li>Collaborating with T&amp;S, legal and product teams to understand goals and develop robust and scalable solutions.</li>
 	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance and anti-abuse services</li>
 	<li>Ongoing monitoring and maintenance of production services, including participation in on call rotations</li>
@@ -25,12 +25,12 @@
 </ul>
 <p><strong>Desirable skills and experience</strong></p>
 <ul>
-	<li>Minimum 5 years of experience building large-scale software applications, preferably distributed systems</li>
+	<li>More than 6 years of experience building large-scale software applications, specifically distributed systems</li>
 	<li>Experience designing and integrating RESTful APIs and/or gRPC services</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
-	<li>Prior experience working with Go or Rust</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Expertise in writing well tested code</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL as well as graph databases</li>
+	<li>Prior experience working with Go or Rust in an enterprise environment</li>
+	<li>Experience with large scale signal processing</li>
+	<li>Excellent debugging and optimisation skills and expertise in writing well tested code</li>
 	<li>Interest in opportunities to be a technical mentor for teammates</li>
 </ul>
 <p><strong>Bonus</strong></p>
@@ -38,10 +38,8 @@
 <ul>
 	<li>Deep understanding of DNS, TLS/SSL and HTTP</li>
 	<li>Expertise in web security issues and industry standards for access control</li>
-	<li>Experience with Kafka</li>
-	<li>Experience building web applications using React</li>
-	<li>Experience with Kubernetes</li>
-	<li>Experience with Redis</li>
+	<li>Experience with Kafka, Kubernetes, Redis</li>
+	<li>Expertise in image/video processing and/or perceptual hashing techniques&nbsp;</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">

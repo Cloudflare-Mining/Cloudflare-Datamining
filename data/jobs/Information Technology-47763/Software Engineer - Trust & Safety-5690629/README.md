@@ -12,7 +12,7 @@
 <p>Engineers on the Trust &amp; Safety Engineering team are responsible for the entire software development lifecycle for our products and services which include both internal and customer-facing software. Whether closing gaps in our abuse processing pipeline, extending our Trust &amp; Safety platform or road mapping the future of Trust &amp; Safety solutions, software engineers on the Trust &amp; Safety Engineering team are critical to Cloudflare’s ability to help make the internet a better place.&nbsp;</p>
 <p>This role will be based out of our Austin office. Remote candidates in the US will also be considered.</p>
 <h4>What you'll do</h4>
-<p>While the majority of our services are now written in Golang, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgresSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
+<p>While the majority of our services are now written in Golang, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgreSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
 <p><strong>Responsibilities include</strong></p>
 <ul>
 	<li>Designing, building, running and scaling tools and services that support Trust and Safety efforts</li>
