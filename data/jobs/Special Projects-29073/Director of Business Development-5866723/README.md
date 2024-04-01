@@ -5,41 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="text-decoration: underline;"><strong>Available:</strong><strong> <em>Austin or Remote US</em></strong></span></p>
-<p><strong>What you'll do</strong></p>
+<p>Location: The preferred location is San Francisco, CA</p>
+<p>As the Director of Business Development for the SPX China team at Cloudflare, you will spearhead efforts to drive growth and expand Cloudflare's China Network business. Your focus will be on leveraging your expertise in China-related business and Mandarin proficiency to develop strategies, build partnerships, and generate revenue in the Chinese market. Reporting to the Vice President of SPX for Mainland China, you will play a pivotal role in advancing Cloudflare's presence and success in China.</p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Assist with the preparation of the Company’s annual and quarterly tax provision (ASC 740), including but not limited to calculating book/tax differences and reconciling ending deferred balances</li>
-	<li>Assist with the preparation of the U.S. federal and state income tax returns and quarterly estimated tax payments. Responsibilities include both U.S. domestic and international aspects of the preparation</li>
-	<li>Proactively manage and maintain provision and compliance calendars and deadlines</li>
-	<li>Prepare monthly, quarterly and annual journal entries and account reconciliations</li>
-	<li>Analyze and effectively communicate tax law changes</li>
-	<li>Assist and support other team members with special projects as needed</li>
-	<li>Manage and respond to tax notices</li>
-	<li>Assist with tax related audits</li>
-	<li>Ensure all supporting documents are complete for record keeping</li>
-	<li>Support tax process documentation and SOX controls</li>
-	<li>Build collaborative working relationships across the organization&nbsp;</li>
+	<li>Strategic Planning: Develop and execute comprehensive business development strategies tailored to the Chinese market, with a primary focus on expanding Cloudflare's China Network business.</li>
+	<li>Partnership Cultivation: Identify, evaluate, and negotiate partnerships with key stakeholders such as ISPs, cloud service providers, and technology partners to enhance Cloudflare's footprint and offerings in China.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>3+ years of applicable income tax experience in corporate tax department or public accounting firm&nbsp;</li>
-	<li>Bachelor’s degree in accounting, economics, or finance related field</li>
-	<li>Experience and proficiency preparing tax workpapers supporting federal and state income and non-income tax filings</li>
-	<li>Have excellent analytical skills, ensure results are accurate and able to communicate findings in a precise and simple manner</li>
-	<li>Ability to work independently in a fast-paced environment with strong ownership of his/her function</li>
-	<li>Results driven with a high level of initiative, teamwork, urgency, accountability and integrity</li>
-	<li>Demonstrates hands-on willingness to accept challenging projects outside areas of experience</li>
-	<li>Hard working, quick learner with a positive ‘can do' attitude</li>
-	<li>Ability to prioritize and manage time effectively</li>
-	<li>Excellent organizational, technical, analytical, problem solving skills and attention to detail</li>
-	<li>Problem solving skills, and are an independent thinker and self-starter</li>
-	<li>Excellent oral and written communication skills</li>
+	<li>Market Analysis: Conduct thorough analysis of the Chinese market, including regulatory frameworks, competitive landscapes, and emerging trends, to identify growth opportunities and inform strategic decision-making.</li>
+	<li>Client Engagement: Foster and nurture relationships with key clients, prospects, and industry influencers in China. Lead client engagements, including presentations, negotiations, and contract discussions, to drive business growth and revenue generation.</li>
+	<li>Team Leadership: Provide leadership and direction to the SPX China team, including sales, marketing, and technical support functions, ensuring alignment with organizational goals and successful execution of business development initiatives.</li>
+	<li>Revenue Generation: Drive revenue growth through the identification of new business opportunities, development of strategic partnerships, and implementation of innovative solutions tailored to the Chinese market.</li>
+	<li>Cross-functional Collaboration: Collaborate closely with internal teams, including product management, marketing, legal, and finance, to ensure alignment and support for business development initiatives in China.</li>
+	<li>Regulatory Compliance: Stay abreast of regulatory requirements and compliance standards in China related to internet services and cybersecurity. Ensure Cloudflare's operations and offerings in China adhere to local regulations and policies.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p>&nbsp;</p>
+<p><strong>Qualifications:</strong></p>
 <ul>
-	<li>Certified Public Accountant</li>
-	<li>Experience with OneSource or Corptax</li>
+	<li>Bachelor's degree in business administration, marketing, or related field (MBA preferred).</li>
+	<li>Minimum of 8 years of experience in business development, sales, or related roles, with a strong focus on the Chinese market.</li>
+	<li>Proven track record of success in driving revenue growth and building strategic partnerships in China.</li>
+	<li>Deep understanding of the Chinese market dynamics, regulatory landscapes, and cultural nuances.</li>
+	<li>Fluency in Mandarin Chinese is essential. Proficiency in English is highly desirable.</li>
+	<li>Excellent negotiation, communication, and interpersonal skills.</li>
+	<li>Leadership experience with the ability to inspire and motivate cross-functional teams.</li>
+	<li>Strategic thinker with a results-oriented mindset and a focus on achieving revenue targets and business objectives.</li>
+	<li>Experience in the technology industry, preferably with knowledge of cloud services, cybersecurity, or networking.</li>
+	<li>Willingness to travel within China and internationally as required.</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
