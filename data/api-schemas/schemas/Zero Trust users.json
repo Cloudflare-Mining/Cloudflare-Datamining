@@ -208,10 +208,12 @@
 														"type": "string"
 													},
 													"seat_uid": {
-														"description": "The unique API identifier for the Zero Trust seat."
+														"description": "The unique API identifier for the Zero Trust seat.",
+														"type": "string"
 													},
 													"uid": {
-														"description": "The unique API identifier for the user."
+														"description": "The unique API identifier for the user.",
+														"type": "string"
 													},
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
