@@ -520,14 +520,6 @@
 		]
 	},
 	{
-		"id": "a92d2450e05d4e7bb7d0a64968f83d11",
-		"name": "Cloudflare AI Read",
-		"description": "Grants access to invoke Workers AI models",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
 		"id": "3b376e0aa52c41cbb6afc9cab945afa8",
 		"name": "Cloudflare DEX Read",
 		"description": "Grants read access to Cloudflare DEX",
@@ -1613,6 +1605,22 @@
 		"description": "Grants write access to Web3 Hostnames\n",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "a92d2450e05d4e7bb7d0a64968f83d11",
+		"name": "Workers AI Read",
+		"description": "Grants access to invoke Workers AI models",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "bacc64e0f6c34fc0883a1223f938a104",
+		"name": "Workers AI Write",
+		"description": "Grants access to invoke Workers AI models and edit assets",
+		"scopes": [
+			"com.cloudflare.api.account"
 		]
 	},
 	{
