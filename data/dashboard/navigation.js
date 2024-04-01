@@ -392,7 +392,6 @@ const navigation = {
 		title: "navigation.account.workers.ai",
 		url: "/ai",
 		iconType: "workers-constellation",
-		labels: ["beta"],
 		hasPermission: T => !!(0, r.RO)(T) || !!(0, r.B)(T),
 		testId: "sidenav-ai-link",
 		pages: [{
@@ -403,11 +402,13 @@ const navigation = {
 		}, {
 			title: "navigation.account.workers.ai.vectorize",
 			url: "/ai/vectorize",
+			labels: ["beta"],
 			testId: "sidenav-ai-vectorize-link",
 			hasPermission: T => (0, r.RO)(T) && !!(0, d.BF)(T, "vector_db.enabled")
 		}, {
 			title: "navigation.account.workers.ai.ai-gateway",
 			url: "/ai/ai-gateway/general",
+			labels: ["beta"],
 			testId: "sidenav-ai-gateway-link",
 			hasPermission: T => !!(0, r.B)(T)
 		}]

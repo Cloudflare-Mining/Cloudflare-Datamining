@@ -516,9 +516,6 @@
 			"title": "navigation.account.workers.ai",
 			"url": "/ai",
 			"iconType": "workers-constellation",
-			"labels": [
-				"beta"
-			],
 			"hasPermission": null,
 			"testId": "sidenav-ai-link",
 			"pages": [
@@ -531,12 +528,18 @@
 				{
 					"title": "navigation.account.workers.ai.vectorize",
 					"url": "/ai/vectorize",
+					"labels": [
+						"beta"
+					],
 					"testId": "sidenav-ai-vectorize-link",
 					"hasPermission": null
 				},
 				{
 					"title": "navigation.account.workers.ai.ai-gateway",
 					"url": "/ai/ai-gateway/general",
+					"labels": [
+						"beta"
+					],
 					"testId": "sidenav-ai-gateway-link",
 					"hasPermission": null
 				}
