@@ -558,10 +558,6 @@
 																"example": true,
 																"type": "boolean"
 															},
-															"only_when_origin_unhealthy": {
-																"deprecated": true,
-																"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
-															},
 															"only_when_upstream_unhealthy": {
 																"default": true,
 																"description": "Only mitigate attacks when upstream servers seem unhealthy.",
@@ -649,10 +645,6 @@
 														"minimum": 30,
 														"nullable": true,
 														"type": "number"
-													},
-													"origin_ips": {
-														"deprecated": true,
-														"description": "Deprecated alias for \"upstream_ips\"."
 													},
 													"ratelimit": {
 														"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
@@ -853,10 +845,6 @@
 																		"example": true,
 																		"type": "boolean"
 																	},
-																	"only_when_origin_unhealthy": {
-																		"deprecated": true,
-																		"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
-																	},
 																	"only_when_upstream_unhealthy": {
 																		"default": true,
 																		"description": "Only mitigate attacks when upstream servers seem unhealthy.",
@@ -944,10 +932,6 @@
 																"minimum": 30,
 																"nullable": true,
 																"type": "number"
-															},
-															"origin_ips": {
-																"deprecated": true,
-																"description": "Deprecated alias for \"upstream_ips\"."
 															},
 															"ratelimit": {
 																"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
@@ -1264,10 +1248,6 @@
 															"example": true,
 															"type": "boolean"
 														},
-														"only_when_origin_unhealthy": {
-															"deprecated": true,
-															"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
-														},
 														"only_when_upstream_unhealthy": {
 															"default": true,
 															"description": "Only mitigate attacks when upstream servers seem unhealthy.",
@@ -1355,10 +1335,6 @@
 													"minimum": 30,
 													"nullable": true,
 													"type": "number"
-												},
-												"origin_ips": {
-													"deprecated": true,
-													"description": "Deprecated alias for \"upstream_ips\"."
 												},
 												"ratelimit": {
 													"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
@@ -1536,10 +1512,6 @@
 																	"example": true,
 																	"type": "boolean"
 																},
-																"only_when_origin_unhealthy": {
-																	"deprecated": true,
-																	"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
-																},
 																"only_when_upstream_unhealthy": {
 																	"default": true,
 																	"description": "Only mitigate attacks when upstream servers seem unhealthy.",
@@ -1627,10 +1599,6 @@
 															"minimum": 30,
 															"nullable": true,
 															"type": "number"
-														},
-														"origin_ips": {
-															"deprecated": true,
-															"description": "Deprecated alias for \"upstream_ips\"."
 														},
 														"ratelimit": {
 															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
@@ -1848,10 +1816,6 @@
 												"example": true,
 												"type": "boolean"
 											},
-											"only_when_origin_unhealthy": {
-												"deprecated": true,
-												"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
-											},
 											"only_when_upstream_unhealthy": {
 												"default": true,
 												"description": "Only mitigate attacks when upstream servers seem unhealthy.",
@@ -1939,10 +1903,6 @@
 										"minimum": 30,
 										"nullable": true,
 										"type": "number"
-									},
-									"origin_ips": {
-										"deprecated": true,
-										"description": "Deprecated alias for \"upstream_ips\"."
 									},
 									"ratelimit": {
 										"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
@@ -2118,10 +2078,6 @@
 															"example": true,
 															"type": "boolean"
 														},
-														"only_when_origin_unhealthy": {
-															"deprecated": true,
-															"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
-														},
 														"only_when_upstream_unhealthy": {
 															"default": true,
 															"description": "Only mitigate attacks when upstream servers seem unhealthy.",
@@ -2209,10 +2165,6 @@
 													"minimum": 30,
 													"nullable": true,
 													"type": "number"
-												},
-												"origin_ips": {
-													"deprecated": true,
-													"description": "Deprecated alias for \"upstream_ips\"."
 												},
 												"ratelimit": {
 													"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
@@ -2390,10 +2342,6 @@
 																	"example": true,
 																	"type": "boolean"
 																},
-																"only_when_origin_unhealthy": {
-																	"deprecated": true,
-																	"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
-																},
 																"only_when_upstream_unhealthy": {
 																	"default": true,
 																	"description": "Only mitigate attacks when upstream servers seem unhealthy.",
@@ -2481,10 +2429,6 @@
 															"minimum": 30,
 															"nullable": true,
 															"type": "number"
-														},
-														"origin_ips": {
-															"deprecated": true,
-															"description": "Deprecated alias for \"upstream_ips\"."
 														},
 														"ratelimit": {
 															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
@@ -2688,10 +2632,6 @@
 										"example": true,
 										"type": "boolean"
 									},
-									"only_when_origin_unhealthy": {
-										"deprecated": true,
-										"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
-									},
 									"only_when_upstream_unhealthy": {
 										"default": true,
 										"description": "Only mitigate attacks when upstream servers seem unhealthy.",
@@ -2740,10 +2680,6 @@
 								"minimum": 30,
 								"nullable": true,
 								"type": "number"
-							},
-							"origin_ips": {
-								"deprecated": true,
-								"description": "Deprecated alias for \"upstream_ips\"."
 							},
 							"ratelimit": {
 								"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
@@ -2908,10 +2844,6 @@
 															"example": true,
 															"type": "boolean"
 														},
-														"only_when_origin_unhealthy": {
-															"deprecated": true,
-															"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
-														},
 														"only_when_upstream_unhealthy": {
 															"default": true,
 															"description": "Only mitigate attacks when upstream servers seem unhealthy.",
@@ -2999,10 +2931,6 @@
 													"minimum": 30,
 													"nullable": true,
 													"type": "number"
-												},
-												"origin_ips": {
-													"deprecated": true,
-													"description": "Deprecated alias for \"upstream_ips\"."
 												},
 												"ratelimit": {
 													"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
@@ -3180,10 +3108,6 @@
 																	"example": true,
 																	"type": "boolean"
 																},
-																"only_when_origin_unhealthy": {
-																	"deprecated": true,
-																	"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
-																},
 																"only_when_upstream_unhealthy": {
 																	"default": true,
 																	"description": "Only mitigate attacks when upstream servers seem unhealthy.",
@@ -3271,10 +3195,6 @@
 															"minimum": 30,
 															"nullable": true,
 															"type": "number"
-														},
-														"origin_ips": {
-															"deprecated": true,
-															"description": "Deprecated alias for \"upstream_ips\"."
 														},
 														"ratelimit": {
 															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
