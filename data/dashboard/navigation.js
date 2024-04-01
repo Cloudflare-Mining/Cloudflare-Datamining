@@ -276,6 +276,10 @@ const navigation = {
 		iconType: "cloudflare-magic-wan",
 		hasPermission: T => (0, a.iY)(T) && !!(0, r.Le)(T, "magic_wan", "mw_home") || !!(0, r.Le)(T, "magic_wan", "mc_home"),
 		pages: [{
+			title: "navigation.account.magic_connectors.overview",
+			url: "/magic-wan/overview",
+			hasPermission: T => (0, a.iY)(T) && !!(0, r.Le)(T, "magic_wan", "mc_home")
+		}, {
 			title: "navigation.account.magic_connectors.sites",
 			url: "/magic-wan/sites",
 			hasPermission: T => (0, a.iY)(T) && !!(0, r.Le)(T, "magic_wan", "mc_home")
