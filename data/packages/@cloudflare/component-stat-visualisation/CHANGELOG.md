@@ -1,5 +1,13 @@
 # Change Log
 
+## 4.0.13
+
+### Patch Changes
+
+- Updated dependencies [0ee1fec7bf]
+- Updated dependencies [2d5bd954a2]
+  - @cloudflare/component-legend@6.1.0
+
 ## 4.0.12
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.1.0
+
+### Minor Changes
+
+- 70744fa86c: Fix react-tooltip import
+
 ## 7.0.8
 
 ### Patch Changes

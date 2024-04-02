@@ -1,5 +1,17 @@
 # Change Log
 
+## 6.1.0
+
+### Minor Changes
+
+- 0ee1fec7bf: Allow SlabStat to have custom tooltip hide delay
+- 2d5bd954a2: Allow custom tooltip in SlabStat
+
+### Patch Changes
+
+- Updated dependencies [7823cdd34e]
+  - @cloudflare/component-tooltip@4.6.0
+
 ## 6.0.12
 
 ### Patch Changes

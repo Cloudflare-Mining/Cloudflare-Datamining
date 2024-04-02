@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.6.0
+
+### Minor Changes
+
+- 7823cdd34e: Update react-tooltip version and allow more customization
+
 ## 4.5.1
 
 ### Patch Changes
