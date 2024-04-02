@@ -1087,7 +1087,6 @@
 			"arguments": "undefined",
 			"caller": "undefined",
 			"cancel": "function",
-			"from": "undefined",
 			"getReader": "function",
 			"length": "undefined",
 			"locked": "boolean",
@@ -1098,7 +1097,6 @@
 			"tee": "function",
 			"values": "function"
 		},
-		"from": "function",
 		"length": "number",
 		"name": "string"
 	},
@@ -10587,123 +10585,6 @@
 				"length": "number",
 				"name": "string",
 				"_prototype": "object"
-			},
-			"toUSVString": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"log": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"aborted": {
-				"__proto": "object",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			},
-			"debuglog": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "number",
-					"name": "string",
-					"enabled": "boolean",
-					"prototype": "undefined"
-				}
-			},
-			"debug": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "number",
-					"name": "string",
-					"enabled": "boolean",
-					"prototype": "undefined"
-				}
-			},
-			"deprecate": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"TextEncoder": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"arguments": "undefined",
-					"caller": "undefined",
-					"prototype": "undefined",
-					"encoding": "string",
-					"encode": "function",
-					"encodeInto": "function"
-				}
-			},
-			"TextDecoder": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"arguments": "undefined",
-					"caller": "undefined",
-					"prototype": "undefined",
-					"ignoreBOM": "boolean",
-					"fatal": "boolean",
-					"encoding": "string",
-					"decode": "function"
-				}
-			},
-			"parseArgs": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"transferableAbortController": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"transferableAbortSignal": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
 			}
 		}
 	},
