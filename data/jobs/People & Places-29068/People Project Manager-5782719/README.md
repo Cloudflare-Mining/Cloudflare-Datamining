@@ -5,55 +5,50 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location's: </strong>Remote in<strong> </strong>San Francisco, CA or Austin, TX or Seattle, WA</p>
-<p><strong>About the Role:</strong><strong><br></strong></p>
-<p>We are looking for someone with a background in Engineering, Product, and G&amp;A talent compensation, who is passionate about developing meaningful rewards programs, guiding organizations in making pay decisions, and building knowledge and trust in our compensation programs. The Sr. Compensation Manager (Business Partner) will partner and consult with the HR business partners and a group of senior leaders and their organizations supporting and evolving Cloudflare’s approach to Engineering and G&amp;A compensation.&nbsp; This role also partners closely with the compensation experts globally.</p>
-<p><strong>Responsibilities:</strong></p>
+<p><strong>Available Locations: Austin, TX or Pacific time zone</strong></p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare is seeking a highly skilled and technically-oriented project manager to lead and manage global People team projects. You will drive project excellence and help the People function execute more efficiently against global and cross-functional initiatives. You will be able to work with the entire People Leadership team to lead and manage our most impactful People projects from initiation to completion, ensuring timely delivery within scope and budget. Having recently exceeded $1 billion in revenue, this Project Manager will be joining at an exciting point of growth as Cloudflare plans to scale to $5 billion in revenue, and from 3,800 to 10,000 employees, in the next five years. Our focus is finding the best people to work at Cloudflare and enabling them to do their best work. As we continue to grow, scale and mature our operations, we are looking for a proven Project Manager who is highly organized and motivated to solve tough problems that come with fast-growing, dynamic and global teams.&nbsp;</p>
 <ul>
-	<li>Partner with our People Team Business Partners to influence business leaders in compensation strategy, programs and issues while balancing business acumen, reward expertise and relationship skills</li>
-	<li>Work with cross-functional teams and leadership to understand business goals and recommend/implement innovative approaches, policies and processes to effect continual improvements in compensation programs</li>
-	<li>Assess the effectiveness of our compensation strategy for our engineering, product, and G&amp;A organizations, while optimizing for employee experience</li>
-	<li>Consult on the design and administration of global programs, processes, market analysis, annual budget planning and focal review</li>
-	<li>Develop, implement, and manage base, variable, and equity compensation programs</li>
-	<li>Partner with leadership on cost impacts relating to location strategy and cash and equity programs across all organizations.</li>
-	<li>Assists with preparation of data related to participation in compensation benchmarking/surveys.&nbsp;</li>
-	<li>Lead compensation survey input and market analysis&nbsp;</li>
-	<li>Manage compensation team's day to day ad hoc analytical data analysis, creating standards, processes, and analytical tools.</li>
-	<li>Work with data to develop compensation models to derive useful compensation insights that will drive our decision making&nbsp;</li>
-	<li>Partner with recruiters to create fair and competitive compensation decisions and offers</li>
-	<li>Partner with the People Operations and Systems team to configure and administer Workday compensation&nbsp;</li>
-	<li>Partner with People Analytics to build tools that help the business make compensation decisions and deliver insight.</li>
-	<li>Implement and administer compensation policies and programs&nbsp;&nbsp;</li>
-	<li>Develop and deliver total compensation communications, including training, compensation statements, videos and other material</li>
-	<li>You are a team player, low ego and highly-collaborative. You get energized by engaging with people, helping them grow and seeing them thrive.</li>
-	<li>Emotional intelligence, ability to work well in a fast-paced, iterative environment, open to changes in focus and direction.</li>
-	<li>Play a key role in administering the annual compensation cycle&nbsp;&nbsp;</li>
-	<li>Partner with People Team Business Partners to provide compensation consulting to the Engineering and G&amp;A functions, including job evaluation, market pricing, compensation exceptions and other ad hoc compensation projects</li>
-	<li>Good understanding of fundamental business and financial concepts and a history of effectively collaborating with Finance teams, Legal.</li>
+	<li>In this role, you will report to the Head of People Operations, leading complex and cross-functional initiatives that support our broader People team strategy.</li>
+	<li>This is an exciting opportunity to partner with all People team functions and our cross-functional partners, serving as a project leader in establishing and teaching project management methodologies and tools that help the People function execute projects optimally.&nbsp;</li>
+	<li>You will also help manage our People team planning process, publishing our People team goals and establishing a cadence of regularly reviewing progress and ensuring initiatives stay on track.</li>
+	<li>You will help tell our story and convey key messages by developing slides for company-wide presentations.&nbsp;</li>
+	<li>We passionately believe in leadership at all levels, and our fast growth creates special opportunities to really stretch our team members to acquire new skills and grow on the job. We are looking for candidates that are agile, able to move with speed, and balance between presenting to senior executives while at the same time diving deep into the details of the project plan.</li>
 </ul>
-<p><strong>Experience:</strong></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Bachelor's degree with a minimum of 10 years of experience as a Compensation Consultant, preferably 4 years directly supporting groups with leveraged compensation programs in tech industry.&nbsp;</li>
-	<li>Experience supporting Engineering client groups required and G&amp;A client groups a plus</li>
-	<li>Expertise in financial analysis, statistical analysis, and modeling is required&nbsp;</li>
-	<li>Expertise in Excel &amp; PowerPoint&nbsp;</li>
-	<li>Excellent project management and time management skills&nbsp;</li>
-	<li>Ability to prioritize and work on multiple projects simultaneously&nbsp;</li>
-	<li>Experience with equity program administration</li>
-	<li>Knowledge of Radford survey benchmark jobs and database</li>
-	<li>The ability to work in a fast-paced environment, influence, problem solve, and successfully collaborate and communicate with clients on various levels is essential&nbsp;</li>
-	<li>Experience working in Tableau Desktop (strongly preferred) or other equivalent tool</li>
-	<li>Experience with Workday&nbsp;&nbsp;</li>
-	<li>Previous experience working in the high-tech industry or a fast growth environment are preferred</li>
+	<li>Ensure strategic priorities are met by aligning projects to company and People team goals.</li>
+	<li>Develop detailed project plans, outlining tasks, timelines, and resource requirements. Identify and mitigate project risks early, engaging the appropriate stakeholders.</li>
+	<li>Implement change management strategies, ensuring smooth transitions and minimal disruptions to daily operations.</li>
+	<li>Partner across various stakeholders in the business as well as across People functions to gather key requirements and gain support for the change prior to release.</li>
+	<li>Utilize data-driven insights to monitor project performance and make informed decisions.</li>
+	<li>Prepare regular reports and presentations for senior management, highlighting project milestones and outcomes.</li>
+	<li>Develop exec-level presentation slides for broad consumption that tell a compelling story.</li>
 </ul>
-<h4>&nbsp;</h4>
+<p><strong>About You</strong></p>
+<p style="padding-left: 40px;">Minimum Qualifications</p>
+<ul>
+	<li>
+		<ul>
+			<li>10+ yrs managing high-impact projects with multiple stakeholders and business functions.</li>
+			<li>Proven working experience as a project manager in the technology sector, preferably with an international consulting firm</li>
+			<li>Demonstrated experience in developing and maintaining project resources and planning tools e.g. project plan, scope, status updates, resource plans, risk plans with associated mitigations.</li>
+			<li>Expert level slide making capability</li>
+			<li>Self-starter who’s able to execute with minimal supervision and some ambiguity</li>
+			<li>Experience in driving collaboration, accountability, decision making and governance toward project outcomes</li>
+			<li>Deep familiarity with different project methodologies (agile, waterfall, etc) and able to draw best practices to create solutions that make sense for Cloudflare.</li>
+		</ul>
+	</li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $143,000 - $175,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $188,000 - $230,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $198,000 - $242,000</li>
+	<li>For Colorado-based hires: Estimated annual salary of 127,000 - 155,000</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of 148,000 - 180,000</li>
+	<li>For Bay Area-based hires: Estimated annual salary of 156,000 - 190,000</li>
 </ul>
+<p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -81,7 +76,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<h4>&nbsp;</h4>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
