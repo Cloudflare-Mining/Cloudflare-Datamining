@@ -1750,6 +1750,52 @@
 												"httpStats": {
 													"nullable": true,
 													"properties": {
+														"availabilityPct": {
+															"properties": {
+																"avg": {
+																	"description": "average observed in the time period",
+																	"format": "float",
+																	"nullable": true,
+																	"type": "number"
+																},
+																"max": {
+																	"description": "highest observed in the time period",
+																	"format": "float",
+																	"nullable": true,
+																	"type": "number"
+																},
+																"min": {
+																	"description": "lowest  observed in the time period",
+																	"format": "float",
+																	"nullable": true,
+																	"type": "number"
+																},
+																"slots": {
+																	"items": {
+																		"properties": {
+																			"timestamp": {
+																				"example": "2023-07-16 15:00:00+00",
+																				"type": "string"
+																			},
+																			"value": {
+																				"format": "float",
+																				"type": "number"
+																			}
+																		},
+																		"required": [
+																			"timestamp",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"slots"
+															],
+															"type": "object"
+														},
 														"dnsResponseTimeMs": {
 															"properties": {
 																"avg": {
@@ -1918,13 +1964,60 @@
 														"resourceFetchTimeMs",
 														"serverResponseTimeMs",
 														"dnsResponseTimeMs",
-														"httpStatusCode"
+														"httpStatusCode",
+														"availabilityPct"
 													],
 													"type": "object"
 												},
 												"httpStatsByColo": {
 													"items": {
 														"properties": {
+															"availabilityPct": {
+																"properties": {
+																	"avg": {
+																		"description": "average observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"max": {
+																		"description": "highest observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"min": {
+																		"description": "lowest  observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"slots": {
+																		"items": {
+																			"properties": {
+																				"timestamp": {
+																					"example": "2023-07-16 15:00:00+00",
+																					"type": "string"
+																				},
+																				"value": {
+																					"format": "float",
+																					"type": "number"
+																				}
+																			},
+																			"required": [
+																				"timestamp",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"slots"
+																],
+																"type": "object"
+															},
 															"colo": {
 																"example": "DFW",
 																"type": "string"
@@ -2098,7 +2191,8 @@
 															"resourceFetchTimeMs",
 															"serverResponseTimeMs",
 															"dnsResponseTimeMs",
-															"httpStatusCode"
+															"httpStatusCode",
+															"availabilityPct"
 														],
 														"type": "object"
 													},
@@ -2123,6 +2217,32 @@
 													"description": "The name of the HTTP synthetic application test",
 													"example": "Atlassian Sign In Page",
 													"type": "string"
+												},
+												"target_policies": {
+													"items": {
+														"properties": {
+															"default": {
+																"description": "Whether the policy is the default for the account",
+																"type": "boolean"
+															},
+															"id": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"default"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"targeted": {
+													"type": "boolean"
 												}
 											},
 											"type": "object"
@@ -2790,6 +2910,12 @@
 											"properties": {
 												"overviewMetrics": {
 													"properties": {
+														"avgHttpAvailabilityPct": {
+															"description": "percentage availability for all HTTP test results in response",
+															"format": "float",
+															"nullable": true,
+															"type": "number"
+														},
 														"avgTracerouteAvailabilityPct": {
 															"description": "percentage availability for all traceroutes results in response",
 															"format": "float",
@@ -3076,6 +3202,32 @@
 															"name": {
 																"description": "name given to this test",
 																"type": "string"
+															},
+															"target_policies": {
+																"items": {
+																	"properties": {
+																		"default": {
+																			"description": "Whether the policy is the default for the account",
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name",
+																		"default"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"targeted": {
+																"type": "boolean"
 															},
 															"tracerouteResults": {
 																"nullable": true,
@@ -4305,6 +4457,32 @@
 													"description": "The name of the Traceroute synthetic application test",
 													"example": "Atlassian Sign In Page",
 													"type": "string"
+												},
+												"target_policies": {
+													"items": {
+														"properties": {
+															"default": {
+																"description": "Whether the policy is the default for the account",
+																"type": "boolean"
+															},
+															"id": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"default"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"targeted": {
+													"type": "boolean"
 												},
 												"tracerouteStats": {
 													"nullable": true,
