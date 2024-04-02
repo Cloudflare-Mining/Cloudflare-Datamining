@@ -176,7 +176,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: H.T
+		hasPermission: Y.T
 	}, {
 		title: "navigation.account.group_title.application_services",
 		url: "/",
@@ -666,9 +666,9 @@ const navigation = {
 			const te = (0, l.nA)(T);
 			if ((0, d.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !te) return !1;
 			const $ = !!((0, _.l8)(T) || (0, l.DQ)(T)),
-				q = !!(0, l.ZB)(T, "spectrum", "enabled"),
+				J = !!(0, l.ZB)(T, "spectrum", "enabled"),
 				me = !!(0, l.Ns)(te);
-			return q || $ || !me
+			return J || $ || !me
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -1010,5 +1010,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: Y.G
+	support: K.G
 }

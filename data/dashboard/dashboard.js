@@ -759,7 +759,7 @@
 			var Kt = n("../react/app/components/Persistence/index.tsx"),
 				Yt = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				Jt = n("../react/app/components/LoadingSuspense.tsx");
-			const Qt = ge().lazy(() => Promise.all([n.e(2480), n.e(57496), n.e(4616), n.e(16574), n.e(98283), n.e(76725), n.e(43351), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Qt = ge().lazy(() => Promise.all([n.e(2480), n.e(87582), n.e(4616), n.e(17416), n.e(98283), n.e(76725), n.e(43351), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Xt = () => ge().createElement(Jt.Z, null, ge().createElement(Qt, null));
 			const qt = () => (De.useEffect(() => ee, []), null);
 			var en = n("../../../../node_modules/moment/moment.js"),
@@ -813,8 +813,8 @@
 						}
 					}, [_.search])
 				},
-				sn = ge().lazy(() => Promise.all([n.e(2480), n.e(57496), n.e(4616), n.e(16574), n.e(81778), n.e(72019), n.e(20270), n.e(76725), n.e(43351), n.e(47261), n.e(35812), n.e(77637), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
-				cn = ge().lazy(() => Promise.all([n.e(57496), n.e(81778), n.e(76725), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
+				sn = ge().lazy(() => Promise.all([n.e(2480), n.e(87582), n.e(4616), n.e(17416), n.e(81778), n.e(72019), n.e(20270), n.e(76725), n.e(43351), n.e(47261), n.e(35812), n.e(77637), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				cn = ge().lazy(() => Promise.all([n.e(87582), n.e(81778), n.e(76725), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var ln = ({
 					userIsAuthed: _
 				}) => {
@@ -937,10 +937,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "a4465217acbc3be5896cda944236210515ee6fe7",
+					commit: "3d1088c8ed3275166b1489afdaf3a98fca04a4b0",
 					env: "production",
-					builtAt: 1712010544696,
-					dashVersion: "e4e124c715b0b76f2499f49baa747eadd1e1c526",
+					builtAt: 1712070592984,
+					dashVersion: "99a1c4f7e41fd80818f61c99dab2dce0db331161",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",
@@ -1802,7 +1802,6 @@
 						height: "fit-content",
 						fontSize: "14px",
 						fontWeight: 400,
-						outline: "none",
 						"&:focus": {
 							outline: "2px solid #086fff"
 						},
@@ -9973,6 +9972,7 @@
 					documentation: {
 						workersAPI: "https://developers.cloudflare.com/api/operations/worker-script-list-workers",
 						root: "https://workers.cloudflare.com/docs",
+						configuration: "https://developers.cloudflare.com/workers/configuration",
 						installWrangler: "https://developers.cloudflare.com/workers/wrangler/install-and-update/",
 						wranglerDocs: "https://developers.cloudflare.com/workers/wrangler/",
 						wranglerCommands: "https://developers.cloudflare.com/workers/wrangler/commands/",
