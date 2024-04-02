@@ -4374,7 +4374,6 @@ declare module "cloudflare:workers" {
   };
   export abstract class RpcTarget implements Rpc.RpcTargetBranded {
     [Rpc.__RPC_TARGET_BRAND]: never;
-    [Symbol.dispose]?(): void;
   }
   // `protected` fields don't appear in `keyof`s, so can't be accessed over RPC
   export abstract class WorkerEntrypoint<Env = unknown>
@@ -4384,7 +4383,6 @@ declare module "cloudflare:workers" {
     protected ctx: ExecutionContext;
     protected env: Env;
     constructor(ctx: ExecutionContext, env: Env);
-    [Symbol.dispose]?(): void;
     fetch?(request: Request): Response | Promise<Response>;
     tail?(events: TraceItem[]): void | Promise<void>;
     trace?(traces: TraceItem[]): void | Promise<void>;
@@ -4399,7 +4397,6 @@ declare module "cloudflare:workers" {
     protected ctx: DurableObjectState;
     protected env: Env;
     constructor(ctx: DurableObjectState, env: Env);
-    [Symbol.dispose]?(): void;
     fetch?(request: Request): Response | Promise<Response>;
     alarm?(): void | Promise<void>;
     webSocketMessage?(
