@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.2.0
+
+### Minor Changes
+
+- 39cae8c9af: add preserveDrawingBuffer: true to ReactMapboxGl initialization
+
 ## 8.1.2
 
 ### Patch Changes
