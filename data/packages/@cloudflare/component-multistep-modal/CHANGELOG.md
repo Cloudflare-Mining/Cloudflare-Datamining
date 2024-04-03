@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.12
+
+### Patch Changes
+
+- @cloudflare/component-progress@9.0.12
+
 ## 4.0.11
 
 ### Patch Changes

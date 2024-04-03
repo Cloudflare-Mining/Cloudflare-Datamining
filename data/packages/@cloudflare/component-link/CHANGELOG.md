@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.0.12
+
+### Patch Changes
+
+- e5cdb47a90: Prevent ButtonLink console warning when invert prop is used
+
 ## 8.0.11
 
 ### Patch Changes

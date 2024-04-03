@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.1.0
+
+### Minor Changes
+
+- 9a6482a7ac: Disable SearchForm autocomplete unless name prop is provided
+
 ## 6.0.11
 
 ### Patch Changes

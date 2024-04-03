@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.1.29
+
+### Patch Changes
+
+- Updated dependencies [e5cdb47a90]
+  - @cloudflare/component-link@8.0.12
+
 ## 6.1.28
 
 ### Patch Changes

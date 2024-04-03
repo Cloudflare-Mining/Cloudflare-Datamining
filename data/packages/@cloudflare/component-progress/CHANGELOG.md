@@ -1,5 +1,12 @@
 # Change Log
 
+## 9.0.12
+
+### Patch Changes
+
+- Updated dependencies [e5cdb47a90]
+  - @cloudflare/component-link@8.0.12
+
 ## 9.0.11
 
 ### Patch Changes

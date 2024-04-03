@@ -1,5 +1,14 @@
 # Change Log
 
+## 7.1.1
+
+### Patch Changes
+
+- Updated dependencies [9a6482a7ac]
+- Updated dependencies [e5cdb47a90]
+  - @cloudflare/component-forms@6.1.0
+  - @cloudflare/component-link@8.0.12
+
 ## 7.1.0
 
 ### Minor Changes
