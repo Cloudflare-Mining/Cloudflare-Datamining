@@ -937,10 +937,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "6f9d44818befc8343e3ca905d1f36924f9aad096",
+					commit: "c7fc1b9933575c48c4400d91157781b4b21bc516",
 					env: "production",
-					builtAt: 1712170926562,
-					dashVersion: "b164c17bca0398627078ed3d9c4f41835f41f461",
+					builtAt: 1712182640415,
+					dashVersion: "04e809df2d70aae30e91b4014bcf7a2c25179017",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",
@@ -10040,7 +10040,8 @@
 						userCpuLimits: "https://developers.cloudflare.com/workers/platform/pricing/#standard-usage-model",
 						versions: "https://developers.cloudflare.com/workers/configuration/versions-and-deployments",
 						gradualRollouts: "https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments",
-						rollbacks: "https://developers.cloudflare.com/workers/configuration/versions-and-deployments/rollbacks"
+						rollbacks: "https://developers.cloudflare.com/workers/configuration/versions-and-deployments/rollbacks",
+						moduleSyntax: "https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#migrate-from-service-workers-to-es-modules"
 					},
 					serverlist: "https://blog.cloudflare.com/tag/serverlist/",
 					discord: "https://discord.cloudflare.com/",
