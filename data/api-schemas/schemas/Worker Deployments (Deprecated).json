@@ -1,0 +1,879 @@
+{
+	"GET /accounts/{account_id}/workers/deployments/by-script/{script_id}": {
+		"deprecated": true,
+		"operationId": "worker-deployments-(-deprecated)-list-deployments",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "script_id",
+				"required": true,
+				"schema": {
+					"example": "8ee82b3a2c0f42928b8f14dae4a97121",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"items": {
+													"example": [
+														{
+															"id": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+															"metadata": {
+																"author_email": "user@example.com",
+																"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																"created_on": "2022-11-15T18:25:44.442097Z",
+																"modified_on": "2022-11-15T18:25:44.442097Z",
+																"source": "api"
+															},
+															"number": 2
+														},
+														{
+															"id": "18f97339-c287-4872-9bdd-e2135c07ec12",
+															"metadata": {
+																"author_email": "user@example.com",
+																"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																"created_on": "2022-11-08T17:30:56.968096Z",
+																"modified_on": "2022-11-08T17:30:56.968096Z",
+																"source": "api"
+															},
+															"number": 1
+														}
+													],
+													"items": {},
+													"type": "array"
+												},
+												"latest": {
+													"example": {
+														"id": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+														"metadata": {
+															"author_email": "user@example.com",
+															"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+															"created_on": "2022-11-15T18:25:44.442097Z",
+															"modified_on": "2022-11-15T18:25:44.442097Z",
+															"source": "api"
+														},
+														"number": 2,
+														"resources": {
+															"bindings": [
+																{
+																	"json": "example_binding",
+																	"name": "JSON_VAR",
+																	"type": "json"
+																}
+															],
+															"script": {
+																"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																"handlers": [
+																	"fetch"
+																],
+																"last_deployed_from": "api"
+															},
+															"script_runtime": {
+																"usage_model": "bundled"
+															}
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Deployments response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"items": {
+															"example": [
+																{
+																	"id": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+																	"metadata": {
+																		"author_email": "user@example.com",
+																		"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																		"created_on": "2022-11-15T18:25:44.442097Z",
+																		"modified_on": "2022-11-15T18:25:44.442097Z",
+																		"source": "api"
+																	},
+																	"number": 2
+																},
+																{
+																	"id": "18f97339-c287-4872-9bdd-e2135c07ec12",
+																	"metadata": {
+																		"author_email": "user@example.com",
+																		"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																		"created_on": "2022-11-08T17:30:56.968096Z",
+																		"modified_on": "2022-11-08T17:30:56.968096Z",
+																		"source": "api"
+																	},
+																	"number": 1
+																}
+															],
+															"items": {},
+															"type": "array"
+														},
+														"latest": {
+															"example": {
+																"id": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+																"metadata": {
+																	"author_email": "user@example.com",
+																	"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																	"created_on": "2022-11-15T18:25:44.442097Z",
+																	"modified_on": "2022-11-15T18:25:44.442097Z",
+																	"source": "api"
+																},
+																"number": 2,
+																"resources": {
+																	"bindings": [
+																		{
+																			"json": "example_binding",
+																			"name": "JSON_VAR",
+																			"type": "json"
+																		}
+																	],
+																	"script": {
+																		"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																		"handlers": [
+																			"fetch"
+																		],
+																		"last_deployed_from": "api"
+																	},
+																	"script_runtime": {
+																		"usage_model": "bundled"
+																	}
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Deployments response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Deployments",
+		"tags": [
+			"Worker Deployments (Deprecated)"
+		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts/{account_id}/workers/scripts/{script_name}/versions` equivalent APIs.",
+			"display": true,
+			"id": "worker_deployments_deprecation"
+		},
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.deployment.list"
+			]
+		}
+	},
+	"GET /accounts/{account_id}/workers/deployments/by-script/{script_id}/detail/{deployment_id}": {
+		"deprecated": true,
+		"operationId": "worker-deployments-(-deprecated)-get-deployment-detail",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "deployment_id",
+				"required": true,
+				"schema": {
+					"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_id",
+				"required": true,
+				"schema": {
+					"example": "8ee82b3a2c0f42928b8f14dae4a97121",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
+													"type": "string"
+												},
+												"metadata": {
+													"example": {
+														"author_email": "user@example.com",
+														"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+														"created_on": "2022-11-08T17:19:29.176266Z",
+														"modified_on": "2022-11-08T17:19:29.176266Z",
+														"source": "api"
+													},
+													"type": "object"
+												},
+												"number": {
+													"example": 1,
+													"type": "number"
+												},
+												"resources": {
+													"example": {
+														"bindings": [
+															{
+																"json": "example_binding",
+																"name": "JSON_VAR",
+																"type": "json"
+															}
+														],
+														"script": {
+															"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+															"handlers": [
+																"fetch"
+															],
+															"last_deployed_from": "api"
+														},
+														"script_runtime": {
+															"usage_model": "bundled"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Deployment Detail response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
+															"type": "string"
+														},
+														"metadata": {
+															"example": {
+																"author_email": "user@example.com",
+																"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																"created_on": "2022-11-08T17:19:29.176266Z",
+																"modified_on": "2022-11-08T17:19:29.176266Z",
+																"source": "api"
+															},
+															"type": "object"
+														},
+														"number": {
+															"example": 1,
+															"type": "number"
+														},
+														"resources": {
+															"example": {
+																"bindings": [
+																	{
+																		"json": "example_binding",
+																		"name": "JSON_VAR",
+																		"type": "json"
+																	}
+																],
+																"script": {
+																	"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																	"handlers": [
+																		"fetch"
+																	],
+																	"last_deployed_from": "api"
+																},
+																"script_runtime": {
+																	"usage_model": "bundled"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Deployment Detail response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Deployment Detail",
+		"tags": [
+			"Worker Deployments (Deprecated)"
+		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts/{account_id}/workers/scripts/{script_name}/versions` equivalent APIs.",
+			"display": true,
+			"id": "worker_deployments_deprecation"
+		},
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.deployment.read"
+			]
+		}
+	}
+}

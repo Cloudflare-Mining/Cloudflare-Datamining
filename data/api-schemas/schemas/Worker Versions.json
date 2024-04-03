@@ -1,0 +1,1368 @@
+{
+	"GET /accounts/{account_id}/workers/scripts/{script_name}/versions": {
+		"description": "List of Worker Versions. The first version in the list is the latest version.",
+		"operationId": "worker-versions-list-versions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"items": {
+													"items": {
+														"properties": {
+															"id": {
+																"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
+																"readOnly": true,
+																"type": "string"
+															},
+															"metadata": {
+																"example": {
+																	"author_email": "user@example.com",
+																	"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																	"created_on": "2022-11-08T17:19:29.176266Z",
+																	"modified_on": "2022-11-08T17:19:29.176266Z",
+																	"source": "api"
+																},
+																"readOnly": true,
+																"type": "object"
+															},
+															"number": {
+																"example": 1,
+																"readOnly": true,
+																"type": "number"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Versions response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"items": {
+															"items": {
+																"properties": {
+																	"id": {
+																		"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"metadata": {
+																		"example": {
+																			"author_email": "user@example.com",
+																			"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																			"created_on": "2022-11-08T17:19:29.176266Z",
+																			"modified_on": "2022-11-08T17:19:29.176266Z",
+																			"source": "api"
+																		},
+																		"readOnly": true,
+																		"type": "object"
+																	},
+																	"number": {
+																		"example": 1,
+																		"readOnly": true,
+																		"type": "number"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Versions response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Versions",
+		"tags": [
+			"Worker Versions"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.deployment.list"
+			]
+		}
+	},
+	"GET /accounts/{account_id}/workers/scripts/{script_name}/versions/{version_id}": {
+		"operationId": "worker-versions-get-version-detail",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "version_id",
+				"required": true,
+				"schema": {
+					"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"id": {
+															"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
+															"readOnly": true,
+															"type": "string"
+														},
+														"metadata": {
+															"example": {
+																"author_email": "user@example.com",
+																"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																"created_on": "2022-11-08T17:19:29.176266Z",
+																"modified_on": "2022-11-08T17:19:29.176266Z",
+																"source": "api"
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"number": {
+															"example": 1,
+															"readOnly": true,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"resources": {
+															"example": {
+																"bindings": [
+																	{
+																		"json": "example_binding",
+																		"name": "JSON_VAR",
+																		"type": "json"
+																	}
+																],
+																"script": {
+																	"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																	"handlers": [
+																		"fetch"
+																	],
+																	"last_deployed_from": "api"
+																},
+																"script_runtime": {
+																	"usage_model": "bundled"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														}
+													},
+													"required": [
+														"resources"
+													],
+													"type": "object"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Version Detail response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"metadata": {
+																	"example": {
+																		"author_email": "user@example.com",
+																		"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																		"created_on": "2022-11-08T17:19:29.176266Z",
+																		"modified_on": "2022-11-08T17:19:29.176266Z",
+																		"source": "api"
+																	},
+																	"readOnly": true,
+																	"type": "object"
+																},
+																"number": {
+																	"example": 1,
+																	"readOnly": true,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"resources": {
+																	"example": {
+																		"bindings": [
+																			{
+																				"json": "example_binding",
+																				"name": "JSON_VAR",
+																				"type": "json"
+																			}
+																		],
+																		"script": {
+																			"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																			"handlers": [
+																				"fetch"
+																			],
+																			"last_deployed_from": "api"
+																		},
+																		"script_runtime": {
+																			"usage_model": "bundled"
+																		}
+																	},
+																	"readOnly": true,
+																	"type": "object"
+																}
+															},
+															"required": [
+																"resources"
+															],
+															"type": "object"
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Version Detail response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Version Detail",
+		"tags": [
+			"Worker Versions"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.deployment.read"
+			]
+		}
+	},
+	"POST /accounts/{account_id}/workers/scripts/{script_name}/versions": {
+		"description": "Upload a Worker Version without deploying to Cloudflare's network.",
+		"operationId": "worker-versions-upload-version",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"encoding": {
+						"<any part name>": {
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream"
+						}
+					},
+					"schema": {
+						"properties": {
+							"<any part name>": {
+								"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present and referenced in the metadata as `main_module`.",
+								"items": {
+									"format": "binary",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"metadata": {
+								"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
+								"properties": {
+									"annotations": {
+										"properties": {
+											"workers/message": {
+												"description": "Human-readable message about the version.",
+												"example": "Fixed worker code.",
+												"maxLength": 50,
+												"type": "string"
+											},
+											"workers/tag": {
+												"description": "User-provided identifier for the version.",
+												"example": "any-identifier-from-external-system",
+												"maxLength": 20,
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"bindings": {
+										"description": "List of bindings available to the worker.",
+										"example": [
+											{
+												"name": "MY_ENV_VAR",
+												"text": "my_data",
+												"type": "plain_text"
+											}
+										],
+										"items": {
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"compatibility_date": {
+										"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
+										"example": "2023-07-25",
+										"type": "string"
+									},
+									"compatibility_flags": {
+										"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"keep_bindings": {
+										"description": "List of binding types to keep from previous_upload.",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"main_module": {
+										"description": "Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
+										"example": "worker.js",
+										"type": "string"
+									},
+									"usage_model": {
+										"description": "Usage model to apply to invocations.",
+										"enum": [
+											"standard"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"id": {
+															"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
+															"readOnly": true,
+															"type": "string"
+														},
+														"metadata": {
+															"example": {
+																"author_email": "user@example.com",
+																"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																"created_on": "2022-11-08T17:19:29.176266Z",
+																"modified_on": "2022-11-08T17:19:29.176266Z",
+																"source": "api"
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"number": {
+															"example": 1,
+															"readOnly": true,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"resources": {
+															"example": {
+																"bindings": [
+																	{
+																		"json": "example_binding",
+																		"name": "JSON_VAR",
+																		"type": "json"
+																	}
+																],
+																"script": {
+																	"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																	"handlers": [
+																		"fetch"
+																	],
+																	"last_deployed_from": "api"
+																},
+																"script_runtime": {
+																	"usage_model": "bundled"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														}
+													},
+													"required": [
+														"resources"
+													],
+													"type": "object"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Upload Version response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"metadata": {
+																	"example": {
+																		"author_email": "user@example.com",
+																		"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																		"created_on": "2022-11-08T17:19:29.176266Z",
+																		"modified_on": "2022-11-08T17:19:29.176266Z",
+																		"source": "api"
+																	},
+																	"readOnly": true,
+																	"type": "object"
+																},
+																"number": {
+																	"example": 1,
+																	"readOnly": true,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"resources": {
+																	"example": {
+																		"bindings": [
+																			{
+																				"json": "example_binding",
+																				"name": "JSON_VAR",
+																				"type": "json"
+																			}
+																		],
+																		"script": {
+																			"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+																			"handlers": [
+																				"fetch"
+																			],
+																			"last_deployed_from": "api"
+																		},
+																		"script_runtime": {
+																			"usage_model": "bundled"
+																		}
+																	},
+																	"readOnly": true,
+																	"type": "object"
+																}
+															},
+															"required": [
+																"resources"
+															],
+															"type": "object"
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Upload Version response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Upload Version",
+		"tags": [
+			"Worker Versions"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.deployment.edit"
+			]
+		}
+	}
+}

@@ -1,15 +1,16 @@
 {
-	"GET /accounts/{account_id}/workers/deployments/by-script/{script_id}": {
+	"GET /accounts/{account_id}/workers/scripts/{script_name}/deployments": {
+		"description": "List of Worker Deployments. The first deployment in the list is the latest deployment actively serving traffic.",
 		"operationId": "worker-deployments-list-deployments",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "script_id",
+				"name": "script_name",
 				"required": true,
 				"schema": {
-					"example": "8ee82b3a2c0f42928b8f14dae4a97121",
-					"maxLength": 32,
-					"readOnly": true,
+					"description": "Name of the script.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -111,71 +112,103 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"items": {
-													"example": [
-														{
-															"id": "bcf48806-b317-4351-9ee7-36e7d557d4de",
-															"metadata": {
-																"author_email": "user@example.com",
-																"author_id": "408cbcdfd4dda4617efef40b04d168a1",
-																"created_on": "2022-11-15T18:25:44.442097Z",
-																"modified_on": "2022-11-15T18:25:44.442097Z",
-																"source": "api"
+												"deployments": {
+													"items": {
+														"allOf": [
+															{
+																"properties": {
+																	"annotations": {
+																		"properties": {
+																			"workers/message": {
+																				"description": "Human-readable message about the deployment.",
+																				"example": "Deploy bug fix.",
+																				"maxLength": 50,
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"author_email": {
+																		"example": "user@example.com",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"created_on": {
+																		"example": "2022-11-08T17:19:29.176266Z",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"id": {
+																		"allOf": [
+																			{
+																				"example": "dc78f0bc-05c5-46b7-bb4e-137f55930378",
+																				"maxLength": 36,
+																				"type": "string"
+																			}
+																		],
+																		"readOnly": true
+																	},
+																	"source": {
+																		"example": "api",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"strategy": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															},
-															"number": 2
-														},
-														{
-															"id": "18f97339-c287-4872-9bdd-e2135c07ec12",
-															"metadata": {
-																"author_email": "user@example.com",
-																"author_id": "408cbcdfd4dda4617efef40b04d168a1",
-																"created_on": "2022-11-08T17:30:56.968096Z",
-																"modified_on": "2022-11-08T17:30:56.968096Z",
-																"source": "api"
-															},
-															"number": 1
-														}
-													],
-													"items": {},
-													"type": "array"
-												},
-												"latest": {
-													"example": {
-														"id": "bcf48806-b317-4351-9ee7-36e7d557d4de",
-														"metadata": {
-															"author_email": "user@example.com",
-															"author_id": "408cbcdfd4dda4617efef40b04d168a1",
-															"created_on": "2022-11-15T18:25:44.442097Z",
-															"modified_on": "2022-11-15T18:25:44.442097Z",
-															"source": "api"
-														},
-														"number": 2,
-														"resources": {
-															"bindings": [
-																{
-																	"json": "example_binding",
-																	"name": "JSON_VAR",
-																	"type": "json"
-																}
-															],
-															"script": {
-																"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
-																"handlers": [
-																	"fetch"
-																],
-																"last_deployed_from": "api"
-															},
-															"script_runtime": {
-																"usage_model": "bundled"
+															{
+																"oneOf": [
+																	{
+																		"properties": {
+																			"strategy": {
+																				"enum": [
+																					"percentage"
+																				],
+																				"type": "string"
+																			},
+																			"versions": {
+																				"items": {
+																					"properties": {
+																						"percentage": {
+																							"maximum": 100,
+																							"minimum": 0,
+																							"type": "number"
+																						},
+																						"version_id": {
+																							"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+																							"maxLength": 36,
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"version_id",
+																						"percentage"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"strategy",
+																			"versions"
+																		],
+																		"type": "object"
+																	}
+																]
 															}
-														}
+														]
 													},
-													"type": "object"
+													"type": "array"
 												}
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -269,71 +302,103 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"items": {
-															"example": [
-																{
-																	"id": "bcf48806-b317-4351-9ee7-36e7d557d4de",
-																	"metadata": {
-																		"author_email": "user@example.com",
-																		"author_id": "408cbcdfd4dda4617efef40b04d168a1",
-																		"created_on": "2022-11-15T18:25:44.442097Z",
-																		"modified_on": "2022-11-15T18:25:44.442097Z",
-																		"source": "api"
+														"deployments": {
+															"items": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"annotations": {
+																				"properties": {
+																					"workers/message": {
+																						"description": "Human-readable message about the deployment.",
+																						"example": "Deploy bug fix.",
+																						"maxLength": 50,
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"author_email": {
+																				"example": "user@example.com",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"created_on": {
+																				"example": "2022-11-08T17:19:29.176266Z",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"id": {
+																				"allOf": [
+																					{
+																						"example": "dc78f0bc-05c5-46b7-bb4e-137f55930378",
+																						"maxLength": 36,
+																						"type": "string"
+																					}
+																				],
+																				"readOnly": true
+																			},
+																			"source": {
+																				"example": "api",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"strategy": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	},
-																	"number": 2
-																},
-																{
-																	"id": "18f97339-c287-4872-9bdd-e2135c07ec12",
-																	"metadata": {
-																		"author_email": "user@example.com",
-																		"author_id": "408cbcdfd4dda4617efef40b04d168a1",
-																		"created_on": "2022-11-08T17:30:56.968096Z",
-																		"modified_on": "2022-11-08T17:30:56.968096Z",
-																		"source": "api"
-																	},
-																	"number": 1
-																}
-															],
-															"items": {},
-															"type": "array"
-														},
-														"latest": {
-															"example": {
-																"id": "bcf48806-b317-4351-9ee7-36e7d557d4de",
-																"metadata": {
-																	"author_email": "user@example.com",
-																	"author_id": "408cbcdfd4dda4617efef40b04d168a1",
-																	"created_on": "2022-11-15T18:25:44.442097Z",
-																	"modified_on": "2022-11-15T18:25:44.442097Z",
-																	"source": "api"
-																},
-																"number": 2,
-																"resources": {
-																	"bindings": [
-																		{
-																			"json": "example_binding",
-																			"name": "JSON_VAR",
-																			"type": "json"
-																		}
-																	],
-																	"script": {
-																		"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
-																		"handlers": [
-																			"fetch"
-																		],
-																		"last_deployed_from": "api"
-																	},
-																	"script_runtime": {
-																		"usage_model": "bundled"
+																	{
+																		"oneOf": [
+																			{
+																				"properties": {
+																					"strategy": {
+																						"enum": [
+																							"percentage"
+																						],
+																						"type": "string"
+																					},
+																					"versions": {
+																						"items": {
+																							"properties": {
+																								"percentage": {
+																									"maximum": 100,
+																									"minimum": 0,
+																									"type": "number"
+																								},
+																								"version_id": {
+																									"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+																									"maxLength": 36,
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"version_id",
+																								"percentage"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"strategy",
+																					"versions"
+																				],
+																				"type": "object"
+																			}
+																		]
 																	}
-																}
+																]
 															},
-															"type": "object"
+															"type": "array"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -447,28 +512,18 @@
 			]
 		}
 	},
-	"GET /accounts/{account_id}/workers/deployments/by-script/{script_id}/detail/{deployment_id}": {
-		"operationId": "worker-deployments-get-deployment-detail",
+	"POST /accounts/{account_id}/workers/scripts/{script_name}/deployments": {
+		"description": "Deployments configure how [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions) are deployed to traffic. A deployment can consist of one or two versions of a Worker.",
+		"operationId": "worker-deployments-create-deployment",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "deployment_id",
+				"name": "script_name",
 				"required": true,
 				"schema": {
-					"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
-					"maxLength": 36,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "script_id",
-				"required": true,
-				"schema": {
-					"example": "8ee82b3a2c0f42928b8f14dae4a97121",
-					"maxLength": 32,
-					"readOnly": true,
+					"description": "Name of the script.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -485,6 +540,102 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"annotations": {
+										"properties": {
+											"workers/message": {
+												"description": "Human-readable message about the deployment.",
+												"example": "Deploy bug fix.",
+												"maxLength": 50,
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"author_email": {
+										"example": "user@example.com",
+										"readOnly": true,
+										"type": "string"
+									},
+									"created_on": {
+										"example": "2022-11-08T17:19:29.176266Z",
+										"readOnly": true,
+										"type": "string"
+									},
+									"id": {
+										"allOf": [
+											{
+												"example": "dc78f0bc-05c5-46b7-bb4e-137f55930378",
+												"maxLength": 36,
+												"type": "string"
+											}
+										],
+										"readOnly": true
+									},
+									"source": {
+										"example": "api",
+										"readOnly": true,
+										"type": "string"
+									},
+									"strategy": {
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							{
+								"oneOf": [
+									{
+										"properties": {
+											"strategy": {
+												"enum": [
+													"percentage"
+												],
+												"type": "string"
+											},
+											"versions": {
+												"items": {
+													"properties": {
+														"percentage": {
+															"maximum": 100,
+															"minimum": 0,
+															"type": "number"
+														},
+														"version_id": {
+															"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+															"maxLength": 36,
+															"type": "string"
+														}
+													},
+													"required": [
+														"version_id",
+														"percentage"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"strategy",
+											"versions"
+										],
+										"type": "object"
+									}
+								]
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
 		"responses": {
 			"200": {
 				"content": {
@@ -569,57 +720,102 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"id": {
-													"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
-													"type": "string"
-												},
-												"metadata": {
-													"example": {
-														"author_email": "user@example.com",
-														"author_id": "408cbcdfd4dda4617efef40b04d168a1",
-														"created_on": "2022-11-08T17:19:29.176266Z",
-														"modified_on": "2022-11-08T17:19:29.176266Z",
-														"source": "api"
-													},
-													"type": "object"
-												},
-												"number": {
-													"example": 1,
-													"type": "number"
-												},
-												"resources": {
-													"example": {
-														"bindings": [
-															{
-																"json": "example_binding",
-																"name": "JSON_VAR",
-																"type": "json"
-															}
-														],
-														"script": {
-															"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
-															"handlers": [
-																"fetch"
-															],
-															"last_deployed_from": "api"
+											"allOf": [
+												{
+													"properties": {
+														"annotations": {
+															"properties": {
+																"workers/message": {
+																	"description": "Human-readable message about the deployment.",
+																	"example": "Deploy bug fix.",
+																	"maxLength": 50,
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														},
-														"script_runtime": {
-															"usage_model": "bundled"
+														"author_email": {
+															"example": "user@example.com",
+															"readOnly": true,
+															"type": "string"
+														},
+														"created_on": {
+															"example": "2022-11-08T17:19:29.176266Z",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"allOf": [
+																{
+																	"example": "dc78f0bc-05c5-46b7-bb4e-137f55930378",
+																	"maxLength": 36,
+																	"type": "string"
+																}
+															],
+															"readOnly": true
+														},
+														"source": {
+															"example": "api",
+															"readOnly": true,
+															"type": "string"
+														},
+														"strategy": {
+															"type": "string"
 														}
 													},
 													"type": "object"
+												},
+												{
+													"oneOf": [
+														{
+															"properties": {
+																"strategy": {
+																	"enum": [
+																		"percentage"
+																	],
+																	"type": "string"
+																},
+																"versions": {
+																	"items": {
+																		"properties": {
+																			"percentage": {
+																				"maximum": 100,
+																				"minimum": 0,
+																				"type": "number"
+																			},
+																			"version_id": {
+																				"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+																				"maxLength": 36,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"version_id",
+																			"percentage"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"strategy",
+																"versions"
+															],
+															"type": "object"
+														}
+													]
 												}
-											},
-											"type": "object"
+											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "Get Deployment Detail response"
+				"description": "Create Deployment response"
 			},
 			"4XX": {
 				"content": {
@@ -706,51 +902,96 @@
 										{
 											"properties": {
 												"result": {
-													"properties": {
-														"id": {
-															"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
-															"type": "string"
-														},
-														"metadata": {
-															"example": {
-																"author_email": "user@example.com",
-																"author_id": "408cbcdfd4dda4617efef40b04d168a1",
-																"created_on": "2022-11-08T17:19:29.176266Z",
-																"modified_on": "2022-11-08T17:19:29.176266Z",
-																"source": "api"
-															},
-															"type": "object"
-														},
-														"number": {
-															"example": 1,
-															"type": "number"
-														},
-														"resources": {
-															"example": {
-																"bindings": [
-																	{
-																		"json": "example_binding",
-																		"name": "JSON_VAR",
-																		"type": "json"
-																	}
-																],
-																"script": {
-																	"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
-																	"handlers": [
-																		"fetch"
-																	],
-																	"last_deployed_from": "api"
+													"allOf": [
+														{
+															"properties": {
+																"annotations": {
+																	"properties": {
+																		"workers/message": {
+																			"description": "Human-readable message about the deployment.",
+																			"example": "Deploy bug fix.",
+																			"maxLength": 50,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
 																},
-																"script_runtime": {
-																	"usage_model": "bundled"
+																"author_email": {
+																	"example": "user@example.com",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"created_on": {
+																	"example": "2022-11-08T17:19:29.176266Z",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"id": {
+																	"allOf": [
+																		{
+																			"example": "dc78f0bc-05c5-46b7-bb4e-137f55930378",
+																			"maxLength": 36,
+																			"type": "string"
+																		}
+																	],
+																	"readOnly": true
+																},
+																"source": {
+																	"example": "api",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"strategy": {
+																	"type": "string"
 																}
 															},
 															"type": "object"
+														},
+														{
+															"oneOf": [
+																{
+																	"properties": {
+																		"strategy": {
+																			"enum": [
+																				"percentage"
+																			],
+																			"type": "string"
+																		},
+																		"versions": {
+																			"items": {
+																				"properties": {
+																					"percentage": {
+																						"maximum": 100,
+																						"minimum": 0,
+																						"type": "number"
+																					},
+																					"version_id": {
+																						"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+																						"maxLength": 36,
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"version_id",
+																					"percentage"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"strategy",
+																		"versions"
+																	],
+																	"type": "object"
+																}
+															]
 														}
-													},
-													"type": "object"
+													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -842,7 +1083,7 @@
 						}
 					}
 				},
-				"description": "Get Deployment Detail response failure"
+				"description": "Create Deployment response failure"
 			}
 		},
 		"security": [
@@ -854,13 +1095,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Deployment Detail",
+		"summary": "Create Deployment",
 		"tags": [
 			"Worker Deployments"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.deployment.read"
+				"com.cloudflare.edge.worker.deployment.edit"
 			]
 		}
 	}
