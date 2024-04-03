@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.3.0
+
+### Minor Changes
+
+- e50c7ac6aa: downgrades mapbox-gl to the version used before referrer update
+
 ## 8.2.1
 
 ### Patch Changes
