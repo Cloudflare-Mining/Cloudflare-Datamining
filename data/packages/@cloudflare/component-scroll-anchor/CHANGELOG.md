@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.403
+
+### Patch Changes
+
+- 23efb762a5: Ensure childen are included in props
+
 ## 1.0.402
 
 ### Patch Changes
