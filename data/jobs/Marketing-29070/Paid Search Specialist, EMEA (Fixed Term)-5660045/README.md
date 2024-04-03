@@ -23,8 +23,9 @@
 </ul>
 <p><strong>Required Skills &amp; Experience</strong></p>
 <ul>
-	<li>5+ years working with paid search channels including Google Ads and Microsoft Ads</li>
-	<li>3+ year experience working in an agency or in-house environment for a B2B software company</li>
+	<li>
+		<div>3+ years working with paid search channels including Google Ads and Microsoft Ads, ideally within B2B</div>
+	</li>
 	<li>Deep experience working directly within paid search advertising accounts with a keen eye for detail at executing bulk changes</li>
 	<li>Ability to determine, understand and set up bid strategies that incorporate multi layers of data to drive engaged, high quality leads</li>
 	<li>Experience applying testing methodologies to support ongoing improvement and evolution of search campaigns</li>
