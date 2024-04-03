@@ -508,7 +508,8 @@
 															"override",
 															"l4_override",
 															"egress",
-															"audit_ssh"
+															"audit_ssh",
+															"resolve"
 														],
 														"example": "allow",
 														"type": "string"
@@ -674,18 +675,18 @@
 																"type": "object"
 															},
 															"dns_resolvers": {
-																"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+																"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
 																"properties": {
 																	"ipv4": {
 																		"items": {
 																			"properties": {
 																				"ip": {
-																					"description": "IP address of upstream resolver.",
-																					"example": "2001:DB8::/64",
+																					"description": "IPv4 address of upstream resolver.",
+																					"example": "2.2.2.2",
 																					"type": "string"
 																				},
 																				"port": {
-																					"description": "A port number to use for upstream resolver.",
+																					"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																					"example": 5053,
 																					"type": "integer"
 																				},
@@ -711,12 +712,12 @@
 																		"items": {
 																			"properties": {
 																				"ip": {
-																					"description": "IP address of upstream resolver.",
-																					"example": "2001:DB8::/64",
+																					"description": "IPv6 address of upstream resolver.",
+																					"example": "2001:DB8::",
 																					"type": "string"
 																				},
 																				"port": {
-																					"description": "A port number to use for upstream resolver.",
+																					"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																					"example": 5053,
 																					"type": "integer"
 																				},
@@ -840,7 +841,7 @@
 																"type": "object"
 															},
 															"resolve_dns_through_cloudflare": {
-																"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 																"example": true,
 																"type": "boolean"
 															},
@@ -1075,7 +1076,8 @@
 																	"override",
 																	"l4_override",
 																	"egress",
-																	"audit_ssh"
+																	"audit_ssh",
+																	"resolve"
 																],
 																"example": "allow",
 																"type": "string"
@@ -1241,18 +1243,18 @@
 																		"type": "object"
 																	},
 																	"dns_resolvers": {
-																		"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+																		"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
 																		"properties": {
 																			"ipv4": {
 																				"items": {
 																					"properties": {
 																						"ip": {
-																							"description": "IP address of upstream resolver.",
-																							"example": "2001:DB8::/64",
+																							"description": "IPv4 address of upstream resolver.",
+																							"example": "2.2.2.2",
 																							"type": "string"
 																						},
 																						"port": {
-																							"description": "A port number to use for upstream resolver.",
+																							"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																							"example": 5053,
 																							"type": "integer"
 																						},
@@ -1278,12 +1280,12 @@
 																				"items": {
 																					"properties": {
 																						"ip": {
-																							"description": "IP address of upstream resolver.",
-																							"example": "2001:DB8::/64",
+																							"description": "IPv6 address of upstream resolver.",
+																							"example": "2001:DB8::",
 																							"type": "string"
 																						},
 																						"port": {
-																							"description": "A port number to use for upstream resolver.",
+																							"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																							"example": 5053,
 																							"type": "integer"
 																						},
@@ -1407,7 +1409,7 @@
 																		"type": "object"
 																	},
 																	"resolve_dns_through_cloudflare": {
-																		"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																		"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 																		"example": true,
 																		"type": "boolean"
 																	},
@@ -1742,7 +1744,8 @@
 														"override",
 														"l4_override",
 														"egress",
-														"audit_ssh"
+														"audit_ssh",
+														"resolve"
 													],
 													"example": "allow",
 													"type": "string"
@@ -1908,18 +1911,18 @@
 															"type": "object"
 														},
 														"dns_resolvers": {
-															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
 															"properties": {
 																"ipv4": {
 																	"items": {
 																		"properties": {
 																			"ip": {
-																				"description": "IP address of upstream resolver.",
-																				"example": "2001:DB8::/64",
+																				"description": "IPv4 address of upstream resolver.",
+																				"example": "2.2.2.2",
 																				"type": "string"
 																			},
 																			"port": {
-																				"description": "A port number to use for upstream resolver.",
+																				"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																				"example": 5053,
 																				"type": "integer"
 																			},
@@ -1945,12 +1948,12 @@
 																	"items": {
 																		"properties": {
 																			"ip": {
-																				"description": "IP address of upstream resolver.",
-																				"example": "2001:DB8::/64",
+																				"description": "IPv6 address of upstream resolver.",
+																				"example": "2001:DB8::",
 																				"type": "string"
 																			},
 																			"port": {
-																				"description": "A port number to use for upstream resolver.",
+																				"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																				"example": 5053,
 																				"type": "integer"
 																			},
@@ -2074,7 +2077,7 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
-															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -2286,7 +2289,8 @@
 																"override",
 																"l4_override",
 																"egress",
-																"audit_ssh"
+																"audit_ssh",
+																"resolve"
 															],
 															"example": "allow",
 															"type": "string"
@@ -2452,18 +2456,18 @@
 																	"type": "object"
 																},
 																"dns_resolvers": {
-																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
 																	"properties": {
 																		"ipv4": {
 																			"items": {
 																				"properties": {
 																					"ip": {
-																						"description": "IP address of upstream resolver.",
-																						"example": "2001:DB8::/64",
+																						"description": "IPv4 address of upstream resolver.",
+																						"example": "2.2.2.2",
 																						"type": "string"
 																					},
 																					"port": {
-																						"description": "A port number to use for upstream resolver.",
+																						"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																						"example": 5053,
 																						"type": "integer"
 																					},
@@ -2489,12 +2493,12 @@
 																			"items": {
 																				"properties": {
 																					"ip": {
-																						"description": "IP address of upstream resolver.",
-																						"example": "2001:DB8::/64",
+																						"description": "IPv6 address of upstream resolver.",
+																						"example": "2001:DB8::",
 																						"type": "string"
 																					},
 																					"port": {
-																						"description": "A port number to use for upstream resolver.",
+																						"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																						"example": 5053,
 																						"type": "integer"
 																					},
@@ -2618,7 +2622,7 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
-																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
 																	"type": "boolean"
 																},
@@ -2841,7 +2845,8 @@
 									"override",
 									"l4_override",
 									"egress",
-									"audit_ssh"
+									"audit_ssh",
+									"resolve"
 								],
 								"example": "allow",
 								"type": "string"
@@ -2988,18 +2993,18 @@
 										"type": "object"
 									},
 									"dns_resolvers": {
-										"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+										"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
 										"properties": {
 											"ipv4": {
 												"items": {
 													"properties": {
 														"ip": {
-															"description": "IP address of upstream resolver.",
-															"example": "2001:DB8::/64",
+															"description": "IPv4 address of upstream resolver.",
+															"example": "2.2.2.2",
 															"type": "string"
 														},
 														"port": {
-															"description": "A port number to use for upstream resolver.",
+															"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 															"example": 5053,
 															"type": "integer"
 														},
@@ -3025,12 +3030,12 @@
 												"items": {
 													"properties": {
 														"ip": {
-															"description": "IP address of upstream resolver.",
-															"example": "2001:DB8::/64",
+															"description": "IPv6 address of upstream resolver.",
+															"example": "2001:DB8::",
 															"type": "string"
 														},
 														"port": {
-															"description": "A port number to use for upstream resolver.",
+															"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 															"example": 5053,
 															"type": "integer"
 														},
@@ -3154,7 +3159,7 @@
 										"type": "object"
 									},
 									"resolve_dns_through_cloudflare": {
-										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 										"example": true,
 										"type": "boolean"
 									},
@@ -3358,7 +3363,8 @@
 														"override",
 														"l4_override",
 														"egress",
-														"audit_ssh"
+														"audit_ssh",
+														"resolve"
 													],
 													"example": "allow",
 													"type": "string"
@@ -3524,18 +3530,18 @@
 															"type": "object"
 														},
 														"dns_resolvers": {
-															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
 															"properties": {
 																"ipv4": {
 																	"items": {
 																		"properties": {
 																			"ip": {
-																				"description": "IP address of upstream resolver.",
-																				"example": "2001:DB8::/64",
+																				"description": "IPv4 address of upstream resolver.",
+																				"example": "2.2.2.2",
 																				"type": "string"
 																			},
 																			"port": {
-																				"description": "A port number to use for upstream resolver.",
+																				"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																				"example": 5053,
 																				"type": "integer"
 																			},
@@ -3561,12 +3567,12 @@
 																	"items": {
 																		"properties": {
 																			"ip": {
-																				"description": "IP address of upstream resolver.",
-																				"example": "2001:DB8::/64",
+																				"description": "IPv6 address of upstream resolver.",
+																				"example": "2001:DB8::",
 																				"type": "string"
 																			},
 																			"port": {
-																				"description": "A port number to use for upstream resolver.",
+																				"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																				"example": 5053,
 																				"type": "integer"
 																			},
@@ -3690,7 +3696,7 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
-															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -3902,7 +3908,8 @@
 																"override",
 																"l4_override",
 																"egress",
-																"audit_ssh"
+																"audit_ssh",
+																"resolve"
 															],
 															"example": "allow",
 															"type": "string"
@@ -4068,18 +4075,18 @@
 																	"type": "object"
 																},
 																"dns_resolvers": {
-																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
 																	"properties": {
 																		"ipv4": {
 																			"items": {
 																				"properties": {
 																					"ip": {
-																						"description": "IP address of upstream resolver.",
-																						"example": "2001:DB8::/64",
+																						"description": "IPv4 address of upstream resolver.",
+																						"example": "2.2.2.2",
 																						"type": "string"
 																					},
 																					"port": {
-																						"description": "A port number to use for upstream resolver.",
+																						"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																						"example": 5053,
 																						"type": "integer"
 																					},
@@ -4105,12 +4112,12 @@
 																			"items": {
 																				"properties": {
 																					"ip": {
-																						"description": "IP address of upstream resolver.",
-																						"example": "2001:DB8::/64",
+																						"description": "IPv6 address of upstream resolver.",
+																						"example": "2001:DB8::",
 																						"type": "string"
 																					},
 																					"port": {
-																						"description": "A port number to use for upstream resolver.",
+																						"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																						"example": 5053,
 																						"type": "integer"
 																					},
@@ -4234,7 +4241,7 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
-																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
 																	"type": "boolean"
 																},
@@ -4468,7 +4475,8 @@
 									"override",
 									"l4_override",
 									"egress",
-									"audit_ssh"
+									"audit_ssh",
+									"resolve"
 								],
 								"example": "allow",
 								"type": "string"
@@ -4615,18 +4623,18 @@
 										"type": "object"
 									},
 									"dns_resolvers": {
-										"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+										"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
 										"properties": {
 											"ipv4": {
 												"items": {
 													"properties": {
 														"ip": {
-															"description": "IP address of upstream resolver.",
-															"example": "2001:DB8::/64",
+															"description": "IPv4 address of upstream resolver.",
+															"example": "2.2.2.2",
 															"type": "string"
 														},
 														"port": {
-															"description": "A port number to use for upstream resolver.",
+															"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 															"example": 5053,
 															"type": "integer"
 														},
@@ -4652,12 +4660,12 @@
 												"items": {
 													"properties": {
 														"ip": {
-															"description": "IP address of upstream resolver.",
-															"example": "2001:DB8::/64",
+															"description": "IPv6 address of upstream resolver.",
+															"example": "2001:DB8::",
 															"type": "string"
 														},
 														"port": {
-															"description": "A port number to use for upstream resolver.",
+															"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 															"example": 5053,
 															"type": "integer"
 														},
@@ -4781,7 +4789,7 @@
 										"type": "object"
 									},
 									"resolve_dns_through_cloudflare": {
-										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 										"example": true,
 										"type": "boolean"
 									},
@@ -4985,7 +4993,8 @@
 														"override",
 														"l4_override",
 														"egress",
-														"audit_ssh"
+														"audit_ssh",
+														"resolve"
 													],
 													"example": "allow",
 													"type": "string"
@@ -5151,18 +5160,18 @@
 															"type": "object"
 														},
 														"dns_resolvers": {
-															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
 															"properties": {
 																"ipv4": {
 																	"items": {
 																		"properties": {
 																			"ip": {
-																				"description": "IP address of upstream resolver.",
-																				"example": "2001:DB8::/64",
+																				"description": "IPv4 address of upstream resolver.",
+																				"example": "2.2.2.2",
 																				"type": "string"
 																			},
 																			"port": {
-																				"description": "A port number to use for upstream resolver.",
+																				"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																				"example": 5053,
 																				"type": "integer"
 																			},
@@ -5188,12 +5197,12 @@
 																	"items": {
 																		"properties": {
 																			"ip": {
-																				"description": "IP address of upstream resolver.",
-																				"example": "2001:DB8::/64",
+																				"description": "IPv6 address of upstream resolver.",
+																				"example": "2001:DB8::",
 																				"type": "string"
 																			},
 																			"port": {
-																				"description": "A port number to use for upstream resolver.",
+																				"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																				"example": 5053,
 																				"type": "integer"
 																			},
@@ -5317,7 +5326,7 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
-															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -5529,7 +5538,8 @@
 																"override",
 																"l4_override",
 																"egress",
-																"audit_ssh"
+																"audit_ssh",
+																"resolve"
 															],
 															"example": "allow",
 															"type": "string"
@@ -5695,18 +5705,18 @@
 																	"type": "object"
 																},
 																"dns_resolvers": {
-																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.",
 																	"properties": {
 																		"ipv4": {
 																			"items": {
 																				"properties": {
 																					"ip": {
-																						"description": "IP address of upstream resolver.",
-																						"example": "2001:DB8::/64",
+																						"description": "IPv4 address of upstream resolver.",
+																						"example": "2.2.2.2",
 																						"type": "string"
 																					},
 																					"port": {
-																						"description": "A port number to use for upstream resolver.",
+																						"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																						"example": 5053,
 																						"type": "integer"
 																					},
@@ -5732,12 +5742,12 @@
 																			"items": {
 																				"properties": {
 																					"ip": {
-																						"description": "IP address of upstream resolver.",
-																						"example": "2001:DB8::/64",
+																						"description": "IPv6 address of upstream resolver.",
+																						"example": "2001:DB8::",
 																						"type": "string"
 																					},
 																					"port": {
-																						"description": "A port number to use for upstream resolver.",
+																						"description": "A port number to use for upstream resolver. Defaults to 53 if unspecified.",
 																						"example": 5053,
 																						"type": "integer"
 																					},
@@ -5861,7 +5871,7 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
-																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified. Only valid when a rule's action is set to 'resolve'.",
 																	"example": true,
 																	"type": "boolean"
 																},

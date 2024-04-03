@@ -1264,11 +1264,6 @@
 								"description": "The name of the proxy endpoint.",
 								"example": "Devops team",
 								"type": "string"
-							},
-							"subdomain": {
-								"description": "The subdomain to be used as the destination in the proxy client.",
-								"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
-								"type": "string"
 							}
 						}
 					}
@@ -1703,11 +1698,6 @@
 							"name": {
 								"description": "The name of the proxy endpoint.",
 								"example": "Devops team",
-								"type": "string"
-							},
-							"subdomain": {
-								"description": "The subdomain to be used as the destination in the proxy client.",
-								"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 								"type": "string"
 							}
 						},
