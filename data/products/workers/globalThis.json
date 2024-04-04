@@ -2408,6 +2408,14 @@
 				"name": "string"
 			}
 		},
+		"RATE_LIMITER_BINDING": {
+			"limit": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			}
+		},
 		"SEND_EMAIL_BINDING": {
 			"send": {
 				"__proto": "function",
@@ -2428,6 +2436,26 @@
 				"__type": "function",
 				"length": "number",
 				"name": "string"
+			}
+		},
+		"VECTORIZE_BINDING": {
+			"fetcher": {
+				"connect": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"fetch": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				}
+			},
+			"indexId": {
+				"__proto": "object",
+				"__type": "string"
 			}
 		}
 	},
