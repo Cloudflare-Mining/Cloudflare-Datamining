@@ -262,7 +262,7 @@ If you wish to proceed, please check the box below and click the "Revoke" button
 	crypto_origin_certificates_web_server_option_nginx: "NGINX",
 	crypto_origin_certificates_web_server_option_other: "Other (Not Listed)",
 	crypto_origin_certificates_web_server_option_tomcat: "Apache Tomcat",
-	crypto_origin_certificates_web_server_read_instructions: 'For installation instructions specific to your type of origin web server, visit our support guide on <a href="https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/" target="_blank">managing Origin CA certificates</a>.',
+	crypto_origin_certificates_web_server_read_instructions: 'For installation instructions specific to your type of origin web server, visit our support guide on <a href="https://support.cloudflare.com/hc/articles/115000479507" target="_blank">managing Origin CA certificates</a>.',
 	disable_ussl_description: "Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no dedicated certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS.",
 	disable_ussl_disable_button: "Disable Universal SSL",
 	disable_ussl_disabled_notification: "Universal SSL has been disabled",
@@ -653,14 +653,14 @@ By default your certificate will be renewed after 1 year.`,
 Do you want to continue?`,
 	ssl_help: `#### Why isn't my site working over HTTPS?
 If you have recently signed up for Cloudflare, and your certificate status above shows "Authorizing Certificate", HTTPS is not yet available for your site because Cloudflare does not have a certificate for it. Provisioning typically takes around 15 minutes for paid plans and up to 24 hours for Free. Contact Support if you do not have a certificate after that time.
-If the status above shows "Active Certificate" there are [several other common problems that can appear](https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/) when accessing your site over HTTPS.
+If the status above shows "Active Certificate" there are [several other common problems that can appear](https://support.cloudflare.com/hc/articles/200170566) when accessing your site over HTTPS.
 
 #### What SSL setting should I use?
-This setting controls [how Cloudflare's servers connect to your origin for HTTPS requests](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/). We recommend enabling the Full SSL (Strict) setting if possible. Common use cases for each are:
+This setting controls [how Cloudflare's servers connect to your origin for HTTPS requests](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes). We recommend enabling the Full SSL (Strict) setting if possible. Common use cases for each are:
 
 **Off:** No visitors will be able to view your site over HTTPS; they will be redirected to HTTP.
 
-**Flexible SSL:** You cannot configure HTTPS support on your origin, even with a certificate that is not valid for your site. Visitors will be able to access your site over HTTPS, but connections to your origin will be made over HTTP. Note: You may [encounter a redirect loop with some origin configurations](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/).
+**Flexible SSL:** You cannot configure HTTPS support on your origin, even with a certificate that is not valid for your site. Visitors will be able to access your site over HTTPS, but connections to your origin will be made over HTTP. Note: You may [encounter a redirect loop with some origin configurations](https://support.cloudflare.com/hc/articles/115000219871).
 
 **Full SSL:** Your origin supports HTTPS, but the certificate installed does not match your domain or is self-signed. Cloudflare will connect to your origin over HTTPS, but will not validate the certificate.
 
@@ -692,7 +692,7 @@ We have created a [detailed article around using Certificate Transparency Monito
 	tls_analytics_help: `#### About TLS Analytics
  This shows the division between unencrypted and encrypted 'HTTPS' requests using TLS. Redirects from HTTP to HTTPS are counted as unencrypted requests. When a page rule or origin server redirect to HTTPS is used, a percentage of unencrypted traffic is normal
 
-**Note:** In order to increase the amount of traffic served over HTTPS, you should [redirect all visitors to HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/).`,
+**Note:** In order to increase the amount of traffic served over HTTPS, you should [redirect all visitors to HTTPS](https://support.cloudflare.com/hc/articles/204144518#h_a61bfdef-08dd-40f8-8888-7edd8e40d156).`,
 	tls_analytics_no_requests: "No requests in the last 24 hours.",
 	tls_analytics_24hr: "Last 24 hours",
 	ssl_setting_off: "Off (not secure)",
