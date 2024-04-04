@@ -5,51 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Remote US or Austin, Texas or Lisbon, Portugal</strong></p>
-<p><strong>About the role&nbsp;</strong></p>
-<p>As our Director of Security Architecture, you will be responsible for the security architecture program across the Cloudflare information security functions.&nbsp; Establish and lead the development of a robust security architecture program and team.&nbsp; Enhance the security programs of each information security function across multiple security domains.&nbsp; We are looking for someone excited about solving complex security architecture challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; design as well as partnering with other security teams to unify the security architecture strategy and frameworks into one cohesive security roadmap supporting the&nbsp; overall security function objectives.</p>
-<p><strong>What You’ll Do</strong></p>
-<p>Develop and drive comprehensive strategies, roadmaps, innovation, resourcing, and budgeting aligned with Cloudflare’s Security goals and objectives.&nbsp; Partner with stakeholders across the organization to understand and develop security architecture standards, processes, and policies in alignment with regulatory controls.&nbsp; Track industry trends and emerging technologies to ensure programs remain innovative and effective.&nbsp; Build and lead our security architecture program in the following areas:</p>
+<p><strong>Available Locations: Remote, Mexico</strong></p>
+<p><strong>What You'll Do</strong></p>
+<p>We are looking for a strong leader to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Tooling &amp; Strategy.&nbsp;</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Security governance and strategy:</li>
-	<ul>
-		<li>Help develop security teams strategies and roadmaps</li>
-		<li>Develop, maintain and promote security policies and standards</li>
-	</ul>
-	<li>Provide domain expertise in security architecture</li>
-	<ul>
-		<li>Establish scalable architecture framework and processes</li>
-		<li>Influence and mature engineering areas within all security team domains</li>
-		<li>Establish security architecture review processes</li>
-		<li>Establishes metrics and monitoring to report the effectiveness and efficiency of the Security Architecture function</li>
-	</ul>
-	<li>Regulatory Adherence and Risk:</li>
-	<ul>
-		<li>Ensure security architecture strategy aligns and supports the security certification program.</li>
-		<li>Align the security architecture strategy with the security controls program</li>
-		<li>Support the delivery of the continuous compliance program</li>
-		<li>Design security solutions with measurable security performance and assurance in mind.</li>
-		<li>Assess risks and recommend mitigation strategies.</li>
-	</ul>
-	<li>Mentorship and Culture Development:</li>
-	<ul>
-		<li>Take the lead in guiding our security team while cultivating a culture of heightened security awareness and technical acumen.</li>
-	</ul>
+	<li>Lead the formation and implementation of Cloudflare’s offshore Commissions Operations Center of Excellence</li>
+	<li>Partner with Commissions Leadership to identify, standardize and offshore Commissions processes and practices</li>
+	<li>Build extensive playbooks, documentation and enablement materials, scaling Center of Excellence efficiency, repeatability, and capacity</li>
+	<li>Hire, mentor and develop a best-in-class team, supporting an expanding scope of responsibility</li>
+	<li>Implement a customer-centric approach and lead engagement with internal customers with the highest degree of empathy and attention to detail</li>
+	<li>Serve as a custodian of the business, ensuring alignment with established practices and policies</li>
+	<li>Implement robust and thorough change management processes</li>
+	<li>Employ a principles-first approach and operate with the highest level of integrity and discretion</li>
+	<li>Implement appropriate SOX Controls, partnering closely with the Controllership and Internal Audit Organizations</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p><strong>About You</strong></p>
+<ul>
+	<li>5+ years of Corporate Finance/Strategy, Investment Banking, Consulting, or Incentive Compensation Administration; experience with a Saas business model preferred</li>
+	<li>Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</li>
+	<li>Experience or understanding of commissions-specific SOX Controls</li>
+	<li>Experience with Varicent, Anaplan ICM, Xactly, Calidus or a similar ICM tool</li>
+	<li>Experience interfacing and supporting GTM &amp; Sales Organizations</li>
+	<li>Experience with Salesforce Cases</li>
+	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
+	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
+</ul>
 <p>&nbsp;</p>
-<ul>
-	<li>Effective communicator.&nbsp;</li>
-	<li>Experience with Network Security, Endpoint Security, Secure Software Development Life Cycle, Cloud Security, Mobile Device Management, Identity and Access Management, Secrets Management, Cryptography, Data Security, Security Operations, and Vulnerability Management.</li>
-	<li>Conceptual Skills, Decision Making, Informing Others, Functional and Technical Skills.</li>
-	<li>Development of information security policies, standards, and processes.</li>
-	<li>Familiarity with security controls frameworks and regulatory requirements.</li>
-	<li>Ability to effectively prioritize and manage a large number of projects simultaneously.</li>
-	<li>Demonstrated success in earning trust across a broad variety of stakeholders and making principled decisions.</li>
-	<li>Ability to influence and motivate people across a broad variety of job functions.</li>
-	<li>Experience communicating security architecture to the executive leadership.&nbsp;</li>
-	<li>Experience managing a global team and working with cross-functional teams in multiple time zones.&nbsp;</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
