@@ -865,5 +865,18 @@
 	"pages.usage_model_selector.submit": "Change Usage model",
 	"pages.more_custom_domains.one": "+%{undisplayedDomainsCount} more domain",
 	"pages.more_custom_domains.many": "+%{undisplayedDomainsCount} more domains",
-	"pages.workers_and_pages.create_project.back_link": "Create an application"
+	"pages.workers_and_pages.create_project.back_link": "Create an application",
+	"pages.config_file.build_config.locked": "Build output directory for this project is being managed through wrangler.toml. <0>Learn more</0>",
+	"pages.config_file.build_config.directory.locked": "Modify build output directory in wrangler.toml",
+	"pages.config_file.environment_variables.save_disabled": "Add or remove a Secret",
+	"pages.config_file.environment_variables.variable_value_locked": "Modify this environment variable in wrangler.toml.",
+	"pages.config_file.environment_variables.locked.production": "Environment variables for this project's production environment are being managed through wrangler.toml. <b>Only Secrets (encrypted variables)</b> can be added or removed through the Dashboard. <0>Learn more</0>",
+	"pages.config_file.environment_variables.locked.preview": "Environment variables for this project's preview environment are being managed through wrangler.toml. <b>Only Secrets (encrypted variables)</b> can be managed via the Dashboard. <0>Learn more</0>",
+	"pages.config_file.environment_variables.locked.all": "Environment variables for this project are being managed through wrangler.toml. <b>Only Secrets (encrypted variables)</b> can be managed via the Dashboard. <0>Learn more</0>",
+	"pages.config_file.functions.locked.production": "Function configuration for this project's production environment is being managed through wrangler.toml. <0>Learn more</0>",
+	"pages.config_file.functions.locked.preview": "Function configuration for this project's preview environment is being managed through wrangler.toml. <0>Learn more</0>",
+	"pages.config_file.functions.locked.all": "Function configuration for this project is being managed through wrangler.toml. <0>Learn more</0>",
+	"pages.config_file.functions.locked": "This setting is managed in wrangler.toml. Update wrangler.toml to make changes.",
+	"pages.config_file.functions.cpu_limit.locked": "This setting is managed in wrangler.toml. Update wrangler.toml to make changes.",
+	"pages.config_file.functions.smart_placement.locked": "This setting is managed in wrangler.toml. Update wrangler.toml to make changes."
 }
