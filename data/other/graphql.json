@@ -3033,6 +3033,7 @@
 	"AccountQueueMessageOperationsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"actionType": "The type of the Queue message operation",
+		"consumerType": "The queue consumer type for the operation. Only applicable for ReadMessage and DeleteMessge action types.",
 		"date": "Message operation timestamp, truncated to start of a day",
 		"datetime": "Message operation timestamp",
 		"datetimeHour": "Message operation timestamp, truncated to start of an hour",
@@ -3054,6 +3055,60 @@
 		"__description": "",
 		"billableOperations": "Number of Billable Operations (some message operations count as multiple billable operations)",
 		"bytes": "Total size (in bytes) of message operations"
+	},
+	"AccountR2IAOperationsAdaptiveGroups": {
+		"__description": "Beta. R2 infrequent access operations with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountR2IAOperationsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"actionStatus": "Status of the R2 operation",
+		"actionType": "The name of the R2 operation",
+		"bucketName": "The name of the R2 bucket, if applicable to this request",
+		"date": "Request timestamp, truncated to start of a day",
+		"datetime": "Request timestamp",
+		"datetimeHour": "Request timestamp, truncated to start of an hour",
+		"datetimeMinute": "Request timestamp, truncated to start of an minute",
+		"objectName": "The name of the R2 object, if applicable to this request",
+		"responseStatusCode": "HTTP status code returned by R2"
+	},
+	"AccountR2IAOperationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountR2IAOperationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountR2IAOperationsAdaptiveGroupsSum": {
+		"__description": "",
+		"requests": "Sum of Requests",
+		"responseBytes": "Sum of retrieved bytes"
+	},
+	"AccountR2IAStorageAdaptiveGroups": {
+		"__description": "Beta. R2 infrequent access storage with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension"
+	},
+	"AccountR2IAStorageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"bucketName": "The name of the R2 bucket, if applicable to this request",
+		"date": "Storage sample timestamp, truncated to start of a day",
+		"datetime": "Storage sample timestamp",
+		"datetimeHour": "Storage sample timestamp, truncated to start of an hour",
+		"datetimeMinute": "Storage sample timestamp, truncated to start of an minute"
+	},
+	"AccountR2IAStorageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountR2IAStorageAdaptiveGroupsMax": {
+		"__description": "",
+		"metadataSize": "Max of metadata size",
+		"objectCount": "Max of object count",
+		"payloadSize": "Max of payload size",
+		"uploadCount": "Max of upload count"
+	},
+	"AccountR2IAStorageAdaptiveGroupsOrderBy": {
+		"__description": ""
 	},
 	"AccountR2OperationsAdaptiveGroups": {
 		"__description": "Beta. R2 operations with adaptive sampling",
@@ -3469,6 +3524,8 @@
 		"queueConsumerMetricsAdaptiveGroups": "",
 		"queueDelayedBacklogAdaptiveGroups": "",
 		"queueMessageOperationsAdaptiveGroups": "",
+		"r2IAOperationsAdaptiveGroups": "",
+		"r2IAStorageAdaptiveGroups": "",
 		"r2OperationsAdaptiveGroups": "",
 		"r2StorageAdaptiveGroups": "",
 		"rumPageloadEventsAdaptiveGroups": "",
@@ -3492,6 +3549,7 @@
 		"workersOverviewDataAdaptiveGroups": "",
 		"workersOverviewRequestsAdaptiveGroups": "",
 		"workersSubrequestsAdaptiveGroups": "",
+		"zarazTrackAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": "",
 		"zeroTrustPrivateNetworkDiscoveryGroups": ""
 	},
@@ -4088,6 +4146,27 @@
 		"requestBodySizeUncached": "Workers fetch request body size in bytes where the request was not cached",
 		"subrequests": "Number of subrequests"
 	},
+	"AccountZarazTrackAdaptiveGroups": {
+		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
+		"count": "Number of processed Zaraz Track requests",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountZarazTrackAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Date when track was called",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"trackName": "Track Name",
+		"urlPath": "The URL from where Track was called"
+	},
+	"AccountZarazTrackAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountZarazTrackAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountZarazTriggersAdaptiveGroups": {
 		"__description": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
 		"count": "Number of processed Zaraz Triggers",
@@ -4491,7 +4570,7 @@
 	},
 	"ZoneDnsAnalyticsAdaptiveGroupsAvg": {
 		"__description": "",
-		"responseTimeUs": "Average response time in microseconds",
+		"processingTimeUs": "Average processing time in microseconds",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneDnsAnalyticsAdaptiveGroupsDimensions": {
@@ -4525,9 +4604,9 @@
 	},
 	"ZoneDnsAnalyticsAdaptiveGroupsQuantiles": {
 		"__description": "",
-		"responseTimeUsP50": "50th percentile response time in microseconds (median)",
-		"responseTimeUsP90": "90th percentile response time in microseconds",
-		"responseTimeUsP99": "99th percentile response time in microseconds"
+		"processingTimeUsP50": "50th percentile processing time in microseconds (median)",
+		"processingTimeUsP90": "90th percentile processing time in microseconds",
+		"processingTimeUsP99": "99th percentile processing time in microseconds"
 	},
 	"ZoneDnsAnalyticsAdaptiveOrderBy": {
 		"__description": ""
@@ -6018,6 +6097,8 @@
 		"queueConsumerMetricsAdaptiveGroups": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
 		"queueDelayedBacklogAdaptiveGroups": "Beta. Queue delayed backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
 		"queueMessageOperationsAdaptiveGroups": "Beta. Queue message operation data with adaptive sampling",
+		"r2IAOperationsAdaptiveGroups": "Beta. R2 infrequent access operations with adaptive sampling",
+		"r2IAStorageAdaptiveGroups": "Beta. R2 infrequent access storage with adaptive sampling",
 		"r2OperationsAdaptiveGroups": "Beta. R2 operations with adaptive sampling",
 		"r2StorageAdaptiveGroups": "Beta. R2 storage with adaptive sampling",
 		"rumPageloadEventsAdaptiveGroups": "Beta. Aggregated RUM pageload event metrics with adaptive sampling",
@@ -6042,6 +6123,7 @@
 		"workersOverviewDataAdaptiveGroups": "Beta. Workers account overview invocation data with adaptive sampling",
 		"workersOverviewRequestsAdaptiveGroups": "Beta. Workers account overview invocation count with adaptive sampling",
 		"workersSubrequestsAdaptiveGroups": "Beta. Workers subrequests with adaptive sampling",
+		"zarazTrackAdaptiveGroups": "Zaraz Track Analytics - counts zaraz.track calls",
 		"zarazTriggersAdaptiveGroups": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
 		"zeroTrustPrivateNetworkDiscoveryGroups": "Beta - Unique origins, applications, and users discovered for Zero Trust private networks",
 		"zones": ""
