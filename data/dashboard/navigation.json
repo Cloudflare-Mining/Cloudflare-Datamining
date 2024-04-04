@@ -830,6 +830,16 @@
 					"navigationType": "global-settings"
 				},
 				{
+					"title": "navigation.common.analytics",
+					"url": "/dns/analytics",
+					"labels": [
+						"new"
+					],
+					"testId": "zone-navigation-link-dns-overview",
+					"navigationType": "global-settings",
+					"hasPermission": null
+				},
+				{
 					"title": "navigation.zone.dns.settings",
 					"url": "/dns/settings",
 					"testId": "zone-navigation-link-dns-settings",
