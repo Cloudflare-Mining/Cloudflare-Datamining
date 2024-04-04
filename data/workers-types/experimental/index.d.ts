@@ -488,7 +488,10 @@ declare interface DurableObjectNamespace<
   ): DurableObjectId;
   idFromName(name: string): DurableObjectId;
   idFromString(id: string): DurableObjectId;
-  get(id: DurableObjectId): DurableObjectStub<T>;
+  get(
+    id: DurableObjectId,
+    options?: DurableObjectNamespaceGetDurableObjectOptions,
+  ): DurableObjectStub<T>;
   getExisting(
     id: DurableObjectId,
     options?: DurableObjectNamespaceGetDurableObjectOptions,
@@ -846,6 +849,10 @@ declare abstract class AbortSignal extends EventTarget {
   get aborted(): boolean;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/reason) */
   get reason(): any;
+  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_event) */
+  get onabort(): any | null;
+  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_event) */
+  set onabort(value: any | null);
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/throwIfAborted) */
   throwIfAborted(): void;
 }
@@ -1997,16 +2004,16 @@ declare interface ReadableStreamGetReaderOptions {
 }
 declare abstract class ReadableStreamBYOBRequest {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/view) */
-  readonly view: Uint8Array | null;
+  get view(): Uint8Array | null;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/respond) */
   respond(bytesWritten: number): void;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/respondWithNewView) */
   respondWithNewView(view: ArrayBuffer | ArrayBufferView): void;
-  readonly atLeast: number | null;
+  get atLeast(): number | null;
 }
 declare abstract class ReadableStreamDefaultController<R = any> {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/desiredSize) */
-  readonly desiredSize: number | null;
+  get desiredSize(): number | null;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/close) */
   close(): void;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/enqueue) */
@@ -2016,9 +2023,9 @@ declare abstract class ReadableStreamDefaultController<R = any> {
 }
 declare abstract class ReadableByteStreamController {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/byobRequest) */
-  readonly byobRequest: ReadableStreamBYOBRequest | null;
+  get byobRequest(): ReadableStreamBYOBRequest | null;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/desiredSize) */
-  readonly desiredSize: number | null;
+  get desiredSize(): number | null;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/close) */
   close(): void;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/enqueue) */
@@ -2028,7 +2035,7 @@ declare abstract class ReadableByteStreamController {
 }
 declare abstract class WritableStreamDefaultController {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/signal) */
-  readonly signal: AbortSignal;
+  get signal(): AbortSignal;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/error) */
   error(reason?: any): void;
 }
@@ -2325,6 +2332,7 @@ declare class URL {
   toString(): string;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static) */
   static canParse(url: string, base?: string): boolean;
+  static parse(url: string, base?: string): URL | null;
 }
 declare class URLSearchParams {
   constructor(
