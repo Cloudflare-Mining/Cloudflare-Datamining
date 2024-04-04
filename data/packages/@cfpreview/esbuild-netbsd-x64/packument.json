@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild-netbsd-x64",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -17,6 +17,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQCATva4oL5NIJ3qrRbpvydBCaUZUDWnYRJILBkuVAtyXgIhAO6DXGg3FKiCLiPsa/kenegNMEMHDLNLPJIKKctzF8LU"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild-netbsd-x64",
+			"version": "0.18.21-2",
+			"dist": {
+				"integrity": "sha512-pyXboZyct0pXlBxr3qfOMxYgVYfTx6Qiz8oR1Fh1z/XufFcdsJrCtDtOKv/TK7coLnrxrPJoekbzWIvXQFLP8w==",
+				"shasum": "1c661bd70d179eed08d151c524d0e4f942a64328",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild-netbsd-x64/-/esbuild-netbsd-x64-0.18.21-2.tgz",
+				"fileCount": 3,
+				"unpackedSize": 9589626,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDlK/Z+loTAbLVnqYSKdCqPids8w5jWh4mWCfa38hJsfwIhAPy0wLbp4yzV10Lv4f9v/uIejWJjidmVrXOHFs5S9XVe"
 					}
 				]
 			},

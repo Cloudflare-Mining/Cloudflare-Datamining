@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild-linux-ia32",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -17,6 +17,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQDsoQo8GoZiQCmROL/rutt65YEe+933oY/5LahQATQMEgIgOdJu3EmbFzi47MO+jcemttBWkyOA023xErzF9AFiXPg="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild-linux-ia32",
+			"version": "0.18.21-2",
+			"dist": {
+				"integrity": "sha512-yGzU5BtWn4JdR6a4OhwHWUx0bEitQh5oGc0L93FB7map8wkZy0ExFDWqbCmhokogw9ySVsTAkVV7w2PpzG4vtQ==",
+				"shasum": "70ed81893f9e54872c32f19bb54e0bede4ecc458",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild-linux-ia32/-/esbuild-linux-ia32-0.18.21-2.tgz",
+				"fileCount": 3,
+				"unpackedSize": 9101948,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDJJfHxHxl9XLWNsA16e820hYwzuUhJbeJzY6oOMd5CaAiEAl2qAA301q1JqhyKsuBqM7if0LMP+jnHCxLSew0BhCsE="
 					}
 				]
 			},

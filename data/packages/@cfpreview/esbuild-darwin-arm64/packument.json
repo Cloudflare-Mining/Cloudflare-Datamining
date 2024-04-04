@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild-darwin-arm64",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -17,6 +17,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQCriYsK49sBD5en7beV++egYpIW+aTlk9bDND/9ucFiJwIhAOtbY8sgWKVvg71przP7eNUhj0CYnPjZeCpfOyxrEeEv"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild-darwin-arm64",
+			"version": "0.18.21-2",
+			"dist": {
+				"integrity": "sha512-nQo02I6+IwCdBsc4yapz6uDBQWQokL+O92l+9umfU1D6PWJaK+yvN62GLktuIbQi7c1U8bFrDkMWMdMFcPqULw==",
+				"shasum": "305cf8cf11a1dade35e537666962153c9e1b39b8",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.18.21-2.tgz",
+				"fileCount": 3,
+				"unpackedSize": 9258946,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHg0DYWz9csZPoeEaFl6s3v/XivVtk1NxXO3HfD0sGTCAiAiz3YpWtokp2SfQ/nRX711hrnaa+mYmf8Zyl1daK3Jjg=="
 					}
 				]
 			},

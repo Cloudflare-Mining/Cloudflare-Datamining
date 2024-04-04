@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -20,6 +20,29 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIGzPcslqyuMAUqasok8YXv3cVq9OAetRtQAvKleRE4DGAiEA5zCZ2oxAp2h3mDzFX6Q4Zwiwe5NuPimka1o7ZaaQxfQ="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild",
+			"version": "0.18.21-2",
+			"bin": {
+				"esbuild": "bin/esbuild"
+			},
+			"dist": {
+				"integrity": "sha512-dbadHEialrVyhZxw92i68MOYk0NLskgb+PMyS4TvflPGZ7fcdRuQih6roHEktpqJywPs5e7hMg8SD0JZpkmQ1w==",
+				"shasum": "57084a3601cfddeeaf60581297d3372a2f388e28",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild/-/esbuild-0.18.21-2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 132269,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAaqcLO/IGacphTHyWwZMMyZCsIupHvR3pZo+zkhekXNAiEAym7MCGmP3s7mW8Y39jlSiNhxUFytPlGNOJc96D3rd8M="
 					}
 				]
 			},

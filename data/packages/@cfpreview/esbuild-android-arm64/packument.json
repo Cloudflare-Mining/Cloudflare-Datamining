@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild-android-arm64",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -17,6 +17,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIANdk9aYXJtuyuWzcneS+UBnT0hsOTTAi1k8Q3F6I9KQAiEAjwJZJ+c4173xciV56ZacvMULGh1r0QoFF/KWRGBmVJs="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild-android-arm64",
+			"version": "0.18.21-2",
+			"dist": {
+				"integrity": "sha512-8ynEKhWeaN3Gtkk68zHi4jR5uK08Y1abVUSqiXZqGTdMUzIssqr4AUtsJQBxRpWdiZ3LnIKjv8DozZ8WhhQ0AA==",
+				"shasum": "16c6aaee77655e669d976b2c4bd5d3ab2d59c65d",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild-android-arm64/-/esbuild-android-arm64-0.18.21-2.tgz",
+				"fileCount": 3,
+				"unpackedSize": 9962295,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIG8ecD9hStdqyHt8Fekz03Lrv7RU/My5Y2QxjJC3UThzAiEAhgwIB7mbBoMTIrb56Fh+taLNqNfQH/TJ93qTWJgVego="
 					}
 				]
 			},

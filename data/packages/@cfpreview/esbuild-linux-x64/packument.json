@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild-linux-x64",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -17,6 +17,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQCifykG+8iy3meWtJ219zCg1DybX08RPzmsOfb7MrQbEwIhAO+RrrwEpBzC/MYCHVsuE2VWnpNIT2djz1wtwFxh4W7H"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild-linux-x64",
+			"version": "0.18.21-2",
+			"dist": {
+				"integrity": "sha512-YDFmrIp/OIbnpbODdORi6ylC0P8xnHU4+1t7tZmSmnv0h6jDZuVoT8v/eagXm8eD8pP0MyKxQAQuWFSq5y5vEQ==",
+				"shasum": "3637e4fee5196ee4b84bbc5dc62bfd7e18e0b08a",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild-linux-x64/-/esbuild-linux-x64-0.18.21-2.tgz",
+				"fileCount": 3,
+				"unpackedSize": 9618042,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHPhQpIfYfwu3ugRQgRtuayDw+3ANI3631Rho0h+Vq8XAiEA/m9Ap4NCmLu9mHJ8CS6oXn3hZ6qw6C/hpWZsU2Dtxpk="
 					}
 				]
 			},

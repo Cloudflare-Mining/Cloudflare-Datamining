@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild-linux-s390x",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -17,6 +17,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQC6LQS4xEyAtFqSPinvpwSAMfQEHVw91tEsPXcZKPy4CQIgD2EqYp4B3SHRQvpw8JBkX5AU4u8OCNNnx1U6/PMJYkM="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild-linux-s390x",
+			"version": "0.18.21-2",
+			"dist": {
+				"integrity": "sha512-HX1U1ICB6L1YzqorgWPV7Sn8nKEIYRKYadNWjh/NP/vkk6MyVGFMsXZlTWq5YpL2LEg9tUoFMFHlkI6CQn7w7w==",
+				"shasum": "6274c25885c4a2d1994d20ec122af5973ad1a9bb",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild-linux-s390x/-/esbuild-linux-s390x-0.18.21-2.tgz",
+				"fileCount": 3,
+				"unpackedSize": 10093216,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHSmVnfpuVn4sQKczLtMvcpmLcUlPAKJZjcgqqIE9FDWAiEA8mrRHMVPmSYjolL2EPBfZMGKuV3XB1XAHHmRitK//rw="
 					}
 				]
 			},

@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild-wasm",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -20,6 +20,29 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIC73CpUMWjbYn/g4oSXTLIOXvftBSsDlXY4jSuOXCvOXAiAI6yhCMNHNLYTH/yKSl2UjKFsLc9OgA2d9Z+OZk+EBiw=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild-wasm",
+			"version": "0.18.21-2",
+			"bin": {
+				"esbuild": "bin/esbuild"
+			},
+			"dist": {
+				"integrity": "sha512-vjYFuD9pX0izoTuHEbX/XMLmW+ti4LQjldhvWqGU7jHZyJJlQc3BOdm/fpxcrr23eRqpcsEg3pvrJFAgCbMurw==",
+				"shasum": "8d9f7d7eb706752532db3eb1374300bc60501a32",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild-wasm/-/esbuild-wasm-0.18.21-2.tgz",
+				"fileCount": 15,
+				"unpackedSize": 11562997,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIESA+RPwo2We1j3EFikKCYXYa2cM/QftM02K4rkQ4Q+uAiBwIBtSEQgqLnLxLMSgafGs06VyE4Zztyx+6pQPxdpyPw=="
 					}
 				]
 			},

@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild-openbsd-x64",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -17,6 +17,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCICD5PA65fh4RY0qNNkwCErUL1tbFPQBw/A/0mfp0HbzIAiEA1J4uZMfGAJnOSC8obue0w+YLLj2H32VdPvSOnKMe8J4="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild-openbsd-x64",
+			"version": "0.18.21-2",
+			"dist": {
+				"integrity": "sha512-Kd4NBjoz3Hie7R8145gq+QyYPv8sKkCwyQOFeM5EVelpXg4ytbGfs/8nmBf35ZDsyY8KXl/PJuiNTqSN9SjagQ==",
+				"shasum": "8b6f325b659ff17a9ca60f4452d3e57becb60b89",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild-openbsd-x64/-/esbuild-openbsd-x64-0.18.21-2.tgz",
+				"fileCount": 3,
+				"unpackedSize": 9622274,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDXJKUUAf7KwcF7olYFsyw9Giv3T4wgYrSB1yG6br98bAIhAObgNjAPKnHuna2fbkUw37sKPkYzcqEGm0wY53GvZHrz"
 					}
 				]
 			},

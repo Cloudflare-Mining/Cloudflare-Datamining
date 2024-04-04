@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild-win32-arm64",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -17,6 +17,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIADUzOoNOQ24gkgrNsyos5igA/qvR+4jWYkB6ITBN7sMAiB2uufJIaTGPO1C9QRjUI4zOMZvcJZQCT+aMvLqWlgBdw=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild-win32-arm64",
+			"version": "0.18.21-2",
+			"dist": {
+				"integrity": "sha512-j7ichbWCz2B/4hSB0kI3cA+bVyc+M73fqmrQ748+d79xP4NCZPOyQKRangLk2mWntTipr/0UVoyOKUgRidksuQ==",
+				"shasum": "dc181b20fc1946bf94871959257eee5b14a5d28c",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild-win32-arm64/-/esbuild-win32-arm64-0.18.21-2.tgz",
+				"fileCount": 3,
+				"unpackedSize": 9092082,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCCNeu5S35R/dHnzb38Sk9eqI9IQ6024q7Bu+ukeEmw0QIgDCleqnK4HoyR3lZG/RVciTUqU+S+ZxIAOizid2e0VsU="
 					}
 				]
 			},

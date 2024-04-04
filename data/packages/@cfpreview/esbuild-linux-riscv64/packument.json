@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild-linux-riscv64",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -17,6 +17,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQDBd3kBaqkRw6ypTtZtrMtE3bTSslalDsH+2KlvUcmLfgIgNopxmEiyWM09ZyPZ4d/ynahUGBb16xuBhfrVtqXvh/I="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild-linux-riscv64",
+			"version": "0.18.21-2",
+			"dist": {
+				"integrity": "sha512-E1S+Bh3SLf6k2m/Kia3LaeCTPVJbhdPLn8OUTap5lAZacGs/6Y6uDWQjgmvrBCNLlu7dy/0SdGvt+WlozHykaA==",
+				"shasum": "daf37d907e136afd537d4474822e81426f22ab07",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild-linux-riscv64/-/esbuild-linux-riscv64-0.18.21-2.tgz",
+				"fileCount": 3,
+				"unpackedSize": 8979088,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC70XLhuDPQGfnSVrr4UCHeAMunltk4LN3kNFtghgHY1wIgKK2GReV+w0dl+oYC44CKVfJB15ACL6wAkgxYZAG14Bw="
 					}
 				]
 			},

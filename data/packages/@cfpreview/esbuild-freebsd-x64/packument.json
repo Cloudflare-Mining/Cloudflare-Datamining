@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/esbuild-freebsd-x64",
 	"dist-tags": {
-		"latest": "0.18.21"
+		"latest": "0.18.21-2"
 	},
 	"versions": {
 		"0.18.21": {
@@ -17,6 +17,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIEZvIOD8AcNpJ++qZNXGuC6WMGu+CGSwOrtgd4zvFpX/AiBkuVMBWKWSGLaMufR6SffWe9J+MWrRnUJMeiO14B6Pnw=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"0.18.21-2": {
+			"name": "@cfpreview/esbuild-freebsd-x64",
+			"version": "0.18.21-2",
+			"dist": {
+				"integrity": "sha512-Yz0lyf9oegeDBzBFqiXDzbLLtuu0o09WHBdwx429T/K3y3z6UgJftfeUfWTorTceLndF2lBxwHoJFE4fPxO15w==",
+				"shasum": "aedcd64d71afec1bb9a5508177407765ef32eb03",
+				"tarball": "https://registry.npmjs.org/@cfpreview/esbuild-freebsd-x64/-/esbuild-freebsd-x64-0.18.21-2.tgz",
+				"fileCount": 3,
+				"unpackedSize": 9613964,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDUc21yKZBkZWp+dvD0p8+KFjE7brSce2JWk+L3eenDSwIgdtrJxFAu/btqyyQ+ZbQMIfBzUAx74h2RSMhoLhCgkCY="
 					}
 				]
 			},
