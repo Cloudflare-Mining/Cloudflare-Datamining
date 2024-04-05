@@ -1703,6 +1703,7 @@ export declare abstract class R2Object {
   readonly httpMetadata?: R2HTTPMetadata;
   readonly customMetadata?: Record<string, string>;
   readonly range?: R2Range;
+  readonly storageClass: string;
   writeHttpMetadata(headers: Headers): void;
 }
 export interface R2ObjectBody extends R2Object {
@@ -1745,10 +1746,12 @@ export interface R2PutOptions {
   sha256?: ArrayBuffer | string;
   sha384?: ArrayBuffer | string;
   sha512?: ArrayBuffer | string;
+  storageClass?: string;
 }
 export interface R2MultipartOptions {
   httpMetadata?: R2HTTPMetadata | Headers;
   customMetadata?: Record<string, string>;
+  storageClass?: string;
 }
 export interface R2Checksums {
   readonly md5?: ArrayBuffer;
@@ -4121,7 +4124,7 @@ export interface Hyperdrive {
   /*
    * The port that must be paired the the host field when connecting.
    */
-  readonly port: string;
+  readonly port: number;
   /*
    * The username to use when authenticating to your database via Hyperdrive.
    * Unlike the host and password, this will be the same every time
