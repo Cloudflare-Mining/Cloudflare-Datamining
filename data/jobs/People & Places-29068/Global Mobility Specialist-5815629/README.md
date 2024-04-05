@@ -5,6 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available locations: Lisbon, Portugal, London, UK or Remote UK</strong></p>
+<p>&nbsp;</p>
 <p><strong>What You Would Do Here:</strong></p>
 <p>The People team at Cloudflare is growing. We want to find the best people to join our team and then help you to do your best work.&nbsp; We are looking for a Global Mobility Specialist reporting to the Senior Global Mobility Manager. In this role, you will support mobility activities globally including coordinating international transfers and immigration compliance and provide advice on policy, relocation packages and immigration. You will be working closely with the People Business Partners and People Operations teams and partnering with key stakeholders across Cloudflare through activities including those listed below:</p>
 <p><strong>Responsibilities:</strong></p>
@@ -14,10 +16,6 @@
 	<li><strong>Partner with People Team: </strong>Partner with People Operations Specialists to coordinate permanent transfers, assignments and temporary remote work arrangements. Coordinate with the People team and cross-functional partners to find solutions, streamline processes and improve the overall employee experience.</li>
 	<li><strong>Global immigration compliance:</strong> Act as the main point of contact for global immigration compliance and advisory, in particular supporting Recruitment teams.</li>
 	<li><strong>Manage and track the movement of team members globally</strong>: including short-term assignees, transfers, contract extensions, repatriations. Review compliance and approve requests for working overseas temporarily.</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<ul>
 	<li><strong>Resource development:</strong> Design and develop resources for internal partners and employees including FAQs and process documents to facilitate smooth transitions and clarify processes.</li>
 	<li><strong>Work closely with external vendors:</strong> collaborate and maximise support from our external partners to optimise the employee experience.</li>
 	<li><strong>Support the Senior Global Mobility Manager</strong> in enhancing the global mobility program, helping to drive the adoption, communication, training and change management of various initiatives within Global Mobility.</li>

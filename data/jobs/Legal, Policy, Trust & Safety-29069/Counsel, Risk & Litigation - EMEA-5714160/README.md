@@ -27,7 +27,7 @@
 	<li>Ability to organize, prioritize, and manage many tasks on complex projects.</li>
 	<li>An ambitious mindset that enables you to successfully work independently and autonomously with limited guidance, but also to use good judgment and call out issues when needed.</li>
 </ul>
-<h4><br><br><br><br></h4>
+<h4>Available Locations: <span class="collapsed-field-text">Lisbon, Portugal, London, UK</span>&nbsp;<br><br><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

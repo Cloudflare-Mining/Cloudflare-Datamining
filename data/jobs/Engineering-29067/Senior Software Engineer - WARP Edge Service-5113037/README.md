@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available locations: Portugal, UK or US</strong></p>
 <p><strong>What you'll do</strong></p>
 <p>We’re looking for a Senior Software Engineer to join our WARP Edge service team. You will be working on our WARP service, which securely terminates tunneled traffic from millions of devices running <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/">warp client</a>, and uses Cloudflare’s global network to securely route the traffic.&nbsp;</p>
 <p>In your role, you will predominantly be using <strong>Rust </strong>to implement high-performance networking code that runs on linux. You’ll be expected to <strong>improve the code quality</strong> and to build solid, <strong>testable</strong>, and <strong>well-documented</strong> foundations. You will be most successful in this role if you have a good understanding of <strong>operating system concepts</strong> (virtual memory, multi-threading, process lifecycle, etc.) and <strong>networking protocols</strong> (TCP/IP, UDP, DNS, QUIC, H/3, proxying, etc.).&nbsp;</p>

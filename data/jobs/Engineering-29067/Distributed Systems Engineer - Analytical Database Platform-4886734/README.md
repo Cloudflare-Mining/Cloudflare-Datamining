@@ -18,6 +18,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with other teams across Cloudflare to understand their data needs and build solutions that empower them to make data-driven decisions.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Participate in the development of the next generation of the database platform engine, including researching and evaluating new technologies and approaches that can improve the database's performance and scalability.</span></li>
 </ul>
+<p><span style="font-weight: 400;">Available Locations: <span class="collapsed-field-text">Germany, Netherlands, Portugal, UK, US</span>&nbsp;&nbsp;</span></p>
 <p><span style="font-weight: 400;">Key qualifications:</span></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of experience working in software development covering distributed systems, and databases.</span></li>
