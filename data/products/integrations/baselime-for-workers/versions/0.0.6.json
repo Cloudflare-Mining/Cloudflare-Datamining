@@ -1,0 +1,79 @@
+{
+	"alias": "baselime-for-workers",
+	"assets": [
+		{
+			"type": "worker",
+			"name": "tail-worker",
+			"build": "./src/tail-worker"
+		}
+	],
+	"category": "workers-observability",
+	"description": "Observability for developers who ship! Leverage logs, metrics and distributed tracing to resolve issues before they become problems.",
+	"docs_url": "https://developers.cloudflare.com/workers/observability/baselime-integration",
+	"flags": [
+		"paid_only"
+	],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/1cb9dc18-4e60-43c7-019c-d67cf01ccc00/public",
+	"install_target": "worker",
+	"name": "Baselime",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Workers Scripts Write",
+					"reason": "Needed for creating the Baselime Tail Worker to attach to your Worker."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Connect to Baselime",
+			"type": "oauth",
+			"provider": "baselime",
+			"client_id": "7rculr028lfj6o4ojvj2cd95fm",
+			"authorize_url": "https://console.baselime.io/integration/7rculr028lfj6o4ojvj2cd95fm",
+			"grant_type": "authorization_code",
+			"submit_action": "submit-baselime-oauth"
+		},
+		{
+			"title": "Preferences",
+			"type": "form",
+			"components": [
+				{
+					"type": "text_input",
+					"name": "tailWorkerScriptName",
+					"label": "Tail Worker name",
+					"description": "We'll use this name to create a Tail Worker that consumes the events produced by your Worker.",
+					"required": true,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9\\-_]{0,255}$"
+				},
+				{
+					"type": "select_input",
+					"name": "baselimeEnvironmentUUID",
+					"label": "Baselime environment",
+					"description": "Select a Baselime environment to send logs to.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-baselime-environments"
+					}
+				},
+				{
+					"type": "text_input",
+					"name": "baselimeDataset",
+					"label": "Baselime dataset name",
+					"description": "Set the name of the dataset in Baselime.",
+					"required": false,
+					"default_value": "cloudflare-worker-logs"
+				}
+			],
+			"submit_action": "submit-preferences"
+		}
+	],
+	"templates": [],
+	"uninstall_action": "uninstall",
+	"version": "0.0.6"
+}
