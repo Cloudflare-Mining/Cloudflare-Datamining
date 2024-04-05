@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/workerd-darwin-arm64",
 	"dist-tags": {
-		"latest": "1.20240404.0",
+		"latest": "1.20240405.0",
 		"beta": "0.20231030.1"
 	},
 	"versions": {
@@ -1723,6 +1723,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIHKni9bM4SPjKvTmarTZSMZxIROPgxnJrdMgWmVE5x4RAiEAyYces3hH/ojZrjI37l+Aq9OIUTk8CotcObIQvI/BVF4="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20240405.0": {
+			"name": "@cloudflare/workerd-darwin-arm64",
+			"version": "1.20240405.0",
+			"dist": {
+				"integrity": "sha512-x3A3Ym+J2DH1uYnw0aedeKOTnUebEo312+Aladv7bFri97pjRJcqVbYhMtOHLkHjwYn7bpKSY2eL5iM+0XT29A==",
+				"shasum": "5fba9fbfdb6906f5c216ab1e9451a3360daa90fd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20240405.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 110152980,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBsaWiiZ6ICBZq4EYLnLDn9LgOLzg5jgWUnZqw0IsheMAiEA8JERAnFxYZnyHpAnZnX1Qz9bjURE9Ty6HPegdiK9zbw="
 					}
 				]
 			},
