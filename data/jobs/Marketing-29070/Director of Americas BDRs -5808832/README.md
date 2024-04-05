@@ -5,38 +5,78 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><span style="color: rgb(53, 152, 219);"><strong>Location: Austin, Texas </strong><em>(Relocation Assistance Available)</em></span></h3>
-<h3><strong>About the Team</strong></h3>
+<p><span style="color: rgb(230, 126, 35);"><strong>Location: Austin, Texas </strong><em>(Relocation Assistance Available)</em></span></p>
+<p><strong>About the Team</strong></p>
 <p>The BDR program has two goals—generate qualified pipeline opportunities and develop business development representatives’ careers. We care deeply about both goals.</p>
 <p>We have worked purposefully over the last 2 years to increase the percentage of our new business revenue that comes from the outbound BDR team by partnering closely with our internal customers, Account Executives, to generate high quality pipeline opportunities. During that time we have also helped many BDRs grow into Account Executive and Customer Success roles. As we scale, BDRs are also starting to find homes in other roles across the Sales Engineering, Sales Operations, Marketing, and Partner teams.</p>
 <p>While accomplishing these two goals we strive to be a team that always “puts our Cloudflare hat on” and focuses on the best interests of the company.</p>
-<h3><strong>What you’ll do</strong></h3>
+<p><strong>What you’ll do</strong></p>
 <p>We’re looking for someone who has extensive sales and management experience who can help to scale this team to world class and at the same time preserve our collaborative culture. Over the next year our team will scale and that will bring with it new challenges including helping to develop a growing team of extraordinary managers.</p>
-<h3><strong>Responsibilities</strong></h3>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Lead a 120+ BDR organization</li>
-	<li>Execute on vision to make the BDR team a company-wide incubator for talent</li>
-	<li>Recruit, interview, and hire excellent BDRs at scale</li>
-	<li>Drive execution through rigorous metrics and forecast management</li>
-	<li>Maintain and improve relationships with sales and marketing leadership partners</li>
-	<li>Work closely with marketing, sales, and sales operations to ensure alignment on your team’s strategy and execution</li>
-	<li>Drive increased BDR productivity through AI based tools and streamlined processes.</li>
+	<li>
+		<p>Lead a 120+ BDR organization</p>
+	</li>
+	<li>
+		<p>Execute on vision to make the BDR team a company-wide incubator for talent</p>
+	</li>
+	<li>
+		<p>Recruit, interview, and hire excellent BDRs at scale</p>
+	</li>
+	<li>
+		<p>Drive execution through rigorous metrics and forecast management</p>
+	</li>
+	<li>
+		<p>Maintain and improve relationships with sales and marketing leadership partners</p>
+	</li>
+	<li>
+		<p>Work closely with marketing, sales, and sales operations to ensure alignment on your team’s strategy and execution</p>
+	</li>
+	<li>
+		<p>Drive increased BDR productivity through AI based tools and streamlined processes.</p>
+	</li>
 </ul>
-<h3><strong>Requirements</strong></h3>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>8+ years leading a sales team of BDRs or Inside Sales Reps and 4+ years scaling a team of 100+ reps</li>
-	<li>5+ years working in a rapidly growing technology company</li>
-	<li>Closing experience and track record of exceeding quota</li>
-	<li>Experience building career development programs for high performing individual contributors</li>
-	<li>Experience with funnel management across multiple channels (inbound, upsell, outbound, marketing)</li>
-	<li>Salesforce and BDR tool stack knowledge, including generative AI</li>
-	<li>Excellent project management skills</li>
-	<li>Bachelor’s degree required</li>
-	<li>Self-motivated; entrepreneurial spirit</li>
-	<li>Comfortable working in a fast paced dynamic environment</li>
-	<li>Strong interpersonal communication skills (verbal &amp; written) with plenty of empathy</li>
-	<li>Aptitude to learn technical concepts/terms</li>
-	<li>Demonstrate excellent communication skills</li>
+	<li>
+		<p>8+ years leading a sales team of BDRs or Inside Sales Reps and 4+ years scaling a team of 100+ reps</p>
+	</li>
+	<li>
+		<p>5+ years working in a rapidly growing technology company</p>
+	</li>
+	<li>
+		<p>Closing experience and track record of exceeding quota</p>
+	</li>
+	<li>
+		<p>Experience building career development programs for high performing individual contributors</p>
+	</li>
+	<li>
+		<p>Experience with funnel management across multiple channels (inbound, upsell, outbound, marketing)</p>
+	</li>
+	<li>
+		<p>Salesforce and BDR tool stack knowledge, including generative AI</p>
+	</li>
+	<li>
+		<p>Excellent project management skills</p>
+	</li>
+	<li>
+		<p>Bachelor’s degree required</p>
+	</li>
+	<li>
+		<p>Self-motivated; entrepreneurial spirit</p>
+	</li>
+	<li>
+		<p>Comfortable working in a fast paced dynamic environment</p>
+	</li>
+	<li>
+		<p>Strong interpersonal communication skills (verbal &amp; written) with plenty of empathy</p>
+	</li>
+	<li>
+		<p>Aptitude to learn technical concepts/terms</p>
+	</li>
+	<li>
+		<p>Demonstrate excellent communication skills</p>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

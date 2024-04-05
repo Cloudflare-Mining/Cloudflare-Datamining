@@ -5,14 +5,10 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Role Description</strong></p>
-<p><strong>Location</strong>: Remote US</p>
+<p><strong>Location: Remote US<br><br>Role Description</strong></p>
 <p>Cloudflare is seeking a visionary Senior Director of Global Marketing Campaigns &amp; ABM to own the strategy, planning, and optimization of our Global Integrated campaigns. This role is critical in driving Cloudflare's market penetration and recognition as a cybersecurity and performance leader.&nbsp;</p>
-<p>&nbsp;</p>
 <p>You will work cross functionally with Product Marketing, Field Marketing, Partner Marketing, Brand and Events, Sales and Customer Success to drive measurable ROI, pipeline acceleration, and meaningful engagement with customers.&nbsp; On a day-to-day basis, this senior leadership role will be responsible for leading Global Integrated Campaigns and Global ABM Programs, establishing the roadmap for creating a world class campaigns function.&nbsp;&nbsp;</p>
-<p>&nbsp;</p>
 <p><strong>About the Role:</strong></p>
-<p>&nbsp;</p>
 <ul>
 	<li><strong>Global Integrated Campaign Strategy</strong>: Lead the development of global marketing campaign strategies, ensuring alignment with business objectives, cohesive messaging, and adaptation to industry and competitive trends. Understand buyer personas to define solutions across buying journeys and integrate messages across channels.&nbsp;</li>
 	<li><strong>Campaign Execution and Management</strong>: Manage integrated marketing campaigns with digital and field owners, and establish world-class campaign operations, including 1:1/1:few/1:many campaign orchestration. Enable field, partner, and ABM marketers with standardized campaign assets, prioritizing global collaboration to align strategies with regional counterparts.</li>
@@ -20,7 +16,6 @@
 	<li><strong>Team Leadership and Performance</strong>: Mentor and manage a high-performance team of marketing professionals, fostering an environment of creativity, innovation, and growth. Create aspirational plans suitable for a high-growth SaaS environment, driving excellence in global campaign development.</li>
 	<li><strong>Driving Results and Optimization</strong>: Utilize data analytics to assess campaign performance with a test-and-learn methodology to determine mix, content, format and delivery.&nbsp; Optimize across channels and adjust strategies to improve engagement, conversion rates, and ROI.&nbsp; Communicate performance and opportunities across a wide set of stakeholders to improve organization-wide.&nbsp;</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>About You:</strong></p>
 <ul>
 	<li><strong>Seasoned Functional Leader</strong>: Visionary people leader who will constantly grow the capability and maturity of Campaigns and ABM functions to meet the needs of a fast-growing Enterprise SaaS business.&nbsp;</li>
@@ -31,7 +26,8 @@
 </ul>
 <p><strong>Requirements:</strong></p>
 <ul>
-	<li>Over 15 years of marketing experience in B2B Enterprise SaaS, with at least 10 years in leadership roles focused on global campaign management.&nbsp; Experience in cybersecurity is strongly preferred, with clear attainment against targets for revenue and pipeline generation.&nbsp;&nbsp;</li>
+	<li>Over 15 years of marketing experience in B2B Enterprise SaaS, with at least 10 years in leadership roles focused on global campaign management.&nbsp;</li>
+	<li>Experience in cybersecurity is strongly preferred, with clear attainment against targets for revenue and pipeline generation.&nbsp;&nbsp;</li>
 	<li>Deep understanding of content strategy and its application to demand generation and ABM motions across segments (especially Enterprise).</li>
 	<li>Proven track record of developing and executing successful marketing strategies and campaigns on a global scale and across languages.</li>
 	<li>Bachelor's or master's degree in Marketing, Business, Communications, or related field.</li>

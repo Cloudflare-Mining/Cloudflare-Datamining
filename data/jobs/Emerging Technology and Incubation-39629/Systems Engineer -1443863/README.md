@@ -5,9 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
+<p><strong>Available Locations: Austin, TX<br><br>About the Department</strong></p>
 <p>Cloudflare’s Engineering Team builds and runs the software that handles<span style="font-weight: 400;"> trillions of requests per month</span> We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 150+ cities worldwide.</p>
-<p><strong>Available Locations:</strong> Austin, TX</p>
 <p><strong>What you'll do</strong></p>
 <p>Come be part of the founding team and work with a group of passionate, talented engineers that will be creating innovative products. The amount of requests being processed is massive and we utilize all the latest technology to ensure its scalability and availability.&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>

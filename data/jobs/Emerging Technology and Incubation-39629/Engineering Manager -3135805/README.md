@@ -5,9 +5,9 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<h4><strong>Available Locations: Remote US</strong></h4>
 <h4><strong>About the Department</strong></h4>
 <p><span style="font-weight: 400;">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</span></p>
-<p><span style="font-weight: 400;"><strong>Available Locations</strong>: Remote US</span></p>
 <h4>What you'll do</h4>
 <p>We are looking for an Engineering Manager to join Cloudflare, in charge of a new project. You will lead a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites. You will play an active part in shaping the product and team that will build core infrastructure. You will make sure our company hits our ambitious engineering goals. &nbsp;You will change the way people build applications.</p>
 <p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
