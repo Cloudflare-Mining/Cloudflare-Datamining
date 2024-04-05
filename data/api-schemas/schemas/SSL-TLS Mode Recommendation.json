@@ -151,7 +151,7 @@
 				},
 				"description": "SSL/TLS Recommendation response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -376,17 +376,18 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "SSL/TLS Recommendation",
 		"tags": [
 			"SSL/TLS Mode Recommendation"
 		],
+		"x-cfOwnership": "rtg",
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"#ssl:read"

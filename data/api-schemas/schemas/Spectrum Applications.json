@@ -158,7 +158,7 @@
 				},
 				"description": "Delete Spectrum application response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -372,17 +372,18 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete Spectrum application",
 		"tags": [
 			"Spectrum Applications"
-		]
+		],
+		"x-cfOwnership": "spectrum"
 	},
 	"GET /zones/{zone}/spectrum/apps": {
 		"description": "Retrieves a list of currently existing Spectrum applications inside a zone.",
@@ -589,7 +590,7 @@
 				},
 				"description": "List Spectrum applications response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -815,17 +816,18 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Spectrum applications",
 		"tags": [
 			"Spectrum Applications"
-		]
+		],
+		"x-cfOwnership": "spectrum"
 	},
 	"GET /zones/{zone}/spectrum/apps/{app_id}": {
 		"description": "Gets the application configuration of a specific application inside a zone.",
@@ -971,7 +973,7 @@
 				},
 				"description": "Get Spectrum application configuration response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1176,17 +1178,18 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get Spectrum application configuration",
 		"tags": [
 			"Spectrum Applications"
-		]
+		],
+		"x-cfOwnership": "spectrum"
 	},
 	"POST /zones/{zone}/spectrum/apps": {
 		"description": "Creates a new Spectrum application from a configuration using a name for the origin.",
@@ -1699,7 +1702,7 @@
 				},
 				"description": "Create Spectrum application using a name for the origin response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2095,17 +2098,18 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Create Spectrum application using a name for the origin",
 		"tags": [
 			"Spectrum Applications"
-		]
+		],
+		"x-cfOwnership": "spectrum"
 	},
 	"PUT /zones/{zone}/spectrum/apps/{app_id}": {
 		"description": "Updates a previously existing application's configuration that uses a name for the origin.",
@@ -2630,7 +2634,7 @@
 				},
 				"description": "Update Spectrum application configuration using a name for the origin response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3026,16 +3030,17 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Update Spectrum application configuration using a name for the origin",
 		"tags": [
 			"Spectrum Applications"
-		]
+		],
+		"x-cfOwnership": "spectrum"
 	}
 }
