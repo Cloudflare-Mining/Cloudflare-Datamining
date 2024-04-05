@@ -1,0 +1,96 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/organization-for-transformative-works/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Organization for Transformative Works",
+				"contentfulId": "6tUdfElh211fgsMbRj45Zp",
+				"nameUrlSlug": "organization-for-transformative-works",
+				"metaTags": {
+					"metaTitle": "OTW | Case Study | Project Galileo",
+					"metaDescription": "Find out how the website Archive of Our Own (AO3) got back online after being hit by multiple distributed denial-of-service (DDoS) attacks. ",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					}
+				},
+				"orderDate": "2024-03-28",
+				"homepageUrl": "https://www.transformativeworks.org/",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "Find out how the website Archive of Our Own (AO3) got back online after being hit by multiple distributed denial-of-service (DDoS) attacks. ",
+				"longDescription": "## \"Our projects are all online — if they are down, then we are not achieving our mission.\"\n\nIn July 2023, the website Archive of Our Own (AO3) was hit by multiple distributed denial-of-service ([DDoS](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/)) attacks. DDoS attacks function by overwhelming a site with a flood of Internet traffic and making it unusable for legitimate visitors.\n\nThe site, founded in 2007 by the Organization for Transformative Works (OTW) as a home for fanfiction and related creative endeavors, was offline for 28 hours in total.\n\nThe OTW's Systems Committee chair notes that the [layer 7](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) DDoS attack started small, via the abuse of [endpoints](https://www.cloudflare.com/learning/security/glossary/what-is-endpoint/). His team of volunteers used the tools they had available to fight back, but eventually their servers were processing as many as 1.5 million requests per second. At some points, the application servers were generating approximately 6 Gbps of outbound traffic, and the organization's data center reported receiving as much as 1.2 Tbps of layer 3 traffic.\n\nThe hacker group [Anonymous Sudan](https://www.cloudflare.com/learning/ddos/glossary/anonymous-sudan/) claimed (though without proof) that they had launched the attack, and they also made a ransom demand. \n\nTo fend off attacks and resume operations, the OTW joined [Project Galileo](https://www.cloudflare.com/galileo/), which provides free Business-level services to vulnerable groups working in the arts, human rights, civil society, journalism, and democracy.\n\n### The importance of uptime\n\nWithin the OTW, the Systems Committee handles efforts related to servers, networking equipment, [reverse proxies](https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/), [load balancing](https://www.cloudflare.com/learning/performance/what-is-load-balancing/), and database clusters. This group, which is led by the OTW's systems chair, follows industry trends to stay ahead of vulnerabilities and patch as appropriate.\n\nThe systems chair says that while the volunteers are technologically savvy, \"As a solely volunteer-driven organization, we do not have the same resources as some for-profit organizations. We do not have 100-gigabit routing equipment, big WAF appliances, multiple points of presence, or other techniques to help with large-scale attacks.\"\n\nAnd with billions of pageviews a month, there is additional pressure to ensure reliable access to AO3's creative works. \"Our projects are all online — if they are down, then we are not achieving our mission,\" he says. The OTW's volunteer teams also rely on tools that run through the server infrastructure. \n\nHe summarizes, \"It is imperative that we have measures to protect our servers and applications from attacks, not only to protect our data but also so we can continue to serve the fandom community.\"\n\n### Building up a defense\n\nWithin three hours of applying to Project Galileo, the OTW was accepted into the project, configured their nameservers to point to Cloudflare, and successfully got the AO3 site back online. According to the systems chair, \"The impact was immediate.\" \n\nHe and his team quickly tuned their infrastructure and updated their [Web Application Firewall](https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/) and [caching](https://www.cloudflare.com/learning/cdn/what-is-caching/) settings. He reports that within the first 10 hours or so of the OTW's upgraded service, Cloudflare mitigated over 7 billion abusive requests. \n\nAttackers were not done trying to take down the site, however. Not long after bolstering their defenses, the organization was hit by more sizable attacks.\n\nThe systems chair notes, \"The most impressive moment for us was nearly a month later, when we received the largest attack we had seen, briefly reaching a peak of 65 million requests per second. There is no way we would have been able to protect ourselves against that kind of traffic alone.\"\n\nIn addition to avoiding future devastating DDoS attacks, the Systems Committee hopes to keep third parties from [scraping](https://www.cloudflare.com/learning/bots/what-is-data-scraping/) the website, and they have already implemented Bot Management to prevent malicious bots, while allowing good bots for research and other purposes. As the systems chair explains, \"Our users' works are quite popular and there is no shortage of those trying to monetize them in various ways. Cloudflare Bot Management enables us to choose which categories of bots to block or allow.\"\n\n### Preserving free speech online \n\nPart of what differentiates AO3 from other online archives is that it is run by a nonprofit organization with a board elected by fans, a structure intended to give the site long-term stability. The Archive, which contains millions of works across thousands of fandoms, was built completely by fans, many of whom learned skills like coding and design from their work on the open-source project. The site does not run ads or charge users to post or view fanworks, and instead relies on donations.\n\nOne of the OTW's other initiatives is the Legal Advocacy project, which protects and defends fanworks from commercial exploitation and legal challenges, including by filing amicus briefs and submitting comments to legislative bodies in the US and worldwide. In 2023, the group's legal committee publicly opposed multiple bills proposed in the US Congress and highlighted potential consequences for the Internet.\n\n### The OTW by the numbers:\n\n(Data as of March 2024)\n\n- Almost 3 billion pageviews a month\n- 12+ million published fanworks\n- 67,000+ Fanlore articles\n- 40+ volumes of Transformative Works & Cultures\n- Volunteers from 55 different countries \n- 46 language teams\n- 800+ volunteers\n- 9,200+ eligible voting members\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": null,
+				"relatedCaseStudyLinks": [
+					{
+						"text": "Muzeon",
+						"url": "/case-studies/muzeon"
+					},
+					{
+						"text": "Dream Girl Foundation",
+						"url": "/case-studies/dream-girl-foundation"
+					},
+					{
+						"text": "HERA Digital Health",
+						"url": "/case-studies/hera-digital-health"
+					},
+					{
+						"text": "Polish Scouting and Guiding Association (ZHP)",
+						"url": "/case-studies/polish-scouting-and-guiding-association-zhp"
+					},
+					{
+						"text": "Sheltersuit",
+						"url": "/case-studies/sheltersuit"
+					}
+				],
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [],
+				"employeeHeadshot": null,
+				"employeeQuoteName": null,
+				"employeeQuoteText": null,
+				"employeeQuoteJobTitle": null,
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XZ3qqYZgyjAQuGf99j9HT/15886191b83e9ffe70f80ddace40ed19/Otw_logo.svg"
+					},
+					"description": ""
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "6tUdfElh211fgsMbRj45Zp",
+			"pathname": "/case-studies/organization-for-transformative-works/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
