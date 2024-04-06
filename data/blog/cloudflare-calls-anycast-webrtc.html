@@ -69,8 +69,8 @@
 	<p>Separately from the SFU, Calls also offers a TURN service. TURN relays act as relay points for traffic between WebRTC clients like the browser and SFUs, particularly in scenarios where <a href="https://webrtcforthecurious.com/docs/03-connecting/#turn">direct communication is obstructed</a> by NATs or firewalls. TURN maintains an allocation of public IP addresses and ports for each session, ensuring connectivity even in restrictive network environments.</p>
 	<p>Cloudflare Calls’ TURN service supports a few ports to help with misbehaving middleboxes and firewalls:</p>
 	<ul>
-		<li>TURN-over-UDP over port 3748 (standard), and also port 53</li>
-		<li>TURN-over-TCP over ports 3748 and 80</li>
+		<li>TURN-over-UDP over port 3478 (standard), and also port 53</li>
+		<li>TURN-over-TCP over ports 3478 and 80</li>
 		<li>TURN-over-TLS over ports 5349 and 443</li>
 	</ul>
 	<p>TURN works the same way as Calls, available over anycast and always connecting to the closest datacenter.</p>
