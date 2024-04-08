@@ -5,35 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: US Remote, Remote Mexico</h4>
-<h4>About the department</h4>
-<p>The Corporate Finance team is responsible for enterprise level planning, budgeting, forecasting, analysis, and capital allocation.&nbsp; In this highly visible role you’ll use your strong analytical, critical reasoning, communication, and influencing skills to help ensure Cloudflare meets its overall strategic, operational, and financial goals.&nbsp; The ideal candidate is passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth.</p>
-<h4>What you'll do</h4>
+<p><strong>Available Locations: </strong>Lisbon or Remote Portugal</p>
+<p><strong>About the team</strong></p>
+<p>Cloudflare’s mission is to help build a better internet and the Trust &amp; Safety Engineering (TSENG) team lives at the core of that effort. This team collaborates with Cloudflare’s Trust &amp; Safety and Legal teams to develop services and tooling to efficiently address abuse, enable deeper coordination with our external industry anti-abuse partners, and ensure that teams in the company can respond to the quickly changing legal landscape of the internet with scalable tools and services.&nbsp;</p>
+<p><strong>About the Role</strong></p>
+<p>The Trust &amp; Safety Data Analyst will be a member of the Trust &amp; Safety Engineering team, working alongside the engineers who build and maintain our internal abuse response tooling, but will also serve as an embed resource in the Trust &amp; Safety team. This data analyst will work cross-functionally to deeply understand operational processes on the Trust &amp; Safety team, changes and trends in abuse data over time, and regulatory requirements for reporting.&nbsp;</p>
+<p>This role will be based out of our Lisbon office.</p>
+<p><strong>What you'll do</strong></p>
+<p>You will be responsible for development and maintenance of critical reports and interactive dashboards related to abuse trends and volume as well as T&amp;S operational metrics and SLA tracking. Communication skills are critical as you will interface directly with stakeholders to build shared understanding of insights and opportunities surfaced from your analysis. As an expert on T&amp;S data, you can expect to perform ad hoc analysis and present findings to a range of audiences from executives to peers. Alongside your work to drive visibility and insights internally, you will also contribute to external communication in supporting development of Cloudflare’s <a href="https://www.cloudflare.com/en-gb/transparency/">Transparency Report</a>.&nbsp;</p>
+<p><strong>Responsibilities include</strong></p>
 <ul>
-	<li>Support the development of our strategic asset allocation framework. Leverage your deep insights into revenue and cost drivers across the business to form actionable recommendations, including where to slow down or or accelerate, bearing in mind short and long-term investment horizons</li>
-	<li>Drive the Corporate forecasting and budgeting processes, including Annual Planning as well as monthly and quarterly business reviews</li>
-	<li>Work cross functionally to build financial forecasts across the P&amp;L, Balance Sheet and Cash Flow including tax, stock comp, share count and EPS</li>
-	<li>Develop and maintain our forecasting models. Build partnerships with functional managers to understand business drivers, trends, opportunities and risks</li>
-	<li>Partner with the accounting team to ensure timely and accurate financial closes and provide input on management and external reporting needs</li>
-	<li>Support Investor Relations with inputs for Investor Models and related Q&amp;A. Contribute to earnings releases, M&amp;A activities and other corporate initiatives&nbsp;</li>
-	<li>Prepare financial updates for the Executive Team and Board of Directors</li>
-	<li>Drive efficiency through finance processes by automating, simplifying, or eliminating routine work</li>
-	<li>Special projects, ad hoc analyses and strategic deal support</li>
-	<li>This is an individual contributor role reporting to the Head of Corporate Finance</li>
+	<li>Develop and maintain a suite of interactive/exploratory dashboards for T&amp;S leadership as well as executive-level reporting.&nbsp;</li>
+	<li>Conduct ad hoc analysis of operational and product data to support decision-making, identify areas for improvement, and assess the effectiveness of Trust &amp; Safety activities.</li>
+	<li>Work closely with Trust &amp; Safety team members, product managers, engineers, and other stakeholders to understand business problems and requirements.&nbsp;</li>
+	<li>Document data analysis methodologies, dashboard specifications, and best practices to ensure compliance, transparency, reproducibility, and knowledge sharing.</li>
+	<li>Collaborate with engineers to develop and optimize processes for data collection, schema design, analysis, and reporting.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Desirable skills and experience</strong></p>
 <ul>
-	<li>8+ years of progressive experience in Finance or Investment Banking with prior experience in a corporate FP&amp;A function. High growth, public company SaaS experience preferred</li>
-	<li>Finance minded with high attention to detail and a strong operational focus to drive process and execution in a scalable and repeatable way</li>
-	<li>Intellectually curious with problem solving orientation. Strong analytical capabilities and business acumen with ability to apply rigorous logic and sound methods to solve multi-faceted problems. Not satisfied with easy or convenient answers</li>
-	<li>Experience building trust and aligning cross-functional stakeholders.&nbsp;</li>
-	<li>Strong verbal and written communication skills with proficiency in simplifying and distilling complex business information into consumable and actionable takeaways&nbsp;</li>
-	<li>Willingness to play “up and down the stack” diving into the details as well as managing Executive level communications</li>
-	<li>Expert at financial modeling with strong working knowledge of US GAAP.&nbsp; Advanced skills in both MS Excel and Google Sheets required</li>
-	<li>High proficiency with financial systems. Anaplan, Netsuite, RevPro, Salesforce and Tableau experience is a plus</li>
-	<li>BA/BS in Finance, Accounting, Economics or quantitative field</li>
+	<li>At least 2 years experience as a data analyst or business analyst.</li>
+	<li>Proven experience in data analysis and dashboard development with proficiency in data visualization tools such as Tableau, Power BI, or LookerStudio.</li>
+	<li>Strong experience working with relational databases, specifically PostgreSQL and BigQuery</li>
+	<li>Detail-oriented with a commitment to accuracy, data integrity, and transparent assumptions</li>
+	<li>Experience with at least one programming language like Python or R</li>
+	<li>Excellent communication and collaboration skills, with the ability to work effectively in a cross-functional team environment.</li>
+	<li>Curious self-learner who is able to ask as many questions as you answer</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Bonus</strong></p>
+<p>(Relevant but not required - we love to learn on the job!)</p>
+<ul>
+	<li>Strong knowledge of networking and "how the Internet works" (DNS, HTTP, TCP/IP, TLS)</li>
+	<li>Experience working in the Trust &amp; Safety or legal domain space</li>
+	<li>Experience with network analysis or graph databases</li>
+	<li>Experience in database management or schema design</li>
+</ul>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

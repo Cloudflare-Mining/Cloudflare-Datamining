@@ -6,9 +6,7 @@
 	</div>
 </div>
 <p><strong>Available Locations:&nbsp;</strong>US Remote</p>
-<p></p>
 <h4>About the role</h4>
-<p></p>
 <p>Cloudflare’s Director, Accounting Operations is responsible for driving accounting and finance system implementations, process transformation, continuous improvement, project management, and business analysis in the accounting and finance function. This role will be responsible for leading, managing, and supporting large, complex finance transformation initiatives, including large system implementations, that are highly visible and critical to the business. The Director, Accounting Operations will provide strategic thought leadership, drive execution and lead collaborative teaming across different groups. Role will function as the internal point of contact for key business functions that participate in finance transformation initiatives.</p>
 <p>The key objective of this position is to build structure, governance and process around complex finance transformation initiatives to ensure the successful execution and implementation, as well as implementing continuous improvement initiatives to ensure our systems, processes and teams scale along with our business.</p>
 <h4>What you'll do</h4>

@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, San Francisco, Utah</strong></p>
+<p><strong>Available Locations: Austin or San Francisco</strong></p>
 <p><strong>What You’ll Do:</strong></p>
 <p>Cloudflare is looking for a bright, proactive and detail-oriented Executive Assistant to support our Chief Strategy Officer.</p>
 <p>This role requires superior attention to detail, great organizational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude.The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves on being a career EA.&nbsp;</p>
@@ -25,7 +25,7 @@
 	<li>Incredibly organized and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
 	<li>Personable with a can do attitude that sees no task or project to be too small or too big</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
@@ -60,7 +60,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

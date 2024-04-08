@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: US Remote, Remote Mexico</h4>
+<h4>Available Locations: US Remote, Remote Mexico (Must be in Central or Pacific time zones)</h4>
 <h4>About the department</h4>
 <p>The Corporate Finance team is responsible for enterprise level planning, budgeting, forecasting, analysis, and capital allocation.&nbsp; In this highly visible role you’ll use your strong analytical, critical reasoning, communication, and influencing skills to help ensure Cloudflare meets its overall strategic, operational, and financial goals.&nbsp; The ideal candidate is passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth.</p>
 <h4>What you'll do</h4>
@@ -33,7 +33,7 @@
 	<li>High proficiency with financial systems. Anaplan, Netsuite, RevPro, Salesforce and Tableau experience is a plus</li>
 	<li>BA/BS in Finance, Accounting, Economics or quantitative field</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
@@ -69,7 +69,7 @@
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <p>&nbsp;</p>
-<p></p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
