@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: I => (0, n.z1)(E.Mr)(I) && (0, Q.z7)(I) && !!(0, Q.z$)(I).length
+		hasPermission: I => (0, n.z1)(E.Mr)(I) && (0, F.z7)(I) && !!(0, F.z$)(I).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -176,7 +176,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: Y.T
+		hasPermission: K.T
 	}, {
 		title: "navigation.account.group_title.application_services",
 		url: "/",
@@ -397,7 +397,7 @@ const navigation = {
 		url: "/workers-for-platforms",
 		iconType: "workers-for-platforms",
 		testId: "workers-for-platforms",
-		hasPermission: I => !!(0, n.z1)("workers-for-platforms")(I) && (0, a.iY)(I) && ((0, d.p1)(I) || !!(0, r.Le)(I, "workers", "workers_for_saas"))
+		hasPermission: I => !!(0, n.z1)("workers-for-platforms-paygo")(I) || !!(0, n.z1)("workers-for-platforms")(I) && (0, a.iY)(I) && ((0, d.p1)(I) || !!(0, r.Le)(I, "workers", "workers_for_saas"))
 	}, {
 		title: "navigation.account.workers.ai",
 		url: "/ai",
@@ -615,7 +615,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: I => !!(0, F.V)(I)
+			hasPermission: I => !!(0, W.V)(I)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -623,7 +623,7 @@ const navigation = {
 		navigationType: "both",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: j.bB,
+		tabs: R.bB,
 		hasPermission: I => !(0, d.yD)(I) && (0, b.m7)(I)
 	}, {
 		title: "navigation.zone.dns",
@@ -804,7 +804,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: W.x
+			tabs: Z.x
 		}]
 	}, {
 		title: "navigation.zone.caching",
@@ -1027,5 +1027,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: K.G
+	support: Y.G
 }
