@@ -5,29 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;<span class="collapsed-field-text">Canada (Alberta, Ontario or Quebec) Portugal and US</span>&nbsp;<br><br>What You'll Do</strong></p>
-<p>We are looking for an <strong>Engineer Manager</strong> to lead the <a href="https://www.cloudflare.com/zero-trust/">Zero Trust</a> team working on <strong>WARP’s edge service</strong>, which uses Cloudflare’s global network to securely route tunnelled traffic from millions of devices running <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/">WARP</a> to the Internet.</p>
-<p>You will play a key role in shaping the team’s engineering strategy, working with other engineering teams, product management, and external stakeholders to implement customer-impacting features and meet the team’s ambitious goals of <strong>quality</strong>,<strong> reliability</strong>, and <strong>high-availability</strong>. You will work closely with your team to maintain the<strong> code quality</strong> and to build solid, <strong>testable, </strong>and<strong> well-documented</strong> code.</p>
-<p>As a manager in our team, you will be expected to <strong>lead</strong>, <strong>inspire</strong>, and <strong>foster a culture of diversity</strong>. You will communicate <strong>clearly</strong> and with <strong>empathy</strong>, and work towards building a <strong>cohesive and collaborative</strong> team. You will be expected to interact with our customers and internal stakeholders, to identify gaps and areas of improvements in our product and processes alike, and to work with your own stakeholders to transform those into <strong>innovative</strong>, <strong>actionable</strong>, and <strong>achievable</strong> <strong>solutions</strong>.</p>
-<p>The team predominantly uses <strong>Rust</strong> to implement high-performance networking code that runs on our Linux-based edge. You will be most successful in this role if you have a strong understanding of <strong>networking protocols</strong> (IP, TCP, UDP, DNS, QUIC, H/3, proxying, etc.) and <strong>operational principles</strong> (observability, alerting, tracing, incident management, SLIs &amp; SLOs, capacity planning, etc.)</p>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p><strong>Available Locations: US Remote</strong></p>
+<p><strong>About the Department</strong></p>
+<p>Cloudflare’s Special Projects team oversees a wide range of strategic and technical partnership projects that are critical to the operations and long-term development of Cloudflare. The Special Projects team works closely with Product and Engineering to bring new and innovative ideas to life. These range from launching cutting edge consumer privacy protection services, innovative channel partnerships, unique distribution deals, and developing new products and technologies. Overall, we look for a technically minded, big-picture thinker who can build strong relationships, grow strategic partner opportunities, and drive Cloudflare’s business strategy and development globally.</p>
+<p><br><strong>What You'll Do</strong></p>
+<p>For this role, we are seeking an experienced technology partner manager/director to lead our partner ecosystems and product integrations at Cloudflare. We are building a thriving ecosystem of partners that improve the value of our products and help partners grow their business with Cloudflare. This role offers an incredible opportunity to make a significant contribution to a high growth company in a rapidly changing space. You will lead all efforts to qualify and build meaningful product integrations, build better together stories to co-market and take those winning solutions into the channel to co-sell with industry leading companies. You will work hand in hand with product, marketing, sales and channel alliances to continue building out our technology partner ecosystems at Cloudflare. This will include managing the technical relationships with existing partners and marketplaces as well as all new partnership evaluations and go to market strategies across Cloudflare’s expanding product portfolio.</p>
 <ul>
-	<li>Demonstrable experience leading a geographically distributed team</li>
-	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
-	<li>Excellent <strong>operational principles</strong> (observability, alerting, tracing, incident management, SLIs &amp; SLOs, capacity planning, etc.)</li>
-	<li>Excel at planning, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>A strong understanding of how <strong>VPN technologies</strong> work, and the trade-offs between privacy, security, and anonymity</li>
-	<li>Strong understanding of <strong>networking protocols</strong> (IP, TCP, UDP, DNS, QUIC, H/3, proxying, etc.)</li>
-	<li>Good understanding of, and experience with, <strong>security protocols</strong> and standards</li>
-	<li>Good experience with <strong>debugging network-related problems</strong></li>
+	<li>Working with Product teams and sales to prioritize partner integrations and channel opportunities.</li>
+	<li>Managing existing technology partners and coming up with new partnership ideas, defining joint integrations/solutions, and driving GTM activities across the org.&nbsp;&nbsp;</li>
+	<li>Developing, negotiating, and closing agreements with new partners and systematically scaling the go-to market motion with technology partners.</li>
+	<li>Increasing awareness about tech partnerships with customers and prospects, and soliciting feedback from to improve and solve any issues with the integrations.&nbsp;</li>
+	<li>Enabling GTM functions at Cloudflare, such as direct sales, channel, marketing etc., about how these integrations operate and how they can leverage tech partners to drive more leads and joint sales.</li>
+	<li>Managing partner relationships throughout the lifecycle — from maintaining existing relationships with partners and adding new initiatives with established partners.</li>
 </ul>
+<p><strong>Requirements</strong></p>
+<ul>
+	<li>10+ years of experience, in a combination of technology partner management, partnerships, or go-to-market roles.&nbsp;</li>
+	<li>Ideal candidate has been managing technology partnerships for or with leading cyber security companies for the last 5+ years.</li>
+	<li>Track record of successful commercial execution of partner or GTM programs through joint go-to-market activities &amp; cross-functional work across various internal teams.</li>
+	<li>Director level candidates must be very technical minded. Bachelor’s degree in a technical/engineering field, or specific technical experience required.</li>
+	<li>Experience in the Cloud (SaaS/PaaS/IaaS) and Security (DDoS, firewalls) ecosystems preferred.&nbsp;</li>
+	<li>Ability to lead a cross functional team as well as direct reports in a fast paced environment.</li>
+	<li>Strong interpersonal skills and experience in working cross-functionally with a variety of teams, including product, sales, and marketing teams, to establish effective partnerships.</li>
+	<li>The role can be remote based in the United States</li>
+	<li>A natural curiosity and eagerness to do whatever it takes, no task is beneath you, is a must. We are a scrappy team that works hard to accomplish ideas that others say can’t be done.&nbsp;</li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and experience.</p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $162,000 - $233,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $195,000 - $261,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $205,000 - $275,000</li>
+	<li>For Colorado-based hires: Estimated annual salary of $186,000 - $228,000</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $209,000 - $255,000</li>
+	<li>For Bay Area-based hires: Estimated annual salary of&nbsp; $220,000 - $268,000</li>
 </ul>
+<p></p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -55,6 +66,8 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
