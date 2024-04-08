@@ -1,4 +1,361 @@
 {
+	"GET /accounts/{account_identifier}/ai/authors/search": {
+		"operationId": "workers-ai-search-author",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": 48546000,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a list of authors"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Author Search",
+		"tags": [
+			"Workers AI"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_identifier}/ai/models/search": {
+		"operationId": "workers-ai-search-model",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": 48546000,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "task",
+				"schema": {
+					"description": "Filter by Task Name",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "author",
+				"schema": {
+					"description": "Filter by Author",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "source",
+				"schema": {
+					"description": "Filter by Source Id",
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hide_experimental",
+				"schema": {
+					"description": "Filter to hide experimental models",
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Search",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a list of models"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Model Search",
+		"tags": [
+			"Workers AI"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_identifier}/ai/tasks/search": {
+		"operationId": "workers-ai-search-task",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": 48546000,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a list of tasks"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object not found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Task Search",
+		"tags": [
+			"Workers AI"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/{model_name}": {
 		"description": "This endpoint provides users with the capability to run specific AI models on-demand.\n\nBy submitting the required input data, users can receive real-time predictions or results generated by the chosen AI\nmodel. The endpoint supports various AI model types, ensuring flexibility and adaptability for diverse use cases.\n\nModel specific inputs available in [Cloudflare Docs](https://developers.cloudflare.com/workers-ai/models/).",
 		"operationId": "workers-ai-post-run-model",

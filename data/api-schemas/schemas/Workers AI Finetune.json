@@ -1,0 +1,408 @@
+{
+	"GET /accounts/{account_identifier}/ai/finetunes": {
+		"operationId": "workers-ai-list-finetunes",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": 48546000,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"description": {
+											"type": "string"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"model": {
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"model",
+										"name"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns all finetunes"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Finetunes",
+		"tags": [
+			"Workers AI Finetune"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_identifier}/ai/finetunes": {
+		"operationId": "workers-ai-create-finetune",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": 48546000,
+					"type": "integer"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"type": "string"
+							},
+							"model": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"model",
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_id": {
+											"example": 48546000,
+											"type": "integer"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"description": {
+											"type": "string"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"model": {
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"account_id",
+										"created_at",
+										"modified_at",
+										"model",
+										"name"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created finetune"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Finetune creation failed"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new Finetune",
+		"tags": [
+			"Workers AI Finetune"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_identifier}/ai/finetunes/{finetune_id}/finetune-assets": {
+		"operationId": "workers-ai-upload-finetune-asset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": 48546000,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "path",
+				"name": "finetune_id",
+				"required": true,
+				"schema": {
+					"example": "bc451aef-f723-4b26-a6b2-901afd2e7a8a",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"schema": {
+						"properties": {
+							"file": {
+								"format": "binary",
+								"type": "string"
+							},
+							"file_name": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"bucket_name": {
+											"type": "string"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"file_name": {
+											"type": "string"
+										},
+										"finetune_id": {
+											"example": "bc451aef-f723-4b26-a6b2-901afd2e7a8a",
+											"type": "string"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"finetune_id",
+										"file_name",
+										"bucket_name",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created finetune asset"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Finetune creation failed"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Upload a Finetune Asset",
+		"tags": [
+			"Workers AI Finetune"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
