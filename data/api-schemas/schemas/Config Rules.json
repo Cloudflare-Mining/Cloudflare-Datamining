@@ -1,0 +1,854 @@
+{
+	"GET /zones/{zone_id}/rulesets/phases/http_config_settings/entrypoint": {
+		"description": "Fetches all Config Rules in a zone.",
+		"operationId": "config-rules-list-config-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"description": {
+									"example": ""
+								},
+								"id": {
+									"example": "2f2feab2026849078ba485f918791bdc"
+								},
+								"kind": {
+									"example": "zone"
+								},
+								"name": {
+									"example": "default"
+								},
+								"phase": {
+									"example": "http_config_settings"
+								},
+								"rules": {
+									"description": "The rules in the ruleset.",
+									"items": {
+										"properties": {
+											"action": {
+												"example": "set_config"
+											},
+											"action_parameters": {
+												"description": "The parameters configuring the action.",
+												"oneOf": [
+													{
+														"description": "The configuration parameters for the set_config action.",
+														"properties": {
+															"automatic_https_rewrites": {
+																"description": "Enable or disable Automatic HTTPS Rewrites for matching requests",
+																"example": true,
+																"type": "boolean"
+															},
+															"autominify": {
+																"description": "Select which file extensions to minify automatically.",
+																"properties": {
+																	"css": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"html": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"js": {
+																		"example": true,
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															},
+															"bic": {
+																"description": "Enable or disable Browser Integrity Check",
+																"example": true,
+																"type": "boolean"
+															},
+															"disable_apps": {
+																"description": "Disable all active Cloudflare Apps",
+																"example": true,
+																"type": "boolean"
+															},
+															"disable_railgun": {
+																"description": "Disable Cloudflare Railgun",
+																"example": true,
+																"type": "boolean"
+															},
+															"disable_zaraz": {
+																"description": "Disable Cloudflare Railgun",
+																"example": true,
+																"type": "boolean"
+															},
+															"email_obfuscation": {
+																"description": "Enable or disable Email Obfuscation",
+																"example": false,
+																"type": "boolean"
+															},
+															"hotlink_protection": {
+																"description": "Enable or disable Hotlink Protection",
+																"example": false,
+																"type": "boolean"
+															},
+															"mirage": {
+																"description": "Enable or disable Mirage",
+																"example": false,
+																"type": "boolean"
+															},
+															"opportunistic_encryption": {
+																"description": "Enable or disableOpportunistic Encryption",
+																"example": false,
+																"type": "boolean"
+															},
+															"polish": {
+																"description": "Set Polish compression options",
+																"example": "lossless",
+																"type": "string"
+															},
+															"rocket_loader": {
+																"description": "Enable or disable Rocket Loader",
+																"example": false,
+																"type": "boolean"
+															},
+															"security_level": {
+																"description": "Set the Security Level",
+																"example": "low",
+																"type": "string"
+															},
+															"server_side_excludes": {
+																"description": "Enable or disable Server Side Excludes",
+																"example": false,
+																"type": "boolean"
+															},
+															"ssl": {
+																"description": "Select the SSL encryption mode",
+																"example": "flexible",
+																"type": "string"
+															},
+															"sxg": {
+																"description": "Enable or disable Signed Exchangesn(SXG)",
+																"example": false,
+																"type": "boolean"
+															}
+														}
+													}
+												],
+												"type": "object"
+											},
+											"description": {
+												"example": "enable Email Obfuscation"
+											},
+											"expression": {
+												"example": "http.cookie contains \"something\""
+											},
+											"id": {
+												"example": "3a03d665bac047339bb530ecb439a90d"
+											},
+											"version": {
+												"example": "1"
+											}
+										}
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"description": "List Config Rules response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"description": {
+											"example": ""
+										},
+										"id": {
+											"example": "2f2feab2026849078ba485f918791bdc"
+										},
+										"kind": {
+											"example": "zone"
+										},
+										"name": {
+											"example": "default"
+										},
+										"phase": {
+											"example": "http_config_settings"
+										},
+										"rules": {
+											"description": "The rules in the ruleset.",
+											"items": {
+												"properties": {
+													"action": {
+														"example": "set_config"
+													},
+													"action_parameters": {
+														"description": "The parameters configuring the action.",
+														"oneOf": [
+															{
+																"description": "The configuration parameters for the set_config action.",
+																"properties": {
+																	"automatic_https_rewrites": {
+																		"description": "Enable or disable Automatic HTTPS Rewrites for matching requests",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"autominify": {
+																		"description": "Select which file extensions to minify automatically.",
+																		"properties": {
+																			"css": {
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"html": {
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"js": {
+																				"example": true,
+																				"type": "boolean"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"bic": {
+																		"description": "Enable or disable Browser Integrity Check",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"disable_apps": {
+																		"description": "Disable all active Cloudflare Apps",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"disable_railgun": {
+																		"description": "Disable Cloudflare Railgun",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"disable_zaraz": {
+																		"description": "Disable Cloudflare Railgun",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"email_obfuscation": {
+																		"description": "Enable or disable Email Obfuscation",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"hotlink_protection": {
+																		"description": "Enable or disable Hotlink Protection",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"mirage": {
+																		"description": "Enable or disable Mirage",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"opportunistic_encryption": {
+																		"description": "Enable or disableOpportunistic Encryption",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"polish": {
+																		"description": "Set Polish compression options",
+																		"example": "lossless",
+																		"type": "string"
+																	},
+																	"rocket_loader": {
+																		"description": "Enable or disable Rocket Loader",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"security_level": {
+																		"description": "Set the Security Level",
+																		"example": "low",
+																		"type": "string"
+																	},
+																	"server_side_excludes": {
+																		"description": "Enable or disable Server Side Excludes",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"ssl": {
+																		"description": "Select the SSL encryption mode",
+																		"example": "flexible",
+																		"type": "string"
+																	},
+																	"sxg": {
+																		"description": "Enable or disable Signed Exchangesn(SXG)",
+																		"example": false,
+																		"type": "boolean"
+																	}
+																}
+															}
+														],
+														"type": "object"
+													},
+													"description": {
+														"example": "enable Email Obfuscation"
+													},
+													"expression": {
+														"example": "http.cookie contains \"something\""
+													},
+													"id": {
+														"example": "3a03d665bac047339bb530ecb439a90d"
+													},
+													"version": {
+														"example": "1"
+													}
+												}
+											},
+											"type": "array"
+										}
+									}
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Config Rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Config Rules",
+		"tags": [
+			"Config Rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_id}/rulesets/phases/http_config_settings/entrypoint": {
+		"description": "Updates the Config Rules of a zone.",
+		"operationId": "config-rules-update-config-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A ruleset object.",
+						"properties": {
+							"description": {
+								"default": "",
+								"description": "An informative description of the ruleset.",
+								"example": "My ruleset to execute managed rulesets",
+								"type": "string"
+							},
+							"rules": {
+								"description": "The list of rules in the ruleset.",
+								"items": {
+									"anyOf": [
+										{
+											"description": "A rule object.",
+											"properties": {
+												"action": {
+													"description": "The action to perform when the rule matches.",
+													"example": "execute",
+													"pattern": "^[a-z_]+$",
+													"type": "string"
+												},
+												"action_parameters": {
+													"description": "The parameters configuring the rule action.",
+													"example": {
+														"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+													},
+													"type": "object"
+												},
+												"description": {
+													"default": "",
+													"description": "An informative description of the rule.",
+													"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1",
+													"type": "string"
+												},
+												"enabled": {
+													"default": "true",
+													"description": "Whether the rule should be executed.",
+													"example": true,
+													"type": "boolean"
+												},
+												"expression": {
+													"description": "The expression defining which traffic will match the rule.",
+													"example": "ip.src ne 1.1.1.1",
+													"type": "string"
+												},
+												"logging": {
+													"description": "An object configuring the rule's logging behavior.",
+													"example": {
+														"enabled": true
+													},
+													"properties": {
+														"enabled": {
+															"description": "Whether to generate a log when the rule matches.",
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"ref": {
+													"description": "The reference of the rule (the rule ID by default).",
+													"example": "my_ref",
+													"type": "string"
+												}
+											},
+											"required": [
+												"expression",
+												"action"
+											],
+											"type": "object"
+										},
+										{
+											"description": "The unique ID of a rule."
+										}
+									]
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"rules"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"nullable": true,
+													"type": "string"
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update Config Rules response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Config Rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Config Rules",
+		"tags": [
+			"Config Rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

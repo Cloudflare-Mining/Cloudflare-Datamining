@@ -1,0 +1,730 @@
+{
+	"GET /zones/{zone_id}/rulesets/phases/http_request_origin/entrypoint": {
+		"description": "Fetches all Origin Rules in a zone.",
+		"operationId": "origin-rules-list-origin-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"description": {
+									"example": ""
+								},
+								"id": {
+									"example": "2f2feab2026849078ba485f918791bdc"
+								},
+								"kind": {
+									"example": "zone"
+								},
+								"name": {
+									"example": "default"
+								},
+								"phase": {
+									"example": "http_request_origin"
+								},
+								"rules": {
+									"description": "The rules in the ruleset.",
+									"items": {
+										"properties": {
+											"action": {
+												"example": "route"
+											},
+											"action_parameters": {
+												"description": "The parameters configuring the action.",
+												"oneOf": [
+													{
+														"description": "The configuration parameters for the route action.",
+														"properties": {
+															"host_header": {
+																"description": "The value of the Host header.",
+																"example": "foo.example.com",
+																"type": "string"
+															},
+															"origin": {
+																"description": "The parameters that control where the origin is.",
+																"properties": {
+																	"host": {
+																		"description": "The host to use for origin.",
+																		"example": "foo.example.com",
+																		"type": "string"
+																	},
+																	"port": {
+																		"description": "The port to use for origin.",
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"sni": {
+																"description": "The parameters that control the SNI.",
+																"properties": {
+																	"value": {
+																		"description": "The SNI used to connect to the origin.",
+																		"example": "foo.example.com",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														}
+													}
+												],
+												"type": "object"
+											},
+											"description": {
+												"example": "change the host header, origin, and SNI"
+											},
+											"expression": {
+												"example": "http.cookie contains \"something\""
+											},
+											"id": {
+												"example": "3a03d665bac047339bb530ecb439a90d"
+											},
+											"version": {
+												"example": "1"
+											}
+										}
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"description": "List Origin Rules response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"description": {
+											"example": ""
+										},
+										"id": {
+											"example": "2f2feab2026849078ba485f918791bdc"
+										},
+										"kind": {
+											"example": "zone"
+										},
+										"name": {
+											"example": "default"
+										},
+										"phase": {
+											"example": "http_request_origin"
+										},
+										"rules": {
+											"description": "The rules in the ruleset.",
+											"items": {
+												"properties": {
+													"action": {
+														"example": "route"
+													},
+													"action_parameters": {
+														"description": "The parameters configuring the action.",
+														"oneOf": [
+															{
+																"description": "The configuration parameters for the route action.",
+																"properties": {
+																	"host_header": {
+																		"description": "The value of the Host header.",
+																		"example": "foo.example.com",
+																		"type": "string"
+																	},
+																	"origin": {
+																		"description": "The parameters that control where the origin is.",
+																		"properties": {
+																			"host": {
+																				"description": "The host to use for origin.",
+																				"example": "foo.example.com",
+																				"type": "string"
+																			},
+																			"port": {
+																				"description": "The port to use for origin.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"sni": {
+																		"description": "The parameters that control the SNI.",
+																		"properties": {
+																			"value": {
+																				"description": "The SNI used to connect to the origin.",
+																				"example": "foo.example.com",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																}
+															}
+														],
+														"type": "object"
+													},
+													"description": {
+														"example": "change the host header, origin, and SNI"
+													},
+													"expression": {
+														"example": "http.cookie contains \"something\""
+													},
+													"id": {
+														"example": "3a03d665bac047339bb530ecb439a90d"
+													},
+													"version": {
+														"example": "1"
+													}
+												}
+											},
+											"type": "array"
+										}
+									}
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Origin Rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Origin Rules",
+		"tags": [
+			"Origin Rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_id}/rulesets/phases/http_request_origin/entrypoint": {
+		"description": "Updates the Origin Rules of a zone.",
+		"operationId": "origin-rules-update-origin-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A ruleset object.",
+						"properties": {
+							"description": {
+								"default": "",
+								"description": "An informative description of the ruleset.",
+								"example": "My ruleset to execute managed rulesets",
+								"type": "string"
+							},
+							"rules": {
+								"description": "The list of rules in the ruleset.",
+								"items": {
+									"anyOf": [
+										{
+											"description": "A rule object.",
+											"properties": {
+												"action": {
+													"description": "The action to perform when the rule matches.",
+													"example": "execute",
+													"pattern": "^[a-z_]+$",
+													"type": "string"
+												},
+												"action_parameters": {
+													"description": "The parameters configuring the rule action.",
+													"example": {
+														"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+													},
+													"type": "object"
+												},
+												"description": {
+													"default": "",
+													"description": "An informative description of the rule.",
+													"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1",
+													"type": "string"
+												},
+												"enabled": {
+													"default": "true",
+													"description": "Whether the rule should be executed.",
+													"example": true,
+													"type": "boolean"
+												},
+												"expression": {
+													"description": "The expression defining which traffic will match the rule.",
+													"example": "ip.src ne 1.1.1.1",
+													"type": "string"
+												},
+												"logging": {
+													"description": "An object configuring the rule's logging behavior.",
+													"example": {
+														"enabled": true
+													},
+													"properties": {
+														"enabled": {
+															"description": "Whether to generate a log when the rule matches.",
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"ref": {
+													"description": "The reference of the rule (the rule ID by default).",
+													"example": "my_ref",
+													"type": "string"
+												}
+											},
+											"required": [
+												"expression",
+												"action"
+											],
+											"type": "object"
+										},
+										{
+											"description": "The unique ID of a rule."
+										}
+									]
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"rules"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"nullable": true,
+													"type": "string"
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update Origin Rules response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Origin Rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Origin Rules",
+		"tags": [
+			"Origin Rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

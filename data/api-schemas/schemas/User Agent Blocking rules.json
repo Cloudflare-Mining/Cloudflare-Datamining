@@ -1,0 +1,2073 @@
+{
+	"DELETE /zones/{zone_identifier}/firewall/ua_rules/{id}": {
+		"description": "Deletes an existing User Agent Blocking rule.",
+		"operationId": "user-agent-blocking-rules-delete-a-user-agent-blocking-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of the User Agent Blocking rule.",
+					"example": "372e67954025e0ba6aaa6d586b9e0b59",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "The unique identifier of the User Agent Blocking rule.",
+													"example": "372e67954025e0ba6aaa6d586b9e0b59",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a User Agent Blocking rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"errors": {
+																	"example": [],
+																	"items": {
+																		"properties": {
+																			"code": {
+																				"minimum": 1000,
+																				"type": "integer"
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"type": "object",
+																		"uniqueItems": true
+																	},
+																	"type": "array"
+																},
+																"messages": {
+																	"example": [],
+																	"items": {
+																		"properties": {
+																			"code": {
+																				"minimum": 1000,
+																				"type": "integer"
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"type": "object",
+																		"uniqueItems": true
+																	},
+																	"type": "array"
+																},
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"items": {},
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																},
+																"success": {
+																	"description": "Whether the API call was successful",
+																	"enum": [
+																		true
+																	],
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"required": [
+																"success",
+																"errors",
+																"messages",
+																"result"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"nullable": true,
+																			"type": "object"
+																		},
+																		{
+																			"nullable": true,
+																			"type": "string"
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"description": "The unique identifier of the User Agent Blocking rule.",
+															"example": "372e67954025e0ba6aaa6d586b9e0b59",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a User Agent Blocking rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a User Agent Blocking rule",
+		"tags": [
+			"User Agent Blocking rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/firewall/ua_rules": {
+		"description": "Fetches User Agent Blocking rules in a zone. You can filter the results using several optional parameters.",
+		"operationId": "user-agent-blocking-rules-list-user-agent-blocking-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "description",
+				"schema": {
+					"description": "A string to search for in the description of existing rules.",
+					"example": "abusive",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "description_search",
+				"schema": {
+					"description": "A string to search for in the description of existing rules.",
+					"example": "abusive",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`.",
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "ua_search",
+				"schema": {
+					"description": "A string to search for in the user agent values of existing rules.",
+					"example": "Safari",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"configuration": {
+																"description": "The configuration object for the current rule.",
+																"properties": {
+																	"target": {
+																		"description": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules.",
+																		"example": "ua",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value.",
+																		"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"description": {
+																"description": "An informative summary of the rule.",
+																"example": "Prevent access from abusive clients identified by this User Agent to mitigate a DDoS attack",
+																"maxLength": 1024,
+																"type": "string"
+															},
+															"id": {
+																"description": "The unique identifier of the User Agent Blocking rule.",
+																"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"mode": {
+																"description": "The action to apply to a matched request.",
+																"enum": [
+																	"block",
+																	"challenge",
+																	"js_challenge",
+																	"managed_challenge"
+																],
+																"example": "js_challenge",
+																"maxLength": 12
+															},
+															"paused": {
+																"description": "When true, indicates that the rule is currently paused.",
+																"example": false,
+																"type": "boolean"
+															}
+														}
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List User Agent Blocking rules response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"allOf": [
+															{
+																"properties": {
+																	"configuration": {
+																		"description": "The configuration object for the current rule.",
+																		"properties": {
+																			"target": {
+																				"description": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules.",
+																				"example": "ua",
+																				"type": "string"
+																			},
+																			"value": {
+																				"description": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value.",
+																				"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"description": {
+																		"description": "An informative summary of the rule.",
+																		"example": "Prevent access from abusive clients identified by this User Agent to mitigate a DDoS attack",
+																		"maxLength": 1024,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The unique identifier of the User Agent Blocking rule.",
+																		"example": "372e67954025e0ba6aaa6d586b9e0b59",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"mode": {
+																		"description": "The action to apply to a matched request.",
+																		"enum": [
+																			"block",
+																			"challenge",
+																			"js_challenge",
+																			"managed_challenge"
+																		],
+																		"example": "js_challenge",
+																		"maxLength": 12
+																	},
+																	"paused": {
+																		"description": "When true, indicates that the rule is currently paused.",
+																		"example": false,
+																		"type": "boolean"
+																	}
+																}
+															}
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List User Agent Blocking rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List User Agent Blocking rules",
+		"tags": [
+			"User Agent Blocking rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/firewall/ua_rules/{id}": {
+		"description": "Fetches the details of a User Agent Blocking rule.",
+		"operationId": "user-agent-blocking-rules-get-a-user-agent-blocking-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of the User Agent Blocking rule.",
+					"example": "372e67954025e0ba6aaa6d586b9e0b59",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a User Agent Blocking rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a User Agent Blocking rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a User Agent Blocking rule",
+		"tags": [
+			"User Agent Blocking rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_identifier}/firewall/ua_rules": {
+		"description": "Creates a new User Agent Blocking rule in a zone.",
+		"operationId": "user-agent-blocking-rules-create-a-user-agent-blocking-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"required": [
+							"mode",
+							"configuration"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a User Agent Blocking rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a User Agent Blocking rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a User Agent Blocking rule",
+		"tags": [
+			"User Agent Blocking rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_identifier}/firewall/ua_rules/{id}": {
+		"description": "Updates an existing User Agent Blocking rule.",
+		"operationId": "user-agent-blocking-rules-update-a-user-agent-blocking-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of the User Agent Blocking rule.",
+					"example": "372e67954025e0ba6aaa6d586b9e0b59",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"required": [
+							"id",
+							"mode",
+							"configuration"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a User Agent Blocking rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a User Agent Blocking rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a User Agent Blocking rule",
+		"tags": [
+			"User Agent Blocking rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

@@ -1,0 +1,2567 @@
+{
+	"DELETE /zones/{zone_identifier}/firewall/waf/overrides/{id}": {
+		"deprecated": true,
+		"description": "Deletes an existing URI-based WAF override.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"operationId": "waf-overrides-delete-a-waf-override",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of the WAF override.",
+					"example": "de677e5818985db1285d0e80225f06e5",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"id": {
+											"description": "The unique identifier of the WAF override.",
+											"example": "de677e5818985db1285d0e80225f06e5",
+											"maxLength": 32,
+											"readOnly": true,
+											"type": "string"
+										}
+									}
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete a WAF override response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "The unique identifier of the WAF override.",
+													"example": "de677e5818985db1285d0e80225f06e5",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												}
+											}
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a WAF override response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a WAF override",
+		"tags": [
+			"WAF overrides"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/firewall/waf/overrides": {
+		"deprecated": true,
+		"description": "Fetches the URI-based WAF overrides in a zone.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"operationId": "waf-overrides-list-waf-overrides",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "The page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 50,
+					"description": "The number of WAF overrides per page.",
+					"maximum": 100,
+					"minimum": 5,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"description": {
+																"description": "An informative summary of the current URI-based WAF override.",
+																"example": "Enable Cloudflare Magento ruleset for shop.example.com",
+																"maxLength": 1024,
+																"nullable": true,
+																"type": "string"
+															},
+															"groups": {
+																"additionalProperties": true,
+																"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+																"example": {
+																	"ea8687e59929c1fd05ba97574ad43f77": "default"
+																},
+																"type": "object"
+															},
+															"id": {
+																"description": "The unique identifier of the WAF override.",
+																"example": "de677e5818985db1285d0e80225f06e5",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"paused": {
+																"description": "When true, indicates that the WAF package is currently paused.",
+																"type": "boolean"
+															},
+															"priority": {
+																"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
+																"example": 1,
+																"maximum": 1000000000,
+																"minimum": -1000000000,
+																"type": "number"
+															},
+															"rewrite_action": {
+																"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
+																"properties": {
+																	"block": {
+																		"description": "The WAF rule action to apply.",
+																		"enum": [
+																			"challenge",
+																			"block",
+																			"simulate",
+																			"disable",
+																			"default"
+																		]
+																	},
+																	"challenge": {
+																		"example": "block"
+																	},
+																	"default": {
+																		"example": "block"
+																	},
+																	"disable": {
+																		"description": "The WAF rule action to apply.",
+																		"enum": [
+																			"challenge",
+																			"block",
+																			"simulate",
+																			"disable",
+																			"default"
+																		]
+																	},
+																	"simulate": {
+																		"example": "disable"
+																	}
+																},
+																"type": "object"
+															},
+															"rules": {
+																"additionalProperties": {
+																	"allOf": [
+																		{
+																			"description": "The WAF rule action to apply.",
+																			"enum": [
+																				"challenge",
+																				"block",
+																				"simulate",
+																				"disable",
+																				"default"
+																			]
+																		}
+																	],
+																	"example": "default"
+																},
+																"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+																"example": {
+																	"100015": "disable"
+																},
+																"type": "object"
+															},
+															"urls": {
+																"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+																"items": {
+																	"example": "shop.example.com/*",
+																	"type": "string"
+																},
+																"type": "array"
+															}
+														}
+													},
+													{
+														"required": [
+															"id",
+															"paused",
+															"urls",
+															"priority"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List WAF overrides response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"allOf": [
+															{
+																"properties": {
+																	"description": {
+																		"description": "An informative summary of the current URI-based WAF override.",
+																		"example": "Enable Cloudflare Magento ruleset for shop.example.com",
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"groups": {
+																		"additionalProperties": true,
+																		"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+																		"example": {
+																			"ea8687e59929c1fd05ba97574ad43f77": "default"
+																		},
+																		"type": "object"
+																	},
+																	"id": {
+																		"description": "The unique identifier of the WAF override.",
+																		"example": "de677e5818985db1285d0e80225f06e5",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"paused": {
+																		"description": "When true, indicates that the WAF package is currently paused.",
+																		"type": "boolean"
+																	},
+																	"priority": {
+																		"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
+																		"example": 1,
+																		"maximum": 1000000000,
+																		"minimum": -1000000000,
+																		"type": "number"
+																	},
+																	"rewrite_action": {
+																		"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
+																		"properties": {
+																			"block": {
+																				"description": "The WAF rule action to apply.",
+																				"enum": [
+																					"challenge",
+																					"block",
+																					"simulate",
+																					"disable",
+																					"default"
+																				]
+																			},
+																			"challenge": {
+																				"example": "block"
+																			},
+																			"default": {
+																				"example": "block"
+																			},
+																			"disable": {
+																				"description": "The WAF rule action to apply.",
+																				"enum": [
+																					"challenge",
+																					"block",
+																					"simulate",
+																					"disable",
+																					"default"
+																				]
+																			},
+																			"simulate": {
+																				"example": "disable"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"rules": {
+																		"additionalProperties": {
+																			"allOf": [
+																				{
+																					"description": "The WAF rule action to apply.",
+																					"enum": [
+																						"challenge",
+																						"block",
+																						"simulate",
+																						"disable",
+																						"default"
+																					]
+																				}
+																			],
+																			"example": "default"
+																		},
+																		"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+																		"example": {
+																			"100015": "disable"
+																		},
+																		"type": "object"
+																	},
+																	"urls": {
+																		"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+																		"items": {
+																			"example": "shop.example.com/*",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																}
+															},
+															{
+																"required": [
+																	"id",
+																	"paused",
+																	"urls",
+																	"priority"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"result"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List WAF overrides response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List WAF overrides",
+		"tags": [
+			"WAF overrides"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/firewall/waf/overrides/{id}": {
+		"deprecated": true,
+		"description": "Fetches the details of a URI-based WAF override.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"operationId": "waf-overrides-get-a-waf-override",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of the WAF override.",
+					"example": "de677e5818985db1285d0e80225f06e5",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"description": {
+													"description": "An informative summary of the current URI-based WAF override.",
+													"example": "Enable Cloudflare Magento ruleset for shop.example.com",
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string"
+												},
+												"groups": {
+													"additionalProperties": true,
+													"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+													"example": {
+														"ea8687e59929c1fd05ba97574ad43f77": "default"
+													},
+													"type": "object"
+												},
+												"id": {
+													"description": "The unique identifier of the WAF override.",
+													"example": "de677e5818985db1285d0e80225f06e5",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"paused": {
+													"description": "When true, indicates that the WAF package is currently paused.",
+													"type": "boolean"
+												},
+												"priority": {
+													"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
+													"example": 1,
+													"maximum": 1000000000,
+													"minimum": -1000000000,
+													"type": "number"
+												},
+												"rewrite_action": {
+													"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
+													"properties": {
+														"block": {
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
+														},
+														"challenge": {
+															"example": "block"
+														},
+														"default": {
+															"example": "block"
+														},
+														"disable": {
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
+														},
+														"simulate": {
+															"example": "disable"
+														}
+													},
+													"type": "object"
+												},
+												"rules": {
+													"additionalProperties": {
+														"allOf": [
+															{
+																"description": "The WAF rule action to apply.",
+																"enum": [
+																	"challenge",
+																	"block",
+																	"simulate",
+																	"disable",
+																	"default"
+																]
+															}
+														],
+														"example": "default"
+													},
+													"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+													"example": {
+														"100015": "disable"
+													},
+													"type": "object"
+												},
+												"urls": {
+													"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+													"items": {
+														"example": "shop.example.com/*",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											}
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a WAF override response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"description": {
+															"description": "An informative summary of the current URI-based WAF override.",
+															"example": "Enable Cloudflare Magento ruleset for shop.example.com",
+															"maxLength": 1024,
+															"nullable": true,
+															"type": "string"
+														},
+														"groups": {
+															"additionalProperties": true,
+															"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+															"example": {
+																"ea8687e59929c1fd05ba97574ad43f77": "default"
+															},
+															"type": "object"
+														},
+														"id": {
+															"description": "The unique identifier of the WAF override.",
+															"example": "de677e5818985db1285d0e80225f06e5",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"paused": {
+															"description": "When true, indicates that the WAF package is currently paused.",
+															"type": "boolean"
+														},
+														"priority": {
+															"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
+															"example": 1,
+															"maximum": 1000000000,
+															"minimum": -1000000000,
+															"type": "number"
+														},
+														"rewrite_action": {
+															"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
+															"properties": {
+																"block": {
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
+																},
+																"challenge": {
+																	"example": "block"
+																},
+																"default": {
+																	"example": "block"
+																},
+																"disable": {
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
+																},
+																"simulate": {
+																	"example": "disable"
+																}
+															},
+															"type": "object"
+														},
+														"rules": {
+															"additionalProperties": {
+																"allOf": [
+																	{
+																		"description": "The WAF rule action to apply.",
+																		"enum": [
+																			"challenge",
+																			"block",
+																			"simulate",
+																			"disable",
+																			"default"
+																		]
+																	}
+																],
+																"example": "default"
+															},
+															"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+															"example": {
+																"100015": "disable"
+															},
+															"type": "object"
+														},
+														"urls": {
+															"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+															"items": {
+																"example": "shop.example.com/*",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													}
+												}
+											},
+											"required": [
+												"result"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a WAF override response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a WAF override",
+		"tags": [
+			"WAF overrides"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_identifier}/firewall/waf/overrides": {
+		"deprecated": true,
+		"description": "Creates a URI-based WAF override for a zone.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"operationId": "waf-overrides-create-a-waf-override",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"required": [
+							"urls"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"description": {
+													"description": "An informative summary of the current URI-based WAF override.",
+													"example": "Enable Cloudflare Magento ruleset for shop.example.com",
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string"
+												},
+												"groups": {
+													"additionalProperties": true,
+													"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+													"example": {
+														"ea8687e59929c1fd05ba97574ad43f77": "default"
+													},
+													"type": "object"
+												},
+												"id": {
+													"description": "The unique identifier of the WAF override.",
+													"example": "de677e5818985db1285d0e80225f06e5",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"paused": {
+													"description": "When true, indicates that the WAF package is currently paused.",
+													"type": "boolean"
+												},
+												"priority": {
+													"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
+													"example": 1,
+													"maximum": 1000000000,
+													"minimum": -1000000000,
+													"type": "number"
+												},
+												"rewrite_action": {
+													"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
+													"properties": {
+														"block": {
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
+														},
+														"challenge": {
+															"example": "block"
+														},
+														"default": {
+															"example": "block"
+														},
+														"disable": {
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
+														},
+														"simulate": {
+															"example": "disable"
+														}
+													},
+													"type": "object"
+												},
+												"rules": {
+													"additionalProperties": {
+														"allOf": [
+															{
+																"description": "The WAF rule action to apply.",
+																"enum": [
+																	"challenge",
+																	"block",
+																	"simulate",
+																	"disable",
+																	"default"
+																]
+															}
+														],
+														"example": "default"
+													},
+													"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+													"example": {
+														"100015": "disable"
+													},
+													"type": "object"
+												},
+												"urls": {
+													"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+													"items": {
+														"example": "shop.example.com/*",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											}
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a WAF override response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"description": {
+															"description": "An informative summary of the current URI-based WAF override.",
+															"example": "Enable Cloudflare Magento ruleset for shop.example.com",
+															"maxLength": 1024,
+															"nullable": true,
+															"type": "string"
+														},
+														"groups": {
+															"additionalProperties": true,
+															"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+															"example": {
+																"ea8687e59929c1fd05ba97574ad43f77": "default"
+															},
+															"type": "object"
+														},
+														"id": {
+															"description": "The unique identifier of the WAF override.",
+															"example": "de677e5818985db1285d0e80225f06e5",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"paused": {
+															"description": "When true, indicates that the WAF package is currently paused.",
+															"type": "boolean"
+														},
+														"priority": {
+															"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
+															"example": 1,
+															"maximum": 1000000000,
+															"minimum": -1000000000,
+															"type": "number"
+														},
+														"rewrite_action": {
+															"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
+															"properties": {
+																"block": {
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
+																},
+																"challenge": {
+																	"example": "block"
+																},
+																"default": {
+																	"example": "block"
+																},
+																"disable": {
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
+																},
+																"simulate": {
+																	"example": "disable"
+																}
+															},
+															"type": "object"
+														},
+														"rules": {
+															"additionalProperties": {
+																"allOf": [
+																	{
+																		"description": "The WAF rule action to apply.",
+																		"enum": [
+																			"challenge",
+																			"block",
+																			"simulate",
+																			"disable",
+																			"default"
+																		]
+																	}
+																],
+																"example": "default"
+															},
+															"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+															"example": {
+																"100015": "disable"
+															},
+															"type": "object"
+														},
+														"urls": {
+															"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+															"items": {
+																"example": "shop.example.com/*",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													}
+												}
+											},
+											"required": [
+												"result"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a WAF override response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a WAF override",
+		"tags": [
+			"WAF overrides"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /zones/{zone_identifier}/firewall/waf/overrides/{id}": {
+		"deprecated": true,
+		"description": "Updates an existing URI-based WAF override.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"operationId": "waf-overrides-update-waf-override",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of the WAF override.",
+					"example": "de677e5818985db1285d0e80225f06e5",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"required": [
+							"id",
+							"urls",
+							"rules",
+							"rewrite_action"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"description": {
+													"description": "An informative summary of the current URI-based WAF override.",
+													"example": "Enable Cloudflare Magento ruleset for shop.example.com",
+													"maxLength": 1024,
+													"nullable": true,
+													"type": "string"
+												},
+												"groups": {
+													"additionalProperties": true,
+													"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+													"example": {
+														"ea8687e59929c1fd05ba97574ad43f77": "default"
+													},
+													"type": "object"
+												},
+												"id": {
+													"description": "The unique identifier of the WAF override.",
+													"example": "de677e5818985db1285d0e80225f06e5",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"paused": {
+													"description": "When true, indicates that the WAF package is currently paused.",
+													"type": "boolean"
+												},
+												"priority": {
+													"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
+													"example": 1,
+													"maximum": 1000000000,
+													"minimum": -1000000000,
+													"type": "number"
+												},
+												"rewrite_action": {
+													"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
+													"properties": {
+														"block": {
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
+														},
+														"challenge": {
+															"example": "block"
+														},
+														"default": {
+															"example": "block"
+														},
+														"disable": {
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
+														},
+														"simulate": {
+															"example": "disable"
+														}
+													},
+													"type": "object"
+												},
+												"rules": {
+													"additionalProperties": {
+														"allOf": [
+															{
+																"description": "The WAF rule action to apply.",
+																"enum": [
+																	"challenge",
+																	"block",
+																	"simulate",
+																	"disable",
+																	"default"
+																]
+															}
+														],
+														"example": "default"
+													},
+													"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+													"example": {
+														"100015": "disable"
+													},
+													"type": "object"
+												},
+												"urls": {
+													"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+													"items": {
+														"example": "shop.example.com/*",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											}
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update WAF override response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"description": {
+															"description": "An informative summary of the current URI-based WAF override.",
+															"example": "Enable Cloudflare Magento ruleset for shop.example.com",
+															"maxLength": 1024,
+															"nullable": true,
+															"type": "string"
+														},
+														"groups": {
+															"additionalProperties": true,
+															"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+															"example": {
+																"ea8687e59929c1fd05ba97574ad43f77": "default"
+															},
+															"type": "object"
+														},
+														"id": {
+															"description": "The unique identifier of the WAF override.",
+															"example": "de677e5818985db1285d0e80225f06e5",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"paused": {
+															"description": "When true, indicates that the WAF package is currently paused.",
+															"type": "boolean"
+														},
+														"priority": {
+															"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
+															"example": 1,
+															"maximum": 1000000000,
+															"minimum": -1000000000,
+															"type": "number"
+														},
+														"rewrite_action": {
+															"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
+															"properties": {
+																"block": {
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
+																},
+																"challenge": {
+																	"example": "block"
+																},
+																"default": {
+																	"example": "block"
+																},
+																"disable": {
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
+																},
+																"simulate": {
+																	"example": "disable"
+																}
+															},
+															"type": "object"
+														},
+														"rules": {
+															"additionalProperties": {
+																"allOf": [
+																	{
+																		"description": "The WAF rule action to apply.",
+																		"enum": [
+																			"challenge",
+																			"block",
+																			"simulate",
+																			"disable",
+																			"default"
+																		]
+																	}
+																],
+																"example": "default"
+															},
+															"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+															"example": {
+																"100015": "disable"
+															},
+															"type": "object"
+														},
+														"urls": {
+															"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+															"items": {
+																"example": "shop.example.com/*",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													}
+												}
+											},
+											"required": [
+												"result"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update WAF override response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update WAF override",
+		"tags": [
+			"WAF overrides"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}
