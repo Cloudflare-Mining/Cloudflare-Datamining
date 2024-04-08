@@ -2978,36 +2978,11 @@
 			"content": {
 				"multipart/form-data": {
 					"schema": {
-						"oneOf": [
-							{
-								"properties": {
-									"file": {
-										"description": "An image binary data.",
-										"format": "binary"
-									}
-								},
-								"required": [
-									"file"
-								],
-								"title": "File",
-								"type": "object"
-							},
-							{
-								"properties": {
-									"url": {
-										"description": "A URL to fetch an image from origin.",
-										"example": "https://example.com/path/to/logo.png",
-										"type": "string"
-									}
-								},
-								"required": [
-									"url"
-								],
-								"title": "Url",
-								"type": "object"
-							}
-						],
 						"properties": {
+							"file": {
+								"description": "An image binary data. Only needed when type is uploading a file.",
+								"format": "binary"
+							},
 							"metadata": {
 								"description": "User modifiable key-value store. Can use used for keeping references to another system of record for managing images.",
 								"type": "object"
@@ -3017,6 +2992,11 @@
 								"description": "Indicates whether the image requires a signature token for the access.",
 								"example": true,
 								"type": "boolean"
+							},
+							"url": {
+								"description": "A URL to fetch an image from origin. Only needed when type is uploading from a URL.",
+								"example": "https://example.com/path/to/logo.png",
+								"type": "string"
 							}
 						},
 						"type": "object"
