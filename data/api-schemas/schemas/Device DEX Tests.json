@@ -168,6 +168,30 @@
 														"description": "The name of the DEX test. Must be unique.",
 														"example": "HTTP dash health check",
 														"type": "string"
+													},
+													"target_policies": {
+														"description": "Device settings profiles targeted by this test",
+														"items": {
+															"properties": {
+																"default": {
+																	"description": "Whether the profile is the account default",
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "The id of the device settings profile",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the device settings profile",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"targeted": {
+														"type": "boolean"
 													}
 												},
 												"required": [
@@ -334,6 +358,30 @@
 																"description": "The name of the DEX test. Must be unique.",
 																"example": "HTTP dash health check",
 																"type": "string"
+															},
+															"target_policies": {
+																"description": "Device settings profiles targeted by this test",
+																"items": {
+																	"properties": {
+																		"default": {
+																			"description": "Whether the profile is the account default",
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"description": "The id of the device settings profile",
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "The name of the device settings profile",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"targeted": {
+																"type": "boolean"
 															}
 														},
 														"required": [
@@ -610,6 +658,30 @@
 														"description": "The name of the DEX test. Must be unique.",
 														"example": "HTTP dash health check",
 														"type": "string"
+													},
+													"target_policies": {
+														"description": "Device settings profiles targeted by this test",
+														"items": {
+															"properties": {
+																"default": {
+																	"description": "Whether the profile is the account default",
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "The id of the device settings profile",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the device settings profile",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"targeted": {
+														"type": "boolean"
 													}
 												},
 												"required": [
@@ -782,6 +854,30 @@
 															"description": "The name of the DEX test. Must be unique.",
 															"example": "HTTP dash health check",
 															"type": "string"
+														},
+														"target_policies": {
+															"description": "Device settings profiles targeted by this test",
+															"items": {
+																"properties": {
+																	"default": {
+																		"description": "Whether the profile is the account default",
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "The id of the device settings profile",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "The name of the device settings profile",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"targeted": {
+															"type": "boolean"
 														}
 													},
 													"required": [
@@ -1073,6 +1169,30 @@
 													"description": "The name of the DEX test. Must be unique.",
 													"example": "HTTP dash health check",
 													"type": "string"
+												},
+												"target_policies": {
+													"description": "Device settings profiles targeted by this test",
+													"items": {
+														"properties": {
+															"default": {
+																"description": "Whether the profile is the account default",
+																"type": "boolean"
+															},
+															"id": {
+																"description": "The id of the device settings profile",
+																"type": "string"
+															},
+															"name": {
+																"description": "The name of the device settings profile",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"targeted": {
+													"type": "boolean"
 												}
 											},
 											"required": [
@@ -1243,6 +1363,30 @@
 															"description": "The name of the DEX test. Must be unique.",
 															"example": "HTTP dash health check",
 															"type": "string"
+														},
+														"target_policies": {
+															"description": "Device settings profiles targeted by this test",
+															"items": {
+																"properties": {
+																	"default": {
+																		"description": "Whether the profile is the account default",
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "The id of the device settings profile",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "The name of the device settings profile",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"targeted": {
+															"type": "boolean"
 														}
 													},
 													"required": [
@@ -1422,6 +1566,30 @@
 								"description": "The name of the DEX test. Must be unique.",
 								"example": "HTTP dash health check",
 								"type": "string"
+							},
+							"target_policies": {
+								"description": "Device settings profiles targeted by this test",
+								"items": {
+									"properties": {
+										"default": {
+											"description": "Whether the profile is the account default",
+											"type": "boolean"
+										},
+										"id": {
+											"description": "The id of the device settings profile",
+											"type": "string"
+										},
+										"name": {
+											"description": "The name of the device settings profile",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"targeted": {
+								"type": "boolean"
 							}
 						},
 						"required": [
@@ -1587,6 +1755,30 @@
 													"description": "The name of the DEX test. Must be unique.",
 													"example": "HTTP dash health check",
 													"type": "string"
+												},
+												"target_policies": {
+													"description": "Device settings profiles targeted by this test",
+													"items": {
+														"properties": {
+															"default": {
+																"description": "Whether the profile is the account default",
+																"type": "boolean"
+															},
+															"id": {
+																"description": "The id of the device settings profile",
+																"type": "string"
+															},
+															"name": {
+																"description": "The name of the device settings profile",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"targeted": {
+													"type": "boolean"
 												}
 											},
 											"required": [
@@ -1757,6 +1949,30 @@
 															"description": "The name of the DEX test. Must be unique.",
 															"example": "HTTP dash health check",
 															"type": "string"
+														},
+														"target_policies": {
+															"description": "Device settings profiles targeted by this test",
+															"items": {
+																"properties": {
+																	"default": {
+																		"description": "Whether the profile is the account default",
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "The id of the device settings profile",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "The name of the device settings profile",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"targeted": {
+															"type": "boolean"
 														}
 													},
 													"required": [
@@ -1947,6 +2163,30 @@
 								"description": "The name of the DEX test. Must be unique.",
 								"example": "HTTP dash health check",
 								"type": "string"
+							},
+							"target_policies": {
+								"description": "Device settings profiles targeted by this test",
+								"items": {
+									"properties": {
+										"default": {
+											"description": "Whether the profile is the account default",
+											"type": "boolean"
+										},
+										"id": {
+											"description": "The id of the device settings profile",
+											"type": "string"
+										},
+										"name": {
+											"description": "The name of the device settings profile",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"targeted": {
+								"type": "boolean"
 							}
 						},
 						"required": [
@@ -2112,6 +2352,30 @@
 													"description": "The name of the DEX test. Must be unique.",
 													"example": "HTTP dash health check",
 													"type": "string"
+												},
+												"target_policies": {
+													"description": "Device settings profiles targeted by this test",
+													"items": {
+														"properties": {
+															"default": {
+																"description": "Whether the profile is the account default",
+																"type": "boolean"
+															},
+															"id": {
+																"description": "The id of the device settings profile",
+																"type": "string"
+															},
+															"name": {
+																"description": "The name of the device settings profile",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"targeted": {
+													"type": "boolean"
 												}
 											},
 											"required": [
@@ -2282,6 +2546,30 @@
 															"description": "The name of the DEX test. Must be unique.",
 															"example": "HTTP dash health check",
 															"type": "string"
+														},
+														"target_policies": {
+															"description": "Device settings profiles targeted by this test",
+															"items": {
+																"properties": {
+																	"default": {
+																		"description": "Whether the profile is the account default",
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "The id of the device settings profile",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "The name of the device settings profile",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"targeted": {
+															"type": "boolean"
 														}
 													},
 													"required": [
