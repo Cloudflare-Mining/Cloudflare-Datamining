@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/media-manager",
 	"dist-tags": {
-		"latest": "0.1.0-beta.3"
+		"latest": "0.0.29"
 	},
 	"versions": {
 		"0.0.10": {
@@ -681,6 +681,108 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIArJRil9KulJBqI+nO2iUDBSf8vNIFZFaOltIqY9V6mgAiEA1w33S8QUJ9eyLOhb7u18yCV+w2+YcLiOa11C9USukTw="
+					}
+				]
+			}
+		},
+		"0.0.29-beta.0": {
+			"name": "@cloudflare/media-manager",
+			"version": "0.0.29-beta.0",
+			"dependencies": {
+				"@uppy/aws-s3": "^3.6.2",
+				"@uppy/core": "^3.8.0",
+				"@uppy/thumbnail-generator": "^3.0.6",
+				"@uppy/utils": "^2.4.3",
+				"classnames": "^2.5.1",
+				"lodash": "^4.17.21",
+				"nanoid": "^4.0.0",
+				"preact": "^10.5.13",
+				"tailwind-merge": "^2.2.2",
+				"zod": "^3.22.4"
+			},
+			"devDependencies": {
+				"@preact/preset-vite": "^2.8.1",
+				"@rollup/plugin-commonjs": "^25.0.7",
+				"@rollup/plugin-json": "^6.1.0",
+				"@rollup/plugin-node-resolve": "^15.2.3",
+				"@rollup/plugin-terser": "^0.4.4",
+				"@types/lodash": "^4.14.202",
+				"autoprefixer": "^10.4.17",
+				"glob": "^10.3.10",
+				"postcss": "^8.4.33",
+				"postcss-cli": "^11.0.0",
+				"postcss-dir-pseudo-class": "^6.0.0",
+				"postcss-logical": "^5.0.0",
+				"rollup": "^4.12.1",
+				"rollup-plugin-postcss": "^4.0.2",
+				"sass": "^1.69.7",
+				"tailwindcss": "^3.4.1",
+				"typescript": "^5.4.2",
+				"vite": "^5.0.11",
+				"vite-plugin-dts": "^3.7.2",
+				"wrangler": "^3.22.1"
+			},
+			"dist": {
+				"integrity": "sha512-k3qVXWA94F+l4P4G2WPtIZe00kAAA6rKga8F5APNv90achrTSVYCLBPDzx42dFT1SAvf8s6CuYTP1qkcnHxiTw==",
+				"shasum": "466c5988a38fb2f1aac437ebd8127c359219bd5d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/media-manager/-/media-manager-0.0.29-beta.0.tgz",
+				"fileCount": 78,
+				"unpackedSize": 892899,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD/e3RPOyq08ulHj122DlNjr2WUD7hjpCzU5sQGhmgnIAIhAIGA1qZhmYq/VEpBPA59aVpJNgA6Ux0uDc2mCzgPsq7/"
+					}
+				]
+			}
+		},
+		"0.0.29": {
+			"name": "@cloudflare/media-manager",
+			"version": "0.0.29",
+			"dependencies": {
+				"@uppy/aws-s3": "^3.6.2",
+				"@uppy/core": "^3.8.0",
+				"@uppy/thumbnail-generator": "^3.0.6",
+				"@uppy/utils": "^2.4.3",
+				"classnames": "^2.5.1",
+				"lodash": "^4.17.21",
+				"nanoid": "^4.0.0",
+				"preact": "^10.5.13",
+				"tailwind-merge": "^2.2.2",
+				"zod": "^3.22.4"
+			},
+			"devDependencies": {
+				"@preact/preset-vite": "^2.8.1",
+				"@rollup/plugin-commonjs": "^25.0.7",
+				"@rollup/plugin-json": "^6.1.0",
+				"@rollup/plugin-node-resolve": "^15.2.3",
+				"@rollup/plugin-terser": "^0.4.4",
+				"@types/lodash": "^4.14.202",
+				"autoprefixer": "^10.4.17",
+				"glob": "^10.3.10",
+				"postcss": "^8.4.33",
+				"postcss-cli": "^11.0.0",
+				"postcss-dir-pseudo-class": "^6.0.0",
+				"postcss-logical": "^5.0.0",
+				"rollup": "^4.12.1",
+				"rollup-plugin-postcss": "^4.0.2",
+				"sass": "^1.69.7",
+				"tailwindcss": "^3.4.1",
+				"typescript": "^5.4.2",
+				"vite": "^5.0.11",
+				"vite-plugin-dts": "^3.7.2",
+				"wrangler": "^3.22.1"
+			},
+			"dist": {
+				"integrity": "sha512-cehRF/POoPsGGBvtkx4C6JM2h9NTMOgr3zONEdVcK1JOXPliAeSbKUdlsmu5q4jVbIrp3NasPAl8F6asldKNAw==",
+				"shasum": "f92d9aaee352873e1b0111977e862820e433e0e4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/media-manager/-/media-manager-0.0.29.tgz",
+				"fileCount": 78,
+				"unpackedSize": 892809,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDq9PqQ03gvKeSu68a5DiHS1nvl14BrIm7OVebeGj60VgIhANj5S7H4Zd8hvKKBkEBxywFgyc4Ui8yUULscElbBCsaR"
 					}
 				]
 			}
