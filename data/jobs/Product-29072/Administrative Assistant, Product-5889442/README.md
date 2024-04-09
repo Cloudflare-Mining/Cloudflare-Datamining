@@ -5,40 +5,26 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon or Remote Portugal, London or Remote UK.</p>
-<h4>About the department</h4>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base.</span></p>
-<p><span style="font-weight: 400;">The Cloudflare for Teams group within the Engineering organization is taking on the mission of ensuring the people and teams within an organization can access the tools they need to do their job safe from malware and other online threats with the speed and reliability that Cloudflare is known for.</span></p>
-<h4>What you'll do</h4>
-<p><span style="font-weight: 400;">In this role you’ll help us build Gateway, an ambitious product that aims to be the most secure and performant method for an organization’s devices to connect to the Internet. As an engineer on the Gateway team, you will focus on our high-performance global edge network data plane services and will also contribute to the control plane API’s that configure the edge services. You will be joining a </span><a href="https://blog.cloudflare.com/cloudflares-first-year-in-lisbon/"><span style="font-weight: 400;">global team</span></a><span style="font-weight: 400;"> of bright, hard-working, and supportive engineers who really care about their craft.</span></p>
-<p><span style="font-weight: 400;">Example of systems that the team currently is building:</span></p>
+<p style="text-align: left;"><strong>Available Locations: London, United Kingdom</strong></p>
+<p><strong>About the role.</strong></p>
+<p>Cloudflare is looking for a bright, proactive and detail-oriented Administrative Assistant to support three executives in the organization: the VP of Product Management (to whom this role reports), VP of Product Engineering, and the Senior Director of Special Projects / Head of London Office.</p>
+<p>Your job is to keep these leaders organized, prioritized and productive while we grow the business. This role requires superior attention to detail, great organizational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude. The ideal candidate is a seasoned administrative assistant who can cultivate great working relationships, communicate directly, and organize around a common goal. The candidate must be based in the London, UK area.</p>
+<p><strong>What you'll do.</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A forward-proxy service running on every machine of Cloudflare’s extensive edge network, responsible for inspecting, filtering, and blocking device requests based on an organization’s configured policy.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A DNS resolver running on our edge that leverages a Wirefilter based filtering rules engine.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Microservices that allow organizations to configure, manage, and observe their organization's devices and their respective traffic.</span></li>
+	<li>Admin: Provide excellent administrative support, exercising high attention to detail and discretion to every matter. Plan, coordinate and execute meeting set-up and events, including room set-ups, light catering, Audio/Visual set up, attendance tracking and materials distribution. Provide agendas, detailed information and resources in preparation for meetings.</li>
+	<li>Customer engagement preparation: Support executives and their teams with set-up and preparation for meetings and conferences (Cloudflare Connect, Roadshows, etc).</li>
+	<li>Project Management: Assist team projects on an ad-hoc basis. This may include documentation on internal meetings, gathering information, and formalizing plans of action.</li>
+	<li>Calendar: Proactively own and flawlessly execute on calendars, prioritizing with purpose, deflecting with tact, and understanding both the short- and long-term impacts of each confirmed, declined, and rescheduled meeting. Ensure the leaders are equipped with all the necessary meeting information and manage inbound and outbound requests. If you enjoy “playing Tetris” with different time zones and schedules to help people get together, that would be a plus!</li>
+	<li>Travel and Expenses: Plan all aspects of domestic and international travel, optimizing and balancing executives’ time with cost of travel; monitoring flights for up to the minute changes; ensuring all documents are secured and up-to-date. Ensure timely submission of expense reports through Navan.</li>
+	<li>Admin Team: Our admin team has a high degree of camaraderie and the ideal candidate will enjoy partnering closely with their peers and foster teamwork.</li>
 </ul>
-<p><span style="font-weight: 400;">Technologies we use:</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Gateway’s core edge services are written in Rust and deployed globally to 200+ data centers&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Our REST API is written in Go, runs on Kubernetes, and uses Postgres as a data store.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Our frontend is written in Typescript and React.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For service monitoring we use Prometheus and Grafana.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For service logging we use Elasticsearch and Kibana.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For product analytics we use Clickhouse and BigQuery.&nbsp;</span></li>
-</ul>
-<p><span style="font-weight: 400;">Because you’ll be </span><a href="https://blog.cloudflare.com/gateway-swg/"><span style="font-weight: 400;">solving problems of massive scale and significance</span></a><span style="font-weight: 400;">, and </span><a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"><span style="font-weight: 400;">shaping the future of the Internet</span></a><span style="font-weight: 400;">, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</span></p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p><span style="font-weight: 400;">As an ideal candidate for this position, you are curious, hard-working, and passionate.</span></p>
-<p><span style="font-weight: 400;">A rough list of the skills we would love to see you bring:</span></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Rust, C++, or similar low level languages</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Go and/or Typescript is a plus, but not required</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A strong grasp of networking protocols in Layers 3-7 of the OSI Model</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of HTTP protocols - including experience with HTTP/2 and bonus for HTTP/3 experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Basic understanding of software security and encryption</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in designing and implementing secure and highly-available distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness, curiosity, and enthusiasm to learn new programming languages, technologies, and systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills. Caring and empathy are coveted traits here</span></li>
+	<li>You have minimum 3 years experience as an Executive or Administrative Assistant in a high growth environment, prior experience supporting senior leaders</li>
+	<li>Excellent verbal and written communication skills</li>
+	<li>Exhibits a strong work ethic, professionalism, confidentiality, empathy towards others, and good judgment</li>
+	<li>Incredibly organized and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
+	<li>Personable with a can-do attitude that sees no task or project to be too small or too big</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

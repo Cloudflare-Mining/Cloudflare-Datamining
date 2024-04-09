@@ -5,30 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the role and the team</strong></p>
-<p>Cloudflare runs one of the largest DNS infrastructures in the world. We run DNS for millions of Internet properties globally.&nbsp; We also operate the privacy and performance focused public DNS resolver 1.1.1.1 service. Aggregated we handle around 3 trillion DNS queries per day</p>
-<p>Many of our DNS systems are custom built internally, so we’ve developed a lot of proprietary technology that operates at scale, and we are iterating constantly to meet new scaling and reliability requirements.</p>
-<p>In this role, you will be part of a small elite team that builds and maintains one of the core Cloudflare systems. You will maintain and expand our DNS infrastructure and implement features for our customers. We like to think outside the box and come up with novel approaches and solutions.</p>
-<p><strong>Job Description</strong></p>
+<p><strong>Available Locations</strong>: Remote Portugal, Netherlands, France, UK, and Germany</p>
+<hr>
+<h3><strong>About the Department</strong></h3>
+<p>Cloudflare’s Production Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. Production Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
+<p>The Platform Configuration Team within the Production Engineering organization is responsible for ensuring that we can provision and manage our infrastructure in a manner that supports both rapid innovation and safe change at scale to provide the speed and reliability that Cloudflare is known for.</p>
+<p>The Platform Configuration Team has a unique role in Cloudflare in that we get visibility into many different aspects of how Cloudflare’s systems work.&nbsp; This is an incredible opportunity to work on Cloudflare’s next generation of configuration management systems.</p>
+<h3><strong>What you'll do</strong></h3>
+<h4>In this role, you'll help us:</h4>
 <ul>
-	<li>You will be required to research and implement various DNS RFC</li>
-	<li>As part of the job you will be researching new tools and&nbsp; technologies to&nbsp; elegantly and efficiently solve problems at scale</li>
-	<li>You will be responsible for creating and maintaining documentation on software installations, tools, and procedures</li>
-	<li>You will be working mainly with systems languages like Rust, Golang, C, etc</li>
-	<li>You are expected to be versed in TCP/IP and Internet routing</li>
-	<li>You will be involved in designing and operating highly scalable distributed systems that power Cloudflare products</li>
-	<li>You will participate in open source projects that benefit the internet community</li>
+	<li>Re-imagine and redesign Configuration Management tooling for a rapidly evolving, global infrastructure capable of handling over 20% of all Internet traffic</li>
+	<li>Improve and extend our existing deployment tools, frameworks and processes to provide key enhancements to extensibility and testability</li>
+	<li>Design, implement and teach best-practices giving our internal users the most flexibility with the easiest learning-curve</li>
+	<li>Own operations, reliability, availability and security of our platform configuration systems</li>
+	<li>Participate in code reviews to ensure code quality and distribute knowledge</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h4><strong>You may be a good fit for our team if you have:</strong></h4>
 <ul>
-	<li>Open source contributions is a big bonus</li>
-	<li>Knowledge of DNSSEC and various security extensions to DNS</li>
-	<li>Knowledge of HTTP, TLS and CDN Networks</li>
-	<li>Knowledge of building Data Analytics pipeline</li>
-	<li>Experience building Distributed Systems</li>
-	<li>Experience with large scale Monitoring Systems including metric collection, metric pipeline, visualization, trend/statistical analysis etc</li>
-	<li>Good communicator, we work with many other groups and like to tell others about what we do in blogs, talks, and meetups</li>
+	<li>A degree in Computer Science, Engineering, Mathematics, Statistics or related field; OR have relevant background/experience to the field.</li>
+	<li>A deep understanding of performance, security, and user interactions in complex, distributed systems</li>
+	<li>Experience developing a configuration management framework at scale (e.g. SaltStack, Chef, Puppet, or Ansible)</li>
+	<li>Ability to manage a project, work to deadlines, and prioritize between competing demands</li>
+	<li>Proficiency in Python or similar language</li>
+	<li>Experience in designing and implementing secure and highly-available distributed systems</li>
+	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
+	<li>Strong English language oral and written communications skills</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
