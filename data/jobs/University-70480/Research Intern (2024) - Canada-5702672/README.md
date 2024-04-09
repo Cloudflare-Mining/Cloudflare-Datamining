@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Location(s) Available: US, Portugal, UK, Germany, </strong><strong>France, Netherlands, </strong><strong>Alberta, Canada, British Columbia, Canada, Ontario, Canada, Ottawa, Canada, Quebec, Canada</strong></h4>
+<h4><strong>Location(s) Available: US, Portugal, UK, Germany, </strong><strong>France, Netherlands &amp; Canada <em>(</em></strong><em><strong>Alberta, British Columbia, Manitoba, Ontario, Quebec only)</strong></em></h4>
 <h4><strong>About the department</strong></h4>
 <p>Cloudflare’s Research Team is involved with building the future of Cloudflare by tackling strategic projects that have a large impact on Cloudflare systems and the Internet at large.&nbsp;Our focus is on solving difficult problems that serve our goal of connecting and protecting users, applications, and data, while always making the Internet better.</p>
 <p>In our quest to make the Internet better, we frequently find ourselves exploring open problems at the boundaries of current work in scalable security, privacy, and systems, including AI/ML and performance.&nbsp; We make cutting edge research contributions in-house, as well as in collaboration with academia, Internet standards organizations like the IETF, and more!</p>

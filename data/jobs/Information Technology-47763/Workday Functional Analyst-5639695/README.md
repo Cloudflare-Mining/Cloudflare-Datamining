@@ -8,38 +8,38 @@
 <p><strong>Workday Functional Analyst</strong></p>
 <p><strong>Remote US</strong></p>
 <h4><strong>About the department</strong></h4>
-<p><strong>Cloudflare’s Enterprise Applications Team builds and runs Enterprise systems to enable Cloudflare internal teams to operate efficiently and enable our customers and partners to do business with us. Enterprise Applications Team is part of the CIO organization.&nbsp; Within the Enterprise Applications Team is a technical team whose main responsibility is to manage our Workday platform instance.</strong></p>
-<p><strong>This team is responsible for the performance and maintenance of the company's Human Resources Information System (HRIS) associated with the collection, retrieval, accessibility, and usage of employee information for the Human Resources department planning and related activities. The team documents and analyzes the company's HR data system's needs and develops solutions to support the department.&nbsp; They also collaborate with other departments relative to the interface of HR systems with other critical enterprise systems (i.e. compensation, payroll, time and attendance, benefits, finance, etc.).</strong></p>
+<p>Cloudflare’s Enterprise Applications Team builds and runs Enterprise systems to enable Cloudflare internal teams to operate efficiently and enable our customers and partners to do business with us. Enterprise Applications Team is part of the CIO organization.&nbsp; Within the Enterprise Applications Team is a technical team whose main responsibility is to manage our Workday platform instance.</p>
+<p>This team is responsible for the performance and maintenance of the company's Human Resources Information System (HRIS) associated with the collection, retrieval, accessibility, and usage of employee information for the Human Resources department planning and related activities. The team documents and analyzes the company's HR data system's needs and develops solutions to support the department.&nbsp; They also collaborate with other departments relative to the interface of HR systems with other critical enterprise systems (i.e. compensation, payroll, time and attendance, benefits, finance, etc.).</p>
 <p><strong>About the role</strong></p>
-<p><strong>As a Workday Functional Analyst, you are expected to be involved in the following:</strong></p>
+<p>As a Workday Functional Analyst, you are expected to be involved in the following:</p>
 <ul>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Lead workstreams for module deployments in Workday HCM (such as Benefits, Absence, Time Tracking, Talent and Performance, Advanced Comp, etc.)</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Lead and or participate in optimization projects to help business users realize the full potential of Workday</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Serve as an advisor to other Workday post-production engagements in accordance with your areas of expertise</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Build consensus around business processes and design</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Communication of Workday capabilities and limitations</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Configuration of Workday application in multiple modules</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Consistent and ongoing interaction with client subject matter experts</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Collaborate/ Consult with on and offshore resources</strong></li>
+	<li>&nbsp; Lead workstreams for module deployments in Workday HCM (such as Benefits, Absence, Time Tracking, Talent and Performance, Advanced Comp, etc.)</li>
+	<li>&nbsp; Lead and or participate in optimization projects to help business users realize the full potential of Workday</li>
+	<li>&nbsp; Serve as an advisor to other Workday post-production engagements in accordance with your areas of expertise</li>
+	<li>&nbsp; Build consensus around business processes and design</li>
+	<li>&nbsp; Communication of Workday capabilities and limitations</li>
+	<li>&nbsp; Configuration of Workday application in multiple modules</li>
+	<li>&nbsp; Consistent and ongoing interaction with client subject matter experts</li>
+	<li>&nbsp; Collaborate/ Consult with on and offshore resources</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<h4><strong>Bachelor's Degree or higher in technology-related field or relevant experience in implementing Business systems</strong></h4>
 <ul>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>3-5 years of Project or Production Support experience with SaaS Human Resource Information System</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>3-5 years of Workday HCM configuration and business process experience in two or more of the following: Recruiting, Core HCM, Security, Reporting, Benefits Administration, Payroll, Time Tracking, or Absence or Learning</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>2 years of Workday Configurable Security and Custom Report Design and Development</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Experience serving as a workstream lead on HCM implementations or optimization engagements, from design to deployment</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Superior communication skills, both written and verbal</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Experience with Excel, Word, Visio and Power point</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Attention to detail and strong work ethic</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Experienced in working with both internal and system integrator teams for development</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Experience with Jira and Google Suite</strong></li>
+	<li>&nbsp; Bachelor's Degree or higher in technology-related field or relevant experience in implementing Business systems&nbsp;</li>
+	<li>&nbsp; 3-5 years of Project or Production Support experience with SaaS Human Resource Information System</li>
+	<li>&nbsp; 3-5 years of Workday HCM configuration and business process experience in two or more of the following: Recruiting, Core HCM, Security, Reporting, Benefits Administration, Payroll, Time Tracking, or Absence or&nbsp; &nbsp; &nbsp;Learning</li>
+	<li>&nbsp; 2 years of Workday Configurable Security and Custom Report Design and Development</li>
+	<li>&nbsp; Experience serving as a workstream lead on HCM implementations or optimization engagements, from design to deployment</li>
+	<li>&nbsp; Superior communication skills, both written and verbal</li>
+	<li>&nbsp; Experience with Excel, Word, Visio and Power point</li>
+	<li>&nbsp; Attention to detail and strong work ethic</li>
+	<li>&nbsp; Experienced in working with both internal and system integrator teams for development</li>
+	<li>&nbsp; Experience with Jira and Google Suite</li>
 </ul>
 <p><strong>&nbsp;</strong></p>
 <p><strong>Preferred qualifications</strong></p>
 <ul>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Workday PRO certified in HCM Core, Security, Advance Compensation, Benefits Administration, Time Tracking or Payroll</strong></li>
-	<li><strong> &nbsp; </strong><strong> </strong><strong>Consulting experience within the Human Resources Information Systems space</strong></li>
+	<li>&nbsp; Workday PRO certified in HCM Core, Security, Advance Compensation, Benefits Administration, Time Tracking or Payroll</li>
+	<li>&nbsp; Consulting experience within the Human Resources Information Systems space</li>
 </ul>
 <p><strong>&nbsp;</strong></p>
 <h4><br><br></h4>

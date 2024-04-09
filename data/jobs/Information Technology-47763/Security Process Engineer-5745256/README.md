@@ -5,32 +5,24 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>Available Locations</strong>: London, UK</p>
-<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheTeam">About the Team</h3>
-<p>The Workers Runtime team delivers features and improvements to our Runtime which actually executes customer code at the edge. We care deeply about increasing performance, improving JS API surface area and compiled language support through WebAssembly, and optimizing to meet the next 10x increase in scale. The Runtime is a hostile environment - System resources such as memory, cpu, I/O, etc need to be managed extremely carefully and security must be foundational in everything we do.</p>
-<h3 id="SeniorSystemsEngineerWorkersRuntime-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>We are looking for a Systems Engineer to join our team. You will work with a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product features based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
-<p>You bring a passion for meeting business needs while building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment.</p>
-<h3 id="SeniorSystemsEngineerWorkersRuntime-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><strong>Available Locations: Austin, Texas Or Washington, DC</strong></p>
+<p><strong>About the Department</strong><strong><br></strong>The Identity and Access Management (IAM) team is dedicated to ensuring the secure and efficient management of user identities, access privileges, and authentication mechanisms across all company systems, applications, and data. Our mission is to safeguard the organization against unauthorized access, protect sensitive information, and enable seamless user experiences while adhering to industry best practices and compliance standards.</p>
+<p><strong>About the Role</strong></p>
+<p>The IAM Security team is seeking an experienced Process Engineer to join our team. This role requires an individual with a deep understanding of IAM concepts, technologies, and best practices, coupled with exceptional writing and communication skills. The ideal candidate will be responsible for designing, documenting, and optimizing IAM processes and workflows to ensure alignment with security requirements, compliance standards, and best practices. Collaboration with cross-functional teams and stakeholders is essential for this role to analyze existing IAM processes, identify areas for improvement, and implement enhancements.</p>
+<p><strong>Desirable skills, knowledge and experience</strong></p>
+<p>Process engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but working knowledge in several of the following areas is required:&nbsp;</p>
 <ul>
-	<li>At least 3 years of recent professional experience with C++.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>An operational mindset - we don't just write code, we also own it in production</li>
-	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;a large-scale Linux-based distributed system.</li>
+	<li>In-depth understanding of IAM concepts, technologies, standards, and best practices.</li>
+	<li>Experience in designing, documenting, and optimizing IAM processes and workflows to meet security requirements, compliance standards, and business needs.</li>
+	<li>Ability to collaborate with cross-functional teams to analyze existing IAM processes, identify areas for improvement, and implement process enhancements.</li>
+	<li>Excellent writing skills with the ability to translate complex technical concepts into clear, concise, and user-friendly documentation for diverse audiences.</li>
+	<li>Proficiency in creating various types of IAM documentation, including technical guides, process diagrams, and policy documents.</li>
+	<li>Experience conducting interviews and workshops to gather requirements, validate documentation, and solicit feedback.</li>
+	<li>Knowledge of regulatory compliance requirements (e.g., FedRAMP, SOC, and ISO 27001) are a plus.</li>
+	<li>Experience gathering data and interfacing with compliance teams is desired.</li>
 </ul>
-<h3 id="SeniorSystemsEngineerWorkersRuntime-BonusPoints"><strong>Bonus Points</strong></h3>
-<ul>
-	<li>Experience building high performance distributed systems in Rust.</li>
-	<li>Experience working with cloud platforms, especially server-less platforms.</li>
-	<li>Experience with the internals of JS engines such as V8, SpiderMonkey, or JavaScriptCore</li>
-	<li>Experience with standalone WebAssembly runtimes such as Wasmtime, Wasmer, Lucet, etc</li>
-	<li>Deep Linux/UNIX systems, kernel, or networking knowledge</li>
-	<li>Contributions to large open source projects</li>
-</ul>
+<p><br><br></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
