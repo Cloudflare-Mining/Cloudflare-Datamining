@@ -21,6 +21,7 @@
 </ul>
 <h3><strong>About you</strong></h3>
 <ul>
+	<li>You have at least two years of professional experience.</li>
 	<li>We primarily work in Golang and TypeScript. We recommend you have worked in one of these languages before, preferably professionally</li>
 	<li>You are naturally curious and willing to take a step to learn something you don’t have experience in.</li>
 	<li>You enjoy getting things done and have a bias for action: you're a builder and a creator.</li>
