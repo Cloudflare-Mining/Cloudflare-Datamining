@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/media-manager",
 	"dist-tags": {
-		"latest": "0.1.0-beta.2"
+		"latest": "0.1.0-beta.3"
 	},
 	"versions": {
 		"0.0.10": {
@@ -630,6 +630,57 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIB0NwXX+CMICtfVTwDSGKLLkkb/aybuivfNIqvGUGvUjAiEAvbLASf0vknAGt7j98hfmiTJCNym32c/PvL5/sjkdz2g="
+					}
+				]
+			}
+		},
+		"0.1.0-beta.3": {
+			"name": "@cloudflare/media-manager",
+			"version": "0.1.0-beta.3",
+			"dependencies": {
+				"@uppy/aws-s3": "^3.6.2",
+				"@uppy/core": "^3.8.0",
+				"@uppy/thumbnail-generator": "^3.0.6",
+				"@uppy/utils": "^2.4.3",
+				"classnames": "^2.5.1",
+				"lodash": "^4.17.21",
+				"nanoid": "^4.0.0",
+				"preact": "^10.5.13",
+				"tailwind-merge": "^2.2.2",
+				"zod": "^3.22.4"
+			},
+			"devDependencies": {
+				"@preact/preset-vite": "^2.8.1",
+				"@rollup/plugin-commonjs": "^25.0.7",
+				"@rollup/plugin-json": "^6.1.0",
+				"@rollup/plugin-node-resolve": "^15.2.3",
+				"@rollup/plugin-terser": "^0.4.4",
+				"@types/lodash": "^4.14.202",
+				"autoprefixer": "^10.4.17",
+				"glob": "^10.3.10",
+				"postcss": "^8.4.33",
+				"postcss-cli": "^11.0.0",
+				"postcss-dir-pseudo-class": "^6.0.0",
+				"postcss-logical": "^5.0.0",
+				"rollup": "^4.12.1",
+				"rollup-plugin-postcss": "^4.0.2",
+				"sass": "^1.69.7",
+				"tailwindcss": "^3.4.1",
+				"typescript": "^5.4.2",
+				"vite": "^5.0.11",
+				"vite-plugin-dts": "^3.7.2",
+				"wrangler": "^3.22.1"
+			},
+			"dist": {
+				"integrity": "sha512-rICBAXEQcESR2eqtZeTELfkHAsiZc9FKPqYFIC3vfxe2oeG5UHHVwp52jds+CKqPIay0bMDqZG2HZ3JP1zG9zg==",
+				"shasum": "187524c946da98c2127fc91b1042e3e7b2f721fd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/media-manager/-/media-manager-0.1.0-beta.3.tgz",
+				"fileCount": 78,
+				"unpackedSize": 892898,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIArJRil9KulJBqI+nO2iUDBSf8vNIFZFaOltIqY9V6mgAiEA1w33S8QUJ9eyLOhb7u18yCV+w2+YcLiOa11C9USukTw="
 					}
 				]
 			}
