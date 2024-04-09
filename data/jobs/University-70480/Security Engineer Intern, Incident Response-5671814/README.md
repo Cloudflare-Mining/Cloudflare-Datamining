@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About Cloudflare's Security teams</strong></p>
+<p><strong>Available Location: Lisbon, Portugal<br><br>About Cloudflare's Security teams</strong></p>
 <p>Anytime our engineers push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 300 cities in more than 100 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
 <p>Cloudflare’s Security team works to ensure the safety and security of our products, networks, and, above all, our people. We are organized in teams that deal with, for example, Service Delivery, Product Security, GRC (Governance, Risk and Compliance), Vulnerability management or Security Response.</p>
 <p>The Security Response team (EMEA) is the front end for the Incident Response program and its main mission is to collect, triage and respond to incidents that affect Cloudflare's Infrastructure or users.</p>

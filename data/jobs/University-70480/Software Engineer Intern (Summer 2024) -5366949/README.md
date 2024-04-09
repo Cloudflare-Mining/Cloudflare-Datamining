@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="collapsed-field-text">Austin, US, Lisbon, Portugal, London, UK</span> &nbsp;</strong></p>
+<p><strong>Available Locations: <span class="collapsed-field-text">London, UK</span> &nbsp;</strong></p>
 <p><strong>About Cloudflare's Engineering teams</strong></p>
 <p>Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 300 cities in more than 100 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
 <p><span style="font-weight: 400;">Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture. Technologies include: C/C++, Rust, Go, Lua, Nginx, Go, Python, Typescript, JavaScript and ReactJS.</span></p>

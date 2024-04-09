@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>This is a fixed-term 11 months role.</strong></p>
+<p><strong>Contract Type: Fixed Term 11 Month<br>Available Location: Amsterdam, Netherlands</strong></p>
 <p><strong>About the Role</strong></p>
 <p>We are looking for a Field Marketing Associate to support marketing efforts in the Benelux and Nordics. Working closely with the regional Marketing Manager for Northern Europe, you will help to create, deliver and execute impactful marketing programs to drive awareness and develop qualified pipeline for Cloudflare’s sales team — specifically targeting Enterprise, Field and Mid-Market accounts within the region. In this position you’ll positively contribute to developing and executing campaigns and events to generate leads that contribute to sales pipeline, revenue and brand awareness.</p>
 <p>The right candidate will have a builder mindset, a strong knowledge of B2B demand generation best practices, be digitally savvy, have a natural inclination to measure the effectiveness of marketing activities, strong project management skills, and the ability to drive program execution while managing the expectations of various stakeholders.</p>

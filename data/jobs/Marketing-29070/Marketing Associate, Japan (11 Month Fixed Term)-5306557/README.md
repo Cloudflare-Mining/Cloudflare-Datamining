@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Tokyo, Japan</strong></p>
+<p><strong>Contract Type: Fixed Term 11 Month<br>Available Location: Tokyo, Japan</strong></p>
 <p><strong>About the Role&nbsp;</strong></p>
 <p>Cloudflare is looking for a Marketing Associate with a strong interest in B2B Marketing in the IT field. The ideal candidate will have experience in sales or marketing, be willing to communicate within the team, and enjoy working on business growth and personal growth. This is a contract role: 12 months.</p>
 <p>You will plan and execute events, webinars, and digital engagements with customers based on the enterprise buying journey. In addition, the candidate will conduct a wide range of marketing activities, including online media planning, management of sponsored events and trade shows and vendor management.The ideal candidate will be flexible in the use of marketing-related software tools and accurate in project management.&nbsp;</p>
