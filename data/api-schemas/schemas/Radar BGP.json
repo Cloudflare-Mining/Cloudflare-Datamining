@@ -1450,6 +1450,15 @@
 			},
 			{
 				"in": "query",
+				"name": "includeDelay",
+				"schema": {
+					"description": "Include data delay meta information",
+					"example": "true",
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
 				"name": "format",
 				"schema": {
 					"description": "Format results are returned in.",

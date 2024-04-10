@@ -8,7 +8,9 @@
 				"name": "rule_id",
 				"required": true,
 				"schema": {
-					"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+					"description": "The id of the rule. Must be unique.",
+					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+					"type": "string"
 				}
 			},
 			{
@@ -16,7 +18,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "6f91088a406011ed95aed352566e8d4c"
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string"
 				}
 			}
 		],
@@ -152,7 +155,9 @@
 													"type": "string"
 												},
 												"id": {
-													"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+													"description": "The id of the rule. Must be unique.",
+													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+													"type": "string"
 												},
 												"name": {
 													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
@@ -318,7 +323,9 @@
 															"type": "string"
 														},
 														"id": {
-															"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+															"description": "The id of the rule. Must be unique.",
+															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+															"type": "string"
 														},
 														"name": {
 															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
@@ -464,7 +471,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "6f91088a406011ed95aed352566e8d4c"
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string"
 				}
 			}
 		],
@@ -613,7 +621,9 @@
 														"type": "string"
 													},
 													"id": {
-														"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+														"description": "The id of the rule. Must be unique.",
+														"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+														"type": "string"
 													},
 													"name": {
 														"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
@@ -800,7 +810,9 @@
 																"type": "string"
 															},
 															"id": {
-																"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+																"description": "The id of the rule. Must be unique.",
+																"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+																"type": "string"
 															},
 															"name": {
 																"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
@@ -948,7 +960,9 @@
 				"name": "rule_id",
 				"required": true,
 				"schema": {
-					"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+					"description": "The id of the rule. Must be unique.",
+					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+					"type": "string"
 				}
 			},
 			{
@@ -956,7 +970,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "6f91088a406011ed95aed352566e8d4c"
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string"
 				}
 			}
 		],
@@ -1086,7 +1101,9 @@
 													"type": "string"
 												},
 												"id": {
-													"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+													"description": "The id of the rule. Must be unique.",
+													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+													"type": "string"
 												},
 												"name": {
 													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
@@ -1252,7 +1269,9 @@
 															"type": "string"
 														},
 														"id": {
-															"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+															"description": "The id of the rule. Must be unique.",
+															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+															"type": "string"
 														},
 														"name": {
 															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
@@ -1398,7 +1417,9 @@
 				"name": "rule_id",
 				"required": true,
 				"schema": {
-					"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+					"description": "The id of the rule. Must be unique.",
+					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+					"type": "string"
 				}
 			},
 			{
@@ -1406,7 +1427,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "6f91088a406011ed95aed352566e8d4c"
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string"
 				}
 			}
 		],
@@ -1542,7 +1564,9 @@
 													"type": "string"
 												},
 												"id": {
-													"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+													"description": "The id of the rule. Must be unique.",
+													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+													"type": "string"
 												},
 												"name": {
 													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
@@ -1708,7 +1732,9 @@
 															"type": "string"
 														},
 														"id": {
-															"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+															"description": "The id of the rule. Must be unique.",
+															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+															"type": "string"
 														},
 														"name": {
 															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
@@ -1854,7 +1880,9 @@
 				"name": "rule_id",
 				"required": true,
 				"schema": {
-					"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+					"description": "The id of the rule. Must be unique.",
+					"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+					"type": "string"
 				}
 			},
 			{
@@ -1862,7 +1890,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "6f91088a406011ed95aed352566e8d4c"
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string"
 				}
 			}
 		],
@@ -2236,7 +2265,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "6f91088a406011ed95aed352566e8d4c"
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string"
 				}
 			}
 		],
@@ -2372,7 +2402,9 @@
 													"type": "string"
 												},
 												"id": {
-													"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+													"description": "The id of the rule. Must be unique.",
+													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+													"type": "string"
 												},
 												"name": {
 													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
@@ -2538,7 +2570,9 @@
 															"type": "string"
 														},
 														"id": {
-															"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+															"description": "The id of the rule. Must be unique.",
+															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+															"type": "string"
 														},
 														"name": {
 															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
@@ -2684,7 +2718,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "6f91088a406011ed95aed352566e8d4c"
+					"example": "6f91088a406011ed95aed352566e8d4c",
+					"type": "string"
 				}
 			}
 		],
@@ -2820,7 +2855,9 @@
 													"type": "string"
 												},
 												"id": {
-													"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+													"description": "The id of the rule. Must be unique.",
+													"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+													"type": "string"
 												},
 												"name": {
 													"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
@@ -2986,7 +3023,9 @@
 															"type": "string"
 														},
 														"id": {
-															"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+															"description": "The id of the rule. Must be unique.",
+															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
+															"type": "string"
 														},
 														"name": {
 															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",

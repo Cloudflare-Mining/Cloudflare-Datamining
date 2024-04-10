@@ -1,10 +1,10 @@
 {
-	"POST /accounts/{account_identifier}/request-tracer/trace": {
+	"POST /accounts/{account_id}/request-tracer/trace": {
 		"operationId": "account-request-tracer-request-trace",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -305,7 +305,7 @@
 																"example": "rule_id01",
 																"type": "string"
 															},
-															"trace": "[Circular ~.POST /accounts/{account_identifier}/request-tracer/trace.responses.200.content.application/json.schema.allOf.1.properties.result.properties.trace]",
+															"trace": "[Circular ~.POST /accounts/{account_id}/request-tracer/trace.responses.200.content.application/json.schema.allOf.1.properties.result.properties.trace]",
 															"type": {
 																"description": "Tracing step type",
 																"example": "rule",
