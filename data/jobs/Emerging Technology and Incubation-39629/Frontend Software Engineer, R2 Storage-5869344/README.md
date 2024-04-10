@@ -5,63 +5,24 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2>Engineering Manager in Test - Zero Trust Client Automation</h2>
-<h3>What you’ll do</h3>
-<p>We are looking for an <strong>Engineering Manager</strong> in Test to lead our <a href="https://www.cloudflare.com/zero-trust/">Zero Trust</a> QA/SDET team and grow our <strong>desktop client automation</strong> and testing.</p>
-<p>As the Engineering Manager in Test, you and your team will own, improve, and maintain our&nbsp;<strong>end-to-end (E2E) testing automation</strong> frameworks &amp; processes that enables all engineers to write E2E tests to <strong>guarantee the quality and reliability</strong> of the clients. You and your team will work closely with our client teams to define and refine our <strong>approach to testing</strong> (automated and manual), and drive the direction of our testing strategy to ensure the reliable and scalable testing of our software.</p>
-<p>You will lead a multidisciplinary team, who writes&nbsp;<strong>high-quality</strong>, <strong>low-complexity</strong> code for <strong>test automation</strong> (E2E testing framework), sets up and <strong>manage test infrastructure</strong> (e.g. integration with CI/CD platforms, VM orchestration), and creates release test plans. You will also be expected to use your passion and extensive testing experience to instil, and advocate for, <strong>best testing practices</strong> in all the teams you will collaborate with.</p>
-<h2>Examples of desirable skills, knowledge, and experience</h2>
+<h3><strong>Locations: Austin, TX</strong></h3>
+<h3></h3>
+<h3 id="FrontendEngineerPlatformStorageRemote(America/Europe)-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3 id="FrontendEngineerPlatformStorageRemote(America/Europe)-Whatyou'lldo"><strong>What you'll do</strong></h3>
+<p>We are looking for experienced front-end engineers to join our team. The ideal candidates will have experience working with large-scale applications and a track record of producing great output. You must care deeply not only about the quality of your and the team's code, but also the customer experience. We have growing front-end needs, so we’re looking for highly motivated individuals that are excited to join a team and work with product and content owners, designers, and other software engineers to build and scale services at Cloudflare.</p>
+<h3 id="FrontendEngineerPlatformStorageRemote(America/Europe)-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Demonstrable experience <strong>leading a team of SDETs</strong> working on E2E automation projects</li>
-	<li><strong>Excellent</strong> <strong>software engineering skills</strong>, with experience writing &amp; designing high-quality, highly-documented, low-complexity code</li>
-	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
-	<li>Proficiency in one or more common <strong>cross-platform scripting</strong> <strong>language</strong> (Python preferred)</li>
-	<li>Deep understanding of <strong>automation methodology</strong> and tooling</li>
-	<li>Hands-on experience developing <strong>E2E automation frameworks</strong> for desktop clients</li>
-	<li>Experience with automating <strong>E2E testing of network-based apps</strong>, especially VPNs (e.g. DNS, IPsec, WireGuard, QUIC, throttling, packet loss, etc.)</li>
-	<li>Demonstrable experience working on <strong>multi-platform desktop client automation</strong></li>
-	<li>Strong knowledge and understanding of macOS, Windows, and/or Linux platforms and how to test native apps on each</li>
-	<li>Experience setting up or working with <strong>multi-platform VM orchestration</strong></li>
-	<li>Bonus: Knowledge of Go and/or Rust</li>
+	<li>5+ years experience building web applications.</li>
+	<li>Strong knowledge of HTML, CSS and Javascript.</li>
+	<li>Experience working with and/or designing RESTful APIs</li>
+	<li>Understanding of responsive design and its implementation.</li>
+	<li>Experience building web applications using a modern frontend framework such as React or AngularJS.&nbsp;</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Excellent communication skills and the ability to work effectively with others in a team environment.</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and experience.</p>
-<ul>
-	<li>
-		<ul>
-			<li>For Colorado-based hires: Estimated annual salary of $162,000 - $233,000</li>
-			<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $195,000 - $261,000</li>
-			<li>For Bay Area-based hires: Estimated annual salary of $205,000 - $275,000</li>
-		</ul>
-	</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<h3 id="SoftwareEngineerR2StorageRemote(America/Europe)-AbouttheDepartment"></h3>
+<h3 id="SystemsEngineer-R2Storage-Austin,TX-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

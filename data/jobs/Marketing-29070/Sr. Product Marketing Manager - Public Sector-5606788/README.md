@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations - Remote US and San Francisco, CA</strong></p>
+<p><strong>Available Locations - Remote US&nbsp;</strong></p>
 <p><strong>About the Role</strong></p>
 <p>Product Marketing is responsible for developing crisp, highly differentiated, and compelling positioning and messaging for Cloudflare and its services. We tell Cloudflare’s most important and interesting stories to educate customers about what is possible when you connect, protect and build with Cloudflare.</p>
 <p>Cloudflare is searching for a Senior Product Marketing Manager to drive our Public Sector business. We are looking for insightful and energetic marketer to build and market our compelling solution narratives that capture the full set of capabilities offered by the breadth of our solution offerings. Join us and you'll define and execute messaging and positioning for FED/SLED and Education sectors,&nbsp; and produce compelling technical content and programming that breaks new ground in areas of security and compliance.&nbsp;</p>

@@ -5,8 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations:</strong> Austin TX&nbsp;</p>
-<p></p>
+<h4><strong>Locations:</strong> Austin TX&nbsp;</h4>
 <h3 id="JD:SystemsEngineerWorkersCorePlatformAustin,TX-AbouttheDepartment"><strong>About the Department</strong></h3>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
 <p>The Workers teams makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the serverless technology that executes billions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
@@ -26,7 +25,7 @@
 	<li>Familiarity with the web and technologies such as web browsers, HTTP, JavaScript.</li>
 	<li>Familiarity with Kubernetes, Kafka, Clickhouse.</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

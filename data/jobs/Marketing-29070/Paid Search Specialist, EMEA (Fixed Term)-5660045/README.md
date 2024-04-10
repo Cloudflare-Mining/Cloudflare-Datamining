@@ -5,11 +5,11 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Location: London or Lisbon. Please note this is a fixed term role (12 months fixed term employment)</strong></p>
 <p><strong>What you'll do</strong></p>
 <p>Cloudflare is looking for a paid search practitioner who has a proven track record of understanding and working with global paid search account structures to drive measurable impact on pipeline creation and closed-won revenue. This person will work in conjunction with the paid media manager to execute on routine optimizations, new launches, testing, and reporting.&nbsp;</p>
 <p><strong>About the role</strong></p>
 <p>The Paid Search Specialist is accountable for successfully executing the EMEA paid search strategy across a portfolio of products, regional accounts and campaigns. This role will work in conjunction with internal teams across the company to execute an industry-leading paid search program in multiple languages.&nbsp;</p>
-<p><strong>Location: Lisbon. </strong>Please note this is a fixed term role (12 months fixed term employment)</p>
 <p><strong>Responsibilities:</strong></p>
 <ul>
 	<li>Implement and support global paid search campaigns, including but not limited to campaign setup, strategy development, organization, and management for Cloudflare’s global enterprise campaigns.&nbsp;</li>
