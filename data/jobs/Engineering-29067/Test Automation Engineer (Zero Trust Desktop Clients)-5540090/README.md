@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<h4>Locations Available: Remote, Canada&nbsp;</h4>
 <h4>What you'll do</h4>
 <p>The Zero Trust team is looking for an Automation Engineer/SDET with a <strong>strong experience</strong> automating testing of <strong>desktop applications</strong>, and potentially mobile.</p>
 <p>As an Automation Engineer/SDET, you will create, lead, and maintain our <strong>end-to-end (E2E) testing automation</strong> frameworks &amp; processes, to enable the teams to write their own E2E tests to <strong>guarantee the quality and reliability</strong> of their apps. You will work closely with our client teams to define and refine our <strong>approach to testing automation</strong>, and drive the direction of our testing strategy to ensure the reliable and scalable testing of our software.</p>
