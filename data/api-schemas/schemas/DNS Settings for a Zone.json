@@ -120,6 +120,16 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"foundation_dns": {
+													"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+													"example": false,
+													"type": "boolean"
+												},
+												"multi_provider": {
+													"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
+													"example": false,
+													"type": "boolean"
+												},
 												"nameservers": {
 													"description": "Settings determining the nameservers through which the zone should be available.",
 													"properties": {
@@ -137,13 +147,21 @@
 														"type"
 													],
 													"type": "object"
+												},
+												"secondary_overrides": {
+													"description": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
+													"example": false,
+													"type": "boolean"
 												}
 											},
 											"type": "object"
 										}
 									},
 									"required": [
-										"nameservers"
+										"nameservers",
+										"foundation_dns",
+										"multi_provider",
+										"secondary_overrides"
 									],
 									"type": "object"
 								}
@@ -258,6 +276,16 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"foundation_dns": {
+															"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+															"example": false,
+															"type": "boolean"
+														},
+														"multi_provider": {
+															"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
+															"example": false,
+															"type": "boolean"
+														},
 														"nameservers": {
 															"description": "Settings determining the nameservers through which the zone should be available.",
 															"properties": {
@@ -275,13 +303,21 @@
 																"type"
 															],
 															"type": "object"
+														},
+														"secondary_overrides": {
+															"description": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
+															"example": false,
+															"type": "boolean"
 														}
 													},
 													"type": "object"
 												}
 											},
 											"required": [
-												"nameservers"
+												"nameservers",
+												"foundation_dns",
+												"multi_provider",
+												"secondary_overrides"
 											],
 											"type": "object"
 										}
@@ -422,6 +458,16 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"foundation_dns": {
+								"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+								"example": false,
+								"type": "boolean"
+							},
+							"multi_provider": {
+								"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
+								"example": false,
+								"type": "boolean"
+							},
 							"nameservers": {
 								"description": "Settings determining the nameservers through which the zone should be available.",
 								"properties": {
@@ -439,6 +485,11 @@
 									"type"
 								],
 								"type": "object"
+							},
+							"secondary_overrides": {
+								"description": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
+								"example": false,
+								"type": "boolean"
 							}
 						},
 						"type": "object"
@@ -551,6 +602,16 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"foundation_dns": {
+													"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+													"example": false,
+													"type": "boolean"
+												},
+												"multi_provider": {
+													"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
+													"example": false,
+													"type": "boolean"
+												},
 												"nameservers": {
 													"description": "Settings determining the nameservers through which the zone should be available.",
 													"properties": {
@@ -568,13 +629,21 @@
 														"type"
 													],
 													"type": "object"
+												},
+												"secondary_overrides": {
+													"description": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
+													"example": false,
+													"type": "boolean"
 												}
 											},
 											"type": "object"
 										}
 									},
 									"required": [
-										"nameservers"
+										"nameservers",
+										"foundation_dns",
+										"multi_provider",
+										"secondary_overrides"
 									],
 									"type": "object"
 								}
@@ -689,6 +758,16 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"foundation_dns": {
+															"description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+															"example": false,
+															"type": "boolean"
+														},
+														"multi_provider": {
+															"description": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
+															"example": false,
+															"type": "boolean"
+														},
 														"nameservers": {
 															"description": "Settings determining the nameservers through which the zone should be available.",
 															"properties": {
@@ -706,13 +785,21 @@
 																"type"
 															],
 															"type": "object"
+														},
+														"secondary_overrides": {
+															"description": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
+															"example": false,
+															"type": "boolean"
 														}
 													},
 													"type": "object"
 												}
 											},
 											"required": [
-												"nameservers"
+												"nameservers",
+												"foundation_dns",
+												"multi_provider",
+												"secondary_overrides"
 											],
 											"type": "object"
 										}
