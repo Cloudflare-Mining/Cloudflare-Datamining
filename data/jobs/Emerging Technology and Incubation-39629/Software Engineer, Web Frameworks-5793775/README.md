@@ -5,8 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Position Location: Lisbon, Portugal</strong></p>
-<p></p>
+<p><strong>Position Location: Austin, TX | Lisbon, Portugal | London, UK</strong></p>
 <p><strong>About the Role</strong></p>
 <p>Our team’s core mission is to enable developers to do what they do best — build powerful applications.&nbsp; We believe they should be able to do this without having to think or worry about infrastructure, scaling, or performance. While Cloudflare Workers, Cloudflare’s solution to serverless computing, handles the infrastructure part, there’s so much more that goes into enabling developers to do their jobs. In this role you will work on a wide range of projects that enable our platform to integrate seamlessly with the existing Web development ecosystem, including developing and improving integration with full stack web frameworks, developer tools for bundling, transpiling, and performance optimizations. You’ll also be exposed to JS API design and standardization work, and development or integration of backwards/forwards compatibility API layers for Web and Node.js APIs. If this excites you, come join our team of talented engineers that enables developers all around the world to build low-latency planet-scale applications for the Internet and the Web!&nbsp;&nbsp;</p>
 <p><strong>About the Department</strong></p>
@@ -48,7 +47,7 @@
 	<li>Experience contributing to OSS software development or maintaining OSS projects</li>
 	<li>Public speaking or developer relations skills</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

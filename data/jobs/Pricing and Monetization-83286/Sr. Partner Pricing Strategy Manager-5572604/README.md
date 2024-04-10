@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: Austin, TX; Remote US</strong></h4>
+<h4><strong>Available Locations: Remote US</strong></h4>
 <h4><strong>About the role</strong></h4>
 <p>Cloudflare is seeking a Senior Partner Pricing Strategy Manager to bring our offerings to our Partner Channels through compelling pricing and packaging strategies.</p>
 <p>You will be responsible for developing strategies for a specific sales channel: Partner channels.&nbsp; You will collaborate cross-functionally with Sales, Product, Services, Product Marketing, and Finance to align our organization behind our strategies to solve customer pain and deliver value. &nbsp; A successful candidate will have a track record of delivering results in a fast-paced and dynamic business environment.&nbsp;&nbsp;</p>

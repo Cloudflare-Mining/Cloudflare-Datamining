@@ -5,9 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>&nbsp;</h4>
 <h4><strong>Available Locations: San Francisco, CA | Remote US</strong></h4>
-<h4>&nbsp;</h4>
 <h4>Description</h4>
 <p>Cloudflare is seeking a Sr. Pricing Strategy Manager to lead GTM Pricing optimization initiatives to further accelerate company growth.</p>
 <p>You will be responsible for developing strategies to optimize our existing pricing GTM strategies and sales motions across channels and geographies.&nbsp; You will collaborate cross-functionally with Product, Sales, Product Marketing, Sales/Channel, and Finance to align our organization behind our strategies to solve customer pain and deliver value. &nbsp; A successful candidate will have a track record of delivering results in a fast-paced and dynamic business environment.&nbsp; This is an individual contributor role, reporting to the Sr. Director, Pricing Strategy.</p>

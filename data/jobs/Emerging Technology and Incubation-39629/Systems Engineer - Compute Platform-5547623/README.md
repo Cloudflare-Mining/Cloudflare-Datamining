@@ -5,10 +5,10 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: Austin, TX | Lisbon, Portugal | London, UK</strong></p>
 <p><strong>About the Role</strong></p>
 <p>Cloudflare is building a brand new way of running globally distributed compute for both CPU and GPU workloads, and we need a strong Systems Engineer well-versed in Linux systems and network programming to join this effort. Our edge network&nbsp;<a href="https://www.cloudflare.com/network/">spans the world</a> and lets us treat the entire network as a compute resource to build ultra-low latency applications. This is the core of how we ship great new products every year —&nbsp;and this team is taking this way of building, and growing it into a platform of its own with both internal and external use cases.</p>
 <p>This team works on some of the most challenging compute problems at Cloudflare — secure sandboxing of GPU and AI workloads, high throughput network data plane where every millisecond counts, distributed routing control plane.</p>
-<p><strong>Available Locations:</strong> Portugal, Lisbon</p>
 <p><strong>Skills &amp; Technologies</strong></p>
 <p>We are looking for engineers with battle-tested experience in Linux systems and network programming. Come help build something new and transformative for the company that <a href="https://w3techs.com/technologies/details/cn-cloudflare">nearly 20% of the internet</a> already depends on.</p>
 <p>Here are the technologies and problems we face today</p>

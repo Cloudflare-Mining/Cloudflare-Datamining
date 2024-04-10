@@ -5,9 +5,9 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Location: Austin, TX | Lisbon, Portugal | London, UK</strong></p>
 <p><strong>About the Role</strong></p>
 <p>Our team’s core mission is to enable developers to do what they do best — build powerful applications.&nbsp; We believe they should be able to do this without having to think or worry about infrastructure, scaling, or performance. While Cloudflare Workers, Cloudflare’s solution to serverless computing, handles the infrastructure part, there’s so much more that goes into enabling developers to do their jobs. Developer experience plays a critical role in the success of developers using our platform, so it is our team’s goal to make our platform easy to understand, accessible, and fun and delightful to use! If this excites you, come join our team of talented engineers that enables developers all around the world to build low-latency planet-scale applications for the Internet and the Web!</p>
-<p>Available Location: Portugal, Lisbon</p>
 <p><strong>About the Department</strong></p>
 <p>Our team is part of Cloudflare's Emerging Technology and Incubation (ETI) team where new, bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a successful business, ETI leverages our network to deliver entirely new tools and products to our customers. The Developer Productivity team maintains several tools (Wrangler, Miniflare, Workers Playground, among others) within a larger collection of developer resources for one of ETIs most successful endeavors so far, Cloudflare Workers.&nbsp;</p>
 <p><strong>What you'll do</strong></p>
@@ -35,7 +35,7 @@
 	<li>Naturally curious and eager to take a step to learn something new</li>
 	<li>Above all, a collaborator and effective communicator. You want to join a team that upholds a culture of support, open and honest communication, and vulnerability, and that values collaboration over heroism. We celebrate our achievements, support each other when we make mistakes, and hold each other and our work to the highest standard</li>
 </ul>
-<p>You’ll really feel right at home if you have:</p>
+<p><strong>You’ll really feel right at home if you have:</strong></p>
 <ul>
 	<li>Experience using the Cloudflare Workers development platform</li>
 	<li>Experience contributing to OSS software development</li>
