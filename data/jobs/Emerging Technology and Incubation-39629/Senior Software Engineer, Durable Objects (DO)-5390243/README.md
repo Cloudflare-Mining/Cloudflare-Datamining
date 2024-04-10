@@ -6,25 +6,29 @@
 	</div>
 </div>
 <h3><strong>Available Locations: Austin, Texas | Lisbon, Portugal | London, UK</strong></h3>
-<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-AbouttheDepartment"><strong>About the Department</strong></h3>
+<h3></h3>
+<h3 id="PrincipalSoftwareEngineerDurableObjects(DO)-AbouttheDepartment"><strong>About the Department</strong></h3>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>The Durable Objects (DO) and D1 team is responsible for DO, Cloudflare's&nbsp;distributed coordination API with strongly consistent storage, and D1, Cloudflare's first SQL database optimized for the edge. In this role, you will work with a top-notch engineering team to expand Cloudflare's capabilities by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
-<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
-<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h3 id="PrincipalSoftwareEngineerDurableObjects(DO)-Whatyou'lldo"><strong>What you'll do</strong></h3>
+<p>The Durable Objects (DO) team is responsible for DO, Cloudflare's&nbsp;distributed coordination API with strongly consistent storage. In this role, you will work with a top-notch engineering team to expand Cloudflare's capabilities by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.&nbsp;You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
+<h3 id="PrincipalSoftwareEngineerDurableObjects(DO)-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Min 5 years experience working with distributed systems or developing on cloud platforms.</li>
-	<li>Experience managing high volume software applications.</li>
+	<li>10+ years experience working with distributed systems or developing on cloud platforms.</li>
+	<li>An operational mindset - we don't just write code, we also own it in production</li>
 	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Java, C#, Rust, or C++.</li>
+	<li>Deep knowledge of at least one systems programming language such as C/C++ or Rust</li>
+	<li>Experience in designing and architecting large-scale distributed systems</li>
+	<li>Experience working with cloud platforms, especially serverless platforms</li>
+	<li>Experience being in a technical leader or operating in a team lead role</li>
 </ul>
-<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-BonusPoints"><strong>Bonus Points</strong></h3>
+<h3 id="PrincipalSoftwareEngineerDurableObjects(DO)-BonusPoints"><strong>Bonus Points</strong></h3>
 <ul>
 	<li>Previous experience working on database internals such as a SQL query planner.&nbsp;</li>
 	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly.</li>
 	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
 	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;a large-scale Linux-based distributed system.</li>
 </ul>
+<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,26 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3 id="SystemsEngineer-R2Storage-Austin,TX-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
-<h3 id="SystemsEngineer-R2Storage-Austin,TX-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>Cloudflare's R2 Storage is distributed object storage accessible through Cloudflare's infrastructure allowing customers–both internal and external–the convenience of accessing their data from anywhere with the reliability and performance of Cloudflare infrastructure. In this role, you'll work with a top-notch engineering team to drive R2 Storage forward by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
-<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
-<h3 id="SystemsEngineer-R2Storage-Austin,TX-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><strong>About the Teams</strong></p>
+<p><strong>Role location: Lisbon, Remote Portugal, London, Remote UK.&nbsp;</strong></p>
+<p><span style="font-weight: 400;">Cloudflare’s Engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products,&nbsp; help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</span></p>
+<p><span style="font-weight: 400;">Cloudflare is a fast growing company and engineering is an ever-evolving function with teams being formed and redefined often. You will interview for an engineering role at Cloudflare and will have the opportunity to meet with and ultimately select one or more teams.&nbsp; Here are a few examples of the teams that you could be part of.</span></p>
+<p><strong>Application Performance; Application Security; Zero Trust Services; Serverless, Bot Management; DDoS Protection; Network Services / Magic Products; Full Stack / Microservices; Security / Cryptography; Content Delivery; Email Security; API Security; Client / WARP applications; Machine Learning; Threat Intelligence</strong></p>
+<p><strong>About the Role</strong></p>
+<p><span style="font-weight: 400;">Cloudflare is a system spanning the globe, on a mission to make the Internet better, safer, and more powerful every day. As a Distributed Systems Engineer at Cloudflare, you’ll work on the code that runs close to the end user, runs at a massive scale, and is deployed to 250+ cities around the world.</span></p>
+<p><span style="font-weight: 400;">Examples of software systems at Cloudflare include:</span></p>
 <ul>
-	<li>Minimum 8 years of experience working with distributed systems.</li>
-	<li>Experience building and managing high volume software applications.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use Go, TypeScript, and Rust.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;<span class="inline-comment-marker" data-ref="54d10e3b-73c1-4af9-8da4-e619f015c3b0">a large-scale distributed system</span>.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A TLS/HTTP proxy to make the connection from eyeball to edge as fast and secure as possible</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Filtering malicious traffic and handling good traffic according to customer configuration</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Content optimization that takes content served from customer sites and makes it more performant</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A platform that runs “serverless” Workers and provides a key value store</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A reverse-proxy system that caches customer website content according to customer configuration</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Optimization of connections from Cloudflare to our customers' origin servers to reduce their load and increase performance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Our Authoritative DNS server and our public resolver 1.1.1.1.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">One of the biggest data pipelines in the world, operating at well over 25M events per second</span></li>
 </ul>
-<h3 id="SystemsEngineer-R2Storage-Austin,TX-BonusPoints"><strong><span class="inline-comment-marker" data-ref="9d2723d0-7d67-4963-9e09-d584d29788bf">Bonus Points</span></strong></h3>
+<p><span style="font-weight: 400;">We operate some of the fastest, and most widely distributed services on the Internet. Your work will focus on building robust, secure, and high performance distributed systems. We are a small engineering team operating at a massive scale, so what you do will have a huge impact.</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Experience building and managing a large scale data storage platform.&nbsp;</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
-	<li>Experience working in a non-garbage collected language such as Rust or C++.</li>
-	<li>Experience writing Javascript and Typescript.&nbsp;</li>
-	<li>Deep Linux / UNIX systems knowledge.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding at the protocol level, including the differences between what the specs say, and what actually happens on the Internet</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Confidence to work in multiple programming languages - could include C, Go, Rust, Python, Lua and even PHP</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience (and love) for debugging to ensure the system works in all cases</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong systems level programming skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excited by the idea of optimizing complex solutions to general problems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a continuous integration workflow and using source control (we use git)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Unix knowledge, patches to Operating Systems a huge plus for some roles</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of security issues and responsibilities</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with monitoring, alerting and debugging high volume production systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluent in analyses of data sets such as logs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Designing and building APIs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Great oral and written communications skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Desire to learn and improve</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Willing and eager to share knowledge, and mentor</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

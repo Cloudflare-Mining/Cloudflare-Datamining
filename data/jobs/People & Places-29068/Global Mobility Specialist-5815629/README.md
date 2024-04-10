@@ -6,7 +6,6 @@
 	</div>
 </div>
 <p><strong>Available locations: Lisbon, Portugal, London, UK or Remote UK</strong></p>
-<p>&nbsp;</p>
 <p><strong>What You Would Do Here:</strong></p>
 <p>The People team at Cloudflare is growing. We want to find the best people to join our team and then help you to do your best work.&nbsp; We are looking for a Global Mobility Specialist reporting to the Senior Global Mobility Manager. In this role, you will support mobility activities globally including coordinating international transfers and immigration compliance and provide advice on policy, relocation packages and immigration. You will be working closely with the People Business Partners and People Operations teams and partnering with key stakeholders across Cloudflare through activities including those listed below:</p>
 <p><strong>Responsibilities:</strong></p>

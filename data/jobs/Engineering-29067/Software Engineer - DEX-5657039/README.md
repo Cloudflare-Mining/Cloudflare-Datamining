@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Location: Remote US</strong></p>
 <p><strong>What you’ll do</strong></p>
 <p><span style="font-weight: 400;">In this role, you’ll be helping build the new Digital Experience Monitoring product in the Cloudflare Zero Trust Platform. The Digital Experience Monitoring team is all about helping customers understand how their deployment of Cloudflare’s solutions are working in their environment, providing critical insight into network performance, usage analytics, and much more. As a software engineer on the team, you’ll work across the stack to implement new frontend analytical visualizations and functionality, build and maintain our Go API, and add new backend features as the product continues to grow. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the challenges our customers face.</span></p>
 <p><strong>Technologies we use:</strong></p>
