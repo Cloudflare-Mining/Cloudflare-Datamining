@@ -1,13 +1,13 @@
-<div class="mb2 gray5 ">19 min read</div>
+<div class="mb2 gray5">19 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/a-debugging-story-corrupt-packets-in-af_xdp-kernel-bug-or-user-error-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/a-debugging-story-corrupt-packets-in-af_xdp-kernel-bug-or-user-error-zh-tw">繁體中文</a>.</small></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-33.png" class="kg-image" alt="A debugging story: corrupt packets in AF_XDP; a kernel bug or user error?" loading="lazy"></figure>
 	<h3 id="panic-invalid-tcp-packet-truncated">panic: Invalid TCP packet: Truncated</h3>
-	<p>A few months ago we started getting a handful of crash reports for flowtrackd, our <a href="https://developers.cloudflare.com/ddos-protection/tcp-protection">Advanced TCP Protection</a> system that runs on our global network. The provided stack traces indicated that the panics occurred while parsing a TCP packet that was truncated.</p>
+	<p>A few months ago we started getting a handful of crash reports for flowtrackd, our <a href="https://developers.cloudflare.com/ddos-protection/tcp-protection">Advanced TCP Protection</a> system that runs on our global network. The provided stack traces indicated that the panics occurred while parsing a TCP packet that was truncated. </p>
 	<p>What was most interesting wasn’t that we failed to parse the packet. It isn’t rare that we receive malformed packets from the Internet that are (deliberately or not) truncated. Those packets will be caught the first time we parse them and won’t make it to the latter processing stages. However, in our case, the panic occurred the second time we parsed the packet, indicating it had been truncated <strong>after</strong> we received it and successfully parsed it the first time. Both parse calls were made from a single green thread and referenced the same packet buffer in memory, and we made no attempts to mutate the packet in between.</p>
 	<p>It can be easy to dread discovering a bug like this. Is there a race condition? Is there memory corruption? Is this a kernel bug? A compiler bug? Our plan to get to the root cause of this potentially complex issue was to identify symptom(s) related to the bug, create theories on what may be occurring and create a way to test our theories or gather more information.</p>
-	<p>Before we get into the details we first need some background information about AF_XDP and our setup.</p>
+	<p>Before we get into the details we first need some background information about <code>AF_XDP</code> and our setup.</p>
 	<h3 id="af_xdp-overview">AF_XDP overview</h3>
 	<p><a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html">AF_XDP</a> is the high performance asynchronous user-space networking API in the Linux kernel. For network devices that support it, AF_XDP provides a way to perform extremely fast, zero-copy packet forwarding using a memory buffer that’s shared between the kernel and a user-space application.</p>
 	<p>A number of components need to be set up by the user-space application to start interacting with the packets entering a network device using AF_XDP.</p>
