@@ -4314,19 +4314,21 @@
 		"__description": ""
 	},
 	"ZoneApiRequestSequencesGroups": {
-		"__description": "Sequences of API endpoint operations. Sequences are grouped by AuthID and currently ranked by correlation score. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
+		"__description": "Sequences of API endpoint operations. Sequences are learned by grouping requests by AuthID. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
 		"aggArgMax": "",
 		"aggMax": "",
-		"dimensions": "List of dimensions to group by"
+		"dimensions": "List of dimensions to group by",
+		"uniq": ""
 	},
 	"ZoneApiRequestSequencesGroupsAggArgMax": {
 		"__description": "",
-		"correlation": "Correlation score estimated over a 24 hour window (higher scores mean more correlation between requests in the sequence of endpoint operations)",
+		"correlation": "Correlation score estimated over a 24 hour window. The correlation score is the probability that the last operation in the sequence is preceded by the remaining operations in the sequence, assuming that the last operation in the sequence occurred",
 		"numOccurrences": "Estimated number of occurrences of this sequence of endpoint operations",
+		"numOccurrencesLast": "Estimated number of occurrences of the last operation in this sequence of endpoint operations",
 		"numOccurrencesPrefix": "Estimated number of occurrences of this sequence of endpoint operations, disregarding the last operation",
-		"numOccurrencesSuffix": "Estimated number of occurrences of this sequence of endpoint operations, disregarding the first operation",
-		"operationsApiEndpoints": "API endpoints comprising the sequence of operations. Individual endpoints are delimited by # symbols",
-		"operationsClientRequestHTTPMethods": "HTTP request methods comprising the sequence of operations. Individual request method names are delimited by # symbols",
+		"numOccurrencesSuffix": "<small>DEPRECATED (Field is not guaranteed to be always populated for sequences of length greater than 2. Use <code>numOccurrencesLast</code> instead):</small> Estimated number of occurrences of this sequence of endpoint operations, disregarding the first operation",
+		"operationsApiEndpoints": "API endpoints in the sequence of operations. Individual endpoints are delimited by # symbols",
+		"operationsClientRequestHTTPMethods": "HTTP request methods in the sequence of operations. Individual request method names are delimited by # symbols",
 		"samplingFraction": "Fraction of requests sampled"
 	},
 	"ZoneApiRequestSequencesGroupsAggMax": {
@@ -4339,13 +4341,25 @@
 		"apiHost": "The host associated with this sequence of endpoint operations",
 		"clientRequestHTTPHost": "<small>DEPRECATED (Field is replaced with <code>apiHost</code>):</small> The host associated with this sequence of endpoint operations",
 		"datetime": "Sequence generation timeslot, truncated to 10 minutes",
-		"rank": "Sequence rank based on ordering sequences by correlation"
+		"operationsFirstApiEndpoint": "First API endpoint in the sequence of operations",
+		"operationsFirstClientRequestHTTPMethod": "First HTTP request method in the sequence of operations",
+		"operationsLastApiEndpoint": "Last API endpoint in the sequence of operations",
+		"operationsLastClientRequestHTTPMethod": "Last HTTP request method in the sequence of operations",
+		"operationsLength": "Length of the sequence of operations",
+		"operationsPrefixApiEndpoints": "API endpoints in the sequence of operations, disregarding the last operation. Individual endpoints are delimited by # symbols",
+		"operationsPrefixClientRequestHTTPMethods": "HTTP request methods in the sequence of operations, disregarding the last operation. Individual request method names are delimited by # symbols",
+		"rank": "<small>DEPRECATED (Field is replaced with <code>sequenceHash</code> serving as unique sequence identifier):</small> Sequence rank based on ordering sequences by correlation",
+		"sequenceHash": "Unique sequence identifier obtained by hashing <code>operationsApiEndpoints</code> and <code>operationsClientRequestHTTPMethods</code>"
 	},
 	"ZoneApiRequestSequencesGroupsFilter_InputObject": {
 		"__description": ""
 	},
 	"ZoneApiRequestSequencesGroupsOrderBy": {
 		"__description": ""
+	},
+	"ZoneApiRequestSequencesGroupsUniq": {
+		"__description": "",
+		"sequenceHashCount": "Number of unique sequenceHash values"
 	},
 	"ZoneCacheReserveOperationsAdaptiveGroups": {
 		"__description": "Beta. Cache Reserve operations with adaptive sampling",
@@ -6174,7 +6188,7 @@
 		"__description": "",
 		"apiGatewayGraphqlQueryAnalyticsGroups": "GraphQL query attributes and trends",
 		"apiGatewayMatchedSessionIDsAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches",
-		"apiRequestSequencesGroups": "Sequences of API endpoint operations. Sequences are grouped by AuthID and currently ranked by correlation score. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
+		"apiRequestSequencesGroups": "Sequences of API endpoint operations. Sequences are learned by grouping requests by AuthID. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
 		"cacheReserveOperationsAdaptiveGroups": "Beta. Cache Reserve operations with adaptive sampling",
 		"cacheReserveRequestsAdaptiveGroups": "Cache Reserve HTTP requests data with adaptive sampling",
 		"cacheReserveStorageAdaptiveGroups": "Beta. Cache Reserve storage with adaptive sampling",
