@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.2.0
+
+### Minor Changes
+
+- a715507f6a: Revert tooltip changes
+
 ## 7.1.0
 
 ### Minor Changes
