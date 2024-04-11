@@ -2108,18 +2108,23 @@
 	},
 	"_env": {
 		"AI": {
-			"connect": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
+			"fetcher": {
+				"connect": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"fetch": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				}
 			},
-			"fetch": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			}
+			"lastRequestId": {},
+			"logs": {},
+			"options": {}
 		},
 		"ANALYTICS_ENGINE_BINDING": {
 			"writeDataPoint": {
@@ -2144,18 +2149,23 @@
 			}
 		},
 		"CONSTELLATION_BINDING": {
-			"connect": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
+			"fetcher": {
+				"connect": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"fetch": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				}
 			},
-			"fetch": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string"
-			}
+			"lastRequestId": {},
+			"logs": {},
+			"options": {}
 		},
 		"D1_BINDING": {
 			"fetcher": {
