@@ -774,6 +774,24 @@
 		"label": "d1_write"
 	},
 	{
+		"id": "dee7c22a57674abea8f942110b094717",
+		"name": "DDoS Botnet Feed Read",
+		"description": "Grants read access to Botnet Feed reports",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "ddos_botnet_feed_read"
+	},
+	{
+		"id": "0caa90c9b186447397c8b00358d34a76",
+		"name": "DDoS Botnet Feed Write",
+		"description": "Grants write access to Botnet Feed configuration",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "ddos_botnet_feed_write"
+	},
+	{
 		"id": "af1c363c35ba45b9a8c682ae50eb3f99",
 		"name": "DDoS Protection Read",
 		"description": "Grants read access to DDoS protection",
