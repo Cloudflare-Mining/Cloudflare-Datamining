@@ -208,12 +208,6 @@
 														"readOnly": true,
 														"type": "string"
 													},
-													"pipeline_hash": {
-														"description": "Deprecated. Deployment metadata for internal usage.",
-														"example": "ea95132c15732412d22c1476fa83f27a",
-														"readOnly": true,
-														"type": "string"
-													},
 													"placement_mode": {
 														"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
 														"example": "smart",
@@ -380,12 +374,6 @@
 																"description": "When the script was last modified.",
 																"example": "2017-01-01T00:00:00Z",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															},
-															"pipeline_hash": {
-																"description": "Deprecated. Deployment metadata for internal usage.",
-																"example": "ea95132c15732412d22c1476fa83f27a",
 																"readOnly": true,
 																"type": "string"
 															},
@@ -1442,6 +1430,17 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"limits": {
+													"description": "Limits to apply for this Worker.",
+													"properties": {
+														"cpu_ms": {
+															"description": "The amount of CPU time this Worker can use in milliseconds.",
+															"example": 50,
+															"type": "integer"
+														}
+													},
+													"type": "object"
 												},
 												"logpush": {
 													"description": "Whether Logpush is turned on for the Worker.",
@@ -2760,6 +2759,17 @@
 										},
 										"type": "array"
 									},
+									"limits": {
+										"description": "Limits to apply for this Worker.",
+										"properties": {
+											"cpu_ms": {
+												"description": "The amount of CPU time this Worker can use in milliseconds.",
+												"example": 50,
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									},
 									"logpush": {
 										"description": "Whether Logpush is turned on for the Worker.",
 										"example": false,
@@ -3387,6 +3397,17 @@
 													},
 													"type": "array"
 												},
+												"limits": {
+													"description": "Limits to apply for this Worker.",
+													"properties": {
+														"cpu_ms": {
+															"description": "The amount of CPU time this Worker can use in milliseconds.",
+															"example": 50,
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
 												"logpush": {
 													"description": "Whether Logpush is turned on for the Worker.",
 													"example": false,
@@ -3768,7 +3789,7 @@
 				"multipart/form-data": {
 					"encoding": {
 						"<any part name>": {
-							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream"
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream, application/source-map"
 						}
 					},
 					"schema": {
@@ -3776,7 +3797,7 @@
 							{
 								"properties": {
 									"<any part name>": {
-										"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present and referenced in the metadata as `main_module` or `body_part` by part name.",
+										"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present and referenced in the metadata as `main_module` or `body_part` by part name. Source maps may also be included using the `application/source-map` content type.",
 										"items": {
 											"format": "binary",
 											"type": "string"
@@ -4215,12 +4236,6 @@
 															"readOnly": true,
 															"type": "string"
 														},
-														"pipeline_hash": {
-															"description": "Deprecated. Deployment metadata for internal usage.",
-															"example": "ea95132c15732412d22c1476fa83f27a",
-															"readOnly": true,
-															"type": "string"
-														},
 														"placement_mode": {
 															"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
 															"example": "smart",
@@ -4500,13 +4515,13 @@
 				"multipart/form-data": {
 					"encoding": {
 						"<any part name>": {
-							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream"
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream, application/source-map"
 						}
 					},
 					"schema": {
 						"properties": {
 							"<any part name>": {
-								"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present. This should be referenced either in the metadata as `main_module` (esm)/`body_part` (service worker) or as a header `CF-WORKER-MAIN-MODULE-PART` (esm) /`CF-WORKER-BODY-PART` (service worker) by part name.",
+								"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present. This should be referenced either in the metadata as `main_module` (esm)/`body_part` (service worker) or as a header `CF-WORKER-MAIN-MODULE-PART` (esm) /`CF-WORKER-BODY-PART` (service worker) by part name. Source maps may also be included using the `application/source-map` content type.",
 								"items": {
 									"format": "binary",
 									"type": "string"
@@ -4668,12 +4683,6 @@
 													"description": "When the script was last modified.",
 													"example": "2017-01-01T00:00:00Z",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												},
-												"pipeline_hash": {
-													"description": "Deprecated. Deployment metadata for internal usage.",
-													"example": "ea95132c15732412d22c1476fa83f27a",
 													"readOnly": true,
 													"type": "string"
 												},
