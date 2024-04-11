@@ -1,0 +1,17 @@
+{
+	"Action": "string; What type of record is this. login | logout.",
+	"Allowed": "bool; If request was allowed or denied.",
+	"AppDomain": "string; The domain of the Application that Access is protecting.",
+	"AppUUID": "string; Access Application UUID.",
+	"Connection": "string; Identity provider used for the login.",
+	"Country": "string; Request's country of origin.",
+	"CreatedAt": "int or string; The date and time the corresponding access request was made (for example, '2021-07-27T00:01:07Z').",
+	"Email": "string; Email of the user who logged in.",
+	"IPAddress": "string; The IP address of the client.",
+	"PurposeJustificationPrompt": "string; Message prompted to the client when accessing the application.",
+	"PurposeJustificationResponse": "string; Justification given by the client when accessing the application.",
+	"RayID": "string; Identifier of the request.",
+	"TemporaryAccessApprovers": "array[string]; List of approvers for this access request.",
+	"TemporaryAccessDuration": "int; Approved duration for this access request.",
+	"UserUID": "string; The uid of the user who logged in."
+}

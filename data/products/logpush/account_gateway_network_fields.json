@@ -1,0 +1,22 @@
+{
+	"AccountID": "string; Cloudflare account tag.",
+	"Action": "string; Action performed by gateway on the session.",
+	"Datetime": "int or string; The date and time the corresponding network session was made (for example, '2021-07-27T00:01:07Z').",
+	"DestinationIP": "string; Destination IP of the network session.",
+	"DestinationPort": "int; Destination port of the network session.",
+	"DetectedProtocol": "string; Detected traffic protocol of the network session.",
+	"DeviceID": "string; UUID of the device where the network session originated from.",
+	"DeviceName": "string; The name of the device where the HTTP request originated from (for example, 'Laptop MB810').",
+	"Email": "string; Email associated with the user identity where the network sesion originated from.",
+	"OverrideIP": "string; Overriden IP of the network session, if any.",
+	"OverridePort": "int; Overriden port of the network session, if any.",
+	"PolicyID": "string; Identifier of the policy/rule that was applied, if any.",
+	"PolicyName": "string; The name of the gateway policy applied to the request, if any.",
+	"SNI": "string; Content of the SNI for the TLS network session, if any.",
+	"SessionID": "string; The session identifier of this network session.",
+	"SourceIP": "string; Source IP of the network session.",
+	"SourceInternalIP": "string; Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp.",
+	"SourcePort": "int; Source port of the network session.",
+	"Transport": "string; Transport protocol used for this session. Possible values are tcp | quic | udp.",
+	"UserID": "string; User identity where the network session originated from."
+}

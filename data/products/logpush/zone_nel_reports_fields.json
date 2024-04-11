@@ -1,0 +1,9 @@
+{
+	"ClientIPASN": "int; Client ASN.",
+	"ClientIPASNDescription": "string; Client ASN description.",
+	"ClientIPCountry": "string; Client country.",
+	"LastKnownGoodColoCode": "string; IATA airport code of colo client connected to.",
+	"Phase": "string; The phase of connection the error occurred in; dns | connection | application | unknown.",
+	"Timestamp": "int or string; Timestamp for error report.",
+	"Type": "string; The type of error in the phase."
+}

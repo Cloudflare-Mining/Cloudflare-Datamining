@@ -1,0 +1,19 @@
+{
+	"ClientVersion": "string; The Zero Trust client version at the time of upload.",
+	"DeviceID": "string; The device ID that performed the posture upload.",
+	"DeviceManufacturer": "string; The manufacturer of the device that the Zero Trust client is running on.",
+	"DeviceModel": "string; The model of the device that the Zero Trust client is running on.",
+	"DeviceName": "string; The name of the device that the Zero Trust client is running on.",
+	"DeviceSerialNumber": "string; The serial number of the device that the Zero Trust client is running on.",
+	"DeviceType": "string; The Zero Trust client operating system type.",
+	"Email": "string; The email used to register the device with the Zero Trust client.",
+	"OSVersion": "string; The operating system version at the time of upload.",
+	"PolicyID": "string; The posture check ID associated with this device posture result.",
+	"PostureCheckName": "string; The name of the posture check associated with this device posture result.",
+	"PostureCheckType": "string; The type of the Zero Trust client check or service provider check.",
+	"PostureEvaluatedResult": "bool; Whether this posture upload passes the associated posture check, given the requirements posture check at the time of the timestamp.",
+	"PostureExpectedJSON": "object; JSON object of what the posture check expects from the Zero Trust client.",
+	"PostureReceivedJSON": "object; JSON object of what the Zero Trust client actually uploads.",
+	"Timestamp": "int or string; The date and time the corresponding device posture upload was performed (for example, '2021-07-27T00:01:07Z').",
+	"UserUID": "string; The uid of the user who registered the device."
+}

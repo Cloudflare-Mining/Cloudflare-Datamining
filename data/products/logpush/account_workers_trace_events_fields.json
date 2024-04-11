@@ -1,0 +1,12 @@
+{
+	"DispatchNamespace": "string; The Cloudflare Worker dispatch namespace.",
+	"Entrypoint": "string; The name of the entrypoint class in which the Worker began execution.",
+	"Event": "object; Details about the source event.",
+	"EventTimestampMs": "int; The timestamp of when the event was received, in milliseconds.",
+	"EventType": "string; The event type that triggered the invocation. Possible values are fetch.",
+	"Exceptions": "array[object]; List of uncaught exceptions during the invocation.",
+	"Logs": "array[object]; List of console messages emitted during the invocation.",
+	"Outcome": "string; The outcome of the worker script invocation. Possible values are ok | exception.",
+	"ScriptName": "string; The Cloudflare Worker script name.",
+	"ScriptTags": "array[string]; A list of user-defined tags used to categorize the Worker."
+}

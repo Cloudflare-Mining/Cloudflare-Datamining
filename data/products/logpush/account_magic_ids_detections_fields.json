@@ -1,0 +1,14 @@
+{
+	"Action": "string; What action was taken on the packet. Possible values are pass | block.",
+	"ColoCity": "string; The city where the detection occurred.",
+	"ColoCode": "string; The IATA airport code corresponding to where the detection occurred.",
+	"DestinationIP": "string; The destination IP of the packet which triggered the detection.",
+	"DestinationPort": "int; The destination port of the packet which triggered the detection. It is set to 0 if the protocol field is set to any.",
+	"Protocol": "string; The layer 4 protocol of the packet which triggered the detection. Possible values are tcp | udp | any. Variant any means a detection occurred at a lower layer (such as IP).",
+	"SignatureID": "int; The signature ID of the detection.",
+	"SignatureMessage": "string; The signature message of the detection. Describes what the packet is attempting to do.",
+	"SignatureRevision": "int; The signature revision of the detection.",
+	"SourceIP": "string; The source IP of packet which triggered the detection.",
+	"SourcePort": "int; The source port of the packet which triggered the detection. It is set to 0 if the protocol field is set to any.",
+	"Timestamp": "int or string; A timestamp of when the detection occurred."
+}

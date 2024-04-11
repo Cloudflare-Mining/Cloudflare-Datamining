@@ -1,0 +1,10 @@
+{
+	"Action": "string; The action which was taken against the violation. Possible values are log | allow.",
+	"Host": "string; The host where the resource was seen on.",
+	"PageURL": "string; The page URL the violation was seen on.",
+	"PolicyID": "string; The ID of the policy which was violated.",
+	"Timestamp": "int or string; The timestamp of when the report was received.",
+	"URL": "string; The resource URL.",
+	"URLContainsCDNCGIPath": "bool; Whether the resource URL contains the CDN-CGI path.",
+	"URLHost": "string; The domain host of the URL."
+}

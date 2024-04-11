@@ -1,0 +1,19 @@
+{
+	"AccountID": "string; The Account ID.",
+	"Body": "string; The request body.",
+	"BodyLength": "int; The length of request body.",
+	"DestAddr": "string; The destination IP address of the request.",
+	"Headers": "string; The request headers. If a header has multiple values, the values are comma separated. Each header is separated by the escaped newline character (\\n).",
+	"Host": "string; The host the request was sent to.",
+	"Method": "string; The request method.",
+	"Password": "string; The request password.",
+	"R2Path": "string; The path to the object within the R2 bucket linked to this sinkhole that stores overflow body and header data. Blank if neither headers nor body was larger than 256 bytes.",
+	"Referrer": "string; The referrer of the request.",
+	"SinkholeID": "string; The ID of the Sinkhole that logged the HTTP Request.",
+	"SrcAddr": "string; The sender's IP address.",
+	"Timestamp": "int or string; The date and time the sinkhole HTTP request was logged.",
+	"URI": "string; The request Uniform Resource Identifier.",
+	"URL": "string; The request Uniform Resource Locator.",
+	"UserAgent": "string; The request user agent.",
+	"Username": "string; The request username."
+}
