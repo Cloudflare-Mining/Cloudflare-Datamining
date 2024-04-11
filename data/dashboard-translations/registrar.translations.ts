@@ -450,6 +450,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	domain_registration_registrar_colon: "Registrar:",
 	domain_registration_expires: "Expires:",
 	domain_registration_transfer_cloudflare: "Transfer to Cloudflare",
+	domain_registration_check_transfer_progress: "Check transfer progress",
 	domain_registration_auto_renew: "Auto Renew Registration",
 	domain_registration_auto_renews_on: "Renews on",
 	domain_registration_auto_renew_unknown: "Unknown renewal date",

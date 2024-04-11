@@ -316,7 +316,19 @@
 			"url": "/network-security/ddos",
 			"iconType": "cloudflare-security-network",
 			"hasPermission": null,
-			"tabs": []
+			"tabs": [],
+			"pages": [
+				{
+					"title": "navigation.account.l3l4.ddos.ddos_managed_rules",
+					"url": "/network-security/ddos",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.l3l4.ddos.ddos_protection",
+					"url": "/network-security/ddos-protection",
+					"hasPermission": null
+				}
+			]
 		},
 		{
 			"title": "navigation.account.ip_addresses",
