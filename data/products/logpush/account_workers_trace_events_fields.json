@@ -8,5 +8,6 @@
 	"Logs": "array[object]; List of console messages emitted during the invocation.",
 	"Outcome": "string; The outcome of the worker script invocation. Possible values are ok | exception.",
 	"ScriptName": "string; The Cloudflare Worker script name.",
-	"ScriptTags": "array[string]; A list of user-defined tags used to categorize the Worker."
+	"ScriptTags": "array[string]; A list of user-defined tags used to categorize the Worker.",
+	"ScriptVersion": "object; The version of the script that was invoked."
 }
