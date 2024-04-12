@@ -8479,6 +8479,49 @@
 		]
 	},
 	{
+		"id": "e713d034437c4c6d936daf981f29bf88",
+		"name": "Cache Domain Purge",
+		"status": "V",
+		"meta": {
+			"description": "Can purge the edge cache for a specific domain.",
+			"editable": "false",
+			"label": "cache_domain_purge",
+			"scopes": "com.cloudflare.api.account.zone"
+		},
+		"created_on": "2024-04-11T18:32:26.536193Z",
+		"modified_on": "2024-04-11T18:32:26.536193Z",
+		"permissions": [
+			{
+				"id": "a267d9e96ce646f18ce98e100da9fa72",
+				"key": "com.cloudflare.api.account.zone.purge-tag",
+				"attributes": {
+					"legacy_name": "#cache_purge:edit"
+				}
+			},
+			{
+				"id": "bd5099164c5b4f27a5a016aafb1c95a4",
+				"key": "com.cloudflare.api.account.zone.purge-host",
+				"attributes": {
+					"legacy_name": "#cache_purge:edit"
+				}
+			},
+			{
+				"id": "995129085bac4e5ead827eb5072e493b",
+				"key": "com.cloudflare.api.account.zone.purge-url",
+				"attributes": {
+					"legacy_name": "#cache_purge:edit"
+				}
+			},
+			{
+				"id": "6a9005b0fdc44667b3c9dc58a79be783",
+				"key": "com.cloudflare.api.account.zone.purge-all",
+				"attributes": {
+					"legacy_name": "#cache_purge:edit"
+				}
+			}
+		]
+	},
+	{
 		"id": "7be68eafa6db411891a3717d2dc5d56c",
 		"name": "Cache Purge",
 		"status": "V",
