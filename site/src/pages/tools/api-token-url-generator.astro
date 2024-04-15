@@ -30,10 +30,11 @@ for (const scope of tokenPermissionGroups) {
 		`api_tokens.permission_${key}`,
 		`api_tokens.permission_${key.replace('account_', '')}`,
 		`api_tokens.permission_${key.replace('zone_', '')}`,
-	];
+	] as const;
 	for (const translationKey of translationKeysToTry) {
-		if (commonTranslations[translationKey]) {
-			description = commonTranslations[translationKey];
+		const typedKey = translationKey as keyof typeof commonTranslations;
+		if (commonTranslations[typedKey]) {
+			description = commonTranslations[typedKey];
 			break;
 		}
 	}
@@ -94,8 +95,10 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 
 		// TODO better types
 		function triggerChange() {
+			if (!form || !output) { return; }
+
 			const formData = new FormData(form);
-			const permissions = {};
+			const permissions: Record<string, unknown> = {};
 			const types: PermissionTypes = {};
 			for (const [key, value] of formData.entries()) {
 				if (key.startsWith('permission_')) {
@@ -121,6 +124,8 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 			if (formData.has('name')) {
 				url.searchParams.set('name', formData.get('name') as string);
 			}
+			url.searchParams.set('accountId', '*');
+			url.searchParams.set('zoneId', 'all')
 			output.textContent = url.toString();
 		}
 		form.addEventListener('change', (event) => {
