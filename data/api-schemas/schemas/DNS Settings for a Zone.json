@@ -68,20 +68,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -94,8 +80,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -136,8 +121,7 @@
 														"type": {
 															"description": "Nameserver type",
 															"enum": [
-																"cloudflare.standard",
-																"cloudflare.foundation_dns"
+																"cloudflare.standard"
 															],
 															"example": "cloudflare.standard",
 															"type": "string"
@@ -224,20 +208,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -250,8 +220,7 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
 												},
@@ -292,8 +261,7 @@
 																"type": {
 																	"description": "Nameserver type",
 																	"enum": [
-																		"cloudflare.standard",
-																		"cloudflare.foundation_dns"
+																		"cloudflare.standard"
 																	],
 																	"example": "cloudflare.standard",
 																	"type": "string"
@@ -474,8 +442,7 @@
 									"type": {
 										"description": "Nameserver type",
 										"enum": [
-											"cloudflare.standard",
-											"cloudflare.foundation_dns"
+											"cloudflare.standard"
 										],
 										"example": "cloudflare.standard",
 										"type": "string"
@@ -550,20 +517,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -576,8 +529,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -618,8 +570,7 @@
 														"type": {
 															"description": "Nameserver type",
 															"enum": [
-																"cloudflare.standard",
-																"cloudflare.foundation_dns"
+																"cloudflare.standard"
 															],
 															"example": "cloudflare.standard",
 															"type": "string"
@@ -706,20 +657,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -732,8 +669,7 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
 												},
@@ -774,8 +710,7 @@
 																"type": {
 																	"description": "Nameserver type",
 																	"enum": [
-																		"cloudflare.standard",
-																		"cloudflare.foundation_dns"
+																		"cloudflare.standard"
 																	],
 																	"example": "cloudflare.standard",
 																	"type": "string"
