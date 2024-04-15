@@ -5,62 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p>Cloudflare’s Enterprise Integrations Engineering Team builds and maintains integrations around a multitude of SaaS applications that are used in Cloudflare. We build scalable, resilient, efficient and fault tolerant integrations, enabling various cloud applications in Cloudflare to connect to each other and keeping data in sync between applications.. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
-<p>Enterprise Integrations Team is a place where you will learn fast, interface and collaborate with all other business and technical teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project retrospectives, team collaboration, constant learning is central to our success.</p>
-<p><strong>Description:&nbsp;</strong></p>
-<p>The Enterprise Integrations Manager will drive and own the integrations portfolio for Cloudflare. We are looking for a manager with extensive integration experience who has built APIs and workflows. You will lead a team of integration engineers and will collaborate with other allied teams within the organization . You will drive integration strategy, best practices. If you are excited and passionate about integrations and leading a team who will help drive strategy forward, we want to talk with you.</p>
-<p><strong>Solution Design</strong></p>
+<h3><strong>About The Role</strong></h3>
+<p>We announced Workers AI (along with a few other AI products), during our birthday week, in late September of this year. If you’re not familiar with Workers AI, you should check out our <a href="https://blog.cloudflare.com/workers-ai/">launch blog post</a>. We built Workers AI to make ML accessible to all developers regardless of your familiarity with ML. You shouldn’t need a background in data science, building ML models, or deploying pipelines at scale to be able to leverage the power of the latest open source models to deliver beautiful AI experiences to your end users. So what is Workers AI? It’s an AI inference as a service platform, empowering developers to run AI models with just a few lines of code, all powered by our global network of GPUs. It's open and accessible, serverless, privacy-focused, runs near your users, pay-as-you-go, and it's built from the ground up for a best in class developer experience. You’ll be responsible for driving, building, and shipping everything needed to make Cloudflare the best place to run AI inference that “just works” out of the box.</p>
+<h3><strong>What You’ll Do</strong></h3>
 <ul>
-	<li>Review technical specification documents, architecture and provide guidance and direction.</li>
-	<li>Participate in system design and architecture conversations with the cross-functional teams.</li>
+	<li>Drive the strategy, roadmap &amp; represent your products across the organization</li>
+	<li>Lead projects from ideation through launch, and continuing through ongoing maintenance and support</li>
+	<li>Develop and nurture relationships with engineering and coordinate closely to ensure successful delivery of product</li>
+	<li>Talk to developers (probably the most important)! You’ll need to be crafty and develop a playbook to find the right users to talk to. This might include diving into our BI tools to find specific cohorts that are worth talking to, engaging on our developer discord, or heading straight to Twitter or Hacker news to engage and build relationships with the community.</li>
+	<li>Partner with other departments such as Product Marketing, Marketing, Community &amp; Developer Relations, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
+	<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</li>
+	<li>Represent the company externally as needed, including meetings with customers and prospects and analysis</li>
+	<li>Delve into market research to drive new investments opportunities</li>
 </ul>
-<p><strong>Integrations Development</strong></p>
+<h3><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></h3>
+<p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</p>
 <ul>
-	<li>Proven experience in building integration workflows. Can read code and provide guidance on best practices.</li>
-	<li>Ensure Code reviews are completed</li>
+	<li>Proven track record of shipping developer-facing products from ideation to launch</li>
+	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
+	<li>BS/MS in a technology field.&nbsp;</li>
+	<li>Professional product management experience (3-4 years) or previous founder</li>
+	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
+	<li>A desire to sweat the details and ship great developer experiences</li>
+	<li>Experience using developer tools (such as source-control management tools, CLIs, etc)</li>
+	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
+	<li>Scripting/programming experience (Javascript, Rust, Go, etc.) and/or experience with query languages.</li>
+	<li>Nice to have - background or familiarity with data science or ML/AI. Not a hard requirement, but you must have a burning desire to dive into this space and learn, and make your mark.</li>
 </ul>
-<p><strong>Hiring and retaining talent</strong></p>
-<ul>
-	<li>Forecasting resourcing needs, collaborating with the recruitment and IT teams on the hiring process.</li>
-	<li>Recruits, develops, and retains a high-performance team while promoting a culture of accountability and operational excellence.</li>
-	<li>Manage a team of FTEs and occasionally contractors.</li>
-</ul>
-<p><strong>Mentoring the team&nbsp;</strong></p>
-<ul>
-	<li>Holding regular 1:1s with team members.</li>
-	<li>Provides constructive feedback, guidance and coaching to help engineers grow their skills and experience.</li>
-	<li>Creating quarterly goals for team members and ensuring they are met.&nbsp;</li>
-</ul>
-<p><strong>Collaboration</strong></p>
-<ul>
-	<li>Helps remove roadblocks for the team</li>
-	<li>Partner with Operations Manager and IT planning &amp; Governance team on Initiatives/ Epics and provides clarity on desired outcomes as well as technical expertise.</li>
-	<li>Promote a positive team environment where individuals can work collaboratively while supporting and appreciating each other’s ideas&nbsp;</li>
-	<li>Builds strong working relationships with technical and functional stakeholders.</li>
-	<li>Proactively identifies cross team challenges and works with teams to solve them collaboratively.</li>
-</ul>
-<p><strong>QUALIFICATIONS &amp; SKILLS:&nbsp;</strong></p>
-<ul>
-	<li>Bachelor's degree in Computer Science or other technical field or equivalent work experience</li>
-	<li>8+ years of progressively responsible positions in Information Technology including 5+ years’ experience in IT integration engineering and annual / quarterly roadmap development.</li>
-	<li>3+ years of leadership experience in all aspects of integration engineering and 3+ years experience working with agile methodology.</li>
-	<li>3+ years’ management/supervisory experience</li>
-	<li>Proven expertise driving multi-year project roadmaps</li>
-	<li>Demonstrated leadership and experience managing geographically diverse, high-performance engineering teams.</li>
-	<li>Strong competency in project management and ability to drive multiple initiatives simultaneously.</li>
-	<li>Experience working with internal customers to develop solutions to complex business problems.</li>
-	<li>Proven ability to communicate effectively with functional and technical stakeholders to support business initiatives.</li>
-	<li>Experience building integration workflows with SasS applications such as Salesforce, Netsuite, Revpro, Stripe, Workday, Anaplan.</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Familiarity with Golang.</li>
-	<li>Solid understanding of RESTful APIs and authentication methods.</li>
-	<li>Exposure to Boomi iPaaS desired but not required.</li>
-	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
-	<li>Prior experience in migrating integration workflows from iPaaS</li>
-</ul>
+<p><span style="font-weight: 400;"><strong>Available Locations</strong>: Austin or Remote US</span></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

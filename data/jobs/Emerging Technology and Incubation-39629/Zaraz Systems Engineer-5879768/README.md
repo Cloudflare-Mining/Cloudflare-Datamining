@@ -6,40 +6,43 @@
 	</div>
 </div>
 <p><strong>About the Department</strong></p>
-<p>Production Engineering is responsible for the world’s most reliable, observable, performant, and safe network ecosystem. Our customers rely on our products and systems to safely modify, troubleshoot, and release products without external impact.</p>
-<p>Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.</p>
-<p>We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behavior is and we are capable of determining and exposing anomalous behavior.</p>
-<p>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>In this role, you can expect to:</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p><strong>About the Team</strong></p>
+<p>Cloudflare Zaraz allows engineers and product teams to fuel the growth of their web applications using 3rd party tools while maintaining high performance metrics, minimizing security risks, and respecting privacy obligations. In doing so, the team helped establish the open source Managed Components initiative as a new Internet standard to improve how third party code is packaged for inclusion in digital products across a range of devices.</p>
+<p>Building on its successful adoption so far, we’re looking to expand the Cloudflare Zaraz category &amp; catalog with a fresh complement of growth tools to continue removing obstacles in the path to develop thriving Internet properties.</p>
+<p>We are a tight-knit team, communicating &amp; collaborating regularly. We like to celebrate our achievements, support each other when we make mistakes, and hold each other and our work to the highest standard.</p>
+<p><strong>What you'll do</strong></p>
+<p>In this role, you will join world class engineers in shaping new products built entirely on Cloudflare’s global network, while continuing to nurture the growing impact of Cloudflare Zaraz on the Internet - ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
+<p>You will be encouraged to bring ideas and own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, ship a new feature layered upon 3 different technologies, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust. We use Workers heavily and creatively.</p>
+<p>If applicable to ongoing projects, you will also support the health and availability of services by being part of an on-call rotation.</p>
+<p><strong>About you</strong></p>
+<p>We want you to love it here! This role is a good fit for you if:</p>
 <ul>
-	<li>Design, deliver, and operate software that progresses Cloudflare's Observability competency</li>
-	<li>Solve scaling bottlenecks in critical services in our Logging pipeline</li>
-	<li>Work on highly distributed and scalable systems</li>
-	<li>Participate in the constant cycle of knowledge sharing and mentoring</li>
-	<li>Participate in the global on-call rotation for the services your team owns</li>
-	<li>Research and introduce cutting-edge technologies</li>
-	<li>Contribute to open-source</li>
+	<li>you bring a passion for meeting business needs while building technically innovative solutions, and excel at shifting between the two - understanding how big-picture goals inform technical details, and vice-versa.&nbsp;</li>
+	<li>you are bold and persistent in your efforts to get your work across the finish line</li>
+	<li>you are excited to collaborate &amp; communicate with engineers across Cloudflare, and contribute at many layers of the stack</li>
+	<li>you take pride in shipping effective, reliable code</li>
+	<li>you are energized by learning new skills, battling through mind-bending debugging sessions, and sharing your knowledge with others</li>
+	<li>you feel that documenting your work is just as important as delivering the code</li>
+	<li>you want to join a team that upholds a culture of support, open and honest communication, and vulnerability, and that values collaboration over heroism</li>
 </ul>
-<p>We are a small team, well-funded, growing and focused on building an extraordinary company. This is a systems engineering role and is a superb opportunity to be part of a high performing team to help to support Cloudflare’s mission and help build a better internet.</p>
-<h3>You may be a good fit for our team if you have:</h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Proficiency in distributed Linux environments</li>
-	<li>Proficiency in designing high-scale distributed systems</li>
-	<li>Proficiency in high-level programming languages (e.g., Golang)</li>
-	<li>Proficiency in Prometheus, Alertmanager, Thanos</li>
-	<li>Proficiency in networking protocols Layer 2-7 of the OSI model</li>
-	<li>Experience working in a fast, high-growth environment</li>
-	<li>Experience working in a 24/7/365 service environment</li>
-	<li>Exquisite written and verbal communication skills</li>
-	<li>Familiarity with Internetworking and BGP</li>
-	<li>Strong bias for action</li>
+	<li>5+ years experience working with high volume software applications, with a strong focus on TypeScript programming language</li>
+	<li>Ability to scope, work on and deliver initiatives independently&nbsp;</li>
+	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Rust, or C++</li>
+	<li>Strong written communication skills for contributing to internal and public-facing technical documentation, and authoring blog posts</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design</li>
 </ul>
-<h3><strong>Bonus points if you have:</strong></h3>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Experience with high-bandwidth transit Internetworking and routing</li>
-	<li>Passion for code simplicity and performance</li>
+	<li>Understanding of the web and technologies such as web browsers, HTTP, JavaScript</li>
+	<li>Experience building reliable, high performance distributed systems or on cloud platforms</li>
+	<li>Experience using the Cloudflare Workers development platform</li>
+	<li>Experience contributing to OSS software development or maintaining OSS projects</li>
 </ul>
-<p><strong>Available Locations: </strong>Amsterdam or Remote Netherlands, Paris or Remote France, Munich or Remote Germany, London or Remote UK, and Lisbon or Remote Portugal</p>
+<p><strong>Available Locations</strong>: Lisbon or remote PT, London or Remote UK, Paris of Remote FR, Amsterdam or Remote NL, Munich or Remote DE&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

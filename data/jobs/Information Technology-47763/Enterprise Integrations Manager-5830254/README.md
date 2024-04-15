@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Location: Remote US</strong></p>
 <p><strong>About the Department</strong></p>
 <p>Cloudflare’s Enterprise Integrations Engineering Team builds and maintains integrations around a multitude of SaaS applications that are used in Cloudflare. We build scalable, resilient, efficient and fault tolerant integrations, enabling various cloud applications in Cloudflare to connect to each other and keeping data in sync between applications.. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
 <p>Enterprise Integrations Team is a place where you will learn fast, interface and collaborate with all other business and technical teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project retrospectives, team collaboration, constant learning is central to our success.</p>
