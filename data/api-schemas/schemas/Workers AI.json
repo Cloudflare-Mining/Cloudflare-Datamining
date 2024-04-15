@@ -1,10 +1,10 @@
 {
-	"GET /accounts/{account_identifier}/ai/authors/search": {
+	"GET /apiv4/accounts/{account_id}/authors/search": {
 		"operationId": "workers-ai-search-author",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": 48546000,
@@ -100,12 +100,12 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/ai/models/search": {
+	"GET /apiv4/accounts/{account_id}/models/search": {
 		"operationId": "workers-ai-search-model",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": 48546000,
@@ -255,12 +255,12 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/ai/tasks/search": {
+	"GET /apiv4/accounts/{account_id}/tasks/search": {
 		"operationId": "workers-ai-search-task",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": 48546000,

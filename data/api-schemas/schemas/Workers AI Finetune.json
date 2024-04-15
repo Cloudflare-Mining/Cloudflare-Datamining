@@ -1,10 +1,10 @@
 {
-	"GET /accounts/{account_identifier}/ai/finetunes": {
+	"GET /apiv4/accounts/{account_id}/finetunes": {
 		"operationId": "workers-ai-list-finetunes",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": 48546000,
@@ -119,12 +119,12 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_identifier}/ai/finetunes": {
+	"POST /apiv4/accounts/{account_id}/finetunes": {
 		"operationId": "workers-ai-create-finetune",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": 48546000,
@@ -262,12 +262,12 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_identifier}/ai/finetunes/{finetune_id}/finetune-assets": {
+	"POST /apiv4/accounts/{account_id}/finetunes/{finetune_id}/finetune-assets": {
 		"operationId": "workers-ai-upload-finetune-asset",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": 48546000,
