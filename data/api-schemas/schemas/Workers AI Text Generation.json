@@ -1503,6 +1503,194 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1": {
+		"operationId": "workers-ai-post-run-cf-mistral-mistral-7b-instruct-v0-1",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"lora": {
+										"type": "string"
+									},
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 6144,
+										"minLength": 1,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 6144,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/mistral/mistral-7b-instruct-v0.1 model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1-vllm": {
 		"operationId": "workers-ai-post-run-cf-mistral-mistral-7b-instruct-v0-1-vllm",
 		"parameters": [
