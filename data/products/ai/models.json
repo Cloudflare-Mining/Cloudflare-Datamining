@@ -18,10 +18,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "diff_streaming_output: false"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/qwen/qwen1.5-0.5b-chat"
 			}
@@ -47,10 +43,6 @@
 				"value": "false"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/Intel/distilbert-base-uncased-finetuned-sst-2-english-int8-static"
 			}
@@ -70,10 +62,6 @@
 		"properties": [
 			{
 				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "lora",
 				"value": "true"
 			}
 		]
@@ -97,18 +85,6 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/Nexusflow/Starling-LM-7B-beta"
-			},
-			{
-				"property_id": "max_batch_prefill_tokens",
-				"value": "8192"
-			},
-			{
-				"property_id": "max_input_length",
-				"value": "3072"
-			},
-			{
-				"property_id": "max_total_tokens",
-				"value": "4096"
 			}
 		]
 	},
@@ -130,10 +106,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
 			}
 		]
 	},
@@ -155,10 +127,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_requests_per_min:\n  default: 300\n  accounts:\n    32118455: 600 # ai.cloudflare.com staging\n    50147400: 600 # ai.cloudflare.com\nmax_concurrent_requests: 100"
 			}
 		]
 	},
@@ -179,10 +147,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "{}"
 			}
 		]
 	},
@@ -206,20 +170,8 @@
 				"value": "false"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "infer_response_cache: in_memory\nmax_requests_per_min:\n  default: 300\n  accounts:\n    32118455: 600 # ai.cloudflare.com staging\n    50147400: 600 # ai.cloudflare.com\n\nnneurons:\n  metrics:\n    - name: input_tokens\n      neuron_cost: 0.3672\n    - name: output_tokens\n      neuron_cost: 0.3672\nmax_concurrent_requests: 1"
-			},
-			{
-				"property_id": "context_length_limit",
-				"value": "3072"
-			},
-			{
 				"property_id": "info",
 				"value": "https://ai.meta.com/llama/"
-			},
-			{
-				"property_id": "sequence_length_limit",
-				"value": "2500"
 			},
 			{
 				"property_id": "terms",
@@ -267,10 +219,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "lora",
-				"value": "true"
 			}
 		]
 	},
@@ -292,10 +240,6 @@
 			{
 				"property_id": "beta",
 				"value": "false"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 5"
 			},
 			{
 				"property_id": "info",
@@ -322,10 +266,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0"
 			}
@@ -350,44 +290,6 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2"
-			},
-			{
-				"property_id": "max_batch_prefill_tokens",
-				"value": "8192"
-			},
-			{
-				"property_id": "max_input_length",
-				"value": "3072"
-			},
-			{
-				"property_id": "max_total_tokens",
-				"value": "4096"
-			}
-		]
-	},
-	{
-		"id": "b720aa1e-aa0b-42a5-878d-98e6f371dcdd",
-		"source": 1,
-		"name": "@cf/shopify/llava-1.5-7b-hf",
-		"description": "Internal model.",
-		"task": {
-			"id": "882a91d1-c331-4eec-bdad-834c919942a8",
-			"name": "Image-to-Text",
-			"description": null
-		},
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "allowed_accounts",
-				"value": "49545679"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 10"
-			},
-			{
-				"property_id": "private",
-				"value": "true"
 			}
 		]
 	},
@@ -412,10 +314,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100\nmax_requests_per_min:\n  default: 300\n  accounts:\n    32118455: 600 # ai.cloudflare.com staging\n    50147400: 600 # ai.cloudflare.com\n"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-AWQ"
 			}
@@ -438,10 +336,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
 			},
 			{
 				"property_id": "info",
@@ -472,18 +366,6 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2"
-			},
-			{
-				"property_id": "max_batch_prefill_tokens",
-				"value": "8192"
-			},
-			{
-				"property_id": "max_input_length",
-				"value": "3072"
-			},
-			{
-				"property_id": "max_total_tokens",
-				"value": "4096"
 			}
 		]
 	},
@@ -504,10 +386,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
 			},
 			{
 				"property_id": "info",
@@ -535,20 +413,8 @@
 				"value": "false"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "infer_response_cache: in_memory\nmax_requests_per_min:\n  default: 300\n  accounts:\n    32118455: 600 # ai.cloudflare.com staging\n    50147400: 600 # ai.cloudflare.com    48546443: 1000 # workers ai\n    56599770: 1000 # talkmap\n\nnneurons:\n  metrics:\n    - name: input_tokens\n      neuron_cost: 0.0146\n    - name: output_tokens\n      neuron_cost: 0.0218\nmax_concurrent_requests: 4"
-			},
-			{
-				"property_id": "context_length_limit",
-				"value": "2048"
-			},
-			{
 				"property_id": "info",
 				"value": "https://ai.meta.com/llama/"
-			},
-			{
-				"property_id": "sequence_length_limit",
-				"value": "1800"
 			},
 			{
 				"property_id": "terms",
@@ -576,10 +442,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100\nmax_requests_per_min:\n  default: 300\n  accounts:\n    32118455: 600 # ai.cloudflare.com staging\n    50147400: 600 # ai.cloudflare.com\n"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-AWQ"
 			}
@@ -603,10 +465,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_requests_per_min:\n  default: 720\n  accounts:\n    32118455: 1440 # ai.cloudflare.com staging\n    50147400: 1440 # ai.cloudflare.com\nmax_concurrent_requests: 100"
 			}
 		]
 	},
@@ -627,10 +485,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
 			},
 			{
 				"property_id": "info",
@@ -658,10 +512,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100\nmax_requests_per_min:\n  default: 150\n  accounts:\n    32118455: 300 # ai.cloudflare.com staging\n    50147400: 300 # ai.cloudflare.com\n"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/TheBloke/Llama-2-13B-chat-AWQ"
 			}
@@ -687,10 +537,6 @@
 				"value": "false"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_requests_per_min:\n  default: 3000\n  accounts:\n    32118455: 6000 # ai.cloudflare.com staging\n    50147400: 6000 # ai.cloudflare.com\n\nneurons:\n  cost_per_infer: 0.2280555556\nmax_concurrent_requests: 100"
-			},
-			{
 				"property_id": "info",
 				"value": "https://www.microsoft.com/en-us/research/blog/microsoft-vision-model-resnet-50-combines-web-scale-data-and-multi-task-learning-to-achieve-state-of-the-art/"
 			}
@@ -713,10 +559,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
 			},
 			{
 				"property_id": "info",
@@ -744,10 +586,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100\nmax_requests_per_min:\n  default: 300\n  accounts:\n    32118455: 600 # ai.cloudflare.com staging\n    50147400: 600 # ai.cloudflare.com\n"
-			},
-			{
 				"property_id": "terms",
 				"value": "https://huggingface.co/TheBloke/deepseek-coder-6.7B-base-AWQ"
 			}
@@ -767,10 +605,6 @@
 		"properties": [
 			{
 				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "lora",
 				"value": "true"
 			}
 		]
@@ -792,10 +626,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
 			},
 			{
 				"property_id": "info",
@@ -821,10 +651,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_requests_per_min:\n  default: 720\n  accounts:\n    32118455: 1440 # ai.cloudflare.com staging\n    50147400: 1440 # ai.cloudflare.com\n    13852056: 1440 # Firewall Team for `@RespectTables ai`\n\nneurons:\n  metrics:\n    - name: inference_steps\n      neuron_cost: 0\nmax_concurrent_requests: 1"
 			},
 			{
 				"property_id": "info",
@@ -857,10 +683,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_requests_per_min:\n  default: 3000\n  accounts:\n    32118455: 6000 # ai.cloudflare.com staging\n    50147400: 6000 # ai.cloudflare.com\n\nnneurons:\n  cost_per_infer: 0.6841666668  # ...3x that of resnet-50 (:shrug:).\nmax_concurrent_requests: 100"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/facebook/detr-resnet-50"
 			}
@@ -883,38 +705,6 @@
 		"properties": [
 			{
 				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_requests_per_min:\n  default: 300\n  accounts:\n    32118455: 600 # ai.cloudflare.com staging\n    50147400: 600 # ai.cloudflare.com\nmax_concurrent_requests: 100"
-			}
-		]
-	},
-	{
-		"id": "671f9423-fee2-42fb-a4a1-9be17d43be43",
-		"source": 1,
-		"name": "@cf/sven/test",
-		"description": "Internal test model.",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"tags": [
-			"experimental"
-		],
-		"properties": [
-			{
-				"property_id": "allowed_accounts",
-				"value": "1"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 10"
-			},
-			{
-				"property_id": "private",
 				"value": "true"
 			}
 		]
@@ -939,16 +729,8 @@
 				"value": "false"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_requests_per_min:   default: 720   accounts:     32118455: 1440 # ai.cloudflare.com staging     50147400: 1440 # ai.cloudflare.com     13852056: 1440 # Firewall Team for `@RespectTables ai`  downloads:   \"model-repository/m2m100-1.2b/1/huggingface-model-cache/pytorch_model.bin\":     url: https://pub-aad46f56812e4449bc904f1d68336a16.r2.dev/m2m100-1.2b/pytorch_model.bin     sha256sum: a58ef8f42362ef12adeddc600b3425f1e2bbd019cfa6aae6b0051e2e3e055cd4  neurons:   metrics:     - name: input_tokens       neuron_cost: 0.03105     - name: output_tokens       neuron_cost: 0.03105 max_concurrent_requests: 64"
-			},
-			{
 				"property_id": "info",
 				"value": "https://github.com/facebookresearch/fairseq/tree/main/examples/m2m_100"
-			},
-			{
-				"property_id": "languages",
-				"value": "english, chinese, french, spanish, arabic, russian, german, japanese, portuguese, hindi"
 			},
 			{
 				"property_id": "terms",
@@ -976,10 +758,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100\nmax_requests_per_min:\n  default: 300\n  accounts:\n    32118455: 600 # ai.cloudflare.com staging\n    50147400: 600 # ai.cloudflare.com\n"
-			},
-			{
 				"property_id": "terms",
 				"value": "https://huggingface.co/TheBloke/deepseek-coder-6.7B-instruct-AWQ"
 			}
@@ -1005,20 +783,8 @@
 				"value": "false"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "infer_response_cache: in_memory\n\nmax_requests_per_min:\n  default: 3000\n  accounts:\n    32118455: 6000 # ai.cloudflare.com staging\n    50147400: 6000 # ai.cloudflare.com\n\nneurons:\n  metrics:\n    - name: input_tokens\n      neuron_cost: 0.001840833333\nmax_concurrent_requests: 100"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/BAAI/bge-base-en-v1.5"
-			},
-			{
-				"property_id": "max_input_tokens",
-				"value": "512"
-			},
-			{
-				"property_id": "output_dimensions",
-				"value": "384"
 			}
 		]
 	},
@@ -1039,10 +805,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
 			},
 			{
 				"property_id": "info",
@@ -1073,10 +835,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/tiiuae/falcon-7b-instruct"
 			}
@@ -1101,18 +859,6 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B"
-			},
-			{
-				"property_id": "max_batch_prefill_tokens",
-				"value": "8192"
-			},
-			{
-				"property_id": "max_input_length",
-				"value": "3072"
-			},
-			{
-				"property_id": "max_total_tokens",
-				"value": "4096"
 			}
 		]
 	},
@@ -1136,20 +882,8 @@
 				"value": "false"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "infer_response_cache: in_memory\n\nmax_requests_per_min:\n  default: 3000\n  accounts:\n    32118455: 6000 # ai.cloudflare.com staging\n    50147400: 6000 # ai.cloudflare.com\n\nneurons:\n  metrics:\n    - name: input_tokens\n      neuron_cost: 0.0060575\nmax_concurrent_requests: 100"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/BAAI/bge-base-en-v1.5"
-			},
-			{
-				"property_id": "max_input_tokens",
-				"value": "512"
-			},
-			{
-				"property_id": "output_dimensions",
-				"value": "768"
 			}
 		]
 	},
@@ -1170,10 +904,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
 			},
 			{
 				"property_id": "info",
@@ -1201,10 +931,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100\nmax_requests_per_min:\n  default: 300\n  accounts:\n    32118455: 600 # ai.cloudflare.com staging\n    50147400: 600 # ai.cloudflare.com\n"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/TheBloke/zephyr-7B-beta-AWQ"
 			}
@@ -1224,10 +950,6 @@
 		"properties": [
 			{
 				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "lora",
 				"value": "true"
 			}
 		]
@@ -1249,10 +971,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "diff_streaming_output: false"
 			},
 			{
 				"property_id": "info",
@@ -1307,10 +1025,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/microsoft/phi-2"
 			}
@@ -1333,10 +1047,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
 			}
 		]
 	},
@@ -1357,10 +1067,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
 			},
 			{
 				"property_id": "info",
@@ -1393,18 +1099,6 @@
 				"value": "https://ai.google.dev/gemma/docs"
 			},
 			{
-				"property_id": "max_batch_prefill_tokens",
-				"value": "2048"
-			},
-			{
-				"property_id": "max_input_length",
-				"value": "1512"
-			},
-			{
-				"property_id": "max_total_tokens",
-				"value": "2048"
-			},
-			{
 				"property_id": "terms",
 				"value": "https://ai.google.dev/gemma/terms"
 			}
@@ -1429,10 +1123,6 @@
 				"value": "true"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/qwen/qwen1.5-14b-chat-awq"
 			}
@@ -1455,10 +1145,6 @@
 			{
 				"property_id": "beta",
 				"value": "true"
-			},
-			{
-				"property_id": "constellation_config",
-				"value": "max_concurrent_requests: 100"
 			},
 			{
 				"property_id": "info",
@@ -1486,20 +1172,8 @@
 				"value": "false"
 			},
 			{
-				"property_id": "constellation_config",
-				"value": "infer_response_cache: in_memory\n\nmax_requests_per_min:\n  default: 1500\n  accounts:\n    32118455: 3000 # ai.cloudflare.com staging\n    50147400: 3000 # ai.cloudflare.com\n\nneurons:\n  metrics:\n    - name: input_tokens\n      neuron_cost: 0.01858166667\nmax_concurrent_requests: 100"
-			},
-			{
 				"property_id": "info",
 				"value": "https://huggingface.co/BAAI/bge-base-en-v1.5"
-			},
-			{
-				"property_id": "max_input_tokens",
-				"value": "512"
-			},
-			{
-				"property_id": "output_dimensions",
-				"value": "1024"
 			}
 		]
 	}
