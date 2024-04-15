@@ -1,4 +1,4 @@
-<div class="mb2 gray5 ">19 min read</div>
+<div class="mb2 gray5">19 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image1-1.png" class="kg-image" alt="How to execute an object file: part 4, AArch64 edition" loading="lazy" width="1999" height="1125"></figure>
 	<p>Translating source code written in a high-level programming language into an executable binary typically involves a series of steps, namely compiling and assembling the code into object files, and then linking those object files into the final executable. However, there are certain scenarios where it can be useful to apply an alternate approach that involves executing object files directly, bypassing the linker. For example, we might use it for malware analysis or when part of the code requires an incompatible compiler. We’ll be focusing on the latter scenario: when one of our libraries needed to be compiled differently from the rest of the code. Learning how to execute an object file directly will give you a much better sense of how code is compiled and linked together.</p>

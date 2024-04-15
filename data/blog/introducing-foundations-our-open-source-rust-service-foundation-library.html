@@ -1,4 +1,4 @@
-<div class="mb2 gray5 ">9 min read</div>
+<div class="mb2 gray5">9 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/01/image1-4.png" class="kg-image" alt="Introducing Foundations - our open source Rust service foundation library" loading="lazy" width="1999" height="1125"></figure>
 	<p>In this blog post, we're excited to present Foundations, our foundational library for Rust services, now released as <a href="https://github.com/cloudflare/foundations">open source on GitHub</a>. Foundations is a foundational Rust library, designed to help scale programs for distributed, production-grade systems. It enables engineers to concentrate on the core business logic of their services, rather than the intricacies of production operation setups.</p>
@@ -43,7 +43,7 @@ async fn respond(
 	<p>However, Foundations distinguishes itself in a few key ways:</p>
 	<ul>
 		<li><strong>Simplified API</strong>: we've streamlined the setup process for tracing, aiming for a more minimalistic approach compared to tokio/tracing.</li>
-		<li><strong>Enhanced trace sampling flexibility</strong>: Foundations allows for selective override of the sampling ratio in specific code branches. This feature is particularly useful for detailed performance bug investigations, enabling a balance between global trace sampling for overall performance monitoring and targeted sampling for specific accounts, connections, or requests.</li>
+		<li><strong>Enhanced trace sampling flexibility</strong>: Foundations allows for selective override of the sampling ratio in specific code branches. This feature is particularly useful for detailed performance bug investigations, enabling a balance between global trace sampling for overall <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">performance monitoring</a> and targeted sampling for specific accounts, connections, or requests.</li>
 		<li><strong>Distributed trace stitching</strong>: our API supports the integration of trace data from multiple services, contributing to a comprehensive view of the entire pipeline. This functionality includes fine-tuned control over sampling ratios, allowing upstream services to dictate the sampling of specific traffic flows in downstream services.</li>
 		<li><strong>Trace forking capability</strong>: addressing the challenge of long-lasting connections with numerous multiplexed requests, Foundations introduces trace forking. This feature enables each request within a connection to have its own trace, linked to the parent connection trace. This method significantly simplifies the analysis and improves performance, particularly for connections handling thousands of requests.</li>
 	</ul>
