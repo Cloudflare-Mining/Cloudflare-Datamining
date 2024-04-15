@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5579911?gh_jid=5579911",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5563426?gh_jid=5563426",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -9,9 +9,9 @@
 			"retention_period": null
 		}
 	],
-	"internal_job_id": 2748087,
+	"internal_job_id": 2742876,
 	"location": {
-		"name": "Lisbon or London or Munich"
+		"name": "Remote US"
 	},
 	"metadata": [
 		{
@@ -23,30 +23,30 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4100 - Infrastructure",
+			"value": "4300 - Systems Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"France",
-				"Munich, Germany",
-				"Netherlands",
+				"Lisbon, Portugal",
+				"London, UK",
 				"Portugal",
-				"UK"
+				"UK",
+				"US"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 5579911,
-	"updated_at": "2024-04-11T12:41:54-04:00",
+	"id": 5563426,
+	"updated_at": "2024-04-15T11:37:21-04:00",
 	"requisition_id": null,
-	"title": "Senior Software Engineer",
+	"title": "Software Engineer - Distributed Systems",
 	"departments": [
 		{
-			"id": 30604,
-			"name": "Infrastructure",
+			"id": 29067,
+			"name": "Engineering",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -60,20 +60,6 @@
 			"parent_id": 74843
 		},
 		{
-			"id": 48350,
-			"name": "Munich, Germany",
-			"location": "München, Bayern, Germany",
-			"child_ids": [],
-			"parent_id": 74843
-		},
-		{
-			"id": 48758,
-			"name": "Paris, France",
-			"location": "Paris, Paris, France",
-			"child_ids": [],
-			"parent_id": 74843
-		},
-		{
 			"id": 63782,
 			"name": "Lisbon, Portugal",
 			"location": "Lisboa, Lisboa, Portugal",
@@ -81,8 +67,22 @@
 			"parent_id": 74843
 		},
 		{
-			"id": 77970,
-			"name": "Amsterdam, Netherlands",
+			"id": 75375,
+			"name": "Remote US",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 82455,
+			"name": "Remote Portugal",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 82456,
+			"name": "Remote UK",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 74843

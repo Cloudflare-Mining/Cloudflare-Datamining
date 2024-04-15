@@ -5,62 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: France, Munich, Germany, Netherlands, Portugal, UK</strong></p>
-<p><strong>About the Role</strong></p>
-<p>An engineering role at Cloudflare provides an opportunity to address some big challenges, at scale.&nbsp; We believe that with our talented team, we can solve some of the biggest security, reliability and performance problems facing the Internet. Just how big?&nbsp;&nbsp;</p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare’s Self-Serve Team is looking for a highly-motivated Digital Marketing Manager to take the lead on planning, developing and executing experiments and campaigns across display and video channels. Our team is responsible for driving growth across Cloudflare’s large self-serve customer base. To do this, we employ a data-driven, product-led, experimentation-based approach to help customers experience the value of our products and adopt more of Cloudflare’s solutions. From campaign planning to data analysis and reporting - you’ll own and develop growth strategies for the display and video channels across both organic and paid initiatives (including social media, native ads, content sponsorship and other types of advertising, as these become available).</p>
+<p><strong>Available: Seattle, San Francisco, Los Angeles, Austin, Remote</strong></p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>We have in excess of 15 Terabits of network transit capacity</li>
-	<li>We operate 250 Points-of-presence around the world</li>
-	<li>We serve more traffic than <em>Twitter, Amazon, Apple, Instagram, Bing, &amp; Wikipedia </em>combined</li>
-	<li>Anytime we push code, it immediately affects over 200 million internet users</li>
-	<li>Every day, up to 20,000 new customers sign-up for Cloudflare service</li>
-	<li>Every week, the average Internet user touches us more than 500 times</li>
+	<li>Plan, build and manage organic and paid media campaigns that help deliver outcomes tied to awareness, acquisition and revenue.</li>
+	<li>Own and manage both the strategy and the day-to-day operations of display and video ads across platforms including, but not limited to, DV360, YouTube, Facebook, Twitter, Reddit, LinkedIn, TikTok etc</li>
+	<li>Design experiments and manage A/B and multivariate tests across the channels you own to accelerate learning and improve campaign performance.</li>
+	<li>Collect, analyze and report on campaign data to help key stakeholders understand overall program performance impact over time.&nbsp;</li>
+	<li>Draw pertinent insights from data analysis and use them to make recommendations for campaign optimization and future experimentation.</li>
+	<li>Assist with the development of channel budgets, forecasts and actualization of spend.</li>
+	<li>Manage purchase orders and invoices for the campaigns you are responsible for.</li>
+	<li>Develop a deep understanding of Cloudflare’s products, user personas, and various in-product customer journeys.&nbsp;</li>
+	<li>Collaborate with in-house and/or external design and product-marketing teams to deliver creative assets (landing page designs, ad copy, video and display assets etc).&nbsp;</li>
+	<li>Collaborate with digital ops to ensure accurate tracking and measurement for your campaigns.&nbsp;</li>
 </ul>
-<p>We are looking for talented Software Engineers to build and develop the platform which makes Cloudflare customers place their trust in us.&nbsp; Our Software Engineers come from a variety of technical backgrounds and have built up their knowledge working in different environments. But the common factors across all of our reliability-focused engineers include a passion for automation, scalability, and operational excellence.&nbsp; Our Infrastructure Engineering team focuses on the automation to scale our infrastructure.</p>
-<p>Our team is well-funded and focused on building an extraordinary company.&nbsp; This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows.&nbsp; You will build tools to constantly improve our scale and speed of deployment.&nbsp; You will nurture a passion for an “automate everything” approach that makes systems failure-resistant and ready-to-scale.&nbsp;&nbsp;&nbsp;</p>
-<p>Cloudflare Software Engineers focus on automating our infrastructure installations and decommissions at scale.&nbsp; We enable our Data Centre Engineering teams by allowing them to install new data centers, replace servers and networking in existing data centers as quickly and efficiently as possible while not impacting existing infrastructure and customer services.&nbsp; While our focus is on automating all infrastructure requirements, there is an element of ongoing operational support of Data Center Engineers and other teams.&nbsp; We also review upcoming hardware changes and update automation and configuration management to cater to these advances.</p>
-<p>Many of our Software Engineers have had the opportunity to work at multiple offices on interim and long-term project assignments. The ideal Software Engineering candidate has a passionate curiosity about how the Internet fundamentally works and has a strong knowledge of Linux and Hardware.&nbsp; We require strong coding ability in Bash, Python or Go. We prefer to hire experienced candidates; however raw skill trumps experience and we welcome strong junior applicants.</p>
-<p><strong>Requisite Skills</strong></p>
+<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Intermediate level software development skills in Python and Go</li>
-	<li>Linux systems administration experience</li>
-	<li>5 years of relevant Development experience</li>
-	<li>Strong skills in network services, including Rest APIs and HTTP</li>
+	<li>5+ years of running paid media campaigns for SaaS brands (agency experience preferred) and securing both direct and programmatic media buys&nbsp;</li>
+	<li>Strong data analytics skills and copywriting skills</li>
+	<li>Experience using Adobe Target, Adobe Analytics, Google Optimize, Campaign Manager (including SA360 and DV360), GA360/GA4,&nbsp; and other page advertising platforms</li>
+	<li>An outcome-oriented mindset with a track record of driving actual business results (like user growth and revenue)</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>5 years of relevant work experience</li>
-	<li>Strong tooling and automations development experience</li>
-	<li>Network fundamentals DHCP, ARP, subnetting, routing, firewalls, IPv6</li>
-	<li>Configuration management systems such as Saltstack, Chef, Puppet or Ansible</li>
-	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Apache</li>
-	<li>SQL databases (Postgres or MySQL)</li>
-	<li>Time series databases (OpenTSDB, Graphite, Prometheus)</li>
-	<li>The ability to understand service and device metrics and visualize them using Grafana</li>
-	<li>Key/Value stores (Redis, KyotoTycoon, Cassandra, LevelDB)</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience programming in C, C++, Rust or Go</li>
-	<li>Experience with continuous / rapid release engineering</li>
-	<li>Experience developing systems that are highly available and redundant across regions</li>
-	<li>High-bandwidth transit Internetworking and routing experience</li>
-	<li>Performance analysis and debugging with tools like perf, sar, strace, dtrace</li>
-	<li>Experience with the Linux kernel and Linux software packaging</li>
-	<li>Internetworking and BGP</li>
-</ul>
-<p><strong>Some tools that we use</strong></p>
-<ul>
-	<li>Apache Airflow&nbsp;</li>
-	<li>Salt</li>
-	<li>Netbox</li>
-	<li>Docker</li>
-	<li>Kubernetes</li>
-	<li>Nginx</li>
-	<li>Python</li>
-	<li>PostgreSQL</li>
-	<li>Redis</li>
-	<li>Prometheus</li>
+	<li>Experience evaluating, onboarding and managing external vendors, contractors and agencies&nbsp;</li>
+	<li>Strong negotiation and project management skills to help you push your projects to completion</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

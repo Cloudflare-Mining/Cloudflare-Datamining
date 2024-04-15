@@ -5,37 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the department</strong></h4>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 250+ cities worldwide.</span></p>
-<h4><strong>What you'll do</strong></h4>
-<p><span style="font-weight: 400;">In this role you’ll help us build Cloudflare Tunnel, an ambitious product that aims to be the best and most secure way to connect any machine to the Cloudflare network. As an engineer on the Cloudflare Tunnel team, you will be responsible for building and maintaining the technologies and systems that comprise Cloudflare Tunnel, both in our high-performance global edge network and in our centralized microservice cluster. You will be joining a team of bright, hard-working, and supportive engineers who really care about their craft.</span></p>
-<p><span style="font-weight: 400;">Examples of software systems that you’ll be working with include:</span></p>
+<p><strong>About the Role</strong><br>At Cloudflare, we are on a mission to help build a better internet. Our Learning and Development team looks to help build a great employee experience by providing tools and resources for all Cloudflare employees to grow and develop in the skills critical for success. <br>We are looking for a Learning Partner to join our global Learning and Development team. You will be responsible for scaling and improving a variety of learning programs including our Orientation program, to increase our team’s impact.&nbsp;</p>
+<p>This role may be the perfect fit if you…&nbsp;</p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A service running on every machine of Cloudflare’s extensive edge network, responsible for proxying data to customer servers through persistent network connections</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A cross-platform, open-source client service application that connects machines to the Cloudflare network</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Microservices and APIs that enable and facilitate fast and reliable information exchange between Cloudflare and the rest of the Internet</span></li>
+	<li>Have a proven track record for improving systems and processes to enhance productivity and efficiency&nbsp;</li>
+	<li>Thrive when project managing large scale, company-wide initiatives in a fast paced environment</li>
+	<li>Pride yourself on continuously learning about the most recent best practices in corporate learning</li>
+	<li>Are skilled in group dynamics, and working with diverse groups of people&nbsp;</li>
+	<li>Are a skilled facilitator but are comfortable with more of a behind the scenes role&nbsp;</li>
+	<li>Are obsessed with using data in all your decision making</li>
 </ul>
-<p><span style="font-weight: 400;">You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Lua, REST APIs, various SQL and no-SQL databases, Salt, Prometheus and Grafana, Docker, Kubernetes, the list goes on.</span></p>
-<p><span style="font-weight: 400;">Other responsibilities include:</span></p>
+<p><strong>Location: Austin or San Francisco</strong></p>
+<p><strong>KEY RESPONSIBILITIES&nbsp;</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborating with internal teams (security, network engineering, SRE, product management) to design effective and scalable solutions to difficult technical problems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Reviewing work from your peers throughout all stages of the development lifecycle</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentoring team members to help bring out their best work</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Working with our support teams to ensure customer delight</span></li>
+	<li>Support the execution and revamp of our New Hire Orientation: coordinate, organize and facilitate our orientation for U.S. employee, guiding our new hires throughout the process to create a comprehensive and best-in-class Onboarding program</li>
+	<li>Create and execute on strategy to scale, drive engagement and market our offerings</li>
+	<li>Regularly evaluate and refine our programs based on data, industry best practices, and evolving company needs, striving for continuous improvement.</li>
 </ul>
-<p><span style="font-weight: 400;">Because you’ll be solving problems of massive scale and significance, and shaping the future of performance on the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sane work environment.</span></p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p><span style="font-weight: 400;">As an ideal candidate for this position, you are curious, hard-working, and passionate.</span></p>
-<p><span style="font-weight: 400;">A rough list of the skills we would love to see you bring:</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Go, Rust, C++, or similar languages</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness, curiosity, and enthusiasm to learn new programming languages, technologies, and systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Working knowledge of modern Unix/Linux development and runtime environments</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong ability to debug issues in complex systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A grasp of networking protocols in any of Layers 3-7 of the OSI Model, experience with network programming</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Basic understanding of software security and encryption</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in designing and implementing secure and highly-available distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</span></li>
+	<li>Design, publish and continually enhance learning materials&nbsp;</li>
+	<li>Facilitate effective delivery of training with clear and concise communication and professionalism in classroom and virtual(on-camera) settings</li>
+	<li>Serve as support in for LMS assistance (registration, attendance administration)</li>
+</ul>
+<p><strong>Examples of desirable skills and knowledge</strong></p>
+<ul>
+	<li>Excellent project management and organizational skills</li>
+	<li>3+ years of experience in Human Resources/Learning &amp; Development/Training Teams&nbsp;</li>
+	<li>Experience designing and implementing company-wide initiatives, working with stakeholders and and cross-functional partners&nbsp;</li>
+	<li>Strong facilitation skills with the demonstrated ability to present information in a clear, concise, and confident manner through multiple modalities (in a virtual or in-person environment) to a variety of audiences</li>
+	<li>Proven experience in creating and delivering informal and formal learning solutions and utilize learning metrics/analytics to measure the impact of them</li>
+	<li>Enjoys working in a fast paced environment and adapts to change quickly</li>
+	<li>Self-sufficient, motivated and able to work independently and as part of team</li>
+	<li>Ability to collaborate, build trust, negotiate, influence and resolve conflict with peers, stakeholders and business unit leaders</li>
+	<li>Ability to read, analyze data and communicate informed needs and decisions to peers, learners, stakeholder, and front-line leaders</li>
+	<li>Ability to troubleshoot and resolve technical issues</li>
+	<li>Excellent written communication</li>
+	<li>Experience using Google Suite (Slides, Docs, etc.)</li>
+	<li>Experience with learning authoring tools (Articulate, Captivate, Illustrator, etc.) and email marketing platforms (e.g. Marketo, Mailchimp) a plus but not required</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
