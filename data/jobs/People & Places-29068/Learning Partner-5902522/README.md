@@ -15,7 +15,7 @@
 	<li>Are a skilled facilitator but are comfortable with more of a behind the scenes role&nbsp;</li>
 	<li>Are obsessed with using data in all your decision making</li>
 </ul>
-<p><strong>Location: Austin or San Francisco</strong></p>
+<p><strong>Location: San Francisco or Austin</strong></p>
 <p><strong>KEY RESPONSIBILITIES&nbsp;</strong></p>
 <ul>
 	<li>Support the execution and revamp of our New Hire Orientation: coordinate, organize and facilitate our orientation for U.S. employee, guiding our new hires throughout the process to create a comprehensive and best-in-class Onboarding program</li>
