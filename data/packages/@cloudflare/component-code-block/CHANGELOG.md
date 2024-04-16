@@ -1,5 +1,12 @@
 # @cloudflare/component-code-block
 
+## 5.0.16
+
+### Patch Changes
+
+- Updated dependencies [25bc2ee144]
+  - @cloudflare/component-tooltip@4.7.1
+
 ## 5.0.15
 
 ### Patch Changes

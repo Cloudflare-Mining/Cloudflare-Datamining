@@ -1,5 +1,12 @@
 # Change Log
 
+## 8.3.2
+
+### Patch Changes
+
+- Updated dependencies [25bc2ee144]
+  - @cloudflare/component-tooltip@4.7.1
+
 ## 8.3.1
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.1.2
+
+### Patch Changes
+
+- Updated dependencies [25bc2ee144]
+  - @cloudflare/component-tooltip@4.7.1
+
 ## 6.1.1
 
 ### Patch Changes

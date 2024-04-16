@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.7.1
+
+### Patch Changes
+
+- 25bc2ee144: add aria-describedby to read tooltip content on screen readers
+
 ## 4.7.0
 
 ### Minor Changes
