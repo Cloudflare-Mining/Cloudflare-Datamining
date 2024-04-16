@@ -788,6 +788,25 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"description": "Page number of paginated results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Maximum number of results per page. Must be a multiple of 5.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 25,
+					"maximum": 1000,
+					"minimum": 5
+				}
 			}
 		],
 		"responses": {
