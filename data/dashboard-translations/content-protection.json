@@ -15,6 +15,7 @@
 	"sse.description": "Automatically hide specific content from disreputable visitors.",
 	"sse.help": "#### How can I hide content using Server-side Excludes?\nPlace the content you want to hide from disreputable visitors inside the following conditional comment:\n\n`<!--sse--> <!--/sse-->`\n\n**Example:**\n\n`<!--sse-->Disreputable visitors won't see this<!--/sse-->`\n\n#### How do I know if Server-side Excludes are working?\nYou may not see conditional comments in your content when served by Cloudflare. Certain Cloudflare features like HTML minification will remove the conditional comments. This indicates that Server-side Excludes are functioning properly. You will always be able to see your conditional comments in the HTML source on your origin.\n\n**Note:** Server-side Excludes are only applied to content with a MIME type of `text/html` or `application/xhtml+xml`.",
 	"sse.title": "Server-side Excludes",
+	"sse.deprecated.toast": "Server-side Excludes (SSE) is deprecated and will be removed on 2024-06-14.",
 	"sse.api.title.get": "Get Server Side Exclude setting",
 	"sse.api.title.patch": "Change Server Side Exclude setting"
 }

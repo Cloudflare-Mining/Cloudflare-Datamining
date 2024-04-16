@@ -759,7 +759,7 @@
 			var Kt = n("../react/app/components/Persistence/index.tsx"),
 				Yt = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				Qt = n("../react/app/components/LoadingSuspense.tsx");
-			const Jt = ge().lazy(() => Promise.all([n.e(2480), n.e(95170), n.e(4616), n.e(58094), n.e(98283), n.e(76725), n.e(43351), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Jt = ge().lazy(() => Promise.all([n.e(2480), n.e(95170), n.e(4616), n.e(58094), n.e(98283), n.e(76725), n.e(20464), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Xt = () => ge().createElement(Qt.Z, null, ge().createElement(Jt, null));
 			const qt = () => (Re.useEffect(() => re, []), null);
 			var en = n("../../../../node_modules/moment/moment.js"),
@@ -813,7 +813,7 @@
 						}
 					}, [h.search])
 				},
-				sn = ge().lazy(() => Promise.all([n.e(2480), n.e(95170), n.e(4616), n.e(58094), n.e(81778), n.e(72019), n.e(98455), n.e(76725), n.e(43351), n.e(47261), n.e(35812), n.e(7974), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				sn = ge().lazy(() => Promise.all([n.e(2480), n.e(95170), n.e(4616), n.e(58094), n.e(81778), n.e(72019), n.e(98455), n.e(76725), n.e(20464), n.e(47261), n.e(35812), n.e(7974), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				cn = ge().lazy(() => Promise.all([n.e(95170), n.e(81778), n.e(76725), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var ln = ({
 					userIsAuthed: h
@@ -937,10 +937,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "251ac83785f0d790ab934a13f8b3822a155ea6f0",
+					commit: "d376add270e5cfc69f4069d1b3a45fcf9ca90985",
 					env: "production",
-					builtAt: 1713209114876,
-					dashVersion: "f2994e3d86eec58903361f745b257bd875b02bd3",
+					builtAt: 1713297111246,
+					dashVersion: "f9fc818c665b2812ba08386e09c3532225d3e474",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",
@@ -4338,9 +4338,7 @@
 				}, {
 					entityType: "WAFMigrationStatus"
 				}, {
-					entityType: "accountEnvironments"
-				}, {
-					entityType: "zoneEnvironments"
+					entityType: "environments"
 				}, {
 					entityType: "tenants"
 				}, {
