@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/vectorize/indexes/{index_name}": {
+	"DELETE /accounts/{account_id}/vectorize/indexes/{index_name}": {
 		"description": "Deletes the specified Vectorize Index.",
 		"operationId": "vectorize-delete-vectorize-index",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -366,13 +366,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/vectorize/indexes": {
+	"GET /accounts/{account_id}/vectorize/indexes": {
 		"description": "Returns a list of Vectorize Indexes",
 		"operationId": "vectorize-list-vectorize-indexes",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -751,13 +751,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/vectorize/indexes/{index_name}": {
+	"GET /accounts/{account_id}/vectorize/indexes/{index_name}": {
 		"description": "Returns the specified Vectorize Index.",
 		"operationId": "vectorize-get-vectorize-index",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1164,13 +1164,13 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/vectorize/indexes": {
+	"POST /accounts/{account_id}/vectorize/indexes": {
 		"description": "Creates and returns a new Vectorize Index.",
 		"operationId": "vectorize-create-vectorize-index",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1191,26 +1191,6 @@
 									{
 										"description": "Specifies the type of configuration to use for the index.",
 										"oneOf": [
-											{
-												"properties": {
-													"preset": {
-														"description": "Specifies the preset to use for the index.",
-														"enum": [
-															"@cf/baai/bge-small-en-v1.5",
-															"@cf/baai/bge-base-en-v1.5",
-															"@cf/baai/bge-large-en-v1.5",
-															"openai/text-embedding-ada-002",
-															"cohere/embed-multilingual-v2.0"
-														],
-														"example": "@cf/baai/bge-small-en-v1.5",
-														"type": "string"
-													}
-												},
-												"required": [
-													"preset"
-												],
-												"type": "object"
-											},
 											{
 												"properties": {
 													"dimensions": {
@@ -1235,14 +1215,27 @@
 													"metric"
 												],
 												"type": "object"
+											},
+											{
+												"properties": {
+													"preset": {
+														"description": "Specifies the preset to use for the index.",
+														"enum": [
+															"@cf/baai/bge-small-en-v1.5",
+															"@cf/baai/bge-base-en-v1.5",
+															"@cf/baai/bge-large-en-v1.5",
+															"openai/text-embedding-ada-002",
+															"cohere/embed-multilingual-v2.0"
+														],
+														"example": "@cf/baai/bge-small-en-v1.5",
+														"type": "string"
+													}
+												},
+												"required": [
+													"preset"
+												],
+												"type": "object"
 											}
-										]
-									},
-									{
-										"required": [
-											"preset",
-											"dimensions",
-											"metric"
 										]
 									}
 								]
@@ -1654,13 +1647,13 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/vectorize/indexes/{index_name}/delete-by-ids": {
+	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/delete-by-ids": {
 		"description": "Delete a set of vectors from an index by their vector identifiers.",
 		"operationId": "vectorize-delete-vectors-by-id",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2065,13 +2058,13 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/vectorize/indexes/{index_name}/get-by-ids": {
+	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/get-by-ids": {
 		"description": "Get a set of vectors from an index by their vector identifiers.",
 		"operationId": "vectorize-get-vectors-by-id",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2511,13 +2504,13 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/vectorize/indexes/{index_name}/insert": {
+	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/insert": {
 		"description": "Inserts vectors into the specified index and returns the count of the vectors successfully inserted.",
 		"operationId": "vectorize-insert-vector",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2908,13 +2901,13 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/vectorize/indexes/{index_name}/query": {
+	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/query": {
 		"description": "Finds vectors closest to a given vector in an index.",
 		"operationId": "vectorize-query-vector",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2940,6 +2933,16 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"filter": {
+								"description": "A metadata filter expression used to limit nearest neighbor results.",
+								"example": {
+									"has_viewed": {
+										"$ne": true
+									},
+									"streaming_platform": "netflix"
+								},
+								"type": "object"
+							},
 							"returnMetadata": {
 								"default": false,
 								"description": "Whether to return the metadata associated with the closest vectors.",
@@ -2969,6 +2972,9 @@
 								"type": "array"
 							}
 						},
+						"required": [
+							"vector"
+						],
 						"type": "object"
 					}
 				}
@@ -3097,6 +3103,7 @@
 																"type": "string"
 															},
 															"metadata": {
+																"nullable": true,
 																"type": "object"
 															},
 															"score": {
@@ -3107,6 +3114,7 @@
 																"items": {
 																	"type": "number"
 																},
+																"nullable": true,
 																"type": "array"
 															}
 														},
@@ -3349,13 +3357,13 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/vectorize/indexes/{index_name}/upsert": {
+	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/upsert": {
 		"description": "Upserts vectors into the specified index, creating them if they do not exist and returns the count of values and ids successfully inserted.",
 		"operationId": "vectorize-upsert-vector",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3746,13 +3754,13 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/vectorize/indexes/{index_name}": {
+	"PUT /accounts/{account_id}/vectorize/indexes/{index_name}": {
 		"description": "Updates and returns the specified Vectorize Index.",
 		"operationId": "vectorize-update-vectorize-index",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
