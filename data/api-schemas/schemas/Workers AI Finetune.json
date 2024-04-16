@@ -1,5 +1,5 @@
 {
-	"GET /apiv4/accounts/{account_id}/finetunes": {
+	"GET /accounts/{account_id}/ai/finetunes": {
 		"operationId": "workers-ai-list-finetunes",
 		"parameters": [
 			{
@@ -119,7 +119,7 @@
 			"pro": true
 		}
 	},
-	"POST /apiv4/accounts/{account_id}/finetunes": {
+	"POST /accounts/{account_id}/ai/finetunes": {
 		"operationId": "workers-ai-create-finetune",
 		"parameters": [
 			{
@@ -262,7 +262,7 @@
 			"pro": true
 		}
 	},
-	"POST /apiv4/accounts/{account_id}/finetunes/{finetune_id}/finetune-assets": {
+	"POST /accounts/{account_id}/ai/finetunes/{finetune_id}/finetune-assets": {
 		"operationId": "workers-ai-upload-finetune-asset",
 		"parameters": [
 			{
