@@ -91,20 +91,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -117,8 +103,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -333,20 +318,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -359,8 +330,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -557,6 +527,11 @@
 																		"description": "The name of the application.",
 																		"example": "Admin Site",
 																		"type": "string"
+																	},
+																	"options_preflight_bypass": {
+																		"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"same_site_cookie_attribute": {
 																		"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -1024,6 +999,11 @@
 																				"example": "Admin Site",
 																				"type": "string"
 																			},
+																			"options_preflight_bypass": {
+																				"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																				"example": true,
+																				"type": "boolean"
+																			},
 																			"same_site_cookie_attribute": {
 																				"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																				"example": "strict",
@@ -1226,6 +1206,11 @@
 																				"description": "The name of the application.",
 																				"example": "Admin Site",
 																				"type": "string"
+																			},
+																			"options_preflight_bypass": {
+																				"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																				"example": true,
+																				"type": "boolean"
 																			},
 																			"same_site_cookie_attribute": {
 																				"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -1892,20 +1877,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -1918,8 +1889,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -2095,6 +2065,11 @@
 																	"description": "The name of the application.",
 																	"example": "Admin Site",
 																	"type": "string"
+																},
+																"options_preflight_bypass": {
+																	"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																	"example": true,
+																	"type": "boolean"
 																},
 																"same_site_cookie_attribute": {
 																	"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -2562,6 +2537,11 @@
 																			"example": "Admin Site",
 																			"type": "string"
 																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"same_site_cookie_attribute": {
 																			"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																			"example": "strict",
@@ -2764,6 +2744,11 @@
 																			"description": "The name of the application.",
 																			"example": "Admin Site",
 																			"type": "string"
+																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"same_site_cookie_attribute": {
 																			"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -3428,20 +3413,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -3454,8 +3425,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -3869,6 +3839,11 @@
 												"description": "The name of the application.",
 												"example": "Admin Site",
 												"type": "string"
+											},
+											"options_preflight_bypass": {
+												"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+												"example": true,
+												"type": "boolean"
 											},
 											"same_site_cookie_attribute": {
 												"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -4336,6 +4311,11 @@
 														"example": "Admin Site",
 														"type": "string"
 													},
+													"options_preflight_bypass": {
+														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+														"example": true,
+														"type": "boolean"
+													},
 													"same_site_cookie_attribute": {
 														"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 														"example": "strict",
@@ -4538,6 +4518,11 @@
 														"description": "The name of the application.",
 														"example": "Admin Site",
 														"type": "string"
+													},
+													"options_preflight_bypass": {
+														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+														"example": true,
+														"type": "boolean"
 													},
 													"same_site_cookie_attribute": {
 														"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -5057,20 +5042,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -5083,8 +5054,7 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
 												},
@@ -5260,6 +5230,11 @@
 																			"description": "The name of the application.",
 																			"example": "Admin Site",
 																			"type": "string"
+																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"same_site_cookie_attribute": {
 																			"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -5727,6 +5702,11 @@
 																					"example": "Admin Site",
 																					"type": "string"
 																				},
+																				"options_preflight_bypass": {
+																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"same_site_cookie_attribute": {
 																					"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																					"example": "strict",
@@ -5929,6 +5909,11 @@
 																					"description": "The name of the application.",
 																					"example": "Admin Site",
 																					"type": "string"
+																				},
+																				"options_preflight_bypass": {
+																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																					"example": true,
+																					"type": "boolean"
 																				},
 																				"same_site_cookie_attribute": {
 																					"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -6550,6 +6535,11 @@
 																	"example": "Admin Site",
 																	"type": "string"
 																},
+																"options_preflight_bypass": {
+																	"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"same_site_cookie_attribute": {
 																	"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																	"example": "strict",
@@ -7016,6 +7006,11 @@
 																			"example": "Admin Site",
 																			"type": "string"
 																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"same_site_cookie_attribute": {
 																			"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																			"example": "strict",
@@ -7218,6 +7213,11 @@
 																			"description": "The name of the application.",
 																			"example": "Admin Site",
 																			"type": "string"
+																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"same_site_cookie_attribute": {
 																			"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -8158,6 +8158,11 @@
 												"example": "Admin Site",
 												"type": "string"
 											},
+											"options_preflight_bypass": {
+												"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+												"example": true,
+												"type": "boolean"
+											},
 											"same_site_cookie_attribute": {
 												"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 												"example": "strict",
@@ -8624,6 +8629,11 @@
 														"example": "Admin Site",
 														"type": "string"
 													},
+													"options_preflight_bypass": {
+														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+														"example": true,
+														"type": "boolean"
+													},
 													"same_site_cookie_attribute": {
 														"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 														"example": "strict",
@@ -8826,6 +8836,11 @@
 														"description": "The name of the application.",
 														"example": "Admin Site",
 														"type": "string"
+													},
+													"options_preflight_bypass": {
+														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+														"example": true,
+														"type": "boolean"
 													},
 													"same_site_cookie_attribute": {
 														"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -9345,20 +9360,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -9371,8 +9372,7 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
 												},
@@ -9548,6 +9548,11 @@
 																			"description": "The name of the application.",
 																			"example": "Admin Site",
 																			"type": "string"
+																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"same_site_cookie_attribute": {
 																			"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -10015,6 +10020,11 @@
 																					"example": "Admin Site",
 																					"type": "string"
 																				},
+																				"options_preflight_bypass": {
+																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"same_site_cookie_attribute": {
 																					"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																					"example": "strict",
@@ -10217,6 +10227,11 @@
 																					"description": "The name of the application.",
 																					"example": "Admin Site",
 																					"type": "string"
+																				},
+																				"options_preflight_bypass": {
+																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																					"example": true,
+																					"type": "boolean"
 																				},
 																				"same_site_cookie_attribute": {
 																					"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
@@ -10838,6 +10853,11 @@
 																	"example": "Admin Site",
 																	"type": "string"
 																},
+																"options_preflight_bypass": {
+																	"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"same_site_cookie_attribute": {
 																	"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																	"example": "strict",
@@ -11304,6 +11324,11 @@
 																			"example": "Admin Site",
 																			"type": "string"
 																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"same_site_cookie_attribute": {
 																			"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																			"example": "strict",
@@ -11506,6 +11531,11 @@
 																			"description": "The name of the application.",
 																			"example": "Admin Site",
 																			"type": "string"
+																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"same_site_cookie_attribute": {
 																			"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",

@@ -91,20 +91,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -117,8 +103,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -333,20 +318,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -359,8 +330,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -579,6 +549,11 @@
 																		"description": "The name of the application.",
 																		"example": "Admin Site",
 																		"type": "string"
+																	},
+																	"options_preflight_bypass": {
+																		"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"path_cookie_attribute": {
 																		"default": false,
@@ -1123,6 +1098,11 @@
 																				"example": "Admin Site",
 																				"type": "string"
 																			},
+																			"options_preflight_bypass": {
+																				"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																				"example": true,
+																				"type": "boolean"
+																			},
 																			"path_cookie_attribute": {
 																				"default": false,
 																				"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
@@ -1374,6 +1354,11 @@
 																				"description": "The name of the application.",
 																				"example": "Admin Site",
 																				"type": "string"
+																			},
+																			"options_preflight_bypass": {
+																				"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																				"example": true,
+																				"type": "boolean"
 																			},
 																			"path_cookie_attribute": {
 																				"default": false,
@@ -2075,20 +2060,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -2101,8 +2072,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -2300,6 +2270,11 @@
 																	"description": "The name of the application.",
 																	"example": "Admin Site",
 																	"type": "string"
+																},
+																"options_preflight_bypass": {
+																	"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																	"example": true,
+																	"type": "boolean"
 																},
 																"path_cookie_attribute": {
 																	"default": false,
@@ -2844,6 +2819,11 @@
 																			"example": "Admin Site",
 																			"type": "string"
 																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"path_cookie_attribute": {
 																			"default": false,
 																			"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
@@ -3095,6 +3075,11 @@
 																			"description": "The name of the application.",
 																			"example": "Admin Site",
 																			"type": "string"
+																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"path_cookie_attribute": {
 																			"default": false,
@@ -3794,20 +3779,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -3820,8 +3791,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -4259,6 +4229,11 @@
 												"description": "The name of the application.",
 												"example": "Admin Site",
 												"type": "string"
+											},
+											"options_preflight_bypass": {
+												"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+												"example": true,
+												"type": "boolean"
 											},
 											"path_cookie_attribute": {
 												"default": false,
@@ -4803,6 +4778,11 @@
 														"example": "Admin Site",
 														"type": "string"
 													},
+													"options_preflight_bypass": {
+														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+														"example": true,
+														"type": "boolean"
+													},
 													"path_cookie_attribute": {
 														"default": false,
 														"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
@@ -5054,6 +5034,11 @@
 														"description": "The name of the application.",
 														"example": "Admin Site",
 														"type": "string"
+													},
+													"options_preflight_bypass": {
+														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+														"example": true,
+														"type": "boolean"
 													},
 													"path_cookie_attribute": {
 														"default": false,
@@ -5608,20 +5593,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -5634,8 +5605,7 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
 												},
@@ -5833,6 +5803,11 @@
 																			"description": "The name of the application.",
 																			"example": "Admin Site",
 																			"type": "string"
+																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"path_cookie_attribute": {
 																			"default": false,
@@ -6377,6 +6352,11 @@
 																					"example": "Admin Site",
 																					"type": "string"
 																				},
+																				"options_preflight_bypass": {
+																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"path_cookie_attribute": {
 																					"default": false,
 																					"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
@@ -6628,6 +6608,11 @@
 																					"description": "The name of the application.",
 																					"example": "Admin Site",
 																					"type": "string"
+																				},
+																				"options_preflight_bypass": {
+																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																					"example": true,
+																					"type": "boolean"
 																				},
 																				"path_cookie_attribute": {
 																					"default": false,
@@ -7306,6 +7291,11 @@
 																	"example": "Admin Site",
 																	"type": "string"
 																},
+																"options_preflight_bypass": {
+																	"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"path_cookie_attribute": {
 																	"default": false,
 																	"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
@@ -7849,6 +7839,11 @@
 																			"example": "Admin Site",
 																			"type": "string"
 																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"path_cookie_attribute": {
 																			"default": false,
 																			"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
@@ -8100,6 +8095,11 @@
 																			"description": "The name of the application.",
 																			"example": "Admin Site",
 																			"type": "string"
+																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"path_cookie_attribute": {
 																			"default": false,
@@ -9097,6 +9097,11 @@
 												"example": "Admin Site",
 												"type": "string"
 											},
+											"options_preflight_bypass": {
+												"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+												"example": true,
+												"type": "boolean"
+											},
 											"path_cookie_attribute": {
 												"default": false,
 												"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
@@ -9640,6 +9645,11 @@
 														"example": "Admin Site",
 														"type": "string"
 													},
+													"options_preflight_bypass": {
+														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+														"example": true,
+														"type": "boolean"
+													},
 													"path_cookie_attribute": {
 														"default": false,
 														"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
@@ -9891,6 +9901,11 @@
 														"description": "The name of the application.",
 														"example": "Admin Site",
 														"type": "string"
+													},
+													"options_preflight_bypass": {
+														"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+														"example": true,
+														"type": "boolean"
 													},
 													"path_cookie_attribute": {
 														"default": false,
@@ -10445,20 +10460,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -10471,8 +10472,7 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
 												},
@@ -10670,6 +10670,11 @@
 																			"description": "The name of the application.",
 																			"example": "Admin Site",
 																			"type": "string"
+																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"path_cookie_attribute": {
 																			"default": false,
@@ -11214,6 +11219,11 @@
 																					"example": "Admin Site",
 																					"type": "string"
 																				},
+																				"options_preflight_bypass": {
+																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"path_cookie_attribute": {
 																					"default": false,
 																					"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
@@ -11465,6 +11475,11 @@
 																					"description": "The name of the application.",
 																					"example": "Admin Site",
 																					"type": "string"
+																				},
+																				"options_preflight_bypass": {
+																					"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																					"example": true,
+																					"type": "boolean"
 																				},
 																				"path_cookie_attribute": {
 																					"default": false,
@@ -12143,6 +12158,11 @@
 																	"example": "Admin Site",
 																	"type": "string"
 																},
+																"options_preflight_bypass": {
+																	"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"path_cookie_attribute": {
 																	"default": false,
 																	"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
@@ -12686,6 +12706,11 @@
 																			"example": "Admin Site",
 																			"type": "string"
 																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"path_cookie_attribute": {
 																			"default": false,
 																			"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
@@ -12937,6 +12962,11 @@
 																			"description": "The name of the application.",
 																			"example": "Admin Site",
 																			"type": "string"
+																		},
+																		"options_preflight_bypass": {
+																			"description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"path_cookie_attribute": {
 																			"default": false,
