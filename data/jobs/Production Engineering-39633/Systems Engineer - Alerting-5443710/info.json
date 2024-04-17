@@ -30,14 +30,8 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Amsterdam, Netherlands",
-				"France",
 				"Germany",
-				"Lisbon, Portugal",
-				"London, UK",
-				"Munich, Germany",
 				"Netherlands",
-				"Paris, France",
 				"Portugal",
 				"UK"
 			],
@@ -45,7 +39,7 @@
 		}
 	],
 	"id": 5443710,
-	"updated_at": "2024-04-16T15:16:30-04:00",
+	"updated_at": "2024-04-17T05:38:10-04:00",
 	"requisition_id": null,
 	"title": "Systems Engineer - Alerting",
 	"departments": [
@@ -58,15 +52,29 @@
 	],
 	"offices": [
 		{
-			"id": 48350,
-			"name": "Munich, Germany",
-			"location": "München, Bayern, Germany",
+			"id": 82439,
+			"name": "Remote Germany",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 74843
 		},
 		{
-			"id": 82439,
-			"name": "Remote Germany",
+			"id": 82454,
+			"name": "Remote Netherlands",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 82455,
+			"name": "Remote Portugal",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 82456,
+			"name": "Remote UK",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 74843
