@@ -54,7 +54,7 @@
 	"overview.dns_update_panel.cname.title": "We could not verify your TXT record",
 	"overview.dns_update_panel.cname.update_notice": "Cloudflare will automatically re-check your TXT record. If your TXT record is correct, your site will be immediately activated. Please allow up to 6 hours for this change to be processed.",
 	"overview.dns_update_panel.cname.update_notice_heading_experiment": "<0>Registrars take up to 24 hours to process nameserver changes (quicker in most cases). We will email you when %{zone} is active on Cloudflare.</0>",
-	"overview.dns_update_panel.cname.update_notice_body_1_experiment": "While in this <1>pending state</1>, Cloudflare will respond to DNS queries on your assigned nameservers.",
+	"overview.dns_update_panel.cname.update_notice_body_1_experiment": "While in this <0>pending state</0>, Cloudflare will respond to DNS queries on your assigned nameservers.",
 	"overview.dns_update_panel.cname.update_notice_body_2_experiment": "Once activated, SSL/TLS, DDoS protection, caching, and other automatic optimizations will go live for proxied DNS records, along with any custom settings you pre-configure.",
 	"overview.dns_update_panel.cname.update_notice_body_3_experiment": "<0>Learn more about pending domains</0>",
 	"overview.dns_update_panel.incomplete_setup.description_experiment": "This process makes Cloudflare your authoritative <1>DNS provider</1>, allowing your DNS queries and web traffic to be served from and protected by our <3>global network.</3>",

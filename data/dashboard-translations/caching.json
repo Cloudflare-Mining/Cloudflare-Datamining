@@ -196,6 +196,7 @@
 	"sort_query_string_for_cache.help": "#### How does Query String Sort make my website faster?\n\nWhen set to u201COnu201D, this feature enables query strings to be sorted before they hit Cloudflareu2019s cache for increased cache hit rates.\n\n Today, we treat URLs query strings that are in different orders as separate files in the cache. This mean that if one user requests:\n\n```\n/video/48088296?title=0&byline=0&portrait=0&color=51a516\n```\n\nAnd another user requests:\n\n```\n/video/48088296?byline=0&color=51a516&portrait=0&title=0\n```\n\nWe will go back to the origin, even though we have the file in our cache. \n\nQuery String Sort will sort the query strings before they hit our cache resulting in a higher cache hit rate.",
 	"sort_query_string_for_cache.title": "Enable Query String Sort",
 	"tiered_cache_plus.cached_origins.title": "Cached Origins",
+	"tiered_cache_plus.cached_origins.anycast_ip_toast": "The Smart Tiered Cache feature is not compatible with origins behind Anycast networks. Refer to the <0>documentation</0> for more information",
 	"tiered_cache.table.origin_ip.label": "Origin IP",
 	"tiered_cache.table.primary_datacenter.label": "Primary Data Center",
 	"tiered_cache.table.secondary_datacenter.label": "Failover Data Center",
