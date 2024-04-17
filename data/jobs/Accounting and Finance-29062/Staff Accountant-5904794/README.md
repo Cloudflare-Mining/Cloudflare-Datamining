@@ -5,45 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Lisbon, Portugal<br><br>About Cloudflare's Security teams</strong></p>
-<p>Anytime our engineers push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 300 cities in more than 100 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
-<p>Cloudflare’s Security team works to ensure the safety and security of our products, networks, and, above all, our people. We are organized in teams that deal with, for example, Service Delivery, Product Security, GRC (Governance, Risk and Compliance), Vulnerability management or Security Response.</p>
-<p>The Security Response team (EMEA) is the front end for the Incident Response program and its main mission is to collect, triage and respond to incidents that affect Cloudflare's Infrastructure or users.</p>
-<p><strong>About the Internship Program</strong></p>
-<p>The ideal intern is passionate about making the Internet a better place and Cloudflare more secure. You will work with knowledgeable engineers and incident responders. You will help triage and respond to security alerts and incidents, and also help improve our processes and detection capabilities. This is a great opportunity to gain exposure to a first-class Incident Response team.</p>
-<p>What would you do as a Cloudflare intern for the Security Response Team?</p>
+<h4><strong>About the department</strong></h4>
+<p>The Order-to-Cash Accounting A/R Staff processes all facets of Cloudflare’s worldwide Billing and Accounts Receivable (A/R) functions. This role facilitates prompt, correct, and complete billing, collection, and cash application of Cloudflare receivables to support preparation of accurate financial statements, compliance with customer contracts, and optimization of cash flow. Additionally, this position participates in certain regulatory compliance activities including sales tax assessment and reporting, and unclaimed property remittance.</p>
+<p><strong>Locations: US, UK, Portugal</strong></p>
+<p><strong>What You'll Do</strong></p>
 <ul>
-	<li>Participate in incident response activities such as triage, analysis and containment of security incidents.</li>
-	<li>Find opportunities to improve detections and automate repetitive tasks.</li>
-	<li>Work cross-functionally with various teams from different countries.</li>
-	<li>Be assigned a mentor to guide you through the internship and help with career goals.</li>
-	<li>Make friends across the company through our Buddy Program, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
-	<li>Present your work to the entire company at the end of the internship.</li>
-	<li>Get direct access to our executives and leadership team including our co-founders.</li>
-	<li>Write for our <a href="https://blog.cloudflare.com/">Cloudflare blog</a> and be featured on <a href="http://cloudflare.tv/">Cloudflare.tv</a> sessions.&nbsp;</li>
-	<li>Receive Cloudflare swag and free Cloudflare products!</li>
+	<li>Direct preparation and issuance of customer invoices to ensure prompt and accurate billing in compliance with contract terms.</li>
+	<li>Oversee response to billing and A/R inquiries in a manner that cultivates a culture of exemplary customer service both internal and external.</li>
+	<li>Support Order-to-Cash Accounting team by running credit checks and monitoring credit worthiness of new and existing customers.</li>
+	<li>Participate in month-end close processes associated with Accounts Receivable to support timely and accurate preparation and delivery of financial statements.</li>
+	<li>Facilitate cash receipt and application processes to ensure prompt and accurate deposit of all funds and application to customer accounts.</li>
+	<li>Execute process for managing and refunding customer credit balances in a timely manner, partnering with Accounts Payable to escalate or resolve any A/R related unclaimed property issues.</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internships/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Currently pursuing (or recently finished) a degree or program in Computer Science, Engineering, or similar field.</li>
-	<li>Demonstrated critical thinking skills and drive to learn and adapt to a quickly changing environment.</li>
-	<li>Curiosity, empathy and ability to get things done.</li>
-	<li>Ability to commit to a 12+ week internship.</li>
-	<li>Interest in security topics such as Security Incident Response, Application Security, Network Security, etc.</li>
-	<li>Nice to have:</li>
-	<ul>
-		<li>Understanding of security concepts.</li>
-		<li>Familiarity with pentesting or system administration.</li>
-		<li>Understanding of the Incident Response lifecycle.</li>
-		<li>Familiarity with writing scripts in bash or python.</li>
-	</ul>
+	<li>Oversee maintenance of customer account information within Billing System(s) to ensure up-to-date address, terms, tax, and contact information.</li>
+	<li>Collaborate with cross-functional teams on various systems projects including selection, implementation, and upgrades to A/R and Billing systems.</li>
 </ul>
-<p><strong>IMPORTANT - Please note!</strong></p>
 <ul>
-	<li>Once you submit your application, you will receive an email with instructions. Please check your spam and email from Cloudflare Hiring &lt;hiring@notify.cloudflare.com&gt;.&nbsp;</li>
-	<li>We will be hiring interns through the year on a rolling basis until all roles are complete. Due to the volume of applicants, we may not get back to every candidate.</li>
-	<li>Our internship will preferably be located in our office in Lisbon.</li>
+	<li>Execute policies and procedures for Billing and A/R, driving toward implementation of best practices and business process improvements.</li>
+	<li>Support overall organization’s SOX compliance requirements through adherence to key controls and timely completion of reporting.</li>
+</ul>
+<p><strong>Experience</strong></p>
+<ul>
+	<li>Bachelor’s degree required, with emphasis in Accounting or Finance preferred.</li>
+	<li>2+ years of experience in Billing and A/R functions in a high volume environment.</li>
+	<li>Exposure to international operations preferred.</li>
+	<li>Experience participating in system evaluation and implementation preferred.</li>
+	<li>Demonstrated effective written, verbal and interpersonal communication skills at all levels of the organization.</li>
+	<li>Creative problem solving skills coupled with good judgment.</li>
+	<li>Effective communication skills, verbal and written, in order to research, prepare and present information to Management, as well as effective communication skills with co-workers.</li>
+	<li>Critical thinking and strong analytical skills.</li>
+	<li>Ability to exercise sound judgment, provide leadership, and take initiative under minimal supervision.</li>
+	<li>Intermediate Microsoft office skills.</li>
+	<li>Comfort in a fast paced work environment, with multiple concurrent projects and priorities.</li>
+	<li>Ability to plan, execute and deliver on projects in a timely manner; plus the ability to multitask on varying projects and initiatives.</li>
+	<li>Very high attention to detail; organized and thorough with a desire for continuous improvement.</li>
+	<li>Stellar work ethic.</li>
+	<li>CPA/CA a plus.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
