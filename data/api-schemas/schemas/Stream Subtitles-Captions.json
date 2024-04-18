@@ -579,6 +579,18 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"label": {
+													"description": "The language label displayed in the native language to users.",
+													"example": "Türkçe",
+													"type": "string"
+												},
+												"language": {
+													"description": "The language tag in BCP 47 format.",
+													"example": "tr",
+													"type": "string"
+												}
+											},
 											"type": "object"
 										}
 									}
@@ -999,6 +1011,18 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"label": {
+													"description": "The language label displayed in the native language to users.",
+													"example": "Türkçe",
+													"type": "string"
+												},
+												"language": {
+													"description": "The language tag in BCP 47 format.",
+													"example": "tr",
+													"type": "string"
+												}
+											},
 											"type": "object"
 										}
 									}
