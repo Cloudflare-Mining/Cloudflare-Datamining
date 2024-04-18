@@ -63,6 +63,10 @@
 			{
 				"property_id": "beta",
 				"value": "true"
+			},
+			{
+				"property_id": "lora",
+				"value": "true"
 			}
 		]
 	},
@@ -85,6 +89,18 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/Nexusflow/Starling-LM-7B-beta"
+			},
+			{
+				"property_id": "max_batch_prefill_tokens",
+				"value": "8192"
+			},
+			{
+				"property_id": "max_input_length",
+				"value": "3072"
+			},
+			{
+				"property_id": "max_total_tokens",
+				"value": "4096"
 			}
 		]
 	},
@@ -170,8 +186,16 @@
 				"value": "false"
 			},
 			{
+				"property_id": "context_length_limit",
+				"value": "3072"
+			},
+			{
 				"property_id": "info",
 				"value": "https://ai.meta.com/llama/"
+			},
+			{
+				"property_id": "sequence_length_limit",
+				"value": "2500"
 			},
 			{
 				"property_id": "terms",
@@ -218,6 +242,10 @@
 		"properties": [
 			{
 				"property_id": "beta",
+				"value": "true"
+			},
+			{
+				"property_id": "lora",
 				"value": "true"
 			}
 		]
@@ -290,6 +318,18 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2"
+			},
+			{
+				"property_id": "max_batch_prefill_tokens",
+				"value": "8192"
+			},
+			{
+				"property_id": "max_input_length",
+				"value": "3072"
+			},
+			{
+				"property_id": "max_total_tokens",
+				"value": "4096"
 			}
 		]
 	},
@@ -366,6 +406,18 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2"
+			},
+			{
+				"property_id": "max_batch_prefill_tokens",
+				"value": "8192"
+			},
+			{
+				"property_id": "max_input_length",
+				"value": "3072"
+			},
+			{
+				"property_id": "max_total_tokens",
+				"value": "4096"
 			}
 		]
 	},
@@ -413,8 +465,16 @@
 				"value": "false"
 			},
 			{
+				"property_id": "context_length_limit",
+				"value": "2048"
+			},
+			{
 				"property_id": "info",
 				"value": "https://ai.meta.com/llama/"
+			},
+			{
+				"property_id": "sequence_length_limit",
+				"value": "1800"
 			},
 			{
 				"property_id": "terms",
@@ -606,6 +666,10 @@
 			{
 				"property_id": "beta",
 				"value": "true"
+			},
+			{
+				"property_id": "lora",
+				"value": "true"
 			}
 		]
 	},
@@ -733,6 +797,10 @@
 				"value": "https://github.com/facebookresearch/fairseq/tree/main/examples/m2m_100"
 			},
 			{
+				"property_id": "languages",
+				"value": "english, chinese, french, spanish, arabic, russian, german, japanese, portuguese, hindi"
+			},
+			{
 				"property_id": "terms",
 				"value": "https://github.com/facebookresearch/fairseq/blob/main/LICENSE"
 			}
@@ -785,6 +853,14 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/BAAI/bge-base-en-v1.5"
+			},
+			{
+				"property_id": "max_input_tokens",
+				"value": "512"
+			},
+			{
+				"property_id": "output_dimensions",
+				"value": "384"
 			}
 		]
 	},
@@ -859,6 +935,18 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B"
+			},
+			{
+				"property_id": "max_batch_prefill_tokens",
+				"value": "8192"
+			},
+			{
+				"property_id": "max_input_length",
+				"value": "3072"
+			},
+			{
+				"property_id": "max_total_tokens",
+				"value": "4096"
 			}
 		]
 	},
@@ -884,6 +972,14 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/BAAI/bge-base-en-v1.5"
+			},
+			{
+				"property_id": "max_input_tokens",
+				"value": "512"
+			},
+			{
+				"property_id": "output_dimensions",
+				"value": "768"
 			}
 		]
 	},
@@ -950,6 +1046,10 @@
 		"properties": [
 			{
 				"property_id": "beta",
+				"value": "true"
+			},
+			{
+				"property_id": "lora",
 				"value": "true"
 			}
 		]
@@ -1099,6 +1199,18 @@
 				"value": "https://ai.google.dev/gemma/docs"
 			},
 			{
+				"property_id": "max_batch_prefill_tokens",
+				"value": "2048"
+			},
+			{
+				"property_id": "max_input_length",
+				"value": "1512"
+			},
+			{
+				"property_id": "max_total_tokens",
+				"value": "2048"
+			},
+			{
 				"property_id": "terms",
 				"value": "https://ai.google.dev/gemma/terms"
 			}
@@ -1174,6 +1286,14 @@
 			{
 				"property_id": "info",
 				"value": "https://huggingface.co/BAAI/bge-base-en-v1.5"
+			},
+			{
+				"property_id": "max_input_tokens",
+				"value": "512"
+			},
+			{
+				"property_id": "output_dimensions",
+				"value": "1024"
 			}
 		]
 	}
