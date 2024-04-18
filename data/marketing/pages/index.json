@@ -74,6 +74,12 @@
 					"name": "Homepage - Lightning Strike version - 9/26/2023",
 					"relatedBlades": [
 						{
+							"contentTypeId": "bladeHtml",
+							"contentfulId": "2f58vcDzMnudlZiKLnqqXn",
+							"htmlContent": "<style>\n.wrapper { background-color: #003682; margin: 0; padding: 20px; width: 100vw;margin-left: calc((100vw - 100%) / -2);  }\n.content { color: #ffffff; margin: 0px auto;  width: fit-content; }\n.link-helper {color: #ffffff !important; margin-left: 5px; text-decoration: underline !important; text-underline-offset: 4px;}\n.link-helper:hover { text-decoration: underline; color: #ffffff !important; text-underline-offset: 4px; }\n</style>\n\n    <section class=\" wrapper\" id=\"contentful-psa-banner\">\n        <div class=\"content\">\n            <span>Live @ RSAC 2024 | SASE & WAAP workshops & demos, VIP panels, and parties! </span>\n   <a class=\"link-helper\"  href=\"/rsa-conference-2024\"> <strong>RSVP></strong></a>    \n\n        </div>\n    </section>",
+							"htmlId": null
+						},
+						{
 							"contentTypeId": "bladeFullWidthHero",
 							"contentfulId": "1aiNHwPqxQp1tVnno4dREM",
 							"promotionalBanner": null,
@@ -211,18 +217,18 @@
 												"data": {
 													"target": {
 														"sys": {
-															"id": "4ZL1HxX2ZIGXgiAsnhMpGU",
+															"id": "3XtBAf9EtWn3e9ADIeWwk5",
 															"type": "Link",
 															"linkType": "Asset"
 														},
 														"related_asset": [
 															{
-																"contentfulId": "4ZL1HxX2ZIGXgiAsnhMpGU",
+																"contentfulId": "3XtBAf9EtWn3e9ADIeWwk5",
 																"locale": "en-US",
-																"title": "SV SASE image",
+																"title": "Gartner logo",
 																"file": {
-																	"name": "Single-vendor SASE simplified for security, networking, and DevOps_B.png",
-																	"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ZL1HxX2ZIGXgiAsnhMpGU/e96d452f686f1c79526801d9d87f7d6f/Single-vendor_SASE_simplified_for_security__networking__and_DevOps_B.png",
+																	"name": "Gartner_logo.png",
+																	"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XtBAf9EtWn3e9ADIeWwk5/73fe62aa762048d9edf93b7a46b4692b/Gartner_logo.png",
 																	"internal": {
 																		"mediaType": "image/png"
 																	}
@@ -292,7 +298,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "Fulfilling the promise of single-vendor SASE through network modernization",
+														"value": "Cloudflare named in Gartner® Magic Quadrant™ for SSE for second consecutive year",
 														"marks": [],
 														"content": null
 													}
@@ -313,7 +319,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "A series of updates to our SASE platform, Cloudflare One, make SASE networking more flexible for security teams, more efficient for traditional networking teams, and uniquely extend its reach to DevOps teams — now with expanded site-to-site, WANaaS, mesh, and P2P networking capabilities.",
+														"value": "Cloudflare has been recognized in the 2024 Gartner® Magic Quadrant™ for Security Service Edge (SSE) report. We believe this recognition is a testament to our single-vendor SASE platform and its ability to modernize your network and consolidate more use cases.",
 														"marks": [],
 														"content": null
 													}
@@ -346,7 +352,7 @@
 														"nodeType": "hyperlink",
 														"data": {
 															"target": null,
-															"uri": "https://cfl.re/single-vendor-sase-blog-feb-2024"
+															"uri": "https://blog.cloudflare.com/cloudflare-sse-gartner-magic-quadrant-2024/"
 														},
 														"value": null,
 														"marks": null,
@@ -357,22 +363,12 @@
 																	"target": null,
 																	"uri": null
 																},
-																"value": "Learn more",
+																"value": "Learn more >",
 																"marks": [
 																	{
 																		"type": "bold"
 																	}
 																],
-																"content": null
-															},
-															{
-																"nodeType": "text",
-																"data": {
-																	"target": null,
-																	"uri": null
-																},
-																"value": " >",
-																"marks": [],
 																"content": null
 															}
 														]
@@ -879,12 +875,12 @@
 								{
 									"contentTypeId": "feature",
 									"contentfulId": "6DqWwSkBuJsNtE8jtUwP8i",
-									"title": "Cloudflare recognized as a Representative Vendor in Integrated Cloud Email Security (ICES) category",
+									"title": "Cloudflare named in 2024 Gartner® Magic Quadrant™ for Security Service Edge (SSE)",
 									"makeTitleLink": null,
 									"titleUrl": null,
 									"titleSize": "medium",
-									"description": "The 2023 Gartner® Market Guide for Email Security offers guidance for organizations to filter malicious content or suspicious interactions across multiple channels and prevent phishing attacks.",
-									"learnMoreUrl": "https://www.cloudflare.com/lp/emailsecurity/",
+									"description": "We believe this recognition is a testament to Cloudflare's single-vendor SASE platform and its ability to modernize your network and consolidate more use cases.",
+									"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2024/",
 									"learnMoreText": "Read the report",
 									"displayBorder": false,
 									"openLinkInNewTab": false,
