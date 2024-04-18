@@ -127,6 +127,7 @@
 				}
 			},
 			{
+				"description": "Filter by Task Name",
 				"in": "query",
 				"name": "task",
 				"schema": {
@@ -135,6 +136,7 @@
 				}
 			},
 			{
+				"description": "Filter by Author",
 				"in": "query",
 				"name": "author",
 				"schema": {
@@ -143,6 +145,7 @@
 				}
 			},
 			{
+				"description": "Filter by Source Id",
 				"in": "query",
 				"name": "source",
 				"schema": {
@@ -151,6 +154,7 @@
 				}
 			},
 			{
+				"description": "Filter to hide experimental models",
 				"in": "query",
 				"name": "hide_experimental",
 				"schema": {
@@ -159,6 +163,7 @@
 				}
 			},
 			{
+				"description": "Search",
 				"in": "query",
 				"name": "search",
 				"schema": {
