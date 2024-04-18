@@ -214,6 +214,7 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	no_captions_uploaded: "No captions uploaded",
 	remove_caption: "Remove Caption",
 	captions: "Captions",
+	generatedCaption: (0, e.d)`${"language"} (auto-generated)`,
 	captions_not_yet_available: "Captions unavailable while encoding",
 	captions_tooltip: "Changes to captions may take a few minutes to appear in the video player",
 	add_caption: "Add Caption",

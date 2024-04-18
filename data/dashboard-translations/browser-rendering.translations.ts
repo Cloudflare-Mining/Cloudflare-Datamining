@@ -1,10 +1,10 @@
 {
-	banner: (0, r.d)`
+	banner: (0, o.d)`
       <b>No logs?</b> <0>Get started</0> with your first browser rendering worker.<br/><small>* If you have a browser rendering worker but no logs are showing, please re-deploy.</small>`,
 	common: {
 		title: "Browser Rendering",
 		description: "The Workers Browser Rendering API allows developers to programmatically control and interact with a headless browser instance and create automation flows for their applications and products. ",
-		documentation: (0, r.d)`Workers AI will start billing on April 1st, 2024, learn more about plans and pricing <0>here</0>`,
+		documentation: (0, o.d)`Workers AI will start billing on April 1st, 2024, learn more about plans and pricing <0>here</0>`,
 		labels: {
 			beta: "Beta",
 			documentation: "Browser Rendering documentation"
@@ -39,6 +39,7 @@
 		other: "Other"
 	},
 	activity_events: {
+		browser_start: "Browser Start",
 		connection_start: "Connection Start",
 		connection_end: "Connection End",
 		connection_close: "Browser Close"

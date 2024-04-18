@@ -391,7 +391,6 @@ const navigation = {
 		}, {
 			title: "navigation.account.workers.browser_rendering",
 			url: "/workers/browser-rendering",
-			labels: ["beta"],
 			hasPermission: I => !!(0, n.z1)("browser-rendering-ui")(I) && (!!(0, r.Le)(I, "workers", "browser_bindings") || !!(0, u.$f)(I, "workers.enabled"))
 		}, {
 			title: "navigation.account.workers.plans",
