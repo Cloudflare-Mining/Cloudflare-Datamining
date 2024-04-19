@@ -290,12 +290,12 @@
 					})
 				}
 			}
-			var ce = n("../react/common/selectors/languagePreferenceSelector.ts"),
+			var ue = n("../react/common/selectors/languagePreferenceSelector.ts"),
 				B = n("../flags.js"),
-				b = n("../utils/getDashVersion.ts"),
+				C = n("../utils/getDashVersion.ts"),
 				O = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
 				x = n.n(O),
-				C = n("../../../common/intl/intl-core/src/errors.ts"),
+				b = n("../../../common/intl/intl-core/src/errors.ts"),
 				Q = n("../../../../node_modules/@sentry/utils/esm/object.js"),
 				ve = n("../react/common/middleware/sparrow/errors.ts");
 			const Ae = "https://a32e52f8871f439f850537cab9b0645a@sentry10.cfdata.org/218",
@@ -366,7 +366,7 @@
 										chunkUrl: q.request
 									}
 								} catch {}
-							} else q instanceof C.YB && (pe = {
+							} else q instanceof b.YB && (pe = {
 								fingerprint: ["TranslatorError", q.translationKey]
 							});
 							Se && y.Tb(q, pe)
@@ -387,7 +387,7 @@
 							envelope: V.body,
 							url: h.url,
 							isPreviewDeploy: (q = window) === null || q === void 0 || (pe = q.build) === null || pe === void 0 ? void 0 : pe.isPreviewDeploy,
-							release: (0, b.t)()
+							release: (0, C.t)()
 						};
 						try {
 							const be = await fetch("https://platform.dash.cloudflare.com/sentry/envelope", {
@@ -417,7 +417,7 @@
 						let rt = "production";
 						((h = window) === null || h === void 0 || (L = h.build) === null || L === void 0 ? void 0 : L.isPreviewDeploy) && (rt += "-preview"), F.S({
 							dsn: Ae,
-							release: (0, b.t)(),
+							release: (0, C.t)(),
 							environment: rt,
 							ignoreErrors: Be,
 							allowUrls: Ne,
@@ -441,7 +441,7 @@
 									type: (V = window) === null || V === void 0 || (q = V.navigator) === null || q === void 0 || (pe = q.connection) === null || pe === void 0 ? void 0 : pe.effectiveType,
 									bandwidth: (Se = window) === null || Se === void 0 || (be = Se.navigator) === null || be === void 0 || (Ve = be.connection) === null || Ve === void 0 ? void 0 : Ve.downlink
 								},
-								languagePreference: (0, ce.r)(St),
+								languagePreference: (0, ue.r)(St),
 								isPreviewDeploy: (et = window) === null || et === void 0 || (Ye = et.build) === null || Ye === void 0 ? void 0 : Ye.isPreviewDeploy
 							},
 							utilGates: (0, k.T2)(St)
@@ -503,14 +503,14 @@
 				qe = n("../../../../node_modules/@cloudflare/component-modals/es/index.js"),
 				j = n("../../../../node_modules/svg-classlist-polyfill/polyfill.js"),
 				ne = n("../react/shims/focus-visible.js"),
-				ue = n("../react/app/components/DeepLink/index.ts"),
+				le = n("../react/app/components/DeepLink/index.ts"),
 				_e = n("../../../../node_modules/prop-types/index.js"),
 				Ce = n.n(_e),
 				je = n("../react/utils/translator.tsx"),
 				T = n("../../../common/intl/intl-react/src/index.ts"),
 				A = n("../../../dash/intl/intl-translations/src/index.ts"),
 				Y = n("../../../../node_modules/query-string/query-string.js"),
-				le = n.n(Y),
+				ce = n.n(Y),
 				he = n("../react/common/actions/userActions.ts"),
 				We = n("../react/common/selectors/userSelectors.ts"),
 				Ze = n("../react/utils/i18n.ts"),
@@ -553,7 +553,7 @@
 				}
 				return (L === "string" ? String : Number)(h)
 			}
-			let Fe = le().parse(location.search);
+			let Fe = ce().parse(location.search);
 			const ct = h => {
 					const L = (0, at.$8)() ? [(0, A.Fy)(A.if.changes), (0, A.Fy)(A.if.common), (0, A.Fy)(A.if.navigation), (0, A.Fy)(A.if.overview), (0, A.Fy)(A.if.onboarding), (0, A.Fy)(A.if.invite), (0, A.Fy)(A.if.login), (0, A.Fy)(A.if.dns), (0, A.Fy)(A.n4.ssl_tls)] : [(0, A.Fy)(A.if.common), (0, A.Fy)(A.if.invite), (0, A.Fy)(A.if.login), (0, A.Fy)(A.if.onboarding)];
 					Fe.lang ? pt(h) : de.Z.get(Ze.th) && lt(h, de.Z.get(Ze.ly));
@@ -569,14 +569,14 @@
 				},
 				pt = async h => {
 					let L = Fe.lang.substring(0, Fe.lang.length - 2) + Fe.lang.substring(Fe.lang.length - 2, Fe.lang.length).toUpperCase();
-					if (!(0, ce.v)(L)) {
+					if (!(0, ue.v)(L)) {
 						console.warn(`${L} is not a supported locale.`), delete Fe.lang, h.history.replace({
-							search: le().stringify(Fe)
+							search: ce().stringify(Fe)
 						});
 						return
 					}
 					de.Z.set(Ze.ly, L), delete Fe.lang, lt(h, L), h.isAuthenticated || h.history.replace({
-						search: le().stringify(Fe)
+						search: ce().stringify(Fe)
 					})
 				}, lt = async (h, L) => {
 					if (h.isAuthenticated) try {
@@ -585,7 +585,7 @@
 						}, {
 							hideErrorAlert: !0
 						}), de.Z.remove(Ze.th), h.history.replace({
-							search: le().stringify(Fe)
+							search: ce().stringify(Fe)
 						})
 					} catch (V) {
 						de.Z.set(Ze.th, !0), console.error(V)
@@ -594,7 +594,7 @@
 					const L = (0, We.PR)(h);
 					return {
 						isAuthenticated: !!(L && L.id),
-						languagePreference: de.Z.get(Ze.ly) || (0, ce.r)(h)
+						languagePreference: de.Z.get(Ze.ly) || (0, ue.r)(h)
 					}
 				}, Pt = {
 					setUserCommPreferences: he.V_
@@ -740,7 +740,7 @@
 			var Zt = n("../react/app/components/Persistence/index.tsx"),
 				Ht = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				Vt = n("../react/app/components/LoadingSuspense.tsx");
-			const Kt = Ee().lazy(() => Promise.all([n.e(2480), n.e(95170), n.e(4616), n.e(58094), n.e(98283), n.e(65547), n.e(20464), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Kt = Ee().lazy(() => Promise.all([n.e(2480), n.e(95170), n.e(4616), n.e(9291), n.e(98283), n.e(65547), n.e(20464), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Yt = () => Ee().createElement(Vt.Z, null, Ee().createElement(Kt, null));
 			const Qt = () => (we.useEffect(() => re, []), null);
 			var Jt = n("../../../../node_modules/moment/moment.js"),
@@ -767,7 +767,7 @@
 					}
 				},
 				qt = () => {
-					const h = (0, Qe.p4)(ce.r);
+					const h = (0, Qe.p4)(ue.r);
 					(0, we.useEffect)(() => {
 						const L = Xt(h);
 						L !== Ct().locale() && Ct().locale(L), document.documentElement.lang = h
@@ -787,14 +787,14 @@
 			const nn = () => {
 					const h = (0, Ge.useLocation)();
 					(0, we.useEffect)(() => {
-						const L = le().parse(h.search);
+						const L = ce().parse(h.search);
 						if (L.pt && de.Z.set(tn.sJ, L.pt), (L == null ? void 0 : L.devPanel) === null) {
 							var V, q;
 							(V = window) === null || V === void 0 || (q = V.localStorage) === null || q === void 0 || q.setItem("gates_devtools_ui_gates_controller_enabled", "true")
 						}
 					}, [h.search])
 				},
-				rn = Ee().lazy(() => Promise.all([n.e(2480), n.e(95170), n.e(4616), n.e(58094), n.e(81778), n.e(72019), n.e(98455), n.e(65547), n.e(20464), n.e(47261), n.e(35812), n.e(7974), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				rn = Ee().lazy(() => Promise.all([n.e(2480), n.e(95170), n.e(4616), n.e(9291), n.e(81778), n.e(72019), n.e(18703), n.e(65547), n.e(20464), n.e(47261), n.e(35812), n.e(7974), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				on = Ee().lazy(() => Promise.all([n.e(95170), n.e(81778), n.e(65547), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var an = ({
 					userIsAuthed: h
@@ -853,7 +853,7 @@
 						}
 					}, Ee().createElement(Wt, null), Ee().createElement(Ut, null), Ee().createElement(Zt.Z_, {
 						onDarkModeChangeCb: Se
-					}, Ee().createElement(ue.ZP, null, Ee().createElement(an, {
+					}, Ee().createElement(le.ZP, null, Ee().createElement(an, {
 						userIsAuthed: h
 					}))), Ee().createElement(Nt, null), Ee().createElement(qe.F0, null)))))))))
 				},
@@ -918,10 +918,10 @@
 				n.g.build = pn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "b3600482f60afc744fbeefaccf73f3d3abe3928d",
+					commit: "fba33991c48534fb260e988656c504bd04897e86",
 					env: "production",
-					builtAt: 1713518620688,
-					dashVersion: "8abedb2fc38dc43a3db762c1ce1019111ae3f2d9",
+					builtAt: 1713537713149,
+					dashVersion: "9f738c36b057f25cb9b0d9d7ca3e18c70411b637",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",
@@ -930,7 +930,7 @@
 					},
 					staticDashHost: "https://static.dash.cloudflare.com"
 				}, {
-					isPreviewDeploy: (0, b.p)()
+					isPreviewDeploy: (0, C.p)()
 				}), ie(), n("../react/utils/api.ts"), _(w), (0, H.Z)(), Re(), (0, De.k)().then(async h => {
 					var L;
 					const V = (0, o.bh)(),
@@ -1291,19 +1291,19 @@
 					} else se && (W.set(u.BV, se), U = se);
 					if (U && u._h.test(U)) {
 						const B = W.getAll(u.Kt),
-							b = JSON.stringify(B);
-						B.length && b !== w && I(b), W.has(u.Tc) && W.delete(u.Tc), W.delete(u.Kt)
+							C = JSON.stringify(B);
+						B.length && C !== w && I(C), W.has(u.Tc) && W.delete(u.Tc), W.delete(u.Kt)
 					}!Z && me === void 0 && U && J(W.toString());
-					const ce = async () => {
+					const ue = async () => {
 						try {
 							if ((0, p.I3)(U) && Z && !F) {
 								me && J(void 0), X.dispatch((0, a.r4)()), te(!0);
 								const B = await (0, p.py)(U, te, X, H, k, new s(U, se ? `${H.location.pathname}${H.location.search}` : void 0));
 								W.delete(u.BV);
-								const b = W.toString();
+								const C = W.toString();
 								H.replace(M({}, H.location, {
 									pathname: B,
-									search: b
+									search: C
 								}, oe ? {
 									hash: oe
 								} : {})), X.dispatch((0, a.WF)())
@@ -1315,7 +1315,7 @@
 						}
 					};
 					return (0, e.useEffect)(() => {
-						ce()
+						ue()
 					}, [H.location.pathname, H.location.search, F]), (N || (0, p.I3)(U)) && Z ? null : re
 				},
 				$ = n("../react/app/components/DeepLink/reducer.ts"),
@@ -2338,24 +2338,24 @@
 					children: w,
 					onDarkModeChangeCb: I
 				}) => {
-					const [Z, W] = (0, e.useState)(s), [se, U] = (0, e.useState)(_.isLoading), oe = (0, a.$8)(), ce = (0, l.p4)(O => (0, i.wH)(O));
+					const [Z, W] = (0, e.useState)(s), [se, U] = (0, e.useState)(_.isLoading), oe = (0, a.$8)(), ue = (0, l.p4)(O => (0, i.wH)(O));
 					(0, e.useEffect)(() => {
 						oe ? (0, c.yl)().then(O => {
 							O && (W(O), I(O.darkMode))
 						}).finally(() => U(!1)) : U(!1)
 					}, [oe]);
-					const B = (O, x) => !!Z.favorites.find(C => C.type === "zone" && C.name === O && C.accountId === x),
-						b = O => Z.favorites.filter(C => C.type === "zone" && C.accountId === O).length < y;
+					const B = (O, x) => !!Z.favorites.find(b => b.type === "zone" && b.name === O && b.accountId === x),
+						C = O => Z.favorites.filter(b => b.type === "zone" && b.accountId === O).length < y;
 					return r().createElement(u.Provider, {
 						value: t({}, Z, {
 							isLoading: se,
 							actions: {
-								canAccountStarZone: b,
+								canAccountStarZone: C,
 								isZoneStarred: B,
 								starZone: async (O, x) => {
-									var C;
+									var b;
 									const Q = !B(O, x),
-										ve = b(x);
+										ve = C(x);
 									if (Q && !ve) {
 										console.log("can not star zone - account is at limit");
 										return
@@ -2364,7 +2364,7 @@
 									g().sendEvent("click star zone", {
 										isStarring: Q,
 										totalStarredZones: Ae.filter(Pe => Pe.accountId === x && Pe.type === "zone").length,
-										totalZones: ce == null || (C = ce.paginationData) === null || C === void 0 ? void 0 : C.info.total_count
+										totalZones: ue == null || (b = ue.paginationData) === null || b === void 0 ? void 0 : b.info.total_count
 									}), W(t({}, Z, {
 										favorites: Ae
 									}))
@@ -2375,8 +2375,8 @@
 								},
 								logRouteVisited: async O => {
 									var x;
-									const C = await (0, c.n)(O);
-									W((x = C) !== null && x !== void 0 ? x : t({}, Z))
+									const b = await (0, c.n)(O);
+									W((x = b) !== null && x !== void 0 ? x : t({}, Z))
 								},
 								viewChange: async O => {
 									const x = await (0, c.m6)(O);
@@ -2517,17 +2517,18 @@
 				isStarred: I,
 				onClickFn: Z,
 				isDisabled: W,
-				buttonText: se,
-				size: U = "large"
-			}, oe) => {
-				const ce = te[(0, G.Yc)() ? "dark" : "light"][I && !w ? "active" : "default"],
-					B = H({}, U === "large" && {
+				testId: se,
+				buttonText: U,
+				size: oe = "large"
+			}, ue) => {
+				const B = te[(0, G.Yc)() ? "dark" : "light"][I && !w ? "active" : "default"],
+					C = H({}, oe === "large" && {
 						starIconSize: 16,
 						fontSize: 3,
 						height: "auto",
 						paddingLeft: "12px",
 						paddingRight: 3
-					}, U === "small" && {
+					}, oe === "small" && {
 						starIconSize: 14,
 						fontSize: 1,
 						height: "1.5rem",
@@ -2535,29 +2536,30 @@
 						paddingRight: 2
 					});
 				return r().createElement(X.zx, {
-					innerRef: oe,
+					innerRef: ue,
 					display: "inline-flex",
 					alignItems: "center",
 					py: 2,
-					pr: B.paddingRight,
+					pr: C.paddingRight,
 					gap: 1,
-					pl: B.paddingLeft,
+					pl: C.paddingLeft,
 					pointerEvents: "inherit",
 					borderRadius: "50vh",
 					border: "1px solid",
 					cursor: w || W ? "default" : "pointer",
-					backgroundColor: ce.bg,
-					color: ce.text,
-					borderColor: ce.border,
+					backgroundColor: B.bg,
+					color: B.text,
+					borderColor: B.border,
 					onClick: Z,
 					opacity: W ? .5 : 1,
 					disabled: W,
-					fontSize: B.fontSize,
-					height: B.height
+					fontSize: C.fontSize,
+					height: C.height,
+					"data-testid": se
 				}, r().createElement(re, {
 					isStarred: w ? !1 : I,
-					size: B.starIconSize
-				}), se)
+					size: C.starIconSize
+				}), U)
 			})
 		},
 		"../react/app/components/SomethingWrong.jsx": function(z, E, n) {
@@ -2832,9 +2834,9 @@
 				switch (A.type) {
 					case s.Li:
 						const {
-							userId: Y, accountId: le, timeStamp: he
+							userId: Y, accountId: ce, timeStamp: he
 						} = A;
-						return i.static.setIn(T, [Y, le], {
+						return i.static.setIn(T, [Y, ce], {
 							lastSeen: he
 						});
 					default:
@@ -2845,10 +2847,10 @@
 			function M(T) {
 				for (var A = 1; A < arguments.length; A++) {
 					var Y = arguments[A] != null ? Object(arguments[A]) : {},
-						le = Object.keys(Y);
-					typeof Object.getOwnPropertySymbols == "function" && le.push.apply(le, Object.getOwnPropertySymbols(Y).filter(function(he) {
+						ce = Object.keys(Y);
+					typeof Object.getOwnPropertySymbols == "function" && ce.push.apply(ce, Object.getOwnPropertySymbols(Y).filter(function(he) {
 						return Object.getOwnPropertyDescriptor(Y, he).enumerable
-					})), le.forEach(function(he) {
+					})), ce.forEach(function(he) {
 						G(T, he, Y[he])
 					})
 				}
@@ -2873,8 +2875,8 @@
 				if (typeof T != "object" || T === null) return T;
 				var Y = T[Symbol.toPrimitive];
 				if (Y !== void 0) {
-					var le = Y.call(T, A || "default");
-					if (typeof le != "object") return le;
+					var ce = Y.call(T, A || "default");
+					if (typeof ce != "object") return ce;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (A === "string" ? String : Number)(T)
@@ -2904,12 +2906,12 @@
 					case s.Np: {
 						const {
 							payload: Y,
-							options: le
+							options: ce
 						} = A, {
 							ModalComponent: he,
 							props: We
 						} = Y;
-						return T = le.replace ? $ : T, [...T, {
+						return T = ce.replace ? $ : T, [...T, {
 							id: K(),
 							ModalComponent: he,
 							props: We
@@ -2920,8 +2922,8 @@
 							ModalComponent: Y
 						} = A.payload;
 						if (Y) {
-							const le = T.findIndex(he => he.ModalComponent === Y);
-							return le >= 0 ? T.slice(0, le) : T
+							const ce = T.findIndex(he => he.ModalComponent === Y);
+							return ce >= 0 ? T.slice(0, ce) : T
 						} else return T.slice(0, -1)
 					}
 					default:
@@ -2932,10 +2934,10 @@
 			function re(T) {
 				for (var A = 1; A < arguments.length; A++) {
 					var Y = arguments[A] != null ? Object(arguments[A]) : {},
-						le = Object.keys(Y);
-					typeof Object.getOwnPropertySymbols == "function" && le.push.apply(le, Object.getOwnPropertySymbols(Y).filter(function(he) {
+						ce = Object.keys(Y);
+					typeof Object.getOwnPropertySymbols == "function" && ce.push.apply(ce, Object.getOwnPropertySymbols(Y).filter(function(he) {
 						return Object.getOwnPropertyDescriptor(Y, he).enumerable
-					})), le.forEach(function(he) {
+					})), ce.forEach(function(he) {
 						X(T, he, Y[he])
 					})
 				}
@@ -2960,8 +2962,8 @@
 				if (typeof T != "object" || T === null) return T;
 				var Y = T[Symbol.toPrimitive];
 				if (Y !== void 0) {
-					var le = Y.call(T, A || "default");
-					if (typeof le != "object") return le;
+					var ce = Y.call(T, A || "default");
+					if (typeof ce != "object") return ce;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (A === "string" ? String : Number)(T)
@@ -3006,10 +3008,10 @@
 			function me(T) {
 				for (var A = 1; A < arguments.length; A++) {
 					var Y = arguments[A] != null ? Object(arguments[A]) : {},
-						le = Object.keys(Y);
-					typeof Object.getOwnPropertySymbols == "function" && le.push.apply(le, Object.getOwnPropertySymbols(Y).filter(function(he) {
+						ce = Object.keys(Y);
+					typeof Object.getOwnPropertySymbols == "function" && ce.push.apply(ce, Object.getOwnPropertySymbols(Y).filter(function(he) {
 						return Object.getOwnPropertyDescriptor(Y, he).enumerable
-					})), le.forEach(function(he) {
+					})), ce.forEach(function(he) {
 						J(T, he, Y[he])
 					})
 				}
@@ -3034,21 +3036,21 @@
 				if (typeof T != "object" || T === null) return T;
 				var Y = T[Symbol.toPrimitive];
 				if (Y !== void 0) {
-					var le = Y.call(T, A || "default");
-					if (typeof le != "object") return le;
+					var ce = Y.call(T, A || "default");
+					if (typeof ce != "object") return ce;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (A === "string" ? String : Number)(T)
 			}
 			const Z = T => (0, a.ZP)(T).on("success", (A, Y, {
-					meta: le
+					meta: ce
 				}) => {
 					var he, We;
 					const {
 						accountId: Ze,
 						zoneId: at,
 						dateOnly: dt = !1
-					} = le.params || {};
+					} = ce.params || {};
 					let tt = "";
 					const st = {},
 						it = me({}, (he = A.paginationData) === null || he === void 0 || (We = he.options) === null || We === void 0 ? void 0 : We.editedDate);
@@ -3080,13 +3082,13 @@
 				U = n("../react/pages/onboarding/components/guide/reducer.ts"),
 				oe = n("../../../../node_modules/redux-grim/dist/redux-grim.es.js");
 
-			function ce(T) {
+			function ue(T) {
 				for (var A = 1; A < arguments.length; A++) {
 					var Y = arguments[A] != null ? Object(arguments[A]) : {},
-						le = Object.keys(Y);
-					typeof Object.getOwnPropertySymbols == "function" && le.push.apply(le, Object.getOwnPropertySymbols(Y).filter(function(he) {
+						ce = Object.keys(Y);
+					typeof Object.getOwnPropertySymbols == "function" && ce.push.apply(ce, Object.getOwnPropertySymbols(Y).filter(function(he) {
 						return Object.getOwnPropertyDescriptor(Y, he).enumerable
-					})), le.forEach(function(he) {
+					})), ce.forEach(function(he) {
 						B(T, he, Y[he])
 					})
 				}
@@ -3094,7 +3096,7 @@
 			}
 
 			function B(T, A, Y) {
-				return A = b(A), A in T ? Object.defineProperty(T, A, {
+				return A = C(A), A in T ? Object.defineProperty(T, A, {
 					value: Y,
 					enumerable: !0,
 					configurable: !0,
@@ -3102,7 +3104,7 @@
 				}) : T[A] = Y, T
 			}
 
-			function b(T) {
+			function C(T) {
 				var A = O(T, "string");
 				return typeof A == "symbol" ? A : String(A)
 			}
@@ -3111,8 +3113,8 @@
 				if (typeof T != "object" || T === null) return T;
 				var Y = T[Symbol.toPrimitive];
 				if (Y !== void 0) {
-					var le = Y.call(T, A || "default");
-					if (typeof le != "object") return le;
+					var ce = Y.call(T, A || "default");
+					if (typeof ce != "object") return ce;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (A === "string" ? String : Number)(T)
@@ -3123,19 +3125,19 @@
 				} = A;
 				return Y && Y.method === "delete" && !T[Y.entityType] ? T : (0, oe.uW)(T, A)
 			};
-			var C = {
+			var b = {
 					access: (0, e.combineReducers)({
-						accessOrganizations: (0, a.ZP)("organizations").modifyInitialState(T => ce({}, T, {
+						accessOrganizations: (0, a.ZP)("organizations").modifyInitialState(T => ue({}, T, {
 							needsHydration: !0,
 							data: {
 								auth_domain: "",
 								name: "",
 								login_design: {}
 							}
-						})).on("success", (T, A) => ce({}, T, {
+						})).on("success", (T, A) => ue({}, T, {
 							data: Array.isArray(T == null ? void 0 : T.data) ? A == null ? void 0 : A.data : T == null ? void 0 : T.data,
 							needsHydration: !1
-						})).on("error", T => ce({}, T, {
+						})).on("error", T => ue({}, T, {
 							needsHydration: !1
 						}))
 					}),
@@ -3157,8 +3159,8 @@
 					userDetails: (0, a.ZP)("userDetails"),
 					invite: d.reducer,
 					membership: (0, a.ZP)("membership"),
-					memberships: (0, a.ZP)("memberships").on("success", (T, A, Y) => Y.meta.method === "delete" ? ce({}, T, {
-						data: A.data.filter(le => le !== Y.payload)
+					memberships: (0, a.ZP)("memberships").on("success", (T, A, Y) => Y.meta.method === "delete" ? ue({}, T, {
+						data: A.data.filter(ce => ce !== Y.payload)
 					}) : T),
 					filteredMemberships: (0, a.ZP)("filteredMemberships"),
 					user: (0, a.ZP)("user"),
@@ -3179,10 +3181,10 @@
 			function Be(T) {
 				for (var A = 1; A < arguments.length; A++) {
 					var Y = arguments[A] != null ? Object(arguments[A]) : {},
-						le = Object.keys(Y);
-					typeof Object.getOwnPropertySymbols == "function" && le.push.apply(le, Object.getOwnPropertySymbols(Y).filter(function(he) {
+						ce = Object.keys(Y);
+					typeof Object.getOwnPropertySymbols == "function" && ce.push.apply(ce, Object.getOwnPropertySymbols(Y).filter(function(he) {
 						return Object.getOwnPropertyDescriptor(Y, he).enumerable
-					})), le.forEach(function(he) {
+					})), ce.forEach(function(he) {
 						Ue(T, he, Y[he])
 					})
 				}
@@ -3207,8 +3209,8 @@
 				if (typeof T != "object" || T === null) return T;
 				var Y = T[Symbol.toPrimitive];
 				if (Y !== void 0) {
-					var le = Y.call(T, A || "default");
-					if (typeof le != "object") return le;
+					var ce = Y.call(T, A || "default");
+					if (typeof ce != "object") return ce;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (A === "string" ? String : Number)(T)
@@ -3249,12 +3251,12 @@
 						meta: A
 					}));
 					const Y = yield(0, ae.RE)(fe[Re], T.url, T.params[0]);
-					let le = Y && Y.body;
-					T.type === ie.UM.MEMBERSHIPS_ROOT_REQUESTED && (le = (0, Te.ct)({
-						payload: le.result
+					let ce = Y && Y.body;
+					T.type === ie.UM.MEMBERSHIPS_ROOT_REQUESTED && (ce = (0, Te.ct)({
+						payload: ce.result
 					})), yield(0, ae.gz)((0, de.Oy)({
 						type: `${T.entityType}.success`,
-						payload: le,
+						payload: ce,
 						meta: {
 							entityType: T.entityType,
 							method: Re
@@ -3282,10 +3284,10 @@
 			function Ee(T) {
 				for (var A = 1; A < arguments.length; A++) {
 					var Y = arguments[A] != null ? Object(arguments[A]) : {},
-						le = Object.keys(Y);
-					typeof Object.getOwnPropertySymbols == "function" && le.push.apply(le, Object.getOwnPropertySymbols(Y).filter(function(he) {
+						ce = Object.keys(Y);
+					typeof Object.getOwnPropertySymbols == "function" && ce.push.apply(ce, Object.getOwnPropertySymbols(Y).filter(function(he) {
 						return Object.getOwnPropertyDescriptor(Y, he).enumerable
-					})), le.forEach(function(he) {
+					})), ce.forEach(function(he) {
 						Ge(T, he, Y[he])
 					})
 				}
@@ -3310,8 +3312,8 @@
 				if (typeof T != "object" || T === null) return T;
 				var Y = T[Symbol.toPrimitive];
 				if (Y !== void 0) {
-					var le = Y.call(T, A || "default");
-					if (typeof le != "object") return le;
+					var ce = Y.call(T, A || "default");
+					if (typeof ce != "object") return ce;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
 				return (A === "string" ? String : Number)(T)
@@ -3324,8 +3326,8 @@
 				qe = (0, ze.ZP)(),
 				ne = [({
 					dispatch: T
-				}) => A => Y => we()(Y) ? Y.then(le => T(le)) : A(Y), qe, r.Z, Ie.Z, Q.qR],
-				ue = T => (0, l.Wq)(Xe, Ee({}, C, T));
+				}) => A => Y => we()(Y) ? Y.then(ce => T(ce)) : A(Y), qe, r.Z, Ie.Z, Q.qR],
+				le = T => (0, l.Wq)(Xe, Ee({}, b, T));
 
 			function _e() {
 				const T = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__,
@@ -3333,8 +3335,8 @@
 						actionTransformer: $e,
 						stateTransformer: Ke
 					})),
-					le = {},
-					he = (0, e.createStore)(ue(He.Z.getReducers()), le, Y);
+					ce = {},
+					he = (0, e.createStore)(le(He.Z.getReducers()), ce, Y);
 				qe.run(Oe), (0, l.p5)(he);
 				const Ze = (n.g.bootstrap || {}).data || {};
 				return he.dispatch((0, oe.mW)("user", Ze.user)), he
@@ -3342,7 +3344,7 @@
 			let Ce;
 			He.Z.setChangeListener(T => {
 				var A;
-				Ce && ((A = Ce) === null || A === void 0 ? void 0 : A.replaceReducer) && (Ce.replaceReducer(ue(T)), (0, l.p5)(Ce))
+				Ce && ((A = Ce) === null || A === void 0 ? void 0 : A.replaceReducer) && (Ce.replaceReducer(le(T)), (0, l.p5)(Ce))
 			});
 
 			function je() {
@@ -5415,24 +5417,24 @@
 
 			function m(j) {
 				for (var ne = 1; ne < arguments.length; ne++) {
-					var ue = arguments[ne] != null ? Object(arguments[ne]) : {},
-						_e = Object.keys(ue);
-					typeof Object.getOwnPropertySymbols == "function" && _e.push.apply(_e, Object.getOwnPropertySymbols(ue).filter(function(Ce) {
-						return Object.getOwnPropertyDescriptor(ue, Ce).enumerable
+					var le = arguments[ne] != null ? Object(arguments[ne]) : {},
+						_e = Object.keys(le);
+					typeof Object.getOwnPropertySymbols == "function" && _e.push.apply(_e, Object.getOwnPropertySymbols(le).filter(function(Ce) {
+						return Object.getOwnPropertyDescriptor(le, Ce).enumerable
 					})), _e.forEach(function(Ce) {
-						s(j, Ce, ue[Ce])
+						s(j, Ce, le[Ce])
 					})
 				}
 				return j
 			}
 
-			function s(j, ne, ue) {
+			function s(j, ne, le) {
 				return ne = _(ne), ne in j ? Object.defineProperty(j, ne, {
-					value: ue,
+					value: le,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : j[ne] = ue, j
+				}) : j[ne] = le, j
 			}
 
 			function _(j) {
@@ -5442,9 +5444,9 @@
 
 			function u(j, ne) {
 				if (typeof j != "object" || j === null) return j;
-				var ue = j[Symbol.toPrimitive];
-				if (ue !== void 0) {
-					var _e = ue.call(j, ne || "default");
+				var le = j[Symbol.toPrimitive];
+				if (le !== void 0) {
+					var _e = le.call(j, ne || "default");
 					if (typeof _e != "object") return _e;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
@@ -5457,20 +5459,20 @@
 				R = j => {
 					const ne = (0, o.PR)(j);
 					if (ne) {
-						const ue = ne.id;
-						return j.accountAccess[ue] || {}
+						const le = ne.id;
+						return j.accountAccess[le] || {}
 					}
 					return {}
 				},
 				M = j => j.accountsDetailed,
 				G = (0, t.P1)("accountsDetailed", M),
 				S = j => j.memberships,
-				v = (0, a.P1)((0, t.P1)("memberships", S), d.U, (j, ne) => !!ne && !!j ? j.filter(ue => ne.includes(ue.id)) : j),
+				v = (0, a.P1)((0, t.P1)("memberships", S), d.U, (j, ne) => !!ne && !!j ? j.filter(le => ne.includes(le.id)) : j),
 				P = j => j.accountFlags && j.accountFlags.data,
 				K = j => j.accountFlags,
-				$ = (j, ne, ue) => {
+				$ = (j, ne, le) => {
 					const _e = P(j);
-					return !_e || !_e[ne] ? null : _e[ne][ue]
+					return !_e || !_e[ne] ? null : _e[ne][le]
 				},
 				ye = j => j.accountFlags.isRequesting,
 				re = (j, ...ne) => l()(j, ["accountFlagsChanges", "data", ...ne]),
@@ -5479,7 +5481,7 @@
 					data: j,
 					meta: ne
 				})),
-				k = (j, ne, ue) => !!(isEnterpriseSSEnabledSelector(j) && $(j, ne, ue)),
+				k = (j, ne, le) => !!(isEnterpriseSSEnabledSelector(j) && $(j, ne, le)),
 				F = j => j.membership,
 				N = (0, t.P1)("membership", F),
 				te = (0, a.P1)(N, F, (j, ne) => ({
@@ -5490,12 +5492,12 @@
 					const {
 						roles: ne = []
 					} = N(j) || {};
-					return Boolean(ne.find(ue => ue === "Super Administrator - All Privileges" || ue === "Billing"))
+					return Boolean(ne.find(le => le === "Super Administrator - All Privileges" || le === "Billing"))
 				},
 				J = j => {
 					const ne = R(j),
-						ue = Me.getMemberships(j) ? g().asMutable(Me.getMemberships(j)) : [];
-					if (!!ue) return g().from(ue.map(_e => m({}, _e, {
+						le = Me.getMemberships(j) ? g().asMutable(Me.getMemberships(j)) : [];
+					if (!!le) return g().from(le.map(_e => m({}, _e, {
 						lastSeen: ne[_e.account.id] ? ne[_e.account.id].lastSeen : null
 					})).sort((_e, Ce) => _e.lastSeen && Ce.lastSeen ? Ce.lastSeen - _e.lastSeen : 0))
 				},
@@ -5503,47 +5505,47 @@
 				I = (0, t.P1)("filteredMemberships", w),
 				Z = (0, a.P1)(N, j => j == null ? void 0 : j.permissions),
 				W = (0, a.P1)(Z, j => (0, e.Z)(ne => {
-					var ue;
-					return (ue = j == null ? void 0 : j[ne]) !== null && ue !== void 0 ? ue : {
+					var le;
+					return (le = j == null ? void 0 : j[ne]) !== null && le !== void 0 ? le : {
 						read: !1,
 						edit: !1
 					}
 				})),
 				se = (0, a.P1)(N, j => j == null ? void 0 : j.policies),
-				U = (j, ne, ue) => {
+				U = (j, ne, le) => {
 					let _e = Me.getMembership(j);
 					if (!_e) {
 						const Ce = Me.getMemberships(j);
 						if (!Ce || !ne) return !1;
 						_e = Ce.find(je => je.account.id === ne)
 					}
-					if (!_e || !ue) return !1;
+					if (!_e || !le) return !1;
 					try {
-						return ue(_e.permissions)
+						return le(_e.permissions)
 					} catch {
 						return !1
 					}
 				},
 				oe = j => {
-					var ne, ue;
-					return (ne = (ue = f(j)) === null || ue === void 0 ? void 0 : ue.meta.has_pro_zones) !== null && ne !== void 0 ? ne : !1
+					var ne, le;
+					return (ne = (le = f(j)) === null || le === void 0 ? void 0 : le.meta.has_pro_zones) !== null && ne !== void 0 ? ne : !1
 				},
-				ce = j => {
-					var ne, ue;
-					return (ne = (ue = f(j)) === null || ue === void 0 ? void 0 : ue.meta.has_business_zones) !== null && ne !== void 0 ? ne : !1
+				ue = j => {
+					var ne, le;
+					return (ne = (le = f(j)) === null || le === void 0 ? void 0 : le.meta.has_business_zones) !== null && ne !== void 0 ? ne : !1
 				},
-				B = j => ce(j) || oe(j),
-				b = (j, ne) => {
-					const ue = O(j, ne);
-					return !!ue && !!ue.enabled
+				B = j => ue(j) || oe(j),
+				C = (j, ne) => {
+					const le = O(j, ne);
+					return !!le && !!le.enabled
 				},
 				O = (j, ne) => {
-					const ue = Me.getMembership(j),
-						_e = ue && ue.account;
+					const le = Me.getMembership(j),
+						_e = le && le.account;
 					return _e && _e.legacy_flags && _e.legacy_flags[ne]
 				},
-				x = j => b(j, "custom_pages"),
-				C = j => !!j && j["webhooks.webhooks.enabled"],
+				x = j => C(j, "custom_pages"),
+				b = j => !!j && j["webhooks.webhooks.enabled"],
 				Q = j => $(j, "bots", "enabled"),
 				ve = j => $(j, "billing", "annual_subscriptions_enable"),
 				Ae = j => j ? Boolean($(j, "ConstellationAI", "v2_ui")) : !1,
@@ -5560,36 +5562,36 @@
 				Ke = j => j.accountRoles,
 				$e = (0, t.P1)("accountRoles", Ke),
 				He = (j, ne) => {
-					const ue = Me.getMemberships(j),
-						_e = ue && ue.find(T => T.account.id === ne);
+					const le = Me.getMemberships(j),
+						_e = le && le.find(T => T.account.id === ne);
 					if (_e) return _e.account.name.replace(" Account", " account");
 					const Ce = Me.getMembership(j),
 						je = Ce && Ce.account;
 					return je && je.id === ne ? je.name : null
 				},
 				ze = (j, ne) => {
-					const ue = Me.getMemberships(j),
-						_e = ue && ue.find(T => T.account.id === ne);
+					const le = Me.getMemberships(j),
+						_e = le && le.find(T => T.account.id === ne);
 					if (_e) return _e.account.settings.access_approval_expiry;
 					const Ce = Me.getMembership(j),
 						je = Ce && Ce.account;
 					return je && je.id === ne ? je.settings.access_approval_expiry : null
 				},
 				ae = (j, ne) => {
-					const ue = ze(j, ne);
-					return ue ? c().utc(ue).isAfter() : !1
+					const le = ze(j, ne);
+					return le ? c().utc(le).isAfter() : !1
 				},
-				ie = (j, ne, ue) => {
+				ie = (j, ne, le) => {
 					const _e = ze(j, ne);
 					let Ce = _e ? c().utc(_e) : null;
-					return !Ce || !Ce.isAfter() ? "" : Ce && Ce.year() === 3e3 ? ue("account.access_approval.card_expiration_forever") : ue("account.access_approval.card_expiration_text", {
+					return !Ce || !Ce.isAfter() ? "" : Ce && Ce.year() === 3e3 ? le("account.access_approval.card_expiration_forever") : le("account.access_approval.card_expiration_text", {
 						expiryTimestamp: Ce.local().format(y.U.DateTime)
 					})
 				},
 				fe = j => j && j.member && j.member.edit,
 				de = (j, ne) => {
-					const ue = Me.getMembership(j),
-						_e = ue && ue.account;
+					const le = Me.getMembership(j),
+						_e = le && le.account;
 					return _e ? _e.id !== ne : !1
 				},
 				Te = j => j.dpa,
@@ -5669,7 +5671,7 @@
 					return s
 				},
 				hL: function() {
-					return b
+					return C
 				},
 				ji: function() {
 					return oe
@@ -5702,133 +5704,133 @@
 					return t
 				},
 				yD: function() {
-					return ce
+					return ue
 				}
 			});
 
-			function e(C, Q) {
-				return C && C[Q]
+			function e(b, Q) {
+				return b && b[Q]
 			}
-			const r = C => !l(C).isRequesting;
+			const r = b => !l(b).isRequesting;
 
-			function l(C) {
-				return C.entitlements.zone
+			function l(b) {
+				return b.entitlements.zone
 			}
 
-			function p(C) {
-				return l(C).data
+			function p(b) {
+				return l(b).data
 			}
-			const g = C => {
+			const g = b => {
 				var Q, ve;
-				return ((Q = l(C).paginationData) === null || Q === void 0 || (ve = Q.options) === null || ve === void 0 ? void 0 : ve.editedDate) || {}
+				return ((Q = l(b).paginationData) === null || Q === void 0 || (ve = Q.options) === null || ve === void 0 ? void 0 : ve.editedDate) || {}
 			};
 
-			function a(C, Q) {
-				const ve = p(C);
+			function a(b, Q) {
+				const ve = p(b);
 				return ve ? e(ve, Q) : void 0
 			}
-			const i = (C, Q) => a(C, Q) === !0;
+			const i = (b, Q) => a(b, Q) === !0;
 
-			function c(C) {
-				return C.entitlements.account
+			function c(b) {
+				return b.entitlements.account
 			}
 
-			function y(C) {
-				return c(C).data
+			function y(b) {
+				return c(b).data
 			}
-			const t = C => {
+			const t = b => {
 				var Q, ve;
-				return ((Q = c(C).paginationData) === null || Q === void 0 || (ve = Q.options) === null || ve === void 0 ? void 0 : ve.editedDate) || {}
+				return ((Q = c(b).paginationData) === null || Q === void 0 || (ve = Q.options) === null || ve === void 0 ? void 0 : ve.editedDate) || {}
 			};
 
-			function o(C) {
-				return !c(C).isRequesting
+			function o(b) {
+				return !c(b).isRequesting
 			}
 
-			function d(C, Q) {
-				const ve = y(C);
+			function d(b, Q) {
+				const ve = y(b);
 				return ve ? e(ve, Q) : void 0
 			}
 
-			function m(C, Q) {
-				return d(C, Q) === !0
+			function m(b, Q) {
+				return d(b, Q) === !0
 			}
 
-			function s(C, Q) {
-				return Q.every(ve => m(C, ve))
+			function s(b, Q) {
+				return Q.every(ve => m(b, ve))
 			}
 
-			function _(C) {
-				return m(C, "contract.customer_enabled")
+			function _(b) {
+				return m(b, "contract.customer_enabled")
 			}
 
-			function u(C) {
-				return m(C, "contract.self_service_allowed")
+			function u(b) {
+				return m(b, "contract.self_service_allowed")
 			}
 
-			function f(C) {
-				return m(C, "billing.partners_managed")
+			function f(b) {
+				return m(b, "billing.partners_managed")
 			}
-			const R = C => _(C) && u(C),
-				M = C => m(C, "enterprise.ecp_allowed");
+			const R = b => _(b) && u(b),
+				M = b => m(b, "enterprise.ecp_allowed");
 
-			function G(C) {
-				return S(C) || m(C, "argo.allow_smart_routing") || m(C, "argo.allow_tiered_caching") || m(C, "rate_limiting.enabled") || m(C, "ctm.enabled") || m(C, "workers.enabled") || m(C, "workers.kv_store.enabled") || m(C, "stream.enabled")
+			function G(b) {
+				return S(b) || m(b, "argo.allow_smart_routing") || m(b, "argo.allow_tiered_caching") || m(b, "rate_limiting.enabled") || m(b, "ctm.enabled") || m(b, "workers.enabled") || m(b, "workers.kv_store.enabled") || m(b, "stream.enabled")
 			}
-			const S = C => i(C, "argo.allow_smart_routing") || i(C, "argo.allow_tiered_caching"),
-				v = C => m(C, "zone.cname_setup_allowed") || m(C, "zone.partial_setup_allowed") || i(C, "zone.partial_setup_allowed"),
-				P = C => m(C, "argo.allow_smart_routing") || i(C, "argo.allow_smart_routing"),
-				K = C => m(C, "argo.allow_tiered_caching") || i(C, "argo.allow_tiered_caching"),
-				$ = C => P(C) || K(C),
-				ye = C => m(C, "ctm.enabled"),
-				re = C => {
-					const Q = d(C, "ctm.load_balancers");
+			const S = b => i(b, "argo.allow_smart_routing") || i(b, "argo.allow_tiered_caching"),
+				v = b => m(b, "zone.cname_setup_allowed") || m(b, "zone.partial_setup_allowed") || i(b, "zone.partial_setup_allowed"),
+				P = b => m(b, "argo.allow_smart_routing") || i(b, "argo.allow_smart_routing"),
+				K = b => m(b, "argo.allow_tiered_caching") || i(b, "argo.allow_tiered_caching"),
+				$ = b => P(b) || K(b),
+				ye = b => m(b, "ctm.enabled"),
+				re = b => {
+					const Q = d(b, "ctm.load_balancers");
 					return typeof Q == "number" ? Q : 0
 				},
-				X = C => {
-					const Q = d(C, "ctm.pools");
+				X = b => {
+					const Q = d(b, "ctm.pools");
 					return typeof Q == "number" ? Q : 0
 				},
-				H = C => {
-					const Q = d(C, "ctm.origins");
+				H = b => {
+					const Q = d(b, "ctm.origins");
 					return typeof Q == "number" ? Q : 0
 				},
-				k = C => m(C, "workers.enabled"),
-				F = C => m(C, "stream.enabled"),
-				N = C => {
-					const Q = d(C, "access.users_allowed");
+				k = b => m(b, "workers.enabled"),
+				F = b => m(b, "stream.enabled"),
+				N = b => {
+					const Q = d(b, "access.users_allowed");
 					return typeof Q == "number" ? Q : 0
 				},
-				te = C => N(C) > 0,
-				me = C => {
-					const Q = a(C, "dedicated_certificates");
+				te = b => N(b) > 0,
+				me = b => {
+					const Q = a(b, "dedicated_certificates");
 					return typeof Q == "number" ? Q : 0
 				},
-				J = C => me(C) > 0,
-				w = C => {
-					const Q = a(C, "rate_limiting.max_rules");
+				J = b => me(b) > 0,
+				w = b => {
+					const Q = a(b, "rate_limiting.max_rules");
 					return typeof Q == "number" ? Q : 0
 				},
-				I = C => m(C, "rate_limiting.enabled"),
-				Z = C => {
-					const Q = a(C, "page_rules");
+				I = b => m(b, "rate_limiting.enabled"),
+				Z = b => {
+					const Q = a(b, "page_rules");
 					return typeof Q == "number" ? Q : 0
 				},
-				W = C => Z(C) > 0,
-				se = C => {
-					const Q = d(C, "dns_firewall.max_clusters_allowed");
+				W = b => Z(b) > 0,
+				se = b => {
+					const Q = d(b, "dns_firewall.max_clusters_allowed");
 					return typeof Q == "number" ? Q : 0
 				},
-				U = C => se(C) > 0,
-				oe = C => i(C, "zone.advanced_certificate_manager") || m(C, "zone.advanced_certificate_manager"),
-				ce = C => a(C, "authoritative_dns.proxy_record_allowed") === !1 || d(C, "authoritative_dns.proxy_record_allowed") === !1,
-				B = C => m(C, "authoritative_dns.outgoing_zone_transfers_allowed") === !0,
-				b = C => a(C, "authoritative_dns.outgoing_zone_transfers_allowed") === !0,
-				O = C => {
-					const Q = a(C, "authoritative_dns.min_record_ttl_allowed");
+				U = b => se(b) > 0,
+				oe = b => i(b, "zone.advanced_certificate_manager") || m(b, "zone.advanced_certificate_manager"),
+				ue = b => a(b, "authoritative_dns.proxy_record_allowed") === !1 || d(b, "authoritative_dns.proxy_record_allowed") === !1,
+				B = b => m(b, "authoritative_dns.outgoing_zone_transfers_allowed") === !0,
+				C = b => a(b, "authoritative_dns.outgoing_zone_transfers_allowed") === !0,
+				O = b => {
+					const Q = a(b, "authoritative_dns.min_record_ttl_allowed");
 					return typeof Q == "number" && Q > 1 ? Q : 60
 				},
-				x = C => i(C, "foundation_dns.advanced_nameservers_allowed")
+				x = b => i(b, "foundation_dns.advanced_nameservers_allowed")
 		},
 		"../react/common/selectors/languagePreferenceSelector.ts": function(z, E, n) {
 			"use strict";
@@ -5963,7 +5965,7 @@
 					return f
 				},
 				DQ: function() {
-					return C
+					return b
 				},
 				Ej: function() {
 					return $
@@ -5990,7 +5992,7 @@
 					return Ke
 				},
 				NY: function() {
-					return b
+					return C
 				},
 				Ns: function() {
 					return se
@@ -6041,7 +6043,7 @@
 					return X
 				},
 				jg: function() {
-					return ce
+					return ue
 				},
 				kC: function() {
 					return K
@@ -6270,7 +6272,7 @@
 				return D && D.owner
 			}
 
-			function ce(D, ee) {
+			function ue(D, ee) {
 				const ge = oe(ee);
 				return !!ge && ge.type === "user" && ge.id === D.id
 			}
@@ -6280,7 +6282,7 @@
 				return !!ee && ee.type === "partial"
 			}
 
-			function b(D) {
+			function C(D) {
 				const ee = s(D);
 				return !!ee && ee.type === "secondary"
 			}
@@ -6294,7 +6296,7 @@
 					const ge = s(D);
 					return !!(ge == null ? void 0 : ge.host) && !!((ee = ge.plan) === null || ee === void 0 ? void 0 : ee.externally_managed)
 				},
-				C = D => {
+				b = D => {
 					const ee = S(D);
 					return ee && ee.some(J)
 				},
@@ -6516,7 +6518,7 @@
 			"use strict";
 			n.d(E, {
 				y: function() {
-					return ce
+					return ue
 				}
 			});
 			var e = n("../../../../node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js"),
@@ -6529,15 +6531,15 @@
 				c = n("../react/pages/apps/marketplace/types.ts");
 
 			function* y() {
-				const b = (0, i.aP)();
-				if (!b) throw new i.C6;
+				const C = (0, i.aP)();
+				if (!C) throw new i.C6;
 				try {
-					const O = (0, i.he)(b);
+					const O = (0, i.he)(C);
 					if (O && (0, i.pw)(O)) throw new i.C6;
 					yield(0, e.gz)(l.Nw.setToken({
-						token: b,
+						token: C,
 						parsed: O
-					})), yield(0, e.RE)([localStorage, "setItem"], c.m.CloudflareAppsToken, b), yield(0, e.RE)([p.L, "setAuthHeader"], b)
+					})), yield(0, e.RE)([localStorage, "setItem"], c.m.CloudflareAppsToken, C), yield(0, e.RE)([p.L, "setAuthHeader"], C)
 				} catch {
 					throw new i.C6
 				}
@@ -6545,18 +6547,18 @@
 
 			function* t() {
 				const {
-					status: b
+					status: C
 				} = yield(0, e.RE)(a);
-				if (b === 401) throw new i.xT;
-				if (b === 403) throw new i.k7;
+				if (C === 401) throw new i.xT;
+				if (C === 403) throw new i.k7;
 				yield(0, e.gz)(l.Nw.setTokenValid(!0))
 			}
 
 			function* o() {
 				try {
 					yield(0, e.gz)(l.Nw.getCurrentUserSending());
-					const b = yield(0, e.RE)(g);
-					return yield(0, e.gz)(b.id ? l.Nw.getCurrentUserSuccess(b) : l.Nw.getCurrentUserFailed()), b
+					const C = yield(0, e.RE)(g);
+					return yield(0, e.gz)(C.id ? l.Nw.getCurrentUserSuccess(C) : l.Nw.getCurrentUserFailed()), C
 				} catch {
 					throw yield(0, e.gz)(l.Nw.getCurrentUserFailed())
 				}
@@ -6566,18 +6568,18 @@
 				yield(0, e.ib)(l.U4.CurrentUserSaga, o)
 			}
 
-			function* m(b) {
+			function* m(C) {
 				try {
 					yield(0, e.RE)(y), yield(0, e.RE)(t)
 				} catch (O) {
-					if (yield(0, e.RE)([localStorage, "removeItem"], c.m.CloudflareAppsToken), ![i.Vm.RedirectToLogin, i.Vm.BadToken].includes(O.name)) return yield(0, e.gz)(l.Nw.initSaga(b.zoneId));
+					if (yield(0, e.RE)([localStorage, "removeItem"], c.m.CloudflareAppsToken), ![i.Vm.RedirectToLogin, i.Vm.BadToken].includes(O.name)) return yield(0, e.gz)(l.Nw.initSaga(C.zoneId));
 					try {
 						return (0, i.rf)()
 					} catch {
 						throw new i.Sf
 					}
 				}
-				yield(0, e.gz)(l.Nw.setZone(b.zoneId)), yield(0, e.gz)(l.Nw.getCurrentUserSaga()), yield(0, e.RE)([localStorage, "removeItem"], c.m.CloudflareAppsAuthAttempts)
+				yield(0, e.gz)(l.Nw.setZone(C.zoneId)), yield(0, e.gz)(l.Nw.getCurrentUserSaga()), yield(0, e.RE)([localStorage, "removeItem"], c.m.CloudflareAppsAuthAttempts)
 			}
 
 			function* s() {
@@ -6586,83 +6588,83 @@
 
 			function* _() {
 				for (;;) {
-					const b = yield(0, e.qn)(l.XO.SetCurrentUser), O = yield(0, e.RE)([localStorage, "getItem"], c.m.CloudflareAppsToken);
+					const C = yield(0, e.qn)(l.XO.SetCurrentUser), O = yield(0, e.RE)([localStorage, "getItem"], c.m.CloudflareAppsToken);
 					if (O) {
 						const x = (0, i.he)(O),
-							C = (0, r.Z)(x, "sub"),
-							Q = (0, r.Z)(b, `meta.entities.user.${b.payload}.email`);
-						if (Q && Q !== C) return yield(0, e.RE)([localStorage, "removeItem"], c.m.CloudflareAppsToken)
+							b = (0, r.Z)(x, "sub"),
+							Q = (0, r.Z)(C, `meta.entities.user.${C.payload}.email`);
+						if (Q && Q !== b) return yield(0, e.RE)([localStorage, "removeItem"], c.m.CloudflareAppsToken)
 					}
 				}
 			}
 			var u = [s(), _(), d()],
 				f = n("../react/pages/apps/marketplace/requests/common.ts"),
 				R = n("../react/pages/apps/marketplace/libraries/constants.ts");
-			const M = (b, O) => b.apps ? b.apps[O] : b[O],
-				G = b => M(b, "authState"),
-				S = b => M(b, "commonState"),
-				v = b => M(b, "homePageState"),
-				P = b => G(b).zone;
+			const M = (C, O) => C.apps ? C.apps[O] : C[O],
+				G = C => M(C, "authState"),
+				S = C => M(C, "commonState"),
+				v = C => M(C, "homePageState"),
+				P = C => G(C).zone;
 			var K = n("../react/pages/apps/marketplace/libraries/helpers.ts"),
 				$ = n("../react/pages/apps/marketplace/state/common.reducer.ts");
 
-			function ye(b) {
+			function ye(C) {
 				for (var O = 1; O < arguments.length; O++) {
 					var x = arguments[O] != null ? Object(arguments[O]) : {},
-						C = Object.keys(x);
-					typeof Object.getOwnPropertySymbols == "function" && C.push.apply(C, Object.getOwnPropertySymbols(x).filter(function(Q) {
+						b = Object.keys(x);
+					typeof Object.getOwnPropertySymbols == "function" && b.push.apply(b, Object.getOwnPropertySymbols(x).filter(function(Q) {
 						return Object.getOwnPropertyDescriptor(x, Q).enumerable
-					})), C.forEach(function(Q) {
-						re(b, Q, x[Q])
+					})), b.forEach(function(Q) {
+						re(C, Q, x[Q])
 					})
 				}
-				return b
+				return C
 			}
 
-			function re(b, O, x) {
-				return O = X(O), O in b ? Object.defineProperty(b, O, {
+			function re(C, O, x) {
+				return O = X(O), O in C ? Object.defineProperty(C, O, {
 					value: x,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : b[O] = x, b
+				}) : C[O] = x, C
 			}
 
-			function X(b) {
-				var O = H(b, "string");
+			function X(C) {
+				var O = H(C, "string");
 				return typeof O == "symbol" ? O : String(O)
 			}
 
-			function H(b, O) {
-				if (typeof b != "object" || b === null) return b;
-				var x = b[Symbol.toPrimitive];
+			function H(C, O) {
+				if (typeof C != "object" || C === null) return C;
+				var x = C[Symbol.toPrimitive];
 				if (x !== void 0) {
-					var C = x.call(b, O || "default");
-					if (typeof C != "object") return C;
+					var b = x.call(C, O || "default");
+					if (typeof b != "object") return b;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (O === "string" ? String : Number)(b)
+				return (O === "string" ? String : Number)(C)
 			}
 
-			function* k(b, O, x) {
-				const C = {
+			function* k(C, O, x) {
+				const b = {
 					categories: (x.markets || ["none"]).map(Q => {
 						const ve = R.XZ.find(Ae => Ae.key === Q);
 						return !Q || !ve ? R.iK.categories : ve.categories
 					}).reduce((Q, ve) => Q.concat(ve), []).filter((Q, ve, Ae) => Ae.indexOf(Q) === ve).join(","),
 					excludeApps: O.map(Q => Q.appId).join(",")
 				};
-				return yield(0, e.RE)(f.RX, $.Nw, f.Jb.recommendedApps.name, f.Jb.recommendedApps.url(C), K.Ux.transformers.transformAppIdsToApps.bind(null, b))
+				return yield(0, e.RE)(f.RX, $.Nw, f.Jb.recommendedApps.name, f.Jb.recommendedApps.url(b), K.Ux.transformers.transformAppIdsToApps.bind(null, C))
 			}
 
 			function* F() {
 				for (;;) {
 					const {
-						zoneId: b,
+						zoneId: C,
 						currentResources: O
 					} = yield(0, e.qn)($.U4.GetHomePageAssetsSaga), {
 						appsList: x,
-						installsList: C,
+						installsList: b,
 						metadata: Q
 					} = yield(0, e.$6)(ye({}, O.appsList.status === "latent" ? {
 						appsList: (0, e.RE)(f.RX, $.Nw, f.Jb.apps.name, f.Jb.apps.url())
@@ -6675,46 +6677,46 @@
 					} : {
 						categoriesList: O.categoriesList.value
 					}, O.installsList.status === "latent" ? {
-						installsList: (0, e.RE)(f.RX, $.Nw, f.Jb.installs.default.name, f.Jb.installs.default.url(b))
+						installsList: (0, e.RE)(f.RX, $.Nw, f.Jb.installs.default.name, f.Jb.installs.default.url(C))
 					} : {
 						installsList: O.installsList.value
 					}, O.metadata.status === "latent" ? {
-						metadata: (0, e.RE)(f.RX, $.Nw, f.Jb.metadata.get.name, f.Jb.metadata.get.url(b))
+						metadata: (0, e.RE)(f.RX, $.Nw, f.Jb.metadata.get.name, f.Jb.metadata.get.url(C))
 					} : {
 						metadata: O.metadata.value
 					}));
-					yield(0, e.gz)($.Nw.getRecommendedAppsSaga(x, C, Q))
+					yield(0, e.gz)($.Nw.getRecommendedAppsSaga(x, b, Q))
 				}
 			}
 
 			function* N() {
 				for (;;) {
 					const {
-						userId: b,
+						userId: C,
 						zoneId: O
 					} = yield(0, e.qn)($.U4.GetDevelopedAppsAssetsSaga);
-					yield(0, e.RE)(f.RX, $.Nw, f.Jb.installs.default.name, f.Jb.installs.default.url(O)), yield(0, e.RE)(f.RX, $.Nw, f.Jb.developedApps.name, f.Jb.developedApps.url(b))
+					yield(0, e.RE)(f.RX, $.Nw, f.Jb.installs.default.name, f.Jb.installs.default.url(O)), yield(0, e.RE)(f.RX, $.Nw, f.Jb.developedApps.name, f.Jb.developedApps.url(C))
 				}
 			}
 
 			function* te() {
 				for (;;) {
 					const {
-						appIdentifier: b,
+						appIdentifier: C,
 						zoneId: O,
 						version: x
-					} = yield(0, e.qn)($.U4.GetAppInfoAssetsSaga), C = yield(0, e.RE)(f.RX, $.Nw, f.Jb.installs.default.name, f.Jb.installs.default.url(O));
-					yield(0, e.RE)(f.RX, $.Nw, f.Jb.app.name, f.Jb.app.url(b, x ? {
+					} = yield(0, e.qn)($.U4.GetAppInfoAssetsSaga), b = yield(0, e.RE)(f.RX, $.Nw, f.Jb.installs.default.name, f.Jb.installs.default.url(O));
+					yield(0, e.RE)(f.RX, $.Nw, f.Jb.app.name, f.Jb.app.url(C, x ? {
 						version: x
-					} : {}), K.Ux.transformers.addCurrentSiteInstall.bind(null, C))
+					} : {}), K.Ux.transformers.addCurrentSiteInstall.bind(null, b))
 				}
 			}
 
 			function* me() {
 				for (;;) {
 					const {
-						zoneId: b
-					} = yield(0, e.qn)($.U4.GetInstalledAppsAssetsSaga), x = (yield(0, e.RE)(f.RX, $.Nw, f.Jb.installs.default.name, f.Jb.installs.default.url(b))).filter(Ae => Ae.app.installable && Ae.versionTag !== Ae.app.infoVersion), C = x.reduce((Ae, Pe) => (Ae[Pe.app.alias] = (0, e.RE)(f.RX, $.Nw, f.Jb.app.name, f.Jb.app.url(Pe.app.alias || Pe.appId), K.Ux.transformers.addAppVersionInfo.bind(null, Pe)), Ae), {}), Q = yield(0, e.$6)(C), ve = x.map(Ae => ({
+						zoneId: C
+					} = yield(0, e.qn)($.U4.GetInstalledAppsAssetsSaga), x = (yield(0, e.RE)(f.RX, $.Nw, f.Jb.installs.default.name, f.Jb.installs.default.url(C))).filter(Ae => Ae.app.installable && Ae.versionTag !== Ae.app.infoVersion), b = x.reduce((Ae, Pe) => (Ae[Pe.app.alias] = (0, e.RE)(f.RX, $.Nw, f.Jb.app.name, f.Jb.app.url(Pe.app.alias || Pe.appId), K.Ux.transformers.addAppVersionInfo.bind(null, Pe)), Ae), {}), Q = yield(0, e.$6)(b), ve = x.map(Ae => ({
 						install: Ae,
 						app: Q[Ae.app.alias]
 					}));
@@ -6729,57 +6731,57 @@
 			function* w() {
 				for (;;) {
 					const {
-						queryParams: b
+						queryParams: C
 					} = yield(0, e.qn)($.U4.GetCategoriesSaga);
-					return yield(0, e.RE)(f.RX, $.Nw, f.Jb.categories.name, f.Jb.categories.url(b))
+					return yield(0, e.RE)(f.RX, $.Nw, f.Jb.categories.name, f.Jb.categories.url(C))
 				}
 			}
 
 			function* I() {
 				for (;;) {
 					const {
-						zoneId: b
+						zoneId: C
 					} = yield(0, e.qn)($.U4.GetInstallsSaga);
-					return yield(0, e.RE)(f.RX, $.Nw, f.Jb.installs.default.name, f.Jb.installs.default.url(b))
+					return yield(0, e.RE)(f.RX, $.Nw, f.Jb.installs.default.name, f.Jb.installs.default.url(C))
 				}
 			}
 
 			function* Z() {
 				for (;;) {
 					const {
-						zoneId: b
+						zoneId: C
 					} = yield(0, e.qn)($.U4.GetMetadataSaga);
-					return yield(0, e.RE)(f.RX, $.Nw, f.Jb.metadata.get.name, f.Jb.metadata.get.url(b))
+					return yield(0, e.RE)(f.RX, $.Nw, f.Jb.metadata.get.name, f.Jb.metadata.get.url(C))
 				}
 			}
 
 			function* W() {
 				for (;;) {
 					const {
-						appsList: b,
+						appsList: C,
 						installsList: O,
 						metadata: x
 					} = yield(0, e.qn)($.U4.GetRecommendedAppsSaga);
-					yield(0, e.RE)(k, b, O, x)
+					yield(0, e.RE)(k, C, O, x)
 				}
 			}
 
 			function* se() {
 				for (;;) {
 					const {
-						zoneId: b,
+						zoneId: C,
 						data: O
 					} = yield(0, e.qn)($.U4.PostMetadataSaga);
 					try {
 						const {
 							appsList: x,
-							installsList: C,
+							installsList: b,
 							metadata: Q
 						} = yield(0, e.Ys)(S), ve = ye({}, Q.value, {
-							id: b,
+							id: C,
 							markets: [O]
 						});
-						yield(0, e.RE)(f.JX, $.Nw, f.Jb.metadata.post.name, f.Jb.metadata.post.url(b), ve), yield(0, e.RE)(k, x.value, C.value, ve)
+						yield(0, e.RE)(f.JX, $.Nw, f.Jb.metadata.post.name, f.Jb.metadata.post.url(C), ve), yield(0, e.RE)(k, x.value, b.value, ve)
 					} catch {}
 				}
 			}
@@ -6788,10 +6790,10 @@
 				for (;;) yield(0, e.qn)($.dg.CloudflareZoneChangeStart), yield(0, e.gz)($.Nw.zoneChangedSaga())
 			}
 			var oe = [F(), me(), N(), te(), J(), I(), w(), Z(), se(), W(), U()];
-			const ce = [...u, ...oe];
+			const ue = [...u, ...oe];
 
 			function* B() {
-				yield all(ce)
+				yield all(ue)
 			}
 		},
 		"../react/pages/apps/marketplace/libraries/auth.ts": function(z, E, n) {
@@ -10742,17 +10744,17 @@
 					const se = I.split(" ").length > 1,
 						U = I.split(".").length > 1,
 						oe = !se && U;
-					let ce = I;
+					let ue = I;
 					if (oe) try {
-						ce = (0, g.ZP)(I)
+						ue = (0, g.ZP)(I)
 					} catch {}
 					if (I.startsWith("billing.")) return {
-						message: `Error while processing payment: ${ce}.`,
+						message: `Error while processing payment: ${ue}.`,
 						code: Z
 					};
-					const B = Array.isArray(W) ? W.map(b => b.message).join(". ") : "";
+					const B = Array.isArray(W) ? W.map(C => C.message).join(". ") : "";
 					return {
-						message: `${ce}${typeof Z!="undefined"?` (Code: ${Z})`:""} ${B}`,
+						message: `${ue}${typeof Z!="undefined"?` (Code: ${Z})`:""} ${B}`,
 						code: Z
 					}
 				}),
@@ -11150,24 +11152,24 @@
 
 			function i(U) {
 				for (var oe = 1; oe < arguments.length; oe++) {
-					var ce = arguments[oe] != null ? Object(arguments[oe]) : {},
-						B = Object.keys(ce);
-					typeof Object.getOwnPropertySymbols == "function" && B.push.apply(B, Object.getOwnPropertySymbols(ce).filter(function(b) {
-						return Object.getOwnPropertyDescriptor(ce, b).enumerable
-					})), B.forEach(function(b) {
-						c(U, b, ce[b])
+					var ue = arguments[oe] != null ? Object(arguments[oe]) : {},
+						B = Object.keys(ue);
+					typeof Object.getOwnPropertySymbols == "function" && B.push.apply(B, Object.getOwnPropertySymbols(ue).filter(function(C) {
+						return Object.getOwnPropertyDescriptor(ue, C).enumerable
+					})), B.forEach(function(C) {
+						c(U, C, ue[C])
 					})
 				}
 				return U
 			}
 
-			function c(U, oe, ce) {
+			function c(U, oe, ue) {
 				return oe = y(oe), oe in U ? Object.defineProperty(U, oe, {
-					value: ce,
+					value: ue,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : U[oe] = ce, U
+				}) : U[oe] = ue, U
 			}
 
 			function y(U) {
@@ -11177,9 +11179,9 @@
 
 			function t(U, oe) {
 				if (typeof U != "object" || U === null) return U;
-				var ce = U[Symbol.toPrimitive];
-				if (ce !== void 0) {
-					var B = ce.call(U, oe || "default");
+				var ue = U[Symbol.toPrimitive];
+				if (ue !== void 0) {
+					var B = ue.call(U, oe || "default");
 					if (typeof B != "object") return B;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
@@ -11188,8 +11190,8 @@
 			const {
 				endsWithSlash: o
 			} = l.default, d = (U, oe) => {
-				const ce = U.replace(o, "").split("/");
-				return ce.slice(0, 2).concat([oe]).concat(ce.slice(3)).join("/")
+				const ue = U.replace(o, "").split("/");
+				return ue.slice(0, 2).concat([oe]).concat(ue.slice(3)).join("/")
 			}, m = () => window.location.hostname.includes("dash.staging.cloudflare") || window.location.hostname.includes("dash.cloudflare"), s = U => `/${U.replace(o,"").replace(/^\//,"")}`, _ = U => f("add-site", U), u = U => f("billing", U), f = (U, oe) => oe ? `/${oe}${U?`/${U}`:""}` : `/?to=/:account/${U}`, R = () => {
 				const U = location ? location.pathname.match(/^\/([0-9a-f]{32})/) || location.pathname.match(/^\/a\/([0-9a-f]{32})/) : null;
 				return U ? U[1] : null
@@ -11202,15 +11204,15 @@
 				}
 			}, N = U => ye(U) && U.split("/")[2] === "register-domain", te = U => N(U) ? U.split("/") : null, me = U => {
 				if (re(U)) {
-					const [, , , oe, ce, B, b, O] = U.split("/");
-					return oe === "traffic" && ce === "load-balancing" && B === "pools" && b === "edit" && O
+					const [, , , oe, ue, B, C, O] = U.split("/");
+					return oe === "traffic" && ue === "load-balancing" && B === "pools" && C === "edit" && O
 				}
 			}, J = U => {
 				const oe = te(U);
 				if (oe) return oe[3]
 			}, w = (U, oe) => {
-				var ce, B;
-				return ((ce = U.pattern.match(/\:/g)) !== null && ce !== void 0 ? ce : []).length - ((B = oe.pattern.match(/\:/g)) !== null && B !== void 0 ? B : []).length
+				var ue, B;
+				return ((ue = U.pattern.match(/\:/g)) !== null && ue !== void 0 ? ue : []).length - ((B = oe.pattern.match(/\:/g)) !== null && B !== void 0 ? B : []).length
 			}, I = [...Object.values(p._j), ...Object.values(g._j), ...Object.values(a._j)].sort(w);
 
 			function Z(U) {
@@ -11228,9 +11230,9 @@
 					const [, , , , O] = B;
 					return `/:accountId/:zoneName${O||""}`
 				}
-				const b = k(U);
-				if (b) {
-					const [, , O] = b;
+				const C = k(U);
+				if (C) {
+					const [, , O] = C;
 					return `/:accountId${O||""}`
 				}
 				return U
@@ -11238,16 +11240,16 @@
 
 			function W(U) {
 				if (!!U) try {
-					const ce = U.split(".").pop();
-					if (ce && ce.length > 0) return ce
+					const ue = U.split(".").pop();
+					if (ue && ue.length > 0) return ue
 				} catch {}
 			}
 
 			function se(U, oe = document.location.href) {
 				try {
-					const ce = new URL(U),
+					const ue = new URL(U),
 						B = new URL(oe);
-					if (ce.origin === B.origin) return `${ce.pathname}${ce.search}${ce.hash}`
+					if (ue.origin === B.origin) return `${ue.pathname}${ue.search}${ue.hash}`
 				} catch {}
 			}
 		},
@@ -11427,8 +11429,8 @@
 				se = n("../react/pages/firewall/security-analytics/logs/constants.ts"),
 				U = n("../react/pages/magic/overview/tracking.ts"),
 				oe = n("../react/pages/hyperdrive/tracking.ts");
-			const B = ((ae, ie, ...fe) => t.eg.union([t.eg.literal(ae), t.eg.literal(ie), ...fe.map(de => t.eg.literal(de))]))("abort import", "Access Click", "Access click", "Access Promo Banner Click", "ack queue message", "ACM Purchase Success", "activate coveo recommended resource TSF (3.0)", "activate helperbot diagnostic TSF (3.0)", "Activity feed cancel download modal", "Activity feed close event", "Activity feed download from modal", "Activity feed download", "Activity feed expand event", "Activity feed expand matches", "Activity feed next page", "Activity feed open download modal", "Activity feed previous page", "Add API Discovery authorization headers", "Add column", "Add Configuration Rule Settings", "add cron trigger", "Add filter", "add jwt credentials", "add jwt configuration location", "add kv key-value", "Add insight", "Add cache rule setting", "add payment method", "Add site click", "add workers route", "Added API Shield schema", "Addon Purchase Success", "agree to terms", "Analytics Secondary Nav - Tab Click", "Analytics Time Period Change", "anonymizers found", "API documentation click", "apply recommendation", "argo enabled", "argo click", "argo smart routing click", "argo tiered caching click", "argo cancel modal submit feedback clicked", "argo cancel modal open state", "argo cancel modal clicked cancel", "Attempt TOTP reconfigure", "begin deployment log stream", "begin import flow", "begin log stream", "begin zone activation flow", "Billing address country select toggle", "Billing click", "Billing email update failure", "Billing email update success", "Billing invoice download failed", "Billing invoice download success", "brand protection", "bulk delete images", "bulk export images", "Button click", "Cache settings click", "Can not display filter - Unparsable filter", "Can not display filter - Unsupported Fields", "cancel add records later", "cancel addon purchase of automatic platform optimization", "cancel disable totalTLS", "cancel import flow", "cancel form", "cancel notification create", "cancel notification delete", "cancel notification edit", "cancel notification test", "cancel onboarding flow", "cancel resizing after bundle buy", "cancel snippet form", "cancel source deletion", "cancel variant edit", "Canceled rule form", "Canceled subscription", "Certificate Patch click", "change api shield sequence rule config option", "change brand pattern filter", "change certificate authority totalTLS", "change chart time horizon", "Change dataset", "Change default action API Shield SV", "change DNS file upload error visibility", "change DNS setup method", "Change limit", "change metadata boundary", "change pagination page shield", "Change Plan Frequency", "change priority submitted", "change SSL recommender", "change tab", "Change time window", "change zone setting", "Change zone setup confirmation", "Change zone status confirmation", "change zone status", "chat submission form submit click", "check nameservers", "choose plan", "copy script id page shield", "copy script url page shield", "copy trace json", "Cipher Suites Link Click", "claim yubico promo offer", "click 2fa support token link", "click Account Home TSF (3.0)", "click add settings", "click add sources", "click API shield upsell link", "click API shield enable product button", "click API shield feedback link", "click API snippet drawer", "click back to all policies link", "Click BM bots JS detection", "Click BM bot templates", "Click BM create firewall rule", "Click BM welcome card", "click cancel downgrade", "click cache reserve purchase", "click chat button", "click chat close modal", "click chat start", "click close callback request form", "click complete purchase button", "click configure 2fa support app link", "click continue quick scan", "click continue to support TSF (3.0)", "click coveo recommended resource TSF (3.0)", "click create load balancer", "Click Create Rule", "click create policy form link", "click deflect community TSF (3.0)", "Click Deploy Rule", "click dns completion wizard suggestion", "click dns email security configure", "click dns email security wizard record type", "click documentation link", "click edit policy", "click edge traffic visualisation link", "click enable argo button", "click end stream button", "click expand known issue", "click expand maintenance view", "click helperbot diagnostic report TSF (3.0)", "click Hide Self Help Flow", "click learn more link", "click link to waf migration documentation", "click link", "click load more coveo content TSF (3.0)", "click load balancer step", "click login help forgot email selection", "click login help forgot password selection", "click login help lost two factor selection", "click multi-sku confirmation", "click on edit snippet", "click on expand one sequence on api gateway sequences", "click on filter one sequence on api gateway sequences", "click on main filter api gateway sequences", "click on view endpoint on api gateway sequences", "click Open a Ticket TSF (3.0)", "click open callback request form", "click payment details", "click plan documentation link", "click purchase ACM - totalTLS", "click refresh suggestions", "Click refresh transfer status", "click Request Live Chat TSF (3.0)", "click resolve security issue button", "click save whois", "click scan again", "click select known issue", "click Self Help Flow Answer", "click Self Help Flow Close", "click Start Over TSF (3.0)", "click Start Self Help Flow", "click start stream button", "click submit callback request form", "click submit domain categorization feedback", "click submit feedback TSF (3.0)", "click subscribe system status", "click ticket submission form search result", "click ticket submission form suggestion", "Click to create API Shield portal", "click to create rate limiting rule for endpoint", "click to Trace link", "click Top N investigate", "click investigate icon", "click trace feedback form", "click TSF (2.0) community more help", "click TSF (2.0) new category", "click TSF (2.0) search result", "click TSF (2.0) step", "click TSF (2.0) suggested help link", "click TSF (2.0) suggestion", "Click query logs", "Click use custom sql", "Click use basic editor", "click Upgrade to Business Close", "click Upgrade to Business Start", "click Upgrade to Business Zone Selected", "Click view details", "click waf upgrade banner", "click domain registration link", "click Workers & Pages link", "click full DNS setup docs link", "click partial DNS setup docs link", "click secondary DNS setup docs link", "click settings first deploy cta", "click custom domain first deploy cta", "click web analytics first deploy cta", "Click", "create migration", "create or update queue consumer", "create trace", "create queue", "create sink", "create trace", "enter summary TSF (3.0)", "reach chat end TSF (3.0)", "submit login help form submission", "toggle TSF (3.0)", "toggle snippet status", "close abort import modal", "close account select dropdown", "close bulk delete image modal", "close configuration switcher sidemodal", "close delete image modal", "close delete variant modal", "close domain switcher sidemodal", "close rename source modal", "close script modal page shield", "close zone select dropdown", "close support dropdown", "collapse row", "collapse sidebar nav", "Collapse top N", "Community page link click", "complete addon purchase of automatic platform optimization", "complete plan change from automatic platform optimization card", "Configuration Rules Link Click", "confirm add records later", "confirm api shield sequence rule config", "confirm auth code", "confirm disable totalTLS", "confirm DNS records", "confirm domain transfer purchase", "confirm source deletion", "confirm zone removal", "Confirm", "contentful banner displayed", "continue billing flow", "continue import flow", "continue onboarding flow", "continue to final step", "continue to js snippet", "Continue", "Contract SS - Approver contact details cancel", "Contract SS - Approver contact details submit success", "Contract SS - Legal agreement cancel", "Contract SS - Legal agreement submit success", "Contract SS - Payment type cancel", "Contract SS - Payment type selected success", "Contract SS - Purchase cancel", "Contract SS - Purchase flow enter", "Contract SS - Purchase success", "copy account hash", "copy account id", "copy API snippet from drawer", "copy curl command", "copy delivery url", "copy image delivery url", "copy image id", "copy script id page shield", "copy script url page shield", "copy snippet", "Create Bulk Redirect Rule", "create clone", "create default environments", "create environment", "create job", "create kv namespace", "create migration", "Create New Rule", "create new magic firewall rule", "create notification", "create pages deployment", "create pages deployment", "create pages project", "create pages project", "create r2 api token", "create r2 api token", "create r2 bucket", "create rate limiting rule", "create regional hostname", "create rule", "Create Rule (Save)", "Create Rule as Draft (Save as Draft)", "create service", "create worker from playground", "cancel create worker from playground", "create sink", "create source", "create snippet", "create snippet", "create user", "create variant", "create worker", "create zone", "Create, Update or Edit Save Failures (Builder)", "Create, Update or Edit Save Failures (Editor)", "CT Alerting Change", "Custom Hostname create click", "Custom Hostname create success", "Custom Hostname delete click", "Custom Hostname delete success", "Custom Hostname edit click", "Custom Hostname edit success", "Custom Hostname fallback origin add click", "Custom Hostname fallback origin delete click", "Custom Hostname fallback origin delete success", "Custom Hostname fallback origin edit click", "Custom Hostname fallback origin refresh", "Custom Hostname refresh click", "Custom Trust Store delete click", "Custom Trust Store delete success", "Custom Trust Store upload click", "Custom Trust Store upload success", "customer click URL in support ai chat", "customer close support ai chat", "Dashboard search closed", "Dashboard search opened", "Dashboard search result selected", "Dashboard search results empty", "Dedicated Certificates click", "Deep Link Cancel", "Deep Link Success", "delete brand pattern", "Delete click", "Delete confirmation", "delete custom error pages", "delete environment", "delete image", "delete kv key-value", "delete kv namespace", "delete notification", "delete pages project", "delete policy", "delete queue", "delete r2 api token", "delete r2 bucket", "delete r2 objects", "Delete Rule", "delete service", "delete site", "delete snippet", "delete snippet", "delete source", "delete variant", "Deploy API Shield portal", "deploy policy", "deploy worker script", "deploy worker script", "deploy version", "Details click", "Dev Mode change confirm", "Dev Mode change", "develop with wrangler cli", "Diagnostic failure", "Diagnostic result", "disable page shield", "disable pages web analytics", "Disable Rule", "disable sidebar nav", "disable totalTLS", "dislike redirect in the same window", "dismiss notification", "dismiss recommendation", "dismiss yubico promo banner", "display recommendation module", "display recommendation", "display record wizard notification", "display self help flow", "display yubico promo banner", "display support ai chat", "DNS settings click", "download file", "download progress log", "download r2 object", "download tax doc", "draft new worker script", "edge traffic visualisation is shown", "edit contact information", "edit cron trigger", "edit environment", "Edit filter", "edit image", "edit kv key-value", "edit notification", "edit plan", "edit r2 api token", "edit registration details", "edit service environment variables", "edit service kv bindings", "edit service r2 bindings", "edit service to service bindings", "edit service mtls certificate bindings", "edit service tail consumers", "edit dispatch namespace bindings", "edit variant", "edit workers route", "Edit/Update Rule (Save)", "Enable automatic https rewrites click", "Enable Optimization", "Enable or disable API Shield SV", "enable page shield", "enable pages access policy", "enable pages web analytics", "Enable Rule", "enable sidebar nav", "enable totalTLS", "enable policy toggle", "enable versioning", "enable workers", "encrypt variable", "end WAF migration v2", "environment migrate forward", "environment migrate back", "enter domain search value", "enter icloud registrar", "enter summary TSF (3.0)", "Error adding or removing records", "Error Analytics link click", "Error when retrieving conflicting records", "error creating snippet", "Event Names", "exit onboarding guide", "expand account select dropdown", "expand domain details", "Expand measurement details", "expand row", "expand sidebar nav account selector", "expand sidebar nav zone selector", "expand sidebar nav", "Expand top N", "expand trace accordion", "expand zone select dropdown", "Explore demo button click", "export instant logs", "export single image", "export trace results", "fail addon purchase of automatic platform optimization", "Failed to Switch to Editor", "failed pre-flight check", "Fetched template", "Filter rules", "filter search page shield", "filter search view all page shield", "filter snippet", "filter trace results", "Filter used", "finish import flow", "finish loading gates and microfrontends", "finish onboarding guide later", "finish onboarding guide", "Firewall settings click", "Flow authorize", "Flow cancel", "follow contentful banner link", "follow docs link", "follow link to investigate external", "follow link to investigate", "follow link", "follow policy link", "follow recommendation CTA", "follow return to icloud link", "follow support link", "follow yubico promo banner", "follower icloud footer link", "Free Long Wait", "Get your API key click", "go back in billing flow", "go to next page", "go to page", "go to prev page", "hover score tooltip page shield", "hover to read risk identified tooltip", "hover to read threshold tooltip", "http worker editor tab", "identify", "image upload complete", "Initialization error", "Initialization success", "initiate addon purchase of automatic platform optimization", "initiate plan change from automatic platform optimization card", "initiate wordpress plugin installation for automatic platform optimization", "interact with api shield sequence rule main table", "Interaction with Film Strip", "Interacton with Film Strip", "investigate threat search", "IP settings click", "launch icloud registrar onboarding", "launch onboarding guide", "launch sidebar nav survey", "launch teams dashboard", "launch zone overview", "list kv key-values", "list kv namespaces", "list pages projects", "list queues", "list r2 buckets", "list r2 objects", "Load Balancing click", "load web analytics overview", "Logpush Create Job - Open modal", "Logpush Create Job - Step Transition", "Logpush Create Job - Success", "Manage click", "manage pages members", "manage pages policies", "manage security insight", "Map detail type changed", "Matches Entitlement Validation error", "migrate waf", "Mixed content notification test 2019-05-03 link click", "multi-sku purchase error", "multi-sku purchase success", "navigate back", "navigate footer nav", "navigate investigate sidebar nav", "navigate quick link", "navigate sidebar nav", "navigate to account", "navigate to api tokens", "navigate to appearance", "navigate to billing", "navigate to community forum", "navigate to community", "navigate to compliance docs", "navigate to contact support", "navigate to create first source", "navigate to documentation", "navigate to edit image", "navigate to enterprise customer portal", "navigate to filtered domains", "navigate to help center", "navigate to import detail", "navigate to images", "navigate to my activities", "navigate to logout", "navigate to previous onboarding guide task", "navigate to profile", "navigate to request feature", "navigate to request feature", "Navigate to speed test", "navigate to source detail", "navigate to variant detail", "navigate to version management through configuration sidemodal", "navigate to version management docs through configuration sidemodal", "navigate to WAF Migration Review configuration view", "navigate topbar", "navigate to tax docs", "Next onboarding guide section", "next page", "Notification dismissed", "Notification displayed", "Notification link click", "Notification load on page confirmation", "observe automatic platform optimization card", "Onboarding guide elapsed time", "open abort import modal", "open advanced waiting room sales link", "open alert modal page shield", "open argo subscription modal", "open blog post for automatic platform optimization", "open bot management lead generator link", "open bulk delete image modal", "open cancel downgrade modal", "open configuration switcher sidemodal", "open create notification page", "open delete image modal", "open delete notification modal", "open delete variant modal", "open domain switcher sidemodal", "open edit notification page", "open help documentation for automatic platform optimization", "open image preview", "open load balancing subscription modal", "Open Modal Enable Access", "open priority change modal", "open onboarding guide task manually", "open remove zone modal", "open rename source modal", "open script modal page shield", "open support dropdown", "open security center url categorization feedback", "open security center categorization tooltip", "open waiting room upsell modal", "open zone plan update modal", "Opened BrowserInsights tab", "opt-in to marketing emails", "Order click", "Order success", "Page Rules click", "pageview", "page load gate deflection TSF", "paginate kv key-values", "paginate kv namespaces", "paginate pages projects", "paginate queues", "paginate r2 buckets", "paginate r2 objects", "paginate services", "Pick validity period success", "Plan Purchase Confirmation", "Plan Purchase Failure", "Plan Purchase Success", "Plan Update Confirmation", "Plan Update Failure", "Plan Update Success", "preview live worker", "preview queue messages", "preview worker editor tab", "previous page", "Private keys in china toggle", "Product Purchase Cancel", "Product Purchase Failure", "Product Purchase Success", "Product Update Failure", "Product Update Success", "prompted to verify email", "promote version", "purchase attempt", "purchase completed", "purchase domain transfer", "purchase images subscription", "Purge cache click", "purge everything from cache", "Rate Limiting click", "Re-activate zone click", "Re-check nameservers click", "reach ticket end TSF (3.0)", "read kv key-value", "ready to update waf migration phase 2", "recheck zone for automatic platform optimization", "redirect chat", "register site", "Remove column", "Remove filter", "Remove insight", "remove item from checkout", "remove zone", "rename account", "rename service", "rename source", "Reprioritize certificate", "Request review click", "Request trial button click", "resend verification email", "resume onboarding", "retry coveo search", "return to developer platform from modal", "return to developer platform from onboarding", "review onboarding guide task from summary", "review products", "request migrator capacity", "rollback version", "roll r2 api token", "Rule event", "Rule preview that was denied because of an unsupported field or operator", "Rule preview that was denied because of lack of data", "Rule preview that was denied due to error", "rules configured", "run security scan", "save contact information", "save and deploy load balancer", "save load balancer", "save load balancer as draft", "save onboarding guide task", "save payment details", "save registration details", "search auto fetch", "search kv key-values", "search kv namespaces", "search pages projects", "search queues", "search r2 buckets", "search r2 objects", "search services", "search source", "search table", "Search", "See more click", "select account", "select alert type page shield", "select category TSF (3.0)", "select change nameservers", "select directive default value", "select directive value", "select domain", "select file", "Select hostname success", "select language", "select notification type", "select onboarding bundle", "select page rules quantity", "select payment method", "select payment option", "select product", "select r2 plan", "select record addition method", "select source", "select storage plan", "select task", "Select timeseries group by", "select transfer registrars", "Select type success", "select variant", "select version", "select queues plan", "select workers plan", "select zone plan", "select zone", "select summary in support ai chat", "Select", "Selected advanced GeoIP field in rule builder", "Selected schema API Shield portal", "send verification email", "send queue message", "Set Communication Preferences", "Set communication Preferences", "set page size", "set pages do bindings", "set pages environment variables", "set pages kv bindings", "set up custom domain", "set up subdomain", "Setting up", "show access key", "show notification", "show waf upgrade banner v2", "show waf upgrade banner", "Showed API Shield Flyfishing page", "signed exchanges toggle", "site configured", "skip onboarding guide section", "sort auto fetch", "sort column page shield", "sort queues", "sort r2 buckets", "sort services", "sort table", "Speedheader - change your nameservers click", "Speedtest - Headless Chrome fetch returned error", "Speedtest - tests are completed", "Speedtest - Tests are running", "Speedtest - WPT tests failed", "SPF conflict resolution failure", "SSL click", "SSL Mode Change", "start import flow", "start import manually", "start subscription change", "start WAF migration v2", "start wizard", "Status page link click", "Stream click", "Stream Signup Success", "Stream Video Page Play", "Stream Video Upload Failure", "Stream Video Upload Success", "submit brand pattern", "submit grotto chat feedback", "submit DNS email security wizard failure", "submit DNS email security wizard", "submit DNS entry method", "submit domain name", "submit login form", "submit login help form submission", "submit new grotto chat request", "submit new support ai chat request", "submit order", "submit signup form", "Successful flow and user redirected", "Successful rule preview", "Suggestions query confirmation", "suggest category tsf (3.0)", "suggest category displayed tsf (3.0)", "Marketing banner dismissed", "Survey banner closed", "Marketing banner shown", "Survey banner shown", "Survey opened", "switch DNS entry method", "Switch from Editor and Discarded Changes", "Switch to expression editor", "Test", "test notification", "Ticket form step click", "Ticket submission form button click", "Ticket submission form submit click", "Time range changed", "Toast dismiss click", "Toast load on page confirmation", "toggle advanced options", "Toggle API discovery", "toggle automatic platform optimization feature", "toggle cache by device type", "toggle flexible variants", "toggle key", "toggle recommendation module", "toggle TSF (3.0)", "Toggle user level audit logs", "Toggled injection", "trace user jorney", "transfer DNS records", "Transfer out survey submitted", "Transfer Step", "Transter purchased", "tried to register unavailable domain", "tried to remove zone of a domain registered on cloudflare registrar", "Under Attack Mode change", "update custom error pages", "update job", "update jwt configuration", "update jwt rule", "update magic firewall rule", "update pages project", "update rule", "update site", "upgrade unique transformations config", "upgrade stream subscription", "upgrade resizing to new stream subscription", "Upload custom click", "Upload custom confirmation", "upload custom error pages", "upload DNS file", "upload image", "Upload keyless click", "Upload keyless confirmation", "Upload list item CSV", "update snippet", "upload r2 objects", "Use multiselect API Shield SV", "Use overflow API Shield SV", "use spacebar to pause", "use spacebar to play", "User has recommended optimisations", "User navigated by zone navigation", "Use template", "USSL Certificate Authority: Changed", "USSL Certificate Authority: Modal Launch", "validate spf content", "Validation method change", "Validation success", "verified email successfully", "verify address", "verify email", "view accounts", "view checkout complete purchase", "View click", "view custom error pages", "view documentation", "view downgrade offer", "view downgrade survey", "view downgrade warning", "view onboarding guide recommendations", "view snippet", "view plan", "view system status", "Viewed Global API Key", "Viewed Origin CA Key", "visit workers developer docs", "visit workers showcase", "visit workers templates", "web analytics upgrade plan click", "WHOIS link click", "Workers:Enablement", "Zap:Opt in", "Zap:Opt out", "Zone setup change", "Bots Report Data", "Information Toast Shown", "Information Toast Closed", "quick edit http tab", "quick edit preview tab", "quick edit schedule tab", "quick edit wrangler tab", "visit product documentation", "visit blog post", "visit recent", "visit blog announcements", "click discover card call to action", "click discover card view products", "click featured product call to action", "click paygo card cta", "click opt-in", "click opt-out", "click close opt out", "click stripe beta select plan support link", "click stripe beta change plan support link", "click rule link", "click button to speed recommendation page", "click trace rule details", "view stripe beta opt out", "error notification shown", "fetch personalized content", "view page", "run speed test", "delete speed test", "create speed test schedule", "delete speed test schedule", "select speed test trend range", "select speed test trend metric", "view speed recommendation", "view lighthouse audit", "enable speed recommendation", "click speed feature link", "click speed optimization documentation link", "enable all speed optimization recommendations", "complete plan change from speed", "start plan change from speed", "view rum disabled screen", "enable rum from speed", "select rum map range", "select rum map metric", "has payment plan on file", "click DNS records link", "click disable DNSSEC link", "click migrate DNSSEC link", "click enable DNSSEC link", "click pending domains link", "change appearance", "click star zone", "click star zone filter", "click empty state link", "click view more", "visit system status item", "view system status item menu", "subscribe to system status item", "click cloudflare logo", "dismiss change notification", "dismiss change notification modal", "set marketing preference ent ss purchase", "view change notification", "view change notification modal", "expand side drawer", "collapse side drawer", "documentation side drawer present", "expand documentation side drawer", "collapse documentation side drawer", "clicked sidebar Discord link", "clicked sidebar Community Forum link", "clicked Workers for Platforms CLI Guide link", "clicked Workers for Platforms Documentation link", "clicked R2 feedback link", "clicked R2 CLI guide", "clicked Constellation feedback link", "domain on cart has trademark claims", "click expand trademark claims button", "click disagree trademark claims button", "click agree trademark claims button", "click to begin domain delete", "domain deletion completed sucessfully", "domain deletion failed because user does not have permissions", "domain deletion failed because user submitted invalid confirmation code", "domain deletion failed for unknown reason", "click to delete domain", "click cancel and closes confirm modal", "click to re-send confirmation code", "click cancel and closes verification modal", "click to continue with domain deletion", "click cancel and closes warning modal", P.N3.INITIAL_FETCH_SCORES, P.N3.FETCH_CONFIGURATION, P.N3.INITIAL_FETCH_TIME_SERIES, P.N3.INITIAL_FETCH_ATTRIBUTES, P.N3.UPDATE_SETTINGS, P.N3.DELETE_RULE, P.N3.UPDATE_RULE, P.N3.FETCH_RULES, P.N3.CONFIGURE_BOT_MANAGEMENT, P.N3.WAF_RULES_REDIRECT, k.F.TOGGLE_TCP_PROTECTION, k.F.CREATE_SYN_PROTECTION_RULE, k.F.UPDATE_SYN_PROTECTION_RULE, k.F.CREATE_TCP_FLOW_PROTECTION_RULE, k.F.UPDATE_TCP_FLOW_PROTECTION_RULE, k.F.CREATE_SYN_PROTECTION_FILTER, k.F.UPDATE_SYN_PROTECTION_FILTER, k.F.CREATE_TCP_FLOW_PROTECTION_FILTER, k.F.UPDATE_TCP_FLOW_PROTECTION_FILTER, ye.F.MANAGE_PAGE_SHIELD_POLICY, ye.F.CONFIGURE_PAGE_SHIELD, ye.F.VIEW_DETECTED_CONNECTIONS, ye.F.VIEW_DETECTED_SCRIPTS, ye.F.VIEW_PAGE_SHIELD_POLICIES, ye.F.VIEW_PAGE_SHIELD_SETTINGS, te.y.CREATE_LIST, te.y.DELETE_LIST, te.y.ADD_LIST_ITEM, te.y.DELETE_LIST_ITEM, oe.KO.PURCHASE_WORKERS_PAID, oe.KO.LIST_CONFIGS, oe.KO.CREATE_HYPERDRIVE_CONFIG, oe.KO.VIEW_CONFIG_DETAILS, oe.KO.UPDATE_CACHING_SETTINGS, oe.KO.DELETE_HYPERDRIVE_CONFIG, oe.KO.CLICK_HYPERDRIVE_DOCUMENTATION, oe.KO.CLICK_GET_STARTED_GUIDE, oe.KO.CLICK_CONNECTIVITY_GUIDES, oe.KO.CLICK_QUICK_LINK, H.N.CNAME, H.N.IP_ADDRESS, H.N.LB, H.N.UPDATE_CNAME, H.N.UPDATE_IP_ADDRESS, H.N.UPDATE_LB, H.N.DISABLE, K.N.TIERED_CACHE, K.N.CACHE_PURGE, K.N.CACHE_ANALYTICS, ...(0, re.x4)(), X.N.CREATE, X.N.EVENTS, X.N.ANALYTICS, X.N.UPDATE, X.N.GENERATE_PREVIEW, F.R.INITIATE_URL_SCAN, F.R.LOAD_SCAN_INFO, N.Fj[N.kq.ENDPOINT_MANAGEMENT].listOfEndpoints, N.Fj[N.kq.ENDPOINT_MANAGEMENT].detailedMetrics, N.Fj[N.kq.ENDPOINT_MANAGEMENT].createEndpoint, N.Fj[N.kq.ENDPOINT_MANAGEMENT].deleteEndpoint, N.Fj[N.kq.API_DISCOVERY].viewDiscoveredEndpoints, N.Fj[N.kq.API_DISCOVERY].saveDiscoveredEndpoint, N.Fj[N.kq.API_DISCOVERY].ignoreOrUnignoreDiscoveredEndpoint, N.Fj[N.kq.SCHEMA_VALIDATION].viewSchemasList, N.Fj[N.kq.SCHEMA_VALIDATION].uploadSchema, N.Fj[N.kq.SCHEMA_VALIDATION].viewSchemaAdoption, N.Fj[N.kq.SCHEMA_VALIDATION].downloadSchema, N.Fj[N.kq.SCHEMA_VALIDATION].deleteSchema, N.Fj[N.kq.SCHEMA_VALIDATION].addLearnedSchemaByHostname, N.Fj[N.kq.SCHEMA_VALIDATION].addLearnedSchemaByEndpoint, N.Fj[N.kq.SEQUENCE_ANALYTICS].viewSequencesPage, N.Fj[N.kq.JWT_VALIDATION].viewJWTRules, N.Fj[N.kq.JWT_VALIDATION].addJWTRule, N.Fj[N.kq.JWT_VALIDATION].editJWTRule, N.Fj[N.kq.JWT_VALIDATION].deleteJWTRule, N.Fj[N.kq.JWT_VALIDATION].reprioritizeJWTRule, N.Fj[N.kq.JWT_VALIDATION].viewJWTConfigs, N.Fj[N.kq.JWT_VALIDATION].addJWTConfig, N.Fj[N.kq.JWT_VALIDATION].editJWTConfig, N.Fj[N.kq.JWT_VALIDATION].deleteJWTConfig, N.Fj[N.kq.SETTINGS].redirectToFirewallRulesTemplate, N.Fj[N.kq.SETTINGS].redirectToPages, N.Fj[N.kq.SETTINGS].listSessionIdentifiers, N.Fj[N.kq.SETTINGS].listRequestsContainingSessionIdentifiers, N.Fj[N.kq.SETTINGS].addOrRemoveSessionIdentifiers, N.Fj[N.kq.SEQUENCE_RULES].listSequenceRules, N.Fj[N.kq.SEQUENCE_RULES].deleteSequenceRule, N.Fj[N.kq.SEQUENCE_RULES].reorderSequenceRule, N.Fj[N.kq.SEQUENCE_RULES].createSequenceRule, N.Fj[N.kq.SEQUENCE_RULES].editSequenceRule, me.Z.CREATE_AND_DEPLOY, me.Z.ANALYTICS, J.y.SECONDARY_DNS_NOTIFICATION_CREATE, J.y.SECONDARY_DNS_NOTIFICATION_UPDATE, J.y.SECONDARY_DNS_NOTIFICATION_DELETE, w.U.ZONE_TRANSFER_SUCCESS, w.U.DNS_RECORD_CREATE, w.U.DNS_RECORD_UPDATE, w.U.DNS_RECORD_DELETE, I.Y.PEER_DNS_CREATE, I.Y.PEER_DNS_UPDATE, I.Y.PEER_DNS_DELETE, I.Y.ZONE_TRANSFER_ENABLE, I.Y.ZONE_TRANSFER_DISABLE, Z.V.ARGO_ENABLEMENT, Z.V.ARGO_GEO_ANALYTICS_FETCH, Z.V.ARGO_GLOBAL_ANALYTICS_FETCH, $.X.VIEW_BUCKETS_LIST, $.X.CREATE_BUCKET, $.X.VALIDATE_BUCKET, $.X.DELETE_BUCKET, $.X.VIEW_CAPTURES_LIST, $.X.CREATE_SIMPLE_CAPTURE, $.X.CREATE_FULL_CAPTURE, $.X.VIEW_FULL_CAPTURE, $.X.DOWNLOAD_SIMPLE_CAPTURE, W.bK.VIEW_RULES, W.bK.CREATE_RULE, W.bK.UPDATE_RULE, W.bK.DELETE_RULE, W.bK.VIEW_CONFIGURATION, W.bK.CREATE_CONFIGURATION, W.bK.UPDATE_CONFIGURATION, W.bK.DELETE_CONFIGURATION, U.r8.VIEW_ALERTS, U.r8.VIEW_ALERTS_HISTORY, U.r8.MAGIC_OVERVIEW_ANALYTICS, se.o4.CLICK_ADAPTIVE_SAMPLING, se.o4.CLICK_TO_LOG_EXPLORER_BANNER, se.o4.CLICK_TO_LOG_EXPLORER_DESCRIPTION, se.o4.CLICK_SWITCH_TO_RAW_LOGS, se.o4.CLICK_SWITCH_TO_SAMPLED_LOGS, "send AI feedback"),
-				b = t.eg.exactStrict(t.eg.object({
+			const B = ((ae, ie, ...fe) => t.eg.union([t.eg.literal(ae), t.eg.literal(ie), ...fe.map(de => t.eg.literal(de))]))("abort import", "Access Click", "Access click", "Access Promo Banner Click", "ack queue message", "ACM Purchase Success", "activate coveo recommended resource TSF (3.0)", "activate helperbot diagnostic TSF (3.0)", "Activity feed cancel download modal", "Activity feed close event", "Activity feed download from modal", "Activity feed download", "Activity feed expand event", "Activity feed expand matches", "Activity feed next page", "Activity feed open download modal", "Activity feed previous page", "Add API Discovery authorization headers", "Add column", "Add Configuration Rule Settings", "add cron trigger", "Add filter", "add jwt credentials", "add jwt configuration location", "add kv key-value", "Add insight", "Add cache rule setting", "add payment method", "Add site click", "add workers route", "Added API Shield schema", "Addon Purchase Success", "agree to terms", "Analytics Secondary Nav - Tab Click", "Analytics Time Period Change", "anonymizers found", "API documentation click", "apply recommendation", "argo enabled", "argo click", "argo smart routing click", "argo tiered caching click", "argo cancel modal submit feedback clicked", "argo cancel modal open state", "argo cancel modal clicked cancel", "Attempt TOTP reconfigure", "begin deployment log stream", "begin import flow", "begin log stream", "begin zone activation flow", "Billing address country select toggle", "Billing click", "Billing email update failure", "Billing email update success", "Billing invoice download failed", "Billing invoice download success", "brand protection", "bulk delete images", "bulk export images", "Button click", "Cache settings click", "Can not display filter - Unparsable filter", "Can not display filter - Unsupported Fields", "cancel add records later", "cancel addon purchase of automatic platform optimization", "cancel disable totalTLS", "cancel import flow", "cancel form", "cancel notification create", "cancel notification delete", "cancel notification edit", "cancel notification test", "cancel onboarding flow", "cancel resizing after bundle buy", "cancel snippet form", "cancel source deletion", "cancel variant edit", "Canceled rule form", "Canceled subscription", "Certificate Patch click", "change api shield sequence rule config option", "change brand pattern filter", "change certificate authority totalTLS", "change chart time horizon", "Change dataset", "Change default action API Shield SV", "change DNS file upload error visibility", "change DNS setup method", "Change limit", "change metadata boundary", "change pagination page shield", "Change Plan Frequency", "change priority submitted", "change SSL recommender", "change tab", "Change time window", "change zone setting", "Change zone setup confirmation", "Change zone status confirmation", "change zone status", "chat submission form submit click", "check nameservers", "choose plan", "copy script id page shield", "copy script url page shield", "copy trace json", "Cipher Suites Link Click", "claim yubico promo offer", "click 2fa support token link", "click Account Home TSF (3.0)", "click add settings", "click add sources", "click API shield upsell link", "click API shield enable product button", "click API shield feedback link", "click API snippet drawer", "click back to all policies link", "Click BM bots JS detection", "Click BM bot templates", "Click BM create firewall rule", "Click BM welcome card", "click cancel downgrade", "click cache reserve purchase", "click chat button", "click chat close modal", "click chat start", "click close callback request form", "click complete purchase button", "click configure 2fa support app link", "click continue quick scan", "click continue to support TSF (3.0)", "click coveo recommended resource TSF (3.0)", "click create load balancer", "Click Create Rule", "click create policy form link", "click deflect community TSF (3.0)", "Click Deploy Rule", "click dns completion wizard suggestion", "click dns email security configure", "click dns email security wizard record type", "click documentation link", "click edit policy", "click edge traffic visualisation link", "click enable argo button", "click end stream button", "click expand known issue", "click expand maintenance view", "click helperbot diagnostic report TSF (3.0)", "click Hide Self Help Flow", "click learn more link", "click link to waf migration documentation", "click link", "click load more coveo content TSF (3.0)", "click load balancer step", "click login help forgot email selection", "click login help forgot password selection", "click login help lost two factor selection", "click multi-sku confirmation", "click on edit snippet", "click on expand one sequence on api gateway sequences", "click on filter one sequence on api gateway sequences", "click on main filter api gateway sequences", "click on view endpoint on api gateway sequences", "click Open a Ticket TSF (3.0)", "click open callback request form", "click payment details", "click plan documentation link", "click purchase ACM - totalTLS", "click refresh suggestions", "Click refresh transfer status", "click Request Live Chat TSF (3.0)", "click resolve security issue button", "click save whois", "click scan again", "click select known issue", "click Self Help Flow Answer", "click Self Help Flow Close", "click Start Over TSF (3.0)", "click Start Self Help Flow", "click start stream button", "click submit callback request form", "click submit domain categorization feedback", "click submit feedback TSF (3.0)", "click subscribe system status", "click ticket submission form search result", "click ticket submission form suggestion", "Click to create API Shield portal", "click to create rate limiting rule for endpoint", "click to Trace link", "click Top N investigate", "click investigate icon", "click trace feedback form", "click TSF (2.0) community more help", "click TSF (2.0) new category", "click TSF (2.0) search result", "click TSF (2.0) step", "click TSF (2.0) suggested help link", "click TSF (2.0) suggestion", "Click query logs", "Click use custom sql", "Click use basic editor", "click Upgrade to Business Close", "click Upgrade to Business Start", "click Upgrade to Business Zone Selected", "Click view details", "click waf upgrade banner", "click domain registration link", "click Workers & Pages link", "click full DNS setup docs link", "click partial DNS setup docs link", "click secondary DNS setup docs link", "click settings first deploy cta", "click custom domain first deploy cta", "click web analytics first deploy cta", "Click", "create migration", "create or update queue consumer", "create trace", "create queue", "create sink", "create trace", "enter summary TSF (3.0)", "reach chat end TSF (3.0)", "submit login help form submission", "toggle TSF (3.0)", "toggle snippet status", "close abort import modal", "close account select dropdown", "close bulk delete image modal", "close configuration switcher sidemodal", "close delete image modal", "close delete variant modal", "close domain switcher sidemodal", "close rename source modal", "close script modal page shield", "close zone select dropdown", "close support dropdown", "collapse row", "collapse sidebar nav", "Collapse top N", "Community page link click", "complete addon purchase of automatic platform optimization", "complete plan change from automatic platform optimization card", "Configuration Rules Link Click", "confirm add records later", "confirm api shield sequence rule config", "confirm auth code", "confirm disable totalTLS", "confirm DNS records", "confirm domain transfer purchase", "confirm source deletion", "confirm zone removal", "Confirm", "contentful banner displayed", "continue billing flow", "continue import flow", "continue onboarding flow", "continue to final step", "continue to js snippet", "Continue", "Contract SS - Approver contact details cancel", "Contract SS - Approver contact details submit success", "Contract SS - Legal agreement cancel", "Contract SS - Legal agreement submit success", "Contract SS - Payment type cancel", "Contract SS - Payment type selected success", "Contract SS - Purchase cancel", "Contract SS - Purchase flow enter", "Contract SS - Purchase success", "copy account hash", "copy account id", "copy API snippet from drawer", "copy curl command", "copy delivery url", "copy image delivery url", "copy image id", "copy script id page shield", "copy script url page shield", "copy snippet", "Create Bulk Redirect Rule", "create clone", "create default environments", "create environment", "create job", "create kv namespace", "create migration", "Create New Rule", "create new magic firewall rule", "create notification", "create pages deployment", "create pages deployment", "create pages project", "create pages project", "create r2 api token", "create r2 api token", "create r2 bucket", "create rate limiting rule", "create regional hostname", "create rule", "Create Rule (Save)", "Create Rule as Draft (Save as Draft)", "create service", "create worker from playground", "cancel create worker from playground", "create sink", "create source", "create snippet", "create snippet", "create user", "create variant", "create worker", "create zone", "Create, Update or Edit Save Failures (Builder)", "Create, Update or Edit Save Failures (Editor)", "CT Alerting Change", "Custom Hostname create click", "Custom Hostname create success", "Custom Hostname delete click", "Custom Hostname delete success", "Custom Hostname edit click", "Custom Hostname edit success", "Custom Hostname fallback origin add click", "Custom Hostname fallback origin delete click", "Custom Hostname fallback origin delete success", "Custom Hostname fallback origin edit click", "Custom Hostname fallback origin refresh", "Custom Hostname refresh click", "Custom Trust Store delete click", "Custom Trust Store delete success", "Custom Trust Store upload click", "Custom Trust Store upload success", "customer click URL in support ai chat", "customer close support ai chat", "Dashboard search closed", "Dashboard search opened", "Dashboard search result selected", "Dashboard search results empty", "Dedicated Certificates click", "Deep Link Cancel", "Deep Link Success", "delete brand pattern", "Delete click", "Delete confirmation", "delete custom error pages", "delete environment", "delete image", "delete kv key-value", "delete kv namespace", "delete notification", "delete pages project", "delete policy", "delete queue", "delete r2 api token", "delete r2 bucket", "delete r2 objects", "Delete Rule", "delete service", "delete site", "delete snippet", "delete snippet", "delete source", "delete variant", "Deploy API Shield portal", "deploy policy", "deploy worker script", "deploy worker script", "deploy version", "Details click", "Dev Mode change confirm", "Dev Mode change", "develop with wrangler cli", "Diagnostic failure", "Diagnostic result", "disable page shield", "disable pages web analytics", "Disable Rule", "disable sidebar nav", "disable totalTLS", "dislike redirect in the same window", "dismiss notification", "dismiss recommendation", "dismiss yubico promo banner", "display recommendation module", "display recommendation", "display record wizard notification", "display self help flow", "display yubico promo banner", "display support ai chat", "DNS settings click", "download file", "download progress log", "download r2 object", "download tax doc", "draft new worker script", "edge traffic visualisation is shown", "edit contact information", "edit cron trigger", "edit environment", "Edit filter", "edit image", "edit kv key-value", "edit notification", "edit plan", "edit r2 api token", "edit registration details", "edit service environment variables", "edit service kv bindings", "edit service r2 bindings", "edit service to service bindings", "edit service mtls certificate bindings", "edit service tail consumers", "edit dispatch namespace bindings", "edit variant", "edit workers route", "Edit/Update Rule (Save)", "Enable automatic https rewrites click", "Enable Optimization", "Enable or disable API Shield SV", "enable page shield", "enable pages access policy", "enable pages web analytics", "Enable Rule", "enable sidebar nav", "enable totalTLS", "enable policy toggle", "enable versioning", "enable workers", "encrypt variable", "end WAF migration v2", "environment migrate forward", "environment migrate back", "enter domain search value", "enter icloud registrar", "enter summary TSF (3.0)", "Error adding or removing records", "Error Analytics link click", "Error when retrieving conflicting records", "error creating snippet", "Event Names", "exit onboarding guide", "expand account select dropdown", "expand domain details", "Expand measurement details", "expand row", "expand sidebar nav account selector", "expand sidebar nav zone selector", "expand sidebar nav", "Expand top N", "expand trace accordion", "expand zone select dropdown", "Explore demo button click", "export instant logs", "export single image", "export trace results", "fail addon purchase of automatic platform optimization", "Failed to Switch to Editor", "failed pre-flight check", "Fetched template", "Filter rules", "filter search page shield", "filter search view all page shield", "filter snippet", "filter trace results", "Filter used", "finish import flow", "finish loading gates and microfrontends", "finish onboarding guide later", "finish onboarding guide", "Firewall settings click", "Flow authorize", "Flow cancel", "follow contentful banner link", "follow docs link", "follow link to investigate external", "follow link to investigate", "follow link", "follow policy link", "follow recommendation CTA", "follow return to icloud link", "follow support link", "follow yubico promo banner", "follower icloud footer link", "Free Long Wait", "Get your API key click", "go back in billing flow", "go to next page", "go to page", "go to prev page", "hover score tooltip page shield", "hover to read risk identified tooltip", "hover to read threshold tooltip", "http worker editor tab", "identify", "image upload complete", "Initialization error", "Initialization success", "initiate addon purchase of automatic platform optimization", "initiate plan change from automatic platform optimization card", "initiate wordpress plugin installation for automatic platform optimization", "interact with api shield sequence rule main table", "Interaction with Film Strip", "Interacton with Film Strip", "investigate threat search", "IP settings click", "launch icloud registrar onboarding", "launch onboarding guide", "launch sidebar nav survey", "launch teams dashboard", "launch zone overview", "list kv key-values", "list kv namespaces", "list pages projects", "list queues", "list r2 buckets", "list r2 objects", "Load Balancing click", "load web analytics overview", "Logpush Create Job - Open modal", "Logpush Create Job - Step Transition", "Logpush Create Job - Success", "Manage click", "manage pages members", "manage pages policies", "manage security insight", "Map detail type changed", "Matches Entitlement Validation error", "migrate waf", "Mixed content notification test 2019-05-03 link click", "multi-sku purchase error", "multi-sku purchase success", "navigate back", "navigate footer nav", "navigate investigate sidebar nav", "navigate quick link", "navigate sidebar nav", "navigate to account", "navigate to api tokens", "navigate to appearance", "navigate to billing", "navigate to community forum", "navigate to community", "navigate to compliance docs", "navigate to contact support", "navigate to create first source", "navigate to documentation", "navigate to edit image", "navigate to enterprise customer portal", "navigate to filtered domains", "navigate to help center", "navigate to import detail", "navigate to images", "navigate to my activities", "navigate to logout", "navigate to previous onboarding guide task", "navigate to profile", "navigate to request feature", "navigate to request feature", "Navigate to speed test", "navigate to source detail", "navigate to variant detail", "navigate to version management through configuration sidemodal", "navigate to version management docs through configuration sidemodal", "navigate to WAF Migration Review configuration view", "navigate topbar", "navigate to tax docs", "Next onboarding guide section", "next page", "Notification dismissed", "Notification displayed", "Notification link click", "Notification load on page confirmation", "observe automatic platform optimization card", "Onboarding guide elapsed time", "open abort import modal", "open advanced waiting room sales link", "open alert modal page shield", "open argo subscription modal", "open blog post for automatic platform optimization", "open bot management lead generator link", "open bulk delete image modal", "open cancel downgrade modal", "open configuration switcher sidemodal", "open create notification page", "open delete image modal", "open delete notification modal", "open delete variant modal", "open domain switcher sidemodal", "open edit notification page", "open help documentation for automatic platform optimization", "open image preview", "open load balancing subscription modal", "Open Modal Enable Access", "open priority change modal", "open onboarding guide task manually", "open remove zone modal", "open rename source modal", "open script modal page shield", "open support dropdown", "open security center url categorization feedback", "open security center categorization tooltip", "open waiting room upsell modal", "open zone plan update modal", "Opened BrowserInsights tab", "opt-in to marketing emails", "Order click", "Order success", "Page Rules click", "pageview", "page load gate deflection TSF", "paginate kv key-values", "paginate kv namespaces", "paginate pages projects", "paginate queues", "paginate r2 buckets", "paginate r2 objects", "paginate services", "Pick validity period success", "Plan Purchase Confirmation", "Plan Purchase Failure", "Plan Purchase Success", "Plan Update Confirmation", "Plan Update Failure", "Plan Update Success", "preview live worker", "preview queue messages", "preview worker editor tab", "previous page", "Private keys in china toggle", "Product Purchase Cancel", "Product Purchase Failure", "Product Purchase Success", "Product Update Failure", "Product Update Success", "prompted to verify email", "promote version", "purchase attempt", "purchase completed", "purchase domain transfer", "purchase images subscription", "Purge cache click", "purge everything from cache", "Rate Limiting click", "Re-activate zone click", "Re-check nameservers click", "reach ticket end TSF (3.0)", "read kv key-value", "ready to update waf migration phase 2", "recheck zone for automatic platform optimization", "redirect chat", "register site", "Remove column", "Remove filter", "Remove insight", "remove item from checkout", "remove zone", "rename account", "rename service", "rename source", "Reprioritize certificate", "Request review click", "Request trial button click", "resend verification email", "resume onboarding", "retry coveo search", "return to developer platform from modal", "return to developer platform from onboarding", "review onboarding guide task from summary", "review products", "request migrator capacity", "rollback version", "roll r2 api token", "Rule event", "Rule preview that was denied because of an unsupported field or operator", "Rule preview that was denied because of lack of data", "Rule preview that was denied due to error", "rules configured", "run security scan", "save contact information", "save and deploy load balancer", "save load balancer", "save load balancer as draft", "save onboarding guide task", "save payment details", "save registration details", "search auto fetch", "search kv key-values", "search kv namespaces", "search pages projects", "search queues", "search r2 buckets", "search r2 objects", "search services", "search source", "search table", "Search", "See more click", "select account", "select alert type page shield", "select category TSF (3.0)", "select change nameservers", "select directive default value", "select directive value", "select domain", "select file", "Select hostname success", "select language", "select notification type", "select onboarding bundle", "select page rules quantity", "select payment method", "select payment option", "select product", "select r2 plan", "select record addition method", "select source", "select storage plan", "select task", "Select timeseries group by", "select transfer registrars", "Select type success", "select variant", "select version", "select queues plan", "select workers plan", "select zone plan", "select zone", "select summary in support ai chat", "Select", "Selected advanced GeoIP field in rule builder", "Selected schema API Shield portal", "send verification email", "send queue message", "Set Communication Preferences", "Set communication Preferences", "set page size", "set pages do bindings", "set pages environment variables", "set pages kv bindings", "set pages vectorize bindings", "set up custom domain", "set up subdomain", "Setting up", "show access key", "show notification", "show waf upgrade banner v2", "show waf upgrade banner", "Showed API Shield Flyfishing page", "signed exchanges toggle", "site configured", "skip onboarding guide section", "sort auto fetch", "sort column page shield", "sort queues", "sort r2 buckets", "sort services", "sort table", "Speedheader - change your nameservers click", "Speedtest - Headless Chrome fetch returned error", "Speedtest - tests are completed", "Speedtest - Tests are running", "Speedtest - WPT tests failed", "SPF conflict resolution failure", "SSL click", "SSL Mode Change", "start import flow", "start import manually", "start subscription change", "start WAF migration v2", "start wizard", "Status page link click", "Stream click", "Stream Signup Success", "Stream Video Page Play", "Stream Video Upload Failure", "Stream Video Upload Success", "submit brand pattern", "submit grotto chat feedback", "submit DNS email security wizard failure", "submit DNS email security wizard", "submit DNS entry method", "submit domain name", "submit login form", "submit login help form submission", "submit new grotto chat request", "submit new support ai chat request", "submit order", "submit signup form", "Successful flow and user redirected", "Successful rule preview", "Suggestions query confirmation", "suggest category tsf (3.0)", "suggest category displayed tsf (3.0)", "Marketing banner dismissed", "Survey banner closed", "Marketing banner shown", "Survey banner shown", "Survey opened", "switch DNS entry method", "Switch from Editor and Discarded Changes", "Switch to expression editor", "Test", "test notification", "Ticket form step click", "Ticket submission form button click", "Ticket submission form submit click", "Time range changed", "Toast dismiss click", "Toast load on page confirmation", "toggle advanced options", "Toggle API discovery", "toggle automatic platform optimization feature", "toggle cache by device type", "toggle flexible variants", "toggle key", "toggle recommendation module", "toggle TSF (3.0)", "Toggle user level audit logs", "Toggled injection", "trace user jorney", "transfer DNS records", "Transfer out survey submitted", "Transfer Step", "Transter purchased", "tried to register unavailable domain", "tried to remove zone of a domain registered on cloudflare registrar", "Under Attack Mode change", "update custom error pages", "update job", "update jwt configuration", "update jwt rule", "update magic firewall rule", "update pages project", "update rule", "update site", "upgrade unique transformations config", "upgrade stream subscription", "upgrade resizing to new stream subscription", "Upload custom click", "Upload custom confirmation", "upload custom error pages", "upload DNS file", "upload image", "Upload keyless click", "Upload keyless confirmation", "Upload list item CSV", "update snippet", "upload r2 objects", "Use multiselect API Shield SV", "Use overflow API Shield SV", "use spacebar to pause", "use spacebar to play", "User has recommended optimisations", "User navigated by zone navigation", "Use template", "USSL Certificate Authority: Changed", "USSL Certificate Authority: Modal Launch", "validate spf content", "Validation method change", "Validation success", "verified email successfully", "verify address", "verify email", "view accounts", "view checkout complete purchase", "View click", "view custom error pages", "view documentation", "view downgrade offer", "view downgrade survey", "view downgrade warning", "view onboarding guide recommendations", "view snippet", "view plan", "view system status", "Viewed Global API Key", "Viewed Origin CA Key", "visit workers developer docs", "visit workers showcase", "visit workers templates", "web analytics upgrade plan click", "WHOIS link click", "Workers:Enablement", "Zap:Opt in", "Zap:Opt out", "Zone setup change", "Bots Report Data", "Information Toast Shown", "Information Toast Closed", "quick edit http tab", "quick edit preview tab", "quick edit schedule tab", "quick edit wrangler tab", "visit product documentation", "visit blog post", "visit recent", "visit blog announcements", "click discover card call to action", "click discover card view products", "click featured product call to action", "click paygo card cta", "click opt-in", "click opt-out", "click close opt out", "click stripe beta select plan support link", "click stripe beta change plan support link", "click rule link", "click button to speed recommendation page", "click trace rule details", "view stripe beta opt out", "error notification shown", "fetch personalized content", "view page", "run speed test", "delete speed test", "create speed test schedule", "delete speed test schedule", "select speed test trend range", "select speed test trend metric", "view speed recommendation", "view lighthouse audit", "enable speed recommendation", "click speed feature link", "click speed optimization documentation link", "enable all speed optimization recommendations", "complete plan change from speed", "start plan change from speed", "view rum disabled screen", "enable rum from speed", "select rum map range", "select rum map metric", "has payment plan on file", "click DNS records link", "click disable DNSSEC link", "click migrate DNSSEC link", "click enable DNSSEC link", "click pending domains link", "change appearance", "click star zone", "click star zone filter", "click empty state link", "click view more", "visit system status item", "view system status item menu", "subscribe to system status item", "click cloudflare logo", "dismiss change notification", "dismiss change notification modal", "set marketing preference ent ss purchase", "view change notification", "view change notification modal", "expand side drawer", "collapse side drawer", "documentation side drawer present", "expand documentation side drawer", "collapse documentation side drawer", "clicked sidebar Discord link", "clicked sidebar Community Forum link", "clicked Workers for Platforms CLI Guide link", "clicked Workers for Platforms Documentation link", "clicked R2 feedback link", "clicked R2 CLI guide", "clicked Constellation feedback link", "domain on cart has trademark claims", "click expand trademark claims button", "click disagree trademark claims button", "click agree trademark claims button", "click to begin domain delete", "domain deletion completed sucessfully", "domain deletion failed because user does not have permissions", "domain deletion failed because user submitted invalid confirmation code", "domain deletion failed for unknown reason", "click to delete domain", "click cancel and closes confirm modal", "click to re-send confirmation code", "click cancel and closes verification modal", "click to continue with domain deletion", "click cancel and closes warning modal", P.N3.INITIAL_FETCH_SCORES, P.N3.FETCH_CONFIGURATION, P.N3.INITIAL_FETCH_TIME_SERIES, P.N3.INITIAL_FETCH_ATTRIBUTES, P.N3.UPDATE_SETTINGS, P.N3.DELETE_RULE, P.N3.UPDATE_RULE, P.N3.FETCH_RULES, P.N3.CONFIGURE_BOT_MANAGEMENT, P.N3.WAF_RULES_REDIRECT, k.F.TOGGLE_TCP_PROTECTION, k.F.CREATE_SYN_PROTECTION_RULE, k.F.UPDATE_SYN_PROTECTION_RULE, k.F.CREATE_TCP_FLOW_PROTECTION_RULE, k.F.UPDATE_TCP_FLOW_PROTECTION_RULE, k.F.CREATE_SYN_PROTECTION_FILTER, k.F.UPDATE_SYN_PROTECTION_FILTER, k.F.CREATE_TCP_FLOW_PROTECTION_FILTER, k.F.UPDATE_TCP_FLOW_PROTECTION_FILTER, ye.F.MANAGE_PAGE_SHIELD_POLICY, ye.F.CONFIGURE_PAGE_SHIELD, ye.F.VIEW_DETECTED_CONNECTIONS, ye.F.VIEW_DETECTED_SCRIPTS, ye.F.VIEW_PAGE_SHIELD_POLICIES, ye.F.VIEW_PAGE_SHIELD_SETTINGS, te.y.CREATE_LIST, te.y.DELETE_LIST, te.y.ADD_LIST_ITEM, te.y.DELETE_LIST_ITEM, oe.KO.PURCHASE_WORKERS_PAID, oe.KO.LIST_CONFIGS, oe.KO.CREATE_HYPERDRIVE_CONFIG, oe.KO.VIEW_CONFIG_DETAILS, oe.KO.UPDATE_CACHING_SETTINGS, oe.KO.DELETE_HYPERDRIVE_CONFIG, oe.KO.CLICK_HYPERDRIVE_DOCUMENTATION, oe.KO.CLICK_GET_STARTED_GUIDE, oe.KO.CLICK_CONNECTIVITY_GUIDES, oe.KO.CLICK_QUICK_LINK, H.N.CNAME, H.N.IP_ADDRESS, H.N.LB, H.N.UPDATE_CNAME, H.N.UPDATE_IP_ADDRESS, H.N.UPDATE_LB, H.N.DISABLE, K.N.TIERED_CACHE, K.N.CACHE_PURGE, K.N.CACHE_ANALYTICS, ...(0, re.x4)(), X.N.CREATE, X.N.EVENTS, X.N.ANALYTICS, X.N.UPDATE, X.N.GENERATE_PREVIEW, F.R.INITIATE_URL_SCAN, F.R.LOAD_SCAN_INFO, N.Fj[N.kq.ENDPOINT_MANAGEMENT].listOfEndpoints, N.Fj[N.kq.ENDPOINT_MANAGEMENT].detailedMetrics, N.Fj[N.kq.ENDPOINT_MANAGEMENT].createEndpoint, N.Fj[N.kq.ENDPOINT_MANAGEMENT].deleteEndpoint, N.Fj[N.kq.API_DISCOVERY].viewDiscoveredEndpoints, N.Fj[N.kq.API_DISCOVERY].saveDiscoveredEndpoint, N.Fj[N.kq.API_DISCOVERY].ignoreOrUnignoreDiscoveredEndpoint, N.Fj[N.kq.SCHEMA_VALIDATION].viewSchemasList, N.Fj[N.kq.SCHEMA_VALIDATION].uploadSchema, N.Fj[N.kq.SCHEMA_VALIDATION].viewSchemaAdoption, N.Fj[N.kq.SCHEMA_VALIDATION].downloadSchema, N.Fj[N.kq.SCHEMA_VALIDATION].deleteSchema, N.Fj[N.kq.SCHEMA_VALIDATION].addLearnedSchemaByHostname, N.Fj[N.kq.SCHEMA_VALIDATION].addLearnedSchemaByEndpoint, N.Fj[N.kq.SEQUENCE_ANALYTICS].viewSequencesPage, N.Fj[N.kq.JWT_VALIDATION].viewJWTRules, N.Fj[N.kq.JWT_VALIDATION].addJWTRule, N.Fj[N.kq.JWT_VALIDATION].editJWTRule, N.Fj[N.kq.JWT_VALIDATION].deleteJWTRule, N.Fj[N.kq.JWT_VALIDATION].reprioritizeJWTRule, N.Fj[N.kq.JWT_VALIDATION].viewJWTConfigs, N.Fj[N.kq.JWT_VALIDATION].addJWTConfig, N.Fj[N.kq.JWT_VALIDATION].editJWTConfig, N.Fj[N.kq.JWT_VALIDATION].deleteJWTConfig, N.Fj[N.kq.SETTINGS].redirectToFirewallRulesTemplate, N.Fj[N.kq.SETTINGS].redirectToPages, N.Fj[N.kq.SETTINGS].listSessionIdentifiers, N.Fj[N.kq.SETTINGS].listRequestsContainingSessionIdentifiers, N.Fj[N.kq.SETTINGS].addOrRemoveSessionIdentifiers, N.Fj[N.kq.SEQUENCE_RULES].listSequenceRules, N.Fj[N.kq.SEQUENCE_RULES].deleteSequenceRule, N.Fj[N.kq.SEQUENCE_RULES].reorderSequenceRule, N.Fj[N.kq.SEQUENCE_RULES].createSequenceRule, N.Fj[N.kq.SEQUENCE_RULES].editSequenceRule, me.Z.CREATE_AND_DEPLOY, me.Z.ANALYTICS, J.y.SECONDARY_DNS_NOTIFICATION_CREATE, J.y.SECONDARY_DNS_NOTIFICATION_UPDATE, J.y.SECONDARY_DNS_NOTIFICATION_DELETE, w.U.ZONE_TRANSFER_SUCCESS, w.U.DNS_RECORD_CREATE, w.U.DNS_RECORD_UPDATE, w.U.DNS_RECORD_DELETE, I.Y.PEER_DNS_CREATE, I.Y.PEER_DNS_UPDATE, I.Y.PEER_DNS_DELETE, I.Y.ZONE_TRANSFER_ENABLE, I.Y.ZONE_TRANSFER_DISABLE, Z.V.ARGO_ENABLEMENT, Z.V.ARGO_GEO_ANALYTICS_FETCH, Z.V.ARGO_GLOBAL_ANALYTICS_FETCH, $.X.VIEW_BUCKETS_LIST, $.X.CREATE_BUCKET, $.X.VALIDATE_BUCKET, $.X.DELETE_BUCKET, $.X.VIEW_CAPTURES_LIST, $.X.CREATE_SIMPLE_CAPTURE, $.X.CREATE_FULL_CAPTURE, $.X.VIEW_FULL_CAPTURE, $.X.DOWNLOAD_SIMPLE_CAPTURE, W.bK.VIEW_RULES, W.bK.CREATE_RULE, W.bK.UPDATE_RULE, W.bK.DELETE_RULE, W.bK.VIEW_CONFIGURATION, W.bK.CREATE_CONFIGURATION, W.bK.UPDATE_CONFIGURATION, W.bK.DELETE_CONFIGURATION, U.r8.VIEW_ALERTS, U.r8.VIEW_ALERTS_HISTORY, U.r8.MAGIC_OVERVIEW_ANALYTICS, se.o4.CLICK_ADAPTIVE_SAMPLING, se.o4.CLICK_TO_LOG_EXPLORER_BANNER, se.o4.CLICK_TO_LOG_EXPLORER_DESCRIPTION, se.o4.CLICK_SWITCH_TO_RAW_LOGS, se.o4.CLICK_SWITCH_TO_SAMPLED_LOGS, "send AI feedback"),
+				C = t.eg.exactStrict(t.eg.object({
 					".agency": t.eg.any.optional,
 					".auction": t.eg.any.optional,
 					".bet": t.eg.any.optional,
@@ -11867,18 +11869,18 @@
 					return (0, t.nM)(B.decode(ae)) && (Te = new v.Uh(ae)), de && de.length > 0 && (Re = new v.oV(ae, de)), [fe, Te, Re]
 				},
 				x = ae => {
-					const ie = b.decode(ae);
+					const ie = C.decode(ae);
 					if ((0, t.nM)(ie)) {
 						const fe = ie.left.map(({
 							context: de
 						}) => de.map(({
 							key: Te
 						}) => Te)).reduce((de, Te) => de.concat(Te), []).filter(de => de in ae);
-						return [C(fe, ae), fe]
+						return [b(fe, ae), fe]
 					}
 					return [ae, []]
 				},
-				C = (ae, ie) => Object.entries(ie).reduce((fe, [de, Te]) => (ae.includes(de) || (fe[de] = Te), fe), {}),
+				b = (ae, ie) => Object.entries(ie).reduce((fe, [de, Te]) => (ae.includes(de) || (fe[de] = Te), fe), {}),
 				Q = ae => (ie, fe, de) => {
 					const [Te, Re, D] = O(fe, de);
 					if (Re) throw Re;
@@ -12602,7 +12604,7 @@
 					return d
 				},
 				RD: function() {
-					return ce
+					return ue
 				},
 				cC: function() {
 					return I
@@ -12623,144 +12625,144 @@
 
 			function i() {
 				return i = Object.assign ? Object.assign.bind() : function(B) {
-					for (var b = 1; b < arguments.length; b++) {
-						var O = arguments[b];
+					for (var C = 1; C < arguments.length; C++) {
+						var O = arguments[C];
 						for (var x in O) Object.prototype.hasOwnProperty.call(O, x) && (B[x] = O[x])
 					}
 					return B
 				}, i.apply(this, arguments)
 			}
 
-			function c(B, b) {
+			function c(B, C) {
 				if (B == null) return {};
-				var O = y(B, b),
-					x, C;
+				var O = y(B, C),
+					x, b;
 				if (Object.getOwnPropertySymbols) {
 					var Q = Object.getOwnPropertySymbols(B);
-					for (C = 0; C < Q.length; C++) x = Q[C], !(b.indexOf(x) >= 0) && (!Object.prototype.propertyIsEnumerable.call(B, x) || (O[x] = B[x]))
+					for (b = 0; b < Q.length; b++) x = Q[b], !(C.indexOf(x) >= 0) && (!Object.prototype.propertyIsEnumerable.call(B, x) || (O[x] = B[x]))
 				}
 				return O
 			}
 
-			function y(B, b) {
+			function y(B, C) {
 				if (B == null) return {};
 				var O = {},
 					x = Object.keys(B),
-					C, Q;
-				for (Q = 0; Q < x.length; Q++) C = x[Q], !(b.indexOf(C) >= 0) && (O[C] = B[C]);
+					b, Q;
+				for (Q = 0; Q < x.length; Q++) b = x[Q], !(C.indexOf(b) >= 0) && (O[b] = B[b]);
 				return O
 			}
 			class t extends e.Component {
-				constructor(b) {
-					super(b);
+				constructor(C) {
+					super(C);
 					const {
 						locale: O,
 						phrases: x,
-						translator: C
-					} = b;
-					O && C.locale(O), x && C.extend(x)
+						translator: b
+					} = C;
+					O && b.locale(O), x && b.extend(x)
 				}
-				componentDidUpdate(b) {
-					b.phrases !== this.props.phrases && this.props.phrases && this.props.translator.locale(this.props.locale)
+				componentDidUpdate(C) {
+					C.phrases !== this.props.phrases && this.props.phrases && this.props.translator.locale(this.props.locale)
 				}
 				render() {
 					const {
-						children: b
+						children: C
 					} = this.props;
-					return b
+					return C
 				}
 			}
 			var d = B => {
 				let {
-					translator: b
-				} = B, O = c(B, ["translator"]);
-				const x = () => e.createElement(g, null, C => e.createElement(t, i({
 					translator: C
+				} = B, O = c(B, ["translator"]);
+				const x = () => e.createElement(g, null, b => e.createElement(t, i({
+					translator: b
 				}, O)));
-				return b ? (b.locale(O.locale), e.createElement(a, {
-					value: b
+				return C ? (C.locale(O.locale), e.createElement(a, {
+					value: C
 				}, x())) : x()
 			};
 
 			function m() {
 				return m = Object.assign ? Object.assign.bind() : function(B) {
-					for (var b = 1; b < arguments.length; b++) {
-						var O = arguments[b];
+					for (var C = 1; C < arguments.length; C++) {
+						var O = arguments[C];
 						for (var x in O) Object.prototype.hasOwnProperty.call(O, x) && (B[x] = O[x])
 					}
 					return B
 				}, m.apply(this, arguments)
 			}
 
-			function s(B, b) {
+			function s(B, C) {
 				if (B == null) return {};
-				var O = _(B, b),
-					x, C;
+				var O = _(B, C),
+					x, b;
 				if (Object.getOwnPropertySymbols) {
 					var Q = Object.getOwnPropertySymbols(B);
-					for (C = 0; C < Q.length; C++) x = Q[C], !(b.indexOf(x) >= 0) && (!Object.prototype.propertyIsEnumerable.call(B, x) || (O[x] = B[x]))
+					for (b = 0; b < Q.length; b++) x = Q[b], !(C.indexOf(x) >= 0) && (!Object.prototype.propertyIsEnumerable.call(B, x) || (O[x] = B[x]))
 				}
 				return O
 			}
 
-			function _(B, b) {
+			function _(B, C) {
 				if (B == null) return {};
 				var O = {},
 					x = Object.keys(B),
-					C, Q;
-				for (Q = 0; Q < x.length; Q++) C = x[Q], !(b.indexOf(C) >= 0) && (O[C] = B[C]);
+					b, Q;
+				for (Q = 0; Q < x.length; Q++) b = x[Q], !(C.indexOf(b) >= 0) && (O[b] = B[b]);
 				return O
 			}
 
 			function u(B) {
-				for (var b = 1; b < arguments.length; b++) {
-					var O = arguments[b] != null ? Object(arguments[b]) : {},
+				for (var C = 1; C < arguments.length; C++) {
+					var O = arguments[C] != null ? Object(arguments[C]) : {},
 						x = Object.keys(O);
-					typeof Object.getOwnPropertySymbols == "function" && x.push.apply(x, Object.getOwnPropertySymbols(O).filter(function(C) {
-						return Object.getOwnPropertyDescriptor(O, C).enumerable
-					})), x.forEach(function(C) {
-						f(B, C, O[C])
+					typeof Object.getOwnPropertySymbols == "function" && x.push.apply(x, Object.getOwnPropertySymbols(O).filter(function(b) {
+						return Object.getOwnPropertyDescriptor(O, b).enumerable
+					})), x.forEach(function(b) {
+						f(B, b, O[b])
 					})
 				}
 				return B
 			}
 
-			function f(B, b, O) {
-				return b = R(b), b in B ? Object.defineProperty(B, b, {
+			function f(B, C, O) {
+				return C = R(C), C in B ? Object.defineProperty(B, C, {
 					value: O,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : B[b] = O, B
+				}) : B[C] = O, B
 			}
 
 			function R(B) {
-				var b = M(B, "string");
-				return typeof b == "symbol" ? b : String(b)
+				var C = M(B, "string");
+				return typeof C == "symbol" ? C : String(C)
 			}
 
-			function M(B, b) {
+			function M(B, C) {
 				if (typeof B != "object" || B === null) return B;
 				var O = B[Symbol.toPrimitive];
 				if (O !== void 0) {
-					var x = O.call(B, b || "default");
+					var x = O.call(B, C || "default");
 					if (typeof x != "object") return x;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (b === "string" ? String : Number)(B)
+				return (C === "string" ? String : Number)(B)
 			}
 			class G extends e.Component {
-				constructor(...b) {
-					super(...b);
+				constructor(...C) {
+					super(...C);
 					f(this, "state", {
 						phrasesByLocale: {}
 					}), f(this, "loadLocale", async O => {
 						const {
 							loadPhrases: x
-						} = this.props, C = await x(O);
+						} = this.props, b = await x(O);
 						this.setState(Q => ({
 							phrasesByLocale: u({}, Q.phrasesByLocale, {
-								[O]: C
+								[O]: b
 							})
 						}))
 					})
@@ -12768,15 +12770,15 @@
 				componentDidMount() {
 					this.loadLocale(this.props.locale)
 				}
-				componentDidUpdate(b) {
+				componentDidUpdate(C) {
 					const {
 						phrasesByLocale: O
 					} = this.state;
-					this.props.locale !== b.locale && !O[this.props.locale] && this.loadLocale(this.props.locale)
+					this.props.locale !== C.locale && !O[this.props.locale] && this.loadLocale(this.props.locale)
 				}
 				render() {
 					const {
-						children: b,
+						children: C,
 						locale: O
 					} = this.props, {
 						phrasesByLocale: x
@@ -12784,16 +12786,16 @@
 					return x[O] ? e.createElement(d, {
 						locale: O,
 						phrases: x[O]
-					}, b) : null
+					}, C) : null
 				}
 			}
 			f(G, "defaultProps", {});
 			var v = B => {
 					let {
-						locale: b
+						locale: C
 					} = B, O = s(B, ["locale"]);
 					return e.createElement(g, null, x => e.createElement(G, m({
-						locale: b || x.locale()
+						locale: C || x.locale()
 					}, O)))
 				},
 				P = n("../../../../node_modules/lodash/escape.js"),
@@ -12801,47 +12803,47 @@
 				$ = n("../../../../node_modules/@cloudflare/util-markdown/es/index.js");
 
 			function ye(B) {
-				for (var b = 1; b < arguments.length; b++) {
-					var O = arguments[b] != null ? Object(arguments[b]) : {},
+				for (var C = 1; C < arguments.length; C++) {
+					var O = arguments[C] != null ? Object(arguments[C]) : {},
 						x = Object.keys(O);
-					typeof Object.getOwnPropertySymbols == "function" && x.push.apply(x, Object.getOwnPropertySymbols(O).filter(function(C) {
-						return Object.getOwnPropertyDescriptor(O, C).enumerable
-					})), x.forEach(function(C) {
-						re(B, C, O[C])
+					typeof Object.getOwnPropertySymbols == "function" && x.push.apply(x, Object.getOwnPropertySymbols(O).filter(function(b) {
+						return Object.getOwnPropertyDescriptor(O, b).enumerable
+					})), x.forEach(function(b) {
+						re(B, b, O[b])
 					})
 				}
 				return B
 			}
 
-			function re(B, b, O) {
-				return b = X(b), b in B ? Object.defineProperty(B, b, {
+			function re(B, C, O) {
+				return C = X(C), C in B ? Object.defineProperty(B, C, {
 					value: O,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : B[b] = O, B
+				}) : B[C] = O, B
 			}
 
 			function X(B) {
-				var b = H(B, "string");
-				return typeof b == "symbol" ? b : String(b)
+				var C = H(B, "string");
+				return typeof C == "symbol" ? C : String(C)
 			}
 
-			function H(B, b) {
+			function H(B, C) {
 				if (typeof B != "object" || B === null) return B;
 				var O = B[Symbol.toPrimitive];
 				if (O !== void 0) {
-					var x = O.call(B, b || "default");
+					var x = O.call(B, C || "default");
 					if (typeof x != "object") return x;
 					throw new TypeError("@@toPrimitive must return a primitive value.")
 				}
-				return (b === "string" ? String : Number)(B)
+				return (C === "string" ? String : Number)(B)
 			}
 
 			function k() {
 				return k = Object.assign ? Object.assign.bind() : function(B) {
-					for (var b = 1; b < arguments.length; b++) {
-						var O = arguments[b];
+					for (var C = 1; C < arguments.length; C++) {
+						var O = arguments[C];
 						for (var x in O) Object.prototype.hasOwnProperty.call(O, x) && (B[x] = O[x])
 					}
 					return B
@@ -12850,36 +12852,36 @@
 			const F = /<(\d+)>(.*)<\/\1>|<(\d+)\/>/,
 				N = /(?:\r\n|\r|\n)/g;
 
-			function te(B, b, O) {
+			function te(B, C, O) {
 				return e.createElement("span", {
 					key: B,
 					"data-testid": O,
 					dangerouslySetInnerHTML: {
-						__html: b
+						__html: C
 					}
 				})
 			}
 
-			function me(B, b = [], O = [], x) {
-				let C = 0;
+			function me(B, C = [], O = [], x) {
+				let b = 0;
 				const Q = B.replace(N, "").split(F);
-				if (Q.length === 1) return [te(C, B, x)];
+				if (Q.length === 1) return [te(b, B, x)];
 				const ve = [],
 					Ae = Q.shift();
 				if (Ae) {
-					const Pe = te(C, Ae, x);
-					ve.push(Pe), typeof Pe != "string" && C++
+					const Pe = te(b, Ae, x);
+					ve.push(Pe), typeof Pe != "string" && b++
 				}
 				for (const [Pe, Ne, Be] of J(Q)) {
-					b[Pe] || window.console && console.warn(`Missing Component for translation key: ${B}, index: ${Pe}. Fragment will be used.`);
-					const Ue = b[Pe] || e.Fragment,
+					C[Pe] || window.console && console.warn(`Missing Component for translation key: ${B}, index: ${Pe}. Fragment will be used.`);
+					const Ue = C[Pe] || e.Fragment,
 						Le = O[Pe] || {},
 						ke = te(0, Ne);
 					if (ve.push(e.createElement(Ue, k({
-							key: C
-						}, Le), ke)), C++, Be) {
-						const xe = te(C, Be);
-						ve.push(xe), typeof xe != "string" && C++
+							key: b
+						}, Le), ke)), b++, Be) {
+						const xe = te(b, Be);
+						ve.push(xe), typeof xe != "string" && b++
 					}
 				}
 				return ve
@@ -12887,18 +12889,18 @@
 
 			function J(B) {
 				if (!B.length) return [];
-				const [b, O, x, C] = B.slice(0, 4);
+				const [C, O, x, b] = B.slice(0, 4);
 				return [
-					[parseInt(b || x), O || "", C]
+					[parseInt(C || x), O || "", b]
 				].concat(J(B.slice(4, B.length)))
 			}
 
 			function w({
 				id: B = "",
-				smartCount: b,
+				smartCount: C,
 				_: O,
 				values: x,
-				applyMarkdown: C,
+				applyMarkdown: b,
 				Components: Q,
 				componentProps: ve,
 				testId: Ae
@@ -12910,10 +12912,10 @@
 						})
 					});
 					const Ne = ye({
-							smart_count: b,
+							smart_count: C,
 							_: O
 						}, x),
-						Be = C ? (0, $.Z)(Pe.t(B.toString(), Ne), {
+						Be = b ? (0, $.Z)(Pe.t(B.toString(), Ne), {
 							__dangerouslyDontSanitizeMarkdown: !0
 						}) : Pe.t(B.toString(), Ne),
 						Ue = me(Be, Q, ve, Ae);
@@ -12924,8 +12926,8 @@
 
 			function Z() {
 				return Z = Object.assign ? Object.assign.bind() : function(B) {
-					for (var b = 1; b < arguments.length; b++) {
-						var O = arguments[b];
+					for (var C = 1; C < arguments.length; C++) {
+						var O = arguments[C];
 						for (var x in O) Object.prototype.hasOwnProperty.call(O, x) && (B[x] = O[x])
 					}
 					return B
@@ -12944,7 +12946,7 @@
 				return (0, e.useContext)(p)
 			}
 			var oe = n("../../../common/intl/intl-types/src/index.ts"),
-				ce = r().createContext(oe.Q.en_US)
+				ue = r().createContext(oe.Q.en_US)
 		},
 		"../../../common/util/types/src/utils/index.ts": function(z, E, n) {
 			"use strict";
