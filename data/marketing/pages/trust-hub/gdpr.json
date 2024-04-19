@@ -388,7 +388,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The types of personal data Cloudflare processes on behalf of a customer depend on which Cloudflare services are implemented. For our most popular Application Services and Network Services, Cloudflare does not store customer content, nor do we have any control of the data our customers choose to transmit, route, switch, and cache through our Global Network. In a limited number of cases, Cloudflare products can be used for storage of content. Regardless of what Cloudflare services they use, however, our customers are fully responsible for their own compliance with applicable law and their independent contractual arrangements in connection with the data they choose to transmit, route, switch, cache, or store through the Cloudflare Global Network.",
+													"value": "The types of personal data Cloudflare processes on behalf of a customer depend on which Cloudflare services are implemented. For our most popular Core Application Layer Services, Cloudflare does not store customer content, nor do we have any control of the data our customers choose to transmit, route, switch, and cache through our Global Network. In a limited number of cases, Cloudflare products can be used for storage of content. Regardless of what Cloudflare services they use, however, our customers are fully responsible for their own compliance with applicable law and their independent contractual arrangements in connection with the data they choose to transmit, route, switch, cache, or store through the Cloudflare Global Network.",
 													"marks": [],
 													"content": null
 												}
@@ -409,7 +409,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "For our Application and Network Services, the vast majority of data that transits Cloudflare's network stays on Cloudflare's Edge servers. Metadata about this activity is processed on behalf of our customers in our data centers in the United States and Europe.",
+													"value": "For our Core Application Layer Services, the vast majority of data that transits Cloudflare's network stays on Cloudflare's Edge servers. Metadata about this activity is processed on behalf of our customers in our data centers in the United States and Europe.",
 													"marks": [],
 													"content": null
 												}
@@ -2218,7 +2218,17 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "c) Keyless SSL. Keyless SSL allows a customer to store and manage their own SSL Private keys for use with Cloudflare. Customers can use a variety of systems for their keystore, including hardware security modules (\"HSMs\"), virtual servers, and hardware running Unix/Linux and Windows that is housed in environments customers control.",
+													"value": "c",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ") Geo key Manager. Cloudflare has a truly international customer base and we've learned that customers around the world have different regulatory and statutory requirements, and different risk profiles, concerning the placement of their private keys. With that philosophy in mind, we set out to design a very flexible system for deciding where keys can be kept. Geo Key Manager lets customers limit the exposure of their private keys to certain locations. It's similar to Keyless SSL, but instead of having to run a key server inside your infrastructure, Cloudflare hosts key servers in the locations of your choosing.",
 													"marks": [],
 													"content": null
 												}
@@ -2239,28 +2249,27 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "d) Geo key Manager. Cloudflare has a truly international customer base and we've learned that customers around the world have different regulatory and statutory requirements, and different risk profiles, concerning the placement of their private keys. With that philosophy in mind, we set out to design a very flexible system for deciding where keys can be kept. Geo Key Manager lets customers limit the exposure of their private keys to certain locations. It's similar to Keyless SSL, but instead of having to run a key server inside your infrastructure, Cloudflare hosts key servers in the locations of your choosing.",
+													"value": "\n",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
 												{
 													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": "\n\n\n\n\n",
+													"value": "In addition, Cloudflare offers Keyless SSL, which allows a customer to store and manage their own SSL Private keys for use with Cloudflare. Customers can use a variety of systems for their keystore, including hardware security modules (\"HSMs\"), virtual servers, and hardware running Unix/Linux and Windows that is housed in environments customers control. ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n\n\n\n",
 													"marks": [],
 													"content": null
 												}
