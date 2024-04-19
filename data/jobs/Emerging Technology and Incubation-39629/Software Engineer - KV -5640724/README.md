@@ -5,15 +5,15 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3>About the Department</h3>
+<p><strong>Available Locations<br></strong><br>Hybrid: Amsterdam, Lisbon or London<br>Remote: Netherlands, Portugal or UK<strong><br><br>About the Department</strong></p>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
 <p>The Workers organization makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the technology that executes trillions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
-<h3>About the Team</h3>
+<p><strong>About the Team</strong></p>
 <p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the developer platform that executes trillions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to. The Workers team is split into several groups, this group is focused on how we bring state to the edge.</p>
-<h3>What you'll do</h3>
+<p><strong>What you'll do</strong></p>
 <p>In this role, you'll help design and build <a href="https://developers.cloudflare.com/workers/learning/how-kv-works/">Workers KV</a>, a global low-latency key-value data store for the <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022/">Supercloud</a>. You'll be part of a top-notch engineering team keeping KV running smoothly at global scale while implementing new features, ensuring reliability, and improving performance.</p>
 <p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how KV processes and stores data, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust, and C++.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>4+ years of experience with (and love for) distributed systems and data</li>
 	<li>Willing and eager to share knowledge, and mentorGreat oral and written communications skills, especially concisely documenting complex concepts</li>
@@ -26,7 +26,7 @@
 	<li>Designing and building APIs</li>
 	<li>A desire for continuous learning and improvement</li>
 </ul>
-<p><strong>Available Locations</strong>: Amsterdam or Remote Netherlands, London or Remote UK, Lisbon or Remote Portugal</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: <span class="collapsed-field-text">Austin, US, Lisbon, Portugal, London, UK or US</span>&nbsp;&nbsp;</strong></p>
+<p><strong>Available locations: <br><br></strong><span class="collapsed-field-text">Hybrid - Austin, US | Lisbon, Portugal | London, UK<br></span>Remote - US&nbsp;&nbsp;</p>
 <p><strong>About the team</strong></p>
 <p>The mission of the DDoS engineering team at Cloudflare is to make DDoS attacks a thing of the past. We create Internet-scale systems that analyze and mitigate the largest DDoS attacks in the world. Our systems operate across one of the largest networks on the Internet and protect nearly 20% of all websites. Because of our scale and reach, we’re consistently on the front line in the battle against new and emerging threats, and the work we do on this team has an outsized impact in helping Cloudflare build a better Internet.</p>
 <p>Our team is responsible for a large number of different systems. Our tooling and mitigation systems are primarily written in Rust, but we also use Lua, C, and eBPF. Our analytics systems are primarily written in Go, and they leverage Kafka and ClickHouse. All of our analysis and mitigation operates in real-time to process massive amounts of data.</p>

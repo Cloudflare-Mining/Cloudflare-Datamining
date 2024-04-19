@@ -6,7 +6,7 @@
 	</div>
 </div>
 <div id="main-content" class="wiki-content">
-	<p><strong>Available Locations:&nbsp;&nbsp;</strong>Austin Texas, San Francisco, Mexico City - MX</p>
+	<p><strong>Available Locations: </strong>Austin Texas, San Francisco, Mexico City - MX</p>
 	<h4 id="SecurityEngineer-AbouttheTeam"><strong>About the Team</strong></h4>
 	<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
 	<p><strong>About the Role</strong></p>

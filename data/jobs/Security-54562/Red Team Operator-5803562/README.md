@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Texas, Washington, D.C. or Lisbon, Portugal</strong></p>
+<p><strong>Available Locations: Austin, Texas or Washington, D.C.</strong></p>
 <p><strong>About the role&nbsp;</strong></p>
 <p>A Red Team Engineer at Cloudflare will be a key member in the development of an adversarial emulation program and capabilities. This program and capabilities sole purpose is to help gauge the effectiveness of Cloudflare’s people, processes and technologies in use to drive continuous&nbsp; improvements into the security posture of Cloudflare by thinking as an adversary would.&nbsp;</p>
 <p><strong>What You’ll Do</strong></p>

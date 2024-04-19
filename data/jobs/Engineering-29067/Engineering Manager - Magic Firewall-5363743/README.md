@@ -5,8 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2>Engineering Manager - Magic Firewall</h2>
-<p><strong>About the role</strong></p>
+<p><strong>Location: Austin, TX or Remote US<br><br>About the role</strong></p>
 <p>Cloudflare provides a full stack of networking-as-a-service products that allow customers to build and operate secure, reliable, and fast networks without purchasing traditional network hardware. Cloudflare’s network underpins mission-critical infrastructure, always-on applications, small businesses, and everything in between. Our customers rely on the performance, security, reliability, and visibility provided by our network to power their business.&nbsp;</p>
 <p>We’re looking for an Engineering Manager to help lead and grow a team to execute on the vision to replace “next generation” network firewalls with a modern, network-as-a-service offering leveraging the full power and threat data of the Cloudflare network. Traditional network firewalls, and their virtualized equivalents, all suffer from the same scale, cost, and administration challenges of other network hardware that Cloudflare replaces. It’s time to build a better solution and reinvent the market.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>

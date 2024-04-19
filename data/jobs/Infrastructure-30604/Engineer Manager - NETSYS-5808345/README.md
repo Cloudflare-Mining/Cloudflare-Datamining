@@ -5,29 +5,52 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3>About the Department</h3>
+<p><strong>Available Locations<br><br></strong>Hybrid: Amsterdam, Lisbon, London or Munich<br>Remote: Germany, Netherlands, Portugal or UK</p>
+<p><strong><br>About the Department</strong></p>
 <p>Cloudflare's Network Engineering Team builds and runs the infrastructure that runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world's largest networks with data centers in 190 cities worldwide and a couple of large specialized data centers for internal needs.</p>
-<h3>About the role</h3>
+<p><strong>About the role</strong></p>
 <p>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network automation engineers who are building software solutions to improve network resilience and reduce engineering operational toil.</p>
 <p>You will work on a range of tools, infrastructure and services - new and existing - with an aim to elegantly and efficiently solve problems and deliver practical, maintainable and scalable solutions.</p>
-<h3>Examples Of Desirable Skills, Knowledge And Experience</h3>
+<p>Examples Of Desirable Skills, Knowledge And Experience</p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>Management role with 2+years of experience</li>
-	<li>Solid foundation on configuration management frameworks: Ansible, Chef, Saltstack.</li>
-	<li>Knowledge of programming languages like Python or Golang.</li>
-	<li>Highly Proficient with modern Unix/Linux operating systems/distributions</li>
-	<li>Experience with CI/CD, containers and/or virtualization, web servers, and databases</li>
-	<li>Experience in systems Observability.</li>
+	<li>
+		<p>BA/BS in Computer Science or equivalent experience</p>
+	</li>
+	<li>
+		<p>Management role with 2+years of experience</p>
+	</li>
+	<li>
+		<p>Solid foundation on configuration management frameworks: Ansible, Chef, Saltstack.</p>
+	</li>
+	<li>
+		<p>Knowledge of programming languages like Python or Golang.</p>
+	</li>
+	<li>
+		<p>Highly Proficient with modern Unix/Linux operating systems/distributions</p>
+	</li>
+	<li>
+		<p>Experience with CI/CD, containers and/or virtualization, web servers, and databases</p>
+	</li>
+	<li>
+		<p>Experience in systems Observability.</p>
+	</li>
 </ul>
-<h3>Bonus Points but not required:</h3>
+<p><strong>Bonus Points but not required:</strong></p>
 <ul>
-	<li>Professional experience as a Site Reliability Engineer (SRE)</li>
-	<li>Knowledge of Networking engineering, with competencies in Layer 2 and Layer 3 protocols and vendor equipment: Cisco, Juniper, etc.</li>
-	<li>Experience building and maintaining large distributed systems</li>
-	<li>Experience managing internal and/or external customer requirements and expectations</li>
+	<li>
+		<p>Professional experience as a Site Reliability Engineer (SRE)</p>
+	</li>
+	<li>
+		<p>Knowledge of Networking engineering, with competencies in Layer 2 and Layer 3 protocols and vendor equipment: Cisco, Juniper, etc.</p>
+	</li>
+	<li>
+		<p>Experience building and maintaining large distributed systems</p>
+	</li>
+	<li>
+		<p>Experience managing internal and/or external customer requirements and expectations</p>
+	</li>
 </ul>
-<p><strong>Available Locations:</strong> Lisbon or Remote Portugal, London or Remote UK, Amsterdam or Remote Netherlands, Germany or Munich</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

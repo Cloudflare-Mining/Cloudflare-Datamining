@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Team:</strong></p>
+<p><strong>Available Locations: Lisbon or Remote Portugal<br><br>About the Team:</strong></p>
 <p>The Marketing Engineering (MRKENG) team builds awareness by sharing how Cloudflare can make a positive impact for customers and prospects. This spans across all channels of client communication: our website, blog, emails, social media, events, ads, etc. We build the technology that allows internal customers to craft beautiful experiences and tell compelling stories about Cloudflare.</p>
 <p>This role entails a scope of developer work focused on the Adobe Experience Platform (AEP), particularly Adobe Target, Adobe Customer&nbsp; Data Platform (CDP), and Adobe Journey Optimizer (AJO).&nbsp; The selected candidate will work amongst a global engineering team, broader Marketing organization, and cross-team contributions to a personalized user journey.</p>
 <p><strong>REQUIREMENTS</strong></p>
@@ -37,7 +37,6 @@
 	<li>Passion for building and optimizing a personalized user experience, from freelance developer to CxO</li>
 	<li>Working knowledge of Cloudflare tools, including Zaraz, Dash, and Workers</li>
 </ul>
-<p><strong>Available Locations</strong>: Lisbon or Remote Portugal</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

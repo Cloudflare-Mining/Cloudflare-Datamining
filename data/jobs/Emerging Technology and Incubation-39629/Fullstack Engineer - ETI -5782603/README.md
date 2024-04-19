@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
+<p><strong>Location: </strong>Lisbon or Remote Portugal<strong> <br><br>About the Department</strong></p>
 <p><span style="font-weight: 400;">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers.&nbsp;</span></p>
 <h4><strong>About The Team</strong></h4>
 <p>Cloudflare helps build the future of the Internet. The Emerging Technology and Incubation (ETI) team invents, launches, and brings to market the technologies required to reach that goal. ETI ships software that changes the Internet. The world's fastest DNS resolver, 1.1.1.1, Cloudflare WARP, Cloudflare One, Cloudflare Workers, D1, R2, and Workers AI are examples of our launches.</p>

@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - <span class="collapsed-field-text">Austin, San Francisco,&nbsp;</span>or Remote - US</p>
+<p><strong>Available Locations<br><br></strong>Hybrid - <span class="collapsed-field-text">Austin, San Francisco<br></span>Remote - US<br><br><strong>About the position</strong></p>
 <p>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager with experience driving security compliance projects to join our team.&nbsp; Your main responsibility will be to work cross functionally across the product, engineering, security compliance, and legal organizations to build and execute on the overall strategy for pursuing compliance projects.&nbsp;</p>
 <p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations and working with various functions to deliver success. You will partner with various security compliance professionals to determine available options, manage stakeholder expectations, and execute against the jointly designed path to certification.</p>
 <p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>

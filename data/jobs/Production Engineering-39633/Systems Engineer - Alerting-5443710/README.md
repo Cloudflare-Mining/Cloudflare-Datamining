@@ -5,12 +5,12 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
+<p><strong>Available Locations<br><br></strong>Hybrid: Amsterdam, Lisbon, London, Munich or Paris<br>Remote: France, Germany, Netherlands, Portugal or UK<strong><br><br>About the Department</strong></p>
 <p>Production Engineering is responsible for the world’s most reliable, observable, performant, and safe network ecosystem. Our customers rely on our products and systems to safely modify, troubleshoot, and release products without external impact.</p>
 <p>Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.</p>
 <p>We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behavior is and we are capable of determining and exposing anomalous behavior.</p>
 <p>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>In this role, you can expect to:</strong></h3>
+<p><strong>In this role, you can expect to:</strong></p>
 <ul>
 	<li>Design, deliver, and operate software that progresses Cloudflare's Observability competency</li>
 	<li>Solve scaling bottlenecks in critical services in our Logging pipeline</li>
@@ -21,7 +21,7 @@
 	<li>Contribute to open-source</li>
 </ul>
 <p>We are a small team, well-funded, growing and focused on building an extraordinary company. This is a systems engineering role and is a superb opportunity to be part of a high performing team to help to support Cloudflare’s mission and help build a better internet.</p>
-<h3>You may be a good fit for our team if you have:</h3>
+<p>You may be a good fit for our team if you have:</p>
 <ul>
 	<li>Proficiency in distributed Linux environments</li>
 	<li>Proficiency in designing high-scale distributed systems</li>
@@ -34,12 +34,11 @@
 	<li>Familiarity with Internetworking and BGP</li>
 	<li>Strong bias for action</li>
 </ul>
-<h3><strong>Bonus points if you have:</strong></h3>
+<p><strong>Bonus points if you have:</strong></p>
 <ul>
 	<li>Experience with high-bandwidth transit Internetworking and routing</li>
 	<li>Passion for code simplicity and performance</li>
 </ul>
-<p><strong>Available Locations: </strong>Amsterdam or Remote Netherlands, Paris or Remote France, Munich or Remote Germany, London or Remote UK, and Lisbon or Remote Portugal</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

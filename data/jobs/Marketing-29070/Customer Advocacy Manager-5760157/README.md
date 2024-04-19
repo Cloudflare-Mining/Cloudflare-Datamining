@@ -5,7 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Preferred location is San Francisco remote, but open to US Remote</strong></p>
+<p><strong>Available Locations</strong></p>
+<p>Preferred location is San Francisco Hybrid/Remote, but open to US Remote<br><br></p>
 <p><strong>Responsibilities</strong></p>
 <p>The Customer Advocacy Manager will be responsible for building, managing and growing customer marketing programs. Reporting to the Head of Customer Advocacy, the ideal candidate should have previous experience in both customer engagement and scaling customer programs in high growth SaaS companies. This is a fantastic opportunity to join a high growth company.</p>
 <p>You will work cross functionally to build customer participation with enterprise customers across many industries and partnering closely with stakeholders in Sales, Customer Success, Marketing, and PR/AR.&nbsp;</p>

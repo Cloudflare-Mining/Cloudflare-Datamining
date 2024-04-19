@@ -5,11 +5,11 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the department</strong></h4>
+<p><strong>Available Locations<br><br></strong>Hybrid: Amsterdam, Lisbon, London or Munich<br>Remote: Germany, Netherlands, Portugal or UK<br><strong><br>About the department</strong></p>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
 <p><strong>What you'll do</strong></p>
 <p>The Media platform organization builds and maintains a suite of products that are easy to enable and make web experiences faster.&nbsp; The <a href="https://developers.cloudflare.com/images/">Cloudflare Image Optimization</a> suite of products allow customers to focus on building great experiences rather than spending time optimizing for performance. You will own code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify the request flow of Media products, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Rust, Go, Typescript.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>Experience building, deploying, and operating full-stack services.</li>
 	<li>You will be working mainly with systems programming languages like Rust, Golang, Typescript, etc</li>
@@ -17,14 +17,13 @@
 	<li>Experience debugging, optimizing, and identifying failure modes in a large-scale distributed system.</li>
 	<li>A keen interest in the web and technologies such as web browsers, HTTP and JavaScript.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p><strong>Bonus Points</strong></p>
 <ul>
 	<li>Experience with image processing and transformation operations.</li>
 	<li>Experience with audio and video protocols – specifically, ingestion (SRT, RTMP, WebRTC) and delivery (HLS, DASH)</li>
 	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
 	<li>Expertise in data analysis and troubleshooting large-scale distributed systems</li>
 </ul>
-<p><strong>Available Locations:&nbsp;</strong>London or Remote UK, and Lisbon or Remote Portugal, Munich or Remote Germany, Amsterdam or Remote Netherlands</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

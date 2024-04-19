@@ -5,8 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>&nbsp;</p>
-<p><strong>Available locations</strong>: Remote US, Austin, TX or San Francisco, CA</p>
+<p><strong>Available locations<br></strong>Remote - US<br>Hybrid - Austin, TX or San Francisco, CA</p>
 <hr>
 <p><strong>About the department</strong></p>
 <p>You’ll be joining the Developer Marketing team sitting in the Product and Solution marketing organization. Developer Marketing works cross functionally with field marketing, demand generation, and emerging technology and incubation to drive go-to-market activities for new and emerging developer solutions. The primary focus of this role will be on Cloudflare’s AI solutions with a secondary focus on the developer platform suite.&nbsp;</p>

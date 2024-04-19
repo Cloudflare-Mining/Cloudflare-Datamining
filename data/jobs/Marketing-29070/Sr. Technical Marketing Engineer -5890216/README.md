@@ -7,7 +7,6 @@
 </div>
 <p>Available Locations - San Francisco and or US Remote</p>
 <hr>
-<p><strong>Sr. Technical Marketing Engineer, Developer/AI</strong></p>
 <p>Cloudflare is looking for a passionate technical marketer to lead our program for Developer/AI solution area. This is a high-impact, results-oriented role, where you will work directly with developers, Product Management, Technical Enablement and Marketing to effectively demonstrate our current products/platform and take new ones to market. You will also identify our technical differentiators and develop stories (and supporting technical assets) that position us against our competitors and aid our sales team.&nbsp;</p>
 <p>Cloudflare <a href="https://www.cloudflare.com/developer-platform/products/">Developer Platform</a> consists of our Compute, Storage, Developer tooling, and our recently announced AI solutions, that together deliver serverless applications and services needed to deploy full-stack and AI applications. We are ranked highest in Forrester Wave for Edge Development Platform with the highest market presence.&nbsp;</p>
 <p>You will have a drive to understand developers’ needs, dig into product details, and elevate our messaging to deliver solution-oriented, breakthrough initiatives. You will enjoy this role if you like working with fast-paced teams and having autonomy to drive your initiatives.&nbsp;</p>
