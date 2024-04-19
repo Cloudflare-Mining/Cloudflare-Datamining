@@ -2064,15 +2064,20 @@ declare class DecompressionStream extends TransformStream<
 }
 declare class TextEncoderStream extends TransformStream<string, Uint8Array> {
   constructor();
+  get encoding(): string;
 }
 declare class TextDecoderStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   string
 > {
   constructor(label?: string, options?: TextDecoderStreamTextDecoderStreamInit);
+  get encoding(): string;
+  get fatal(): boolean;
+  get ignoreBOM(): boolean;
 }
 declare interface TextDecoderStreamTextDecoderStreamInit {
   fatal?: boolean;
+  ignoreBOM?: boolean;
 }
 declare class ByteLengthQueuingStrategy
   implements QueuingStrategy<ArrayBufferView>
@@ -4184,10 +4189,10 @@ declare namespace Rpc {
   // TypeScript uses *structural* typing meaning anything with the same shape as type `T` is a `T`.
   // For the classes exported by `cloudflare:workers` we want *nominal* typing (i.e. we only want to
   // accept `WorkerEntrypoint` from `cloudflare:workers`, not any other class with the same shape)
-  export const __RPC_STUB_BRAND: unique symbol;
-  export const __RPC_TARGET_BRAND: unique symbol;
-  export const __WORKER_ENTRYPOINT_BRAND: unique symbol;
-  export const __DURABLE_OBJECT_BRAND: unique symbol;
+  export const __RPC_STUB_BRAND: "__RPC_STUB_BRAND";
+  export const __RPC_TARGET_BRAND: "__RPC_TARGET_BRAND";
+  export const __WORKER_ENTRYPOINT_BRAND: "__WORKER_ENTRYPOINT_BRAND";
+  export const __DURABLE_OBJECT_BRAND: "__DURABLE_OBJECT_BRAND";
   export interface RpcTargetBranded {
     [__RPC_TARGET_BRAND]: never;
   }
