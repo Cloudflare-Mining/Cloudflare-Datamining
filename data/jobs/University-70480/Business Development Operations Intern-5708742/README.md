@@ -5,37 +5,26 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>What You’ll Do</strong></h3>
-<p><span style="font-weight: 400;">Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</span></p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h4>Available Locations:&nbsp;<strong>Singapore</strong><br><br></h4>
+<p><strong>About our Internship Program</strong></p>
+<p>The focus of the Business Development Operations team is to understand and help optimize the flow of interested potential customers to the Business Development Representative (BDR) Teams and the best ways the BDRs can turn that interest into a sales opportunity for Cloudflare. To this end, we work closely with the BDRs and their leadership to document and understand how our sellers work allows us to find opportunities of improvement and to share best practices between all of our international locations.&nbsp;</p>
+<p>In this role, you will spend time with BDRs, their managers, and members of the Business Development team to understand and document the work being done. From this documentation, you will make recommendations for improvements, including prioritization and level of effort. You will have the opportunity to make one (or more for bonus points) of these improvements a reality. With the assistance of the Business Development Operations team and the enablement team, you will deliver the process to the larger Business Development team.&nbsp;</p>
+<p>Our internship program runs for 12 weeks and will give you the opportunity to work on a meaningful project, attend workshops, improve your skill set and build a strong network within Cloudflare.&nbsp;</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-driven and capable of learning new technologies / systems / features with little guidance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fundamental understanding how the Internet works (OSI Model)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Advanced understanding of modern internet protocols like TCP and UDP</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Computer Networking fundamentals, experience with iptables and looking glass</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Packet capture analysis</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in command line and tools, including curl, dig, traceroute, openssl, git</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting DNS, SSL / TLS, HTTP</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience writing scripts in Bash, Python, JavaScript or other scripting language</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in working as part of a team in a customer-facing role</span></li>
+	<li>Partner with the Business Development Leadership and Business Development Operations team to shadow and understand the different BDR functions by region.</li>
+	<li>Document BDR practices and identify areas of success and improvement</li>
+	<li>Deliver a list of opportunities for improvement and suggested prioritization</li>
+	<li>Work with the Business Development Operations team, Business Development Leadership, and Enablement partner to turn one of the opportunities into reality</li>
 </ul>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Intern Requirements</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate with customers via chat, email, and phone&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Product teams to improve the products and tools</span></li>
+	<li>A passion for Cloudflare’s mission, vision, and growth.</li>
+	<li>Excellent written and verbal skills, including the ability to collaborate cross-functionally with all stakeholders, including sales ops, marketing ops, marketing, and BDR leadership.</li>
+	<li>Operational mindset with an aptitude for distilling trends and metrics into a cohesive narrative.</li>
+	<li>Deep curiosity with an ability to quickly learn technical concepts and terms; excellent listening and empathy, with an ability to get things done in a collaborative team environment.</li>
+	<li>Strategic thinker who is able to get to work quickly and execute independently.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are fluent in German, Japanese, French, Spanish, Portuguese, or Mandarin</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are familiar with Cloudflare and are actively using our platform</span></li>
-</ul>
-<p><span style="font-weight: 400;"><strong>Available Locations</strong>: London, Remote UK, Lisbon, and Remote Portugal</span></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,36 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Remote - US</p>
+<p><strong>Available Locations:</strong> Remote - US or London, England&nbsp;</p>
 <h2><span style="font-size: 12pt;">About Product Management at Cloudflare</span></h2>
-<p><span style="font-size: 10pt;">As a Product Manager at Cloudflare, you are responsible for helping build products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation. We have ultimate responsibility for understanding our customer needs, influencing business strategy, feature specification, and working with engineering to develop our software.</span></p>
+<p>As a Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
 <h2><span style="font-size: 12pt;">About the role</span></h2>
-<p><span style="font-size: 10pt;">As the Product Manager for Analytics, your primary goal is to support and grow the Analytics Platform at Cloudflare, which allows Cloudflare to expose powerful Analytics products to customers. You’ll work closely with a strong team of Engineers on data problems at unparalleled scale.</span></p>
-<p><span style="font-size: 10pt;">&nbsp;Among other things you’ll be responsible for:</span></p>
+<p>As the Product Manager for Analytics, your primary goal is to support and grow the Analytics Platform at Cloudflare, which allows us to expose powerful Analytics products to customers. You’ll work closely with a strong team of Engineers on data problems at unparalleled scale. In short, this job is about understanding the data &amp; analytics needs of our internal and external customers and the business, and partnering with your team to deliver solutions that are valuable and viable.</p>
+<p>&nbsp;Among other things you’ll be responsible for:</p>
 <ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">The scalability of our data infrastructure, ensuring that our data systems scale reliably with the growth of our data volume.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">The quality of the data that flows through our systems, ensuring good governance and hygiene across all systems.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Ensuring that internal teams can easily integrate with our various data sources to power a variety of Analytics experiences for our customers in the Cloudflare Dashboard and beyond.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Have strong, data-informed opinions about <em>how</em> internal teams can best use our data infrastructure to power customer-facing Analytics products.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Support all the data that our customers use to set up Alerts &amp; Notifications for various events that happen with their applications / web sites.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">While your main goal is to serve Cloudflare’s end users, you’ll also work with other product teams at Cloudflare to onboard new datasets and make sure these products have strong adoption internally.</span></li>
+	<li>The scalability of our data infrastructure, ensuring that our data systems scale reliably with the growth of our data volume.</li>
+	<li>The quality of the data that flows through our systems, ensuring good governance and hygiene across all systems.</li>
+	<li>Ensuring that internal teams can easily integrate with our various data sources to power a variety of Analytics experiences for our customers in the Cloudflare Dashboard and beyond.</li>
+	<li>Have strong, informed opinions and suggestions about <em>how</em> internal teams can best use our data infrastructure to power customer-facing Analytics products.</li>
+	<li>Support all the data that our customers use to set up Alerts &amp; Notifications for various events that happen within their applications / web sites.</li>
 </ul>
-<h2><span style="font-size: 12pt;">Key Responsibilities</span></h2>
+<h2><span style="font-size: 12pt;">Key Competencies</span></h2>
 <ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Ownership of the data pipelines that power Cloudflare Analytics: You will be responsible for the end-to-end management of these tools, from conceptualization to deployment, and ongoing enhancement.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Customer Engagement: Engage directly with customers to deeply understand their needs. You will be the voice of the customer within Cloudflare, ensuring that our logs products are continuously evolving to meet their requirements.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Product Strategy and Vision: Define and drive the strategic direction for Cloudflare's analytics products, aligning with broader company objectives and customer needs.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Cross-Functional Leadership: Collaborate with engineering, design, marketing, sales, and support teams to deliver an integrated product experience.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Data-Driven Decision Making: Utilize data analytics to inform product decisions and measure the impact of new features and improvements.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Market Analysis: Keep abreast of industry trends and competitor activities to ensure Cloudflare remains a leader in cloud connectivity and security.</span></li>
+	<li>Customer Engagement: Engage directly with customers (internal and external) to deeply understand their needs. You will be the voice of the customer within Cloudflare, ensuring that our data and analytics products are continuously evolving to meet their needs.</li>
+	<li>Market Understanding: Keep up to date on industry trends and competitor activities to ensure Cloudflare remains a leader in cloud connectivity and security.</li>
+	<li>Product Strategy and Vision: Define and drive the strategic direction for Cloudflare's analytics products, aligning with broader company objectives and customer needs.</li>
+	<li>Cross-Functional Partnership: Collaborate with engineering, design, marketing, sales, and support teams to understand user and business needs, and deliver a product experience that is valuable and viable.</li>
+	<li>Data-Informed Decision Making: Use data analytics to inform product decisions and measure the impact of new features and improvements.</li>
 </ul>
-<h2><span style="font-size: 12pt;">Bonus Points</span></h2>
-<ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Understanding the modern UX stack with enough fidelity to hold your own with engineers will be highly beneficial. An engineering background would be helpful. An alternate source of credibility on this front might come from having developed a web property yourself.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Data-fluency - there is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</span></li>
-</ul>
-<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

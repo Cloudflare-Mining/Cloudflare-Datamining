@@ -5,25 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: Lisbon, Portugal, London, UK or Remote UK</strong></p>
-<p><strong>What You Would Do Here:</strong></p>
-<p>The People team at Cloudflare is growing. We want to find the best people to join our team and then help you to do your best work.&nbsp; We are looking for a Global Mobility Specialist reporting to the Senior Global Mobility Manager. In this role, you will support mobility activities globally including coordinating international transfers and immigration compliance and provide advice on policy, relocation packages and immigration. You will be working closely with the People Business Partners and People Operations teams and partnering with key stakeholders across Cloudflare through activities including those listed below:</p>
-<p><strong>Responsibilities:</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>The Order-to-Cash Accounting A/R Staff processes all facets of Cloudflare’s worldwide Billing and Accounts Receivable (A/R) functions. This role facilitates prompt, correct, and complete billing, collection, and cash application of Cloudflare receivables to support preparation of accurate financial statements, compliance with customer contracts, and optimization of cash flow. Additionally, this position participates in certain regulatory compliance activities including sales tax assessment and reporting, and unclaimed property remittance.</p>
+<p><strong>Locations: US, UK, Portugal</strong></p>
+<p><strong>What You'll Do</strong></p>
 <ul>
-	<li><strong>Primary point of contact</strong>: serve a primary point of contact for all moves at Cloudflare, conducting employee’s briefings detailing the mobility process and the relocation/assignment package.</li>
-	<li><strong>Immigration and Relocation Coordination</strong>: coordinate all immigration and relocation activities, ensuring high-quality execution and timely process. Proactively identify and address risks and deadlines for each move while maintaining attention to detail while juggling multiple moves.</li>
-	<li><strong>Partner with People Team: </strong>Partner with People Operations Specialists to coordinate permanent transfers, assignments and temporary remote work arrangements. Coordinate with the People team and cross-functional partners to find solutions, streamline processes and improve the overall employee experience.</li>
-	<li><strong>Global immigration compliance:</strong> Act as the main point of contact for global immigration compliance and advisory, in particular supporting Recruitment teams.</li>
-	<li><strong>Manage and track the movement of team members globally</strong>: including short-term assignees, transfers, contract extensions, repatriations. Review compliance and approve requests for working overseas temporarily.</li>
-	<li><strong>Resource development:</strong> Design and develop resources for internal partners and employees including FAQs and process documents to facilitate smooth transitions and clarify processes.</li>
-	<li><strong>Work closely with external vendors:</strong> collaborate and maximise support from our external partners to optimise the employee experience.</li>
-	<li><strong>Support the Senior Global Mobility Manager</strong> in enhancing the global mobility program, helping to drive the adoption, communication, training and change management of various initiatives within Global Mobility.</li>
+	<li>Direct preparation and issuance of customer invoices to ensure prompt and accurate billing in compliance with contract terms.</li>
+	<li>Oversee response to billing and A/R inquiries in a manner that cultivates a culture of exemplary customer service both internal and external.</li>
+	<li>Support Order-to-Cash Accounting team by running credit checks and monitoring credit worthiness of new and existing customers.</li>
+	<li>Participate in month-end close processes associated with Accounts Receivable to support timely and accurate preparation and delivery of financial statements.</li>
+	<li>Facilitate cash receipt and application processes to ensure prompt and accurate deposit of all funds and application to customer accounts.</li>
+	<li>Execute process for managing and refunding customer credit balances in a timely manner, partnering with Accounts Payable to escalate or resolve any A/R related unclaimed property issues.</li>
 </ul>
-<p><strong>Who You Are:</strong></p>
-<p>You have been part of a Global Mobility team with at least 3 years of experience coordinating and administering secondments and transfers as well as experience of immigration compliance. You have demonstrated commitment to delivering exceptional relocation experience to employees.&nbsp;</p>
-<p>You are motivated by streamlining processes to enhance the relocation journey for people and are always looking for ways to innovate. You have a solid work ethic and self-starter attitude, you can operate independently and present solutions to problems. You are generous with your time with all of our people and dedicated to earn and maintain their trust.&nbsp;</p>
-<p>You are a skillful communicator, both in your verbal and written communications internally and externally. You love working with people. You have strong attention to detail and are process-driven.&nbsp;</p>
-<p>&nbsp;</p>
+<ul>
+	<li>Oversee maintenance of customer account information within Billing System(s) to ensure up-to-date address, terms, tax, and contact information.</li>
+	<li>Collaborate with cross-functional teams on various systems projects including selection, implementation, and upgrades to A/R and Billing systems.</li>
+</ul>
+<ul>
+	<li>Execute policies and procedures for Billing and A/R, driving toward implementation of best practices and business process improvements.</li>
+	<li>Support overall organization’s SOX compliance requirements through adherence to key controls and timely completion of reporting.</li>
+</ul>
+<p><strong>Experience</strong></p>
+<ul>
+	<li>Bachelor’s degree required, with emphasis in Accounting or Finance preferred.</li>
+	<li>2+ years of experience in Billing and A/R functions in a high volume environment.</li>
+	<li>Exposure to international operations preferred.</li>
+	<li>Experience participating in system evaluation and implementation preferred.</li>
+	<li>Demonstrated effective written, verbal and interpersonal communication skills at all levels of the organization.</li>
+	<li>Creative problem solving skills coupled with good judgment.</li>
+	<li>Effective communication skills, verbal and written, in order to research, prepare and present information to Management, as well as effective communication skills with co-workers.</li>
+	<li>Critical thinking and strong analytical skills.</li>
+	<li>Ability to exercise sound judgment, provide leadership, and take initiative under minimal supervision.</li>
+	<li>Intermediate Microsoft office skills.</li>
+	<li>Comfort in a fast paced work environment, with multiple concurrent projects and priorities.</li>
+	<li>Ability to plan, execute and deliver on projects in a timely manner; plus the ability to multitask on varying projects and initiatives.</li>
+	<li>Very high attention to detail; organized and thorough with a desire for continuous improvement.</li>
+	<li>Stellar work ethic.</li>
+	<li>CPA/CA a plus.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
