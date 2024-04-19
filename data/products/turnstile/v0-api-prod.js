@@ -640,7 +640,7 @@
 
 	function tr(e, r) {
 		var t, o, u, s = st(r.params, J),
-			m = "h/".concat("g", "/"),
+			m = "h/".concat("b", "/"),
 			b = "".concat(s, "/cdn-cgi/challenge-platform/").concat(m, "feedback-reports/").concat(be(e), "/").concat(r.displayLanguage, "/"),
 			h = document.getElementById(e);
 		h || v("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
@@ -793,7 +793,7 @@
 					switch (R.label) {
 						case 0:
 							if (a = l.params.sitekey, p = ir(), !p) return _("Cannot determine Turnstile's embedded location, aborting clearance redemption."), o(l, i, !1), [2];
-							x = "h/".concat("g", "/"), E = new URL(p), f = "https", w = "", T = "".concat(f, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(x, "rc/").concat(c).concat(w), R.label = 1;
+							x = "h/".concat("b", "/"), E = new URL(p), f = "https", w = "", T = "".concat(f, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(x, "rc/").concat(c).concat(w), R.label = 1;
 						case 1:
 							return R.trys.push([1, 6, , 7]), [4, fetch(T, {
 								method: "POST",
@@ -1020,7 +1020,7 @@
 								cData: a.cData,
 								chlPageData: a.chlPageData,
 								rcV: a.rcV,
-								ch: "54ea73d52131",
+								ch: "471dc2adc340",
 								url: ir(),
 								retry: a.params.retry,
 								"expiry-interval": a.params["expiry-interval"],
@@ -1121,7 +1121,7 @@
 					a = document.querySelector("#".concat(c));
 				(!c || !a) && v("Widget ".concat(i, " to reset was not found."), 3330), n.params.appearance === V.INTERACTION_ONLY && ar(a), n.params.sitekey === null && v("Unexpected Error: Sitekey is null", 3347);
 				var p;
-				a.src = ft(i, n.params.sitekey, n.params, (p = n.rcV) !== null && p !== void 0 ? p : F, J, "g", ut(n)), pt(c), n.retryTimeout && window.clearTimeout(n.retryTimeout)
+				a.src = ft(i, n.params.sitekey, n.params, (p = n.rcV) !== null && p !== void 0 ? p : F, J, "b", ut(n)), pt(c), n.retryTimeout && window.clearTimeout(n.retryTimeout)
 			} else v("Widget ".concat(i, " to reset was not found."), 3331)
 		}
 
@@ -1226,7 +1226,7 @@
 						widgetInitStartTimeMs: 0
 					})), ct(y, J);
 					var We = y.widgetMap.get(te);
-					We || v("Turnstile Initialization Error ", 3606), L.style.display = "none", L.style.border = "none", L.style.overflow = "hidden", L.setAttribute("src", ft(te, C, f, F, J, "g", ut(We))), L.onerror = function() {
+					We || v("Turnstile Initialization Error ", 3606), L.style.display = "none", L.style.border = "none", L.style.overflow = "hidden", L.setAttribute("src", ft(te, C, f, F, J, "b", ut(We))), L.onerror = function() {
 						if (X) {
 							X == null || X(String(Rt.code));
 							return
