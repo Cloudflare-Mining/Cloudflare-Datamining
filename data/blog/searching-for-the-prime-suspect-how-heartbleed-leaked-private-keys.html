@@ -1,7 +1,7 @@
 <div class="mb2 gray5">8 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>Within a few hours of CloudFlare launching its <a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">Heartbleed Challenge</a> the truth was out. Not only did Heartbleed leak private session information (such as cookies and other data that SSL should have been protecting), but the crown jewels of an HTTPS web server were also vulnerable: the private SSL keys were accessible through Heartbleed messages.</p>
-	<p><img alt="Prime Suspect" src="https://blog.cloudflare.com/content/images/Prime-Suspect_BBC_cast-e1315077167915.jpg"><noscript><img alt="Prime Suspect" src="https://blog.cloudflare.com/content/images/Prime-Suspect_BBC_cast-e1315077167915.jpg"></noscript></p>
+	<p><img alt="Prime Suspect" src="https://blog.cloudflare.com/content/images/Prime-Suspect_BBC_cast-e1315077167915.jpg"></p>
 	<p>When we launched the challenge we were unsure if private keys could be accessed, but had started the process of revoking and recreating all the SSL private keys that we manage. When the challenge was defeated in a matter of hours it became obvious that it was fairly easy to find the prime numbers that are at the heart of an RSA private key.</p>
 	<p>Most of the people who obtained the private SSL key of the challenge server did so by searching the results returned in Heartbleed messages for prime numbers. Testing for prime numbers itself is pretty simple (although slow): find a number and see if it has any divisors. Since the length of the prime numbers (in bits) was known it was just a matter of finding all blocks of 1,024 bits and seeing if they were actually a prime.</p>
 	<p>Finding one prime is enough to break the private SSL key.</p>
@@ -50,16 +50,16 @@
 	<p>To understand how primes are used inside OpenSSL I instrumented the code to output information about all the memory allocated by OpenSSL and to highlight blocks of memory used for prime numbers. I then processed this information using a small program to produce a picture of memory.</p>
 	<p>Here's the state of the memory used by OpenSSL when running inside NGINX 1.5.13 just after it has started up. Green blocks are memory in use, black areas are unused and the two red bars are the two primes number p and q that form part of the RSA key.</p>
 	<p>Each row of the picture is 1,024 bytes. The picture shows a total of about 280KB of memory in use. The primes are being stored in a single location (delving into the source of OpenSSL this is the location of the primes when loaded in the function <code>ssl_set_pkey</code> in <a href="https://github.com/openssl/openssl/blob/master/ssl/ssl_rsa.c#L190">ssl_rsa.c</a>).</p>
-	<p><img alt="Starting" src="https://blog.cloudflare.com/content/images/startup.png"><noscript><img alt="Starting" src="https://blog.cloudflare.com/content/images/startup.png"></noscript></p>
+	<p><img alt="Starting" src="https://blog.cloudflare.com/content/images/startup.png"></p>
 	<p>In contrast, something interesting has happen when NGINX/OpenSSL processes its first request. A second copy of the primes has appeared. OpenSSL is now using more memory and two long red lines (two complete primes) are in memory along with some fragments of prime numbers that have been partially overwritten (those are vulnerable to Coppersmith's Attack).</p>
-	<p><img alt="One Request" src="https://blog.cloudflare.com/content/images/first.png"><noscript><img alt="One Request" src="https://blog.cloudflare.com/content/images/first.png"></noscript></p>
+	<p><img alt="One Request" src="https://blog.cloudflare.com/content/images/first.png"></p>
 	<p>Delving into the code once more it becomes apparent that the two new primes are copies of p and q made for the Montgomery reduction code in <a href="https://github.com/openssl/openssl/blob/master/crypto/bn/bn_mont.c">bn_mont.c</a>. The fragments of primes are left over from where p and q were used in calculations.</p>
 	<p>After ten identical requests the memory layout has changed a little more. The fragments of primes have been overwritten, but the Montgomery reduction copies are still there. And some new fragments have appeared.</p>
-	<p><img alt="Ten Requests" src="https://blog.cloudflare.com/content/images/ten.png"><noscript><img alt="Ten Requests" src="https://blog.cloudflare.com/content/images/ten.png"></noscript></p>
+	<p><img alt="Ten Requests" src="https://blog.cloudflare.com/content/images/ten.png"></p>
 	<p>After running a more realistic simulated load through the web server the memory has grown and most of the prime fragments have been overwritten leaving the original primes and the Montgomery reduction primes in memory.</p>
-	<p><img alt="Load" src="https://blog.cloudflare.com/content/images/load.png"><noscript><img alt="Load" src="https://blog.cloudflare.com/content/images/load.png"></noscript></p>
+	<p><img alt="Load" src="https://blog.cloudflare.com/content/images/load.png"></p>
 	<p>To get a sense of how OpenSSL copies the primes around, here's a slightly different visualization. It shows all the memory that stored primes in red (whether or not it was later overwritten). As you can see OpenSSL is making copies of the primes all over its memory space.</p>
-	<p><img alt="Load overwrite" src="https://blog.cloudflare.com/content/images/load-overwrite.png"><noscript><img alt="Load overwrite" src="https://blog.cloudflare.com/content/images/load-overwrite.png"></noscript></p>
+	<p><img alt="Load overwrite" src="https://blog.cloudflare.com/content/images/load-overwrite.png"></p>
 	<p>And therein lies the heart of Heartbleed: there are two copies of the primes that never move (the original location where they are loaded and the location of the Montgomery reduction copy) and lots of temporary copies of the primes all over OpenSSL's memory.</p>
 	<h3 id="opensslpatches">OpenSSL patches</h3>
 	<p>It's possible to clean up OpenSSL's memory so that copies of primes are not left in memory by applying the following patch:</p>

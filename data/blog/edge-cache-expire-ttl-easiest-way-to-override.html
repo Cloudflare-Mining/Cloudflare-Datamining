@@ -1,8 +1,7 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p><img alt="Edge Cache Expire TTL: Easiest way to override any existing
-headers" src="https://blog.cloudflare.com/content/images/Cache_Rules_Everything_Around_Me.png.scaled500.png" title="Edge Cache Expire TTL: Easiest way to override any existing headers"><noscript><img alt="Edge Cache Expire TTL: Easiest way to override any existing
-headers" src="https://blog.cloudflare.com/content/images/Cache_Rules_Everything_Around_Me.png.scaled500.png" title="Edge Cache Expire TTL: Easiest way to override any existing headers"></noscript></p>
+headers" src="https://blog.cloudflare.com/content/images/Cache_Rules_Everything_Around_Me.png.scaled500.png" title="Edge Cache Expire TTL: Easiest way to override any existing headers"></p>
 	<p>CloudFlare makes caching easy. Our service automatically determines what files to cache based on file extensions. Performance benefits kick in automatically.</p>
 	<p>For customers that want advanced caching, beyond the defaults, we have <a href="https://blog.cloudflare.com/introducing-pagerules-advanced-caching">Cache Everything</a> available as Page Rules. Designate a URL and CloudFlare will cache everything, including HTML, out at the edges of our global network.</p>
 	<p>With Cache Everything, we respect all headers. If there is any header in place from the server or a CMS solution like WordPress, we will respect it. However, we got many requests from customers who wanted an easy way to override any existing headers. Today, we are releasing a new feature called 'Edge cache expire TTL' that does just that.</p>
@@ -30,14 +29,12 @@ headers" src="https://blog.cloudflare.com/content/images/Cache_Rules_Everything_
 	</ul>
 	<p>A Pro customer may set the refetch time to 1 hour. After 60 minutes, we return to your server for a fresh copy of the resource. Business customers may lower the refetch interval to 30 minutes. Enterprise customers may set this interval as low as 30 seconds.</p>
 	<h4 id="howtoturniton">How to Turn It On</h4>
-	<p>Login in to your CloudFlare account and choose "Page Rules" from under the gear icon. Enter the URL that you want to Cache Everything (under Custom Caching):<img alt="Edge Cache Expire TTL: Easiest way to override any existing headers" src="https://blog.cloudflare.com/content/images/Cache_Everything.tiff.scaled500.jpg" title="Edge Cache Expire TTL: Easiest way to override any existing headers"><noscript><img alt="Edge Cache Expire TTL: Easiest way to override any existing headers" src="https://blog.cloudflare.com/content/images/Cache_Everything.tiff.scaled500.jpg" title="Edge Cache Expire TTL: Easiest way to override any existing headers"></noscript></p>
-	<p>The edge cache server TTL option will appear:<img alt="Edge Cache Expire TTL: Easiest way to override any existing headers" src="https://blog.cloudflare.com/content/images/Edge_cache_expire_TTL_appears.tiff.scaled500.jpg" title="Edge Cache Expire TTL: Easiest way to override any existing headers"><noscript><img alt="Edge Cache Expire TTL: Easiest way to override any existing headers" src="https://blog.cloudflare.com/content/images/Edge_cache_expire_TTL_appears.tiff.scaled500.jpg" title="Edge Cache Expire TTL: Easiest way to override any existing headers"></noscript></p>
+	<p>Login in to your CloudFlare account and choose "Page Rules" from under the gear icon. Enter the URL that you want to Cache Everything (under Custom Caching):<img alt="Edge Cache Expire TTL: Easiest way to override any existing headers" src="https://blog.cloudflare.com/content/images/Cache_Everything.tiff.scaled500.jpg" title="Edge Cache Expire TTL: Easiest way to override any existing headers"></p>
+	<p>The edge cache server TTL option will appear:<img alt="Edge Cache Expire TTL: Easiest way to override any existing headers" src="https://blog.cloudflare.com/content/images/Edge_cache_expire_TTL_appears.tiff.scaled500.jpg" title="Edge Cache Expire TTL: Easiest way to override any existing headers"></p>
 	<p>The default setting is set to "Respect all existing headers." To override this setting, choose a time from the drop down menu:</p>
 	<p><img alt="Edge Cache Expire
 TTL: Easiest way to override any existing
-headers" src="https://blog.cloudflare.com/content/images/Edge_cache_expire_TTL_dropdown.tiff.scaled500.jpg" title="Edge Cache Expire TTL: Easiest way to override any existing headers"><noscript><img alt="Edge Cache Expire
-TTL: Easiest way to override any existing
-headers" src="https://blog.cloudflare.com/content/images/Edge_cache_expire_TTL_dropdown.tiff.scaled500.jpg" title="Edge Cache Expire TTL: Easiest way to override any existing headers"></noscript></p>
+headers" src="https://blog.cloudflare.com/content/images/Edge_cache_expire_TTL_dropdown.tiff.scaled500.jpg" title="Edge Cache Expire TTL: Easiest way to override any existing headers"></p>
 	<p>You can find more information in our knowledge base articles <a href="https://support.cloudflare.com/entries/23023893-what-does-edge-cache-expire-ttl-mean">here</a> and <a href="https://support.cloudflare.com/entries/23009261-what-does-browser-cache-expire-ttl-mean">here.</a></p>
 	<p>Give it a try and let us know what you think.</p>
 	<!--kg-card-end: markdown-->

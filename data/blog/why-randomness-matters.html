@@ -5,7 +5,7 @@
 	<p>To understand why, and the threat that bad random numbers pose, it's necessary to understand a little about random numbers themselves (such as "what is a good random number anyway?") and how they are used in secure systems.</p>
 	<h3 id="ahackernewshack">A Hacker News Hack</h3>
 	<p>As an example of how random numbers go wrong I'll begin with a hack of the popular programming and technology web site <a href="http://news.ycombinator.com">Hacker News</a>.</p>
-	<p><img alt="Hacker News" src="https://blog.cloudflare.com/content/images/hn.png" title="Hacker News"><noscript><img alt="Hacker News" src="https://blog.cloudflare.com/content/images/hn.png" title="Hacker News"></noscript></p>
+	<p><img alt="Hacker News" src="https://blog.cloudflare.com/content/images/hn.png" title="Hacker News"></p>
 	<p>Four years ago I <a href="https://news.ycombinator.com/item?id=596126">mentioned</a> on the site that its random number generator was vulnerable to being used to attack the site. Not long after, and entirely independently, another contributor to the site actually <a href="https://news.ycombinator.com/item?id=639976">carried out the attack</a> with the permission of the site owner.</p>
 	<p>Here's how it worked. When you log into a web site you are typically assigned a unique ID for that session (the period you are logged in). That unique ID needs to be unique to you and not guessable by someone else. If someone else can guess it they can impersonate you.</p>
 	<p>In the case of Hacker News, the unique ID is a string of random<br>
@@ -17,7 +17,7 @@
 		generator. That's a mathematical function that can be called<br>
 		repeatedly to get apparently random numbers. I say apparently because, as the great mathematician John von Neumann said: "Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin." The computer scientist Donald Knuth tells a story of inventing a pseudo-random number generator himself only to be shocked at how poor it was.</p>
 	<p>Although pseudo-random number generators can generate a sequence of apparently random numbers they have weaknesses.</p>
-	<p><img alt="The Three" src="https://blog.cloudflare.com/content/images/vonneumann.jpg" title="The Three"><noscript><img alt="The Three" src="https://blog.cloudflare.com/content/images/vonneumann.jpg" title="The Three"></noscript></p>
+	<p><img alt="The Three" src="https://blog.cloudflare.com/content/images/vonneumann.jpg" title="The Three"></p>
 	<p>von Neumann used a simple pseudo-random number generator called the<br>
 		<a href="https://en.wikipedia.org/wiki/Middle-square_method">middle square</a> that works as follows. You start with some number (called a seed) and square it. You take the four middle digits as your random number and square them to get the next random number, and so on.
 	</p>
@@ -72,12 +72,12 @@
 	<p>The access point and the computer continue on from there using those<br>
 		random nonce values to secure the connection.</p>
 	<p>Similarly, random numbers turn up when logging into web sites (and other systems), creating secure connections to servers using <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a>, holding Skype video chats, sending encrypted email and more.</p>
-	<p><img alt="Soviet one-time pad" src="https://blog.cloudflare.com/content/images/otp.jpg" title="Soviet one-time pad"><noscript><img alt="Soviet one-time pad" src="https://blog.cloudflare.com/content/images/otp.jpg" title="Soviet one-time pad"></noscript></p>
+	<p><img alt="Soviet one-time pad" src="https://blog.cloudflare.com/content/images/otp.jpg" title="Soviet one-time pad"></p>
 	<p>And the Achilles' Heel of the only completely secure cryptosystem, the <a href="https://en.wikipedia.org/wiki/One_time_pad">one-time pad</a> is that the pad itself must be completely randomly generated. Any predictability or non-uniformity in the random numbers used can lead to breaking of a one-time pad. (The other problem with one-time pads is reuse: they must be used <a href="https://en.wikipedia.org/wiki/VENONA#Breakthrough">only once</a>.)</p>
 	<h3 id="cloudflaresrandomnumbersource">CloudFlare's Random Number Source</h3>
 	<p>At CloudFlare we need lots of random numbers for cryptographic purposes: we need them to secure SSL connections, <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">Railgun</a>, generating public/private key pairs, and authentication systems. They are an important part of <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secrecy</a> which we've rolled out for all our customers.</p>
 	<p>We currently obtain most of our random numbers from either OpenSSL's random number generation system or from the Linux kernel. Both seed their random number generators from a variety of sources to make them as unpredictable as possible. Sources include things like network data, or the seek time of disks. But we think we can improve on them by adding some truly random data into the system, and, as a result, improve security for our customers.</p>
-	<p><img alt="The sky above the port was the color of television, tuned to a dead channel" src="https://blog.cloudflare.com/content/images/neuromancer.jpg" title="The sky above the port was the color of television, tuned to a dead channel."><noscript><img alt="The sky above the port was the color of television, tuned to a dead channel" src="https://blog.cloudflare.com/content/images/neuromancer.jpg" title="The sky above the port was the color of television, tuned to a dead channel."></noscript></p>
+	<p><img alt="The sky above the port was the color of television, tuned to a dead channel" src="https://blog.cloudflare.com/content/images/neuromancer.jpg" title="The sky above the port was the color of television, tuned to a dead channel."></p>
 	<p>We've embarked on a project to further improve our random numbers by providing a source of truly random numbers that don't come from a mathematical process. That can be done using things like <a href="http://www.fourmilab.ch/hotbits">radioactive decay</a>, the <a href="https://en.wikipedia.org/wiki/Lavarand">motion of fluids</a>, <a href="https://www.random.org">atmospheric noise</a>, or <a href="http://www.lavarnd.org/what/process.html">other chaos</a>.</p>
 	<p>We'll be posting details of the new system when it's online.</p>
 	<!--kg-card-end: markdown-->

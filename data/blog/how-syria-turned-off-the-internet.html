@@ -2,8 +2,7 @@
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>Today, 29 November 2012, between 1026 and 1028 (UTC), all traffic from Syria to the rest of the Internet stopped. At CloudFlare, we witnessed the drop off. We've spent the morning studying the situation to understand what happened. The following graph shows the last several days of traffic coming to CloudFlare's network from Syria.</p>
 	<p><img alt="How Syria Turned Off the
-Internet" src="https://blog.cloudflare.com/content/images/cloudflare_syrian_traffic_utc.png.scaled500.png" title="How Syria Turned Off the Internet"><noscript><img alt="How Syria Turned Off the
-Internet" src="https://blog.cloudflare.com/content/images/cloudflare_syrian_traffic_utc.png.scaled500.png" title="How Syria Turned Off the Internet"></noscript></p>
+Internet" src="https://blog.cloudflare.com/content/images/cloudflare_syrian_traffic_utc.png.scaled500.png" title="How Syria Turned Off the Internet"></p>
 	<p>Since the beginning of today's outage, we have received no requests from Syrian IP space. That is a more complete blackout than we've seen when other countries have been cut from the Internet (see, for example, Egypt where while <a href="https://blog.cloudflare.com/what-egypt-shutting-down-the-internet-looks-l">most traffic was cut off some requests still trickled out)</a>.</p>
 	<p>The graph above shows two other incidents over the last week. On 25 November 2012 at approximately 0800 UTC we witnessed a 15 minute period during which Syrian traffic was cut to only 13% of normal levels. Again on 27 November 2012 at 0730 UTC, we saw a 15 minute period during which traffic dropped to only 0.2% of normal.</p>
 	<h3 id="whathappened">What Happened?</h3>
@@ -18,8 +17,7 @@ Internet" src="https://blog.cloudflare.com/content/images/cloudflare_syrian_traf
 	<p>Beginning at 1026 UTC, routes were withdrawn for PCCW. The routing shifted primarily to Turk Telekom. Routes to Telecom Italia and TATA were also withdrawn, but has less of an impact. Then, at 1028 UTC, routes were withdrawn for Turk Telekom. After that, Syria was effectively cut off from the Internet. (Note that the remaining path that appears to be present in the video is an anomaly. We have confirmed that it is not actually active.)</p>
 	<p>While we cannot know for sure, our network team estimates that Syria likely has a small number of edge routers. All the edge routers are controlled by Syrian Telecommunications. The systematic way in which routes were withdrawn suggests that this was done through updates in router configurations, not through a physical failure or cable cut.</p>
 	<h3 id="whatsyriansweresurfingbeforetheinternetwasturnedoffh2">What Syrians Were Surfing Before the Internet Was Turned Off</h3>
-	<p><img alt="How Syria Turned Off the Internet" src="https://blog.cloudflare.com/content/images/last_site_syrians_accessed.jpg.scaled500.jpg" title="How Syria Turned Off the Internet"><noscript><img alt="How Syria Turned Off the
-Internet" src="https://blog.cloudflare.com/content/images/last_site_syrians_accessed.jpg.scaled500.jpg" title="How Syria Turned Off the Internet"></noscript></p>
+	<p><img alt="How Syria Turned Off the Internet" src="https://blog.cloudflare.com/content/images/last_site_syrians_accessed.jpg.scaled500.jpg" title="How Syria Turned Off the Internet"></p>
 	<p>The last four sites on CloudFlare that received requests from Syria in<br>
 		the seconds before access was cut were:</p>
 	<ul>

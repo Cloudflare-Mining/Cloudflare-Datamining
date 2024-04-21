@@ -1,15 +1,13 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p><img alt="What CloudFlare
-Logs" src="https://blog.cloudflare.com/content/images/logs.jpg.scaled500.jpg" title="What CloudFlare Logs"><noscript><img alt="What CloudFlare
-Logs" src="https://blog.cloudflare.com/content/images/logs.jpg.scaled500.jpg" title="What CloudFlare Logs"></noscript></p>
+Logs" src="https://blog.cloudflare.com/content/images/logs.jpg.scaled500.jpg" title="What CloudFlare Logs"></p>
 	<p>Over the last few weeks, we've had a number of requests for information about what data CloudFlare logs when someone visits a site on our network. While we have provided a <a href="https://www.cloudflare.com/security-policy">Privacy Policy</a> that outlines how we keep information private, I wanted to take the time to clarify our customer log retention policies.</p>
 	<h3 id="whatcloudflarelogs">What CloudFlare Logs</h3>
 	<p>When you visit a site on CloudFlare's network, we record information about that visit. If you run a web server you'll be familiar with these logs as they're similar to an Apache access log. We log data for two reasons: 1) to help us identify security threats and attacks hitting our customers in order to mitigate them; and 2) in order to identify performance bottlenecks and errors on our system.</p>
 	<p>It's somewhat hard to fathom the scale of the log data that we generate. Every minute of every day we generate more than 20GB (compressed) of log data. That translates, at our current volume, to more than 10 Petabytes of storage needed to store a year's worth of logs, and, due to our continued growth, that volume that has been doubling every 4 months or so. Today, even if we wanted to, we don't have the ability to retain all the logs we generate. This means that, for most customers, we discard access logs within 4 hours of them being recorded.</p>
 	<p><img alt="What CloudFlare
-Logs" src="https://blog.cloudflare.com/content/images/dev_null.png.scaled500.png" title="What CloudFlare Logs"><noscript><img alt="What CloudFlare
-Logs" src="https://blog.cloudflare.com/content/images/dev_null.png.scaled500.png" title="What CloudFlare Logs"></noscript></p>
+Logs" src="https://blog.cloudflare.com/content/images/dev_null.png.scaled500.png" title="What CloudFlare Logs"></p>
 	<p>For our <a href="https://www.cloudflare.com/plans/enterprise">Enterprise customers</a>, we offer an optional feature that allows them to export their raw log files in Apache format. This requires us to store log files for a longer period of time in order to allow them to be downloaded. By default, we store logs for these customers for 3 days.</p>
 	<h4 id="crunchingdata">Crunching Data</h4>
 	<p>Since CloudFlare does not keep the raw logs, it is impossible for us to answer questions like: tell me all the visitors who have been to a particular website on CloudFlare's network.</p>

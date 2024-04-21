@@ -1,6 +1,6 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="The Hunt for Red October" src="https://blog.cloudflare.com/content/images/The_Hunt_for_Red_October-1.jpg"><noscript><img alt="The Hunt for Red October" src="https://blog.cloudflare.com/content/images/The_Hunt_for_Red_October-1.jpg"></noscript></p>
+	<p><img alt="The Hunt for Red October" src="https://blog.cloudflare.com/content/images/The_Hunt_for_Red_October-1.jpg"></p>
 	<p>At CloudFlare, we are always looking for better ways to secure the data we’re entrusted with. This means hardening our system against outside threats such as hackers, but it also means protecting against insider threats. According to a <a href="http://www.verizonenterprise.com/DBIR/2013">recent Verizon report</a>, insider threats account for around 14% of data breaches in 2013. While we perform background checks and carefully screen team members, we also implement technical barriers to protect the data with which we are entrusted.</p>
 	<p>One good information security practice is known as the “two-man rule.” It comes from military history, where a nuclear missile couldn’t be launched unless two people agreed and turned their launch keys simultaneously. This requirement was introduced in order to prevent one individual from accidentally (or intentionally) starting World War III.</p>
 	<iframe width="420" height="315" src="//www.youtube.com/embed/ReJ3RltihME" frameborder="0" allowfullscreen=""></iframe>
@@ -21,15 +21,15 @@
 	<p>Each user is assigned a unique, randomly-generated RSA key pair when creating an account on a Red October server. The private key is encrypted with a password key derived from the user’s password and salt using scrypt. The public key is stored unencrypted in the vault with the encrypted private key.</p>
 	<h4 id="encryptingdata">Encrypting data</h4>
 	<p>When asked to encrypt a piece of data, the server generates a random 128-bit AES key. This key is used to encrypt the data. For each user that is allowed to decrypt the data, a user-specific key encryption key is chosen. For each unique pair of users, the data key is doubly encrypted, once with the key encryption key of each user. The key encryption keys are then encrypted with the public RSA key associated with their account. The encrypted data, the set of doubly-encrypted data keys, and the RSA-encrypted key encryption keys are all bundled together and returned. The encrypted data is never stored on the server.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/cryptography1.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/cryptography1.png"></noscript><br>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/cryptography1.png"><br>
 		<small>Delegating credentials to the server</small>
 	</p>
 	<p>When a user delegates their key to the server, they submit their username and password over TLS using the delegate JSON API. For each account, the password is verified against the salted hash. If the password is correct, a password key is derived from the password and used to decrypt the user’s RSA private key. This key is now “Live” for the length of time and number of decryptions chosen by the user.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/cryptography3.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/cryptography3.png"></noscript><br>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/cryptography3.png"><br>
 		<small>Decrypting data</small>
 	</p>
 	<p>To decrypt a file, the server validates that the requesting user is an administrator and has the correct password. If two users of the list of valid users have delegated their keys, then decryption can occur. First the RSA private key is used to decrypt the key encryption key for these two users, then the key encryption keys are used to decrypt the doubly encrypted data key, which is then used to decrypt the data.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/cryptography2.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/cryptography2.png"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/cryptography2.png"></p>
 	<p>Some other key points:</p>
 	<ol>
 		<li>Cryptographic security. The Red October server does not have the ability to decrypt user keys without their password. This prevents someone with access to the vault from decrypting data.</li>

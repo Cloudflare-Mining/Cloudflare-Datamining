@@ -48,7 +48,7 @@ func main() {
 	<p>The program uses the <a href="https://golang.org/pkg/runtime/#ReadMemStats">runtime.ReadMemStats</a> function to get information about the size of the heap. It prints out four values: <code>HeapSys</code> (the number of bytes the program has asked the operating system for), <code>HeapAlloc</code> (the number of bytes currently allocated in the heap), <code>HeapIdle</code> (the number of bytes in the heap that are unused) and <code>HeapReleased</code> (the number of bytes returned to the operating system).</p>
 	<p>Garbage collection runs frequently in a Go program (see the <code>GOGC</code> environment variable to understand how to control the garbage collector's operation), so when running the size of the heap will change as memory is spotted as unused: this will causes <code>HeapAlloc</code> and <code>HeapIdle</code> to change over time. The scavenger will only release memory that has been unused for more than 5 minutes so <code>HeapReleased</code> does not change often.</p>
 	<p>Here's a chart of the program above running for ten minutes.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/garbage.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/garbage.png"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/garbage.png"></p>
 	<p>(On this and subsequent charts the left axis in in bytes and the right axis is a count used for Make Count)</p>
 	<p>The red line shows the number of bytes that are actually in byte buffers in the pool. Because it has a fixed size of 20 buffers it quickly plateaus at around 150,000,000 bytes. The top blue line shows the amount of memory request from the operating system; it plateaus at around 375,000,000 bytes. So the program is using about 2.5x the amount of memory it needs.</p>
 	<p>As the program is churning through memory the allocated size of the heap and the amount of idle memory jumps around as garbage collection occurs. The orange line just counts the number of times <code>makeBuffer()</code> has been called to create a new buffer.</p>
@@ -111,7 +111,7 @@ func main() {
 }
 </pre>
 	<p>And here's a graph of its operation for 10 minutes:</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/garbage-pool.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/garbage-pool.png"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/garbage-pool.png"></p>
 	<p>This tells a very different story from above. The memory actually in pool is very close to the memory requested from the operating system and the garbage collector has little to no work to do. The heap only has a very small amount of idle memory that eventually gets released to the operating system.</p>
 	<p>The key to the operation of this memory recycling mechanism is a buffered channel called <code>buffer</code>. In the code above it can store 5 <code>[]byte</code> slices. When the program needs a buffer it first tries to read one from the channel using a <code>select</code> trick:</p>
 	<pre>select {
@@ -227,7 +227,7 @@ func main() {
 }
 </pre>
 	<p>Running that program for ten minutes looks very similar to the second program above:</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/garbage-recyler.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/garbage-recyler.png"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/garbage-recyler.png"></p>
 	<p>These techniques can be used to recycle memory that the programmer knows is likely to be reused without asking the garbage collector to do the work. They can significantly reduce the amount of memory a program needs. And they can be used for more than just byte slices. Any arbitrary Go type (user-defined or not) could be recycled in a similar manner.</p>
 	<!--kg-card-end: markdown-->
 </div>

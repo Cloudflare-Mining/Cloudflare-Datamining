@@ -1,6 +1,6 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-02-13_at_9.34.43_AM.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-02-13_at_9.34.43_AM.png"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2014-02-13_at_9.34.43_AM.png"></p>
 	<p>On Monday we mitigated a large DDoS that targeted one of our customers. The attack peaked just shy of 400Gbps. We've seen a handful of other attacks at this scale, but this is the largest attack we've seen that uses NTP amplification. This style of attacks has grown dramatically over the last six months and poses a significant new threat to the web. Monday's attack serves as a good case study to examine how these attacks work.</p>
 	<h3 id="ntpamplification101">NTP Amplification 101</h3>
 	<p>Before diving into the particular details of this attack, it's important to understand the basic mechanics of how NTP amplification attacks work. This is a quick overview of how these attacks occur. John Graham-Cumming on our team previously wrote a <a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks">detailed primer on NTP amplification attacks</a> if you're interested in further technical details. If you're interested in amplification attacks, you may also find interesting <a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">our posts about DNS Amplification attacks</a>. These attacks use a similar method but target open DNS resolvers rather than NTP servers.</p>
@@ -11,7 +11,7 @@
 	<p>While NTP servers that support MONLIST are less common than open DNS resolvers, they tend to run on beefier servers with fatter connections to the network. Combined with the high amplification factor, this allows a much smaller number of NTP servers to generate very large attacks. For comparison, the attack that targeted Spamhaus used 30,956 open DNS resolvers to <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">generate a 300Gbps DDoS</a>. On Monday, with 1/7th the number of vulnerable servers, the attacker was able to generate an attack that was 33% larger than the Spamhaus attack.</p>
 	<h3 id="globallydistributedthreat">Globally Distributed Threat</h3>
 	<script type="text/javascript" src="https://public.tableausoftware.com/javascripts/api/viz_v1.js"></script>
-	<div class="tableauPlaceholder" style="width: 663px; height: 437px;"><noscript><a href="#"><img alt="Sheet 1 " src="http://public.tableausoftware.com/content/images/IP/IPMap/Sheet1/1_rss.png" style="border: none"></a></noscript><object class="tableauViz" width="663" height="437" style="display:none;">
+	<div class="tableauPlaceholder" style="width: 663px; height: 437px;"><object class="tableauViz" width="663" height="437" style="display:none;">
 			<param name="host_url" value="http%3A%2F%2Fpublic.tableausoftware.com%2F">
 			<param name="site_root" value="">
 			<param name="name" value="IPMap/Sheet1">

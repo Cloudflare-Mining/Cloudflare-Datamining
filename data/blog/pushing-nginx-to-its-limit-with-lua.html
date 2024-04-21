@@ -1,6 +1,6 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="Pushing Nginx to its limit with Lua" src="https://blog.cloudflare.com/content/images/nginx-lua.png.scaled500.png" title="Pushing Nginx to its limit with Lua"><noscript><img alt="Pushing Nginx to its limit with Lua" src="https://blog.cloudflare.com/content/images/nginx-lua.png.scaled500.png" title="Pushing Nginx to its limit with Lua"></noscript></p>
+	<p><img alt="Pushing Nginx to its limit with Lua" src="https://blog.cloudflare.com/content/images/nginx-lua.png.scaled500.png" title="Pushing Nginx to its limit with Lua"></p>
 	<p>At CloudFlare, Nginx is at the core of what we do. It is part of the underlying foundation of our reverse proxy service. In addition to the built-in Nginx functionalities, we use an array of custom C modules that are specific to our infrastructure including load balancing, monitoring, and caching. Recently, we've been adding more simple services. And they are almost exclusively written in Lua.</p>
 	<p>I wanted to share more about how we are augmenting Nginx with new capabilities using Lua and provide some examples so you can do the same.</p>
 	<h3 id="whatislua">What is Lua?</h3>
@@ -22,7 +22,7 @@
 	<p>However, with a multitude of openresty libraries to "speak" <a href="https://github.com/agentzh/lua-resty-mysql">SQL</a>, <a href="https://github.com/agentzh/lua-resty-memcached">memcached</a>, and <a href="https://github.com/agentzh/lua-resty-redis">Redis</a>, as well as the <a href="https://github.com/agentzh/lua-resty-dns">DNS</a> built on top of ngx_lua sockets, this isn't really a problem in practice.</p>
 	<h3 id="anexampletotrynginxlogaggregation">An example to try: Nginx Log Aggregation</h3>
 	<p><a href="https://github.com/mtourne/nginx_log_by_lua">Here is an example</a> of how to build and run a simple log aggregator for Nginx. You can add it to any of your own existing configuration. This is the output once the aggregated logs are funneled to a <a href="http://opentsdb.net">time series system</a>:</p>
-	<p><img alt="Pushing Nginx to its limit with Lua" src="https://blog.cloudflare.com/content/images/Production_Graph.png.scaled500.png" title="Pushing Nginx to its limit with Lua"><noscript><img alt="Pushing Nginx to its limit with Lua" src="https://blog.cloudflare.com/content/images/Production_Graph.png.scaled500.png" title="Pushing Nginx to its limit with Lua"></noscript><br>
+	<p><img alt="Pushing Nginx to its limit with Lua" src="https://blog.cloudflare.com/content/images/Production_Graph.png.scaled500.png" title="Pushing Nginx to its limit with Lua"><br>
 		This particular example graph shows the average number of requests per second on certain nodes of the CloudFlare infrastructure.</p>
 	<h3 id="showmethecodealready">Show me the code already!</h3>
 	<p>Let's assume you already have a working webapp in Nginx, or that you use the proxy_pass directives to upstream to an Apache server.</p>

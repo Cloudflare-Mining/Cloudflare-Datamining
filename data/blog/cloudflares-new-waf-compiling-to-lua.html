@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>We use nginx throughout our network for front-line web serving, proxying and traffic filtering. In some cases, we've augmented the core C code of nginx with our own modules, but recently we've made a <a href="https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua">major move</a> to using Lua in conjunction with nginx.</p>
 	<p>One project that's now almost entirely written in Lua is the new CloudFlare WAF that we <a href="https://blog.cloudflare.com/heuristics-and-rules-why-we-built-a-new-old-waf">blogged about the other day</a>.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/Astronaut_moon_rock.jpg"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/Astronaut_moon_rock.jpg"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/Astronaut_moon_rock.jpg"></p>
 	<p>The Lua WAF uses the <a href="http://wiki.nginx.org/HttpLuaModule">nginx Lua module</a> to embed Lua code and execute that code as part of the normal nginx handling of phases. The entire execution of the [WAF](https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/) is actually handled by the following nginx configuration:</p>
 	<pre>location / {
    set $backend_waf    "WAF_CORE";
@@ -31,7 +31,7 @@ deny<br>
 	<p></p>
 	<p>We'll be opening up the ability to write custom rules in either mod_security or CloudFlare style as the WAF rolls out more widely. Most importantly the CloudFlare WAF language is not Lua despite the fact that the WAF is implemented in Lua.</p>
 	<p>In fact, the WAF operates by first taking rules written in either mod_security or CloudFlare style and converting them to a common JSON format that encodes the rule and adds additional information used by the WAF UI (such as whether the rule can be disabled or not).</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/cloudflare-waf-screenshot_2.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/cloudflare-waf-screenshot_2.png"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/cloudflare-waf-screenshot_2.png"></p>
 	<p>The JSON format is then compiled into a Lua program that is executed by the WAF. The compilation step allows us to support different input languages (like the two above) and perform optimization so that the WAF executes quickly.</p>
 	<p>For example, the compiler performs tasks such as:</p>
 	<ul>
@@ -70,15 +70,15 @@ wr.lua:1158   1563          52.906   if not f() then
 </pre>
 	<p>It shows that a call to ngx_sha1_bin (which is actually a local Lua reference to the <a href="http://wiki.nginx.org/HttpLuaModule#ngx.sha1_bin">ngx.sha1_bin</a> function in nginx Lua) was called only twice but took 823ms to run. The next most expensive line was line 1172 which took 471ms in total but was called 428 times. Using this detailed information we were able to optimize specific hot spots of code.</p>
 	<p>Information from the systemtap or a stack trace is fed into our own pastebin which parses it and automatically produces a <a href="http://dtrace.org/blogs/brendan/2011/12/16/flame-graphs">flame graph</a> showing where the code is running. Hovering over any segment gives information about percentage of time spent in any part of the code. </p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2013-08-23_at_2.57.02_PM_1.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2013-08-23_at_2.57.02_PM_1.png"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2013-08-23_at_2.57.02_PM_1.png"></p>
 	<p>Early on in the optimization of the WAF the flame graph quickly showed that extensive used of <a href="http://lua-users.org/wiki/MinimisingClosures">closures</a> was causing slowness because of their cost in <a href="http://luajit.org">LuaJIT</a>. A change to the compiler removed their use.</p>
 	<p>Another view generated from the same information shows the total time spent within a function (ignoring any functions it itself calls). This enables quick identification of hot functions. Here it's easy to see that regular expression processing and string matching are the most expensive operations (which isn't surprising given that that's what the WAF does, mostly).</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2013-08-23_at_2.55.07_PM.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2013-08-23_at_2.55.07_PM.png"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2013-08-23_at_2.55.07_PM.png"></p>
 	<p>Examining these traces we decided that it would be worthwhile <a href="http://luajit.org/sponsors.html#sponsorship_perf">sponsoring improvements</a> to the LuaJIT open source project.</p>
 	<p>The key to optimizing the WAF came from two things: repeatable test data and tools for inspecting the code as it ran. The combination of flame graphs and lulip meant that it was possible to make huge leaps in WAF performance by seeing precisely where time was spent. The use of a rule compiler meant that optimizations could be made rapidly to all the rules as needed. There's no point guessing what's slow: measure it!</p>
 	<p>The resulting code makes extensive use of <a href="http://lua-users.org/wiki/OptimisingUsingLocalVariables">local variables</a> (many of which are automatically generated by the compiler) and memoization. We also use nginx Lua's cache of loaded Lua code to speed up loading of custom rules and a two stage in-memory cache that uses by <a href="http://wiki.nginx.org/HttpLuaModule#ngx.shared.DICT">lua_shared_dict</a> and memcached for additional loading speed. And our <a href="https://blog.cloudflare.com/kyoto_tycoon_with_postgresql">globally distributed data store</a> means that new rules can be rolled out in seconds.</p>
 	<p>And, finally, to measure the operation of the WAF in production we have a global metrics system that gathers metrics about all parts of the CloudFlare network. Here's a chart showing a few hours of WAF operation; it shows the average time to process a request in microseconds. The WAF is running at between 380us and 480us per request, well within the goal of 1ms.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2013-08-23_at_4.41.07_PM.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2013-08-23_at_4.41.07_PM.png"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/Screen_Shot_2013-08-23_at_4.41.07_PM.png"></p>
 	<p>The combination of optimization in the language, the compiler and the WAF core mean that we now have a very fast all Lua WAF that gives us great flexibility and which runs within the core of nginx. This is yet another project that points to Lua being an excellent embedded language in which to write the sorts of scalable logic that CloudFlare needs.</p>
 	<!--kg-card-end: markdown-->
 </div>

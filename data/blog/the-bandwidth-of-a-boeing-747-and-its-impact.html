@@ -1,6 +1,6 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="The bandwidth of a Boeing 747 and its impact on web browsing" src="https://blog.cloudflare.com/content/images/6058320343_383e2a2c46.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"><noscript><img alt="The bandwidth of a Boeing 747 and its impact on web browsing" src="https://blog.cloudflare.com/content/images/6058320343_383e2a2c46.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"></noscript><br>
+	<p><img alt="The bandwidth of a Boeing 747 and its impact on web browsing" src="https://blog.cloudflare.com/content/images/6058320343_383e2a2c46.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"><br>
 		<small>Image credit: <a href="http://www.flickr.com/photos/markyharky">markyharky</a></small>
 	</p>
 	<p>This is the first in a series of posts looking at what makes the web slow and what to do about it.</p>
@@ -13,8 +13,7 @@
 		latency will be something like 150ms. That figure is governed and limited by the speed of light. For the 747 the latency is the literal flying time of 10 hours.</p>
 	<p>One thing British Airways ensures while flying the 1TB of data is reliability. The data is very, very unlikely to not arrive in London. The Internet does not provide the same guarantee. As data is transferred across the Internet it gets delayed, lost, corrupted and misordered. So, the Internet's core protocol TCP provides mechanisms to ensure the reliable delivery of data despite the lossy network the data is passing through. It's these mechanisms that slow the transfer of data down and where the speed of light comes into play.</p>
 	<p>(If airlines experienced aircraft loss at the rate the Internet sees packet loss there'd be 28 crashes per day in the US alone).</p>
-	<p><img alt="The bandwidth of a Boeing 747 and its impact on web browsing" src="https://blog.cloudflare.com/content/images/5080064040_cfa89f55d2.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"><noscript><img alt="The bandwidth of a Boeing 747 and its impact on web
-browsing" src="https://blog.cloudflare.com/content/images/5080064040_cfa89f55d2.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"></noscript><br>
+	<p><img alt="The bandwidth of a Boeing 747 and its impact on web browsing" src="https://blog.cloudflare.com/content/images/5080064040_cfa89f55d2.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"><br>
 		<small>Image credit: <a href="http://www.flickr.com/photos/ronniechan">El Ronzo</a></small>
 	</p>
 	<p>To ensure reliability, TCP breaks data to be sent up into chunks (which are further broken down into packets) and sends chunks of data and then waits for an acknowledgement that the chunk was successfully received. It's while waiting for the acknowledgement that the speed of light comes into play.</p>

@@ -17,7 +17,7 @@
 12/30 01:42:14 23.75.345.200 example.com /index.php?6732828=-106444 WordPress/3.2.2
 </pre>
 	<p>The attacker was using a botnet to hit the script /index.php on example.com. To make each request different they are appending a query string in the form number=number where each number is randomly chosen. The User-Agent in the requests is spoofed to look like WordPress.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/cloudflare.1.png"><noscript><img alt="" src="https://blog.cloudflare.com/content/images/cloudflare.1.png"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/cloudflare.1.png"></p>
 	<p>Although this attack doesn’t cause CloudFlare a problem it can cause the customer’s web server to become overloaded. The customer contacted us and we put in place a custom rule for them that blocks the attack. The rule looks like this:</p>
 	<pre>rule 12345678 WordPress Numbers Botnet
   REQUEST_HEADERS:User-Agent matches ^WordPress\/ and

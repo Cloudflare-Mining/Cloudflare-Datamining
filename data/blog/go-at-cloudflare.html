@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>The other day I blogged here about our new <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">Railgun software</a> that speeds up the back haul between CloudFlare data centers and our clients' servers. At CloudFlare we're using a number of different languages depending on the task: C or C++ for all core services, PHP for the main web site, Lua for customization of nginx and an extensive amount of JavaScript. Railgun is slightly different as it's about 4,000 lines of <a href="https://golang.org">Go</a> of which about 3,000 are code (not comments).</p>
-	<p><img alt="Go at CloudFlare" src="https://blog.cloudflare.com/content/images/1320968710.jpeg.scaled500.jpg" title="Go at CloudFlare"><noscript><img alt="Go at CloudFlare" src="https://blog.cloudflare.com/content/images/1320968710.jpeg.scaled500.jpg" title="Go at CloudFlare"></noscript><br>
+	<p><img alt="Go at CloudFlare" src="https://blog.cloudflare.com/content/images/1320968710.jpeg.scaled500.jpg" title="Go at CloudFlare"><br>
 		<small>Image source: <a href="http://stanleylieber.com">stanleylieber.com</a>; created by <a href="http://reneefrench.blogspot.co.uk">Renée French</a></small>
 	</p>
 	<p>We chose to use Go for Railgun because Railgun is inherently highly concurrent. A single instance of the Railgun client should be able to handle large numbers of requests from the CloudFlare data center for content and then multiplex them across an Internet connection to be handled. Go's concurrency makes writing software that must scale up and down very easy.</p>

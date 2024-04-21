@@ -1,6 +1,6 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><img alt="A note about Kerckhoff's Principle" src="https://blog.cloudflare.com/content/images/5418878050_64ef7e914a.jpeg.scaled500.jpg" title="A note about Kerckhoff's Principle"><noscript><img alt="A note about Kerckhoff&apos;s Principle" src="https://blog.cloudflare.com/content/images/5418878050_64ef7e914a.jpeg.scaled500.jpg" title="A note about Kerckhoff&apos;s Principle"></noscript><br>
+	<p><img alt="A note about Kerckhoff's Principle" src="https://blog.cloudflare.com/content/images/5418878050_64ef7e914a.jpeg.scaled500.jpg" title="A note about Kerckhoff's Principle"><br>
 		<small>Image credit: <a href="http://www.flickr.com/photos/psicologiaclinica">psicologiaclinica</a></small>
 	</p>
 	<p>The other day I wrote a long post describing in detail <a href="https://blog.cloudflare.com/keeping-passwords-safe-by-staying-up-to-date">how we used to and how we now store customer passwords</a>. Some people were surprised that we were open about this, and others wanted to understand exactly what part of a security system needs to be kept secret.</p>
@@ -14,8 +14,7 @@
 	<p>That's just as true today. The security of HTTPS, SSL and ciphers like AES or RSA rely on the complexity of the algorithm, not on keeping them secret. In fact, they are all published, detailed standards. The only secret is the key that's chosen when you connect to a secure web site (that's done automatically and randomly by your browser and the server) or when you encrypt a document using a program like GPG.</p>
 	<p>Another example is home security. Imagine if you bought a lock that stated that it must be hidden from view so that no one knew what type of lock you had installed. That wouldn't provide much reassurance that the lock was any good. The security of the lock should depend on its mechanism and you keeping the key safe not on you keeping the lock a secret!</p>
 	<p><img alt="A note about Kerckhoff's
-Principle" src="https://blog.cloudflare.com/content/images/7190315846_1a651daaf7.jpeg.scaled500.jpg" title="A note about Kerckhoff's Principle"><noscript><img alt="A note about Kerckhoff&apos;s
-Principle" src="https://blog.cloudflare.com/content/images/7190315846_1a651daaf7.jpeg.scaled500.jpg" title="A note about Kerckhoff&apos;s Principle"></noscript><br>
+Principle" src="https://blog.cloudflare.com/content/images/7190315846_1a651daaf7.jpeg.scaled500.jpg" title="A note about Kerckhoff's Principle"><br>
 		<small>Image credit: <a href="http://www.flickr.com/photos/paulorear">paul.orear</a></small>
 	</p>
 	<p>When storing passwords securely we rely on the complexity of the bcrypt algorithm. Everything about our storage mechanism is assumed to be something that can be made public. So it's safe to say that we choose a random salt, and that we use bcrypt. The salt is not a key, and it does not need to be kept secret.</p>
