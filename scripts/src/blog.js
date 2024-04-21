@@ -382,6 +382,7 @@ for (const url of [...blogURLs].sort()) {
 			delete revived.relatedPosts;
 
 			const ordered = sortObjectByKeys(revived);
+			ordered.post = sortObjectByKeys(ordered.post);
 			await fs.writeFile(slug + '.props.json', JSON.stringify(ordered, null, '\t'));
 
 			// add tags if ID not already in list
