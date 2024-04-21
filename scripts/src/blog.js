@@ -205,7 +205,7 @@ function reviveObject(raw) {
 const promises = [];
 const tags = [];
 let publisher = null;
-for (const url of [...blogURLs].sort().slice(0, 10)) {
+for (const url of [...blogURLs].sort()) {
 	promises.push(limit(async () => {
 		console.log('Fetching', url);
 		const parsedURL = new URL(url);
