@@ -10,7 +10,7 @@ import fetch from 'node-fetch';
 import pLimit from 'p-limit';
 import puppeteer from 'puppeteer';
 
-import { tryAndPush, userAgent } from './utils.js';
+import { sortObjectByKeys, tryAndPush, userAgent } from './utils.js';
 
 const cfRes = await fetch('https://jross.me/cf.json');
 const cf = await cfRes.json();
@@ -381,7 +381,8 @@ for (const url of [...blogURLs].sort()) {
 			// remove relatedPosts
 			delete revived.relatedPosts;
 
-			await fs.writeFile(slug + '.props.json', JSON.stringify(revived, null, '\t'));
+			const ordered = sortObjectByKeys(revived);
+			await fs.writeFile(slug + '.props.json', JSON.stringify(ordered, null, '\t'));
 
 			// add tags if ID not already in list
 			if (revived.post.tags) {
