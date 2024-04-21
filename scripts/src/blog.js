@@ -172,9 +172,40 @@ await fs.writeFile(path.resolve(dir, 'sitemap.json'), JSON.stringify([...blogURL
 
 console.log('Processing blog posts...', blogURLs.size);
 
+/* eslint-disable no-use-before-define */
+const propTypes = {
+	0: value => reviveObject(value),
+	1: value => reviveArray(value),
+	2: value => new RegExp(value),
+	3: value => new Date(value),
+	4: value => new Map(reviveArray(value)),
+	5: value => new Set(reviveArray(value)),
+	6: BigInt,
+	7: value => new URL(value),
+	8: value => new Uint8Array(value),
+	9: value => new Uint16Array(value),
+	10: value => new Uint32Array(value),
+};
+/* eslint-enable no-use-before-define */
+
+function reviveTuple(raw) {
+	const [type, value] = raw;
+	return type in propTypes ? propTypes[type](value) : undefined;
+}
+
+function reviveArray(raw) {
+	return (raw).map(reviveTuple);
+}
+
+function reviveObject(raw) {
+	if (typeof raw !== 'object' || raw === null) { return raw; }
+	return Object.fromEntries(Object.entries(raw).map(([key, value]) => [key, reviveTuple(value)]));
+}
+
 const promises = [];
+const tags = [];
 let publisher = null;
-for (const url of [...blogURLs].sort()) {
+for (const url of [...blogURLs].sort().slice(0, 10)) {
 	promises.push(limit(async () => {
 		console.log('Fetching', url);
 		const parsedURL = new URL(url);
@@ -291,6 +322,14 @@ for (const url of [...blogURLs].sort()) {
 			});
 		}
 
+		// delete anything inside noscript tags. Some blog posts have malformed stuff in here
+		const noscripts = dom('noscript');
+		if (noscripts) {
+			noscripts.each((i, noscript) => {
+				dom(noscript).remove();
+			});
+		}
+
 		// get application/ld+json
 		const rawDom = cheerio.load(data.body);
 		const ldJson = rawDom('script[type="application/ld+json"]');
@@ -327,6 +366,33 @@ for (const url of [...blogURLs].sort()) {
 				}
 			}
 		}
+
+		// get props from astro-island Post component
+		const astroIslands = rawDom('astro-island');
+		const astroIslandPost = astroIslands.filter((i, el) => {
+			const astro = rawDom(el);
+			return astro.attr('component-export') === 'Post';
+		});
+		if (astroIslandPost) {
+			const astro = rawDom(astroIslandPost);
+			const props = JSON.parse(astro.attr('props'));
+			const revived = reviveObject(props);
+
+			// remove relatedPosts
+			delete revived.relatedPosts;
+
+			await fs.writeFile(slug + '.props.json', JSON.stringify(revived, null, '\t'));
+
+			// add tags if ID not already in list
+			if (revived.post.tags) {
+				for (const tag of revived.post.tags) {
+					// check if ID is already in list, this is array of objects
+					if (!tags.some(existingTag => existingTag.id === tag.id)) {
+						tags.push(tag);
+					}
+				}
+			}
+		}
 		console.log('write', slug);
 		const beautified = jsBeautify.html_beautify(dom.html(), {
 			indent_size: 4,
@@ -339,6 +405,12 @@ await Promise.all(promises);
 if (publisher) {
 	await fs.writeFile(path.resolve(dir, '_publisher.json'), JSON.stringify(publisher, null, '\t'));
 }
+const orderedTags = tags.sort((tagA, tagB) => tagA.id.localeCompare(tagB.id));
+await fs.writeFile(path.resolve(dir, '_tags.json'), JSON.stringify(orderedTags, null, '\t'));
+
+// dump internal tags to a file
+const internalTags = orderedTags.filter(tag => tag.visibility === 'internal');
+await fs.writeFile(path.resolve(dir, '_internal-tags.json'), JSON.stringify(internalTags, null, '\t'));
 
 await browser.close();
 
