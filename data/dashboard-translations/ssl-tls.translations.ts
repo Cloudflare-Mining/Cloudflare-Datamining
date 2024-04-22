@@ -707,6 +707,8 @@ We have created a [detailed article around using Certificate Transparency Monito
 	ssl_setting_origin_pull: "Strict (SSL-Only Origin Pull)",
 	ssl_setting_origin_pull_description: "Same as Full (strict), but ensures that the request to the origin is always encrypted",
 	ssl_setting_header_prefix: "Your SSL/TLS encryption mode is",
+	ssl_setting_change_encryption_mode_prefix: "You are switching your SSL mode from",
+	ssl_setting_change_encryption_mode: "Are you sure you want to make that change?",
 	ssl_setting_label_browser: "Browser",
 	ssl_setting_label_cloudflare: "Cloudflare",
 	ssl_setting_label_origin: "Origin Server",
