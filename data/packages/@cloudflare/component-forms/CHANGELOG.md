@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.1.1
+
+### Patch Changes
+
+- Updated dependencies [6125d19861]
+  - @cloudflare/util-responsive@3.0.0
+  - @cloudflare/component-grid@3.0.9
+
 ## 6.1.0
 
 ### Minor Changes

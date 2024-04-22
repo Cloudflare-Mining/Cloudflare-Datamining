@@ -1,5 +1,18 @@
 # Change Log
 
+## 3.0.0
+
+### Major Changes
+
+- 6125d19861: `isBefore(breakpoint1, breakpoint2)` no longer returns `true` if `breakpoint1` and `breakpoint2` are equal.
+
+  This is essentially a bugfix that aligns the method behavior with what one would expect given its name.
+  There are many instances of the following code in use that previously were not behaving as intended:
+
+  ```js
+  const isMobile = isBefore(breakpoint, 'tablet');
+  ```
+
 ## 2.0.8
 
 ### Patch Changes

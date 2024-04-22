@@ -1,5 +1,14 @@
 # Change Log
 
+## 7.1.2
+
+### Patch Changes
+
+- Updated dependencies [b57967acf0]
+  - @cloudflare/component-arrow-swivel@8.0.9
+  - @cloudflare/component-forms@6.1.1
+  - @cloudflare/component-link@8.0.13
+
 ## 7.1.1
 
 ### Patch Changes

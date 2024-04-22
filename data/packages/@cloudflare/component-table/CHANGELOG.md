@@ -1,5 +1,12 @@
 # Change Log
 
+## 10.0.9
+
+### Patch Changes
+
+- Updated dependencies [b57967acf0]
+  - @cloudflare/component-arrow-swivel@8.0.9
+
 ## 10.0.8
 
 ### Patch Changes

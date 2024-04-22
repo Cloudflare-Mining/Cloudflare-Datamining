@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.0.40
+
+### Patch Changes
+
+- Updated dependencies [6125d19861]
+  - @cloudflare/util-responsive@3.0.0
+
 ## 6.0.39
 
 ### Patch Changes

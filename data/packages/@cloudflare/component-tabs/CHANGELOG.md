@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.0.13
+
+### Patch Changes
+
+- Updated dependencies [6125d19861]
+  - @cloudflare/util-responsive@3.0.0
+  - @cloudflare/component-forms@6.1.1
+
 ## 6.0.12
 
 ### Patch Changes

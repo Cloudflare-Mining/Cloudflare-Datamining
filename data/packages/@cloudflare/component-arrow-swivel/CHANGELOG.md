@@ -1,5 +1,17 @@
 # Change Log
 
+## 8.0.9
+
+### Patch Changes
+
+- b57967acf0: Update `size` prop type from string to number to match `IArrowSwivelProps` TS types
+
+  ***
+
+  ## '@cloudflare/component-input': patch
+
+  Add type="tel" as a valid prop type value for type prop
+
 ## 8.0.8
 
 ## 8.0.7
