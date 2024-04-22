@@ -7,7 +7,7 @@
 </div>
 <p><strong>Position Location: Austin, TX | Lisbon, Portugal | London, UK</strong></p>
 <h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p></p>
+<p>&nbsp;</p>
 <p class="diff-block-context">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
 <p class="diff-block-context">The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the serverless technology that executes billions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
 <p class="diff-block-target diff-block-context">The Workers Onboarding&nbsp;<span id="added-diff-0" class="diff-html-added">&amp; Integrations&nbsp;</span>team aims to provide the best in class experience for Workers users to move fast and quickly bring ideas to life.</p>
@@ -24,7 +24,7 @@
 	<li>Product mindset and comfortable talking to customers and partners</li>
 	<li>Experience delivering projects end-to-end – gathering requirements, writing technical specifications, implementing, testing, and releasing</li>
 	<li>Comfortable managing multiple projects simultaneously</li>
-	<li><span id="removed-diff-1" class="diff-html-removed">Comfortable working&nbsp;</span><span id="added-diff-2" class="diff-html-added">Able to participate in&nbsp;</span>on an oncall shift</li>
+	<li><span id="added-diff-2" class="diff-html-added">Able to participate in&nbsp;</span>on an on call shift</li>
 </ul>
 <h3 id="Jobdescription:SeniorSoftwareEngineerWorkersOnboarding&amp;Integrations-BonusPoints" class="diff-block-target diff-block-context"><strong><span id="changed-diff-7" class="diff-html-changed">Bonus Points</span></strong></h3>
 <ul class="diff-block-context">
@@ -34,7 +34,7 @@
 	<li>Knowledge of OAuth and building integrations with third-parties</li>
 	<li>Has managed interns or mentored junior engineers</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,62 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin or San Francisco</strong></p>
-<p><strong>What You’ll Do:</strong></p>
-<p>Cloudflare is looking for a bright, proactive and detail-oriented Executive Assistant to support our Chief Strategy Officer.</p>
-<p>This role requires superior attention to detail, great organizational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude.The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves on being a career EA.&nbsp;</p>
-<p>Responsibilities:</p>
+<h4><strong>About the department</strong></h4>
+<h4>Cloudflare’s Infrastructure group is responsible for building our global network. Our Hardware Engineering team helps research, develop, test, and deploy new equipment enabling 20% of the world’s internet traffic to be served smoothly. Deployed across 285 cities in 100+ countries, the hardware we select helps improve the security, reliability, and performance of the Internet.</h4>
+<h4><strong>About the Role</strong></h4>
+<p>We need to make thoughtful infrastructure choices affecting a significant portion of the Internet. Hardware we work with includes servers, routers, switches, optical equipment, power distribution units, cables, optics, and more. As a Hardware Systems Engineer, you will work with colleagues on the Hardware Engineering, Product teams, and Hardware Sourcing teams to troubleshoot and maintain Cloudflare’s worldwide fleet of storage and compute servers.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Admin: Provide excellent administrative support for members of the Executive Leadership team exercising high attention to detail and discretion to every matter. Plan, coordinate and execute meeting set-up and events. Including room set-ups, light catering, Audio/Visual set up, attendance tracking and materials distribution. Provide agendas, detailed data, information and resources in preparation for meetings.&nbsp;</li>
-	<li>Calendar: Proactively own and flawlessly execute on calendars, prioritizing with purpose, deflecting with tact, and understanding both the short- and long-term impacts of each confirmed, declined, and rescheduled meeting. Ensure the leaders are equipped with all the necessary meeting information and manage inbound and outbound requests. If you enjoy “playing Tetris” with different Time Zones and schedules to help people get together, that would be a plus!</li>
-	<li>Travel and Expenses: Plan all aspects of domestic and international travel, optimizing and balancing executives’ time with cost of travel; monitoring flights for up to the minute changes; ensuring all documents are secured and up-to-date. Ensure timely submission of expense reports through Navan.</li>
-	<li>EA Team: Our EA team has a high degree of camaraderie and so the ideal candidate will enjoy partnering closely with their peers and foster teamwork.</li>
+	<li>Develop and maintain automation tools to update firmware on servers and components in Cloudflare’s fleet</li>
+	<li>Work with software teams to validate bug fixes and performance of new firmware revisions</li>
+	<li>Test and deploy firmware updates to the fleet, monitoring the progress of the rollout for compliance and reliability</li>
+	<li>Work with server and component vendors to obtain, debug, and maintain the latest updates</li>
+	<li>Work with our Site Reliability Engineering teams to triage bug reports</li>
+	<li>Support our Data Centre Engineering teams in resolving hardware issues</li>
+	<li>Communicate your results and updates through blog posts, internal talks, and tickets</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>You have 5+ years experience as an Executive Assistant in a high growth environment, prior experience supporting senior leaders&nbsp;</li>
-	<li>Excellent verbal and written communication skills</li>
-	<li>Working knowledge of Google Suite and major airline carrier’s platforms</li>
-	<li>Exhibits a strong work ethic, professionalism, confidentiality and good judgment</li>
-	<li>Incredibly organized and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
-	<li>Personable with a can do attitude that sees no task or project to be too small or too big</li>
+	<li>Bachelor’s degree in Computer Engineering, Electrical Engineering, or Computer Science</li>
+	<li>Desire to learn about the <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server/">Cloudflare hardware</a> used by <a href="https://blog.cloudflare.com/application-security/">almost 20% of all web sites</a></li>
+	<li>Desire to learn how a diverse server fleet is managed at scale</li>
+	<li>Desire to learn the tools Cloudflare uses to maintain and monitor our hardware</li>
+	<li>Knowledge of PXE booting</li>
+	<li>Knowledge of configuration management, in particular we use salt to manage our fleet</li>
+	<li>Knowledge of Redfish, IPMI and server remote management protocols</li>
+	<li>Knowledge of running production mission critical systems</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>For Colorado-based hires and Washington hires: Estimated annual salary of $98,000 - $120,000</li>
-	<li>For New York City-based and California (excluding Bay Area): Estimated annual salary of $115,000 - $141,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $122,000 - $149,000</li>
+	<li>Familiarity with server hardware architecture</li>
+	<li>Knowledge of debugging server hardware faults and the ability to engage with our sourcing team and vendors to improve quality</li>
+	<li>Experience of managing large fleets comprising of thousands of servers</li>
+	<li>Experience of observability and monitoring tools such as Prometheus and Grafana, and the ability to observe trends over time</li>
+	<li>Experience scripting and programming, in particular python and bash</li>
+	<li>Experience with software development tools and processes such as git, Bitbucket and TeamCity and Jira</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
+<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
