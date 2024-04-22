@@ -13,7 +13,7 @@
 <p><strong>In this role, you can expect to:</strong></p>
 <ul>
 	<li>Design, deliver, and operate software that progresses Cloudflare's Observability competency</li>
-	<li>Solve scaling bottlenecks in critical services in our Logging pipeline</li>
+	<li>Solve scaling bottlenecks in critical services in our Metrics &amp; Alerting pipeline</li>
 	<li>Work on highly distributed and scalable systems</li>
 	<li>Participate in the constant cycle of knowledge sharing and mentoring</li>
 	<li>Participate in the global on-call rotation for the services your team owns</li>
