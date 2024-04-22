@@ -662,6 +662,11 @@
 																					},
 																					"custom_attributes": {
 																						"properties": {
+																							"friendly_name": {
+																								"description": "The SAML FriendlyName of the attribute.",
+																								"example": "Last Name",
+																								"type": "string"
+																							},
 																							"name": {
 																								"description": "The name of the attribute.",
 																								"example": "family_name",
@@ -677,12 +682,28 @@
 																								"example": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
 																								"type": "string"
 																							},
+																							"required": {
+																								"description": "If the attribute is required when building a SAML assertion.",
+																								"example": true,
+																								"type": "boolean"
+																							},
 																							"source": {
 																								"properties": {
 																									"name": {
 																										"description": "The name of the IdP attribute.",
 																										"example": "last_name",
 																										"type": "string"
+																									},
+																									"name_by_idp": {
+																										"additionalProperties": {
+																											"type": "string"
+																										},
+																										"description": "A mapping from IdP ID to attribute name.",
+																										"example": {
+																											"exampleIdPID1": "AttributeName1",
+																											"exampleIdPID2": "AttributeName2"
+																										},
+																										"type": "object"
 																									}
 																								},
 																								"type": "object"
@@ -765,6 +786,53 @@
 																						"format": "date-time",
 																						"readOnly": true,
 																						"type": "string"
+																					},
+																					"custom_claims": {
+																						"properties": {
+																							"name": {
+																								"description": "The name of the claim.",
+																								"example": "family_name",
+																								"type": "string"
+																							},
+																							"name_by_idp": {
+																								"additionalProperties": {
+																									"type": "string"
+																								},
+																								"description": "A mapping from IdP ID to claim name.",
+																								"example": {
+																									"exampleIdPID1": "ClaimName1",
+																									"exampleIdPID2": "ClaimName2"
+																								},
+																								"type": "object"
+																							},
+																							"required": {
+																								"description": "If the claim is required when building an OIDC token.",
+																								"example": true,
+																								"type": "boolean"
+																							},
+																							"scope": {
+																								"description": "The scope of the claim.",
+																								"enum": [
+																									"groups",
+																									"profile",
+																									"email",
+																									"openid"
+																								],
+																								"example": "profile",
+																								"type": "string"
+																							},
+																							"source": {
+																								"properties": {
+																									"name": {
+																										"description": "The name of the IdP claim.",
+																										"example": "last_name",
+																										"type": "string"
+																									}
+																								},
+																								"type": "object"
+																							}
+																						},
+																						"type": "object"
 																					},
 																					"grant_types": {
 																						"description": "The OIDC flows supported by this application",
@@ -2200,6 +2268,11 @@
 																				},
 																				"custom_attributes": {
 																					"properties": {
+																						"friendly_name": {
+																							"description": "The SAML FriendlyName of the attribute.",
+																							"example": "Last Name",
+																							"type": "string"
+																						},
 																						"name": {
 																							"description": "The name of the attribute.",
 																							"example": "family_name",
@@ -2215,12 +2288,28 @@
 																							"example": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
 																							"type": "string"
 																						},
+																						"required": {
+																							"description": "If the attribute is required when building a SAML assertion.",
+																							"example": true,
+																							"type": "boolean"
+																						},
 																						"source": {
 																							"properties": {
 																								"name": {
 																									"description": "The name of the IdP attribute.",
 																									"example": "last_name",
 																									"type": "string"
+																								},
+																								"name_by_idp": {
+																									"additionalProperties": {
+																										"type": "string"
+																									},
+																									"description": "A mapping from IdP ID to attribute name.",
+																									"example": {
+																										"exampleIdPID1": "AttributeName1",
+																										"exampleIdPID2": "AttributeName2"
+																									},
+																									"type": "object"
 																								}
 																							},
 																							"type": "object"
@@ -2303,6 +2392,53 @@
 																					"format": "date-time",
 																					"readOnly": true,
 																					"type": "string"
+																				},
+																				"custom_claims": {
+																					"properties": {
+																						"name": {
+																							"description": "The name of the claim.",
+																							"example": "family_name",
+																							"type": "string"
+																						},
+																						"name_by_idp": {
+																							"additionalProperties": {
+																								"type": "string"
+																							},
+																							"description": "A mapping from IdP ID to claim name.",
+																							"example": {
+																								"exampleIdPID1": "ClaimName1",
+																								"exampleIdPID2": "ClaimName2"
+																							},
+																							"type": "object"
+																						},
+																						"required": {
+																							"description": "If the claim is required when building an OIDC token.",
+																							"example": true,
+																							"type": "boolean"
+																						},
+																						"scope": {
+																							"description": "The scope of the claim.",
+																							"enum": [
+																								"groups",
+																								"profile",
+																								"email",
+																								"openid"
+																							],
+																							"example": "profile",
+																							"type": "string"
+																						},
+																						"source": {
+																							"properties": {
+																								"name": {
+																									"description": "The name of the IdP claim.",
+																									"example": "last_name",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
 																				},
 																				"grant_types": {
 																					"description": "The OIDC flows supported by this application",
@@ -3974,6 +4110,11 @@
 															},
 															"custom_attributes": {
 																"properties": {
+																	"friendly_name": {
+																		"description": "The SAML FriendlyName of the attribute.",
+																		"example": "Last Name",
+																		"type": "string"
+																	},
 																	"name": {
 																		"description": "The name of the attribute.",
 																		"example": "family_name",
@@ -3989,12 +4130,28 @@
 																		"example": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
 																		"type": "string"
 																	},
+																	"required": {
+																		"description": "If the attribute is required when building a SAML assertion.",
+																		"example": true,
+																		"type": "boolean"
+																	},
 																	"source": {
 																		"properties": {
 																			"name": {
 																				"description": "The name of the IdP attribute.",
 																				"example": "last_name",
 																				"type": "string"
+																			},
+																			"name_by_idp": {
+																				"additionalProperties": {
+																					"type": "string"
+																				},
+																				"description": "A mapping from IdP ID to attribute name.",
+																				"example": {
+																					"exampleIdPID1": "AttributeName1",
+																					"exampleIdPID2": "AttributeName2"
+																				},
+																				"type": "object"
 																			}
 																		},
 																		"type": "object"
@@ -4077,6 +4234,53 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string"
+															},
+															"custom_claims": {
+																"properties": {
+																	"name": {
+																		"description": "The name of the claim.",
+																		"example": "family_name",
+																		"type": "string"
+																	},
+																	"name_by_idp": {
+																		"additionalProperties": {
+																			"type": "string"
+																		},
+																		"description": "A mapping from IdP ID to claim name.",
+																		"example": {
+																			"exampleIdPID1": "ClaimName1",
+																			"exampleIdPID2": "ClaimName2"
+																		},
+																		"type": "object"
+																	},
+																	"required": {
+																		"description": "If the claim is required when building an OIDC token.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"scope": {
+																		"description": "The scope of the claim.",
+																		"enum": [
+																			"groups",
+																			"profile",
+																			"email",
+																			"openid"
+																		],
+																		"example": "profile",
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"name": {
+																				"description": "The name of the IdP claim.",
+																				"example": "last_name",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
 															},
 															"grant_types": {
 																"description": "The OIDC flows supported by this application",
@@ -5365,6 +5569,11 @@
 																						},
 																						"custom_attributes": {
 																							"properties": {
+																								"friendly_name": {
+																									"description": "The SAML FriendlyName of the attribute.",
+																									"example": "Last Name",
+																									"type": "string"
+																								},
 																								"name": {
 																									"description": "The name of the attribute.",
 																									"example": "family_name",
@@ -5380,12 +5589,28 @@
 																									"example": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
 																									"type": "string"
 																								},
+																								"required": {
+																									"description": "If the attribute is required when building a SAML assertion.",
+																									"example": true,
+																									"type": "boolean"
+																								},
 																								"source": {
 																									"properties": {
 																										"name": {
 																											"description": "The name of the IdP attribute.",
 																											"example": "last_name",
 																											"type": "string"
+																										},
+																										"name_by_idp": {
+																											"additionalProperties": {
+																												"type": "string"
+																											},
+																											"description": "A mapping from IdP ID to attribute name.",
+																											"example": {
+																												"exampleIdPID1": "AttributeName1",
+																												"exampleIdPID2": "AttributeName2"
+																											},
+																											"type": "object"
 																										}
 																									},
 																									"type": "object"
@@ -5468,6 +5693,53 @@
 																							"format": "date-time",
 																							"readOnly": true,
 																							"type": "string"
+																						},
+																						"custom_claims": {
+																							"properties": {
+																								"name": {
+																									"description": "The name of the claim.",
+																									"example": "family_name",
+																									"type": "string"
+																								},
+																								"name_by_idp": {
+																									"additionalProperties": {
+																										"type": "string"
+																									},
+																									"description": "A mapping from IdP ID to claim name.",
+																									"example": {
+																										"exampleIdPID1": "ClaimName1",
+																										"exampleIdPID2": "ClaimName2"
+																									},
+																									"type": "object"
+																								},
+																								"required": {
+																									"description": "If the claim is required when building an OIDC token.",
+																									"example": true,
+																									"type": "boolean"
+																								},
+																								"scope": {
+																									"description": "The scope of the claim.",
+																									"enum": [
+																										"groups",
+																										"profile",
+																										"email",
+																										"openid"
+																									],
+																									"example": "profile",
+																									"type": "string"
+																								},
+																								"source": {
+																									"properties": {
+																										"name": {
+																											"description": "The name of the IdP claim.",
+																											"example": "last_name",
+																											"type": "string"
+																										}
+																									},
+																									"type": "object"
+																								}
+																							},
+																							"type": "object"
 																						},
 																						"grant_types": {
 																							"description": "The OIDC flows supported by this application",
@@ -6669,6 +6941,11 @@
 																				},
 																				"custom_attributes": {
 																					"properties": {
+																						"friendly_name": {
+																							"description": "The SAML FriendlyName of the attribute.",
+																							"example": "Last Name",
+																							"type": "string"
+																						},
 																						"name": {
 																							"description": "The name of the attribute.",
 																							"example": "family_name",
@@ -6684,12 +6961,28 @@
 																							"example": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
 																							"type": "string"
 																						},
+																						"required": {
+																							"description": "If the attribute is required when building a SAML assertion.",
+																							"example": true,
+																							"type": "boolean"
+																						},
 																						"source": {
 																							"properties": {
 																								"name": {
 																									"description": "The name of the IdP attribute.",
 																									"example": "last_name",
 																									"type": "string"
+																								},
+																								"name_by_idp": {
+																									"additionalProperties": {
+																										"type": "string"
+																									},
+																									"description": "A mapping from IdP ID to attribute name.",
+																									"example": {
+																										"exampleIdPID1": "AttributeName1",
+																										"exampleIdPID2": "AttributeName2"
+																									},
+																									"type": "object"
 																								}
 																							},
 																							"type": "object"
@@ -6772,6 +7065,53 @@
 																					"format": "date-time",
 																					"readOnly": true,
 																					"type": "string"
+																				},
+																				"custom_claims": {
+																					"properties": {
+																						"name": {
+																							"description": "The name of the claim.",
+																							"example": "family_name",
+																							"type": "string"
+																						},
+																						"name_by_idp": {
+																							"additionalProperties": {
+																								"type": "string"
+																							},
+																							"description": "A mapping from IdP ID to claim name.",
+																							"example": {
+																								"exampleIdPID1": "ClaimName1",
+																								"exampleIdPID2": "ClaimName2"
+																							},
+																							"type": "object"
+																						},
+																						"required": {
+																							"description": "If the claim is required when building an OIDC token.",
+																							"example": true,
+																							"type": "boolean"
+																						},
+																						"scope": {
+																							"description": "The scope of the claim.",
+																							"enum": [
+																								"groups",
+																								"profile",
+																								"email",
+																								"openid"
+																							],
+																							"example": "profile",
+																							"type": "string"
+																						},
+																						"source": {
+																							"properties": {
+																								"name": {
+																									"description": "The name of the IdP claim.",
+																									"example": "last_name",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
 																				},
 																				"grant_types": {
 																					"description": "The OIDC flows supported by this application",
@@ -8292,6 +8632,11 @@
 															},
 															"custom_attributes": {
 																"properties": {
+																	"friendly_name": {
+																		"description": "The SAML FriendlyName of the attribute.",
+																		"example": "Last Name",
+																		"type": "string"
+																	},
 																	"name": {
 																		"description": "The name of the attribute.",
 																		"example": "family_name",
@@ -8307,12 +8652,28 @@
 																		"example": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
 																		"type": "string"
 																	},
+																	"required": {
+																		"description": "If the attribute is required when building a SAML assertion.",
+																		"example": true,
+																		"type": "boolean"
+																	},
 																	"source": {
 																		"properties": {
 																			"name": {
 																				"description": "The name of the IdP attribute.",
 																				"example": "last_name",
 																				"type": "string"
+																			},
+																			"name_by_idp": {
+																				"additionalProperties": {
+																					"type": "string"
+																				},
+																				"description": "A mapping from IdP ID to attribute name.",
+																				"example": {
+																					"exampleIdPID1": "AttributeName1",
+																					"exampleIdPID2": "AttributeName2"
+																				},
+																				"type": "object"
 																			}
 																		},
 																		"type": "object"
@@ -8395,6 +8756,53 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string"
+															},
+															"custom_claims": {
+																"properties": {
+																	"name": {
+																		"description": "The name of the claim.",
+																		"example": "family_name",
+																		"type": "string"
+																	},
+																	"name_by_idp": {
+																		"additionalProperties": {
+																			"type": "string"
+																		},
+																		"description": "A mapping from IdP ID to claim name.",
+																		"example": {
+																			"exampleIdPID1": "ClaimName1",
+																			"exampleIdPID2": "ClaimName2"
+																		},
+																		"type": "object"
+																	},
+																	"required": {
+																		"description": "If the claim is required when building an OIDC token.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"scope": {
+																		"description": "The scope of the claim.",
+																		"enum": [
+																			"groups",
+																			"profile",
+																			"email",
+																			"openid"
+																		],
+																		"example": "profile",
+																		"type": "string"
+																	},
+																	"source": {
+																		"properties": {
+																			"name": {
+																				"description": "The name of the IdP claim.",
+																				"example": "last_name",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
 															},
 															"grant_types": {
 																"description": "The OIDC flows supported by this application",
@@ -9683,6 +10091,11 @@
 																						},
 																						"custom_attributes": {
 																							"properties": {
+																								"friendly_name": {
+																									"description": "The SAML FriendlyName of the attribute.",
+																									"example": "Last Name",
+																									"type": "string"
+																								},
 																								"name": {
 																									"description": "The name of the attribute.",
 																									"example": "family_name",
@@ -9698,12 +10111,28 @@
 																									"example": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
 																									"type": "string"
 																								},
+																								"required": {
+																									"description": "If the attribute is required when building a SAML assertion.",
+																									"example": true,
+																									"type": "boolean"
+																								},
 																								"source": {
 																									"properties": {
 																										"name": {
 																											"description": "The name of the IdP attribute.",
 																											"example": "last_name",
 																											"type": "string"
+																										},
+																										"name_by_idp": {
+																											"additionalProperties": {
+																												"type": "string"
+																											},
+																											"description": "A mapping from IdP ID to attribute name.",
+																											"example": {
+																												"exampleIdPID1": "AttributeName1",
+																												"exampleIdPID2": "AttributeName2"
+																											},
+																											"type": "object"
 																										}
 																									},
 																									"type": "object"
@@ -9786,6 +10215,53 @@
 																							"format": "date-time",
 																							"readOnly": true,
 																							"type": "string"
+																						},
+																						"custom_claims": {
+																							"properties": {
+																								"name": {
+																									"description": "The name of the claim.",
+																									"example": "family_name",
+																									"type": "string"
+																								},
+																								"name_by_idp": {
+																									"additionalProperties": {
+																										"type": "string"
+																									},
+																									"description": "A mapping from IdP ID to claim name.",
+																									"example": {
+																										"exampleIdPID1": "ClaimName1",
+																										"exampleIdPID2": "ClaimName2"
+																									},
+																									"type": "object"
+																								},
+																								"required": {
+																									"description": "If the claim is required when building an OIDC token.",
+																									"example": true,
+																									"type": "boolean"
+																								},
+																								"scope": {
+																									"description": "The scope of the claim.",
+																									"enum": [
+																										"groups",
+																										"profile",
+																										"email",
+																										"openid"
+																									],
+																									"example": "profile",
+																									"type": "string"
+																								},
+																								"source": {
+																									"properties": {
+																										"name": {
+																											"description": "The name of the IdP claim.",
+																											"example": "last_name",
+																											"type": "string"
+																										}
+																									},
+																									"type": "object"
+																								}
+																							},
+																							"type": "object"
 																						},
 																						"grant_types": {
 																							"description": "The OIDC flows supported by this application",
@@ -10987,6 +11463,11 @@
 																				},
 																				"custom_attributes": {
 																					"properties": {
+																						"friendly_name": {
+																							"description": "The SAML FriendlyName of the attribute.",
+																							"example": "Last Name",
+																							"type": "string"
+																						},
 																						"name": {
 																							"description": "The name of the attribute.",
 																							"example": "family_name",
@@ -11002,12 +11483,28 @@
 																							"example": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
 																							"type": "string"
 																						},
+																						"required": {
+																							"description": "If the attribute is required when building a SAML assertion.",
+																							"example": true,
+																							"type": "boolean"
+																						},
 																						"source": {
 																							"properties": {
 																								"name": {
 																									"description": "The name of the IdP attribute.",
 																									"example": "last_name",
 																									"type": "string"
+																								},
+																								"name_by_idp": {
+																									"additionalProperties": {
+																										"type": "string"
+																									},
+																									"description": "A mapping from IdP ID to attribute name.",
+																									"example": {
+																										"exampleIdPID1": "AttributeName1",
+																										"exampleIdPID2": "AttributeName2"
+																									},
+																									"type": "object"
 																								}
 																							},
 																							"type": "object"
@@ -11090,6 +11587,53 @@
 																					"format": "date-time",
 																					"readOnly": true,
 																					"type": "string"
+																				},
+																				"custom_claims": {
+																					"properties": {
+																						"name": {
+																							"description": "The name of the claim.",
+																							"example": "family_name",
+																							"type": "string"
+																						},
+																						"name_by_idp": {
+																							"additionalProperties": {
+																								"type": "string"
+																							},
+																							"description": "A mapping from IdP ID to claim name.",
+																							"example": {
+																								"exampleIdPID1": "ClaimName1",
+																								"exampleIdPID2": "ClaimName2"
+																							},
+																							"type": "object"
+																						},
+																						"required": {
+																							"description": "If the claim is required when building an OIDC token.",
+																							"example": true,
+																							"type": "boolean"
+																						},
+																						"scope": {
+																							"description": "The scope of the claim.",
+																							"enum": [
+																								"groups",
+																								"profile",
+																								"email",
+																								"openid"
+																							],
+																							"example": "profile",
+																							"type": "string"
+																						},
+																						"source": {
+																							"properties": {
+																								"name": {
+																									"description": "The name of the IdP claim.",
+																									"example": "last_name",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
 																				},
 																				"grant_types": {
 																					"description": "The OIDC flows supported by this application",
