@@ -54,16 +54,11 @@
 				},
 				"sys": {
 					"createdAt": "2022-06-03T17:36:56.056Z",
-					"updatedAt": "2024-04-10T00:53:13.487Z"
+					"updatedAt": "2024-04-22T22:18:23.095Z"
 				},
 				"contentfulId": "1eFnOez80UnYQvIDLH0SjW",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "NEW",
-					"linkText": "Read more",
-					"linkUrl": "http://blog.cloudflare.com/protecting-apis-with-jwt-validation",
-					"desktopText": "Protect your APIs from broken authentication attacks with JSON Web Token validation"
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -123,493 +118,98 @@
 						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "7t40EEZ6SNQTjjqLzE4Zz8",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "RBVdkfRpBLGpfSiXQOREv",
-								"title": "58% of Cloudflare traffic is API-related",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare allows IT Security leaders to protect their public APIs - XML, RESTful and GraphQL - while enabling innovation. Your customer and partner trust is at stake, after all.  ",
-								"learnMoreUrl": null,
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CM1OI4g3KJOxwt9qcnhxS/7a14bdfedfd4a626527ae0b972f64307/cloudflare-api.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1gt1TU0emJM2Ng4lOm7Lxk",
-								"title": "Shadow APIs create security blindspots",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "APIs are the fastest growing data type, growing more than twice as fast as web traffic. Cloudflare enables IT and Security leaders to gain visibility over their public APIs, schemas and performance metrics.  ",
-								"learnMoreUrl": null,
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XT9berNmP9XDlptO157K0/096043c3ff5e8ff33ae162ad5641ced7/performance-acceleration-rocket.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "345KibGnwKHvueBk9aS8ae",
-								"title": "Authentication, data loss and abuse concerns",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Once discovered, Cloudflare protects your APIs from abuse, vulnerability exploits, authentication loopholes and data leakage. Cloudflare now blocks more API traffic than web traffic.",
-								"learnMoreUrl": null,
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LIuOSdwXAc6VOPaF4riTG/dcf6475e7dc6f9e1e37baa747dd7b2b7/attacker.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "FQE0JEkVFENSePs5C1zvS",
-						"title": "API Gateway: Security ",
-						"copy": "Protect and secure your APIs:\n\n- __API discovery__: automatically discover your API endpoints and their schemas through simple heuristics and machine learning models.\n- __OWASP Top 10 security__: block OWASP API Top 10 attacks including authentication, data loss, abuse, DDoS and brute-force attacks.\n- __Mutual TLS__: authenticate and validate API traffic with mTLS certificates for mobile and IoT APIs, and JSON web tokens (JWT) to block requests from illegitimate clients.\n- __Positive API security__: protect APIs by only accepting traffic that conforms to your OpenAPI schemas. Block malformed requests and HTTP anomalies.\n- __API abuse detection:__ stop volumetric and sequential API abuse of XML, RESTful and GraphQL APIs through simple heuristics and advanced anomaly detection.\n- __Sensitive data detection:__ prevent data leaks by continuously scanning response payloads for sensitive data.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60WcAVhY8VMxw1bwvjBFEA/e88143abf3a5992971b9c0f418e0a313/api_shield_-2.png"
-							},
-							"description": "Illustration of a shield securing a cloud and APIs"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "small",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "1Z9koikzykufU2mGpGOYn3",
-						"title": "API Gateway: Management",
-						"copy": "Maintain high performing APIs with [powerful monitoring](https://www.cloudflare.com/application-services/solutions/app-performance-monitoring/) and management:\n\n- __Developer portal and management__: single view for up to date API inventory, interactive API documentation and security controls. Host the documentation on your domain with Cloudflare Pages.\n- __API routing__: will append headers or cookies or reroute to the right backend resource\n- __API analytics__: will closely track API performance and identify your most popular and business critical API sequences\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YHyv0GorxPugqBNbT3q3P/0ce9a8f2d7f79f1a98bc9341b8de4c98/image6.png"
-							},
-							"description": "Illustration of dashboard morning APIs"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "border-top",
-						"imagePosition": true,
-						"imageSize": "small",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "1s0CwrHHLXoSXeOXT5NbkX",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3wImQOIIa06PGP7iXqlYb",
-								"title": null,
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "API Gateway protects organizations against the risks in the __OWASP Foundation's API Security Top 10__ security list. ",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "61702084-84d9-534a-9c2f-20d86f1e885a",
-									"altText": "OWASP logo",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4EscLGZlsk6i5elUE3vrP9/d1022d10d80e90e66fb14d5ccdc6caff/OWASP-Combination-mark-r.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7gaQnjwSq82WJZl0eOG9uw",
-								"title": null,
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "\n- Broken Object Level Authorization\n- Broken Authentication\n- Broken Object Property Level Authorization\n- Unrestricted Resource Consumption\n- Broken Function Level Authorization\n",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3dgI7wvJVznajgBm4WPcEj",
-								"title": null,
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "- Unrestricted Access to Sensitive Business Flows\n- Server Side Request Forgery\n- Security Misconfiguration\n- Improper Inventory Management\n- Unsafe Consumption of APIs",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "5Zpyem74Ku6vNTfbqJUwP7",
-						"title": "Protections for OWASP API Top 10",
-						"titleSize": null,
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "4ZyjNhkrc2yRbqtlwdIjQM",
-							"elementName": "API Top Ten ",
-							"standardText": "Learn More",
-							"text": null,
-							"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4uq4cXQPbfO8fh3T18q9JJ/0bbfddf1ef9bdbd60c74901d9b27f6e1/CF_API_top_ten_data_sheet.pdf",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
-					},
-					{
-						"contentfulId": "4stCM45d2YA0cnC5gM8p1U",
-						"contentTypeId": "bladeResourceGrid",
-						"title": "Learn more about API Gateway",
+						"contentfulId": "5iaHnaoYM9YGrcB26XiZyB",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "What analysts say",
+						"eyebrowHeading": null,
 						"description": null,
-						"sectionPadding": null,
-						"bladeBorder": "none",
-						"textColor": "black",
-						"backgroundColor": "white",
-						"htmlId": null,
-						"resourceList": [
+						"textLayout": "center",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
-								"resourceMedia": null,
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "API Shield Forrester webinar",
-								"callToAction": "Watch Video",
-								"id": "38086432-03a9-510b-b94e-72c37d9f50a5",
-								"resourceTitle": "API Security webinar with Forrester",
-								"resourceType": "Webinar",
-								"topic": [
-									"Secure Internet Applications"
-								],
-								"orderDate": "2021-10-20",
-								"industry": null,
-								"description": "Cloudflare and Forrester discuss key API security trends and risks while exploring how to strengthen API security postures to keep APIs secure and productive.  ",
-								"externalLinkUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/3424150/?_gl=1%2a5m36fd%2a_ga%2aMjM0NzkwMzY4LjE2MTcwNTQ4NjE.%2a_gid%2aNjE1MzU2NTIyLjE2MzQ1NzQ4OTk.",
-								"hideFromResourceHub": false
+								"contentTypeId": "feature",
+								"contentfulId": "6DqWwSkBuJsNtE8jtUwP8i",
+								"title": "Cloudflare named in 2024 Gartner® Magic Quadrant™ for Security Service Edge (SSE)",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "We believe this recognition is a testament to Cloudflare's single-vendor SASE platform and its ability to modernize your network and consolidate more use cases.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2024/",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EpMDcOzRGz0qkeQbuOoB1/647e0c54d93967efd46237dec01b149d/gartner.svg"
+									},
+									"description": "Gartner logo"
+								},
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"resourceMedia": {
+								"contentTypeId": "feature",
+								"contentfulId": "16MooJbviWl1XyxAD4Fxb8",
+								"title": "Cloudflare a Strong Performer in The Forrester Wave™: Security Service Edge Solutions, Q1 2024",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Cloudflare received the highest score in the global network criterion among SSE vendors in the Forrester report.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/forrester-wave-sse-2024/",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zfIEoxvRDHLRbkBaLJqsT/4362a886351323da38a17f35cc15a33a/API_Shield_white_paper.pdf"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AdmvEGP1Nssxe3RI0j9Fl/d35e24c62136bae8429dfd43805ad832/forester.svg"
 									},
-									"description": ""
+									"description": "Forrester logo"
 								},
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "API Gateway white paper April 2023 - Resource Card",
-								"callToAction": "Download PDF",
-								"id": "3ea7c2c0-db69-525f-8fb2-44d52607b960",
-								"resourceTitle": "Keeping APIs secure and productive ",
-								"resourceType": "Whitepaper",
-								"topic": [
-									"Secure Internet Applications"
-								],
-								"orderDate": "2021-10-19",
-								"industry": null,
-								"description": "As APIs become ever more important, so does keeping them secure and productive. This paper examines key API attacks - and the security needed to protect APIs against them.",
-								"externalLinkUrl": null,
-								"hideFromResourceHub": false
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"resourceMedia": {
+								"contentTypeId": "feature",
+								"contentfulId": "57VJcEPrZ9CtXnwT8I11um",
+								"title": "Cloudflare a Leader in 2023 IDC MarketScape: Zero Trust Network Access",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "IDC cites Cloudflare's \"aggressive product strategy to support enterprise security needs.\"",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/idc-marketscape-ztna-2023/",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/tsfdPtMqrwiq35aylt8yj/c27aaf27571f1b7ed8448d99fde332cd/API_Gateway_Datasheet.pdf"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/62y2LOw1pScTM3Nyy6mM8j/e74f4d41a003a796b26dfdcd30448372/idc.svg"
 									},
-									"description": ""
+									"description": "IDC logo"
 								},
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "API Shield data sheet - Resource Card",
-								"callToAction": "Download PDF",
-								"id": "2d251ade-c912-53ec-a26e-54667e93e8d8",
-								"resourceTitle": "API Gateway data sheet",
-								"resourceType": "Solution & Product Guides",
-								"topic": [
-									"Secure Internet Applications"
-								],
-								"orderDate": "2021-08-04",
-								"industry": null,
-								"description": "Learn more about Cloudflare API Gateway innovation to keep APIs safe and productive.",
-								"externalLinkUrl": null,
-								"hideFromResourceHub": false
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						],
-						"filterMenu": null
-					},
-					{
-						"contentfulId": "22FNi54zVVfnTtVUqykIDQ",
-						"title": "World-class application security from Cloudflare",
-						"copy": "The Cloudflare web application firewall (WAF) is the cornerstone of our [advanced application security portfolio](https://www.cloudflare.com/application-services/solutions/) that keeps applications and APIs secure and productive, thwarts DDoS attacks, keeps bots at bay, detects anomalies and malicious payloads, all while monitoring for browser supply chain attacks.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Cr0cOWVoVXoiyaiaKUJro/62be0746986138e0774a4b8a7522b04a/security-week-hero.svg"
-							},
-							"description": "Illustration of Cloudflare logo on a shield"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": "small",
 						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "3ZcSnbCZrPCES5RlYLyeT6",
-						"title": "Gartner® named Cloudflare a Representative Vendor in Web Application and API Protection.",
-						"copy": "Cloudflare recognized as a Representative Vendor in the Gartner Market Guide for WAAP report. We believe this recognition validates that we protect against emerging threats faster, offer tighter integration of security capabilities, and deliver powerful ease of use and deployment.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-cloud-web-application-api-protection-market-guide/",
-						"learnMoreText": "Market Guide for WAAP page",
-						"link": [],
-						"subheadline": null,
-						"button1Text": "Learn more",
-						"button1Url": "https://www.cloudflare.com/lp/gartner-cloud-web-application-api-protection-market-guide/",
-						"button1Color": "orange",
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "7733b7fc-fa7b-5c81-8a5b-543982140774",
-							"altText": "Cloudflare is a Leader in the Gartner Magic Quadrant™ for WAAP",
-							"title": "Gartner WAAP Magic Quadrant",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hJGkoRmgGGhMIpvQ6VJ4U/90e6a961145b3cc4d0c9dc4cb2940a47/Application_Services_Image_03.svg"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": []
+						"htmlId": null
 					}
 				],
 				"noindex": false,
