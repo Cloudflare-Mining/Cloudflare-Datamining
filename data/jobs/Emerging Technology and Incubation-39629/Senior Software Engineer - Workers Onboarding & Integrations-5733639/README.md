@@ -7,14 +7,15 @@
 </div>
 <p><strong>Position Location: Austin, TX | Lisbon, Portugal | London, UK</strong></p>
 <h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the serverless technology that executes billions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
-<p>The Workers Onboarding team aims to provide the best in class experience for Workers users to move fast and quickly bring ideas to life.</p>
-<h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-Whatyouwilldo"><strong>What you will do</strong></h3>
-<p>As a member of the Workers team, you will collaborate with Engineers, Designers, and Product Managers to design, build and support large scale, customer facing systems that push the boundaries of what is possible at Cloudflare's edge computing platform. You will drive projects from idea to release, delivering solutions at all layers of the software stack to empower the Cloudflare customers. You can expect to interact with a variety of languages and technologies including, but not limited to Go, JavaScript, Typescript, SQL, GraphQL, Rust, and C++.</p>
-<h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-RequisiteSkills"><strong>Requisite Skills</strong></h3>
-<ul>
-	<li>4+ years professional software engineering experience</li>
+<p></p>
+<p class="diff-block-context">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p class="diff-block-context">The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the serverless technology that executes billions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
+<p class="diff-block-target diff-block-context">The Workers Onboarding&nbsp;<span id="added-diff-0" class="diff-html-added">&amp; Integrations&nbsp;</span>team aims to provide the best in class experience for Workers users to move fast and quickly bring ideas to life.</p>
+<h3 id="Jobdescription:SeniorSoftwareEngineerWorkersOnboarding&amp;Integrations-Whatyouwilldo" class="diff-block-target"><strong><span id="changed-diff-5" class="diff-html-changed">What you will do</span></strong></h3>
+<p class="diff-block-context">As a member of the Workers team, you will collaborate with Engineers, Designers, and Product Managers to design, build and support large scale, customer facing systems that push the boundaries of what is possible at Cloudflare's edge computing platform. You will drive projects from idea to release, delivering solutions at all layers of the software stack to empower the Cloudflare customers. You can expect to interact with a variety of languages and technologies including, but not limited to Go, JavaScript, Typescript, SQL, GraphQL, Rust, and C++.</p>
+<h3 id="Jobdescription:SeniorSoftwareEngineerWorkersOnboarding&amp;Integrations-RequisiteSkills" class="diff-block-target diff-block-context"><strong><span id="changed-diff-6" class="diff-html-changed">Requisite Skills</span></strong></h3>
+<ul class="diff-block-target diff-block-context">
+	<li><span id="removed-diff-0" class="diff-html-removed"></span><span id="added-diff-1" class="diff-html-added">6</span>+ years professional software engineering experience</li>
 	<li>Experience with large-scale systems</li>
 	<li>Must have strong experience with Javascript, Typescript, and one of the following: Go, C++, Rust</li>
 	<li>Experience working in frontend frameworks such as React</li>
@@ -23,17 +24,17 @@
 	<li>Product mindset and comfortable talking to customers and partners</li>
 	<li>Experience delivering projects end-to-end – gathering requirements, writing technical specifications, implementing, testing, and releasing</li>
 	<li>Comfortable managing multiple projects simultaneously</li>
-	<li>Comfortable working on an oncall shift</li>
+	<li><span id="removed-diff-1" class="diff-html-removed">Comfortable working&nbsp;</span><span id="added-diff-2" class="diff-html-added">Able to participate in&nbsp;</span>on an oncall shift</li>
 </ul>
-<h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-BonusPoints"><strong>Bonus Points</strong></h3>
-<ul>
+<h3 id="Jobdescription:SeniorSoftwareEngineerWorkersOnboarding&amp;Integrations-BonusPoints" class="diff-block-target diff-block-context"><strong><span id="changed-diff-7" class="diff-html-changed">Bonus Points</span></strong></h3>
+<ul class="diff-block-context">
 	<li>Experience with metrics and observability tools such as Prometheus, Grafana</li>
 	<li>Experience using Workers and Pages</li>
 	<li>Experience scaling systems to meet increasing performance and usability demands</li>
 	<li>Knowledge of OAuth and building integrations with third-parties</li>
 	<li>Has managed interns or mentored junior engineers</li>
 </ul>
-<h4>&nbsp;</h4>
+<p></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
