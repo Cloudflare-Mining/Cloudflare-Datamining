@@ -1149,6 +1149,24 @@
 		]
 	},
 	{
+		"id": "2169496d-9c0e-4e49-8399-c44ee66bff7d",
+		"source": 1,
+		"name": "@cf/openai/whisper-tiny-en",
+		"description": "Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. Trained on 680k hours of labelled data, Whisper models demonstrate a strong ability to generalize to many datasets and domains without the need for fine-tuning. This is the English-only version of the Whisper Tiny model which was trained on the task of speech recognition.",
+		"task": {
+			"id": "dfce1c48-2a81-462e-a7fd-de97ce985207",
+			"name": "Automatic Speech Recognition",
+			"description": "Automatic speech recognition (ASR) models convert a speech signal, typically an audio input, to text."
+		},
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "beta",
+				"value": "true"
+			}
+		]
+	},
+	{
 		"id": "1dc9e589-df6b-4e66-ac9f-ceff42d64983",
 		"source": 1,
 		"name": "@cf/defog/sqlcoder-7b-2",
