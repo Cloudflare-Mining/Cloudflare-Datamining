@@ -11,7 +11,7 @@
 <p>The right candidate will have a builder mindset, a strong knowledge of B2B demand generation best practices, be digitally savvy, have a natural inclination to measure the effectiveness of marketing activities, strong project management skills, and the ability to drive program execution while managing the expectations of various stakeholders.</p>
 <p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Reporting into the Northern Europe Field Marketing Manager, based in the UK</li>
+	<li>Reporting into the Northern Europe Field Marketing Manager, based in the Netherlands</li>
 	<li>Demand generation – Work closely with the EMEA Centers of Excellence, EMEA Business Development Team and EMEA Sales Team to support demand and lead generation programs for Benelux and Nordics ensuring operational success</li>
 	<li>Design and execute on regional marketing activities to excite and enable sales teams and ensure growth in the region. Activities to include but not limited to; events, direct mailers, webinars, call-out campaigns, digital, email campaigns, content development, brand awareness</li>
 	<li>Events - Work closely with the EMEA Events team to identify appropriate events across target markets, ensure success of events from messaging, branding, promotions, and follow-up.</li>

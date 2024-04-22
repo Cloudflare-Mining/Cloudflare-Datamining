@@ -29,7 +29,6 @@
 	<li>SQL databases (Postgres or MySQL)</li>
 	<li>Self-starter; able to work independently based on high-level requirements</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>5 years of relevant work experience</li>
@@ -40,7 +39,6 @@
 	<li>The ability to understand service metrics and visualize them using Grafana and Prometheus</li>
 	<li>Key/Value stores (Redis, KeyDB, CouchBase, KyotoTycoon, Cassandra, LevelDB)</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Bonus Points</strong></p>
 <ul>
 	<li>Experience with programming languages other than those listed in requirements.</li>
@@ -51,8 +49,7 @@
 	<li>Experience with the Linux kernel and Linux software packaging</li>
 	<li>Internetworking and BGP</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Some tools that we use</strong></p>
+<p><strong>Some of the tools we use</strong></p>
 <ul>
 	<li>Rust</li>
 	<li>Python</li>
@@ -132,13 +129,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>What Makes Cloudflare Special?</strong></p>
-<p>We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</p>
-<p>Project Galileo: We equip politically and artistically important organizations and journalists with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.</p>
-<p>Athenian Project: We created Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration.</p>
-<p>Path Forward Partnership: Since 2016, we have partnered with Path Forward, a nonprofit organization, to create 16-week positions for mid-career professionals who want to get back to the workplace after taking time off to care for a child, parent, or loved one.</p>
-<p>1.1.1.1: We released 1.1.1.1 to help fix the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. This is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released. Here’s the deal - we don’t store client IP addresses never, ever. We will continue to abide by our privacy commitment and ensure that no user data is sold to advertisers or used to target consumers.</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
