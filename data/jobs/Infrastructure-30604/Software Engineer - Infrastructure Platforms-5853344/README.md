@@ -20,6 +20,7 @@
 <p>Our team is well-funded and focused on building an extraordinary company.&nbsp; This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows.&nbsp; You will build tools to constantly improve our scale and speed of deployment.&nbsp; You will nurture a passion for an “automate everything” approach that makes systems failure-resistant and ready-to-scale.&nbsp;&nbsp;&nbsp;</p>
 <p>Infrastructure Platforms Software Engineers inside our Resiliency organization focus on building and maintaining the reliable and scalable underlying platforms that act as sources of truth and foundations for automation of Cloudflare’s hardware, network, and datacenter infrastructure. We interface with SRE, Network Engineering, Datacenter Engineering and other Infrastructure and Reliability teams to ensure their ongoing needs are met by the platforms we provide.</p>
 <p>Many of our Software Engineers have had the opportunity to work at multiple offices on interim and long-term project assignments. The ideal Software Engineering candidate has a passionate curiosity about how the Internet fundamentally works and has a strong knowledge of Linux and Hardware.&nbsp; We require strong coding ability in Rust and Python. We prefer to hire experienced candidates; however raw skill trumps experience and we welcome strong junior applicants.</p>
+<p>&nbsp;</p>
 <p><strong>Required Skills</strong></p>
 <ul>
 	<li>Intermediate level software development skills in Rust and Python</li>
@@ -29,6 +30,7 @@
 	<li>SQL databases (Postgres or MySQL)</li>
 	<li>Self-starter; able to work independently based on high-level requirements</li>
 </ul>
+<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>5 years of relevant work experience</li>
@@ -49,7 +51,7 @@
 	<li>Experience with the Linux kernel and Linux software packaging</li>
 	<li>Internetworking and BGP</li>
 </ul>
-<p><strong>Some of the tools we use</strong></p>
+<p><strong>Some tools that we use</strong></p>
 <ul>
 	<li>Rust</li>
 	<li>Python</li>
@@ -65,35 +67,6 @@
 	<li>PostgreSQL</li>
 	<li>Redis</li>
 	<li>Prometheus</li>
-</ul>
-<p>&nbsp;</p>
-<h3><span style="font-size: 12pt;"><strong>About the Team</strong></span></h3>
-<p>At Cloudflare, our engineering and research team combines the expertise of some of the industry’s most talented professionals in both software engineering and advanced research. Our bot and fraud detection research and development team focuses on innovating and developing leading-edge solutions to combat online fraud and bot activities, thereby ensuring the highest levels of security and integrity for online platforms. Collaborating closely with product development and engineering groups, our researchers play a crucial role in advancing our fraud detection products through identification of new signals and refining our bot detection algorithms.</p>
-<h2><span style="font-size: 12pt;">What You'll Do</span></h2>
-<p>As a researcher in our bot and fraud detection team, you will:</p>
-<ul>
-	<li>Engage in cutting-edge research to design, develop, and enhance our fraud detection products.</li>
-	<li>Apply your knowledge in data science and machine learning to analyze and interpret vast datasets, contributing to the fight against sophisticated online attackers.</li>
-	<li>Collaborate with cross-functional teams to integrate research findings into practical, scalable solutions.</li>
-	<li>Utilize and improve upon our technology stack, which includes Python, Rust, Kafka, Kubernetes, PostgreSQL, and Clickhouse.</li>
-	<li>Make significant contributions to the field of bot and fraud detection, impacting the security of online applications globally.</li>
-</ul>
-<h2><span style="font-size: 12pt;">What Are We Looking For?</span></h2>
-<ul>
-	<li>Advanced degree (PhD or Masters) in the fields of Computer Science, Data Science, or Cybersecurity.</li>
-	<li>Proven track record of research in academia or industry, preferably in areas related to cybersecurity, bot detection, browser fingerprinting, fraud detection, or machine learning.</li>
-	<li>Expertise in web security, network protocols, and web application architectures.</li>
-	<li>Demonstrated ability to work with large-scale datasets and distributed computing.</li>
-</ul>
-<h3><span style="font-size: 12pt;">Bonus points</span></h3>
-<ul>
-	<li>Experience in developing and implementing bot detection and fraud prevention strategies.</li>
-	<li>Publication record in peer-reviewed venues or industry conferences in relevant fields.</li>
-	<li>Familiarity with cloud computing environments and big data technologies.</li>
-	<li>Experience with productionizing machine learning models.</li>
-	<li>Experience with technologies such as Docker, Kubernetes, Salt.</li>
-	<li>Familiarity with writing and optimizing advanced SQL queries.</li>
-	<li>Experience with columnar databases such as Clickhouse.</li>
 </ul>
 <p><span style="font-size: 12pt;"><strong>Compensation</strong></span></p>
 <p>Compensation may be adjusted depending on work location.</p>
