@@ -97,13 +97,13 @@
 								p && "multi" !== p.load && (p.load = "single"), window.__cfBeacon = p
 							}
 							if (s && p && p.token) {
-								var w, b, S = !1;
+								var w, S, b = !1;
 								document.addEventListener("visibilitychange", (function() {
 									if ("hidden" === document.visibilityState) {
 										if (L && R()) {
 											var t = e();
 											(null == w ? void 0 : w.url) == t && (null == w ? void 0 : w.triggered) || P(), x(t)
-										}!S && w && (S = !0, B())
+										}!b && w && (b = !0, B())
 									} else "visible" === document.visibilityState && (new Date).getTime()
 								}));
 								var E = {};
@@ -126,12 +126,12 @@
 													startTime: I(),
 													versions: {
 														fl: p ? p.version : "",
-														js: "2024.4.0",
+														js: "2024.4.1",
 														timings: 1
 													},
 													pageloadId: d,
 													location: f,
-													nt: b
+													nt: S
 												};
 											if (null == n) {
 												if ("function" == typeof s.getEntriesByType) {
@@ -140,7 +140,7 @@
 												}
 												1 === l.versions.timings && t(c, l.timings), t(u, l.memory)
 											} else O(l);
-											return l.firstPaint = _("first-paint"), l.firstContentfulPaint = _("first-contentful-paint"), p && (p.icTag && (l.icTag = p.icTag), M(l, p.abtestTags), l.siteToken = p.token), void 0 !== n && (delete l.timings, delete l.memory), l
+											return l.firstPaint = _("first-paint"), l.firstContentfulPaint = _("first-contentful-paint"), p && (p.icTag && (l.icTag = p.icTag), l.siteToken = p.token), void 0 !== n && (delete l.timings, delete l.memory), l
 										}(i);
 										a && p && (a.resources = [], p && ((0, o.sendObjectBeacon)("", a, (function() {}), !1, C), void 0 !== p.forward && void 0 !== p.forward.url && (0, o.sendObjectBeacon)("", a, (function() {}), !1, p.forward.url)))
 									},
@@ -155,15 +155,15 @@
 												referrer: document.referrer || "",
 												eventType: r.EventType.WebVitalsV2,
 												versions: {
-													js: "2024.4.0"
+													js: "2024.4.1"
 												},
 												pageloadId: d,
 												location: e(),
 												landingPath: n,
 												startTime: I(),
-												nt: b
+												nt: S
 											};
-											return p && (p.version && (i.versions.fl = p.version), p.icTag && (i.icTag = p.icTag), M(i, p.abtestTags), i.siteToken = p.token), E && ["lcp", "fid", "cls", "fcp", "ttfb", "inp"].forEach((function(e) {
+											return p && (p.version && (i.versions.fl = p.version), p.icTag && (i.icTag = p.icTag), i.siteToken = p.token), E && ["lcp", "fid", "cls", "fcp", "ttfb", "inp"].forEach((function(e) {
 												i[e] = {
 													value: -1,
 													path: void 0
@@ -217,7 +217,7 @@
 
 						function F(e) {
 							var t, n, i, r, o, a, c, u = window.location.pathname;
-							switch (b || (b = e.navigationType), "INP" !== e.name && (E[e.name.toLowerCase()] = {
+							switch (S || (S = e.navigationType), "INP" !== e.name && (E[e.name.toLowerCase()] = {
 									value: e.value,
 									path: u
 								}), e.name) {
@@ -260,10 +260,6 @@
 								return n ? n.startTime : 0
 							}
 							return 0
-						}
-
-						function M(e, t) {
-							t && (e.abtestTags = t)
 						}
 					}()
 				}()
@@ -401,22 +397,22 @@
 							}
 						},
 						w = -1,
-						b = function() {
+						S = function() {
 							return "hidden" !== document.visibilityState || document.prerendering ? 1 / 0 : 0
 						},
-						S = function(e) {
+						b = function(e) {
 							"hidden" === document.visibilityState && w > -1 && (w = "visibilitychange" === e.type ? e.timeStamp : 0, L())
 						},
 						E = function() {
-							addEventListener("visibilitychange", S, !0), addEventListener("prerenderingchange", S, !0)
+							addEventListener("visibilitychange", b, !0), addEventListener("prerenderingchange", b, !0)
 						},
 						L = function() {
-							removeEventListener("visibilitychange", S, !0), removeEventListener("prerenderingchange", S, !0)
+							removeEventListener("visibilitychange", b, !0), removeEventListener("prerenderingchange", b, !0)
 						},
 						C = function() {
-							return w < 0 && (w = b(), E(), d((function() {
+							return w < 0 && (w = S(), E(), d((function() {
 								setTimeout((function() {
-									w = b(), E()
+									w = S(), E()
 								}), 0)
 							}))), {
 								get firstHiddenTime() {
