@@ -156,7 +156,7 @@
 	"dns.matching_type": "Matching type",
 	"dns.name": "Name",
 	"dns.actions": "Actions",
-	"dns.nameservers.description": "To use Cloudflare, ensure your authoritative DNS servers, or nameservers have been changed. These are your assigned Cloudflare nameservers.",
+	"dns.nameservers.description": "Every DNS zone on Cloudflare is assigned a set of Cloudflare-branded nameservers.",
 	"dns.nameservers.description.with_kb_link": "To use Cloudflare, [change your nameservers](https://developers.cloudflare.com/dns/zone-setups/full-setup), or authoritative DNS servers. These are your assigned Cloudflare nameservers.",
 	"dns.nameservers.title": "Cloudflare Nameservers",
 	"dns.no_records_parsed": "No DNS records were parsed. Please check that you are uploading valid DNS records and that they are in the BIND format.",
@@ -426,7 +426,6 @@
 	"dns.warnings.localized.direct": "We added a DNS only subdomain that can access your server directly. You can use this domain for services like SSH, FTP, and Telnet hosted on your server. To increase security, change the name to something other than **direct**.",
 	"dns.warnings.localized.ssh": "We added a DNS only subdomain that can access your server directly. If you have previously connected to **%{zoneName}** via SSH, you should now connect to **ssh.%{zoneName}**. To increase security, change the name to something other than **ssh*.",
 	"dns.warnings.localized.ftp": "We added a DNS only subdomain that can access your server directly. If you have previously connected to **%{zoneName}** via FTP , you should now connect to **ftp.%{zoneName}**. To increase security, change the name to something other than **ftp*.",
-	"dns.warnings.localized.locked": "This record is used by your custom nameservers and cannot be updated.",
 	"dns.warnings.localized.managed_by_apps": "This record is managed by Apps.",
 	"dns.warnings.localized.managed_by_argotunnel": "This record is managed by Cloudflare Tunnel.",
 	"dns.warnings.domainconnect.txt": "Cloudflare will not serve this record because it is from a different DNS provider",
@@ -628,5 +627,11 @@
 	"dns.analytics.empty_state_block.enabled.cta": "Go to the new DNS analytics",
 	"dns.analytics.empty_state_banner.disabled.title": "New DNS Analytics",
 	"dns.analytics.empty_state_banner.disabled.description": "Get more insights on your DNS queries by turning on advanced nameservers under your DNS records.",
-	"dns.analytics.empty_state_banner.disabled.cta": "Go to DNS records"
+	"dns.analytics.empty_state_banner.disabled.cta": "Go to DNS records",
+	"dns.multiprovider.card.title": "Multi-provider DNS",
+	"dns.multiprovider.card.description": "<0>Multi-provider DNS</0> allows domains using a <1>full DNS setup</1> to be active on Cloudflare while using another authoritative DNS provider in addition to Cloudflare. Also allows the domain to serve any apex NS records added to its DNS configuration at Cloudflare.",
+	"dns.multiprovider.card.documentation_link": "<0>Learn more about using multi-provider DNS with a full DNS setup</0>",
+	"dns.secondary_override.card.title": "Secondary DNS override",
+	"dns.secondary_override.card.description": "<0>Secondary DNS override</0> allows domains using a <1>secondary DNS setup</1> to proxy traffic through Cloudflare and flatten CNAMEs on the DNS zone apex.",
+	"dns.secondary_override.card.documentation_link": "<0>Learn more about secondary DNS override</0>"
 }
