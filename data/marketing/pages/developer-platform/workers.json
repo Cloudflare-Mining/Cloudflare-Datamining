@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-09-26T13:52:45.193Z",
-					"updatedAt": "2024-02-21T01:24:30.607Z"
+					"updatedAt": "2024-04-22T23:50:37.788Z"
 				},
 				"contentfulId": "3IcvEtHKLpaiKgusyXaAIL",
 				"contentTypeId": "page",
@@ -513,7 +513,7 @@
 								"cellsInRow": [
 									{
 										"contentfulId": "5mXwG1LZAx06c344km7dGO",
-										"cellText": "30",
+										"cellText": "100",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -522,7 +522,7 @@
 									},
 									{
 										"contentfulId": "27V1a5BhZr4u0TiyqzViui",
-										"cellText": "100",
+										"cellText": "500",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -554,7 +554,7 @@
 								"cellsInRow": [
 									{
 										"contentfulId": "6NOY5ytL1UmckJZyXg49dw",
-										"cellText": "10 ms",
+										"cellText": "10 ms per request",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -563,16 +563,7 @@
 									},
 									{
 										"contentfulId": "7IdbDixmVqrNUlnUjdz95V",
-										"cellText": "400,000 GB-s",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "3vDkNfpB1opzMkxGumkJAM",
-										"cellText": null,
+										"cellText": "30 million ms/month",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -595,7 +586,7 @@
 								"cellsInRow": [
 									{
 										"contentfulId": "2uWdyfvJh492TDW9ArJyzX",
-										"cellText": "100,000 / day",
+										"cellText": "Hard limit 100,000/day",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -604,7 +595,7 @@
 									},
 									{
 										"contentfulId": "4tVQWNSiC2bTXkiMJU99Dx",
-										"cellText": "1,000,000 / month",
+										"cellText": "10 million / month",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -613,48 +604,7 @@
 									},
 									{
 										"contentfulId": "RzHsv7A0WyxWSwSxm0ucP",
-										"cellText": "$0.15 / million",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "2c9pCP1602VTqKwlDlukOx",
-								"rowHeader2": {
-									"contentfulId": "kYRvLC9RaMsyVkAgHR7lo",
-									"cellText": "Duration (measured in GB-s)",
-									"cellTextLinkUrl": "https://developers.cloudflare.com/workers/platform/limits/#duration",
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "4avy9OTCdwFlElzjlhYesR",
-										"cellText": "-",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "4pURADCjRNeBY4SIYl20bQ",
-										"cellText": "400,000 GB-s ",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "4oTzKgQWGP1fZq5qSXeyQY",
-										"cellText": "$12.50 / million GB-s",
+										"cellText": "$0.30 / million",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -813,7 +763,7 @@
 								"contentfulId": "HU0BUC2Q71uLUICqqy1qi",
 								"rowHeader2": {
 									"contentfulId": "5dTSZ2yM0h5v8BiCHP47PM",
-									"cellText": "Included Durable Objects",
+									"cellText": "Included Durable Objects requests",
 									"cellTextLinkUrl": null,
 									"buttonText": null,
 									"buttonUrl": null,
