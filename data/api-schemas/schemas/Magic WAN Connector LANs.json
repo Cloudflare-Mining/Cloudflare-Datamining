@@ -152,158 +152,150 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"deleted": {
-													"example": true,
+												"ha_link": {
+													"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
 													"type": "boolean"
 												},
-												"deleted_lan": {
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"nat": {
 													"properties": {
-														"description": {
+														"static_prefix": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
-														},
-														"ha_link": {
-															"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"nat": {
-															"properties": {
-																"static_prefix": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
-														"physport": {
-															"example": 1,
-															"type": "integer"
-														},
-														"routed_subnets": {
-															"items": {
+														}
+													},
+													"type": "object"
+												},
+												"physport": {
+													"example": 1,
+													"type": "integer"
+												},
+												"routed_subnets": {
+													"items": {
+														"properties": {
+															"nat": {
 																"properties": {
-																	"nat": {
-																		"properties": {
-																			"static_prefix": {
-																				"description": "A valid CIDR notation representing an IP range.",
-																				"example": "192.0.2.0/24",
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
-																	},
-																	"next_hop": {
-																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"prefix": {
+																	"static_prefix": {
 																		"description": "A valid CIDR notation representing an IP range.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	}
 																},
-																"required": [
-																	"prefix",
-																	"next_hop"
-																],
 																"type": "object"
 															},
-															"type": "array"
+															"next_hop": {
+																"description": "A valid IPv4 address.",
+																"example": "192.0.2.1",
+																"type": "string"
+															},
+															"prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															}
 														},
-														"site_id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"required": [
+															"prefix",
+															"next_hop"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"site_id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"static_addressing": {
+													"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+													"properties": {
+														"address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
 														},
-														"static_addressing": {
-															"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+														"dhcp_relay": {
 															"properties": {
-																"address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																},
-																"dhcp_relay": {
-																	"properties": {
-																		"server_addresses": {
-																			"description": "List of DHCP server IPs.",
-																			"items": {
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			"type": "array"
-																		}
+																"server_addresses": {
+																	"description": "List of DHCP server IPs.",
+																	"items": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
 																	},
-																	"type": "object"
-																},
-																"dhcp_server": {
-																	"properties": {
-																		"dhcp_pool_end": {
-																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"dhcp_pool_start": {
-																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"dns_server": {
-																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"reservations": {
-																			"additionalProperties": {
-																				"description": "IP address associated with the MAC address",
-																				"type": "string"
-																			},
-																			"description": "Mapping of MAC addresses to IP addresses",
-																			"example": {
-																				"00:11:22:33:44:55": "192.0.2.100",
-																				"AA:BB:CC:DD:EE:FF": "192.168.1.101"
-																			},
-																			"type": "object"
-																		}
-																	},
-																	"type": "object"
-																},
-																"secondary_address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																},
-																"virtual_address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
+																	"type": "array"
 																}
 															},
-															"required": [
-																"address"
-															],
 															"type": "object"
 														},
-														"vlan_tag": {
-															"description": "VLAN port number.",
-															"example": 0,
-															"type": "integer"
+														"dhcp_server": {
+															"properties": {
+																"dhcp_pool_end": {
+																	"description": "A valid IPv4 address.",
+																	"example": "192.0.2.1",
+																	"type": "string"
+																},
+																"dhcp_pool_start": {
+																	"description": "A valid IPv4 address.",
+																	"example": "192.0.2.1",
+																	"type": "string"
+																},
+																"dns_server": {
+																	"description": "A valid IPv4 address.",
+																	"example": "192.0.2.1",
+																	"type": "string"
+																},
+																"reservations": {
+																	"additionalProperties": {
+																		"description": "IP address associated with the MAC address",
+																		"type": "string"
+																	},
+																	"description": "Mapping of MAC addresses to IP addresses",
+																	"example": {
+																		"00:11:22:33:44:55": "192.0.2.100",
+																		"AA:BB:CC:DD:EE:FF": "192.168.1.101"
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"secondary_address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
+															"type": "string"
+														},
+														"virtual_address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
+															"type": "string"
 														}
 													},
+													"required": [
+														"address"
+													],
 													"type": "object"
+												},
+												"vlan_tag": {
+													"description": "VLAN port number.",
+													"example": 0,
+													"type": "integer"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -561,158 +553,154 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"lans": {
-													"items": {
+											"items": {
+												"properties": {
+													"ha_link": {
+														"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
+														"type": "boolean"
+													},
+													"id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"nat": {
 														"properties": {
-															"description": {
+															"static_prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
 																"type": "string"
-															},
-															"ha_link": {
-																"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
-																"type": "boolean"
-															},
-															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
-															},
-															"nat": {
-																"properties": {
-																	"static_prefix": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															"physport": {
-																"example": 1,
-																"type": "integer"
-															},
-															"routed_subnets": {
-																"items": {
+															}
+														},
+														"type": "object"
+													},
+													"physport": {
+														"example": 1,
+														"type": "integer"
+													},
+													"routed_subnets": {
+														"items": {
+															"properties": {
+																"nat": {
 																	"properties": {
-																		"nat": {
-																			"properties": {
-																				"static_prefix": {
-																					"description": "A valid CIDR notation representing an IP range.",
-																					"example": "192.0.2.0/24",
-																					"type": "string"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"next_hop": {
-																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"prefix": {
+																		"static_prefix": {
 																			"description": "A valid CIDR notation representing an IP range.",
 																			"example": "192.0.2.0/24",
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"prefix",
-																		"next_hop"
-																	],
 																	"type": "object"
 																},
-																"type": "array"
+																"next_hop": {
+																	"description": "A valid IPv4 address.",
+																	"example": "192.0.2.1",
+																	"type": "string"
+																},
+																"prefix": {
+																	"description": "A valid CIDR notation representing an IP range.",
+																	"example": "192.0.2.0/24",
+																	"type": "string"
+																}
 															},
-															"site_id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
+															"required": [
+																"prefix",
+																"next_hop"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"site_id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"static_addressing": {
+														"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+														"properties": {
+															"address": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
 																"type": "string"
 															},
-															"static_addressing": {
-																"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+															"dhcp_relay": {
 																"properties": {
-																	"address": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
-																	},
-																	"dhcp_relay": {
-																		"properties": {
-																			"server_addresses": {
-																				"description": "List of DHCP server IPs.",
-																				"items": {
-																					"description": "A valid IPv4 address.",
-																					"example": "192.0.2.1",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
+																	"server_addresses": {
+																		"description": "List of DHCP server IPs.",
+																		"items": {
+																			"description": "A valid IPv4 address.",
+																			"example": "192.0.2.1",
+																			"type": "string"
 																		},
-																		"type": "object"
-																	},
-																	"dhcp_server": {
-																		"properties": {
-																			"dhcp_pool_end": {
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			"dhcp_pool_start": {
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			"dns_server": {
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			"reservations": {
-																				"additionalProperties": {
-																					"description": "IP address associated with the MAC address",
-																					"type": "string"
-																				},
-																				"description": "Mapping of MAC addresses to IP addresses",
-																				"example": {
-																					"00:11:22:33:44:55": "192.0.2.100",
-																					"AA:BB:CC:DD:EE:FF": "192.168.1.101"
-																				},
-																				"type": "object"
-																			}
-																		},
-																		"type": "object"
-																	},
-																	"secondary_address": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
-																	},
-																	"virtual_address": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "array"
 																	}
 																},
-																"required": [
-																	"address"
-																],
 																"type": "object"
 															},
-															"vlan_tag": {
-																"description": "VLAN port number.",
-																"example": 0,
-																"type": "integer"
+															"dhcp_server": {
+																"properties": {
+																	"dhcp_pool_end": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"dhcp_pool_start": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"dns_server": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"reservations": {
+																		"additionalProperties": {
+																			"description": "IP address associated with the MAC address",
+																			"type": "string"
+																		},
+																		"description": "Mapping of MAC addresses to IP addresses",
+																		"example": {
+																			"00:11:22:33:44:55": "192.0.2.100",
+																			"AA:BB:CC:DD:EE:FF": "192.168.1.101"
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
+															},
+															"secondary_address": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"virtual_address": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
 															}
 														},
+														"required": [
+															"address"
+														],
 														"type": "object"
 													},
-													"type": "array"
-												}
-											}
+													"vlan_tag": {
+														"description": "VLAN port number.",
+														"example": 0,
+														"type": "integer"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
 										}
 									}
 								}
@@ -978,154 +966,150 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"lan": {
+												"ha_link": {
+													"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"nat": {
 													"properties": {
-														"description": {
+														"static_prefix": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
-														},
-														"ha_link": {
-															"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"nat": {
-															"properties": {
-																"static_prefix": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
-														"physport": {
-															"example": 1,
-															"type": "integer"
-														},
-														"routed_subnets": {
-															"items": {
+														}
+													},
+													"type": "object"
+												},
+												"physport": {
+													"example": 1,
+													"type": "integer"
+												},
+												"routed_subnets": {
+													"items": {
+														"properties": {
+															"nat": {
 																"properties": {
-																	"nat": {
-																		"properties": {
-																			"static_prefix": {
-																				"description": "A valid CIDR notation representing an IP range.",
-																				"example": "192.0.2.0/24",
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
-																	},
-																	"next_hop": {
-																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"prefix": {
+																	"static_prefix": {
 																		"description": "A valid CIDR notation representing an IP range.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	}
 																},
-																"required": [
-																	"prefix",
-																	"next_hop"
-																],
 																"type": "object"
 															},
-															"type": "array"
+															"next_hop": {
+																"description": "A valid IPv4 address.",
+																"example": "192.0.2.1",
+																"type": "string"
+															},
+															"prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															}
 														},
-														"site_id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"required": [
+															"prefix",
+															"next_hop"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"site_id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"static_addressing": {
+													"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+													"properties": {
+														"address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
 														},
-														"static_addressing": {
-															"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+														"dhcp_relay": {
 															"properties": {
-																"address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																},
-																"dhcp_relay": {
-																	"properties": {
-																		"server_addresses": {
-																			"description": "List of DHCP server IPs.",
-																			"items": {
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			"type": "array"
-																		}
+																"server_addresses": {
+																	"description": "List of DHCP server IPs.",
+																	"items": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
 																	},
-																	"type": "object"
-																},
-																"dhcp_server": {
-																	"properties": {
-																		"dhcp_pool_end": {
-																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"dhcp_pool_start": {
-																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"dns_server": {
-																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"reservations": {
-																			"additionalProperties": {
-																				"description": "IP address associated with the MAC address",
-																				"type": "string"
-																			},
-																			"description": "Mapping of MAC addresses to IP addresses",
-																			"example": {
-																				"00:11:22:33:44:55": "192.0.2.100",
-																				"AA:BB:CC:DD:EE:FF": "192.168.1.101"
-																			},
-																			"type": "object"
-																		}
-																	},
-																	"type": "object"
-																},
-																"secondary_address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																},
-																"virtual_address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
+																	"type": "array"
 																}
 															},
-															"required": [
-																"address"
-															],
 															"type": "object"
 														},
-														"vlan_tag": {
-															"description": "VLAN port number.",
-															"example": 0,
-															"type": "integer"
+														"dhcp_server": {
+															"properties": {
+																"dhcp_pool_end": {
+																	"description": "A valid IPv4 address.",
+																	"example": "192.0.2.1",
+																	"type": "string"
+																},
+																"dhcp_pool_start": {
+																	"description": "A valid IPv4 address.",
+																	"example": "192.0.2.1",
+																	"type": "string"
+																},
+																"dns_server": {
+																	"description": "A valid IPv4 address.",
+																	"example": "192.0.2.1",
+																	"type": "string"
+																},
+																"reservations": {
+																	"additionalProperties": {
+																		"description": "IP address associated with the MAC address",
+																		"type": "string"
+																	},
+																	"description": "Mapping of MAC addresses to IP addresses",
+																	"example": {
+																		"00:11:22:33:44:55": "192.0.2.100",
+																		"AA:BB:CC:DD:EE:FF": "192.168.1.101"
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"secondary_address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
+															"type": "string"
+														},
+														"virtual_address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
+															"type": "string"
 														}
 													},
+													"required": [
+														"address"
+													],
 													"type": "object"
+												},
+												"vlan_tag": {
+													"description": "VLAN port number.",
+													"example": 0,
+													"type": "integer"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1283,144 +1267,139 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"lan": {
+							"ha_link": {
+								"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
+								"type": "boolean"
+							},
+							"name": {
+								"type": "string"
+							},
+							"nat": {
 								"properties": {
-									"description": {
+									"static_prefix": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
 										"type": "string"
-									},
-									"ha_link": {
-										"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
-										"type": "boolean"
-									},
-									"nat": {
-										"properties": {
-											"static_prefix": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
-											}
-										},
-										"type": "object"
-									},
-									"physport": {
-										"example": 1,
-										"type": "integer"
-									},
-									"routed_subnets": {
-										"items": {
+									}
+								},
+								"type": "object"
+							},
+							"physport": {
+								"example": 1,
+								"type": "integer"
+							},
+							"routed_subnets": {
+								"items": {
+									"properties": {
+										"nat": {
 											"properties": {
-												"nat": {
-													"properties": {
-														"static_prefix": {
-															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
-														}
-													},
-													"type": "object"
-												},
-												"next_hop": {
-													"description": "A valid IPv4 address.",
-													"example": "192.0.2.1",
-													"type": "string"
-												},
-												"prefix": {
+												"static_prefix": {
 													"description": "A valid CIDR notation representing an IP range.",
 													"example": "192.0.2.0/24",
 													"type": "string"
 												}
 											},
-											"required": [
-												"prefix",
-												"next_hop"
-											],
 											"type": "object"
 										},
-										"type": "array"
+										"next_hop": {
+											"description": "A valid IPv4 address.",
+											"example": "192.0.2.1",
+											"type": "string"
+										},
+										"prefix": {
+											"description": "A valid CIDR notation representing an IP range.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										}
 									},
-									"static_addressing": {
-										"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+									"required": [
+										"prefix",
+										"next_hop"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"static_addressing": {
+								"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+								"properties": {
+									"address": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
+										"type": "string"
+									},
+									"dhcp_relay": {
 										"properties": {
-											"address": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
-											},
-											"dhcp_relay": {
-												"properties": {
-													"server_addresses": {
-														"description": "List of DHCP server IPs.",
-														"items": {
-															"description": "A valid IPv4 address.",
-															"example": "192.0.2.1",
-															"type": "string"
-														},
-														"type": "array"
-													}
+											"server_addresses": {
+												"description": "List of DHCP server IPs.",
+												"items": {
+													"description": "A valid IPv4 address.",
+													"example": "192.0.2.1",
+													"type": "string"
 												},
-												"type": "object"
-											},
-											"dhcp_server": {
-												"properties": {
-													"dhcp_pool_end": {
-														"description": "A valid IPv4 address.",
-														"example": "192.0.2.1",
-														"type": "string"
-													},
-													"dhcp_pool_start": {
-														"description": "A valid IPv4 address.",
-														"example": "192.0.2.1",
-														"type": "string"
-													},
-													"dns_server": {
-														"description": "A valid IPv4 address.",
-														"example": "192.0.2.1",
-														"type": "string"
-													},
-													"reservations": {
-														"additionalProperties": {
-															"description": "IP address associated with the MAC address",
-															"type": "string"
-														},
-														"description": "Mapping of MAC addresses to IP addresses",
-														"example": {
-															"00:11:22:33:44:55": "192.0.2.100",
-															"AA:BB:CC:DD:EE:FF": "192.168.1.101"
-														},
-														"type": "object"
-													}
-												},
-												"type": "object"
-											},
-											"secondary_address": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
-											},
-											"virtual_address": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
+												"type": "array"
 											}
 										},
-										"required": [
-											"address"
-										],
 										"type": "object"
 									},
-									"vlan_tag": {
-										"description": "VLAN port number.",
-										"example": 0,
-										"type": "integer"
+									"dhcp_server": {
+										"properties": {
+											"dhcp_pool_end": {
+												"description": "A valid IPv4 address.",
+												"example": "192.0.2.1",
+												"type": "string"
+											},
+											"dhcp_pool_start": {
+												"description": "A valid IPv4 address.",
+												"example": "192.0.2.1",
+												"type": "string"
+											},
+											"dns_server": {
+												"description": "A valid IPv4 address.",
+												"example": "192.0.2.1",
+												"type": "string"
+											},
+											"reservations": {
+												"additionalProperties": {
+													"description": "IP address associated with the MAC address",
+													"type": "string"
+												},
+												"description": "Mapping of MAC addresses to IP addresses",
+												"example": {
+													"00:11:22:33:44:55": "192.0.2.100",
+													"AA:BB:CC:DD:EE:FF": "192.168.1.101"
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"secondary_address": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
+										"type": "string"
+									},
+									"virtual_address": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
+										"type": "string"
 									}
 								},
 								"required": [
-									"physport",
-									"vlan_tag"
+									"address"
 								],
 								"type": "object"
+							},
+							"vlan_tag": {
+								"description": "VLAN port number.",
+								"example": 0,
+								"type": "integer"
 							}
 						},
+						"required": [
+							"physport",
+							"vlan_tag"
+						],
 						"type": "object"
 					}
 				}
@@ -1532,158 +1511,154 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"lans": {
-													"items": {
+											"items": {
+												"properties": {
+													"ha_link": {
+														"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
+														"type": "boolean"
+													},
+													"id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"nat": {
 														"properties": {
-															"description": {
+															"static_prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
 																"type": "string"
-															},
-															"ha_link": {
-																"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
-																"type": "boolean"
-															},
-															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
-															},
-															"nat": {
-																"properties": {
-																	"static_prefix": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															"physport": {
-																"example": 1,
-																"type": "integer"
-															},
-															"routed_subnets": {
-																"items": {
+															}
+														},
+														"type": "object"
+													},
+													"physport": {
+														"example": 1,
+														"type": "integer"
+													},
+													"routed_subnets": {
+														"items": {
+															"properties": {
+																"nat": {
 																	"properties": {
-																		"nat": {
-																			"properties": {
-																				"static_prefix": {
-																					"description": "A valid CIDR notation representing an IP range.",
-																					"example": "192.0.2.0/24",
-																					"type": "string"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"next_hop": {
-																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"prefix": {
+																		"static_prefix": {
 																			"description": "A valid CIDR notation representing an IP range.",
 																			"example": "192.0.2.0/24",
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"prefix",
-																		"next_hop"
-																	],
 																	"type": "object"
 																},
-																"type": "array"
+																"next_hop": {
+																	"description": "A valid IPv4 address.",
+																	"example": "192.0.2.1",
+																	"type": "string"
+																},
+																"prefix": {
+																	"description": "A valid CIDR notation representing an IP range.",
+																	"example": "192.0.2.0/24",
+																	"type": "string"
+																}
 															},
-															"site_id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
+															"required": [
+																"prefix",
+																"next_hop"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"site_id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"static_addressing": {
+														"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+														"properties": {
+															"address": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
 																"type": "string"
 															},
-															"static_addressing": {
-																"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+															"dhcp_relay": {
 																"properties": {
-																	"address": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
-																	},
-																	"dhcp_relay": {
-																		"properties": {
-																			"server_addresses": {
-																				"description": "List of DHCP server IPs.",
-																				"items": {
-																					"description": "A valid IPv4 address.",
-																					"example": "192.0.2.1",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
+																	"server_addresses": {
+																		"description": "List of DHCP server IPs.",
+																		"items": {
+																			"description": "A valid IPv4 address.",
+																			"example": "192.0.2.1",
+																			"type": "string"
 																		},
-																		"type": "object"
-																	},
-																	"dhcp_server": {
-																		"properties": {
-																			"dhcp_pool_end": {
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			"dhcp_pool_start": {
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			"dns_server": {
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			"reservations": {
-																				"additionalProperties": {
-																					"description": "IP address associated with the MAC address",
-																					"type": "string"
-																				},
-																				"description": "Mapping of MAC addresses to IP addresses",
-																				"example": {
-																					"00:11:22:33:44:55": "192.0.2.100",
-																					"AA:BB:CC:DD:EE:FF": "192.168.1.101"
-																				},
-																				"type": "object"
-																			}
-																		},
-																		"type": "object"
-																	},
-																	"secondary_address": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
-																	},
-																	"virtual_address": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "array"
 																	}
 																},
-																"required": [
-																	"address"
-																],
 																"type": "object"
 															},
-															"vlan_tag": {
-																"description": "VLAN port number.",
-																"example": 0,
-																"type": "integer"
+															"dhcp_server": {
+																"properties": {
+																	"dhcp_pool_end": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"dhcp_pool_start": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"dns_server": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	"reservations": {
+																		"additionalProperties": {
+																			"description": "IP address associated with the MAC address",
+																			"type": "string"
+																		},
+																		"description": "Mapping of MAC addresses to IP addresses",
+																		"example": {
+																			"00:11:22:33:44:55": "192.0.2.100",
+																			"AA:BB:CC:DD:EE:FF": "192.168.1.101"
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
+															},
+															"secondary_address": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"virtual_address": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
 															}
 														},
+														"required": [
+															"address"
+														],
 														"type": "object"
 													},
-													"type": "array"
-												}
-											}
+													"vlan_tag": {
+														"description": "VLAN port number.",
+														"example": 0,
+														"type": "integer"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
 										}
 									}
 								}
@@ -1848,134 +1823,129 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"lan": {
+							"name": {
+								"type": "string"
+							},
+							"nat": {
 								"properties": {
-									"description": {
+									"static_prefix": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
 										"type": "string"
-									},
-									"nat": {
-										"properties": {
-											"static_prefix": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
-											}
-										},
-										"type": "object"
-									},
-									"physport": {
-										"example": 1,
-										"type": "integer"
-									},
-									"routed_subnets": {
-										"items": {
+									}
+								},
+								"type": "object"
+							},
+							"physport": {
+								"example": 1,
+								"type": "integer"
+							},
+							"routed_subnets": {
+								"items": {
+									"properties": {
+										"nat": {
 											"properties": {
-												"nat": {
-													"properties": {
-														"static_prefix": {
-															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
-														}
-													},
-													"type": "object"
-												},
-												"next_hop": {
-													"description": "A valid IPv4 address.",
-													"example": "192.0.2.1",
-													"type": "string"
-												},
-												"prefix": {
+												"static_prefix": {
 													"description": "A valid CIDR notation representing an IP range.",
 													"example": "192.0.2.0/24",
 													"type": "string"
 												}
 											},
-											"required": [
-												"prefix",
-												"next_hop"
-											],
 											"type": "object"
 										},
-										"type": "array"
+										"next_hop": {
+											"description": "A valid IPv4 address.",
+											"example": "192.0.2.1",
+											"type": "string"
+										},
+										"prefix": {
+											"description": "A valid CIDR notation representing an IP range.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										}
 									},
-									"static_addressing": {
-										"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+									"required": [
+										"prefix",
+										"next_hop"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"static_addressing": {
+								"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+								"properties": {
+									"address": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
+										"type": "string"
+									},
+									"dhcp_relay": {
 										"properties": {
-											"address": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
-											},
-											"dhcp_relay": {
-												"properties": {
-													"server_addresses": {
-														"description": "List of DHCP server IPs.",
-														"items": {
-															"description": "A valid IPv4 address.",
-															"example": "192.0.2.1",
-															"type": "string"
-														},
-														"type": "array"
-													}
+											"server_addresses": {
+												"description": "List of DHCP server IPs.",
+												"items": {
+													"description": "A valid IPv4 address.",
+													"example": "192.0.2.1",
+													"type": "string"
 												},
-												"type": "object"
-											},
-											"dhcp_server": {
-												"properties": {
-													"dhcp_pool_end": {
-														"description": "A valid IPv4 address.",
-														"example": "192.0.2.1",
-														"type": "string"
-													},
-													"dhcp_pool_start": {
-														"description": "A valid IPv4 address.",
-														"example": "192.0.2.1",
-														"type": "string"
-													},
-													"dns_server": {
-														"description": "A valid IPv4 address.",
-														"example": "192.0.2.1",
-														"type": "string"
-													},
-													"reservations": {
-														"additionalProperties": {
-															"description": "IP address associated with the MAC address",
-															"type": "string"
-														},
-														"description": "Mapping of MAC addresses to IP addresses",
-														"example": {
-															"00:11:22:33:44:55": "192.0.2.100",
-															"AA:BB:CC:DD:EE:FF": "192.168.1.101"
-														},
-														"type": "object"
-													}
-												},
-												"type": "object"
-											},
-											"secondary_address": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
-											},
-											"virtual_address": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
+												"type": "array"
 											}
 										},
-										"required": [
-											"address"
-										],
 										"type": "object"
 									},
-									"vlan_tag": {
-										"description": "VLAN port number.",
-										"example": 0,
-										"type": "integer"
+									"dhcp_server": {
+										"properties": {
+											"dhcp_pool_end": {
+												"description": "A valid IPv4 address.",
+												"example": "192.0.2.1",
+												"type": "string"
+											},
+											"dhcp_pool_start": {
+												"description": "A valid IPv4 address.",
+												"example": "192.0.2.1",
+												"type": "string"
+											},
+											"dns_server": {
+												"description": "A valid IPv4 address.",
+												"example": "192.0.2.1",
+												"type": "string"
+											},
+											"reservations": {
+												"additionalProperties": {
+													"description": "IP address associated with the MAC address",
+													"type": "string"
+												},
+												"description": "Mapping of MAC addresses to IP addresses",
+												"example": {
+													"00:11:22:33:44:55": "192.0.2.100",
+													"AA:BB:CC:DD:EE:FF": "192.168.1.101"
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"secondary_address": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
+										"type": "string"
+									},
+									"virtual_address": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
+										"type": "string"
 									}
 								},
+								"required": [
+									"address"
+								],
 								"type": "object"
+							},
+							"vlan_tag": {
+								"description": "VLAN port number.",
+								"example": 0,
+								"type": "integer"
 							}
 						},
 						"type": "object"
@@ -2090,154 +2060,150 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"lan": {
+												"ha_link": {
+													"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"nat": {
 													"properties": {
-														"description": {
+														"static_prefix": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
-														},
-														"ha_link": {
-															"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"nat": {
-															"properties": {
-																"static_prefix": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
-														"physport": {
-															"example": 1,
-															"type": "integer"
-														},
-														"routed_subnets": {
-															"items": {
+														}
+													},
+													"type": "object"
+												},
+												"physport": {
+													"example": 1,
+													"type": "integer"
+												},
+												"routed_subnets": {
+													"items": {
+														"properties": {
+															"nat": {
 																"properties": {
-																	"nat": {
-																		"properties": {
-																			"static_prefix": {
-																				"description": "A valid CIDR notation representing an IP range.",
-																				"example": "192.0.2.0/24",
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
-																	},
-																	"next_hop": {
-																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"prefix": {
+																	"static_prefix": {
 																		"description": "A valid CIDR notation representing an IP range.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	}
 																},
-																"required": [
-																	"prefix",
-																	"next_hop"
-																],
 																"type": "object"
 															},
-															"type": "array"
+															"next_hop": {
+																"description": "A valid IPv4 address.",
+																"example": "192.0.2.1",
+																"type": "string"
+															},
+															"prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															}
 														},
-														"site_id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"required": [
+															"prefix",
+															"next_hop"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"site_id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"static_addressing": {
+													"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+													"properties": {
+														"address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
 														},
-														"static_addressing": {
-															"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+														"dhcp_relay": {
 															"properties": {
-																"address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																},
-																"dhcp_relay": {
-																	"properties": {
-																		"server_addresses": {
-																			"description": "List of DHCP server IPs.",
-																			"items": {
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			"type": "array"
-																		}
+																"server_addresses": {
+																	"description": "List of DHCP server IPs.",
+																	"items": {
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
 																	},
-																	"type": "object"
-																},
-																"dhcp_server": {
-																	"properties": {
-																		"dhcp_pool_end": {
-																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"dhcp_pool_start": {
-																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"dns_server": {
-																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"reservations": {
-																			"additionalProperties": {
-																				"description": "IP address associated with the MAC address",
-																				"type": "string"
-																			},
-																			"description": "Mapping of MAC addresses to IP addresses",
-																			"example": {
-																				"00:11:22:33:44:55": "192.0.2.100",
-																				"AA:BB:CC:DD:EE:FF": "192.168.1.101"
-																			},
-																			"type": "object"
-																		}
-																	},
-																	"type": "object"
-																},
-																"secondary_address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																},
-																"virtual_address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
+																	"type": "array"
 																}
 															},
-															"required": [
-																"address"
-															],
 															"type": "object"
 														},
-														"vlan_tag": {
-															"description": "VLAN port number.",
-															"example": 0,
-															"type": "integer"
+														"dhcp_server": {
+															"properties": {
+																"dhcp_pool_end": {
+																	"description": "A valid IPv4 address.",
+																	"example": "192.0.2.1",
+																	"type": "string"
+																},
+																"dhcp_pool_start": {
+																	"description": "A valid IPv4 address.",
+																	"example": "192.0.2.1",
+																	"type": "string"
+																},
+																"dns_server": {
+																	"description": "A valid IPv4 address.",
+																	"example": "192.0.2.1",
+																	"type": "string"
+																},
+																"reservations": {
+																	"additionalProperties": {
+																		"description": "IP address associated with the MAC address",
+																		"type": "string"
+																	},
+																	"description": "Mapping of MAC addresses to IP addresses",
+																	"example": {
+																		"00:11:22:33:44:55": "192.0.2.100",
+																		"AA:BB:CC:DD:EE:FF": "192.168.1.101"
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"secondary_address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
+															"type": "string"
+														},
+														"virtual_address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
+															"type": "string"
 														}
 													},
+													"required": [
+														"address"
+													],
 													"type": "object"
+												},
+												"vlan_tag": {
+													"description": "VLAN port number.",
+													"example": 0,
+													"type": "integer"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}

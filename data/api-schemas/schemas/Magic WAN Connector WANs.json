@@ -152,71 +152,63 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"deleted": {
-													"example": true,
-													"type": "boolean"
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												},
-												"deleted_wan": {
+												"name": {
+													"type": "string"
+												},
+												"physport": {
+													"example": 1,
+													"type": "integer"
+												},
+												"priority": {
+													"description": "Priority of WAN for traffic loadbalancing.",
+													"type": "integer"
+												},
+												"site_id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"static_addressing": {
+													"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
 													"properties": {
-														"description": {
+														"address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
 														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"gateway_address": {
+															"description": "A valid IPv4 address.",
+															"example": "192.0.2.1",
 															"type": "string"
 														},
-														"physport": {
-															"example": 1,
-															"type": "integer"
-														},
-														"priority": {
-															"description": "Priority of WAN for traffic loadbalancing.",
-															"type": "integer"
-														},
-														"site_id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"secondary_address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
-														},
-														"static_addressing": {
-															"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
-															"properties": {
-																"address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																},
-																"gateway_address": {
-																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
-																},
-																"secondary_address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"address",
-																"gateway_address"
-															],
-															"type": "object"
-														},
-														"vlan_tag": {
-															"description": "VLAN port number.",
-															"example": 0,
-															"type": "integer"
 														}
 													},
+													"required": [
+														"address",
+														"gateway_address"
+													],
 													"type": "object"
+												},
+												"vlan_tag": {
+													"description": "VLAN port number.",
+													"example": 0,
+													"type": "integer"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -474,71 +466,67 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"wans": {
-													"items": {
+											"items": {
+												"properties": {
+													"id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"physport": {
+														"example": 1,
+														"type": "integer"
+													},
+													"priority": {
+														"description": "Priority of WAN for traffic loadbalancing.",
+														"type": "integer"
+													},
+													"site_id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"static_addressing": {
+														"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
 														"properties": {
-															"description": {
+															"address": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
 																"type": "string"
 															},
-															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
+															"gateway_address": {
+																"description": "A valid IPv4 address.",
+																"example": "192.0.2.1",
 																"type": "string"
 															},
-															"physport": {
-																"example": 1,
-																"type": "integer"
-															},
-															"priority": {
-																"description": "Priority of WAN for traffic loadbalancing.",
-																"type": "integer"
-															},
-															"site_id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
+															"secondary_address": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
 																"type": "string"
-															},
-															"static_addressing": {
-																"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
-																"properties": {
-																	"address": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
-																	},
-																	"gateway_address": {
-																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"secondary_address": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"address",
-																	"gateway_address"
-																],
-																"type": "object"
-															},
-															"vlan_tag": {
-																"description": "VLAN port number.",
-																"example": 0,
-																"type": "integer"
 															}
 														},
+														"required": [
+															"address",
+															"gateway_address"
+														],
 														"type": "object"
 													},
-													"type": "array"
-												}
-											}
+													"vlan_tag": {
+														"description": "VLAN port number.",
+														"example": 0,
+														"type": "integer"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
 										}
 									}
 								}
@@ -804,67 +792,63 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"wan": {
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"physport": {
+													"example": 1,
+													"type": "integer"
+												},
+												"priority": {
+													"description": "Priority of WAN for traffic loadbalancing.",
+													"type": "integer"
+												},
+												"site_id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"static_addressing": {
+													"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
 													"properties": {
-														"description": {
+														"address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
 														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"gateway_address": {
+															"description": "A valid IPv4 address.",
+															"example": "192.0.2.1",
 															"type": "string"
 														},
-														"physport": {
-															"example": 1,
-															"type": "integer"
-														},
-														"priority": {
-															"description": "Priority of WAN for traffic loadbalancing.",
-															"type": "integer"
-														},
-														"site_id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"secondary_address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
-														},
-														"static_addressing": {
-															"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
-															"properties": {
-																"address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																},
-																"gateway_address": {
-																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
-																},
-																"secondary_address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"address",
-																"gateway_address"
-															],
-															"type": "object"
-														},
-														"vlan_tag": {
-															"description": "VLAN port number.",
-															"example": 0,
-															"type": "integer"
 														}
 													},
+													"required": [
+														"address",
+														"gateway_address"
+													],
 													"type": "object"
+												},
+												"vlan_tag": {
+													"description": "VLAN port number.",
+													"example": 0,
+													"type": "integer"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1022,56 +1006,51 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"wan": {
+							"name": {
+								"type": "string"
+							},
+							"physport": {
+								"example": 1,
+								"type": "integer"
+							},
+							"priority": {
+								"type": "integer"
+							},
+							"static_addressing": {
+								"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
 								"properties": {
-									"description": {
+									"address": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
 										"type": "string"
 									},
-									"physport": {
-										"example": 1,
-										"type": "integer"
+									"gateway_address": {
+										"description": "A valid IPv4 address.",
+										"example": "192.0.2.1",
+										"type": "string"
 									},
-									"priority": {
-										"type": "integer"
-									},
-									"static_addressing": {
-										"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
-										"properties": {
-											"address": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
-											},
-											"gateway_address": {
-												"description": "A valid IPv4 address.",
-												"example": "192.0.2.1",
-												"type": "string"
-											},
-											"secondary_address": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
-											}
-										},
-										"required": [
-											"address",
-											"gateway_address"
-										],
-										"type": "object"
-									},
-									"vlan_tag": {
-										"description": "VLAN port number.",
-										"example": 0,
-										"type": "integer"
+									"secondary_address": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
+										"type": "string"
 									}
 								},
 								"required": [
-									"physport",
-									"vlan_tag"
+									"address",
+									"gateway_address"
 								],
 								"type": "object"
+							},
+							"vlan_tag": {
+								"description": "VLAN port number.",
+								"example": 0,
+								"type": "integer"
 							}
 						},
+						"required": [
+							"physport",
+							"vlan_tag"
+						],
 						"type": "object"
 					}
 				}
@@ -1183,71 +1162,67 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"wans": {
-													"items": {
+											"items": {
+												"properties": {
+													"id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"physport": {
+														"example": 1,
+														"type": "integer"
+													},
+													"priority": {
+														"description": "Priority of WAN for traffic loadbalancing.",
+														"type": "integer"
+													},
+													"site_id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"static_addressing": {
+														"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
 														"properties": {
-															"description": {
+															"address": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
 																"type": "string"
 															},
-															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
+															"gateway_address": {
+																"description": "A valid IPv4 address.",
+																"example": "192.0.2.1",
 																"type": "string"
 															},
-															"physport": {
-																"example": 1,
-																"type": "integer"
-															},
-															"priority": {
-																"description": "Priority of WAN for traffic loadbalancing.",
-																"type": "integer"
-															},
-															"site_id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
+															"secondary_address": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
 																"type": "string"
-															},
-															"static_addressing": {
-																"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
-																"properties": {
-																	"address": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
-																	},
-																	"gateway_address": {
-																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"secondary_address": {
-																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"address",
-																	"gateway_address"
-																],
-																"type": "object"
-															},
-															"vlan_tag": {
-																"description": "VLAN port number.",
-																"example": 0,
-																"type": "integer"
 															}
 														},
+														"required": [
+															"address",
+															"gateway_address"
+														],
 														"type": "object"
 													},
-													"type": "array"
-												}
-											}
+													"vlan_tag": {
+														"description": "VLAN port number.",
+														"example": 0,
+														"type": "integer"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
 										}
 									}
 								}
@@ -1412,50 +1387,45 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"wan": {
+							"name": {
+								"type": "string"
+							},
+							"physport": {
+								"example": 1,
+								"type": "integer"
+							},
+							"priority": {
+								"type": "integer"
+							},
+							"static_addressing": {
+								"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
 								"properties": {
-									"description": {
+									"address": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
 										"type": "string"
 									},
-									"physport": {
-										"example": 1,
-										"type": "integer"
+									"gateway_address": {
+										"description": "A valid IPv4 address.",
+										"example": "192.0.2.1",
+										"type": "string"
 									},
-									"priority": {
-										"type": "integer"
-									},
-									"static_addressing": {
-										"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
-										"properties": {
-											"address": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
-											},
-											"gateway_address": {
-												"description": "A valid IPv4 address.",
-												"example": "192.0.2.1",
-												"type": "string"
-											},
-											"secondary_address": {
-												"description": "A valid CIDR notation representing an IP range.",
-												"example": "192.0.2.0/24",
-												"type": "string"
-											}
-										},
-										"required": [
-											"address",
-											"gateway_address"
-										],
-										"type": "object"
-									},
-									"vlan_tag": {
-										"description": "VLAN port number.",
-										"example": 0,
-										"type": "integer"
+									"secondary_address": {
+										"description": "A valid CIDR notation representing an IP range.",
+										"example": "192.0.2.0/24",
+										"type": "string"
 									}
 								},
+								"required": [
+									"address",
+									"gateway_address"
+								],
 								"type": "object"
+							},
+							"vlan_tag": {
+								"description": "VLAN port number.",
+								"example": 0,
+								"type": "integer"
 							}
 						},
 						"type": "object"
@@ -1570,67 +1540,63 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"wan": {
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"physport": {
+													"example": 1,
+													"type": "integer"
+												},
+												"priority": {
+													"description": "Priority of WAN for traffic loadbalancing.",
+													"type": "integer"
+												},
+												"site_id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"static_addressing": {
+													"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
 													"properties": {
-														"description": {
+														"address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
 														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"gateway_address": {
+															"description": "A valid IPv4 address.",
+															"example": "192.0.2.1",
 															"type": "string"
 														},
-														"physport": {
-															"example": 1,
-															"type": "integer"
-														},
-														"priority": {
-															"description": "Priority of WAN for traffic loadbalancing.",
-															"type": "integer"
-														},
-														"site_id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"secondary_address": {
+															"description": "A valid CIDR notation representing an IP range.",
+															"example": "192.0.2.0/24",
 															"type": "string"
-														},
-														"static_addressing": {
-															"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
-															"properties": {
-																"address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																},
-																"gateway_address": {
-																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
-																},
-																"secondary_address": {
-																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"address",
-																"gateway_address"
-															],
-															"type": "object"
-														},
-														"vlan_tag": {
-															"description": "VLAN port number.",
-															"example": 0,
-															"type": "integer"
 														}
 													},
+													"required": [
+														"address",
+														"gateway_address"
+													],
 													"type": "object"
+												},
+												"vlan_tag": {
+													"description": "VLAN port number.",
+													"example": 0,
+													"type": "integer"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}

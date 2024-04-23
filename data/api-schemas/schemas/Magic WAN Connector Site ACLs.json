@@ -151,135 +151,127 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Bidirectional ACL policy for network traffic within a site.",
 											"properties": {
-												"deleted": {
-													"example": true,
+												"description": {
+													"description": "Description for the ACL.",
+													"example": "Allows local traffic between PIN pads and cash register.",
+													"type": "string"
+												},
+												"forward_locally": {
+													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
 													"type": "boolean"
 												},
-												"deleted_acl": {
-													"description": "Bidirectional ACL policy for network traffic within a site.",
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"lan_1": {
 													"properties": {
-														"description": {
-															"description": "Description for the ACL.",
-															"example": "Allows local traffic between PIN pads and cash register.",
+														"lan_id": {
+															"description": "The identifier for the LAN you want to create an ACL policy with.",
 															"type": "string"
 														},
-														"forward_locally": {
-															"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"lan_name": {
+															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
-														"lan_1": {
-															"properties": {
-																"lan_id": {
-																	"description": "The identifier for the LAN you want to create an ACL policy with.",
-																	"type": "string"
-																},
-																"lan_name": {
-																	"description": "The name of the LAN based on the provided lan_id.",
-																	"type": "string"
-																},
-																"ports": {
-																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-																	"items": {
-																		"example": 1,
-																		"type": "integer"
-																	},
-																	"type": "array"
-																},
-																"subnets": {
-																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-																	"items": {
-																		"oneOf": [
-																			{
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			{
-																				"description": "A valid CIDR notation representing an IP range.",
-																				"example": "192.0.2.0/24",
-																				"type": "string"
-																			}
-																		]
-																	},
-																	"type": "array"
-																}
-															},
-															"required": [
-																"lan_id"
-															],
-															"type": "object"
-														},
-														"lan_2": {
-															"properties": {
-																"lan_id": {
-																	"description": "The identifier for the LAN you want to create an ACL policy with.",
-																	"type": "string"
-																},
-																"lan_name": {
-																	"description": "The name of the LAN based on the provided lan_id.",
-																	"type": "string"
-																},
-																"ports": {
-																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-																	"items": {
-																		"example": 1,
-																		"type": "integer"
-																	},
-																	"type": "array"
-																},
-																"subnets": {
-																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-																	"items": {
-																		"oneOf": [
-																			{
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			{
-																				"description": "A valid CIDR notation representing an IP range.",
-																				"example": "192.0.2.0/24",
-																				"type": "string"
-																			}
-																		]
-																	},
-																	"type": "array"
-																}
-															},
-															"required": [
-																"lan_id"
-															],
-															"type": "object"
-														},
-														"name": {
-															"description": "The name of the ACL.",
-															"example": "PIN Pad - Cash Register",
-															"type": "string"
-														},
-														"protocols": {
+														"ports": {
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
 															"items": {
-																"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
-																"enum": [
-																	"tcp",
-																	"udp",
-																	"icmp"
-																],
-																"type": "string"
+																"example": 1,
+																"type": "integer"
+															},
+															"type": "array"
+														},
+														"subnets": {
+															"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+															"items": {
+																"oneOf": [
+																	{
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	{
+																		"description": "A valid CIDR notation representing an IP range.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	}
+																]
 															},
 															"type": "array"
 														}
 													},
+													"required": [
+														"lan_id"
+													],
 													"type": "object"
+												},
+												"lan_2": {
+													"properties": {
+														"lan_id": {
+															"description": "The identifier for the LAN you want to create an ACL policy with.",
+															"type": "string"
+														},
+														"lan_name": {
+															"description": "The name of the LAN based on the provided lan_id.",
+															"type": "string"
+														},
+														"ports": {
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"example": 1,
+																"type": "integer"
+															},
+															"type": "array"
+														},
+														"subnets": {
+															"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+															"items": {
+																"oneOf": [
+																	{
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	{
+																		"description": "A valid CIDR notation representing an IP range.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	}
+																]
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"lan_id"
+													],
+													"type": "object"
+												},
+												"name": {
+													"description": "The name of the ACL.",
+													"example": "PIN Pad - Cash Register",
+													"type": "string"
+												},
+												"protocols": {
+													"items": {
+														"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+														"enum": [
+															"tcp",
+															"udp",
+															"icmp"
+														],
+														"type": "string"
+													},
+													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -537,134 +529,130 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"acls": {
-													"items": {
-														"description": "Bidirectional ACL policy for network traffic within a site.",
+											"items": {
+												"description": "Bidirectional ACL policy for network traffic within a site.",
+												"properties": {
+													"description": {
+														"description": "Description for the ACL.",
+														"example": "Allows local traffic between PIN pads and cash register.",
+														"type": "string"
+													},
+													"forward_locally": {
+														"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+														"type": "boolean"
+													},
+													"id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"lan_1": {
 														"properties": {
-															"description": {
-																"description": "Description for the ACL.",
-																"example": "Allows local traffic between PIN pads and cash register.",
+															"lan_id": {
+																"description": "The identifier for the LAN you want to create an ACL policy with.",
 																"type": "string"
 															},
-															"forward_locally": {
-																"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
-																"type": "boolean"
-															},
-															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
+															"lan_name": {
+																"description": "The name of the LAN based on the provided lan_id.",
 																"type": "string"
 															},
-															"lan_1": {
-																"properties": {
-																	"lan_id": {
-																		"description": "The identifier for the LAN you want to create an ACL policy with.",
-																		"type": "string"
-																	},
-																	"lan_name": {
-																		"description": "The name of the LAN based on the provided lan_id.",
-																		"type": "string"
-																	},
-																	"ports": {
-																		"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-																		"items": {
-																			"example": 1,
-																			"type": "integer"
-																		},
-																		"type": "array"
-																	},
-																	"subnets": {
-																		"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-																		"items": {
-																			"oneOf": [
-																				{
-																					"description": "A valid IPv4 address.",
-																					"example": "192.0.2.1",
-																					"type": "string"
-																				},
-																				{
-																					"description": "A valid CIDR notation representing an IP range.",
-																					"example": "192.0.2.0/24",
-																					"type": "string"
-																				}
-																			]
-																		},
-																		"type": "array"
-																	}
-																},
-																"required": [
-																	"lan_id"
-																],
-																"type": "object"
-															},
-															"lan_2": {
-																"properties": {
-																	"lan_id": {
-																		"description": "The identifier for the LAN you want to create an ACL policy with.",
-																		"type": "string"
-																	},
-																	"lan_name": {
-																		"description": "The name of the LAN based on the provided lan_id.",
-																		"type": "string"
-																	},
-																	"ports": {
-																		"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-																		"items": {
-																			"example": 1,
-																			"type": "integer"
-																		},
-																		"type": "array"
-																	},
-																	"subnets": {
-																		"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-																		"items": {
-																			"oneOf": [
-																				{
-																					"description": "A valid IPv4 address.",
-																					"example": "192.0.2.1",
-																					"type": "string"
-																				},
-																				{
-																					"description": "A valid CIDR notation representing an IP range.",
-																					"example": "192.0.2.0/24",
-																					"type": "string"
-																				}
-																			]
-																		},
-																		"type": "array"
-																	}
-																},
-																"required": [
-																	"lan_id"
-																],
-																"type": "object"
-															},
-															"name": {
-																"description": "The name of the ACL.",
-																"example": "PIN Pad - Cash Register",
-																"type": "string"
-															},
-															"protocols": {
+															"ports": {
+																"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
 																"items": {
-																	"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
-																	"enum": [
-																		"tcp",
-																		"udp",
-																		"icmp"
-																	],
-																	"type": "string"
+																	"example": 1,
+																	"type": "integer"
+																},
+																"type": "array"
+															},
+															"subnets": {
+																"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																"items": {
+																	"oneOf": [
+																		{
+																			"description": "A valid IPv4 address.",
+																			"example": "192.0.2.1",
+																			"type": "string"
+																		},
+																		{
+																			"description": "A valid CIDR notation representing an IP range.",
+																			"example": "192.0.2.0/24",
+																			"type": "string"
+																		}
+																	]
 																},
 																"type": "array"
 															}
 														},
+														"required": [
+															"lan_id"
+														],
 														"type": "object"
 													},
-													"type": "array"
-												}
-											}
+													"lan_2": {
+														"properties": {
+															"lan_id": {
+																"description": "The identifier for the LAN you want to create an ACL policy with.",
+																"type": "string"
+															},
+															"lan_name": {
+																"description": "The name of the LAN based on the provided lan_id.",
+																"type": "string"
+															},
+															"ports": {
+																"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+																"items": {
+																	"example": 1,
+																	"type": "integer"
+																},
+																"type": "array"
+															},
+															"subnets": {
+																"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+																"items": {
+																	"oneOf": [
+																		{
+																			"description": "A valid IPv4 address.",
+																			"example": "192.0.2.1",
+																			"type": "string"
+																		},
+																		{
+																			"description": "A valid CIDR notation representing an IP range.",
+																			"example": "192.0.2.0/24",
+																			"type": "string"
+																		}
+																	]
+																},
+																"type": "array"
+															}
+														},
+														"required": [
+															"lan_id"
+														],
+														"type": "object"
+													},
+													"name": {
+														"description": "The name of the ACL.",
+														"example": "PIN Pad - Cash Register",
+														"type": "string"
+													},
+													"protocols": {
+														"items": {
+															"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+															"enum": [
+																"tcp",
+																"udp",
+																"icmp"
+															],
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
 										}
 									}
 								}
@@ -929,131 +917,127 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Bidirectional ACL policy for network traffic within a site.",
 											"properties": {
-												"acl": {
-													"description": "Bidirectional ACL policy for network traffic within a site.",
+												"description": {
+													"description": "Description for the ACL.",
+													"example": "Allows local traffic between PIN pads and cash register.",
+													"type": "string"
+												},
+												"forward_locally": {
+													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"lan_1": {
 													"properties": {
-														"description": {
-															"description": "Description for the ACL.",
-															"example": "Allows local traffic between PIN pads and cash register.",
+														"lan_id": {
+															"description": "The identifier for the LAN you want to create an ACL policy with.",
 															"type": "string"
 														},
-														"forward_locally": {
-															"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"lan_name": {
+															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
-														"lan_1": {
-															"properties": {
-																"lan_id": {
-																	"description": "The identifier for the LAN you want to create an ACL policy with.",
-																	"type": "string"
-																},
-																"lan_name": {
-																	"description": "The name of the LAN based on the provided lan_id.",
-																	"type": "string"
-																},
-																"ports": {
-																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-																	"items": {
-																		"example": 1,
-																		"type": "integer"
-																	},
-																	"type": "array"
-																},
-																"subnets": {
-																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-																	"items": {
-																		"oneOf": [
-																			{
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			{
-																				"description": "A valid CIDR notation representing an IP range.",
-																				"example": "192.0.2.0/24",
-																				"type": "string"
-																			}
-																		]
-																	},
-																	"type": "array"
-																}
-															},
-															"required": [
-																"lan_id"
-															],
-															"type": "object"
-														},
-														"lan_2": {
-															"properties": {
-																"lan_id": {
-																	"description": "The identifier for the LAN you want to create an ACL policy with.",
-																	"type": "string"
-																},
-																"lan_name": {
-																	"description": "The name of the LAN based on the provided lan_id.",
-																	"type": "string"
-																},
-																"ports": {
-																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-																	"items": {
-																		"example": 1,
-																		"type": "integer"
-																	},
-																	"type": "array"
-																},
-																"subnets": {
-																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-																	"items": {
-																		"oneOf": [
-																			{
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			{
-																				"description": "A valid CIDR notation representing an IP range.",
-																				"example": "192.0.2.0/24",
-																				"type": "string"
-																			}
-																		]
-																	},
-																	"type": "array"
-																}
-															},
-															"required": [
-																"lan_id"
-															],
-															"type": "object"
-														},
-														"name": {
-															"description": "The name of the ACL.",
-															"example": "PIN Pad - Cash Register",
-															"type": "string"
-														},
-														"protocols": {
+														"ports": {
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
 															"items": {
-																"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
-																"enum": [
-																	"tcp",
-																	"udp",
-																	"icmp"
-																],
-																"type": "string"
+																"example": 1,
+																"type": "integer"
+															},
+															"type": "array"
+														},
+														"subnets": {
+															"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+															"items": {
+																"oneOf": [
+																	{
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	{
+																		"description": "A valid CIDR notation representing an IP range.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	}
+																]
 															},
 															"type": "array"
 														}
 													},
+													"required": [
+														"lan_id"
+													],
 													"type": "object"
+												},
+												"lan_2": {
+													"properties": {
+														"lan_id": {
+															"description": "The identifier for the LAN you want to create an ACL policy with.",
+															"type": "string"
+														},
+														"lan_name": {
+															"description": "The name of the LAN based on the provided lan_id.",
+															"type": "string"
+														},
+														"ports": {
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"example": 1,
+																"type": "integer"
+															},
+															"type": "array"
+														},
+														"subnets": {
+															"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+															"items": {
+																"oneOf": [
+																	{
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	{
+																		"description": "A valid CIDR notation representing an IP range.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	}
+																]
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"lan_id"
+													],
+													"type": "object"
+												},
+												"name": {
+													"description": "The name of the ACL.",
+													"example": "PIN Pad - Cash Register",
+													"type": "string"
+												},
+												"protocols": {
+													"items": {
+														"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+														"enum": [
+															"tcp",
+															"udp",
+															"icmp"
+														],
+														"type": "string"
+													},
+													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1212,127 +1196,122 @@
 					"schema": {
 						"description": "Bidirectional ACL policy for local network traffic within a site.",
 						"properties": {
-							"acl": {
+							"description": {
+								"description": "Description for the ACL.",
+								"example": "Allows local traffic between PIN pads and cash register.",
+								"type": "string"
+							},
+							"forward_locally": {
+								"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+								"type": "boolean"
+							},
+							"lan_1": {
 								"properties": {
-									"description": {
-										"description": "Description for the ACL.",
-										"example": "Allows local traffic between PIN pads and cash register.",
+									"lan_id": {
+										"description": "The identifier for the LAN you want to create an ACL policy with.",
 										"type": "string"
 									},
-									"forward_locally": {
-										"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
-										"type": "boolean"
-									},
-									"lan_1": {
-										"properties": {
-											"lan_id": {
-												"description": "The identifier for the LAN you want to create an ACL policy with.",
-												"type": "string"
-											},
-											"lan_name": {
-												"description": "The name of the LAN based on the provided lan_id.",
-												"type": "string"
-											},
-											"ports": {
-												"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-												"items": {
-													"example": 1,
-													"type": "integer"
-												},
-												"type": "array"
-											},
-											"subnets": {
-												"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-												"items": {
-													"oneOf": [
-														{
-															"description": "A valid IPv4 address.",
-															"example": "192.0.2.1",
-															"type": "string"
-														},
-														{
-															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
-														}
-													]
-												},
-												"type": "array"
-											}
-										},
-										"required": [
-											"lan_id"
-										],
-										"type": "object"
-									},
-									"lan_2": {
-										"properties": {
-											"lan_id": {
-												"description": "The identifier for the LAN you want to create an ACL policy with.",
-												"type": "string"
-											},
-											"lan_name": {
-												"description": "The name of the LAN based on the provided lan_id.",
-												"type": "string"
-											},
-											"ports": {
-												"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-												"items": {
-													"example": 1,
-													"type": "integer"
-												},
-												"type": "array"
-											},
-											"subnets": {
-												"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-												"items": {
-													"oneOf": [
-														{
-															"description": "A valid IPv4 address.",
-															"example": "192.0.2.1",
-															"type": "string"
-														},
-														{
-															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
-														}
-													]
-												},
-												"type": "array"
-											}
-										},
-										"required": [
-											"lan_id"
-										],
-										"type": "object"
-									},
-									"name": {
-										"description": "The name of the ACL.",
-										"example": "PIN Pad - Cash Register",
+									"lan_name": {
+										"description": "The name of the LAN based on the provided lan_id.",
 										"type": "string"
 									},
-									"protocols": {
+									"ports": {
+										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
 										"items": {
-											"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
-											"enum": [
-												"tcp",
-												"udp",
-												"icmp"
-											],
-											"type": "string"
+											"example": 1,
+											"type": "integer"
+										},
+										"type": "array"
+									},
+									"subnets": {
+										"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+										"items": {
+											"oneOf": [
+												{
+													"description": "A valid IPv4 address.",
+													"example": "192.0.2.1",
+													"type": "string"
+												},
+												{
+													"description": "A valid CIDR notation representing an IP range.",
+													"example": "192.0.2.0/24",
+													"type": "string"
+												}
+											]
 										},
 										"type": "array"
 									}
 								},
 								"required": [
-									"name",
-									"lan_1",
-									"lan_2"
+									"lan_id"
 								],
 								"type": "object"
+							},
+							"lan_2": {
+								"properties": {
+									"lan_id": {
+										"description": "The identifier for the LAN you want to create an ACL policy with.",
+										"type": "string"
+									},
+									"lan_name": {
+										"description": "The name of the LAN based on the provided lan_id.",
+										"type": "string"
+									},
+									"ports": {
+										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+										"items": {
+											"example": 1,
+											"type": "integer"
+										},
+										"type": "array"
+									},
+									"subnets": {
+										"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+										"items": {
+											"oneOf": [
+												{
+													"description": "A valid IPv4 address.",
+													"example": "192.0.2.1",
+													"type": "string"
+												},
+												{
+													"description": "A valid CIDR notation representing an IP range.",
+													"example": "192.0.2.0/24",
+													"type": "string"
+												}
+											]
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"lan_id"
+								],
+								"type": "object"
+							},
+							"name": {
+								"description": "The name of the ACL.",
+								"example": "PIN Pad - Cash Register",
+								"type": "string"
+							},
+							"protocols": {
+								"items": {
+									"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+									"enum": [
+										"tcp",
+										"udp",
+										"icmp"
+									],
+									"type": "string"
+								},
+								"type": "array"
 							}
 						},
+						"required": [
+							"name",
+							"lan_1",
+							"lan_2"
+						],
 						"type": "object"
 					}
 				}
@@ -1444,134 +1423,127 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Bidirectional ACL policy for network traffic within a site.",
 											"properties": {
-												"acls": {
-													"items": {
-														"description": "Bidirectional ACL policy for network traffic within a site.",
-														"properties": {
-															"description": {
-																"description": "Description for the ACL.",
-																"example": "Allows local traffic between PIN pads and cash register.",
-																"type": "string"
-															},
-															"forward_locally": {
-																"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
-																"type": "boolean"
-															},
-															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
-															},
-															"lan_1": {
-																"properties": {
-																	"lan_id": {
-																		"description": "The identifier for the LAN you want to create an ACL policy with.",
-																		"type": "string"
-																	},
-																	"lan_name": {
-																		"description": "The name of the LAN based on the provided lan_id.",
-																		"type": "string"
-																	},
-																	"ports": {
-																		"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-																		"items": {
-																			"example": 1,
-																			"type": "integer"
-																		},
-																		"type": "array"
-																	},
-																	"subnets": {
-																		"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-																		"items": {
-																			"oneOf": [
-																				{
-																					"description": "A valid IPv4 address.",
-																					"example": "192.0.2.1",
-																					"type": "string"
-																				},
-																				{
-																					"description": "A valid CIDR notation representing an IP range.",
-																					"example": "192.0.2.0/24",
-																					"type": "string"
-																				}
-																			]
-																		},
-																		"type": "array"
-																	}
-																},
-																"required": [
-																	"lan_id"
-																],
-																"type": "object"
-															},
-															"lan_2": {
-																"properties": {
-																	"lan_id": {
-																		"description": "The identifier for the LAN you want to create an ACL policy with.",
-																		"type": "string"
-																	},
-																	"lan_name": {
-																		"description": "The name of the LAN based on the provided lan_id.",
-																		"type": "string"
-																	},
-																	"ports": {
-																		"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-																		"items": {
-																			"example": 1,
-																			"type": "integer"
-																		},
-																		"type": "array"
-																	},
-																	"subnets": {
-																		"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-																		"items": {
-																			"oneOf": [
-																				{
-																					"description": "A valid IPv4 address.",
-																					"example": "192.0.2.1",
-																					"type": "string"
-																				},
-																				{
-																					"description": "A valid CIDR notation representing an IP range.",
-																					"example": "192.0.2.0/24",
-																					"type": "string"
-																				}
-																			]
-																		},
-																		"type": "array"
-																	}
-																},
-																"required": [
-																	"lan_id"
-																],
-																"type": "object"
-															},
-															"name": {
-																"description": "The name of the ACL.",
-																"example": "PIN Pad - Cash Register",
-																"type": "string"
-															},
-															"protocols": {
-																"items": {
-																	"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
-																	"enum": [
-																		"tcp",
-																		"udp",
-																		"icmp"
-																	],
-																	"type": "string"
-																},
-																"type": "array"
-															}
+												"description": {
+													"description": "Description for the ACL.",
+													"example": "Allows local traffic between PIN pads and cash register.",
+													"type": "string"
+												},
+												"forward_locally": {
+													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"lan_1": {
+													"properties": {
+														"lan_id": {
+															"description": "The identifier for the LAN you want to create an ACL policy with.",
+															"type": "string"
 														},
-														"type": "object"
+														"lan_name": {
+															"description": "The name of the LAN based on the provided lan_id.",
+															"type": "string"
+														},
+														"ports": {
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"example": 1,
+																"type": "integer"
+															},
+															"type": "array"
+														},
+														"subnets": {
+															"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+															"items": {
+																"oneOf": [
+																	{
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	{
+																		"description": "A valid CIDR notation representing an IP range.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	}
+																]
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"lan_id"
+													],
+													"type": "object"
+												},
+												"lan_2": {
+													"properties": {
+														"lan_id": {
+															"description": "The identifier for the LAN you want to create an ACL policy with.",
+															"type": "string"
+														},
+														"lan_name": {
+															"description": "The name of the LAN based on the provided lan_id.",
+															"type": "string"
+														},
+														"ports": {
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"example": 1,
+																"type": "integer"
+															},
+															"type": "array"
+														},
+														"subnets": {
+															"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+															"items": {
+																"oneOf": [
+																	{
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	{
+																		"description": "A valid CIDR notation representing an IP range.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	}
+																]
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"lan_id"
+													],
+													"type": "object"
+												},
+												"name": {
+													"description": "The name of the ACL.",
+													"example": "PIN Pad - Cash Register",
+													"type": "string"
+												},
+												"protocols": {
+													"items": {
+														"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+														"enum": [
+															"tcp",
+															"udp",
+															"icmp"
+														],
+														"type": "string"
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1736,120 +1708,115 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"acl": {
+							"description": {
+								"description": "Description for the ACL.",
+								"example": "Allows local traffic between PIN pads and cash register.",
+								"type": "string"
+							},
+							"forward_locally": {
+								"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+								"type": "boolean"
+							},
+							"lan_1": {
 								"properties": {
-									"description": {
-										"description": "Description for the ACL.",
-										"example": "Allows local traffic between PIN pads and cash register.",
+									"lan_id": {
+										"description": "The identifier for the LAN you want to create an ACL policy with.",
 										"type": "string"
 									},
-									"forward_locally": {
-										"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
-										"type": "boolean"
-									},
-									"lan_1": {
-										"properties": {
-											"lan_id": {
-												"description": "The identifier for the LAN you want to create an ACL policy with.",
-												"type": "string"
-											},
-											"lan_name": {
-												"description": "The name of the LAN based on the provided lan_id.",
-												"type": "string"
-											},
-											"ports": {
-												"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-												"items": {
-													"example": 1,
-													"type": "integer"
-												},
-												"type": "array"
-											},
-											"subnets": {
-												"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-												"items": {
-													"oneOf": [
-														{
-															"description": "A valid IPv4 address.",
-															"example": "192.0.2.1",
-															"type": "string"
-														},
-														{
-															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
-														}
-													]
-												},
-												"type": "array"
-											}
-										},
-										"required": [
-											"lan_id"
-										],
-										"type": "object"
-									},
-									"lan_2": {
-										"properties": {
-											"lan_id": {
-												"description": "The identifier for the LAN you want to create an ACL policy with.",
-												"type": "string"
-											},
-											"lan_name": {
-												"description": "The name of the LAN based on the provided lan_id.",
-												"type": "string"
-											},
-											"ports": {
-												"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-												"items": {
-													"example": 1,
-													"type": "integer"
-												},
-												"type": "array"
-											},
-											"subnets": {
-												"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-												"items": {
-													"oneOf": [
-														{
-															"description": "A valid IPv4 address.",
-															"example": "192.0.2.1",
-															"type": "string"
-														},
-														{
-															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
-														}
-													]
-												},
-												"type": "array"
-											}
-										},
-										"required": [
-											"lan_id"
-										],
-										"type": "object"
-									},
-									"name": {
-										"description": "The name of the ACL.",
-										"example": "PIN Pad - Cash Register",
+									"lan_name": {
+										"description": "The name of the LAN based on the provided lan_id.",
 										"type": "string"
 									},
-									"protocols": {
+									"ports": {
+										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
 										"items": {
-											"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
-											"enum": [
-												"tcp",
-												"udp",
-												"icmp"
-											],
-											"type": "string"
+											"example": 1,
+											"type": "integer"
+										},
+										"type": "array"
+									},
+									"subnets": {
+										"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+										"items": {
+											"oneOf": [
+												{
+													"description": "A valid IPv4 address.",
+													"example": "192.0.2.1",
+													"type": "string"
+												},
+												{
+													"description": "A valid CIDR notation representing an IP range.",
+													"example": "192.0.2.0/24",
+													"type": "string"
+												}
+											]
 										},
 										"type": "array"
 									}
 								},
+								"required": [
+									"lan_id"
+								],
 								"type": "object"
+							},
+							"lan_2": {
+								"properties": {
+									"lan_id": {
+										"description": "The identifier for the LAN you want to create an ACL policy with.",
+										"type": "string"
+									},
+									"lan_name": {
+										"description": "The name of the LAN based on the provided lan_id.",
+										"type": "string"
+									},
+									"ports": {
+										"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+										"items": {
+											"example": 1,
+											"type": "integer"
+										},
+										"type": "array"
+									},
+									"subnets": {
+										"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+										"items": {
+											"oneOf": [
+												{
+													"description": "A valid IPv4 address.",
+													"example": "192.0.2.1",
+													"type": "string"
+												},
+												{
+													"description": "A valid CIDR notation representing an IP range.",
+													"example": "192.0.2.0/24",
+													"type": "string"
+												}
+											]
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"lan_id"
+								],
+								"type": "object"
+							},
+							"name": {
+								"description": "The name of the ACL.",
+								"example": "PIN Pad - Cash Register",
+								"type": "string"
+							},
+							"protocols": {
+								"items": {
+									"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+									"enum": [
+										"tcp",
+										"udp",
+										"icmp"
+									],
+									"type": "string"
+								},
+								"type": "array"
 							}
 						},
 						"type": "object"
@@ -1963,131 +1930,127 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Bidirectional ACL policy for network traffic within a site.",
 											"properties": {
-												"acl": {
-													"description": "Bidirectional ACL policy for network traffic within a site.",
+												"description": {
+													"description": "Description for the ACL.",
+													"example": "Allows local traffic between PIN pads and cash register.",
+													"type": "string"
+												},
+												"forward_locally": {
+													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"lan_1": {
 													"properties": {
-														"description": {
-															"description": "Description for the ACL.",
-															"example": "Allows local traffic between PIN pads and cash register.",
+														"lan_id": {
+															"description": "The identifier for the LAN you want to create an ACL policy with.",
 															"type": "string"
 														},
-														"forward_locally": {
-															"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"lan_name": {
+															"description": "The name of the LAN based on the provided lan_id.",
 															"type": "string"
 														},
-														"lan_1": {
-															"properties": {
-																"lan_id": {
-																	"description": "The identifier for the LAN you want to create an ACL policy with.",
-																	"type": "string"
-																},
-																"lan_name": {
-																	"description": "The name of the LAN based on the provided lan_id.",
-																	"type": "string"
-																},
-																"ports": {
-																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-																	"items": {
-																		"example": 1,
-																		"type": "integer"
-																	},
-																	"type": "array"
-																},
-																"subnets": {
-																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-																	"items": {
-																		"oneOf": [
-																			{
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			{
-																				"description": "A valid CIDR notation representing an IP range.",
-																				"example": "192.0.2.0/24",
-																				"type": "string"
-																			}
-																		]
-																	},
-																	"type": "array"
-																}
-															},
-															"required": [
-																"lan_id"
-															],
-															"type": "object"
-														},
-														"lan_2": {
-															"properties": {
-																"lan_id": {
-																	"description": "The identifier for the LAN you want to create an ACL policy with.",
-																	"type": "string"
-																},
-																"lan_name": {
-																	"description": "The name of the LAN based on the provided lan_id.",
-																	"type": "string"
-																},
-																"ports": {
-																	"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
-																	"items": {
-																		"example": 1,
-																		"type": "integer"
-																	},
-																	"type": "array"
-																},
-																"subnets": {
-																	"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
-																	"items": {
-																		"oneOf": [
-																			{
-																				"description": "A valid IPv4 address.",
-																				"example": "192.0.2.1",
-																				"type": "string"
-																			},
-																			{
-																				"description": "A valid CIDR notation representing an IP range.",
-																				"example": "192.0.2.0/24",
-																				"type": "string"
-																			}
-																		]
-																	},
-																	"type": "array"
-																}
-															},
-															"required": [
-																"lan_id"
-															],
-															"type": "object"
-														},
-														"name": {
-															"description": "The name of the ACL.",
-															"example": "PIN Pad - Cash Register",
-															"type": "string"
-														},
-														"protocols": {
+														"ports": {
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
 															"items": {
-																"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
-																"enum": [
-																	"tcp",
-																	"udp",
-																	"icmp"
-																],
-																"type": "string"
+																"example": 1,
+																"type": "integer"
+															},
+															"type": "array"
+														},
+														"subnets": {
+															"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+															"items": {
+																"oneOf": [
+																	{
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	{
+																		"description": "A valid CIDR notation representing an IP range.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	}
+																]
 															},
 															"type": "array"
 														}
 													},
+													"required": [
+														"lan_id"
+													],
 													"type": "object"
+												},
+												"lan_2": {
+													"properties": {
+														"lan_id": {
+															"description": "The identifier for the LAN you want to create an ACL policy with.",
+															"type": "string"
+														},
+														"lan_name": {
+															"description": "The name of the LAN based on the provided lan_id.",
+															"type": "string"
+														},
+														"ports": {
+															"description": "Array of ports on the provided LAN that will be included in the ACL. If no ports are provided, communication on any port on this LAN is allowed.",
+															"items": {
+																"example": 1,
+																"type": "integer"
+															},
+															"type": "array"
+														},
+														"subnets": {
+															"description": "Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed.",
+															"items": {
+																"oneOf": [
+																	{
+																		"description": "A valid IPv4 address.",
+																		"example": "192.0.2.1",
+																		"type": "string"
+																	},
+																	{
+																		"description": "A valid CIDR notation representing an IP range.",
+																		"example": "192.0.2.0/24",
+																		"type": "string"
+																	}
+																]
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"lan_id"
+													],
+													"type": "object"
+												},
+												"name": {
+													"description": "The name of the ACL.",
+													"example": "PIN Pad - Cash Register",
+													"type": "string"
+												},
+												"protocols": {
+													"items": {
+														"description": "Array of allowed communication protocols between configured LANs. If no protocols are provided, all protocols are allowed.",
+														"enum": [
+															"tcp",
+															"udp",
+															"icmp"
+														],
+														"type": "string"
+													},
+													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}

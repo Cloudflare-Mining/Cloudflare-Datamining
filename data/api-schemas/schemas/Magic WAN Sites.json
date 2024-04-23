@@ -140,62 +140,54 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"deleted": {
+												"connector_id": {
+													"description": "Magic WAN Connector identifier tag.",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
+													"type": "string"
+												},
+												"description": {
+													"type": "string"
+												},
+												"ha_mode": {
+													"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
 													"example": true,
 													"type": "boolean"
 												},
-												"deleted_site": {
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"location": {
+													"description": "Location of site in latitude and longitude.",
 													"properties": {
-														"connector_id": {
-															"description": "Magic WAN Connector identifier tag.",
-															"example": "ac60d3d0435248289d446cedd870bcf4",
+														"lat": {
+															"description": "Latitude",
+															"example": 37.6192,
 															"type": "string"
 														},
-														"description": {
-															"type": "string"
-														},
-														"ha_mode": {
-															"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-															"example": true,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"location": {
-															"description": "Location of site in latitude and longitude.",
-															"properties": {
-																"lat": {
-																	"description": "Latitude",
-																	"example": 37.6192,
-																	"type": "string"
-																},
-																"lon": {
-																	"description": "Longitude",
-																	"example": 122.3816,
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
-														"name": {
-															"description": "The name of the site.",
-															"example": "site_1",
-															"type": "string"
-														},
-														"secondary_connector_id": {
-															"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
-															"example": "8d67040d3835dbcf46ce29da440dc482",
+														"lon": {
+															"description": "Longitude",
+															"example": 122.3816,
 															"type": "string"
 														}
 													},
 													"type": "object"
+												},
+												"name": {
+													"description": "The name of the site.",
+													"example": "site_1",
+													"type": "string"
+												},
+												"secondary_connector_id": {
+													"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
+													"example": "8d67040d3835dbcf46ce29da440dc482",
+													"type": "string"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -452,62 +444,58 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"sites": {
-													"items": {
+											"items": {
+												"properties": {
+													"connector_id": {
+														"description": "Magic WAN Connector identifier tag.",
+														"example": "ac60d3d0435248289d446cedd870bcf4",
+														"type": "string"
+													},
+													"description": {
+														"type": "string"
+													},
+													"ha_mode": {
+														"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
+														"example": true,
+														"type": "boolean"
+													},
+													"id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"location": {
+														"description": "Location of site in latitude and longitude.",
 														"properties": {
-															"connector_id": {
-																"description": "Magic WAN Connector identifier tag.",
-																"example": "ac60d3d0435248289d446cedd870bcf4",
+															"lat": {
+																"description": "Latitude",
+																"example": 37.6192,
 																"type": "string"
 															},
-															"description": {
-																"type": "string"
-															},
-															"ha_mode": {
-																"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-																"example": true,
-																"type": "boolean"
-															},
-															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
-															},
-															"location": {
-																"description": "Location of site in latitude and longitude.",
-																"properties": {
-																	"lat": {
-																		"description": "Latitude",
-																		"example": 37.6192,
-																		"type": "string"
-																	},
-																	"lon": {
-																		"description": "Longitude",
-																		"example": 122.3816,
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															"name": {
-																"description": "The name of the site.",
-																"example": "site_1",
-																"type": "string"
-															},
-															"secondary_connector_id": {
-																"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
-																"example": "8d67040d3835dbcf46ce29da440dc482",
+															"lon": {
+																"description": "Longitude",
+																"example": 122.3816,
 																"type": "string"
 															}
 														},
 														"type": "object"
 													},
-													"type": "array"
-												}
-											}
+													"name": {
+														"description": "The name of the site.",
+														"example": "site_1",
+														"type": "string"
+													},
+													"secondary_connector_id": {
+														"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
+														"example": "8d67040d3835dbcf46ce29da440dc482",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
 										}
 									}
 								}
@@ -761,58 +749,54 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"site": {
+												"connector_id": {
+													"description": "Magic WAN Connector identifier tag.",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
+													"type": "string"
+												},
+												"description": {
+													"type": "string"
+												},
+												"ha_mode": {
+													"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
+													"example": true,
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"location": {
+													"description": "Location of site in latitude and longitude.",
 													"properties": {
-														"connector_id": {
-															"description": "Magic WAN Connector identifier tag.",
-															"example": "ac60d3d0435248289d446cedd870bcf4",
+														"lat": {
+															"description": "Latitude",
+															"example": 37.6192,
 															"type": "string"
 														},
-														"description": {
-															"type": "string"
-														},
-														"ha_mode": {
-															"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-															"example": true,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"location": {
-															"description": "Location of site in latitude and longitude.",
-															"properties": {
-																"lat": {
-																	"description": "Latitude",
-																	"example": 37.6192,
-																	"type": "string"
-																},
-																"lon": {
-																	"description": "Longitude",
-																	"example": 122.3816,
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
-														"name": {
-															"description": "The name of the site.",
-															"example": "site_1",
-															"type": "string"
-														},
-														"secondary_connector_id": {
-															"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
-															"example": "8d67040d3835dbcf46ce29da440dc482",
+														"lon": {
+															"description": "Longitude",
+															"example": 122.3816,
 															"type": "string"
 														}
 													},
 													"type": "object"
+												},
+												"name": {
+													"description": "The name of the site.",
+													"example": "site_1",
+													"type": "string"
+												},
+												"secondary_connector_id": {
+													"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
+													"example": "8d67040d3835dbcf46ce29da440dc482",
+													"type": "string"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -958,54 +942,49 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"site": {
+							"connector_id": {
+								"description": "Magic WAN Connector identifier tag.",
+								"example": "ac60d3d0435248289d446cedd870bcf4",
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							},
+							"ha_mode": {
+								"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
+								"example": true,
+								"type": "boolean"
+							},
+							"location": {
+								"description": "Location of site in latitude and longitude.",
 								"properties": {
-									"connector_id": {
-										"description": "Magic WAN Connector identifier tag.",
-										"example": "ac60d3d0435248289d446cedd870bcf4",
+									"lat": {
+										"description": "Latitude",
+										"example": 37.6192,
 										"type": "string"
 									},
-									"description": {
-										"type": "string"
-									},
-									"ha_mode": {
-										"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-										"example": true,
-										"type": "boolean"
-									},
-									"location": {
-										"description": "Location of site in latitude and longitude.",
-										"properties": {
-											"lat": {
-												"description": "Latitude",
-												"example": 37.6192,
-												"type": "string"
-											},
-											"lon": {
-												"description": "Longitude",
-												"example": 122.3816,
-												"type": "string"
-											}
-										},
-										"type": "object"
-									},
-									"name": {
-										"description": "The name of the site.",
-										"example": "site_1",
-										"type": "string"
-									},
-									"secondary_connector_id": {
-										"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
-										"example": "8d67040d3835dbcf46ce29da440dc482",
+									"lon": {
+										"description": "Longitude",
+										"example": 122.3816,
 										"type": "string"
 									}
 								},
-								"required": [
-									"name"
-								],
 								"type": "object"
+							},
+							"name": {
+								"description": "The name of the site.",
+								"example": "site_1",
+								"type": "string"
+							},
+							"secondary_connector_id": {
+								"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
+								"example": "8d67040d3835dbcf46ce29da440dc482",
+								"type": "string"
 							}
 						},
+						"required": [
+							"name"
+						],
 						"type": "object"
 					}
 				}
@@ -1118,58 +1097,54 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"site": {
+												"connector_id": {
+													"description": "Magic WAN Connector identifier tag.",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
+													"type": "string"
+												},
+												"description": {
+													"type": "string"
+												},
+												"ha_mode": {
+													"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
+													"example": true,
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"location": {
+													"description": "Location of site in latitude and longitude.",
 													"properties": {
-														"connector_id": {
-															"description": "Magic WAN Connector identifier tag.",
-															"example": "ac60d3d0435248289d446cedd870bcf4",
+														"lat": {
+															"description": "Latitude",
+															"example": 37.6192,
 															"type": "string"
 														},
-														"description": {
-															"type": "string"
-														},
-														"ha_mode": {
-															"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-															"example": true,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"location": {
-															"description": "Location of site in latitude and longitude.",
-															"properties": {
-																"lat": {
-																	"description": "Latitude",
-																	"example": 37.6192,
-																	"type": "string"
-																},
-																"lon": {
-																	"description": "Longitude",
-																	"example": 122.3816,
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
-														"name": {
-															"description": "The name of the site.",
-															"example": "site_1",
-															"type": "string"
-														},
-														"secondary_connector_id": {
-															"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
-															"example": "8d67040d3835dbcf46ce29da440dc482",
+														"lon": {
+															"description": "Longitude",
+															"example": 122.3816,
 															"type": "string"
 														}
 													},
 													"type": "object"
+												},
+												"name": {
+													"description": "The name of the site.",
+													"example": "site_1",
+													"type": "string"
+												},
+												"secondary_connector_id": {
+													"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
+													"example": "8d67040d3835dbcf46ce29da440dc482",
+													"type": "string"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1322,44 +1297,39 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"site": {
+							"connector_id": {
+								"description": "Magic WAN Connector identifier tag.",
+								"example": "ac60d3d0435248289d446cedd870bcf4",
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							},
+							"location": {
+								"description": "Location of site in latitude and longitude.",
 								"properties": {
-									"connector_id": {
-										"description": "Magic WAN Connector identifier tag.",
-										"example": "ac60d3d0435248289d446cedd870bcf4",
+									"lat": {
+										"description": "Latitude",
+										"example": 37.6192,
 										"type": "string"
 									},
-									"description": {
-										"type": "string"
-									},
-									"location": {
-										"description": "Location of site in latitude and longitude.",
-										"properties": {
-											"lat": {
-												"description": "Latitude",
-												"example": 37.6192,
-												"type": "string"
-											},
-											"lon": {
-												"description": "Longitude",
-												"example": 122.3816,
-												"type": "string"
-											}
-										},
-										"type": "object"
-									},
-									"name": {
-										"description": "The name of the site.",
-										"example": "site_1",
-										"type": "string"
-									},
-									"secondary_connector_id": {
-										"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
-										"example": "8d67040d3835dbcf46ce29da440dc482",
+									"lon": {
+										"description": "Longitude",
+										"example": 122.3816,
 										"type": "string"
 									}
 								},
 								"type": "object"
+							},
+							"name": {
+								"description": "The name of the site.",
+								"example": "site_1",
+								"type": "string"
+							},
+							"secondary_connector_id": {
+								"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
+								"example": "8d67040d3835dbcf46ce29da440dc482",
+								"type": "string"
 							}
 						},
 						"type": "object"
@@ -1474,58 +1444,54 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"site": {
+												"connector_id": {
+													"description": "Magic WAN Connector identifier tag.",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
+													"type": "string"
+												},
+												"description": {
+													"type": "string"
+												},
+												"ha_mode": {
+													"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
+													"example": true,
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"location": {
+													"description": "Location of site in latitude and longitude.",
 													"properties": {
-														"connector_id": {
-															"description": "Magic WAN Connector identifier tag.",
-															"example": "ac60d3d0435248289d446cedd870bcf4",
+														"lat": {
+															"description": "Latitude",
+															"example": 37.6192,
 															"type": "string"
 														},
-														"description": {
-															"type": "string"
-														},
-														"ha_mode": {
-															"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-															"example": true,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"location": {
-															"description": "Location of site in latitude and longitude.",
-															"properties": {
-																"lat": {
-																	"description": "Latitude",
-																	"example": 37.6192,
-																	"type": "string"
-																},
-																"lon": {
-																	"description": "Longitude",
-																	"example": 122.3816,
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
-														"name": {
-															"description": "The name of the site.",
-															"example": "site_1",
-															"type": "string"
-														},
-														"secondary_connector_id": {
-															"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
-															"example": "8d67040d3835dbcf46ce29da440dc482",
+														"lon": {
+															"description": "Longitude",
+															"example": 122.3816,
 															"type": "string"
 														}
 													},
 													"type": "object"
+												},
+												"name": {
+													"description": "The name of the site.",
+													"example": "site_1",
+													"type": "string"
+												},
+												"secondary_connector_id": {
+													"description": "Magic WAN Connector identifier tag. Used when high availability mode is on.",
+													"example": "8d67040d3835dbcf46ce29da440dc482",
+													"type": "string"
 												}
-											}
+											},
+											"type": "object"
 										}
 									}
 								}
