@@ -11,6 +11,7 @@
 				"schema": {
 					"description": "UUID of the tunnel.",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
@@ -140,6 +141,7 @@
 															"uuid": {
 																"description": "UUID of the Cloudflare Tunnel connection.",
 																"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
 																"type": "string"
@@ -149,27 +151,27 @@
 													"type": "array"
 												},
 												"created_at": {
-													"description": "Timestamp of when the tunnel was created.",
+													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
 													"type": "string"
 												},
 												"deleted_at": {
-													"description": "Timestamp of when the tunnel was deleted. If `null`, the tunnel has not been deleted.",
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"example": "2009-11-10T23:00:00Z",
 													"format": "date-time",
-													"nullable": true,
 													"type": "string"
 												},
 												"id": {
 													"description": "UUID of the tunnel.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
 													"maxLength": 36,
 													"readOnly": true,
 													"type": "string"
 												},
 												"name": {
-													"description": "A user-friendly name for the tunnel.",
+													"description": "A user-friendly name for a tunnel.",
 													"example": "blog",
 													"type": "string"
 												}
@@ -294,6 +296,7 @@
 																	"uuid": {
 																		"description": "UUID of the Cloudflare Tunnel connection.",
 																		"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
 																		"type": "string"
@@ -303,27 +306,27 @@
 															"type": "array"
 														},
 														"created_at": {
-															"description": "Timestamp of when the tunnel was created.",
+															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"deleted_at": {
-															"description": "Timestamp of when the tunnel was deleted. If `null`, the tunnel has not been deleted.",
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"example": "2009-11-10T23:00:00Z",
 															"format": "date-time",
-															"nullable": true,
 															"type": "string"
 														},
 														"id": {
 															"description": "UUID of the tunnel.",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
 															"type": "string"
 														},
 														"name": {
-															"description": "A user-friendly name for the tunnel.",
+															"description": "A user-friendly name for a tunnel.",
 															"example": "blog",
 															"type": "string"
 														}
@@ -436,6 +439,12 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Delete an Argo Tunnel",
@@ -461,6 +470,7 @@
 				"schema": {
 					"description": "UUID of the tunnel.",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
@@ -770,6 +780,12 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Clean up Argo Tunnel connections",
@@ -795,6 +811,7 @@
 				"schema": {
 					"description": "UUID of the tunnel.",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
@@ -914,6 +931,7 @@
 															"uuid": {
 																"description": "UUID of the Cloudflare Tunnel connection.",
 																"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
 																"type": "string"
@@ -923,27 +941,27 @@
 													"type": "array"
 												},
 												"created_at": {
-													"description": "Timestamp of when the tunnel was created.",
+													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
 													"type": "string"
 												},
 												"deleted_at": {
-													"description": "Timestamp of when the tunnel was deleted. If `null`, the tunnel has not been deleted.",
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"example": "2009-11-10T23:00:00Z",
 													"format": "date-time",
-													"nullable": true,
 													"type": "string"
 												},
 												"id": {
 													"description": "UUID of the tunnel.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
 													"maxLength": 36,
 													"readOnly": true,
 													"type": "string"
 												},
 												"name": {
-													"description": "A user-friendly name for the tunnel.",
+													"description": "A user-friendly name for a tunnel.",
 													"example": "blog",
 													"type": "string"
 												}
@@ -1068,6 +1086,7 @@
 																	"uuid": {
 																		"description": "UUID of the Cloudflare Tunnel connection.",
 																		"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
 																		"type": "string"
@@ -1077,27 +1096,27 @@
 															"type": "array"
 														},
 														"created_at": {
-															"description": "Timestamp of when the tunnel was created.",
+															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"deleted_at": {
-															"description": "Timestamp of when the tunnel was deleted. If `null`, the tunnel has not been deleted.",
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"example": "2009-11-10T23:00:00Z",
 															"format": "date-time",
-															"nullable": true,
 															"type": "string"
 														},
 														"id": {
 															"description": "UUID of the tunnel.",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
 															"type": "string"
 														},
 														"name": {
-															"description": "A user-friendly name for the tunnel.",
+															"description": "A user-friendly name for a tunnel.",
 															"example": "blog",
 															"type": "string"
 														}
@@ -1210,6 +1229,12 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Get an Argo Tunnel",
@@ -1246,12 +1271,14 @@
 					"schema": {
 						"properties": {
 							"name": {
-								"description": "A user-friendly name for the tunnel.",
+								"description": "A user-friendly name for a tunnel.",
 								"example": "blog",
 								"type": "string"
 							},
 							"tunnel_secret": {
-								"description": "Sets the password required to run the tunnel. Must be at least 32 bytes and encoded as a base64 string."
+								"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
+								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -1366,6 +1393,7 @@
 															"uuid": {
 																"description": "UUID of the Cloudflare Tunnel connection.",
 																"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																"format": "uuid",
 																"maxLength": 36,
 																"readOnly": true,
 																"type": "string"
@@ -1375,27 +1403,27 @@
 													"type": "array"
 												},
 												"created_at": {
-													"description": "Timestamp of when the tunnel was created.",
+													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
 													"type": "string"
 												},
 												"deleted_at": {
-													"description": "Timestamp of when the tunnel was deleted. If `null`, the tunnel has not been deleted.",
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 													"example": "2009-11-10T23:00:00Z",
 													"format": "date-time",
-													"nullable": true,
 													"type": "string"
 												},
 												"id": {
 													"description": "UUID of the tunnel.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
 													"maxLength": 36,
 													"readOnly": true,
 													"type": "string"
 												},
 												"name": {
-													"description": "A user-friendly name for the tunnel.",
+													"description": "A user-friendly name for a tunnel.",
 													"example": "blog",
 													"type": "string"
 												}
@@ -1520,6 +1548,7 @@
 																	"uuid": {
 																		"description": "UUID of the Cloudflare Tunnel connection.",
 																		"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																		"format": "uuid",
 																		"maxLength": 36,
 																		"readOnly": true,
 																		"type": "string"
@@ -1529,27 +1558,27 @@
 															"type": "array"
 														},
 														"created_at": {
-															"description": "Timestamp of when the tunnel was created.",
+															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"deleted_at": {
-															"description": "Timestamp of when the tunnel was deleted. If `null`, the tunnel has not been deleted.",
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
 															"example": "2009-11-10T23:00:00Z",
 															"format": "date-time",
-															"nullable": true,
 															"type": "string"
 														},
 														"id": {
 															"description": "UUID of the tunnel.",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
 															"maxLength": 36,
 															"readOnly": true,
 															"type": "string"
 														},
 														"name": {
-															"description": "A user-friendly name for the tunnel.",
+															"description": "A user-friendly name for a tunnel.",
 															"example": "blog",
 															"type": "string"
 														}
@@ -1662,6 +1691,12 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Create an Argo Tunnel",

@@ -5,24 +5,24 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "tunnel_id",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "UUID of the tunnel.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"readOnly": true,
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "tunnel_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
+					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -310,11 +310,17 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Get configuration",
 		"tags": [
-			"Cloudflare Tunnel configuration"
+			"Cloudflare Tunnel Configuration"
 		]
 	},
 	"PUT /accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations": {
@@ -323,24 +329,24 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "tunnel_id",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "UUID of the tunnel.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"readOnly": true,
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "account_id",
+				"name": "tunnel_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
+					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -365,7 +371,7 @@
 													"type": "string"
 												},
 												"originRequest": {
-													"description": "Configuration parameters of connection between cloudflared and origin server.",
+													"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
 													"properties": {
 														"access": {
 															"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
@@ -479,7 +485,7 @@
 										"type": "array"
 									},
 									"originRequest": {
-										"description": "Configuration parameters of connection between cloudflared and origin server.",
+										"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
 										"properties": {
 											"access": {
 												"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
@@ -874,11 +880,17 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Put configuration",
 		"tags": [
-			"Cloudflare Tunnel configuration"
+			"Cloudflare Tunnel Configuration"
 		]
 	}
 }

@@ -10,8 +10,7 @@
 				"schema": {
 					"description": "UUID of the virtual network.",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"readOnly": true,
+					"format": "uuid",
 					"type": "string"
 				}
 			},
@@ -315,6 +314,12 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Delete a virtual network",
@@ -339,10 +344,21 @@
 			},
 			{
 				"in": "query",
+				"name": "id",
+				"schema": {
+					"description": "UUID of the virtual network.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "A user-friendly name for the virtual network.",
 					"example": "us-east-1-vpc",
+					"maxLength": 256,
 					"type": "string"
 				}
 			},
@@ -350,34 +366,16 @@
 				"in": "query",
 				"name": "is_default",
 				"schema": {
-					"description": "If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included."
+					"description": "If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.",
+					"type": "boolean"
 				}
 			},
 			{
 				"in": "query",
 				"name": "is_deleted",
 				"schema": {
-					"description": "If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included."
-				}
-			},
-			{
-				"in": "query",
-				"name": "vnet_name",
-				"schema": {
-					"description": "A user-friendly name for the virtual network.",
-					"example": "us-east-1-vpc",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "vnet_id",
-				"schema": {
-					"description": "UUID of the virtual network.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"readOnly": true,
-					"type": "string"
+					"description": "If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.",
+					"type": "boolean"
 				}
 			}
 		],
@@ -509,19 +507,25 @@
 													"comment": {
 														"description": "Optional remark describing the virtual network.",
 														"example": "Staging VPC for data science",
+														"maxLength": 256,
 														"type": "string"
 													},
 													"created_at": {
-														"description": "Timestamp of when the virtual network was created."
+														"description": "Timestamp of when the resource was created.",
+														"example": "2021-01-25T18:22:34.317854Z",
+														"format": "date-time",
+														"type": "string"
 													},
 													"deleted_at": {
-														"description": "Timestamp of when the virtual network was deleted. If `null`, the virtual network has not been deleted."
+														"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+														"example": "2009-11-10T23:00:00Z",
+														"format": "date-time",
+														"type": "string"
 													},
 													"id": {
 														"description": "UUID of the virtual network.",
 														"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-														"maxLength": 36,
-														"readOnly": true,
+														"format": "uuid",
 														"type": "string"
 													},
 													"is_default_network": {
@@ -532,6 +536,7 @@
 													"name": {
 														"description": "A user-friendly name for the virtual network.",
 														"example": "us-east-1-vpc",
+														"maxLength": 256,
 														"type": "string"
 													}
 												},
@@ -684,19 +689,25 @@
 															"comment": {
 																"description": "Optional remark describing the virtual network.",
 																"example": "Staging VPC for data science",
+																"maxLength": 256,
 																"type": "string"
 															},
 															"created_at": {
-																"description": "Timestamp of when the virtual network was created."
+																"description": "Timestamp of when the resource was created.",
+																"example": "2021-01-25T18:22:34.317854Z",
+																"format": "date-time",
+																"type": "string"
 															},
 															"deleted_at": {
-																"description": "Timestamp of when the virtual network was deleted. If `null`, the virtual network has not been deleted."
+																"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+																"example": "2009-11-10T23:00:00Z",
+																"format": "date-time",
+																"type": "string"
 															},
 															"id": {
 																"description": "UUID of the virtual network.",
 																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-																"maxLength": 36,
-																"readOnly": true,
+																"format": "uuid",
 																"type": "string"
 															},
 															"is_default_network": {
@@ -707,6 +718,7 @@
 															"name": {
 																"description": "A user-friendly name for the virtual network.",
 																"example": "us-east-1-vpc",
+																"maxLength": 256,
 																"type": "string"
 															}
 														},
@@ -821,6 +833,12 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "List virtual networks",
@@ -834,24 +852,23 @@
 		"parameters": [
 			{
 				"in": "path",
-				"name": "virtual_network_id",
-				"required": true,
-				"schema": {
-					"description": "UUID of the virtual network.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "virtual_network_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the virtual network.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -864,6 +881,7 @@
 							"comment": {
 								"description": "Optional remark describing the virtual network.",
 								"example": "Staging VPC for data science",
+								"maxLength": 256,
 								"type": "string"
 							},
 							"is_default_network": {
@@ -874,6 +892,7 @@
 							"name": {
 								"description": "A user-friendly name for the virtual network.",
 								"example": "us-east-1-vpc",
+								"maxLength": 256,
 								"type": "string"
 							}
 						},
@@ -1165,6 +1184,12 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Update a virtual network",
@@ -1196,6 +1221,7 @@
 							"comment": {
 								"description": "Optional remark describing the virtual network.",
 								"example": "Staging VPC for data science",
+								"maxLength": 256,
 								"type": "string"
 							},
 							"is_default": {
@@ -1206,6 +1232,7 @@
 							"name": {
 								"description": "A user-friendly name for the virtual network.",
 								"example": "us-east-1-vpc",
+								"maxLength": 256,
 								"type": "string"
 							}
 						},
@@ -1500,6 +1527,12 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Create a virtual network",

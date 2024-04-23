@@ -118,14 +118,15 @@
 													"type": "string"
 												},
 												"created_at": {
-													"description": "Timestamp of when the route was created."
-												},
-												"deleted_at": {
-													"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
-													"nullable": true,
-													"readOnly": true,
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+													"example": "2009-11-10T23:00:00Z",
+													"format": "date-time",
 													"type": "string"
 												},
 												"id": {
@@ -141,10 +142,18 @@
 													"type": "string"
 												},
 												"tunnel_id": {
-													"description": "UUID of the Cloudflare Tunnel serving the route."
+													"description": "UUID of the tunnel.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												},
 												"virtual_network_id": {
-													"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+													"description": "UUID of the virtual network.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -250,14 +259,15 @@
 															"type": "string"
 														},
 														"created_at": {
-															"description": "Timestamp of when the route was created."
-														},
-														"deleted_at": {
-															"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+															"example": "2009-11-10T23:00:00Z",
+															"format": "date-time",
 															"type": "string"
 														},
 														"id": {
@@ -273,10 +283,18 @@
 															"type": "string"
 														},
 														"tunnel_id": {
-															"description": "UUID of the Cloudflare Tunnel serving the route."
+															"description": "UUID of the tunnel.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														},
 														"virtual_network_id": {
-															"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+															"description": "UUID of the virtual network.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -381,11 +399,17 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Delete a tunnel route",
 		"tags": [
-			"Tunnel route"
+			"Tunnel Routing"
 		]
 	},
 	"DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
@@ -420,8 +444,7 @@
 				"schema": {
 					"description": "UUID of the virtual network.",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"readOnly": true,
+					"format": "uuid",
 					"type": "string"
 				}
 			},
@@ -447,6 +470,7 @@
 				"schema": {
 					"description": "UUID of the tunnel.",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
 					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
@@ -544,14 +568,15 @@
 													"type": "string"
 												},
 												"created_at": {
-													"description": "Timestamp of when the route was created."
-												},
-												"deleted_at": {
-													"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
-													"nullable": true,
-													"readOnly": true,
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+													"example": "2009-11-10T23:00:00Z",
+													"format": "date-time",
 													"type": "string"
 												},
 												"id": {
@@ -567,10 +592,18 @@
 													"type": "string"
 												},
 												"tunnel_id": {
-													"description": "UUID of the Cloudflare Tunnel serving the route."
+													"description": "UUID of the tunnel.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												},
 												"virtual_network_id": {
-													"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+													"description": "UUID of the virtual network.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -676,14 +709,15 @@
 															"type": "string"
 														},
 														"created_at": {
-															"description": "Timestamp of when the route was created."
-														},
-														"deleted_at": {
-															"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+															"example": "2009-11-10T23:00:00Z",
+															"format": "date-time",
 															"type": "string"
 														},
 														"id": {
@@ -699,10 +733,18 @@
 															"type": "string"
 														},
 														"tunnel_id": {
-															"description": "UUID of the Cloudflare Tunnel serving the route."
+															"description": "UUID of the tunnel.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														},
 														"virtual_network_id": {
-															"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+															"description": "UUID of the virtual network.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -807,11 +849,17 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Delete a tunnel route (CIDR Endpoint)",
 		"tags": [
-			"Tunnel route"
+			"Tunnel Routing"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs.",
@@ -848,13 +896,21 @@
 				"in": "query",
 				"name": "is_deleted",
 				"schema": {
-					"description": "If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included."
+					"description": "If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.",
+					"type": "boolean"
 				}
 			},
 			{
 				"in": "query",
 				"name": "network_subset",
 				"schema": {
+					"allOf": [
+						{
+							"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
+							"example": "172.16.0.0/16",
+							"type": "string"
+						}
+					],
 					"description": "If set, only list routes that are contained within this IP range."
 				}
 			},
@@ -862,6 +918,13 @@
 				"in": "query",
 				"name": "network_superset",
 				"schema": {
+					"allOf": [
+						{
+							"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
+							"example": "172.16.0.0/16",
+							"type": "string"
+						}
+					],
 					"description": "If set, only list routes that contain this IP range."
 				}
 			},
@@ -869,14 +932,22 @@
 				"in": "query",
 				"name": "existed_at",
 				"schema": {
-					"description": "If provided, include only routes that were created (and not deleted) before this time."
+					"description": "If provided, include only tunnels that were created (and not deleted) before this time.",
+					"example": "2019-10-12T07:20:50.52Z",
+					"format": "date-time",
+					"type": "string"
 				}
 			},
 			{
 				"in": "query",
 				"name": "tunnel_id",
 				"schema": {
-					"description": "UUID of the Cloudflare Tunnel serving the route."
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -903,7 +974,10 @@
 				"in": "query",
 				"name": "virtual_network_id",
 				"schema": {
-					"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+					"description": "UUID of the virtual network.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
+					"type": "string"
 				}
 			},
 			{
@@ -1058,14 +1132,15 @@
 														"type": "string"
 													},
 													"created_at": {
-														"description": "Timestamp of when the route was created."
-													},
-													"deleted_at": {
-														"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+														"description": "Timestamp of when the resource was created.",
 														"example": "2021-01-25T18:22:34.317854Z",
 														"format": "date-time",
-														"nullable": true,
-														"readOnly": true,
+														"type": "string"
+													},
+													"deleted_at": {
+														"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+														"example": "2009-11-10T23:00:00Z",
+														"format": "date-time",
 														"type": "string"
 													},
 													"id": {
@@ -1093,17 +1168,28 @@
 														"type": "string"
 													},
 													"tunnel_id": {
-														"description": "UUID of the Cloudflare Tunnel serving the route."
+														"description": "UUID of the tunnel.",
+														"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+														"format": "uuid",
+														"maxLength": 36,
+														"readOnly": true,
+														"type": "string"
 													},
 													"tunnel_name": {
-														"description": "The user-friendly name of the Cloudflare Tunnel serving the route."
+														"description": "A user-friendly name for a tunnel.",
+														"example": "blog",
+														"type": "string"
 													},
 													"virtual_network_id": {
-														"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+														"description": "UUID of the virtual network.",
+														"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+														"format": "uuid",
+														"type": "string"
 													},
 													"virtual_network_name": {
 														"description": "A user-friendly name for the virtual network.",
 														"example": "us-east-1-vpc",
+														"maxLength": 256,
 														"type": "string"
 													}
 												},
@@ -1252,14 +1338,15 @@
 																"type": "string"
 															},
 															"created_at": {
-																"description": "Timestamp of when the route was created."
-															},
-															"deleted_at": {
-																"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+																"description": "Timestamp of when the resource was created.",
 																"example": "2021-01-25T18:22:34.317854Z",
 																"format": "date-time",
-																"nullable": true,
-																"readOnly": true,
+																"type": "string"
+															},
+															"deleted_at": {
+																"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+																"example": "2009-11-10T23:00:00Z",
+																"format": "date-time",
 																"type": "string"
 															},
 															"id": {
@@ -1287,17 +1374,28 @@
 																"type": "string"
 															},
 															"tunnel_id": {
-																"description": "UUID of the Cloudflare Tunnel serving the route."
+																"description": "UUID of the tunnel.",
+																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																"format": "uuid",
+																"maxLength": 36,
+																"readOnly": true,
+																"type": "string"
 															},
 															"tunnel_name": {
-																"description": "The user-friendly name of the Cloudflare Tunnel serving the route."
+																"description": "A user-friendly name for a tunnel.",
+																"example": "blog",
+																"type": "string"
 															},
 															"virtual_network_id": {
-																"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+																"description": "UUID of the virtual network.",
+																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																"format": "uuid",
+																"type": "string"
 															},
 															"virtual_network_name": {
 																"description": "A user-friendly name for the virtual network.",
 																"example": "us-east-1-vpc",
+																"maxLength": 256,
 																"type": "string"
 															}
 														},
@@ -1405,11 +1503,17 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "List tunnel routes",
 		"tags": [
-			"Tunnel route"
+			"Tunnel Routing"
 		]
 	},
 	"GET /accounts/{account_id}/teamnet/routes/ip/{ip}": {
@@ -1440,7 +1544,10 @@
 				"in": "query",
 				"name": "virtual_network_id",
 				"schema": {
-					"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+					"description": "UUID of the virtual network.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
+					"type": "string"
 				}
 			}
 		],
@@ -1535,14 +1642,15 @@
 													"type": "string"
 												},
 												"created_at": {
-													"description": "Timestamp of when the route was created."
-												},
-												"deleted_at": {
-													"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
-													"nullable": true,
-													"readOnly": true,
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+													"example": "2009-11-10T23:00:00Z",
+													"format": "date-time",
 													"type": "string"
 												},
 												"id": {
@@ -1570,17 +1678,28 @@
 													"type": "string"
 												},
 												"tunnel_id": {
-													"description": "UUID of the Cloudflare Tunnel serving the route."
+													"description": "UUID of the tunnel.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												},
 												"tunnel_name": {
-													"description": "The user-friendly name of the Cloudflare Tunnel serving the route."
+													"description": "A user-friendly name for a tunnel.",
+													"example": "blog",
+													"type": "string"
 												},
 												"virtual_network_id": {
-													"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+													"description": "UUID of the virtual network.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string"
 												},
 												"virtual_network_name": {
 													"description": "A user-friendly name for the virtual network.",
 													"example": "us-east-1-vpc",
+													"maxLength": 256,
 													"type": "string"
 												}
 											},
@@ -1687,14 +1806,15 @@
 															"type": "string"
 														},
 														"created_at": {
-															"description": "Timestamp of when the route was created."
-														},
-														"deleted_at": {
-															"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+															"example": "2009-11-10T23:00:00Z",
+															"format": "date-time",
 															"type": "string"
 														},
 														"id": {
@@ -1722,17 +1842,28 @@
 															"type": "string"
 														},
 														"tunnel_id": {
-															"description": "UUID of the Cloudflare Tunnel serving the route."
+															"description": "UUID of the tunnel.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														},
 														"tunnel_name": {
-															"description": "The user-friendly name of the Cloudflare Tunnel serving the route."
+															"description": "A user-friendly name for a tunnel.",
+															"example": "blog",
+															"type": "string"
 														},
 														"virtual_network_id": {
-															"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+															"description": "UUID of the virtual network.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
 														},
 														"virtual_network_name": {
 															"description": "A user-friendly name for the virtual network.",
 															"example": "us-east-1-vpc",
+															"maxLength": 256,
 															"type": "string"
 														}
 													},
@@ -1838,11 +1969,17 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Get tunnel route by IP",
 		"tags": [
-			"Tunnel route"
+			"Tunnel Routing"
 		]
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/{route_id}": {
@@ -1888,23 +2025,19 @@
 								"example": "172.16.0.0/16",
 								"type": "string"
 							},
-							"tun_type": {
-								"description": "The type of tunnel.",
-								"enum": [
-									"cfd_tunnel",
-									"warp_connector",
-									"ip_sec",
-									"gre",
-									"cni"
-								],
-								"example": "cfd_tunnel",
+							"tunnel_id": {
+								"description": "UUID of the tunnel.",
+								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+								"format": "uuid",
+								"maxLength": 36,
+								"readOnly": true,
 								"type": "string"
 							},
-							"tunnel_id": {
-								"description": "UUID of the Cloudflare Tunnel serving the route."
-							},
 							"virtual_network_id": {
-								"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+								"description": "UUID of the virtual network.",
+								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+								"format": "uuid",
+								"type": "string"
 							}
 						},
 						"type": "object"
@@ -2004,14 +2137,15 @@
 													"type": "string"
 												},
 												"created_at": {
-													"description": "Timestamp of when the route was created."
-												},
-												"deleted_at": {
-													"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
-													"nullable": true,
-													"readOnly": true,
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+													"example": "2009-11-10T23:00:00Z",
+													"format": "date-time",
 													"type": "string"
 												},
 												"id": {
@@ -2027,10 +2161,18 @@
 													"type": "string"
 												},
 												"tunnel_id": {
-													"description": "UUID of the Cloudflare Tunnel serving the route."
+													"description": "UUID of the tunnel.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												},
 												"virtual_network_id": {
-													"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+													"description": "UUID of the virtual network.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -2136,14 +2278,15 @@
 															"type": "string"
 														},
 														"created_at": {
-															"description": "Timestamp of when the route was created."
-														},
-														"deleted_at": {
-															"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+															"example": "2009-11-10T23:00:00Z",
+															"format": "date-time",
 															"type": "string"
 														},
 														"id": {
@@ -2159,10 +2302,18 @@
 															"type": "string"
 														},
 														"tunnel_id": {
-															"description": "UUID of the Cloudflare Tunnel serving the route."
+															"description": "UUID of the tunnel.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														},
 														"virtual_network_id": {
-															"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+															"description": "UUID of the virtual network.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -2267,11 +2418,17 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Update a tunnel route",
 		"tags": [
-			"Tunnel route"
+			"Tunnel Routing"
 		]
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
@@ -2392,14 +2549,15 @@
 													"type": "string"
 												},
 												"created_at": {
-													"description": "Timestamp of when the route was created."
-												},
-												"deleted_at": {
-													"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
-													"nullable": true,
-													"readOnly": true,
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+													"example": "2009-11-10T23:00:00Z",
+													"format": "date-time",
 													"type": "string"
 												},
 												"id": {
@@ -2415,10 +2573,18 @@
 													"type": "string"
 												},
 												"tunnel_id": {
-													"description": "UUID of the Cloudflare Tunnel serving the route."
+													"description": "UUID of the tunnel.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												},
 												"virtual_network_id": {
-													"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+													"description": "UUID of the virtual network.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -2524,14 +2690,15 @@
 															"type": "string"
 														},
 														"created_at": {
-															"description": "Timestamp of when the route was created."
-														},
-														"deleted_at": {
-															"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+															"example": "2009-11-10T23:00:00Z",
+															"format": "date-time",
 															"type": "string"
 														},
 														"id": {
@@ -2547,10 +2714,18 @@
 															"type": "string"
 														},
 														"tunnel_id": {
-															"description": "UUID of the Cloudflare Tunnel serving the route."
+															"description": "UUID of the tunnel.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														},
 														"virtual_network_id": {
-															"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+															"description": "UUID of the virtual network.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -2655,11 +2830,17 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Update a tunnel route (CIDR Endpoint)",
 		"tags": [
-			"Tunnel route"
+			"Tunnel Routing"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs.",
@@ -2694,7 +2875,7 @@
 								"example": "Example comment for this route.",
 								"type": "string"
 							},
-							"ip_network": {
+							"network": {
 								"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
 								"example": "172.16.0.0/16",
 								"type": "string"
@@ -2702,16 +2883,20 @@
 							"tunnel_id": {
 								"description": "UUID of the tunnel.",
 								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+								"format": "uuid",
 								"maxLength": 36,
 								"readOnly": true,
 								"type": "string"
 							},
 							"virtual_network_id": {
-								"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+								"description": "UUID of the virtual network.",
+								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+								"format": "uuid",
+								"type": "string"
 							}
 						},
 						"required": [
-							"ip_network",
+							"network",
 							"tunnel_id"
 						],
 						"type": "object"
@@ -2811,14 +2996,15 @@
 													"type": "string"
 												},
 												"created_at": {
-													"description": "Timestamp of when the route was created."
-												},
-												"deleted_at": {
-													"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
-													"nullable": true,
-													"readOnly": true,
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+													"example": "2009-11-10T23:00:00Z",
+													"format": "date-time",
 													"type": "string"
 												},
 												"id": {
@@ -2834,10 +3020,18 @@
 													"type": "string"
 												},
 												"tunnel_id": {
-													"description": "UUID of the Cloudflare Tunnel serving the route."
+													"description": "UUID of the tunnel.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												},
 												"virtual_network_id": {
-													"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+													"description": "UUID of the virtual network.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -2943,14 +3137,15 @@
 															"type": "string"
 														},
 														"created_at": {
-															"description": "Timestamp of when the route was created."
-														},
-														"deleted_at": {
-															"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+															"example": "2009-11-10T23:00:00Z",
+															"format": "date-time",
 															"type": "string"
 														},
 														"id": {
@@ -2966,10 +3161,18 @@
 															"type": "string"
 														},
 														"tunnel_id": {
-															"description": "UUID of the Cloudflare Tunnel serving the route."
+															"description": "UUID of the tunnel.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														},
 														"virtual_network_id": {
-															"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+															"description": "UUID of the virtual network.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -3074,11 +3277,17 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Create a tunnel route",
 		"tags": [
-			"Tunnel route"
+			"Tunnel Routing"
 		]
 	},
 	"POST /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
@@ -3121,12 +3330,16 @@
 							"tunnel_id": {
 								"description": "UUID of the tunnel.",
 								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+								"format": "uuid",
 								"maxLength": 36,
 								"readOnly": true,
 								"type": "string"
 							},
 							"virtual_network_id": {
-								"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+								"description": "UUID of the virtual network.",
+								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+								"format": "uuid",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -3229,14 +3442,15 @@
 													"type": "string"
 												},
 												"created_at": {
-													"description": "Timestamp of when the route was created."
-												},
-												"deleted_at": {
-													"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+													"description": "Timestamp of when the resource was created.",
 													"example": "2021-01-25T18:22:34.317854Z",
 													"format": "date-time",
-													"nullable": true,
-													"readOnly": true,
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+													"example": "2009-11-10T23:00:00Z",
+													"format": "date-time",
 													"type": "string"
 												},
 												"id": {
@@ -3252,10 +3466,18 @@
 													"type": "string"
 												},
 												"tunnel_id": {
-													"description": "UUID of the Cloudflare Tunnel serving the route."
+													"description": "UUID of the tunnel.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												},
 												"virtual_network_id": {
-													"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+													"description": "UUID of the virtual network.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -3361,14 +3583,15 @@
 															"type": "string"
 														},
 														"created_at": {
-															"description": "Timestamp of when the route was created."
-														},
-														"deleted_at": {
-															"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
+															"description": "Timestamp of when the resource was created.",
 															"example": "2021-01-25T18:22:34.317854Z",
 															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+															"example": "2009-11-10T23:00:00Z",
+															"format": "date-time",
 															"type": "string"
 														},
 														"id": {
@@ -3384,10 +3607,18 @@
 															"type": "string"
 														},
 														"tunnel_id": {
-															"description": "UUID of the Cloudflare Tunnel serving the route."
+															"description": "UUID of the tunnel.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														},
 														"virtual_network_id": {
-															"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+															"description": "UUID of the virtual network.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -3492,11 +3723,17 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Create a tunnel route (CIDR Endpoint)",
 		"tags": [
-			"Tunnel route"
+			"Tunnel Routing"
 		],
 		"x-cfDeprecation": {
 			"description": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs.",
