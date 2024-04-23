@@ -571,6 +571,9 @@
 											"stream": {
 												"default": false,
 												"type": "boolean"
+											},
+											"temperature": {
+												"type": "number"
 											}
 										},
 										"required": [
@@ -605,6 +608,9 @@
 											"stream": {
 												"default": false,
 												"type": "boolean"
+											},
+											"temperature": {
+												"type": "number"
 											}
 										},
 										"required": [
@@ -660,6 +666,12 @@
 										"type": "string"
 									},
 									{
+										"not": {
+											"required": [
+												"prompt",
+												"messages"
+											]
+										},
 										"properties": {
 											"image": {
 												"items": {
@@ -671,10 +683,39 @@
 												"default": 512,
 												"type": "integer"
 											},
+											"messages": {
+												"items": {
+													"properties": {
+														"content": {
+															"maxLength": 6144,
+															"type": "string"
+														},
+														"role": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"role",
+														"content"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
 											"prompt": {
 												"type": "string"
+											},
+											"raw": {
+												"default": false,
+												"type": "boolean"
+											},
+											"temperature": {
+												"type": "number"
 											}
 										},
+										"required": [
+											"image"
+										],
 										"type": "object"
 									}
 								],

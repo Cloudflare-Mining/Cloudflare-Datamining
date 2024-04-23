@@ -1,4 +1,198 @@
 {
+	"POST /accounts/{account_id}/ai/run/@cf/deepseek-ai/deepseek-coder-7b-instruct-v1.5": {
+		"operationId": "workers-ai-post-run-cf-deepseek-ai-deepseek-coder-7b-instruct-v1-5",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"lora": {
+										"type": "string"
+									},
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 6144,
+										"minLength": 1,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 6144,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/deepseek-ai/deepseek-coder-7b-instruct-v1.5 model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/deepseek-ai/deepseek-math-7b-instruct": {
 		"operationId": "workers-ai-post-run-cf-deepseek-ai-deepseek-math-7b-instruct",
 		"parameters": [
@@ -38,6 +232,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -72,6 +269,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -226,6 +426,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -260,6 +463,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -375,6 +581,200 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/fblgit/una-cybertron-7b-v2-bf16": {
+		"operationId": "workers-ai-post-run-cf-fblgit-una-cybertron-7b-v2-bf16",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"lora": {
+										"type": "string"
+									},
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 6144,
+										"minLength": 1,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 6144,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/fblgit/una-cybertron-7b-v2-bf16 model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/google/gemma-2b-it-lora": {
 		"operationId": "workers-ai-post-run-cf-google-gemma-2b-it-lora",
 		"parameters": [
@@ -414,6 +814,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -448,6 +851,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -602,6 +1008,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -636,6 +1045,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -751,6 +1163,200 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/m-a-p/opencodeinterpreter-ds-6.7b": {
+		"operationId": "workers-ai-post-run-cf-m-a-p-opencodeinterpreter-ds-6-7b",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"lora": {
+										"type": "string"
+									},
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 6144,
+										"minLength": 1,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 6144,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/m-a-p/opencodeinterpreter-ds-6.7b model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta-llama/llama-2-7b-chat-hf-lora": {
 		"operationId": "workers-ai-post-run-cf-meta-llama-llama-2-7b-chat-hf-lora",
 		"parameters": [
@@ -790,6 +1396,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -824,6 +1433,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -978,6 +1590,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -1012,6 +1627,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -1166,6 +1784,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -1200,6 +1821,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -1354,6 +1978,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -1388,6 +2015,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -1542,6 +2172,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -1576,6 +2209,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -1730,6 +2366,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -1764,6 +2403,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -1918,6 +2560,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -1952,6 +2597,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -2106,6 +2754,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -2140,6 +2791,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -2294,6 +2948,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -2328,6 +2985,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -2443,6 +3103,200 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/nexaaidev/octopus-v2": {
+		"operationId": "workers-ai-post-run-cf-nexaaidev-octopus-v2",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"lora": {
+										"type": "string"
+									},
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 6144,
+										"minLength": 1,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 6144,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/nexaaidev/octopus-v2 model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/openchat/openchat-3.5-0106": {
 		"operationId": "workers-ai-post-run-cf-openchat-openchat-3-5-0106",
 		"parameters": [
@@ -2482,6 +3336,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -2516,6 +3373,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -2670,6 +3530,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -2704,6 +3567,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -2858,6 +3724,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -2892,6 +3761,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -3046,6 +3918,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -3080,6 +3955,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -3234,6 +4112,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -3268,6 +4149,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -3422,6 +4306,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -3456,6 +4343,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -3610,6 +4500,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -3644,6 +4537,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -3798,6 +4694,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -3832,6 +4731,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -3986,6 +4888,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -4020,6 +4925,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -4174,6 +5082,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -4208,6 +5119,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -4362,6 +5276,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -4396,6 +5313,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -4550,6 +5470,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -4584,6 +5507,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -4738,6 +5664,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -4772,6 +5701,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -4926,6 +5858,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -4960,6 +5895,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -5114,6 +6052,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -5148,6 +6089,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -5302,6 +6246,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -5336,6 +6283,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -5490,6 +6440,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -5524,6 +6477,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -5678,6 +6634,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -5712,6 +6671,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -5866,6 +6828,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -5900,6 +6865,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -6054,6 +7022,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -6088,6 +7059,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -6242,6 +7216,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -6276,6 +7253,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -6430,6 +7410,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -6464,6 +7447,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -6618,6 +7604,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
@@ -6652,6 +7641,9 @@
 									"stream": {
 										"default": false,
 										"type": "boolean"
+									},
+									"temperature": {
+										"type": "number"
 									}
 								},
 								"required": [
