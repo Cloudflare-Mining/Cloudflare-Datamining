@@ -1,5 +1,6 @@
 {
 	"GET /zones/{zone_id}/firewall/waf/packages/{package_id}/groups": {
+		"deprecated": true,
 		"description": "Fetches the WAF rule groups in a WAF package.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
 		"operationId": "waf-rule-groups-list-waf-rule-groups",
 		"parameters": [
@@ -670,6 +671,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}": {
+		"deprecated": true,
 		"description": "Fetches the details of a WAF rule group.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
 		"operationId": "waf-rule-groups-get-a-waf-rule-group",
 		"parameters": [
@@ -1047,6 +1049,7 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}": {
+		"deprecated": true,
 		"description": "Updates a WAF rule group. You can update the state (`mode` parameter) of a rule group.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
 		"operationId": "waf-rule-groups-update-a-waf-rule-group",
 		"parameters": [
