@@ -365,6 +365,7 @@
 		"errorCode": "Error code",
 		"inferenceTimeMs": "Inference time ms",
 		"modelId": "ModelId that was trigger to inference",
+		"modelIsBeta": "Model that was trigger to inference is Beta",
 		"neurons": "Monetization unit",
 		"requestBytesIn": "Request size in bytes",
 		"requestBytesOut": "Request size out bytes",
@@ -390,6 +391,7 @@
 		"errorCode": "Error code",
 		"inferenceTimeMs": "Inference time ms",
 		"modelId": "ModelId that was trigger to inference",
+		"modelIsBeta": "Model that was trigger to inference is Beta",
 		"neurons": "Monetization unit",
 		"requestBytesIn": "Request size in bytes",
 		"requestBytesOut": "Request size out bytes",
@@ -3125,7 +3127,8 @@
 		"datetimeHour": "Request timestamp, truncated to start of an hour",
 		"datetimeMinute": "Request timestamp, truncated to start of an minute",
 		"objectName": "The name of the R2 object, if applicable to this request",
-		"responseStatusCode": "HTTP status code returned by R2"
+		"responseStatusCode": "HTTP status code returned by R2",
+		"storageClass": "The storage class that applies to this request"
 	},
 	"AccountR2OperationsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -3136,6 +3139,7 @@
 	"AccountR2OperationsAdaptiveGroupsSum": {
 		"__description": "",
 		"requests": "Sum of Requests",
+		"responseBytes": "Sum of retrieved bytes",
 		"responseObjectSize": "Sum of Response Object Sizes"
 	},
 	"AccountR2StorageAdaptiveGroups": {
@@ -3149,7 +3153,8 @@
 		"date": "Storage sample timestamp, truncated to start of a day",
 		"datetime": "Storage sample timestamp",
 		"datetimeHour": "Storage sample timestamp, truncated to start of an hour",
-		"datetimeMinute": "Storage sample timestamp, truncated to start of an minute"
+		"datetimeMinute": "Storage sample timestamp, truncated to start of an minute",
+		"storageClass": "The storage class that applies to this request"
 	},
 	"AccountR2StorageAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -3538,6 +3543,8 @@
 		"storageTraces": "",
 		"streamMinutesViewedAdaptiveGroups": "",
 		"turnstileAdaptiveGroups": "",
+		"vectorizeQueriesAdaptiveGroups": "",
+		"vectorizeStorageAdaptiveGroups": "",
 		"videoBufferEventsAdaptiveGroups": "",
 		"videoPlaybackEventsAdaptiveGroups": "",
 		"videoQualityEventsAdaptiveGroups": "",
@@ -3792,6 +3799,48 @@
 		"__description": ""
 	},
 	"AccountTurnstileAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountVectorizeQueriesAdaptiveGroups": {
+		"__description": "Beta. Vectorize usage with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountVectorizeQueriesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Vectorize storage sample timestamp",
+		"datetimeHour": "Vectorize storage sample timestamp, truncated to the hour",
+		"vectorizeIndexId": "Identifier for a Vectorize index"
+	},
+	"AccountVectorizeQueriesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountVectorizeQueriesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountVectorizeQueriesAdaptiveGroupsSum": {
+		"__description": "",
+		"queriedVectorDimensions": "The number of queried vector dimensions in Vectorize over the queried time period."
+	},
+	"AccountVectorizeStorageAdaptiveGroups": {
+		"__description": "Beta. Vectorize storage with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension"
+	},
+	"AccountVectorizeStorageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Vectorize storage sample timestamp",
+		"datetimeHour": "Vectorize storage sample timestamp, truncated to the hour",
+		"vectorizeIndexId": "Identifier for a Vectorize index"
+	},
+	"AccountVectorizeStorageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountVectorizeStorageAdaptiveGroupsMax": {
+		"__description": "",
+		"storedVectorDimensions": "The maximum number of stored vector dimensions in Vectorize over the queried time period."
+	},
+	"AccountVectorizeStorageAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
 	"AccountVideoBufferEventsAdaptiveGroups": {
@@ -6127,6 +6176,8 @@
 		"storageTraces": "Storage Tracing Information",
 		"streamMinutesViewedAdaptiveGroups": "A high-level summary of Cloudflare Stream minutes viewed.",
 		"turnstileAdaptiveGroups": "Beta. Cloudflare Turnstile aggregated events with adaptive sampling",
+		"vectorizeQueriesAdaptiveGroups": "Beta. Vectorize usage with adaptive sampling",
+		"vectorizeStorageAdaptiveGroups": "Beta. Vectorize storage with adaptive sampling",
 		"videoBufferEventsAdaptiveGroups": "Beta. Aggregated video streaming buffer event metrics with adaptive sampling",
 		"videoPlaybackEventsAdaptiveGroups": "Beta. Aggregated video streaming playback event metrics with adaptive sampling",
 		"videoQualityEventsAdaptiveGroups": "Beta. Aggregated video streaming quality change event metrics with adaptive sampling",
