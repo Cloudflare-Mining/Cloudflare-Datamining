@@ -458,6 +458,8 @@
 	"settings_label": "Settings",
 	"settings_max_age": "Access-Control-Max-Age (seconds)",
 	"settings_max_age_placeholder": "Maximum number of seconds the results can be cached.",
+	"settings_options_preflight_bypass": "Bypass options requests to origin",
+	"settings_options_preflight_bypass_subtext": "Send all options requests directly to the origin server.<br/> This will remove all existing CORS settings for this application.",
 	"settings_org_session": "Same as application session timeout",
 	"settings_path_cookie": "Enforce cookie path attribute",
 	"settings_path_cookie_description": "Enable to scope this application's JWT to the application path. If disabled, the JWT will scope to the hostname by default.",
