@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-10-17T17:35:48.662Z",
-					"updatedAt": "2024-04-03T06:17:25.841Z"
+					"updatedAt": "2024-04-24T14:26:32.184Z"
 				},
 				"contentfulId": "1WqRUHi3kw6ocw0g2GIiOg",
 				"contentTypeId": "page",
@@ -178,31 +178,31 @@
 						"togglesTo": []
 					},
 					{
-						"button": [],
-						"contentTypeId": "bladeDoubleContent",
-						"contentfulId": "3OBUEbzkiQKGOKOWUaOWyI",
-						"bladeName": "WorkersKV - Solution",
+						"contentfulId": "7eVfbp3RuodYvTKA5jgKfF",
+						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"longCopy": null,
-						"header1": "Reliable by default",
-						"subheader1": null,
-						"copy1": "\nKV replicates data automatically to avoid a single point of failure. Application developers can rely on KV to recover from failures with zero downtime.",
-						"image": null,
-						"imageAssetFile": null,
-						"buttonText1": null,
-						"buttonUrl1": null,
-						"button1ExtraClass": null,
-						"header2": "Boost developer productivity",
-						"subheader2": null,
-						"copy2": "Improve developers productivity by allowing them to focus their time on building new features rather than scaling out key-value stores. \n\nWorkers-KV automatically replicates data to all of Cloudflare's global locations, allowing you to scale seamlessly. ",
-						"buttonText2": null,
-						"buttonUrl2": null,
-						"button2ExtraClass": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"sectionPadding": "tile--no-top-padding",
-						"link": []
+						"eyebrowHeading": null,
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Two Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "elementColumnContent",
+								"contentfulId": "3M87CFwTyIudomz3FA3Yz7",
+								"title": null,
+								"heading": "Reliable by default",
+								"copy": "KV replicates data automatically to avoid a single point of failure. Application developers can rely on KV to recover from failures with zero downtime."
+							},
+							{
+								"contentTypeId": "elementColumnContent",
+								"contentfulId": "8WNlgvgUxoJ8N0rG2le1u",
+								"title": null,
+								"heading": "Boost developer productivity",
+								"copy": "Improve developers productivity by allowing them to focus their time on building new features rather than scaling out key-value stores.\n\nWorkers-KV automatically replicates data to all of Cloudflare's global locations, allowing you to scale seamlessly."
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
 					},
 					{
 						"contentTypeId": "bladeQuote",
