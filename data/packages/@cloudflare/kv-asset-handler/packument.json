@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/kv-asset-handler",
 	"dist-tags": {
-		"latest": "0.3.1"
+		"latest": "0.3.2"
 	},
 	"versions": {
 		"0.0.1": {
@@ -517,6 +517,37 @@
 						"sig": "MEQCIAakHYeX+7INtiHdYkyBHI7/93XEHyk7OjR9Zc4Mp/rLAiBHiWEHjnYjTguRJJ5lL3YlVcAHwXV66KK84eF0MrOnIw=="
 					}
 				]
+			}
+		},
+		"0.3.2": {
+			"name": "@cloudflare/kv-asset-handler",
+			"version": "0.3.2",
+			"dependencies": {
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"@ava/typescript": "^4.1.0",
+				"@cloudflare/workers-types": "^4.20240419.0",
+				"@types/mime": "^3.0.4",
+				"@types/node": "^18.11.12",
+				"ava": "^6.0.1",
+				"service-worker-mock": "^2.0.5"
+			},
+			"dist": {
+				"integrity": "sha512-EeEjMobfuJrwoctj7FA1y1KEbM0+Q1xSjobIEyie9k4haVEBB7vkDvsasw1pM3rO39mL2akxIAzLMUAtrMHZhA==",
+				"shasum": "06437b75664729823ac9033b89f06a3b078e4f55",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kv-asset-handler/-/kv-asset-handler-0.3.2.tgz",
+				"fileCount": 11,
+				"unpackedSize": 55576,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIENUeDp56+DL5ggvPr1JcSsBJ6Y65wl+0+9fLmVRymb3AiEAw5A7lxqYCIucodMmH/Eh2Stqm016QGcNtp2hsu6IHEs="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
 			}
 		}
 	}

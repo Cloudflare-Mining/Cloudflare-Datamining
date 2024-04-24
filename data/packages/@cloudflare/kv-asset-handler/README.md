@@ -12,7 +12,7 @@ Most users and sites will not need these customizations, and just want to serve 
 
 For users who _do_ want to customize their assets, and want to build complex experiences on top of their static assets, `kv-asset-handler` (and the default [Workers Sites template](https://github.com/cloudflare/worker-sites-template), which is provided for use with Wrangler + Workers Sites) allows you to customize caching behavior, headers, and anything else about how your Workers function loads the static assets for your site stored in Workers KV.
 
-The Cloudflare Workers Discord server is an active place where Workers users get help, share feedback, and collaborate on making our platform better. The `#workers` channel in particular is a great place to chat about `kv-asset-handler`, and building cool experiences for your users using these tools! If you have questions, want to share what you're working on, or give feedback, [join us in Discord and say hello](https://discord.gg/cloudflaredev)!
+The Cloudflare Workers Discord server is an active place where Workers users get help, share feedback, and collaborate on making our platform better. The `#workers` channel in particular is a great place to chat about `kv-asset-handler`, and building cool experiences for your users using these tools! If you have questions, want to share what you're working on, or give feedback, [join us in Discord and say hello](https://discord.cloudflare.com)!
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -71,63 +71,72 @@ Known errors to be thrown are:
 #### ES Modules
 
 ```js
-import { getAssetFromKV, NotFoundError, MethodNotAllowedError } from '@cloudflare/kv-asset-handler'
-import manifestJSON from '__STATIC_CONTENT_MANIFEST'
-const assetManifest = JSON.parse(manifestJSON)
+import manifestJSON from "__STATIC_CONTENT_MANIFEST";
+import {
+	getAssetFromKV,
+	MethodNotAllowedError,
+	NotFoundError,
+} from "@cloudflare/kv-asset-handler";
+
+const assetManifest = JSON.parse(manifestJSON);
 
 export default {
 	async fetch(request, env, ctx) {
-		if (request.url.includes('/docs')) {
+		if (request.url.includes("/docs")) {
 			try {
 				return await getAssetFromKV(
 					{
 						request,
 						waitUntil(promise) {
-							return ctx.waitUntil(promise)
+							return ctx.waitUntil(promise);
 						},
 					},
 					{
 						ASSET_NAMESPACE: env.__STATIC_CONTENT,
 						ASSET_MANIFEST: assetManifest,
-					},
-				)
+					}
+				);
 			} catch (e) {
 				if (e instanceof NotFoundError) {
 					// ...
 				} else if (e instanceof MethodNotAllowedError) {
 					// ...
 				} else {
-					return new Response('An unexpected error occurred', { status: 500 })
+					return new Response("An unexpected error occurred", { status: 500 });
 				}
 			}
-		} else return fetch(request)
+		} else return fetch(request);
 	},
-}
+};
 ```
 
 #### Service Worker
 
 ```js
-import { getAssetFromKV, NotFoundError, MethodNotAllowedError } from '@cloudflare/kv-asset-handler'
+import {
+	getAssetFromKV,
+	MethodNotAllowedError,
+	NotFoundError,
+} from "@cloudflare/kv-asset-handler";
 
-addEventListener('fetch', (event) => {
-	event.respondWith(handleEvent(event))
-})
+addEventListener("fetch", (event) => {
+	event.respondWith(handleEvent(event));
+});
 
 async function handleEvent(event) {
-	if (event.request.url.includes('/docs')) {
+	if (event.request.url.includes("/docs")) {
 		try {
-			return await getAssetFromKV(event)
+			return await getAssetFromKV(event);
 		} catch (e) {
 			if (e instanceof NotFoundError) {
 				// ...
 			} else if (e instanceof MethodNotAllowedError) {
 				// ...
 			} else {
-				return new Response('An unexpected error occurred', { status: 500 })
+				return new Response("An unexpected error occurred", { status: 500 });
 			}
 		}
-	} else return fetch(event.request)
+	} else return fetch(event.request);
 }
 ```
 
@@ -176,7 +185,7 @@ let cacheControl = {
 	browserTTL: null, // do not set cache control ttl on responses
 	edgeTTL: 2 * 60 * 60 * 24, // 2 days
 	bypassCache: false, // do not bypass Cloudflare's cache
-}
+};
 ```
 
 ##### `browserTTL`
@@ -329,7 +338,7 @@ To turn `etags` **off**, you must bypass cache:
 /* Turn etags off */
 let cacheControl = {
 	bypassCache: true,
-}
+};
 ```
 
 #### Syntax and comparison context
