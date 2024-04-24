@@ -5,34 +5,62 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: </strong>Lisbon or Remote Portugal<strong> <br><br>About the Department</strong></p>
-<p><span style="font-weight: 400;">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers.&nbsp;</span></p>
-<h4><strong>About The Team</strong></h4>
-<p>Cloudflare helps build the future of the Internet. The Emerging Technology and Incubation (ETI) team invents, launches, and brings to market the technologies required to reach that goal. ETI ships software that changes the Internet. The world's fastest DNS resolver, 1.1.1.1, Cloudflare WARP, Cloudflare One, Cloudflare Workers, D1, R2, and Workers AI are examples of our launches.</p>
-<p>The team members in ETI make this possible. The group consists of engineers, product managers, developer advocates and researchers who share a common passion for helping build a better Internet. The ETI organization encourages individual team members to be ambitious and bold in how we find and solve problems. We move quickly and shape our products based on customer usage and feedback, while leveraging the massive scale and reliability of our global network.</p>
-<p>ETI also helps drive our Innovation Weeks at Cloudflare and contributes with new products, features, and visions for helping build a better Internet. Doing that requires all of ETI to execute on releases that customers will use today, tell our story as part of Cloudflare’s larger mission, and to build products that allow Cloudflare’s customers to realize that 1+1 can equal 3 when using all of these features together.</p>
-<p>We are looking for a Fullstack Engineer to join our team. You will work with a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product features based on what’s technically possible. Furthermore, you will make sure our company hits our ambitious goals from an engineering standpoint.</p>
-<p>You bring a passion for meeting business needs while building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment.</p>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><strong>Available Locations: Austin or San Francisco</strong></p>
+<p><strong>What You’ll Do:</strong></p>
+<p>Cloudflare is looking for a bright, proactive and detail-oriented Executive Assistant to support our Chief Strategy Officer.</p>
+<p>This role requires superior attention to detail, great organizational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude.The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves on being a career EA.&nbsp;</p>
+<p>Responsibilities:</p>
 <ul>
-	<li>Bachelor's degree in Computer Science, Engineering, or a related field;</li>
-	<li>Proven experience in software development, with a strong focus on TypeScript programming language;</li>
-	<li>Experience with WebAssembly, Rust or Go and some understanding of the Cloudflare Workers platform is an added bonus;</li>
-	<li>Solid understanding of systems engineering principles and practices;</li>
-	<li>Experience with version control systems such as Git;</li>
-	<li>Strong problem-solving skills and attention to detail;</li>
-	<li>Excellent communication and interpersonal skills, with the ability to work effectively in a team environment;</li>
-	<li>Passion for learning and exploring new technologies;</li>
-	<li>Creative thinker with the ability to propose innovative solutions to complex problems;</li>
-	<li>An operational mindset - we don't just write code, we also own it in production;</li>
-	<li>Previous experience working in an Agile environment is a plus;</li>
-	<li>Good understanding of how Browsers and how their underlying technologies work;</li>
+	<li>Admin: Provide excellent administrative support for members of the Executive Leadership team exercising high attention to detail and discretion to every matter. Plan, coordinate and execute meeting set-up and events. Including room set-ups, light catering, Audio/Visual set up, attendance tracking and materials distribution. Provide agendas, detailed data, information and resources in preparation for meetings.&nbsp;</li>
+	<li>Calendar: Proactively own and flawlessly execute on calendars, prioritizing with purpose, deflecting with tact, and understanding both the short- and long-term impacts of each confirmed, declined, and rescheduled meeting. Ensure the leaders are equipped with all the necessary meeting information and manage inbound and outbound requests. If you enjoy “playing Tetris” with different Time Zones and schedules to help people get together, that would be a plus!</li>
+	<li>Travel and Expenses: Plan all aspects of domestic and international travel, optimizing and balancing executives’ time with cost of travel; monitoring flights for up to the minute changes; ensuring all documents are secured and up-to-date. Ensure timely submission of expense reports through Navan.</li>
+	<li>EA Team: Our EA team has a high degree of camaraderie and so the ideal candidate will enjoy partnering closely with their peers and foster teamwork.</li>
 </ul>
-<p><strong>Bonus Points:</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Experience building high performance distributed systems;</li>
-	<li>Contributions to large open source projects.</li>
+	<li>You have 5+ years experience as an Executive Assistant in a high growth environment, prior experience supporting senior leaders&nbsp;</li>
+	<li>Excellent verbal and written communication skills</li>
+	<li>Working knowledge of Google Suite and major airline carrier’s platforms</li>
+	<li>Exhibits a strong work ethic, professionalism, confidentiality and good judgment</li>
+	<li>Incredibly organized and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
+	<li>Personable with a can do attitude that sees no task or project to be too small or too big</li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado-based hires and Washington hires: Estimated annual salary of $98,000 - $120,000</li>
+	<li>For New York City-based and California (excluding Bay Area): Estimated annual salary of $115,000 - $141,000</li>
+	<li>For Bay Area-based hires: Estimated annual salary of $122,000 - $149,000</li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

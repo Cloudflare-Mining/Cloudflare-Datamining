@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin or Remote US<br><br>About The Role</strong></p>
+<p><strong>Available Locations: </strong>Austin or Remote US<strong><br><br>About The Role</strong></p>
 <p>We announced Cloudflare Workers in 2017&nbsp; — since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support.</p>
 <p>Workers has grown from a simple functions-as-a-service option into a complete full-stack platform — and with this comes the need to support a broader set of <a href="https://developers.cloudflare.com/workers/runtime-apis/">Runtime APIs</a>. This spans a wide range, from TC39 standards, to Node.js APIs, to web standards. We played a key role in forming <a href="https://wintercg.org/">WinterCG</a>, and there’s still much work to do to grow a shared base of APIs across runtimes — to push forward the ecosystem and ease the burden on open-source maintainers of supporting multiple runtimes.</p>
 <p><strong>What You’ll Do</strong></p>

@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
+<p><strong>Location: Lisbon<br><br>About the Role</strong></p>
 <p>Cloudflare is seeking a numerate and process-driven EMEA Field Marketing Operations Specialist to join&nbsp;our growing Field Marketing team. You will be responsible for providing the ongoing operational support&nbsp;to the Field Marketers, vital for ensuring the efficient operation of the Team.<br>In this cross-functional role you will collaborate closely, not only with the EMEA field marketing team, but&nbsp;also with other stakeholders across sales teams, channel partner teams, and other marketing functions.&nbsp;You will own the implementation of existing operational systems and processes as well as suggesting&nbsp;improvements and new processes to further improve on the operational efficiencies of the Team. If you’re&nbsp;passionate about driving efficiencies and optimising processes - this is the perfect opportunity.</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
