@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-10-26T19:40:41.837Z",
-					"updatedAt": "2022-04-21T23:18:39.081Z"
+					"updatedAt": "2024-04-24T16:34:26.035Z"
 				},
 				"contentfulId": "4dBi7GiiaEcFz2bolZr04z",
 				"contentTypeId": "page",
@@ -184,112 +184,1710 @@
 						]
 					},
 					{
-						"button": [],
-						"contentTypeId": "bladeDoubleContent",
-						"contentfulId": "2MwIB8wTLBgAIkbJqhXqks",
-						"bladeName": "DNSSEC Root Signing - Where is the Root-Signing Key",
-						"title": null,
-						"longCopy": null,
-						"header1": null,
-						"subheader1": null,
-						"copy1": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Where Is the Root-Signing Key?</h3>\n<p>\nThere are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.\n</p>\n<h3 class=\"marketing-h3\">Ceremony Participants</h3>\n<ul class=\"marketing-ul\">\n<li>The Ceremony Administrator</li>\n<li>An Internal Witness</li>\n<li>The Credentials Safe Controller</li>\n<li>The Hardware Safe Controller</li>\n<li>Crypto Officer #1</li>\n<li>Crypto Officer #2</li>\n<li>Crypto Officer #3</li>\n</ul>\n<p>\nEach of these participants can only perform certain parts of the ceremony. Their roles are divided in a way that ensures less than a 1:1,000,000 chance that a group of conspirators could compromise the root-signing key, assuming a 5% dishonesty rate (yes, that's formally in the specification) amongst these individuals.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram who holds the key\" alt=\"diagram who holds the key\" src=\"/img/products/dns/dnssec/diagram-who-holds-the-key.svg\">\n<p>\nThe first four of these individuals are ICANN staff members, while the three crypto officers are trusted volunteers from the Internet community. Verisign also plays an important role, as they are the root zone maintainer responsible for generating the root zone-signing key that is signed during the ceremony. In addition, the entire procedure is audited by two Big Four auditing firms that are not associated with either Verisign or ICANN.\n</p>",
-						"image": null,
-						"imageAssetFile": null,
-						"buttonText1": null,
-						"buttonUrl1": null,
-						"button1ExtraClass": null,
-						"header2": null,
-						"subheader2": null,
-						"copy2": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Ceremony Preparations</h3>\n<p>\nThere are only 14 available Crypto Officers in the world (7 are affiliated with each location), and at least three of them must attend the ceremony. So, the first step is to poll the Crypto Officers to find a two-day window when 4-5 of them can attend. We usually try to find a period where more than the minimum three are available, as emergencies or travel problems can cause a ceremony cancellation.\n</p>\n<p>\nThe last ceremony took place on August 13th at the El Segundo facility. To get into the facility, I had to show a government issued ID and show the contents of my bag. In return, I got an ID strip attached to my shirt. Then, I waited for an ICANN staffer to escort me inside. To get through the door, he had to swipe an access card and place his hand on a scanner.\n</p>\n<p>\nThe first stop was a conference room where lunch was being served. We mingled there while waiting for the rest of the ceremony participants to arrive. Being Crypto Officers, most of the small talk revolved around trying to steal root-signing key. We figured it would only take a half hour or so to blast a hole in the wall and walk out with the safe; however, that would probably trip the seismic sensors, so we would know that the key was compromised.\n</p>\n<p>\nOnce everybody showed up, we were escorted to the ceremony room in small groups as the entrance room only holds about 8 people. In this room we sign a log before we are allowed into the main key ceremony room. To access the entrance room, an ICANN staff member needs to use a smart card; to enter the main room a retina scan is needed of said staffer.\n</p>",
-						"buttonText2": null,
-						"buttonUrl2": null,
-						"button2ExtraClass": null,
-						"backgroundColor": "light-gray",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"sectionPadding": null,
-						"link": []
-					},
-					{
-						"button": [],
-						"contentTypeId": "bladeDoubleContent",
-						"contentfulId": "DKsMS2BdPGF2vjoprRETS",
-						"bladeName": "DNSSEC Root Signing - A guy walks into a room",
-						"title": null,
-						"longCopy": null,
-						"header1": null,
-						"subheader1": null,
-						"copy1": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">A Guy Walks Into a Room with Two Safes…</h3>\n<p>\nThe ceremony room has a cage on the side of it that contains two safes. These safes store all of the sensitive material used during the ceremony. The cage can only be entered in the presence of the Ceremony Administrator and an Internal Witness. This is enforced by a second retina scan and access cards from both the Ceremony Administrator and Internal Witness.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram a guy walks into a room with two safes\" alt=\"diagram a guy walks into a room with two safes\" src=\"/img/products/dns/dnssec/diagram-a-guy-walks-into-a-room-with-two-safes.svg\">\n<p>\nHowever, neither the Ceremony Administrator or Internal Witness can actually open the safes. For that, we need the Safe Controllers\n</p>\n<h3 class=\"marketing-h3\">The Credentials Safe</h3>\n<p>\nThe Credentials Safe Controller opens the first safe, and inside we find several safe deposit boxes, each requiring two keys. The Ceremony Administrator has one of those keys, and each of the Crypto Officers has a key to a different box. Together (and in the presence of the Internal Witness and Credentials Safe Controller), the Ceremony Administrator and the Crypto Officers open three safe deposit boxes.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram the credentials safe\" alt=\"diagram the credentials safe\" src=\"/img/products/dns/dnssec/diagram-the-credentials-safe.svg\">\n<p>\nEach safe deposit box contains an operator card and a security permissions card for the Hardware Security Module (HSM), which we'll discuss in the next section. Three operator cards are required to unlock the HSM, which is why three Crypto Officers must attend the ceremony. The security permissions cards are only used when we need to transfer the root-signing key, so we usually leave those in the safe deposit box.\n</p>\n<p>\nBoth cards are stored inside plastic cases wrapped in tamper-evident bags (most of the ceremony revolves around detecting foul-play, if you couldn't tell already). These cards stay in the safe when not in use, which means the last time someone touched them was at the previous Root Signing Ceremony. The tamper-evident bags help ensure that they haven't been altered in the interim.\n</p>\n<p>\nThe plastic cases are also very important, as someone discovered that it was possible to manipulate the cards by poking needles through the tamper evident bag, which would not necessarily be noticeable when inspecting the bag. This is a good example of how the security procedures around the ceremony are constantly evolving.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"tamper evident bag\" alt=\"tamper evident bag\" src=\"/img/products/tamper-evident-bag.jpg\">",
-						"image": null,
-						"imageAssetFile": null,
-						"buttonText1": null,
-						"buttonUrl1": null,
-						"button1ExtraClass": null,
-						"header2": null,
-						"subheader2": null,
-						"copy2": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">The Hardware Safe</h3>\n<p>\nThe Hardware Safe Controller then enters the safe room and opens up the second safe, which contains a tamper-proof hardware security module (HSM). The HSM is a physical computing device designed specifically for working with sensitive cryptographic material. You can think of it as a digital lock-box for the root-signing key. It can only be accessed with the three operator cards that we collected from the credentials safe.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram the hardware safe\" alt=\"diagram the hardware safe\" src=\"/img/products/dns/dnssec/diagram-the-hardware-safe.svg\">\n<p>\nThe HSM can't be operated without an external interface, so the hardware safe also contains a special laptop that can send commands to the HSM. This laptop has no battery, hard disk, or even a clock backup battery, and thus can't store state once it's unplugged. The goal is to eliminate any possibility of the root-signing key leaving the HSM after the ceremony ends.\n</p>\n<p>\nWe now have the hardware to perform the Root Signing Ceremony. Notice that the presence of all 7 participants is required to physically access the materials for the ceremony. Again, the idea is to minimize the risk of malicious conspirators by separating access to the HSM from access to the operator cards that activate the HSM.\n</p>\n<p>\nA USB containing logs from each of the prior ceremonies and a DVD used to boot the laptop (both in their own tamper-evident bags) are also removed from this safe.\n</p>",
-						"buttonText2": null,
-						"buttonUrl2": null,
-						"button2ExtraClass": null,
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "1fwwKC5RdOC7H4kcC0VKlR",
+						"htmlId": null,
+						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"textColor": "black",
 						"sectionPadding": null,
-						"link": []
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "HzSxzSy5csyEMSZltzGsd",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Where Is the Root-Signing Key?",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "There are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Ceremony Participants",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "The Ceremony Administrator",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "An Internal Witness",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "The Credentials Safe Controller",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "The Hardware Safe Controller",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Crypto Officer #1",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Crypto Officer #2",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Crypto Officer #3",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Each of these participants can only perform certain parts of the ceremony. Their roles are divided in a way that ensures less than a 1:1,000,000 chance that a group of conspirators could compromise the root-signing key, assuming a 5% dishonesty rate (yes, that's formally in the specification) amongst these individuals.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "74DJaCth1sSblLhzRCVfEz",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "74DJaCth1sSblLhzRCVfEz",
+															"locale": "en-US",
+															"title": "diagram who holds the key",
+															"file": {
+																"name": "diagram-who-holds-the-key.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74DJaCth1sSblLhzRCVfEz/2eaef93266148f0d8a4f8b7d92afbb50/diagram-who-holds-the-key.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The first four of these individuals are ICANN staff members, while the three crypto officers are trusted volunteers from the Internet community. Verisign also plays an important role, as they are the root zone maintainer responsible for generating the root zone-signing key that is signed during the ceremony. In addition, the entire procedure is audited by two Big Four auditing firms that are not associated with either Verisign or ICANN.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3qZFVmR3V45LpgC2aXnxXB",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Ceremony Preparations",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "There are only 14 available Crypto Officers in the world (7 are affiliated with each location), and at least three of them must attend the ceremony. So, the first step is to poll the Crypto Officers to find a two-day window when 4-5 of them can attend. We usually try to find a period where more than the minimum three are available, as emergencies or travel problems can cause a ceremony cancellation.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The last ceremony took place on August 13th at the El Segundo facility. To get into the facility, I had to show a government issued ID and show the contents of my bag. In return, I got an ID strip attached to my shirt. Then, I waited for an ICANN staffer to escort me inside. To get through the door, he had to swipe an access card and place his hand on a scanner.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The first stop was a conference room where lunch was being served. We mingled there while waiting for the rest of the ceremony participants to arrive. Being Crypto Officers, most of the small talk revolved around trying to steal root-signing key. We figured it would only take a half hour or so to blast a hole in the wall and walk out with the safe; however, that would probably trip the seismic sensors, so we would know that the key was compromised.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Once everybody showed up, we were escorted to the ceremony room in small groups as the entrance room only holds about 8 people. In this room we sign a log before we are allowed into the main key ceremony room. To access the entrance room, an ICANN staff member needs to use a smart card; to enter the main room a retina scan is needed of said staffer.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
 					},
 					{
-						"button": [],
-						"contentTypeId": "bladeDoubleContent",
-						"contentfulId": "5j6xWaOY5uZD6RgqN6Iqos",
-						"bladeName": "DNSSEC - Root Signing - Equipment Setup",
-						"title": null,
-						"longCopy": null,
-						"header1": null,
-						"subheader1": null,
-						"copy1": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Equipment Setup</h3>\n<p>\nWe're now ready to perform the actual Root Signing Ceremony. All of the equipment is laid out on a table in full view of all those attending, as well as the camera used to audit the proceedings.\n</p>\n<p>\nOne by one, each of the three Crypto Officers is called up to the table and asked to hand over the HSM operator card they took out of their safe deposit box. Before doing so, they verify that the tamper-evident bag is in the same condition as when they placed it in the safe deposit box at the end of the previous ceremony. Once they hand it over, only the Ceremony Administrator is allowed to touch the card.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram equipment setup\" alt=\"diagram equipment setup\" src=\"/img/products/dns/dnssec/diagram-equipment-setup.svg\">\n<p>\nThe Ceremony Administrator boots the laptop from a DVD and initializes the USB that records the ceremony logs. Remember that the laptop has no clock battery backup, which means the time needs to be set manually from a special wall clock in the ceremony room. It's the same clock used since the first ceremony five years ago, and it's completely isolated from the rest of the world. It's drifted slightly, but that's fine, as it's only used for logging purposes.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"Root signing ceremony\" alt=\"Root signing ceremony\" src=\"/img/products/ceremony-table.jpg\">\n<p class=\"text--italic\">Ceremony table, before equipment setup</p>\n<p>\nNext, the Ceremony Administrator needs to activate the HSM by placing the three operator cards collected from the Crypto Officers into the machine. Then, the HSM is connected to the laptop via ethernet cable. The Ceremony Administrator now has access to the root-signing key.\n</p>\n",
-						"image": null,
-						"imageAssetFile": null,
-						"buttonText1": null,
-						"buttonUrl1": null,
-						"button1ExtraClass": null,
-						"header2": null,
-						"subheader2": null,
-						"copy2": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Signing the Root DNS Keys</h3>\n<p>\nThere are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram signing the root dns keys\" alt=\"diagram signing the root dns keys\" src=\"/img/products/dns/dnssec/diagram-signing-the-root-dns-keys.svg\">\n<p>\nThe laptop/HSM system is air-gapped, meaning it is physically isolated from any potentially insecure computer networks (e.g., the Internet). The only way to move information from the outside world into the laptop/HSM is via USB drive. Accordingly, the key-signing request is loaded into the laptop via USB. To ensure that the correct key is being signed, a PGP hash of the key-signing request is computed, and Verisign verifies that it is identical to the one they provided.\n</p>\n<p>\nFinally, the Ceremony Administrator can sign the KSR with the private key-signing key. He enters \"Y\" on a command prompt, and the dramatic portion of the ceremony is complete. The result is a collection of digital signatures, otherwise known in DNSSEC as the RRSIG record, which we'll explore in a moment.\n</p>\n<p>\nNote that the KSR actually contains a bundle of zone-signing keys that are rotated out every 15-16 days. There are enough keys in the bundle to last until the next Root Signing Ceremony three months from now.\n</p>",
-						"buttonText2": null,
-						"buttonUrl2": null,
-						"button2ExtraClass": null,
-						"backgroundColor": "light-gray",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"sectionPadding": null,
-						"link": []
-					},
-					{
-						"button": [],
-						"contentTypeId": "bladeDoubleContent",
-						"contentfulId": "7GWHekjQv1C7lyPvTXem22",
-						"bladeName": "DNSSEC - Root Signing - Public Record",
-						"title": null,
-						"longCopy": null,
-						"header1": null,
-						"subheader1": null,
-						"copy1": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Public Record</h3>\n<p>\nEvery tiny detail is recorded by auditors and <a href=\"https://www.iana.org/dnssec/ceremonies/22\">videotaped</a>, making the whole ceremony a matter of public record. This is crucial if the entire DNSSEC-protected Internet is to trust the root name servers' signatures.\n</p>\n<p>\nThis video is streamed live during the ceremony, and we were able to track how many people were watching the ceremony in real time. We had a record-breaking number of viewers this time, probably due to better publicity than previous ceremonies. We were even able to have a participant relay questions from the audience via chatroom. We were very happy about all this engagement.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"logs\" alt=\"logs\" src=\"/img/products/logs.png\">\n<p>\nAt the end of the ceremony, logs are printed out and given to anybody in the room that wants a copy. Verisign is given a copy of the signed key set on a USB stick, and they will use these signed DNSKEY RRsets in the root zone during Q4 this year. All materials are put back into tamper-evident bags and placed in their respective safes.\n</p>",
-						"image": null,
-						"imageAssetFile": null,
-						"buttonText1": null,
-						"buttonUrl1": null,
-						"button1ExtraClass": null,
-						"header2": null,
-						"subheader2": null,
-						"copy2": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Let's See Those Signed Keys!</h3>\n<p>\nThere are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.\n</p>\n<code>\ndig . dnskey +dnssec\n</code>\n<p>\nThis requests the dnskey records from the root DNS name servers. The interesting part of the response should look something like the following:\n</p>\n<code>\n. 20868 IN DNSKEY 257 3 8 AwEAAagAIKlVZrpC6Ia7gEzahOR+9W29euxhJhVVLOyQbSEW0O8gcCjF FVQUTf6v58fLjwBd0YI0EzrAcQqBGCzh/RStIoO8g0NfnfL2MTJRkxoX bfDaUeVPQuYEhg37NZWAJQ9VnMVDxP/VHL496M/QZxkjf5/Efucp2gaD X6RS6CXpoY68LsvPVjR0ZSwzz1apAzvN9dlzEheX7ICJBBtuA6G3LQpz W5hOA2hzCTMjJPJ8LbqF6dsV6DoBQzgul0sGIcGOYl7OyQdXfZ57relS Qageu+ipAdTTJ25AsRTAoub8ONGcLmqrAmRLKBP1dfwhYB4N7knNnulq QxA+Uk1ihz0=\n</code>\n<code>\n. 20868 IN DNSKEY 256 3 8 AwEAAa67bQck1JjopOOFc+iMISFcp/osWrEst2wbKbuQSUWu77QC9UHL ipiHgWN7JlqVAEjKITZz49hhkLmOpmLK55pTq+RD2kwoyNWk9cvpc+tS nIxT7i93O+3oVeLYjMWrkDAz7K45rObbHDuSBwYZKrcSIUCZnCpNMUtn PFl/04cb\n</code>\n<code>\n. 20868 IN RRSIG DNSKEY 8 0 172800 20150913235959 20150830000000 19036 . QKU/YSUHNXa0coshORV2r8o0PWZ43dn/u1ml4DglqLXTi2WJh+OyMFgi w4Xc7cF4T8Eab5TLbwqDHOrE87fmvcdSgQQOVwYN6jwStHAliuEICs6X rd+sqanyyMpaynLI630k5PuuQVOWxHn/Hyn4yFN5MJoQG9Pz+gn8FjCB oNGs0vu1TQm2m6DSGfjRTd7tRIchXAbOUvEVVnDWaTNPX3c35xqoHlUZ Ta00N9FvKqEwZDjdR1e0BCaDLL/Pk+CRygzOyfSKiuULzKEecsp3jPYY nXfKZmTuMuaQNRmcyJD+WSFwi5XyRgqrnxWUYmFcum4zw1NXdyp0mlGO slQ6NQ==\n</code>\n<p>\nThe first record is the public counterpart to the private key-signing key in the HSM, the second is the zone-signing key provided by Verisign, and the third RRSIG record is what we created during the Root Signing Ceremony. Without that last one, the worldwide DNSSEC system wouldn't work.\n</p>",
-						"buttonText2": null,
-						"buttonUrl2": null,
-						"button2ExtraClass": null,
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "5Ta7Jb1pSDRWJC3HLfHJdD",
+						"htmlId": null,
+						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"textColor": "black",
 						"sectionPadding": null,
-						"link": []
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4XemUvzfv4agw4DjKbWr8P",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "A Guy Walks Into a Room with Two Safes",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The ceremony room has a cage on the side of it that contains two safes. These safes store all of the sensitive material used during the ceremony. The cage can only be entered in the presence of the Ceremony Administrator and an Internal Witness. This is enforced by a second retina scan and access cards from both the Ceremony Administrator and Internal Witness.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "4bqxxs9NxgtzcLnFpOvKx1",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "4bqxxs9NxgtzcLnFpOvKx1",
+															"locale": "en-US",
+															"title": "diagram a guy walks into a room with two safes",
+															"file": {
+																"name": "diagram-a-guy-walks-into-a-room-with-two-safes.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4bqxxs9NxgtzcLnFpOvKx1/d4865da18e1ac7130f2c64c57ec79375/diagram-a-guy-walks-into-a-room-with-two-safes.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "However, neither the Ceremony Administrator or Internal Witness can actually open the safes. For that, we need the Safe Controllers",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Credentials Safe",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Credentials Safe Controller opens the first safe, and inside we find several safe deposit boxes, each requiring two keys. The Ceremony Administrator has one of those keys, and each of the Crypto Officers has a key to a different box. Together (and in the presence of the Internal Witness and Credentials Safe Controller), the Ceremony Administrator and the Crypto Officers open three safe deposit boxes.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "4CLRzTpOHxAwO1NHEjklAt",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "4CLRzTpOHxAwO1NHEjklAt",
+															"locale": "en-US",
+															"title": "diagram the credentials safe",
+															"file": {
+																"name": "diagram-the-credentials-safe.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4CLRzTpOHxAwO1NHEjklAt/e6ef5993fd135ecb492c3d59d76bf2af/diagram-the-credentials-safe.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Each safe deposit box contains an operator card and a security permissions card for the Hardware Security Module (HSM), which we'll discuss in the next section. Three operator cards are required to unlock the HSM, which is why three Crypto Officers must attend the ceremony. The security permissions cards are only used when we need to transfer the root-signing key, so we usually leave those in the safe deposit box.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Both cards are stored inside plastic cases wrapped in tamper-evident bags (most of the ceremony revolves around detecting foul-play, if you couldn't tell already). These cards stay in the safe when not in use, which means the last time someone touched them was at the previous Root Signing Ceremony. The tamper-evident bags help ensure that they haven't been altered in the interim.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The plastic cases are also very important, as someone discovered that it was possible to manipulate the cards by poking needles through the tamper evident bag, which would not necessarily be noticeable when inspecting the bag. This is a good example of how the security procedures around the ceremony are constantly evolving.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "vFsW4ObnEkXU5uN7h1jZJ",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "vFsW4ObnEkXU5uN7h1jZJ",
+															"locale": "en-US",
+															"title": "tamper evident bag",
+															"file": {
+																"name": "tamper-evident-bag.jpg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/vFsW4ObnEkXU5uN7h1jZJ/737f34662aa10261f44b9500bde2e5c5/tamper-evident-bag.jpg",
+																"internal": {
+																	"mediaType": "image/jpeg"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7uEppN3eTa8dj20gXeaGq3",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Hardware Safe",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Hardware Safe Controller then enters the safe room and opens up the second safe, which contains a tamper-proof hardware security module (HSM). The HSM is a physical computing device designed specifically for working with sensitive cryptographic material. You can think of it as a digital lock-box for the root-signing key. It can only be accessed with the three operator cards that we collected from the credentials safe.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "4NA13UESVs2p5vcs8ghNVE",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "4NA13UESVs2p5vcs8ghNVE",
+															"locale": "en-US",
+															"title": "diagram the hardware safe",
+															"file": {
+																"name": "diagram-the-hardware-safe.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4NA13UESVs2p5vcs8ghNVE/d118fd58f67fe02277fbb5cc4c97b697/diagram-the-hardware-safe.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The HSM can't be operated without an external interface, so the hardware safe also contains a special laptop that can send commands to the HSM. This laptop has no battery, hard disk, or even a clock backup battery, and thus can't store state once it's unplugged. The goal is to eliminate any possibility of the root-signing key leaving the HSM after the ceremony ends.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "We now have the hardware to perform the Root Signing Ceremony. Notice that the presence of all 7 participants is required to physically access the materials for the ceremony. Again, the idea is to minimize the risk of malicious conspirators by separating access to the HSM from access to the operator cards that activate the HSM.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "A USB containing logs from each of the prior ceremonies and a DVD used to boot the laptop (both in their own tamper-evident bags) are also removed from this safe.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "17wa7PJoO5a3Efs7RBXvv1",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3n1HEF6Wz2r6F5pDyxntS1",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Equipment Setup",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "We're now ready to perform the actual Root Signing Ceremony. All of the equipment is laid out on a table in full view of all those attending, as well as the camera used to audit the proceedings.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "One by one, each of the three Crypto Officers is called up to the table and asked to hand over the HSM operator card they took out of their safe deposit box. Before doing so, they verify that the tamper-evident bag is in the same condition as when they placed it in the safe deposit box at the end of the previous ceremony. Once they hand it over, only the Ceremony Administrator is allowed to touch the card.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "1shNsRxJISH8pF1J6g9rFm",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "1shNsRxJISH8pF1J6g9rFm",
+															"locale": "en-US",
+															"title": "diagram equipment setup",
+															"file": {
+																"name": "diagram-equipment-setup.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1shNsRxJISH8pF1J6g9rFm/2419bf770213b977d74c1999b1bbd24d/diagram-equipment-setup.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Ceremony Administrator boots the laptop from a DVD and initializes the USB that records the ceremony logs. Remember that the laptop has no clock battery backup, which means the time needs to be set manually from a special wall clock in the ceremony room. It's the same clock used since the first ceremony five years ago, and it's completely isolated from the rest of the world. It's drifted slightly, but that's fine, as it's only used for logging purposes.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "1kRFXJuoeWk4qfT3myevp5",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "1kRFXJuoeWk4qfT3myevp5",
+															"locale": "en-US",
+															"title": "ceremony table",
+															"file": {
+																"name": "ceremony-table.jpg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kRFXJuoeWk4qfT3myevp5/c7c6b8a9fe08dfb0e0cabccb01e7f905/ceremony-table.jpg",
+																"internal": {
+																	"mediaType": "image/jpeg"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Ceremony table, before equipment setup",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Next, the Ceremony Administrator needs to activate the HSM by placing the three operator cards collected from the Crypto Officers into the machine. Then, the HSM is connected to the laptop via ethernet cable. The Ceremony Administrator now has access to the root-signing key.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1pr4lBUv1PPXDf4FVsdD54",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Signing the Root DNS Keys",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "There are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "4fiAmVczwNxw1xE4G9dos5",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "4fiAmVczwNxw1xE4G9dos5",
+															"locale": "en-US",
+															"title": "diagram-signing-the-root-dns-keys",
+															"file": {
+																"name": "diagram-signing-the-root-dns-keys.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fiAmVczwNxw1xE4G9dos5/b6c9792b0a6a0026c7df27857ad7f297/diagram-signing-the-root-dns-keys.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The laptop/HSM system is air-gapped, meaning it is physically isolated from any potentially insecure computer networks (e.g., the Internet). The only way to move information from the outside world into the laptop/HSM is via USB drive. Accordingly, the key-signing request is loaded into the laptop via USB. To ensure that the correct key is being signed, a PGP hash of the key-signing request is computed, and Verisign verifies that it is identical to the one they provided.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Finally, the Ceremony Administrator can sign the KSR with the private key-signing key. He enters \"Y\" on a command prompt, and the dramatic portion of the ceremony is complete. The result is a collection of digital signatures, otherwise known in DNSSEC as the RRSIG record, which we'll explore in a moment.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Note that the KSR actually contains a bundle of zone-signing keys that are rotated out every 15-16 days. There are enough keys in the bundle to last until the next Root Signing Ceremony three months from now.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "22nxGs36qeCGqlD2qGq2JC",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "30YQrdT4MCjdFDNpU1bEfn",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Public Record",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Every tiny detail is recorded by auditors and ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.iana.org/dnssec/ceremonies/22"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "videotaped",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", making the whole ceremony a matter of public record. This is crucial if the entire DNSSEC-protected Internet is to trust the root name servers' signatures.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " This video is streamed live during the ceremony, and we were able to track how many people were watching the ceremony in real time. We had a record-breaking number of viewers this time, probably due to better publicity than previous ceremonies. We were even able to have a participant relay questions from the audience via chatroom. We were very happy about all this engagement.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "3gVo02CdqmvRQYfXOxTFGp",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "3gVo02CdqmvRQYfXOxTFGp",
+															"locale": "en-US",
+															"title": "public record logs",
+															"file": {
+																"name": "public record logs.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3gVo02CdqmvRQYfXOxTFGp/9d80e5babe1f373d4e9cd012f89ac5dd/public_record_logs.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "At the end of the ceremony, logs are printed out and given to anybody in the room that wants a copy. Verisign is given a copy of the signed key set on a USB stick, and they will use these signed DNSKEY RRsets in the root zone during Q4 this year. All materials are put back into tamper-evident bags and placed in their respective safes.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "FH7UnKAvh2evZcA0CJdyK",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Let's See Those Signed Keys!",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "There are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "dig . dnskey +dnssec",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "This requests the dnskey records from the root DNS name servers. The interesting part of the response should look something like the following:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". 20868 IN DNSKEY 257 3 8 AwEAAagAIKlVZrpC6Ia7gEzahOR+9W29euxhJhVVLOyQbSEW0O8gcCjF FVQUTf6v58fLjwBd0YI0EzrAcQqBGCzh/RStIoO8g0NfnfL2MTJRkxoX bfDaUeVPQuYEhg37NZWAJQ9VnMVDxP/VHL496M/QZxkjf5/Efucp2gaD X6RS6CXpoY68LsvPVjR0ZSwzz1apAzvN9dlzEheX7ICJBBtuA6G3LQpz W5hOA2hzCTMjJPJ8LbqF6dsV6DoBQzgul0sGIcGOYl7OyQdXfZ57relS Qageu+ipAdTTJ25AsRTAoub8ONGcLmqrAmRLKBP1dfwhYB4N7knNnulq QxA+Uk1ihz0= . 20868 IN DNSKEY 256 3 8 AwEAAa67bQck1JjopOOFc+iMISFcp/osWrEst2wbKbuQSUWu77QC9UHL ipiHgWN7JlqVAEjKITZz49hhkLmOpmLK55pTq+RD2kwoyNWk9cvpc+tS nIxT7i93O+3oVeLYjMWrkDAz7K45rObbHDuSBwYZKrcSIUCZnCpNMUtn PFl/04cb . 20868 IN RRSIG DNSKEY 8 0 172800 20150913235959 20150830000000 19036 . QKU/YSUHNXa0coshORV2r8o0PWZ43dn/u1ml4DglqLXTi2WJh+OyMFgi w4Xc7cF4T8Eab5TLbwqDHOrE87fmvcdSgQQOVwYN6jwStHAliuEICs6X rd+sqanyyMpaynLI630k5PuuQVOWxHn/Hyn4yFN5MJoQG9Pz+gn8FjCB oNGs0vu1TQm2m6DSGfjRTd7tRIchXAbOUvEVVnDWaTNPX3c35xqoHlUZ Ta00N9FvKqEwZDjdR1e0BCaDLL/Pk+CRygzOyfSKiuULzKEecsp3jPYY nXfKZmTuMuaQNRmcyJD+WSFwi5XyRgqrnxWUYmFcum4zw1NXdyp0mlGO slQ6NQ==",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The first record is the public counterpart to the private key-signing key in the HSM, the second is the zone-signing key provided by Verisign, and the third RRSIG record is what we created during the Root Signing Ceremony. Without that last one, the worldwide DNSSEC system wouldn't work.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
 					},
 					{
 						"contentfulId": "5MHIRo77TkiZBRV4RhVqE9",
