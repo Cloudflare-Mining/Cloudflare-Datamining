@@ -1361,6 +1361,9 @@
 		"_prototype": {
 			"arguments": "undefined",
 			"caller": "undefined",
+			"encoding": "string",
+			"fatal": "boolean",
+			"ignoreBOM": "boolean",
 			"length": "undefined",
 			"name": "undefined",
 			"prototype": "undefined",
@@ -1392,6 +1395,7 @@
 		"_prototype": {
 			"arguments": "undefined",
 			"caller": "undefined",
+			"encoding": "string",
 			"length": "undefined",
 			"name": "undefined",
 			"prototype": "undefined",
@@ -1429,7 +1433,8 @@
 		"_prototype": "object",
 		"canParse": "function",
 		"length": "number",
-		"name": "string"
+		"name": "string",
+		"parse": "function"
 	},
 	"URLPattern": {
 		"__proto": "function",
