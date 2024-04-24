@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the department</strong></h4>
+<h4><strong>Available Locations<br><br>Hybrid: Amsterdam, Lisbon, London, Munich, Paris</strong><br><strong>Remote: France, Germany, Netherlands, Portugal, UK</strong><br><strong><br>About the department</strong></h4>
 <h4>Cloudflare’s Infrastructure group is responsible for building our global network. Our Hardware Engineering team helps research, develop, test, and deploy new equipment enabling 20% of the world’s internet traffic to be served smoothly. Deployed across 285 cities in 100+ countries, the hardware we select helps improve the security, reliability, and performance of the Internet.</h4>
 <h4><strong>About the Role</strong></h4>
 <p>We need to make thoughtful infrastructure choices affecting a significant portion of the Internet. Hardware we work with includes servers, routers, switches, optical equipment, power distribution units, cables, optics, and more. As a Hardware Systems Engineer, you will work with colleagues on the Hardware Engineering, Product teams, and Hardware Sourcing teams to troubleshoot and maintain Cloudflare’s worldwide fleet of storage and compute servers.</p>
