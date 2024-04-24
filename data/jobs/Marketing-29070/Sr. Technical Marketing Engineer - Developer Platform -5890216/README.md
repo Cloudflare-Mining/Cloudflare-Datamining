@@ -31,18 +31,22 @@
 <p><strong>Requirements</strong></p>
 <p>Must have multiple of the following skills:</p>
 <ul>
-	<li>4+ years of experience as developer with major languages, ideally JavaScript.&nbsp;</li>
+	<li>4+ years of experience with popular languages like JavaScript, typeScript, or Python.&nbsp;</li>
 	<li>An excellent understanding of developer workflows, CI/CD pipelines, and IDE/GitHub/GitLab integrations.</li>
-	<li>Experience with developer-centric cloud computing environments (AWS, GCP, Azure, etc.)</li>
+	<li>Experience with popular frameworks for creating websites and apps.&nbsp;</li>
+	<li>Understanding of developer-centric cloud computing environments (AWS, GCP, Azure, etc.)</li>
+</ul>
+<p>&nbsp;</p>
+<p>Good to have, additional skills:</p>
+<ul>
+	<li>3+ years of experience in technical marketing/product marketing/product management/solutions engineering.</li>
 	<li>Experience with some or all the following foundational technologies and products: SaaS/Cloud or hybrid cloud deployments, Cloudflare Developer Platform, AWS Cloudfront/Lambda@Edge, Fastly Compute@Edge, Akamai Edge Development, Microsoft Azure Arc/AKS Hybrid.</li>
 	<li>Experience positioning technical products to both technical users and economic decision makers</li>
 	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</li>
 	<li>Good analytical and debugging skills</li>
+	<li>Experience in B2B technology marketing with a keen understanding of the Internet ecosystem, Application Security landscape, and Artificial Intelligence.</li>
 </ul>
-<p><strong>Good to have, additional skills:</strong></p>
 <ul>
-	<li>Ideally 3+ years of experience in technical marketing/product marketing/product management/solutions engineering.</li>
-	<li>Experience in B2B technology marketing with a keen understanding of the Internet ecosystem,&nbsp; Application Security landscape, and Artificial Intelligence.</li>
 	<li>BS/BA degree in Engineering, Computer Science/EE, or related field</li>
 </ul>
 <div class="content-conclusion">
