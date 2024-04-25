@@ -204,6 +204,10 @@ function reviveObject(raw) {
 
 const promises = [];
 const tags = [];
+const oldTags = fs.readFileSync(path.resolve(dir, '_tags.json'));
+if (oldTags) {
+	tags.push(...JSON.parse(oldTags));
+}
 let publisher = null;
 for (const url of [...blogURLs].sort()) {
 	promises.push(limit(async () => {
