@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>The Team</strong></p>
+<p><strong>Available locations: Singapore<br><br>The Team</strong></p>
 <p>Security Compliance is seen as a critical business function at Cloudflare. Compliance certifications allow our customers to be confident in the security and privacy of our products, while also providing frameworks for well-tuned information security management systems and programs. These standards provide clarity to Cloudflare’s teams on how to incorporate security principles in the management of systems, the development of products, and the expansion of our business footprint. The Security Compliance team also works with the Legal team to implement Cloudflare’s security regulatory obligations, including working closely with cybersecurity regulators around the world.</p>
 <p>This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. You will join as a member of the Security and Privacy Validations Team. This team is part of GRC and is part of the greater Security Team.</p>
 <p>We guarantee that you will be challenged and have room for growth on our team!&nbsp;&nbsp;</p>
