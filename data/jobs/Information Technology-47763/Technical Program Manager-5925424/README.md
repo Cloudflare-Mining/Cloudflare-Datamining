@@ -5,37 +5,50 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations Available - Austin, TX, this position is eligible for being remote in Austin Texas only.&nbsp;</strong></p>
-<h4><strong>About the team</strong></h4>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for an experienced Data Engineer to join our team to scale our data platform and product insights initiatives. You will work with a wide array of data sources to build integrated data pipelines that process billions of records each day and influence our critical business initiatives.&nbsp;</p>
-<p>Success in this role comes from marrying a strong data engineering background with product and business acumen to deliver scalable data pipelines and analytics solutions that can enable advanced analytics via a self-service user interface.</p>
-<p><strong>What you'll do</strong></p>
+<h4>Location, Remote US</h4>
+<h4>About the department</h4>
+<p>Cloudflare’s IT/Enterprise Engineering, Planning and Governance Team is a crucial pillar of the CIO Organization. It manages programs and initiatives across IT Infrastructure, Enterprise Systems, and Enterprise Engineering, enabling Cloudflare internal teams to operate at their most efficient level. The team establishes end-to-end governance principles and frameworks, leads business partnering, and drives program planning, execution, and demand capacity management.</p>
+<h4>What you'll do</h4>
+<p>We are looking for a highly skilled and self-motivated Technical Program Manager with excellent communication skills who thrives on solving challenges to join our team. Your main role will be to work with the many teams across the organization to drive data governance and data integrity initiatives. These programs will span over multiple quarters involving IT, various Business Verticals and Technical Operations teams.&nbsp;</p>
+<p>You bring a passion for matching up business needs with building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You are able to implement and drive processes and persistently make progress.&nbsp; The ideal candidate is flexible and comfortable in playing multiple roles (diplomat, moderator, negotiator, reporter, coach, etc.), leading initiatives, and is able to adapt to changing situations. Combined with technical expertise, you have the ability to build trust and strong partnership with counterparts in Engineering, Development, Operations, and Business teams.</p>
 <ul>
-	<li>Design, implement and support end to end scalable data pipelines for multiple data products&nbsp;</li>
-	<li>Work closely with a cross functional team of data scientists and analysts and internal stakeholders on strategic initiatives&nbsp;</li>
-	<li>Contribute in improving an evolving data platform for scalability, observability and reliability</li>
-	<li>Partner with product and other data engineering teams to extract, transform and load data from various sources using big data technologies</li>
-	<li>Build rich data sets that drive innovation in data driven insights at scale within the company</li>
-	<li>Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team in Austin and San Francisco to improve the data collection and quality</li>
+	<li>Develop and deliver a multi-phased effort that will focus on aligning data governance and data integrity efforts across the organization.</li>
+	<li>Facilitate discussions and activities that uncover data trends, patterns and anomalies.</li>
+	<li>Collaborate with cross-functional teams to design and deliver actionable insights.</li>
+	<li>Validate data accuracy, completeness and integrity.</li>
+	<li>Identify and address data quality issues and discrepancies.</li>
+	<li>Implement data quality controls and monitoring mechanisms</li>
+	<li>Analyze business processes and operations to identify opportunities for improvement..</li>
+	<li>Gather business requirements and assist with translating requirements into future state design options, while deftly incorporating sound architecture and design principles into the final solution.</li>
+	<li>Build clear and transparent communication channels to align business stakeholders, IT, and third-party vendors to ensure relevant audiences receive appropriate updates on programs and projects.</li>
+	<li>Work with stakeholders in controlling program scope&nbsp; and executing to committed schedules, as well as maintaining and reporting out program deliverables across&nbsp; multiple teams and business units.</li>
+	<li>Establish and maintain relationships with vendors, ensuring adherence to best practices and accountability throughout the program lifecycle.</li>
+	<li>Maintain clear line-of-site on the critical path timeline; managing risks, and facilitating resolution of blockers to ensure project success.</li>
+	<li>Collaborate with Business PMs on internal processes, tools and workflows across multiple teams and functions across Cloudflare, in support of IT governance and project management methodologies, processes and procedures.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
-	<li>3+ years of industry experience in software engineering, data engineering, or related fields</li>
-	<li>Strong programming skills with Go, Python or any JVM based programming language</li>
-	<li>Experience in writing advanced SQL queries</li>
-	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
-	<li>Solid understanding of big data technologies such as Spark, BigQuery, Kafka etc.&nbsp;</li>
-	<li>Strong communication skills</li>
+	<li>5+ years experience in program and project management</li>
+	<li>3+ years proven experience in leading data governance and/or data integrity programs</li>
+	<li>A strong engineering or development background to facilitate architecture and integration discussions&nbsp;</li>
+	<li>Track record of delivering technical programs through the full end to end program management lifecycle, from conception to usability study</li>
+	<li>Have a balance of people, organizational, and technical skills to deliver and guide decision making without authority</li>
+	<li>Work independently in a dynamic and high-pressure environment with timely delivery despite ambiguous and changing business requirements</li>
+	<li>Strong competency with project management tools (Confluence, JIRA, Smartsheets, etc.) and various methodologies (Waterfall, Scrum, etc)&nbsp;&nbsp;</li>
+	<li>Proven ability to clearly and concisely communicate with an executive audience in both written and verbal communications in English (writing sample will be requested)</li>
+	<li>Thrive in a fast-paced hyper-growth engineering environment, with the ability to learn new technologies quickly, and extremely comfortable&nbsp; with ambiguity</li>
+	<li>Bachelor's degree in Computer Science, Information Systems Management, Technology management, Business management or comparable work experience</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Experience with container based deployments such as Docker &amp; Kubernetes</li>
-	<li>Experience with Google Cloud Platform or other cloud storage platforms</li>
-	<li>Experience in building RESTful and microservices applications is a plus</li>
+	<li>Proven working experience as a program manager in the technology sector, preferably within an IT or Corporate Technology department</li>
+	<li>Experience with both waterfall and Agile development methodologies</li>
+	<li>Experience with data management or data catalog platforms (Informatica, Atlan, etc.)</li>
+	<li>Understanding of data warehousing principles and concepts, and technical knowledge related to Data Management, Business Intelligence, Data Analytics</li>
+	<li>PMP/PgMP and Agile certifications</li>
 </ul>
+<p>Fluency in organizational change management methodologies (Prosci, etc.)</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
