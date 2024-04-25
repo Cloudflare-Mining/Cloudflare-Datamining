@@ -5,36 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: US Remote</strong></p>
-<p><strong>About Cloudflare’s content marketing team</strong></p>
-<p>The content marketing team writes, edits, and manages content for use in marketing and sales campaigns — articles, event presentations, videos, promotional copy, and more. We work most closely with designers, web producers, product marketers, campaign managers, and event planners, but also collaborate as needed with people across the entire organization.</p>
-<p>&nbsp;</p>
-<p><strong>About the Sr. Manager of Content Marketing role</strong></p>
-<p>The Sr. Manager of Content Marketing will lead a team of writers who create a variety of content used in multi-channel marketing campaigns. This is a “player/coach” role, which will require a mixture of strategic planning, team management, and hands-on writing and editing.&nbsp;</p>
-<p><strong>The role’s primary responsibilities are:</strong></p>
+<p><strong>About the Role</strong><br>At Cloudflare, we are on a mission to help build a better internet. Our Learning and Development team looks to help build a great employee experience by providing tools and resources for all Cloudflare employees to grow and develop in the skills critical for success.&nbsp;</p>
+<p><strong>Job Summary:</strong> We are seeking an experienced and innovative Instructional Designer to join our L&amp;D Team. The successful candidate will be responsible for designing and developing high-quality learning experiences that engage learners and achieve business goals. The Instructional Designer will collaborate with subject matter experts, stakeholders, and the learning and development team to create hands-on, interactive, engaging, while utilizing adult learning theories as well as the latest training development methodologies and tools.</p>
+<p><strong>Locations: Austin or San Francisco Remote</strong></p>
+<p><strong>Key Responsibilities:&nbsp;</strong></p>
 <ul>
-	<li>Managing Cloudflare’s content development pipeline: fielding requests, assigning projects, keeping track of progress, and removing blockers</li>
-	<li>Working with marketing colleagues to create quarterly and yearly content marketing plans</li>
-	<li>Establishing and managing relationships with third-party writing resources (e.g. freelancers + agencies)</li>
-	<li>Running content strategy and development for global events</li>
-	<li>Working with the SEO team on web content strategy and development</li>
-	<li>Writing content for high-priority marketing campaigns</li>
-	<li>Editing content written by the content team and other marketing colleagues</li>
-	<li>Establishing and maintaining a content taxonomy</li>
-	<li>Advising and training colleagues on Cloudflare messaging and brand style</li>
+	<li>Design and develop learning materials, including e-learning modules, instructor-led training, and blended learning programs.&nbsp;&nbsp;</li>
+	<li>Conduct needs assessments and analyze learning data to inform design decisions&nbsp;</li>
+	<li>Create storyboards, scripts, and assessments for learning content&nbsp;</li>
+	<li>Collaborate with subject matter experts to ensure accuracy and relevance of content&nbsp;</li>
+	<li>Develop and maintain project plans and timelines&nbsp;</li>
+	<li>Manage and maintain existing learning content, including updates and revisions&nbsp;</li>
+	<li>Stay current with industry trends, best practices, and new technologies in instructional design&nbsp;</li>
+	<li>Collaborate with the learning and development team to ensure alignment with organizational goals and objectives</li>
+	<li>Organize, plan, and execute self-paced course creation and update processes</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Who we’re looking for in a candidate:</strong></p>
-<p>The ideal candidate is someone with 8+ years' full-time experience in content marketing, including 3+ years’ leading a content team. Prior experience in enterprise technology / software is required, and IT or cybersecurity experience is highly desirable.&nbsp;</p>
-<p><strong>Based on this experience, we expect the ideal candidate to be:</strong></p>
+<p><strong>Requirements:&nbsp;</strong></p>
 <ul>
-	<li>A capable marketer, who has a deep understanding of how content powers multi-channel demand generation campaigns, events, organic search efforts, PR launches, and other marketing activities</li>
-	<li>A creative strategist, who can help colleagues ideate unique and compelling content concepts</li>
-	<li>An excellent writer, who is capable of clear, concise, persuasive communication</li>
-	<li>A thoughtful editor, who can improve a written piece’s grammar and structure to increase clarity and impact&nbsp;</li>
-	<li>A determined project manager, who can manage a complex content production pipeline and anticipate/remove blockers</li>
-	<li>An empathetic mentor, who can apply their deep knowledge of professional writing processes to coach and support other writers</li>
-	<li>Sincerely interested in the deep technical details of how the Internet and related technologies work — and healthily skeptical about buzzwords, jargon, and flimsy business logic</li>
+	<li>Four-year practical experience preferably in Human Resources/Learning &amp; Development/Training Teams&nbsp;</li>
+	<li>Proficiency in instructional design models, theories, and methodologies&nbsp;</li>
+	<li>Experience with high-level course development tools such as Articulate 360, Storyline 2, Captivate</li>
+	<li>Experience with setting up eLearning for delivery through a LMS (preferably Workday Learning)</li>
+	<li>Experience using Google Suite (Slides, Docs, etc.)</li>
+	<li>Experience with advanced visual design development tools such as Photoshop, Premiere, Media Encoder, Jira</li>
+	<li>Knowledge of SCORM, xAPI, and other eLearning standards and protocols, preferred</li>
+	<li>HTML knowledge, preferred</li>
+	<li>Strong project management and communication skills&nbsp;</li>
+	<li>Strong analytical and problem-solving skills&nbsp;</li>
+	<li>Be able to thrive when project managing large scale, company-wide initiatives in a fast paced environment</li>
+	<li>A drive for excellence and the ability to work on multiple projects simultaneously to meet delivery timelines</li>
+	<li>Experience in technical and soft skill training content development</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
