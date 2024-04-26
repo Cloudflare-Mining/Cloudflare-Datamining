@@ -11,10 +11,10 @@
 <h3>What you'll do</h3>
 <p>The Technical Account Manager will own the post-contract end-to-end support experience for Cloudflare’s most strategic customers, to unblock post-go-live technical support challenges. They are a dedicated technical primary point of contact for our top-tier Enterprise customers. TAM’s responsibilities are to manage and monitor support interactions, serve as an internal advocate for customers, respond to customer escalations, and proactively escalate issues as needed. TAMs meet regularly with their respective customer(s) and provide proactive recommendations that support customers’ requirements, roadmap, and ongoing technical needs, partnering with the Customer Success and Account Team members.</p>
 <p>To be successful in this role, you must possess strong customer service and leadership skills, be a self-starter, be committed to ongoing self-education, be able to collaborate across organizations and have excellent technical problem-solving skills.</p>
-<p>As a TAM aligned with Cloudflare’s Network Services products and with a working understanding of Layer 3 and 4 functionality, you’ll closely engage with customers who integrate these solutions into their Cloudflare configuration, addressing their primary support needs.</p>
-<h3><strong>Responsibilities</strong></h3>
+<p>As a TAM aligned with <a href="https://www.cloudflare.com/developer-platform/products/">Cloudflare’s Developer Platform</a> products, you’ll be working closely with customers who use these solutions as an integral part of their Cloudflare configuration, addressing their primary support needs.</p>
 <ul>
 	<li>Serve as primary technical support contact.</li>
+	<li>Document and maintain technical profiles for customers to ensure a globally consistent and smooth support experience.</li>
 	<li>Maintain a cooperative relationship with all cross-functional resources, such as product, engineering, and customer account teams comprising Account Executives, Customer Success, Professional Services, and Partners throughout every sales phase.</li>
 	<li>Collaborate with the Account Team, as well as Engineering and Product, to help ensure high customer satisfaction by providing world-class dedicated support throughout the entire life of the customer partnership.</li>
 	<li>Provide product and engineering teams with customer feedback to help identify Support challenges and opportunities.&nbsp;</li>
@@ -32,14 +32,14 @@
 	<li>Ensure rapid Incident response.</li>
 	<li>Assist with preparing and communicating CSRs and formal documentation for incidents and major issues.</li>
 </ul>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h3>Examples of desirable skills, knowledge and experience</h3>
 <ul>
-	<li>Understanding of networking and routing protocols (BGP, OSPF, IPSec, GRE, etc).</li>
-	<li>Experience in security products and technologies (e.g Firewall, IPS, DDoS).</li>
-	<li>Experience in system integration and multi-vendor environments &amp; data center deployments.</li>
-	<li>Basic troubleshooting skills (e.g. traceroute, WireShark, dig, cURL, etc.) towards identifying and escalating to the necessary teams to drive towards a solution.</li>
+	<li>Baseline understanding of at least one programming language, preferably JavaScript.</li>
 	<li>Minimum 8 years of previous experience in a customer-facing team with technical account management responsibilities.</li>
+	<li>Familiarity with modern development tools and systems.</li>
 	<li>Have the business acumen of working with Fortune 500 companies and their leadership team.</li>
+	<li>Experience with edge computing products and technologies (serverless computing, object storage, key-value stores, SQL, etc.).</li>
+	<li>Basic troubleshooting skills and methodologies towards identifying and escalating to the necessary teams to drive towards a solution.</li>
 	<li>Fundamental understanding of how the Internet works, e.g. the OSI Model, Application and Network security, what a proxy is and how it works.</li>
 	<li>Passionate about Cloudflare products, helping customers, and building strong relationships across organizations.</li>
 </ul>
