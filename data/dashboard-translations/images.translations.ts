@@ -65,6 +65,8 @@ You will only be billed for number of images served.`
 		bundle_advanced_description: "Store up to 500,000 images and 10,000 minutes of video content. Deliver up to 1,000,000 images and 50,000 minutes of video content each month.",
 		bundle_advanced_additional_images_description: "The Creator Bundle includes 500,000 images.",
 		bundle_save_up_to: (0, e.d)`**$${"amount"} / month in savings**`,
+		resizing_notice_title: "You're currently using the legacy plan for Image Resizing",
+		resizing_notice_description: "Image Resizing is now available as transformations under Cloudflare Images. You can continue to optimize and manipulate images that aren\u2019t stored in Cloudflare Images. When you purchase Images, then you will automatically switch to the new pricing plan, which costs $0.50 per 1,000 unique transformations. Each unique transformation is billed only once per 30 day period.",
 		single_product_feature_1: "Up to 20 variants per image at no extra cost",
 		single_product_feature_2: "Automatic image optimization in formats including WebP and AVIF",
 		single_product_feature_3: "Direct Creator Uploads",

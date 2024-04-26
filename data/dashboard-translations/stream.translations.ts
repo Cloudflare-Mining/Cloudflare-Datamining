@@ -89,7 +89,10 @@ You will only be billed each month based on how many minutes you stream. If you 
 		images: {
 			subtitle: "in 100,000 images",
 			title: "Images Storage Capacity",
-			additional_title: "Additional Images Storage Capacity"
+			additional_title: "Additional Images Storage Capacity",
+			resizing_notice_title: "You're currently using the legacy plan for Image Resizing",
+			resizing_notice_description: "Image Resizing is now available as transformations under Cloudflare Images. You can continue to optimize and manipulate images that aren\u2019t stored in Cloudflare Images. When you purchase Images, then you will automatically switch to the new pricing plan, which costs $0.50 per 1,000 unique transformations. Each unique transformation is billed only once per 30 day period.",
+			cancel_resizing_after_bundle_error: (0, e.d)`You successfully purchased a Cloudflare Images bundle but we were not able to cancel your existing Image Resizing subscription. Your upgrade is incomplete. Please contact deannalam@cloudflare.com.</br></br><0>Navigate to images</0>`
 		},
 		stream: {
 			title: "Stream Storage Capacity",

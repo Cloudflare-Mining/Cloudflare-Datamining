@@ -109,7 +109,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		register: "Register"
 	},
 	register_page: {
-		search: "Search for a domain name"
+		search: "Search for a domain name",
+		billing_permissions_error_message: "You need permission to manage billing in order to register a domain. Please reach out to a super-admin on the account for assistance."
 	},
 	onboarding: {
 		overview: {
@@ -146,6 +147,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		domain_protection: "Domain is under Domain Protection",
 		auto_renew_description: "Your domain will automatically renew every year.",
 		expires_on: (0, e.d)`Your domain will expire on ${"expires_on"}`,
+		billing_permissions_error_message: "You need permission to manage billing in order to renew a domain. Please reach out to a super-admin on the account for assistance.",
 		grace_period: {
 			title: "Domain expired",
 			details: (0, e.d)`This domain expired on ${"grace_period_start"}. You have a 40 day grace period during which you can renew this domain, which will end on <strong>${"grace_period_end"}</strong>.`
@@ -168,6 +170,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 			description_domain_active: (0, e.d)`The domain is in the redemption period. At the conclusion of the redemption period the domain will be deleted and released by the Registry. Cloudflare can attempt to restore your domain which will also extend the term by 1 year. You will be charged a redemption fee of ${"redemptionFee"} plus the standard renewal fee. You will only be charged the redemption and renewal fees if the restore is successful.`,
 			description_common: '<br /><br />If you would like to proceed with the restore and renewal click the Restore button below. You will be given the opportunity to review the charges before proceeding.<br /><br />Click <a href="https://developers.cloudflare.com/registrar/faq/#what-happens-when-a-domain-expires" rel="noopener noreferrer" target="_blank">here</a> to learn more about the restore process.',
 			restore_cta: "Restore",
+			billing_permissions_error_message: "You need permission to manage billing in order to restore a domain. Please reach out to a super-admin on the account for assistance.",
 			modal: {
 				title: "Confirm domain restore for %{domainName}",
 				domain_new_expiration_date: "Domain expiration date after successful restoration: %{expiration}.",
@@ -254,7 +257,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		per_year: "/ year",
 		billing: (0, e.d)`You will be charged to the card ending in <0>${"last4"}</0>.`,
 		billing_paypal: (0, e.d)`You will be charged to your PayPal account <0>${"email"}</0>.`,
-		billing_cloud: (0, e.d)`You will be charged to the card ending in <0>${"last4"}</0><1>Your new domain will be automatically set up to use iCloud email. By completing this purchase you agree to Cloudflare's:</1>`
+		billing_cloud: (0, e.d)`You will be charged to the card ending in <0>${"last4"}</0><1>Your new domain will be automatically set up to use iCloud email. By completing this purchase you agree to Cloudflare's:</1>`,
+		fees: "Domain fees subject to change."
 	},
 	domain_page_sidebar_domain_details: "Domain Details",
 	domain_page_sidebar_status: "Status",
@@ -550,6 +554,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	wizard_error_no_auth_key: "All auth codes must be valid to proceed",
 	wizard_error_no_websites: "You currently don't have any websites.",
 	wizard_error_no_websites_description: "Prior to transferring a domain, please add the domain you plan to transfer to Cloudflare. Once the domain is added, you will be able to proceed with the next steps in the transfer process. Review <0>supported extensions</0>.",
+	wizard_error_billing_permissions: "You need permission to manage billing in order to transfer a domain. Please reach out to a super-admin on the account for assistance.",
 	wizard_legal_body_one: 'By clicking "Confirm and Finalize Transfer" you agree to purchasing an annual subscription that renews automatically, unless you cancel your subscription(s) through your account dashboard before the next billing period begins. Early cancellation incurs charges for the entire subscription period. Your invoice will include any final sales tax, including state and local taxes when applicable. Visit',
 	wizard_legal_body_two: "for additional information about Cloudflare's billing, renewal, and cancellation policies.",
 	wizard_legal_body_uk: "If you elect to enable DNSSEC for any .uk domain, please note that Nominet, the .UK Registry, accepts no liability in relation to the operation or use of DNSSEC records. They will take reasonable steps to correct any error in the DNSSEC records, where such an error is as a result of a mistake on their part, but will otherwise accept no liability for the error. Registrants accept all risk in relation to the use of DNSSEC in relation to their domain names.",
@@ -708,7 +713,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 Payment will be charged in US dollars.`,
 	registration_checkout_select_payment: "Select payment method",
 	registration_checkout_error_header: "We're sorry, something went wrong with that.",
-	registration_checkout_error_sub_header_default: 'Please review your purchase details and try again, or review the <a href="https://developers.cloudflare.com/fundamentals/subscriptions-and-billing/troubleshooting-failed-payments/" target="_blank">Troubleshoot failed payments</a> guide for further guidance.',
+	registration_checkout_error_sub_header_default: 'Please review your purchase details and try again, or review the <a href="https://developers.cloudflare.com/fundamentals/subscriptions-and-billing/troubleshooting-failed-payments/" target="_blank">troubleshoot failed payments</a> guide for further guidance.',
 	registration_checkout_error_sub_header_banned_zone: 'The registration was not able to be completed. The domain you are attempting to register has been blocked for security reasons. Please <a href="https://support.cloudflare.com" target="_blank">contact support</a> for assistance.',
 	registration_checkout_default_error_message: "Something went wrong. Please try again.",
 	registration_checkout_billing_quote_error_message: 'An internal system error has occurred while trying to process the transaction. Please wait a few minutes and try again. If the issue persists please <a href="https://support.cloudflare.com" target="_blank">contact support</a> for assistance.',
@@ -741,7 +746,8 @@ Payment will be charged in US dollars.`,
 	registration_success_product_list_pages_link_cta: "Learn more",
 	registration_success_contact_preview_no_contact: "No contact information is currently available.",
 	registration_success_contact_preview_roles: "<0>For:</0> Domain owner, Administrative, Technical, Billing",
-	cannot_transfer: "cannot be transferred...",
+	cannot_transfer: "%{domainName} cannot be transferred",
+	cannot_transfer_domain: "Domain",
 	cannot_transfer_default: "Unable to transfer domain",
 	cannot_transfer_zone_not_active: "Zone is not active",
 	cannot_transfer_zone_not_eligible: "Zone is not eligible",
@@ -825,7 +831,7 @@ Payment will be charged in US dollars.`,
 	protection_domains_table_error: "No domains available",
 	protection_unlock_modal_title_account: "Approval required",
 	protection_unlock_modal_title_domain: (0, e.d)`Approval required to unlock ${"domainName"}`,
-	protection_unlock_modal_subtitle_domain: "You will need to select at least %{smart_count} approver to initiate the initiate the unlock of your domain. |||| You will need to select at least %{smart_count} approvers to  initiate the unlock of your domain.",
+	protection_unlock_modal_subtitle_domain: "You will need to select at least %{smart_count} approver to initiate the initiate the unlock of your domain. |||| You will need to select at least %{smart_count} approvers to initiate the unlock of your domain.",
 	protection_unlock_modal_subtitle_account: "You will need to select at least %{smart_count} approver to initiate an update to your domain protection configuration. |||| You will need to select at least %{smart_count} approvers to initiate an update your domain protection configuration.",
 	protection_unlock_modal_search_approvers: "Search approvers",
 	protection_unlock_modal_search: "Search",
