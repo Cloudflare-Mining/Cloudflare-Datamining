@@ -22,7 +22,7 @@
 </ul>
 <p><strong>About You</strong></p>
 <ul>
-	<li>5+ years of Corporate Finance/Strategy, Investment Banking, Consulting, or Incentive Compensation Administration; experience with a Saas business model preferred</li>
+	<li>8+ years of Corporate Finance/Strategy, Investment Banking, Consulting, or Incentive Compensation Administration; experience with a Saas business model preferred</li>
 	<li>Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</li>
 	<li>Experience or understanding of commissions-specific SOX Controls</li>
 	<li>Experience with Varicent, Anaplan ICM, Xactly, Calidus or a similar ICM tool</li>

@@ -5,34 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Remote, Mexico</strong></p>
-<p><strong>What You'll Do</strong></p>
-<p>We are looking for a strong leader to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Tooling &amp; Strategy.&nbsp;</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare is looking for an <strong>EMEA Marketing &amp; Events Operations Executive</strong>, with an intermediate level, marketing mindset - who is dynamic, organised, motivated, analytical and has bags of positive energy. The right candidate will join the EMEA Events Center of Excellence team to help support the delivery of events across the region which leads to growth of EMEA marketing pipeline dollars.</p>
+<p>In this cross-functional role you will collaborate closely, not only with the EMEA Event Centre of Excellence team, but with other stakeholders across the EMEA Marketing team such as globalisation, design team and marketing operations.</p>
+<p>You will support improvement of existing operational processes as well as being analytical to suggest new processes to further improve on the operational efficiencies of the EMEA events as a whole. If you’re passionate about efficiencies and optimising processes&nbsp; - this is the perfect opportunity for you!</p>
+<p>The right candidate will learn first hand how the events process works and will work closely with the EMEA Head of Events to implement new EMEA templates &amp; support the operational part of existing projects from other team members. This role will be supporting robust EMEA events operations, delivering important pieces of a marketing campaign to support the wider EMEA events team.&nbsp;</p>
+<p><br><strong>Responsibilities</strong></p>
 <ul>
-	<li>Lead the formation and implementation of Cloudflare’s offshore Commissions Operations Center of Excellence</li>
-	<li>Partner with Commissions Leadership to identify, standardize and offshore Commissions processes and practices</li>
-	<li>Build extensive playbooks, documentation and enablement materials, scaling Center of Excellence efficiency, repeatability, and capacity</li>
-	<li>Hire, mentor and develop a best-in-class team, supporting an expanding scope of responsibility</li>
-	<li>Implement a customer-centric approach and lead engagement with internal customers with the highest degree of empathy and attention to detail</li>
-	<li>Serve as a custodian of the business, ensuring alignment with established practices and policies</li>
-	<li>Implement robust and thorough change management processes</li>
-	<li>Employ a principles-first approach and operate with the highest level of integrity and discretion</li>
-	<li>Implement appropriate SOX Controls, partnering closely with the Controllership and Internal Audit Organizations</li>
+	<li>Support the project management of EMEA events marketing flows such as email marketing campaign, social media campaign, design requests and any logistics needs that leads to events excellence and consistency on the delivery.</li>
+	<li>Support the improvement &amp; implementation of EMEA event processes and tools to streamline operations and drive efficiencies&nbsp;</li>
+	<li>Support EMEA events executions, taking ownership of pieces of the whole EMEA event campaigns working with the wider EMEA events teams (such as swag orders, swag management, email workflow, event banners creation)</li>
+	<li>Provide operations support for EMEA marketing campaigns, events, and other initiatives</li>
+	<li>Creation of videos for event booth engagement &amp; pre/post event promotion</li>
+	<li>Support on EMEA event leads for uploading to our CRM systems and reports creation in Salesforce</li>
+	<li>Support identifying potential events to support EMEA event calendar evaluation - working with the wider EMEA team&nbsp;</li>
+	<li>Work with the ABM/Campaigns and globalisation teams to identify the best assets to be featured into our post events flow and email campaigns</li>
+	<li>Support the selection of best assets to support events in each region</li>
 </ul>
-<p><strong>About You</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>5+ years of Corporate Finance/Strategy, Investment Banking, Consulting, or Incentive Compensation Administration; experience with a Saas business model preferred</li>
-	<li>Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</li>
-	<li>Experience or understanding of commissions-specific SOX Controls</li>
-	<li>Experience with Varicent, Anaplan ICM, Xactly, Calidus or a similar ICM tool</li>
-	<li>Experience interfacing and supporting GTM &amp; Sales Organizations</li>
-	<li>Experience with Salesforce Cases</li>
-	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
-	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
-	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
+	<li>2+ years of experience in the marketing department</li>
+	<li>Strong organisational skills with acute attention to detail</li>
+	<li>Ability to manage multiple work streams and priorities simultaneously</li>
+	<li>An eye for design and creativity - Experience with Canva, PowerPoint or other similar tools</li>
+	<li>Strong spreadsheet skills as well as other Office Suite applications</li>
+	<li>Strong communicator with ability to build cross-functional partnerships</li>
+	<li>Self-motivated with a solutions-oriented mindset</li>
+	<li>The ideal candidate will have a passion for process optimization and driving operational excellence</li>
+	<li>Demonstrated hands-on attitude, effectiveness in being proactive and taking initiatives&nbsp;</li>
+	<li>A real team player who enjoys sharing and communicating with peers and across functions</li>
+	<li>Mandatory proficiency in English - other languages will be considered a plus</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Bonus points</strong></p>
+<ul>
+	<li>Familiarity with Salesforce and report building</li>
+	<li>Familiarity with common MarTech tools</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
