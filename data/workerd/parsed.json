@@ -2513,6 +2513,14 @@
 						"compatEnableDate": "2024-04-03",
 						"compatEnableFlag": "rpc"
 					}
+				},
+				{
+					"name": "internalStreamByobReturn",
+					"annotations": {
+						"compatDisableFlag": "internal_stream_byob_return_undefined",
+						"compatEnableDate": "2024-05-13",
+						"compatEnableFlag": "internal_stream_byob_return_view"
+					}
 				}
 			]
 		},
