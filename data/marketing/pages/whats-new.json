@@ -2486,22 +2486,6 @@
 					"useCase": "security"
 				},
 				{
-					"contentType": "feature",
-					"date": "2021-03-23",
-					"description": "Cloudflare for Teams customers can configure  policies that rely on device security signals provided by their endpoint security vendor to allow or deny connections to their applications. This includes signals and attributes like version of the operating system, date of the last patch, disk encryption status, inventory of installed applications, status of anti-malware or endpoint security provider, and date of the last malware scan.\n\nCloudflare for Teams customers can now integrate device posture signals from Carbon Black, Sentinel One, Crowdstrike and Microsoft Entra ID.",
-					"id": "f4efd221-9c4e-588c-8e2b-c80385151d98",
-					"pageUrl": null,
-					"relatedContentBlogPost": "https://blog.cloudflare.com/endpoint-partnerships/",
-					"relatedContentCollateral": null,
-					"relatedContentCollateralLabel": null,
-					"relatedContentProductPage": "https://www.cloudflare.com/endpoint-partners/",
-					"relatedContentProductPageLabel": null,
-					"relatedProduct": "Cloudflare Zero Trust",
-					"title": "New device security integrations: Carbon Black, Sentinel One, Crowdstrike and Microsoft Entra ID",
-					"locale": "en-US",
-					"useCase": "security"
-				},
-				{
 					"contentType": "blog",
 					"date": "2021-03-23",
 					"description": "Cloudflare's Secure Web Gateway solution (Gateway) protects users as they navigate the Internet. When users download or upload a file to an origin on the Internet, that file could potentially contain malicious code that may cause their device to perform undesired behavior.\n\nTo prevent this, Cloudflare Gateway allows admins to enable Anti-Virus (AV) scanning of files that are uploaded or downloaded by users as the file passes through Gateway.\n\nAV scanning of files requires organizations to enable Proxy mode under Settings > Network > Layer 7 Firewall.",
@@ -2530,6 +2514,22 @@
 					"relatedContentProductPageLabel": "Explore device posture attributes",
 					"relatedProduct": "Cloudflare Zero Trust",
 					"title": "Zero Trust: New integrations with VMware Carbon Black, CrowdStrike, and SentinelOne",
+					"locale": "en-US",
+					"useCase": "security"
+				},
+				{
+					"contentType": "feature",
+					"date": "2021-03-23",
+					"description": "Cloudflare for Teams customers can configure  policies that rely on device security signals provided by their endpoint security vendor to allow or deny connections to their applications. This includes signals and attributes like version of the operating system, date of the last patch, disk encryption status, inventory of installed applications, status of anti-malware or endpoint security provider, and date of the last malware scan.\n\nCloudflare for Teams customers can now integrate device posture signals from Carbon Black, Sentinel One, Crowdstrike and Microsoft Entra ID.",
+					"id": "f4efd221-9c4e-588c-8e2b-c80385151d98",
+					"pageUrl": null,
+					"relatedContentBlogPost": "https://blog.cloudflare.com/endpoint-partnerships/",
+					"relatedContentCollateral": null,
+					"relatedContentCollateralLabel": null,
+					"relatedContentProductPage": "https://www.cloudflare.com/endpoint-partners/",
+					"relatedContentProductPageLabel": null,
+					"relatedProduct": "Cloudflare Zero Trust",
+					"title": "New device security integrations: Carbon Black, Sentinel One, Crowdstrike and Microsoft Entra ID",
 					"locale": "en-US",
 					"useCase": "security"
 				},
