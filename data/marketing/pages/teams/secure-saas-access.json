@@ -39,7 +39,19 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "SaaS Security | Zero Trust",
+					"metaDescription": "Learn how Cloudflare restores visibility and control over your SaaS apps. Deploy CASB to detect shadow IT, prevent data leaks, and block insider threats.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null,
+					"author": []
+				},
 				"sys": {
 					"createdAt": "2021-11-04T18:22:37.146Z",
 					"updatedAt": "2024-04-27T00:19:59.268Z"
@@ -2930,6 +2942,12 @@
 										"linkText": "Secure SaaS access (CASB)",
 										"page": null,
 										"url": "/products/zero-trust/secure-saas-access"
+									},
+									{
+										"contentfulId": "kVT4h8chqkRIIuzAJ2Xqf",
+										"linkText": "Threat protection",
+										"page": null,
+										"url": "/products/zero-trust/threat-defense"
 									}
 								]
 							},
@@ -3564,6 +3582,30 @@
 								"description": "Read how Cloudflare protects sensitive data within the browser by allowing administrators to control who can copy, paste, and print data in any web-based application.",
 								"externalLinkUrl": "https://blog.cloudflare.com/data-protection-browser/",
 								"hideFromResourceHub": true
+							},
+							{
+								"resourceMedia": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/78idfOCsgt4xYuxQ8SEZKH/ede01fefb8d0083223183e67839a9a97/Zero_Trust_for_SaaS_Apps_Solution_Brief.pdf"
+									},
+									"description": "Cloudflare gives you the tools you need to protect your data and workforce while still allowing your employees to use the SaaS applications that help them get the job done."
+								},
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "[ZT PMM] Solution Brief: Zero Trust for SaaS",
+								"callToAction": "Download PDF",
+								"id": "68e6eb0f-099b-58aa-866c-a316764c6ded",
+								"resourceTitle": "Zero Trust for SaaS Apps",
+								"resourceType": "Solution & Product Guides",
+								"topic": [
+									"Enable Zero Trust Security for Workforce"
+								],
+								"orderDate": "2021-10-13",
+								"industry": null,
+								"description": "Cloudflare Zero Trust enables your organization with visibility into and policy controls over SaaS applications. Learn how Cloudflare helps you discover shadow IT, apply Zero Trust access policies, and data protection controls for SaaS apps.",
+								"externalLinkUrl": null,
+								"hideFromResourceHub": false
 							}
 						],
 						"filterMenu": null
