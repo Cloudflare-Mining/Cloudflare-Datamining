@@ -3,6 +3,7 @@
 		"operationId": "radar-get-annotations-outages",
 		"parameters": [
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -12,6 +13,7 @@
 				}
 			},
 			{
+				"description": "Number of objects to skip before grabbing results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
@@ -20,6 +22,7 @@
 				}
 			},
 			{
+				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -46,6 +49,7 @@
 				}
 			},
 			{
+				"description": "Start of the date range (inclusive).",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -56,6 +60,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -66,6 +71,7 @@
 				}
 			},
 			{
+				"description": "Single ASN as integer.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -75,6 +81,7 @@
 				}
 			},
 			{
+				"description": "Location Alpha2 code.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -84,6 +91,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -331,6 +339,7 @@
 		"operationId": "radar-get-annotations-outages-top",
 		"parameters": [
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -340,6 +349,7 @@
 				}
 			},
 			{
+				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -366,6 +376,7 @@
 				}
 			},
 			{
+				"description": "Start of the date range (inclusive).",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -376,6 +387,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -386,6 +398,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {

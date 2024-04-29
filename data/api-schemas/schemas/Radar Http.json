@@ -4,6 +4,7 @@
 		"operationId": "radar-get-http-summary-by-bot-class",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -16,6 +17,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -44,6 +46,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -57,6 +60,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -70,6 +74,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -82,6 +87,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -94,6 +100,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -106,6 +113,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -123,6 +131,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -139,6 +148,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -156,6 +166,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -172,6 +183,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -193,6 +205,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -212,6 +225,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -429,6 +443,7 @@
 		"operationId": "radar-get-http-summary-by-device-type",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -441,6 +456,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -469,6 +485,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -482,6 +499,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -495,6 +513,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -507,6 +526,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -519,6 +539,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -531,6 +552,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -547,6 +569,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -563,6 +586,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -580,6 +604,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -596,6 +621,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -617,6 +643,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -636,6 +663,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -858,6 +886,7 @@
 		"operationId": "radar-get-http-summary-by-http-protocol",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -870,6 +899,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -898,6 +928,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -911,6 +942,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -924,6 +956,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -936,6 +969,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -948,6 +982,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -960,6 +995,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -976,6 +1012,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -993,6 +1030,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -1010,6 +1048,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -1026,6 +1065,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -1047,6 +1087,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -1066,6 +1107,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -1283,6 +1325,7 @@
 		"operationId": "radar-get-http-summary-by-http-version",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -1295,6 +1338,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -1323,6 +1367,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -1336,6 +1381,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -1349,6 +1395,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -1361,6 +1408,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -1373,6 +1421,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -1385,6 +1434,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -1401,6 +1451,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -1418,6 +1469,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -1434,6 +1486,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -1450,6 +1503,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -1471,6 +1525,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -1490,6 +1545,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -1712,6 +1768,7 @@
 		"operationId": "radar-get-http-summary-by-ip-version",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -1724,6 +1781,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -1752,6 +1810,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -1765,6 +1824,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -1778,6 +1838,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -1790,6 +1851,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -1802,6 +1864,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -1814,6 +1877,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -1830,6 +1894,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -1847,6 +1912,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -1863,6 +1929,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -1880,6 +1947,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -1901,6 +1969,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -1920,6 +1989,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -2137,6 +2207,7 @@
 		"operationId": "radar-get-http-summary-by-operating-system",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -2149,6 +2220,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -2177,6 +2249,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -2190,6 +2263,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -2203,6 +2277,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -2215,6 +2290,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -2227,6 +2303,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -2239,6 +2316,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -2255,6 +2333,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -2272,6 +2351,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -2288,6 +2368,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -2305,6 +2386,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -2321,6 +2403,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -2340,6 +2423,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -2552,11 +2636,12 @@
 			"pro": true
 		}
 	},
-	"GET /radar/http/summary/tls_version": {
-		"description": "Percentage distribution of traffic per TLS protocol version, over a given time period.",
-		"operationId": "radar-get-http-summary-by-tls-version",
+	"GET /radar/http/summary/post_quantum": {
+		"description": "Percentage distribution of traffic per Post Quantum support over a given time period.",
+		"operationId": "radar-get-http-summary-by-post-quantum",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -2569,6 +2654,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -2597,6 +2683,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -2610,6 +2697,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -2623,6 +2711,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -2635,6 +2724,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -2647,6 +2737,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -2659,6 +2750,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -2675,6 +2767,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -2692,6 +2785,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -2708,6 +2802,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -2725,6 +2820,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -2741,6 +2837,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -2762,6 +2859,463 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"properties": {
+												"NOT_SUPPORTED": {
+													"example": "16",
+													"type": "string"
+												},
+												"SUPPORTED": {
+													"example": "84",
+													"type": "string"
+												}
+											},
+											"required": [
+												"SUPPORTED",
+												"NOT_SUPPORTED"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"summary_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get HTTP Post Quantum summary",
+		"tags": [
+			"Radar Http"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/http/summary/tls_version": {
+		"description": "Percentage distribution of traffic per TLS protocol version, over a given time period.",
+		"operationId": "radar-get-http-summary-by-tls-version",
+		"parameters": [
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the start of a series.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+				"in": "query",
+				"name": "botClass",
+				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
+					"items": {
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for device type.",
+				"in": "query",
+				"name": "deviceType",
+				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
+					"items": {
+						"enum": [
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http protocol.",
+				"in": "query",
+				"name": "httpProtocol",
+				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
+					"items": {
+						"enum": [
+							"HTTP",
+							"HTTPS"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for ip version.",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for os name.",
+				"in": "query",
+				"name": "os",
+				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
+					"items": {
+						"enum": [
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -2994,6 +3548,7 @@
 		"operationId": "radar-get-http-timeseries-group-by-bot-class",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -3009,6 +3564,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -3021,6 +3577,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -3049,6 +3606,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -3062,6 +3620,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -3075,6 +3634,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -3087,6 +3647,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -3099,6 +3660,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -3111,6 +3673,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -3128,6 +3691,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -3144,6 +3708,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -3161,6 +3726,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -3177,6 +3743,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -3198,6 +3765,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -3217,6 +3785,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -3358,6 +3927,7 @@
 		"operationId": "radar-get-http-timeseries-group-by-browsers",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -3373,6 +3943,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -3385,6 +3956,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -3413,6 +3985,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -3426,6 +3999,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -3439,6 +4013,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -3451,6 +4026,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -3463,6 +4039,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -3475,6 +4052,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -3491,6 +4069,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -3508,6 +4087,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -3524,6 +4104,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -3541,6 +4122,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -3557,6 +4139,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -3578,6 +4161,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -3597,6 +4181,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
@@ -3606,6 +4191,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -3747,6 +4333,7 @@
 		"operationId": "radar-get-http-timeseries-group-by-browser-families",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -3762,6 +4349,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -3774,6 +4362,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -3802,6 +4391,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -3815,6 +4405,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -3828,6 +4419,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -3840,6 +4432,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -3852,6 +4445,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -3864,6 +4458,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -3880,6 +4475,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -3897,6 +4493,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -3913,6 +4510,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -3930,6 +4528,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -3946,6 +4545,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -3967,6 +4567,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -3986,6 +4587,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -4127,6 +4729,7 @@
 		"operationId": "radar-get-http-timeseries-group-by-device-type",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -4142,6 +4745,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -4154,6 +4758,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -4182,6 +4787,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -4195,6 +4801,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -4208,6 +4815,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -4220,6 +4828,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -4232,6 +4841,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -4244,6 +4854,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -4260,6 +4871,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -4276,6 +4888,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -4293,6 +4906,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -4309,6 +4923,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -4330,6 +4945,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -4349,6 +4965,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -4497,6 +5114,7 @@
 		"operationId": "radar-get-http-timeseries-group-by-http-protocol",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -4512,6 +5130,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -4524,6 +5143,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -4552,6 +5172,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -4565,6 +5186,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -4578,6 +5200,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -4590,6 +5213,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -4602,6 +5226,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -4614,6 +5239,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -4630,6 +5256,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -4647,6 +5274,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -4664,6 +5292,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -4680,6 +5309,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -4701,6 +5331,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -4720,6 +5351,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -4861,6 +5493,7 @@
 		"operationId": "radar-get-http-timeseries-group-by-http-version",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -4876,6 +5509,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -4888,6 +5522,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -4916,6 +5551,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -4929,6 +5565,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -4942,6 +5579,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -4954,6 +5592,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -4966,6 +5605,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -4978,6 +5618,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -4994,6 +5635,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -5011,6 +5653,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -5027,6 +5670,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -5043,6 +5687,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -5064,6 +5709,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -5083,6 +5729,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -5231,6 +5878,7 @@
 		"operationId": "radar-get-http-timeseries-group-by-ip-version",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -5246,6 +5894,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -5258,6 +5907,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -5286,6 +5936,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -5299,6 +5950,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -5312,6 +5964,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -5324,6 +5977,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -5336,6 +5990,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -5348,6 +6003,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -5364,6 +6020,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -5381,6 +6038,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -5397,6 +6055,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -5414,6 +6073,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -5435,6 +6095,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -5454,6 +6115,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -5595,6 +6257,7 @@
 		"operationId": "radar-get-http-timeseries-group-by-operating-system",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -5610,6 +6273,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -5622,6 +6286,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -5650,6 +6315,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -5663,6 +6329,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -5676,6 +6343,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -5688,6 +6356,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -5700,6 +6369,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -5712,6 +6382,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -5728,6 +6399,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -5745,6 +6417,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -5761,6 +6434,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -5778,6 +6452,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -5794,6 +6469,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -5813,6 +6489,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -5949,11 +6626,12 @@
 			"pro": true
 		}
 	},
-	"GET /radar/http/timeseries_groups/tls_version": {
-		"description": "Get a time series of the percentage distribution of traffic per TLS protocol version.",
-		"operationId": "radar-get-http-timeseries-group-by-tls-version",
+	"GET /radar/http/timeseries_groups/post_quantum": {
+		"description": "Get a time series of the percentage distribution of traffic per Post Quantum suport.",
+		"operationId": "radar-get-http-timeseries-group-by-post-quantum",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -5969,6 +6647,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -5981,6 +6660,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -6009,6 +6689,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -6022,6 +6703,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -6035,6 +6717,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -6047,6 +6730,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -6059,6 +6743,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -6071,6 +6756,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -6087,6 +6773,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -6104,6 +6791,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -6120,6 +6808,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -6137,6 +6826,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -6153,6 +6843,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -6174,6 +6865,405 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"NOT_SUPPORTED": {
+													"items": {
+														"example": "16",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"SUPPORTED": {
+													"items": {
+														"example": "84",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"timestamps": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"SUPPORTED",
+												"NOT_SUPPORTED"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get HTTP Post Quantum Support Time Series",
+		"tags": [
+			"Radar Http"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/http/timeseries_groups/tls_version": {
+		"description": "Get a time series of the percentage distribution of traffic per TLS protocol version.",
+		"operationId": "radar-get-http-timeseries-group-by-tls-version",
+		"parameters": [
+			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the start of a series.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+				"in": "query",
+				"name": "botClass",
+				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
+					"items": {
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for device type.",
+				"in": "query",
+				"name": "deviceType",
+				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
+					"items": {
+						"enum": [
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http protocol.",
+				"in": "query",
+				"name": "httpProtocol",
+				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
+					"items": {
+						"enum": [
+							"HTTP",
+							"HTTPS"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for ip version.",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for os name.",
+				"in": "query",
+				"name": "os",
+				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
+					"items": {
+						"enum": [
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -6336,6 +7426,7 @@
 		"operationId": "radar-get-http-top-ases-by-http-requests",
 		"parameters": [
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -6345,6 +7436,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -6357,6 +7449,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -6385,6 +7478,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -6398,6 +7492,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -6411,6 +7506,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -6423,6 +7519,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -6435,6 +7532,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -6447,6 +7545,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -6463,6 +7562,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -6480,6 +7580,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -6496,6 +7597,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -6513,6 +7615,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -6529,6 +7632,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -6550,6 +7654,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -6569,6 +7674,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -6770,6 +7876,7 @@
 		"operationId": "radar-get-http-top-ases-by-bot-class",
 		"parameters": [
 			{
+				"description": "Bot class.",
 				"in": "path",
 				"name": "bot_class",
 				"required": true,
@@ -6783,6 +7890,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -6792,6 +7900,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -6804,6 +7913,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -6832,6 +7942,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -6845,6 +7956,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -6858,6 +7970,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -6870,6 +7983,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -6882,6 +7996,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -6894,6 +8009,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -6911,6 +8027,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -6927,6 +8044,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -6944,6 +8062,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -6960,6 +8079,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -6981,6 +8101,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -7000,6 +8121,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -7201,6 +8323,7 @@
 		"operationId": "radar-get-http-top-ases-by-device-type",
 		"parameters": [
 			{
+				"description": "Device type.",
 				"in": "path",
 				"name": "device_type",
 				"required": true,
@@ -7215,6 +8338,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -7224,6 +8348,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -7236,6 +8361,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -7264,6 +8390,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -7277,6 +8404,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -7290,6 +8418,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -7302,6 +8431,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -7314,6 +8444,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -7326,6 +8457,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -7342,6 +8474,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -7358,6 +8491,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -7375,6 +8509,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -7391,6 +8526,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -7412,6 +8548,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -7431,6 +8568,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -7632,6 +8770,7 @@
 		"operationId": "radar-get-http-top-ases-by-http-protocol",
 		"parameters": [
 			{
+				"description": "HTTP Protocol.",
 				"in": "path",
 				"name": "http_protocol",
 				"required": true,
@@ -7645,6 +8784,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -7654,6 +8794,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -7666,6 +8807,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -7694,6 +8836,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -7707,6 +8850,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -7720,6 +8864,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -7732,6 +8877,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -7744,6 +8890,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -7756,6 +8903,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -7772,6 +8920,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -7789,6 +8938,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -7805,6 +8955,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -7821,6 +8972,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -7842,6 +8994,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -7861,6 +9014,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -8062,6 +9216,7 @@
 		"operationId": "radar-get-http-top-ases-by-http-version",
 		"parameters": [
 			{
+				"description": "HTTP version.",
 				"in": "path",
 				"name": "http_version",
 				"required": true,
@@ -8076,6 +9231,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -8085,6 +9241,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -8097,6 +9254,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -8125,6 +9283,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -8138,6 +9297,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -8151,6 +9311,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -8163,6 +9324,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -8175,6 +9337,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -8187,6 +9350,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -8203,6 +9367,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -8220,6 +9385,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -8236,6 +9402,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -8252,6 +9419,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -8273,6 +9441,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -8292,6 +9461,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -8493,6 +9663,7 @@
 		"operationId": "radar-get-http-top-ases-by-ip-version",
 		"parameters": [
 			{
+				"description": "IP version.",
 				"in": "path",
 				"name": "ip_version",
 				"required": true,
@@ -8506,6 +9677,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -8515,6 +9687,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -8527,6 +9700,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -8555,6 +9729,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -8568,6 +9743,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -8581,6 +9757,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -8593,6 +9770,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -8605,6 +9783,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -8617,6 +9796,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -8633,6 +9813,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -8650,6 +9831,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -8666,6 +9848,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -8683,6 +9866,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -8704,6 +9888,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -8723,6 +9908,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -8924,6 +10110,7 @@
 		"operationId": "radar-get-http-top-ases-by-operating-system",
 		"parameters": [
 			{
+				"description": "IP version.",
 				"in": "path",
 				"name": "os",
 				"required": true,
@@ -8942,6 +10129,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -8951,6 +10139,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -8963,6 +10152,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -8991,6 +10181,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -9004,6 +10195,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -9017,6 +10209,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -9029,6 +10222,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -9041,6 +10235,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -9053,6 +10248,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -9069,6 +10265,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -9086,6 +10283,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -9102,6 +10300,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -9119,6 +10318,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -9135,6 +10335,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -9154,6 +10355,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -9355,6 +10557,7 @@
 		"operationId": "radar-get-http-top-ases-by-tls-version",
 		"parameters": [
 			{
+				"description": "TLS version.",
 				"in": "path",
 				"name": "tls_version",
 				"required": true,
@@ -9371,6 +10574,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -9380,6 +10584,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -9392,6 +10597,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -9420,6 +10626,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -9433,6 +10640,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -9446,6 +10654,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -9458,6 +10667,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -9470,6 +10680,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -9482,6 +10693,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -9498,6 +10710,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -9515,6 +10728,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -9531,6 +10745,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -9548,6 +10763,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -9564,6 +10780,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -9585,6 +10802,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -9786,6 +11004,7 @@
 		"operationId": "radar-get-http-top-browser-families",
 		"parameters": [
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -9795,6 +11014,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -9807,6 +11027,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -9835,6 +11056,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -9848,6 +11070,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -9861,6 +11084,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -9873,6 +11097,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -9885,6 +11110,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -9897,6 +11123,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -9913,6 +11140,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -9930,6 +11158,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -9946,6 +11175,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -9963,6 +11193,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -9979,6 +11210,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -10000,6 +11232,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -10019,6 +11252,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -10214,6 +11448,7 @@
 		"operationId": "radar-get-http-top-browsers",
 		"parameters": [
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -10223,6 +11458,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -10235,6 +11471,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -10263,6 +11500,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -10276,6 +11514,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -10289,6 +11528,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -10301,6 +11541,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -10313,6 +11554,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -10325,6 +11567,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -10341,6 +11584,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -10358,6 +11602,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -10374,6 +11619,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -10391,6 +11637,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -10407,6 +11654,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -10428,6 +11676,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -10447,6 +11696,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -10642,6 +11892,7 @@
 		"operationId": "radar-get-http-top-locations-by-http-requests",
 		"parameters": [
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -10651,6 +11902,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -10663,6 +11915,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -10691,6 +11944,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -10704,6 +11958,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -10717,6 +11972,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -10729,6 +11985,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -10741,6 +11998,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -10753,6 +12011,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -10769,6 +12028,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -10786,6 +12046,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -10802,6 +12063,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -10819,6 +12081,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -10835,6 +12098,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -10856,6 +12120,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -10875,6 +12140,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -11076,6 +12342,7 @@
 		"operationId": "radar-get-http-top-locations-by-bot-class",
 		"parameters": [
 			{
+				"description": "Bot class.",
 				"in": "path",
 				"name": "bot_class",
 				"required": true,
@@ -11089,6 +12356,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -11098,6 +12366,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -11110,6 +12379,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -11138,6 +12408,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -11151,6 +12422,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -11164,6 +12436,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -11176,6 +12449,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -11188,6 +12462,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -11200,6 +12475,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -11217,6 +12493,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -11233,6 +12510,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -11250,6 +12528,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -11266,6 +12545,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -11287,6 +12567,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -11306,6 +12587,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -11507,6 +12789,7 @@
 		"operationId": "radar-get-http-top-locations-by-device-type",
 		"parameters": [
 			{
+				"description": "Device type.",
 				"in": "path",
 				"name": "device_type",
 				"required": true,
@@ -11521,6 +12804,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -11530,6 +12814,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -11542,6 +12827,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -11570,6 +12856,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -11583,6 +12870,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -11596,6 +12884,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -11608,6 +12897,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -11620,6 +12910,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -11632,6 +12923,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -11648,6 +12940,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -11664,6 +12957,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -11681,6 +12975,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -11697,6 +12992,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -11718,6 +13014,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -11737,6 +13034,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -11938,6 +13236,7 @@
 		"operationId": "radar-get-http-top-locations-by-http-protocol",
 		"parameters": [
 			{
+				"description": "HTTP Protocol.",
 				"in": "path",
 				"name": "http_protocol",
 				"required": true,
@@ -11951,6 +13250,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -11960,6 +13260,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -11972,6 +13273,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -12000,6 +13302,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -12013,6 +13316,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -12026,6 +13330,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -12038,6 +13343,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -12050,6 +13356,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -12062,6 +13369,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -12078,6 +13386,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -12095,6 +13404,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -12111,6 +13421,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -12127,6 +13438,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -12148,6 +13460,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -12167,6 +13480,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -12368,6 +13682,7 @@
 		"operationId": "radar-get-http-top-locations-by-http-version",
 		"parameters": [
 			{
+				"description": "HTTP version.",
 				"in": "path",
 				"name": "http_version",
 				"required": true,
@@ -12382,6 +13697,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -12391,6 +13707,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -12403,6 +13720,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -12431,6 +13749,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -12444,6 +13763,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -12457,6 +13777,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -12469,6 +13790,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -12481,6 +13803,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -12493,6 +13816,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -12509,6 +13833,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -12526,6 +13851,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -12542,6 +13868,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -12558,6 +13885,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -12579,6 +13907,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -12598,6 +13927,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -12799,6 +14129,7 @@
 		"operationId": "radar-get-http-top-locations-by-ip-version",
 		"parameters": [
 			{
+				"description": "IP version.",
 				"in": "path",
 				"name": "ip_version",
 				"required": true,
@@ -12812,6 +14143,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -12821,6 +14153,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -12833,6 +14166,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -12861,6 +14195,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -12874,6 +14209,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -12887,6 +14223,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -12899,6 +14236,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -12911,6 +14249,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -12923,6 +14262,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -12939,6 +14279,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -12956,6 +14297,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -12972,6 +14314,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -12989,6 +14332,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -13010,6 +14354,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -13029,6 +14374,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -13230,6 +14576,7 @@
 		"operationId": "radar-get-http-top-locations-by-operating-system",
 		"parameters": [
 			{
+				"description": "IP version.",
 				"in": "path",
 				"name": "os",
 				"required": true,
@@ -13248,6 +14595,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -13257,6 +14605,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -13269,6 +14618,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -13297,6 +14647,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -13310,6 +14661,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -13323,6 +14675,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -13335,6 +14688,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -13347,6 +14701,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -13359,6 +14714,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -13375,6 +14731,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -13392,6 +14749,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -13408,6 +14766,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -13425,6 +14784,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -13441,6 +14801,7 @@
 				}
 			},
 			{
+				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -13460,6 +14821,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -13661,6 +15023,7 @@
 		"operationId": "radar-get-http-top-locations-by-tls-version",
 		"parameters": [
 			{
+				"description": "TLS version.",
 				"in": "path",
 				"name": "tls_version",
 				"required": true,
@@ -13677,6 +15040,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -13686,6 +15050,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -13698,6 +15063,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -13726,6 +15092,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -13739,6 +15106,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -13752,6 +15120,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -13764,6 +15133,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -13776,6 +15146,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -13788,6 +15159,7 @@
 				}
 			},
 			{
+				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -13804,6 +15176,7 @@
 				}
 			},
 			{
+				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -13821,6 +15194,7 @@
 				}
 			},
 			{
+				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -13837,6 +15211,7 @@
 				}
 			},
 			{
+				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -13854,6 +15229,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -13870,6 +15246,7 @@
 				}
 			},
 			{
+				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -13891,6 +15268,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {

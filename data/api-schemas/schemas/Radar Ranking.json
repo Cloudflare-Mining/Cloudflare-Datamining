@@ -14,6 +14,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -23,6 +24,7 @@
 				}
 			},
 			{
+				"description": "The ranking type.",
 				"in": "query",
 				"name": "rankingType",
 				"schema": {
@@ -38,6 +40,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -50,6 +53,7 @@
 				}
 			},
 			{
+				"description": "Array of dates to filter the ranking.",
 				"in": "query",
 				"name": "date",
 				"schema": {
@@ -63,6 +67,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -240,6 +245,7 @@
 		"operationId": "radar-get-ranking-domain-timeseries",
 		"parameters": [
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -249,6 +255,7 @@
 				}
 			},
 			{
+				"description": "The ranking type.",
 				"in": "query",
 				"name": "rankingType",
 				"schema": {
@@ -264,6 +271,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -276,6 +284,7 @@
 				}
 			},
 			{
+				"description": "Array of locations (alpha-2 country codes).",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -288,6 +297,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of domains names.",
 				"in": "query",
 				"name": "domains",
 				"schema": {
@@ -301,6 +311,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -329,6 +340,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -342,6 +354,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -355,6 +368,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -532,6 +546,7 @@
 		"operationId": "radar-get-ranking-top-domains",
 		"parameters": [
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -541,6 +556,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -553,6 +569,7 @@
 				}
 			},
 			{
+				"description": "Array of locations (alpha-2 country codes).",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -565,6 +582,7 @@
 				}
 			},
 			{
+				"description": "Array of dates to filter the ranking.",
 				"in": "query",
 				"name": "date",
 				"schema": {
@@ -578,6 +596,7 @@
 				}
 			},
 			{
+				"description": "The ranking type.",
 				"in": "query",
 				"name": "rankingType",
 				"schema": {
@@ -593,6 +612,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {

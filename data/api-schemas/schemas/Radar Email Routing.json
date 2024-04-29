@@ -4,6 +4,7 @@
 		"operationId": "radar-get-email-routing-summary-by-arc",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -16,6 +17,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -44,6 +46,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -57,6 +60,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -70,6 +74,7 @@
 				}
 			},
 			{
+				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -87,6 +92,7 @@
 				}
 			},
 			{
+				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -104,6 +110,7 @@
 				}
 			},
 			{
+				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -121,6 +128,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -137,6 +145,7 @@
 				}
 			},
 			{
+				"description": "Filter for encrypted emails.",
 				"in": "query",
 				"name": "encrypted",
 				"schema": {
@@ -153,6 +162,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -375,6 +385,7 @@
 		"operationId": "radar-get-email-routing-summary-by-dkim",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -387,6 +398,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -415,6 +427,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -428,6 +441,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -441,6 +455,7 @@
 				}
 			},
 			{
+				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -458,6 +473,7 @@
 				}
 			},
 			{
+				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -475,6 +491,7 @@
 				}
 			},
 			{
+				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -492,6 +509,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -508,6 +526,7 @@
 				}
 			},
 			{
+				"description": "Filter for encrypted emails.",
 				"in": "query",
 				"name": "encrypted",
 				"schema": {
@@ -524,6 +543,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -746,6 +766,7 @@
 		"operationId": "radar-get-email-routing-summary-by-dmarc",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -758,6 +779,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -786,6 +808,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -799,6 +822,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -812,6 +836,7 @@
 				}
 			},
 			{
+				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -829,6 +854,7 @@
 				}
 			},
 			{
+				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -846,6 +872,7 @@
 				}
 			},
 			{
+				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -863,6 +890,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -879,6 +907,7 @@
 				}
 			},
 			{
+				"description": "Filter for encrypted emails.",
 				"in": "query",
 				"name": "encrypted",
 				"schema": {
@@ -895,6 +924,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -1117,6 +1147,7 @@
 		"operationId": "radar-get-email-routing-summary-by-encrypted",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -1129,6 +1160,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -1157,6 +1189,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -1170,6 +1203,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -1183,6 +1217,7 @@
 				}
 			},
 			{
+				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -1200,6 +1235,7 @@
 				}
 			},
 			{
+				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -1217,6 +1253,7 @@
 				}
 			},
 			{
+				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -1234,6 +1271,7 @@
 				}
 			},
 			{
+				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -1251,6 +1289,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -1267,6 +1306,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -1484,6 +1524,7 @@
 		"operationId": "radar-get-email-routing-summary-by-ip-version",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -1496,6 +1537,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -1524,6 +1566,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -1537,6 +1580,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -1550,6 +1594,7 @@
 				}
 			},
 			{
+				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -1567,6 +1612,7 @@
 				}
 			},
 			{
+				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -1584,6 +1630,7 @@
 				}
 			},
 			{
+				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -1601,6 +1648,7 @@
 				}
 			},
 			{
+				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -1618,6 +1666,7 @@
 				}
 			},
 			{
+				"description": "Filter for encrypted emails.",
 				"in": "query",
 				"name": "encrypted",
 				"schema": {
@@ -1634,6 +1683,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -1851,6 +1901,7 @@
 		"operationId": "radar-get-email-routing-summary-by-spf",
 		"parameters": [
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -1863,6 +1914,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -1891,6 +1943,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -1904,6 +1957,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -1917,6 +1971,7 @@
 				}
 			},
 			{
+				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -1934,6 +1989,7 @@
 				}
 			},
 			{
+				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -1951,6 +2007,7 @@
 				}
 			},
 			{
+				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -1968,6 +2025,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -1984,6 +2042,7 @@
 				}
 			},
 			{
+				"description": "Filter for encrypted emails.",
 				"in": "query",
 				"name": "encrypted",
 				"schema": {
@@ -2000,6 +2059,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -2222,6 +2282,7 @@
 		"operationId": "radar-get-email-routing-timeseries-group-by-arc",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -2237,6 +2298,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -2249,6 +2311,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -2277,6 +2340,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -2290,6 +2354,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -2303,6 +2368,7 @@
 				}
 			},
 			{
+				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -2320,6 +2386,7 @@
 				}
 			},
 			{
+				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -2337,6 +2404,7 @@
 				}
 			},
 			{
+				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -2354,6 +2422,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -2370,6 +2439,7 @@
 				}
 			},
 			{
+				"description": "Filter for encrypted emails.",
 				"in": "query",
 				"name": "encrypted",
 				"schema": {
@@ -2386,6 +2456,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -2530,6 +2601,7 @@
 		"operationId": "radar-get-email-routing-timeseries-group-by-dkim",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -2545,6 +2617,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -2557,6 +2630,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -2585,6 +2659,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -2598,6 +2673,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -2611,6 +2687,7 @@
 				}
 			},
 			{
+				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -2628,6 +2705,7 @@
 				}
 			},
 			{
+				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -2645,6 +2723,7 @@
 				}
 			},
 			{
+				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -2662,6 +2741,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -2678,6 +2758,7 @@
 				}
 			},
 			{
+				"description": "Filter for encrypted emails.",
 				"in": "query",
 				"name": "encrypted",
 				"schema": {
@@ -2694,6 +2775,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -2838,6 +2920,7 @@
 		"operationId": "radar-get-email-routing-timeseries-group-by-dmarc",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -2853,6 +2936,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -2865,6 +2949,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -2893,6 +2978,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -2906,6 +2992,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -2919,6 +3006,7 @@
 				}
 			},
 			{
+				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -2936,6 +3024,7 @@
 				}
 			},
 			{
+				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -2953,6 +3042,7 @@
 				}
 			},
 			{
+				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -2970,6 +3060,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -2986,6 +3077,7 @@
 				}
 			},
 			{
+				"description": "Filter for encrypted emails.",
 				"in": "query",
 				"name": "encrypted",
 				"schema": {
@@ -3002,6 +3094,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -3146,6 +3239,7 @@
 		"operationId": "radar-get-email-routing-timeseries-group-by-encrypted",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -3161,6 +3255,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -3173,6 +3268,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -3201,6 +3297,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -3214,6 +3311,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -3227,6 +3325,7 @@
 				}
 			},
 			{
+				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -3244,6 +3343,7 @@
 				}
 			},
 			{
+				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -3261,6 +3361,7 @@
 				}
 			},
 			{
+				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -3278,6 +3379,7 @@
 				}
 			},
 			{
+				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -3295,6 +3397,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -3311,6 +3414,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -3447,6 +3551,7 @@
 		"operationId": "radar-get-email-routing-timeseries-group-by-ip-version",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -3462,6 +3567,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -3474,6 +3580,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -3502,6 +3609,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -3515,6 +3623,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -3528,6 +3637,7 @@
 				}
 			},
 			{
+				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -3545,6 +3655,7 @@
 				}
 			},
 			{
+				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -3562,6 +3673,7 @@
 				}
 			},
 			{
+				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -3579,6 +3691,7 @@
 				}
 			},
 			{
+				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -3596,6 +3709,7 @@
 				}
 			},
 			{
+				"description": "Filter for encrypted emails.",
 				"in": "query",
 				"name": "encrypted",
 				"schema": {
@@ -3612,6 +3726,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -3748,6 +3863,7 @@
 		"operationId": "radar-get-email-routing-timeseries-group-by-spf",
 		"parameters": [
 			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
@@ -3763,6 +3879,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -3775,6 +3892,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -3803,6 +3921,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -3816,6 +3935,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -3829,6 +3949,7 @@
 				}
 			},
 			{
+				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -3846,6 +3967,7 @@
 				}
 			},
 			{
+				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -3863,6 +3985,7 @@
 				}
 			},
 			{
+				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -3880,6 +4003,7 @@
 				}
 			},
 			{
+				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -3896,6 +4020,7 @@
 				}
 			},
 			{
+				"description": "Filter for encrypted emails.",
 				"in": "query",
 				"name": "encrypted",
 				"schema": {
@@ -3912,6 +4037,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {

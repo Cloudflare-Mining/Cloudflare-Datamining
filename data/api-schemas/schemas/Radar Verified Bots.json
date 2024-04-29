@@ -4,6 +4,7 @@
 		"operationId": "radar-get-verified-bots-top-by-http-requests",
 		"parameters": [
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -13,6 +14,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -25,6 +27,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -53,6 +56,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -66,6 +70,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -79,6 +84,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -91,6 +97,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -103,6 +110,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -115,6 +123,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -335,6 +344,7 @@
 		"operationId": "radar-get-verified-bots-top-categories-by-http-requests",
 		"parameters": [
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -344,6 +354,7 @@
 				}
 			},
 			{
+				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -356,6 +367,7 @@
 				}
 			},
 			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -384,6 +396,7 @@
 				}
 			},
 			{
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
@@ -397,6 +410,7 @@
 				}
 			},
 			{
+				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
@@ -410,6 +424,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -422,6 +437,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -434,6 +450,7 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 				"in": "query",
 				"name": "continent",
 				"schema": {
@@ -446,6 +463,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {

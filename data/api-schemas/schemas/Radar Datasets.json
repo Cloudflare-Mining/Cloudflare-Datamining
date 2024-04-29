@@ -4,6 +4,7 @@
 		"operationId": "radar-get-reports-datasets",
 		"parameters": [
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -13,6 +14,7 @@
 				}
 			},
 			{
+				"description": "Number of objects to skip before grabbing results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
@@ -21,6 +23,7 @@
 				}
 			},
 			{
+				"description": "Dataset type.",
 				"in": "query",
 				"name": "datasetType",
 				"schema": {
@@ -35,6 +38,7 @@
 				}
 			},
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
@@ -186,6 +190,7 @@
 		"operationId": "radar-get-reports-dataset-download",
 		"parameters": [
 			{
+				"description": "Dataset alias or id",
 				"in": "path",
 				"name": "alias",
 				"required": true,
@@ -196,6 +201,7 @@
 				}
 			},
 			{
+				"description": "Filter dataset alias by date",
 				"in": "query",
 				"name": "date",
 				"schema": {
@@ -283,6 +289,7 @@
 		"operationId": "radar-post-reports-dataset-download-url",
 		"parameters": [
 			{
+				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
