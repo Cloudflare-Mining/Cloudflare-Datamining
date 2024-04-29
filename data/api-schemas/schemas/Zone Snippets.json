@@ -1,10 +1,10 @@
 {
-	"DELETE /zones/{zone_identifier}/snippets/{snippet_name}": {
+	"DELETE /zones/{zone_id}/snippets/{snippet_name}": {
 		"operationId": "zone-snippets-snippet-delete",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -76,20 +76,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -102,8 +88,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								}
@@ -322,12 +307,12 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/snippets": {
+	"GET /zones/{zone_id}/snippets": {
 		"operationId": "zone-snippets",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -388,20 +373,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -414,8 +385,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -665,12 +635,12 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/snippets/{snippet_name}": {
+	"GET /zones/{zone_id}/snippets/{snippet_name}": {
 		"operationId": "zone-snippets-snippet",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -742,20 +712,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -768,8 +724,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -1015,12 +970,12 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/snippets/{snippet_name}/content": {
+	"GET /zones/{zone_id}/snippets/{snippet_name}/content": {
 		"operationId": "zone-snippets-snippet-content",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1267,12 +1222,12 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/snippets/snippet_rules": {
+	"GET /zones/{zone_id}/snippets/snippet_rules": {
 		"operationId": "zone-snippets-snippet-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1333,20 +1288,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -1359,8 +1300,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -1611,12 +1551,12 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/snippets/{snippet_name}": {
+	"PUT /zones/{zone_id}/snippets/{snippet_name}": {
 		"operationId": "zone-snippets-snippet-put",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1714,20 +1654,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -1740,8 +1666,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -1987,12 +1912,12 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/snippets/snippet_rules": {
+	"PUT /zones/{zone_id}/snippets/snippet_rules": {
 		"operationId": "zone-snippets-snippet-rules-put",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2091,20 +2016,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -2117,8 +2028,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
