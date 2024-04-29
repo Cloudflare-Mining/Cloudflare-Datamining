@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations</strong>: Remote Portugal, Netherlands, France, UK, and Germany</p>
+<p><strong>Available Locations</strong>: Portugal, Netherlands, France, UK, Germany or US</p>
 <hr>
 <h3><strong>About the Department</strong></h3>
 <p>Cloudflare’s Production Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. Production Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>

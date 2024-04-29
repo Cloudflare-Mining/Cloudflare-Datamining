@@ -8,8 +8,6 @@
 <h4>Available Locations: Lisbon or Remote Portugal; Mexico City or Remote Mexico</h4>
 <h4><strong>About the department</strong></h4>
 <p>Cloudflare’s IT Business Systems Team is a crucial pillar of the CIO Organization.&nbsp; It operates our enterprise systems end-to-end, providing process cohesiveness across the functional business areas</p>
-<p><strong>About the role</strong></p>
-<h4>&nbsp;</h4>
 <h4><strong>What you'll do</strong></h4>
 <ul>
 	<li>Successful candidates will be technical professionals, experienced in web application development and have strong hands-on background in building custom solutions using JQuery, Apex, Lightning (LWC, Aura) and Visualforce with a focus on delivering functional solutions on the Salesforce.com platform.</li>
