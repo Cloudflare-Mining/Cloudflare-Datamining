@@ -633,7 +633,7 @@ const navigation = {
 			labels: ["new"],
 			testId: "zone-navigation-link-dns-overview",
 			navigationType: "global-settings",
-			hasPermission: L => !!(0, e.z1)("foundation-dns-enabled")(L) && (0, u.du)(L, "foundation_dns.advanced_nameservers_allowed")
+			hasPermission: L => !!(0, e.z1)("foundation-dns-enabled")(L) && ((0, u.$f)(L, "foundation_dns.advanced_nameservers_allowed") || (0, u.du)(L, "foundation_dns.advanced_nameservers_allowed"))
 		}, {
 			title: "navigation.zone.dns.settings",
 			url: "/dns/settings",
