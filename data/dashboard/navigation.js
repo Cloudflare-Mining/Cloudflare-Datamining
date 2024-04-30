@@ -186,7 +186,7 @@ const navigation = {
 		title: "navigation.account.waf",
 		url: "/application-security/waf",
 		iconType: "cloudflare-security-application",
-		tabs: w.DW
+		tabs: k.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -230,7 +230,7 @@ const navigation = {
 		url: "/network-security/magic_firewall",
 		iconType: "magic-firewall",
 		hasPermission: L => !!(0, a.zJ)(L),
-		tabs: w.$$
+		tabs: k.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
@@ -239,7 +239,7 @@ const navigation = {
 			const pe = !!(0, a.Wq)(L) && !!(0, a.fO)(L);
 			return !!(0, a.Tk)(L) || pe
 		},
-		tabs: w.Dn,
+		tabs: k.Dn,
 		pages: [{
 			title: "navigation.account.l3l4.ddos.ddos_managed_rules",
 			url: "/network-security/ddos",
@@ -381,7 +381,7 @@ const navigation = {
 		url: "/workers-for-platforms",
 		iconType: "workers-for-platforms",
 		testId: "workers-for-platforms",
-		hasPermission: L => (0, a.iY)(L) && (0, Z.k)(L)
+		hasPermission: L => (0, a.iY)(L) && (0, F.k)(L)
 	}, {
 		title: "navigation.account.workers.ai",
 		url: "/ai",
@@ -605,7 +605,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: L => !!(0, $.V)(L)
+			hasPermission: L => !!(0, q.V)(L)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -613,7 +613,7 @@ const navigation = {
 		navigationType: "both",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: R.bB,
+		tabs: j.bB,
 		hasPermission: L => !(0, u.yD)(L) && (0, I.m7)(L)
 	}, {
 		title: "navigation.zone.dns",
@@ -807,7 +807,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: j
+			tabs: w
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -1022,5 +1022,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: F.G
+	support: Z.G
 }

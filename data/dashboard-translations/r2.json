@@ -1,7 +1,7 @@
 {
 	"r2.worker_details.section_heading.r2": "R2 Bucket Bindings",
 	"r2.worker_details.r2_description": "Bind an instance of an R2 Bucket to access its data in a Worker.",
-	"r2.worker_details.r2_empty": "There are no R2 buckets bound to this service.",
+	"r2.worker_details.r2_empty": "There are no R2 buckets bound to this Worker.",
 	"r2.worker_details.r2_edit_header": "Edit R2 bindings",
 	"r2.worker_details.r2_no_buckets": "There are no R2 buckets to bind to. <0>Create an R2 bucket</0> to get started.",
 	"r2.sidepanel.metrics.total_storage": "Total Storage",
@@ -132,7 +132,7 @@
 	"r2.objects.table.empty_object_key_tooltip": "Objects with empty names cannot be viewed in the dashboard.",
 	"r2.objects.table.pending_multipart_upload_tooltip": "This is a multipart upload that has not yet been completed or aborted",
 	"r2.objects.toasts.bucket_created.wrangler": "Manage your objects and buckets using the <0>Wrangler CLI</0>",
-	"r2.objects.toasts.bucket_created.binding": "<0>Bind to this bucket</0> from a Workers Service to access and store data.",
+	"r2.objects.toasts.bucket_created.binding": "<0>Bind to this bucket</0> from a Worker to access and store data.",
 	"r2.objects.toasts.objects.deleted_singular": "**%{file}** was deleted",
 	"r2.objects.toasts.objects.deleted_plural": "%{count} files were deleted",
 	"r2.objects.toasts.objects.delete_error": "There was an error deleting your files. Please try again later.",
