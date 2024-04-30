@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5815188?gh_jid=5815188",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5934670?gh_jid=5934670",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -9,7 +9,7 @@
 			"retention_period": null
 		}
 	],
-	"internal_job_id": 2829853,
+	"internal_job_id": 2867021,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -17,32 +17,34 @@
 		{
 			"id": 164993,
 			"name": "Cross-post department",
-			"value": "Special Projects",
+			"value": null,
 			"value_type": "single_select"
 		},
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "6400 - Special Projects",
+			"value": "4100 - Infrastructure",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Singapore"
+				"Singapore",
+				"Sydney, Australia",
+				"Tokyo, Japan"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 5815188,
-	"updated_at": "2024-04-25T15:46:48-04:00",
+	"id": 5934670,
+	"updated_at": "2024-04-29T22:10:56-04:00",
 	"requisition_id": null,
-	"title": "Technical PM Intern (12 weeks)",
+	"title": "Data Centre Selection - Technical Business Development",
 	"departments": [
 		{
-			"id": 29073,
-			"name": "Special Projects",
+			"id": 30604,
+			"name": "Infrastructure",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -52,6 +54,20 @@
 			"id": 19992,
 			"name": "Singapore",
 			"location": "Singapore",
+			"child_ids": [],
+			"parent_id": 74844
+		},
+		{
+			"id": 19993,
+			"name": "Sydney, Australia",
+			"location": "Sydney, New South Wales, Australia",
+			"child_ids": [],
+			"parent_id": 74844
+		},
+		{
+			"id": 48756,
+			"name": "Tokyo, Japan",
+			"location": "Japan, 東京都東京都",
 			"child_ids": [],
 			"parent_id": 74844
 		}

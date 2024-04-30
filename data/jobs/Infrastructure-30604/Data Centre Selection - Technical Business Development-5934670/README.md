@@ -5,34 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<div><strong><span style="font-family: arial, sans-serif;">Available Location: Singapore</span></strong></div>
-<div>&nbsp;</div>
-<div><strong><span id="m_-3258336974184610919m_-7879829078436668916m_6708352278383655199gmail-docs-internal-guid-ad18bb12-7fff-973a-748f-4b3375d9cf3e"><span style="font-family: arial, sans-serif;">Job Scope and Expect Deliverables:</span></span></strong></div>
-<div>
-	<ul>
-		<li><span style="font-family: arial, sans-serif;">Develop automation scripts using Python, Shell or other scripting languages to automate data processing and report generation.</span></li>
-		<li><span style="font-family: arial, sans-serif;">Develop bots to perform check-ups on user end-point environments.</span></li>
-		<li><span style="font-family: arial, sans-serif;">Collaborate with internal teams (Infrastructure and SRE) and external partners, &nbsp;participate in colocation provisioning projects, optimize the provision scripts and regularly report the status and project progress.</span></li>
-	</ul>
-</div>
-<div>
-	<p><strong>Qualifications:&nbsp;</strong></p>
-	<ul>
-		<li>
-			<p>Currently pursuing a degree in Computer Science.</p>
-		</li>
-		<li>
-			<p>Familiar with Python, Shell or other scripting languages.</p>
-		</li>
-		<li>
-			<p>Curiosity, empathy and ability to get things done.</p>
-		</li>
-		<li>
-			<p>Ability to commit to a 12 week internship.</p>
-		</li>
-		<li>Proficiency in English and Mandarin is required to work with regional stakeholders</li>
-	</ul>
-</div>
+<p><strong>Available Locations: Singapore, or Sydney, Australia, or&nbsp;Tokyo, Japan</strong></p>
+<p><span style="font-weight: 400;">We are seeking a new Data Center Selection team member to improve the quality and unit cost and grow the size and number of our colocation sites/PoPs, and help us understand where on the map Cloudflare’s infrastructure needs to go next. You possess a broad set of contacts across the data center industry and are able to navigate local and international businesses in various markets to drive the best possible deal parameters.&nbsp; You will unlock efficiency within our vendor partner portfolio by understanding how to structure contracts to follow demand, keeping abreast of unique market dynamics and insights that help us negotiate, and managing vendor partner relationships to know where to invest and partner further with existing or new partners.&nbsp; We are looking for someone who excels at progressing many projects in parallel, managing dynamic day to day priorities with many stakeholders, and has experience implementing and refining sourcing best practices in a high growth environment. Getting stuff done is a must!</span></p>
+<p><strong>What you get to do in this role:</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Define regional vendor strategy for data centers</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Own deals end to end involving new and existing data center vendors and sites to support Cloudflare’s infrastructure growth including planning, RFP, commercial negotiation and execution</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work cross-functionally with legal, operations, capacity planning, network strategy and security teams to understand requirements and project timelines</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Establish and conduct scheduled QBR and other vendor management activities with top category partners</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Represent Cloudflare credibly to external partner C-level senior management and at public conferences/events</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Expert point of contact for internal business customers &amp; external colocation partner vendors as needed</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Contribute information to annual data center budget for effective tracking and benchmarking of infrastructure costs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Review colocation spend &amp; invoices for management approval&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Other duties as assigned</span></li>
+</ul>
+<p><strong>Skills/Experience:</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">10+ years in planning and managing data center footprints within a fast moving enterprise technology organization or cloud services, software or colocation company</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to multi-task and manage complex projects across multiple teams and geographies within set deadlines</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to navigate, solve problems and answer questions with minimal supervision</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Relationship management experience and excellent communication skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated experience in commercial negotiation&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with rack, site power and white space planning (data center sales engineering) a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with or understanding of network concepts a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in budget planning, financial analysis, or other analytical role a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Jira a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Multilingual and/or experience living/working/conducting business in another country a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor's degree or equivalent experience required</span></li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
