@@ -5,35 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Remote Mexico</strong></p>
-<p><strong>About the Department:</strong></p>
-<p>The Partner team works hard to grow the Partner ecosystem around Cloudflare. Channel Account Managers, Partner Development teams, and Partner Solutions Engineers all support partner businesses as they grow and scale with Cloudflare. All working together help our customers adopt Cloudflare and create great Internet-enabled experiences.</p>
-<p><strong>About the Role:</strong></p>
-<p>This role is strategically focused on service delivery and operational excellence for Cloudflare’s Managed Service Providers (MSPs) and Distribution Partners. In this player/coach role, you will guide Channel partners through their Cloudflare journey with your strong leadership, technical, and business acumen as well as lead, mentor, and develop a team to deliver technical services coverage to MSP and Distribution partners. This role/team helps our partners build and scale different service offerings to ensure our end-customers receive an amazing Cloudflare experience.&nbsp;</p>
-<p>You’ll be pivotal in streamlining and ongoing satisfaction with Cloudflare services provided by channel partners. Your position involves high-level engagements and discussions with C-suite executives at partner organizations, focusing on post sales partner success. You'll be responsible for ensuring the smooth onboarding of new partners, providing ongoing post-sales support, and maintaining high partner satisfaction. Your technical knowledge of Cloudflare’s solution, industry expertise, familiarity with go to market models and ability to manage large cross-functional projects will allow you to act as a trusted advisor for your partners alongside Cloudflare’s Partner Success Managers, Channel &amp; Alliance Managers and Solutions Engineers.</p>
-<p>To aid your team, you will work closely with every team at Cloudflare, from Sales and Product, through to Engineering and Customer Support. Your goal of partner and customer success should drive you through the entire organization as you seek out and advise your team on how to provide scalable technical services coverage for partner needs.</p>
-<p>Reporting to the Head of Partner Services, you will own the performance and development of the team with accountability for Team Development, Operational Diligence, and partner with the Revenue organization to drive positive outcomes in developing technical partner practices.</p>
-<p><strong>Specifically, we are looking for you to:</strong></p>
+<p><strong>What You'll Do</strong></p>
+<p>We are looking for a strong leader to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Tooling &amp; Strategy.&nbsp;</p>
+<p><strong>Locations: Remote US &amp; Canada</strong></p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Actively engage with MSPs and distribution partners, guiding them through their journey with Cloudflare, focusing on post-sales and onboarding processes.</li>
-	<li>Develop and manage a tailored support framework for MSPs and distributor partners, ensuring they receive the assistance needed for efficient Cloudflare solution deployment and management.</li>
-	<li>Oversee the creation of specialized resources and tools designed to enhance partner capabilities in service delivery and customer support.</li>
-	<li>Utilize your strong communication skills and technical understanding to develop strong relationships with partners.</li>
-	<li>Lead your team with clarity and empathy, creating a culture of innovation, safety, and creativity.</li>
-	<li>Clearly articulate and implement your team’s vision and strategy, promoting collaboration and operational excellence.</li>
-	<li>Oversee and report on various initiatives and projects, focusing on enhancing partner capabilities and development within the post-sales landscape.</li>
-	<li>Concentrate on mentoring and developing your team, ensuring they possess both the functional and technical skills necessary for effective partner support.</li>
-	<li>Champion the development of technical services practices for partners, collaborating with colleagues to create enriching partner experiences.</li>
-	<li>Establish a continuous feedback loop with partners to identify areas for improvement in post-sales support, leading initiatives to enhance partner satisfaction and success.</li>
-	<li>Ability to troubleshoot and resolve technical issues related to Cloudflare services.</li>
-	<li>Strong grasp of networking concepts, including DNS, CDN, and web security.</li>
-	<li>Understanding of cybersecurity principles and practices.</li>
-	<li>Experience with API management and integration, essential for automating and customizing service platforms.</li>
-	<li>Experience with cloud-native solutions, architectures, and services, especially those relevant to scalable and secure internet operations.</li>
+	<li>Support Strategic Direction, Product Vision, Customer Discovery, Feature Prioritization &amp; Cross-functional alignment for Cloudflare’s Commission Tech Stack</li>
+	<li>Identify &amp; implement leading practice architecture and build techniques, optimizing for scalability, useability, flexibility and analytical intelligence</li>
+	<li>Coordinate managed services resources, leveraging them to execute and implement builds, enhancements and testing, eventually taking ownership once the solution is functionally complete.</li>
+	<li>Support the implementation of&nbsp; robust and thorough change management processes and&nbsp; testing framework</li>
+	<li>Employ a ‘business-focused’ approach to technical work; learn, understand and speak the language of key stakeholders and business partners</li>
+	<li>Plan and execute appropriate testing (e.g. test plans, test cases, and test scripts) to comprehensively test assigned enhancements to business applications.</li>
+	<li>Review and analyze application performance, to provide enhancement recommendations and process improvements.</li>
+	<li>Provide risk assessment for new functionality and enhancements.</li>
+	<li>Build extensive solution / process documentation and enablement infrastructure, scaling consistent practices, documentation and desktop procedures for tool functionality</li>
+	<li>Build deep knowledge around and leverage relationships to influence outcomes and prioritization of upstream system enhancements which directly impact ICM practice (eg. HCM, CRM, etc.)</li>
+	<li>Support the implementation of appropriate SOX Controls, partnering closely with the Controllership and Internal Audit Organizations</li>
 </ul>
-<p>We know that the ideal candidate may not have all of the above skills on Day 1 and we’re committed to developing and investing in the right person for the role.</p>
-<h4><br><br></h4>
-<p>&nbsp;</p>
+<p><strong>About You:</strong></p>
+<ul>
+	<li>8+ years of Product Management, Technical Project Management, Consulting, or Incentive Compensation Administration; experience with a Saas business model preferred</li>
+	<li>Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</li>
+	<li>Experience or understanding of commissions-specific SOX Controls</li>
+	<li>Experience with Varicent, Anaplan ICM, Xactly, Calidus or a similar ICM tool</li>
+	<li>Experience with SQL platforms and queries</li>
+	<li>Preferred: Familiarity with services such as EC2 and S3 and experience working with large-scale, complex datasets; coding proficiency in at least one modern programming language (Python, Perl, Java, etc)</li>
+	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
+	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
