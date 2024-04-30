@@ -313,7 +313,7 @@
 				"name": "dataset_id",
 				"required": true,
 				"schema": {
-					"description": "Name of the dataset.",
+					"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 					"example": "http_requests",
 					"maxLength": 256,
 					"nullable": true,
@@ -631,7 +631,7 @@
 				"name": "dataset_id",
 				"required": true,
 				"schema": {
-					"description": "Name of the dataset.",
+					"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 					"example": "http_requests",
 					"maxLength": 256,
 					"nullable": true,
@@ -725,7 +725,7 @@
 												"nullable": true,
 												"properties": {
 													"dataset": {
-														"description": "Name of the dataset.",
+														"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 														"example": "http_requests",
 														"maxLength": 256,
 														"nullable": true,
@@ -752,7 +752,8 @@
 													},
 													"frequency": {
 														"default": "high",
-														"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+														"deprecated": true,
+														"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 														"enum": [
 															"high",
 															"low"
@@ -765,6 +766,16 @@
 														"description": "Unique id of the job.",
 														"minimum": 1,
 														"type": "integer"
+													},
+													"kind": {
+														"default": "",
+														"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+														"enum": [
+															"edge"
+														],
+														"example": "",
+														"nullable": true,
+														"type": "string"
 													},
 													"last_complete": {
 														"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -786,6 +797,32 @@
 														"maxLength": 4096,
 														"nullable": true,
 														"type": "string"
+													},
+													"max_upload_bytes": {
+														"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+														"example": 5000000,
+														"maximum": 1000000000,
+														"minimum": 5000000,
+														"nullable": true,
+														"type": "integer"
+													},
+													"max_upload_interval_seconds": {
+														"default": 30,
+														"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+														"example": 30,
+														"maximum": 300,
+														"minimum": 30,
+														"nullable": true,
+														"type": "integer"
+													},
+													"max_upload_records": {
+														"default": 100000,
+														"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+														"example": 1000,
+														"maximum": 1000000,
+														"minimum": 1000,
+														"nullable": true,
+														"type": "integer"
 													},
 													"name": {
 														"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -978,7 +1015,7 @@
 														"nullable": true,
 														"properties": {
 															"dataset": {
-																"description": "Name of the dataset.",
+																"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 																"example": "http_requests",
 																"maxLength": 256,
 																"nullable": true,
@@ -1005,7 +1042,8 @@
 															},
 															"frequency": {
 																"default": "high",
-																"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+																"deprecated": true,
+																"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 																"enum": [
 																	"high",
 																	"low"
@@ -1018,6 +1056,16 @@
 																"description": "Unique id of the job.",
 																"minimum": 1,
 																"type": "integer"
+															},
+															"kind": {
+																"default": "",
+																"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+																"enum": [
+																	"edge"
+																],
+																"example": "",
+																"nullable": true,
+																"type": "string"
 															},
 															"last_complete": {
 																"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -1039,6 +1087,32 @@
 																"maxLength": 4096,
 																"nullable": true,
 																"type": "string"
+															},
+															"max_upload_bytes": {
+																"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+																"example": 5000000,
+																"maximum": 1000000000,
+																"minimum": 5000000,
+																"nullable": true,
+																"type": "integer"
+															},
+															"max_upload_interval_seconds": {
+																"default": 30,
+																"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+																"example": 30,
+																"maximum": 300,
+																"minimum": 30,
+																"nullable": true,
+																"type": "integer"
+															},
+															"max_upload_records": {
+																"default": 100000,
+																"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+																"example": 1000,
+																"maximum": 1000000,
+																"minimum": 1000,
+																"nullable": true,
+																"type": "integer"
 															},
 															"name": {
 																"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -1356,7 +1430,7 @@
 												"nullable": true,
 												"properties": {
 													"dataset": {
-														"description": "Name of the dataset.",
+														"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 														"example": "http_requests",
 														"maxLength": 256,
 														"nullable": true,
@@ -1383,7 +1457,8 @@
 													},
 													"frequency": {
 														"default": "high",
-														"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+														"deprecated": true,
+														"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 														"enum": [
 															"high",
 															"low"
@@ -1396,6 +1471,16 @@
 														"description": "Unique id of the job.",
 														"minimum": 1,
 														"type": "integer"
+													},
+													"kind": {
+														"default": "",
+														"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+														"enum": [
+															"edge"
+														],
+														"example": "",
+														"nullable": true,
+														"type": "string"
 													},
 													"last_complete": {
 														"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -1417,6 +1502,32 @@
 														"maxLength": 4096,
 														"nullable": true,
 														"type": "string"
+													},
+													"max_upload_bytes": {
+														"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+														"example": 5000000,
+														"maximum": 1000000000,
+														"minimum": 5000000,
+														"nullable": true,
+														"type": "integer"
+													},
+													"max_upload_interval_seconds": {
+														"default": 30,
+														"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+														"example": 30,
+														"maximum": 300,
+														"minimum": 30,
+														"nullable": true,
+														"type": "integer"
+													},
+													"max_upload_records": {
+														"default": 100000,
+														"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+														"example": 1000,
+														"maximum": 1000000,
+														"minimum": 1000,
+														"nullable": true,
+														"type": "integer"
 													},
 													"name": {
 														"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -1609,7 +1720,7 @@
 														"nullable": true,
 														"properties": {
 															"dataset": {
-																"description": "Name of the dataset.",
+																"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 																"example": "http_requests",
 																"maxLength": 256,
 																"nullable": true,
@@ -1636,7 +1747,8 @@
 															},
 															"frequency": {
 																"default": "high",
-																"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+																"deprecated": true,
+																"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 																"enum": [
 																	"high",
 																	"low"
@@ -1649,6 +1761,16 @@
 																"description": "Unique id of the job.",
 																"minimum": 1,
 																"type": "integer"
+															},
+															"kind": {
+																"default": "",
+																"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+																"enum": [
+																	"edge"
+																],
+																"example": "",
+																"nullable": true,
+																"type": "string"
 															},
 															"last_complete": {
 																"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -1670,6 +1792,32 @@
 																"maxLength": 4096,
 																"nullable": true,
 																"type": "string"
+															},
+															"max_upload_bytes": {
+																"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+																"example": 5000000,
+																"maximum": 1000000000,
+																"minimum": 5000000,
+																"nullable": true,
+																"type": "integer"
+															},
+															"max_upload_interval_seconds": {
+																"default": 30,
+																"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+																"example": 30,
+																"maximum": 300,
+																"minimum": 30,
+																"nullable": true,
+																"type": "integer"
+															},
+															"max_upload_records": {
+																"default": 100000,
+																"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+																"example": 1000,
+																"maximum": 1000000,
+																"minimum": 1000,
+																"nullable": true,
+																"type": "integer"
 															},
 															"name": {
 																"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -2015,7 +2163,7 @@
 											"nullable": true,
 											"properties": {
 												"dataset": {
-													"description": "Name of the dataset.",
+													"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 													"example": "http_requests",
 													"maxLength": 256,
 													"nullable": true,
@@ -2042,7 +2190,8 @@
 												},
 												"frequency": {
 													"default": "high",
-													"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+													"deprecated": true,
+													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 													"enum": [
 														"high",
 														"low"
@@ -2055,6 +2204,16 @@
 													"description": "Unique id of the job.",
 													"minimum": 1,
 													"type": "integer"
+												},
+												"kind": {
+													"default": "",
+													"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+													"enum": [
+														"edge"
+													],
+													"example": "",
+													"nullable": true,
+													"type": "string"
 												},
 												"last_complete": {
 													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -2076,6 +2235,32 @@
 													"maxLength": 4096,
 													"nullable": true,
 													"type": "string"
+												},
+												"max_upload_bytes": {
+													"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+													"example": 5000000,
+													"maximum": 1000000000,
+													"minimum": 5000000,
+													"nullable": true,
+													"type": "integer"
+												},
+												"max_upload_interval_seconds": {
+													"default": 30,
+													"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+													"example": 30,
+													"maximum": 300,
+													"minimum": 30,
+													"nullable": true,
+													"type": "integer"
+												},
+												"max_upload_records": {
+													"default": 100000,
+													"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+													"example": 1000,
+													"maximum": 1000000,
+													"minimum": 1000,
+													"nullable": true,
+													"type": "integer"
 												},
 												"name": {
 													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -2284,7 +2469,7 @@
 													"nullable": true,
 													"properties": {
 														"dataset": {
-															"description": "Name of the dataset.",
+															"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 															"example": "http_requests",
 															"maxLength": 256,
 															"nullable": true,
@@ -2311,7 +2496,8 @@
 														},
 														"frequency": {
 															"default": "high",
-															"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+															"deprecated": true,
+															"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 															"enum": [
 																"high",
 																"low"
@@ -2324,6 +2510,16 @@
 															"description": "Unique id of the job.",
 															"minimum": 1,
 															"type": "integer"
+														},
+														"kind": {
+															"default": "",
+															"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+															"enum": [
+																"edge"
+															],
+															"example": "",
+															"nullable": true,
+															"type": "string"
 														},
 														"last_complete": {
 															"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -2345,6 +2541,32 @@
 															"maxLength": 4096,
 															"nullable": true,
 															"type": "string"
+														},
+														"max_upload_bytes": {
+															"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+															"example": 5000000,
+															"maximum": 1000000000,
+															"minimum": 5000000,
+															"nullable": true,
+															"type": "integer"
+														},
+														"max_upload_interval_seconds": {
+															"default": 30,
+															"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+															"example": 30,
+															"maximum": 300,
+															"minimum": 30,
+															"nullable": true,
+															"type": "integer"
+														},
+														"max_upload_records": {
+															"default": 100000,
+															"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+															"example": 1000,
+															"maximum": 1000000,
+															"minimum": 1000,
+															"nullable": true,
+															"type": "integer"
 														},
 														"name": {
 															"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -2593,7 +2815,7 @@
 					"schema": {
 						"properties": {
 							"dataset": {
-								"description": "Name of the dataset.",
+								"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 								"example": "http_requests",
 								"maxLength": 256,
 								"nullable": true,
@@ -2614,12 +2836,23 @@
 							},
 							"frequency": {
 								"default": "high",
-								"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+								"deprecated": true,
+								"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 								"enum": [
 									"high",
 									"low"
 								],
 								"example": "high",
+								"nullable": true,
+								"type": "string"
+							},
+							"kind": {
+								"default": "",
+								"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+								"enum": [
+									"edge"
+								],
+								"example": "",
 								"nullable": true,
 								"type": "string"
 							},
@@ -2631,6 +2864,32 @@
 								"maxLength": 4096,
 								"nullable": true,
 								"type": "string"
+							},
+							"max_upload_bytes": {
+								"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+								"example": 5000000,
+								"maximum": 1000000000,
+								"minimum": 5000000,
+								"nullable": true,
+								"type": "integer"
+							},
+							"max_upload_interval_seconds": {
+								"default": 30,
+								"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+								"example": 30,
+								"maximum": 300,
+								"minimum": 30,
+								"nullable": true,
+								"type": "integer"
+							},
+							"max_upload_records": {
+								"default": 100000,
+								"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+								"example": 1000,
+								"maximum": 1000000,
+								"minimum": 1000,
+								"nullable": true,
+								"type": "integer"
 							},
 							"name": {
 								"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -2843,7 +3102,7 @@
 											"nullable": true,
 											"properties": {
 												"dataset": {
-													"description": "Name of the dataset.",
+													"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 													"example": "http_requests",
 													"maxLength": 256,
 													"nullable": true,
@@ -2870,7 +3129,8 @@
 												},
 												"frequency": {
 													"default": "high",
-													"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+													"deprecated": true,
+													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 													"enum": [
 														"high",
 														"low"
@@ -2883,6 +3143,16 @@
 													"description": "Unique id of the job.",
 													"minimum": 1,
 													"type": "integer"
+												},
+												"kind": {
+													"default": "",
+													"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+													"enum": [
+														"edge"
+													],
+													"example": "",
+													"nullable": true,
+													"type": "string"
 												},
 												"last_complete": {
 													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -2904,6 +3174,32 @@
 													"maxLength": 4096,
 													"nullable": true,
 													"type": "string"
+												},
+												"max_upload_bytes": {
+													"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+													"example": 5000000,
+													"maximum": 1000000000,
+													"minimum": 5000000,
+													"nullable": true,
+													"type": "integer"
+												},
+												"max_upload_interval_seconds": {
+													"default": 30,
+													"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+													"example": 30,
+													"maximum": 300,
+													"minimum": 30,
+													"nullable": true,
+													"type": "integer"
+												},
+												"max_upload_records": {
+													"default": 100000,
+													"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+													"example": 1000,
+													"maximum": 1000000,
+													"minimum": 1000,
+													"nullable": true,
+													"type": "integer"
 												},
 												"name": {
 													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -3112,7 +3408,7 @@
 													"nullable": true,
 													"properties": {
 														"dataset": {
-															"description": "Name of the dataset.",
+															"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 															"example": "http_requests",
 															"maxLength": 256,
 															"nullable": true,
@@ -3139,7 +3435,8 @@
 														},
 														"frequency": {
 															"default": "high",
-															"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+															"deprecated": true,
+															"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 															"enum": [
 																"high",
 																"low"
@@ -3152,6 +3449,16 @@
 															"description": "Unique id of the job.",
 															"minimum": 1,
 															"type": "integer"
+														},
+														"kind": {
+															"default": "",
+															"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+															"enum": [
+																"edge"
+															],
+															"example": "",
+															"nullable": true,
+															"type": "string"
 														},
 														"last_complete": {
 															"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -3173,6 +3480,32 @@
 															"maxLength": 4096,
 															"nullable": true,
 															"type": "string"
+														},
+														"max_upload_bytes": {
+															"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+															"example": 5000000,
+															"maximum": 1000000000,
+															"minimum": 5000000,
+															"nullable": true,
+															"type": "integer"
+														},
+														"max_upload_interval_seconds": {
+															"default": 30,
+															"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+															"example": 30,
+															"maximum": 300,
+															"minimum": 30,
+															"nullable": true,
+															"type": "integer"
+														},
+														"max_upload_records": {
+															"default": 100000,
+															"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+															"example": 1000,
+															"maximum": 1000000,
+															"minimum": 1000,
+															"nullable": true,
+															"type": "integer"
 														},
 														"name": {
 															"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -4758,12 +5091,23 @@
 							},
 							"frequency": {
 								"default": "high",
-								"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+								"deprecated": true,
+								"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 								"enum": [
 									"high",
 									"low"
 								],
 								"example": "high",
+								"nullable": true,
+								"type": "string"
+							},
+							"kind": {
+								"default": "",
+								"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+								"enum": [
+									"edge"
+								],
+								"example": "",
 								"nullable": true,
 								"type": "string"
 							},
@@ -4775,6 +5119,32 @@
 								"maxLength": 4096,
 								"nullable": true,
 								"type": "string"
+							},
+							"max_upload_bytes": {
+								"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+								"example": 5000000,
+								"maximum": 1000000000,
+								"minimum": 5000000,
+								"nullable": true,
+								"type": "integer"
+							},
+							"max_upload_interval_seconds": {
+								"default": 30,
+								"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+								"example": 30,
+								"maximum": 300,
+								"minimum": 30,
+								"nullable": true,
+								"type": "integer"
+							},
+							"max_upload_records": {
+								"default": 100000,
+								"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+								"example": 1000,
+								"maximum": 1000000,
+								"minimum": 1000,
+								"nullable": true,
+								"type": "integer"
 							},
 							"output_options": {
 								"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
@@ -4976,7 +5346,7 @@
 											"nullable": true,
 											"properties": {
 												"dataset": {
-													"description": "Name of the dataset.",
+													"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 													"example": "http_requests",
 													"maxLength": 256,
 													"nullable": true,
@@ -5003,7 +5373,8 @@
 												},
 												"frequency": {
 													"default": "high",
-													"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+													"deprecated": true,
+													"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 													"enum": [
 														"high",
 														"low"
@@ -5016,6 +5387,16 @@
 													"description": "Unique id of the job.",
 													"minimum": 1,
 													"type": "integer"
+												},
+												"kind": {
+													"default": "",
+													"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+													"enum": [
+														"edge"
+													],
+													"example": "",
+													"nullable": true,
+													"type": "string"
 												},
 												"last_complete": {
 													"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -5037,6 +5418,32 @@
 													"maxLength": 4096,
 													"nullable": true,
 													"type": "string"
+												},
+												"max_upload_bytes": {
+													"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+													"example": 5000000,
+													"maximum": 1000000000,
+													"minimum": 5000000,
+													"nullable": true,
+													"type": "integer"
+												},
+												"max_upload_interval_seconds": {
+													"default": 30,
+													"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+													"example": 30,
+													"maximum": 300,
+													"minimum": 30,
+													"nullable": true,
+													"type": "integer"
+												},
+												"max_upload_records": {
+													"default": 100000,
+													"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+													"example": 1000,
+													"maximum": 1000000,
+													"minimum": 1000,
+													"nullable": true,
+													"type": "integer"
 												},
 												"name": {
 													"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
@@ -5245,7 +5652,7 @@
 													"nullable": true,
 													"properties": {
 														"dataset": {
-															"description": "Name of the dataset.",
+															"description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).",
 															"example": "http_requests",
 															"maxLength": 256,
 															"nullable": true,
@@ -5272,7 +5679,8 @@
 														},
 														"frequency": {
 															"default": "high",
-															"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+															"deprecated": true,
+															"description": "This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 															"enum": [
 																"high",
 																"low"
@@ -5285,6 +5693,16 @@
 															"description": "Unique id of the job.",
 															"minimum": 1,
 															"type": "integer"
+														},
+														"kind": {
+															"default": "",
+															"description": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.",
+															"enum": [
+																"edge"
+															],
+															"example": "",
+															"nullable": true,
+															"type": "string"
 														},
 														"last_complete": {
 															"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
@@ -5306,6 +5724,32 @@
 															"maxLength": 4096,
 															"nullable": true,
 															"type": "string"
+														},
+														"max_upload_bytes": {
+															"description": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.",
+															"example": 5000000,
+															"maximum": 1000000000,
+															"minimum": 5000000,
+															"nullable": true,
+															"type": "integer"
+														},
+														"max_upload_interval_seconds": {
+															"default": 30,
+															"description": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.",
+															"example": 30,
+															"maximum": 300,
+															"minimum": 30,
+															"nullable": true,
+															"type": "integer"
+														},
+														"max_upload_records": {
+															"default": 100000,
+															"description": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.",
+															"example": 1000,
+															"maximum": 1000000,
+															"minimum": 1000,
+															"nullable": true,
+															"type": "integer"
 														},
 														"name": {
 															"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
