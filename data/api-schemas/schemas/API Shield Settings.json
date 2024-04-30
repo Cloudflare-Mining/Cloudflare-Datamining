@@ -139,28 +139,57 @@
 											"properties": {
 												"auth_id_characteristics": {
 													"items": {
-														"properties": {
-															"name": {
-																"description": "The name of the characteristic field, i.e., the header or cookie name.",
-																"example": "authorization",
-																"maxLength": 128,
-																"type": "string"
+														"anyOf": [
+															{
+																"description": "Auth ID Characteristic",
+																"properties": {
+																	"name": {
+																		"description": "The name of the characteristic field, i.e., the header or cookie name.",
+																		"example": "authorization",
+																		"maxLength": 128,
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The type of characteristic.",
+																		"enum": [
+																			"header",
+																			"cookie"
+																		],
+																		"example": "header",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"name"
+																]
 															},
-															"type": {
-																"description": "The type of characteristic.",
-																"enum": [
-																	"header",
-																	"cookie"
+															{
+																"description": "Auth ID Characteristic extracted from JWT Token Claims",
+																"properties": {
+																	"name": {
+																		"description": "Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` \nis the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 \nJSONPath (https://goessner.net/articles/JsonPath/, https://www.rfc-editor.org/rfc/rfc9535.html).\nThe JSONPath expression may be in dot or bracket notation, may only specify literal keys\nor array indexes, and must return a singleton value, which will be interpreted as a string.\n",
+																		"example": "e0de1a3a-8c2c-4f90-98d8-cbdf0a3f2cb5:$.foo.bar[0].baz",
+																		"maxLength": 128,
+																		"pattern": "^(token_config_id:[a-z0-9]{32,36}):\\$(json_path:.*?)$",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The type of characteristic.",
+																		"enum": [
+																			"jwt"
+																		],
+																		"example": "jwt",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"name"
 																],
-																"example": "header",
-																"type": "string"
+																"type": "object"
 															}
-														},
-														"required": [
-															"type",
-															"name"
-														],
-														"type": "object"
+														]
 													},
 													"maxItems": 10,
 													"type": "array",
@@ -283,28 +312,57 @@
 													"properties": {
 														"auth_id_characteristics": {
 															"items": {
-																"properties": {
-																	"name": {
-																		"description": "The name of the characteristic field, i.e., the header or cookie name.",
-																		"example": "authorization",
-																		"maxLength": 128,
-																		"type": "string"
+																"anyOf": [
+																	{
+																		"description": "Auth ID Characteristic",
+																		"properties": {
+																			"name": {
+																				"description": "The name of the characteristic field, i.e., the header or cookie name.",
+																				"example": "authorization",
+																				"maxLength": 128,
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "The type of characteristic.",
+																				"enum": [
+																					"header",
+																					"cookie"
+																				],
+																				"example": "header",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"name"
+																		]
 																	},
-																	"type": {
-																		"description": "The type of characteristic.",
-																		"enum": [
-																			"header",
-																			"cookie"
+																	{
+																		"description": "Auth ID Characteristic extracted from JWT Token Claims",
+																		"properties": {
+																			"name": {
+																				"description": "Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` \nis the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 \nJSONPath (https://goessner.net/articles/JsonPath/, https://www.rfc-editor.org/rfc/rfc9535.html).\nThe JSONPath expression may be in dot or bracket notation, may only specify literal keys\nor array indexes, and must return a singleton value, which will be interpreted as a string.\n",
+																				"example": "e0de1a3a-8c2c-4f90-98d8-cbdf0a3f2cb5:$.foo.bar[0].baz",
+																				"maxLength": 128,
+																				"pattern": "^(token_config_id:[a-z0-9]{32,36}):\\$(json_path:.*?)$",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "The type of characteristic.",
+																				"enum": [
+																					"jwt"
+																				],
+																				"example": "jwt",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"name"
 																		],
-																		"example": "header",
-																		"type": "string"
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"type",
-																	"name"
-																],
-																"type": "object"
+																]
 															},
 															"maxItems": 10,
 															"type": "array",
@@ -437,28 +495,57 @@
 						"properties": {
 							"auth_id_characteristics": {
 								"items": {
-									"properties": {
-										"name": {
-											"description": "The name of the characteristic field, i.e., the header or cookie name.",
-											"example": "authorization",
-											"maxLength": 128,
-											"type": "string"
+									"anyOf": [
+										{
+											"description": "Auth ID Characteristic",
+											"properties": {
+												"name": {
+													"description": "The name of the characteristic field, i.e., the header or cookie name.",
+													"example": "authorization",
+													"maxLength": 128,
+													"type": "string"
+												},
+												"type": {
+													"description": "The type of characteristic.",
+													"enum": [
+														"header",
+														"cookie"
+													],
+													"example": "header",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"name"
+											]
 										},
-										"type": {
-											"description": "The type of characteristic.",
-											"enum": [
-												"header",
-												"cookie"
+										{
+											"description": "Auth ID Characteristic extracted from JWT Token Claims",
+											"properties": {
+												"name": {
+													"description": "Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` \nis the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 \nJSONPath (https://goessner.net/articles/JsonPath/, https://www.rfc-editor.org/rfc/rfc9535.html).\nThe JSONPath expression may be in dot or bracket notation, may only specify literal keys\nor array indexes, and must return a singleton value, which will be interpreted as a string.\n",
+													"example": "e0de1a3a-8c2c-4f90-98d8-cbdf0a3f2cb5:$.foo.bar[0].baz",
+													"maxLength": 128,
+													"pattern": "^(token_config_id:[a-z0-9]{32,36}):\\$(json_path:.*?)$",
+													"type": "string"
+												},
+												"type": {
+													"description": "The type of characteristic.",
+													"enum": [
+														"jwt"
+													],
+													"example": "jwt",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"name"
 											],
-											"example": "header",
-											"type": "string"
+											"type": "object"
 										}
-									},
-									"required": [
-										"type",
-										"name"
-									],
-									"type": "object"
+									]
 								},
 								"maxItems": 10,
 								"type": "array",
