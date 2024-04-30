@@ -344,6 +344,22 @@
 		]
 	},
 	{
+		"id": "4dc8917b4b40457d88d3035d5dadb054",
+		"name": "AI Gateway Read",
+		"description": "Grants access to reading Ai Gateways",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "6c8a3737f07f46369c1ea1f22138daaf",
+		"name": "AI Gateway Write",
+		"description": "Grants access to reading and editing Ai Gateways",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "f3604047d46144d2a3e9cf4ac99d7f16",
 		"name": "Allow Request Tracer Read",
 		"description": "Allows read access to request tracer API",
