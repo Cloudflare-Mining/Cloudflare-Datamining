@@ -5,41 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Teams</strong></p>
-<p><strong>Role location: Lisbon, Remote Portugal, London, Remote UK.&nbsp;</strong></p>
-<p><span style="font-weight: 400;">Cloudflare’s Engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products,&nbsp; help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</span></p>
-<p><span style="font-weight: 400;">Cloudflare is a fast growing company and engineering is an ever-evolving function with teams being formed and redefined often. You will interview for an engineering role at Cloudflare and will have the opportunity to meet with and ultimately select one or more teams.&nbsp; Here are a few examples of the teams that you could be part of.</span></p>
-<p><strong>Application Performance; Application Security; Zero Trust Services; Serverless, Bot Management; DDoS Protection; Network Services / Magic Products; Full Stack / Microservices; Security / Cryptography; Content Delivery; Email Security; API Security; Client / WARP applications; Machine Learning; Threat Intelligence</strong></p>
-<p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is a system spanning the globe, on a mission to make the Internet better, safer, and more powerful every day. As a Distributed Systems Engineer at Cloudflare, you’ll work on the code that runs close to the end user, runs at a massive scale, and is deployed to 250+ cities around the world.</span></p>
-<p><span style="font-weight: 400;">Examples of software systems at Cloudflare include:</span></p>
+<p><strong>Position Location: Austin, TX</strong></p>
+<p><strong>About the team</strong></p>
+<p><a href="https://pages.cloudflare.com/">Cloudflare Pages</a> is a collaborative web development platform that provides users with a fast and secure way to build and host web applications. We work hard to remove barriers between vision and execution for content creators, large and small. Pages is part of Cloudflare's Emerging Technology and Incubation team where new, bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a successful business, ETI leverages our network to deliver entirely new tools and products to our customers.&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A TLS/HTTP proxy to make the connection from eyeball to edge as fast and secure as possible</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Filtering malicious traffic and handling good traffic according to customer configuration</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Content optimization that takes content served from customer sites and makes it more performant</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A platform that runs “serverless” Workers and provides a key value store</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A reverse-proxy system that caches customer website content according to customer configuration</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Optimization of connections from Cloudflare to our customers' origin servers to reduce their load and increase performance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Our Authoritative DNS server and our public resolver 1.1.1.1.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">One of the biggest data pipelines in the world, operating at well over 25M events per second</span></li>
+	<li>Help build the next generation of CI/CD for Cloudflare's Developer Platform</li>
+	<li>Scale and improve the Pages API, a highly interconnected service that incorporates many other Cloudflare services into the Pages product</li>
+	<li>Collaborate with engineers across Cloudflare, and contribute at many layers of the stack&nbsp;</li>
+	<li>Own your work from early discussions on. You will plan, craft milestones, and effectively communicate scope and blockers as your project progresses. You will help implement metrics and dashboards to monitor operational health after the project ships</li>
+	<li>Leverage your creativity and developer prowess to seek out new ways to improve the platform</li>
 </ul>
-<p><span style="font-weight: 400;">We operate some of the fastest, and most widely distributed services on the Internet. Your work will focus on building robust, secure, and high performance distributed systems. We are a small engineering team operating at a massive scale, so what you do will have a huge impact.</span></p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>About you</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding at the protocol level, including the differences between what the specs say, and what actually happens on the Internet</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Confidence to work in multiple programming languages - could include C, Go, Rust, Python, Lua and even PHP</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience (and love) for debugging to ensure the system works in all cases</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong systems level programming skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excited by the idea of optimizing complex solutions to general problems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a continuous integration workflow and using source control (we use git)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Unix knowledge, patches to Operating Systems a huge plus for some roles</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of security issues and responsibilities</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with monitoring, alerting and debugging high volume production systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluent in analyses of data sets such as logs</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Designing and building APIs</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Great oral and written communications skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Desire to learn and improve</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willing and eager to share knowledge, and mentor</span></li>
+	<li>You are security focused. You understand that running untrusted code in a multitenant environment requires careful and deliberate work</li>
+	<li>You are a solid backend developer with a strong understanding of Kubernetes, relational databases, and RESTful APIs</li>
+	<li>You have experience with CI/CD, maybe even on a large scale</li>
+	<li>Our backend is written primarily in Go, Python, and TypeScript. We recommend you have worked in one of these languages before, preferably professionally</li>
+	<li>Although our backend isn't a mesh, parts of it rely on a decentralized architecture of Cloudflare Workers. You are familiar with Workers or have worked with microservices&nbsp;</li>
+	<li>You are empathic to the developer experience and knowledgeable of best practices, trends, and pain points&nbsp;&nbsp;</li>
+	<li>You are naturally curious and willing to take a step to learn something you don’t have experience in</li>
+	<li>Above all, you are a collaborator. You want to join a team that upholds a culture of support, open and honest communication, and vulnerability, and that values collaboration over heroism. We celebrate our achievements, support each other when we make mistakes, and hold each other and our work to the highest standard</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
