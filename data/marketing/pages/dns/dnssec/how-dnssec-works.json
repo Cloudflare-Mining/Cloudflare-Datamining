@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-10-23T16:58:52.792Z",
-					"updatedAt": "2024-04-24T15:41:48.296Z"
+					"updatedAt": "2024-05-01T19:50:49.012Z"
 				},
 				"contentfulId": "1u5jsNsHNJdTmfnxHFEdos",
 				"contentTypeId": "page",
@@ -184,31 +184,1499 @@
 						]
 					},
 					{
-						"button": [],
-						"contentTypeId": "bladeDoubleContent",
-						"contentfulId": "25PU5PY51urAw6JMa9eCWb",
-						"bladeName": "How DNSSEC Works - Delegation",
-						"title": null,
-						"longCopy": null,
-						"header1": "Delegation Signer Records",
-						"subheader1": null,
-						"copy1": "<p>\nDNSSEC introduces a delegation signer (DS) record to allow the transfer of trust from a parent zone to a child zone. A zone operator hashes the DNSKEY record containing the public KSK and gives it to the parent zone to publish as a DS record.\n</p>\n<img class=\"responsive-image\" title=\"diagram delegation signer records\" alt=\"diagram delegation signer records\" src=\"/img/products/ssl/diagram-delegation-signer-records.svg\">\n<p>\nEvery time a resolver is referred to a child zone, the parent zone also provides a DS record. This DS record is how resolvers know that the child zone is DNSSEC-enabled. To check the validity of the child zone's public KSK, the resolver hashes it and compares it to the DS record from the parent. If they match, the resolver can assume that the public KSK hasn't been tampered with, which means it can trust all of the records in the child zone. This is how a chain of trust is established in DNSSEC.\n</p>\n<p>\nNote that any change in the KSK also requires a change in the parent zone's DS record. Changing the DS record is a multi-step process that can end up breaking the zone if it's performed incorrectly. First, the parent needs to add the new DS record, then they need to wait until the TTL for the original DS record to expire before removing it. This is why it's much easier to swap out zone-signing keys than key-signing keys.\n</p>\n<h3 class=\"marketing-h3\">Explicit Denial of Existence</h3>\n<p>\nIf you ask DNS for the IP address of a domain that doesn't exist, it returns an empty answer—there's no way to explicitly say, \"sorry, the zone you requested doesn't exist.\" This is a problem if you want to authenticate the response, since there's no message to sign. DNSSEC fixes this by adding the NSEC and NSEC3 record types. They both allow for an authenticated denial of existence.\n</p>\n<p>\nNSEC works by returning the \"next secure\" record. For example, consider a name server that defines AAAA records for api, blog, and www. If you request a record for store, it would return an NSEC record containing www, meaning there's no AAAA records between store and www when the records are sorted alphabetically. This effectively tells you that store doesn't exist. And, since the NSEC record is signed, you can validate its corresponding RRSIG just like any RRset.\n</p>\n<p>\nUnfortunately, this solution allows anybody to walk through the zone and gather every single record without knowing which ones they're looking for. This can be a potential security threat if the zone administrator was counting on the contents of the zone being private. You can read more about this problem in <a href=\"/dns/dnssec/dnssec-complexities-and-considerations/\">DNSSEC: Complexities and Considerations</a>, as well as Cloudflare's unique solution in <a href=\"https://blog.cloudflare.com/dnssec-done-right/\">DNSSEC Done Right</a>.\n</p>",
-						"image": null,
-						"imageAssetFile": null,
-						"buttonText1": null,
-						"buttonUrl1": null,
-						"button1ExtraClass": null,
-						"header2": "The Chain of Trust",
-						"subheader2": null,
-						"copy2": "<p>\nOk, so we have a way to establish trust within a zone and connect it to its parent zone, but how do we trust the DS record? Well, the DS record is signed just like any other RRset, which means it has a corresponding RRSIG in the parent. The whole validation process repeats until we get to the parent's public KSK. To verify that, we need to go to that parent's DS record, and on and on we go up the chain of trust.\n</p>\n<img class=\"responsive-image\" title=\"diagram the chain of trust\" alt=\"diagram the chain of trust\" src=\"/img/products/ssl/diagram-the-chain-of-trust.svg\">\n<p>\nHowever, when we finally get to the root DNS zone, we have a problem: there's no parent DS record to validate against. This is where we get to see a very human side of the global Internet.\n</p>\n<p>\nIn the <a href=\"/dns/dnssec/root-signing-ceremony/\">Root Signing Ceremony</a>, several selected individuals from around the world come together and sign the root DNSKEY RRset in a very public and highly audited way. The ceremony produces an RRSIG record that can be used to verify the root name server's public KSK and ZSK. Instead of trusting the public KSK because of the parent's DS record, we <em>assume</em> that it's valid because we trust the security procedures around accessing the private KSK.\n</p>\n<p>\nThe ability to establish trust between parent and child zones is an integral part of DNSSEC. If any part of the chain is broken, we can't trust the records we're requesting because a man-in-the-middle could alter the records and direct us to any IP address they want.\n</p>",
-						"buttonText2": null,
-						"buttonUrl2": null,
-						"button2ExtraClass": null,
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "47HB9dE5fVKTky4fCYLICI",
+						"htmlId": null,
+						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"textColor": "black",
 						"sectionPadding": null,
-						"link": []
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "20L9MLW2h5IP2r42LjIVyF",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "A Gentle Introduction to DNSSEC",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nDNSSEC creates a secure domain name system by adding cryptographic signatures to existing DNS records. These digital signatures are stored in DNS name servers alongside common record types like A, AAAA, MX, CNAME, etc. By checking its associated signature, you can verify that a requested DNS record comes from its authoritative name server and wasn't altered en-route, opposed to a fake record injected in a man-in-the-middle attack.\n\nTo facilitate signature validation, DNSSEC adds a few new DNS record types:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "RRSIG",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " - Contains a cryptographic signature",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "DNSKEY",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " - Contains a public signing key",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "DS",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " - Contains the hash of a DNSKEY record",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "NSEC",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " and ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "NSEC3",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " - For explicit denial-of-existence of a DNS record",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "CDNSKEY",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " and ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "CDS",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " - For a child zone requesting updates to DS record(s) in the parent zone.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The interaction between RRSIG, DNSKEY, and DS records, as well as how they add a layer of trust on top of DNS, is what we'll be talking about in this article.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5VTq6LnuAdQpnJDxRsLnlT",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "RRsets",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nThe first step towards securing a zone with DNSSEC is to group all the records with the same type into a resource record set (RRset). For example, if you have three AAAA records in your zone on the same label (i.e. label.example.com), they would all be bundled into a single AAAA RRset.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "2UiiJsLr9F6Z4aaMomt8ck",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "2UiiJsLr9F6Z4aaMomt8ck",
+															"locale": "en-US",
+															"title": "diagram-rrsets",
+															"file": {
+																"name": "diagram-rrsets.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UiiJsLr9F6Z4aaMomt8ck/75c1d62e52e7c7336cc05262a34419df/diagram-rrsets.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nIt's actually this full RRset that gets digitally signed, opposed to individual DNS records. Of course, this also means that you must request and validate all of the AAAA records from a zone with the same label instead of validating only one of them.\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "FsUFmEFx61R04vxDu60eR",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5eQzXvkO3CuOapcrPqU0U",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Zone-Signing Keys",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Each zone in DNSSEC has a zone-signing key pair (ZSK): the private portion of the key digitally signs each RRset in the zone, while the public portion verifies the signature. To enable DNSSEC, a zone operator creates digital signatures for each RRset using the private ZSK and stores them in their name server as RRSIG records. This is like saying, \"These are my DNS records, they come from my server, and they should look like this.\"",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "48JcjHykiolSxdnuVuD8lm",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "48JcjHykiolSxdnuVuD8lm",
+															"locale": "en-US",
+															"title": "diagram-zone-signing-keys-1",
+															"file": {
+																"name": "diagram-zone-signing-keys-1.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/48JcjHykiolSxdnuVuD8lm/f58e103e876c31ba110073421f9f6181/diagram-zone-signing-keys-1.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "However, these RRSIG records are useless unless DNS resolvers have a way of verifying the signatures. The zone operator also needs to make their public ZSK available by adding it to their name server in a DNSKEY record.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "When a DNSSEC resolver requests a particular record type (e.g., AAAA), the name server also returns the corresponding RRSIG. The resolver can then pull the DNSKEY record containing the public ZSK from the name server. Together, the RRset, RRSIG, and public ZSK can validate the response.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "2oZXy37sOnUsLLivDFXwPS",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "2oZXy37sOnUsLLivDFXwPS",
+															"locale": "en-US",
+															"title": "diagram-zone-signing-keys-2",
+															"file": {
+																"name": "diagram-zone-signing-keys-2.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oZXy37sOnUsLLivDFXwPS/a1096577e759d37d282e20b3b979a92d/diagram-zone-signing-keys-2.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "If we trust the zone-signing key in the DNSKEY record, we can trust all the records in the zone. But, what if the zone-signing key was compromised? We need a way to validate the public ZSK.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "12dNc1AXQhRNbeXl8IthRr",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Key-Signing Keys",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nIn addition to a zone-signing key, DNSSEC name servers also have a key-signing key (KSK). The KSK validates the DNSKEY record in exactly the same way as our ZSK secured the rest of our RRsets in the previous section: It signs the public ZSK (which is stored in a DNSKEY record), creating an RRSIG for the DNSKEY.\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "1vJPrN2rp2NM6OKo9qmgdg",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "1vJPrN2rp2NM6OKo9qmgdg",
+															"locale": "en-US",
+															"title": "diagram-keys-signing-keys-1",
+															"file": {
+																"name": "diagram-key-signing-keys-1.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vJPrN2rp2NM6OKo9qmgdg/99ff2fd964bf6abb014d781d054b3d15/diagram-key-signing-keys-1.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nJust like the public ZSK, the name server publishes the public KSK in another DNSKEY record, which gives us the DNSKEY RRset shown above. Both the public KSK and public ZSK are signed by the private KSK. Resolvers can then use the public KSK to validate the public ZSK.\n\nValidation for resolvers now looks like this:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Request the desired RRset, which also returns the corresponding RRSIG record.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Request the DNSKEY records containing the public ZSK and public KSK, which also returns the RRSIG for the DNSKEY RRset.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Verify the RRSIG of the requested RRset with the public ZSK.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Verify the RRSIG of the DNSKEY RRset with the public KSK.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "5zBcbyLd3KpzlK8xuwaFLc",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "5zBcbyLd3KpzlK8xuwaFLc",
+															"locale": "en-US",
+															"title": "diagram-key-signing-keys-2",
+															"file": {
+																"name": "diagram-key-signing-keys-2.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5zBcbyLd3KpzlK8xuwaFLc/92e8dc7fbd28f116ed7630805b578f9c/diagram-key-signing-keys-2.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nOf course, the DNSKEY RRset and corresponding RRSIG records can be cached, so the DNS name servers aren't constantly being bombarded with unnecessary requests.\n\nWhy do we use separate zone-signing keys and key-signing keys? As we'll discuss in the next section, it's difficult to swap out an old or compromised KSK. Changing the ZSK, on the other hand, is much easier. This allows us to use a smaller ZSK without compromising the security of the server, minimizing the amount of data that the server has to send with each response.\n\nWe've now established trust within our zone, but DNS is a hierarchical system, and zones rarely operate independently. Complicating things further, the key-signing key is signed by itself, which doesn't provide any additional trust. We need a way to connect the trust in our zone with its parent zone.\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "1OCtmbtRFTtjjFFIUYz30e",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "mQvJIqYME0VAN3GL4YNtU",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Delegation Signer Records",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nDNSSEC introduces a delegation signer (DS) record to allow the transfer of trust from a parent zone to a child zone. A zone operator hashes the DNSKEY record containing the public KSK and gives it to the parent zone to publish as a DS record.\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "3YDpzavncwWIwyO16iCrLW",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "3YDpzavncwWIwyO16iCrLW",
+															"locale": "en-US",
+															"title": "Diagram Delegation Signer Records",
+															"file": {
+																"name": "diagram-delegation-signer-records.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3YDpzavncwWIwyO16iCrLW/4324d1830a2d0d7da64aa83312e74cb2/diagram-delegation-signer-records.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Every time a resolver is referred to a child zone, the parent zone also provides a DS record. This DS record is how resolvers know that the child zone is DNSSEC-enabled. To check the validity of the child zone's public KSK, the resolver hashes it and compares it to the DS record from the parent. If they match, the resolver can assume that the public KSK hasn't been tampered with, which means it can trust all of the records in the child zone. This is how a chain of trust is established in DNSSEC.\n\nNote that any change in the KSK also requires a change in the parent zone's DS record. Changing the DS record is a multi-step process that can end up breaking the zone if it's performed incorrectly. First, the parent needs to add the new DS record, then they need to wait until the TTL for the original DS record to expire before removing it. This is why it's much easier to swap out zone-signing keys than key-signing keys.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nExplicit Denial of Existence",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nIf you ask DNS for the IP address of a domain that doesn't exist, it returns an empty answer—there's no way to explicitly say, \"sorry, the zone you requested doesn't exist.\" This is a problem if you want to authenticate the response, since there's no message to sign. DNSSEC fixes this by adding the NSEC and NSEC3 record types. They both allow for an authenticated denial of existence.\n\nNSEC works by returning the \"next secure\" record. For example, consider a name server that defines AAAA records for api, blog, and www. If you request a record for store, it would return an NSEC record containing www, meaning there's no AAAA records between store and www when the records are sorted alphabetically. This effectively tells you that store doesn't exist. And, since the NSEC record is signed, you can validate its corresponding RRSIG just like any RRset.\n\nUnfortunately, this solution allows anybody to walk through the zone and gather every single record without knowing which ones they're looking for. This can be a potential security threat if the zone administrator was counting on the contents of the zone being private. You can read more about this problem in ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "/dns/dnssec/dnssec-complexities-and-considerations/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "DNSSEC: Complexities and Considerations",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", as well as Cloudflare's unique solution in ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://blog.cloudflare.com/dnssec-done-right/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "DNSSEC Done Right",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "nSoCqdeUvTepL8FWh0M4K",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Chain of Trust",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nOk, so we have a way to establish trust within a zone and connect it to its parent zone, but how do we trust the DS record? Well, the DS record is signed just like any other RRset, which means it has a corresponding RRSIG in the parent. The whole validation process repeats until we get to the parent's public KSK. To verify that, we need to go to that parent's DS record, and on and on we go up the chain of trust.\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "3whTM2HI9iX2nu37QaGVxM",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "3whTM2HI9iX2nu37QaGVxM",
+															"locale": "en-US",
+															"title": "Diagram the chain of trust",
+															"file": {
+																"name": "diagram-the-chain-of-trust.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3whTM2HI9iX2nu37QaGVxM/06b7e5506789e32d67307eb6deb87e45/diagram-the-chain-of-trust.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nHowever, when we finally get to the root DNS zone, we have a problem: there's no parent DS record to validate against. This is where we get to see a very human side of the global Internet.\n\nIn the ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "/dns/dnssec/root-signing-ceremony/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Root Signing Ceremony",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", several selected individuals from around the world come together and sign the root DNSKEY RRset in a very public and highly audited way. The ceremony produces an RRSIG record that can be used to verify the root name server's public KSK and ZSK. Instead of trusting the public KSK because of the parent's DS record, we ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "assume",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " that it's valid because we trust the security procedures around accessing the private KSK.\n\nThe ability to establish trust between parent and child zones is an integral part of DNSSEC. If any part of the chain is broken, we can't trust the records we're requesting because a man-in-the-middle could alter the records and direct us to any IP address they want.\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
