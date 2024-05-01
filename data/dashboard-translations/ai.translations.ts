@@ -94,6 +94,8 @@
 	explore_workers_templates: "Explore Workers Templates",
 	get_api_token: "Get API Token",
 	get_api_token_description: "To use Workers AI API, create a custom token with the correct *Read* permissions:",
+	get_account_id_header: "Get Account ID",
+	get_account_id_description: "Use this account ID to make API calls to the Workers AI REST API.",
 	join_waitlist: "Join Waitlist",
 	make_your_first_inference_call: "Make your first inference call",
 	make_your_first_inference_call_description: "Substitute your Workers AI API token into the example below to make your first Worker AI API call.",
