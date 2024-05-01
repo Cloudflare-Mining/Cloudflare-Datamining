@@ -66,6 +66,61 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeSignUpForm",
+						"contentfulId": "3M4Lmw3jNuyoi2UqMuaics",
+						"bladeName": "Kubernetes - Form Blade",
+						"formType": "formRight",
+						"formTitle": null,
+						"buttonText": "#",
+						"buttonColor": "orange",
+						"htmlId": "kubernetesForm",
+						"marketoEmbeddedForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "jEeqxlfmpMxH6HQ9lk7cG",
+							"bladeName": "Kubernetes - Marketo Form",
+							"backgroundColor": "white",
+							"marketoFormId": 1343,
+							"marketoFormLeadSource": "Partner - Integration",
+							"marketoFormLeadSourceDetail": "Contact Us Kubernetes",
+							"marketoFormHeaderText": "Learn More And Get $500 in Google Cloud Platform Credit *",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": false,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Cloudflare + Kubernetes",
+						"subtitle": "Multi-Cloud, Federated Kubernetes Made Easy",
+						"copy": "Deploying applications using containers provides an effective way to ensure that application code runs in a consistent, lightweight, and portable environment. While this solution works effectively for applications running in the same cloud it has been difficult to scale out to take advantage of the benefits provided by having multiple cloud providers.\n\nUsing the Cloudflare® Load Balancer or Argo Tunnel™ Ingress Controller in conjunction with Kubernetes®, developers can ensure applications benefit from cluster management across clouds. Together, Cloudflare's multi-cloud solution and Kubernetes lead to improved application availability and reduced costs, while also providing a unified security and performance control plane.\n\n\n(*) Credit is available for new Google Cloud Platform users.",
+						"iconList": [],
+						"iconTitleList": null,
+						"iconCopyList": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamOptions": null,
+						"rightSideCopy": null,
+						"rightSideCopyPosition": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"extraClass": null,
+						"sectionPadding": null,
+						"customPrivacyPolicy": null,
+						"customPrivacyPolicyText": null,
+						"featureList": null
+					},
+					{
 						"contentfulId": "7gtcVYkBC6Jo51ovdN6ZH7",
 						"backgroundColor": "light-gray",
 						"contentTypeId": "bladeFourFeatures",
@@ -384,6 +439,47 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2kPaxft6u9ryKDAWMakUMX/fe59bad8c033624fa688d57f65ee51ed/connect-iot.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4Vx2yReUZcYxQSVNFnU2EM",
+								"title": "Add and Modify Web Applications",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Easily add applications hosted using Kubernetes clusters on premise, in a private cloud, or in the public cloud. Cloudflare Load Balancer works with applications hosted in or across any setup.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rYwyQhnByZ8k8qCvbukDb/dc24b2eae1721c65037270f5f62aebac/icon-configuration-blue.png"
+									},
+									"description": "icon configuration blue"
+								},
+								"iconAssetFile": {
+									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
+									"altText": "Optimization gear ",
+									"title": "Optimization gear ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JreowuAuIySxXXXqycY4r/746dc87c57caa9f58423af84de3fa35a/optimization-gear.svg"
 										},
 										"description": ""
 									},
