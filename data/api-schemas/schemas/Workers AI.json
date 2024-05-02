@@ -674,10 +674,18 @@
 										},
 										"properties": {
 											"image": {
-												"items": {
-													"type": "number"
-												},
-												"type": "array"
+												"oneOf": [
+													{
+														"items": {
+															"type": "number"
+														},
+														"type": "array"
+													},
+													{
+														"format": "base64",
+														"type": "string"
+													}
+												]
 											},
 											"max_tokens": {
 												"default": 512,
@@ -752,9 +760,18 @@
 											"type": "array"
 										},
 										{
-											"format": "binary",
+											"oneOf": [
+												{
+													"format": "binary",
+													"type": "string"
+												},
+												{
+													"format": "binary",
+													"type": "string"
+												}
+											],
 											"title": "Text To Image",
-											"type": "string"
+											"type": "object"
 										},
 										{
 											"items": {
