@@ -645,6 +645,13 @@
 	"pre-clearance-turnstile": {
 		"enabled": true
 	},
+	"prg-bots-upsell-copy-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"proxy-ips-ui": {
 		"enabled": true
 	},
