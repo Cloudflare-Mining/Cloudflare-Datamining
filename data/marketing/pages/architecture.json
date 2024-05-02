@@ -274,6 +274,25 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - Architecture using Cloudflare SASE with Microsoft",
+													"callToAction": "Learn More",
+													"id": "f9ca6455-a8e6-5114-ba4f-08c5b693314e",
+													"resourceTitle": "Architecture using Cloudflare SASE with Microsoft",
+													"resourceType": "Reference Architecture",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-02",
+													"industry": null,
+													"description": "Learn about the many ways Cloudflare's Secure Access Service Edge (SASE) integrates with Microsoft's cloud services to bolster security and performance in hybrid environments.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/architectures/cloudflare-sase-with-microsoft/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Architecture Center] - Load Balancing - Reference Architecture",
 													"callToAction": "Learn More",
 													"id": "87cea958-def4-57f5-a527-b703ad5f70b4",
@@ -374,6 +393,158 @@
 										{
 											"filterItemName": "Reference Architecture Diagram",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - A/B-testing using Workers",
+													"callToAction": "Learn More",
+													"id": "1b91ec37-d149-5677-afad-7d05c0e41dd1",
+													"resourceTitle": "A/B-testing using Workers",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "A/B testing is a method of comparing two versions of a webpage or app to determine which performs better given a metric to optimize for. This document describes how Cloudflare's platform can be used to implement server-side A/B testing.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/serverless/a-b-testing-using-workers/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Fullstack web applications",
+													"callToAction": "Learn More",
+													"id": "1ea3928b-6147-5b41-bc90-b6e4b5bc404e",
+													"resourceTitle": "Fullstack web applications",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Cloudflare offers all building blocks to build, deploy and operate fullstack applications. This document describes how Cloudflare's platform can be used for modern, secure and performant fullstack applications.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Multi-vendor AI observability and control",
+													"callToAction": "Learn More",
+													"id": "2e7e8bbb-fcd5-5cc9-86ef-ba87043f7c54",
+													"resourceTitle": "Multi-vendor AI observability and control",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Forward proxies positioned between services making inference requests and inference providers, can serve as a single point for observability and control. Learn how AI Gateway can interact be used in a multi-vendor architecture.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-multivendor-observability-control/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data in transit",
+													"callToAction": "Learn More",
+													"id": "60791c9a-64cb-5654-be3d-a03ec29b8e5e",
+													"resourceTitle": "Securing data in transit",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Secure all communications to and from your applications. Detect confidential data as it travels over the Cloudflare network and implement access control policies to enforce authorized access.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-in-transit/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data in use",
+													"callToAction": "Learn More",
+													"id": "9d7f1c78-cc9b-5436-8755-7e70567e552d",
+													"resourceTitle": "Securing data in use",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Detect and protect data in use by leveraging our cloud host remote browser isolation. Limit what users can do with confidential data in their browser.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-in-use/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Serverless global APIs",
+													"callToAction": "Learn More",
+													"id": "b2b9c75a-8afe-5f2f-b8c9-2f0658cb4df2",
+													"resourceTitle": "Serverless global APIs",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "APIs account for a significant share of internet traffic. Building scalable, performant APIs can be challenging and costly. This document describes how serverless APIs can be globally deployed on Cloudflare.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Composable AI architecture",
+													"callToAction": "Learn More",
+													"id": "b8c456e7-ad20-5f69-b525-8ac3dfa44182",
+													"resourceTitle": "Composable AI architecture",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Composability, data portability, and standardized APIs are crucial factors in navigating the complexities of the quickly-changing AI ecosystem. This document describes how Cloudflare's AI platform is fully composable and interoperable with other solutions.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-composable/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data at rest",
+													"callToAction": "Learn More",
+													"id": "ecedd627-d59f-53f9-98b8-42116353b09b",
+													"resourceTitle": "Securing data at rest",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Continuously analyze SaaS applications & data-at-rest to detect misconfigurations, exposed files, and suspicious activities",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-at-rest/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -518,6 +689,26 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - Building zero trust architecture into your startup",
+													"callToAction": "Learn More",
+													"id": "e5268175-fee5-5078-8c48-ccc131a4ec14",
+													"resourceTitle": "Building zero trust architecture into your startup",
+													"resourceType": "Design Guide",
+													"topic": [
+														"Secure Internet Applications",
+														"Enable Zero Trust Security for Workforce"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Explore common considerations, recommendations, and best practices for building Zero Trust concepts into the fabric of your startup business.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Design Guide] - Securely deliver applications with Cloudflare",
 													"callToAction": "Learn More",
 													"id": "24dc0f55-a593-5651-a0e0-730be7bb5633",
@@ -538,6 +729,25 @@
 										{
 											"filterItemName": "Implementation Guide",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Secure your Internet traffic and SaaS apps",
+													"callToAction": "Learn More",
+													"id": "fe212dbf-6635-5a76-8e2b-6baf4462f583",
+													"resourceTitle": "Secure your Internet traffic and SaaS apps",
+													"resourceType": "Implementation Guide",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Provide your users and networks with a secure, performant, and flexible path to the Internet.",
+													"externalLinkUrl": "https://developers.cloudflare.com/learning-paths/secure-internet-traffic/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -588,6 +798,102 @@
 										{
 											"filterItemName": "Secure Access Service Edge (SASE)",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data in transit",
+													"callToAction": "Learn More",
+													"id": "60791c9a-64cb-5654-be3d-a03ec29b8e5e",
+													"resourceTitle": "Securing data in transit",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Secure all communications to and from your applications. Detect confidential data as it travels over the Cloudflare network and implement access control policies to enforce authorized access.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-in-transit/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data in use",
+													"callToAction": "Learn More",
+													"id": "9d7f1c78-cc9b-5436-8755-7e70567e552d",
+													"resourceTitle": "Securing data in use",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Detect and protect data in use by leveraging our cloud host remote browser isolation. Limit what users can do with confidential data in their browser.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-in-use/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Building zero trust architecture into your startup",
+													"callToAction": "Learn More",
+													"id": "e5268175-fee5-5078-8c48-ccc131a4ec14",
+													"resourceTitle": "Building zero trust architecture into your startup",
+													"resourceType": "Design Guide",
+													"topic": [
+														"Secure Internet Applications",
+														"Enable Zero Trust Security for Workforce"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Explore common considerations, recommendations, and best practices for building Zero Trust concepts into the fabric of your startup business.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data at rest",
+													"callToAction": "Learn More",
+													"id": "ecedd627-d59f-53f9-98b8-42116353b09b",
+													"resourceTitle": "Securing data at rest",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Continuously analyze SaaS applications & data-at-rest to detect misconfigurations, exposed files, and suspicious activities",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-at-rest/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Secure your Internet traffic and SaaS apps",
+													"callToAction": "Learn More",
+													"id": "fe212dbf-6635-5a76-8e2b-6baf4462f583",
+													"resourceTitle": "Secure your Internet traffic and SaaS apps",
+													"resourceType": "Implementation Guide",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Provide your users and networks with a secure, performant, and flexible path to the Internet.",
+													"externalLinkUrl": "https://developers.cloudflare.com/learning-paths/secure-internet-traffic/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -796,6 +1102,101 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - A/B-testing using Workers",
+													"callToAction": "Learn More",
+													"id": "1b91ec37-d149-5677-afad-7d05c0e41dd1",
+													"resourceTitle": "A/B-testing using Workers",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "A/B testing is a method of comparing two versions of a webpage or app to determine which performs better given a metric to optimize for. This document describes how Cloudflare's platform can be used to implement server-side A/B testing.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/serverless/a-b-testing-using-workers/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Fullstack web applications",
+													"callToAction": "Learn More",
+													"id": "1ea3928b-6147-5b41-bc90-b6e4b5bc404e",
+													"resourceTitle": "Fullstack web applications",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Cloudflare offers all building blocks to build, deploy and operate fullstack applications. This document describes how Cloudflare's platform can be used for modern, secure and performant fullstack applications.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Multi-vendor AI observability and control",
+													"callToAction": "Learn More",
+													"id": "2e7e8bbb-fcd5-5cc9-86ef-ba87043f7c54",
+													"resourceTitle": "Multi-vendor AI observability and control",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Forward proxies positioned between services making inference requests and inference providers, can serve as a single point for observability and control. Learn how AI Gateway can interact be used in a multi-vendor architecture.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-multivendor-observability-control/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Serverless global APIs",
+													"callToAction": "Learn More",
+													"id": "b2b9c75a-8afe-5f2f-b8c9-2f0658cb4df2",
+													"resourceTitle": "Serverless global APIs",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "APIs account for a significant share of internet traffic. Building scalable, performant APIs can be challenging and costly. This document describes how serverless APIs can be globally deployed on Cloudflare.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Composable AI architecture",
+													"callToAction": "Learn More",
+													"id": "b8c456e7-ad20-5f69-b525-8ac3dfa44182",
+													"resourceTitle": "Composable AI architecture",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Composability, data portability, and standardized APIs are crucial factors in navigating the complexities of the quickly-changing AI ecosystem. This document describes how Cloudflare's AI platform is fully composable and interoperable with other solutions.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-composable/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Architecture Center] - Egress-free object storage in multi-cloud setups",
 													"callToAction": "Learn More",
 													"id": "f7b369c1-946b-51e5-a0f4-31b1a2ac13c4",
@@ -911,6 +1312,44 @@
 										{
 											"filterItemName": "Workers AI",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Multi-vendor AI observability and control",
+													"callToAction": "Learn More",
+													"id": "2e7e8bbb-fcd5-5cc9-86ef-ba87043f7c54",
+													"resourceTitle": "Multi-vendor AI observability and control",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Forward proxies positioned between services making inference requests and inference providers, can serve as a single point for observability and control. Learn how AI Gateway can interact be used in a multi-vendor architecture.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-multivendor-observability-control/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Composable AI architecture",
+													"callToAction": "Learn More",
+													"id": "b8c456e7-ad20-5f69-b525-8ac3dfa44182",
+													"resourceTitle": "Composable AI architecture",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Composability, data portability, and standardized APIs are crucial factors in navigating the complexities of the quickly-changing AI ecosystem. This document describes how Cloudflare's AI platform is fully composable and interoperable with other solutions.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-composable/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -1177,6 +1616,102 @@
 													"resourceMediaAssetFile": null,
 													"image": null,
 													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data in transit",
+													"callToAction": "Learn More",
+													"id": "60791c9a-64cb-5654-be3d-a03ec29b8e5e",
+													"resourceTitle": "Securing data in transit",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Secure all communications to and from your applications. Detect confidential data as it travels over the Cloudflare network and implement access control policies to enforce authorized access.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-in-transit/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data in use",
+													"callToAction": "Learn More",
+													"id": "9d7f1c78-cc9b-5436-8755-7e70567e552d",
+													"resourceTitle": "Securing data in use",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Detect and protect data in use by leveraging our cloud host remote browser isolation. Limit what users can do with confidential data in their browser.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-in-use/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Building zero trust architecture into your startup",
+													"callToAction": "Learn More",
+													"id": "e5268175-fee5-5078-8c48-ccc131a4ec14",
+													"resourceTitle": "Building zero trust architecture into your startup",
+													"resourceType": "Design Guide",
+													"topic": [
+														"Secure Internet Applications",
+														"Enable Zero Trust Security for Workforce"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Explore common considerations, recommendations, and best practices for building Zero Trust concepts into the fabric of your startup business.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data at rest",
+													"callToAction": "Learn More",
+													"id": "ecedd627-d59f-53f9-98b8-42116353b09b",
+													"resourceTitle": "Securing data at rest",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Continuously analyze SaaS applications & data-at-rest to detect misconfigurations, exposed files, and suspicious activities",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-at-rest/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Secure your Internet traffic and SaaS apps",
+													"callToAction": "Learn More",
+													"id": "fe212dbf-6635-5a76-8e2b-6baf4462f583",
+													"resourceTitle": "Secure your Internet traffic and SaaS apps",
+													"resourceType": "Implementation Guide",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Provide your users and networks with a secure, performant, and flexible path to the Internet.",
+													"externalLinkUrl": "https://developers.cloudflare.com/learning-paths/secure-internet-traffic/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
 													"title": "[Architecture Center] - Access to private apps without having to deploy client agents",
 													"callToAction": "Learn More",
 													"id": "0ab2bb00-f0ff-5040-bf40-9dc38438c239",
@@ -1196,6 +1731,102 @@
 										{
 											"filterItemName": "Zero Trust Network Access (ZTNA)",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data in transit",
+													"callToAction": "Learn More",
+													"id": "60791c9a-64cb-5654-be3d-a03ec29b8e5e",
+													"resourceTitle": "Securing data in transit",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Secure all communications to and from your applications. Detect confidential data as it travels over the Cloudflare network and implement access control policies to enforce authorized access.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-in-transit/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data in use",
+													"callToAction": "Learn More",
+													"id": "9d7f1c78-cc9b-5436-8755-7e70567e552d",
+													"resourceTitle": "Securing data in use",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Detect and protect data in use by leveraging our cloud host remote browser isolation. Limit what users can do with confidential data in their browser.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-in-use/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Building zero trust architecture into your startup",
+													"callToAction": "Learn More",
+													"id": "e5268175-fee5-5078-8c48-ccc131a4ec14",
+													"resourceTitle": "Building zero trust architecture into your startup",
+													"resourceType": "Design Guide",
+													"topic": [
+														"Secure Internet Applications",
+														"Enable Zero Trust Security for Workforce"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Explore common considerations, recommendations, and best practices for building Zero Trust concepts into the fabric of your startup business.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data at rest",
+													"callToAction": "Learn More",
+													"id": "ecedd627-d59f-53f9-98b8-42116353b09b",
+													"resourceTitle": "Securing data at rest",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Continuously analyze SaaS applications & data-at-rest to detect misconfigurations, exposed files, and suspicious activities",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-at-rest/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Secure your Internet traffic and SaaS apps",
+													"callToAction": "Learn More",
+													"id": "fe212dbf-6635-5a76-8e2b-6baf4462f583",
+													"resourceTitle": "Secure your Internet traffic and SaaS apps",
+													"resourceType": "Implementation Guide",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Provide your users and networks with a secure, performant, and flexible path to the Internet.",
+													"externalLinkUrl": "https://developers.cloudflare.com/learning-paths/secure-internet-traffic/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
@@ -1521,6 +2152,102 @@
 										{
 											"filterItemName": "Adopt Zero Trust",
 											"resources": [
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data in transit",
+													"callToAction": "Learn More",
+													"id": "60791c9a-64cb-5654-be3d-a03ec29b8e5e",
+													"resourceTitle": "Securing data in transit",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Secure all communications to and from your applications. Detect confidential data as it travels over the Cloudflare network and implement access control policies to enforce authorized access.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-in-transit/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data in use",
+													"callToAction": "Learn More",
+													"id": "9d7f1c78-cc9b-5436-8755-7e70567e552d",
+													"resourceTitle": "Securing data in use",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Detect and protect data in use by leveraging our cloud host remote browser isolation. Limit what users can do with confidential data in their browser.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-in-use/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Building zero trust architecture into your startup",
+													"callToAction": "Learn More",
+													"id": "e5268175-fee5-5078-8c48-ccc131a4ec14",
+													"resourceTitle": "Building zero trust architecture into your startup",
+													"resourceType": "Design Guide",
+													"topic": [
+														"Secure Internet Applications",
+														"Enable Zero Trust Security for Workforce"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Explore common considerations, recommendations, and best practices for building Zero Trust concepts into the fabric of your startup business.",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Securing data at rest",
+													"callToAction": "Learn More",
+													"id": "ecedd627-d59f-53f9-98b8-42116353b09b",
+													"resourceTitle": "Securing data at rest",
+													"resourceType": "Reference Architecture Diagram",
+													"topic": [
+														"Accelerate Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Continuously analyze SaaS applications & data-at-rest to detect misconfigurations, exposed files, and suspicious activities",
+													"externalLinkUrl": "https://developers.cloudflare.com/reference-architecture/reference-architecture/diagrams/security/securing-data-at-rest/",
+													"hideFromResourceHub": true
+												},
+												{
+													"resourceMedia": null,
+													"resourceMediaAssetFile": null,
+													"image": null,
+													"resourceStreamId": null,
+													"title": "[Architecture Center] - Secure your Internet traffic and SaaS apps",
+													"callToAction": "Learn More",
+													"id": "fe212dbf-6635-5a76-8e2b-6baf4462f583",
+													"resourceTitle": "Secure your Internet traffic and SaaS apps",
+													"resourceType": "Implementation Guide",
+													"topic": [
+														"Secure Internet Applications"
+													],
+													"orderDate": "2024-05-01",
+													"industry": null,
+													"description": "Provide your users and networks with a secure, performant, and flexible path to the Internet.",
+													"externalLinkUrl": "https://developers.cloudflare.com/learning-paths/secure-internet-traffic/",
+													"hideFromResourceHub": true
+												},
 												{
 													"resourceMedia": null,
 													"resourceMediaAssetFile": null,
