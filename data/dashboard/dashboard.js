@@ -918,10 +918,10 @@
 				n.g.build = pn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "c40cc2c9b9303de101eeb676bd37faa99d8db534",
+					commit: "2bd438ce3016b3fe271888918eac12bfef6bd96a",
 					env: "production",
-					builtAt: 1714672675699,
-					dashVersion: "faba722486184b6880c459ecaef2c3e872858a64",
+					builtAt: 1714677043183,
+					dashVersion: "2dbee82a6af4d86f2b0cbd639356b006eafb91ac",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",
@@ -2047,13 +2047,7 @@
 					target: "_blank",
 					rel: "noopener noreferrer",
 					href: "https://www.cloudflare.com/abuse"
-				}, (0, t.ZP)("footer.trust_safety"))), o().createElement(d.Dd, {
-					mb: 2
-				}, o().createElement(q, {
-					target: "_blank",
-					rel: "noopener noreferrer",
-					href: "https://supportenablement.cloudflaretraining.com"
-				}, (0, t.ZP)("footer.technical_training"))))), o().createElement(d.ZC, {
+				}, (0, t.ZP)("footer.trust_safety"))))), o().createElement(d.ZC, {
 					mb: 3,
 					width: [1 / 2, 1 / 5, 1 / 5]
 				}, o().createElement(d.Dl, {
