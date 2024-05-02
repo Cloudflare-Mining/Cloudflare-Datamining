@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>London - UK</p>
+<p><strong>Available Locations: </strong>UK or Germany</p>
 <h4><strong>About the department</strong></h4>
 <p>Cloudflare’s Application Security department builds and runs the software that detects and mitigates malicious, abusive, and fraudulent HTTP requests going through Cloudflare network before they reach our customer sites. We achieve this by harnessing the vast amount of internet traffic data available to us to create and manage products including WAF, Bot Management, Fraud Detection and more. We use state of art Artificial Intelligence and Machine Learning techniques in security attack detection and mitigation. The team is a multidisciplinary team where system and software engineers, security researchers and analysts, and data scientists work together to identify active adversaries or attackers, and design and implement machine learning models and engineering solutions to protect customers from these security attacks.&nbsp;</p>
 <h4><strong>What you'll do</strong></h4>
@@ -38,12 +38,7 @@
 	<li>Good Linux/UNIX systems knowledge</li>
 	<li>Presented in security conferences such as Blackhat, Defcon, Bsides etc.</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location. <strong>Compensation will depend on the candidate's experience and will also include RSU Stock.</strong></p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
