@@ -218,6 +218,7 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   clearInterval(timeoutId: number | null): void;
   queueMicrotask(task: Function): void;
   structuredClone<T>(value: T, options?: StructuredSerializeOptions): T;
+  reportError(error: any): void;
   fetch(
     input: RequestInfo,
     init?: RequestInit<RequestInitCfProperties>,
@@ -246,6 +247,7 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   TransformStream: typeof TransformStream;
   ByteLengthQueuingStrategy: typeof ByteLengthQueuingStrategy;
   CountQueuingStrategy: typeof CountQueuingStrategy;
+  ErrorEvent: typeof ErrorEvent;
   CompressionStream: typeof CompressionStream;
   DecompressionStream: typeof DecompressionStream;
   TextEncoderStream: typeof TextEncoderStream;
@@ -345,6 +347,8 @@ declare function structuredClone<T>(
   value: T,
   options?: StructuredSerializeOptions,
 ): T;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/reportError) */
+declare function reportError(error: any): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/fetch) */
 declare function fetch(
   input: RequestInfo,
@@ -1195,6 +1199,26 @@ declare interface TextDecoderDecodeOptions {
 declare interface TextEncoderEncodeIntoResult {
   read: number;
   written: number;
+}
+declare class ErrorEvent extends Event {
+  constructor(type: string, init?: ErrorEventErrorEventInit);
+  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/filename) */
+  get filename(): string;
+  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/message) */
+  get message(): string;
+  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/lineno) */
+  get lineno(): number;
+  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/colno) */
+  get colno(): number;
+  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/error) */
+  get error(): any;
+}
+declare interface ErrorEventErrorEventInit {
+  message?: string;
+  filename?: string;
+  lineno?: number;
+  colno?: number;
+  error?: any;
 }
 declare class FormData {
   constructor();
@@ -2407,23 +2431,6 @@ declare class MessageEvent extends Event {
 declare interface MessageEventInit {
   data: ArrayBuffer | string;
 }
-/**
- * Events providing information related to errors in scripts or in files.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent)
- */
-declare interface ErrorEvent extends Event {
-  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/filename) */
-  readonly filename: string;
-  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/message) */
-  readonly message: string;
-  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/lineno) */
-  readonly lineno: number;
-  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/colno) */
-  readonly colno: number;
-  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/error) */
-  readonly error: any;
-}
 declare type WebSocketEventMap = {
   close: CloseEvent;
   message: MessageEvent;
@@ -3026,6 +3033,256 @@ declare interface gpuGPUOrigin3DDict {
   x?: number;
   y?: number;
   z?: number;
+}
+declare type AiImageClassificationInput = {
+  image: number[];
+};
+declare type AiImageClassificationOutput = {
+  score?: number;
+  label?: string;
+}[];
+declare abstract class BaseAiImageClassification {
+  inputs: AiImageClassificationInput;
+  postProcessedOutputs: AiImageClassificationOutput;
+}
+declare type AiImageToTextInput = {
+  image: number[];
+  prompt?: string;
+  max_tokens?: number;
+  temperature?: number;
+  raw?: boolean;
+  messages?: RoleScopedChatInput[];
+};
+declare type AiImageToTextOutput = {
+  description: string;
+};
+declare abstract class BaseAiImageToText {
+  inputs: AiImageToTextInput;
+  postProcessedOutputs: AiImageToTextOutput;
+}
+declare type AiObjectDetectionInput = {
+  image: number[];
+};
+declare type AiObjectDetectionOutput = {
+  score?: number;
+  label?: string;
+}[];
+declare abstract class BaseAiObjectDetection {
+  inputs: AiObjectDetectionInput;
+  postProcessedOutputs: AiObjectDetectionOutput;
+}
+declare type AiSentenceSimilarityInput = {
+  source: string;
+  sentences: string[];
+};
+declare type AiSentenceSimilarityOutput = number[];
+declare abstract class BaseAiSentenceSimilarity {
+  inputs: AiSentenceSimilarityInput;
+  postProcessedOutputs: AiSentenceSimilarityOutput;
+}
+declare type AiSpeechRecognitionInput = {
+  audio: number[];
+};
+declare type AiSpeechRecognitionOutput = {
+  text?: string;
+  words?: {
+    word: string;
+    start: number;
+    end: number;
+  }[];
+  vtt?: string;
+};
+declare abstract class BaseAiSpeechRecognition {
+  inputs: AiSpeechRecognitionInput;
+  postProcessedOutputs: AiSpeechRecognitionOutput;
+}
+declare type AiSummarizationInput = {
+  input_text: string;
+  max_length?: number;
+};
+declare type AiSummarizationOutput = {
+  summary: string;
+};
+declare abstract class BaseAiSummarization {
+  inputs: AiSummarizationInput;
+  postProcessedOutputs: AiSummarizationOutput;
+}
+declare type AiTextClassificationInput = {
+  text: string;
+};
+declare type AiTextClassificationOutput = {
+  score?: number;
+  label?: string;
+}[];
+declare abstract class BaseAiTextClassification {
+  inputs: AiTextClassificationInput;
+  postProcessedOutputs: AiTextClassificationOutput;
+}
+declare type AiTextEmbeddingsInput = {
+  text: string | string[];
+};
+declare type AiTextEmbeddingsOutput = {
+  shape: number[];
+  data: number[][];
+};
+declare abstract class BaseAiTextEmbeddings {
+  inputs: AiTextEmbeddingsInput;
+  postProcessedOutputs: AiTextEmbeddingsOutput;
+}
+declare type RoleScopedChatInput = {
+  role: string;
+  content: string;
+};
+declare type AiTextGenerationInput = {
+  prompt?: string;
+  raw?: boolean;
+  stream?: boolean;
+  max_tokens?: number;
+  messages?: RoleScopedChatInput[];
+};
+declare type AiTextGenerationOutput =
+  | {
+      response?: string;
+    }
+  | ReadableStream;
+declare abstract class BaseAiTextGeneration {
+  inputs: AiTextGenerationInput;
+  postProcessedOutputs: AiTextGenerationOutput;
+}
+declare type AiTextToImageInput = {
+  prompt: string;
+  image?: number[];
+  mask?: number[];
+  num_steps?: number;
+  strength?: number;
+  guidance?: number;
+};
+declare type AiTextToImageOutput = Uint8Array;
+declare abstract class BaseAiTextToImage {
+  inputs: AiTextToImageInput;
+  postProcessedOutputs: AiTextToImageOutput;
+}
+declare type AiTranslationInput = {
+  text: string;
+  target_lang: string;
+  source_lang?: string;
+};
+declare type AiTranslationOutput = {
+  translated_text?: string;
+};
+declare abstract class BaseAiTranslation {
+  inputs: AiTranslationInput;
+  postProcessedOutputs: AiTranslationOutput;
+}
+declare type AiOptions = {
+  prefix?: string;
+  extraHeaders?: object;
+};
+declare abstract class Ai {
+  run(
+    model:
+      | "@cf/huggingface/distilbert-sst-2-int8"
+      | "@cf/jpmorganchase/roberta-spam"
+      | "@cf/inml/inml-roberta-dga",
+    inputs: BaseAiTextClassification["inputs"],
+    options?: AiOptions,
+  ): Promise<BaseAiTextClassification["postProcessedOutputs"]>;
+  run(
+    model:
+      | "@cf/stabilityai/stable-diffusion-xl-base-1.0"
+      | "@cf/runwayml/stable-diffusion-v1-5-inpainting"
+      | "@cf/runwayml/stable-diffusion-v1-5-img2img"
+      | "@cf/lykon/dreamshaper-8-lcm"
+      | "@cf/bytedance/stable-diffusion-xl-lightning",
+    inputs: BaseAiTextToImage["inputs"],
+    options?: AiOptions,
+  ): Promise<BaseAiTextToImage["postProcessedOutputs"]>;
+  run(
+    model: "@hf/sentence-transformers/all-minilm-l6-v2",
+    inputs: BaseAiSentenceSimilarity["inputs"],
+    options?: AiOptions,
+  ): Promise<BaseAiSentenceSimilarity["postProcessedOutputs"]>;
+  run(
+    model:
+      | "@cf/baai/bge-small-en-v1.5"
+      | "@cf/baai/bge-base-en-v1.5"
+      | "@cf/baai/bge-large-en-v1.5",
+    inputs: BaseAiTextEmbeddings["inputs"],
+    options?: AiOptions,
+  ): Promise<BaseAiTextEmbeddings["postProcessedOutputs"]>;
+  run(
+    model:
+      | "@cf/openai/whisper"
+      | "@cf/openai/whisper-tiny-en"
+      | "@cf/openai/whisper-sherpa",
+    inputs: BaseAiSpeechRecognition["inputs"],
+    options?: AiOptions,
+  ): Promise<BaseAiSpeechRecognition["postProcessedOutputs"]>;
+  run(
+    model: "@cf/microsoft/resnet-50",
+    inputs: BaseAiImageClassification["inputs"],
+    options?: AiOptions,
+  ): Promise<BaseAiImageClassification["postProcessedOutputs"]>;
+  run(
+    model: "@cf/facebook/detr-resnet-50",
+    inputs: BaseAiObjectDetection["inputs"],
+    options?: AiOptions,
+  ): Promise<BaseAiObjectDetection["postProcessedOutputs"]>;
+  run(
+    model:
+      | "@cf/meta/llama-3-8b-instruct"
+      | "@cf/meta/llama-2-7b-chat-int8"
+      | "@cf/mistral/mistral-7b-instruct-v0.1"
+      | "@cf/mistral/mistral-7b-instruct-v0.1-vllm"
+      | "@cf/mistral/mistral-7b-instruct-v0.2-lora"
+      | "@cf/meta/llama-2-7b-chat-fp16"
+      | "@hf/thebloke/llama-2-13b-chat-awq"
+      | "@hf/thebloke/zephyr-7b-beta-awq"
+      | "@hf/thebloke/mistral-7b-instruct-v0.1-awq"
+      | "@hf/thebloke/codellama-7b-instruct-awq"
+      | "@hf/thebloke/openchat_3.5-awq"
+      | "@hf/thebloke/openhermes-2.5-mistral-7b-awq"
+      | "@hf/thebloke/neural-chat-7b-v3-1-awq"
+      | "@hf/thebloke/llamaguard-7b-awq"
+      | "@hf/thebloke/deepseek-coder-6.7b-base-awq"
+      | "@hf/thebloke/deepseek-coder-6.7b-instruct-awq"
+      | "@hf/nousresearch/hermes-2-pro-mistral-7b"
+      | "@hf/mistral/mistral-7b-instruct-v0.2"
+      | "@cf/mistral/mixtral-8x7b-instruct-v0.1-awq"
+      | "@hf/google/gemma-7b-it"
+      | "@hf/nexusflow/starling-lm-7b-beta"
+      | "@cf/deepseek-ai/deepseek-math-7b-instruct"
+      | "@cf/defog/sqlcoder-7b-2"
+      | "@cf/openchat/openchat-3.5-0106"
+      | "@cf/tiiuae/falcon-7b-instruct"
+      | "@cf/thebloke/discolm-german-7b-v1-awq"
+      | "@cf/qwen/qwen1.5-0.5b-chat"
+      | "@cf/qwen/qwen1.5-1.8b-chat"
+      | "@cf/qwen/qwen1.5-7b-chat-awq"
+      | "@cf/qwen/qwen1.5-14b-chat-awq"
+      | "@cf/tinyllama/tinyllama-1.1b-chat-v1.0"
+      | "@cf/microsoft/phi-2"
+      | "@cf/google/gemma-2b-it-lora"
+      | "@cf/google/gemma-7b-it-lora"
+      | "@cf/meta-llama/llama-2-7b-chat-hf-lora",
+    inputs: BaseAiTextGeneration["inputs"],
+    options?: AiOptions,
+  ): Promise<BaseAiTextGeneration["postProcessedOutputs"]>;
+  run(
+    model: "@cf/meta/m2m100-1.2b",
+    inputs: BaseAiTranslation["inputs"],
+    options?: AiOptions,
+  ): Promise<BaseAiTranslation["postProcessedOutputs"]>;
+  run(
+    model: "@cf/facebook/bart-large-cnn",
+    inputs: BaseAiSummarization["inputs"],
+    options?: AiOptions,
+  ): Promise<BaseAiSummarization["postProcessedOutputs"]>;
+  run(
+    model: "@cf/unum/uform-gen2-qwen-500m" | "@cf/llava-hf/llava-1.5-7b-hf",
+    inputs: BaseAiImageToText["inputs"],
+    options?: AiOptions,
+  ): Promise<BaseAiImageToText["postProcessedOutputs"]>;
 }
 declare interface BasicImageTransformations {
   /**
