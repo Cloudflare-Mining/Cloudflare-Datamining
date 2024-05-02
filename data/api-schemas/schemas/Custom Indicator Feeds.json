@@ -65,20 +65,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -91,8 +77,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -120,6 +105,8 @@
 													"created_on": "2023-05-12T12:21:56.777653Z",
 													"description": "example feed description",
 													"id": 1,
+													"is_attributable": false,
+													"is_public": false,
 													"modified_on": "2023-06-18T03:13:34.123321Z",
 													"name": "example_feed_1"
 												},
@@ -136,6 +123,14 @@
 													"id": {
 														"description": "The unique identifier for the indicator feed",
 														"type": "integer"
+													},
+													"is_attributable": {
+														"description": "Whether the indicator feed can be attributed to a provider",
+														"type": "boolean"
+													},
+													"is_public": {
+														"description": "Whether the indicator feed is exposed to customers",
+														"type": "boolean"
 													},
 													"modified_on": {
 														"description": "The date and time when the data entry was last modified",
@@ -209,20 +204,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -235,8 +216,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -264,6 +244,8 @@
 															"created_on": "2023-05-12T12:21:56.777653Z",
 															"description": "example feed description",
 															"id": 1,
+															"is_attributable": false,
+															"is_public": false,
 															"modified_on": "2023-06-18T03:13:34.123321Z",
 															"name": "example_feed_1"
 														},
@@ -280,6 +262,14 @@
 															"id": {
 																"description": "The unique identifier for the indicator feed",
 																"type": "integer"
+															},
+															"is_attributable": {
+																"description": "Whether the indicator feed can be attributed to a provider",
+																"type": "boolean"
+															},
+															"is_public": {
+																"description": "Whether the indicator feed is exposed to customers",
+																"type": "boolean"
 															},
 															"modified_on": {
 																"description": "The date and time when the data entry was last modified",
@@ -478,20 +468,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -504,8 +480,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -635,20 +610,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -661,8 +622,7 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
 												},
@@ -1047,20 +1007,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -1073,8 +1019,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -1085,11 +1030,15 @@
 												{
 													"description": "An important indicator list",
 													"id": 1,
+													"is_attributable": false,
+													"is_public": false,
 													"name": "indicator_list_1"
 												},
 												{
 													"description": "An even more important indicator list",
 													"id": 2,
+													"is_attributable": false,
+													"is_public": true,
 													"name": "indicator_list_2"
 												}
 											],
@@ -1102,6 +1051,14 @@
 													"id": {
 														"description": "The unique identifier for the indicator feed",
 														"type": "integer"
+													},
+													"is_attributable": {
+														"description": "Whether the indicator feed can be attributed to a provider",
+														"type": "boolean"
+													},
+													"is_public": {
+														"description": "Whether the indicator feed is exposed to customers",
+														"type": "boolean"
 													},
 													"name": {
 														"description": "The name of the indicator feed",
@@ -1170,20 +1127,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -1196,8 +1139,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -1208,11 +1150,15 @@
 														{
 															"description": "An important indicator list",
 															"id": 1,
+															"is_attributable": false,
+															"is_public": false,
 															"name": "indicator_list_1"
 														},
 														{
 															"description": "An even more important indicator list",
 															"id": 2,
+															"is_attributable": false,
+															"is_public": true,
 															"name": "indicator_list_2"
 														}
 													],
@@ -1225,6 +1171,14 @@
 															"id": {
 																"description": "The unique identifier for the indicator feed",
 																"type": "integer"
+															},
+															"is_attributable": {
+																"description": "Whether the indicator feed can be attributed to a provider",
+																"type": "boolean"
+															},
+															"is_public": {
+																"description": "Whether the indicator feed is exposed to customers",
+																"type": "boolean"
 															},
 															"name": {
 																"description": "The name of the indicator feed",
@@ -1431,20 +1385,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -1457,8 +1397,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -1486,6 +1425,8 @@
 												"created_on": "2023-05-12T12:21:56.777653Z",
 												"description": "example feed description",
 												"id": 1,
+												"is_attributable": false,
+												"is_public": false,
 												"modified_on": "2023-06-18T03:13:34.123321Z",
 												"name": "example_feed_1"
 											},
@@ -1502,6 +1443,14 @@
 												"id": {
 													"description": "The unique identifier for the indicator feed",
 													"type": "integer"
+												},
+												"is_attributable": {
+													"description": "Whether the indicator feed can be attributed to a provider",
+													"type": "boolean"
+												},
+												"is_public": {
+													"description": "Whether the indicator feed is exposed to customers",
+													"type": "boolean"
 												},
 												"modified_on": {
 													"description": "The date and time when the data entry was last modified",
@@ -1575,20 +1524,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -1601,8 +1536,7 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
 												},
@@ -1630,6 +1564,8 @@
 														"created_on": "2023-05-12T12:21:56.777653Z",
 														"description": "example feed description",
 														"id": 1,
+														"is_attributable": false,
+														"is_public": false,
 														"modified_on": "2023-06-18T03:13:34.123321Z",
 														"name": "example_feed_1"
 													},
@@ -1646,6 +1582,14 @@
 														"id": {
 															"description": "The unique identifier for the indicator feed",
 															"type": "integer"
+														},
+														"is_attributable": {
+															"description": "Whether the indicator feed can be attributed to a provider",
+															"type": "boolean"
+														},
+														"is_public": {
+															"description": "Whether the indicator feed is exposed to customers",
+															"type": "boolean"
 														},
 														"modified_on": {
 															"description": "The date and time when the data entry was last modified",
@@ -1764,6 +1708,433 @@
 			"Custom Indicator Feeds"
 		]
 	},
+	"PUT /accounts/{account_id}/intel/indicator-feeds/{feed_id}": {
+		"operationId": "custom-indicator-feeds-update-indicator-feed-metadata",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "feed_id",
+				"required": true,
+				"schema": {
+					"description": "Indicator feed ID",
+					"example": 12,
+					"type": "integer"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"feed_description": {
+								"description": "The new description of the feed",
+								"example": "This is an example description",
+								"type": "string"
+							},
+							"is_attributable": {
+								"description": "The new is_attributable value of the feed",
+								"example": true,
+								"type": "boolean"
+							},
+							"is_public": {
+								"description": "The new is_public value of the feed",
+								"example": true,
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": {
+												"created_on": "2023-05-12T12:21:56.777653Z",
+												"description": "example feed description",
+												"id": 1,
+												"is_attributable": false,
+												"is_public": false,
+												"modified_on": "2023-06-18T03:13:34.123321Z",
+												"name": "example_feed_1"
+											},
+											"properties": {
+												"created_on": {
+													"description": "The date and time when the data entry was created",
+													"format": "date-time",
+													"type": "string"
+												},
+												"description": {
+													"description": "The description of the example test",
+													"type": "string"
+												},
+												"id": {
+													"description": "The unique identifier for the indicator feed",
+													"type": "integer"
+												},
+												"is_attributable": {
+													"description": "Whether the indicator feed can be attributed to a provider",
+													"type": "boolean"
+												},
+												"is_public": {
+													"description": "Whether the indicator feed is exposed to customers",
+													"type": "boolean"
+												},
+												"modified_on": {
+													"description": "The date and time when the data entry was last modified",
+													"format": "date-time",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the indicator feed",
+													"type": "string"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get update public field response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": {
+														"created_on": "2023-05-12T12:21:56.777653Z",
+														"description": "example feed description",
+														"id": 1,
+														"is_attributable": false,
+														"is_public": false,
+														"modified_on": "2023-06-18T03:13:34.123321Z",
+														"name": "example_feed_1"
+													},
+													"properties": {
+														"created_on": {
+															"description": "The date and time when the data entry was created",
+															"format": "date-time",
+															"type": "string"
+														},
+														"description": {
+															"description": "The description of the example test",
+															"type": "string"
+														},
+														"id": {
+															"description": "The unique identifier for the indicator feed",
+															"type": "integer"
+														},
+														"is_attributable": {
+															"description": "Whether the indicator feed can be attributed to a provider",
+															"type": "boolean"
+														},
+														"is_public": {
+															"description": "Whether the indicator feed is exposed to customers",
+															"type": "boolean"
+														},
+														"modified_on": {
+															"description": "The date and time when the data entry was last modified",
+															"format": "date-time",
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the indicator feed",
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get update public field response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update indicator feed metadata",
+		"tags": [
+			"Custom Indicator Feeds"
+		]
+	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/{feed_id}/snapshot": {
 		"operationId": "custom-indicator-feeds-update-indicator-feed-data",
 		"parameters": [
@@ -1859,20 +2230,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -1885,8 +2242,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -2132,20 +2488,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -2158,8 +2500,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -2251,20 +2592,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -2277,8 +2604,7 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
 												},
@@ -2504,20 +2830,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -2530,8 +2842,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
@@ -2623,20 +2934,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -2649,8 +2946,7 @@
 													"required": [
 														"success",
 														"errors",
-														"messages",
-														"result"
+														"messages"
 													],
 													"type": "object"
 												},
