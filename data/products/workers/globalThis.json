@@ -402,44 +402,6 @@
 		"length": "number",
 		"name": "string"
 	},
-	"ErrorEvent": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"AT_TARGET": "number",
-			"BUBBLING_PHASE": "number",
-			"CAPTURING_PHASE": "number",
-			"NONE": "number",
-			"arguments": "undefined",
-			"bubbles": "boolean",
-			"caller": "undefined",
-			"cancelBubble": "boolean",
-			"cancelable": "boolean",
-			"colno": "number",
-			"composed": "boolean",
-			"composedPath": "function",
-			"currentTarget": "undefined",
-			"defaultPrevented": "boolean",
-			"error": "undefined",
-			"eventPhase": "number",
-			"filename": "string",
-			"isTrusted": "boolean",
-			"length": "undefined",
-			"lineno": "number",
-			"message": "string",
-			"name": "undefined",
-			"preventDefault": "function",
-			"prototype": "undefined",
-			"returnValue": "boolean",
-			"srcElement": "undefined",
-			"stopImmediatePropagation": "function",
-			"stopPropagation": "function",
-			"timeStamp": "number",
-			"type": "string"
-		},
-		"length": "number",
-		"name": "string"
-	},
 	"Event": {
 		"AT_TARGET": "number",
 		"BUBBLING_PHASE": "number",
@@ -2123,12 +2085,6 @@
 		"length": "number",
 		"name": "string"
 	},
-	"reportError": {
-		"__proto": "function",
-		"__type": "function",
-		"length": "number",
-		"name": "string"
-	},
 	"scheduler": {
 		"wait": {
 			"__proto": "function",
@@ -2485,7 +2441,6 @@
 		"Date",
 		"DecompressionStream",
 		"Error",
-		"ErrorEvent",
 		"EvalError",
 		"Event",
 		"EventTarget",
@@ -2589,7 +2544,6 @@
 		"performance",
 		"queueMicrotask",
 		"removeEventListener",
-		"reportError",
 		"scheduler",
 		"self",
 		"setInterval",
