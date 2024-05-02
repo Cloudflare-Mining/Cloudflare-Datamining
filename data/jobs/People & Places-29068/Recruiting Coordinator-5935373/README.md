@@ -6,6 +6,7 @@
 	</div>
 </div>
 <p><strong>Available Locations:</strong> Lisbon or Remote Portugal, London or Remote UK</p>
+<p><strong>Duration</strong>: 11 month fixed term contract</p>
 <p><strong>About Us</strong></p>
 <p><span style="font-weight: 400;">At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognised by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</span></p>
 <p><span style="font-weight: 400;">We realise people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp; </span></p>
@@ -24,6 +25,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">1-3 years experience of scheduling experience</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Coordinating complex, high volume interview schedules.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in prioritising different functions and tasks while managing their work time.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of GSuite applications.&nbsp;</span></li>
