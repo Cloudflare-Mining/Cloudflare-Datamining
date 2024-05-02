@@ -60,7 +60,7 @@
 				"in": "query",
 				"name": "url",
 				"schema": {
-					"description": "Filter scans by exact match URL of _any_ request made by the webpage",
+					"description": "Filter scans by URL of _any_ request made by the webpage",
 					"example": "https://example.com/?hello",
 					"type": "string"
 				}
@@ -113,7 +113,7 @@
 				"in": "query",
 				"name": "page_url",
 				"schema": {
-					"description": "Filter scans by exact match to scanned URL (_after redirects_)",
+					"description": "Filter scans by submitted or scanned URL",
 					"type": "string"
 				}
 			},
@@ -121,7 +121,7 @@
 				"in": "query",
 				"name": "page_hostname",
 				"schema": {
-					"description": "Filter scans by main page hostname .",
+					"description": "Filter scans by main page hostname (domain of effective URL).",
 					"type": "string"
 				}
 			},
@@ -129,7 +129,7 @@
 				"in": "query",
 				"name": "page_path",
 				"schema": {
-					"description": "Filter scans by exact match URL path (also supports suffix search).",
+					"description": "Filter scans by exact match of effective URL path (also supports suffix search).",
 					"type": "string"
 				}
 			},
