@@ -7,44 +7,33 @@
 </div>
 <h4>Location:&nbsp;<strong>This role will be based out of our Austin office. Remote candidates in the US will also be considered.</strong></h4>
 <h4>About the department</h4>
-<p>Cloudflare’s Enterprise Applications Team builds and runs our enterprise systems that enable Cloudflare internal teams to operate efficiently and enable our customers and partners to do business with us. Enterprise Applications Team is part of the CIO organization.&nbsp;&nbsp;</p>
+<p>Cloudflare’s IT Business Systems Team is a crucial pillar of the CIO Organization.&nbsp; It operates our enterprise systems end-to-end, providing process cohesiveness across the functional business areas</p>
 <p>Within the Enterprise Applications Team is a Go-To-Market team whose main responsibility is to manage our Salesforce platform (Marketing, Sales, Service/Success) in addition to other platforms that support our CRM functional areas.&nbsp;</p>
-<h4>What you'll do</h4>
-<p>As a Sr Business Systems Analyst, you are expected to be an advanced professional in the systems &amp; process design and implementation space with strong Service/Success business process knowledge. The Business Systems Analyst will elicit, understand, and document the internal customer's business requirements, processes and workflows developing both written and visual depictions of requirements and process flows. You will also work with developers to create the functional specifications that meet those requirements, serve as a subject matter expert to the developers building those functions, and test the developed functionality. This role works closely with other Business SMEs, Developers, and Production Support through each stage of the software development lifecycle and also demonstrates both existing and new functionality to the customer stakeholders.&nbsp;</p>
-<p>This job requires an experienced analyst who can partner effectively with all levels of the organization, lead others, drive results, proactively identify and resolve problems, and make challenging decisions.&nbsp; You will also be responsible for recommending and instituting business analysis best practices, tools and methodology towards standardization of BA deliverables and procedures.</p>
-<p>This is a senior individual contributor role; as a trusted advisor to the team, you will apply your technical expertise to the realization of meaningful business process improvements across the enterprise, and you must be confident in your ability to do so. You will lead discovery and analysis sessions with stakeholders and help business teams derive unambiguous business rules and requirements that can be translated into actionable specifications for development teams. You will be responsible for partnering with application developers, business stakeholders and application administrators. A team player with a collaborative mindset is essential.</p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare is expanding its IT business application group and searching for a dynamic, forward thinking Salesforce Developer to join our team. A Salesforce Developer will be responsible for building world-class applications to automate and improve productivity of the business processes for core business teams (Sales, Partner, Marketing, Support, Legal, and Finance) for a rapidly growing organization.</p>
+<p>&nbsp;The candidate will be responsible for partnering with other Engineers, Business Analysts and Salesforce Administrators. A team player with a collaboration-oriented mindset is essential!</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Primary Business Systems liaison to the Customer success, Support, and product teams acting as the consultative partner to providing timely remediation, support, and strategic mentorship to ensure business objectives are met</li>
-	<li>Responsible for end to end solution design and delivery – from requirements gathering, testing, through deployment – to ensure effective business system tools design and implementation</li>
-	<li>Provide incident management support for key business applications and coordinate support with our vendors and key partners in internal groups. Partner with Support/Success Product manager to develop Support/Success Systems roadmap – short term to 12+ months</li>
-	<li>Serve as main point of contact and project coordinator for Business Applications, Process and corresponding enhancements</li>
-	<li>Manage multiple competing priorities through effective organization and communication</li>
+	<li>Successful candidates will be technical professionals, experienced in web application development and have strong hands-on background in building custom solutions using JQuery, Apex, Lightning (LWC, Aura) and Visualforce with a focus on delivering functional solutions on the Salesforce.com platform.</li>
+	<li>Work with senior members of the team to analyze business requirements, translating those requirements into customized solutions using Apex and/or standard Salesforce out of the box functionality.</li>
+	<li>Implement Salesforce solutions that adhere to industry best practices, and perform peer code reviews.</li>
+	<li>Deep Knowledge of Salesforce platform best practices, coding, design guidelines and governor limits</li>
+	<li>Typical Salesforce implementations will include (but not limited to) custom platform development (Apex, Visualforce, Lightning Components), integrations with back office systems (often through the use of middle-ware tools).</li>
+	<li>Provide development support, from design through testing and deployment, often working with other members of the team.</li>
+	<li>Implement, deploy and document projects that leverage the Salesforce.com toolset.</li>
+	<li>Post-delivery: work with client teams in supporting the live application and perform hand-off and knowledge transfer activities with team members, positioning our users for long term success.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Bachelor's Degree or higher in technology-related field or relevant experience in implementing Business systems</li>
-	<li>5+ years of experience in implementations and ongoing operations of a Salesforce org in a Business systems analyst role</li>
-	<li>An understanding of Post Sales Service/Success business processes&nbsp;</li>
-	<li>5+ years of experience working with business applications (Salesforce Service Cloud, Chat, knowledge base, Survey tools)</li>
-	<li>Extraordinary problem solver with the ability to cross between detailed data and high-level insights.</li>
-	<li>Ability to communicate effectively cross functionally with both executive management and end users.</li>
-	<li>Experience in building strong working relationships with business partners, application users, project managers, internal IT team, external application consultants</li>
+	<li>BS in Computer science, Software engineering or related field involving code development</li>
+	<li>Advance knowledge of Salesforce CRM Platform - Sales/Service Cloud.</li>
+	<li>Experience developing customer-facing interfaces.</li>
+	<li>Proficient in MYSQL, Apex, JavaScript, Native, and VisualForce.</li>
+	<li>Excellent Verbal and Written communication skills.</li>
+	<li>Experience with custom integration with cloud business applications such as CLM, E-sign, Boomi, Marketo</li>
+	<li>Salesforce Certified Platform Developer(I, II) certification strongly desired</li>
 </ul>
-<ul>
-	<li>Demonstrated ability to deliver on Salesforce project requirements and lead operations support, by working with development, integration and admin team.&nbsp;</li>
-	<li>Experience implementing and managing large Salesforce projects such as transitioning to Salesforce Lightning, implementation of Service Cloud, variety of different support channels and case routing rules</li>
-	<li>Experience with sensitive data and creating systems that meet the security and compliance needs that come with the management/ownership of sensitive data</li>
-	<li>Highly organized, results-driven, with exceptional attention to detail with great end-to-end program management</li>
-	<li>Has expertise in developing and preparing use cases, functional specifications, and technical requirements</li>
-	<li>Ability to understand and represent the needs of the end user in a software development environment</li>
-	<li>Experienced in implementing and sustaining best of breed SaaS applications implementations in an enterprise environment</li>
-	<li>Strong consultative and advisory skills</li>
-	<li>Excellent written and verbal communications</li>
-	<li>Experienced in working with both internal and system integrator teams for development</li>
-	<li>Experience with Jira and Google Suite</li>
-	<li>Experience in supporting internal and external auditors with SOX ITGC, SOD</li>
-</ul>
-<p>&nbsp;</p>
+<p><br><br><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
