@@ -5,30 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon or Remote Portugal, London or Remote UK</p>
-<p><strong>Duration</strong>: 11 month fixed term contract</p>
-<p><strong>About Us</strong></p>
-<p><span style="font-weight: 400;">At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognised by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</span></p>
-<p><span style="font-weight: 400;">We realise people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp; </span></p>
-<p><strong>What You Would Do Here:</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is growing our People &amp; Places team. Our focus is getting the best people to work at Cloudflare and then allowing you to do your best work. We are looking for a Recruiting Coordinator to join our team in London where you will work closely with the Recruiters and Coordinators across the organisation.</span></p>
-<p><strong>What you can expect:</strong></p>
+<p><strong>Available Locations: </strong>London or Remote UK, Munich or Remote Germany, Amsterdam or Remote Netherlands</p>
+<p><strong>About The Team</strong></p>
+<p>We build security products for our customers and work mostly in Go, Python and Rust. One of our challenges is designing architecture that can withstand a huge scale of 50 million peak requests per second. Our flagship products are <a href="https://developers.cloudflare.com/page-shield/">Page Shield</a>, <a href="https://developers.cloudflare.com/security-center/">Security Center</a> and <a href="https://developers.cloudflare.com/waf/">Web Application Firewall </a>(WAF).&nbsp;</p>
+<p>Software engineers will work with our Product Managers and Security Analysts to define managed protection products which aim to protect customers against application and network vulnerabilities (at L3 and L7), by analysing data passing through our network. We also build systems to help customers understand this data themselves.</p>
+<p><strong>What you'll do</strong></p>
+<p>You will work in the Application Security portfolio and take a cross-functional role to ensure we protect our customers from L3-L7 attacks on a variety of levels.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Coordinating phone, onsite and video interviews for candidates with speed and efficiency.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Coordinate candidate travel &amp; the candidate expenses process.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain recruitment applicant tracking system ensuring information is up-to-date.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate professionally and maintain a high level of confidentiality at all times, both internally and externally, with our candidates.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Meeting and greeting candidates who are onsite for an interview.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Deliver a top-notch recruiting experience for all candidates.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Perform administrative duties as required to support the corporate development team.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with other coordinators on cross-functional teams.</span></li>
+	<li>Minimum 3 years of commercial software development experience</li>
+	<li>Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</li>
+	<li>Proven experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</li>
+	<li>Proven ability in sustainable collaboration across cross-functional teams to define, drive and scope solutions, communicate trade offs, execute and deliver.</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>A drive for continuous improvement when it comes to both operations and new product development</li>
+	<li>Demonstrated ability to deliver and listen to feedback.</li>
+	<li>Proven ability to deliver performance (what) with the right behaviors (how)</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><strong>Bonus Points</strong></p>
+<p>These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">1-3 years experience of scheduling experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Coordinating complex, high volume interview schedules.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in prioritising different functions and tasks while managing their work time.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of GSuite applications.&nbsp;</span></li>
+	<li>Knowledge of Rust, Go</li>
+	<li>Deep knowledge of web servers and web protocols</li>
+	<li>Distributed systems</li>
+	<li>Logging pipelines</li>
+	<li>Production API design</li>
+	<li>Web security issues and industry standards</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
