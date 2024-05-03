@@ -25,6 +25,8 @@
 	"compression_rules.card.options.custom.error.type": "You should select at least one compression type",
 	"compression_rules.card.options.custom.error.quantity": "You can only select up to 2 compression types",
 	"compression_rules.helper.text": "Cloudflare <0>compresses some file types</0> by default. Create compression rules to configure how Cloudflare compresses responses sent to visitors.",
+	"dynamic_redirects.bulk_redirects.description": "Create thousands (or even millions) of static redirects. At the account level, <0>create a bulk redirect list</0> first, and then <1>create a bulk redirect rule</1> using that list",
+	"dynamic_redirects.bulk_redirects.usage": "You have used **%{lists_used} of %{lists_total}** redirect lists and **%{items_used} of %{items_total}** redirect rules",
 	"dynamic_redirects.card.title": "Single Redirects",
 	"dynamic_redirects.card.description": "Create static redirects or dynamic redirects with advanced features.",
 	"dynamic_redirects.card.create_rule": "Create Redirect Rule",

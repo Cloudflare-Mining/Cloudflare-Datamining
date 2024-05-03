@@ -1,4 +1,5 @@
 {
+	"magic.common.new": "New",
 	"magic.connectors.metrics.title": "Usage information",
 	"magic.connectors.metrics.description": "The data below displays current usage. The graph shows usage from the hour.",
 	"magic.connectors.metrics.no_data": "No data available",
@@ -219,5 +220,10 @@
 	"magic.overview.detail.site_traffic.egress.title": "Avg. Sent [bps]",
 	"magic.overview.detail.site_traffic.ingress.title": "Avg. Received [bps]",
 	"magic.overview.detail.site_traffic.site_analytics.traffic_by_tunnel": "Traffic by tunnel",
-	"magic.overview.detail.site_traffic.site_analytics.all_traffic": "All traffic"
+	"magic.overview.detail.site_traffic.site_analytics.all_traffic": "All traffic",
+	"magic.tunnels.healthcheck.title": "Tunnel Health",
+	"magic.tunnels.healthcheck.description": "Tunnel health checks monitor the status of Anycast tunnels that route traffic from Cloudflare to your origin network. Magic Transit uses health checks to steer traffic to the best available routes.",
+	"magic.tunnels.healthcheck.documentation_label": "Tunnel Health Check Documentation",
+	"magic.tunnels.healthcheck.parentPageLabel_wan": "Magic WAN",
+	"magic.tunnels.healthcheck.parentPageLabel_transit": "Magic Transit"
 }
