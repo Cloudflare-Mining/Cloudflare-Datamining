@@ -1,5 +1,11 @@
 # @cloudflare/pages-plugin-sentry
 
+## 1.1.3
+
+### Patch Changes
+
+- 567f8c5: Add MIT license
+
 ## 1.1.2
 
 ### Patch Changes

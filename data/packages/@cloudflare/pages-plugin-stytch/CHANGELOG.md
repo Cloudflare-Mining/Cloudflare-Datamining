@@ -1,5 +1,11 @@
 # @cloudflare/pages-plugin-stytch
 
+## 1.0.3
+
+### Patch Changes
+
+- 567f8c5: Add MIT license
+
 ## 1.0.2
 
 ### Patch Changes

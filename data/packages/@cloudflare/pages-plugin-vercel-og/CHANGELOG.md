@@ -1,5 +1,11 @@
 # @cloudflare/pages-plugin-vercel-og
 
+## 0.1.2
+
+### Patch Changes
+
+- 567f8c5: Add MIT license
+
 ## 0.1.1
 
 ### Patch Changes

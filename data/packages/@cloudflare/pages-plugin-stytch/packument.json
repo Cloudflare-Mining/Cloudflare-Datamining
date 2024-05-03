@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-plugin-stytch",
 	"dist-tags": {
-		"latest": "1.0.2"
+		"latest": "1.0.3"
 	},
 	"versions": {
 		"1.0.0": {
@@ -62,6 +62,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQDs88lOK8PWZLGt/9sRkffaUSlEGTnG0Me0v3NvOP0QVwIgAkdHLoKTrVW+sl+mupwhGShC6cto/0NJtlaS4MUIv1o="
+					}
+				]
+			}
+		},
+		"1.0.3": {
+			"name": "@cloudflare/pages-plugin-stytch",
+			"version": "1.0.3",
+			"devDependencies": {
+				"cookie": "^0.5.0"
+			},
+			"dist": {
+				"integrity": "sha512-Rm+aVZNcr5+m0Pan7hj2GP4tG/H+8DMGtiL9KKz5+giSFa2yM2mQpNovlCdhhT4Y7nuCSQgJ6gvzjeq5bvjTmw==",
+				"shasum": "b196e31838dee3d2aa6529dc8b980f7dd9205dc0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-plugin-stytch/-/pages-plugin-stytch-1.0.3.tgz",
+				"fileCount": 11,
+				"unpackedSize": 80641,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIB7Z0PoeornVbFWiyll4wJarxWSiBk6bBH8W7Y4FQOdtAiA2jrihtVtsP/1L6Xs46jgnbvoU7/dYgo2arTGd2nhWmQ=="
 					}
 				]
 			}

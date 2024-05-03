@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-plugin-honeycomb",
 	"dist-tags": {
-		"latest": "1.0.3"
+		"latest": "1.0.4"
 	},
 	"versions": {
 		"1.0.0": {
@@ -83,6 +83,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQDOmyA5hZ8vHu8MkIf9DerVakVCaWYE44z8BXnRSpk/VwIhAJ4kZbtUUexWOIRWCtWcH1MP0O/LsK9t5Es1Me/hJSle"
+					}
+				]
+			}
+		},
+		"1.0.4": {
+			"name": "@cloudflare/pages-plugin-honeycomb",
+			"version": "1.0.4",
+			"devDependencies": {
+				"@cloudflare/workers-honeycomb-logger": "^2.3.3"
+			},
+			"dist": {
+				"integrity": "sha512-TStzePusyXve24z1NdZar3x9/l6XYmI9glB2YnPeyWvdk1StdoKIZOgnGrTx+NWxA4lVAKJrRau3W5D8Z24l3w==",
+				"shasum": "cdcaeaf1a1d24eace9a9cbc0083637ac9e96b73c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-plugin-honeycomb/-/pages-plugin-honeycomb-1.0.4.tgz",
+				"fileCount": 6,
+				"unpackedSize": 134481,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCQGyaLtcbh7lMXx7Qx63mE9eFw7/mHLmRFNNqndPMZwwIgbWpR313IihTG2tXK1tP6X8vp51sBu/v1YxLat7maEqA="
 					}
 				]
 			}

@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-plugin-graphql",
 	"dist-tags": {
-		"latest": "1.0.3"
+		"latest": "1.0.4"
 	},
 	"versions": {
 		"1.0.0": {
@@ -83,6 +83,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQC4lBJ0m/N2yuCv+RO37Tn1okew78c3pK6Y97SSY+gSvAIgFwmSc6mYPxqmPsWsPHzq1zCGYDiCL1eRM38Na082ZHU="
+					}
+				]
+			}
+		},
+		"1.0.4": {
+			"name": "@cloudflare/pages-plugin-graphql",
+			"version": "1.0.4",
+			"devDependencies": {
+				"graphql": "^16.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-hh6+tkw/sqT5qX3+hd3xe+JF1GsK/4LQ0LwTLt2l0yPceoeXYkhJNWbaGEufqpzDww4OOqQaeLSgIrrkiKG1fw==",
+				"shasum": "a0e8b97a7d4ea5b6fb1da38499c621affa588ac2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-plugin-graphql/-/pages-plugin-graphql-1.0.4.tgz",
+				"fileCount": 7,
+				"unpackedSize": 51621,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHCyWk9DYC5GCfsMK/Xe8SNTnSr1NHFng4CvtXpbIwvdAiEAqOqas1a1jZ4IRCbPZrZETbGxsDjRyg+OA6MPdAH9D2A="
 					}
 				]
 			}

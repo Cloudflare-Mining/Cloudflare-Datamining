@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-plugin-vercel-og",
 	"dist-tags": {
-		"latest": "0.1.1"
+		"latest": "0.1.2"
 	},
 	"versions": {
 		"0.1.0": {
@@ -41,6 +41,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIG8RInc9BMtGL5R6gstODmevEdRxKRXCDgSsK2kSgeL+AiEA89EAeOTeXdmnQSGC4cDIJ/f6UTqZINd7AYWS9e0qmbk="
+					}
+				]
+			}
+		},
+		"0.1.2": {
+			"name": "@cloudflare/pages-plugin-vercel-og",
+			"version": "0.1.2",
+			"devDependencies": {
+				"@vercel/og": "0.4.1"
+			},
+			"dist": {
+				"integrity": "sha512-aWA2pHu1R2UbOJIcSASCuViyYVEhYkZ3tWTrTnr+yLosBfksOzjecHQkCkPv/jy75hGPrn1BbtsQR+oWVFkp1g==",
+				"shasum": "d8d839a6ec1d66e997ae258653459a26b2dcf0f4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-plugin-vercel-og/-/pages-plugin-vercel-og-0.1.2.tgz",
+				"fileCount": 14,
+				"unpackedSize": 3856799,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCvERDZvmmeUsTk0SmV/+AK/rvaozZ07Yc/HId8W9mkTAIgI4vW0qxxkvQr1VzmNl2Rkc7IZDUyLSGCP5ZVYpkA08Q="
 					}
 				]
 			}

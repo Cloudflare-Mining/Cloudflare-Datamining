@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-plugin-google-chat",
 	"dist-tags": {
-		"latest": "1.0.3"
+		"latest": "1.0.4"
 	},
 	"versions": {
 		"1.0.0": {
@@ -97,6 +97,28 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCICPNCPhvZ+ifIzgKwAYKhvLsYD3coTUCjaRFtr1Gd51mAiB4EiJkXhpMhBJuQFaGHZHyZt63VRuHKfLRD+xpL7AM7g=="
+					}
+				]
+			}
+		},
+		"1.0.4": {
+			"name": "@cloudflare/pages-plugin-google-chat",
+			"version": "1.0.4",
+			"devDependencies": {
+				"@googleapis/chat": "^9.0.0",
+				"@types/jsrsasign": "^10.5.4",
+				"jsrsasign": "^10.6.1"
+			},
+			"dist": {
+				"integrity": "sha512-hK2tXy25Fjo9RQmze4slaKOGu4EBTUpqKdHxSPow+xulP9C2iBu/ffExyI+x5IIhOJ/XyChNQbcsvGpZ3ganUA==",
+				"shasum": "f8dae8396797f94ccee8903f30bc6d7ab36f68a6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-plugin-google-chat/-/pages-plugin-google-chat-1.0.4.tgz",
+				"fileCount": 11,
+				"unpackedSize": 2710353,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCtphW8e1LOQtl9fIjfCKYYtDi/uOLNDIR31BVGItLFaQIgIJhyI8pSnHqgNoG2az/FYfNopbcFZ/2/xK1lerVEy60="
 					}
 				]
 			}
