@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.2.59
+
+### Patch Changes
+
+- Updated dependencies [c1edbe1df3]
+  - @cloudflare/util-sparrow@5.3.48
+
 ## 1.2.58
 
 ### Patch Changes
