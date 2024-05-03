@@ -1,0 +1,80 @@
+{
+	"alias": "deploy-with-workers",
+	"assets": [],
+	"category": "workers-databases",
+	"description": "Deploy buttons let you deploy applications to Cloudflare’s global network in under five minutes.",
+	"docs_url": "https://developers.cloudflare.com/workers/tutorials/deploy-button/",
+	"flags": [
+		"template_only"
+	],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/c6fc5da3-1e0a-4608-b2f1-9628577ec800/public",
+	"install_target": "account",
+	"name": "Deploy with Workers",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Workers Scripts Write",
+					"reason": "Needed to deploy your Worker to your Cloudflare account."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Connect to GitHub",
+			"type": "oauth",
+			"provider": "github",
+			"client_id": "Ov23li4vgKG730eqOrmY",
+			"authorize_url": "https://github.com/login/oauth/authorize?scope=repo%20workflow%20user",
+			"grant_type": "authorization_code",
+			"submit_action": "submit-github-oauth"
+		},
+		{
+			"title": "Fork this repo",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "destinationOrg",
+					"label": "GitHub Organization",
+					"description": "Select a GitHub organization to fork the repo into.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-github-orgs"
+					}
+				},
+				{
+					"type": "text_input",
+					"name": "destinationRepo",
+					"label": "Repo name",
+					"description": "We'll fork the repo using this name.",
+					"required": true,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9\\-_]{0,255}$"
+				},
+				{
+					"type": "text_input",
+					"name": "workerName",
+					"label": "Worker name",
+					"description": "We'll create the Cloudflare Worker with this name.",
+					"required": true,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9\\-_]{0,255}$"
+				}
+			],
+			"submit_action": "submit-fork-settings"
+		}
+	],
+	"templates": [
+		{
+			"context": "external",
+			"label": "Deploy Worker",
+			"preview_action": "preview-worker",
+			"deploy_action": "deploy-worker"
+		}
+	],
+	"uninstall_action": "no-op",
+	"version": "0.0.4"
+}
