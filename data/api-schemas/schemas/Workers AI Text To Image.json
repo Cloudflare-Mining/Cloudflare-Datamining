@@ -58,20 +58,12 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
+					"image/png": {
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"format": "binary",
-											"type": "string"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
+									"format": "binary",
+									"type": "string"
 								},
 								"success": {
 									"default": "true",
@@ -210,20 +202,12 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
+					"image/png": {
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"format": "binary",
-											"type": "string"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
+									"format": "binary",
+									"type": "string"
 								},
 								"success": {
 									"default": "true",
@@ -362,20 +346,12 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
+					"image/png": {
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"format": "binary",
-											"type": "string"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
+									"format": "binary",
+									"type": "string"
 								},
 								"success": {
 									"default": "true",
@@ -514,20 +490,12 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
+					"image/png": {
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"format": "binary",
-											"type": "string"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
+									"format": "binary",
+									"type": "string"
 								},
 								"success": {
 									"default": "true",
@@ -666,20 +634,12 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
+					"image/png": {
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"format": "binary",
-											"type": "string"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
+									"format": "binary",
+									"type": "string"
 								},
 								"success": {
 									"default": "true",
@@ -818,20 +778,12 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
+					"image/png": {
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"format": "binary",
-											"type": "string"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
+									"format": "binary",
+									"type": "string"
 								},
 								"success": {
 									"default": "true",

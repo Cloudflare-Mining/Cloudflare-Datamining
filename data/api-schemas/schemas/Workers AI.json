@@ -760,18 +760,9 @@
 											"type": "array"
 										},
 										{
-											"oneOf": [
-												{
-													"format": "binary",
-													"type": "string"
-												},
-												{
-													"format": "binary",
-													"type": "string"
-												}
-											],
+											"format": "binary",
 											"title": "Text To Image",
-											"type": "object"
+											"type": "string"
 										},
 										{
 											"items": {
