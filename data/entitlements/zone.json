@@ -480,6 +480,18 @@
 		}
 	},
 	{
+		"id": "foundation_dns.advanced_nameservers_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1245,
+			"key": "foundation_dns.advanced_nameservers_allowed",
+			"name": "Foundation DNS - Advanced Name Servers"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "fw.rule_testing.enabled",
 		"feature": {
 			"feature_set": "firewall",

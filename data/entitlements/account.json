@@ -360,6 +360,18 @@
 		}
 	},
 	{
+		"id": "authoritative_dns.outgoing_zone_transfers_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 953,
+			"key": "authoritative_dns.outgoing_zone_transfers_allowed",
+			"name": "Allow Outgoing Zone Transfers"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "bot_management.enabled",
 		"feature": {
 			"feature_set": "bot_management",
@@ -876,6 +888,18 @@
 		}
 	},
 	{
+		"id": "ddos.dns_traffic_profiling_allowed",
+		"feature": {
+			"feature_set": "ddos",
+			"id": 1217,
+			"key": "ddos.dns_traffic_profiling_allowed",
+			"name": "DNS Traffic Profiling"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "ddos.l4_advanced_alerts_allowed",
 		"feature": {
 			"feature_set": "ddos",
@@ -990,6 +1014,30 @@
 			"id": 1099,
 			"key": "dlp.max_custom_profiles",
 			"name": "DLP - Maximum number of Custom Profiles"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "dns_firewall.max_clusters_allowed",
+		"feature": {
+			"feature_set": "dns_firewall",
+			"id": 974,
+			"key": "dns_firewall.max_clusters_allowed",
+			"name": "DNS Firewall - Cluster Quota"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "dns_firewall.max_ips_per_cluster",
+		"feature": {
+			"feature_set": "dns_firewall",
+			"id": 976,
+			"key": "dns_firewall.max_ips_per_cluster",
+			"name": "DNS Firewall - IP Per Cluster Quota"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -1128,6 +1176,18 @@
 		}
 	},
 	{
+		"id": "foundation_dns.advanced_nameservers_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1245,
+			"key": "foundation_dns.advanced_nameservers_allowed",
+			"name": "Foundation DNS - Advanced Name Servers"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "graphql_api_v2.enabled_bot_management",
 		"feature": {
 			"feature_set": "graphqlv2",
@@ -1233,6 +1293,18 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "hyperdrive.max_configs",
+		"feature": {
+			"feature_set": "hyperdrive",
+			"id": 1423,
+			"key": "hyperdrive.max_configs",
+			"name": "Hyperdrive - Max Configs"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
@@ -1854,6 +1926,18 @@
 			"id": 1314,
 			"key": "r2.fedramp",
 			"name": "R2 - FedRAMP Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "r2.infrequent_access",
+		"feature": {
+			"feature_set": "r2",
+			"id": 1456,
+			"key": "r2.infrequent_access",
+			"name": "R2 - Infrequent Access Enabled"
 		},
 		"allocation": {
 			"type": "bool"
@@ -2940,6 +3024,18 @@
 		}
 	},
 	{
+		"id": "swg.overrides_biz_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 663,
+			"key": "swg.overrides_biz_enabled",
+			"name": "Secure Web Gateway - Overrides Biz Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "swg.overrides_pro_enabled",
 		"feature": {
 			"feature_set": "access",
@@ -3114,6 +3210,18 @@
 			"id": 377,
 			"key": "workers.enabled",
 			"name": "Workers"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "workers.is_enterprise",
+		"feature": {
+			"feature_set": "workers",
+			"id": 1528,
+			"key": "workers.is_enterprise",
+			"name": "Workers Enterprise"
 		},
 		"allocation": {
 			"type": "bool"
