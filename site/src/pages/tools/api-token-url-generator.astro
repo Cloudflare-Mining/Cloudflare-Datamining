@@ -125,7 +125,7 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 				url.searchParams.set('name', formData.get('name') as string);
 			}
 			url.searchParams.set('accountId', '*');
-			url.searchParams.set('zoneId', 'all')
+			url.searchParams.set('zoneId', 'all');
 			output.textContent = url.toString();
 		}
 		form.addEventListener('change', (event) => {
