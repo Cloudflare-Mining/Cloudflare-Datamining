@@ -1,10 +1,10 @@
 {
-	"DELETE /accounts/{account_tag}/ai-gateway/gateways/{id}": {
+	"DELETE /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"operationId": "aig-config-delete-gateway",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_tag",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "0d37909e38d3e99c29fa2cd343ac421a",
@@ -140,12 +140,12 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_tag}/ai-gateway/gateways": {
+	"GET /accounts/{account_id}/ai-gateway/gateways": {
 		"operationId": "aig-config-list-gateway",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_tag",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "0d37909e38d3e99c29fa2cd343ac421a",
@@ -327,12 +327,12 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_tag}/ai-gateway/gateways/{id}": {
+	"GET /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"operationId": "aig-config-fetch-gateway",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_tag",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "0d37909e38d3e99c29fa2cd343ac421a",
@@ -468,12 +468,12 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_tag}/ai-gateway/gateways/{id}/logs": {
+	"GET /accounts/{account_id}/ai-gateway/gateways/{id}/logs": {
 		"operationId": "aig-config-list-gateway-logs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_tag",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "0d37909e38d3e99c29fa2cd343ac421a",
@@ -714,12 +714,12 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_tag}/ai-gateway/gateways": {
+	"POST /accounts/{account_id}/ai-gateway/gateways": {
 		"operationId": "aig-config-create-gateway",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_tag",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "0d37909e38d3e99c29fa2cd343ac421a",
@@ -912,12 +912,12 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{account_tag}/ai-gateway/gateways/{id}": {
+	"PUT /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"operationId": "aig-config-update-gateway",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_tag",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "0d37909e38d3e99c29fa2cd343ac421a",
