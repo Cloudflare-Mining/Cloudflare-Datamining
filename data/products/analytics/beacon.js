@@ -75,17 +75,17 @@
 					}! function() {
 						var n, u, s = window.performance || window.webkitPerformance || window.msPerformance || window.mozPerformance,
 							f = "data-cf-beacon",
-							l = document.currentScript || ("function" == typeof document.querySelector ? document.querySelector("script[".concat(f, "]")) : void 0),
-							d = c(),
+							d = document.currentScript || ("function" == typeof document.querySelector ? document.querySelector("script[".concat(f, "]")) : void 0),
+							l = c(),
 							v = [],
 							p = window.__cfBeacon ? window.__cfBeacon : {};
 						if (!p || "single" !== p.load) {
-							if (l) {
-								var m = l.getAttribute(f);
+							if (d) {
+								var m = d.getAttribute(f);
 								if (m) try {
 									p = i(i({}, p), JSON.parse(m))
 								} catch (e) {} else {
-									var g = l.getAttribute("src");
+									var g = d.getAttribute("src");
 									if (g && "function" == typeof URLSearchParams) {
 										var y = new URLSearchParams(g.replace(/^[^\?]+\??/, "")),
 											h = y.get("token");
@@ -115,7 +115,7 @@
 											var o, a, c = s.timing,
 												u = s.memory,
 												f = i || e(),
-												l = {
+												d = {
 													memory: {},
 													timings: {},
 													resources: [],
@@ -126,21 +126,21 @@
 													startTime: I(),
 													versions: {
 														fl: p ? p.version : "",
-														js: "2024.4.1",
+														js: "2024.5.0",
 														timings: 1
 													},
-													pageloadId: d,
+													pageloadId: l,
 													location: f,
 													nt: S
 												};
 											if (null == n) {
 												if ("function" == typeof s.getEntriesByType) {
 													var m = s.getEntriesByType("navigation");
-													m && Array.isArray(m) && m.length > 0 && (l.timingsV2 = {}, l.versions.timings = 2, l.dt = m[0].deliveryType, delete l.timings, t(m[0], l.timingsV2))
+													m && Array.isArray(m) && m.length > 0 && (d.timingsV2 = {}, d.versions.timings = 2, d.dt = m[0].deliveryType, delete d.timings, t(m[0], d.timingsV2))
 												}
-												1 === l.versions.timings && t(c, l.timings), t(u, l.memory)
-											} else O(l);
-											return l.firstPaint = _("first-paint"), l.firstContentfulPaint = _("first-contentful-paint"), p && (p.icTag && (l.icTag = p.icTag), l.siteToken = p.token), void 0 !== n && (delete l.timings, delete l.memory), l
+												1 === d.versions.timings && t(c, d.timings), t(u, d.memory)
+											} else O(d);
+											return d.firstPaint = _("first-paint"), d.firstContentfulPaint = _("first-contentful-paint"), p && (p.icTag && (d.icTag = p.icTag), d.siteToken = p.token), void 0 !== n && (delete d.timings, delete d.memory), d
 										}(i);
 										a && p && (a.resources = [], p && ((0, o.sendObjectBeacon)("", a, (function() {}), !1, C), void 0 !== p.forward && void 0 !== p.forward.url && (0, o.sendObjectBeacon)("", a, (function() {}), !1, p.forward.url)))
 									},
@@ -155,9 +155,9 @@
 												referrer: document.referrer || "",
 												eventType: r.EventType.WebVitalsV2,
 												versions: {
-													js: "2024.4.1"
+													js: "2024.5.0"
 												},
-												pageloadId: d,
+												pageloadId: l,
 												location: e(),
 												landingPath: n,
 												startTime: I(),
@@ -175,7 +175,7 @@
 									A = function() {
 										var t = window.__cfRl && window.__cfRl.done || window.__cfQR && window.__cfQR.done;
 										t ? t.then(P) : P(), w = {
-											id: d,
+											id: l,
 											url: e(),
 											ts: (new Date).getTime(),
 											triggered: !0
@@ -186,12 +186,12 @@
 								}));
 								var R = function() {
 										return L && 0 === v.filter((function(e) {
-											return e.id === d
+											return e.id === l
 										})).length
 									},
 									x = function(e) {
 										v.push({
-											id: d,
+											id: l,
 											url: e,
 											ts: (new Date).getTime()
 										}), v.length > 3 && v.shift()
@@ -200,7 +200,7 @@
 									var i = t.pushState;
 									if (i) {
 										var r = function() {
-											d = c()
+											l = c()
 										};
 										t.pushState = function(o, a, c) {
 											n = e(c);
@@ -246,7 +246,7 @@
 							if ("function" == typeof s.getEntriesByType) {
 								var n = s.getEntriesByType("navigation"),
 									i = {};
-								e.timingsV2 = {}, n && n[0] && (n[0].nextHopProtocol && (i.nextHopProtocol = n[0].nextHopProtocol), e.dt = n[0].deliveryType), t(i, e.timingsV2)
+								e.timingsV2 = {}, n && n[0] && (n[0].nextHopProtocol && (i.nextHopProtocol = n[0].nextHopProtocol), n[0].transferSize && (i.transferSize = n[0].transferSize), n[0].decodedBodySize && (i.decodedBodySize = n[0].decodedBodySize), e.dt = n[0].deliveryType), t(i, e.timingsV2)
 							}
 						}
 
@@ -329,10 +329,10 @@
 							return n
 						},
 						f = -1,
-						l = function() {
+						d = function() {
 							return f
 						},
-						d = function(e) {
+						l = function(e) {
 							addEventListener("pageshow", (function(t) {
 								t.persisted && (f = t.timeStamp, e(t))
 							}), !0)
@@ -344,7 +344,7 @@
 						p = function(e, t) {
 							var n = a(),
 								i = "navigate";
-							return l() >= 0 ? i = "back-forward-cache" : n && (document.prerendering || v() > 0 ? i = "prerender" : document.wasDiscarded ? i = "restore" : n.type && (i = n.type.replace(/_/g, "-"))), {
+							return d() >= 0 ? i = "back-forward-cache" : n && (document.prerendering || v() > 0 ? i = "prerender" : document.wasDiscarded ? i = "restore" : n.type && (i = n.type.replace(/_/g, "-"))), {
 								name: e,
 								value: void 0 === t ? -1 : t,
 								rating: "good",
@@ -410,7 +410,7 @@
 							removeEventListener("visibilitychange", b, !0), removeEventListener("prerenderingchange", b, !0)
 						},
 						C = function() {
-							return w < 0 && (w = S(), E(), d((function() {
+							return w < 0 && (w = S(), E(), l((function() {
 								setTimeout((function() {
 									w = S(), E()
 								}), 0)
@@ -435,7 +435,7 @@
 											"first-contentful-paint" === e.name && (o.disconnect(), e.startTime < i.firstHiddenTime && (r.value = Math.max(e.startTime - v(), 0), r.entries.push(e), n(!0)))
 										}))
 									}));
-								o && (n = g(e, r, B, t.reportAllChanges), d((function(i) {
+								o && (n = g(e, r, B, t.reportAllChanges), l((function(i) {
 									r = p("FCP"), n = g(e, r, B, t.reportAllChanges), y((function() {
 										r.value = performance.now() - i.timeStamp, n(!0)
 									}))
@@ -502,7 +502,7 @@
 									f = m("first-input", s);
 								o = g(e, c, k, i.reportAllChanges), f && h(T((function() {
 									s(f.takeRecords()), f.disconnect()
-								}))), f && d((function() {
+								}))), f && l((function() {
 									var a;
 									c = p("FID"), o = g(e, c, k, i.reportAllChanges), r = [], n = -1, t = null, M(addEventListener), a = u, r.push(a), O()
 								}))
@@ -519,17 +519,17 @@
 						H = function() {
 							return o ? D : performance.interactionCount || 0
 						},
-						J = function() {
+						z = function() {
 							"interactionCount" in performance || o || (o = m("event", q, {
 								type: "event",
 								buffered: !0,
 								durationThreshold: 0
 							}))
 						},
-						U = [200, 500],
-						z = 0,
+						J = [200, 500],
+						U = 0,
 						W = function() {
-							return H() - z
+							return H() - U
 						},
 						Q = [],
 						X = {},
@@ -572,13 +572,13 @@
 								if (r) {
 									var o = r.responseStart;
 									if (o <= 0 || o > performance.now()) return;
-									n.value = Math.max(o - v(), 0), n.entries = [r], i(!0), d((function() {
+									n.value = Math.max(o - v(), 0), n.entries = [r], i(!0), l((function() {
 										n = p("TTFB", 0), (i = g(e, n, Z, t.reportAllChanges))(!0)
 									}))
 								}
 							}))
 						};
-					e.CLSThresholds = R, e.FCPThresholds = B, e.FIDThresholds = k, e.INPThresholds = U, e.LCPThresholds = K, e.TTFBThresholds = Z, e.onCLS = function(e, t) {
+					e.CLSThresholds = R, e.FCPThresholds = B, e.FIDThresholds = k, e.INPThresholds = J, e.LCPThresholds = K, e.TTFBThresholds = Z, e.onCLS = function(e, t) {
 						! function(e, t) {
 							t = t || {}, A(T((function() {
 								var n, i = p("CLS", 0),
@@ -596,7 +596,7 @@
 									c = m("layout-shift", a);
 								c && (n = g(e, i, R, t.reportAllChanges), h((function() {
 									a(c.takeRecords()), n(!0)
-								})), d((function() {
+								})), l((function() {
 									r = 0, i = p("CLS", 0), n = g(e, i, R, t.reportAllChanges), y((function() {
 										return n()
 									}))
@@ -647,7 +647,7 @@
 								e.attribution = {
 									timeToFirstByte: 0,
 									firstByteToFCP: e.value,
-									loadState: c(l())
+									loadState: c(d())
 								}
 							}(t), e(t)
 						}), t)
@@ -668,7 +668,7 @@
 						! function(e, t) {
 							t = t || {}, P((function() {
 								var n;
-								J();
+								z();
 								var i, r = p("INP"),
 									o = function(e) {
 										e.forEach((function(e) {
@@ -684,13 +684,13 @@
 									a = m("event", o, {
 										durationThreshold: null !== (n = t.durationThreshold) && void 0 !== n ? n : 40
 									});
-								i = g(e, r, U, t.reportAllChanges), a && ("PerformanceEventTiming" in window && "interactionId" in PerformanceEventTiming.prototype && a.observe({
+								i = g(e, r, J, t.reportAllChanges), a && ("PerformanceEventTiming" in window && "interactionId" in PerformanceEventTiming.prototype && a.observe({
 									type: "first-input",
 									buffered: !0
 								}), h((function() {
 									o(a.takeRecords()), r.value < 0 && W() > 0 && (r.value = 0, r.entries = []), i(!0)
-								})), d((function() {
-									Q = [], z = H(), r = p("INP"), i = g(e, r, U, t.reportAllChanges)
+								})), l((function() {
+									Q = [], U = H(), r = p("INP"), i = g(e, r, J, t.reportAllChanges)
 								})))
 							}))
 						}((function(t) {
@@ -731,7 +731,7 @@
 										addEventListener(e, (function() {
 											return setTimeout(c, 0)
 										}), !0)
-									})), h(c), d((function(i) {
+									})), h(c), l((function(i) {
 										r = p("LCP"), n = g(e, r, K, t.reportAllChanges), y((function() {
 											r.value = performance.now() - i.timeStamp, Y[r.id] = !0, n(!0)
 										}))
@@ -752,7 +752,7 @@
 											c = Math.max(o, r ? (r.requestStart || r.startTime) - n : 0),
 											u = Math.max(c, r ? r.responseEnd - n : 0),
 											f = Math.max(u, i ? i.startTime - n : 0),
-											l = {
+											d = {
 												element: s(i.element),
 												timeToFirstByte: o,
 												resourceLoadDelay: c - o,
@@ -761,7 +761,7 @@
 												navigationEntry: t,
 												lcpEntry: i
 											};
-										return i.url && (l.url = i.url), r && (l.lcpResourceEntry = r), void(e.attribution = l)
+										return i.url && (d.url = i.url), r && (d.lcpResourceEntry = r), void(e.attribution = d)
 									}
 								}
 								e.attribution = {
