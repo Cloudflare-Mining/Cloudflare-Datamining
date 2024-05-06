@@ -16,7 +16,7 @@
 	<pre><code>grafana-cli plugins install cloudflare-app
 </code></pre>
 	<p>Once you sign in using your user email and API key, the plugin will automatically discover domains and Virtual DNS clusters you have access to.</p>
-	<p>The Grafana plugin is built on our new <a href="https://www.cloudflare.com/docs/CloudflareDNSAnalyticsAPIBetaDocumentation.pdf">DNS analytics API</a>. If you want to explore your DNS traffic but Grafana isn’t your tool of choice, our DNS analytics API is very easy to get started with. Here’s a curl to get you started:</p>
+	<p>The Grafana plugin is built on our new <a href="https://developers.cloudflare.com/api/#dns-analytics-properties">DNS analytics API</a>. If you want to explore your DNS traffic but Grafana isn’t your tool of choice, our DNS analytics API is very easy to get started with. Here’s a curl to get you started:</p>
 	<pre><code>curl -s -H 'X-Auth-Key:####' -H 'X-Auth-Email:####' 'https://api.cloudflare.com/client/v4/zones/####/dns_analytics/report?metrics=queryCount’
 </code></pre>
 	<p>To make all of this work, Cloudflare DNS is answering and logging millions of queries each second. Having high resolution data at this scale enables us to quickly pinpoint and resolve problems, and we’re excited to share this with you. More on this in a follow up deep dive blog post on improvements in our new data pipeline.</p>

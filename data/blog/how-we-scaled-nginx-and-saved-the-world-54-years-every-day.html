@@ -91,6 +91,6 @@ read(fd, buf, 32*1024);
 	<p>We've submitted our work to <a href="http://mailman.nginx.org/pipermail/nginx-devel/2018-August/011354.html">upstream</a>. Interested parties can follow along.</p>
 	<p>Our event loop handling is still not completely non-blocking. In particular, we still block when we are caching a file for the first time (both the <code>open(O_CREAT)</code> and <code>rename()</code>), or doing revalidation updates. However, those are rare compared to cache hits. In the future we will consider moving those off of the event loop to further improve our p99 latency.</p>
 	<h3 id="conclusion">Conclusion</h3>
-	<p>NGINX is a powerful platform, but scaling extremely high I/O loads on linux can be challenging. Upstream NGINX can offload reads in separate threads, but at our scale we often need to go one step further. If working on challenging performance problems sounds exciting to you, <a href="https://www.cloudflare.com/careers/departments/engineering">apply to join our team</a> in San Francisco, London, Austin or Champaign.</p>
+	<p>NGINX is a powerful platform, but scaling extremely high I/O loads on linux can be challenging. Upstream NGINX can offload reads in separate threads, but at our scale we often need to go one step further. If working on challenging performance problems sounds exciting to you, <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering">apply to join our team</a> in San Francisco, London, Austin or Champaign.</p>
 	<!--kg-card-end: markdown-->
 </div>

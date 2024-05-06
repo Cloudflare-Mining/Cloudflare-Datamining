@@ -419,7 +419,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 </code></pre>
 	<h3 id="managingratelimits">Managing rate limits</h3>
 	<p><em>Before proceeding, make sure that your account is enabled for Rate Limiting. If you’re on an Enterprise plan, you should ask your Customer Success Manager to do this; otherwise, you can subscribe to Rate Limiting within the Cloudflare Dashboard.</em></p>
-	<p>With our zone settings locked down, and our site starting to get some more attention, it's unfortunately begun attracting some of the less scrupulous characters on the internet. Our server access logs show attempts to brute force our login page at <code>https://www.example.com/login</code>. Let's see what we can do with Cloudflare's <a href="https://blog.cloudflare.com/(https://www.cloudflare.com/rate-limiting/)">rate limiting product</a> to put a stop to these efforts.</p>
+	<p>With our zone settings locked down, and our site starting to get some more attention, it's unfortunately begun attracting some of the less scrupulous characters on the internet. Our server access logs show attempts to brute force our login page at <code>https://www.example.com/login</code>. Let's see what we can do with Cloudflare's <a href="https://www.cloudflare.com/application-services/products/rate-limiting">rate limiting product</a>) to put a stop to these efforts.</p>
 	<h4 id="1createanewbranchandappendtheratelimitingsettings">1. Create a new branch and append the rate limiting settings</h4>
 	<p>After creating a new branch we specify the rate limiting rule:</p>
 	<pre><code>$ git checkout -b step4-ratelimit
