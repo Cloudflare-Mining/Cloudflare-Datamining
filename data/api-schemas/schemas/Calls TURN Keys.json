@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_id}/calls/apps/{app_id}": {
-		"description": "Deletes an app from Cloudflare Calls",
-		"operationId": "calls-apps-delete-app",
+	"DELETE /accounts/{account_id}/calls/turn_keys/{key_id}": {
+		"description": "Deletes a TURN key from Cloudflare Calls",
+		"operationId": "calls-delete-turn-key",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "app_id",
+				"name": "key_id",
 				"required": true,
 				"schema": {
 					"description": "A Cloudflare-generated unique identifier for a item.",
@@ -115,34 +115,11 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"created": {
-													"description": "The date and time the item was created.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"type": "string"
-												},
-												"modified": {
-													"description": "The date and time the item was last modified.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"type": "string"
-												},
-												"name": {
-													"default": "",
-													"description": "A short description of Calls app, not shown to end users.",
-													"example": "production-realtime-app",
-													"type": "string"
-												},
-												"uid": {
-													"description": "A Cloudflare-generated unique identifier for a item.",
-													"example": "2a95132c15732412d22c1476fa83f27a",
-													"maxLength": 32,
-													"minLength": 32,
-													"type": "string"
-												}
-											},
-											"type": "object"
+											"description": "Bearer token",
+											"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
+											"maxLength": 64,
+											"minLength": 64,
+											"type": "string"
 										}
 									}
 								}
@@ -150,13 +127,13 @@
 						}
 					}
 				},
-				"description": "Delete app response"
+				"description": "Delete TURN key response"
 			},
 			"4XX": {
 				"content": {
 					"application/json": {}
 				},
-				"description": "Delete app response failure"
+				"description": "Delete TURN key response failure"
 			}
 		},
 		"security": [
@@ -164,14 +141,14 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete app",
+		"summary": "Delete TURN key",
 		"tags": [
-			"Calls Apps"
+			"Calls TURN Keys"
 		]
 	},
-	"GET /accounts/{account_id}/calls/apps": {
-		"description": "Lists all apps in the Cloudflare account",
-		"operationId": "calls-apps-list",
+	"GET /accounts/{account_id}/calls/turn_keys": {
+		"description": "Lists all TURN keys in the Cloudflare account",
+		"operationId": "calls-turn-key-list",
 		"parameters": [
 			{
 				"in": "path",
@@ -269,7 +246,7 @@
 						}
 					}
 				},
-				"description": "List apps response"
+				"description": "List TURN key response"
 			},
 			"4XX": {
 				"content": {
@@ -360,7 +337,7 @@
 						}
 					}
 				},
-				"description": "List apps response failure"
+				"description": "List TURN key response failure"
 			}
 		},
 		"security": [
@@ -368,18 +345,18 @@
 				"api_token": []
 			}
 		],
-		"summary": "List apps",
+		"summary": "List TURN Keys",
 		"tags": [
-			"Calls Apps"
+			"Calls TURN Keys"
 		]
 	},
-	"GET /accounts/{account_id}/calls/apps/{app_id}": {
-		"description": "Fetches details for a single Calls app.",
-		"operationId": "calls-apps-retrieve-app-details",
+	"GET /accounts/{account_id}/calls/turn_keys/{key_id}": {
+		"description": "Fetches details for a single TURN key.",
+		"operationId": "calls-retrieve-turn-key-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "app_id",
+				"name": "key_id",
 				"required": true,
 				"schema": {
 					"description": "A Cloudflare-generated unique identifier for a item.",
@@ -489,34 +466,11 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"created": {
-													"description": "The date and time the item was created.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"type": "string"
-												},
-												"modified": {
-													"description": "The date and time the item was last modified.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"type": "string"
-												},
-												"name": {
-													"default": "",
-													"description": "A short description of Calls app, not shown to end users.",
-													"example": "production-realtime-app",
-													"type": "string"
-												},
-												"uid": {
-													"description": "A Cloudflare-generated unique identifier for a item.",
-													"example": "2a95132c15732412d22c1476fa83f27a",
-													"maxLength": 32,
-													"minLength": 32,
-													"type": "string"
-												}
-											},
-											"type": "object"
+											"description": "Bearer token",
+											"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
+											"maxLength": 64,
+											"minLength": 64,
+											"type": "string"
 										}
 									}
 								}
@@ -524,7 +478,7 @@
 						}
 					}
 				},
-				"description": "Retrieve app details response"
+				"description": "Retrieve TURN key details response"
 			},
 			"4XX": {
 				"content": {
@@ -615,7 +569,7 @@
 						}
 					}
 				},
-				"description": "Retrieve app details response failure"
+				"description": "Retrieve TURN key details failure"
 			}
 		},
 		"security": [
@@ -623,14 +577,14 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve app details",
+		"summary": "Retrieve TURN key details",
 		"tags": [
-			"Calls Apps"
+			"Calls TURN Keys"
 		]
 	},
-	"POST /accounts/{account_id}/calls/apps": {
-		"description": "Creates a new Cloudflare calls app. An app is an unique enviroment where each Session can access all Tracks within the app.",
-		"operationId": "calls-apps-create-a-new-app",
+	"POST /accounts/{account_id}/calls/turn_keys": {
+		"description": "Creates a new Cloudflare Calls TURN key.",
+		"operationId": "calls-turn-key-create",
 		"parameters": [
 			{
 				"in": "path",
@@ -651,8 +605,8 @@
 						"properties": {
 							"name": {
 								"default": "",
-								"description": "A short description of Calls app, not shown to end users.",
-								"example": "production-realtime-app",
+								"description": "A short description of a TURN key, not shown to end users.",
+								"example": "my-turn-key",
 								"type": "string"
 							}
 						},
@@ -667,132 +621,45 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
-										}
-									],
-									"type": "object"
+							"properties": {
+								"created": {
+									"description": "The date and time the item was created.",
+									"example": "2014-01-02T02:20:00Z",
+									"format": "date-time",
+									"type": "string"
 								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
-												"created": {
-													"description": "The date and time the item was created.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"type": "string"
-												},
-												"modified": {
-													"description": "The date and time the item was last modified.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"type": "string"
-												},
-												"name": {
-													"default": "",
-													"description": "A short description of Calls app, not shown to end users.",
-													"example": "production-realtime-app",
-													"type": "string"
-												},
-												"secret": {
-													"description": "Bearer token",
-													"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
-													"maxLength": 64,
-													"minLength": 64,
-													"type": "string"
-												},
-												"uid": {
-													"description": "A Cloudflare-generated unique identifier for a item.",
-													"example": "2a95132c15732412d22c1476fa83f27a",
-													"maxLength": 32,
-													"minLength": 32,
-													"type": "string"
-												}
-											},
-											"type": "object"
-										}
-									}
+								"key": {
+									"description": "Bearer token",
+									"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
+									"maxLength": 64,
+									"minLength": 64,
+									"type": "string"
+								},
+								"modified": {
+									"description": "The date and time the item was last modified.",
+									"example": "2014-01-02T02:20:00Z",
+									"format": "date-time",
+									"type": "string"
+								},
+								"name": {
+									"default": "",
+									"description": "A short description of a TURN key, not shown to end users.",
+									"example": "my-turn-key",
+									"type": "string"
+								},
+								"uid": {
+									"description": "A Cloudflare-generated unique identifier for a item.",
+									"example": "2a95132c15732412d22c1476fa83f27a",
+									"maxLength": 32,
+									"minLength": 32,
+									"type": "string"
 								}
-							]
+							},
+							"type": "object"
 						}
 					}
 				},
-				"description": "Created a new app"
+				"description": "Created a new TURN key"
 			}
 		},
 		"security": [
@@ -800,18 +667,18 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new app",
+		"summary": "Create a new TURN key",
 		"tags": [
-			"Calls Apps"
+			"Calls TURN Keys"
 		]
 	},
-	"PUT /accounts/{account_id}/calls/apps/{app_id}": {
-		"description": "Edit details for a single app.",
-		"operationId": "calls-apps-update-app-details",
+	"PUT /accounts/{account_id}/calls/turn_keys/{key_id}": {
+		"description": "Edit details for a single TURN key.",
+		"operationId": "calls-update-turn-key",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "app_id",
+				"name": "key_id",
 				"required": true,
 				"schema": {
 					"description": "A Cloudflare-generated unique identifier for a item.",
@@ -840,8 +707,8 @@
 						"properties": {
 							"name": {
 								"default": "",
-								"description": "A short description of Calls app, not shown to end users.",
-								"example": "production-realtime-app",
+								"description": "A short description of a TURN key, not shown to end users.",
+								"example": "my-turn-key",
 								"type": "string"
 							}
 						},
@@ -939,34 +806,11 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"created": {
-													"description": "The date and time the item was created.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"type": "string"
-												},
-												"modified": {
-													"description": "The date and time the item was last modified.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"type": "string"
-												},
-												"name": {
-													"default": "",
-													"description": "A short description of Calls app, not shown to end users.",
-													"example": "production-realtime-app",
-													"type": "string"
-												},
-												"uid": {
-													"description": "A Cloudflare-generated unique identifier for a item.",
-													"example": "2a95132c15732412d22c1476fa83f27a",
-													"maxLength": 32,
-													"minLength": 32,
-													"type": "string"
-												}
-											},
-											"type": "object"
+											"description": "Bearer token",
+											"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
+											"maxLength": 64,
+											"minLength": 64,
+											"type": "string"
 										}
 									}
 								}
@@ -974,7 +818,7 @@
 						}
 					}
 				},
-				"description": "Edit app details response"
+				"description": "Edit TURN key details response"
 			},
 			"4XX": {
 				"content": {
@@ -1065,7 +909,7 @@
 						}
 					}
 				},
-				"description": "Edit app details response failure"
+				"description": "Edit TURN key details response failure"
 			}
 		},
 		"security": [
@@ -1073,9 +917,9 @@
 				"api_token": []
 			}
 		],
-		"summary": "Edit app details",
+		"summary": "Edit TURN key details",
 		"tags": [
-			"Calls Apps"
+			"Calls TURN Keys"
 		]
 	}
 }
