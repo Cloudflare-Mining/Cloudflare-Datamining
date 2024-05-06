@@ -500,6 +500,9 @@
 												"type": "array"
 											}
 										},
+										"required": [
+											"audio"
+										],
 										"type": "object"
 									}
 								],
@@ -521,6 +524,9 @@
 												"type": "array"
 											}
 										},
+										"required": [
+											"image"
+										],
 										"type": "object"
 									}
 								],
@@ -682,7 +688,7 @@
 														"type": "array"
 													},
 													{
-														"format": "base64",
+														"format": "binary",
 														"type": "string"
 													}
 												]
