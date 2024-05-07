@@ -911,7 +911,11 @@
 														"uri": null
 													},
 													"value": "1. Implement modern prevention tools ",
-													"marks": [],
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -1150,7 +1154,11 @@
 														"uri": null
 													},
 													"value": "2. Attack the problem head-on ",
-													"marks": [],
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -1244,7 +1252,11 @@
 														"uri": null
 													},
 													"value": "3. Turn intelligence into tactical success",
-													"marks": [],
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -1390,7 +1402,11 @@
 														"uri": null
 													},
 													"value": "It's not all doom and gloom: Modernizing the fight against phishing ",
-													"marks": [],
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -1441,7 +1457,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " so no user or device has complete, trusted access to email or other network resources. Organizations can integrate multiple anti-phishing controls to cloud email security to address high-risk areas for attack exposure, and implement phishing-resistant MFA security tools. ",
+													"value": " so no user or device has complete, trusted access to email or other network resources. Organizations can integrate multiple anti-phishing controls to ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/zero-trust/solutions/email-security-services/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "cloud email security",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " to address high-risk areas for attack exposure, and implement phishing-resistant MFA security tools. ",
 													"marks": [],
 													"content": null
 												}
