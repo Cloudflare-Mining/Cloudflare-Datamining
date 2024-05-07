@@ -321,8 +321,7 @@
 								"type": "string"
 							},
 							"public": {
-								"default": "false",
-								"type": "string"
+								"type": "boolean"
 							}
 						},
 						"required": [
@@ -364,7 +363,7 @@
 											"type": "string"
 										},
 										"public": {
-											"type": "string"
+											"type": "boolean"
 										}
 									},
 									"required": [
