@@ -5,38 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Remote US or Lisbon or Remote Portugal, London or Remote UK, Amsterdam or Remote Netherlands, Munich or Remote Germany</strong></p>
-<p><strong>About the Department</strong></p>
-<p>Cloudflare Research is involved with building the future of Cloudflare by tackling strategic projects that have a large impact on Cloudflare systems and the Internet at large. Team members<strong> independently drive greenfield projects</strong>, work closely with Cloudflare product and engineering teams on shared objectives, and build strong collaborations with both external organizations and other organizations within Cloudflare to achieve common goals.</p>
-<p>Cloudflare Research embarks upon projects that help shape the future of the Internet at large, and the systems that drive it. We design, develop, and deploy these projects into Cloudflare systems to demonstrate their impact, and to share that knowledge with the wider standards and research communities -- often in collaboration with university or other industry labs. A sample of our recent high-profile works include Constellation AI, Encrypted Client Hello (ECH), Post Quantum Encryption, Cryptographic Attestation of Personhood (CAP), and Addressing Agility. Our current research directions include applied cryptography, privacy, network protocols, network architecture, network performance, AI and ML and distributed systems.&nbsp;</p>
-<p>More information about Cloudflare's approach to research can be found<a href="https://research.cloudflare.com/about/approach/"> here</a>.</p>
-<p><strong>About the Role&nbsp;&nbsp;</strong></p>
-<p>This role involves managing and supporting a team of passionate research engineers who are building innovative technology and conducting scientific research. For this role we welcome experience in any of the domains in which we work, or adjacent domains. Prioritization and planning are key elements as the nature of the team’s research necessarily shifts between putting ideas into practice and onto paper, while ensuring rigorous evaluations of performance, correctness, or impact. The successful candidate will have a proven track record of success driving streams of investigation to completion.</p>
-<p>The Research Director helps to design and introduce tools or processes that make our researchers’ lives better. A significant component of this role is to guide team members professional development, as well as supporting their projects’ integration into Cloudflare’s infrastructure so that the research can touch customer and client experiences alike, and help the company reach our ambitious goals.</p>
-<p><strong>General Requirements</strong></p>
+<p>As a Full Stack engineer on the Web team, you will be responsible for building and maintaining the systems that comprise our marketing website, developer docs, blog, marketing automation, and more. You will build Cloudflare Workers deployed on our edge network and Node.js and Golang services to Kubernetes. You’ll bring industry best practices for standing up and maintaining backend services plus a solid understanding of modern frontend development.</p>
 <ul>
-	<li>Experience managing R&amp;D teams and managers</li>
-	<li>Proficiency in software development</li>
-	<li>Solid technical foundations, understanding of one or more Cloudflare-relevant areas such as privacy, networking, distributed systems, storage, operating systems, formal methods or machine learning for systems.</li>
+	<li>Build tools, frameworks and libraries to help the front-end team build a better cloudflare.com</li>
+	<li>Optimize our TypeScript/Gatsby build system</li>
+	<li>Build Workers in TypeScript.</li>
+	<li>Build services and tooling in TypeScript and Golang.</li>
+	<li>Review work from your peers throughout all stages of the development lifecycle.</li>
+	<li>Plan and lead engineering work on large projects.</li>
+	<li>Mentor team members to help bring out their best work.</li>
+	<li>Represent the team within the company and externally through blogging and tech talks.</li>
 </ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Excel at planning, working independently and multi-functionally, leading execution across teams to meet commitments, and deliver with predictability</li>
-	<li>Have a track record of leading teams, including hiring, onboarding, and professional development. You inspire your team to reach higher.</li>
-	<li>Have a track record of strong communication and advocacy on behalf of your team.</li>
-	<li>Demonstrated ability to recruit and hire top talent</li>
-	<li>Experience implementing tools, processes, internal instrumentation, methodologies, and resolving blockages</li>
-	<li>Comfortable working on teams/projects with tight deadlines and short release cycles</li>
-	<li>Experience working with and getting the best out of engineers and researchers, whether budding or experienced.</li>
+	<li>
+		<ul>
+			<li>More than 2 years of experience building and managing high volume software applications.&nbsp; Golang and Typescript are a plus</li>
+			<li>Experience building, deploying and operating services.</li>
+			<li>You enjoy getting things done and have a bias for action: you're a builder and a creator and have led small teams that deliver results.</li>
+			<li>Experience managing or contributing to build systems for large JavaScript projects and have contributed to open-source JavaScript tools and frameworks&nbsp;</li>
+			<li>Contributions to open-source JavaScript tools and frameworks.</li>
+			<li>Strong interpersonal and communication skills. Curiosity and empathy are coveted traits here!</li>
+			<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript, and the DOM.</li>
+		</ul>
+	</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>A PhD or equivalent graduate research program in Computer Science, Mathematics, or related STEM field&nbsp;</li>
-	<li>Peer-reviewed publications in, or engagement with, research venues sponsored by the ACM, USENIX, or IEEE.</li>
-	<li>Strong ties to and participation in standards bodies such as IETF, W3C, and others.</li>
-	<li>Proficiency in one or more the following languages - Go, Rust, Typescript, Python, or C, C++</li>
-	<li>Familiarity with Kafka, Postgres, ClickHouse, Kubernetes, Prometheus, and tools such as Cloudflare’s Workers platform</li>
-	<li>Demonstrated excellence in broad-audience technical communication</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

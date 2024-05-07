@@ -5,37 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Remote US or Lisbon or Remote Portugal, London or Remote UK, Amsterdam or Remote Netherlands, Munich or Remote Germany</strong></p>
+<p><strong>Locations: Austin, TX or San Francisco, CA&nbsp;</strong></p>
 <p><strong>About the Department</strong></p>
-<p>Cloudflare Research is involved with building the future of Cloudflare by tackling strategic projects that have a large impact on Cloudflare systems and the Internet at large. Team members<strong> independently drive greenfield projects</strong>, work closely with Cloudflare product and engineering teams on shared objectives, and build strong collaborations with both external organizations and other organizations within Cloudflare to achieve common goals.</p>
-<p>Cloudflare Research embarks upon projects that help shape the future of the Internet at large, and the systems that drive it. We design, develop, and deploy these projects into Cloudflare systems to demonstrate their impact, and to share that knowledge with the wider standards and research communities -- often in collaboration with university or other industry labs. A sample of our recent high-profile works include Constellation AI, Encrypted Client Hello (ECH), Post Quantum Encryption, Cryptographic Attestation of Personhood (CAP), and Addressing Agility. Our current research directions include applied cryptography, privacy, network protocols, network architecture, network performance, AI and ML and distributed systems.&nbsp;</p>
-<p>More information about Cloudflare's approach to research can be found<a href="https://research.cloudflare.com/about/approach/"> here</a>.</p>
-<p><strong>About the Role&nbsp;&nbsp;</strong></p>
-<p>This role involves managing and supporting a team of passionate research engineers who are building innovative technology and conducting scientific research. For this role we welcome experience in any of the domains in which we work, or adjacent domains. Prioritization and planning are key elements as the nature of the team’s research necessarily shifts between putting ideas into practice and onto paper, while ensuring rigorous evaluations of performance, correctness, or impact. The successful candidate will have a proven track record of success driving streams of investigation to completion.</p>
-<p>The Research Director helps to design and introduce tools or processes that make our researchers’ lives better. A significant component of this role is to guide team members professional development, as well as supporting their projects’ integration into Cloudflare’s infrastructure so that the research can touch customer and client experiences alike, and help the company reach our ambitious goals.</p>
-<p><strong>General Requirements</strong></p>
+<p>Because of the scope, complexity, and diversity of the company’s work, we need a world-class legal team to help the company avoid distractions, and guide company leadership around obstacles.&nbsp; Our legal team is made up of very accomplished lawyers and staff who comprise a flexible, talented, and very cohesive team.&nbsp;</p>
+<p><strong>About the Role</strong></p>
+<p>In this role, you’ll be a valued member of Cloudflare’s commercial legal team.&nbsp; You will also collaborate and work cross-functionally with other internal groups, across the sales, customer success finance, and partnerships teams.&nbsp; The position is based in Austin, TX or San Francisco, CA&nbsp; and frequent communication with our other offices will be required.</p>
+<p><strong>What You’ll Be Doing</strong></p>
 <ul>
-	<li>Experience managing R&amp;D teams and managers</li>
-	<li>Proficiency in software development</li>
-	<li>Solid technical foundations, understanding of one or more Cloudflare-relevant areas such as privacy, networking, distributed systems, storage, operating systems, formal methods or machine learning for systems.</li>
+	<li>Assist with the intake management of all contracts via internal systems and conduct correspondence with all stakeholders regarding the status of contract requests</li>
+	<li>Manage busy contract queue and prioritize urgent requests as necessary prior to legal counsel review</li>
+	<li>Conduct initial review of contracts in relation to risks stemming from contract language, internal legal thresholds, and other criteria</li>
+	<li>Assist with commercial negotiations, including NDAs, and MSAs, and any other general commercial terms and conditions</li>
+	<li>Serve as first point of contact to internal business units to answer contract-related inquiries and escalate as appropriate to senior legal colleagues</li>
+	<li>Manage contract lifecycles from providing forms through contract execution and maintenance</li>
+	<li>Assist with legal department analytics by pulling key performance indicators from various tools including SFDC and Ironclad</li>
+	<li>Maintain a library of form documents, contract clauses, templates, and historical documents, and add or revise material as needed</li>
+	<li>Provide input into the formulation, development, and/or revision of operating policies, procedures, and strategies for the commercial legal function, as appropriate&nbsp;</li>
 </ul>
+<p><strong>Requirements:</strong>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</p>
 <ul>
-	<li>Excel at planning, working independently and multi-functionally, leading execution across teams to meet commitments, and deliver with predictability</li>
-	<li>Have a track record of leading teams, including hiring, onboarding, and professional development. You inspire your team to reach higher.</li>
-	<li>Have a track record of strong communication and advocacy on behalf of your team.</li>
-	<li>Demonstrated ability to recruit and hire top talent</li>
-	<li>Experience implementing tools, processes, internal instrumentation, methodologies, and resolving blockages</li>
-	<li>Comfortable working on teams/projects with tight deadlines and short release cycles</li>
-	<li>Experience working with and getting the best out of engineers and researchers, whether budding or experienced.</li>
+	<li>B.A. or B.S. degree; paralegal certification a plus but not required</li>
+	<li>3+ years relevant business or legal experience&nbsp;</li>
+	<li>Ability to meet the needs of a high-growth, fast-paced Internet company</li>
+	<li>Customer service oriented while maintaining acute attention to detail</li>
+	<li>Great organizational skills and ability to prioritize workloads</li>
+	<li>Possess excellent problem-solving capabilities, judgment, negotiation, communication (written and verbal) and interpersonal skills</li>
+	<li>Proven ability to manage high-volume workloads, multiple stakeholder demands and ever-shifting priorities all while instilling confidence</li>
+	<li>Ability to operate autonomously while being a team player who brings a positive attitude to the workplace&nbsp;</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>A PhD or equivalent graduate research program in Computer Science, Mathematics, or related STEM field&nbsp;</li>
-	<li>Peer-reviewed publications in, or engagement with, research venues sponsored by the ACM, USENIX, or IEEE.</li>
-	<li>Strong ties to and participation in standards bodies such as IETF, W3C, and others.</li>
-	<li>Proficiency in one or more the following languages - Go, Rust, Typescript, Python, or C, C++</li>
-	<li>Familiarity with Kafka, Postgres, ClickHouse, Kubernetes, Prometheus, and tools such as Cloudflare’s Workers platform</li>
-	<li>Demonstrated excellence in broad-audience technical communication</li>
+	<li>Experience in a legal setting (law firm or in-house)</li>
+	<li>Experience using administrative management systems such Salesforce, Apttus, DocuSign, Ironclad and/or JIRA</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
