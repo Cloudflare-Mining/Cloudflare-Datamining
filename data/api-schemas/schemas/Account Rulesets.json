@@ -476,6 +476,7 @@
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
+																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 																				"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 																				"redirect": "#/components/schemas/rulesets_RedirectRule",
 																				"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -3594,7 +3595,7 @@
 																											"default": {
 																												"description": "The TTL (in seconds) if you choose override_origin mode.",
 																												"maximum": 9223372036854776000,
-																												"minimum": 1,
+																												"minimum": 0,
 																												"title": "Default",
 																												"type": "integer"
 																											},
@@ -3706,6 +3707,209 @@
 																							}
 																						},
 																						"title": "Set Cache Settings rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"log_custom_field"
+																								]
+																							},
+																							"action_parameters": {
+																								"minProperties": 1,
+																								"properties": {
+																									"cookie_fields": {
+																										"description": "The cookie fields to log.",
+																										"items": {
+																											"description": "The cookie field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "cookie_name_1",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Cookie field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Cookie fields",
+																										"type": "array"
+																									},
+																									"request_fields": {
+																										"description": "The request fields to log.",
+																										"items": {
+																											"description": "The request field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_request_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Request field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Request fields",
+																										"type": "array"
+																									},
+																									"response_fields": {
+																										"description": "The response fields to log.",
+																										"items": {
+																											"description": "The response field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_response_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Response field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Response fields",
+																										"type": "array"
+																									}
+																								}
+																							},
+																							"description": {
+																								"example": "Log custom field when the IP address is not 1.1.1.1"
+																							}
+																						},
+																						"title": "Log Custom Field rule"
 																					}
 																				]
 																			}
@@ -4820,6 +5024,7 @@
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
+																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 																				"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 																				"redirect": "#/components/schemas/rulesets_RedirectRule",
 																				"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -7938,7 +8143,7 @@
 																											"default": {
 																												"description": "The TTL (in seconds) if you choose override_origin mode.",
 																												"maximum": 9223372036854776000,
-																												"minimum": 1,
+																												"minimum": 0,
 																												"title": "Default",
 																												"type": "integer"
 																											},
@@ -8050,6 +8255,209 @@
 																							}
 																						},
 																						"title": "Set Cache Settings rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"log_custom_field"
+																								]
+																							},
+																							"action_parameters": {
+																								"minProperties": 1,
+																								"properties": {
+																									"cookie_fields": {
+																										"description": "The cookie fields to log.",
+																										"items": {
+																											"description": "The cookie field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "cookie_name_1",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Cookie field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Cookie fields",
+																										"type": "array"
+																									},
+																									"request_fields": {
+																										"description": "The request fields to log.",
+																										"items": {
+																											"description": "The request field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_request_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Request field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Request fields",
+																										"type": "array"
+																									},
+																									"response_fields": {
+																										"description": "The response fields to log.",
+																										"items": {
+																											"description": "The response field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_response_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Response field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Response fields",
+																										"type": "array"
+																									}
+																								}
+																							},
+																							"description": {
+																								"example": "Log custom field when the IP address is not 1.1.1.1"
+																							}
+																						},
+																						"title": "Log Custom Field rule"
 																					}
 																				]
 																			}
@@ -8981,6 +9389,7 @@
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
+																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 																				"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 																				"redirect": "#/components/schemas/rulesets_RedirectRule",
 																				"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -12099,7 +12508,7 @@
 																											"default": {
 																												"description": "The TTL (in seconds) if you choose override_origin mode.",
 																												"maximum": 9223372036854776000,
-																												"minimum": 1,
+																												"minimum": 0,
 																												"title": "Default",
 																												"type": "integer"
 																											},
@@ -12211,6 +12620,209 @@
 																							}
 																						},
 																						"title": "Set Cache Settings rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"log_custom_field"
+																								]
+																							},
+																							"action_parameters": {
+																								"minProperties": 1,
+																								"properties": {
+																									"cookie_fields": {
+																										"description": "The cookie fields to log.",
+																										"items": {
+																											"description": "The cookie field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "cookie_name_1",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Cookie field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Cookie fields",
+																										"type": "array"
+																									},
+																									"request_fields": {
+																										"description": "The request fields to log.",
+																										"items": {
+																											"description": "The request field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_request_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Request field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Request fields",
+																										"type": "array"
+																									},
+																									"response_fields": {
+																										"description": "The response fields to log.",
+																										"items": {
+																											"description": "The response field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_response_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Response field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Response fields",
+																										"type": "array"
+																									}
+																								}
+																							},
+																							"description": {
+																								"example": "Log custom field when the IP address is not 1.1.1.1"
+																							}
+																						},
+																						"title": "Log Custom Field rule"
 																					}
 																				]
 																			}
@@ -12710,6 +13322,7 @@
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
+																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 																				"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 																				"redirect": "#/components/schemas/rulesets_RedirectRule",
 																				"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -15828,7 +16441,7 @@
 																											"default": {
 																												"description": "The TTL (in seconds) if you choose override_origin mode.",
 																												"maximum": 9223372036854776000,
-																												"minimum": 1,
+																												"minimum": 0,
 																												"title": "Default",
 																												"type": "integer"
 																											},
@@ -15940,6 +16553,209 @@
 																							}
 																						},
 																						"title": "Set Cache Settings rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"log_custom_field"
+																								]
+																							},
+																							"action_parameters": {
+																								"minProperties": 1,
+																								"properties": {
+																									"cookie_fields": {
+																										"description": "The cookie fields to log.",
+																										"items": {
+																											"description": "The cookie field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "cookie_name_1",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Cookie field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Cookie fields",
+																										"type": "array"
+																									},
+																									"request_fields": {
+																										"description": "The request fields to log.",
+																										"items": {
+																											"description": "The request field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_request_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Request field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Request fields",
+																										"type": "array"
+																									},
+																									"response_fields": {
+																										"description": "The response fields to log.",
+																										"items": {
+																											"description": "The response field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_response_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Response field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Response fields",
+																										"type": "array"
+																									}
+																								}
+																							},
+																							"description": {
+																								"example": "Log custom field when the IP address is not 1.1.1.1"
+																							}
+																						},
+																						"title": "Log Custom Field rule"
 																					}
 																				]
 																			}
@@ -16438,6 +17254,7 @@
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
+																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 																				"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 																				"redirect": "#/components/schemas/rulesets_RedirectRule",
 																				"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -19556,7 +20373,7 @@
 																											"default": {
 																												"description": "The TTL (in seconds) if you choose override_origin mode.",
 																												"maximum": 9223372036854776000,
-																												"minimum": 1,
+																												"minimum": 0,
 																												"title": "Default",
 																												"type": "integer"
 																											},
@@ -19668,6 +20485,209 @@
 																							}
 																						},
 																						"title": "Set Cache Settings rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"log_custom_field"
+																								]
+																							},
+																							"action_parameters": {
+																								"minProperties": 1,
+																								"properties": {
+																									"cookie_fields": {
+																										"description": "The cookie fields to log.",
+																										"items": {
+																											"description": "The cookie field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "cookie_name_1",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Cookie field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Cookie fields",
+																										"type": "array"
+																									},
+																									"request_fields": {
+																										"description": "The request fields to log.",
+																										"items": {
+																											"description": "The request field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_request_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Request field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Request fields",
+																										"type": "array"
+																									},
+																									"response_fields": {
+																										"description": "The response fields to log.",
+																										"items": {
+																											"description": "The response field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_response_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Response field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Response fields",
+																										"type": "array"
+																									}
+																								}
+																							},
+																							"description": {
+																								"example": "Log custom field when the IP address is not 1.1.1.1"
+																							}
+																						},
+																						"title": "Log Custom Field rule"
 																					}
 																				]
 																			}
@@ -20647,6 +21667,7 @@
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
+																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 																				"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 																				"redirect": "#/components/schemas/rulesets_RedirectRule",
 																				"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -23765,7 +24786,7 @@
 																											"default": {
 																												"description": "The TTL (in seconds) if you choose override_origin mode.",
 																												"maximum": 9223372036854776000,
-																												"minimum": 1,
+																												"minimum": 0,
 																												"title": "Default",
 																												"type": "integer"
 																											},
@@ -23877,6 +24898,209 @@
 																							}
 																						},
 																						"title": "Set Cache Settings rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"log_custom_field"
+																								]
+																							},
+																							"action_parameters": {
+																								"minProperties": 1,
+																								"properties": {
+																									"cookie_fields": {
+																										"description": "The cookie fields to log.",
+																										"items": {
+																											"description": "The cookie field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "cookie_name_1",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Cookie field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Cookie fields",
+																										"type": "array"
+																									},
+																									"request_fields": {
+																										"description": "The request fields to log.",
+																										"items": {
+																											"description": "The request field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_request_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Request field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Request fields",
+																										"type": "array"
+																									},
+																									"response_fields": {
+																										"description": "The response fields to log.",
+																										"items": {
+																											"description": "The response field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_response_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Response field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Response fields",
+																										"type": "array"
+																									}
+																								}
+																							},
+																							"description": {
+																								"example": "Log custom field when the IP address is not 1.1.1.1"
+																							}
+																						},
+																						"title": "Log Custom Field rule"
 																					}
 																				]
 																			}
@@ -24136,6 +25360,7 @@
 										"execute": "#/components/schemas/rulesets_ExecuteRule",
 										"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 										"log": "#/components/schemas/rulesets_LogRule",
+										"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 										"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 										"redirect": "#/components/schemas/rulesets_RedirectRule",
 										"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -27254,7 +28479,7 @@
 																	"default": {
 																		"description": "The TTL (in seconds) if you choose override_origin mode.",
 																		"maximum": 9223372036854776000,
-																		"minimum": 1,
+																		"minimum": 0,
 																		"title": "Default",
 																		"type": "integer"
 																	},
@@ -27366,6 +28591,209 @@
 													}
 												},
 												"title": "Set Cache Settings rule"
+											}
+										]
+									},
+									{
+										"allOf": [
+											{
+												"properties": {
+													"action": {
+														"description": "The action to perform when the rule matches.",
+														"pattern": "^[a-z]+$",
+														"title": "Action",
+														"type": "string"
+													},
+													"action_parameters": {
+														"description": "The parameters configuring the rule's action.",
+														"title": "Action parameters",
+														"type": "object"
+													},
+													"categories": {
+														"description": "The categories of the rule.",
+														"example": [
+															"directory-traversal",
+															"header"
+														],
+														"items": {
+															"description": "A category of the rule.",
+															"example": "directory-traversal",
+															"minLength": 1,
+															"title": "Category",
+															"type": "string"
+														},
+														"minItems": 1,
+														"readOnly": true,
+														"title": "Categories",
+														"type": "array",
+														"uniqueItems": true
+													},
+													"description": {
+														"default": "",
+														"description": "An informative description of the rule.",
+														"title": "Description",
+														"type": "string"
+													},
+													"enabled": {
+														"allOf": [
+															{
+																"description": "Whether the rule should be executed.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															},
+															{
+																"default": true
+															}
+														]
+													},
+													"expression": {
+														"description": "The expression defining which traffic will match the rule.",
+														"example": "ip.src ne 1.1.1.1",
+														"minLength": 1,
+														"title": "Expression",
+														"type": "string"
+													},
+													"id": {
+														"description": "The unique ID of the rule.",
+														"example": "3a03d665bac047339bb530ecb439a90d",
+														"pattern": "^[0-9a-f]{32}$",
+														"title": "ID",
+														"type": "string"
+													},
+													"last_updated": {
+														"description": "The timestamp of when the rule was last modified.",
+														"example": "2000-01-01T00:00:00.000000Z",
+														"format": "date-time",
+														"readOnly": true,
+														"title": "Last updated",
+														"type": "string"
+													},
+													"logging": {
+														"description": "An object configuring the rule's logging behavior.",
+														"properties": {
+															"enabled": {
+																"description": "Whether to generate a log when the rule matches.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"title": "Logging",
+														"type": "object"
+													},
+													"ref": {
+														"description": "The reference of the rule (the rule ID by default).",
+														"example": "my_ref",
+														"minLength": 1,
+														"title": "Ref",
+														"type": "string"
+													},
+													"version": {
+														"description": "The version of the rule.",
+														"example": "1",
+														"pattern": "^[0-9]+$",
+														"readOnly": true,
+														"title": "Version",
+														"type": "string"
+													}
+												},
+												"required": [
+													"version",
+													"last_updated"
+												],
+												"title": "Rule",
+												"type": "object"
+											},
+											{
+												"properties": {
+													"action": {
+														"enum": [
+															"log_custom_field"
+														]
+													},
+													"action_parameters": {
+														"minProperties": 1,
+														"properties": {
+															"cookie_fields": {
+																"description": "The cookie fields to log.",
+																"items": {
+																	"description": "The cookie field to log.",
+																	"properties": {
+																		"name": {
+																			"description": "The name of the field.",
+																			"example": "cookie_name_1",
+																			"minLength": 1,
+																			"title": "Name",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name"
+																	],
+																	"title": "Cookie field",
+																	"type": "object"
+																},
+																"minItems": 1,
+																"title": "Cookie fields",
+																"type": "array"
+															},
+															"request_fields": {
+																"description": "The request fields to log.",
+																"items": {
+																	"description": "The request field to log.",
+																	"properties": {
+																		"name": {
+																			"description": "The name of the field.",
+																			"example": "http_request_header_name_1_in_lower_case",
+																			"minLength": 1,
+																			"title": "Name",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name"
+																	],
+																	"title": "Request field",
+																	"type": "object"
+																},
+																"minItems": 1,
+																"title": "Request fields",
+																"type": "array"
+															},
+															"response_fields": {
+																"description": "The response fields to log.",
+																"items": {
+																	"description": "The response field to log.",
+																	"properties": {
+																		"name": {
+																			"description": "The name of the field.",
+																			"example": "http_response_header_name_1_in_lower_case",
+																			"minLength": 1,
+																			"title": "Name",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name"
+																	],
+																	"title": "Response field",
+																	"type": "object"
+																},
+																"minItems": 1,
+																"title": "Response fields",
+																"type": "array"
+															}
+														}
+													},
+													"description": {
+														"example": "Log custom field when the IP address is not 1.1.1.1"
+													}
+												},
+												"title": "Log Custom Field rule"
 											}
 										]
 									}
@@ -27689,6 +29117,7 @@
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
+																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 																				"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 																				"redirect": "#/components/schemas/rulesets_RedirectRule",
 																				"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -30807,7 +32236,7 @@
 																											"default": {
 																												"description": "The TTL (in seconds) if you choose override_origin mode.",
 																												"maximum": 9223372036854776000,
-																												"minimum": 1,
+																												"minimum": 0,
 																												"title": "Default",
 																												"type": "integer"
 																											},
@@ -30919,6 +32348,209 @@
 																							}
 																						},
 																						"title": "Set Cache Settings rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"log_custom_field"
+																								]
+																							},
+																							"action_parameters": {
+																								"minProperties": 1,
+																								"properties": {
+																									"cookie_fields": {
+																										"description": "The cookie fields to log.",
+																										"items": {
+																											"description": "The cookie field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "cookie_name_1",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Cookie field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Cookie fields",
+																										"type": "array"
+																									},
+																									"request_fields": {
+																										"description": "The request fields to log.",
+																										"items": {
+																											"description": "The request field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_request_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Request field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Request fields",
+																										"type": "array"
+																									},
+																									"response_fields": {
+																										"description": "The response fields to log.",
+																										"items": {
+																											"description": "The response field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_response_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Response field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Response fields",
+																										"type": "array"
+																									}
+																								}
+																							},
+																							"description": {
+																								"example": "Log custom field when the IP address is not 1.1.1.1"
+																							}
+																						},
+																						"title": "Log Custom Field rule"
 																					}
 																				]
 																			}
@@ -31257,6 +32889,7 @@
 													"execute": "#/components/schemas/rulesets_ExecuteRule",
 													"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 													"log": "#/components/schemas/rulesets_LogRule",
+													"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 													"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 													"redirect": "#/components/schemas/rulesets_RedirectRule",
 													"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -34375,7 +36008,7 @@
 																				"default": {
 																					"description": "The TTL (in seconds) if you choose override_origin mode.",
 																					"maximum": 9223372036854776000,
-																					"minimum": 1,
+																					"minimum": 0,
 																					"title": "Default",
 																					"type": "integer"
 																				},
@@ -34487,6 +36120,209 @@
 																}
 															},
 															"title": "Set Cache Settings rule"
+														}
+													]
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"action": {
+																	"description": "The action to perform when the rule matches.",
+																	"pattern": "^[a-z]+$",
+																	"title": "Action",
+																	"type": "string"
+																},
+																"action_parameters": {
+																	"description": "The parameters configuring the rule's action.",
+																	"title": "Action parameters",
+																	"type": "object"
+																},
+																"categories": {
+																	"description": "The categories of the rule.",
+																	"example": [
+																		"directory-traversal",
+																		"header"
+																	],
+																	"items": {
+																		"description": "A category of the rule.",
+																		"example": "directory-traversal",
+																		"minLength": 1,
+																		"title": "Category",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"readOnly": true,
+																	"title": "Categories",
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"description": {
+																	"default": "",
+																	"description": "An informative description of the rule.",
+																	"title": "Description",
+																	"type": "string"
+																},
+																"enabled": {
+																	"allOf": [
+																		{
+																			"description": "Whether the rule should be executed.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		},
+																		{
+																			"default": true
+																		}
+																	]
+																},
+																"expression": {
+																	"description": "The expression defining which traffic will match the rule.",
+																	"example": "ip.src ne 1.1.1.1",
+																	"minLength": 1,
+																	"title": "Expression",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The unique ID of the rule.",
+																	"example": "3a03d665bac047339bb530ecb439a90d",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																"last_updated": {
+																	"description": "The timestamp of when the rule was last modified.",
+																	"example": "2000-01-01T00:00:00.000000Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"title": "Last updated",
+																	"type": "string"
+																},
+																"logging": {
+																	"description": "An object configuring the rule's logging behavior.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether to generate a log when the rule matches.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"enabled"
+																	],
+																	"title": "Logging",
+																	"type": "object"
+																},
+																"ref": {
+																	"description": "The reference of the rule (the rule ID by default).",
+																	"example": "my_ref",
+																	"minLength": 1,
+																	"title": "Ref",
+																	"type": "string"
+																},
+																"version": {
+																	"description": "The version of the rule.",
+																	"example": "1",
+																	"pattern": "^[0-9]+$",
+																	"readOnly": true,
+																	"title": "Version",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"version",
+																"last_updated"
+															],
+															"title": "Rule",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"log_custom_field"
+																	]
+																},
+																"action_parameters": {
+																	"minProperties": 1,
+																	"properties": {
+																		"cookie_fields": {
+																			"description": "The cookie fields to log.",
+																			"items": {
+																				"description": "The cookie field to log.",
+																				"properties": {
+																					"name": {
+																						"description": "The name of the field.",
+																						"example": "cookie_name_1",
+																						"minLength": 1,
+																						"title": "Name",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name"
+																				],
+																				"title": "Cookie field",
+																				"type": "object"
+																			},
+																			"minItems": 1,
+																			"title": "Cookie fields",
+																			"type": "array"
+																		},
+																		"request_fields": {
+																			"description": "The request fields to log.",
+																			"items": {
+																				"description": "The request field to log.",
+																				"properties": {
+																					"name": {
+																						"description": "The name of the field.",
+																						"example": "http_request_header_name_1_in_lower_case",
+																						"minLength": 1,
+																						"title": "Name",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name"
+																				],
+																				"title": "Request field",
+																				"type": "object"
+																			},
+																			"minItems": 1,
+																			"title": "Request fields",
+																			"type": "array"
+																		},
+																		"response_fields": {
+																			"description": "The response fields to log.",
+																			"items": {
+																				"description": "The response field to log.",
+																				"properties": {
+																					"name": {
+																						"description": "The name of the field.",
+																						"example": "http_response_header_name_1_in_lower_case",
+																						"minLength": 1,
+																						"title": "Name",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name"
+																				],
+																				"title": "Response field",
+																				"type": "object"
+																			},
+																			"minItems": 1,
+																			"title": "Response fields",
+																			"type": "array"
+																		}
+																	}
+																},
+																"description": {
+																	"example": "Log custom field when the IP address is not 1.1.1.1"
+																}
+															},
+															"title": "Log Custom Field rule"
 														}
 													]
 												}
@@ -34750,6 +36586,7 @@
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
+																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 																				"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 																				"redirect": "#/components/schemas/rulesets_RedirectRule",
 																				"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -37868,7 +39705,7 @@
 																											"default": {
 																												"description": "The TTL (in seconds) if you choose override_origin mode.",
 																												"maximum": 9223372036854776000,
-																												"minimum": 1,
+																												"minimum": 0,
 																												"title": "Default",
 																												"type": "integer"
 																											},
@@ -37980,6 +39817,209 @@
 																							}
 																						},
 																						"title": "Set Cache Settings rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"log_custom_field"
+																								]
+																							},
+																							"action_parameters": {
+																								"minProperties": 1,
+																								"properties": {
+																									"cookie_fields": {
+																										"description": "The cookie fields to log.",
+																										"items": {
+																											"description": "The cookie field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "cookie_name_1",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Cookie field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Cookie fields",
+																										"type": "array"
+																									},
+																									"request_fields": {
+																										"description": "The request fields to log.",
+																										"items": {
+																											"description": "The request field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_request_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Request field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Request fields",
+																										"type": "array"
+																									},
+																									"response_fields": {
+																										"description": "The response fields to log.",
+																										"items": {
+																											"description": "The response field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_response_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Response field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Response fields",
+																										"type": "array"
+																									}
+																								}
+																							},
+																							"description": {
+																								"example": "Log custom field when the IP address is not 1.1.1.1"
+																							}
+																						},
+																						"title": "Log Custom Field rule"
 																					}
 																				]
 																			}
@@ -38227,6 +40267,7 @@
 										"execute": "#/components/schemas/rulesets_ExecuteRule",
 										"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 										"log": "#/components/schemas/rulesets_LogRule",
+										"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 										"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 										"redirect": "#/components/schemas/rulesets_RedirectRule",
 										"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -41345,7 +43386,7 @@
 																	"default": {
 																		"description": "The TTL (in seconds) if you choose override_origin mode.",
 																		"maximum": 9223372036854776000,
-																		"minimum": 1,
+																		"minimum": 0,
 																		"title": "Default",
 																		"type": "integer"
 																	},
@@ -41457,6 +43498,209 @@
 													}
 												},
 												"title": "Set Cache Settings rule"
+											}
+										]
+									},
+									{
+										"allOf": [
+											{
+												"properties": {
+													"action": {
+														"description": "The action to perform when the rule matches.",
+														"pattern": "^[a-z]+$",
+														"title": "Action",
+														"type": "string"
+													},
+													"action_parameters": {
+														"description": "The parameters configuring the rule's action.",
+														"title": "Action parameters",
+														"type": "object"
+													},
+													"categories": {
+														"description": "The categories of the rule.",
+														"example": [
+															"directory-traversal",
+															"header"
+														],
+														"items": {
+															"description": "A category of the rule.",
+															"example": "directory-traversal",
+															"minLength": 1,
+															"title": "Category",
+															"type": "string"
+														},
+														"minItems": 1,
+														"readOnly": true,
+														"title": "Categories",
+														"type": "array",
+														"uniqueItems": true
+													},
+													"description": {
+														"default": "",
+														"description": "An informative description of the rule.",
+														"title": "Description",
+														"type": "string"
+													},
+													"enabled": {
+														"allOf": [
+															{
+																"description": "Whether the rule should be executed.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															},
+															{
+																"default": true
+															}
+														]
+													},
+													"expression": {
+														"description": "The expression defining which traffic will match the rule.",
+														"example": "ip.src ne 1.1.1.1",
+														"minLength": 1,
+														"title": "Expression",
+														"type": "string"
+													},
+													"id": {
+														"description": "The unique ID of the rule.",
+														"example": "3a03d665bac047339bb530ecb439a90d",
+														"pattern": "^[0-9a-f]{32}$",
+														"title": "ID",
+														"type": "string"
+													},
+													"last_updated": {
+														"description": "The timestamp of when the rule was last modified.",
+														"example": "2000-01-01T00:00:00.000000Z",
+														"format": "date-time",
+														"readOnly": true,
+														"title": "Last updated",
+														"type": "string"
+													},
+													"logging": {
+														"description": "An object configuring the rule's logging behavior.",
+														"properties": {
+															"enabled": {
+																"description": "Whether to generate a log when the rule matches.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"title": "Logging",
+														"type": "object"
+													},
+													"ref": {
+														"description": "The reference of the rule (the rule ID by default).",
+														"example": "my_ref",
+														"minLength": 1,
+														"title": "Ref",
+														"type": "string"
+													},
+													"version": {
+														"description": "The version of the rule.",
+														"example": "1",
+														"pattern": "^[0-9]+$",
+														"readOnly": true,
+														"title": "Version",
+														"type": "string"
+													}
+												},
+												"required": [
+													"version",
+													"last_updated"
+												],
+												"title": "Rule",
+												"type": "object"
+											},
+											{
+												"properties": {
+													"action": {
+														"enum": [
+															"log_custom_field"
+														]
+													},
+													"action_parameters": {
+														"minProperties": 1,
+														"properties": {
+															"cookie_fields": {
+																"description": "The cookie fields to log.",
+																"items": {
+																	"description": "The cookie field to log.",
+																	"properties": {
+																		"name": {
+																			"description": "The name of the field.",
+																			"example": "cookie_name_1",
+																			"minLength": 1,
+																			"title": "Name",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name"
+																	],
+																	"title": "Cookie field",
+																	"type": "object"
+																},
+																"minItems": 1,
+																"title": "Cookie fields",
+																"type": "array"
+															},
+															"request_fields": {
+																"description": "The request fields to log.",
+																"items": {
+																	"description": "The request field to log.",
+																	"properties": {
+																		"name": {
+																			"description": "The name of the field.",
+																			"example": "http_request_header_name_1_in_lower_case",
+																			"minLength": 1,
+																			"title": "Name",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name"
+																	],
+																	"title": "Request field",
+																	"type": "object"
+																},
+																"minItems": 1,
+																"title": "Request fields",
+																"type": "array"
+															},
+															"response_fields": {
+																"description": "The response fields to log.",
+																"items": {
+																	"description": "The response field to log.",
+																	"properties": {
+																		"name": {
+																			"description": "The name of the field.",
+																			"example": "http_response_header_name_1_in_lower_case",
+																			"minLength": 1,
+																			"title": "Name",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name"
+																	],
+																	"title": "Response field",
+																	"type": "object"
+																},
+																"minItems": 1,
+																"title": "Response fields",
+																"type": "array"
+															}
+														}
+													},
+													"description": {
+														"example": "Log custom field when the IP address is not 1.1.1.1"
+													}
+												},
+												"title": "Log Custom Field rule"
 											}
 										]
 									}
@@ -41780,6 +44024,7 @@
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
+																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 																				"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 																				"redirect": "#/components/schemas/rulesets_RedirectRule",
 																				"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -44898,7 +47143,7 @@
 																											"default": {
 																												"description": "The TTL (in seconds) if you choose override_origin mode.",
 																												"maximum": 9223372036854776000,
-																												"minimum": 1,
+																												"minimum": 0,
 																												"title": "Default",
 																												"type": "integer"
 																											},
@@ -45010,6 +47255,209 @@
 																							}
 																						},
 																						"title": "Set Cache Settings rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"log_custom_field"
+																								]
+																							},
+																							"action_parameters": {
+																								"minProperties": 1,
+																								"properties": {
+																									"cookie_fields": {
+																										"description": "The cookie fields to log.",
+																										"items": {
+																											"description": "The cookie field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "cookie_name_1",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Cookie field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Cookie fields",
+																										"type": "array"
+																									},
+																									"request_fields": {
+																										"description": "The request fields to log.",
+																										"items": {
+																											"description": "The request field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_request_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Request field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Request fields",
+																										"type": "array"
+																									},
+																									"response_fields": {
+																										"description": "The response fields to log.",
+																										"items": {
+																											"description": "The response field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_response_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Response field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Response fields",
+																										"type": "array"
+																									}
+																								}
+																							},
+																							"description": {
+																								"example": "Log custom field when the IP address is not 1.1.1.1"
+																							}
+																						},
+																						"title": "Log Custom Field rule"
 																					}
 																				]
 																			}
@@ -45360,6 +47808,7 @@
 													"execute": "#/components/schemas/rulesets_ExecuteRule",
 													"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 													"log": "#/components/schemas/rulesets_LogRule",
+													"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 													"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 													"redirect": "#/components/schemas/rulesets_RedirectRule",
 													"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -48478,7 +50927,7 @@
 																				"default": {
 																					"description": "The TTL (in seconds) if you choose override_origin mode.",
 																					"maximum": 9223372036854776000,
-																					"minimum": 1,
+																					"minimum": 0,
 																					"title": "Default",
 																					"type": "integer"
 																				},
@@ -48590,6 +51039,209 @@
 																}
 															},
 															"title": "Set Cache Settings rule"
+														}
+													]
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"action": {
+																	"description": "The action to perform when the rule matches.",
+																	"pattern": "^[a-z]+$",
+																	"title": "Action",
+																	"type": "string"
+																},
+																"action_parameters": {
+																	"description": "The parameters configuring the rule's action.",
+																	"title": "Action parameters",
+																	"type": "object"
+																},
+																"categories": {
+																	"description": "The categories of the rule.",
+																	"example": [
+																		"directory-traversal",
+																		"header"
+																	],
+																	"items": {
+																		"description": "A category of the rule.",
+																		"example": "directory-traversal",
+																		"minLength": 1,
+																		"title": "Category",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"readOnly": true,
+																	"title": "Categories",
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"description": {
+																	"default": "",
+																	"description": "An informative description of the rule.",
+																	"title": "Description",
+																	"type": "string"
+																},
+																"enabled": {
+																	"allOf": [
+																		{
+																			"description": "Whether the rule should be executed.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		},
+																		{
+																			"default": true
+																		}
+																	]
+																},
+																"expression": {
+																	"description": "The expression defining which traffic will match the rule.",
+																	"example": "ip.src ne 1.1.1.1",
+																	"minLength": 1,
+																	"title": "Expression",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The unique ID of the rule.",
+																	"example": "3a03d665bac047339bb530ecb439a90d",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																"last_updated": {
+																	"description": "The timestamp of when the rule was last modified.",
+																	"example": "2000-01-01T00:00:00.000000Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"title": "Last updated",
+																	"type": "string"
+																},
+																"logging": {
+																	"description": "An object configuring the rule's logging behavior.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether to generate a log when the rule matches.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"enabled"
+																	],
+																	"title": "Logging",
+																	"type": "object"
+																},
+																"ref": {
+																	"description": "The reference of the rule (the rule ID by default).",
+																	"example": "my_ref",
+																	"minLength": 1,
+																	"title": "Ref",
+																	"type": "string"
+																},
+																"version": {
+																	"description": "The version of the rule.",
+																	"example": "1",
+																	"pattern": "^[0-9]+$",
+																	"readOnly": true,
+																	"title": "Version",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"version",
+																"last_updated"
+															],
+															"title": "Rule",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"log_custom_field"
+																	]
+																},
+																"action_parameters": {
+																	"minProperties": 1,
+																	"properties": {
+																		"cookie_fields": {
+																			"description": "The cookie fields to log.",
+																			"items": {
+																				"description": "The cookie field to log.",
+																				"properties": {
+																					"name": {
+																						"description": "The name of the field.",
+																						"example": "cookie_name_1",
+																						"minLength": 1,
+																						"title": "Name",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name"
+																				],
+																				"title": "Cookie field",
+																				"type": "object"
+																			},
+																			"minItems": 1,
+																			"title": "Cookie fields",
+																			"type": "array"
+																		},
+																		"request_fields": {
+																			"description": "The request fields to log.",
+																			"items": {
+																				"description": "The request field to log.",
+																				"properties": {
+																					"name": {
+																						"description": "The name of the field.",
+																						"example": "http_request_header_name_1_in_lower_case",
+																						"minLength": 1,
+																						"title": "Name",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name"
+																				],
+																				"title": "Request field",
+																				"type": "object"
+																			},
+																			"minItems": 1,
+																			"title": "Request fields",
+																			"type": "array"
+																		},
+																		"response_fields": {
+																			"description": "The response fields to log.",
+																			"items": {
+																				"description": "The response field to log.",
+																				"properties": {
+																					"name": {
+																						"description": "The name of the field.",
+																						"example": "http_response_header_name_1_in_lower_case",
+																						"minLength": 1,
+																						"title": "Name",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name"
+																				],
+																				"title": "Response field",
+																				"type": "object"
+																			},
+																			"minItems": 1,
+																			"title": "Response fields",
+																			"type": "array"
+																		}
+																	}
+																},
+																"description": {
+																	"example": "Log custom field when the IP address is not 1.1.1.1"
+																}
+															},
+															"title": "Log Custom Field rule"
 														}
 													]
 												}
@@ -48850,6 +51502,7 @@
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
+																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 																				"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 																				"redirect": "#/components/schemas/rulesets_RedirectRule",
 																				"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -51968,7 +54621,7 @@
 																											"default": {
 																												"description": "The TTL (in seconds) if you choose override_origin mode.",
 																												"maximum": 9223372036854776000,
-																												"minimum": 1,
+																												"minimum": 0,
 																												"title": "Default",
 																												"type": "integer"
 																											},
@@ -52080,6 +54733,209 @@
 																							}
 																						},
 																						"title": "Set Cache Settings rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"log_custom_field"
+																								]
+																							},
+																							"action_parameters": {
+																								"minProperties": 1,
+																								"properties": {
+																									"cookie_fields": {
+																										"description": "The cookie fields to log.",
+																										"items": {
+																											"description": "The cookie field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "cookie_name_1",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Cookie field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Cookie fields",
+																										"type": "array"
+																									},
+																									"request_fields": {
+																										"description": "The request fields to log.",
+																										"items": {
+																											"description": "The request field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_request_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Request field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Request fields",
+																										"type": "array"
+																									},
+																									"response_fields": {
+																										"description": "The response fields to log.",
+																										"items": {
+																											"description": "The response field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_response_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Response field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Response fields",
+																										"type": "array"
+																									}
+																								}
+																							},
+																							"description": {
+																								"example": "Log custom field when the IP address is not 1.1.1.1"
+																							}
+																						},
+																						"title": "Log Custom Field rule"
 																					}
 																				]
 																			}
@@ -52454,6 +55310,7 @@
 													"execute": "#/components/schemas/rulesets_ExecuteRule",
 													"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 													"log": "#/components/schemas/rulesets_LogRule",
+													"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 													"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 													"redirect": "#/components/schemas/rulesets_RedirectRule",
 													"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -55572,7 +58429,7 @@
 																				"default": {
 																					"description": "The TTL (in seconds) if you choose override_origin mode.",
 																					"maximum": 9223372036854776000,
-																					"minimum": 1,
+																					"minimum": 0,
 																					"title": "Default",
 																					"type": "integer"
 																				},
@@ -55684,6 +58541,209 @@
 																}
 															},
 															"title": "Set Cache Settings rule"
+														}
+													]
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"action": {
+																	"description": "The action to perform when the rule matches.",
+																	"pattern": "^[a-z]+$",
+																	"title": "Action",
+																	"type": "string"
+																},
+																"action_parameters": {
+																	"description": "The parameters configuring the rule's action.",
+																	"title": "Action parameters",
+																	"type": "object"
+																},
+																"categories": {
+																	"description": "The categories of the rule.",
+																	"example": [
+																		"directory-traversal",
+																		"header"
+																	],
+																	"items": {
+																		"description": "A category of the rule.",
+																		"example": "directory-traversal",
+																		"minLength": 1,
+																		"title": "Category",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"readOnly": true,
+																	"title": "Categories",
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"description": {
+																	"default": "",
+																	"description": "An informative description of the rule.",
+																	"title": "Description",
+																	"type": "string"
+																},
+																"enabled": {
+																	"allOf": [
+																		{
+																			"description": "Whether the rule should be executed.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		},
+																		{
+																			"default": true
+																		}
+																	]
+																},
+																"expression": {
+																	"description": "The expression defining which traffic will match the rule.",
+																	"example": "ip.src ne 1.1.1.1",
+																	"minLength": 1,
+																	"title": "Expression",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The unique ID of the rule.",
+																	"example": "3a03d665bac047339bb530ecb439a90d",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																"last_updated": {
+																	"description": "The timestamp of when the rule was last modified.",
+																	"example": "2000-01-01T00:00:00.000000Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"title": "Last updated",
+																	"type": "string"
+																},
+																"logging": {
+																	"description": "An object configuring the rule's logging behavior.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether to generate a log when the rule matches.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"enabled"
+																	],
+																	"title": "Logging",
+																	"type": "object"
+																},
+																"ref": {
+																	"description": "The reference of the rule (the rule ID by default).",
+																	"example": "my_ref",
+																	"minLength": 1,
+																	"title": "Ref",
+																	"type": "string"
+																},
+																"version": {
+																	"description": "The version of the rule.",
+																	"example": "1",
+																	"pattern": "^[0-9]+$",
+																	"readOnly": true,
+																	"title": "Version",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"version",
+																"last_updated"
+															],
+															"title": "Rule",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"log_custom_field"
+																	]
+																},
+																"action_parameters": {
+																	"minProperties": 1,
+																	"properties": {
+																		"cookie_fields": {
+																			"description": "The cookie fields to log.",
+																			"items": {
+																				"description": "The cookie field to log.",
+																				"properties": {
+																					"name": {
+																						"description": "The name of the field.",
+																						"example": "cookie_name_1",
+																						"minLength": 1,
+																						"title": "Name",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name"
+																				],
+																				"title": "Cookie field",
+																				"type": "object"
+																			},
+																			"minItems": 1,
+																			"title": "Cookie fields",
+																			"type": "array"
+																		},
+																		"request_fields": {
+																			"description": "The request fields to log.",
+																			"items": {
+																				"description": "The request field to log.",
+																				"properties": {
+																					"name": {
+																						"description": "The name of the field.",
+																						"example": "http_request_header_name_1_in_lower_case",
+																						"minLength": 1,
+																						"title": "Name",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name"
+																				],
+																				"title": "Request field",
+																				"type": "object"
+																			},
+																			"minItems": 1,
+																			"title": "Request fields",
+																			"type": "array"
+																		},
+																		"response_fields": {
+																			"description": "The response fields to log.",
+																			"items": {
+																				"description": "The response field to log.",
+																				"properties": {
+																					"name": {
+																						"description": "The name of the field.",
+																						"example": "http_response_header_name_1_in_lower_case",
+																						"minLength": 1,
+																						"title": "Name",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name"
+																				],
+																				"title": "Response field",
+																				"type": "object"
+																			},
+																			"minItems": 1,
+																			"title": "Response fields",
+																			"type": "array"
+																		}
+																	}
+																},
+																"description": {
+																	"example": "Log custom field when the IP address is not 1.1.1.1"
+																}
+															},
+															"title": "Log Custom Field rule"
 														}
 													]
 												}
@@ -55944,6 +59004,7 @@
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
+																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
 																				"managed_challenge": "#/components/schemas/rulesets_ManagedChallengeRule",
 																				"redirect": "#/components/schemas/rulesets_RedirectRule",
 																				"rewrite": "#/components/schemas/rulesets_RewriteRule",
@@ -59062,7 +62123,7 @@
 																											"default": {
 																												"description": "The TTL (in seconds) if you choose override_origin mode.",
 																												"maximum": 9223372036854776000,
-																												"minimum": 1,
+																												"minimum": 0,
 																												"title": "Default",
 																												"type": "integer"
 																											},
@@ -59174,6 +62235,209 @@
 																							}
 																						},
 																						"title": "Set Cache Settings rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"log_custom_field"
+																								]
+																							},
+																							"action_parameters": {
+																								"minProperties": 1,
+																								"properties": {
+																									"cookie_fields": {
+																										"description": "The cookie fields to log.",
+																										"items": {
+																											"description": "The cookie field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "cookie_name_1",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Cookie field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Cookie fields",
+																										"type": "array"
+																									},
+																									"request_fields": {
+																										"description": "The request fields to log.",
+																										"items": {
+																											"description": "The request field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_request_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Request field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Request fields",
+																										"type": "array"
+																									},
+																									"response_fields": {
+																										"description": "The response fields to log.",
+																										"items": {
+																											"description": "The response field to log.",
+																											"properties": {
+																												"name": {
+																													"description": "The name of the field.",
+																													"example": "http_response_header_name_1_in_lower_case",
+																													"minLength": 1,
+																													"title": "Name",
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"title": "Response field",
+																											"type": "object"
+																										},
+																										"minItems": 1,
+																										"title": "Response fields",
+																										"type": "array"
+																									}
+																								}
+																							},
+																							"description": {
+																								"example": "Log custom field when the IP address is not 1.1.1.1"
+																							}
+																						},
+																						"title": "Log Custom Field rule"
 																					}
 																				]
 																			}
