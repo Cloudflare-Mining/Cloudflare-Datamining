@@ -5,54 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Portugal</strong></p>
-<p><strong>About the Role</strong></p>
-<p>We’re looking for an IT Client Platform Engineer focusing on platform integrations to enable enterprise level service integrations for our corporate teams.&nbsp; You will solve complex system integration issues and streamline workflows between critical systems, bridging the gap between IT Operations, Enterprise Security and IT Client Platform Engineering teams.&nbsp; This role will provide critical integration, development, and automation capabilities to our Client Platform deployment.&nbsp; This role reports to the Manager of IT Client Platform Engineering.</p>
-<p><strong>About the Team</strong></p>
-<p>You will join a team of Client Platform Engineers that provide enterprise level Client Platform services, development, support, and client enablement for end users around the globe.&nbsp; We strive to provide highly resilient and observable services to our teams, and reduce manual toil wherever possible.&nbsp; We’re focused on providing a positive customer service and user experience.</p>
-<p><strong>What You'll Do</strong></p>
+<h4>Senior Systems Engineer - Warp</h4>
+<p>Available locations: UK or Portugal</p>
+<p><strong>What you'll do</strong></p>
+<p>As a Senior Systems engineer in the WARP team you will join a team that works on the backend system that allows our customers to manage their devices via our Zero Trust Network solution.&nbsp; <br>In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our WARP and Zero Trust product, such as Device Posture, Orchestration and Notification.</p>
+<p>We are looking for engineers that are versatile and display leadership qualities capable of setting technical direction of the product, with a focus on growth, scalability and high-availability.<br>You will support the management team on the planning, priority, deadlines and deliverables of solutions to our customers requirements.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Solve complex integration problems</li>
-	<li>Provide design, implementation and operational support for built integrations</li>
-	<li>Seek guidance from the team when needed</li>
-	<li>Be flexible and available for after hours support</li>
-	<li>Assist the team with macOS, Windows, and Linux platform management</li>
-	<li>Provide thoughtful feedback on asks and requirements for new integrations</li>
-	<li>Work collaboratively across geographical and team boundaries to solve problems</li>
-	<li>Work in a team environment</li>
-	<li>Create and update technical documentation</li>
-	<li>Help make your team and cohort teams lives better</li>
+	<li>Design, develop, test, deploy, maintain, and enhance large scale software solutions.</li>
+	<li>Provide technical leadership to the team projects and objectives</li>
+	<li>Influence a team of engineers, coach and mentor a distributed team.</li>
+	<li>Support the management team on the strategy and roadmap of the team, identifying opportunities and critical projects for the success of the team and product.</li>
+	<li>Facilitate alignment and clarity across the Zero Trust teams on goals, outcomes, and timelines.</li>
+	<li>Support on the management of project priorities, deadlines, and deliverables.</li>
 </ul>
-<p><strong>What You'll Bring</strong></p>
+<p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>2+ years of proven work experience in a systems administration role</li>
-	<li>2+ years of proven work experience in a systems integration role</li>
-	<li>Hands-on experience with Windows/Linux/Mac OS management platforms</li>
-	<li>Hands-on experience with scripting languages such as Python, Golang, and/or Rust</li>
-	<li>Good understanding of computer systems, mobile devices management platforms and software development best practices</li>
-	<li>Ability to perform root cause analysis on integration failures and implement solutions</li>
-	<li>Familiarity serverless application development, observation, and deployment methods</li>
-	<li>Familiarity with Continuous Integration/Continuous Deployment, DevOps, and Agile methodologies</li>
-	<li>Excellent problem-solving and communication skills</li>
-	<li>Ability to provide step-by-step technical guidance, both written and verbal</li>
-	<li>BS degree in Information Technology, Computer Science or relevant field or equivalent experience</li>
+	<li>At least 3 years of experience of technical leadership</li>
+	<li>Experience managing high available systems with disaster recovery support.</li>
+	<li>Experience in at least of the following languages: Go, Rust</li>
+	<li>Experience in Typescript</li>
+	<li>Experience designing and integrating RESTful APIs at scale</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
+	<li>Knowledge on distributed NoSQL databases</li>
+	<li>Excellent debugging experience and optimization skills</li>
+	<li>Experience with Kubernetes</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience with Jamf Pro and Microsoft Intune</li>
-	<li>Experience with Ansible and Linux system administration</li>
-	<li>Experience working in the technology industry</li>
-	<li>Experience working in a Service Desk, Help Desk, or Call Center environment</li>
-	<li>AWS Technical Certifications</li>
-	<li>Microsoft Azure Technical Certifications</li>
-	<li>Google Cloud Technical Certifications</li>
-	<li>Agile Certification</li>
-	<li>Microsoft Support Certification</li>
-	<li>Apple Support Certification</li>
-	<li>ITIL Foundations</li>
-	<li>HDI Support Center Agent</li>
-	<li>CompTIA A+ Certified</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
