@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-05-07T02:55:10.455Z",
-					"updatedAt": "2024-05-07T02:55:10.455Z"
+					"updatedAt": "2024-05-07T14:42:19.221Z"
 				},
 				"contentfulId": "4aAAwpqqzfZDu4MbERK3EP",
 				"contentTypeId": "page",
@@ -65,6 +65,12 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "6EO656nlNdzyr3NJW23hoe",
+						"htmlContent": "<style>\n.wrapper { background-color: #003682; margin: 0; padding: 20px; width: 100vw;margin-left: calc((100vw - 100%) / -2);  }\n.content { color: #ffffff; margin: 0px auto;  width: fit-content; }\n.link-helper {color: #ffffff !important; margin-left: 5px; text-decoration: underline !important; text-underline-offset: 4px;}\n.link-helper:hover { text-decoration: underline; color: #ffffff !important; text-underline-offset: 4px; }\n</style>\n\n    <section class=\" wrapper\" id=\"contentful-psa-banner\">\n        <div class=\"content\">\n            <span>Live @ RSAC 2024 | SASE & WAAP workshops & demos, VIP panels, and parties! </span>\n   <a class=\"link-helper\"  href=\"/rsa-conference-2024\"> <strong>RSVP></strong></a>,        \n\n        </div>\n    </section>",
+						"htmlId": null
+					},
 					{
 						"contentfulId": "6USwqXuvr0mBneyWSIWjQO",
 						"contentTypeId": "bladeHeroAnimation",
@@ -80,9 +86,9 @@
 						"buttonUrl1": "/plans/enterprise/contact/",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": null,
+						"buttonText2": "Read the announcement",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
+						"buttonUrl2": "https://blog.cloudflare.com/unified-risk-posture",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -97,7 +103,7 @@
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": false,
-						"button2OpenInNewTab": false,
+						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
@@ -1454,6 +1460,214 @@
 							"locale": "en-US"
 						},
 						"secondaryCtaButton": null
+					},
+					{
+						"contentTypeId": "bladeCardMosaic",
+						"contentfulId": "3Uo2LzWhI1usXkUGCbCd4Q",
+						"entryTitle": "Unified risk posture - RESOURCES",
+						"title": "Resources",
+						"htmlId": null,
+						"backgroundImage": null,
+						"elementResourceCards": [
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "2FfP9ApM0AaU4e0snqtcJ8",
+								"heading": "Blog",
+								"description": "Announcement post outlines our unique approach & key use cases",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3bWDUvLDaWTBNCaLP2dZDU",
+									"elementName": "Announcement post outlines our unique approach & key use cases - link",
+									"standardText": null,
+									"text": "Read blog",
+									"url": "https://cfl.re/unified-risk-posture-blog",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "ff46241a-9060-5f63-81d1-ebd3e3d4b14b",
+									"altText": "Risk Posture Management",
+									"title": "Risk Posture Management",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qq517fLY0YW98Hp8ytJzA/71243f08a54f0c61d799201231c53d2a/Risk-posture-hero.svg"
+										},
+										"description": "Risk posture hero"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1v8u5j3ge0rsmjeZY6jNhg",
+								"heading": "Webinar",
+								"description": "Join Cloudflare & CrowdStrike in a webinar discussing strategies to manage risk",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "AO9KnM16eYZtNX8SGyamM",
+									"elementName": "Join Cloudflare & CrowdStrike in a webinar discussing strategies to manage risk - link",
+									"standardText": null,
+									"text": "Register now",
+									"url": "https://cfl.re/unified-risk-posture-webinar",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "b6011867-5a8b-5c2f-b567-9ebfb16f9361",
+									"altText": null,
+									"title": "Webinar 106x165 - Thumbnail for mosaic card",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/R68bUicgjCMdgEBXBM1ey/c350338abc119640172d8876202ffbf8/Webinar-106x165-thumbnail-card.svg"
+										},
+										"description": "Webinar 106x165 - Thumbnail for mosaic card"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5xL5S8twF4yfrSC1fdjlXR",
+								"heading": "Infographic",
+								"description": "Explore how to enforce security and manage risk everywhere",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5hjGIOsEABgnuEF4IKfJU5",
+									"elementName": "Explore how to enforce security and manage risk everywhere - link",
+									"standardText": null,
+									"text": "View infographic",
+									"url": "https://cfl.re/everywhere-security-infographic-2024",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "71f58bd6-9d22-5490-8966-2445bc178c83",
+									"altText": "Risk posture enforce",
+									"title": "Risk posture enforce",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/U8cgcYm6LWpFZJo2VjpmE/f16b886da3f18469727ca568da616081/Risk-posture-enforce.svg"
+										},
+										"description": "Risk posture enforce"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "6dqEMfrNJB2H7lUHnQiPNK",
+								"heading": "Solution brief",
+								"description": "Dig deeper into how Cloudflare unifies risk posture management",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "1DIQTFJYl5hSX1NvOkrfl4",
+									"elementName": "Dig deeper into how Cloudflare unifies risk posture management - link",
+									"standardText": null,
+									"text": "Download pdf",
+									"url": "https://cfl.re/unified-risk-posture-solution-brief",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "d6f7292a-dfbe-5219-9f5f-3e9140c67dab",
+									"altText": "Risk posture evaluate",
+									"title": "Risk posture evaluate",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/722oBG51tVX9R7wfFlRYSH/a1155e6bf84ae6c9c3f562fa35ee3180/Risk-posture-evaluate.svg"
+										},
+										"description": "Risk posture evaluate"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "1pDOAe4QmV6q4RfkQAzulV",
+								"heading": "Press",
+								"description": "Read the press release for Cloudflare for Unified Risk Posture",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "70bsPHOIPqe0AiFdg1FOI2",
+									"elementName": "Read the press release for Cloudflare for Unified Risk Posture - link",
+									"standardText": null,
+									"text": "Read press release",
+									"url": "https://cfl.re/unified-risk-posture-press-release",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "6c861e08-c590-54b4-8ffa-fc5eb865a8ca",
+									"altText": "2024 API Security & Management Report press release image",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2MwUTWYt0psg5xd55Vkvfo/7822687bbbf2b0738c770e183b7b737a/Press_Release_99x180.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "3yKPVHqcWmNaiTUeaIxD0A",
+								"heading": "Article",
+								"description": "Simplify risk management by adopting a SASE architecture.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "2C83pFqiW9Uw08gxOV4Hmy",
+									"elementName": "Simplify risk management by adopting a SASE architecture - link",
+									"standardText": null,
+									"text": "Read guide",
+									"url": "https://developers.cloudflare.com/reference-architecture/architectures/sase/",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "9684b054-c308-59f8-99ed-c8659a80b834",
+									"altText": "Single Vendor SASE launch / promotion",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6E70smKDCjFB3woMX7lsLw/ddb0cf0399c78060538738e721363c47/Single-vendor-SASE-simplified-for-security--networking--and-DevOps-1.png"
+										},
+										"description": "Single Vendor SASE launch / promotion"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							}
+						]
 					},
 					{
 						"contentfulId": "1aTL3pHTHpvASyIP9CQiMc",

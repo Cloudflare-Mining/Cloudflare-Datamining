@@ -64,7 +64,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-12-11T05:26:24.364Z",
-					"updatedAt": "2024-05-02T10:11:28.742Z"
+					"updatedAt": "2024-05-07T15:57:41.744Z"
 				},
 				"contentfulId": "2rFsqrsfx3dbpiu6dQPw1P",
 				"contentTypeId": "page",
@@ -150,6 +150,18 @@
 												"specialLinkType": null,
 												"openInNewWindow": true,
 												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
+												"contentfulId": "7JRJ8E2YY8VkjU2rWTUODX",
+												"locale": "en-US",
+												"title": "Risk posture",
+												"description": "Automated & dynamic risk controls across your attack surface",
+												"url": "/cybersecurity-risk-management/",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": false
 											}
 										],
 										"navIcon": null,
@@ -2814,7 +2826,7 @@
 						{
 							"contentTypeId": "bladeHtml",
 							"contentfulId": "2f58vcDzMnudlZiKLnqqXn",
-							"htmlContent": "<style>\n.wrapper { background-color: #003682; margin: 0; padding: 20px; width: 100vw;margin-left: calc((100vw - 100%) / -2);  }\n.content { color: #ffffff; margin: 0px auto;  width: fit-content; }\n.link-helper {color: #ffffff !important; margin-left: 5px; text-decoration: underline !important; text-underline-offset: 4px;}\n.link-helper:hover { text-decoration: underline; color: #ffffff !important; text-underline-offset: 4px; }\n</style>\n\n    <section class=\" wrapper\" id=\"contentful-psa-banner\">\n        <div class=\"content\">\n            <span>Live @ RSAC 2024 | SASE & WAAP workshops & demos, VIP panels, and parties! </span>\n   <a class=\"link-helper\"  href=\"/rsa-conference-2024\"> <strong>RSVP></strong></a>    \n\n        </div>\n    </section>",
+							"htmlContent": "<style>\n.wrapper { background-color: #003682; margin: 0; padding: 20px; width: 100vw;margin-left: calc((100vw - 100%) / -2);  }\n.content { color: #ffffff; margin: 0px auto;  width: fit-content; }\n.link-helper {color: #ffffff !important; margin-left: 5px; text-decoration: underline !important; text-underline-offset: 4px;}\n.link-helper:hover { text-decoration: underline; color: #ffffff !important; text-underline-offset: 4px; }\n  .link-helper.first-element {\n    display: inline-block;\n  }\n</style>\n\n<section class=\" wrapper\" id=\"contentful-psa-banner\">\n  <div class=\"content\">\n    <a class=\"link-helper first-element\" href=\"/rsa-conference-2024/\">\n      <strong>Meet us</strong>\n    </a>\n    <span>\n      @ RSAC 2024 | Unified Risk Posture announcement\n    </span>\n   <a class=\"link-helper\"  href=\"/cybersecurity-risk-management/\"> \n     <strong>Learn more.</strong>\n    </a>   \n  </div>\n</section>",
 							"htmlId": null
 						},
 						{
@@ -2944,358 +2956,6 @@
 							},
 							"sectionPadding": "tile--no-top-padding",
 							"htmlId": "home-hero-full-width-blade"
-						},
-						{
-							"contentTypeId": "bladeRichTextColumnGroup",
-							"contentfulId": "4Rmj5OaJEMunpBalgzXP2R",
-							"htmlId": null,
-							"mainHeadline": null,
-							"backgroundColor": "white",
-							"bladeBorder": "none",
-							"sectionPadding": "tile--no-bottom-padding",
-							"columnLayout": "One Third & Two Thirds",
-							"columns": [
-								{
-									"contentTypeId": "elementRichText",
-									"contentfulId": "2xfJMoheSRmCKegkHxZGeE",
-									"title": null,
-									"htmlId": null,
-									"column": {
-										"nodeType": "document",
-										"content": [
-											{
-												"nodeType": "embedded-asset-block",
-												"data": {
-													"target": {
-														"sys": {
-															"id": "3XtBAf9EtWn3e9ADIeWwk5",
-															"type": "Link",
-															"linkType": "Asset"
-														},
-														"related_asset": [
-															{
-																"contentfulId": "3XtBAf9EtWn3e9ADIeWwk5",
-																"locale": "en-US",
-																"title": "Gartner logo",
-																"file": {
-																	"name": "Gartner_logo.png",
-																	"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XtBAf9EtWn3e9ADIeWwk5/73fe62aa762048d9edf93b7a46b4692b/Gartner_logo.png",
-																	"internal": {
-																		"mediaType": "image/png"
-																	}
-																}
-															}
-														],
-														"entry_elementMarkdown": [],
-														"entry_assetFile": [],
-														"entry_button": [],
-														"entry_elementLink": [],
-														"entry_page": [],
-														"entry_elementIcon": [],
-														"entry_bladeTable": [],
-														"entry_bladeThreeFeatures": [],
-														"entry_bladeFourFeatures": []
-													},
-													"uri": null
-												},
-												"value": null,
-												"marks": null,
-												"content": []
-											},
-											{
-												"nodeType": "paragraph",
-												"data": {
-													"target": null,
-													"uri": null
-												},
-												"value": null,
-												"marks": null,
-												"content": [
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "",
-														"marks": [],
-														"content": null
-													}
-												]
-											}
-										]
-									}
-								},
-								{
-									"contentTypeId": "elementRichText",
-									"contentfulId": "6osoHQZaILquN7kSIa2jgk",
-									"title": null,
-									"htmlId": null,
-									"column": {
-										"nodeType": "document",
-										"content": [
-											{
-												"nodeType": "heading-2",
-												"data": {
-													"target": null,
-													"uri": null
-												},
-												"value": null,
-												"marks": null,
-												"content": [
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "Cloudflare named in Gartner® Magic Quadrant™ for SSE for second consecutive year",
-														"marks": [],
-														"content": null
-													}
-												]
-											},
-											{
-												"nodeType": "paragraph",
-												"data": {
-													"target": null,
-													"uri": null
-												},
-												"value": null,
-												"marks": null,
-												"content": [
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "Cloudflare has been recognized in the 2024 Gartner® Magic Quadrant™ for Security Service Edge (SSE) report. We believe this recognition is a testament to our single-vendor SASE platform and its ability to modernize your network and consolidate more use cases.",
-														"marks": [],
-														"content": null
-													}
-												]
-											},
-											{
-												"nodeType": "paragraph",
-												"data": {
-													"target": null,
-													"uri": null
-												},
-												"value": null,
-												"marks": null,
-												"content": [
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "",
-														"marks": [
-															{
-																"type": "bold"
-															}
-														],
-														"content": null
-													},
-													{
-														"nodeType": "hyperlink",
-														"data": {
-															"target": null,
-															"uri": "https://blog.cloudflare.com/cloudflare-sse-gartner-magic-quadrant-2024/"
-														},
-														"value": null,
-														"marks": null,
-														"content": [
-															{
-																"nodeType": "text",
-																"data": {
-																	"target": null,
-																	"uri": null
-																},
-																"value": "Learn more >",
-																"marks": [
-																	{
-																		"type": "bold"
-																	}
-																],
-																"content": null
-															}
-														]
-													},
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": " ",
-														"marks": [],
-														"content": null
-													}
-												]
-											},
-											{
-												"nodeType": "paragraph",
-												"data": {
-													"target": null,
-													"uri": null
-												},
-												"value": null,
-												"marks": null,
-												"content": [
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "",
-														"marks": [],
-														"content": null
-													}
-												]
-											}
-										]
-									}
-								}
-							]
-						},
-						{
-							"contentTypeId": "bladeFeaturedSolutions",
-							"contentfulId": "2VzDbAstn3YqIW8dqxvwLu",
-							"title": "Powered by an intelligent global network, our connectivity cloud is a unified platform that helps your business work, deliver, and innovate everywhere.",
-							"featuredSolutions": [
-								{
-									"id": "5e2b773f-d6a6-5fc1-900c-2099af68b047",
-									"contentfulId": "1zQxe5G4EMw7KI4Ezl2aP8",
-									"contentTypeId": "elementFeaturedSolution",
-									"title": "SASE and SSE services",
-									"description": "Connect and secure your employees, contractors, devices, networks, apps, and data everywhere they live.",
-									"icon": {
-										"id": "a297a435-305a-5587-ba67-e7e28fc7d6d0",
-										"altText": "SSE AND SASE",
-										"title": "SSE AND SASE",
-										"activeAsset": "Contentful Asset",
-										"locale": "en-US",
-										"contentfulAsset": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pqDYkVg8K6GqUXO2x7Izl/2d2a67e1288dbd9fc5eadcd48b56333f/SSE_SASE_01.svg"
-											},
-											"description": ""
-										},
-										"brandfolderAsset": null,
-										"brandfolderAssetMobile": null
-									},
-									"elementLink": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "ygNXZZAF1sDx37AAepHxi",
-										"elementName": "Explore SASE",
-										"standardText": null,
-										"text": "Explore SASE / SSE",
-										"url": "/zero-trust",
-										"elementModal": null,
-										"openInNewTab": false,
-										"locale": "en-US"
-									},
-									"secondaryCta": null
-								},
-								{
-									"id": "f26d9a59-bd68-5c76-bb98-c640def2ebf3",
-									"contentfulId": "2zPDEKkESjUZKYcTksk96y",
-									"contentTypeId": "elementFeaturedSolution",
-									"title": "App and infrastructure services",
-									"description": "Give your digital products and services top-notch security, reliability, and performance for customers everywhere.",
-									"icon": {
-										"id": "c1c2d3b3-368e-548e-9550-88c80d9f266d",
-										"altText": "Trusted Apps and Infrastructure",
-										"title": "Trusted Apps and Infrastructure",
-										"activeAsset": "Contentful Asset",
-										"locale": "en-US",
-										"contentfulAsset": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PDJxm9gpmdAMR1JSTQRSl/1ad54dc5651ec6d7edd26c3785766bd5/Apps_Infrastructure.svg_01.svg"
-											},
-											"description": ""
-										},
-										"brandfolderAsset": null,
-										"brandfolderAssetMobile": null
-									},
-									"elementLink": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "7EFrKu7N5PxQhTZvSONRtx",
-										"elementName": "Explore Trusted Apps",
-										"standardText": null,
-										"text": "Explore apps",
-										"url": "/application-services",
-										"elementModal": null,
-										"openInNewTab": false,
-										"locale": "en-US"
-									},
-									"secondaryCta": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "3MbTgNKrHBPEqDcouGTDwz",
-										"elementName": "Explore Infrastructure",
-										"standardText": null,
-										"text": "Explore infrastructure",
-										"url": "/network-services",
-										"elementModal": null,
-										"openInNewTab": false,
-										"locale": "en-US"
-									}
-								},
-								{
-									"id": "2dcfb9d0-5cee-5f14-a7fd-8ea2c9687e56",
-									"contentfulId": "5aHr0OtM6gRRJ2CSivlO3t",
-									"contentTypeId": "elementFeaturedSolution",
-									"title": "Developer services",
-									"description": "Easily build and deploy full-stack applications everywhere, thanks to integrated compute, storage, and networking.",
-									"icon": {
-										"id": "7100e660-f839-5d44-b01b-57bb719756e8",
-										"altText": "Developer Services",
-										"title": "Developer Services",
-										"activeAsset": "Contentful Asset",
-										"locale": "en-US",
-										"contentfulAsset": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jwF6zz4lTaL25osoXtSIy/76a1cf8bb1e2292f64d4314d702a7de3/Developer_Platform_01.svg"
-											},
-											"description": ""
-										},
-										"brandfolderAsset": null,
-										"brandfolderAssetMobile": null
-									},
-									"elementLink": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "5WRfhcw9liLwHkubtmar6M",
-										"elementName": "Learn more - Developers platform",
-										"standardText": null,
-										"text": "Explore developer services",
-										"url": "/developer-platform",
-										"elementModal": null,
-										"openInNewTab": false,
-										"locale": "en-US"
-									},
-									"secondaryCta": null
-								}
-							],
-							"promotionalBanner": {
-								"pillText": "Speak with an expert",
-								"linkText": "Get in touch",
-								"linkUrl": "https://www.cloudflare.com/plans/enterprise/contact/",
-								"desktopText": "Want to speak with an expert?"
-							},
-							"border": true,
-							"htmlId": "blade-featured-solutions-staging",
-							"textLayout": "Center",
-							"sectionPadding": "tile--no-bottom-padding"
-						},
-						{
-							"contentTypeId": "bladeHtml",
-							"contentfulId": "5sHSXt1U7OcSz1swHN1zV3",
-							"htmlContent": "\n  <style>\n\n.cards-homePage-wrapper { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}  \n  .cards_section-title { text-align: center;}\n.cards_item-cios { font-size: 32px;background-color: white;border-radius: 1rem; box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.25); overflow: hidden;}\n.border-gradient { border: 8px solid; border-image-slice: 1;}\n.border-gradient-orange { border-image-source: linear-gradient(to left, #FBAD41, #FF6633);}\n.card_content { padding: 1rem; display: flex; flex-direction: column;}\n.only-top { border-left: 0; border-right: 0; border-bottom: 0;}\n.card_title-cios{ color: #000000; font-size: 32px; font-weight: 600; margin: 0px; padding: 30px 0px;  }\n.card_text-cios { color: #000000; font-size: 0.875rem; line-height: 21px ; margin-bottom: 2.25rem;  font-weight: 400;}\n\n@media (max-width: 40rem) {.cards-homePage-wrapper{ grid-template-columns: 1fr; } }\n\n  </style>\n\n  <!--Cxo 3 cards -->\n\n <div class=\"cards_section-title\">\n  <h3 class=\"headline-3 black-900\">Resources for technology leaders</h3>\n  <p class=\"body-1 black\">Accelerate your IT and security strategy with curated insights and solutions</p>\n</div>\n\n<div class=\"cards-homePage-wrapper\">\n\n  <div class=\"cards_item-cios \">\n    <div class=\"card_content border-gradient border-gradient-orange only-top\">\n      <div class=\"card_title-cios\">For CISOs</div>\n      <div class=\"card_text-cios\">Improve cyber resilience to control risk and preserve customer trust.</div>\n      <div><a\n          class=\"button-cta f2 auto-btn ls2 fw5 tc bg-orange-1-500 black h-orange-2-500 bs-active-black-3px bs-focus-orange-1-500-8px d-bg-black-100 d-black-600 pv12px ph2 w-auto\"\n          href=\"/ciso\" data-tracking-action=\"click\"\n          data-tracking-label=\"Explore - ciso\" data-tracking-category=\"HP - ciso\">Explore</a></div>\n    </div>\n  </div>\n\n  <div class=\"cards_item-cios\">\n    <div class=\"card_content border-gradient border-gradient-orange only-top\">\n      <div class=\"card_title-cios\">For CIOs</div>\n      <div class=\"card_text-cios\">Accelerate digital transformation for better efficiency and faster growth.</div>\n      <div><a\n          class=\"button-cta f2 auto-btn ls2 fw5 tc bg-orange-1-500 black h-orange-2-500 bs-active-black-3px bs-focus-orange-1-500-8px d-bg-black-100 d-black-600 pv12px ph2 w-auto\"\n          href=\"/cio\" data-tracking-action=\"click\"\n          data-tracking-label=\"Explore - cio\" data-tracking-category=\"HP -cio\">Explore</a>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"cards_item-cios\">\n    <div class=\"card_content border-gradient border-gradient-orange only-top\">\n      <div class=\"card_title-cios\">For CTOs</div>\n      <div class=\"card_text-cios\">Deliver better software faster while fostering a culture of innovation.</div>\n      <div><a\n          class=\"button-cta f2 auto-btn ls2 fw5 tc bg-orange-1-500 black h-orange-2-500 bs-active-black-3px bs-focus-orange-1-500-8px d-bg-black-100 d-black-600 pv12px ph2 w-auto\"\n          href=\"/cto\" data-tracking-action=\"click\"\n          data-tracking-label=\"Explore - cto\" data-tracking-category=\"HP -cto\">Explore</a>\n      </div>\n    </div>\n  </div>\n\n</div>",
-							"htmlId": null
 						},
 						{
 							"contentTypeId": "bladeCardCarousel",
@@ -3615,68 +3275,133 @@
 							]
 						},
 						{
-							"contentfulId": "3Bbr1VfNv2tqiisBPFbMsx",
-							"contentTypeId": "bladeHeroAnimation",
-							"title": "Discover the connectivity cloud",
-							"titleSize": "medium",
-							"subtitle": null,
-							"subtitleSize": null,
-							"copy": "Today's enterprises need to securely connect people, apps and networks everywhere. But how do you tame complexity and maintain control? Cloudflare's connectivity cloud helps you improve security, consolidate to reduce costs, and move faster than ever.",
-							"buttonColor": "orange",
-							"buttonColor2": "orange",
-							"buttonText1": "Watch webinar",
-							"buttonText1LoggedIn": null,
-							"buttonUrl1": "https://gateway.on24.com/wcc/eh/2153307/lp/4536446/",
-							"buttonUrl1LoggedIn": null,
-							"button1ExtraClass": null,
-							"buttonText2": null,
-							"buttonText2LoggedIn": null,
-							"buttonUrl2": null,
-							"button2ExtraClass": null,
-							"bladeBorder": "none",
-							"htmlId": null,
-							"textColor": "black",
-							"includeVideo": true,
-							"streamVideoId": "880795275ff16a793449c92b53bd99f2",
-							"streamOptions": [
-								"controls",
-								"captions"
-							],
-							"streamCaptions": "en",
-							"popupStreamId": null,
-							"popupText": null,
-							"button1OpenInNewTab": true,
-							"button2OpenInNewTab": null,
-							"streamThumbnails": null,
-							"sectionPadding": null,
-							"streamPosterAssetFile": {
-								"id": "57a2138e-3ef7-5f23-b701-db628e704e78",
-								"altText": null,
-								"title": "cc-video thumbnail",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6MHCosN1XnOOJXTcjG2QDc/7fead8bb65a415e2a5dd2d7a16a62cfc/CCVideo_Thumbnail.svg"
+							"contentTypeId": "bladeFeaturedSolutions",
+							"contentfulId": "2VzDbAstn3YqIW8dqxvwLu",
+							"title": "Powered by an intelligent global network, our connectivity cloud is a unified platform that helps your business work, deliver, and innovate everywhere.",
+							"featuredSolutions": [
+								{
+									"id": "5e2b773f-d6a6-5fc1-900c-2099af68b047",
+									"contentfulId": "1zQxe5G4EMw7KI4Ezl2aP8",
+									"contentTypeId": "elementFeaturedSolution",
+									"title": "SASE and SSE services",
+									"description": "Connect and secure your employees, contractors, devices, networks, apps, and data everywhere they live.",
+									"icon": {
+										"id": "a297a435-305a-5587-ba67-e7e28fc7d6d0",
+										"altText": "SSE AND SASE",
+										"title": "SSE AND SASE",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pqDYkVg8K6GqUXO2x7Izl/2d2a67e1288dbd9fc5eadcd48b56333f/SSE_SASE_01.svg"
+											},
+											"description": ""
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
 									},
-									"description": ""
+									"elementLink": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "ygNXZZAF1sDx37AAepHxi",
+										"elementName": "Explore SASE",
+										"standardText": null,
+										"text": "Explore SASE / SSE",
+										"url": "/zero-trust",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
+									"secondaryCta": null
 								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
+								{
+									"id": "f26d9a59-bd68-5c76-bb98-c640def2ebf3",
+									"contentfulId": "2zPDEKkESjUZKYcTksk96y",
+									"contentTypeId": "elementFeaturedSolution",
+									"title": "App and infrastructure services",
+									"description": "Give your digital products and services top-notch security, reliability, and performance for customers everywhere.",
+									"icon": {
+										"id": "c1c2d3b3-368e-548e-9550-88c80d9f266d",
+										"altText": "Trusted Apps and Infrastructure",
+										"title": "Trusted Apps and Infrastructure",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PDJxm9gpmdAMR1JSTQRSl/1ad54dc5651ec6d7edd26c3785766bd5/Apps_Infrastructure.svg_01.svg"
+											},
+											"description": ""
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									},
+									"elementLink": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "7EFrKu7N5PxQhTZvSONRtx",
+										"elementName": "Explore Trusted Apps",
+										"standardText": null,
+										"text": "Explore apps",
+										"url": "/application-services",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
+									"secondaryCta": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "3MbTgNKrHBPEqDcouGTDwz",
+										"elementName": "Explore Infrastructure",
+										"standardText": null,
+										"text": "Explore infrastructure",
+										"url": "/network-services",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									}
+								},
+								{
+									"id": "2dcfb9d0-5cee-5f14-a7fd-8ea2c9687e56",
+									"contentfulId": "5aHr0OtM6gRRJ2CSivlO3t",
+									"contentTypeId": "elementFeaturedSolution",
+									"title": "Developer services",
+									"description": "Easily build and deploy full-stack applications everywhere, thanks to integrated compute, storage, and networking.",
+									"icon": {
+										"id": "7100e660-f839-5d44-b01b-57bb719756e8",
+										"altText": "Developer Services",
+										"title": "Developer Services",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jwF6zz4lTaL25osoXtSIy/76a1cf8bb1e2292f64d4314d702a7de3/Developer_Platform_01.svg"
+											},
+											"description": ""
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									},
+									"elementLink": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "5WRfhcw9liLwHkubtmar6M",
+										"elementName": "Learn more - Developers platform",
+										"standardText": null,
+										"text": "Explore developer services",
+										"url": "/developer-platform",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
+									"secondaryCta": null
+								}
+							],
+							"promotionalBanner": {
+								"pillText": "Speak with an expert",
+								"linkText": "Get in touch",
+								"linkUrl": "https://www.cloudflare.com/plans/enterprise/contact/",
+								"desktopText": "Want to speak with an expert?"
 							},
-							"streamPoster": null,
-							"imageSize": "Medium",
-							"imagePosition": null,
-							"leftLinkUrl": null,
-							"leftLink": null,
-							"leftLinkLoggedIn": null,
-							"leftLinkOptions": "hide",
-							"backgroundColor": "white",
-							"textlayoutMode": "left wide",
-							"backgroundAssetFile": null,
-							"imageLayout": null,
-							"image": null,
-							"imageAssetFile": null
+							"border": true,
+							"htmlId": "blade-featured-solutions-staging",
+							"textLayout": "Center",
+							"sectionPadding": "tile--no-bottom-padding"
 						},
 						{
 							"contentfulId": "5iaHnaoYM9YGrcB26XiZyB",
@@ -3770,6 +3495,12 @@
 								}
 							],
 							"sectionPadding": null,
+							"htmlId": null
+						},
+						{
+							"contentTypeId": "bladeHtml",
+							"contentfulId": "5sHSXt1U7OcSz1swHN1zV3",
+							"htmlContent": "\n  <style>\n\n.cards-homePage-wrapper { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}  \n  .cards_section-title { text-align: center; margin: 64px 0px;}\n.cards_item-cios { font-size: 32px;background-color: white;border-radius: 1rem; box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.25); overflow: hidden;}\n.border-gradient { border: 8px solid; border-image-slice: 1;}\n.border-gradient-orange { border-image-source: linear-gradient(to left, #FBAD41, #FF6633);}\n.card_content { padding: 1rem; display: flex; flex-direction: column;}\n.only-top { border-left: 0; border-right: 0; border-bottom: 0;}\n.card_title-cios{ color: #000000; font-size: 32px; font-weight: 600; margin: 0px; padding: 30px 0px;  }\n.card_text-cios { color: #000000; font-size: 0.875rem; line-height: 21px ; margin-bottom: 2.25rem;  font-weight: 400;}\n\n@media (max-width: 40rem) {.cards-homePage-wrapper{ grid-template-columns: 1fr; } }\n\n  </style>\n\n  <!--Cxo 3 cards -->\n\n <div class=\"cards_section-title\">\n  <h3 class=\"headline-3 black-900\">Resources for technology leaders</h3>\n  <p class=\"body-1 black\">Accelerate your IT and security strategy with curated insights and solutions</p>\n</div>\n\n<div class=\"cards-homePage-wrapper\">\n\n  <div class=\"cards_item-cios \">\n    <div class=\"card_content border-gradient border-gradient-orange only-top\">\n      <div class=\"card_title-cios\">For CISOs</div>\n      <div class=\"card_text-cios\">Improve cyber resilience to control risk and preserve customer trust.</div>\n      <div><a\n          class=\"button-cta f2 auto-btn ls2 fw5 tc bg-orange-1-500 black h-orange-2-500 bs-active-black-3px bs-focus-orange-1-500-8px d-bg-black-100 d-black-600 pv12px ph2 w-auto\"\n          href=\"/ciso\" data-tracking-action=\"click\"\n          data-tracking-label=\"Explore - ciso\" data-tracking-category=\"HP - ciso\">Explore</a></div>\n    </div>\n  </div>\n\n  <div class=\"cards_item-cios\">\n    <div class=\"card_content border-gradient border-gradient-orange only-top\">\n      <div class=\"card_title-cios\">For CIOs</div>\n      <div class=\"card_text-cios\">Accelerate digital transformation for better efficiency and faster growth.</div>\n      <div><a\n          class=\"button-cta f2 auto-btn ls2 fw5 tc bg-orange-1-500 black h-orange-2-500 bs-active-black-3px bs-focus-orange-1-500-8px d-bg-black-100 d-black-600 pv12px ph2 w-auto\"\n          href=\"/cio\" data-tracking-action=\"click\"\n          data-tracking-label=\"Explore - cio\" data-tracking-category=\"HP -cio\">Explore</a>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"cards_item-cios\">\n    <div class=\"card_content border-gradient border-gradient-orange only-top\">\n      <div class=\"card_title-cios\">For CTOs</div>\n      <div class=\"card_text-cios\">Deliver better software faster while fostering a culture of innovation.</div>\n      <div><a\n          class=\"button-cta f2 auto-btn ls2 fw5 tc bg-orange-1-500 black h-orange-2-500 bs-active-black-3px bs-focus-orange-1-500-8px d-bg-black-100 d-black-600 pv12px ph2 w-auto\"\n          href=\"/cto\" data-tracking-action=\"click\"\n          data-tracking-label=\"Explore - cto\" data-tracking-category=\"HP -cto\">Explore</a>\n      </div>\n    </div>\n  </div>\n\n</div>",
 							"htmlId": null
 						},
 						{
@@ -5282,6 +5013,18 @@
 											"specialLinkType": null,
 											"openInNewWindow": true,
 											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "7JRJ8E2YY8VkjU2rWTUODX",
+											"locale": "en-US",
+											"title": "Risk posture",
+											"description": "Automated & dynamic risk controls across your attack surface",
+											"url": "/cybersecurity-risk-management/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": false
 										}
 									],
 									"navIcon": null,
@@ -8014,6 +7757,18 @@
 												"specialLinkType": null,
 												"openInNewWindow": true,
 												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
+												"contentfulId": "7JRJ8E2YY8VkjU2rWTUODX",
+												"locale": "en-US",
+												"title": "Risk posture",
+												"description": "Automated & dynamic risk controls across your attack surface",
+												"url": "/cybersecurity-risk-management/",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": false
 											}
 										],
 										"navIcon": null,
