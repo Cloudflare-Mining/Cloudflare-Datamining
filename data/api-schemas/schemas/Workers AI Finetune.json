@@ -20,6 +20,10 @@
 							"properties": {
 								"result": {
 									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
 										"description": {
 											"type": "string"
 										},
@@ -30,6 +34,10 @@
 										"model": {
 											"type": "string"
 										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
 										"name": {
 											"type": "string"
 										}
@@ -37,7 +45,9 @@
 									"required": [
 										"id",
 										"model",
-										"name"
+										"name",
+										"created_at",
+										"modified_at"
 									],
 									"type": "object"
 								},
@@ -119,6 +129,170 @@
 			"pro": true
 		}
 	},
+	"GET /accounts/{account_id}/ai/finetunes/public": {
+		"operationId": "workers-ai-list-public-finetunes",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": 48546000,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Pagination Limit",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Pagination Limit",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Pagination Offset",
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"description": "Pagination Offset",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Order By Column Name",
+				"in": "query",
+				"name": "orderBy",
+				"schema": {
+					"description": "Order By Column Name",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"description": {
+												"type": "string"
+											},
+											"id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"model": {
+												"type": "string"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"public": {
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"id",
+											"model",
+											"name",
+											"public",
+											"created_at",
+											"modified_at"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns all public finetunes"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Public Finetunes",
+		"tags": [
+			"Workers AI Finetune"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/finetunes": {
 		"operationId": "workers-ai-create-finetune",
 		"parameters": [
@@ -145,6 +319,10 @@
 							},
 							"name": {
 								"type": "string"
+							},
+							"public": {
+								"default": "false",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -164,10 +342,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"example": 48546000,
-											"type": "integer"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -188,15 +362,18 @@
 										},
 										"name": {
 											"type": "string"
+										},
+										"public": {
+											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"account_id",
 										"created_at",
 										"modified_at",
-										"model",
-										"name"
+										"public",
+										"name",
+										"model"
 									],
 									"type": "object"
 								},
