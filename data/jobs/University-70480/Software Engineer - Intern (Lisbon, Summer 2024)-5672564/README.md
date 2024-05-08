@@ -5,36 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location(s) Available: Remote US</strong></p>
-<p><strong>About the Team</strong></p>
-<p>Capacity Engineering ensures there's always enough capacity—servers, storage, memory, or bandwidth—available whenever and wherever it's needed. The capacity team focuses on creating and optimizing global and regional capacity plans at various altitudes to balance service, infrastructure, financial, and business constraints, directly managing $millions of investment per year. We collaborate closely with engineering teams to understand demand signals and work hand in hand with infrastructure operations teams to deploy the right amount of capacity. Supporting over 25 million internet properties across ~300 cities, we manage infrastructure capacity. Simple as that!</p>
-<p><strong>About the Role</strong></p>
-<p>As a capacity planning full-stack engineer intern, your primary focus will be on building internal tools and systems for capacity engineering. This entails developing an autonomous capacity planning system to efficiently oversee capacity deployments around the world, covering compute, storage, GPU, and network resources. These internal tools will encompass a wide range of functionalities, from automating server deployment plans to prioritizing global work orders for all infrastructure tasks.</p>
-<p><strong>Prerequisite Skills</strong></p>
+<p><strong>Available Locations:&nbsp;<span class="collapsed-field-text">Lisbon, Portugal</span></strong></p>
+<p><strong>About Cloudflare's Engineering teams</strong></p>
+<p>Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 300 cities in more than 100 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture. Technologies include: C/C++, Rust, Go, Lua, Nginx, Go, Python, Typescript, JavaScript and ReactJS.</span></p>
+<p><strong>About the Internship Program</strong></p>
+<p><span style="font-weight: 400;">The ideal summer intern is passionate about making the Internet a better place. You will work with strong engineers. You will push code this summer that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious and can take on and complete projects. This is a great opportunity for engineers that want to learn to develop at Internet scale.</span></p>
+<p>What would you do as a Cloudflare intern?</p>
 <ul>
-	<li>Intermediate skills with JavaScript and the React framework</li>
-	<li>Familiarity with server side development in Node.js or Python</li>
-	<li>Strong skills in network services, including Rest APIs and HTTP</li>
-	<li>Some experience with SQL (CREATE, ALTER, DROP, SELECT, LEFT_JOIN, INNER_JOIN, etc.)</li>
-	<li>Familiarity with version control tools like Git (push, pull, commit)</li>
-	<li>Familiarity with CSS concepts like the Box model, CSS Grid or Flexbox</li>
-	<li>Currently pursuing a degree or program (example: bootcamp) in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role</li>
-	<li>Ability to commit to a 12-16 week internship</li>
+	<li>Ship and deliver projects over 12 weeks with autonomy and support.</li>
+	<li>Work cross-functionally with various teams.</li>
+	<li>Be assigned a mentor to guide you through the internship and help with career goals.</li>
+	<li>Make friends across the company through our Cloudfriends Program, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
+	<li>Present your project to the entire company at the end of the internship.</li>
+	<li>Get direct access to our executives and leadership team including our co-founders.</li>
+	<li>Write for our&nbsp;<a href="https://blog.cloudflare.com/" target="_blank">Cloudflare blog</a>&nbsp;and be featured on&nbsp;<a class="oiM5sf" href="http://cloudflare.tv/" target="_blank">Cloudflare.tv</a>&nbsp;sessions.&nbsp;</li>
+	<li>Receive Cloudflare swag and free Cloudflare products!</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience with Cloudflare Workers</li>
-	<li>Familiarity with basic Typescript features like Interfaces and Type assertions</li>
-	<li>Familiarity with a CSS framework like Bootstrap (Grid system, basic utility classes)</li>
-	<li>Experience with Frontend build systems (npm or yarn scripts, webpack)</li>
-	<li>Experience deploying code to environments (kubernetes, docker)</li>
-</ul>
+<p>You can check out our&nbsp;<a href="https://blog.cloudflare.com/tag/internship-experience/" target="_blank">internship blogs</a>&nbsp;to learn more about our program and hear directly from our past interns.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Experience building, shipping products end to end, wearing different hats</li>
-	<li>Contribute to discussions and documentation to communicate and arrive at the best technical design</li>
-	<li>Experience working across different component boundaries, from frontend to backend, and even infrastructure layers</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Currently pursuing a degree or program in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated critical thinking skills and drive to learn and adapt new technologies.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Curiosity, empathy and ability to get things done.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to commit to a 12 week summer internship.</span></li>
 </ul>
+<p><strong>Please note</strong></p>
+<ul>
+	<li><span style="font-weight: 400;">We will be hiring interns through the fall and early spring on a rolling basis until all roles are complete.&nbsp;</span></li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
