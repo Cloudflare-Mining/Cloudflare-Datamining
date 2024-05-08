@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-01-24T18:31:06.567Z",
-					"updatedAt": "2024-05-08T21:29:52.587Z"
+					"updatedAt": "2024-05-08T22:19:27.250Z"
 				},
 				"contentfulId": "4c1GpwCtDQJ5WFUJo9yX1q",
 				"contentTypeId": "page",
@@ -728,6 +728,30 @@
 											"title": "Enterprise plans",
 											"description": null,
 											"url": "plans/enterprise",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
+										"navigationLinks": [],
+										"navIcon": null,
+										"showIconOnly": false,
+										"hideOnChinaSite": false,
+										"navigationItems": []
+									},
+									{
+										"contentTypeId": "navNavigationItem",
+										"contentfulId": "12IfZakhKCvOwZ62mB57Lu",
+										"locale": "en-US",
+										"name": "Compare all plans",
+										"description": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "6usymxfOH4pWYmAhFFIr62",
+											"locale": "en-US",
+											"title": "Compare all plans",
+											"description": null,
+											"url": "/plans/",
 											"badges": null,
 											"specialLinkType": null,
 											"openInNewWindow": false,
@@ -1525,6 +1549,18 @@
 												"title": "CDN",
 												"description": "Learn how CDN works & explore benefits",
 												"url": "https://www.cloudflare.com/learning/cdn/what-is-a-cdn/",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
+												"contentfulId": "3fYgunEi8lWu3OYfuVJ1gQ",
+												"locale": "en-US",
+												"title": "DDoS",
+												"description": "Learn about DDoS attacks & mitigation",
+												"url": "https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -3212,62 +3248,6 @@
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "small",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "4WeKIVdiyHQWCtyq470Aw9",
-						"title": "Posture checks across device types",
-						"copy": "- Level up security by integrating with endpoint protection providers (like Crowdstrike, SentinelOne, and more)\n- Context-aware access across any device (Windows, macOS, Linux, iOS, chromeOS, and Android) \n- Enrich risk assessment with our client, optimized for flexible deployment\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/eEJldZKLG3FgK9KGp557t/0cd0829c089dd7265e02e3d434534f07/Any-endpoint3.svg"
-							},
-							"description": "Illustration of a laptop and a mobile device with a padlock"
-						},
-						"imageAssetFile": {
-							"id": "f91edc91-d049-5064-9d0a-3d2af4f70efc",
-							"altText": null,
-							"title": "Any endpoint: Zero Trust Integrations",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/eEJldZKLG3FgK9KGp557t/0cd0829c089dd7265e02e3d434534f07/Any-endpoint3.svg"
-								},
-								"description": "Illustration of a laptop and a mobile device with a padlock"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Endpoint agnostic",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": false,
 						"imageSize": "small",
 						"imageTextAlignment": null,
 						"togglesTo": []
