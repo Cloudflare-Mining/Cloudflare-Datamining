@@ -1193,7 +1193,8 @@
 																						"items": {
 																							"enum": [
 																								"authorization_code",
-																								"authorization_code_with_pkce"
+																								"authorization_code_with_pkce",
+																								"refresh_tokens"
 																							],
 																							"type": "string"
 																						},
@@ -1219,8 +1220,18 @@
 																						},
 																						"type": "array"
 																					},
+																					"refresh_token_options": {
+																						"properties": {
+																							"lifetime": {
+																								"description": "How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.",
+																								"example": "30d",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
 																					"scopes": {
-																						"description": "Define the user information shared with access",
+																						"description": "Define the user information shared with access, \"offline_access\" scope will be automatically enabled if refresh tokens are enabled",
 																						"example": [
 																							"openid",
 																							"groups",
@@ -4188,7 +4199,8 @@
 																					"items": {
 																						"enum": [
 																							"authorization_code",
-																							"authorization_code_with_pkce"
+																							"authorization_code_with_pkce",
+																							"refresh_tokens"
 																						],
 																						"type": "string"
 																					},
@@ -4214,8 +4226,18 @@
 																					},
 																					"type": "array"
 																				},
+																				"refresh_token_options": {
+																					"properties": {
+																						"lifetime": {
+																							"description": "How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.",
+																							"example": "30d",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
 																				"scopes": {
-																					"description": "Define the user information shared with access",
+																					"description": "Define the user information shared with access, \"offline_access\" scope will be automatically enabled if refresh tokens are enabled",
 																					"example": [
 																						"openid",
 																						"groups",
@@ -7419,7 +7441,8 @@
 																"items": {
 																	"enum": [
 																		"authorization_code",
-																		"authorization_code_with_pkce"
+																		"authorization_code_with_pkce",
+																		"refresh_tokens"
 																	],
 																	"type": "string"
 																},
@@ -7445,8 +7468,18 @@
 																},
 																"type": "array"
 															},
+															"refresh_token_options": {
+																"properties": {
+																	"lifetime": {
+																		"description": "How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.",
+																		"example": "30d",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
 															"scopes": {
-																"description": "Define the user information shared with access",
+																"description": "Define the user information shared with access, \"offline_access\" scope will be automatically enabled if refresh tokens are enabled",
 																"example": [
 																	"openid",
 																	"groups",
@@ -10267,7 +10300,8 @@
 																							"items": {
 																								"enum": [
 																									"authorization_code",
-																									"authorization_code_with_pkce"
+																									"authorization_code_with_pkce",
+																									"refresh_tokens"
 																								],
 																								"type": "string"
 																							},
@@ -10293,8 +10327,18 @@
 																							},
 																							"type": "array"
 																						},
+																						"refresh_token_options": {
+																							"properties": {
+																								"lifetime": {
+																									"description": "How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.",
+																									"example": "30d",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						},
 																						"scopes": {
-																							"description": "Define the user information shared with access",
+																							"description": "Define the user information shared with access, \"offline_access\" scope will be automatically enabled if refresh tokens are enabled",
 																							"example": [
 																								"openid",
 																								"groups",
@@ -13028,7 +13072,8 @@
 																					"items": {
 																						"enum": [
 																							"authorization_code",
-																							"authorization_code_with_pkce"
+																							"authorization_code_with_pkce",
+																							"refresh_tokens"
 																						],
 																						"type": "string"
 																					},
@@ -13054,8 +13099,18 @@
 																					},
 																					"type": "array"
 																				},
+																				"refresh_token_options": {
+																					"properties": {
+																						"lifetime": {
+																							"description": "How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.",
+																							"example": "30d",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
 																				"scopes": {
-																					"description": "Define the user information shared with access",
+																					"description": "Define the user information shared with access, \"offline_access\" scope will be automatically enabled if refresh tokens are enabled",
 																					"example": [
 																						"openid",
 																						"groups",
@@ -16108,7 +16163,8 @@
 																"items": {
 																	"enum": [
 																		"authorization_code",
-																		"authorization_code_with_pkce"
+																		"authorization_code_with_pkce",
+																		"refresh_tokens"
 																	],
 																	"type": "string"
 																},
@@ -16134,8 +16190,18 @@
 																},
 																"type": "array"
 															},
+															"refresh_token_options": {
+																"properties": {
+																	"lifetime": {
+																		"description": "How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.",
+																		"example": "30d",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
 															"scopes": {
-																"description": "Define the user information shared with access",
+																"description": "Define the user information shared with access, \"offline_access\" scope will be automatically enabled if refresh tokens are enabled",
 																"example": [
 																	"openid",
 																	"groups",
@@ -18956,7 +19022,8 @@
 																							"items": {
 																								"enum": [
 																									"authorization_code",
-																									"authorization_code_with_pkce"
+																									"authorization_code_with_pkce",
+																									"refresh_tokens"
 																								],
 																								"type": "string"
 																							},
@@ -18982,8 +19049,18 @@
 																							},
 																							"type": "array"
 																						},
+																						"refresh_token_options": {
+																							"properties": {
+																								"lifetime": {
+																									"description": "How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.",
+																									"example": "30d",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						},
 																						"scopes": {
-																							"description": "Define the user information shared with access",
+																							"description": "Define the user information shared with access, \"offline_access\" scope will be automatically enabled if refresh tokens are enabled",
 																							"example": [
 																								"openid",
 																								"groups",
@@ -21717,7 +21794,8 @@
 																					"items": {
 																						"enum": [
 																							"authorization_code",
-																							"authorization_code_with_pkce"
+																							"authorization_code_with_pkce",
+																							"refresh_tokens"
 																						],
 																						"type": "string"
 																					},
@@ -21743,8 +21821,18 @@
 																					},
 																					"type": "array"
 																				},
+																				"refresh_token_options": {
+																					"properties": {
+																						"lifetime": {
+																							"description": "How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.",
+																							"example": "30d",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
 																				"scopes": {
-																					"description": "Define the user information shared with access",
+																					"description": "Define the user information shared with access, \"offline_access\" scope will be automatically enabled if refresh tokens are enabled",
 																					"example": [
 																						"openid",
 																						"groups",
