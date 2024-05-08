@@ -2872,17 +2872,36 @@
 																									},
 																									"disable_apps": {
 																										"description": "Turn off all active Cloudflare Apps.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Apps",
+																										"type": "boolean"
+																									},
+																									"disable_rum": {
+																										"description": "Turn off Real User Monitoring (RUM).",
+																										"enum": [
+																											true
+																										],
+																										"title": "Disable RUM",
 																										"type": "boolean"
 																									},
 																									"disable_zaraz": {
 																										"description": "Turn off Zaraz.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Zaraz",
 																										"type": "boolean"
 																									},
 																									"email_obfuscation": {
 																										"description": "Turn on or off Email Obfuscation.",
 																										"title": "Email Obfuscation",
+																										"type": "boolean"
+																									},
+																									"fonts": {
+																										"description": "Turn on or off Cloudflare Fonts.",
+																										"title": "Cloudflare Fonts",
 																										"type": "boolean"
 																									},
 																									"hotlink_protection": {
@@ -7420,17 +7439,36 @@
 																									},
 																									"disable_apps": {
 																										"description": "Turn off all active Cloudflare Apps.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Apps",
+																										"type": "boolean"
+																									},
+																									"disable_rum": {
+																										"description": "Turn off Real User Monitoring (RUM).",
+																										"enum": [
+																											true
+																										],
+																										"title": "Disable RUM",
 																										"type": "boolean"
 																									},
 																									"disable_zaraz": {
 																										"description": "Turn off Zaraz.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Zaraz",
 																										"type": "boolean"
 																									},
 																									"email_obfuscation": {
 																										"description": "Turn on or off Email Obfuscation.",
 																										"title": "Email Obfuscation",
+																										"type": "boolean"
+																									},
+																									"fonts": {
+																										"description": "Turn on or off Cloudflare Fonts.",
+																										"title": "Cloudflare Fonts",
 																										"type": "boolean"
 																									},
 																									"hotlink_protection": {
@@ -11785,17 +11823,36 @@
 																									},
 																									"disable_apps": {
 																										"description": "Turn off all active Cloudflare Apps.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Apps",
+																										"type": "boolean"
+																									},
+																									"disable_rum": {
+																										"description": "Turn off Real User Monitoring (RUM).",
+																										"enum": [
+																											true
+																										],
+																										"title": "Disable RUM",
 																										"type": "boolean"
 																									},
 																									"disable_zaraz": {
 																										"description": "Turn off Zaraz.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Zaraz",
 																										"type": "boolean"
 																									},
 																									"email_obfuscation": {
 																										"description": "Turn on or off Email Obfuscation.",
 																										"title": "Email Obfuscation",
+																										"type": "boolean"
+																									},
+																									"fonts": {
+																										"description": "Turn on or off Cloudflare Fonts.",
+																										"title": "Cloudflare Fonts",
 																										"type": "boolean"
 																									},
 																									"hotlink_protection": {
@@ -15717,17 +15774,36 @@
 																									},
 																									"disable_apps": {
 																										"description": "Turn off all active Cloudflare Apps.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Apps",
+																										"type": "boolean"
+																									},
+																									"disable_rum": {
+																										"description": "Turn off Real User Monitoring (RUM).",
+																										"enum": [
+																											true
+																										],
+																										"title": "Disable RUM",
 																										"type": "boolean"
 																									},
 																									"disable_zaraz": {
 																										"description": "Turn off Zaraz.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Zaraz",
 																										"type": "boolean"
 																									},
 																									"email_obfuscation": {
 																										"description": "Turn on or off Email Obfuscation.",
 																										"title": "Email Obfuscation",
+																										"type": "boolean"
+																									},
+																									"fonts": {
+																										"description": "Turn on or off Cloudflare Fonts.",
+																										"title": "Cloudflare Fonts",
 																										"type": "boolean"
 																									},
 																									"hotlink_protection": {
@@ -20130,17 +20206,36 @@
 																									},
 																									"disable_apps": {
 																										"description": "Turn off all active Cloudflare Apps.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Apps",
+																										"type": "boolean"
+																									},
+																									"disable_rum": {
+																										"description": "Turn off Real User Monitoring (RUM).",
+																										"enum": [
+																											true
+																										],
+																										"title": "Disable RUM",
 																										"type": "boolean"
 																									},
 																									"disable_zaraz": {
 																										"description": "Turn off Zaraz.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Zaraz",
 																										"type": "boolean"
 																									},
 																									"email_obfuscation": {
 																										"description": "Turn on or off Email Obfuscation.",
 																										"title": "Email Obfuscation",
+																										"type": "boolean"
+																									},
+																									"fonts": {
+																										"description": "Turn on or off Cloudflare Fonts.",
+																										"title": "Cloudflare Fonts",
 																										"type": "boolean"
 																									},
 																									"hotlink_protection": {
@@ -23823,17 +23918,36 @@
 															},
 															"disable_apps": {
 																"description": "Turn off all active Cloudflare Apps.",
+																"enum": [
+																	true
+																],
 																"title": "Disable Apps",
+																"type": "boolean"
+															},
+															"disable_rum": {
+																"description": "Turn off Real User Monitoring (RUM).",
+																"enum": [
+																	true
+																],
+																"title": "Disable RUM",
 																"type": "boolean"
 															},
 															"disable_zaraz": {
 																"description": "Turn off Zaraz.",
+																"enum": [
+																	true
+																],
 																"title": "Disable Zaraz",
 																"type": "boolean"
 															},
 															"email_obfuscation": {
 																"description": "Turn on or off Email Obfuscation.",
 																"title": "Email Obfuscation",
+																"type": "boolean"
+															},
+															"fonts": {
+																"description": "Turn on or off Cloudflare Fonts.",
+																"title": "Cloudflare Fonts",
 																"type": "boolean"
 															},
 															"hotlink_protection": {
@@ -27580,17 +27694,36 @@
 																									},
 																									"disable_apps": {
 																										"description": "Turn off all active Cloudflare Apps.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Apps",
+																										"type": "boolean"
+																									},
+																									"disable_rum": {
+																										"description": "Turn off Real User Monitoring (RUM).",
+																										"enum": [
+																											true
+																										],
+																										"title": "Disable RUM",
 																										"type": "boolean"
 																									},
 																									"disable_zaraz": {
 																										"description": "Turn off Zaraz.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Zaraz",
 																										"type": "boolean"
 																									},
 																									"email_obfuscation": {
 																										"description": "Turn on or off Email Obfuscation.",
 																										"title": "Email Obfuscation",
+																										"type": "boolean"
+																									},
+																									"fonts": {
+																										"description": "Turn on or off Cloudflare Fonts.",
+																										"title": "Cloudflare Fonts",
 																										"type": "boolean"
 																									},
 																									"hotlink_protection": {
@@ -31352,17 +31485,36 @@
 																		},
 																		"disable_apps": {
 																			"description": "Turn off all active Cloudflare Apps.",
+																			"enum": [
+																				true
+																			],
 																			"title": "Disable Apps",
+																			"type": "boolean"
+																		},
+																		"disable_rum": {
+																			"description": "Turn off Real User Monitoring (RUM).",
+																			"enum": [
+																				true
+																			],
+																			"title": "Disable RUM",
 																			"type": "boolean"
 																		},
 																		"disable_zaraz": {
 																			"description": "Turn off Zaraz.",
+																			"enum": [
+																				true
+																			],
 																			"title": "Disable Zaraz",
 																			"type": "boolean"
 																		},
 																		"email_obfuscation": {
 																			"description": "Turn on or off Email Obfuscation.",
 																			"title": "Email Obfuscation",
+																			"type": "boolean"
+																		},
+																		"fonts": {
+																			"description": "Turn on or off Cloudflare Fonts.",
+																			"title": "Cloudflare Fonts",
 																			"type": "boolean"
 																		},
 																		"hotlink_protection": {
@@ -35049,17 +35201,36 @@
 																									},
 																									"disable_apps": {
 																										"description": "Turn off all active Cloudflare Apps.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Apps",
+																										"type": "boolean"
+																									},
+																									"disable_rum": {
+																										"description": "Turn off Real User Monitoring (RUM).",
+																										"enum": [
+																											true
+																										],
+																										"title": "Disable RUM",
 																										"type": "boolean"
 																									},
 																									"disable_zaraz": {
 																										"description": "Turn off Zaraz.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Zaraz",
 																										"type": "boolean"
 																									},
 																									"email_obfuscation": {
 																										"description": "Turn on or off Email Obfuscation.",
 																										"title": "Email Obfuscation",
+																										"type": "boolean"
+																									},
+																									"fonts": {
+																										"description": "Turn on or off Cloudflare Fonts.",
+																										"title": "Cloudflare Fonts",
 																										"type": "boolean"
 																									},
 																									"hotlink_protection": {
@@ -38730,17 +38901,36 @@
 															},
 															"disable_apps": {
 																"description": "Turn off all active Cloudflare Apps.",
+																"enum": [
+																	true
+																],
 																"title": "Disable Apps",
+																"type": "boolean"
+															},
+															"disable_rum": {
+																"description": "Turn off Real User Monitoring (RUM).",
+																"enum": [
+																	true
+																],
+																"title": "Disable RUM",
 																"type": "boolean"
 															},
 															"disable_zaraz": {
 																"description": "Turn off Zaraz.",
+																"enum": [
+																	true
+																],
 																"title": "Disable Zaraz",
 																"type": "boolean"
 															},
 															"email_obfuscation": {
 																"description": "Turn on or off Email Obfuscation.",
 																"title": "Email Obfuscation",
+																"type": "boolean"
+															},
+															"fonts": {
+																"description": "Turn on or off Cloudflare Fonts.",
+																"title": "Cloudflare Fonts",
 																"type": "boolean"
 															},
 															"hotlink_protection": {
@@ -42487,17 +42677,36 @@
 																									},
 																									"disable_apps": {
 																										"description": "Turn off all active Cloudflare Apps.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Apps",
+																										"type": "boolean"
+																									},
+																									"disable_rum": {
+																										"description": "Turn off Real User Monitoring (RUM).",
+																										"enum": [
+																											true
+																										],
+																										"title": "Disable RUM",
 																										"type": "boolean"
 																									},
 																									"disable_zaraz": {
 																										"description": "Turn off Zaraz.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Zaraz",
 																										"type": "boolean"
 																									},
 																									"email_obfuscation": {
 																										"description": "Turn on or off Email Obfuscation.",
 																										"title": "Email Obfuscation",
+																										"type": "boolean"
+																									},
+																									"fonts": {
+																										"description": "Turn on or off Cloudflare Fonts.",
+																										"title": "Cloudflare Fonts",
 																										"type": "boolean"
 																									},
 																									"hotlink_protection": {
@@ -46271,17 +46480,36 @@
 																		},
 																		"disable_apps": {
 																			"description": "Turn off all active Cloudflare Apps.",
+																			"enum": [
+																				true
+																			],
 																			"title": "Disable Apps",
+																			"type": "boolean"
+																		},
+																		"disable_rum": {
+																			"description": "Turn off Real User Monitoring (RUM).",
+																			"enum": [
+																				true
+																			],
+																			"title": "Disable RUM",
 																			"type": "boolean"
 																		},
 																		"disable_zaraz": {
 																			"description": "Turn off Zaraz.",
+																			"enum": [
+																				true
+																			],
 																			"title": "Disable Zaraz",
 																			"type": "boolean"
 																		},
 																		"email_obfuscation": {
 																			"description": "Turn on or off Email Obfuscation.",
 																			"title": "Email Obfuscation",
+																			"type": "boolean"
+																		},
+																		"fonts": {
+																			"description": "Turn on or off Cloudflare Fonts.",
+																			"title": "Cloudflare Fonts",
 																			"type": "boolean"
 																		},
 																		"hotlink_protection": {
@@ -49965,17 +50193,36 @@
 																									},
 																									"disable_apps": {
 																										"description": "Turn off all active Cloudflare Apps.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Apps",
+																										"type": "boolean"
+																									},
+																									"disable_rum": {
+																										"description": "Turn off Real User Monitoring (RUM).",
+																										"enum": [
+																											true
+																										],
+																										"title": "Disable RUM",
 																										"type": "boolean"
 																									},
 																									"disable_zaraz": {
 																										"description": "Turn off Zaraz.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Zaraz",
 																										"type": "boolean"
 																									},
 																									"email_obfuscation": {
 																										"description": "Turn on or off Email Obfuscation.",
 																										"title": "Email Obfuscation",
+																										"type": "boolean"
+																									},
+																									"fonts": {
+																										"description": "Turn on or off Cloudflare Fonts.",
+																										"title": "Cloudflare Fonts",
 																										"type": "boolean"
 																									},
 																									"hotlink_protection": {
@@ -53773,17 +54020,36 @@
 																		},
 																		"disable_apps": {
 																			"description": "Turn off all active Cloudflare Apps.",
+																			"enum": [
+																				true
+																			],
 																			"title": "Disable Apps",
+																			"type": "boolean"
+																		},
+																		"disable_rum": {
+																			"description": "Turn off Real User Monitoring (RUM).",
+																			"enum": [
+																				true
+																			],
+																			"title": "Disable RUM",
 																			"type": "boolean"
 																		},
 																		"disable_zaraz": {
 																			"description": "Turn off Zaraz.",
+																			"enum": [
+																				true
+																			],
 																			"title": "Disable Zaraz",
 																			"type": "boolean"
 																		},
 																		"email_obfuscation": {
 																			"description": "Turn on or off Email Obfuscation.",
 																			"title": "Email Obfuscation",
+																			"type": "boolean"
+																		},
+																		"fonts": {
+																			"description": "Turn on or off Cloudflare Fonts.",
+																			"title": "Cloudflare Fonts",
 																			"type": "boolean"
 																		},
 																		"hotlink_protection": {
@@ -57467,17 +57733,36 @@
 																									},
 																									"disable_apps": {
 																										"description": "Turn off all active Cloudflare Apps.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Apps",
+																										"type": "boolean"
+																									},
+																									"disable_rum": {
+																										"description": "Turn off Real User Monitoring (RUM).",
+																										"enum": [
+																											true
+																										],
+																										"title": "Disable RUM",
 																										"type": "boolean"
 																									},
 																									"disable_zaraz": {
 																										"description": "Turn off Zaraz.",
+																										"enum": [
+																											true
+																										],
 																										"title": "Disable Zaraz",
 																										"type": "boolean"
 																									},
 																									"email_obfuscation": {
 																										"description": "Turn on or off Email Obfuscation.",
 																										"title": "Email Obfuscation",
+																										"type": "boolean"
+																									},
+																									"fonts": {
+																										"description": "Turn on or off Cloudflare Fonts.",
+																										"title": "Cloudflare Fonts",
 																										"type": "boolean"
 																									},
 																									"hotlink_protection": {
