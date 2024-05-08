@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-09-28T13:22:46.260Z",
-					"updatedAt": "2024-04-27T03:09:24.341Z"
+					"updatedAt": "2024-05-08T19:22:25.532Z"
 				},
 				"contentfulId": "4i1usPVo6625lvcdhccDpy",
 				"contentTypeId": "page",
@@ -251,572 +251,361 @@
 						"eyebrow": null
 					},
 					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "7zWUuCJXLNYujQebxBIgkE",
-						"htmlContent": "<br><br><br>\n<h3 class=\"headline-3 mt0 mb0\">Get Hyperdrive for free in all paid Workers subscriptions.</h2>\n<br><br><br>",
-						"htmlId": null
-					},
-					{
-						"bladeBorder": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundColor": null,
-						"contentTypeId": "bladePricingPlans",
-						"contentfulId": "4tPFBEoZ0c9IdtOxLCjRAz",
-						"title": null,
-						"description": null,
-						"htmlId": "overview",
-						"plansList": [
+						"contentTypeId": "bladeTable",
+						"contentfulId": "2yZWjAy2GRTKwFfd3FgLvf",
+						"locale": "en-US",
+						"sectionPadding": "tile--no-bottom-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"displayHeader": null,
+						"showFilter": null,
+						"sectionTitle": null,
+						"title": "Workers Pricing Plans",
+						"copy": "All plans come with a free workers.dev subdomain. ",
+						"htmlId": null,
+						"columnHeaders": [
 							{
-								"contentTypeId": "plan",
-								"contentfulId": "4GyBFDQIZIppCBRaTZ5Olt",
-								"type": "Workers Free",
-								"priceCurrencySymbol": null,
-								"price": "$0/mo",
-								"priceDurationPeriod": null,
-								"billingSubtext": "100,000 requests per day (Across all of your Worker scripts, UTC+0)",
-								"description": "Experience the Workers ecosystem without commitment.",
-								"shortDescription": null,
-								"mediumDescription": null,
-								"supportResponseTitleText": null,
-								"supportResponseTime": null,
-								"ctaButtonText": "Get started",
-								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/workers",
-								"ctaButton": {
-									"buttonAssetFile": null,
-									"buttonTextLoggedIn": null,
-									"contentTypeId": "button",
-									"contentfulId": "4oX0QPLBmknFTy2P2z2Qrz",
-									"elementName": "Workers Free Plan-CTA",
-									"standardText": null,
-									"text": "Get started",
-									"url": "https://dash.cloudflare.com/sign-up/workers",
-									"loggedInUrl": null,
-									"buttonModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"additionalTermsText": null,
-								"learnMoreText": null,
-								"plansPageLinkText": null,
-								"plansPageLinkUrl": null,
-								"activatedKeyFeatures": null,
-								"deactivatedKeyFeatures": null,
-								"coreFeatures": null,
-								"supportResponse": null,
-								"bottomCtaLinkUrl": "/",
-								"bottomCtaLinkText": "Learn more",
-								"bottomCtaLink": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "7hhUllbEp59YYenatq9ekQ",
-									"elementName": "Workers Free Plan - Learn more",
-									"standardText": null,
-									"text": "Learn more",
-									"url": "https://cloudflare.com/products/workers",
-									"elementModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"hideTopDivider": true,
-								"featureList1": {
-									"contentTypeId": "featureList",
-									"contentfulId": "2Dfu7kNvA8XqBRVsK2OHB8",
-									"title": "Workers features",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "Includes 100k requests per day",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Max 10ms CPU time per request",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Access to Developer Platform products. Limits apply",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								},
-								"featureList2": {
-									"contentTypeId": "featureList",
-									"contentfulId": "4P0VqCNCSIy85EzL66eqd4",
-									"title": "Key-value storage features",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "100,000 read operations per day",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "1,000 write, delete, list operations per day",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 1GB of storage",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								},
-								"featureList3": {
-									"contentTypeId": "featureList",
-									"contentfulId": "6dNBDqx2Qdz7BuxEW6hXD0",
-									"title": "Platform basics",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 100 Worker scripts",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 100 namespaces",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Automatic global deployments to hundreds of data centers",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Maintenance-free infrastructure that scales automatically",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "High performance runtime with no cold starts",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Support for JavaScript and over 10 other languages",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Full CLI deployment capabilities",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Mutual TLS for Workers",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								}
+								"cellText": "Free",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
 							},
 							{
-								"contentTypeId": "plan",
-								"contentfulId": "13rVSEtBKuIwe5Ia9dMWlC",
-								"type": "Workers Paid",
-								"priceCurrencySymbol": null,
-								"price": "Starting at $5/mo",
-								"priceDurationPeriod": null,
-								"billingSubtext": " $0.30/million requests per month",
-								"description": "Build scalable, production ready applications without usage limits.",
-								"shortDescription": null,
-								"mediumDescription": null,
-								"supportResponseTitleText": null,
-								"supportResponseTime": null,
-								"ctaButtonText": "Get started",
-								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/workers",
-								"ctaButton": {
-									"buttonAssetFile": null,
-									"buttonTextLoggedIn": null,
-									"contentTypeId": "button",
-									"contentfulId": "11eZrlh8U5qKhhBZGihV2D",
-									"elementName": "Workers Paid-CTA",
-									"standardText": null,
-									"text": "Get started",
-									"url": "https://dash.cloudflare.com/sign-up/workers",
-									"loggedInUrl": null,
-									"buttonModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"additionalTermsText": null,
-								"learnMoreText": "Learn more",
-								"plansPageLinkText": null,
-								"plansPageLinkUrl": null,
-								"activatedKeyFeatures": null,
-								"deactivatedKeyFeatures": null,
-								"coreFeatures": null,
-								"supportResponse": null,
-								"bottomCtaLinkUrl": "/",
-								"bottomCtaLinkText": "Learn more",
-								"bottomCtaLink": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "jRSIhkIvs03MIPhMz83Qz",
-									"elementName": "Workers Paid-Learn more",
-									"standardText": null,
-									"text": "Learn more",
-									"url": "https://cloudflare.com/products/workers",
-									"elementModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"hideTopDivider": true,
-								"featureList1": {
-									"contentTypeId": "featureList",
-									"contentfulId": "1wiyjSuzo3RsjyEuOP1yKK",
-									"title": "Workers features",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "Unlimited requests. 10M requests/month included",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Max 30s CPU time/request. 30M CPU ms/month included",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": " Access to Developer Platform products",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								},
-								"featureList2": {
-									"contentTypeId": "featureList",
-									"contentfulId": "kldb9KoH5BZ862VtOVEag",
-									"title": "Key-value storage features",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "Includes 10 million read operations per month ",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Includes 1 million write, delete, and list operations per month",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 1GB of storage",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								},
-								"featureList3": {
-									"contentTypeId": "featureList",
-									"contentfulId": "3pmMB2AuXFPC4pmQezE6Gt",
-									"title": "Platform basics",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 500 Worker scripts",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 100 namespaces",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Automatic global deployments to hundreds of data centers",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Maintenance-free infrastructure that scales automatically",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "High performance runtime with no cold starts",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Support for JavaScript and over 10 other languages",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Full CLI deployment capabilities",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Mutual TLS for Workers",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								}
+								"cellText": "Paid",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": "Starting at $5 / month",
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							},
+							{
+								"cellText": "Incremental cost",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
 							}
-						]
+						],
+						"groupsInTable": [],
+						"rowsInTable": [
+							{
+								"contentfulId": "1gnpCAHg05n5dph3TaIXDY",
+								"rowHeader2": {
+									"contentfulId": "1dEAbmPjctoA5xrpjEdiIj",
+									"cellText": "Maximum number of scripts",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "5mXwG1LZAx06c344km7dGO",
+										"cellText": "100",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "27V1a5BhZr4u0TiyqzViui",
+										"cellText": "500",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "3vDkNfpB1opzMkxGumkJAM",
+										"cellText": null,
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "6peAXSTnHy0zL0KL45SA8q",
+								"rowHeader2": {
+									"contentfulId": "1SHM5n02YLYAjWg9hxFU8P",
+									"cellText": "Max CPU time",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6NOY5ytL1UmckJZyXg49dw",
+										"cellText": "10 ms per request",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "7IdbDixmVqrNUlnUjdz95V",
+										"cellText": "30 million ms/month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "5FZbTnd4mIaT0u62hMDbaZ",
+										"cellText": "$0.02 per million CPU milliseconds",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "5WCVcXB8kMYB2L0fTllkJZ",
+								"rowHeader2": {
+									"contentfulId": "5mgoudwjrcTDSNLMLaNmT6",
+									"cellText": "Included requests",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "2uWdyfvJh492TDW9ArJyzX",
+										"cellText": "Hard limit 100,000/day",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4tVQWNSiC2bTXkiMJU99Dx",
+										"cellText": "10 million / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "RzHsv7A0WyxWSwSxm0ucP",
+										"cellText": "$0.30 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "3tGev2twpcmyfVixG3UBIj",
+								"rowHeader2": {
+									"contentfulId": "4TDk999k0N7KJAohkkNwvk",
+									"cellText": "Workers storage ",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "3vDkNfpB1opzMkxGumkJAM",
+										"cellText": null,
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "1kmmMf6L8Ti6PIDqedZrvb",
+								"rowHeader2": {
+									"contentfulId": "6ksXXwoyjzfXWh38B9zKeK",
+									"cellText": "Included Workers KV read operations",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "3ZmtFV1iN44reX3tZlnvtW",
+										"cellText": "100,000 / day",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6zsuAojeiS40JF3YiBIiSW",
+										"cellText": "10,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "56m7B8pDd5AdyHp3UafVMR",
+										"cellText": "$0.50 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "4Ilc8s1AtmzlscM9DNaJc1",
+								"rowHeader2": {
+									"contentfulId": "Y66OaEh7BZNA0i4msIYh5",
+									"cellText": "Included Workers KV write, delete, and list operations",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "3dCYxdwLcLIY7ISzHqK9qy",
+										"cellText": "1,000 / day",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1vEQjUWRMQmXnobl4P9OQa",
+										"cellText": "1,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1bZl6BlxrRtVDhHLWtXBRx",
+										"cellText": "$5.00 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "312D4ICAY03yjV3mLhMtp3",
+								"rowHeader2": {
+									"contentfulId": "xVLjQl1t1xIMScNgbKkSd",
+									"cellText": "Included KV storage",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "5kIozEIy4dGEo1JXJEONaF",
+										"cellText": "1 GB",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "2VijeHi8Slw3lsrEgViGKz",
+										"cellText": "1 GB",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "7w0kFbmDnDrDcB5l4EFuip",
+										"cellText": "$0.50 / GB-month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "HU0BUC2Q71uLUICqqy1qi",
+								"rowHeader2": {
+									"contentfulId": "5dTSZ2yM0h5v8BiCHP47PM",
+									"cellText": "Included Durable Objects requests",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4Ge18B8z2vYBHyCydNFQmw",
+										"cellText": "N/A",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "m2l29xToyjl6NzZ1pSRqq",
+										"cellText": "1,000,000 ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "5q187Nt0mzVKnCjhRyNRg6",
+										"cellText": "$0.15 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							}
+						],
+						"dataSource": null
 					}
 				],
 				"noindex": false,
