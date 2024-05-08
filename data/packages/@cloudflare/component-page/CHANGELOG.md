@@ -1,10 +1,17 @@
 # Change Log
 
+## 9.2.0
+
+### Minor Changes
+
+- 4902daa763: make documentation open in new tab in mobile even if its intended to be rendered in the side drawer on screen sizes larger than mobile
+
 ## 9.1.6
 
 ### Patch Changes
 
-- @cloudflare/component-link@8.0.13
+- Updated dependencies [35b41fdd48]
+  - @cloudflare/component-link@8.0.13
 
 ## 9.1.5
 
