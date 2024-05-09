@@ -858,7 +858,7 @@
 														"badges": null,
 														"specialLinkType": null,
 														"openInNewWindow": true,
-														"isExternalUrl": true
+														"isExternalUrl": null
 													},
 													{
 														"contentTypeId": "elementNavLink",
@@ -2864,7 +2864,17 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Last Updated May 10, 2023",
+													"value": "Last Updated ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "May 9, 2024",
 													"marks": [],
 													"content": null
 												}
@@ -4282,7 +4292,42 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "You agree not to, and not to allow third parties to use the Services to: (a) falsely imply any sponsorship or association with Cloudflare; (b) post, transmit, store or link to any files, materials, data, text, audio, video, images or other content that infringe on any person's intellectual property rights or that are otherwise unlawful; (c) distribute viruses, worms, time bombs, Trojan horses, or other malicious code, files, scripts, software agents and programs; (d) facilitate phishing, spamming, or other technical abuse; or (e) engage in any activities that are illegal, including disseminating, promoting or facilitating child sexual abuse material or engaging in human trafficking.",
+													"value": "You agree not to, and not to allow third parties to use the Services to: (a) falsely imply any sponsorship or association with Cloudflare; (b) post, transmit, store or link to any files, materials, data, text, audio, video, images or other content that infringe on any person's intellectual property rights or that are otherwise unlawful; (c) distribute viruses, worms, time bombs, Trojan horses, or other malicious code, files, scripts, software agents and programs; (d) facilitate phishing, spamming, or other technical abuse; or (e) engage in any activities that are illegal, including disseminating, promoting or facilitating child sexual abuse material or engaging in human trafficking.  You can find more information on our approach to abuse and reporting practices ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/trust-hub/abuse-approach/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "here",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
 													"marks": [],
 													"content": null
 												}
@@ -4490,7 +4535,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\"). By providing a Payment Method you are authorizing us to charge your Payment Method on a monthly, annual, or pay-as-you-go basis, or as otherwise applicable for the fees associated with the Paid Services that you use. Any Payment Method that you provide us must be valid, and kept current by you during the Subscription Term. By providing us with a Payment Method, you represent and warrant that you are authorized to use such Payment Method. Cloudflare will begin billing your Payment Method for the Paid Services on the day that you begin using such Paid Services, regardless of whether you have fully configured the Paid Services as of that date.",
+													"value": "\"). By providing a Payment Method you are authorizing us to charge your Payment Method on a monthly, annual, or pay-as-you-go basis, or as otherwise applicable for the fees associated with the Paid Services that you use. Any Payment Method that you provide us must be valid, and kept current by you during the Subscription Term. By providing us with a Payment Method, you represent and warrant that you are authorized to use such Payment Method. Cloudflare will begin billing your Payment Method for the Paid Services on the day that you begin using such Paid Services, regardless of whether you have fully configured the Paid Services as of that date.  For Services subject to usage-based billing, we may initiate a pre-authorization on your credit card for the accrued fees at any point during a billing period. This hold will be removed when the time limit for the hold is up.",
 													"marks": [],
 													"content": null
 												}
@@ -4574,7 +4619,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "FEES ARE NONREFUNDABLE. YOU WILL BE BILLED IN FULL FOR THE SUBSCRIPTION TERM IN WHICH YOU CANCEL AND NO REFUNDS WILL BE PROVIDED FOR THE UNUSED PORTION OF SUCH SUBSCRIPTION TERM. Following any cancellation, however, you will continue to have access to the Paid Services through the end of your current Subscription Term. We may, in our sole discretion, provide a refund, discount, or credit (\"",
+													"value": "FEES ARE NONREFUNDABLE. YOU WILL BE BILLED IN FULL FOR THE SUBSCRIPTION TERM IN WHICH YOU CANCEL AND NO REFUNDS WILL BE PROVIDED FOR THE UNUSED PORTION OF SUCH SUBSCRIPTION TERM. Following any cancellation, however, you will continue to have access to the Paid Services through the end of your current Subscription Term (except with respect to Services subject to usage-based billing). We may, in our sole discretion, provide a refund, discount, or credit (\"",
 													"marks": [],
 													"content": null
 												},
@@ -4640,7 +4685,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Unless otherwise stated, our charges do not include any taxes, levies, duties or similar governmental assessments, including value-added, sales, use or withholding taxes assessable by any local, state, provincial or foreign jurisdiction (collectively \"",
+													"value": "Unless otherwise stated, our charges do not include any taxes, levies, duties or similar governmental assessments, including value-added, sales, use or withholding taxes accessible by any local, state, provincial or foreign jurisdiction (collectively \"",
 													"marks": [],
 													"content": null
 												},
@@ -5215,7 +5260,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Section 2.2",
+													"value": "Section 2.2 or 2.7",
 													"marks": [
 														{
 															"type": "bold"
