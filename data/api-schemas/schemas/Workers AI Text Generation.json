@@ -97,20 +97,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -119,9 +111,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -291,20 +280,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -313,9 +294,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -485,20 +463,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -507,9 +477,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -679,20 +646,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -701,9 +660,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -873,20 +829,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -895,9 +843,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -1067,20 +1012,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -1089,9 +1026,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -1261,20 +1195,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -1283,9 +1209,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -1455,20 +1378,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -1477,9 +1392,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -1649,20 +1561,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -1671,9 +1575,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -1843,20 +1744,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -1865,9 +1758,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -2037,20 +1927,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -2059,9 +1941,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -2231,20 +2110,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -2253,9 +2124,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -2327,8 +2195,8 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1": {
-		"operationId": "workers-ai-post-run-cf-mistral-mistral-7b-instruct-v0-1",
+	"POST /accounts/{account_id}/ai/run/@cf/microsoft/phi-3-mini-4k-instruct": {
+		"operationId": "workers-ai-post-run-cf-microsoft-phi-3-mini-4k-instruct",
 		"parameters": [
 			{
 				"in": "path",
@@ -2425,20 +2293,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -2447,9 +2307,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -2505,7 +2362,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Execute @cf/mistral/mistral-7b-instruct-v0.1 model.",
+		"summary": "Execute @cf/microsoft/phi-3-mini-4k-instruct model.",
 		"tags": [
 			"Workers AI Text Generation"
 		],
@@ -2619,20 +2476,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -2641,9 +2490,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -2813,20 +2659,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -2835,9 +2673,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -3007,20 +2842,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -3029,9 +2856,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -3201,20 +3025,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -3223,9 +3039,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -3395,20 +3208,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -3417,9 +3222,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -3589,20 +3391,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -3611,9 +3405,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -3783,20 +3574,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -3805,9 +3588,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -3977,20 +3757,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -3999,9 +3771,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -4171,20 +3940,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -4193,9 +3954,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -4365,20 +4123,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -4387,9 +4137,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -4559,20 +4306,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -4581,9 +4320,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -4753,20 +4489,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -4775,9 +4503,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -4947,20 +4672,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -4969,9 +4686,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -5141,20 +4855,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -5163,9 +4869,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -5335,20 +5038,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -5357,9 +5052,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -5529,20 +5221,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -5551,9 +5235,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -5723,20 +5404,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -5745,9 +5418,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -5917,20 +5587,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -5939,9 +5601,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -6111,20 +5770,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -6133,9 +5784,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -6305,20 +5953,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -6327,9 +5967,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -6499,20 +6136,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -6521,9 +6150,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -6693,20 +6319,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -6715,9 +6333,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -6887,20 +6502,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -6909,9 +6516,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -7081,20 +6685,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -7103,9 +6699,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -7275,20 +6868,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -7297,9 +6882,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -7469,20 +7051,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -7491,9 +7065,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -7663,20 +7234,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
+									"properties": {
+										"description": {
 											"type": "string"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -7685,9 +7248,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"

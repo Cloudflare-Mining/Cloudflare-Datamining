@@ -29,18 +29,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"items": {
-										"properties": {
-											"label": {
-												"type": "string"
-											},
-											"score": {
-												"type": "number"
-											}
-										},
-										"type": "object"
+									"properties": {
+										"description": {
+											"type": "string"
+										}
 									},
-									"type": "array"
+									"type": "object"
 								},
 								"success": {
 									"default": "true",

@@ -58,12 +58,16 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"description": {
+											"type": "string"
+										}
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -202,12 +206,16 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"description": {
+											"type": "string"
+										}
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -346,12 +354,16 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"description": {
+											"type": "string"
+										}
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -490,12 +502,16 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"description": {
+											"type": "string"
+										}
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -634,12 +650,16 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"description": {
+											"type": "string"
+										}
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",
@@ -778,12 +798,16 @@
 		"responses": {
 			"200": {
 				"content": {
-					"image/png": {
+					"application/json": {
 						"schema": {
 							"properties": {
 								"result": {
-									"format": "binary",
-									"type": "string"
+									"properties": {
+										"description": {
+											"type": "string"
+										}
+									},
+									"type": "object"
 								},
 								"success": {
 									"default": "true",

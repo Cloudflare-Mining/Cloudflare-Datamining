@@ -29,35 +29,12 @@
 						"schema": {
 							"properties": {
 								"result": {
-									"items": {
-										"properties": {
-											"box": {
-												"properties": {
-													"xmax": {
-														"type": "number"
-													},
-													"xmin": {
-														"type": "number"
-													},
-													"ymax": {
-														"type": "number"
-													},
-													"ymin": {
-														"type": "number"
-													}
-												},
-												"type": "object"
-											},
-											"label": {
-												"type": "string"
-											},
-											"score": {
-												"type": "number"
-											}
-										},
-										"type": "object"
+									"properties": {
+										"description": {
+											"type": "string"
+										}
 									},
-									"type": "array"
+									"type": "object"
 								},
 								"success": {
 									"default": "true",

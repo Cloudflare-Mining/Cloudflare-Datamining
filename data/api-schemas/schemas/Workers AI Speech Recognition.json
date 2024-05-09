@@ -30,36 +30,10 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"text": {
+										"description": {
 											"type": "string"
-										},
-										"vtt": {
-											"type": "string"
-										},
-										"word_count": {
-											"type": "number"
-										},
-										"words": {
-											"items": {
-												"properties": {
-													"end": {
-														"type": "number"
-													},
-													"start": {
-														"type": "number"
-													},
-													"word": {
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
 										}
 									},
-									"required": [
-										"text"
-									],
 									"type": "object"
 								},
 								"success": {
@@ -171,36 +145,10 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"text": {
+										"description": {
 											"type": "string"
-										},
-										"vtt": {
-											"type": "string"
-										},
-										"word_count": {
-											"type": "number"
-										},
-										"words": {
-											"items": {
-												"properties": {
-													"end": {
-														"type": "number"
-													},
-													"start": {
-														"type": "number"
-													},
-													"word": {
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
 										}
 									},
-									"required": [
-										"text"
-									],
 									"type": "object"
 								},
 								"success": {
@@ -312,36 +260,10 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"text": {
+										"description": {
 											"type": "string"
-										},
-										"vtt": {
-											"type": "string"
-										},
-										"word_count": {
-											"type": "number"
-										},
-										"words": {
-											"items": {
-												"properties": {
-													"end": {
-														"type": "number"
-													},
-													"start": {
-														"type": "number"
-													},
-													"word": {
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
 										}
 									},
-									"required": [
-										"text"
-									],
 									"type": "object"
 								},
 								"success": {
