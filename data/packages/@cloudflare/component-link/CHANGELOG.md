@@ -1,10 +1,34 @@
 # Change Log
 
+## 8.0.15
+
+### Patch Changes
+
+- Updated dependencies [fc0a586a75]
+  - @cloudflare/util-sparrow@5.3.49
+
+## 8.0.14
+
+### Patch Changes
+
+- Updated dependencies [3ce02e6a30]
+  - @cloudflare/component-icon@12.6.0
+  - @cloudflare/component-arrow-swivel@8.0.10
+  - @cloudflare/component-button@8.3.5
+
 ## 8.0.13
 
 ### Patch Changes
 
+- 35b41fdd48: Fixed an issue where `@cloudflare/style-container` wouldn't dedupe conflicting style rules when using `RouteLink` as a base component.
+
+  `fela` (which `@cloudflare/style-container` uses under the hood) only dedupes style rule conflicts when extending another fela component.
+  We were previously returning `RouteLink` as a raw React component that wrapped a fela component, which caused fela to pass along any conflicting style rules without first resolving them.
+  Instead, `RouteLink` is now exported as a fela component.
+
+- Updated dependencies [c1edbe1df3]
 - Updated dependencies [b57967acf0]
+  - @cloudflare/util-sparrow@5.3.48
   - @cloudflare/component-arrow-swivel@8.0.9
 
 ## 8.0.12

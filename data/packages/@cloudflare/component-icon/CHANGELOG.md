@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.6.0
+
+### Minor Changes
+
+- 3ce02e6a30: Adds "inbox" icon
+
 ## 12.5.0
 
 ### Minor Changes
