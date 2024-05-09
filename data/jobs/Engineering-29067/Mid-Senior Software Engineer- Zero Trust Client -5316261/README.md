@@ -14,7 +14,7 @@
 <ul>
 	<li>Excellent programming skills, with experience writing very <strong>high-quality and low-complexity</strong> code with thorough documentation.</li>
 	<li>Strong experience writing <strong>easily-testable</strong> and<strong> thoroughly-tested code</strong> (e.g. using dependency injection with the right abstractions)</li>
-	<li>Experience with<strong> cross-platform programming</strong> and good familiarity and understanding of <strong>user-interface and core OS concepts</strong> of one or more platform (macOS, Windows, Linux, iOS, Android)</li>
+	<li>Experience with<strong> cross-platform programming</strong> and good familiarity and understanding of <strong>user-interface and core OS concepts</strong> of one or more platforms (macOS, Windows, Linux, iOS, Android)</li>
 	<li>Great experience successfully using&nbsp;<strong>different typed programming languages</strong>, such as Swift, Java, Kotlin, C#, as well as<strong> lower-level languages</strong>, such as Rust, C, C++.</li>
 	<li>Very comfortable writing&nbsp;<strong>multithreaded, asynchronous</strong> code</li>
 	<li>Strong experience with&nbsp;<strong>debugging</strong>, both at the <strong>application level</strong> and <strong>network-related problems</strong></li>
