@@ -2761,6 +2761,32 @@
 							},
 							{
 								"contentTypeId": "navNavigationItem",
+								"contentfulId": "6C1rwh6mbzhIbIstToAv60",
+								"locale": "en-US",
+								"name": "Under attack?",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"overrideTheSalesPhoneNumber": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "72TqunUhwVex9AwVqvhXJH",
+									"locale": "en-US",
+									"title": "Under attack?",
+									"description": null,
+									"url": "/under-attack-hotline/",
+									"badges": null,
+									"specialLinkType": "CTA",
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
 								"contentfulId": "6hwsf5NzNvaEIvken104XZ",
 								"locale": "en-US",
 								"name": "Log in",
@@ -3149,6 +3175,39 @@
 								},
 								{
 									"contentTypeId": "elementResourceCard",
+									"contentfulId": "6N47qq4GFSiuEyokDfqg6t",
+									"heading": "Blog",
+									"description": "Cloudflare simplifies single-vendor SASE for security, networking, and DevOps",
+									"category": "None",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "7BnaHVBS0HilYEqDHODPP7",
+										"elementName": "Single Vendor SASE launch / promotion - link",
+										"standardText": null,
+										"text": "Read the blog",
+										"url": "https://blog.cloudflare.com/single-vendor-sase-announcement-2024/",
+										"elementModal": null,
+										"openInNewTab": true,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "9684b054-c308-59f8-99ed-c8659a80b834",
+										"altText": "Single Vendor SASE launch / promotion",
+										"title": null,
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6E70smKDCjFB3woMX7lsLw/ddb0cf0399c78060538738e721363c47/Single-vendor-SASE-simplified-for-security--networking--and-DevOps-1.png"
+											},
+											"description": "Single Vendor SASE launch / promotion"
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
+								{
+									"contentTypeId": "elementResourceCard",
 									"contentfulId": "7g49Aoc5BKnXcb6kGKqmEj",
 									"heading": "Report",
 									"description": "How to evaluate SASE vendors: an in-depth guide",
@@ -3197,7 +3256,21 @@
 										"openInNewTab": false,
 										"locale": "en-US"
 									},
-									"image": null
+									"image": {
+										"id": "102717fe-4e92-5760-beec-07bf210987a4",
+										"altText": "VPN icon",
+										"title": "Ivanti VPN hack",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/22NdsHtFns1jWKNVhQy8LT/c6d7444b0c46561bf6dd46638f2a7fc9/vanti-VPN_Whats-New-Card_OPT4.png"
+											},
+											"description": ""
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
 								}
 							]
 						},
@@ -4904,7 +4977,20 @@
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
 							},
-							"primaryCtaButton": null,
+							"primaryCtaButton": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "4rnrXiq1i4wEYx9ZjMU35r",
+								"elementName": "Get in Touch",
+								"standardText": null,
+								"text": "Get in touch",
+								"url": "https://www.cloudflare.com/plans/enterprise/contact/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							},
 							"secondaryCtaButton": null
 						}
 					]
@@ -12404,6 +12490,14 @@
 					},
 					{
 						"customClassName": null,
+						"contentfulId": "5EcYatWxZWTYbxOtFMsEpF",
+						"url": "/plans/",
+						"title": "Compare plans",
+						"trackingLabel": "Compare plans",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
 						"contentfulId": "N2F4KP3flAEB6G73dllnX",
 						"url": "/about-your-website/",
 						"title": "Get a recommendation",
@@ -12416,6 +12510,14 @@
 						"url": "/plans/enterprise/demo/",
 						"title": "Request a demo",
 						"trackingLabel": "request-a-demo",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "2Ekkn62N8a0ULwW7B5OqMk",
+						"url": "/plans/enterprise/contact/",
+						"title": "Contact sales",
+						"trackingLabel": "contact-sales",
 						"hideOnChinaSite": null
 					}
 				],
@@ -12475,6 +12577,14 @@
 						"url": "/resource-hub/?resourcetype=Whitepaper",
 						"title": "White Papers",
 						"trackingLabel": "white-papers",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "7K5hiyAT088Ir5YMkC7Dxg",
+						"url": "https://developers.cloudflare.com/",
+						"title": "Developer docs",
+						"trackingLabel": "developer-docs",
 						"hideOnChinaSite": null
 					},
 					{
