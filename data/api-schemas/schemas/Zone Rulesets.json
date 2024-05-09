@@ -3855,6 +3855,11 @@
 																								"properties": {
 																									"cookie_fields": {
 																										"description": "The cookie fields to log.",
+																										"example": [
+																											{
+																												"name": "cookie_name_1"
+																											}
+																										],
 																										"items": {
 																											"description": "The cookie field to log.",
 																											"properties": {
@@ -3878,6 +3883,11 @@
 																									},
 																									"request_fields": {
 																										"description": "The request fields to log.",
+																										"example": [
+																											{
+																												"name": "http_request_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The request field to log.",
 																											"properties": {
@@ -3901,6 +3911,11 @@
 																									},
 																									"response_fields": {
 																										"description": "The response fields to log.",
+																										"example": [
+																											{
+																												"name": "http_response_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The response field to log.",
 																											"properties": {
@@ -8422,6 +8437,11 @@
 																								"properties": {
 																									"cookie_fields": {
 																										"description": "The cookie fields to log.",
+																										"example": [
+																											{
+																												"name": "cookie_name_1"
+																											}
+																										],
 																										"items": {
 																											"description": "The cookie field to log.",
 																											"properties": {
@@ -8445,6 +8465,11 @@
 																									},
 																									"request_fields": {
 																										"description": "The request fields to log.",
+																										"example": [
+																											{
+																												"name": "http_request_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The request field to log.",
 																											"properties": {
@@ -8468,6 +8493,11 @@
 																									},
 																									"response_fields": {
 																										"description": "The response fields to log.",
+																										"example": [
+																											{
+																												"name": "http_response_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The response field to log.",
 																											"properties": {
@@ -12806,6 +12836,11 @@
 																								"properties": {
 																									"cookie_fields": {
 																										"description": "The cookie fields to log.",
+																										"example": [
+																											{
+																												"name": "cookie_name_1"
+																											}
+																										],
 																										"items": {
 																											"description": "The cookie field to log.",
 																											"properties": {
@@ -12829,6 +12864,11 @@
 																									},
 																									"request_fields": {
 																										"description": "The request fields to log.",
+																										"example": [
+																											{
+																												"name": "http_request_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The request field to log.",
 																											"properties": {
@@ -12852,6 +12892,11 @@
 																									},
 																									"response_fields": {
 																										"description": "The response fields to log.",
+																										"example": [
+																											{
+																												"name": "http_response_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The response field to log.",
 																											"properties": {
@@ -16757,6 +16802,11 @@
 																								"properties": {
 																									"cookie_fields": {
 																										"description": "The cookie fields to log.",
+																										"example": [
+																											{
+																												"name": "cookie_name_1"
+																											}
+																										],
 																										"items": {
 																											"description": "The cookie field to log.",
 																											"properties": {
@@ -16780,6 +16830,11 @@
 																									},
 																									"request_fields": {
 																										"description": "The request fields to log.",
+																										"example": [
+																											{
+																												"name": "http_request_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The request field to log.",
 																											"properties": {
@@ -16803,6 +16858,11 @@
 																									},
 																									"response_fields": {
 																										"description": "The response fields to log.",
+																										"example": [
+																											{
+																												"name": "http_response_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The response field to log.",
 																											"properties": {
@@ -21189,6 +21249,11 @@
 																								"properties": {
 																									"cookie_fields": {
 																										"description": "The cookie fields to log.",
+																										"example": [
+																											{
+																												"name": "cookie_name_1"
+																											}
+																										],
 																										"items": {
 																											"description": "The cookie field to log.",
 																											"properties": {
@@ -21212,6 +21277,11 @@
 																									},
 																									"request_fields": {
 																										"description": "The request fields to log.",
+																										"example": [
+																											{
+																												"name": "http_request_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The request field to log.",
 																											"properties": {
@@ -21235,6 +21305,11 @@
 																									},
 																									"response_fields": {
 																										"description": "The response fields to log.",
+																										"example": [
+																											{
+																												"name": "http_response_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The response field to log.",
 																											"properties": {
@@ -24901,6 +24976,11 @@
 														"properties": {
 															"cookie_fields": {
 																"description": "The cookie fields to log.",
+																"example": [
+																	{
+																		"name": "cookie_name_1"
+																	}
+																],
 																"items": {
 																	"description": "The cookie field to log.",
 																	"properties": {
@@ -24924,6 +25004,11 @@
 															},
 															"request_fields": {
 																"description": "The request fields to log.",
+																"example": [
+																	{
+																		"name": "http_request_header_name_1_in_lower_case"
+																	}
+																],
 																"items": {
 																	"description": "The request field to log.",
 																	"properties": {
@@ -24947,6 +25032,11 @@
 															},
 															"response_fields": {
 																"description": "The response fields to log.",
+																"example": [
+																	{
+																		"name": "http_response_header_name_1_in_lower_case"
+																	}
+																],
 																"items": {
 																	"description": "The response field to log.",
 																	"properties": {
@@ -28677,6 +28767,11 @@
 																								"properties": {
 																									"cookie_fields": {
 																										"description": "The cookie fields to log.",
+																										"example": [
+																											{
+																												"name": "cookie_name_1"
+																											}
+																										],
 																										"items": {
 																											"description": "The cookie field to log.",
 																											"properties": {
@@ -28700,6 +28795,11 @@
 																									},
 																									"request_fields": {
 																										"description": "The request fields to log.",
+																										"example": [
+																											{
+																												"name": "http_request_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The request field to log.",
 																											"properties": {
@@ -28723,6 +28823,11 @@
 																									},
 																									"response_fields": {
 																										"description": "The response fields to log.",
+																										"example": [
+																											{
+																												"name": "http_response_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The response field to log.",
 																											"properties": {
@@ -32468,6 +32573,11 @@
 																	"properties": {
 																		"cookie_fields": {
 																			"description": "The cookie fields to log.",
+																			"example": [
+																				{
+																					"name": "cookie_name_1"
+																				}
+																			],
 																			"items": {
 																				"description": "The cookie field to log.",
 																				"properties": {
@@ -32491,6 +32601,11 @@
 																		},
 																		"request_fields": {
 																			"description": "The request fields to log.",
+																			"example": [
+																				{
+																					"name": "http_request_header_name_1_in_lower_case"
+																				}
+																			],
 																			"items": {
 																				"description": "The request field to log.",
 																				"properties": {
@@ -32514,6 +32629,11 @@
 																		},
 																		"response_fields": {
 																			"description": "The response fields to log.",
+																			"example": [
+																				{
+																					"name": "http_response_header_name_1_in_lower_case"
+																				}
+																			],
 																			"items": {
 																				"description": "The response field to log.",
 																				"properties": {
@@ -36184,6 +36304,11 @@
 																								"properties": {
 																									"cookie_fields": {
 																										"description": "The cookie fields to log.",
+																										"example": [
+																											{
+																												"name": "cookie_name_1"
+																											}
+																										],
 																										"items": {
 																											"description": "The cookie field to log.",
 																											"properties": {
@@ -36207,6 +36332,11 @@
 																									},
 																									"request_fields": {
 																										"description": "The request fields to log.",
+																										"example": [
+																											{
+																												"name": "http_request_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The request field to log.",
 																											"properties": {
@@ -36230,6 +36360,11 @@
 																									},
 																									"response_fields": {
 																										"description": "The response fields to log.",
+																										"example": [
+																											{
+																												"name": "http_response_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The response field to log.",
 																											"properties": {
@@ -39884,6 +40019,11 @@
 														"properties": {
 															"cookie_fields": {
 																"description": "The cookie fields to log.",
+																"example": [
+																	{
+																		"name": "cookie_name_1"
+																	}
+																],
 																"items": {
 																	"description": "The cookie field to log.",
 																	"properties": {
@@ -39907,6 +40047,11 @@
 															},
 															"request_fields": {
 																"description": "The request fields to log.",
+																"example": [
+																	{
+																		"name": "http_request_header_name_1_in_lower_case"
+																	}
+																],
 																"items": {
 																	"description": "The request field to log.",
 																	"properties": {
@@ -39930,6 +40075,11 @@
 															},
 															"response_fields": {
 																"description": "The response fields to log.",
+																"example": [
+																	{
+																		"name": "http_response_header_name_1_in_lower_case"
+																	}
+																],
 																"items": {
 																	"description": "The response field to log.",
 																	"properties": {
@@ -43660,6 +43810,11 @@
 																								"properties": {
 																									"cookie_fields": {
 																										"description": "The cookie fields to log.",
+																										"example": [
+																											{
+																												"name": "cookie_name_1"
+																											}
+																										],
 																										"items": {
 																											"description": "The cookie field to log.",
 																											"properties": {
@@ -43683,6 +43838,11 @@
 																									},
 																									"request_fields": {
 																										"description": "The request fields to log.",
+																										"example": [
+																											{
+																												"name": "http_request_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The request field to log.",
 																											"properties": {
@@ -43706,6 +43866,11 @@
 																									},
 																									"response_fields": {
 																										"description": "The response fields to log.",
+																										"example": [
+																											{
+																												"name": "http_response_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The response field to log.",
 																											"properties": {
@@ -47463,6 +47628,11 @@
 																	"properties": {
 																		"cookie_fields": {
 																			"description": "The cookie fields to log.",
+																			"example": [
+																				{
+																					"name": "cookie_name_1"
+																				}
+																			],
 																			"items": {
 																				"description": "The cookie field to log.",
 																				"properties": {
@@ -47486,6 +47656,11 @@
 																		},
 																		"request_fields": {
 																			"description": "The request fields to log.",
+																			"example": [
+																				{
+																					"name": "http_request_header_name_1_in_lower_case"
+																				}
+																			],
 																			"items": {
 																				"description": "The request field to log.",
 																				"properties": {
@@ -47509,6 +47684,11 @@
 																		},
 																		"response_fields": {
 																			"description": "The response fields to log.",
+																			"example": [
+																				{
+																					"name": "http_response_header_name_1_in_lower_case"
+																				}
+																			],
 																			"items": {
 																				"description": "The response field to log.",
 																				"properties": {
@@ -51176,6 +51356,11 @@
 																								"properties": {
 																									"cookie_fields": {
 																										"description": "The cookie fields to log.",
+																										"example": [
+																											{
+																												"name": "cookie_name_1"
+																											}
+																										],
 																										"items": {
 																											"description": "The cookie field to log.",
 																											"properties": {
@@ -51199,6 +51384,11 @@
 																									},
 																									"request_fields": {
 																										"description": "The request fields to log.",
+																										"example": [
+																											{
+																												"name": "http_request_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The request field to log.",
 																											"properties": {
@@ -51222,6 +51412,11 @@
 																									},
 																									"response_fields": {
 																										"description": "The response fields to log.",
+																										"example": [
+																											{
+																												"name": "http_response_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The response field to log.",
 																											"properties": {
@@ -55003,6 +55198,11 @@
 																	"properties": {
 																		"cookie_fields": {
 																			"description": "The cookie fields to log.",
+																			"example": [
+																				{
+																					"name": "cookie_name_1"
+																				}
+																			],
 																			"items": {
 																				"description": "The cookie field to log.",
 																				"properties": {
@@ -55026,6 +55226,11 @@
 																		},
 																		"request_fields": {
 																			"description": "The request fields to log.",
+																			"example": [
+																				{
+																					"name": "http_request_header_name_1_in_lower_case"
+																				}
+																			],
 																			"items": {
 																				"description": "The request field to log.",
 																				"properties": {
@@ -55049,6 +55254,11 @@
 																		},
 																		"response_fields": {
 																			"description": "The response fields to log.",
+																			"example": [
+																				{
+																					"name": "http_response_header_name_1_in_lower_case"
+																				}
+																			],
 																			"items": {
 																				"description": "The response field to log.",
 																				"properties": {
@@ -58716,6 +58926,11 @@
 																								"properties": {
 																									"cookie_fields": {
 																										"description": "The cookie fields to log.",
+																										"example": [
+																											{
+																												"name": "cookie_name_1"
+																											}
+																										],
 																										"items": {
 																											"description": "The cookie field to log.",
 																											"properties": {
@@ -58739,6 +58954,11 @@
 																									},
 																									"request_fields": {
 																										"description": "The request fields to log.",
+																										"example": [
+																											{
+																												"name": "http_request_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The request field to log.",
 																											"properties": {
@@ -58762,6 +58982,11 @@
 																									},
 																									"response_fields": {
 																										"description": "The response fields to log.",
+																										"example": [
+																											{
+																												"name": "http_response_header_name_1_in_lower_case"
+																											}
+																										],
 																										"items": {
 																											"description": "The response field to log.",
 																											"properties": {
