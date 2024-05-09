@@ -72,6 +72,7 @@ declare const _default: {
     'hide-eye': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     home: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     image: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    inbox: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'info-sign': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'internet-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     key: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

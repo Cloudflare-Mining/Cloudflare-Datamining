@@ -25,6 +25,11 @@ export var CloudInternet = () => /*#__PURE__*/React.createElement(Icon, {
   size: 36
 });
 CloudInternet.decorators = [withStyleProvider];
+export var Inbox = () => /*#__PURE__*/React.createElement(Icon, {
+  type: "inbox",
+  size: 36
+});
+Inbox.decorators = [withStyleProvider];
 export var Spectrum = () => /*#__PURE__*/React.createElement(Icon, {
   type: "spectrum",
   size: 36

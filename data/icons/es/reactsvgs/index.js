@@ -70,6 +70,7 @@ import Help from './Help';
 import HideEye from './HideEye';
 import Home from './Home';
 import Image from './Image';
+import Inbox from './Inbox';
 import InfoSign from './InfoSign';
 import InternetBrowser from './InternetBrowser';
 import Key from './Key';
@@ -233,6 +234,7 @@ export default {
   'hide-eye': HideEye,
   home: Home,
   image: Image,
+  inbox: Inbox,
   'info-sign': InfoSign,
   'internet-browser': InternetBrowser,
   key: Key,
