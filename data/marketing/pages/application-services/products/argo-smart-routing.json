@@ -24,15 +24,15 @@
 					"nlNL": "English for Locale",
 					"idID": "English for Locale",
 					"thTH": "English for Locale",
-					"ruRU": "English for Locale",
+					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
+					"plPL": "Translated for Locale",
 					"elGR": "English for Locale",
 					"nbNO": "English for Locale",
-					"arAR": null
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "application-services/products/argo-smart-routing/",
 				"topNavOptions": "default",
@@ -128,7 +128,7 @@
 						"htmlId": null,
 						"copy": null,
 						"title": null,
-						"subtitle": null,
+						"subtitle": "BENEFITS OF ARGO SMART ROUTING",
 						"bladeStyle": null,
 						"bladeBorder": "none",
 						"sectionPadding": null,
@@ -139,11 +139,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "59H5z43z0IKFVotTdgOkt0",
-								"title": "Faster Loading Times",
+								"title": "Faster loading times",
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Argo delivers web traffic over the fastest links available resulting in noticeably faster web assets and improved end-user experience",
+								"description": "Deliver web traffic over the quickest network paths available for noticeably faster app performance and an improved user experience",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
@@ -180,11 +180,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "3CxfLaAhb7uKDmYe2QERxo",
-								"title": "Increased Reliability",
+								"title": "Increased reliability",
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Argo's live view of network conditions enables it to route around congestion and leverage the most reliable links to deliver increased uptime",
+								"description": "Route around congestion and use the most reliable paths to increase uptime",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
@@ -220,53 +220,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3NYFqtKF7gVR2oZ2ccY9oe",
-								"title": "Integrated Security ",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "All Argo traffic is encrypted end-to-end across the Cloudflare network, protecting web traffic from bad actors",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/iYSsW6GnALSRvS95AJwmP/6fc942fdf9d305551d58b9b0890e61c6/icon-scanning_1-purple.png"
-									},
-									"description": "icon scanning_1 purple"
-								},
-								"iconAssetFile": {
-									"id": "c6776679-e543-5a80-9232-26ab70198b70",
-									"altText": "Security lock Orange",
-									"title": "Security lock Orange",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
-										},
-										"description": "Padlock icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "oZTU91dlxsWi7SOs0Eox0",
-								"title": "Reduced Costs",
+								"title": "Reduced costs",
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Argo minimizes content requests to the origin server, reducing latency, server load, and bandwidth usage",
+								"description": "Minimize content requests to the origin server, reducing latency, server load, and bandwidth usage",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
@@ -289,6 +248,47 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
 										},
 										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3NYFqtKF7gVR2oZ2ccY9oe",
+								"title": "Integrated security",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Encrypt end-to-end traffic across the Cloudflare network, protecting web traffic from attackers",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/iYSsW6GnALSRvS95AJwmP/6fc942fdf9d305551d58b9b0890e61c6/icon-scanning_1-purple.png"
+									},
+									"description": "icon scanning_1 purple"
+								},
+								"iconAssetFile": {
+									"id": "c6776679-e543-5a80-9232-26ab70198b70",
+									"altText": "Security lock Orange",
+									"title": "Security lock Orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
+										},
+										"description": "Padlock icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -901,7 +901,9 @@
 				"pt-BR",
 				"es-ES",
 				"es-LA",
-				"zh-Hans-CN"
+				"ru-RU",
+				"zh-Hans-CN",
+				"pl-PL"
 			],
 			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
