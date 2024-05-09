@@ -650,7 +650,7 @@ const navigation = {
 			title: "navigation.zone.email.routing",
 			navigationType: "global-settings",
 			url: "/email/routing",
-			tabs: A.hg,
+			tabs: D.hg,
 			hasPermission: L => (0, a.iY)(L) && !(0, u.yD)(L) && (0, a.$n)(L, "dns_records", "dns-record")
 		}, {
 			title: "navigation.zone.email.dmarc-reports",
@@ -981,7 +981,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.plans",
 			navigationType: "global-settings",
 			url: "/zaraz/plans",
-			hasPermission: L => !!(0, oe.GM)(L) && !!(0, e.z1)("zaraz-plans-page-access")(L)
+			hasPermission: L => !!(0, ne.GM)(L) && !!(0, e.z1)("zaraz-plans-page-access")(L)
 		}]
 	}, {
 		title: "navigation.zone.web3.title",
