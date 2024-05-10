@@ -5,43 +5,48 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the department</strong></h4>
-<p>The Order-to-Cash Accounting A/R Staff processes all facets of Cloudflare’s worldwide Billing and Accounts Receivable (A/R) functions. This role facilitates prompt, correct, and complete billing, collection, and cash application of Cloudflare receivables to support preparation of accurate financial statements, compliance with customer contracts, and optimization of cash flow. Additionally, this position participates in certain regulatory compliance activities including sales tax assessment and reporting, and unclaimed property remittance.</p>
-<p><strong>Locations: US, UK, Portugal</strong></p>
-<p><strong>What You'll Do</strong></p>
+<p><strong>Position Locations: Austin, TX</strong></p>
+<p><strong>About the Role</strong></p>
+<p>The&nbsp; Deal Desk Manager will help accelerate revenue growth of our enterprise business by supporting our sales motion to create quality deals. As the deal desk leader for our sales team, you will be responsible for:</p>
 <ul>
-	<li>Direct preparation and issuance of customer invoices to ensure prompt and accurate billing in compliance with contract terms.</li>
-	<li>Oversee response to billing and A/R inquiries in a manner that cultivates a culture of exemplary customer service both internal and external.</li>
-	<li>Support Order-to-Cash Accounting team by running credit checks and monitoring credit worthiness of new and existing customers.</li>
-	<li>Participate in month-end close processes associated with Accounts Receivable to support timely and accurate preparation and delivery of financial statements.</li>
-	<li>Facilitate cash receipt and application processes to ensure prompt and accurate deposit of all funds and application to customer accounts.</li>
-	<li>Execute process for managing and refunding customer credit balances in a timely manner, partnering with Accounts Payable to escalate or resolve any A/R related unclaimed property issues.</li>
+	<li>Supporting the sales team in structuring and executing large/strategic deals, including bid management for enterprise deals.</li>
+	<li>Manage our enterprise deal approval process to ensure compliance while enabling unique contracting needs and requirements</li>
+	<li>Ensure sales motion reflects a healthy sales discovery process so that deals reflect the customer’s needs</li>
+	<li>Understand an evolving competitive landscape to help create competitive differentiation</li>
+	<li>Provide additional deal desk supporting to other enterprise businesses based on business need</li>
 </ul>
+<p>If you’re excited by driving growth through global, cross-channel and cross-product initiatives and want to be part of a company that is helping to build a better internet, Cloudflare would love to talk to you.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Oversee maintenance of customer account information within Billing System(s) to ensure up-to-date address, terms, tax, and contact information.</li>
-	<li>Collaborate with cross-functional teams on various systems projects including selection, implementation, and upgrades to A/R and Billing systems.</li>
+	<li>Collaborate with the sales team in structuring and executing large/strategic deals, liaison with all organizations involved in the agreement process (e.g., finance, legal, order management, product, services/support).</li>
+	<li>Audit and validate data and margins on adhoc deals submitted by the sales team.</li>
+	<li>Perform margin and pricing analysis in order to support business strategy.</li>
+	<li>Manage international pricing matrix, partner margin deals and large deal approvals.</li>
+	<li>Collaborate with internal teams to build, streamline and automate our deal desk processes.</li>
+	<li>Perform monthly and ad-hoc analysis to identify opportunities to improve the business KPIs through continuous improvement&nbsp;</li>
+	<li>Work with teams to develop pricing tools (e.g., TCO calculators, discounting guidelines) and integrate them into Salesforce</li>
 </ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Execute policies and procedures for Billing and A/R, driving toward implementation of best practices and business process improvements.</li>
-	<li>Support overall organization’s SOX compliance requirements through adherence to key controls and timely completion of reporting.</li>
-</ul>
-<p><strong>Experience</strong></p>
-<ul>
-	<li>Bachelor’s degree required, with emphasis in Accounting or Finance preferred.</li>
-	<li>2+ years of experience in Billing and A/R functions in a high volume environment.</li>
-	<li>Exposure to international operations preferred.</li>
-	<li>Experience participating in system evaluation and implementation preferred.</li>
-	<li>Demonstrated effective written, verbal and interpersonal communication skills at all levels of the organization.</li>
-	<li>Creative problem solving skills coupled with good judgment.</li>
-	<li>Effective communication skills, verbal and written, in order to research, prepare and present information to Management, as well as effective communication skills with co-workers.</li>
-	<li>Critical thinking and strong analytical skills.</li>
-	<li>Ability to exercise sound judgment, provide leadership, and take initiative under minimal supervision.</li>
-	<li>Intermediate Microsoft office skills.</li>
-	<li>Comfort in a fast paced work environment, with multiple concurrent projects and priorities.</li>
-	<li>Ability to plan, execute and deliver on projects in a timely manner; plus the ability to multitask on varying projects and initiatives.</li>
-	<li>Very high attention to detail; organized and thorough with a desire for continuous improvement.</li>
-	<li>Stellar work ethic.</li>
-	<li>CPA/CA a plus.</li>
+	<li>Must be comfortable in a fast-paced sales environment</li>
+	<li>Understand the buying process and negotiating dynamic for enterprise entities</li>
+	<li>Experience working the deal desk/contract management team:</li>
+	<ul>
+		<li>Develop an in-depth understanding of the pricing models</li>
+		<li>Provide support in conjunction with contracts, legal &amp; finance teams</li>
+		<li>Ability to analyze &amp; recommend the best course of action for complex pricing &amp; licensing situations.</li>
+	</ul>
+	<li>Knowledge of Cloud/SaaS services, software and solutions is highly recommended</li>
+	<li>Expert knowledge of Microsoft Excel, SQL&nbsp; and prior experience with modeling and analysis</li>
+	<li>Enjoys engaging with complex, cross-functional teams and individuals</li>
+	<li>Experience with&nbsp;</li>
+	<ul>
+		<li>3+ years of&nbsp; experience&nbsp;</li>
+		<li>3+ years of deal desk experience</li>
+	</ul>
+	<li>Possess excellent written and oral communication skills</li>
+	<li>Proactive, creative, and results oriented individual</li>
+	<li>Experience selling software is considered a bonus</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
