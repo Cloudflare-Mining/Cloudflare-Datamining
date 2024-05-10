@@ -918,10 +918,10 @@
 				n.g.build = pn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "a45b854f27e040c5430f4546ba15d8a303ab16f8",
+					commit: "341f58c9c6678f77c4a16d4f939acf56346536e4",
 					env: "production",
-					builtAt: 1715289892528,
-					dashVersion: "071e6606235ddd48971599f24388bfb4a959bba1",
+					builtAt: 1715350770360,
+					dashVersion: "374d1ee66e6e9b836a94ef01cf2961a3e2362a3b",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",
