@@ -2521,6 +2521,14 @@
 						"compatEnableDate": "2024-05-13",
 						"compatEnableFlag": "internal_stream_byob_return_view"
 					}
+				},
+				{
+					"name": "blobStandardMimeType",
+					"annotations": {
+						"compatDisableFlag": "blob_legacy_mime_type",
+						"compatEnableDate": "2024-06-03",
+						"compatEnableFlag": "blob_standard_mime_type"
+					}
 				}
 			]
 		},
