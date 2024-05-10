@@ -1,27 +1,28 @@
 {
-	"DELETE /accounts/{identifier}/access/policies/{uuid}": {
+	"DELETE /accounts/{account_id}/access/policies/{policy_id}": {
 		"description": "Deletes an Access reusable policy.",
 		"operationId": "access-policies-delete-an-access-reusable-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
-				"required": true,
-				"schema": {
-					"description": "The ID of the Access policy.",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -117,9 +118,10 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "The ID of the Access policy.",
+													"description": "UUID",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
+													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -236,13 +238,13 @@
 			"Access reusable policies"
 		]
 	},
-	"GET /accounts/{identifier}/access/policies": {
+	"GET /accounts/{account_id}/access/policies": {
 		"description": "Lists Access reusable policies.",
 		"operationId": "access-policies-list-access-reusable-policies",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -897,9 +899,10 @@
 																"type": "array"
 															},
 															"id": {
-																"description": "The ID of the Access policy.",
+																"description": "UUID",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
+																"readOnly": true,
 																"type": "string"
 															},
 															"include": {
@@ -1991,29 +1994,30 @@
 			"Access reusable policies"
 		]
 	},
-	"GET /accounts/{identifier}/access/policies/{uuid}": {
+	"GET /accounts/{account_id}/access/policies/{policy_id}": {
 		"description": "Fetches a single Access reusable policy.",
 		"operationId": "access-policies-get-an-access-reusable-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
-				"required": true,
-				"schema": {
-					"description": "The ID of the Access policy.",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -2642,9 +2646,10 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "The ID of the Access policy.",
+															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
+															"readOnly": true,
 															"type": "string"
 														},
 														"include": {
@@ -3734,13 +3739,13 @@
 			"Access reusable policies"
 		]
 	},
-	"POST /accounts/{identifier}/access/policies": {
+	"POST /accounts/{account_id}/access/policies": {
 		"description": "Creates a new Access reusable policy.",
 		"operationId": "access-policies-create-an-access-reusable-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5866,9 +5871,10 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "The ID of the Access policy.",
+															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
+															"readOnly": true,
 															"type": "string"
 														},
 														"include": {
@@ -6958,29 +6964,30 @@
 			"Access reusable policies"
 		]
 	},
-	"PUT /accounts/{identifier}/access/policies/{uuid}": {
+	"PUT /accounts/{account_id}/access/policies/{policy_id}": {
 		"description": "Updates a Access reusable policy.",
 		"operationId": "access-policies-update-an-access-reusable-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
-				"required": true,
-				"schema": {
-					"description": "The ID of the Access policy.",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"type": "string"
-				}
-			},
-			{
-				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -9101,9 +9108,10 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "The ID of the Access policy.",
+															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
+															"readOnly": true,
 															"type": "string"
 														},
 														"include": {

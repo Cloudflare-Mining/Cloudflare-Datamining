@@ -926,9 +926,10 @@
 																"type": "array"
 															},
 															"id": {
-																"description": "The ID of the Access policy.",
+																"description": "UUID",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
+																"readOnly": true,
 																"type": "string"
 															},
 															"include": {
@@ -2678,9 +2679,10 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "The ID of the Access policy.",
+															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
+															"readOnly": true,
 															"type": "string"
 														},
 														"include": {
@@ -5920,9 +5922,10 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "The ID of the Access policy.",
+															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
+															"readOnly": true,
 															"type": "string"
 														},
 														"include": {
@@ -9175,9 +9178,10 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "The ID of the Access policy.",
+															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
+															"readOnly": true,
 															"type": "string"
 														},
 														"include": {

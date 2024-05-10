@@ -1145,17 +1145,6 @@
 																								"example": "family_name",
 																								"type": "string"
 																							},
-																							"name_by_idp": {
-																								"additionalProperties": {
-																									"type": "string"
-																								},
-																								"description": "A mapping from IdP ID to claim name.",
-																								"example": {
-																									"exampleIdPID1": "ClaimName1",
-																									"exampleIdPID2": "ClaimName2"
-																								},
-																								"type": "object"
-																							},
 																							"required": {
 																								"description": "If the claim is required when building an OIDC token.",
 																								"example": true,
@@ -1178,6 +1167,17 @@
 																										"description": "The name of the IdP claim.",
 																										"example": "last_name",
 																										"type": "string"
+																									},
+																									"name_by_idp": {
+																										"additionalProperties": {
+																											"type": "string"
+																										},
+																										"description": "A mapping from IdP ID to claim name.",
+																										"example": {
+																											"exampleIdPID1": "ClaimName1",
+																											"exampleIdPID2": "ClaimName2"
+																										},
+																										"type": "object"
 																									}
 																								},
 																								"type": "object"
@@ -4151,17 +4151,6 @@
 																							"example": "family_name",
 																							"type": "string"
 																						},
-																						"name_by_idp": {
-																							"additionalProperties": {
-																								"type": "string"
-																							},
-																							"description": "A mapping from IdP ID to claim name.",
-																							"example": {
-																								"exampleIdPID1": "ClaimName1",
-																								"exampleIdPID2": "ClaimName2"
-																							},
-																							"type": "object"
-																						},
 																						"required": {
 																							"description": "If the claim is required when building an OIDC token.",
 																							"example": true,
@@ -4184,6 +4173,17 @@
 																									"description": "The name of the IdP claim.",
 																									"example": "last_name",
 																									"type": "string"
+																								},
+																								"name_by_idp": {
+																									"additionalProperties": {
+																										"type": "string"
+																									},
+																									"description": "A mapping from IdP ID to claim name.",
+																									"example": {
+																										"exampleIdPID1": "ClaimName1",
+																										"exampleIdPID2": "ClaimName2"
+																									},
+																									"type": "object"
 																								}
 																							},
 																							"type": "object"
@@ -7393,17 +7393,6 @@
 																		"example": "family_name",
 																		"type": "string"
 																	},
-																	"name_by_idp": {
-																		"additionalProperties": {
-																			"type": "string"
-																		},
-																		"description": "A mapping from IdP ID to claim name.",
-																		"example": {
-																			"exampleIdPID1": "ClaimName1",
-																			"exampleIdPID2": "ClaimName2"
-																		},
-																		"type": "object"
-																	},
 																	"required": {
 																		"description": "If the claim is required when building an OIDC token.",
 																		"example": true,
@@ -7426,6 +7415,17 @@
 																				"description": "The name of the IdP claim.",
 																				"example": "last_name",
 																				"type": "string"
+																			},
+																			"name_by_idp": {
+																				"additionalProperties": {
+																					"type": "string"
+																				},
+																				"description": "A mapping from IdP ID to claim name.",
+																				"example": {
+																					"exampleIdPID1": "ClaimName1",
+																					"exampleIdPID2": "ClaimName2"
+																				},
+																				"type": "object"
 																			}
 																		},
 																		"type": "object"
@@ -10252,17 +10252,6 @@
 																									"example": "family_name",
 																									"type": "string"
 																								},
-																								"name_by_idp": {
-																									"additionalProperties": {
-																										"type": "string"
-																									},
-																									"description": "A mapping from IdP ID to claim name.",
-																									"example": {
-																										"exampleIdPID1": "ClaimName1",
-																										"exampleIdPID2": "ClaimName2"
-																									},
-																									"type": "object"
-																								},
 																								"required": {
 																									"description": "If the claim is required when building an OIDC token.",
 																									"example": true,
@@ -10285,6 +10274,17 @@
 																											"description": "The name of the IdP claim.",
 																											"example": "last_name",
 																											"type": "string"
+																										},
+																										"name_by_idp": {
+																											"additionalProperties": {
+																												"type": "string"
+																											},
+																											"description": "A mapping from IdP ID to claim name.",
+																											"example": {
+																												"exampleIdPID1": "ClaimName1",
+																												"exampleIdPID2": "ClaimName2"
+																											},
+																											"type": "object"
 																										}
 																									},
 																									"type": "object"
@@ -13024,17 +13024,6 @@
 																							"example": "family_name",
 																							"type": "string"
 																						},
-																						"name_by_idp": {
-																							"additionalProperties": {
-																								"type": "string"
-																							},
-																							"description": "A mapping from IdP ID to claim name.",
-																							"example": {
-																								"exampleIdPID1": "ClaimName1",
-																								"exampleIdPID2": "ClaimName2"
-																							},
-																							"type": "object"
-																						},
 																						"required": {
 																							"description": "If the claim is required when building an OIDC token.",
 																							"example": true,
@@ -13057,6 +13046,17 @@
 																									"description": "The name of the IdP claim.",
 																									"example": "last_name",
 																									"type": "string"
+																								},
+																								"name_by_idp": {
+																									"additionalProperties": {
+																										"type": "string"
+																									},
+																									"description": "A mapping from IdP ID to claim name.",
+																									"example": {
+																										"exampleIdPID1": "ClaimName1",
+																										"exampleIdPID2": "ClaimName2"
+																									},
+																									"type": "object"
 																								}
 																							},
 																							"type": "object"
@@ -16115,17 +16115,6 @@
 																		"example": "family_name",
 																		"type": "string"
 																	},
-																	"name_by_idp": {
-																		"additionalProperties": {
-																			"type": "string"
-																		},
-																		"description": "A mapping from IdP ID to claim name.",
-																		"example": {
-																			"exampleIdPID1": "ClaimName1",
-																			"exampleIdPID2": "ClaimName2"
-																		},
-																		"type": "object"
-																	},
 																	"required": {
 																		"description": "If the claim is required when building an OIDC token.",
 																		"example": true,
@@ -16148,6 +16137,17 @@
 																				"description": "The name of the IdP claim.",
 																				"example": "last_name",
 																				"type": "string"
+																			},
+																			"name_by_idp": {
+																				"additionalProperties": {
+																					"type": "string"
+																				},
+																				"description": "A mapping from IdP ID to claim name.",
+																				"example": {
+																					"exampleIdPID1": "ClaimName1",
+																					"exampleIdPID2": "ClaimName2"
+																				},
+																				"type": "object"
 																			}
 																		},
 																		"type": "object"
@@ -18974,17 +18974,6 @@
 																									"example": "family_name",
 																									"type": "string"
 																								},
-																								"name_by_idp": {
-																									"additionalProperties": {
-																										"type": "string"
-																									},
-																									"description": "A mapping from IdP ID to claim name.",
-																									"example": {
-																										"exampleIdPID1": "ClaimName1",
-																										"exampleIdPID2": "ClaimName2"
-																									},
-																									"type": "object"
-																								},
 																								"required": {
 																									"description": "If the claim is required when building an OIDC token.",
 																									"example": true,
@@ -19007,6 +18996,17 @@
 																											"description": "The name of the IdP claim.",
 																											"example": "last_name",
 																											"type": "string"
+																										},
+																										"name_by_idp": {
+																											"additionalProperties": {
+																												"type": "string"
+																											},
+																											"description": "A mapping from IdP ID to claim name.",
+																											"example": {
+																												"exampleIdPID1": "ClaimName1",
+																												"exampleIdPID2": "ClaimName2"
+																											},
+																											"type": "object"
 																										}
 																									},
 																									"type": "object"
@@ -21746,17 +21746,6 @@
 																							"example": "family_name",
 																							"type": "string"
 																						},
-																						"name_by_idp": {
-																							"additionalProperties": {
-																								"type": "string"
-																							},
-																							"description": "A mapping from IdP ID to claim name.",
-																							"example": {
-																								"exampleIdPID1": "ClaimName1",
-																								"exampleIdPID2": "ClaimName2"
-																							},
-																							"type": "object"
-																						},
 																						"required": {
 																							"description": "If the claim is required when building an OIDC token.",
 																							"example": true,
@@ -21779,6 +21768,17 @@
 																									"description": "The name of the IdP claim.",
 																									"example": "last_name",
 																									"type": "string"
+																								},
+																								"name_by_idp": {
+																									"additionalProperties": {
+																										"type": "string"
+																									},
+																									"description": "A mapping from IdP ID to claim name.",
+																									"example": {
+																										"exampleIdPID1": "ClaimName1",
+																										"exampleIdPID2": "ClaimName2"
+																									},
+																									"type": "object"
 																								}
 																							},
 																							"type": "object"
