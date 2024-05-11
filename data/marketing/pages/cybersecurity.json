@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-01-26T22:16:55.346Z",
-					"updatedAt": "2024-05-02T05:02:06.768Z"
+					"updatedAt": "2024-05-10T23:45:03.616Z"
 				},
 				"contentfulId": "1oxTNE35eCzGRub0RB3k1i",
 				"contentTypeId": "page",
@@ -67,35 +67,87 @@
 				"relatedBlades": [
 					{
 						"contentTypeId": "bladeHtml",
-						"contentfulId": "eGXAn16OshEZyotqLbHpf",
-						"htmlContent": "<style>\n.wrapper { background-color: #003682; margin: 0; padding: 20px; width: 100vw;margin-left: calc((100vw - 100%) / -2);  }\n.content { color: #ffffff; margin: 0px auto;  width: fit-content; }\n.link-helper {color: #ffffff !important; margin-left: 5px; text-decoration: underline !important; text-underline-offset: 4px;}\n.link-helper:hover { text-decoration: underline; color: #ffffff !important; text-underline-offset: 4px; }\n</style>\n\n<section class=\" wrapper\" id=\"contentful-psa-banner\">\n  <div class=\"content\">\n    <span>\n      Live @ RSAC 2024 | SASE & WAAP workshops & demos, VIP panels, and parties!\n    </span>\n   <a class=\"link-helper\"  href=\"/rsa-conference-2024/\"> \n     <strong>RSVP></strong>\n    </a>   \n  </div>\n</section>",
+						"contentfulId": "2eE4VUL6KvHfLWKdyWiQTR",
+						"htmlContent": "<style>\n.wrapper { background-color: #003682; margin: 0; padding: 20px; width: 100vw;margin-left: calc((100vw - 100%) / -2);  }\n.content { color: #ffffff; margin: 0px auto;  width: fit-content; }\n.link-helper {color: #ffffff !important; margin-left: 5px; text-decoration: underline !important; text-underline-offset: 4px;}\n.link-helper:hover { text-decoration: underline; color: #ffffff !important; text-underline-offset: 4px; }\n  .link-helper.first-element {\n    display: inline-block;\n  }\n</style>\n\n<section class=\" wrapper\" id=\"contentful-psa-banner\">\n  <div class=\"content\">\n    <a class=\"link-helper first-element\" href=\"/rsa-conference-2024/\">\n      <strong>Meet us</strong>\n    </a>\n    <span>\n      @ RSAC 2024 | Unified Risk Posture announcement\n    </span>\n   <a class=\"link-helper\"  href=\"/cybersecurity-risk-management/\"> \n     <strong>Learn more.</strong>\n    </a>   \n  </div>\n</section>",
 						"htmlId": null
 					},
 					{
 						"contentTypeId": "bladeHalfWidthHero",
 						"contentfulId": "6Q2CYG2eMBPU5jnwkodSjU",
-						"entityTitle": "Everywhere Security - half width hero",
+						"entityTitle": "Everywhere Security - HERO",
 						"leftHalf": {
 							"contentTypeId": "elementHalfWidthHeroContent",
 							"contentfulId": "35b7JTSnhg3HGgnsXQcPKg",
-							"title": "Everywhere Security",
+							"title": "Unify security services under one control plane",
 							"eyebrow": null,
-							"copy": "Most IT and security architectures are too complex and disjointed to enforce controls everywhere they need to be, slowing down business.<br><br>\n\nCloudflare unifies security everywhere across the Internet, employees and corporate network, so you can accelerate growth.",
+							"copy": "Secure your people, apps and networks more efficiently and effectively with Cloudflare's connectivity cloud<br><br>\n",
 							"primaryCta": {
 								"buttonAssetFile": null,
 								"buttonTextLoggedIn": null,
 								"contentTypeId": "button",
 								"contentfulId": "1Fv79jmi5xQdRMpRKt7AFL",
-								"elementName": "Request a consultation - CTA - 0",
+								"elementName": "Request a consultation - CTA - Modal-form",
 								"standardText": null,
 								"text": "Request a consultation",
-								"url": "/plans/enterprise/contact/",
+								"url": null,
 								"loggedInUrl": null,
-								"buttonModal": null,
+								"buttonModal": {
+									"contentTypeId": "formModal",
+									"contentfulId": "7De9wYOG8Ot820qAXNjbpQ",
+									"modalName": "Everywhere Security - Request a consultation - Form",
+									"modalId": "everywhere-security-request-a-consultation-form",
+									"modalType": "single-form",
+									"marketoForm": {
+										"contentTypeId": "marketoEmbeddedForm",
+										"contentfulId": "7GA8lvyPoXFLUsPEgHqzur",
+										"bladeName": "Everywhere Security - Request a consultation - Marketo form",
+										"backgroundColor": "white",
+										"marketoFormId": 1341,
+										"marketoFormLeadSource": "Inbound - Web Form",
+										"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+										"marketoFormHeaderText": "Request a consultation",
+										"marketoFormDefaultComment": null,
+										"showCommentBox": null,
+										"marketoFormThankYouText": null,
+										"marketoFormCustomSuccessMessage": null,
+										"marketoFormPdfDownload": null,
+										"marketoFormPdfDownloadI18n": [],
+										"marketoFormAssetDownloadButtonText": null,
+										"marketoFormSuccessRedirectUrl": null,
+										"sendAdRoll": null,
+										"meta_adRollCustomSegment": null,
+										"enableSandbox": null,
+										"marketoFormSubmitButtonText": null,
+										"marketoFormSubmitButtonColor": null,
+										"enableEmailVerification": null,
+										"disableEnterpriseEmailNotification": null,
+										"enableRingout": null
+									},
+									"title": null,
+									"regularCopy": null,
+									"splitFormDefaultTab": null,
+									"selfServeTabText": null,
+									"selfServeCopy": null,
+									"enterpriseTabText": null,
+									"enterpriseCopy": null
+								},
 								"openInNewTab": false,
 								"locale": "en-US"
 							},
-							"secondaryCta": null,
+							"secondaryCta": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "5it3EGYBXmjLJtv3IKaITQ",
+								"elementName": "Everywhere Security - Get the solution brief - CTA",
+								"standardText": null,
+								"text": "Get the solution brief",
+								"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4l0w4jfYuFWHE8GYTK9Exj/2922e513896530a537cf356a2d5574fb/Cloudflare_Everywhere_Security_Solution_Brief.pdf",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": true,
+								"locale": "en-US"
+							},
 							"tertiaryCta": null
 						},
 						"rightHalf": {
@@ -124,10 +176,25 @@
 					},
 					{
 						"contentfulId": "5L9r6q04QgpiUINMtvwylH",
-						"title": "Complex & disjointed security creates attack opportunities",
-						"copy": "Defending against cyber attacks has too often required manually stitching together siloed tools with limited visibility and imprecise controls across environments. \n\nAll this complexity has led to overworked teams, widening vulnerabilities, more damaging attacks, and an unsustainable level of resources just to keep up with yesterday's threats.",
+						"title": "Disparate tools and environments create security vulnerabilities",
+						"copy": "Multiple security vendors and control planes, and stretched teams, provide an ideal environment for sophisticated attacks. ",
 						"toggleText": null,
-						"button": [],
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "1CZ36zqEVJjUBG1FkO934Y",
+								"elementName": "Everywhere Security - Problem - Read whitepaper  - CTA",
+								"standardText": null,
+								"text": " Read whitepaper",
+								"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Z9RZvt9J6S3qVNvqlemI4/25a1c900a6cf6731181203f3b3c9d00c/BDES-4327_Hope-on-the-Horizon-WP-A4.pdf",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": true,
+								"locale": "en-US"
+							}
+						],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],
@@ -167,11 +234,11 @@
 						"sectionTitle": "PROBLEM",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "large",
+						"imageSize": "medium",
 						"imageTextAlignment": null,
 						"togglesTo": []
 					},
@@ -187,11 +254,83 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "6wLIj6cbEEG7kdgucIU10k",
-								"title": "Attack surfaces are expanding",
+								"title": "Security inefficiency",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Hybrid work and modern API-first app development mean more entry points for attackers to target with an ever expanding arsenal of attacks.",
+								"description": "More vendors means more tickets and longer timelines.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "242e7c8b-2bc5-5a5a-8dfa-8798e0b2b0bb",
+									"altText": "Analytics network",
+									"title": "Analytics network ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/43PVIP7xl52gR53bMu92mz/9992969dcf14d61f8c151a799c1c694c/analytics-network.png"
+										},
+										"description": "Analytics network orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7giBv4xiSBNNMWnjAoxzs9",
+								"title": "Reduced visibility",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Redundant dashboards and alerts create oversights.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b2c191f0-effd-503a-b3f1-1074c1fe8181",
+									"altText": "View icon",
+									"title": "View icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/bCn6sPxILTPh4Eei55A24/bad50a5773f3fdb795fa717bb751b694/view-eye.svg"
+										},
+										"description": "View icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1y3wjpqoqDGKKBtV39pfqo",
+								"title": "More attacks and breaches",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Inefficiency and reduced visibility cause gaps and slow response.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -219,78 +358,6 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7giBv4xiSBNNMWnjAoxzs9",
-								"title": "Too hard to manage",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Outdated and bloated security stacks with too many point solutions make it hard for teams to know how to protect their business.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
-									"altText": "Optimization gear ",
-									"title": "Optimization gear ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JreowuAuIySxXXXqycY4r/746dc87c57caa9f58423af84de3fa35a/optimization-gear.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1y3wjpqoqDGKKBtV39pfqo",
-								"title": "Innovation outpaces security",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Investing in new digital experiences and emerging technologies like AI introduces new risks. Security must evolve alongside business needs.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ff31bfda-5ac0-5e67-bf9e-bd602f3d81ce",
-									"altText": "Innovation intelligence blue",
-									"title": "Innovation intelligence blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10Jn71GCDQVevOJja3TfLO/ce8d67a09048cb50a47d2f90e33da8b2/innovation-intelligence.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
 							}
 						],
 						"sectionPadding": "tile--no-top-padding",
@@ -298,10 +365,25 @@
 					},
 					{
 						"contentfulId": "494KigWctBkJlNpit9zKia",
-						"title": "Simplify and deliver security everywhere with Cloudflare",
-						"copy": "Regain control and unify security with Cloudflare to protect the Internet, employees, and the corporate network everywhere:\n\n- Throughout IT environments\n- Across the attack lifecycle\n- Around the world\n\nEnforce protections from one unified, intelligent platform of programmable cloud-native services.",
+						"title": "Simplify security and reduce vendor sprawl with Cloudflare",
+						"copy": "The connectivity cloud from Cloudflare offers comprehensive enterprise security via scalable, programmable, cloud-native services, which eliminates the need for multiple security vendors. ",
 						"toggleText": null,
-						"button": [],
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "4kj0ycDsjtUXfnOxvuBeMV",
+								"elementName": "Everywhere Security - Solution - CTA",
+								"standardText": null,
+								"text": "Download ebook ",
+								"url": "/lp/everywhere-security-ebook/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],
@@ -352,8 +434,8 @@
 					{
 						"contentfulId": "7nveY8KAq2Od8Au2nEwTJ3",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Uniquely enabled by...",
-						"eyebrowHeading": null,
+						"title": null,
+						"eyebrowHeading": "Meet key security needs",
 						"description": null,
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
@@ -361,11 +443,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "A7PYpAf8J0hvxAfaKZhhu",
-								"title": "One unified & composable platform",
+								"title": "Adopt Zero Trust",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Converge web app and API protection (WAAP), security services edge (SSE), email security & more. Adopt new capabilities in any order with limitless interoperability and flexible integrations.",
+								"description": "Augment or replace risky VPNs, secure contractor or unmanaged device access, mitigate ransomware attacks, view and reduce data exposure.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -373,16 +455,16 @@
 								"removeCardBorder": true,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "6116a658-a791-529f-86ef-243564024b8d",
-									"altText": "Security waf blue",
-									"title": "Security waf blue",
+									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
+									"altText": "Security shield zero trust ",
+									"title": "Security shield zero trust ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ekrF3dQ9wlkBCY0Km9Rsw/2c6f76a6e909a6bec5d42ef5e83366e9/security-waf.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
 										},
-										"description": ""
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -397,11 +479,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "6Mt5wAB8sEopjJelxs8TmK",
-								"title": "Mass scale threat intelligence",
+								"title": "Protect your attack surface",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Cloudflare sees more, so you can protect more. Real-time visibility across 20% of the Internet and 2TB DNS queries / day powers AI/ML-back models that defend against emerging threats.",
+								"description": "Prevent multi-channel phishing and business email compromise, protect remote workers and distributed offices, and secure the WAN.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -409,14 +491,14 @@
 								"removeCardBorder": true,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ff31bfda-5ac0-5e67-bf9e-bd602f3d81ce",
-									"altText": "Innovation intelligence blue",
-									"title": "Innovation intelligence blue",
+									"id": "0e7afbfb-6bd8-53f7-862d-96d8bdc1c635",
+									"altText": "Ddos attack blue",
+									"title": "Ddos attack blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10Jn71GCDQVevOJja3TfLO/ce8d67a09048cb50a47d2f90e33da8b2/innovation-intelligence.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fCtDJiVXAmgSWmlKenFBR/d25c631065e2c37cc74e991740434118/ddos-attack.svg"
 										},
 										"description": ""
 									},
@@ -433,11 +515,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "3XcQdc49DJ0xrRhLvQiHhY",
-								"title": "Built for scale",
+								"title": "Stop zero-days",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Every service is available to run locally across our %{DataCenterCount} network locations in over %{CountryCount} countries. Single-pass inspection and policy enforcement is always fast, consistent, and resilient.",
+								"description": "Stop vulnerability exploits in APIs & web apps (e.g. 0-days, known CVEs, SQLi, XSS etc), along with denial of service and bot attacks.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -445,16 +527,16 @@
 								"removeCardBorder": true,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
-									"altText": "internet globe",
-									"title": "internet globe",
+									"id": "418c254e-48a6-5cdc-93f2-bd26f2346337",
+									"altText": "Zero trust risk scoring icon",
+									"title": "Zero trust risk scoring icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/vvAAIipXArJjc16UV2PZ4/e04ce1b49a190f34ca1db25553de1040/arrow-twoway.svg"
 										},
-										"description": "Orange icon of a globe"
+										"description": "arrow-twoway"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -471,238 +553,490 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "d0mtR80UPPVDBrdKiGtyh",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Ready to unify security everywhere?",
-						"description": null,
-						"variant": "full-width",
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "IH8YOcTElGSycRNT53tzk",
+						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nSpeedier incident response times, reduced cost and faster innovation\n\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeNetworkStats",
+						"contentfulId": "12bRfpQCNh5Sg3SplHGM1K",
+						"title": null,
+						"backgroundColor": "white",
 						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
-								},
-								"description": ""
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"variant": null,
+						"sectionPadding": "tile--no-top-padding",
+						"bladeBorder": "none",
+						"learnMoreLink": null,
+						"bigImage": null,
+						"quotearticle": null,
+						"bigImageAssetFile": null,
+						"networkLocationImage": null,
+						"networkLocationImageAssetFile": null,
+						"networkLocationText": null,
+						"statsFeatures": [
+							{
+								"title": "75% ",
+								"description": "improvement in response times to security and performance incidents"
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
+							{
+								"title": "48%",
+								"description": "reduction in total cost of ownership (TCO) of security and IT investments\n"
+							},
+							{
+								"title": "54% ",
+								"description": "improved time-to-market with new innovations"
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "5Mq1dWpH2MeMsUMZBY5h3u",
+						"title": "Global leaders, including 30% of the Fortune 1000, rely on Cloudflare",
+						"htmlId": "company-Logos",
+						"companyLogos": [
+							{
+								"id": "3e79297d-861e-57b1-a1fa-f060fd8b04b6",
+								"altText": "Broadcom logo",
+								"title": "Broadcom",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tI7zPMdgwOu8KsxmJDy3S/9309834cae3b3c861cf791c446abba0e/featured_logo_broadcom.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "6bab8727-c5b1-51be-a2a6-dd5f7277944f",
+								"altText": "Colgate Palmolive logo",
+								"title": "Colgate Palmolive",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVlcVxBM7oHC0gQhqhAhg/696a2e2e1211f5ee5ce104036faf364b/featured_logo_colgate_palmolive.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "323ff65d-ba14-504d-b500-be5f9e390ba7",
+								"altText": "DHL logo",
+								"title": "DHL",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1k3b3CsMHw3Tr3r9oRrUeU/b4c0c681dc6f7fdf13c1a55ebfc9a9cb/featured_logo_dhl.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "117ee30a-282a-5fab-b478-fbe6b0d69cdb",
+								"altText": "Doordash logo",
+								"title": "Doordash",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OWBxeEeZgpxcoAFt3BIOf/ddd74305e760b3872a476d3c427c0466/featured_logo_doordash.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "39287d4d-f0e8-57fe-9a88-8167fa0722ef",
+								"altText": "Garmin logo",
+								"title": "Garmin",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20TBr23zGqzXgbfSvnY1BK/bfcac6ddc997cad19bccbbc449a520af/featured_logo_garmin.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "42cf8aae-46de-5880-9fd7-0503132a132c",
+								"altText": "GPC logo",
+								"title": "GPC",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dfLsRXpaFsOQxkDsYnLdX/58164c9bea5b98ba3e5ff853ecf97e20/featured_logo_GPC.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "1328899d-c8af-5126-a77c-da738ce40380",
+								"altText": "Ted Baker London logo",
+								"title": null,
+								"activeAsset": "Brandfolder Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/0DjBw0DSC6Pp0T94SCiMz/41d22554fcbce22cffbd9a119ed8fc41/ted_baker_logo_homepage.png"
+									},
+									"description": " Ted Baker logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "95e00df8-fcd0-5888-b156-42769ae84dc4",
+								"altText": "LabCorp logo",
+								"title": "LabCorp",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/k1sJUCRn8BrepRd04ZvyA/4bd1ed0b631c2c1f887cb99a9ac80a12/featured_logo_labcorp.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4e7bdfb6-f045-5a8f-8442-c598fb96a027",
+								"altText": "L'Oreal logo",
+								"title": "L'Oreal",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/XBApB6LjRjaNIy0Cktw9k/fb5aa40999cbbc782642a25c17a0ca9e/featured_logo_loreal.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "a1b10eb3-9e13-51a4-94ac-052317747aa5",
+								"altText": "Mars logo",
+								"title": "Mars",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6i0JyE7PJxW63fNovIs3FR/6f0bec5cb4b1a9f4884086a2cdd50f39/featured_logo_mars.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "18018637-f4be-521a-8329-48bc173433f1",
+								"altText": "NCR logo",
+								"title": "NCR",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gBYWcUrgtwrxZsPK0iaa3/3bb40c3761934f3f5a8851052030139f/featured_logo_ncr.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "400536c0-a8c2-59e9-a27e-b1631f9b444e",
+								"altText": "Shopify logo",
+								"title": "Shopify",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6snCzkIRG6x4TVqNqdp8ud/11de2531f20dfa0d859d5993775eb197/featured_logo_shopify.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "a82fef0a-849a-5d8c-87d7-4484f63a2562",
+								"altText": "National Oilwell Varco logo",
+								"title": "National Oilwell Varco",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SfHC30bLvnVt2Q8VdY7pX/5988ddfdcf17de6cd65938bf73fcfe45/featured_logo_varco.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3ce88696-8ccb-5bd4-b14d-d4d4f2feec32",
+								"altText": "Intercontinental Exchange Holdings logo",
+								"title": "Intercontinental Exchange Holdings",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/69GbqaMe5hplmWO0KfO0x7/09f5cffe177333fddafa08027b7268c4/featured_logo_ice.png"
+									},
+									"description": "Intercontinental Exchange logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "8fab8575-999d-502b-97e8-489ed1772640",
+								"altText": "Carrefour logo",
+								"title": "Carrefour",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/56RBCbyjHHeUgoKnzPt5u1/25166e153ba52ecfa97879c966fab007/featured_logo_carrefour.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3a802750-7324-584d-a36d-3e5c2314478f",
+								"altText": "DeliveryHero logo",
+								"title": "DeliveryHero",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UR7JNrSk2DMlK6s3OSHGo/d362c6c86d8d67d7ef576307b5d8be86/featured_logo_delivery_hero.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "accfac33-a9fd-5c4f-a63a-776cdbdea261",
+								"altText": "Cintas logo",
+								"title": "Cintas",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5tirSMVcFPrH1glC4WGhg3/25ca2004e1d05d7814bf928cfd75ed1f/featured_logo_cintas.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "25d2f1c8-e74e-5229-9739-a81634cdd187",
+								"altText": "Thomson Reuters logo",
+								"title": "Thomson Reuters",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DiOULNDmkC76Go9zjnSXs/2fe09a5f27700c5cf6f24b26570a8190/featured_logo_thomson_reuters.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "947cdcdc-5f08-56bc-99b0-6625112b0f89",
+								"altText": "Dropbox logo",
+								"title": "Dropbox",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TezkcyrSKECJ3033CXgDZ/b98a9e661827064f20431c4521343cb1/featured_logo_dropbox.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c160dc97-0190-5165-8c3a-03d71053bcd8",
+								"altText": "Pitney Bowes logo",
+								"title": "Pitney Bowes",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tbBFmgYoEQD6Yx5IcPjOr/67854bf21f4a0ece3a4683040b70bc03/featured_logo_pitney_bowes.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fec1a3df-3c16-56bf-bc49-c7a9a2bcd401",
+								"altText": "IBM logo",
+								"title": "IBM",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CdLkPlavqnIjAC2IXGtoV/8f905b918b212c08c2616ef91d114c0d/trustedby-ibm-black.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "33f3f7e2-7590-5ba4-917b-5441d0a183fa",
+								"altText": "Melbourne Airport logo",
+								"title": "Melbourne Airport",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mTtJdvzUAqci4DXlDuZMg/e2bbf87df44278ec8ba30e6afe09e670/featured_logo_melbourne_airport.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "1c533476-07f0-5785-8705-305ae8a1ed85",
+								"altText": "Polestar logo",
+								"title": "Polestar",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/oqhmwGXDLMCdeH1SYvPMH/7a4f9a1fe781b73b41bc2c17e5358daa/featured_logo_polestar.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "31bdab15-eded-5be0-9a4c-ff7728fa3c0f",
+								"altText": "Falabella logo",
+								"title": "Falabella",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5J9gWjrgVqesMQ6Kg0HB3r/eee9c2abc323fbb80746bf98e7ded2cf/featured_logo_falabella.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": null
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "N3s4DCzvC2Z4BDj0L24mV",
+						"title": "Ready to have a conversation with a specialist?",
+						"titleSize": null,
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
 							"contentfulId": "7EvGFJJsKVZgYeN38ajPTa",
-							"elementName": "Request a consultation",
+							"elementName": "Talk to an expert ",
 							"standardText": null,
-							"text": "Request a consultation",
+							"text": "Talk to an expert",
 							"url": "/plans/enterprise/contact/",
 							"loggedInUrl": null,
-							"buttonModal": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "1vPRNya1LleNRDVspQv5dk",
+								"modalName": "Enterprise General Sales Inquiry",
+								"modalId": "enterprise-general-sales-inquiry",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "4tTjsBLF0mNsBJLLtM7OoP",
+									"bladeName": "Web Form - Enterprise General Sales Inquiry - Marketo form",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
-					},
-					{
-						"contentfulId": "4xtfa9XNpKIjWWTiQK10Vp",
-						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Lifecycle of a cyberattack",
-						"eyebrowHeading": "HOW IT WORKS",
-						"description": "Point solutions with traditional flat network architectures make it easier for threat actors across the cyberattack lifecycle:",
-						"textLayout": "center",
-						"columnsLayout": "One Column",
-						"columnContent": [
-							{
-								"contentTypeId": "elementColumnImageContent",
-								"contentfulId": "eIbANuIzANoyr8kSvfP3E",
-								"image": {
-									"contentfulId": "7JUoxoYpOrJ8zqiIklQOX8",
-									"locale": "en-US",
-									"title": "IT Environment - Lifecycle of a cyber attack",
-									"file": {
-										"name": "attack-timeline-problem.png",
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7JUoxoYpOrJ8zqiIklQOX8/11d963491987c226f1dcbb34904b9679/attack-timeline-problem.png",
-										"internal": {
-											"mediaType": "image/png"
-										}
-									}
-								},
-								"heading": null,
-								"copy": null
-							}
-						],
-						"sectionPadding": "tile--no-bottom-padding",
-						"htmlId": null
-					},
-					{
-						"contentfulId": "5WzWQN7lmgmrkXDi0CQem",
-						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": null,
-						"eyebrowHeading": null,
-						"description": null,
-						"textLayout": "left",
-						"columnsLayout": "Four Columns",
-						"columnContent": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2y8yBPRmC4LFXL7cWm8Kfn",
-								"title": "1. Discover",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Attackers begin by discovering some vulnerability in your attack surface.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": true,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "f46bb671-ca3f-5b66-9c26-31f14275bcef",
-									"altText": "Target orange icon",
-									"title": "Target orange icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ljieC61A3bA8pHEMYLNlC/1e691047fee857a4d39a7168b1183182/target.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1KFXaQJZufGlsFe5WmuYt9",
-								"title": "2. Compromise",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Attackers then exploit a vulnerability or security gap to gain a foothold in your IT environment.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": true,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "fff20bd5-578a-53e4-ace0-dbcd9836b7b3",
-									"altText": "Attention blue",
-									"title": "Attention blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nRZeUMwzYafbEY28jf1Lc/86d60be9b7f76e45d0c03636c7899176/attention.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "18vgsezqGVJvue77Edckeo",
-								"title": "3. Lateral movement",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Once inside, attackers often need to move laterally within your environment to reach their desired target.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": true,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "d7e06a5d-c299-5788-82c3-b20a33e75fae",
-									"altText": "Lateral movement icon",
-									"title": "Lateral movement icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DMPKRLf4SbnRLKAhg2ZQO/b023500fc1efd3c6953e2638e41cd6b9/BDES-5458_Lateral_movement.svg"
-										},
-										"description": "Lateral movement icon: 128x128"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2B3kWdb6n9IIYK6YWex7j3",
-								"title": "4. Exfil / extort",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "After getting where they want to go, attackers leave with your money or data - or leave your business in disarray via sabotage.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": true,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
-									"altText": "Dollar",
-									"title": "Dollar",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						],
+						"buttonTwo": null,
 						"sectionPadding": null,
-						"htmlId": null
+						"eyebrow": null
 					},
 					{
 						"contentfulId": "6xLuywLzwB8QHuh6poA7EP",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Everywhere Security",
+						"title": "Cloudflare's connectivity cloud simplifies and streamlines security consolidation",
 						"eyebrowHeading": "HOW IT WORKS",
-						"description": "Cloudflare helps organizations across every stage of the attack lifecycle by offering a single composable platform and network to connect and protect their users, apps, and networks, across any endpoint or infrastructure in any location",
+						"description": "Our composable platform and network make it easier for organizations to protect their users, apps, and networks, across any endpoint or infrastructure — across the entire attack lifecycle.",
 						"textLayout": "center",
 						"columnsLayout": "One Column",
 						"columnContent": [
@@ -740,11 +1074,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4ZY2lNgW8XJ3aIlTjawRbi",
-								"title": "1. Minimize attack surface",
+								"title": "1. Minimize attack surfaces",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Minimize attack surface by hiding customer IP addresses, configurations, and IT assets.",
+								"description": "Unite different security domains on a single platform, simplifying management across every attack surface\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -780,7 +1114,7 @@
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Protect the entire corporate network and everything a customer connects to the Internet with L3-L7 services.",
+								"description": "Block more attacks with peerless threat intelligence spanning every domain",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -816,7 +1150,7 @@
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Eliminate lateral movement with the Zero Trust best practices of default-deny and least-privilege.",
+								"description": "Detect and respond to threats faster via unified dashboards and reporting\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -848,11 +1182,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "2UQQgpt3h6S9mutxz9ywUD",
-								"title": "4. Stop exfiltration & extortion",
+								"title": "4. Stop exfiltration and extortion",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": "small",
-								"description": "Regain visibility and control over data to stop exfiltration, fraud, and mitigate exposure risk.",
+								"description": "Lock down the whole network with Zero Trust policies\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -860,16 +1194,16 @@
 								"removeCardBorder": true,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "871b286f-8e32-54da-906c-3d30ac7806ab",
-									"altText": "Stop Exfiltration / extort icon - 128x128",
-									"title": "Stop Exfiltration / extort icon",
+									"id": "c6776679-e543-5a80-9232-26ab70198b70",
+									"altText": "Security lock Orange",
+									"title": "Security lock Orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/vLtXRFmYFmkQ9Km7xVz28/454f74d6fe161739ab06c992b7dd38ae/BDES-5458_Stop_exfiltration.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
 										},
-										"description": "Stop Exfiltration / extort icon"
+										"description": "Padlock icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -882,8 +1216,171 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4d4tu2V1FaV1pgrOfCp3X4",
+						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nCloudflare helps GPC blocks hundreds of millions of attacks across their digital portfolio\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "eGUoWbzIgiUyhOMAIa6r8",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5jwXIQV4u3kOP4tY4Mshg",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "GPC faced poor threat visibility across their 900+ site web presence, complicating detection and response. In response, they replaced their multi-vendor stack with Cloudflare's web application security services. \n\nNow, Cloudflare has helped them detect and block as many as 450 million threats per year, and prevent competitive screen scraping.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3WxqvFSHpPDUocbpDvNe3h",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"When board members see the numbers, they know we're getting a solid return on our Cloudflare investment.\"",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "6uAyvEFDVOfMedlKMxKz1j",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "6uAyvEFDVOfMedlKMxKz1j",
+															"locale": "en-US",
+															"title": "GPC logo small",
+															"file": {
+																"name": "GPS-logo-push-right.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uAyvEFDVOfMedlKMxKz1j/22f34e7635656158c1ca6a35f40e3179/GPS-logo-push-right.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
 					},
 					{
 						"contentfulId": "2648RWLDMWW14bu1ypP4Ql",
@@ -974,31 +1471,34 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "46Ro4ZFHocL2EwAGUrhQpG",
-								"title": "GPC",
+								"contentfulId": "3QN4lMt3Emyey55Rng3U5a",
+								"title": "LendingTree",
 								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Cloudflare protects 900+ GPC websites, giving them complete visibility into threats across their entire digital footprint.",
-								"learnMoreUrl": "/case-studies/genuine-parts-company/",
+								"titleSize": "small",
+								"description": "Leveraging Cloudflare solutions for DDoS, Bot Management, and Rate Limiting, LendingTree was able to save $250,000 over five months by stopping API endpoint abuse.",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/lendingtree/",
 								"learnMoreText": "Read case study",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "1c88f75f-fcb9-5483-b3f4-d30596b48753",
-									"altText": "GPC logo",
-									"title": null,
-									"activeAsset": "Contentful Asset",
+									"id": "57132979-04a7-5e58-9ac2-085ea5315886",
+									"altText": "Logo lending tree",
+									"title": "Logo lending tree",
+									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
-									"contentfulAsset": {
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 14055,
+										"height": 96,
+										"width": 320,
+										"filename": "logo_lending-tree.svg",
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mkkQsoM0pOXcVPHkjfOET/2af3643b0494c3de3aa79aa3657ae985/gpc_logo.png"
-										},
-										"description": "GPC logo"
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_lending-tree.svg"
+										}
 									},
-									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"imageOverlaySuperheader": null,
@@ -1119,62 +1619,27 @@
 						]
 					},
 					{
-						"contentfulId": "5MhgBWIXcdrz0gdbe2fsBy",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Ready to unify security everywhere?",
-						"description": null,
-						"variant": "full-width",
+						"contentTypeId": "bladeCardMosaic",
+						"contentfulId": "3ajq67a7l9x4TQ7mKrPhlC",
+						"entryTitle": "Everywhere Security - RESOURCES - (mosaic)",
+						"title": "Security Resources",
 						"htmlId": null,
-						"sectionPadding": null,
 						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
+							"id": "85748e13-8517-5221-887b-d4bfd593f60a",
+							"altText": null,
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qOkL7b52oII5tM50rXHvx/244e247fb24d4b337481750c11a25031/Whats-New_Background.svg"
 								},
 								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "7EvGFJJsKVZgYeN38ajPTa",
-							"elementName": "Request a consultation",
-							"standardText": null,
-							"text": "Request a consultation",
-							"url": "/plans/enterprise/contact/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": null
-					},
-					{
-						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "5r24AucyGVlk3MTQCnVnqR",
-						"title": "Research",
-						"htmlId": null,
-						"backgroundImage": {
-							"contentfulId": "5qOkL7b52oII5tM50rXHvx",
-							"locale": "en-US",
-							"title": "[Test] Thought leadership background",
-							"file": {
-								"name": "Whats-New_Background.svg",
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qOkL7b52oII5tM50rXHvx/244e247fb24d4b337481750c11a25031/Whats-New_Background.svg",
-								"internal": {
-									"mediaType": "image/svg+xml"
-								}
-							}
-						},
-						"cards": [
+						"elementResourceCards": [
 							{
 								"contentTypeId": "elementResourceCard",
 								"contentfulId": "5MHyfPYAYdxZSCp7n2rcpb",
@@ -1213,7 +1678,7 @@
 								"contentfulId": "73NNAUDhQ823be7CXaQvqi",
 								"heading": "Report",
 								"description": "Examine risks of APIs, made up of 57% of Internet traffic processed by Cloudflare",
-								"category": "Insights",
+								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
 									"contentfulId": "5jyCXS88fOYNxZgFfbRss6",
@@ -1246,7 +1711,7 @@
 								"contentfulId": "7HY4oe5hZ94qNzc0u39njI",
 								"heading": "Blog",
 								"description": "The sixteenth and most recent edition of Cloudflare's quarterly DDoS trend analysis",
-								"category": "Insights",
+								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
 									"contentfulId": "3b8FMgNFkScNSa1JUWhz9E",
@@ -1266,7 +1731,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4k5YG7ST7AQvdzc0Spj9xg/869d38177835fcd29fd8547ec8da0a28/Illustration__2_.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4k5YG7ST7AQvdzc0Spj9xg/ac694f85905cc6e03467836b49b3ac13/DDoS-Threat-Report_Thumbnail_106x165.svg"
 										},
 										"description": ""
 									},
@@ -1279,7 +1744,7 @@
 								"contentfulId": "162U5N8SExG9k5wy6QrWHT",
 								"heading": "Insight",
 								"description": "Cloudflare's CSO and CTO weigh in on emerging risks like AI-enabled threats",
-								"category": "Insights",
+								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
 									"contentfulId": "6vzhSxyBPWxEZbvKdGGsA5",
@@ -1312,7 +1777,7 @@
 								"contentfulId": "4lU6wI6IrfMWdoZIxm3XpT",
 								"heading": "Blog",
 								"description": "Analyze selected Internet disruptions observed by Cloudflare in 2023 Q4",
-								"category": "Insights",
+								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
 									"contentfulId": "5Jjaw0uNOjhmkV938uVD6e",
@@ -1345,7 +1810,7 @@
 								"contentfulId": "7tnTyxty5QQmdI10mEhklM",
 								"heading": "Report",
 								"description": "Learn about multichannel phishing threats and how a Zero Trust approach reduces risk",
-								"category": "Insights",
+								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
 									"contentfulId": "6xiefo9OEtsCGllamIJwue",
@@ -1365,7 +1830,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/jPpf0mOBqggMZSvkckdZY/eba068f963cf13862adc2a572665b8d0/Illustration__5_.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/jPpf0mOBqggMZSvkckdZY/4836eeadb2362fa2163e4e6a2a31e35b/Leverage-Zero-Trust-To-Combat-Multichannel-Phishing-Threats_thumbnail_106x182.png"
 										},
 										"description": "Forrester Opportunity Snapshot "
 									},
@@ -1374,10 +1839,112 @@
 								}
 							}
 						]
+					},
+					{
+						"contentfulId": "01tVF8VK0z4VuBPeYQnne5",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Learn about other ways our connectivity cloud can meet your business' needs",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 2 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7LDmpHSjrBdNtC7dxNSjLm",
+								"title": "Digital modernization",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare helps business modernize their applications and networks, and gain efficiency and cost savings via platform consolidation.\n",
+								"learnMoreUrl": "/modernization",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3zPxuV65TKuLn0s0dyMPB3",
+								"title": "Data compliance",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Global businesses use Cloudflare to streamline regulatory compliance, improve privacy practices, and reduce risk. ",
+								"learnMoreUrl": "/data",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "7De9wYOG8Ot820qAXNjbpQ",
+						"modalName": "Everywhere Security - Request a consultation - Form",
+						"modalId": "everywhere-security-request-a-consultation-form",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "7GA8lvyPoXFLUsPEgHqzur",
+							"bladeName": "Everywhere Security - Request a consultation - Marketo form",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": "Request a consultation",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": null,
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {

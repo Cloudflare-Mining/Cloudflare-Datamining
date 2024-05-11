@@ -54,16 +54,11 @@
 				},
 				"sys": {
 					"createdAt": "2023-05-02T17:17:34.584Z",
-					"updatedAt": "2024-05-02T21:28:49.172Z"
+					"updatedAt": "2024-05-10T23:47:10.771Z"
 				},
 				"contentfulId": "25N5MNrKXZSTSIkS9MX5vv",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "Analyst report",
-					"linkText": "Read the report",
-					"linkUrl": "/lp/idc-marketscape-ztna-2023/",
-					"desktopText": "Cloudflare named a Leader in the 2023 IDC MarketScape for Zero Trust Network Access (ZTNA)"
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
@@ -668,35 +663,11 @@
 										"navigationLinks": [
 											{
 												"contentTypeId": "elementNavLink",
-												"contentfulId": "7Gqm5KQHbQwtTYBSBGZh0y",
-												"locale": "en-US",
-												"title": "Zero Trust & SASE",
-												"description": "ZTNA, CASB, SWG, RBI, email security, & more",
-												"url": "https://www.cloudflare.com/plans/zero-trust-services/#overview",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
 												"contentfulId": "7A6ruAMn22Fmn7bNy4Wt5a",
 												"locale": "en-US",
 												"title": "Application Security & Performance",
 												"description": "DDoS, WAF, CDN, DNS, load balancing, & more",
 												"url": "/plans/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "YVAoh9YgF9medqRflTxmj",
-												"locale": "en-US",
-												"title": "Network Security & Performance",
-												"description": "WAN, FWaaS and DDoS protection",
-												"url": "/plans/network-services/",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -750,18 +721,7 @@
 										"locale": "en-US",
 										"name": "Compare all plans",
 										"description": null,
-										"mainLink": {
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "6usymxfOH4pWYmAhFFIr62",
-											"locale": "en-US",
-											"title": "Compare all plans",
-											"description": null,
-											"url": "/plans/",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": false,
-											"isExternalUrl": null
-										},
+										"mainLink": null,
 										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
@@ -807,1069 +767,6 @@
 										"openInNewWindow": false,
 										"isExternalUrl": null
 									},
-									{
-										"contentTypeId": "elementNavLink",
-										"contentfulId": "56atTa9grHhB7wHsr22uql",
-										"locale": "en-US",
-										"title": "Contact sales",
-										"description": null,
-										"url": "/plans/enterprise/contact/",
-										"badges": null,
-										"specialLinkType": "CTA",
-										"openInNewWindow": false,
-										"isExternalUrl": null
-									}
-								]
-							},
-							{
-								"contentTypeId": "navNavigationItem",
-								"contentfulId": "PWVUASQ4yUK1BA206aTyw",
-								"locale": "en-US",
-								"name": "Resources",
-								"description": null,
-								"navIcon": null,
-								"contentfulButton": null,
-								"showIconOnly": false,
-								"hideOnChinaSite": false,
-								"overrideTheSalesPhoneNumber": false,
-								"navigationItems": [
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "7HOY1MbPAnfrW8ja0PaOQn",
-										"locale": "en-US",
-										"name": "Documentation",
-										"description": null,
-										"mainLink": null,
-										"navigationLinks": [],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": [
-											{
-												"contentTypeId": "navNavigationItem",
-												"contentfulId": "6CTZhAmBxe8kCfSgx816gK",
-												"locale": "en-US",
-												"name": "Getting Started",
-												"description": null,
-												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "7dyyhm3ZJu05EeDdbj3QuV",
-														"locale": "en-US",
-														"title": "New to Cloudflare? Start here",
-														"description": null,
-														"url": "https://developers.cloudflare.com/learning-paths/get-started/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "6W3PfWQ8GUtaFv5tjuABUn",
-														"locale": "en-US",
-														"title": "Developer documentation hub",
-														"description": null,
-														"url": "https://developers.cloudflare.com/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "5u8VEPclIFoEmdHGJ7Odp7",
-														"locale": "en-US",
-														"title": "Architecture center",
-														"description": null,
-														"url": "/architecture",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": null
-													}
-												],
-												"navIcon": null,
-												"showIconOnly": false,
-												"hideOnChinaSite": false,
-												"navigationItems": []
-											},
-											{
-												"contentTypeId": "navNavigationItem",
-												"contentfulId": "17ARM5mMCSAKHWVp2uMMaA",
-												"locale": "en-US",
-												"name": "Application Security",
-												"description": null,
-												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "5PNFO1wFb3CIqgScOMF03C",
-														"locale": "en-US",
-														"title": "Bot Management",
-														"description": null,
-														"url": "https://developers.cloudflare.com/bots/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "2YDP6M4rjvy7ySkW5GYigk",
-														"locale": "en-US",
-														"title": "Firewall Rules",
-														"description": null,
-														"url": "https://developers.cloudflare.com/waf/custom-rules/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "3pJx4OI3NmXAeirB76Oigb",
-														"locale": "en-US",
-														"title": "SSL",
-														"description": null,
-														"url": "https://developers.cloudflare.com/ssl/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "7xCXEesovV0hR3uuPuvFrx",
-														"locale": "en-US",
-														"title": "WAF",
-														"description": null,
-														"url": "https://developers.cloudflare.com/waf/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													}
-												],
-												"navIcon": null,
-												"showIconOnly": false,
-												"hideOnChinaSite": null,
-												"navigationItems": []
-											},
-											{
-												"contentTypeId": "navNavigationItem",
-												"contentfulId": "6NZ00tbb9QsiqAhP56HgDC",
-												"locale": "en-US",
-												"name": "Application Services",
-												"description": null,
-												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "6q86AtM22YcnTw7N3wvm8O",
-														"locale": "en-US",
-														"title": "CDN",
-														"description": null,
-														"url": "https://developers.cloudflare.com/cache/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "6HmltYkOClNQkSEjVkGK7s",
-														"locale": "en-US",
-														"title": "DNS",
-														"description": null,
-														"url": "https://developers.cloudflare.com/dns/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "5armdRHQJGDNBBEIW1KY2p",
-														"locale": "en-US",
-														"title": "Image Resizing",
-														"description": null,
-														"url": "https://developers.cloudflare.com/images/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "4E0FDSDKxeMticziFyChdT",
-														"locale": "en-US",
-														"title": "Load Balancing",
-														"description": null,
-														"url": "https://developers.cloudflare.com/load-balancing",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "jtV3eZQxL3Q5FqimcuFaR",
-														"locale": "en-US",
-														"title": "Stream (video)",
-														"description": null,
-														"url": "https://developers.cloudflare.com/stream/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "1AIxSElCUfcAaxqerbuHoL",
-														"locale": "en-US",
-														"title": "China Network",
-														"description": null,
-														"url": "https://developers.cloudflare.com/china-network/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": null
-													}
-												],
-												"navIcon": null,
-												"showIconOnly": false,
-												"hideOnChinaSite": null,
-												"navigationItems": []
-											},
-											{
-												"contentTypeId": "navNavigationItem",
-												"contentfulId": "1AzFZVBpBwrGttFtE76ESQ",
-												"locale": "en-US",
-												"name": "Zero Trust Services",
-												"description": null,
-												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "56VX6ODfbYEsNDHqbmaeQq",
-														"locale": "en-US",
-														"title": "Zero Trust",
-														"description": null,
-														"url": "https://developers.cloudflare.com/cloudflare-one/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "4ystSiAOfDj03V63SQS3Xt",
-														"locale": "en-US",
-														"title": "Application Access (ZTNA)",
-														"description": null,
-														"url": "https://developers.cloudflare.com/cloudflare-one/applications",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "2fbQPTKnuOYJlVRC3Ho3t3",
-														"locale": "en-US",
-														"title": "Browser Isolation",
-														"description": null,
-														"url": "https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "Sl3wdpVFAMAczREo51U62",
-														"locale": "en-US",
-														"title": "Gateway (SWG)",
-														"description": null,
-														"url": "https://developers.cloudflare.com/cloudflare-one/policies/filtering",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "6nxAgNC1EcIwaSJ793bhxX",
-														"locale": "en-US",
-														"title": "Email Security (Area 1)",
-														"description": null,
-														"url": "https://developers.cloudflare.com/email-security/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": null
-													}
-												],
-												"navIcon": null,
-												"showIconOnly": false,
-												"hideOnChinaSite": null,
-												"navigationItems": []
-											},
-											{
-												"contentTypeId": "navNavigationItem",
-												"contentfulId": "5886uVa7aLFvSpmvt51x3f",
-												"locale": "en-US",
-												"name": "Developer Platform",
-												"description": null,
-												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "2osj84l1r7N8suQkWUpNgy",
-														"locale": "en-US",
-														"title": "Workers Quick Start",
-														"description": null,
-														"url": "https://developers.cloudflare.com/workers/learning/getting-started",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "480rnATGJFF7KIFjD5WVYz",
-														"locale": "en-US",
-														"title": "Workers Pages",
-														"description": null,
-														"url": "https://developers.cloudflare.com/pages/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "3SyYEpphf1LOsfdptDFwTq",
-														"locale": "en-US",
-														"title": "Sample Workers Projects",
-														"description": null,
-														"url": "https://developers.cloudflare.com/workers/templates/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "7LxagdywNjCJ22312rCkYR",
-														"locale": "en-US",
-														"title": "Workers Tutorials",
-														"description": null,
-														"url": "https://developers.cloudflare.com/workers/tutorials",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "5LXs7OisUSZsCIpjY2umWJ",
-														"locale": "en-US",
-														"title": "Command-line (Wrangler)",
-														"description": null,
-														"url": "https://developers.cloudflare.com/workers/tooling/wrangler",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "3FCBV0El2HlIgsNVn71GOp",
-														"locale": "en-US",
-														"title": "Runtime",
-														"description": null,
-														"url": "https://developers.cloudflare.com/workers/reference/apis",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													}
-												],
-												"navIcon": null,
-												"showIconOnly": false,
-												"hideOnChinaSite": null,
-												"navigationItems": []
-											},
-											{
-												"contentTypeId": "navNavigationItem",
-												"contentfulId": "17gVooh39dfRemmSh9KSyK",
-												"locale": "en-US",
-												"name": "Network Services",
-												"description": null,
-												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "6FKNGzfd6ztul6YW2drwPD",
-														"locale": "en-US",
-														"title": "Magic Transit",
-														"description": null,
-														"url": "https://developers.cloudflare.com/magic-transit/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "LC71xLM6HBejqEzaEnkho",
-														"locale": "en-US",
-														"title": "Magic WAN",
-														"description": null,
-														"url": "https://developers.cloudflare.com/magic-wan/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "1NFi9Iri7yY5vLq2PlK4fU",
-														"locale": "en-US",
-														"title": "Magic Firewall",
-														"description": null,
-														"url": "https://developers.cloudflare.com/magic-firewall/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "4wL6hxITkwSdpMToyggJNz",
-														"locale": "en-US",
-														"title": "Spectrum (TCP/UDP)",
-														"description": null,
-														"url": "https://developers.cloudflare.com/spectrum/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													}
-												],
-												"navIcon": null,
-												"showIconOnly": false,
-												"hideOnChinaSite": null,
-												"navigationItems": []
-											},
-											{
-												"contentTypeId": "navNavigationItem",
-												"contentfulId": "4E0JADpOudRkHVrzdai31D",
-												"locale": "en-US",
-												"name": "Insights",
-												"description": null,
-												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "1Ju3iOzFafhq3TaFne7Dhh",
-														"locale": "en-US",
-														"title": "Analytics",
-														"description": null,
-														"url": "https://developers.cloudflare.com/analytics/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "2iC4qY12CEQF2X1TibYxug",
-														"locale": "en-US",
-														"title": "Logs",
-														"description": null,
-														"url": "https://developers.cloudflare.com/logs/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													}
-												],
-												"navIcon": null,
-												"showIconOnly": false,
-												"hideOnChinaSite": null,
-												"navigationItems": []
-											},
-											{
-												"contentTypeId": "navNavigationItem",
-												"contentfulId": "7rar0cPpSRnS1iSSSUJxib",
-												"locale": "en-US",
-												"name": "API",
-												"description": null,
-												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "5wg2LaBIcPAaJaArkqXowH",
-														"locale": "en-US",
-														"title": "API Reference",
-														"description": null,
-														"url": "https://developers.cloudflare.com/api",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "5NKAJ5xNecrC3FhsfScjTg",
-														"locale": "en-US",
-														"title": "API Authentication",
-														"description": null,
-														"url": "https://developers.cloudflare.com/fundamentals/api",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													}
-												],
-												"navIcon": null,
-												"showIconOnly": false,
-												"hideOnChinaSite": null,
-												"navigationItems": []
-											},
-											{
-												"contentTypeId": "navNavigationItem",
-												"contentfulId": "5X7wGsPUdNt0dMVyQPGq10",
-												"locale": "en-US",
-												"name": "AI",
-												"description": null,
-												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "cV6TIgA5iVpDToSOaKYmS",
-														"locale": "en-US",
-														"title": "AI Gateway",
-														"description": null,
-														"url": "https://developers.cloudflare.com/ai-gateway/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "4ed9qTNFECVl2E8KOVpDc4",
-														"locale": "en-US",
-														"title": "Vectorize",
-														"description": null,
-														"url": "https://developers.cloudflare.com/vectorize/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": true
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "4veP3pkVzZNagUz7RKpZ7d",
-														"locale": "en-US",
-														"title": "Workers AI",
-														"description": null,
-														"url": "https://developers.cloudflare.com/workers-ai/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": true
-													}
-												],
-												"navIcon": null,
-												"showIconOnly": false,
-												"hideOnChinaSite": false,
-												"navigationItems": []
-											}
-										]
-									},
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "7pjGfWInJP9Gizmy6kCr16",
-										"locale": "en-US",
-										"name": "Resource hub",
-										"description": null,
-										"mainLink": null,
-										"navigationLinks": [
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "434uABBSjK42z2nEmkZAAf",
-												"locale": "en-US",
-												"title": "Case studies",
-												"description": "Learn how we've helped others",
-												"url": "/case-studies/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "4cIe1truf62he5WfDvLoZ5",
-												"locale": "en-US",
-												"title": "Industry analysts on Cloudflare",
-												"description": "Explore industry analysis of our products",
-												"url": "/analysts/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "4t0SI6iVy0mGIfVIKNG7CK",
-												"locale": "en-US",
-												"title": "Solution & product guides",
-												"description": "Explore our product documentation",
-												"url": "/resource-hub/?resourcetype=Solution+%26+Product+Guides",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "4v5nGgtiRfYMXBlDwgAJG1",
-												"locale": "en-US",
-												"title": "Webinars",
-												"description": "Explore past & upcoming webinars",
-												"url": "/resource-hub/?resourcetype=Webinar",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "6HSXJwin9ySRdTWNYxDVdr",
-												"locale": "en-US",
-												"title": "Ebooks",
-												"description": "Explore helpful how-to ebooks",
-												"url": "https://www.cloudflare.com/resource-hub/?resourcetype=Ebook ",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": true,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "6yajw8NLlJvJcyvERx5TBM",
-												"locale": "en-US",
-												"title": "Whitepapers",
-												"description": "Explore our solution whitepapers",
-												"url": "https://www.cloudflare.com/resource-hub/?resourcetype=Whitepaper ",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": true,
-												"isExternalUrl": null
-											}
-										],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": []
-									},
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "3hv9taEOi4jU6GDFaEA22u",
-										"locale": "en-US",
-										"name": "Learning",
-										"description": null,
-										"mainLink": null,
-										"navigationLinks": [
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "6P5MlBIdUT5o6GpFHvGyie",
-												"locale": "en-US",
-												"title": "Learning Center",
-												"description": "Explore our resources on cybersecurity & the Internet",
-												"url": "https://www.cloudflare.com/learning/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "5V31VX1s6xNOuaBnoelRC7",
-												"locale": "en-US",
-												"title": "AI",
-												"description": "Learn about predictive and generative AI",
-												"url": "https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "3XEeISUaK7HiDUZkdriuhv",
-												"locale": "en-US",
-												"title": "Bot management",
-												"description": "Learn the difference between good & bad bots",
-												"url": "https://www.cloudflare.com/learning/bots/what-is-a-bot/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "7lVfE0ISLArs2RNc1uxsqq",
-												"locale": "en-US",
-												"title": "Cloud",
-												"description": "Learn how the cloud works & explore benefits",
-												"url": "https://www.cloudflare.com/learning/cloud/what-is-the-cloud/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "1acn6ci0NJt2XSLLZphlUI",
-												"locale": "en-US",
-												"title": "Connectivity Cloud",
-												"description": "Learn how a connectivity cloud works & its benefits",
-												"url": "https://www.cloudflare.com/connectivity-cloud/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "KZ9K9hfJUeuwscXs4TNkR",
-												"locale": "en-US",
-												"title": "CDN",
-												"description": "Learn how CDN works & explore benefits",
-												"url": "https://www.cloudflare.com/learning/cdn/what-is-a-cdn/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "3fYgunEi8lWu3OYfuVJ1gQ",
-												"locale": "en-US",
-												"title": "DDoS",
-												"description": "Learn about DDoS attacks & mitigation",
-												"url": "https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "21NfnNA2WOTBPoKywqiJga",
-												"locale": "en-US",
-												"title": "DNS",
-												"description": "Learn about DNS & how it works",
-												"url": "https://www.cloudflare.com/learning/dns/what-is-dns/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "5siGtLin6kXidBWPSZ6nwD",
-												"locale": "en-US",
-												"title": "Email security",
-												"description": "Learn about email security & common attacks",
-												"url": "https://www.cloudflare.com/learning/email-security/what-is-email-security/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "6lwSegAGzOWACVdtOSrN9k",
-												"locale": "en-US",
-												"title": "Network layer",
-												"description": "Learn about network layer & how it works",
-												"url": "https://www.cloudflare.com/learning/network-layer/what-is-the-network-layer/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "6SrmMqnYdfTxCuPcPOejmd",
-												"locale": "en-US",
-												"title": "Performance",
-												"description": "Learn about performance & why it matters",
-												"url": "https://www.cloudflare.com/learning/performance/why-site-speed-matters/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "6MSPzTwbtgAlFZtI1StNW",
-												"locale": "en-US",
-												"title": "Security",
-												"description": "Learn about core security concepts & common vulnerabilities",
-												"url": "https://www.cloudflare.com/learning/security/what-is-web-application-security/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "3LEgk5oSaTjIqOe5HULDwz",
-												"locale": "en-US",
-												"title": "Serverless",
-												"description": "Learn about serverless computing & explore benefits",
-												"url": "https://www.cloudflare.com/learning/serverless/what-is-serverless/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "2Od4jxZdXKdz9F3getdvfL",
-												"locale": "en-US",
-												"title": "SSL",
-												"description": "Learn about SSL, TLS, & understanding certificates",
-												"url": "https://www.cloudflare.com/learning/ssl/what-is-ssl/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "5rBHDEwPiIRPHg4vT8zXoH",
-												"locale": "en-US",
-												"title": "Zero Trust",
-												"description": "Learn about Zero Trust security model & implementation",
-												"url": "https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											}
-										],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": []
-									},
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "sNKXuhdeMlUtae0kTbBfU",
-										"locale": "en-US",
-										"name": "Trends & insights",
-										"description": null,
-										"mainLink": null,
-										"navigationLinks": [
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "54HE1U0rrawfLiDS7oakzE",
-												"locale": "en-US",
-												"title": "Blog",
-												"description": "Explore the latest news in cybersecurity",
-												"url": "https://blog.cloudflare.com/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": true,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "2t4BreQO7PUfLCsFXAaaXR",
-												"locale": "en-US",
-												"title": "Radar",
-												"description": "Up to date Internet trends & insights",
-												"url": "https://radar.cloudflare.com/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": true,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "4lNTIBtGi71en8ntRPQhFM",
-												"locale": "en-US",
-												"title": "theNET",
-												"description": "Insights for the digital enterprise",
-												"url": "/the-net/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": false
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "1ekEvnLQYIpQnAnL3OXnnj",
-												"locale": "en-US",
-												"title": "Speed Test",
-												"description": "Test your Internet connection speed",
-												"url": "https://speed.cloudflare.com/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": true,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "3XC6YzFD4cuSG6G2xiNlva",
-												"locale": "en-US",
-												"title": "Is BGP Safe Yet?",
-												"description": "Test your Internet provider's routing security",
-												"url": "https://isbgpsafeyet.com/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": true,
-												"isExternalUrl": true
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "1uj2Kleq41w1YyeVOEMvC2",
-												"locale": "en-US",
-												"title": "RPKI Portal",
-												"description": "Explore the Internet's routing security ecosystem",
-												"url": "https://rpki.cloudflare.com/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": true,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "4HSzVY1qbE0AIyNZ78YBWy",
-												"locale": "en-US",
-												"title": "Certificate Transparency",
-												"description": "Explore the certificate transparency ecosystem",
-												"url": "https://ct.cloudflare.com/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": true,
-												"isExternalUrl": null
-											}
-										],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": []
-									},
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "6vpiDnFGotWBvuUlR10mD3",
-										"locale": "en-US",
-										"name": "Blog",
-										"description": null,
-										"mainLink": {
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "VVr3iYWHGMVuBilgdy8jR",
-											"locale": "en-US",
-											"title": "Blog",
-											"description": null,
-											"url": "https://blog.cloudflare.com/",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": false,
-											"isExternalUrl": null
-										},
-										"navigationLinks": [],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": []
-									},
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "3SIlcwsFnxZEhViUybfa0U",
-										"locale": "en-US",
-										"name": "Cloudflare TV",
-										"description": null,
-										"mainLink": {
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "4q6Z8fayr86bxrWR0IUcfV",
-											"locale": "en-US",
-											"title": "Cloudflare TV",
-											"description": null,
-											"url": "https://cloudflare.tv",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": true,
-											"isExternalUrl": null
-										},
-										"navigationLinks": [],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": []
-									},
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "4UOa2VzmlikmhobUsqILgS",
-										"locale": "en-US",
-										"name": "Community forum",
-										"description": null,
-										"mainLink": {
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "XQ8YOOaTgQTreYN68RbsN",
-											"locale": "en-US",
-											"title": "Community",
-											"description": null,
-											"url": "https://community.cloudflare.com/",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": true,
-											"isExternalUrl": null
-										},
-										"navigationLinks": [],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": []
-									},
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "5TcjPvkdEey2A8mP647oVv",
-										"locale": "en-US",
-										"name": "Get help",
-										"description": null,
-										"mainLink": {
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "kWspa8S40gTdF8ln4ZkDi",
-											"locale": "en-US",
-											"title": "Get help",
-											"description": null,
-											"url": "https://support.cloudflare.com/hc/en-us",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": false,
-											"isExternalUrl": null
-										},
-										"navigationLinks": [],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": []
-									}
-								],
-								"mainLink": null,
-								"navigationLinks": [
 									{
 										"contentTypeId": "elementNavLink",
 										"contentfulId": "56atTa9grHhB7wHsr22uql",
@@ -2021,18 +918,6 @@
 												"title": "Cyber risk",
 												"description": "We partner with leading cyber insurers & incident response providers to reduce cyber risk",
 												"url": "https://www.cloudflare.com/partners/cyber-risk/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "Sg0IE1QXHBFUzQ9EZV4at",
-												"locale": "en-US",
-												"title": "Developer platform",
-												"description": "We work with partners to provide network, storage, & power for faster, safer delivery",
-												"url": "https://www.cloudflare.com/partners/developer-platform/",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -2232,18 +1117,6 @@
 														"title": "What is a connectivity cloud?",
 														"description": "Learn how to connect and protect your people, apps, and data everywhere",
 														"url": "connectivity-cloud",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "7sT56Bei8FHFhoikZYGATw",
-														"locale": "en-US",
-														"title": "One of the largest global networks",
-														"description": "Learn about our growing network",
-														"url": "https://www.cloudflare.com/network/",
 														"badges": null,
 														"specialLinkType": null,
 														"openInNewWindow": false,
@@ -2790,228 +1663,23 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "VMr8WucXelTbBixQ88LUQ",
-						"htmlContent": "<style>\n.wrapper { background-color: #003682; margin: 0; padding: 20px; width: 100vw;margin-left: calc((100vw - 100%) / -2);  }\n.content { color: #ffffff; margin: 0px auto;  width: fit-content; }\n.link-helper {color: #ffffff !important; margin-left: 5px; text-decoration: underline !important; text-underline-offset: 4px;}\n.link-helper:hover { text-decoration: underline; color: #ffffff !important; text-underline-offset: 4px; }\n</style>\n\n    <section class=\" wrapper\" id=\"contentful-psa-banner\">\n        <div class=\"content\">\n            <span>Cloudflare named in Gartner® Magic Quadrant™ for SSE for 2nd year. </span>\n   <a class=\"link-helper\"  href=\"https://blog.cloudflare.com/cloudflare-sse-gartner-magic-quadrant-2024/\"> <strong>Announcement ></strong></a>    \n\n        </div>\n    </section>",
-						"htmlId": null
-					},
-					{
-						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
-						"contentTypeId": "bladePadding",
-						"height": 1,
-						"backgroundColor": "blue5"
-					},
-					{
-						"contentTypeId": "bladeSubNav",
-						"contentfulId": "70Il4X62A37cPxf97qmEgo",
-						"menuTitle": "SSE & SASE",
-						"mobileOnlyMenuTitle": null,
-						"stickyNav": true,
-						"htmlId": null,
-						"menuItems": [
-							{
-								"contentfulId": "10X0LS8uVJOWBbeZkeI6ah",
-								"linkText": "Overview",
-								"page": null,
-								"url": "/zero-trust",
-								"subMenuItems": []
-							},
-							{
-								"contentfulId": "5yQ7qOG5YMtgCKBnS1dEDF",
-								"linkText": "Pricing",
-								"page": null,
-								"url": "/plans/zero-trust-services/",
-								"subMenuItems": []
-							},
-							{
-								"contentfulId": "1km56yP6vf7r4Nx1pgEs9H",
-								"linkText": "Products",
-								"page": null,
-								"url": null,
-								"subMenuItems": [
-									{
-										"contentfulId": "7iTBf8dnqrOhNIlOnhuI68",
-										"linkText": "Access (ZTNA)",
-										"page": null,
-										"url": "/zero-trust/products/access/"
-									},
-									{
-										"contentfulId": "67KsgUQP4xNLDqvlRnWfDk",
-										"linkText": "Gateway (SWG)",
-										"page": null,
-										"url": "/zero-trust/products/gateway/"
-									},
-									{
-										"contentfulId": "EE4vIuUPld0U1uz8b4KgV",
-										"linkText": "Browser Isolation (RBI)",
-										"page": null,
-										"url": "/zero-trust/products/browser-isolation/"
-									},
-									{
-										"contentfulId": "76s7oENCn73FZhugtuI9c6",
-										"linkText": "Cloud Access Security Broker (CASB)",
-										"page": null,
-										"url": "/zero-trust/products/casb/"
-									},
-									{
-										"contentfulId": "1aJ424vC1rwgiH4apcJhrr",
-										"linkText": "Data Loss Prevention (DLP)",
-										"page": null,
-										"url": "/zero-trust/products/dlp/"
-									},
-									{
-										"contentfulId": "4fqU9qBCakRwiZ1mNr9Yrb",
-										"linkText": "Cloud Email Security",
-										"page": null,
-										"url": "/zero-trust/products/email-security/"
-									},
-									{
-										"contentfulId": "3cEoD6Xzdvf5hIktAK21IF",
-										"linkText": "Magic WAN",
-										"page": null,
-										"url": "https://www.cloudflare.com/network-services/products/magic-wan/"
-									},
-									{
-										"contentfulId": "6HePlYqxMr0lbwj2b8sRss",
-										"linkText": "Magic Firewall",
-										"page": null,
-										"url": "https://www.cloudflare.com/network-services/products/magic-firewall/"
-									},
-									{
-										"contentfulId": "mnLAvzd9LxIskwaMFrNob",
-										"linkText": "All Products",
-										"page": null,
-										"url": "/zero-trust/products/"
-									}
-								]
-							},
-							{
-								"contentfulId": "7etJU93erWBUQPdDbjYBWX",
-								"linkText": "Solutions",
-								"page": null,
-								"url": "/zero-trust/solutions/",
-								"subMenuItems": []
-							},
-							{
-								"contentfulId": "7oqf8k1Rn0L1np5ZuVuPDA",
-								"linkText": "Analyst reports",
-								"page": null,
-								"url": null,
-								"subMenuItems": [
-									{
-										"contentfulId": "59Gxkab1yfmnzFDnL78ZXq",
-										"linkText": "Gartner® Magic Quadrant™ for Security Service Edge (SSE), 2024",
-										"page": null,
-										"url": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2024/"
-									},
-									{
-										"contentfulId": "2yqY7yRGNCJZQaMetcv2wu",
-										"linkText": "Forrester Wave™ for Security Service Edge Solutions, Q1 2024",
-										"page": null,
-										"url": "https://www.cloudflare.com/lp/forrester-wave-sse-2024/"
-									},
-									{
-										"contentfulId": "6i8WRohX9yfvKsiERYenxg",
-										"linkText": "Forrester Wave™ for Zero Trust Platforms, Q3 2023",
-										"page": null,
-										"url": "https://www.cloudflare.com/lp/forrester-wave-zero-trust-platforms-2023/"
-									},
-									{
-										"contentfulId": "1gJYOT56w0z5OZeb1VfYmG",
-										"linkText": "Forrester Wave™ for Enterprise Email Security, Q2 2023",
-										"page": null,
-										"url": "https://www.cloudflare.com/lp/forrester-wave-email-security-2023"
-									},
-									{
-										"contentfulId": "6CvinfBwGXdxPjprYcjB6J",
-										"linkText": "IDC MarketScape for Zero Trust Network Access (ZTNA), 2023",
-										"page": null,
-										"url": "https://www.cloudflare.com/lp/idc-marketscape-ztna-2023"
-									},
-									{
-										"contentfulId": "66ZpjOLSKQuzNq0Br8o7i7",
-										"linkText": "KuppingerCole Leadership Compass for ZTNA, 2022",
-										"page": null,
-										"url": "https://www.cloudflare.com/lp/kuppingercole-ztna-report/"
-									},
-									{
-										"contentfulId": "2rM0bXoJGZCcU1uV9QDHHs",
-										"linkText": "KuppingerCole Leadership Compass for SASE Integration Suites, 2023",
-										"page": null,
-										"url": "https://www.cloudflare.com/lp/kuppingercole-leadership-compass-for-sase-report/"
-									},
-									{
-										"contentfulId": "MyNVVaJoxVZXgBLcFw5BD",
-										"linkText": "Forrester Opportunity Shapshot: Leverage Zero Trust To Combat Multichannel Phishing Threats",
-										"page": null,
-										"url": "https://www.cloudflare.com/lp/zero-trust-to-combat-multichannel-phishing/"
-									}
-								]
-							},
-							{
-								"contentfulId": "1MPnz4oklmxIn6d5MfI1x0",
-								"linkText": "Resources",
-								"page": null,
-								"url": null,
-								"subMenuItems": [
-									{
-										"contentfulId": "ed03e65uKsOrXuo6SyZ30",
-										"linkText": "SASE reference architecture",
-										"page": null,
-										"url": "https://developers.cloudflare.com/reference-architecture/sase-reference-architecture/"
-									},
-									{
-										"contentfulId": "3HGoPb20JnCvUMRn8kKPk8",
-										"linkText": "Zero Trust interactive demo",
-										"page": null,
-										"url": "https://interactive.cloudflaredemos.com/"
-									},
-									{
-										"contentfulId": "3Ko7yh630HKRG9uuKTmq59",
-										"linkText": "Case studies",
-										"page": null,
-										"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce"
-									},
-									{
-										"contentfulId": "1w8r7NiYjDJPtNDraIkvhP",
-										"linkText": "Platform integrations",
-										"page": null,
-										"url": "/products/zero-trust/integrations"
-									},
-									{
-										"contentfulId": "KxYYsyoMmFhVrH8ESEj7c",
-										"linkText": "White papers & product guides",
-										"page": null,
-										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce"
-									},
-									{
-										"contentfulId": "1awgo4XNStilPgkAKZNekC",
-										"linkText": "Technical documentation",
-										"page": null,
-										"url": "https://developers.cloudflare.com/cloudflare-one/"
-									}
-								]
-							}
-						]
-					},
-					{
 						"contentfulId": "1o8tSpeCHewPlTAF9qnUaz",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare's SSE & SASE Platform",
+						"title": "Cloudflare's SSE & SASE services",
 						"titleSize": null,
-						"subtitle": "Stronger security and consistent experiences for your remote and office users alike",
+						"subtitle": "Zero Trust networking delivered from unified, cloud-native platform of security and connectivity services",
 						"subtitleSize": null,
-						"copy": "- Provide simple, secure access for any user, app, device, network, or location\n- Consolidate point products with an Internet-native architecture and one unified, composable platform\n",
+						"copy": "Cloudflare products can help you secure corporate applications and web browsing, protect against email attacks, embrace cloud-based networking, and more.\n",
 						"buttonColor": "blue",
-						"buttonColor2": "blue-outline",
-						"buttonText1": "View products",
+						"buttonColor2": null,
+						"buttonText1": "Talk to an expert",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#ztfeatures",
+						"buttonUrl1": "/products/zero-trust/plans/enterprise/",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Compare plans and pricing",
+						"buttonText2": null,
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "#overview",
+						"buttonUrl2": null,
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -3028,7 +1696,7 @@
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Large",
+						"imageSize": "Medium",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -3056,1009 +1724,947 @@
 						}
 					},
 					{
-						"contentfulId": "2JTjeZ6XYsJ5sa7bD9nEsQ",
-						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Modernize security and transform your network",
-						"eyebrowHeading": "Cloudflare's SASE Platform",
-						"description": "Ensure all traffic in and out of your business is verified and authorized. Check dynamic context to \"never trust and always verify\" every request.",
-						"textLayout": "left",
-						"columnsLayout": "Three Columns",
-						"columnContent": [
+						"locale": "en-US",
+						"entryTitle": "Product Hub - Zero Trust - PRODUCT LIST",
+						"htmlId": null,
+						"contentfulId": "JOboLkOlyK1tZ0r5MlCY8",
+						"contentTypeId": "bladeAddOns",
+						"caption": "CLOUDFLARE'S SASE PLATFORM CAPABILITIES",
+						"title": null,
+						"grouped": false,
+						"description": null,
+						"variant": null,
+						"callToAction": null,
+						"sectionPadding": "default",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"addOns": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "FPtUs0zA9VFc2JLpRH4vb",
-								"title": "Zero Trust Network Access (ZTNA)",
-								"makeTitleLink": true,
-								"titleUrl": "/zero-trust/products/access/",
-								"titleSize": "small",
-								"description": "Enforce default-deny, Zero Trust rules for users accessing all your applications, faster and safer than a VPN.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
+								"locale": "en-US",
+								"entryTitle": "Zero Trust Network Access (ZTNA)",
+								"contentfulId": "XGi19MscOrq4TfPNCeDuX",
+								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "87f9101d-857c-5202-9a77-f2f35ff7e4a9",
-									"altText": "Cloudflare One  SASE Solution",
-									"title": "Cloudflare Access Orange",
+									"id": "88f379fa-19b2-5b18-90b7-ae06b186cd4f",
+									"altText": null,
+									"title": "Analytics network round icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/64ekoyPlI1bPZ9MvWEuxqu/9de135bc78a1e1559505fcb8b59788c0/cloudflare-access.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Fh2PgMjLDscashca1pfd7/0b6641f5125b3329e164ae192d2aed1e/analytics-network-round-fill.svg"
+										},
+										"description": "analytics network round icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Zero Trust Network Access (ZTNA)",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Enforce default-deny, Zero Trust rules for users accessing all your applications, faster and safer than a VPN.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "70BVQ0zHpoglRhShuSf4w",
+									"elementName": "Zero Trust Network Access (ZTNA) - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/zero-trust/products/access/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Secure Web Gateway (SWG)",
+								"contentfulId": "4NdsGbFzAR5v2xdZK1KziB",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "a0efa544-aa20-5337-8e79-d5411ea6b5ac",
+									"altText": "Cloudflare access round icon",
+									"title": "Cloudflare access round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7H02c695tAmuf4JsFZEuGt/41456dda4de5de97a71290c651405e45/cloudflare-access-round-fill.svg"
+										},
+										"description": "Cloudflare access round icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Secure Web Gateway (SWG)",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Secure and inspect corporate Internet traffic to help prevent phishing, ransomware, and other Internet risks.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "5E6oMligV0OqzS9psrbhYQ",
+									"elementName": "Secure Web Gateway (SWG) - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/zero-trust/products/gateway/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Remote Browser Isolation (RBI)",
+								"contentfulId": "2EbJjIyJwgBrhhKtCYjW8N",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "158f1bce-78b5-54b0-85bd-d4ce21639e08",
+									"altText": "Phishing round icon",
+									"title": "Phishing round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/GcXnnHsj1aM7m8Ftuvwxg/8fd8b8c959170ee95225027b15d3bc5d/phishing-round-fill.svg"
+										},
+										"description": "Phishing round icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Remote Browser Isolation (RBI)",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Provide Internet threat and data protection by running code away from endpoints, without sacrificing performance.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "3w0bGJqV1ckwOb4KjYBijV",
+									"elementName": "Remote Browser Isolation (RBI) - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/zero-trust/products/browser-isolation/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Cloud Access Security Broker (CASB)",
+								"contentfulId": "3ihg4NiS9l7Rdf3V2E0CyP",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "6cfec14e-bac3-5166-b278-53d7ad8624f1",
+									"altText": "Office branch round icon",
+									"title": "Office branch round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3do7sVwpab8uXc5fGYBQ4N/4d61496b786dc2bc90415b7dcf63e790/office-branch-round-fill.svg"
+										},
+										"description": "Office branch round icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Cloud Access Security Broker (CASB)",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Easily secure SaaS tools, granularly control user access, and protect sensitive data.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "6HlhxpPf8l9sGooXFVTA0U",
+									"elementName": "Cloud Access Security Broker (CASB) - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/zero-trust/products/casb/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Cloud Email Security",
+								"contentfulId": "5V6fsn0Jpjz7ERBTfkNnMk",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "857e71cb-6cf0-585d-98ec-fd508f712cc6",
+									"altText": "Security shield protection round icon",
+									"title": "Security shield protection round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eFgVBnGh1n6TR86jbPgUW/b61753a994df308de84c820d42516c07/security-shield-protection-round-fill.svg"
 										},
 										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1F64MGRdLakpG8UTBFBVx4",
-								"title": "Secure Web Gateway (SWG)",
-								"makeTitleLink": true,
-								"titleUrl": "/zero-trust/products/gateway/",
-								"titleSize": "small",
-								"description": "Secure and inspect corporate Internet traffic to help prevent phishing, ransomware, and other Internet risks.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "128fa0bd-6d49-5037-8a08-fa22ab772b83",
-									"altText": "Cloudflare gateway blue",
-									"title": "Cloudflare gateway blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5phC3b5HlknIojc80J5NVf/f3719ad6d9aa3919a05dec873b8502f6/cloudflare-gateway.svg"
-										},
-										"description": "Cloudflare gateway orange"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2jcXTY5iYuRaBlVvgeGgyc",
-								"title": "Remote Browser Isolation (RBI)",
-								"makeTitleLink": true,
-								"titleUrl": "/zero-trust/products/browser-isolation/",
-								"titleSize": null,
-								"description": "Provide Internet threat and data protection by running code away from endpoints, without sacrificing performance. ",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "953cbaaa-193d-59ff-9633-351fbea8ef99",
-									"altText": "Cloudflare browser blue",
-									"title": "Cloudflare browser blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HCrh1LL2UxeUZAEgQo9Oi/81d48b27248ae38a890b8e82adec9896/cloudflare-browser.svg"
-										},
-										"description": "Cloudflare browser orange"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "57TjC4i13hulVu3OXV9LUd",
-								"title": "Cloud Access Security Broker (CASB)",
-								"makeTitleLink": true,
-								"titleUrl": "/zero-trust/products/casb/",
-								"titleSize": null,
-								"description": "Easily secure SaaS tools, granularly control user access, and protect sensitive data.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "c3584ce8-4945-5445-b102-95fd01ba0d50",
-									"altText": "Cloudflare Cloud Access Security Broker (CASB)",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HXZPdrSSPOMmpyqNuWuDX/312652bbce5b076dc799abf930afa8fb/cloudflare-gateway__1_.png"
-										},
-										"description": "Zero Trust services icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3Z5qJo4EFzMKkKUPWXayDV",
 								"title": "Cloud Email Security",
-								"makeTitleLink": true,
-								"titleUrl": "/zero-trust/products/email-security/",
-								"titleSize": "small",
-								"description": "Preemptively protect your users from phishing, business email compromise (BEC), and email supply chain attacks.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Preemptively protect your users from phishing, business email compromise (BEC), and email supply chain attacks.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "3tejMggmjckqaLG83kdCv0",
+									"elementName": "Cloud Email Security - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/zero-trust/products/email-security/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Data Loss Prevention (DLP)",
+								"contentfulId": "5oT4q2xOfTpmAzezRc9Xf1",
+								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "01febf6d-9b4b-5599-be2c-ea57390b4094",
-									"altText": null,
-									"title": null,
+									"id": "47a0a289-e6c7-5cca-8164-77c7601e889f",
+									"altText": "Ddos attack round icon",
+									"title": "Ddos attack round icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/16iB8yBZdgX7paOzbM5YtE/6904656352f05ecfaade9fccb666c427/spam-email.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2wuXsQ9ocjkOUMM9Z1Hlkx/02792975d7f0be7673a33aa004c88e7a/ddos-attack-round-fill.svg"
 										},
-										"description": ""
+										"description": "Ddos attack round icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "41Tdsj4CvN9z280wnyJrAw",
 								"title": "Data Loss Prevention (DLP)",
-								"makeTitleLink": true,
-								"titleUrl": "/zero-trust/products/dlp/",
-								"titleSize": "small",
-								"description": "Inspect HTTP/S traffic for sensitive data like PII and prevent exfiltration with allow or block policies.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Inspect HTTP/S traffic for sensitive data like PII and prevent exfiltration with allow or block policies.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "2dvUhPmifSb9xCShltBlDo",
+									"elementName": "Data Loss Prevention (DLP) - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/zero-trust/products/dlp/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Magic WAN",
+								"contentfulId": "4kYYmYZ0ctjEWhGiPvHMmw",
+								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "a2e13743-df8f-5dc4-b0d0-7886c680972f",
-									"altText": null,
-									"title": "Secure distributed remote workforces",
+									"id": "b468fce9-824e-51b1-8365-fc54a87b082b",
+									"altText": "Optimization web round icon",
+									"title": "Optimization web round icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Cy6RUpurh3hxxzkZwh8Ax/e7758d8bd71b19216644a3612915c55a/cloudflare-security-center__1_.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4MLzp4ErpMSXun1wx0k92I/c686cb575d7b0c2c87daaf7cfd765974/optimization-web-round-fill.svg"
 										},
-										"description": ""
+										"description": "Optimization web round icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5mEHPtiI4Kxbd7jnTBr5kS",
 								"title": "Magic WAN",
-								"makeTitleLink": true,
-								"titleUrl": "/network-services/products/magic-wan/",
-								"titleSize": "small",
-								"description": "Connect and secure your branch offices, headquarters, data centers, cloud VPCs and SD-WANs using the Cloudflare network.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Connect and secure your branch offices, headquarters, data centers, cloud VPCs and SD-WANs using the Cloudflare network.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "1lGG9SSVCavzlwlHRudtan",
+									"elementName": "Magic WAN - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/network-services/products/magic-wan/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Magic Firewall",
+								"contentfulId": "2NoNKQbgMrTjhe6OrhiY8M",
+								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale ",
-									"title": "Network scale ",
+									"id": "334ffbe3-9e05-5cbd-b77a-f0b4dba39034",
+									"altText": "Analytics data round icon",
+									"title": "Analytics data round icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25B0tY2bGsZrocxnifpnpx/2a328b9ddf2ec85b6c026f5b2d03ed42/network-scale.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4PV9bQAsawR9bGTFfREI0c/87032c7e59cea26f8ec4323383d7b000/analytics-data-round-fill.svg"
 										},
-										"description": "Network scale orange"
+										"description": "Analytics data round icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5eOUJTsDZCKywsLkGurDiB",
 								"title": "Magic Firewall",
-								"makeTitleLink": true,
-								"titleUrl": "/network-services/products/magic-firewall/",
-								"titleSize": "small",
-								"description": "Enforce consistent network security policies across your entire WAN, without backhauling traffic or creating choke points.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "81936886-7ce4-51c1-8472-58f3698d44a0",
-									"altText": "Cloudflare Firewall as a Service - Magic Firewall",
-									"title": "Firewall as a service icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/xAb8mJ3D3jImhUIC6I781/4e5fcde46add21ab9e397610b06c8e32/security-waf.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Enforce consistent network security policies across your entire WAN, without backhauling traffic or creating choke points.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						],
-						"sectionPadding": null,
-						"htmlId": "ztfeatures"
-					},
-					{
-						"contentfulId": "0mH6CDAC1Pwzbt9qGNzAJ",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Learn More",
-						"description": "Elevating organizational trust with Zero Trust and a step-by-step roadmap to Zero Trust architecture.",
-						"variant": "full-width",
-						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "7I2GKH2uHw5hsr7FKPlLcI",
-							"elementName": "CTA - /the-net/zero-trust-organization/",
-							"standardText": null,
-							"text": "Read the article",
-							"url": "/the-net/zero-trust-organization/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "2jUy34HlF0Pyf1LK2guCjR",
-							"elementName": "CTA - /lp/zero-trust-roadmap/",
-							"standardText": null,
-							"text": "Read analyst report",
-							"url": "/lp/zero-trust-roadmap/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						}
-					},
-					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "WaU09l56G4qCc4bdcWEHO",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "/case-studies?usecase=Enable+zero+trust+security+for+workforce",
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"title": "Helping organizations worldwide progress towards Zero Trust",
-						"copy": null,
-						"logoList": [
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ox6kZdsCZBSqhDUa0vBD/7ae8539f70a2db3a1566b3a375406cba/Canva-grayscale.png"
-								},
-								"description": ""
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6l3uXN7rkllTveH1HRSct1/2725dc80c3773d23bbc382089c885a42/Delivery-Hero-grayscale.png"
-								},
-								"description": "Delivery Hero logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QqegCVRghNpJ5u3koSMIT/150638cc91b792966719e79e2fad1f4b/eTeacherGroup-grayscale.png"
-								},
-								"description": " eTeacher Group logo grayscale - Zero Trust logo blade"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2x1AgM10BcMFrIHXw3ye7k/d22413985484dfd7295fee3fb4e98621/ezCater-grayscale.png"
-								},
-								"description": "ezCater logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/WfJskUftbIg2L9wkJlpvk/fb58bb010585e1139d31ada16363fa51/logo_insead_trusted-by_gray.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7k7S8k0jg0tXOAFBbXuHdg/efea000cb7c6ebf7ce8f12ffc8109954/logo_jetblue-travel-products_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/z4dEAjCkLg48nCqhqzE96/8e18c72e29608c99e6b32b8c20bdddea/Kathmandu-grayscale.png"
-								},
-								"description": "Kathmandu logo grayscale - Zero Trust logo blade"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XWZR07sp0nr55Vmvga4h2/1b3040aa46a01077e7b366c3d11f367c/logo_onetrust_gray_32px-wrapper.svg"
-								},
-								"description": "OneTrust logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Tr7JQ2TzJPJ7wY4AOzmqI/27e3c8aee40e5db8d0fc6f71825e7b55/logo_politico_gray_158px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sjx4ZVSwUCm4STib20hBG/c2592fdb19ddef806a8e9fd75c92f45c/ZiffMedia-grayscale.png"
-								},
-								"description": "Ziff Media Group logo grayscale - Zero Trust logo blade"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3N0npaMxlGf7sFDe5w8Y25/eb29f4658a2c4a0adb97ff904b3de0e6/Insead-grayscale.png"
-								},
-								"description": "Insead logo grayscale - Zero Trust logo blade"
-							}
-						],
-						"logoListAssetFile": [],
-						"logoUrlList": null
-					},
-					{
-						"bladeBorder": null,
-						"sectionPadding": null,
-						"backgroundColor": null,
-						"contentTypeId": "bladePricingPlans",
-						"contentfulId": "5c2cXP5oYxy3XxYkHAssvh",
-						"title": null,
-						"description": null,
-						"htmlId": "overview",
-						"plansList": [
-							{
-								"contentTypeId": "plan",
-								"contentfulId": "5qjf6dt0beYnc9pZ3zsskc",
-								"type": "Free Plan",
-								"priceCurrencySymbol": null,
-								"price": "$0 per user",
-								"priceDurationPeriod": null,
-								"billingSubtext": "Maximum of 50 users",
-								"description": "Essential security controls to keep employees and apps protected online. Best for teams under 50 users, or proof-of-concept test runs.",
-								"shortDescription": null,
-								"mediumDescription": null,
-								"supportResponseTitleText": null,
-								"supportResponseTime": null,
-								"ctaButtonText": null,
-								"ctaButtonUrl": null,
-								"ctaButton": {
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
 									"buttonAssetFile": null,
 									"buttonTextLoggedIn": null,
 									"contentTypeId": "button",
-									"contentfulId": "1b1zcvHXVhf5RnmejD8Q8c",
-									"elementName": "Plans&Pricing-Product_Category-ZT-Free_Plan-CTA",
+									"contentfulId": "1Nc4dZqkrgAJny10QXRFxk",
+									"elementName": "Magic Firewall - CTA",
 									"standardText": null,
-									"text": "Get started",
-									"url": "https://dash.cloudflare.com/sign-up/teams",
+									"text": "Learn more",
+									"url": "/network-services/products/magic-firewall/",
 									"loggedInUrl": null,
 									"buttonModal": null,
 									"openInNewTab": false,
 									"locale": "en-US"
-								},
-								"additionalTermsText": null,
-								"learnMoreText": null,
-								"plansPageLinkText": null,
-								"plansPageLinkUrl": null,
-								"activatedKeyFeatures": null,
-								"deactivatedKeyFeatures": null,
-								"coreFeatures": null,
-								"supportResponse": null,
-								"bottomCtaLinkUrl": null,
-								"bottomCtaLinkText": null,
-								"bottomCtaLink": null,
-								"hideTopDivider": true,
-								"featureList1": {
-									"contentTypeId": "featureList",
-									"contentfulId": "6pQQisBZ98n1l93CWEgxhH",
-									"title": "USAGE & SUPPORT",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 50 users",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Community forums available for tips and troubleshooting",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 24 hours of activity logging",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 3 network locations (for office-based DNS filtering)",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								},
-								"featureList2": {
-									"contentTypeId": "featureList",
-									"contentfulId": "7GuuzxbbnXVre4V2uexSi9",
-									"title": "FEATURES",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "Application Connector Software",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Device Client (Agent) Software",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Zero Trust Network Access",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Secure Web Gateway",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Inline-Only Cloud Access Security Broker",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								},
-								"featureList3": null
-							},
-							{
-								"contentTypeId": "plan",
-								"contentfulId": "5g1k1UzXTjwftx5Pye2mMT",
-								"type": "Pay-as-you-go Plan",
-								"priceCurrencySymbol": null,
-								"price": "$7 per user",
-								"priceDurationPeriod": null,
-								"billingSubtext": "Billed month-to-month",
-								"description": "Protects access to anything on your network and the Internet. Best for teams over 50 users that do not require enterprise support services.",
-								"shortDescription": null,
-								"mediumDescription": null,
-								"supportResponseTitleText": null,
-								"supportResponseTime": null,
-								"ctaButtonText": "Get started",
-								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up/teams",
-								"ctaButton": {
-									"buttonAssetFile": null,
-									"buttonTextLoggedIn": null,
-									"contentTypeId": "button",
-									"contentfulId": "3aVc8bojzITFwNl96YpnNM",
-									"elementName": "Plans&Pricing-Product_Category-ZT-Standard_Plan-CTA",
-									"standardText": null,
-									"text": "Get started",
-									"url": "https://dash.cloudflare.com/sign-up/teams",
-									"loggedInUrl": null,
-									"buttonModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"additionalTermsText": null,
-								"learnMoreText": null,
-								"plansPageLinkText": null,
-								"plansPageLinkUrl": null,
-								"activatedKeyFeatures": null,
-								"deactivatedKeyFeatures": null,
-								"coreFeatures": null,
-								"supportResponse": null,
-								"bottomCtaLinkUrl": null,
-								"bottomCtaLinkText": null,
-								"bottomCtaLink": null,
-								"hideTopDivider": true,
-								"featureList1": {
-									"contentTypeId": "featureList",
-									"contentfulId": "44H7GXUIMsq0cfhon2nXpZ",
-									"title": "USAGE & SUPPORT",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "No user limit with 100% uptime SLA",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Email and chat with 4 hour median initial response for urgent issues ",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 30 days of activity logging",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 50 network locations (for office-based DNS filtering)",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								},
-								"featureList2": {
-									"contentTypeId": "featureList",
-									"contentfulId": "2YJCuxatSut6Rwjx8unEJh",
-									"title": "ALL FEATURES IN FREE, PLUS",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "Remote Browser Isolation (available as add-on for $10 per user)",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								},
-								"featureList3": null
-							},
-							{
-								"contentTypeId": "plan",
-								"contentfulId": "1nD5vXppsRIRmXuLyUQmp1",
-								"type": "Contract Plan",
-								"priceCurrencySymbol": null,
-								"price": "Custom",
-								"priceDurationPeriod": null,
-								"billingSubtext": "Billed annually",
-								"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
-								"shortDescription": null,
-								"mediumDescription": null,
-								"supportResponseTitleText": null,
-								"supportResponseTime": null,
-								"ctaButtonText": "Talk to an expert",
-								"ctaButtonUrl": "/products/zero-trust/plans/enterprise/",
-								"ctaButton": {
-									"buttonAssetFile": null,
-									"buttonTextLoggedIn": null,
-									"contentTypeId": "button",
-									"contentfulId": "70fOWLJrcnV0CyXw322wDA",
-									"elementName": "Plans&Pricing-Product_Category-ZT-Enterprise_Plan-CTA",
-									"standardText": null,
-									"text": "Talk to an expert",
-									"url": "/products/zero-trust/plans/enterprise/",
-									"loggedInUrl": null,
-									"buttonModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"additionalTermsText": null,
-								"learnMoreText": null,
-								"plansPageLinkText": null,
-								"plansPageLinkUrl": null,
-								"activatedKeyFeatures": null,
-								"deactivatedKeyFeatures": null,
-								"coreFeatures": null,
-								"supportResponse": null,
-								"bottomCtaLinkUrl": null,
-								"bottomCtaLinkText": null,
-								"bottomCtaLink": null,
-								"hideTopDivider": true,
-								"featureList1": {
-									"contentTypeId": "featureList",
-									"contentfulId": "2cSMIDcxhVrWGlfHmCIYip",
-									"title": "USAGE & SUPPORT",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "No user limit with 100% uptime SLA",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Priority phone, email, & chat with 1 hour median initial response for urgent issues ",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 6 months of activity logging",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Up to 250 network locations (for office-based DNS filtering)",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								},
-								"featureList2": {
-									"contentTypeId": "featureList",
-									"contentfulId": "2NNREfEXTiT5ehcTIupJ7p",
-									"title": "ALL FEATURES IN PAY-AS-YOU-GO, PLUS",
-									"description": null,
-									"features": [
-										{
-											"contentTypeId": "feature",
-											"title": "Logpush to SIEM/cloud storage",
-											"description": null,
-											"displayBorder": null,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "mTLS Authentication for IoT",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Multi-mode Cloud Access Security Broker (available as add-on)",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Cloud Email Security (available as add-on)",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Remote Browser Isolation (available as add-on)",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Data Loss Prevention (available as add-on)",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										}
-									],
-									"supplementaryCallToAction": null
-								},
-								"featureList3": null
+								}
 							}
 						]
 					},
 					{
-						"contentfulId": "4bdkj9rLVGdQspLKD1CDrj",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Get started today",
-						"description": null,
-						"variant": "full-width",
-						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
+						"contentfulId": "MrjkZskJTBC8BaLHW8p2b",
+						"title": "Cloudflare's connectivity cloud simplifies SSE and SASE",
+						"copy": "Our composable platform and network make it easier to secure and accelerate every connection in your corporate network, regardless of the nature of your workforce or infrastructure. \n",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "a3fe5227-779f-5c68-b261-a33721d14ab9",
+							"altText": "Map of global Cloudflare network",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qkAxZ673cqHFDwafV08rB/a84fce9776746b777d06625170646cbc/Application_Services_current_network_map.svg"
 								},
-								"description": ""
+								"description": null
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"primaryCtaButton": {
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "WHY CLOUDFLARE",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "279fIY4z7zYPHxV7FlWoHt",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": null,
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4QLbTrIRbwhDIOaqPzLyJt",
+								"title": "Composable architecture",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Meet any unique use case with full API programmability and customizable logging and routing",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "c957ff8d-a1fd-5d1f-9dab-40bee8ed2b02",
+									"altText": "Pull request orange",
+									"title": "Pull request orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tuARUDvAQEzpWTMdMK2z3/6f5e4bbfbea969d25ccc5a855be7975b/pull-request-merged.svg"
+										},
+										"description": "Pull request icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4A6yJKVKTTHbKxJgKFJvCw",
+								"title": "Integration",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Preserve user experiences with single-pass inspection and a network that's 50 ms from 95% of Internet users \n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7f55482c-4683-5702-8d01-773f9cd06136",
+									"altText": "Performance wrench ",
+									"title": "Performance wrench ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wssqiGu7F5lhbklqwGJU/2d9d1e090229bf4b832b922f7bb821dc/performance-wrench.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "56Av3YwuW0cTJQjctBoJtH",
+								"title": "Intelligence",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "We serve ~20% of Internet traffic and block 182 billion daily threats, helping you route traffic efficiently and catch more attacks",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ff31bfda-5ac0-5e67-bf9e-bd602f3d81ce",
+									"altText": "Innovation intelligence blue",
+									"title": "Innovation intelligence blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10Jn71GCDQVevOJja3TfLO/ce8d67a09048cb50a47d2f90e33da8b2/innovation-intelligence.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3hdgMwHsTQFFIX7mgSDOrT",
+								"title": "Unified interface",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Reduce tool sprawl and alert fatigue by uniting every security and networking service in one UI\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b815385d-6fa7-54c1-9020-d5394237a7ab",
+									"altText": "Applications icon",
+									"title": "Applications icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Gs1nPWmoZABBztrTHECMD/62d032e76ca646918a6420271edb612c/applications.svg"
+										},
+										"description": "Applications icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "63F0Mj86J6jAheEMHnK2Mn",
+						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nCloudflare Zero Trust services help Applied Systems <br> secure its workforce\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "py7SU3FOqSP45I5IxN0Wd",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2DnBEJDDX1wtmRtsW8e1Ww",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Applied Systems had a complex security stack that resulted in a tangle of network paths. They consolidated their Zero Trust services onto Cloudflare's cloud-native platform.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Now, they're saving money on bandwidth and hardware, and enforcing default-deny access policies across their entire corporate network.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "w0vWWUcUOBITQXiwVQX8S",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"We have received great feedback on Cloudflare Zero Trust — it's easier to deploy and better for our employees…We are much more secure as an organization with the same amount of time available to us.\"",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "5d9Okme8X8LiEsPYfXyw9s",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "5d9Okme8X8LiEsPYfXyw9s",
+															"locale": "en-US",
+															"title": "Applied logo push right",
+															"file": {
+																"name": "Applied-logo-push-right.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5d9Okme8X8LiEsPYfXyw9s/9bfee36ec41ad997f635b5c49969af66/Applied-logo-push-right.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "JpcdCrx1TrIndXuzxxR7J",
+						"title": "Contact a Cloudflare enterprise representative",
+						"titleSize": null,
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2mfrQ3Os9WlM8kr8YBbNic",
-							"elementName": "Talk to an expert - Primary CTA",
+							"contentfulId": "5yrwKG7eOSTZna8OMGeuZm",
+							"elementName": "Get in touch - CTA",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": "https://www.cloudflare.com/plans/enterprise/contact/",
+							"text": "Get in touch ",
+							"url": "/plans/enterprise/contact/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": true,
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
