@@ -201,7 +201,7 @@ async function run() {
 		for (const link of newLinks) {
 			try {
 				const url = new URL(link);
-				url.pathname = url.pathname.replace(/\/\/+/g, '/');
+				url.pathname = url.pathname.replaceAll(/\/\/+/g, '/');
 				if (!ignoreURLs.some(str => url.href.includes(str))) {
 					links.add(url.href);
 				}

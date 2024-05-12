@@ -261,7 +261,7 @@ async function generateDashboardStructure(wantedChunks, translations) {
 			if (match && match[1] && !match[1].includes('`')) {
 				try {
 					const url = new URL(match[1]);
-					url.pathname = url.pathname.replace(/\/\/+/g, '/');
+					url.pathname = url.pathname.replaceAll(/\/\/+/g, '/');
 					links.add(url.toString());
 				} catch {
 					//console.warn('Found a bad link', match[1]);

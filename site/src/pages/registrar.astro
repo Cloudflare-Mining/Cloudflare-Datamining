@@ -17,13 +17,12 @@ const formatter = new Intl.NumberFormat('en-US', {
 >
 	<MainHeading title="Registrar" />
 	<Table
-		headers = {['TLD', 'Price', 'Renewal', 'ICANN Fee']}
+		headers = {['TLD', 'Price', 'Renewal']}
 		data = {Object.keys(registrar).map(tld => (
 			[
 				tld,
 				formatter.format(registrar[tld].price),
 				formatter.format(registrar[tld].renewal),
-				formatter.format(registrar[tld].icann_fee),
 			]
 		))}
 	></Table>
