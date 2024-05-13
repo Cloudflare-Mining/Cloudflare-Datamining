@@ -16,7 +16,9 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
+					"description": "gateway slug",
+					"example": "my-gateway",
+					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
 					"type": "string"
 				}
 			}
@@ -43,14 +45,13 @@
 											"type": "string"
 										},
 										"id": {
-											"format": "uuid",
+											"description": "gateway slug",
+											"example": "my-gateway",
+											"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
 											"type": "string"
 										},
 										"modified_at": {
 											"format": "date-time",
-											"type": "string"
-										},
-										"name": {
 											"type": "string"
 										},
 										"rate_limiting_interval": {
@@ -61,20 +62,15 @@
 										},
 										"rate_limiting_technique": {
 											"type": "string"
-										},
-										"slug": {
-											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"created_at",
-										"modified_at",
-										"name",
-										"slug",
 										"collect_logs",
 										"cache_ttl",
-										"cache_invalidate_on_update"
+										"cache_invalidate_on_update",
+										"created_at",
+										"modified_at"
 									],
 									"type": "object"
 								},
@@ -184,7 +180,9 @@
 				"in": "query",
 				"name": "id",
 				"schema": {
-					"format": "uuid",
+					"description": "gateway slug",
+					"example": "my-gateway",
+					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
 					"type": "string"
 				}
 			}
@@ -212,14 +210,13 @@
 												"type": "string"
 											},
 											"id": {
-												"format": "uuid",
+												"description": "gateway slug",
+												"example": "my-gateway",
+												"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
 												"type": "string"
 											},
 											"modified_at": {
 												"format": "date-time",
-												"type": "string"
-											},
-											"name": {
 												"type": "string"
 											},
 											"rate_limiting_interval": {
@@ -230,20 +227,15 @@
 											},
 											"rate_limiting_technique": {
 												"type": "string"
-											},
-											"slug": {
-												"type": "string"
 											}
 										},
 										"required": [
 											"id",
-											"created_at",
-											"modified_at",
-											"name",
-											"slug",
 											"collect_logs",
 											"cache_ttl",
-											"cache_invalidate_on_update"
+											"cache_invalidate_on_update",
+											"created_at",
+											"modified_at"
 										],
 										"type": "object"
 									},
@@ -344,7 +336,9 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
+					"description": "gateway slug",
+					"example": "my-gateway",
+					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
 					"type": "string"
 				}
 			}
@@ -371,14 +365,13 @@
 											"type": "string"
 										},
 										"id": {
-											"format": "uuid",
+											"description": "gateway slug",
+											"example": "my-gateway",
+											"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
 											"type": "string"
 										},
 										"modified_at": {
 											"format": "date-time",
-											"type": "string"
-										},
-										"name": {
 											"type": "string"
 										},
 										"rate_limiting_interval": {
@@ -389,20 +382,15 @@
 										},
 										"rate_limiting_technique": {
 											"type": "string"
-										},
-										"slug": {
-											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"created_at",
-										"modified_at",
-										"name",
-										"slug",
 										"collect_logs",
 										"cache_ttl",
-										"cache_invalidate_on_update"
+										"cache_invalidate_on_update",
+										"created_at",
+										"modified_at"
 									],
 									"type": "object"
 								},
@@ -485,7 +473,9 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
+					"description": "gateway slug",
+					"example": "my-gateway",
+					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
 					"type": "string"
 				}
 			},
@@ -741,7 +731,10 @@
 							"collect_logs": {
 								"type": "boolean"
 							},
-							"name": {
+							"id": {
+								"description": "gateway slug",
+								"example": "my-gateway",
+								"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
 								"type": "string"
 							},
 							"rate_limiting_interval": {
@@ -752,14 +745,10 @@
 							},
 							"rate_limiting_technique": {
 								"type": "string"
-							},
-							"slug": {
-								"type": "string"
 							}
 						},
 						"required": [
-							"name",
-							"slug",
+							"id",
 							"collect_logs",
 							"cache_ttl",
 							"cache_invalidate_on_update"
@@ -793,14 +782,13 @@
 													"type": "string"
 												},
 												"id": {
-													"format": "uuid",
+													"description": "gateway slug",
+													"example": "my-gateway",
+													"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
 													"type": "string"
 												},
 												"modified_at": {
 													"format": "date-time",
-													"type": "string"
-												},
-												"name": {
 													"type": "string"
 												},
 												"rate_limiting_interval": {
@@ -811,20 +799,15 @@
 												},
 												"rate_limiting_technique": {
 													"type": "string"
-												},
-												"slug": {
-													"type": "string"
 												}
 											},
 											"required": [
 												"id",
-												"created_at",
-												"modified_at",
-												"name",
-												"slug",
 												"collect_logs",
 												"cache_ttl",
-												"cache_invalidate_on_update"
+												"cache_invalidate_on_update",
+												"created_at",
+												"modified_at"
 											],
 											"type": "object"
 										}
@@ -929,7 +912,9 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
+					"description": "gateway slug",
+					"example": "my-gateway",
+					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
 					"type": "string"
 				}
 			}
@@ -948,9 +933,6 @@
 							"collect_logs": {
 								"type": "boolean"
 							},
-							"name": {
-								"type": "string"
-							},
 							"rate_limiting_interval": {
 								"type": "integer"
 							},
@@ -959,14 +941,9 @@
 							},
 							"rate_limiting_technique": {
 								"type": "string"
-							},
-							"slug": {
-								"type": "string"
 							}
 						},
 						"required": [
-							"name",
-							"slug",
 							"collect_logs",
 							"cache_ttl",
 							"cache_invalidate_on_update"
@@ -998,14 +975,13 @@
 											"type": "string"
 										},
 										"id": {
-											"format": "uuid",
+											"description": "gateway slug",
+											"example": "my-gateway",
+											"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
 											"type": "string"
 										},
 										"modified_at": {
 											"format": "date-time",
-											"type": "string"
-										},
-										"name": {
 											"type": "string"
 										},
 										"rate_limiting_interval": {
@@ -1016,20 +992,15 @@
 										},
 										"rate_limiting_technique": {
 											"type": "string"
-										},
-										"slug": {
-											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"created_at",
-										"modified_at",
-										"name",
-										"slug",
 										"collect_logs",
 										"cache_ttl",
-										"cache_invalidate_on_update"
+										"cache_invalidate_on_update",
+										"created_at",
+										"modified_at"
 									],
 									"type": "object"
 								},

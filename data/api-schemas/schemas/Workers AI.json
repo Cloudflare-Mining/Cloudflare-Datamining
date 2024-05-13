@@ -558,12 +558,22 @@
 								"oneOf": [
 									{
 										"properties": {
+											"frequency_penalty": {
+												"maximum": 2,
+												"minimum": 0,
+												"type": "number"
+											},
 											"lora": {
 												"type": "string"
 											},
 											"max_tokens": {
 												"default": 256,
 												"type": "integer"
+											},
+											"presence_penalty": {
+												"maximum": 2,
+												"minimum": 0,
+												"type": "number"
 											},
 											"prompt": {
 												"maxLength": 6144,
@@ -574,11 +584,33 @@
 												"default": false,
 												"type": "boolean"
 											},
+											"repetition_penalty": {
+												"maximum": 2,
+												"minimum": 0,
+												"type": "number"
+											},
+											"seed": {
+												"maximum": 9999999999,
+												"minimum": 1,
+												"type": "integer"
+											},
 											"stream": {
 												"default": false,
 												"type": "boolean"
 											},
 											"temperature": {
+												"maximum": 5,
+												"minimum": 0,
+												"type": "number"
+											},
+											"top_k": {
+												"maximum": 50,
+												"minimum": 1,
+												"type": "integer"
+											},
+											"top_p": {
+												"maximum": 2,
+												"minimum": 0,
 												"type": "number"
 											}
 										},
@@ -588,6 +620,11 @@
 									},
 									{
 										"properties": {
+											"frequency_penalty": {
+												"maximum": 2,
+												"minimum": 0,
+												"type": "number"
+											},
 											"max_tokens": {
 												"default": 256,
 												"type": "integer"
@@ -611,11 +648,38 @@
 												},
 												"type": "array"
 											},
+											"presence_penalty": {
+												"maximum": 2,
+												"minimum": 0,
+												"type": "number"
+											},
+											"repetition_penalty": {
+												"maximum": 2,
+												"minimum": 0,
+												"type": "number"
+											},
+											"seed": {
+												"maximum": 9999999999,
+												"minimum": 1,
+												"type": "integer"
+											},
 											"stream": {
 												"default": false,
 												"type": "boolean"
 											},
 											"temperature": {
+												"maximum": 5,
+												"minimum": 0,
+												"type": "number"
+											},
+											"top_k": {
+												"maximum": 50,
+												"minimum": 1,
+												"type": "integer"
+											},
+											"top_p": {
+												"maximum": 2,
+												"minimum": 0,
 												"type": "number"
 											}
 										},
