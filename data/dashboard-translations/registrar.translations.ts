@@ -16,7 +16,8 @@
 		email_notification: "Please <0>verify your account email address</0> to access all Registrar features such as Registration and Transfer.",
 		invalid_auth_code: "The registry has indicated that the authorization code is not correct. Please re-enter the code again. If you continue to receive an authorization code error, please request a new code from your current registrar.",
 		registrar_managed: "As this is a Cloudflare Registrar managed account, no payment is needed.",
-		error_message: "Something went wrong. Please try again or contact support for assistance."
+		error_message: "Something went wrong. Please try again or contact support for assistance.",
+		premium: "Premium"
 	},
 	form: {
 		field_validation_error: (0, e.d)`Invalid input for ${"field"}`,
@@ -328,7 +329,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	search_domain_supported_extensions: "<0>Review instructions</0> and <1>supported extensions</1>.",
 	search_domain_suggestions_purchase: "Purchase",
 	search_domain_unavailable: "<0>%{domainName}</0> is not available.",
-	search_domain_already_registered: "<0>%{domainName}</0> is unavailable because it is registered already. If you already own this domain and wish to transfer in to Cloudflare, please go to <1>Transfer Domains</1> section in the dashboard.",
+	search_domain_already_registered: "<0>%{domainName}</0> is unavailable because it is registered already. If you already own this domain and wish to transfer it to Cloudflare, please go to the <1>Transfer Domains</1> section of the dashboard.",
 	search_premium_tld: "<0>%{domainName}</0> is a premium domain, which Cloudflare Registrar does not currently support. Please try searching for a different domain.",
 	search_unsupported_tld: '<0>%{domainName}</0> cannot be registered as Cloudflare does not yet support the "%{tld}" extension.',
 	search_similar_domains: "Here are some similar domains that might be available.",
@@ -339,6 +340,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	search_domain_renewal_price: "Renews at %{domainRenewalPrice}",
 	search_domain_purchase: "Purchase",
 	search_domain_suggestions: "Suggested domain names",
+	search_domain_premium_domain_explanation: "Premium domains have non-standard pricing.",
+	search_domain_premium_domain_docs: "<0>What is a premium domain name?</0>",
 	transfer_out_panel_title: "Transfer to another registrar",
 	transfer_out_panel_text: "Unlocking this domain generates a unique transfer authorization code.",
 	transfer_out_uk_panel_text: "The domain tag has been updated. The transfer will complete once the new registrar has accepted the tag change. If the transfer is not accepted within 5 days the request will time out.",
@@ -386,7 +389,11 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	whois_disclaimer_3: "Note: failure to provide accurate information may result in your domain registration being suspended and/or deleted.",
 	whois_disclaimer_4: "ICANN requires registrars to keep accurate contact information for your domain (WHOIS). We will apply the contact information below to all roles in your WHOIS record. You may modify this information after the transfer.",
 	whois_disclaimer_uk: ".UK domains undergo a contact validation process to verify that the name and address is accurate. It is important that you provide accurate and complete information. When the domain transfers over, we will attempt to import the existing contact information assigned to the domain name. If that information can not be imported the information below will be used.",
-	whois_terms: 'By clicking \u201C%{buttonText}" you agree that you are purchasing an annual subscription which will automatically renew unless you cancel your subscription through your account dashboard before the beginning of your next annual billing period. Please note that if you cancel your subscription mid-year you will still be charged for the entire year. For more information on Cloudflare\u2019s billing, renewal and cancellation policies please visit [https://www.cloudflare.com/terms](https://www.cloudflare.com/terms)',
+	whois_terms: `By clicking \u201CComplete Purchase\u201D, you agree to our <a href="https://www.cloudflare.com/terms" target="_blank">Terms</a>, <a href="https://www.cloudflare.com/privacypolicy" target="_blank">Privacy Policy</a>, and <a href="https://www.cloudflare.com/domain-registration-agreement" target="_blank">Domain Registration Agreement</a>.
+
+  Your subscription, including any domain name(s), automatically renews and will be billed to your payment method on file, until canceled. You may cancel anytime in Billing Subscriptions, or via the Domain Management page in your account for registrar, at least a day before each renewal date.
+
+  For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare.`,
 	whois_contact_display_registrant: "Registrant",
 	whois_contact_display_administrative: "Administrative",
 	whois_contact_display_technical: "Technical",
@@ -441,7 +448,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	cancel_transfer_body: "If you believe an issue has occurred during your transfer, you can cancel this request and restart the process. You will not be billed twice for the same domain.",
 	cancel_transfer_close: "Close",
 	cancel_transfer_cancel: "Cancel transfer",
-	domain_registration_advanced_settings: "Manage Domain",
+	domain_registration_advanced_settings: "Manage domain registration",
 	domain_registration_edit: "Edit",
 	domain_registration_enable: "Enable",
 	domain_registration_disable: "Disable",
@@ -686,6 +693,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	registration_checkout_duration_select_label: "Payment option",
 	registration_checkout_duration_select_description: "Your domain will be registered for %{duration} and will expire on <strong>%{date}</strong>.",
 	registration_checkout_renews_at_price: "Renews at %{price}.",
+	registration_checkout_registration_additional_years: "Additional years may be added after the registration has been completed.",
 	registration_checkout_payment_in_usd_disclaimer: 'Payment will be charged in US dollars. <a href="https://developers.cloudflare.com/registrar/account-options/icloud-domains/" rel="noopener noreferrer" target="_blank">Learn more.</a>',
 	registration_checkout_nameservers_disclaimer: "<strong>Note:</strong> You cannot change the nameservers of a domain registered with Cloudflare.&nbsp;<0>Learn about registering a domain.</0>",
 	registration_checkout_google_tlds_ssl_notice: '.%{tld} is a more secure domain, meaning that HTTPS is required for all websites. You can buy your domain name now, but in order for it to work properly in browsers you must first configure HTTPS serving. All domains registered through Cloudflare come with free SSL. For more information about configuring HTTPS, including resources to obtain an SSL certificate, refer to our <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl" rel="noopener noreferrer" target="_blank">SSL documentation</a>.',
@@ -752,7 +760,7 @@ Payment will be charged in US dollars.`,
 	cannot_transfer_zone_not_active: "Zone is not active",
 	cannot_transfer_zone_not_eligible: "Zone is not eligible",
 	cannot_transfer_domain_on_cf: "Domain is already on Cloudflare",
-	cannot_transfer_domain_available: "Domain is available",
+	cannot_transfer_domain_available: "Domain must be registered",
 	cannot_transfer_domain_transfer_conditions: "Transfer conditions not met",
 	cannot_transfer_domain_premium: "Domain is premium",
 	cannot_transfer_domain_transfer_in_progress: "Transfer is already in progress",

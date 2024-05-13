@@ -10,10 +10,9 @@
 	api_spec: "API Spec",
 	api_spec_description: "Review the Workers AI API spec to build your application using the REST API",
 	beta_banner: (0, e.d)`Workers AI is now generally available! Learn more about our plans and pricing <0>here</0>`,
-	browse_model_catalog: "Browse Model Catalog",
 	build_your_first_ai_application: "Build your first AI application",
-	browse_model_catalogue: "Browse Model Catalogue",
-	browse_model_catalogue_description: "Browse all models available through Workers AI via Workers, Pages or REST API ",
+	browse_model_catalog: "Browse Model Catalog",
+	browse_model_catalog_description: "Browse all models available through Workers AI via Workers, Pages or REST API ",
 	charts: {
 		units: {
 			cost: "Cost",

@@ -378,7 +378,7 @@
 				},
 				{
 					"title": "navigation.account.magic_connectors.cloud_connectors",
-					"url": "/magic-wan/cloud/connectors",
+					"url": "/magic-wan/cloud",
 					"labels": [
 						"beta"
 					],
@@ -627,17 +627,7 @@
 				"beta"
 			],
 			"iconType": "calls",
-			"hasPermission": null,
-			"pages": [
-				{
-					"title": "navigation.account.calls.applications",
-					"url": "/calls"
-				},
-				{
-					"title": "navigation.common.analytics",
-					"url": "/calls/analytics"
-				}
-			]
+			"hasPermission": null
 		},
 		{
 			"title": "navigation.account.group_title.account_management",
@@ -685,7 +675,7 @@
 				},
 				{
 					"title": "navigation.account.mcn",
-					"url": "/mcn/integrations",
+					"url": "/mcn",
 					"labels": [
 						"beta"
 					],
@@ -720,13 +710,13 @@
 			"url": "/analytics",
 			"iconType": "chart",
 			"testId": "zone-navigation-link-analytics",
-			"navigationType": "both",
+			"navigationType": "version",
 			"hasPermission": null,
 			"pages": [
 				{
 					"title": "navigation.zone.analytics.traffic",
 					"url": "/analytics/traffic",
-					"navigationType": "both",
+					"navigationType": "version",
 					"hasPermission": null
 				},
 				{
@@ -767,7 +757,7 @@
 				{
 					"title": "navigation.zone.analytics.logs",
 					"url": "/analytics/logs",
-					"navigationType": "both",
+					"navigationType": "version",
 					"hasPermission": null
 				},
 				{
@@ -790,7 +780,7 @@
 		{
 			"title": "navigation.zone.zone_versioning",
 			"url": "/versioning",
-			"navigationType": "both",
+			"navigationType": "global-settings",
 			"iconType": "git-branch",
 			"testId": "zone-navigation-link-zone-versioning",
 			"tabs": [],
