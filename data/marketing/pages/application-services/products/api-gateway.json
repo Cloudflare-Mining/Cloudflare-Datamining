@@ -70,19 +70,19 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare API Gateway",
 						"titleSize": null,
-						"subtitle": "Keeping APIs secure and productive",
+						"subtitle": "Global, integrated API protection and monitoring",
 						"subtitleSize": null,
-						"copy": "At Cloudflare, we know APIs make the world go around.  That is why we make our massive global network your API gateway. With API discovery, integrated API management and analytics, and layered API defenses, Cloudflare ensures APIs drive business success like never before.",
+						"copy": "Powered by %{DataCenterCount} locations on our global network, API Gateway automatically discovers, validates, and protects your API endpoints.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
-						"buttonText1": "Talk to an Expert",
+						"buttonText1": "Talk to an expert",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://www.cloudflare.com/plans/enterprise/contact/",
+						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": null,
-						"buttonText2": "Watch webinar",
+						"button1ExtraClass": "product-gateway-modal",
+						"buttonText2": "Get the product brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://gateway.on24.com/wcc/eh/2153307/lp/3424150/?_gl=1%2a5m36fd%2a_ga%2aMjM0NzkwMzY4LjE2MTcwNTQ4NjE.%2a_gid%2aNjE1MzU2NTIyLjE2MzQ1NzQ4OTk.",
+						"buttonUrl2": "https://www.cloudflare.com/static/e8a1a579f034363d3145ea1637ad451c/API_Gateway_datasheet_Sept_2022_v1.pdf",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -94,12 +94,12 @@
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
+						"button2OpenInNewTab": false,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Regular",
+						"imageSize": "Large",
 						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -109,12 +109,7 @@
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1J63U8McMRTlG9jJAPR1g9/395c903a71c202b7b58c4722a3d1730a/security-api-web-apps-spot-illustration.svg"
-							},
-							"description": "Illustration depicting web app security"
-						},
+						"image": null,
 						"imageAssetFile": null
 					},
 					{
@@ -502,6 +497,45 @@
 							}
 						],
 						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "7ltuaDb62n4t9L78YjN5N0",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": "Helping organizations worldwide progress towards Zero Trust",
+						"description": "Trusted by millions of Internet properties",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": null,
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "6iCDUX8WxFw0p4ENXI510p",
+							"elementName": "See case studies",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "https://www.cloudflare.com/case-studies/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
 					}
 				],
 				"noindex": false,
