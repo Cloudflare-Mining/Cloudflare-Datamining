@@ -4,12 +4,20 @@
 
 # privacypass-ts: A TypeScript Library for the Privacy Pass Issuance Protocol
 
-**Specification:** Compliant with IETF [draft-ietf-privacypass-protocol](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/) and tests vectors match with draft [v11](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/11/).
+**Specification:** Compliant with IETF [draft-ietf-privacypass-protocol](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/), [draft-hendrickson-privacypass-public-metadata-03](https://datatracker.ietf.org/doc/draft-hendrickson-privacypass-public-metadata/) and tests vectors match with draft [v11](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/11/).
 
 **Support:**
  - Public-Verifiable tokens (Blind-RSA)
+ - Public-Verifiable tokens with Metadata (Partially-Blind-RSA)
  - Private-Verifiable tokens (VOPRF)
 
+**Usage:**
+
+We provide examples in the [examples folder](examples).
+
+### Limitations
+
+- Public-Verifiable tokens with Metadata verification is not supported in browser environments. This is due to @cloudflare/blindrsa-ts [not supporting them](https://github.com/cloudflare/blindrsa-ts?tab=readme-ov-file#platform-specific-configuration).
 
 ### Development
 
