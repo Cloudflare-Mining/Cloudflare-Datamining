@@ -93,8 +93,25 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
-									"type": "string"
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"success": {
 									"type": "boolean"
@@ -102,13 +119,13 @@
 							},
 							"required": [
 								"success",
-								"error"
+								"errors"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Object not found"
+				"description": "Not Found"
 			}
 		},
 		"security": [
@@ -413,8 +430,25 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
-									"type": "string"
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"success": {
 									"type": "boolean"
@@ -422,13 +456,13 @@
 							},
 							"required": [
 								"success",
-								"error"
+								"errors"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Object not found"
+				"description": "Not Found"
 			}
 		},
 		"security": [
@@ -839,27 +873,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
 											"message": {
+												"example": "Input Validation Error",
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -867,7 +910,7 @@
 						}
 					}
 				},
-				"description": "Bad Request"
+				"description": "Input Validation Error"
 			}
 		},
 		"security": [
@@ -1018,13 +1061,38 @@
 				},
 				"description": "Returns the updated Gateway"
 			},
-			"404": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
-									"type": "string"
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"success": {
 									"type": "boolean"
@@ -1032,13 +1100,52 @@
 							},
 							"required": [
 								"success",
-								"error"
+								"errors"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Object not found"
+				"description": "Input Validation Error"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
 			}
 		},
 		"security": [
