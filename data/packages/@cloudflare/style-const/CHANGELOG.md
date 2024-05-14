@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.8.1
+
+### Patch Changes
+
+- f829b70169: Force disabled link to have default cursor
+
 ## 5.8.0
 
 ### Minor Changes

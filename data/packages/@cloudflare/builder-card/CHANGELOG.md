@@ -1,5 +1,13 @@
 # Change Log
 
+## 9.0.11
+
+### Patch Changes
+
+- @cloudflare/component-loading@6.1.5
+- @cloudflare/component-card@10.0.11
+- @cloudflare/component-dynamic-content@3.0.4
+
 ## 9.0.10
 
 ### Patch Changes

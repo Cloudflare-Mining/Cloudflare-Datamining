@@ -1,5 +1,7 @@
 # Change Log
 
+## 7.13.1
+
 ## 7.13.0
 
 ### Minor Changes
