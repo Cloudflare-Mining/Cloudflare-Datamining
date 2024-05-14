@@ -7,16 +7,16 @@
 				"pageName": "API Gateway (Shield) (New URL)",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -24,11 +24,11 @@
 					"nlNL": "English for Locale",
 					"idID": "English for Locale",
 					"thTH": "English for Locale",
-					"ruRU": "English for Locale",
+					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale",
 					"elGR": "English for Locale",
 					"nbNO": "English for Locale",
@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-06-03T17:36:56.056Z",
-					"updatedAt": "2024-05-08T14:58:24.993Z"
+					"updatedAt": "2024-05-13T23:10:49.712Z"
 				},
 				"contentfulId": "1eFnOez80UnYQvIDLH0SjW",
 				"contentTypeId": "page",
@@ -110,64 +110,60 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": null
+						"imageAssetFile": {
+							"id": "5f328dd4-dcb5-5cd0-bca3-93e0a4d2a4b8",
+							"altText": "How it works - API gateway",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NS72obX98poHLNcBMncrL/e785972b562ec533611c43568e516a3c/BDES-4896_-_security-api-web-apps-spot-illustration.png"
+								},
+								"description": "How it works - API gateway"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
-						"contentfulId": "5iaHnaoYM9YGrcB26XiZyB",
+						"contentfulId": "4Opq5PGKCgM9uGyGrP3iwf",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "What analysts say",
-						"eyebrowHeading": null,
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF API GATEWAY",
 						"description": null,
-						"textLayout": "center",
+						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6DqWwSkBuJsNtE8jtUwP8i",
-								"title": "Cloudflare named in 2024 Gartner® Magic Quadrant™ for Security Service Edge (SSE)",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "We believe this recognition is a testament to Cloudflare's single-vendor SASE platform and its ability to modernize your network and consolidate more use cases.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2024/",
-								"learnMoreText": "Read the report",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2EpMDcOzRGz0qkeQbuOoB1/647e0c54d93967efd46237dec01b149d/gartner.svg"
-									},
-									"description": "Gartner logo"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "16MooJbviWl1XyxAD4Fxb8",
-								"title": "Cloudflare a Strong Performer in The Forrester Wave™: Security Service Edge Solutions, Q1 2024",
+								"contentfulId": "7u4OewgfwK1U6oW4Iq9OUJ",
+								"title": "Automatically discover API endpoints",
 								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Cloudflare received the highest score in the global network criterion among SSE vendors in the Forrester report.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/forrester-wave-sse-2024/",
-								"learnMoreText": "Read the report",
+								"titleSize": null,
+								"description": "Continuously discover your public API endpoints and their schemas with machine learning models and heuristics.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": null,
 								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AdmvEGP1Nssxe3RI0j9Fl/d35e24c62136bae8429dfd43805ad832/forester.svg"
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
+									"altText": "Performance acceleration bolt orange",
+									"title": "Performance acceleration bolt orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/3901da8ee3ead1d525cb74be33363bec/performance-acceleration-bolt.png"
+										},
+										"description": ""
 									},
-									"description": "Forrester logo"
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -177,24 +173,69 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "57VJcEPrZ9CtXnwT8I11um",
-								"title": "Cloudflare a Leader in 2023 IDC MarketScape: Zero Trust Network Access",
-								"makeTitleLink": null,
+								"contentfulId": "1FH41GUg8QQJIs3ZjvK2jW",
+								"title": "Block OWASP Top 10 API Security risks",
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "small",
-								"description": "IDC cites Cloudflare's \"aggressive product strategy to support enterprise security needs.\"",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/idc-marketscape-ztna-2023/",
-								"learnMoreText": "Read the report",
+								"titleSize": null,
+								"description": "Stop common API attacks, including zero-day exploits, authentication abuse, data loss, DDoS, and other business logic attacks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
 								"displayBorder": false,
-								"openLinkInNewTab": false,
+								"openLinkInNewTab": null,
 								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/62y2LOw1pScTM3Nyy6mM8j/e74f4d41a003a796b26dfdcd30448372/idc.svg"
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7eeb6aea-18f5-5736-9b17-69295f2df58c",
+									"altText": "Security shield protection orange",
+									"title": "Security shield protection orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
+										},
+										"description": null
 									},
-									"description": "IDC logo"
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2fNVot1Dm7CfsAhU0h3Flf",
+								"title": "Reduce costs by only serving to clean API traffic",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Validate incoming requests against schemas, authentication, and legitimate API business logic — and reduce your API hosting costs.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -207,8 +248,214 @@
 						"htmlId": null
 					},
 					{
+						"contentfulId": "5tYU8D6JPNCk2RykVLGRkr",
+						"title": "Protect and maintain high-performing APIs with integrated security and monitoring",
+						"copy": "Built on our global, Internet-native network, API Gateway automatically discovers, secures, and monitors API endpoints across your entire landscape — without slowing business innovation.\n\nIt consolidates application and API inventory, policy management, analytics, and reporting on a single platform, with the same connectivity and security benefits offered by Cloudflare's [web application services](https://www.cloudflare.com/application-services/).\n",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "5f328dd4-dcb5-5cd0-bca3-93e0a4d2a4b8",
+							"altText": "How it works - API gateway",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NS72obX98poHLNcBMncrL/e785972b562ec533611c43568e516a3c/BDES-4896_-_security-api-web-apps-spot-illustration.png"
+								},
+								"description": "How it works - API gateway"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "How it works",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "2hkIZQMqz4eJXLnRbx0ijG",
+						"title": "Learn how your company's API security compares to industry peers",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "fK8FDobQ2KrQDkDpZt9j3",
+							"elementName": "Get the report",
+							"standardText": null,
+							"text": "Get the report",
+							"url": "https://www.cloudflare.com/lp/api-security-report/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
+						"contentfulId": "2JPamHBbQyNn8CHG0EDH8q",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "ANALYST RECOGNITION ",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7rbKsvqPbeKD24jn8Zvcao",
+								"title": "Cloudflare only new vendor in 2023 Gartner® Magic Quadrant™ for Security Service Edge (SSE)",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Cloudflare has been recognized in the 2023 Gartner® Magic Quadrant™ for Security Service Edge (SSE) report. We believe our recognition validates our commitment to continue advancing our Zero Trust platform to help secure hybrid work.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2023/",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "f053b586-67f1-5992-9cde-a4dded1d993f",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DAcMsPy1sPuMUvgcPnvVq/46cbc26b237c578e3b9faa8d4fe4a645/gartner-analyst-thumbnail.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5NjQYsOc33Kqb9tBq0mdCf",
+								"title": "Cloudflare named a Strong Performer in \"The Forrester Wave™: Zero Trust Platforms, Q3 2023",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Cloudflare cites continued disruptive momentum in the SSE market, receiving the highest scores possible, 5.0/5.0, in the innovation, roadmap, pricing flexibility & transparency, and hybrid workforce enablement & protection criteria.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/forrester-wave-zero-trust-platforms-2023/",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "d4edb6be-3c48-57b8-9a5b-2a935896d806",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17oKK3LkdeOb1gQGzz9DUy/a0ef115567946993eaed1be10d3a1be5/forrester-analyst-thumbnail.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3DYc4WV3cnqCB54Nbrg3q8",
+								"title": "Cloudflare named a \"Leader\" in 2023 KuppingerCole Leadership Compass for SASE",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Through its 2023 SASE market analysis, KuppingerCole Analysts AG cited several Cloudflare strengths such as our large globally distributed presence and sophisticated traffic acceleration, massive backbone capacity, 100% uptime guarantee, and innovative Remote Browser Isolation.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/kuppingercole-leadership-compass-for-sase-report/",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "c7c82390-0282-54dd-8188-bbeeafd1b64c",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hiSh5d0E4RIzDpJjLeZjU/2f8abcb143b6e4660edd985f96f205ec/kuppingercole-thumbnail.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
+					},
+					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "6U3Hhmsb8WYdCoL0TOTOwc",
+						"contentfulId": "tFl334d25zoSzCl7GS73r",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
@@ -218,7 +465,7 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "iETrb7fECAqpHnk4mfxr3",
+								"contentfulId": "6cMAiFz1S1t0PnWNayeEdp",
 								"title": null,
 								"htmlId": null,
 								"column": {
@@ -269,7 +516,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "\"Algolia is growing pretty fast. We needed a way to have visibility across our corporate network without slowing things down for our employees. Gateway gave us a simple way to do that.\"",
+															"value": "\"Considering how complex our surface is — with mobile and traditional websites, 13 brands, and so many geographies — it's impressive how quickly and easily we implemented Cloudflare and how Cloudflare supported us throughout the entire effort.\"",
 															"marks": [],
 															"content": null
 														}
@@ -313,7 +560,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Director of Infrastructure & Security — Adam Surak",
+													"value": "Head of Information Security, boohoo Group",
 													"marks": [],
 													"content": null
 												}
@@ -499,6 +746,133 @@
 						"sectionPadding": "tile--no-top-padding"
 					},
 					{
+						"contentfulId": "4hTnpkaIbgAurrkENMi8Pf",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Cloudflare API Gateway helps you catalog and manage API endpoints, while blocking attacks, vulnerability exploits, and data leakage",
+						"eyebrowHeading": "Top API Gateway use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2lW7MNYkPFSvwoEIbB3li4",
+								"title": "Discover shadow APIs",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Document every public API in your landscape, even those that are unmanaged or unsecured.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "99e80fe1-da60-560e-b7ca-0c716e6bd26a",
+									"altText": "Discover shadow APIs",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DwkkQAWtYOeS3Ysr6IdXW/bb2241636309942a2b63675357cf048a/ransom-ddos.png"
+										},
+										"description": "Discover shadow APIs"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7wYnYVJNBlKzJ1TRbV4dsT",
+								"title": "Prevent data exfiltration",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Stop data leaks by continuously scanning response payloads for sensitive data.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7f3d83fb-ac3a-5afd-9df5-e48cd88b1904",
+									"altText": "Prevent data exfiltration",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5vz9D6KZ5THTms26Ik5NLp/ef212b7e054b102f9ebf9dfec2b377be/office-branch.svg"
+										},
+										"description": "Prevent data exfiltration"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "52OceYKFLfa8emMfyGT98N",
+								"title": "Create a positive security model",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Protect APIs by only accepting traffic that conforms to your OpenAPI schemas — while blocking malformed requests and HTTP anomalies.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ab4d366d-2541-5727-9626-432d1bd47ef3",
+									"altText": "Create a positive security model",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dJAtq6FoZyguNzfUifhB6/da2ea971934329f7449c368d3455a361/optimization-gear.png"
+										},
+										"description": "Create a positive security model"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4e9gZUs18AbJlLPrAzccbv",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
 						"contentfulId": "7ltuaDb62n4t9L78YjN5N0",
 						"contentTypeId": "bladeLeadGeneration",
 						"title": "Helping organizations worldwide progress towards Zero Trust",
@@ -536,10 +910,247 @@
 							"locale": "en-US"
 						},
 						"secondaryCtaButton": null
+					},
+					{
+						"contentfulId": "3fw6CEpcEOL3r7j8CXWIt9",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "64UpnNWufQzikfsqH1XauB",
+								"title": "How our API Gateway works",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "See how Cloudflare catalogs, monitors, and protects your APIs — from a single dashboard.",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/tsfdPtMqrwiq35aylt8yj/c27aaf27571f1b7ed8448d99fde332cd/API_Gateway_Datasheet.pdf?_gl=1*rctldt*_ga*NzU3MDkzNDYzLjE1NzIyOTYyNDU.*_ga_SQCRB0TXZW*MTcxMjA3OTE3Mi4yMDUuMS4xNzEyMDgxMDM1LjAuMC4w",
+								"learnMoreText": "Download the product brief",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6zIAxShhVCOuVbDdOFyXkp",
+								"title": "Harness the power ​​of consolidated API protection",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Fast API growth comes with risks. Learn how consolidated API protection protects against new and known attacks.",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xmtktV7hFvcn4YXkOPoIc/104ebf2497a0d35cd29a8b60b31734aa/Legacy_WAF_vs_Cloudflare_AppSec_platform_for_API_Security.pdf",
+								"learnMoreText": "Get the solution brief",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2IvNvYFLyIrmObfKSpDaqu",
+								"title": "Review the latest API security trends and recommendations",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Explore trends in shadow API risks, common API errors and threats, and evolving industry benchmarks.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/api-security-report/",
+								"learnMoreText": "Get the ebook",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "67xgDAzT2QrmZeAjZXmwSG",
+						"title": "Interested in API Gateway for your enterprise?",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1FLF41PSDewRjeHPYgggPL",
+							"elementName": "Get in touch",
+							"standardText": null,
+							"text": "Get in touch",
+							"url": "#",
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "R3Gu4KmqKeM9Kc0ybV8Dk",
+								"modalName": "API Gateway - Get in touch",
+								"modalId": "api-gateway-get-in-touch",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "7aikiryD5sDQGo9ttBEecW",
+									"bladeName": "API Gateway - Get in touch - Marketo",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Get in touch",
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "7sDNwm6tWjOIVDbtBWtyk9",
+						"modalName": "Product Gateway Modal",
+						"modalId": "product-gateway-modal",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "1ltMiNByMeIIOQNTeTZ8vS",
+							"bladeName": "Product Gateway - Marketo",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": "Talk to an expert",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": null,
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
@@ -555,17 +1166,7 @@
 			"contentfulId": "1eFnOez80UnYQvIDLH0SjW",
 			"allowedHrefLangs": [
 				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"ru-RU"
 			],
 			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
