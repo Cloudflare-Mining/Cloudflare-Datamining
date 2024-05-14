@@ -1,5 +1,11 @@
 # @cloudflare/pages-plugin-mailchannels
 
+## 0.1.5
+
+### Patch Changes
+
+- a9c9d75: fix import path for type `MailSendBody` in type definition
+
 ## 0.1.4
 
 ### Patch Changes
