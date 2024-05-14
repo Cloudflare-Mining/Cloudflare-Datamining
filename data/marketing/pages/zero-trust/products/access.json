@@ -45,7 +45,7 @@
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KklSIm1KvIQQaEreFR2QY/f793bc30f8fcd008c33f08edc09ef763/teams-access-zero-trust-hero__2_.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3KklSIm1KvIQQaEreFR2QY/d6f9e06c3dfc1e251b7f655fc522a1a0/Group_48097167.svg"
 						},
 						"description": "Meta image for Cloudflare Access product page. "
 					},
@@ -54,16 +54,11 @@
 				},
 				"sys": {
 					"createdAt": "2022-12-12T23:17:20.205Z",
-					"updatedAt": "2024-04-18T15:16:04.801Z"
+					"updatedAt": "2024-05-14T17:33:09.341Z"
 				},
 				"contentfulId": "6i25SFoslu816yV8btesox",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "Learn",
-					"linkText": "What is ZTNA?",
-					"linkUrl": "https://www.cloudflare.com/learning/access-management/what-is-ztna/",
-					"desktopText": "What is Zero Trust Network Access (ZTNA) and what does it do? Read more in our Learning Center."
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
@@ -2790,16 +2785,16 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
-						"contentTypeId": "bladePadding",
-						"height": 1,
-						"backgroundColor": "blue5"
-					},
-					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "VMr8WucXelTbBixQ88LUQ",
 						"htmlContent": "<style>\n.wrapper { background-color: #003682; margin: 0; padding: 20px; width: 100vw;margin-left: calc((100vw - 100%) / -2);  }\n.content { color: #ffffff; margin: 0px auto;  width: fit-content; }\n.link-helper {color: #ffffff !important; margin-left: 5px; text-decoration: underline !important; text-underline-offset: 4px;}\n.link-helper:hover { text-decoration: underline; color: #ffffff !important; text-underline-offset: 4px; }\n</style>\n\n    <section class=\" wrapper\" id=\"contentful-psa-banner\">\n        <div class=\"content\">\n            <span>Cloudflare named in Gartner® Magic Quadrant™ for SSE for 2nd year. </span>\n   <a class=\"link-helper\"  href=\"https://blog.cloudflare.com/cloudflare-sse-gartner-magic-quadrant-2024/\"> <strong>Announcement ></strong></a>    \n\n        </div>\n    </section>",
 						"htmlId": null
+					},
+					{
+						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
+						"contentTypeId": "bladePadding",
+						"height": 1,
+						"backgroundColor": "blue5"
 					},
 					{
 						"contentTypeId": "bladeSubNav",
@@ -3001,17 +2996,17 @@
 						"titleSize": null,
 						"subtitle": "Fast, reliable Zero Trust Network Access (ZTNA)",
 						"subtitleSize": null,
-						"copy": "Access verifies context (like identity and device posture) to secure access across your entire environment — no VPN required.\n",
+						"copy": "Access verifies context (like identity and device posture) to secure access across your entire environment — no VPN required.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
-						"buttonText1": "Talk to an Expert",
+						"buttonText1": "Talk to an expert",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://www.cloudflare.com/products/zero-trust/plans/enterprise/",
+						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": null,
-						"buttonText2": "Download info sheet",
+						"button1ExtraClass": "ztna-enterprise-general-sales-inquiry",
+						"buttonText2": "Get the product brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MptkPuPsd7R9uRE9ail8v/51e096a7a5be22c7171f16535891e9de/ZTNA__Cloudflare_Access__Product_Overview__2024_Q1_.pdf",
+						"buttonUrl2": "http://cfl.re/ztna-product-overview",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -3025,13 +3020,18 @@
 						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
+						"button1OpenInNewTab": false,
 						"button2OpenInNewTab": true,
-						"streamThumbnails": "2s",
-						"sectionPadding": "tile--no-top-padding",
+						"streamThumbnails": null,
+						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": "Large",
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MBVxKTZjnK8dHxrWsaOpB/429fcbd12597a195ea20631c616a189d/SecureWebGateway_Webinar_Thumbnail-1.png"
+							},
+							"description": "Zero Trust Access - video poster"
+						},
+						"imageSize": "Medium",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -3045,45 +3045,39 @@
 						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "1AbKuxLXHdYRJ5fY27zv2W",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentfulId": "4PGP1TEKWXibHuznrN1aSt",
+						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"subtitle": "Benefits of Cloudflare Access",
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE ACCESS",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "29LZkXMBjkztv5OXYV0q69",
-								"title": "Strengthen the employee experience",
-								"makeTitleLink": null,
+								"contentfulId": "6EXk2O24EqTf1YjKaIju29",
+								"title": "Improve team productivity",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Improve team productivity with modernized security that makes on-prem apps feel just like SaaS apps. No more slow, clunky VPNs or employee complaints.",
+								"description": "Make on-premises applications as easy to use as SaaS apps. ZTNA [reduces remote access support tickets by 80%](https://cfl.re/ztna-product-overview) compared to a VPN.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b3ff4344-a324-59a0-b8e4-414adc95e7d3",
-									"altText": "User multi ",
-									"title": "User multi ",
+									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
+									"altText": "Performance acceleration bolt orange",
+									"title": "Performance acceleration bolt orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oO1wqLlaSM1U8pwMbT3jY/e894b1327f9ec28e674794ac78b233e5/user-multi.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/3901da8ee3ead1d525cb74be33363bec/performance-acceleration-bolt.png"
 										},
-										"description": "User Multi - Orange"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3097,27 +3091,27 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "hOh2J4eDcZfySL2KFUfZu",
-								"title": "Eliminate lateral movement",
-								"makeTitleLink": null,
+								"contentfulId": "7uV5pYGTbjLAR2jNmpXYPG",
+								"title": "Simplify management",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Reduce cyber risk and shrink your attack surface by granting context-based, least privilege access per resource rather than network-level access.",
+								"description": "Simplify the setup and operation of ZTNA with robust software connectors and unified Zero Trust policies.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
-									"altText": "Security shield zero trust ",
-									"title": "Security shield zero trust ",
+									"id": "7eeb6aea-18f5-5736-9b17-69295f2df58c",
+									"altText": "Security shield protection orange",
+									"title": "Security shield protection orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
 										},
 										"description": null
 									},
@@ -3133,29 +3127,65 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "E5aXWRsXVMuAC0cDMf59z",
-								"title": "Scale Zero Trust effortlessly",
-								"makeTitleLink": null,
+								"contentfulId": "1xTCP9fKpXsrKALvB8mjgm",
+								"title": "Eliminate lateral movement",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Improve tech efficiency by protecting critical apps or highest risk user groups first, then expanding Internet-native ZTNA to protect your entire business.",
+								"description": "Shrink your attack surface by enforcing context-based, least-privilege access policies for every resource.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "6d5531b7-edaf-5b05-8686-6f455b1c5c6d",
-									"altText": "Optimization web blue",
-									"title": "Optimization web blue",
+									"id": "d7e06a5d-c299-5788-82c3-b20a33e75fae",
+									"altText": "Lateral movement icon",
+									"title": "Lateral movement icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76OxPWvxXlUbcfGr05wpg5/429150d8058c40452ee038bd9198ba4d/optimization-web.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3DMPKRLf4SbnRLKAhg2ZQO/b023500fc1efd3c6953e2638e41cd6b9/BDES-5458_Lateral_movement.svg"
 										},
-										"description": ""
+										"description": "Lateral movement icon: 128x128"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6AaxtPfDslA3VPlIGwpIa9",
+								"title": "Scale Zero Trust effortlessly",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Shield critical applications and high-risk user groups first — then expand cloud-native ZTNA to protect your entire business.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
+										},
+										"description": "icon scale aqua"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3167,36 +3197,117 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
+						],
+						"sectionPadding": null,
+						"htmlId": null
 					},
 					{
-						"contentfulId": "6tWzGeKyZjwBeTbwwskfiG",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
+						"contentfulId": "23c2eJrlIhizsG7H6o1k3Y",
+						"title": "Manage user access across your entire environment",
+						"copy": "Cloudflare Access verifies and secures employee and third-party access across all of your self-hosted, SaaS, and non-web applications, helping mitigate risk and ensure a smooth user experience.\n\nIt checks granular context like identity and device posture for every request to provide fast, reliable access across your business.\n",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": "https://cfl.re/ztna-product-overview",
+						"learnMoreText": "Learn more in our ZTNA product overview",
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "e737d2e1-717f-53c2-a414-403f59df517c",
+							"altText": null,
+							"title": "Cloudflare Access Diagram Dec '22",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Uwcxlfd7HCKIULe1d4Dlz/514e0240025bdf0e3bfe8901cb4f098b/Access_Diagram.png"
+								},
+								"description": "Diagram of how Cloudflare Zero Trust Access works"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "How it works",
 						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": "Analyst Recognition",
-						"bladeStyle": "Feature Blocks - 3 columns",
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
 						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": "center",
+						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "5vfAAca6WfCBa8VyFG0eMF",
+						"title": "Learn how Access works within Cloudflare's SASE platform",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "7DtVQbM1PAZ8E11TlGt6Ev",
+							"elementName": "See reference architecture",
+							"standardText": null,
+							"text": "See reference architecture",
+							"url": "https://developers.cloudflare.com/reference-architecture/architectures/sase/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
 						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"eyebrow": null
+					},
+					{
+						"contentfulId": "2JPamHBbQyNn8CHG0EDH8q",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "ANALYST RECOGNITION ",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4v8WQXNxB95wnnT75RdlXq",
-								"title": "Cloudflare named in the 2024 Gartner® Magic Quadrant™ for Security Service Edge (SSE)",
-								"makeTitleLink": null,
+								"contentfulId": "7rbKsvqPbeKD24jn8Zvcao",
+								"title": "Cloudflare only new vendor in 2023 Gartner® Magic Quadrant™ for Security Service Edge (SSE)",
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "We believe this recognition is a testament to Cloudflare's single-vendor SASE platform and its ability to modernize your network and consolidate more use cases.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2024/",
+								"titleSize": "small",
+								"description": "Cloudflare has been recognized in the 2023 Gartner® Magic Quadrant™ for Security Service Edge (SSE) report. We believe our recognition validates our commitment to continue advancing our Zero Trust platform to help secure hybrid work.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2023/",
 								"learnMoreText": "Read the report",
 								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": true,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
@@ -3222,17 +3333,17 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4CC2MIgkd7TTouUsYZNn5M",
-								"title": "Cloudflare a Strong Performer in The Forrester Wave™: Security Service Edge Solutions, Q1 2024",
+								"contentfulId": "5NjQYsOc33Kqb9tBq0mdCf",
+								"title": "Cloudflare named a Strong Performer in \"The Forrester Wave™: Zero Trust Platforms, Q3 2023",
 								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Cloudflare received the highest score in the global network criterion. We believe this recognition validates our commitment to build SASE \"the right way,\" converging network and security services on a composable, programmable connectivity cloud.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/forrester-wave-sse-2024/",
+								"titleSize": "small",
+								"description": "Cloudflare cites continued disruptive momentum in the SSE market, receiving the highest scores possible, 5.0/5.0, in the innovation, roadmap, pricing flexibility & transparency, and hybrid workforce enablement & protection criteria.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/forrester-wave-zero-trust-platforms-2023/",
 								"learnMoreText": "Read the report",
 								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": true,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
@@ -3258,32 +3369,32 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1gzjLP7JxkstgNJACuAdpC",
-								"title": "Cloudflare named a \"Leader\" in 2023 IDC MarketScape for Zero Trust Network Access (ZTNA)",
-								"makeTitleLink": null,
+								"contentfulId": "3DYc4WV3cnqCB54Nbrg3q8",
+								"title": "Cloudflare named a \"Leader\" in 2023 KuppingerCole Leadership Compass for SASE",
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "IDC cites Cloudflare's \"aggressive product strategy to support enterprise security needs.\" We believe our recognition validates our approach to help businesses of any size get started with Zero Trust and secure access for any user to any resource, without VPNs.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/idc-marketscape-ztna-2023/",
+								"titleSize": "small",
+								"description": "Through its 2023 SASE market analysis, KuppingerCole Analysts AG cited several Cloudflare strengths such as our large globally distributed presence and sophisticated traffic acceleration, massive backbone capacity, 100% uptime guarantee, and innovative Remote Browser Isolation.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/kuppingercole-leadership-compass-for-sase-report/",
 								"learnMoreText": "Read the report",
 								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": null,
+								"openLinkInNewTab": null,
+								"removeCardBorder": true,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "984896cb-acf9-59af-92de-8ce62a95fd13",
-									"altText": "Analyst Recognition - IDC - Full Color Thumbnail",
+									"id": "c7c82390-0282-54dd-8188-bbeeafd1b64c",
+									"altText": null,
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KfRdoQT4QNeW4tt8hMNQD/8d75d2d8245e345e37fa4b54e452cff8/idc-analyst-thumbnail.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hiSh5d0E4RIzDpJjLeZjU/2f8abcb143b6e4660edd985f96f205ec/kuppingercole-thumbnail.png"
 										},
-										"description": "Analyst Recognition - IDC - Full Color Thumbnail"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3292,60 +3403,467 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "7bULIzHWTzXd03VNcLKvkF",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "39Db1jzuRphKB5cI47ESOi",
+								"title": null,
+								"htmlId": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"Cloudflare Access was a game-changer for Bitso. It made Zero Trust much easier. We now manage access to internal resources more efficiently, ensuring the right people have the right level of access to the right resources, regardless of their location, device or network.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cybersecurity Lead, Bitso",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
 						]
 					},
 					{
-						"contentfulId": "7GhihOx8Y9wBegznnZtZlo",
-						"title": "Top use cases for Access",
-						"copy": "- [VPN replacement](https://www.cloudflare.com/products/zero-trust/vpn-replacement/) - Access is faster and safer than traditional VPNs. Start offloading critical apps for better security and end user experience.\n- Accelerate mergers & acquisitions - Avoid a traditional network merge entirely. Integrate with multiple IdPs and provide per-app internal access during M&A.\n- [Contractor access](https://www.cloudflare.com/products/zero-trust/third-party-access/) - Authenticate third-party users like contractors with clientless options, social IdPs, and more.\n- Developer access - Provide privileged technical users secure access to critical infrastructure without performance tradeoffs.\n- [Phishing-resistant MFA](https://www.cloudflare.com/products/zero-trust/phishing-resistant-mfa/) - Roll out strong authentication, like FIDO2-compliant security keys, everywhere.\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": "/zero-trust/solutions/",
-						"learnMoreText": "Explore hybrid work use cases",
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
 						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "e5e68b70-b150-5a60-be15-cf94394e4f05",
-							"altText": null,
-							"title": "Cloudflare Access - Hero Image",
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "3U6z37nklhxSvkMBmdjUOB",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Cloudflare Access provides simple, secure user access to your internal resources — without a VPN",
+						"eyebrowHeading": "TOP ACCESS USE CASES",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "43W8dUsJpwBmSjWHiosuez",
+								"title": "Augment / replace your VPN",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Offload critical applications for better security and an improved user experience.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "eaeddebf-b730-5e34-b5cd-2dcca8d4cba2",
+									"altText": "security-shield-protection-230x301-664b7d5",
+									"title": "security-shield-protection-230x301-664b7d5",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LaRddEaKEWlYXXx8Y2UST/4a87c8fe7df63554665ed7b673ba5846/security-shield-protection-2.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7JoY1t4aWnwsd2SeFpipP9",
+								"title": "Manage third-party access",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Authenticate third-party users (like contractors) with clientless options, social identity providers, and more.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "34d09038-b12f-5770-b496-0720ec680b69",
+									"altText": "multiple users icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3d4Uar5Bfe7atINKDZiF8F/26c4e1815d54098bd1f3be45888b74e6/user-multi__1_.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3oTEhINeD1loKVXkT5vorx",
+								"title": "Empower developers",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Ensure privileged technical users can access critical infrastructure — without performance trade-offs.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ec747864-4669-5c04-8668-5e48160570c0",
+									"altText": "Code Web approved - orange",
+									"title": "Code Web approved - orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yP8xasUuZA27tpg6marwM/a30b4cac4910de90519f6141964f0920/code-js__1_.svg"
+										},
+										"description": "Code Web approved - orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "1feaOJfayjkKVoTVwaEED4",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/zero-trust/solutions/#secure-work-anywhere-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "2R6SrY8SfmesRyAlYlIGfE",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Helping organizations worldwide progress toward Zero Trust",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6kJMwUn2FqolLJysKJTege/5387be09fe3873dcb4209ef3ac3624ab/Access_2x.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
 								},
-								"description": "Illustration of an identity and a shield"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Secure hybrid work",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": "center",
-						"togglesTo": []
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2mYsIAbK3eh4VCNCjW4llT",
+							"elementName": "View case studies - ZT Access",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "https://www.cloudflare.com/case-studies/?Access=Access",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
 					},
 					{
 						"contentfulId": "3V1kVziJgKOfG92dSJVoJI",
@@ -3357,7 +3875,7 @@
 						"title": "Access control features across full Zero Trust platform",
 						"modalButtonText": null,
 						"mobileMode": "Tabbed",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"showMonthlyVsAnnualToggle": true,
 						"priceToggleDescription": null,
 						"plans": [
@@ -12216,388 +12734,135 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "6fWSMw3ba5tqQ9txwiOuS6",
-						"title": "Tackle Zero Trust one step at a time",
-						"titleSize": null,
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "border",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "1gVcu0O8B0izA0Jhe6ETen",
-							"elementName": "Talk to an Expert zero trust enablement button",
-							"standardText": null,
-							"text": "Talk to an Expert",
-							"url": "/products/zero-trust/plans/enterprise/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"buttonTwo": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "1C6brBH8KmN7UQLesmhHEL",
-							"elementName": "Compare All Plans zero trust enablement btn",
-							"standardText": null,
-							"text": "Compare All Plans",
-							"url": "/plans/zero-trust-services/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"sectionPadding": null,
-						"eyebrow": null
-					},
-					{
-						"contentfulId": "tJzEebl6Gj66lPnwBPTSh",
-						"backgroundColor": "light-blue",
+						"contentfulId": "29IEdNcIPJuPCKHDogdyTt",
+						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": null,
-						"subtitle": "Why choose Cloudflare?",
+						"title": "Resources",
+						"subtitle": null,
 						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2UIZI56DsVbfuJ1KlD2WL2",
-								"title": "Easy setup and management",
-								"makeTitleLink": null,
+								"contentfulId": "7JsWr3jIvoUklc0T02gk3K",
+								"title": "Cloudflare Access is the fastest Zero Trust proxy",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Radically simplify the setup and operation of on-ramping traffic to private resources with [app connector software](https://www.cloudflare.com/products/tunnel/) and tunnel orchestration.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"description": "See how performance tests validated Cloudflare's ZTNA service as 50-75% faster than our competition.",
+								"learnMoreUrl": "https://blog.cloudflare.com/network-performance-update-security-week-2023?_ga=2.126871053.182464972.1715615800-1347123090.1701286357",
+								"learnMoreText": "Read the blog post",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": {
-									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
-									"altText": "Ease of use blue",
-									"title": "Ease of use blue",
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/5983fd8a6bf159cead4f17a99057913a/ease-of-use-toggle.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": "Ease of use orange"
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3CQuFkezw8Zg70sJRGqa5g",
-								"title": "Seamless, always-on experience",
-								"makeTitleLink": null,
+								"contentfulId": "1XOKjCzYkktrEEgid7S0yY",
+								"title": "Augment or replace your VPN with Cloudflare",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Achieve peak end user performance and resilience to network outages with Cloudflare's global Anycast technology, ensuring reliability.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"description": "Learn how to offload key applications from traditional VPNs to Cloudflare Access.",
+								"learnMoreUrl": "https://blog.cloudflare.com/how-to-augment-or-replace-your-vpn/?_ga=2.26625469.182464972.1715615800-1347123090.1701286357",
+								"learnMoreText": "Read the blog post",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": {
-									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale ",
-									"title": "Network scale ",
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25B0tY2bGsZrocxnifpnpx/2a328b9ddf2ec85b6c026f5b2d03ed42/network-scale.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": "Network scale orange"
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4YeNzcQQeEPUlqw6NDiO8u",
-								"title": "Rapid, early-adopter innovation",
-								"makeTitleLink": null,
+								"contentfulId": "x3gNxZTqR56LoSSsMkwM5",
+								"title": "Secure contractor access with Zero Trust",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Keep up with the evolution of the Internet itself with a [Zero Trust](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) provider that constantly out-innovates its peers to make app access faster and more secure.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"description": "See how ZTNA makes connecting third-party users (like contractors and partners) secure and simple.",
+								"learnMoreUrl": "https://cfl.re/contractor-access-whitepaper",
+								"learnMoreText": "Download the whitepaper",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/932f409beb6e487be25979fcc5cbf525/performance-acceleration-rocket.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
 						]
-					},
-					{
-						"contentfulId": "23c2eJrlIhizsG7H6o1k3Y",
-						"title": "How it works",
-						"copy": "- Clientless capabilities support HTTPS traffic and in-browser SSH or VNC terminals, while our device client can help evaluate device posture or extend traffic to other in-line services like [Cloudflare Gateway](https://www.cloudflare.com/zero-trust/products/gateway/)\n- Access verifies identity and device posture and grants continuous, contexual access to all of an organization's internal resources, creating a software-defined perimeter\n- In-line WAF and DDoS threat mitigation further strengthen L7 security for apps protected behind Access\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": "https://cfl.re/ztna-product-overview",
-						"learnMoreText": "Learn more in our ZTNA product overview",
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "e737d2e1-717f-53c2-a414-403f59df517c",
-							"altText": null,
-							"title": "Cloudflare Access Diagram Dec '22",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Uwcxlfd7HCKIULe1d4Dlz/724fa5dff62ba56a817bf8d3400206c6/Access_Diagram.png"
-								},
-								"description": "Diagram of how Cloudflare Zero Trust Access works"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Connect users to internal resources",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": "center",
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "1Bhw9VY3BTNGfrWFzlmA5m",
-						"quote": "\"Cloudflare Access was a game-changer for Bitso. It made Zero Trust much easier. We now manage access to internal resources more efficiently, ensuring the right people have the right level of access to the right resources, regardless of their location, device or network.\"",
-						"quoteAuthor": " Mario A Peréz Alejo",
-						"quoteTitle": "Cybersecurity Lead",
-						"learnMoreText": "Read the full case study",
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "light-gray",
-						"bladeBorder": "none",
-						"learnMoreUrl": "https://www.cloudflare.com/case-studies/bitso/",
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5f9BiHI1ZI4pGuhVdp45Mp/e662f6fdf42e58cd36688276e394de0d/bitso_logo.png"
-							},
-							"description": "Bitso logo"
-						},
-						"imageAssetFile": null,
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": [
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "2PIPGIEtcKgjaCBtRDVxQf",
-								"quote": "\"Cloudflare Access became available just in time to prevent us from having to go through the hassle of deploying a VPN. It was an easy choice for us, and Cloudflare Access was shockingly simple to deploy.\"",
-								"quoteAuthor": "Conor Sherman",
-								"quoteTitle": "Head of Security",
-								"learnMoreText": "Read the full case study",
-								"learnMoreUrl": "https://www.cloudflare.com/case-studies/ezcater/",
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Bc4GQQf2SENIUULFDtBT6/371e3ab3604ac88c727a03e1c553ae3a/Logo_01.png"
-									},
-									"description": "ezCater logo"
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "4UqrzQZJs8TEJs6eyDTHly",
-								"quote": "\"Cloudflare's flexibility and ease of use enabled Platzi to achieve Zero Trust remote access with minimal effort. It's Zero Trust in a box -- it just works!\"",
-								"quoteAuthor": "Ronald Escalona",
-								"quoteTitle": "Head of Cloud Engineering",
-								"learnMoreText": "Read the full case study",
-								"learnMoreUrl": "https://www.cloudflare.com/case-studies/platzi/",
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xJnDZG3yw1qQ1WL2sLCKN/8f5c756dd9e327afa91243fb5a8298eb/logo-platzi.svg"
-									},
-									"description": "Platzi logo"
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "5yciBNtXKJgMdqOekeApWh",
-								"quote": "\"At Delivery Hero, we always strive to deliver an amazing experience to our customers. Cloudflare Access helps us do the same for our internal teams: offering them a secure working environment, and removing the need for a VPN to access all of our applications across the globe.\"",
-								"quoteAuthor": "Willian Carminato",
-								"quoteTitle": "Senior Director, Engineering",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6l3uXN7rkllTveH1HRSct1/2725dc80c3773d23bbc382089c885a42/Delivery-Hero-grayscale.png"
-									},
-									"description": "Delivery Hero logo"
-								}
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "WaU09l56G4qCc4bdcWEHO",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "/case-studies?usecase=Enable+zero+trust+security+for+workforce",
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"title": "Helping organizations worldwide progress towards Zero Trust",
-						"copy": null,
-						"logoList": [
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ox6kZdsCZBSqhDUa0vBD/7ae8539f70a2db3a1566b3a375406cba/Canva-grayscale.png"
-								},
-								"description": ""
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6l3uXN7rkllTveH1HRSct1/2725dc80c3773d23bbc382089c885a42/Delivery-Hero-grayscale.png"
-								},
-								"description": "Delivery Hero logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QqegCVRghNpJ5u3koSMIT/150638cc91b792966719e79e2fad1f4b/eTeacherGroup-grayscale.png"
-								},
-								"description": " eTeacher Group logo grayscale - Zero Trust logo blade"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2x1AgM10BcMFrIHXw3ye7k/d22413985484dfd7295fee3fb4e98621/ezCater-grayscale.png"
-								},
-								"description": "ezCater logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/WfJskUftbIg2L9wkJlpvk/fb58bb010585e1139d31ada16363fa51/logo_insead_trusted-by_gray.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7k7S8k0jg0tXOAFBbXuHdg/efea000cb7c6ebf7ce8f12ffc8109954/logo_jetblue-travel-products_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/z4dEAjCkLg48nCqhqzE96/8e18c72e29608c99e6b32b8c20bdddea/Kathmandu-grayscale.png"
-								},
-								"description": "Kathmandu logo grayscale - Zero Trust logo blade"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1XWZR07sp0nr55Vmvga4h2/1b3040aa46a01077e7b366c3d11f367c/logo_onetrust_gray_32px-wrapper.svg"
-								},
-								"description": "OneTrust logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Tr7JQ2TzJPJ7wY4AOzmqI/27e3c8aee40e5db8d0fc6f71825e7b55/logo_politico_gray_158px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sjx4ZVSwUCm4STib20hBG/c2592fdb19ddef806a8e9fd75c92f45c/ZiffMedia-grayscale.png"
-								},
-								"description": "Ziff Media Group logo grayscale - Zero Trust logo blade"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3N0npaMxlGf7sFDe5w8Y25/eb29f4658a2c4a0adb97ff904b3de0e6/Insead-grayscale.png"
-								},
-								"description": "Insead logo grayscale - Zero Trust logo blade"
-							}
-						],
-						"logoListAssetFile": [],
-						"logoUrlList": null
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "6fWSMw3ba5tqQ9txwiOuS6",
-						"title": "Tackle Zero Trust one step at a time",
-						"titleSize": null,
+						"contentfulId": "5QUuVODXXhX69RzrJfNfF7",
+						"title": "Get Cloudflare Access for your enterprise",
+						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
@@ -12606,202 +12871,114 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "small",
 						"htmlId": null,
-						"bladeBorder": "border",
+						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "1gVcu0O8B0izA0Jhe6ETen",
-							"elementName": "Talk to an Expert zero trust enablement button",
+							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
+							"elementName": "Talk to an expert (modal form)",
 							"standardText": null,
-							"text": "Talk to an Expert",
-							"url": "/products/zero-trust/plans/enterprise/",
+							"text": "Talk to an expert",
+							"url": null,
 							"loggedInUrl": null,
-							"buttonModal": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
+								"modalName": "ZT Access Talk to an expert",
+								"modalId": "zt-access-talk-to-an-expert",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "5daBy41JohWg0zdFI6JHW",
+									"bladeName": "ZT Access - Talk to an expert - Marketo",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"buttonTwo": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "1C6brBH8KmN7UQLesmhHEL",
-							"elementName": "Compare All Plans zero trust enablement btn",
-							"standardText": null,
-							"text": "Compare All Plans",
-							"url": "/plans/zero-trust-services/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
+						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
 					},
 					{
-						"contentfulId": "4QDdmw3zjeVinwJ9B0Lpnx",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Additional resources",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 4 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1hcTJyk8ZyYp8jUMuUclhs",
-								"title": "How to augment or replace your VPN with Cloudflare",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "See why and how to offload key applications from your traditional VPN to Cloudflare Access.",
-								"learnMoreUrl": "https://blog.cloudflare.com/how-to-augment-or-replace-your-vpn/",
-								"learnMoreText": "Read blog post",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "724a706d-ce29-544b-b41f-ebbff7e1c839",
-									"altText": null,
-									"title": "Zero Trust - VPN Replacement - Image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/HkeaOWPCsVb2DCKfUhKUd/de62aed3a47b7b15fd61cfab778c7372/Tech_efficiency_-_Zero_Trust_image.png"
-										},
-										"description": "Illustration of an identity and a server"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3qnGs8R0qhRXhhtdjAoiOG",
-								"title": "Zero Trust guide to securing contractor access",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Read how ZTNA makes connecting third-party users like contractors and partners secure and simple.",
-								"learnMoreUrl": "https://cfl.re/contractor-access-whitepaper",
-								"learnMoreText": "Read whitepaper",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "d0740fb7-ea9f-5bd1-9abc-5b95fc4ff080",
-									"altText": "Cloudflare Zero Trust, SASE and SSE",
-									"title": "Zero Trust, SASE and SSE Image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60DQk9cZzrquETYJDbDx8Z/1b29a26449a758147cc1a16090810135/sse-image.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7vfNj8aiLP8Hd7Qf8AP3Z3",
-								"title": "Zero Trust guide to developer access",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Unburden technical teams with safer, faster access to critical\ntools and infrastructure.",
-								"learnMoreUrl": "https://cfl.re/developer-access-solution-brief",
-								"learnMoreText": "Read solution brief",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "eea68eb7-3177-572a-a143-83b3bf3e723b",
-									"altText": null,
-									"title": "Developer access image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7cGYdrHaulVxtXY22RtLoh/9b2a8b21e7dc8b593ee2d6fa6d22f458/Developer_image.png"
-										},
-										"description": "Illustration of a person working from home with Cloudflare swag"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2RK1NfEVnDlCIGgPa1GqBd",
-								"title": "How strong authentication helps stop phishing attacks",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Learn how ZTNA can help require strong authentication, like security keys, and roll it out everywhere.",
-								"learnMoreUrl": "https://cfl.re/strong-authentication-stop-phishing-brief",
-								"learnMoreText": "Read solution brief",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "f9fa2fab-05a5-58b4-951f-bbad10719053",
-									"altText": null,
-									"title": "Security key + shield image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/n1hUdjydwOo7BPWVTOIha/f34c9e16c1408d555288e7f0dfc64df1/FIDO2___Zero_Trust.png"
-										},
-										"description": "Illustration of a security key in front of a shield"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "K1EtYzh9Sc3gWoWjNpgiN",
+						"htmlContent": "<font color=\"#888888\">\n<sup>1</sup> Gartner, Voice of the Customer for Zero Trust Network Access, by Peer Contributors, 30 January 2024.\n  <br>\n  <br>\nGARTNER is a registered trademark and service mark of Gartner, Inc. and/or its affiliates in the US and internationally, MAGIC QUADRANT and PEER INSIGHTS are registered trademarks and The GARTNER PEER INSIGHTS CUSTOMERS' CHOICE badge is a trademark and service mark of Gartner, Inc. and/or its affiliates and is used herein with permission. All rights reserved.\n  <br>\n  <br>\nGartner® Peer Insights content consists of the opinions of individual end users based on their own experiences, and should not be construed as statements of fact, nor do they represent the views of Gartner or its affiliates. Gartner does not endorse any vendor, product, or service depicted in this content nor makes any warranties, expressed or implied, with respect to this content, about its accuracy or completeness, including any warranties of merchantability or fitness for a particular purpose.\n</font>\n<br>\n<br>\n",
+						"htmlId": null
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "6rh21yOtWdxK4Mu2MKb1OS",
+						"modalName": "ZTNA - Enterprise General Sales Inquiry",
+						"modalId": "ztna-enterprise-general-sales-inquiry",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "4lhJsI7QWN7IIssuZgGari",
+							"bladeName": "ztna-enterprise-general-sales-inquiry",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": "Talk to an expert",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": null,
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
