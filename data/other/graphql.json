@@ -1113,6 +1113,7 @@
 		"contentScanNumMaliciousObj": "Number of scannable content objects that are malicious",
 		"contentScanNumObj": "Number of scannable content objects",
 		"contentScanObjResults": "Array of scan results in order of detection",
+		"contentScanObjSizes": "Array of scan sizes in order of detection",
 		"contentScanObjTypes": "Array of content types in order of detection",
 		"date": "The date the event occurred at the edge",
 		"datetime": "The date and time the event occurred at the edge",
@@ -1926,6 +1927,9 @@
 		"contentScanHasFailed": "1 if not all contents for this request where successfully scanned, else 0",
 		"contentScanNumMaliciousObj": "Number of scannable content objects that are malicious",
 		"contentScanNumObj": "Number of scannable content objects",
+		"contentScanObjResults": "Array of scan results in order of detection",
+		"contentScanObjSizes": "Array of scan sizes in order of detection",
+		"contentScanObjTypes": "Array of content types in order of detection",
 		"date": "The date the event occurred at the edge",
 		"datetime": "The date and time the event occurred at the edge",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to a multiple of 15 minutes",
@@ -2019,6 +2023,9 @@
 		"contentScanHasFailed": "1 if not all contents for this request where successfully scanned, else 0",
 		"contentScanNumMaliciousObj": "Number of scannable content objects that are malicious",
 		"contentScanNumObj": "Number of scannable content objects",
+		"contentScanObjResults": "Array of scan results in order of detection",
+		"contentScanObjSizes": "Array of scan sizes in order of detection",
+		"contentScanObjTypes": "Array of content types in order of detection",
 		"date": "The date the event occurred at the edge",
 		"datetime": "The date and time the event occurred at the edge",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to a multiple of 15 minutes",
@@ -3074,60 +3081,6 @@
 		"billableOperations": "Number of Billable Operations (some message operations count as multiple billable operations)",
 		"bytes": "Total size (in bytes) of message operations"
 	},
-	"AccountR2IAOperationsAdaptiveGroups": {
-		"__description": "Beta. R2 infrequent access operations with adaptive sampling",
-		"dimensions": "List of dimensions to group by",
-		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountR2IAOperationsAdaptiveGroupsDimensions": {
-		"__description": "",
-		"actionStatus": "Status of the R2 operation",
-		"actionType": "The name of the R2 operation",
-		"bucketName": "The name of the R2 bucket, if applicable to this request",
-		"date": "Request timestamp, truncated to start of a day",
-		"datetime": "Request timestamp",
-		"datetimeHour": "Request timestamp, truncated to start of an hour",
-		"datetimeMinute": "Request timestamp, truncated to start of an minute",
-		"objectName": "The name of the R2 object, if applicable to this request",
-		"responseStatusCode": "HTTP status code returned by R2"
-	},
-	"AccountR2IAOperationsAdaptiveGroupsFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountR2IAOperationsAdaptiveGroupsOrderBy": {
-		"__description": ""
-	},
-	"AccountR2IAOperationsAdaptiveGroupsSum": {
-		"__description": "",
-		"requests": "Sum of Requests",
-		"responseBytes": "Sum of retrieved bytes"
-	},
-	"AccountR2IAStorageAdaptiveGroups": {
-		"__description": "Beta. R2 infrequent access storage with adaptive sampling",
-		"dimensions": "List of dimensions to group by",
-		"max": "The max of values for a metric per dimension"
-	},
-	"AccountR2IAStorageAdaptiveGroupsDimensions": {
-		"__description": "",
-		"bucketName": "The name of the R2 bucket, if applicable to this request",
-		"date": "Storage sample timestamp, truncated to start of a day",
-		"datetime": "Storage sample timestamp",
-		"datetimeHour": "Storage sample timestamp, truncated to start of an hour",
-		"datetimeMinute": "Storage sample timestamp, truncated to start of an minute"
-	},
-	"AccountR2IAStorageAdaptiveGroupsFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountR2IAStorageAdaptiveGroupsMax": {
-		"__description": "",
-		"metadataSize": "Max of metadata size",
-		"objectCount": "Max of object count",
-		"payloadSize": "Max of payload size",
-		"uploadCount": "Max of upload count"
-	},
-	"AccountR2IAStorageAdaptiveGroupsOrderBy": {
-		"__description": ""
-	},
 	"AccountR2OperationsAdaptiveGroups": {
 		"__description": "Beta. R2 operations with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
@@ -3545,8 +3498,6 @@
 		"queueConsumerMetricsAdaptiveGroups": "",
 		"queueDelayedBacklogAdaptiveGroups": "",
 		"queueMessageOperationsAdaptiveGroups": "",
-		"r2IAOperationsAdaptiveGroups": "",
-		"r2IAStorageAdaptiveGroups": "",
 		"r2OperationsAdaptiveGroups": "",
 		"r2StorageAdaptiveGroups": "",
 		"rumPageloadEventsAdaptiveGroups": "",
@@ -5401,6 +5352,9 @@
 		"contentScanHasFailed": "1 if not all contents for this request where successfully scanned, else 0",
 		"contentScanNumMaliciousObj": "Number of scannable content objects that are malicious",
 		"contentScanNumObj": "Number of scannable content objects",
+		"contentScanObjResults": "Array of scan results in order of detection",
+		"contentScanObjSizes": "Array of scan sizes in order of detection",
+		"contentScanObjTypes": "Array of content types in order of detection",
 		"date": "The date the event occurred at the edge",
 		"datetime": "The date and time the event occurred at the edge",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to a multiple of 15 minutes",
@@ -5493,6 +5447,9 @@
 		"contentScanHasFailed": "1 if not all contents for this request where successfully scanned, else 0",
 		"contentScanNumMaliciousObj": "Number of scannable content objects that are malicious",
 		"contentScanNumObj": "Number of scannable content objects",
+		"contentScanObjResults": "Array of scan results in order of detection",
+		"contentScanObjSizes": "Array of scan sizes in order of detection",
+		"contentScanObjTypes": "Array of content types in order of detection",
 		"date": "The date the event occurred at the edge",
 		"datetime": "The date and time the event occurred at the edge",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to a multiple of 15 minutes",
@@ -6195,8 +6152,6 @@
 		"queueConsumerMetricsAdaptiveGroups": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
 		"queueDelayedBacklogAdaptiveGroups": "Beta. Queue delayed backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
 		"queueMessageOperationsAdaptiveGroups": "Beta. Queue message operation data with adaptive sampling",
-		"r2IAOperationsAdaptiveGroups": "Beta. R2 infrequent access operations with adaptive sampling",
-		"r2IAStorageAdaptiveGroups": "Beta. R2 infrequent access storage with adaptive sampling",
 		"r2OperationsAdaptiveGroups": "Beta. R2 operations with adaptive sampling",
 		"r2StorageAdaptiveGroups": "Beta. R2 storage with adaptive sampling",
 		"rumPageloadEventsAdaptiveGroups": "Beta. Aggregated RUM pageload event metrics with adaptive sampling",
