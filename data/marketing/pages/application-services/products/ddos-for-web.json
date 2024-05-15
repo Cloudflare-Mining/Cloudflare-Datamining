@@ -54,16 +54,11 @@
 				},
 				"sys": {
 					"createdAt": "2020-08-31T23:52:02.438Z",
-					"updatedAt": "2024-05-10T21:39:11.822Z"
+					"updatedAt": "2024-05-15T05:44:34.716Z"
 				},
 				"contentfulId": "3LNIexiZ9KttpSLWbnp9c5",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "Learn More",
-					"linkText": "What is DDoS?",
-					"linkUrl": "https://www.cloudflare.com/learning/ddos/ddos-attack-tools/how-to-ddos/",
-					"desktopText": "What are DDoS attacks? Read more in our Learning Center."
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -73,22 +68,22 @@
 					{
 						"contentfulId": "hSEr0dfXRb5XeY5HAyd9v",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Free DDoS Web Protection",
+						"title": "Cloudflare DDoS Web Protection",
 						"titleSize": null,
-						"subtitle": "Powerful DDoS (L7) protection for websites & web applications, free with ALL application service plans.",
+						"subtitle": "Powerful, always-on DDoS protection for web applications and websites.",
 						"subtitleSize": null,
-						"copy": "- Cloudflare's %{NetworkCapacity} network blocks an average of %{ThreatsBlockedPerDay} billion daily threats.\n- Intelligent and automated mitigations at the edge.",
+						"copy": "Cloudflare provides automatic, intelligent DDoS mitigation from the edge of our global network — mitigating most attacks in three seconds.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
-						"buttonText1": "Sign Up For Free",
-						"buttonText1LoggedIn": "Activate for Free",
+						"buttonText1": "Compare all plans",
+						"buttonText1LoggedIn": null,
 						"buttonUrl1": "#DDoS-Page-Pricing-AS",
-						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/",
+						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Compare All Plans",
+						"buttonText2": "Talk to an expert",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "#DDoS-Page-Pricing-AS",
-						"button2ExtraClass": null,
+						"buttonUrl2": "#",
+						"button2ExtraClass": "ddos-for-web-modal-form",
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
@@ -101,17 +96,17 @@
 						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
+						"button1OpenInNewTab": false,
+						"button2OpenInNewTab": false,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Regular",
+						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": "[Enterprise plans include DDoS service, & more! Schedule a demo!](https://www.cloudflare.com/plans/enterprise/demo/ \"DDoS Enterprise Demo\")",
-						"leftLinkLoggedIn": "[Enterprise plans include DDoS service, & more! Schedule a demo!](https://www.cloudflare.com/plans/enterprise/demo/ \"DDoS Enterprise Demo\")",
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
@@ -135,121 +130,28 @@
 						}
 					},
 					{
-						"contentfulId": "ABVqaMnGKjeAaiVtZUkCm",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "The Cloudflare Difference",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"contentfulId": "7kowXBUjpANhwOevfnln3m",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF DDOS PROTECTION ",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "17TEZG4Fs33XYHgCURhSZp",
-								"title": "Free",
-								"makeTitleLink": null,
+								"contentfulId": "2owXKvkG7TBaVaPD1v5Vhf",
+								"title": "No-cost mitigation",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "All Cloudflare plans offer unlimited and unmetered mitigation of DDoS attacks. Customers are not charged for attack traffic ever, period. \nThere's no penalty for spikes due to attack traffic, requiring no chargeback by the customer.\n",
+								"description": "Get unlimited, unmetered DDoS mitigation, with no penalty for spikes due to attack traffic.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7IHCBx12J3iyQY1f0mrndx/9752e350d17156eb87958da97a7de810/icon-cost-blue.png"
-									},
-									"description": "icon cost blue"
-								},
-								"iconAssetFile": {
-									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
-									"altText": "Price",
-									"title": "Price",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1Ks2g5U38OOvcl8qemNb7N",
-								"title": "Easy",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Easily onboard your web applications within minutes from the dashboard or the API. Adding other Cloudflare security, performance, and reliability functionality is as easy as flipping a switch. ",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ymGzpUdibg8BUc9tbqzBz/c20f4391d97db438b9c5db85f2fabc5e/icon-easy-on-and-off-blue.png"
-									},
-									"description": "icon easy on and off blue"
-								},
-								"iconAssetFile": {
-									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
-									"altText": "Ease of use blue",
-									"title": "Ease of use blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/5983fd8a6bf159cead4f17a99057913a/ease-of-use-toggle.png"
-										},
-										"description": "Ease of use orange"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5wnWldVsD8IMrTLO4SuEky",
-								"title": "Robust",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "With over %{NetworkCapacity} of network capacity and a global network that's constantly learning from the millions of Internet properties on it, Cloudflare protects you against the largest and most sophisticated attacks.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5KA7D3Y51QoFVSVS5OyZKo/137a3a7079cb012076913b904a77b188/icon-ddos-blue.png"
-									},
-									"description": "icon ddos blue"
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
 									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
 									"altText": "Security shield ddos protection blue",
@@ -271,8 +173,170 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6AOFAgJNUqUp9ydBgk2hMj",
+								"title": "Unmatched network resiliency",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Avoid attack-related outages with intelligent, always-on protection — powered by millions of Internet properties across our global network.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
+									"altText": "Network scale ",
+									"title": "Network scale ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25B0tY2bGsZrocxnifpnpx/2a328b9ddf2ec85b6c026f5b2d03ed42/network-scale.svg"
+										},
+										"description": "Network scale orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6hdMDZ7630ELszpXI3YUGs",
+								"title": "One-click onboarding",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Onboard your web applications within minutes — and add security, performance, and reliability capabilities with the click of a button.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "14005b2d-7a68-5e9b-bd3e-e3dc73345b74",
+									"altText": "one-click",
+									"title": "one-click",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fwUO3g3PM7CAAkL5jIYE1/2ca3d3fc1685ea14142410815b3f9e66/ease-of-use-toggle.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
-						]
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentfulId": "3Z62dPWwe68qWBDNSnJ9Hr",
+						"title": "Mitigate layer 7 DDoS attacks at scale",
+						"copy": "Our industry-leading DDoS protection spans %{DataCenterCount}+ data centers on our global network, so [threats are automatically blocked](https://developers.cloudflare.com/ddos-protection/about/how-ddos-protection-works/) as close to end users as possible — without passing through centralized scrubbing centers first.\n\nAdvanced machine learning models continuously improve our defenses, so we can stay ahead of emerging attacks on your behalf.\n",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/77EM0OTZHJz7ehMzYw3YjG/7862324492346d7a8a4c276499e5a03e/speed.svg"
+							},
+							"description": null
+						},
+						"imageAssetFile": {
+							"id": "5a9e6783-ffc5-5bb2-80e3-c5fc2d8d77aa",
+							"altText": "speed",
+							"title": "speed",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/15qhkDDezwAn7NQS89v2Ys/de440deef583089b55749c784c4c3ee3/cloudflare-pages-speed-performance.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "HOW IT WORKS",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "lFg6iXaeU8xr8AZMy3eoP",
+						"title": " Improve your security program using the latest DDoS trends for 2023",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "6bUQCnaZhd47No3iOYBgtT",
+							"elementName": "DDoS for Web - ADDITIONAL OFFER BLADE - CTA",
+							"standardText": null,
+							"text": "Watch the webinar",
+							"url": "https://gateway.on24.com/wcc/eh/2153307/lp/4424610/the-latest-ddos-attack-trends-and-how-they-affect-you",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
 					},
 					{
 						"contentfulId": "3YjJmkLDaoYMTJ3Vt1bcn7",
@@ -316,16 +380,475 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Industry Leading",
+						"sectionTitle": "ANALYST RECOGNITION",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": false,
 						"imageSize": "small",
 						"imageTextAlignment": null,
 						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "KzCRvJtuOnvWKyLFpJ5SV",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5Yrunb7z73m9HMZ9I4xd6u",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"It's been really impressive to see how Cloudflare's DDoS mitigation continues to evolve and morph, and it's definitely the best DDoS mitigation we've ever had. It's easy. It's a no-brainer.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Vice President of Engineering — Zendesk",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "IyjkFS3GuAK9FHQDDsvyz",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Cloudflare DDoS Protection absorbs and mitigates attacks within seconds, analyzes incoming threats, and helps ensure business continuity",
+						"eyebrowHeading": "TOP DDOS PROTECTION USE CASES",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6AxHBat2N27W3O2BtPefWC",
+								"title": "Mitigate attacks in three seconds",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Our network automatically identifies and blocks most DDoS attacks in three seconds — no backhauling required.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "0e7afbfb-6bd8-53f7-862d-96d8bdc1c635",
+									"altText": "Ddos attack blue",
+									"title": "Ddos attack blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fCtDJiVXAmgSWmlKenFBR/d25c631065e2c37cc74e991740434118/ddos-attack.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2miNvCiTje7JAhr9vp4AV9",
+								"title": "Minimize outage-driven revenue loss",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Attack traffic is mitigated close to the source, helping ensure a seamless end-user experience and reducing negative business impact due to latency and outages.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "71bac9e1-306f-5842-8606-9efe7582b95b",
+									"altText": "Minimize attack surface icon",
+									"title": "Minimize attack surface icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SU8QwaktetlbmnNBmn4zE/7fd23d096aac8a0bd24ac26656196934/BDES-5458_Minimize_attack_surface.svg"
+										},
+										"description": "Minimize attack surface - 128x128"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4qcH9DX7TMvp96GvqBt7zW",
+								"title": "Monitor traffic patterns and incoming threats",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare's built-in analytics give you deeper insights into your traffic patterns, threats observed (and blocked), and much more — right from the Cloudflare Dashboard and GraphQL API.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
+									"altText": "Traffic legit orange",
+									"title": "Traffic legit orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4e9gZUs18AbJlLPrAzccbv",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "79OHSdTYqYdfpyOmN22ExE",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Trusted by millions of Internet properties",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "6O3DCk16Ma8GsmbO4irmzf",
+							"elementName": "DDoS for Web - CASE STUDIES - (Lead gen) - CTA",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "https://www.cloudflare.com/case-studies/?DDoS+Protection=DDoS+Protection",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
 					},
 					{
 						"contentfulId": "2y1QXb1a0w6FeMslbHjhuA",
@@ -338,7 +861,7 @@
 						"modalButtonText": null,
 						"mobileMode": "Cards",
 						"sectionPadding": "tile--no-bottom-padding",
-						"showMonthlyVsAnnualToggle": true,
+						"showMonthlyVsAnnualToggle": false,
 						"priceToggleDescription": null,
 						"plans": [
 							{
@@ -3834,276 +4357,219 @@
 						"planFeaturesGroup": []
 					},
 					{
-						"contentfulId": "jRVJynjvP3ZdGLHUwFJBj",
-						"title": "Fast mitigation",
-						"copy": "Cloudflare centralized and decentralized mitigation systems work in concert to identify and mitigate most DDoS attacks in under 10 seconds (3 seconds on average). Preconfigured static rules are deployed in less than 1 second.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/xhU2X87DvdZ0sQ3qwbIhf/af002e7e78818dd17707106bb328f58c/10-sec_Illustration_3x.png"
-							},
-							"description": "Cloudflare identifies and mitigates most DDoS attacks in under 10 seconds"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "AUTOMATED, UNMETERED, ALWAYS-ON DDOS PROTECTION",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
+						"contentfulId": "2gU8h1GS424hXzQv1XXiaE",
 						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "6VOaTTy2bL8qjMfSxS3jGs",
-						"quote": "It's been really impressive to see how Cloudflare's DDoS mitigation continues to evolve and morph, and it's definitely the best DDoS mitigation we've ever had. It's easy. It's a no-brainer.",
-						"quoteAuthor": "Jason Smale",
-						"quoteTitle": "Vice President of Engineering",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
+						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7BNgWDR6akzoylbF4xJ9LA/c7976a328b3c49651d808d37f3456cd2/logo_zendesk_color_32px-wrapper.svg"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "9d784d41-749d-508c-92cd-56f8ecda8871",
-							"altText": "Logo zendesk gray",
-							"title": "Logo zendesk gray",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 4418,
-								"height": 768,
-								"width": 3999,
-								"filename": "logo_zendesk_gray.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_zendesk_gray.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
-					},
-					{
-						"contentfulId": "3Z62dPWwe68qWBDNSnJ9Hr",
-						"title": "How it Works",
-						"copy": "With a simple change to your DNS settings, you can onboard your website to Cloudflare within minutes. Cloudflare's globally distributed anycast network routes visitor requests to the nearest Cloudflare data center.\n\n- When Cloudflare's edge data centers receive a request, they scan it to see if the visitor appears to be a threat, using criteria such as HTTP headers, user agent, query string, path, host, HTTP method, HTTP version, TLS cipher version, and request rate. We also look at HTTP response metrics such as error codes returned by customers' origin servers.\n\n- Our global and local DoS mitigation systems work in concert to protect new and existing threats of any size or kind against your website.\n\n- Any resources that are already cached are served from Cloudflare's data centers directly. Other client request traffic is sent to your origin server over Cloudflare's high-performance network. \n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/77EM0OTZHJz7ehMzYw3YjG/7862324492346d7a8a4c276499e5a03e/speed.svg"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "5a9e6783-ffc5-5bb2-80e3-c5fc2d8d77aa",
-							"altText": "speed",
-							"title": "speed",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/77EM0OTZHJz7ehMzYw3YjG/7862324492346d7a8a4c276499e5a03e/speed.svg"
+						"copy": null,
+						"title": "DDoS Protection resources",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1HbTenegYPyzrhZLMxhvEV",
+								"title": "How Cloudflare DDoS Protection works",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare's autonomous, centralized DDoS systems analyze traffic samples out of path, which allows Cloudflare to detect and mitigate attacks without causing latency or impacting performance.",
+								"learnMoreUrl": "https://developers.cloudflare.com/ddos-protection/about/how-ddos-protection-works/",
+								"learnMoreText": "Explore the developer docs ",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "9ac0be84-ec70-5751-bb2e-db2ab97ceecd",
+									"altText": "How Cloudflare DDoS Protection works - illustration",
+									"title": "How Cloudflare DDoS Protection works - illustration",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/oPEpwxS31nrUycuZJV0FC/f27cff8e62a618d4f9c2b74796584042/How-Cloudflare-DDoS-Protection-works.svg"
+										},
+										"description": "How Cloudflare DDoS Protection works - illustration"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": null
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
-							"brandfolderAsset": {
-								"size": 17183,
-								"height": 2272,
-								"width": 2940,
-								"filename": "cloudflare-pages-speed-performance.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/cloudflare-pages-speed-performance.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "3C44K7KkS4CD7cgGDMVsmp",
-						"title": "Security with fast performance",
-						"copy": "Cloudflare's DDoS protection is designed to integrate and operate seamlessly with other security and performance products including Web Application Firewall, Bot Management, Load Balancer, CDN, and more.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GzSdPJe91eKfw2AMIJmHy/925a8c2f5aa1349f1a15ac50df6a69bd/performance-acceleration-spot-illustration.svg"
-							},
-							"description": "Illustration of a speedometer"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "66JnKcRqucSEFVkGzbxBcD",
-						"title": "See what we see",
-						"copy": "Cloudflare's built-in analytics give you deeper insights into your traffic patterns, threats observed (and blocked), and much more right from the dashboard or via the Cloudflare GraphQL API. Cloudflare logs can also be integrated with third-party SIEMs.  ",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pYmwBy4ea0pqvpBSRoMHa/bb2d1053d649e2411b20e88fa68737b7/spectrum-analytics-spot-illustration_3x-8.png"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "e021152b-1003-5d58-92a7-be84c83d8b98",
-							"altText": "Platform Partnerships Hero Image",
-							"title": "Platform Partnerships Hero Image",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tbIcBBDJR3Rbwg62Nvt6T/6e0f1ac0d1fcd528b5377f983c919149/graph_ql_api.svg"
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "WuHSXApC800vgBYpTnjN9",
+								"title": "Defend against evolving DDoS attacks",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "The HTTP/2 'Rapid Reset' vulnerability represents a major shift in the DDoS landscape. Here are five steps to get ahead of it.",
+								"learnMoreUrl": " https://www.cloudflare.com/the-net/rapid-reset-ddos/",
+								"learnMoreText": "Read the article",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "6882e395-99f2-59cd-9217-24d1301ad9ca",
+									"altText": "Defend against evolving DDoS attacks - illustrations",
+									"title": "Defend against evolving DDoS attacks - illustrations",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4heYJBvK4YaK77v0D417ug/3c8927fb32b3de7f214b7abce25517ee/Mitigate-layer-DDoS-attacks-at-scale.svg"
+										},
+										"description": "Defend against evolving DDoS attacks - illustration"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": null
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
-							"brandfolderAsset": {
-								"size": 15731,
-								"height": 2272,
-								"width": 3016,
-								"filename": "analytics-granular-visibility-cache-spot-illustration.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/analytics-granular-visibility-cache-spot-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1csUcgCeXklbt05qjJivYr",
+								"title": "Reduce downtime with a cloud-based DDoS defense model",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Explore recent DDoS trends by industry, country, and traffic type — and see how Cloudflare mitigates even the largest attacks.",
+								"learnMoreUrl": "https://blog.cloudflare.com/tag/ddos-reports",
+								"learnMoreText": "Read the reports",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "4d720f7b-21dd-5445-99e2-1a18716afb1e",
+									"altText": "Reduce downtime with a cloud-based DDoS defense model - illustration",
+									"title": "Reduce downtime with a cloud-based DDoS defense model - illustration",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jdCGwjG9dhgyiwA3MjpS4/4f26d55153022c27c3d033d036010be6/Reduce-downtime-with-a-cloud-based-DDoS-defense-model.svg"
+										},
+										"description": "Reduce downtime with a cloud based DDoS defense model - illustration"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "331eiOMrIA3U8b1dX8aKGW",
+						"title": "Interested in DDoS protection for your enterprise?",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "4wTpKBKs1bUCZF50qeScNb",
+							"elementName": "DDoS for Web -  Talk to an expert - CTA",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "2PST5zBSD6fFUn1AEmvpbh",
+								"modalName": "DDoS for Web -  Modal form",
+								"modalId": "ddos-for-web-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "2JMBzmz89n0elN8LAhTlLe",
+									"bladeName": "DDoS for Web - Marketo Modal form",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert ",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "2fV06FzuKMAGzhPcKIcyZ5",
-						"modalName": "DDoS for Web Applications",
-						"modalId": "ddos-for-web-applications",
+						"contentfulId": "2PST5zBSD6fFUn1AEmvpbh",
+						"modalName": "DDoS for Web -  Modal form",
+						"modalId": "ddos-for-web-modal-form",
 						"modalType": "single-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "1je18MFvxVQsdmPeI4QC6V",
-							"bladeName": "DDoS for Web Applications Marketo Form",
+							"contentfulId": "2JMBzmz89n0elN8LAhTlLe",
+							"bladeName": "DDoS for Web - Marketo Modal form",
 							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - GBL - DDoS for Web Applications",
-							"marketoFormHeaderText": "Contact us",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": "Talk to an expert ",
 							"marketoFormDefaultComment": null,
 							"showCommentBox": null,
 							"marketoFormThankYouText": null,
