@@ -544,7 +544,7 @@
 		"enabled": false
 	},
 	"magic-tunnel-health-checks": {
-		"enabled": false
+		"enabled": true
 	},
 	"magic-wan-site-breakout-traffic": {
 		"enabled": true
@@ -652,6 +652,13 @@
 		"enabled": true
 	},
 	"prg-bots-upsell-copy-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
+	"prg-streaming-bundle-experiment": {
 		"enabled": false,
 		"branches": [
 			"baseline",
