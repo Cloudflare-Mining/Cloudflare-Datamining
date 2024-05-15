@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.2.4
+
+### Patch Changes
+
+- 20eb7bba90: add a word break to the PageHeader description for when a long zone name overflows the text
+
 ## 9.2.3
 
 ### Patch Changes

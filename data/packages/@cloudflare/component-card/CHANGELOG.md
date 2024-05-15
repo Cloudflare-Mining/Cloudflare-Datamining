@@ -1,5 +1,7 @@
 # Change Log
 
+## 10.0.12
+
 ## 10.0.11
 
 ### Patch Changes
