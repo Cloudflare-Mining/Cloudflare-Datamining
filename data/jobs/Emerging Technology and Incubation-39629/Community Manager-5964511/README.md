@@ -5,40 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: London or Lisbon. Please note this is a fixed term role (12 months fixed term employment)</strong></p>
-<p><strong>What you'll do</strong></p>
-<p>Cloudflare is looking for a paid search practitioner who has a proven track record of understanding and working with global paid search account structures to drive measurable impact on pipeline creation and closed-won revenue. This person will work in conjunction with the paid media manager to execute on routine optimizations, new launches, testing, and reporting.&nbsp;</p>
-<p><strong>About the role</strong></p>
-<p>The Paid Search Specialist is accountable for successfully executing the EMEA paid search strategy across a portfolio of products, regional accounts and campaigns. This role will work in conjunction with internal teams across the company to execute an industry-leading paid search program in multiple languages.&nbsp;</p>
-<p><strong>Responsibilities:</strong></p>
+<h4 id="CommunityManager-AbouttheDepartment"><strong>About the Department</strong></h4>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h4 id="CommunityManager-Whatyou'lldo"><strong>What you'll do</strong></h4>
+<p>Cloudflare is looking for an experienced and empathetic Community Manager to help cultivate the community building with Cloudflare. In this role, you’ll use your skills to help recognize, reward and amplify our global community. This is a cross-functional role where you’ll work collaboratively across the product, marketing, support and sales teams.</p>
 <ul>
-	<li>Implement and support global paid search campaigns, including but not limited to campaign setup, strategy development, organization, and management for Cloudflare’s global enterprise campaigns.&nbsp;</li>
-	<li>Daily use of paid search platforms, reporting, analytics, and trend tools.</li>
-	<li>Campaign optimization: keyword and search term management, ad copy creation and testing, landing page testing, and bid and budget management.</li>
-	<li>Partner with the regional digital marketing team leads to understand requirements, challenges and ongoing resource requirements and create solutions at a global level across multiple languages.</li>
-	<li>Collaborate with globalisation team and local teams for asset translation and optimization of localised campaigns</li>
-	<li>Track and monitor reporting of campaign results on a weekly/quarterly/ad hoc basis.</li>
-	<li>Campaign budget allocation &amp; monitoring to ensure proper pacing and efficiency.</li>
-	<li>Effectively communicate insights and trends based on campaign performance.</li>
+	<li>Cultivate and establish relationships with developers throughout our community</li>
+	<li>Be a thoughtful point of contact for community members to help recognize, reward and amplify the work they're doing with Cloudflare</li>
+	<li>Collaborate with product and customer support to get answers to product questions posted on our community forums and Discord server</li>
+	<li>Support the operation of our community platforms (Discourse and Discord) and in-person meetups program</li>
+	<li>Influence the direction of our developer products by gathering insights from our developer community</li>
 </ul>
-<p><strong>Required Skills &amp; Experience</strong></p>
+<p><strong><span class="inline-comment-marker valid" data-ref="d780b9f8-3af2-4949-babd-db5cbd4845a7">Qualifications</span></strong></p>
+<p>Note: it is not required that you have all of these! Teams have varying needs, focuses, and use varying technologies.</p>
 <ul>
-	<li>
-		<div>3+ years working with paid search channels including Google Ads and Microsoft Ads, ideally within B2B</div>
-	</li>
-	<li>Deep experience working directly within paid search advertising accounts with a keen eye for detail at executing bulk changes</li>
-	<li>Ability to determine, understand and set up bid strategies that incorporate multi layers of data to drive engaged, high quality leads</li>
-	<li>Experience applying testing methodologies to support ongoing improvement and evolution of search campaigns</li>
-	<li>Experience optimizing to multiple conversion points within the B2B buying cycle</li>
-	<li>Experience working with enterprise paid search optimization platforms such as Search Ads 360, Marin Software or Skai a plus</li>
-	<li>Experience developing presentation decks summarizing key insights and recommendations</li>
-	<li>Excellent planning, project management, prioritization skills</li>
-	<li>Strong data-management skills</li>
-	<li>Strong analytical skills to analyze campaign effectiveness and ROI</li>
-	<li>Positive and flexible attitude for working in a fast-paced environment</li>
-	<li>Great attention to detail, time management, and organization skills</li>
-	<li>Additional languages a bonus: French, German, Spanish</li>
+	<li>Minimum 6 years experience as a Community Manager, Developer Relations, Product Management or related role</li>
+	<li>Extensive knowledge of developer ecosystems</li>
+	<li>Great conflict resolution skills and high empathy</li>
+	<li>Experience with Cloudflare Workers</li>
+	<li>Familiar with with admin level functions of at least 2 community management platform,&nbsp;SQL skills to extract &amp; report on community activity and performance</li>
+	<li>Excellent communication and interpersonal skills with the ability to influence and build strong relationships with customers and internal stakeholders</li>
 </ul>
+<p><strong>Available Locations</strong>: Hybrid or Remote: US and Portugal</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
