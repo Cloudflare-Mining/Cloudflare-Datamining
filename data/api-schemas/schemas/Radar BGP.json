@@ -67,11 +67,12 @@
 				}
 			},
 			{
-				"description": "The prefix hijacked during a BGP hijack event",
+				"description": "Network prefix, IPv4 or IPv6.",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
-					"description": "The prefix hijacked during a BGP hijack event",
+					"description": "Network prefix, IPv4 or IPv6.",
+					"example": "1.1.1.0/24",
 					"type": "string"
 				}
 			},
@@ -811,11 +812,12 @@
 				}
 			},
 			{
-				"description": "Lookup MOASes by prefix",
+				"description": "Network prefix, IPv4 or IPv6.",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
-					"description": "Lookup MOASes by prefix",
+					"description": "Network prefix, IPv4 or IPv6.",
+					"example": "1.1.1.0/24",
 					"type": "string"
 				}
 			},
@@ -996,22 +998,22 @@
 		"operationId": "radar-get-bgp-pfx2as",
 		"parameters": [
 			{
+				"description": "Network prefix, IPv4 or IPv6.",
+				"in": "query",
+				"name": "prefix",
+				"schema": {
+					"description": "Network prefix, IPv4 or IPv6.",
+					"example": "1.1.1.0/24",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Lookup prefixes originated by the given ASN",
 				"in": "query",
 				"name": "origin",
 				"schema": {
 					"description": "Lookup prefixes originated by the given ASN",
 					"type": "integer"
-				}
-			},
-			{
-				"description": "Lookup origin ASNs of the given prefix",
-				"in": "query",
-				"name": "prefix",
-				"schema": {
-					"description": "Lookup origin ASNs of the given prefix",
-					"example": "1.1.1.0/24",
-					"type": "string"
 				}
 			},
 			{
@@ -1787,7 +1789,26 @@
 					"description": "Array of BGP network prefixes.",
 					"example": "1.1.1.0/24",
 					"items": {
-						"type": "string"
+						"properties": {
+							"location": {
+								"example": "query",
+								"type": "string"
+							},
+							"name": {
+								"example": "prefix",
+								"type": "string"
+							},
+							"type": {
+								"description": "Network prefix, IPv4 or IPv6.",
+								"example": "1.1.1.0/24",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"location"
+						],
+						"type": "object"
 					},
 					"type": "array"
 				}
@@ -2147,7 +2168,26 @@
 					"description": "Array of BGP network prefixes.",
 					"example": "1.1.1.0/24",
 					"items": {
-						"type": "string"
+						"properties": {
+							"location": {
+								"example": "query",
+								"type": "string"
+							},
+							"name": {
+								"example": "prefix",
+								"type": "string"
+							},
+							"type": {
+								"description": "Network prefix, IPv4 or IPv6.",
+								"example": "1.1.1.0/24",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"location"
+						],
+						"type": "object"
 					},
 					"type": "array"
 				}
