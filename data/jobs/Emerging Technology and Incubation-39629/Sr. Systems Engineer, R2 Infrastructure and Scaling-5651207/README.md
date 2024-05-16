@@ -6,51 +6,27 @@
 	</div>
 </div>
 <h4><strong>Position Location: Austin, TX | Remote US</strong></h4>
-<h4><strong>About The Department</strong></h4>
-<p>An engineering role at Cloudflare provides an opportunity to address some big challenges, at scale. We believe that with our talented team, we can tackle some of the biggest security, reliability and performance problems facing the Internet.</p>
-<p>We are searching for storage engineers to make storage fast, resilient and reliable across the many use cases that an application on the internet requires.</p>
-<p>Our Engineers come from a variety of technical backgrounds and work across a broad range of environments and codebases. Common qualities across all of our performance-focused engineers include a passion for analysis, optimization, scaling, networking, cross team collaboration and hard problem solving.</p>
-<p><strong>What You'll Do</strong></p>
-<p>This is a hands-on role in which you will design and code comprehensive block, file and object storage tools, as well as testing frameworks, while taking on a technical leadership role, improving productivity of our engineering teams and bringing standardization to our processes and practices.</p>
-<p>You will be responsible for the uptime and reliability of a cloud scale storage solution spanning multiple cities and supporting an ever expanding number of applications. You will build services that can adapt to shifting workload demands to ensure a fast and reliable delivery of a globally distributed storage service..</p>
-<p>Communication within your team and across teams is an important aspect of this role. The ideal candidate should be able to succinctly explain capabilities and limitations of the storage system crisply and clearly.</p>
-<p>Read more on our blog!</p>
-<p><strong>Requisite Skills</strong></p>
+<h4>About The Department</h4>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p>Cloudflare's R2 Storage is distributed object storage accessible through Cloudflare's infrastructure allowing customers–both internal and external–the convenience of accessing their data from anywhere with the reliability and performance of Cloudflare infrastructure.&nbsp;</p>
+<h4>What You'll Do</h4>
 <ul>
-	<li>8+ years hands-on systems engineering experience</li>
-	<li>Knowledge of Linux Storage IO stack</li>
-	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use Go, TypeScript, and Rust.</li>
-	<li>CS fundamentals and comfortable working in multiple languages and codebases</li>
-	<li>Research, analyze, and recommend changes required for system growth</li>
-	<li>Instrumentation of storage management systems</li>
-	<li>Knowledge of redundant storage architecture</li>
-	<li>Distributed storage experience (Ceph or similar)</li>
-	<li>Management and recovery of scaled storage systems</li>
-	<li>Experience with the Linux kernel and Linux software packaging</li>
-	<li>Experience debugging, optimizing and identifying failure modes in a large-scale distributed system</li>
-	<li>Configuration management systems such as Saltstack, Chef, Puppet or Ansible</li>
-	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy or Apache</li>
+	<li>Design, build and operate Cloudflare’s block, file and object storage infrastructure at the edge.&nbsp;</li>
+	<li>Push the boundaries of what is possible in storage at the Cloudflare.&nbsp;</li>
+	<li>Collaborate with engineers across the whole stack and teams across Cloudflare, and contribute at many layers of the architecture.&nbsp;</li>
+	<li>Own your work from early discussions to the day it ships.&nbsp;</li>
+	<li>Work closely with product leaders and get to know customers big and small.&nbsp;</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h4>About You</h4>
 <ul>
-	<li>Experience with network programming in C, C++ or Go</li>
-	<li>Experience building and managing a large scale data storage platform.&nbsp;</li>
-	<li>Strong tooling and automation development experience</li>
-	<li>Experience working in a 24/7/365 service environment</li>
-	<li>Experience with distributed databases / storage system</li>
-	<li>High-bandwidth transit Internetworking and routing experience</li>
-</ul>
-<p><strong>Some tools that we use</strong></p>
-<ul>
-	<li>Consul</li>
-	<li>Docker</li>
-	<li>Grafana</li>
-	<li>Kubernetes</li>
-	<li>Nginx</li>
-	<li>Nomad</li>
-	<li>PostgreSQL</li>
-	<li>Prometheus</li>
-	<li>Salt</li>
+	<li>You have at least five years of professional experience as a Software Engineer, Systems Engineer or Systems Reliability Engineer.&nbsp;</li>
+	<li>Experience with building, operating and automating storage infrastructure services such as Ceph, MinIO or SeaweedFS or distributed databases like CockroachDB or ScyllaDB.</li>
+	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use C++, Go, TypeScript, and Rust.</li>
+	<li>You are comfortable with large scale distributed systems and may have experience working in low-latency or real-time environments.&nbsp;</li>
+	<li>You lead. We are a growing team and you will have a huge role in shaping the product from the ground up.&nbsp;</li>
+	<li>You have solid engineering fundamentals (formal computer science education a plus).&nbsp;</li>
+	<li>You have deep knowledge of the Linux kernel, storage IO, and software packaging.</li>
+	<li>Deep knowledge of the Linux Storage IO stack</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
