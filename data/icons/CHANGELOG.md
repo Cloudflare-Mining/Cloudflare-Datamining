@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.7.0
+
+### Minor Changes
+
+- 8d6e8a31a9: Add the router icon
+
 ## 12.6.1
 
 ## 12.6.0

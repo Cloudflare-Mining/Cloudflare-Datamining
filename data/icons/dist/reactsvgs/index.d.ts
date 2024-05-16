@@ -7,6 +7,7 @@ declare const _default: {
     'api-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     api: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     applications: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'arrow-down': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'arrow-external-link': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     backward: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     bolt: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -43,7 +44,6 @@ declare const _default: {
     discord: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     discover: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     documentation: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    down: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     download: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     drive: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     edgeworker: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -118,6 +118,7 @@ declare const _default: {
     retarget: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     revert: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     right: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    router: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     script: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     search: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'security-bots': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

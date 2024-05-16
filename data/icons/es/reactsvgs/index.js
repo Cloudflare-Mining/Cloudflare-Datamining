@@ -5,6 +5,7 @@ import Add from './Add';
 import ApiSecurity from './ApiSecurity';
 import Api from './Api';
 import Applications from './Applications';
+import ArrowDown from './ArrowDown';
 import ArrowExternalLink from './ArrowExternalLink';
 import Backward from './Backward';
 import Bolt from './Bolt';
@@ -41,7 +42,6 @@ import DeviceTablet from './DeviceTablet';
 import Discord from './Discord';
 import Discover from './Discover';
 import Documentation from './Documentation';
-import Down from './Down';
 import Download from './Download';
 import Drive from './Drive';
 import Edgeworker from './Edgeworker';
@@ -116,6 +116,7 @@ import ResizeHorizontal from './ResizeHorizontal';
 import Retarget from './Retarget';
 import Revert from './Revert';
 import Right from './Right';
+import Router from './Router';
 import Script from './Script';
 import Search from './Search';
 import SecurityBots from './SecurityBots';
@@ -169,6 +170,7 @@ export default {
   'api-security': ApiSecurity,
   api: Api,
   applications: Applications,
+  'arrow-down': ArrowDown,
   'arrow-external-link': ArrowExternalLink,
   backward: Backward,
   bolt: Bolt,
@@ -205,7 +207,6 @@ export default {
   discord: Discord,
   discover: Discover,
   documentation: Documentation,
-  down: Down,
   download: Download,
   drive: Drive,
   edgeworker: Edgeworker,
@@ -280,6 +281,7 @@ export default {
   retarget: Retarget,
   revert: Revert,
   right: Right,
+  router: Router,
   script: Script,
   search: Search,
   'security-bots': SecurityBots,
