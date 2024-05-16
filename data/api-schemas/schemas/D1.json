@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/d1/database/{database_identifier}": {
+	"DELETE /accounts/{account_id}/d1/database/{database_id}": {
 		"description": "Deletes the specified D1 database.",
 		"operationId": "cloudflare-d1-delete-database",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "database_identifier",
+				"name": "database_id",
 				"required": true,
 				"schema": {
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -762,13 +762,13 @@
 			"D1"
 		]
 	},
-	"GET /accounts/{account_identifier}/d1/database/{database_identifier}": {
+	"GET /accounts/{account_id}/d1/database/{database_id}": {
 		"description": "Returns the specified D1 database.",
 		"operationId": "cloudflare-d1-get-database",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -780,7 +780,7 @@
 			},
 			{
 				"in": "path",
-				"name": "database_identifier",
+				"name": "database_id",
 				"required": true,
 				"schema": {
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -1536,13 +1536,13 @@
 			"D1"
 		]
 	},
-	"POST /accounts/{account_identifier}/d1/database/{database_identifier}/query": {
+	"POST /accounts/{account_id}/d1/database/{database_id}/query": {
 		"description": "Returns the query result.",
 		"operationId": "cloudflare-d1-query-database",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -1554,7 +1554,7 @@
 			},
 			{
 				"in": "path",
-				"name": "database_identifier",
+				"name": "database_id",
 				"required": true,
 				"schema": {
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
