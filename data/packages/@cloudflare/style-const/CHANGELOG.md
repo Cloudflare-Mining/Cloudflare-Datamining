@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.9.0
+
+### Minor Changes
+
+- 1793cf255c: Add textMuted token
+
 ## 5.8.1
 
 ### Patch Changes

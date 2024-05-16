@@ -1,5 +1,12 @@
 # Change Log
 
+## 10.0.11
+
+### Patch Changes
+
+- @cloudflare/component-loading@6.1.6
+- @cloudflare/component-dynamic-content@3.0.5
+
 ## 10.0.10
 
 ### Patch Changes

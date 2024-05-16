@@ -1,5 +1,12 @@
 # Change Log
 
+## 8.0.14
+
+### Patch Changes
+
+- @cloudflare/component-button@8.3.7
+- @cloudflare/component-checkbox@5.3.6
+
 ## 8.0.13
 
 ### Patch Changes

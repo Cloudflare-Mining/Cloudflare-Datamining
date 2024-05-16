@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.5
+
+### Patch Changes
+
+- @cloudflare/component-box@4.0.5
+
 ## 5.0.4
 
 ### Patch Changes

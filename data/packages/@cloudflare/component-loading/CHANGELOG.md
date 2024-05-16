@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.1.6
+
+### Patch Changes
+
+- @cloudflare/component-visually-hidden@1.0.90
+- @cloudflare/elements@3.0.7
+
 ## 6.1.5
 
 ### Patch Changes
