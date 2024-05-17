@@ -75,6 +75,20 @@
 									},
 									"type": "array"
 								},
+								"result": {
+									"anyOf": [
+										{
+											"type": "object"
+										},
+										{
+											"items": {},
+											"type": "array"
+										},
+										{
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"description": "Whether the API call was successful",
 									"enum": [
@@ -87,7 +101,8 @@
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
@@ -99,10 +114,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -122,19 +137,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -154,33 +158,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -282,6 +305,20 @@
 									},
 									"type": "array"
 								},
+								"result": {
+									"anyOf": [
+										{
+											"type": "object"
+										},
+										{
+											"items": {},
+											"type": "array"
+										},
+										{
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"description": "Whether the API call was successful",
 									"enum": [
@@ -294,7 +331,8 @@
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
@@ -306,10 +344,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -329,19 +367,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -361,33 +388,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -483,6 +529,20 @@
 											},
 											"type": "array"
 										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -495,7 +555,8 @@
 									"required": [
 										"success",
 										"errors",
-										"messages"
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -612,10 +673,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -635,19 +696,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -667,33 +717,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -777,6 +846,20 @@
 											},
 											"type": "array"
 										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -789,7 +872,8 @@
 									"required": [
 										"success",
 										"errors",
-										"messages"
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -876,10 +960,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -899,19 +983,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -931,33 +1004,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -1041,6 +1133,20 @@
 											},
 											"type": "array"
 										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -1053,7 +1159,8 @@
 									"required": [
 										"success",
 										"errors",
-										"messages"
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -1117,10 +1224,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1140,19 +1247,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1172,33 +1268,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -1282,6 +1397,20 @@
 											},
 											"type": "array"
 										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -1294,7 +1423,8 @@
 									"required": [
 										"success",
 										"errors",
-										"messages"
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -1324,10 +1454,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1347,19 +1477,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1379,33 +1498,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -1606,6 +1744,20 @@
 											},
 											"type": "array"
 										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -1618,7 +1770,8 @@
 									"required": [
 										"success",
 										"errors",
-										"messages"
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -1765,10 +1918,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1788,19 +1941,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -1820,33 +1962,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -2011,6 +2172,20 @@
 											},
 											"type": "array"
 										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -2023,7 +2198,8 @@
 									"required": [
 										"success",
 										"errors",
-										"messages"
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -2105,10 +2281,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2128,19 +2304,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2160,33 +2325,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -2301,6 +2485,20 @@
 											},
 											"type": "array"
 										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -2313,7 +2511,8 @@
 									"required": [
 										"success",
 										"errors",
-										"messages"
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -2392,10 +2591,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2415,19 +2614,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2447,33 +2635,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -2603,6 +2810,20 @@
 											},
 											"type": "array"
 										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -2615,7 +2836,8 @@
 									"required": [
 										"success",
 										"errors",
-										"messages"
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -2732,10 +2954,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2755,19 +2977,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -2787,33 +2998,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -2955,6 +3185,20 @@
 											},
 											"type": "array"
 										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -2967,7 +3211,8 @@
 									"required": [
 										"success",
 										"errors",
-										"messages"
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -3084,10 +3329,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -3107,19 +3352,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -3139,33 +3373,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -3314,6 +3567,20 @@
 											},
 											"type": "array"
 										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -3326,7 +3593,8 @@
 									"required": [
 										"success",
 										"errors",
-										"messages"
+										"messages",
+										"result"
 									],
 									"type": "object"
 								},
@@ -3405,10 +3673,10 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -3428,19 +3696,8 @@
 												"uniqueItems": true
 											},
 											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
+										},
+										"messages": {
 											"example": [],
 											"items": {
 												"properties": {
@@ -3460,33 +3717,52 @@
 												"uniqueItems": true
 											},
 											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"example": []
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
+								{
+									"properties": {
+										"errors": {
+											"example": {
+												"code": 10433,
+												"message": "request error"
+											}
+										},
+										"success": {
+											"example": false
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
