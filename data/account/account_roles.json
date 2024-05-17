@@ -854,11 +854,15 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
 			"magic": {
 				"read": true,
 				"edit": true
 			},
-			"organization": {
+			"billing": {
 				"read": true,
 				"edit": true
 			},
@@ -925,10 +929,6 @@
 				"publish": true
 			},
 			"logs": {
-				"read": true,
-				"edit": true
-			},
-			"billing": {
 				"read": true,
 				"edit": true
 			},
@@ -1438,11 +1438,15 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
 			"magic": {
 				"read": true,
 				"edit": false
 			},
-			"organization": {
+			"billing": {
 				"read": true,
 				"edit": false
 			},
@@ -1499,10 +1503,6 @@
 				"edit": false
 			},
 			"worker": {
-				"read": true,
-				"edit": false
-			},
-			"billing": {
 				"read": true,
 				"edit": false
 			},
@@ -1586,13 +1586,17 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
 			"magic": {
 				"read": true,
 				"edit": true
 			},
-			"organization": {
+			"billing": {
 				"read": true,
-				"edit": true
+				"edit": false
 			},
 			"dns_records": {
 				"read": true,
@@ -1659,10 +1663,6 @@
 			"logs": {
 				"read": true,
 				"edit": true
-			},
-			"billing": {
-				"read": true,
-				"edit": false
 			},
 			"fbm": {
 				"read": true,
