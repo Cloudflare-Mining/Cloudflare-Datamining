@@ -16,9 +16,9 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "gateway slug",
+					"description": "gateway id",
 					"example": "my-gateway",
-					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			}
@@ -45,9 +45,9 @@
 											"type": "string"
 										},
 										"id": {
-											"description": "gateway slug",
+											"description": "gateway id",
 											"example": "my-gateway",
-											"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
 										"modified_at": {
@@ -197,9 +197,9 @@
 				"in": "query",
 				"name": "id",
 				"schema": {
-					"description": "gateway slug",
+					"description": "gateway id",
 					"example": "my-gateway",
-					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			}
@@ -227,9 +227,9 @@
 												"type": "string"
 											},
 											"id": {
-												"description": "gateway slug",
+												"description": "gateway id",
 												"example": "my-gateway",
-												"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 												"type": "string"
 											},
 											"modified_at": {
@@ -353,9 +353,9 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "gateway slug",
+					"description": "gateway id",
 					"example": "my-gateway",
-					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			}
@@ -382,9 +382,9 @@
 											"type": "string"
 										},
 										"id": {
-											"description": "gateway slug",
+											"description": "gateway id",
 											"example": "my-gateway",
-											"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
 										"modified_at": {
@@ -507,9 +507,9 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "gateway slug",
+					"description": "gateway id",
 					"example": "my-gateway",
-					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			},
@@ -769,9 +769,9 @@
 								"type": "boolean"
 							},
 							"id": {
-								"description": "gateway slug",
+								"description": "gateway id",
 								"example": "my-gateway",
-								"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 								"type": "string"
 							},
 							"rate_limiting_interval": {
@@ -819,9 +819,9 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "gateway slug",
+													"description": "gateway id",
 													"example": "my-gateway",
-													"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+													"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 													"type": "string"
 												},
 												"modified_at": {
@@ -958,9 +958,9 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "gateway slug",
+					"description": "gateway id",
 					"example": "my-gateway",
-					"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			}
@@ -1021,9 +1021,9 @@
 											"type": "string"
 										},
 										"id": {
-											"description": "gateway slug",
+											"description": "gateway id",
 											"example": "my-gateway",
-											"pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
 										"modified_at": {
