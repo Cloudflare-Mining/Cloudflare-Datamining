@@ -13,6 +13,45 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "1f755e3b08bf47fdb9215f3de81a045f",
+				"key": "com.cloudflare.api.account.share.recipient.*",
+				"attributes": {
+					"legacy_name": "#organization:read,#organization:edit"
+				}
+			},
+			{
+				"id": "68e3a2972f1545c8b1bc2ef04e312b7d",
+				"key": "com.cloudflare.api.account.share.resource.*",
+				"attributes": {
+					"legacy_name": "#organization:read,#organization:edit"
+				}
+			},
+			{
+				"id": "4c5cff0b5bfd492bb7552bb8895654ec",
+				"key": "com.cloudflare.api.account.share.*",
+				"attributes": {
+					"legacy_name": "#organization:read,#organization:edit"
+				}
+			},
+			{
+				"id": "33612066302c474fb6f511c2aec10229",
+				"key": "com.cloudflare.edge.magic-transit.app.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
+			{
+				"id": "19b27b24f7424adb9df3b8fbff18d881",
+				"key": "com.cloudflare.api.account.load-balancer.entitlements_allowed.validate"
+			},
+			{
+				"id": "66540ff0edf749528d6e2b06605fa3ad",
+				"key": "com.cloudflare.api.account.billing.unpaid-invoice.read",
+				"attributes": {
+					"legacy_name": "#billing:read"
+				}
+			},
+			{
 				"id": "31958b02923c4c3ba319caa26f5a4a74",
 				"key": "com.cloudflare.api.account.cloudchamber.application.*"
 			},
@@ -4489,6 +4528,69 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "d6ba2c08a30c4861ac207f5040d4894d",
+				"key": "com.cloudflare.api.account.share.recipient.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			},
+			{
+				"id": "0c45c05516984c0bb33c872039189026",
+				"key": "com.cloudflare.api.account.share.recipient.list",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			},
+			{
+				"id": "7030d9e5b5ee4440889c45ea16418a51",
+				"key": "com.cloudflare.api.account.share.resource.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			},
+			{
+				"id": "84b28138a7ce4d06b5044d36fd4f4225",
+				"key": "com.cloudflare.api.account.share.resource.list",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			},
+			{
+				"id": "8e297b79dba842ffbb1bf9cc9bb920ae",
+				"key": "com.cloudflare.api.account.share.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			},
+			{
+				"id": "dc81c2e3c772427289b1b8694d69254e",
+				"key": "com.cloudflare.api.account.share.list",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			},
+			{
+				"id": "6cf0973795c947809c3e538312c85624",
+				"key": "com.cloudflare.edge.magic-transit.app.read",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "c87e9bec47814a7c9a3eea4ab254d836",
+				"key": "com.cloudflare.edge.magic-transit.app.list",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "66540ff0edf749528d6e2b06605fa3ad",
+				"key": "com.cloudflare.api.account.billing.unpaid-invoice.read",
+				"attributes": {
+					"legacy_name": "#billing:read"
+				}
+			},
+			{
 				"id": "558c804819704f488a5369a0834abd65",
 				"key": "com.cloudflare.api.account.cloudchamber.application.list"
 			},
@@ -8155,6 +8257,13 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "66540ff0edf749528d6e2b06605fa3ad",
+				"key": "com.cloudflare.api.account.billing.unpaid-invoice.read",
+				"attributes": {
+					"legacy_name": "#billing:read"
+				}
+			},
 			{
 				"id": "2c147c3aae4542c8855112c48a75c5d3",
 				"key": "com.cloudflare.api.account.billing.bad-debt.read",
@@ -17402,6 +17511,20 @@
 		"modified_on": "2022-08-12T21:38:07.587547Z",
 		"permissions": [
 			{
+				"id": "6cf0973795c947809c3e538312c85624",
+				"key": "com.cloudflare.edge.magic-transit.app.read",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "c87e9bec47814a7c9a3eea4ab254d836",
+				"key": "com.cloudflare.edge.magic-transit.app.list",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
 				"id": "05fb4b22d5db46ba9d6152000d2f8e60",
 				"key": "com.cloudflare.api.magic-cloud.onramp.read",
 				"attributes": {
@@ -17674,6 +17797,13 @@
 		"created_on": "2022-08-12T21:38:07.587547Z",
 		"modified_on": "2022-08-12T21:38:07.587547Z",
 		"permissions": [
+			{
+				"id": "33612066302c474fb6f511c2aec10229",
+				"key": "com.cloudflare.edge.magic-transit.app.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
 			{
 				"id": "79235d644206480fba9352d9e9144f1c",
 				"key": "com.cloudflare.api.magic-cloud.onramp.*",
@@ -19081,6 +19211,45 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "1f755e3b08bf47fdb9215f3de81a045f",
+				"key": "com.cloudflare.api.account.share.recipient.*",
+				"attributes": {
+					"legacy_name": "#organization:read,#organization:edit"
+				}
+			},
+			{
+				"id": "68e3a2972f1545c8b1bc2ef04e312b7d",
+				"key": "com.cloudflare.api.account.share.resource.*",
+				"attributes": {
+					"legacy_name": "#organization:read,#organization:edit"
+				}
+			},
+			{
+				"id": "4c5cff0b5bfd492bb7552bb8895654ec",
+				"key": "com.cloudflare.api.account.share.*",
+				"attributes": {
+					"legacy_name": "#organization:read,#organization:edit"
+				}
+			},
+			{
+				"id": "33612066302c474fb6f511c2aec10229",
+				"key": "com.cloudflare.edge.magic-transit.app.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
+			{
+				"id": "19b27b24f7424adb9df3b8fbff18d881",
+				"key": "com.cloudflare.api.account.load-balancer.entitlements_allowed.validate"
+			},
+			{
+				"id": "66540ff0edf749528d6e2b06605fa3ad",
+				"key": "com.cloudflare.api.account.billing.unpaid-invoice.read",
+				"attributes": {
+					"legacy_name": "#billing:read"
+				}
+			},
 			{
 				"id": "31958b02923c4c3ba319caa26f5a4a74",
 				"key": "com.cloudflare.api.account.cloudchamber.application.*"
