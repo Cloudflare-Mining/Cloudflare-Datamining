@@ -30,7 +30,7 @@
 	"QueryName": "string; The query name (for example, 'example.com'). Cloudflare will surface '.' for root server queries in your logs.",
 	"QueryNameReversed": "string; Query name in reverse (for example, 'com.example'). Cloudflare will surface '.' for root server queries in your logs.",
 	"QuerySize": "int; The size of the DNS request in bytes (for example, 151).",
-	"QueryType": "string; The type of DNS query (for example, '1', '28', '15', or '16').",
+	"QueryType": "int; The type of DNS query (for example, 1, 28, 15, or 16).",
 	"QueryTypeName": "string; The type of DNS query (for example, 'A', 'AAAA', 'MX', or 'TXT').",
 	"RCode": "int; The return code sent back by the DNS resolver.",
 	"RData": "array[object]; The rdata objects (for example, {\"type\":\"5\",\"data\":\"dns-packet-placeholder...\"}).",
