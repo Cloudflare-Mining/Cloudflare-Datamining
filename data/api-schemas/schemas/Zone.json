@@ -2028,11 +2028,71 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"examples": {
+						"Flex Purge with Hosts": {
+							"summary": "Flex purge example with hosts list",
+							"value": {
+								"hosts": [
+									"www.example.com",
+									"images.example.com"
+								]
+							}
+						},
+						"Flex Purge with Prefixes": {
+							"summary": "Flex purge example with prefixes list",
+							"value": {
+								"prefixes": [
+									"www.example.com/foo",
+									"images.example.com/bar/baz"
+								]
+							}
+						},
+						"Flex Purge with Tags": {
+							"summary": "Flex purge example with tags list",
+							"value": {
+								"tags": [
+									"some-tag",
+									"another-tag"
+								]
+							}
+						},
+						"Purge Everything": {
+							"summary": "Purge everything example",
+							"value": {
+								"purge_everything": true
+							}
+						},
+						"Single File Purge": {
+							"summary": "Single file purge example with files list",
+							"value": {
+								"files": [
+									"http://www.example.com/css/styles.css",
+									"http://www.example.com/js/index.js"
+								]
+							}
+						},
+						"Single File Purge with UrlAndHeaders": {
+							"summary": "Single file purge example with url and headers list",
+							"value": {
+								"files": [
+									{
+										"headers": "CF-IPCountry: \"US\", CF-Device-Type: \"desktop\", Accept-Language: \"zh-CN\"",
+										"url": "http://www.example.com/cat_picture.jpg"
+									},
+									{
+										"headers": "CF-IPCountry: \"EU\", CF-Device-Type: \"mobile\", Accept-Language: \"en-US\"",
+										"url": "http://www.example.com/dog_picture.jpg"
+									}
+								]
+							}
+						}
+					},
 					"schema": {
 						"anyOf": [
 							{
 								"anyOf": [
 									{
+										"description": "Flex purge by tags",
 										"properties": {
 											"tags": {
 												"example": [
@@ -2048,6 +2108,7 @@
 										"type": "object"
 									},
 									{
+										"description": "Flex purge by host",
 										"properties": {
 											"hosts": {
 												"example": [
@@ -2063,6 +2124,7 @@
 										"type": "object"
 									},
 									{
+										"description": "Flex purge by prefixes",
 										"properties": {
 											"prefixes": {
 												"example": [
@@ -2215,7 +2277,7 @@
 				},
 				"description": "Purge Cached Content"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
