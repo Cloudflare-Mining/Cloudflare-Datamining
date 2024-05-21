@@ -159,7 +159,7 @@
 													"type": "string"
 												},
 												"forward_locally": {
-													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.",
 													"type": "boolean"
 												},
 												"id": {
@@ -381,7 +381,7 @@
 		],
 		"summary": "Delete Site ACL",
 		"tags": [
-			"Magic WAN Connector Site ACLs"
+			"Magic Site ACLs"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -538,7 +538,7 @@
 														"type": "string"
 													},
 													"forward_locally": {
-														"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+														"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.",
 														"type": "boolean"
 													},
 													"id": {
@@ -762,7 +762,7 @@
 		],
 		"summary": "List Site ACLs",
 		"tags": [
-			"Magic WAN Connector Site ACLs"
+			"Magic Site ACLs"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -925,7 +925,7 @@
 													"type": "string"
 												},
 												"forward_locally": {
-													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.",
 													"type": "boolean"
 												},
 												"id": {
@@ -1147,7 +1147,7 @@
 		],
 		"summary": "Site ACL Details",
 		"tags": [
-			"Magic WAN Connector Site ACLs"
+			"Magic Site ACLs"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1213,7 +1213,7 @@
 								"type": "string"
 							},
 							"forward_locally": {
-								"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+								"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.",
 								"type": "boolean"
 							},
 							"lan_1": {
@@ -1437,7 +1437,7 @@
 													"type": "string"
 												},
 												"forward_locally": {
-													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.",
 													"type": "boolean"
 												},
 												"id": {
@@ -1659,7 +1659,7 @@
 		],
 		"summary": "Patch Site ACL",
 		"tags": [
-			"Magic WAN Connector Site ACLs"
+			"Magic Site ACLs"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1675,7 +1675,7 @@
 	},
 	"POST /accounts/{account_id}/magic/sites/{site_id}/acls": {
 		"description": "Creates a new Site ACL.",
-		"operationId": "magic-site-acls-create-site-acl",
+		"operationId": "magic-site-acls-create-acl",
 		"parameters": [
 			{
 				"in": "path",
@@ -1714,7 +1714,7 @@
 								"type": "string"
 							},
 							"forward_locally": {
-								"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+								"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.",
 								"type": "boolean"
 							},
 							"lan_1": {
@@ -1943,7 +1943,7 @@
 													"type": "string"
 												},
 												"forward_locally": {
-													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.",
 													"type": "boolean"
 												},
 												"id": {
@@ -2165,7 +2165,7 @@
 		],
 		"summary": "Create a new Site ACL",
 		"tags": [
-			"Magic WAN Connector Site ACLs"
+			"Magic Site ACLs"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -2226,7 +2226,7 @@
 								"type": "string"
 							},
 							"forward_locally": {
-								"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+								"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.",
 								"type": "boolean"
 							},
 							"lan_1": {
@@ -2450,7 +2450,7 @@
 													"type": "string"
 												},
 												"forward_locally": {
-													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic WAN Connector. If not included in request, will default to false.",
+													"description": "The desired forwarding action for this ACL policy. If set to \"false\", the policy will forward traffic to Cloudflare. If set to \"true\", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.",
 													"type": "boolean"
 												},
 												"id": {
@@ -2672,7 +2672,7 @@
 		],
 		"summary": "Update Site ACL",
 		"tags": [
-			"Magic WAN Connector Site ACLs"
+			"Magic Site ACLs"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
