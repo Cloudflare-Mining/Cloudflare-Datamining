@@ -5,37 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>What you'll do</strong></p>
-<p>As an Engineering Manager in the WARP team you will join a team that works on the backend system that allows our customers to manage their devices via our Zero Trust Network solution.</p>
-<p>We are looking for an <strong>Engineer Manager</strong> to lead the <a href="https://www.cloudflare.com/zero-trust/">Zero Trust</a> team working on <strong>WARP API services</strong>, which uses Cloudflare’s global network to securely route tunnelled traffic from millions of devices running <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/">WARP</a> to the Internet.</p>
-<p>You will play a key role in shaping the team’s engineering strategy, working with other engineering teams, product management, and external stakeholders to implement customer-impacting features and meet the team’s ambitious goals of <strong>quality</strong>,<strong> reliability</strong>, and <strong>high-availability</strong>. You will work closely with your team to maintain the<strong> code quality</strong> and to build solid, <strong>testable, </strong>and<strong> well-documented</strong> code.</p>
-<p>As a manager in our team, you will be expected to <strong>lead</strong>, <strong>inspire</strong>, and <strong>foster a culture of diversity</strong>. You will communicate <strong>clearly</strong> and with <strong>empathy</strong>, and work towards building a <strong>cohesive and collaborative</strong> team. You will be expected to interact with our customers and internal stakeholders, to identify gaps and areas of improvements in our product and processes alike, and to work with your own stakeholders to transform those into <strong>innovative</strong>, <strong>actionable</strong>, and <strong>achievable</strong> <strong>solutions</strong>.</p>
-<p>The team predominantly uses <strong>Go and Typescript</strong> to implement the backend services that power WARP features like Device Posture. You will be most successful in this role if you have a strong understanding of <strong>networking and&nbsp; operational principles</strong> (observability, alerting, tracing, incident management, SLIs &amp; SLOs, capacity planning, etc.) with a special focus in High-Availability and Scalability.</p>
-<p><strong>Available locations: <span class="collapsed-field-text">Portugal, UK</span>&nbsp;&nbsp;</strong></p>
-<p>&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Available Locations: </strong>Remote - US</p>
+<h4><strong>About the Role</strong></h4>
+<p>Cloudflare has embarked on a transformation of our entire quote to cash process. We’re looking for a seasoned product leader who will take charge of these processes, providing leadership, communication and accountability for successful delivery. You will:&nbsp;</p>
 <ul>
-	<li>Experience leading a team of geographically distributed engineers, including hiring, coaching, and professional development</li>
-	<li>Solid track record of building <strong>cohesive</strong> and <strong>collaborative</strong> teams</li>
-	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
-	<li>Experience working with container orchestrators (eg Kubernetes)</li>
-	<li>Programming experience in<strong> Rust</strong> or similar low level languages is a plus but not required.</li>
-	<li>Programming experience in Go and/or Typescript.</li>
-	<li>Knowledge on networking systems</li>
-	<li>Excellent technical leadership skills, driving for very <strong>high-quality</strong> and <strong>low-complexity</strong> code with thorough documentation</li>
-	<li>Experience driving for <strong>easily-testable</strong> and <strong>thoroughly-tested code</strong></li>
-	<li>A strong and tangible <strong>customer empathy</strong></li>
-	<li>A good understanding of how the big-picture goals inform technical details</li>
-	<li>A drive for implementing tools, documentations, processes, instrumentation, and metrics to enhance the team’s velocity and performance</li>
-	<li>A knack for finding <strong>inspiring</strong> and <strong>innovative solutions</strong> to problems and blockages</li>
+	<li>Take leadership. You will manage a small team of product managers ensuring coverage and accountability for the myriad projects across the organization.&nbsp;</li>
+	<li>Work horizontally. Disparate groups like Engineering, Program Management, Finance, Revenue Operations, Business Intelligence and external vendors like Stripe and Salesforce all need to keep plans aligned and work together to deliver commitments.</li>
+	<li>Span timescales. Short term deliverables like supporting product launches, medium term ones like migrating billing progresses and longer term ones like a full ERP implementation all need to be serviced. The urgent cannot starve the important.&nbsp;</li>
+	<li>Span domains. You need to simultaneously let other teams rely on the roadmaps you publish while being responsive to the interrupt-driven nature of the business. When shifts do occur, you need to proactively communicate with other teams to maintain trust.&nbsp;</li>
+	<li>Commit to quality. Our #1 priority is to have an accurate picture of revenue and service of our customers but we also have numerous other concerns like speed of innovation and advancing the roadmap.</li>
+	<li>Communicate and collaborate. Essential to the success of this program is the ability to listen, learn, synthesize and communicate outwards as well as influence through persuasion.</li>
+	<li>Represent Cloudflare. Many of our largest customers want to speak to us about their concerns and our plans in the billing domain. You will spend time learning from them.&nbsp;</li>
+	<li>Provide and demand accountability. You are responsible for the delivery of your commitments and you will hold your peers and subordinates accountable for theirs.&nbsp;</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Some of the domains you will touch include</strong>: Billing, Invoicing, Sales &amp; Opportunity management, Credit &amp; Collections, Pricing &amp; Quoting, Contract &amp; Entitlement Management, Partners &amp; Resellers, Taxation, Bad debt, BI Reporting, ERP Implementation.</p>
+<h4><strong>Success Factors</strong></h4>
+<p>100% essential to taking on this role will be a history of success delivering projects within the financial domain. A history of product management in billing, fintech, financial reporting, compliance or other similar domain in companies with scope similar to or larger than Cloudflare is required. We will also only consider candidates who have successfully managed teams of other product managers in one of these domains.&nbsp;</p>
+<h4><strong>Bonus Points</strong></h4>
 <ul>
-	<li>Experience in Go and Typescript</li>
-	<li>Experience managing a team that works with Distributed Systems</li>
+	<li>Internet native companies tend to think a little differently than the Fortune 500. We’d love to meet folks with a history of delivering with the cadence and timescales of those born on the Internet.&nbsp;</li>
+	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
+	<li>Finance fluency - You’re dealing with data that represents money and that implies a certain level of care. You’ll also be working with a lot of finance types. Fluency in this world might be helpful</li>
+	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
 </ul>
 <p>&nbsp;</p>
-<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
