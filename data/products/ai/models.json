@@ -607,6 +607,19 @@
 		]
 	},
 	{
+		"id": "88c4bbf0-46fd-45c7-bf64-a49fbf8aed73",
+		"source": 1,
+		"name": "@cf/nexaaidev/octopus-v2",
+		"description": "An advanced open-source language model with 3 billion parameters, serves as the master node in Nexa AI's envisioned graph of language models. Tailored specifically for the MMLU benchmark topics, this model efficiently translates user queries into formats that specialized models can effectively process. It excels at directing these queries to the appropriate specialized model, ensuring precise and effective query handling.",
+		"task": {
+			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+			"name": "Text Generation",
+			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+		},
+		"tags": [],
+		"properties": []
+	},
+	{
 		"id": "85c5a3c6-24b0-45e7-b23a-023182578822",
 		"source": 2,
 		"name": "@hf/thebloke/llama-2-13b-chat-awq",
