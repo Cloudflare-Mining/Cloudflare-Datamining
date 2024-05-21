@@ -953,6 +953,18 @@
 													},
 													{
 														"contentTypeId": "elementNavLink",
+														"contentfulId": "6W3PfWQ8GUtaFv5tjuABUn",
+														"locale": "en-US",
+														"title": "Developer documentation hub",
+														"description": null,
+														"url": "https://developers.cloudflare.com/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
 														"contentfulId": "5u8VEPclIFoEmdHGJ7Odp7",
 														"locale": "en-US",
 														"title": "Architecture center",
@@ -2528,6 +2540,13 @@
 								"subMenuItems": []
 							},
 							{
+								"contentfulId": "1km56yP6vf7r4Nx1pgEs9H",
+								"linkText": "Products",
+								"page": null,
+								"url": "/zero-trust/products/",
+								"subMenuItems": []
+							},
+							{
 								"contentfulId": "38FbNwxqUkURwrP9nrDmLO",
 								"linkText": "Use cases",
 								"page": null,
@@ -2682,6 +2701,12 @@
 								"url": null,
 								"subMenuItems": [
 									{
+										"contentfulId": "59Gxkab1yfmnzFDnL78ZXq",
+										"linkText": "Gartner® Magic Quadrant™ for Security Service Edge (SSE), 2024",
+										"page": null,
+										"url": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2024/"
+									},
+									{
 										"contentfulId": "2yqY7yRGNCJZQaMetcv2wu",
 										"linkText": "Forrester Wave™ for Security Service Edge Solutions, Q1 2024",
 										"page": null,
@@ -2724,6 +2749,13 @@
 										"url": "https://www.cloudflare.com/lp/zero-trust-to-combat-multichannel-phishing/"
 									}
 								]
+							},
+							{
+								"contentfulId": "5yQ7qOG5YMtgCKBnS1dEDF",
+								"linkText": "Pricing",
+								"page": null,
+								"url": "/plans/zero-trust-services/",
+								"subMenuItems": []
 							},
 							{
 								"contentfulId": "2wSyxBP4Xy8CZXhKznsEb",
@@ -3094,6 +3126,62 @@
 								}
 							}
 						]
+					},
+					{
+						"contentfulId": "5AE8PLvZKEO7JszHIZZXmR",
+						"title": "Faster Internet access",
+						"copy": "- Existing firewall or [secure web gateway](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/) solutions haul user requests to centralized scrubbing centers for inspections, slowing down user access.\n- Cloudflare's edge network operates in %{DataCenterCount} locations around the world, which means it's always close to your users and the resources on the Internet they need. \n- It uses Anycast with a 100% uptime SLA, which means you never have to configure where user-initiated traffic is routed or worry about outages. ",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nri6CpBvw0n8DL16J7XOs/3668207a185794ca01b719fcc84301ec/teams-gateway-speedup-cost-down-spot-illustration.svg"
+							},
+							"description": "Illustration of a rocket ship"
+						},
+						"imageAssetFile": {
+							"id": "45e9d794-9046-55aa-ba9d-8c25fa485628",
+							"altText": "teams-gateway-speedup-cost-down",
+							"title": "teams-gateway-speedup-cost-down",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nri6CpBvw0n8DL16J7XOs/3668207a185794ca01b719fcc84301ec/teams-gateway-speedup-cost-down-spot-illustration.svg"
+								},
+								"description": "Illustration of a rocket ship"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
 					},
 					{
 						"contentfulId": "4NyfRSGiXAhztAeaI9Gv9o",

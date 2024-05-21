@@ -1426,56 +1426,6 @@
 												"showIconOnly": false,
 												"hideOnChinaSite": null,
 												"navigationItems": []
-											},
-											{
-												"contentTypeId": "navNavigationItem",
-												"contentfulId": "5X7wGsPUdNt0dMVyQPGq10",
-												"locale": "en-US",
-												"name": "AI",
-												"description": null,
-												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "cV6TIgA5iVpDToSOaKYmS",
-														"locale": "en-US",
-														"title": "AI Gateway",
-														"description": null,
-														"url": "https://developers.cloudflare.com/ai-gateway/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "4ed9qTNFECVl2E8KOVpDc4",
-														"locale": "en-US",
-														"title": "Vectorize",
-														"description": null,
-														"url": "https://developers.cloudflare.com/vectorize/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": true
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "4veP3pkVzZNagUz7RKpZ7d",
-														"locale": "en-US",
-														"title": "Workers AI",
-														"description": null,
-														"url": "https://developers.cloudflare.com/workers-ai/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": true
-													}
-												],
-												"navIcon": null,
-												"showIconOnly": false,
-												"hideOnChinaSite": false,
-												"navigationItems": []
 											}
 										]
 									},
@@ -2782,6 +2732,142 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "pRUgQ9ghU8sknMYE1ruV2",
+						"htmlId": null,
+						"mainHeadline": "Pick an architecture designed for the future of networking ",
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "f8b13aZceUKMkYMgFzKm7",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "When choosing Cloudflare over Zscaler, you will benefit from a network built to run every edge service on every server — globally. We bring the entire network to the cloud and enable ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Zero Trust",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " with single-pass inspection, quickly connecting users, devices, workloads, offices, clouds, data centers, and resources, wherever they are located. It is easy to deploy and run, so you can take control and start modernizing your environment at your desired pace, without needing an infinite IT budget, a parade of expensive POCs, and multiple complex deployments to get there.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "vNIIKs2b8g06iLcDPhRjj",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "vNIIKs2b8g06iLcDPhRjj",
+															"locale": "en-US",
+															"title": "[Beat Zscaler] Architecture comparison [1128PX W x 438PX H]",
+															"file": {
+																"name": "Zscaler_architecture-01.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/vNIIKs2b8g06iLcDPhRjj/a2175f413404ee150dc59724307256a4/Zscaler_architecture-01.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
 							}
 						]
 					},
