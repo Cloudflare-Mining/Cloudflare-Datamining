@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 3612,
+	"version": "2024.5.310.1",
+	"short_version": "",
+	"size": 116621312,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "fe1948569e742b2a1317be427338926f",
+	"fingerprint": "3fb56594919c232de527d9d3dffa0b64",
+	"uploaded_at": "2024-05-22T15:01:49.271Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This is a release focused on fixes and improvements.\n\n## Notable updates\n- Added a new Unable to Connect message to the UI to help in troubleshooting.\n- In the upgrade window, a change was made to use international date formats to resolve an issue with localization.\n- Made a change to ensure DEX tests are not running when the tunnel is not up due to the device going to or waking from sleep. This is specific to devices using the S3 power model.\n- Fixed a known issue where the certificate was not always properly left behind in `%ProgramData%\\Cloudflare\\installed_cert.pem`.\n- Fixed an issue where ICMPv6 Neighbor Solicitation messages were being incorrectly sent on the WARP tunnel.\n\n## Known issues\n- If a user has an MDM file configured to support multiple profiles (for the switch configurations feature), and then changes to an MDM file configured for a single profile, the WARP client may not connect. The workaround is to use the 'warp-cli registration delete' command to clear the registration, and then re-register the client.\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp  \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"029b5a0b1eb8125275dac31edbf1bdd107acce5f5ddeab628f3355d4beca9340"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
