@@ -607,19 +607,6 @@
 		]
 	},
 	{
-		"id": "88c4bbf0-46fd-45c7-bf64-a49fbf8aed73",
-		"source": 1,
-		"name": "@cf/nexaaidev/octopus-v2",
-		"description": "An advanced open-source language model with 3 billion parameters, serves as the master node in Nexa AI's envisioned graph of language models. Tailored specifically for the MMLU benchmark topics, this model efficiently translates user queries into formats that specialized models can effectively process. It excels at directing these queries to the appropriate specialized model, ensuring precise and effective query handling.",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"tags": [],
-		"properties": []
-	},
-	{
 		"id": "85c5a3c6-24b0-45e7-b23a-023182578822",
 		"source": 2,
 		"name": "@hf/thebloke/llama-2-13b-chat-awq",
@@ -870,6 +857,28 @@
 			{
 				"property_id": "terms",
 				"value": "https://github.com/facebookresearch/fairseq/blob/main/LICENSE"
+			}
+		]
+	},
+	{
+		"id": "610e6b36-a090-4a2f-8548-eace1aac6598",
+		"source": 1,
+		"name": "@cf/mistral/mistral-7b-instruct-v0.1-vllm",
+		"description": "Instruct fine-tuned version of the Mistral-7b generative text model with 7 billion parameters.",
+		"task": {
+			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+			"name": "Text Generation",
+			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+		},
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "beta",
+				"value": "false"
+			},
+			{
+				"property_id": "info",
+				"value": "https://mistral.ai/news/announcing-mistral-7b/"
 			}
 		]
 	},
@@ -1146,6 +1155,19 @@
 		]
 	},
 	{
+		"id": "2778e877-293c-4169-b93c-6544b71ba8f0",
+		"source": 1,
+		"name": "@cf/suno/bark-small",
+		"description": "Bark is a transformer-based text-to-audio model created by Suno. Bark can generate highly realistic, multilingual speech as well as other audio - including music, background noise and simple sound effects. ",
+		"task": {
+			"id": "b52660a1-9a95-4ab2-8b1d-f232be34604a",
+			"name": "Text-to-Speech",
+			"description": null
+		},
+		"tags": [],
+		"properties": []
+	},
+	{
 		"id": "2169496d-9c0e-4e49-8399-c44ee66bff7d",
 		"source": 1,
 		"name": "@cf/openai/whisper-tiny-en",
@@ -1162,6 +1184,19 @@
 				"value": "true"
 			}
 		]
+	},
+	{
+		"id": "200f0812-148c-48c1-915d-fb3277a94a08",
+		"source": 1,
+		"name": "@cf/openai/whisper-large-v3",
+		"description": "Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. ",
+		"task": {
+			"id": "dfce1c48-2a81-462e-a7fd-de97ce985207",
+			"name": "Automatic Speech Recognition",
+			"description": "Automatic speech recognition (ASR) models convert a speech signal, typically an audio input, to text."
+		},
+		"tags": [],
+		"properties": []
 	},
 	{
 		"id": "1dc9e589-df6b-4e66-ac9f-ceff42d64983",
