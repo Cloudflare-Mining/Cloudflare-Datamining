@@ -1194,7 +1194,9 @@
 																							"enum": [
 																								"authorization_code",
 																								"authorization_code_with_pkce",
-																								"refresh_tokens"
+																								"refresh_tokens",
+																								"hybrid",
+																								"implicit"
 																							],
 																							"type": "string"
 																						},
@@ -1204,6 +1206,19 @@
 																						"description": "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.",
 																						"example": "^GROUP_FILTER-*$",
 																						"type": "string"
+																					},
+																					"hybrid_and_implicit_options": {
+																						"properties": {
+																							"return_access_token_from_authorization_endpoint": {
+																								"description": "If an Access Token should be returned from the OIDC Authorization endpoint",
+																								"type": "boolean"
+																							},
+																							"return_id_token_from_authorization_endpoint": {
+																								"description": "If an ID Token should be returned from the OIDC Authorization endpoint",
+																								"type": "boolean"
+																							}
+																						},
+																						"type": "object"
 																					},
 																					"public_key": {
 																						"description": "The Access public certificate that will be used to verify your identity.",
@@ -4200,7 +4215,9 @@
 																						"enum": [
 																							"authorization_code",
 																							"authorization_code_with_pkce",
-																							"refresh_tokens"
+																							"refresh_tokens",
+																							"hybrid",
+																							"implicit"
 																						],
 																						"type": "string"
 																					},
@@ -4210,6 +4227,19 @@
 																					"description": "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.",
 																					"example": "^GROUP_FILTER-*$",
 																					"type": "string"
+																				},
+																				"hybrid_and_implicit_options": {
+																					"properties": {
+																						"return_access_token_from_authorization_endpoint": {
+																							"description": "If an Access Token should be returned from the OIDC Authorization endpoint",
+																							"type": "boolean"
+																						},
+																						"return_id_token_from_authorization_endpoint": {
+																							"description": "If an ID Token should be returned from the OIDC Authorization endpoint",
+																							"type": "boolean"
+																						}
+																					},
+																					"type": "object"
 																				},
 																				"public_key": {
 																					"description": "The Access public certificate that will be used to verify your identity.",
@@ -7442,7 +7472,9 @@
 																	"enum": [
 																		"authorization_code",
 																		"authorization_code_with_pkce",
-																		"refresh_tokens"
+																		"refresh_tokens",
+																		"hybrid",
+																		"implicit"
 																	],
 																	"type": "string"
 																},
@@ -7452,6 +7484,19 @@
 																"description": "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.",
 																"example": "^GROUP_FILTER-*$",
 																"type": "string"
+															},
+															"hybrid_and_implicit_options": {
+																"properties": {
+																	"return_access_token_from_authorization_endpoint": {
+																		"description": "If an Access Token should be returned from the OIDC Authorization endpoint",
+																		"type": "boolean"
+																	},
+																	"return_id_token_from_authorization_endpoint": {
+																		"description": "If an ID Token should be returned from the OIDC Authorization endpoint",
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
 															},
 															"public_key": {
 																"description": "The Access public certificate that will be used to verify your identity.",
@@ -10301,7 +10346,9 @@
 																								"enum": [
 																									"authorization_code",
 																									"authorization_code_with_pkce",
-																									"refresh_tokens"
+																									"refresh_tokens",
+																									"hybrid",
+																									"implicit"
 																								],
 																								"type": "string"
 																							},
@@ -10311,6 +10358,19 @@
 																							"description": "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.",
 																							"example": "^GROUP_FILTER-*$",
 																							"type": "string"
+																						},
+																						"hybrid_and_implicit_options": {
+																							"properties": {
+																								"return_access_token_from_authorization_endpoint": {
+																									"description": "If an Access Token should be returned from the OIDC Authorization endpoint",
+																									"type": "boolean"
+																								},
+																								"return_id_token_from_authorization_endpoint": {
+																									"description": "If an ID Token should be returned from the OIDC Authorization endpoint",
+																									"type": "boolean"
+																								}
+																							},
+																							"type": "object"
 																						},
 																						"public_key": {
 																							"description": "The Access public certificate that will be used to verify your identity.",
@@ -13073,7 +13133,9 @@
 																						"enum": [
 																							"authorization_code",
 																							"authorization_code_with_pkce",
-																							"refresh_tokens"
+																							"refresh_tokens",
+																							"hybrid",
+																							"implicit"
 																						],
 																						"type": "string"
 																					},
@@ -13083,6 +13145,19 @@
 																					"description": "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.",
 																					"example": "^GROUP_FILTER-*$",
 																					"type": "string"
+																				},
+																				"hybrid_and_implicit_options": {
+																					"properties": {
+																						"return_access_token_from_authorization_endpoint": {
+																							"description": "If an Access Token should be returned from the OIDC Authorization endpoint",
+																							"type": "boolean"
+																						},
+																						"return_id_token_from_authorization_endpoint": {
+																							"description": "If an ID Token should be returned from the OIDC Authorization endpoint",
+																							"type": "boolean"
+																						}
+																					},
+																					"type": "object"
 																				},
 																				"public_key": {
 																					"description": "The Access public certificate that will be used to verify your identity.",
@@ -16164,7 +16239,9 @@
 																	"enum": [
 																		"authorization_code",
 																		"authorization_code_with_pkce",
-																		"refresh_tokens"
+																		"refresh_tokens",
+																		"hybrid",
+																		"implicit"
 																	],
 																	"type": "string"
 																},
@@ -16174,6 +16251,19 @@
 																"description": "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.",
 																"example": "^GROUP_FILTER-*$",
 																"type": "string"
+															},
+															"hybrid_and_implicit_options": {
+																"properties": {
+																	"return_access_token_from_authorization_endpoint": {
+																		"description": "If an Access Token should be returned from the OIDC Authorization endpoint",
+																		"type": "boolean"
+																	},
+																	"return_id_token_from_authorization_endpoint": {
+																		"description": "If an ID Token should be returned from the OIDC Authorization endpoint",
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
 															},
 															"public_key": {
 																"description": "The Access public certificate that will be used to verify your identity.",
@@ -19023,7 +19113,9 @@
 																								"enum": [
 																									"authorization_code",
 																									"authorization_code_with_pkce",
-																									"refresh_tokens"
+																									"refresh_tokens",
+																									"hybrid",
+																									"implicit"
 																								],
 																								"type": "string"
 																							},
@@ -19033,6 +19125,19 @@
 																							"description": "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.",
 																							"example": "^GROUP_FILTER-*$",
 																							"type": "string"
+																						},
+																						"hybrid_and_implicit_options": {
+																							"properties": {
+																								"return_access_token_from_authorization_endpoint": {
+																									"description": "If an Access Token should be returned from the OIDC Authorization endpoint",
+																									"type": "boolean"
+																								},
+																								"return_id_token_from_authorization_endpoint": {
+																									"description": "If an ID Token should be returned from the OIDC Authorization endpoint",
+																									"type": "boolean"
+																								}
+																							},
+																							"type": "object"
 																						},
 																						"public_key": {
 																							"description": "The Access public certificate that will be used to verify your identity.",
@@ -21795,7 +21900,9 @@
 																						"enum": [
 																							"authorization_code",
 																							"authorization_code_with_pkce",
-																							"refresh_tokens"
+																							"refresh_tokens",
+																							"hybrid",
+																							"implicit"
 																						],
 																						"type": "string"
 																					},
@@ -21805,6 +21912,19 @@
 																					"description": "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.",
 																					"example": "^GROUP_FILTER-*$",
 																					"type": "string"
+																				},
+																				"hybrid_and_implicit_options": {
+																					"properties": {
+																						"return_access_token_from_authorization_endpoint": {
+																							"description": "If an Access Token should be returned from the OIDC Authorization endpoint",
+																							"type": "boolean"
+																						},
+																						"return_id_token_from_authorization_endpoint": {
+																							"description": "If an ID Token should be returned from the OIDC Authorization endpoint",
+																							"type": "boolean"
+																						}
+																					},
+																					"type": "object"
 																				},
 																				"public_key": {
 																					"description": "The Access public certificate that will be used to verify your identity.",
