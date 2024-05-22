@@ -2086,7 +2086,18 @@
 										"locale": "en-US",
 										"name": "Cloudflare Agency Program",
 										"description": null,
-										"mainLink": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "6mNmUdDEPu6ZjhUJnnoUJx",
+											"locale": "en-US",
+											"title": "Cloudflare Agency Program",
+											"description": null,
+											"url": "https://www.cloudflare.com/cloudflare-partners-self-serve-program-closed-beta/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
 										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
@@ -2675,6 +2686,163 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": null
+					},
+					{
+						"contentfulId": "l23iMacjV8yFFQgBm3LJn",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE GATEWAY",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "9eicSTRIOAVg8rMqxTzlT",
+								"title": "Accelerate user Internet access",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "No more traffic backhauling. Our single-pass inspection is [50% faster](https://blog.cloudflare.com/network-performance-update-cio-edition/?_ga=2.241337794.1947644748.1710771073-1224524116.1709647459) than SWG alternatives.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4fd99cc4-cde1-5f4e-8b21-4ec5e6a05307",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "56ZdmD4enBOAwvLo2e0QJS",
+								"title": "Block known and unknown threats",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare's DNS and HTTP telemetry and threat detection models catch more risks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "3eb2a090-6777-5cfa-ae9f-fba98ba92f39",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/0K8UzbV8AINKBfgDlRAhK/cc511a44737676ddb0ca216c28d040fe/security-shield-protection-2.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2y0cP0eMcpAllg8Ho9kwJ5",
+								"title": "Monitor traffic across your network",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Stack in-line [Zero Trust services](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) to provide holistic Internet traffic visibility across users, devices, and locations.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b2c191f0-effd-503a-b3f1-1074c1fe8181",
+									"altText": "View icon",
+									"title": "View icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/bCn6sPxILTPh4Eei55A24/bad50a5773f3fdb795fa717bb751b694/view-eye.svg"
+										},
+										"description": "View icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2g7scYRiJWlES0nDzmOoFH",
+								"title": "Easy implementation and management",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Streamline policy building and auditing with predefined categories.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6b2c5242-171b-588a-954a-f72b27e667f9",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4pct6uvknDUwfOeAM2VxUn/18079e5a1b43c3dd1c3e4d942820528b/performance-wrench.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
 					},
 					{
 						"contentfulId": "65HRTP6wNaxfCwYBRzcYFV",
