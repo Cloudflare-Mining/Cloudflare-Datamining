@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2021-03-23T12:50:10.979Z",
-					"updatedAt": "2024-05-21T22:01:51.476Z"
+					"updatedAt": "2024-05-21T23:48:15.636Z"
 				},
 				"contentfulId": "61LON8L2PckHeCJsrN8Gwp",
 				"contentTypeId": "page",
@@ -1420,6 +1420,56 @@
 												"navIcon": null,
 												"showIconOnly": false,
 												"hideOnChinaSite": null,
+												"navigationItems": []
+											},
+											{
+												"contentTypeId": "navNavigationItem",
+												"contentfulId": "5X7wGsPUdNt0dMVyQPGq10",
+												"locale": "en-US",
+												"name": "AI",
+												"description": null,
+												"mainLink": null,
+												"navigationLinks": [
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "cV6TIgA5iVpDToSOaKYmS",
+														"locale": "en-US",
+														"title": "AI Gateway",
+														"description": null,
+														"url": "https://developers.cloudflare.com/ai-gateway/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": false,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "4ed9qTNFECVl2E8KOVpDc4",
+														"locale": "en-US",
+														"title": "Vectorize",
+														"description": null,
+														"url": "https://developers.cloudflare.com/vectorize/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": false,
+														"isExternalUrl": true
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "4veP3pkVzZNagUz7RKpZ7d",
+														"locale": "en-US",
+														"title": "Workers AI",
+														"description": null,
+														"url": "https://developers.cloudflare.com/workers-ai/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": false,
+														"isExternalUrl": true
+													}
+												],
+												"navIcon": null,
+												"showIconOnly": false,
+												"hideOnChinaSite": false,
 												"navigationItems": []
 											}
 										]
@@ -2833,10 +2883,128 @@
 								}
 							}
 						]
+					},
+					{
+						"contentfulId": "3bctmxMAGz5G3lnwlSQS2U",
+						"contentTypeId": "bladeResourceGrid",
+						"title": "Learn More",
+						"description": null,
+						"sectionPadding": null,
+						"bladeBorder": "none",
+						"textColor": "black",
+						"backgroundColor": "blue5",
+						"htmlId": null,
+						"resourceList": [
+							{
+								"resourceMedia": null,
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "[Tech Partner Directory] - Endpoint Protection: Announcement Blog",
+								"callToAction": "Learn More",
+								"id": "c52a9540-d02d-5dd2-b819-6a58044dc404",
+								"resourceTitle": "New device security partnerships for Cloudflare One",
+								"resourceType": "Blog",
+								"topic": [
+									"Enable Zero Trust Security for Workforce",
+									"Secure Teams, Devices, and Internal Applications"
+								],
+								"orderDate": "2022-04-01",
+								"industry": null,
+								"description": "Learn how Cloudflare's integrations with leading endpoint providers helped Cloudflare Zero Trust customers restrict access to applications based on security signals from their devices.",
+								"externalLinkUrl": "https://blog.cloudflare.com/endpoint-partnerships/",
+								"hideFromResourceHub": null
+							},
+							{
+								"resourceMedia": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GZx3lifmkUSVF72q9ZSrW/ef020bb8dcbfa421900e44e30d328a2e/Cloudflare_Zero_Trust_Integrations_Brief.pdf"
+									},
+									"description": "Cloudflare empowers your organization with flexibility to build on the providers you already use and avoid vendor lock-in."
+								},
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "Zero Trust Integrations Solution Brief [ZT PMM] [JCC]",
+								"callToAction": "Download PDF",
+								"id": "6aaa7795-8337-5630-80cf-6a03d8671b31",
+								"resourceTitle": "Cloudflare's Zero Trust Integrations",
+								"resourceType": "Solution & Product Guides",
+								"topic": [
+									"Enable Zero Trust Security for Workforce"
+								],
+								"orderDate": "2021-08-09",
+								"industry": null,
+								"description": "Cloudflare empowers your organization with flexibility to build on the identity, endpoint protection, and cloud providers you already use and avoid vendor lock-in. Learn how we approach technology integrations and partnerships for our Zero Trust platform, Teams.",
+								"externalLinkUrl": null,
+								"hideFromResourceHub": null
+							},
+							{
+								"resourceMedia": null,
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "[ZT PMM] Introducing Cloudflare One",
+								"callToAction": "Learn More",
+								"id": "22754271-42bf-5919-85b2-0cf96446b2dc",
+								"resourceTitle": "Introducing Cloudflare One",
+								"resourceType": "Blog",
+								"topic": [
+									"Enable Zero Trust Security for Workforce",
+									"Secure Teams, Devices, and Internal Applications"
+								],
+								"orderDate": "2020-10-12",
+								"industry": null,
+								"description": "Cloudflare One is a Zero Trust network-as-a-service platform that dynamically connects users to enterprise resources, with identity-based security controls delivered close to users, wherever they are. Read the blog post that first articulated Cloudflare's vision for SASE transformation.",
+								"externalLinkUrl": "https://blog.cloudflare.com/introducing-cloudflare-one/",
+								"hideFromResourceHub": null
+							}
+						],
+						"filterMenu": null
 					}
 				],
 				"noindex": false,
 				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "3SL0bMNdALUO1cVP3ufM0q",
+						"modalName": "Endpoint Protection - Contact Us",
+						"modalId": "endpoint-security-contact-us",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "6sVT6VItMLI9iRHRFpIJMr",
+							"bladeName": "Endpoint Protection Partnerships Program Contact Us",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "[PAR] Q1'21 WEB - GBL - Endpoint Security Partner Page End User Contact Form",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Cloudflare Endpoint Security Partnerships",
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					},
 					{
 						"contentTypeId": "formModal",
 						"contentfulId": "2SMdlOJ68wdo7fSNye6j0",
