@@ -54,16 +54,11 @@
 				},
 				"sys": {
 					"createdAt": "2019-03-20T20:46:41.176Z",
-					"updatedAt": "2024-05-18T00:19:06.433Z"
+					"updatedAt": "2024-05-22T03:13:03.020Z"
 				},
 				"contentfulId": "1MFKT7svIM8e8IcqMemoKW",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "NEW",
-					"linkText": "Read More",
-					"linkUrl": "https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/",
-					"desktopText": "Private Access Tokens: a future with greater privacy and fewer CAPTCHAs "
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -75,19 +70,19 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Bot Management",
 						"titleSize": null,
-						"subtitle": "Stop bad bots while moving beyond CAPTCHAs",
+						"subtitle": "Stop bad bots without CAPTCHAs",
 						"subtitleSize": null,
-						"copy": "Undetected malicious bots can damage your brand, steal sensitive information, take over accounts, and negatively impact your revenue.\n\nNow you can manage good and bad bots in real-time with speed and accuracy by harnessing the data from the millions of Internet properties on Cloudflare.\n\nAll with quick and easy deployment or as part of our SOC-as-a-service offering.",
+						"copy": "Manage good and bad bots in real-time with speed and accuracy by harnessing data from the millions of Internet properties on Cloudflare.",
 						"buttonColor": "orange",
-						"buttonColor2": null,
-						"buttonText1": "Contact Sales",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Talk to expert",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "bot-management-form-modal",
-						"buttonText2": null,
+						"button1ExtraClass": "bot-management-modal-form",
+						"buttonText2": "Get the product brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
+						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DzWC1w6QLq0pvyYplHRDZ/e224ee233d0a817cb111f036348f1176/Bot_Management_data_sheet.pdf",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -101,7 +96,7 @@
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
+						"button2OpenInNewTab": true,
 						"streamThumbnails": "1m58s",
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
@@ -112,7 +107,7 @@
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
@@ -142,48 +137,37 @@
 						}
 					},
 					{
-						"contentfulId": "1wtRgasQ3Svpjq1hkn1GW3",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Manage bots with speed and accuracy by applying several detection methods",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"contentfulId": "5Xn1HYVDL8kOHmBxEN01l3",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE BOT MANAGEMENT",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6MDLmYnZheYQSJ0eHq65AJ",
-								"title": "Behavioral Analysis ",
-								"makeTitleLink": null,
+								"contentfulId": "42qgbqTfDSmbhdLXPVOFr4",
+								"title": "Stop bot attacks",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare analyzes behavior and detects anomalies in your Internet property's specific traffic, scoring every request by how different it is from the baseline.",
+								"description": "Cloudflare blocks credential stuffing, content scraping, inventory hoarding, DDoS, and other malicious bot activity.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6sTKh8Lq0axYdKM7o766xx/48ad2d81a33a962c2d06effed9100de9/icon-behavioral-analysis-orange.png"
-									},
-									"description": "icon behavioral analysis orange"
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "0fe57de7-3ccf-5dce-9a13-71ed4f8fec44",
-									"altText": "Connect iot blue",
-									"title": "Connect iot blue",
+									"id": "c69e1975-042d-56be-9b49-b7f21ef37a0d",
+									"altText": "Security bots ",
+									"title": "Security bots ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2kPaxft6u9ryKDAWMakUMX/fe59bad8c033624fa688d57f65ee51ed/connect-iot.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WenQJx3SKmSr8ePtKqX1Z/2a179c561c16d7c48415294b823ca17a/security-bots.svg"
 										},
 										"description": ""
 									},
@@ -199,32 +183,27 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2shB8gXa1BHyllQbCQteDI",
-								"title": "Machine Learning",
-								"makeTitleLink": null,
+								"contentfulId": "7BhZUjicTtKpqsjfEfPMm5",
+								"title": "Multiple detection methods",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare's Machine Learning trains on a curated subset of hundreds of billions of requests per day to create a reliable bot score for every request. \n",
+								"description": "Cloudflare Bot Management uses machine learning, behavioral analysis, and fingerprinting to accurately classify bots.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2SOsNYYwPqKnvBzn4fdJf6/9a83153da4f073ca44383c9c5a9f0749/icon-machine-learning-1-orange.png"
-									},
-									"description": "icon machine learning 1 orange"
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "ff31bfda-5ac0-5e67-bf9e-bd602f3d81ce",
-									"altText": "Innovation intelligence blue",
-									"title": "Innovation intelligence blue",
+									"id": "f46bb671-ca3f-5b66-9c26-31f14275bcef",
+									"altText": "Target orange icon",
+									"title": "Target orange icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/10Jn71GCDQVevOJja3TfLO/ce8d67a09048cb50a47d2f90e33da8b2/innovation-intelligence.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ljieC61A3bA8pHEMYLNlC/1e691047fee857a4d39a7168b1183182/target.png"
 										},
 										"description": ""
 									},
@@ -240,34 +219,65 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5mJmiBLOhp1801BTKUrFWV",
-								"title": "Fingerprinting ",
-								"makeTitleLink": null,
+								"contentfulId": "L6TBLVB07aAUXcerNm3hL",
+								"title": "Avoid CAPTCHAs",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare uses fingerprinting from millions of Internet properties to accurately classify bots. They do not generate or store device fingerprints, eliminating the risk of user privacy being compromised.",
+								"description": "Cloudflare has developed innovative ways to challenge bots without frustrating real users with CAPTCHAs.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zLcwTNvnNHdZvRmKAiKt7/d4010097e854be5eb6a4cbff30cb346f/icon-fingerprint-orange.png"
-									},
-									"description": "icon fingerprint orange"
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "e06663fb-a656-5e71-86c6-252eccfcc3b8",
-									"altText": "Security fingerprint privacy orange",
-									"title": "Security fingerprint privacy orange",
+									"id": "774fed19-c3c8-5b1a-996e-e5217c014f4e",
+									"altText": "Pages shield blue",
+									"title": "Pages shield blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3o7wgV3QOT67tMsuQmIMPc/105a1dd4cd229dcee110b92e40e5151a/security-fingerprint-privacy.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ygGtWlEN0N5inPgmxPucE/ac30e4bd2a63904fa66bb28ddc24ac3b/page-shield.png"
 										},
 										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5plQktfNcOWlgiXK8j3tHC",
+								"title": "Simple deployment",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "No complex configuration or maintenance: Cloudflare Bot Management automatically recommends rules to manage bots out-of-the-box.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "d2b32cbc-f943-5e9e-9085-1aab95c79802",
+									"altText": "configuration",
+									"title": "configuration",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5mbB3plryIUBjzOv6eX04H/089dfc12bcb1e144e97b0a34436c435d/optimization-gear.svg"
+										},
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -279,275 +289,14 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
 					},
 					{
-						"contentfulId": "6q52EhAe7y5hC9RbZlWPJj",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "We Stop Bots",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3qexT6xHPbRytSOxLtfDUL",
-								"title": "Credential Stuffing",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Exposes your application to account takeovers and breaches of sensitive customer data",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CG10tHIzSDzComq9YYLOY/dca30428224d6d8c4daef66436c41ca3/icon-credential-stuffing-blue.png"
-									},
-									"description": "icon credential stuffing blue"
-								},
-								"iconAssetFile": {
-									"id": "820783b8-d1ce-54db-8426-9c694fefd544",
-									"altText": "Process stack ",
-									"title": "Process stack ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XwC1sNwbO5CFo9p4gxhd6/028d560b5444d56fec012c86338d065b/process-stack.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2sRa7o3Kbgg4FeEqLhOyPx",
-								"title": "Content Scraping ",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Hurts your site's SEO ranking and increases margin pressures from competitors",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tKvJeEl2TrekVIwq1tdPy/1619d42e4f484ec2279ee8a65e6e3c42/icon-scraping-blue.png"
-									},
-									"description": "icon scraping blue"
-								},
-								"iconAssetFile": {
-									"id": "7c6bc8f8-2cb8-53b5-9203-1311eb26d9e5",
-									"altText": "Security scraping ",
-									"title": "Security scraping ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jBKMlmLn9LStJX5QPXxLn/73080fd69d07df74f8babd412354c8f6/security-scraping.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "yKQ8ZKo9OoimNyRWI842x",
-								"title": "Content Spam",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Pollutes your data and creates a bad customer experience with malicious content",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jQAwHRcEJc0PeOSP5Utxd/a8432c758762e21b977ea14598e1691a/icon-spam-blue.png"
-									},
-									"description": "icon spam blue"
-								},
-								"iconAssetFile": {
-									"id": "8cb02df8-4ee5-51a0-93bd-5d68cd65230d",
-									"altText": "Spam email blue",
-									"title": "Spam email blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/16iB8yBZdgX7paOzbM5YtE/6904656352f05ecfaade9fccb666c427/spam-email.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "01xVKViIq493dLpOe2IMRf",
-								"title": "Inventory Hoarding ",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Damages your brand and jeopardizes your relationship with suppliers",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MvoV6nzMPCBYWBW35mk0v/963768ff92f4fd581683476565e5f6ee/icon-inventory-hoarding-blue.png"
-									},
-									"description": "icon inventory hoarding blue"
-								},
-								"iconAssetFile": {
-									"id": "a4feb78c-77bf-5977-b87d-556944dcc956",
-									"altText": "Shop cart no ",
-									"title": "Shop cart no",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7hn9OqFjeVNleB69BhdVLY/8ea1cb335f796f8ae401adda020462b3/shop-cart-no.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "JoP94aidHNG8LKNiqSYAa",
-								"title": "Credit Card Stuffing",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Puts your ability to accept payments at risk",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AkMnLZVAVV48CJjYsBQcH/464682f239065a30260f5a66a59fced6/icon-credit-card-blue.png"
-									},
-									"description": "icon credit card blue"
-								},
-								"iconAssetFile": {
-									"id": "a95310eb-6c65-5c1c-a43b-374316112d9b",
-									"altText": "Payments credit card",
-									"title": "Payments credit card",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/37GS81O8vefPYO3KMcvrAN/c889813302fcd6977e7ec94efe2669c9/payments-credit-card.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5ZLnyeFfWLfSxeMW8nqNwJ",
-								"title": "Application DDoS",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Slows sites for visitors while wasting bandwidth and compute resources",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/avX4m8LIX9rtcQ1FxjLbW/845420e93f82bf47eac2e717e10b8431/icon-denial-of-service-blue.png"
-									},
-									"description": "icon denial of service blue"
-								},
-								"iconAssetFile": {
-									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
-									"altText": "Traffic attack blue",
-									"title": "Traffic attack blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d282e08b82411f75db51ff233bb34247/traffic-attack-browser__1_.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "4THzoMoZDkZcBEF7btIbqJ",
-						"title": "A Future without CAPTCHAs",
-						"copy": "Cloudflare is leading the world to a future without CAPTCHAs. We have developed effective new ways to challenge bots without the frustrations of solving CAPTCHAs.  \n\nWe uniquely call on Private Access Tokens, a new open source standard for an invisible, privacy-first way for users to prove they are real using Apple devices – without CAPTCHAs or PII collection.",
+						"contentfulId": "3ck5ZjXghGExMwyXhRnN0x",
+						"title": "Automatically stop bad bots without interrupting legitimate users",
+						"copy": "Cloudflare analyzes behavior and detects anomalies in network traffic based on how requests deviate from the baseline. \n\nCloudflare's machine learning trains on a curated subset of hundreds of billions of requests per day to create a reliable bot score for every request.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -568,230 +317,7 @@
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4fVeH4zoCFGJx4HZG8O4iC/a863ab1f15c9e5ea94dcc4c6b5a04f4f/Private_Authentication_Token_open_source_standard_to_eliminate_CAPTCHAs.svg"
-							},
-							"description": "Illustration of Private Access Tokens"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "small",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "2Sb3G2nbImlSeoZY1CcCpi",
-						"quote": "\"The great thing about Cloudflare Bot Management solutions is I don't need to spend time fine-tuning. The machine learning algorithms just work because Cloudflare has such great data. Our lives are 1000 times easier while still ensuring our sites are both safe and fast for our customers.\"",
-						"quoteAuthor": "Peter Wolf",
-						"quoteTitle": "Manager, Security Engineering",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/aqJfznA4kKaBQCjr5vPKH/123aec935422047bf3d9f24c7c1e7ea7/SoFi_NewLogo.png"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "9ec3dc34-58ab-57ca-a646-4487553ace49",
-							"altText": "Logo sofi gray",
-							"title": "Logo sofi gray",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 6026,
-								"height": 1063,
-								"width": 3984,
-								"filename": "logo_sofi_gray.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_sofi_gray.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
-					},
-					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1r9sk1u65x4MefEJLfz2zi",
-						"title": "Bot Management is part of SOC-as-a-service",
-						"titleSize": null,
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "2OhPI2B3a7hFA2ZWumsLu0",
-							"elementName": "BM in Managed SOC",
-							"standardText": "Learn More",
-							"text": null,
-							"url": "https://www.cloudflare.com/soc-as-a-service/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
-					},
-					{
-						"contentfulId": "4NU9ZmL8n2fg1J8PvkRMrk",
-						"title": "Simple Deployment",
-						"copy": "Deploy a fast and accurate bot management solution without complex configuration or maintenance. Cloudflare Bot Management will automatically recommend rules to manage bots out-of-the-box. No instrumentation with third-party JavaScript required.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67ELEk0KLRkaGhhXXLxgMu/621608523ee734bdfe4c70fb4cd3035b/one-click-deployment.png"
-							},
-							"description": "One-Click Deployment"
-						},
-						"imageAssetFile": {
-							"id": "dfb8547c-2c90-5a28-a8ee-b37b7646312d",
-							"altText": "Bot analytics hero illustration 3",
-							"title": "Bot analytics hero illustration 3",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 13987,
-								"height": 3298,
-								"width": 3992,
-								"filename": "bot-analytics-hero-illustration-3.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/bot-analytics-hero-illustration-3.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "medium",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "vHbQr5lxpZitqbgxjWeLP",
-						"title": "Lowest Latency",
-						"copy": "Cloudflare Bot Management delivers ultra low-latency bot defenses, with median latency of 0.3 milliseconds or less.  Our bot management performance  keeps applications in the fast lane.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KESWkQf0UBSfG0ykxgOCC/2325304b0991ec6feb3b631105e88e50/fast-lane-internet-connection-hero-illustration.svg"
-							},
-							"description": "Illustration of low-latency bot defense"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "7LobHje5RzJ9D19iLFGrP8",
-						"title": "Rich Analytics and Logs",
-						"copy": "Improve your security posture by understanding, analyzing, and learning from automated traffic in the dashboard with [Bot Analytics](https://blog.cloudflare.com/introducing-bot-analytics/). Create your own dashboards that correlate bot management traffic logs with your other data sources by using third-party tools such as SIEMs or business intelligence applications.\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6d3lhLqgHhof5ZfJH8J7yv/086853df75b310af83eb6a90a4954628/Rich_Analytics_and_Logs.png"
-							},
-							"description": "Rich Analytics and Logs"
-						},
+						"image": null,
 						"imageAssetFile": {
 							"id": "40f98882-e2a2-508e-b4c0-81d5e5bf19c2",
 							"altText": "Analytics granular visibility cache spot illustration",
@@ -809,111 +335,374 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "2m6Ir4kaWwOh59uhTdHKzw",
-						"title": "Control and Configurability",
-						"copy": "Tune bot management rules to fit your specific needs by scoping them based on path or URI pattern, request method, score sensitivities, and mitigation methods, such as log, challenge, or block. Use a visual rule builder or write your own pattern-matching rules.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3SxCNefr1B0xEV6KvorgLs/b8387b7150a9a7abcdc1a5faaa8c7f6d/control-and-configurability.png"
-							},
-							"description": "Control and Configurability"
-						},
-						"imageAssetFile": {
-							"id": "770ba242-cb88-5a93-bf8f-765d37714cd7",
-							"altText": "Configuration support spot illustration",
-							"title": "Configuration support spot illustration",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2kL8p4bQzR3yRfiW2vbYYv/5e3e9a2a2d2b639527c6973f3ea1b1b5/configuration-support-spot-illustration.svg"
-								},
-								"description": "Configuration support spot illustration"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
 						"backgroundColor": "white",
-						"bladeBorder": "border-top",
+						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "5ch7BSN2akiWihinY3vMK6",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "2o1oyhouedqwg2bD3VIAqf",
+						"title": "Stop bots without degrading the experience for real users with CAPTCHAs",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"copy": null,
-						"title": "Sophisticated Protection Against Bad Bots",
-						"subtitle": null,
-						"bladeStyle": null,
 						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2Q9gxL9GDRT8OKRmrsOzp3",
+							"elementName": "Bot Management - CTA - Watch webinar",
+							"standardText": null,
+							"text": "Watch the webinar",
+							"url": "https://gateway.on24.com/wcc/eh/2153307/lp/4335273/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "3SIj0qkRZUDUh27lEQN3g9",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2lGpPRKM2JMdt6TaJ9qWbq",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"The great thing about Cloudflare Bot Management solutions is I don't need to spend time fine-tuning. The machine learning algorithms just work because Cloudflare has such great data. Our lives are 1000 times easier while still ensuring our sites are both safe and fast for our customers.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Manager, Security Engineering — SoFi",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "6XvEVi9NcbuBrJXZuEKwxd",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Cloudflare Bot Management stops bad bots while allowing good bots like search engine crawlers, with minimal latency and rich analytics and logs",
+						"eyebrowHeading": "Top Bot Management use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "Rdweh5ZGEO5kkObOW6BeM",
-								"title": "Threat Intelligence At-Scale",
-								"makeTitleLink": null,
+								"contentfulId": "4bto8F1ROByZ8lLjTca19S",
+								"title": "Protect against malicious bots",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Accurately identify bots by applying behavioral analysis, machine learning and fingerprinting to a diverse and vast volume of globally distributed data.",
+								"description": "Block bot activity that slows down application performance, scrapes data, steals sensitive content, or performs other attacks.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
-									"altText": "Internet globe orange",
-									"title": "Internet globe orange",
+									"id": "c69e1975-042d-56be-9b49-b7f21ef37a0d",
+									"altText": "Security bots ",
+									"title": "Security bots ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WenQJx3SKmSr8ePtKqX1Z/2a179c561c16d7c48415294b823ca17a/security-bots.svg"
 										},
 										"description": ""
 									},
@@ -929,53 +718,17 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4av8wtbvbAZIBU9XvhNy02",
-								"title": "Integrated Security and Performance",
-								"makeTitleLink": null,
+								"contentfulId": "6d9XZoTcyf0fUIdAqhmgfT",
+								"title": "Private Access Tokens",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Cloudflare's Bot Management solution seamlessly integrates with its WAF, DDoS and CDN products, enhancing security, user experience, and performance.",
+								"description": "Cloudflare uses an invisible, privacy-first way for users to prove they are real using Apple devices without CAPTCHAs or PII collection.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "820783b8-d1ce-54db-8426-9c694fefd544",
-									"altText": "Process stack ",
-									"title": "Process stack ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XwC1sNwbO5CFo9p4gxhd6/028d560b5444d56fec012c86338d065b/process-stack.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4YMXaBoojzhNaSWTZfwHjt",
-								"title": "Complete Without Complexity",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Instant deployment and protection against a full range of bot attacks without Javascript injection and mobile SDK.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
 									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
@@ -1001,101 +754,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "fkhuqnnP6l18GQtFSlyR4",
-								"title": "Automatic Allowlists",
-								"makeTitleLink": null,
+								"contentfulId": "4XHvzLMUt3v8nYIRd2pCPz",
+								"title": "Custom bot management rules",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Allows good bots, such as those belonging to search engines, to keep reaching your site while preventing malicious traffic.",
+								"description": "Tune bot management rules to fit your specific needs by scoping them based on a variety of criteria.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "6fd865fc-5f0b-5650-a5a5-9ae0a9d24d1f",
-									"altText": "Yes check blue",
-									"title": "Yes check blue",
+									"id": "85b72606-4e5f-58f1-bdd8-2f22d34e428e",
+									"altText": "Ruleset icon",
+									"title": "Ruleset icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oiO40TBTzUSAm1i5gAc7W/ae5829bb7b71eb63edeb8c87a02135f5/yes-check.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/BWKT2GPjWBacPIsuSQzfq/051691978b1dcd161745317f724eb2b4/cloudflare-ruleset-engine.svg"
 										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "xNIdm0mLS7fWQOyU5xaTT",
-								"title": "Mobile App and API Protection",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Protects your mobile applications from impersonation and emulation attacks without using mobile SDK. The solution also protects APIs that are accessed via web browsers.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "c105eba9-14b5-5b6d-9d29-aefcc9064ed6",
-									"altText": "Device mobile blue",
-									"title": "Device mobile blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S37cDq0i3ZNu51iqW2BnU/6bda00b1ea28e81bb78ccf30fcd37526/device-mobile.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "62QMJc4nHJcdfAaY42A0OY",
-								"title": "Configuration Flexibility",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Granular rules, user-defined mitigations and unique actions beyond the industry standard like render a mock-login or alternative pricing page to thwart bots.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "59228a55-56a3-5c89-ac2c-9d5378155468",
-									"altText": "Rules documentation",
-									"title": "Rules documentation",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2jA3y4By5JUrllnd3NZtL/435407a71e2044221af03f324f2a989d/documentation-rules.svg"
-										},
-										"description": ""
+										"description": "cloudflare ruleset engine icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -1107,490 +788,278 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "4eHypSsmFyE5YSmYXYKrqx",
-						"quote": "\"Cloudflare Bot Management gives us peace of mind as we scale our business. Our team can focus on creating value for our clients instead of dealing with bots! We now have a better experience for our clients with reduced spam, account takeovers, and malicious activity.\"",
-						"quoteAuthor": "Leonard Teo",
-						"quoteTitle": "CEO",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "blue",
-						"bladeBorder": "border-bottom",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6KJmJhnztSSuw4IeACKEI4/24a602b800d14c8b4ad6149896fdbe09/artstation-white.png"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "488c2c5c-8c66-5715-a34e-ea5c29519e58",
-							"altText": "Logo artstation gray",
-							"title": "Logo artstation gray",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 3677,
-								"height": 714,
-								"width": 3993,
-								"filename": "logo_artstation_gray.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_artstation_gray.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": [
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "34CUTGI34JsMYeK4YBPB9p",
-								"quote": "\"Using machine learning across millions of websites, Cloudflare was able to immediately identify unauthorized bots that were abusing our website. Their mitigation strategies block bots without impacting real users - our false-positive rate is now less than 0.01%.\"",
-								"quoteAuthor": "Tony Bruess",
-								"quoteTitle": "Engineer",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": {
-									"id": "af3a2d70-6704-5e48-b2b7-ebe154a307de",
-									"altText": "Logo angellist gray",
-									"title": "Logo angellist gray",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 12452,
-										"height": 732,
-										"width": 3995,
-										"filename": "logo_angellist_gray.svg",
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_angellist_gray.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/AJgI9Ev3fFseWpEvtqZI5/3d3be008b7e043314556ef60f3da018b/AngelList_White_Lockup-5a55c9c4f4cac441f745ea327edb689d4c5829575bcc4e1cf8b1db62e36bf630.png"
-									},
-									"description": null
-								}
-							}
-						]
-					},
-					{
-						"contentfulId": "3nW9v0cu7x1zCt8OJOIWoR",
-						"title": "Forrester named Cloudflare a \"Strong Performer\" in bot management",
-						"copy": "Cloudflare was named a 'Strong Performer' in the 2022 Forrester Wave™ report for bot management. In particular, Cloudflare received the highest possible scores in five evaluation criteria:\n\n- Product Vision\n- Threat Research\n- Accessible UI and Documentation\n- Number of Customers\n- Innovation Roadmap\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": "Read Report",
-						"button1Url": "https://www.cloudflare.com/forrester-wave-bot-management-2022/",
-						"button1Color": "orange",
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
 						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "9bd48e47-12b1-55a6-b138-0bfaa4903ef4",
-							"altText": "Forrester Wave 2022 for bot management image ",
-							"title": "Forrester Wave 2022 for bot management image ",
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "7I5TSmzsc0EkIPq4HVw8S2",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "5P61HNd5H9sCoUI7RZnk8",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "See how global companies are using Bot Management to accelerate their applications",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/45dPnsTqCsPzQOFZII7rIA/517cd2660d19e632730b096ff4856124/Screen_Shot_2022-04-07_at_10.11.34_AM.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
 								},
 								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "6iCDUX8WxFw0p4ENXI510p",
+							"elementName": "See case studies",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "/case-studies/?product=Bot+Management",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "1gIGyqFetDNUW36E5OeFL3",
-						"title": "World-class application security from Cloudflare",
-						"copy": "The Cloudflare web application firewall (WAF) is the cornerstone of our advanced application security portfolio that keeps applications and APIs secure and productive, thwarts DDoS attacks, keeps bots at bay, detects anomalies and malicious payloads, all while monitoring for browser supply chain attacks.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": "World-class application security from Cloudflare",
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2CpH9g9mHHrqxbKKshgPFs/6afad1a7626c75a6968776019a1cd747/CF_App_Portfolio_1x.jpeg"
-							},
-							"description": "Security features of Cloudflare Bot Management"
-						},
-						"imageAssetFile": {
-							"id": "2839283d-e0af-5628-b912-f34c1ed9ffe4",
-							"altText": "World-class application security from Cloudflare",
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Td3fH0d3YIL7CA8PQCRZc/58311e93fddfad15ed7186f0300b1e0a/BDES-5031_-_CF_App_Portfolio.svg"
-								},
-								"description": "World-class application security from Cloudflare"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"contentfulId": "2eALTciVlLYVfGfHxtdu61",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "large",
-						"imageTextAlignment": "center",
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "https://www.cloudflare.com/case-studies/",
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"title": "Trusted by millions of Internet properties",
 						"copy": null,
-						"logoList": [
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ovo10a1mEsAZ7ZwFKfFl/d0d561ddb71ecdb723357bb2f79bc979/logo_mars_gray_32px-wrapper.svg"
+								"contentTypeId": "feature",
+								"contentfulId": "4vUVP00xzsYgIJzZvH1qfh",
+								"title": "Cloudflare Bot Management",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "World-class bot protection from Cloudflare ensures uninterrupted business and lightning-fast web performance.\n",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DzWC1w6QLq0pvyYplHRDZ/e224ee233d0a817cb111f036348f1176/Bot_Management_data_sheet.pdf",
+								"learnMoreText": "Get the data sheet",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": null
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/75Iu2nwjYyY5rckEPqO9hr/57b676a2cf5fe6c1e2b3663d7131fda5/logo_loreal_gray_32px-wrapper.svg"
+								"contentTypeId": "feature",
+								"contentfulId": "109nZ32JLoGd2wpcfREPAr",
+								"title": "4 Strategies for Managing Malicious Bots",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "An estimated 40-50% of total Internet traffic is bot-driven. Learn how to avoid negative business outcomes when these bots turn malicious.\n",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/dcJkF99J0ySDG2Ph9bhHX/0725c673db87fed8a29d97de0f985270/4_Strategies_for_Managing_Malicious_Bots.pdf",
+								"learnMoreText": "Get the solution brief",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": null
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Gps1TUuUvlobFOEXbnJlI/df914dce0414a8cfccb70c090f271304/logo_doordash_gray_32px-wrapper.svg"
+								"contentTypeId": "feature",
+								"contentfulId": "25JHPhAf2mIz7BlusefLYC",
+								"title": "Better defenses against modern bots",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "43.8% of the traffic flowing through Cloudflare is automated, but just 4.5% is from good bots. See these and other insights in our write-up on defending against bot attacks.",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hAcTvteThken5z8VtpeRq/ceb6109cdc9009504eee4315addd4bf0/Best_practices_in_bot_protection_.pdf",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "Doordash logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67NI5PUHwR6yUSWHGPL1rM/1a2179da46b2df3eb6d8c4435bafeaa4/logo_garmin_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mAzLb3ofkkG38jtcP2Ys8/094958a88df30575d79254ee6615a82f/logo_ibm_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TfcZ86qvZor2xtI2z4Vvr/ef54112582296119f4296869c34ba025/logo_23andme_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhur0vl8q716TyGFZuCIG/acb851172c83f325ae99e527ef4c216e/logo_shopify_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lhZTNuuLxtB38r8n1VORb/9fbfad924669a02deb97668b9c8d163b/logo_lending-tree_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/47baOjkvX7lLtmTdWvCYI9/009360a8301d33def2ea3ffe22a922df/logo_labcorp_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26kszL2y2X7zTR2edZPDUY/1a9d00bc8c441346e6dd06bd82204972/logo_ncr_gray_32px-wrapper.svg"
-								},
-								"description": "NCR logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-								},
-								"description": "Thomson Reuters logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YRPa33UFrfL2zoZd2AXTq/658995f16c7ee4818875c254c18573d3/logo_zendesk_gray_32px-wrapper.svg"
-								},
-								"description": null
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
-						],
-						"logoListAssetFile": [
-							{
-								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
-								"altText": "Logo mars trusted by gray",
-								"title": "Logo mars trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xar1H4WcFHHkHRDzMypMh/1f8989ae11cb464cc640c7121d0be9a6/logo_mars_trusted-by_gray.svg"
-									},
-									"description": ""
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "2KROtUtlCWanxj6iJg4pxV",
+						"title": "Interested in bot management for your enterprise?",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
+							"elementName": "Talk to an expert (modal form)",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
+								"modalName": "ZT Access Talk to an expert",
+								"modalId": "zt-access-talk-to-an-expert",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "5daBy41JohWg0zdFI6JHW",
+									"bladeName": "ZT Access - Talk to an expert - Marketo",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
 								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
 							},
-							{
-								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
-								"altText": "Logo loreal trusted by gray",
-								"title": "Logo loreal trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xn47h0gWiUSwJ0PU3Ysvk/683779108bfd6eeb62fbac5135780fe6/logo_loreal_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
-								"altText": "Logo doordash trusted by gray",
-								"title": "Logo doordash trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fy2mc73AF9xqD18C5760R/f46ab68d38c9adb30a639f69589d8af0/doordash_134.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
-								"altText": "Logo garmin trusted by gray",
-								"title": "Logo garmin trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VUhUMEcvn3L3j88LttHzC/b2cf2b702aad874db9cb61b0028e9c40/logo_garmin_trusted-by_gray.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
-								"altText": "Logo ibm trusted by gray",
-								"title": "Logo ibm trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OMwO1Fr8BxHVum0iBbatc/979c1807f5810edc903d4b07c18e0cb0/logo_ibm_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "ffd4a407-4457-5421-8b20-54433e485cc7",
-								"altText": "Logo 23andme trusted by gray",
-								"title": "Logo 23andme trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TfcZ86qvZor2xtI2z4Vvr/ef54112582296119f4296869c34ba025/logo_23andme_color_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
-								"altText": "Logo shopify trusted by gray",
-								"title": "Logo shopify trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVeELky7fceWRpfBvN8qr/4e13aa3d8dd73e1f091f3de966fdc9cb/logo_shopify_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "5d11dee2-570b-5d45-86a2-634fc4c71ce1",
-								"altText": "Logo lending tree trusted by gray",
-								"title": "Logo lending tree trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lhZTNuuLxtB38r8n1VORb/9fbfad924669a02deb97668b9c8d163b/logo_lending-tree_color_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
-								"altText": "Logo labcorp trusted by gray",
-								"title": "Logo labcorp trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsuJijKk8EMH5s1ae56nx/b13406881aa864b7e17b2233a0d090ef/logo_labcorp_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "d20283f3-6fa3-50d0-91a1-715d8d303897",
-								"altText": "Logo ncr trusted by gray",
-								"title": "Logo ncr trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26kszL2y2X7zTR2edZPDUY/1a9d00bc8c441346e6dd06bd82204972/logo_ncr_gray_32px-wrapper.svg"
-									},
-									"description": "NCR logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
-								"altText": "Logo thomson reuters trusted by gray",
-								"title": "Logo thomson reuters trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-									},
-									"description": "Thomson Reuters logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7b63d2ac-0e8f-5b5b-aeab-27b7128928e8",
-								"altText": "Logo zendesk trusted by gray",
-								"title": "Logo zendesk trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YRPa33UFrfL2zoZd2AXTq/658995f16c7ee4818875c254c18573d3/logo_zendesk_gray_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							}
-						],
-						"logoUrlList": null
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "2uN3x3dzLkTZID0n0j0xTu",
-						"modalName": "Bot Management - Form Modal",
-						"modalId": "bot-management-form-modal",
+						"contentfulId": "1oKJNZjFNeqHUQbudTAxgs",
+						"modalName": "Bot Management - Modal form",
+						"modalId": "bot-management-modal-form",
 						"modalType": "single-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "5E6FHFbjGZ73bd8vois6vw",
-							"bladeName": "Bot Management - Marketo Form (1341)",
+							"contentfulId": "7chiDP83G6PEZgW8jXIRBK",
+							"bladeName": "Bot Management - Product Page: Marketo Form (1341)",
 							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Contact Us Bot Management",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
 							"marketoFormHeaderText": null,
 							"marketoFormDefaultComment": null,
-							"showCommentBox": false,
+							"showCommentBox": null,
 							"marketoFormThankYouText": null,
 							"marketoFormCustomSuccessMessage": null,
 							"marketoFormPdfDownload": null,
 							"marketoFormPdfDownloadI18n": [],
 							"marketoFormAssetDownloadButtonText": null,
 							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": false,
+							"sendAdRoll": null,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
 							"marketoFormSubmitButtonText": null,
@@ -1599,9 +1068,9 @@
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Contact Sales",
-						"regularCopy": "Cloudflare Bot Management",
-						"splitFormDefaultTab": "enterprise",
+						"title": "Talk to an expert",
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,
 						"enterpriseTabText": null,

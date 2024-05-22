@@ -2091,18 +2091,7 @@
 										"locale": "en-US",
 										"name": "Cloudflare Agency Program",
 										"description": null,
-										"mainLink": {
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "6mNmUdDEPu6ZjhUJnnoUJx",
-											"locale": "en-US",
-											"title": "Cloudflare Agency Program",
-											"description": null,
-											"url": "https://www.cloudflare.com/cloudflare-partners-self-serve-program-closed-beta/",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": false,
-											"isExternalUrl": null
-										},
+										"mainLink": null,
 										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
@@ -3226,12 +3215,6 @@
 							"htmlId": null
 						},
 						{
-							"contentTypeId": "bladeHtml",
-							"contentfulId": "5sHSXt1U7OcSz1swHN1zV3",
-							"htmlContent": "\n  <style>\n\n.cards-homePage-wrapper { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}  \n  .cards_section-title { text-align: center; margin: 64px 0px;}\n.cards_item-cios { font-size: 32px;background-color: white;border-radius: 1rem; box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.25); overflow: hidden;}\n.border-gradient { border: 8px solid; border-image-slice: 1;}\n.border-gradient-orange { border-image-source: linear-gradient(to left, #FBAD41, #FF6633);}\n.card_content { padding: 1rem; display: flex; flex-direction: column;}\n.only-top { border-left: 0; border-right: 0; border-bottom: 0;}\n.card_title-cios{ color: #000000; font-size: 32px; font-weight: 600; margin: 0px; padding: 30px 0px;  }\n.card_text-cios { color: #000000; font-size: 0.875rem; line-height: 21px ; margin-bottom: 2.25rem;  font-weight: 400;}\n\n@media (max-width: 40rem) {.cards-homePage-wrapper{ grid-template-columns: 1fr; } }\n\n  </style>\n\n  <!--Cxo 3 cards -->\n\n <div class=\"cards_section-title\">\n  <h3 class=\"headline-3 black-900\">Resources for technology leaders</h3>\n  <p class=\"body-1 black\">Accelerate your IT and security strategy with curated insights and solutions</p>\n</div>\n\n<div class=\"cards-homePage-wrapper\">\n\n  <div class=\"cards_item-cios \">\n    <div class=\"card_content border-gradient border-gradient-orange only-top\">\n      <div class=\"card_title-cios\">For CISOs</div>\n      <div class=\"card_text-cios\">Improve cyber resilience to control risk and preserve customer trust.</div>\n      <div><a\n          class=\"button-cta f2 auto-btn ls2 fw5 tc bg-orange-1-500 black h-orange-2-500 bs-active-black-3px bs-focus-orange-1-500-8px d-bg-black-100 d-black-600 pv12px ph2 w-auto\"\n          href=\"/ciso\" data-tracking-action=\"click\"\n          data-tracking-label=\"Explore - ciso\" data-tracking-category=\"HP - ciso\">Explore</a></div>\n    </div>\n  </div>\n\n  <div class=\"cards_item-cios\">\n    <div class=\"card_content border-gradient border-gradient-orange only-top\">\n      <div class=\"card_title-cios\">For CIOs</div>\n      <div class=\"card_text-cios\">Accelerate digital transformation for better efficiency and faster growth.</div>\n      <div><a\n          class=\"button-cta f2 auto-btn ls2 fw5 tc bg-orange-1-500 black h-orange-2-500 bs-active-black-3px bs-focus-orange-1-500-8px d-bg-black-100 d-black-600 pv12px ph2 w-auto\"\n          href=\"/cio\" data-tracking-action=\"click\"\n          data-tracking-label=\"Explore - cio\" data-tracking-category=\"HP -cio\">Explore</a>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"cards_item-cios\">\n    <div class=\"card_content border-gradient border-gradient-orange only-top\">\n      <div class=\"card_title-cios\">For CTOs</div>\n      <div class=\"card_text-cios\">Deliver better software faster while fostering a culture of innovation.</div>\n      <div><a\n          class=\"button-cta f2 auto-btn ls2 fw5 tc bg-orange-1-500 black h-orange-2-500 bs-active-black-3px bs-focus-orange-1-500-8px d-bg-black-100 d-black-600 pv12px ph2 w-auto\"\n          href=\"/cto\" data-tracking-action=\"click\"\n          data-tracking-label=\"Explore - cto\" data-tracking-category=\"HP -cto\">Explore</a>\n      </div>\n    </div>\n  </div>\n\n</div>",
-							"htmlId": null
-						},
-						{
 							"contentfulId": "6YB0NdUMadrNQUmrU6xFIz",
 							"title": "Discover the connectivity cloud",
 							"copy": "Today's enterprises need to securely connect people, apps and networks everywhere. But how do you tame complexity and maintain control? Cloudflare's connectivity cloud helps you improve security, consolidate to reduce costs, and move faster than ever.",
@@ -3561,6 +3544,21 @@
 									"brandfolderAssetMobile": null
 								},
 								{
+									"id": "25d2f1c8-e74e-5229-9739-a81634cdd187",
+									"altText": "Thomson Reuters logo",
+									"title": "Thomson Reuters",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DiOULNDmkC76Go9zjnSXs/2fe09a5f27700c5cf6f24b26570a8190/featured_logo_thomson_reuters.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
 									"id": "947cdcdc-5f08-56bc-99b0-6625112b0f89",
 									"altText": "Dropbox logo",
 									"title": "Dropbox",
@@ -3654,6 +3652,113 @@
 							"sectionPadding": null
 						},
 						{
+							"contentTypeId": "bladeFeaturedCaseStudies",
+							"contentfulId": "28kuKKGRqbkbfyJi8nAFfV",
+							"title": "See how leading enterprises regain control with Cloudflare",
+							"htmlId": "featured-case-studies",
+							"sectionPadding": "tile--no-bottom-padding",
+							"featuredCaseStudies": [
+								{
+									"id": "2c34a0a7-81d1-5b66-8f01-7e121f8ca0d1",
+									"contentfulId": "4l8ClntgaHRdOz8PwYRLHe",
+									"logo": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dreyVsx0FLF3WjCQvWrVT/a9bb912272cd7f8bc9a294f768befde6/delivery-logo-horizontal-1.png"
+										},
+										"description": null
+									},
+									"nameUrlSlug": "delivery-hero",
+									"shortDescription": "Using Cloudflare as a single network entry point for its global operations, Delivery Hero reduced complexity, enhanced global network performance, and secured its international workforce and websites",
+									"longDescription": "## __Delivery Hero secures its global workforce in 70+ countries with Cloudflare__\n\n[Delivery Hero](https://www.deliveryhero.com/) is on a mission \"to deliver anything, straight to customers' doors.\" Today, the company is the world's leading local delivery platform, connecting customers in over 70 countries across four continents with an ecosystem of restaurants, shops, retail partners, and 'Dmarts,' its self-branded, delivery-only supermarkets. \n\nThe company manages a portfolio of international and regional brands like [efood](https://www.e-food.gr/), [foodora](https://www.foodora.com/), [foodpanda](https://www.foodpanda.com/), [foody](https://www.foody.com.cy), [Glovo](https://glovoapp.com/), [HungerStation](https://hungerstation.com/), [PedidosYa](https://www.pedidosya.com/), [talabat](https://www.talabat.com/) and [Yemeksepeti](https://www.yemeksepeti.com/), and is also a global pioneer of q-commerce — online sales and ultra-fast logistics services that deliver goods in under an hour.  \n\nFounded in 2011 in Berlin with an initial team of 10, Delivery Hero now hires employees across 4 continents, in over 70+ countries and has been listed on the Frankfurt Stock Exchange since 2017.\n\n### __Challenge: Rising IT & security complexity driven by rapid growth__\n\nFor Delivery Hero, rapid growth had introduced complexities and challenges for its IT and security approach. Between 2016 and 2020, the company grew its workforce from ~9,000 to ~30,000 employees, and over that time, expanded their global reach through various strategic mergers and acquisitions. Keeping pace with onboarding new users and integrating new companies with different tech stacks was increasingly taxing for Delivery Hero's internal teams.\n\n\"With so many different new people and infrastructures to manage, the complexity added up,\" explains Wilson Tang, Director of Engineering, Platform Core Services at Delivery Hero. \"That limited how efficiently we could innovate. To move quickly, we needed tools to help us get that complexity under control.\" \n\nThe shift to remote work in 2020 placed even greater demands on security, forcing Delivery Hero to manage an expanded [attack surface](https://www.cloudflare.com/learning/security/what-is-an-attack-surface/) and stay vigilant against a rise in cyber threats. Ensuring safe and productive access for employees to internal resources became a top priority.\n\n\"When we adopted work-from-home and hybrid work models around the world, we needed to protect applications designed for access only on our internal office networks,\" says Tang. \"Securing everything and giving employees access from home, or anywhere else they chose to work, became much more challenging and complex.\"\n\nTo tame this complexity, Delivery Hero has adopted [Cloudflare's connectivity cloud](https://www.cloudflare.com/connectivity-cloud/), which converges many services companies need to secure and protect their digital environments. Specifically, Delivery Hero has progressively consolidated more security, performance, and developer functionality, onto Cloudflare's control plane, including:\n\n- Securing access to internal resources with Zero Trust\n- Improving security and performance across public-facing apps and websites\n- Streamlining the development and configuration of apps\n\n\"Cloudflare's connectivity cloud is helping us manage complexity across our global operations and has made our lives so much easier,\" says Tang.  \n\n### __Securing internal access to support hybrid work__ \n\nDelivery Hero, which had always prioritized cloud-native security tools, first turned to Cloudflare to secure access to internal applications. Specifically, Tang and his team began evaluating Cloudflare One, a [Security Services Edge (SSE)](https://www.cloudflare.com/learning/access-management/security-service-edge-sse/) platform that includes a [Zero Trust Network Access (ZTNA)](https://www.cloudflare.com/learning/access-management/what-is-ztna/) service to secure remote access. \n\nPreviously, Delivery Hero had relied on a VPN solution, but had found the technology inefficient to manage and slow for end users. In testing Cloudflare, they focused first on applying identity-based checks for web apps – a common initial use case that does not require deploying any device client software.\n\n\"From the beginning, Cloudflare impressed us with its ease and speed of deployment,\" says Tang. \"Protecting an application takes maybe five minutes, and I can skip the pain points of setting up access with traditional VPNs.\"\n\nOver time, the company has scaled its deployment across more users and more applications, including key developer tools and backend customer systems. Today, Delivery Hero uses Cloudflare to secure access for over 40,000 employees to all applications across self-hosted, SaaS, and non-web environments. Enforcing [single sign-on](https://www.cloudflare.com/learning/access-management/what-is-sso/) identity checks has helped Delivery Hero both improve its security posture with [Zero Trust](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) best practices and streamline the experience for end users.\n\n\"With Cloudflare, our employees can access the tools they need to get their jobs done without extra security hassle or connectivity issues,\" says Tang. \n\nAdopting Cloudflare has helped Delivery Hero scale more efficiently by simplifying the process of onboarding new employees and consolidating access policies on a single platform. This has freed up time and energy for Delivery Hero's technical staff to focus on innovation rather than administration.\n\n\"Being able to onboard new teams quickly and easily shift our new brands onto a consolidated, easily administered platform like Cloudflare improved our efficiency and time-to-market with new products,\" says Tang. \"Speed of innovation is everything in the tech industry, and by simplifying operations using Cloudflare we can iterate and create service and value improvements that keep our customers from turning to our competitors.\"\n\n### __Securing and improving performance of public-facing websites__ \n\nAfter simplifying its security approach for internal resources, Delivery Hero began a similar process for security across its public-facing resources, which include websites, desktop and mobile customer apps, and vendor-facing administrative portals. \n\nWith its large online footprint and high volume of transactions processed, Delivery Hero has consistently been an attractive target for attackers, particularly as the company has grown. These attacks risked eroding customer trust, and mitigating them took time and energy away from staff.\n\n\"We faced every type of attack you can imagine,\" says Tang. \"DDoS attacks and bots brute forcing our endpoints, and deliberate, for-profit credential stuffing, account takeovers, and voucher, identity, and credit card fraud attempts against our customer and vendor portals.\" \n\nTo address these risks, Delivery Hero has secured all its public-facing apps and websites with Cloudflare's [Application Services](https://www.cloudflare.com/application-services/). Security capabilities such as [web application firewalls](https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/), [DDoS mitigation](https://www.cloudflare.com/learning/ddos/ddos-mitigation/), [DNS management](https://www.cloudflare.com/learning/dns/what-is-dns/), and [bot management](https://www.cloudflare.com/learning/bots/what-is-bot-management/) help Tang's staff regain visibility and protection over their expanding footprint of digital properties.\n\n\"Due to their technical advancement, you cannot stop the bot attacks without the observability of a tool like Cloudflare,\" says Tang. \"Using Cloudflare for visibility, we can query malicious traffic, identify the attack patterns, and use that intel to develop solutions to mitigate them.\" \n\nAdopting Cloudflare's Application Services has also helped Delivery Hero more efficiently manage global demand across its websites.\n\n\"We see traffic spikes year-round across regions because of different holidays, marketing activity, or annual festivals.\" says Tang. \"It is not unusual for us to see a 3x traffic surge in one country, and a 10x burst in another the following day.\" \n\nUsing Cloudflare, Delivery Hero has insulated itself against these demand spikes, whether expected or unexpected, and is able to deliver consistently high-speed experiences for their customers year-round. Tang estimates that using the Cloudflare connectivity cloud has reduced latency, slashed Delivery Hero's bandwidth costs by 90%, and helped the company achieve a cache hit rate of 98.5% for its vast library of product images and other online assets. \n\n\"Cloudflare's global network and cache reserve have reduced our infrastructure costs and improved our image and static asset delivery times,\" says Tang. \"The savings are huge, several petabytes per month.\"\n\n### __Securing and streamlining development__\n\nOne final area where consolidating onto Cloudflare's connectivity cloud has helped Delivery Hero is with making development safer and easier. \n\nFor example, Delivery Hero has mandated that all new features for websites and apps are built with Cloudflare's security protections. \n\n\"Cloudflare is so secure and so easy to use we have made it a compulsory tool for our development teams,\" says Tang. \"Whenever we develop a new API endpoint, it must be behind Cloudflare, so we can properly protect and manage it.\"\n\nDelivery Hero also uses Cloudflare Workers, a developer platform to build and deploy serverless applications and functions. By configuring changes on Workers, Tang and his team can scale those changes across Delivery Hero's application footprint with speed.\n\n\"Cloudflare Workers is so easy to deploy. In minutes, we can make changes, create third-party integrations, or onboard new technologies that would otherwise take us hundreds of hours of development and testing,\" says Tang.\n\nThroughout the years tackling various use cases with Cloudflare, Tang has had a positive experience.\n\n\"Cloudflare has supported us every step of the way. From our account managers and customer success agents to Cloudflare technical support, somebody is always on hand to help us achieve our business goals.\"  \n",
+									"cloudflareStreamVideoId": "9c57b16986893553978e4140ea4c1c6c",
+									"orderDate": "2024-04-15",
+									"ref_streamVideoThumbnail": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7a6m6bwj1zKlcQ7JHe2981/fefe33b4f70020feb9afd168ea97c31c/deliveryhero_meta.png"
+										},
+										"description": ""
+									},
+									"twoCardPreviewImage": null,
+									"industryNew52420": [
+										"eCommerce"
+									],
+									"regionNew52520": [
+										"Europe, Middle East & Africa"
+									],
+									"primaryUseCases": [
+										"Accelerate digital properties",
+										"Deploy custom code at the Edge",
+										"Enable zero trust security for workforce",
+										"Secure workforce applications, devices and networks",
+										"Secure websites & applications"
+									],
+									"product": [
+										"Access",
+										"Bot Management",
+										"CDN",
+										"Workers",
+										"Zero Trust"
+									]
+								},
+								{
+									"id": "f5c15aab-e066-5fd3-b28c-7bb922d1c1db",
+									"contentfulId": "2QcgZiRb5PuoVDrcUFv1GT",
+									"logo": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Vjcj5r39nYQK9FAZ6tx1i/15048294cd989a6e460a61e56ad73d3e/PhonePe-horizontal-small2.png"
+										},
+										"description": null
+									},
+									"nameUrlSlug": "phonepe",
+									"shortDescription": "PhonePe protects over  33 million merchants and provides a frictionless and low-latency customer experience to over 400 million registered users, using Cloudflare.  ",
+									"longDescription": "## __Improving PhonePe — Accelerating and securing over 3.6 billion monthly mobile payment transactions with Cloudflare__\n\nMobile payment systems are changing how the world transacts, and no country has adopted digital payments more rapidly  and on a larger scale than India. PhonePe leads that paradigm shift. \n\nWith a user base of nearly one in every four Indian citizens, PhonePe is a clear leader in the Indian digital payment space and in India's premier mobile payment platform [in every metric](https://inc42.com/buzz/phonepe-maintains-lead-in-upi-with-49-market-share-in-jan-2022-whatsapp-at-0-02/), consistently outperforming competitors. \n\n### __The Challenge: Ensuring compliant, secure, and low-latency financial transactions during daily high-traffic clusters__  \n\nScaling to meet their rapid growth — PhonePe has over 435 million registered users and processes over 3.6 billion transactions monthly. Given the scale the  company operates at, PhonePe was under pressure to provide secure, frictionless and quick service. \n\nWith their peak periods defining their network requirements, PhonePe sought a content delivery network (CDN) with the elasticity to absorb every daily traffic surge. More importantly, that solution had to handle dynamic traffic without introducing any latency that might undermine the user experience.\n\n\"Each transaction should take three seconds to complete — as that time increases, people lose patience. Once a transaction reaches 12 seconds, our users assume we are having problems, and volumes drop to zero as they turn to our competitors,\" says Burzin Engineer, PhonePe Co-founder and Chief Reliability Officer. \n\nBecause the quality of their customer experience is so significant to customer retention, PhonePe also needed a way to manage and efficiently deliver their static image and video content. \n\nNext, as a fintech platform partnering with banks, PhonePe wanted a single solution to provide real-time protection against threats like DDoS, malicious bots, and SQL injections. It also had to ensure instantaneous financial transactions on a massive scale.  \n\n\"Over 33 million merchants depend on PhonePe to fulfill their transactions, and we are under attack 24/7, 365 days a year,\" says Engineer. \"We needed the right partner and security tooling to thrive.\"\n\n### __Blocking malicious international traffic and promoting regulatory compliance with the Cloudflare WAF__  \n\nPhonePe selected Cloudflare as their [security solution](https://www.cloudflare.com/application-services/solutions/) and content delivery partner based on a shared commitment to providing modern solutions and exceptional customer service. \n\n\"The Cloudflare tech stack interested us. Compared to the other vendors, it wasn't carrying the baggage of 20-year-old technologies,\" says Engineer. \"Cloudflare was newer and had a modern API-driven CDN purpose-built from the ground up.\"       \n\nThe company leadership was also banking on Cloudflare's commitment to developing relationships in India and improving the topology of its content delivery infrastructure nationwide.\n\nPhonePe began with the Cloudflare core security portfolio. With all of PhonePe's business conducted domestically, the Cloudflare Web Application Firewall (WAF), managed rulesets, and the ability to geo-block traffic resulted in immediate security benefits. \n\n\"Using the Cloudflare WAF, we cut off more than 90% of malicious attacks by restricting traffic to sources within India,\" says Engineer. \"It gives us peace of mind to know that because everything flows through Cloudflare, we can protect our ingress and egress and keep our customers' data and money safe.\"\n\nCloudflare plays a key role in ensuring PhonePe maintains that critical uptime. Monthly, it detected and neutralized 180 million threats to the PhonePe application layer.   \n\nIn addition to protecting PhonePe's applications, Cloudflare simplifies the security auditing process and helps the platform meet its compliance requirements. The announcement that Cloudflare will [comply fully](https://www.livemint.com/companies/people/will-become-data-localization-compliant-in-india-by-decend-11661716747206.html) with India's incoming data localization and data residency requirements by the end of 2022 further eased PhonePe's regulatory needs. \n\n### __Cloudflare Workers and Stream: serverless image resizing and adaptive bitrate video delivery for a smooth, responsive user experience__\n\nWith their security and compliance concerns addressed and their applications and networks protected, PhonePe concentrated on further enhancing their user experience using Workers and the API-first Cloudflare global network.\n\nInitially, PhonePe optimized their millions of source images locally to ensure they were responsive on any device and to improve performance at the point of service. The resizing process required over 50 bare-metal origin servers — Cloudflare Workers eliminated the need for those machines. \n\n\"Once we offloaded the dynamic resizing and delivery of images for over 200 devices to Workers, all we needed to provide was a single high-resolution source image,\" explains Engineer. \"Workers resize, cache, and serve those images for us. It saves PhonePe resources, space and power. It also improves the user experience because it's faster.\"\n\nWith support from the Cloudflare engineering team, PhonePe conceived and implemented the change in under two months.\n\nAfter the success of offloading their responsive image processing to the edge, PhonePe moved on to optimizing their video content delivery. They chose Stream, the [live](https://www.cloudflare.com/developer-platform/solutions/live-streaming/) and on-demand Cloudflare video service that dynamically adapts each stream to network conditions. The Stream service proved ideal for mitigating video delivery issues caused by inconsistent mobile internet performance.\n\n\"Stream changes bitrate based on available bandwidth,\" says Engineer. \"Before we could choose from three bitrates but it was a one-time decision. Now, Stream changes rate dynamically and eliminates stall and jitter and improves our customer experience.\" \n\nUsing Workers and the Cloudflare global network, PhonePe now offloads an average of 80% of the traffic from their origin servers and enjoys corresponding savings in bandwidth and a 10x reduction in infrastructure costs. In a month, Cloudflare serves 775 billion requests for PhonePe — over 289,000 requests per second and their merchant notifications and image resizing use cases trigger 50 billion Workers requests.\n\nFor PhonePe, where network and security issues directly affect their customers and merchant partners, proactive Cloudflare support translates to peace of mind. \n\n\"It is comforting to have Cloudflare to tell us exactly what is happening, why it happened, and how the support team is coming together to fix it,\" says Engineer. \"While no company can guarantee perfection, how they react to problems shows you their true character, and Cloudflare's character is impeccable.\"\n",
+									"cloudflareStreamVideoId": "6a8da927b9682465f8b1ddf98550c1f1",
+									"orderDate": "2023-01-21",
+									"ref_streamVideoThumbnail": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Ro6ObLu3SaiPAtTogToip/29a7a96c2c6f3269ded783bca0c0f6ae/phonepe_meta.png"
+										},
+										"description": ""
+									},
+									"twoCardPreviewImage": null,
+									"industryNew52420": [
+										"Financial Services"
+									],
+									"regionNew52520": [
+										"Asia-Pacific"
+									],
+									"primaryUseCases": [
+										"Deliver rich media experiences",
+										"Secure websites & applications",
+										"Accelerate digital properties",
+										"Stop Phishing & BEC Attacks",
+										"Deploy custom code at the Edge"
+									],
+									"product": [
+										"Workers",
+										"Stream",
+										"CDN",
+										"WAF"
+									]
+								}
+							],
+							"showMoreButton": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "3Tyvr6tmM2Ih6TzYzBIakd",
+								"elementName": "SEE ALL CASE STUDIES",
+								"standardText": null,
+								"text": "See all case studies",
+								"url": "/case-studies",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							},
+							"trustedBy": null
+						},
+						{
 							"contentTypeId": "bladeCardMosaic",
 							"contentfulId": "7KRLpycNuyIeWFQfpuPfRi",
 							"entryTitle": "[Homepage] Thought Leadership Section (Resources)",
@@ -3707,25 +3812,6 @@
 										"brandfolderAsset": null,
 										"brandfolderAssetMobile": null
 									}
-								},
-								{
-									"contentTypeId": "elementResourceCard",
-									"contentfulId": "5xZE0nEBCWdWIRHFVt42eF",
-									"heading": "Whitepaper",
-									"description": "3 challenges of securing and connecting application services",
-									"category": "Library",
-									"link": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "64lD7bjFOWyfvSNrp40Tum",
-										"elementName": "Link",
-										"standardText": null,
-										"text": "Get the whitepaper",
-										"url": "https://www.cloudflare.com/lp/3-challenges-of-securing-and-connecting-application-services",
-										"elementModal": null,
-										"openInNewTab": false,
-										"locale": "en-US"
-									},
-									"image": null
 								},
 								{
 									"contentTypeId": "elementResourceCard",
@@ -3832,17 +3918,7 @@
 									"heading": "Whitepaper",
 									"description": "Explore more whitepapers in Cloudflare's Resource Hub\n",
 									"category": "Library",
-									"link": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "5lvfgWg3qMpZO2vKdTAbND",
-										"elementName": "Explore more whitepapers in Cloudflare's Resource Hub -  CTA - resource-hub/?resourcetype=Whitepaper",
-										"standardText": null,
-										"text": "View whitepapers",
-										"url": "https://www.cloudflare.com/resource-hub/?resourcetype=Whitepaper",
-										"elementModal": null,
-										"openInNewTab": true,
-										"locale": "en-US"
-									},
+									"link": null,
 									"image": {
 										"id": "aef302d2-a7e8-57b1-b2c4-610e768f5249",
 										"altText": "Explore more whitepapers in Cloudflare's Resource Hub - thumbnail",
@@ -3993,39 +4069,6 @@
 								},
 								{
 									"contentTypeId": "elementResourceCard",
-									"contentfulId": "5CwqhD6l1sCSpMBRdm3ISJ",
-									"heading": "Event",
-									"description": "Explore the connectivity cloud at Connect New York on May 30",
-									"category": "Events",
-									"link": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "2rMdDGgrtZ4YlsmwGsaTMV",
-										"elementName": "Learn more - Connect 2024 - Connect New York",
-										"standardText": null,
-										"text": "Learn more",
-										"url": "https://events.www.cloudflare.com/connectnyc2024",
-										"elementModal": null,
-										"openInNewTab": true,
-										"locale": "en-US"
-									},
-									"image": {
-										"id": "f531be0c-4b32-5d22-8158-b8be2d204300",
-										"altText": "Connect 2024 - Connect New York",
-										"title": null,
-										"activeAsset": "Contentful Asset",
-										"locale": "en-US",
-										"contentfulAsset": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/624bnxVUUmQfDGs12DHtJq/62011395ea6feac96abd2fa9ba23b500/NYC.png"
-											},
-											"description": "Connect 2024 - Connect New York"
-										},
-										"brandfolderAsset": null,
-										"brandfolderAssetMobile": null
-									}
-								},
-								{
-									"contentTypeId": "elementResourceCard",
 									"contentfulId": "4QUJGRc8odnsaElWKlbtoT",
 									"heading": "Press",
 									"description": "Cloudflare powers hyper-local AI Inference with NVIDIA accelerated computing",
@@ -4063,17 +4106,7 @@
 									"heading": "Press",
 									"description": "Cloudflare enters multicloud networking market with Magic Cloud Networking",
 									"category": "News",
-									"link": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "1WVEsiyJHnp2fS2PW8ETkk",
-										"elementName": "Magic Cloud Networking",
-										"standardText": null,
-										"text": "Read more",
-										"url": "https://www.cloudflare.com/press-releases/2024/cloudflare-enters-multicloud-networking-market-unlocks-simple-secure/",
-										"elementModal": null,
-										"openInNewTab": false,
-										"locale": "en-US"
-									},
+									"link": null,
 									"image": {
 										"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
 										"altText": "Press Release Header",
@@ -6583,18 +6616,7 @@
 									"locale": "en-US",
 									"name": "Cloudflare Agency Program",
 									"description": null,
-									"mainLink": {
-										"contentTypeId": "elementNavLink",
-										"contentfulId": "6mNmUdDEPu6ZjhUJnnoUJx",
-										"locale": "en-US",
-										"title": "Cloudflare Agency Program",
-										"description": null,
-										"url": "https://www.cloudflare.com/cloudflare-partners-self-serve-program-closed-beta/",
-										"badges": null,
-										"specialLinkType": null,
-										"openInNewWindow": false,
-										"isExternalUrl": null
-									},
+									"mainLink": null,
 									"navigationLinks": [],
 									"navIcon": null,
 									"showIconOnly": false,
@@ -9061,18 +9083,7 @@
 										"locale": "en-US",
 										"name": "Cloudflare Agency Program",
 										"description": null,
-										"mainLink": {
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "6mNmUdDEPu6ZjhUJnnoUJx",
-											"locale": "en-US",
-											"title": "Cloudflare Agency Program",
-											"description": null,
-											"url": "https://www.cloudflare.com/cloudflare-partners-self-serve-program-closed-beta/",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": false,
-											"isExternalUrl": null
-										},
+										"mainLink": null,
 										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,

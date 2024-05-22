@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-10-04T14:13:49.413Z",
-					"updatedAt": "2024-05-15T08:49:12.242Z"
+					"updatedAt": "2024-05-22T03:22:58.290Z"
 				},
 				"contentfulId": "0c7G74M4ikVXeYrwm6cQh",
 				"contentTypeId": "page",
@@ -68,21 +68,21 @@
 					{
 						"contentfulId": "4BG4m1tDItAATPeMVWU7Yr",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Build collaborative applications ",
+						"title": " Cloudflare Durable Objects",
 						"titleSize": null,
-						"subtitle": null,
+						"subtitle": "Real-time, low-latency API coordination and consistent storage",
 						"subtitleSize": null,
-						"copy": "Collaborative apps, like chat rooms, games, or whiteboards require strong consistency of state to ensure everybody, everywhere is working with the most up to date version. Run stateful applications on Cloudflare's connectivity cloud with Durable Objects.\n",
+						"copy": "Durable Objects provides a powerful API for coordinating multiple clients and users — helping you build collaborative applications while maintaining strong consistency of state.\n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
-						"buttonText1": "Developer documentation",
+						"buttonText1": "Get started",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://developers.cloudflare.com/workers/runtime-apis/durable-objects/",
+						"buttonUrl1": "https://dash.cloudflare.com/login",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "View in dash",
+						"buttonText2": null,
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://dash.cloudflare.com/login",
+						"buttonUrl2": null,
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -130,347 +130,791 @@
 						}
 					},
 					{
-						"contentfulId": "2eT70Wdz5W8wIEERtHdUWc",
-						"title": "Maintain state",
-						"copy": "Regain control when you define data center to store application state in.  Guaranteed connectivity for all requests to reach the same instance.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "4a9c0682-7a63-5677-90f2-8c8515500ea1",
-							"altText": null,
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/tRPfLEJCQFwDopbDIBxOr/dccc5e0b67b96e57f32e0031af7e5e27/BDES-5042_-_Cdn-global-hero-illustration.svg"
-								},
-								"description": "Illustration of an application processing requests"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "small",
-						"imageTextAlignment": "top",
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "7kjXeiFZkcJNz4DPeb46Xl",
-						"title": "Scale on demand",
-						"copy": "With near limitless scale, Durable Objects can scale from 0 to millions in a matter of seconds. Ensuring your application can handle surges of traffic during peak times.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "77882bbc-749e-5e10-bb0d-9dddbad12aa7",
-							"altText": null,
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QkV13Czst4TNFpO4IFtwW/a7e5844a6b0898a60ea579b39f9e389d/BDES-5042_-_Scaling-globally-spot-illustration.svg"
-								},
-								"description": "Illustration of a scaling application"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "small",
-						"imageTextAlignment": "top",
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "vABsz616LpslzDFfVyZNJ",
-						"title": "Embedded Compute",
-						"copy": "Build complex logic without a performance tax when your compute functions execute within the same serverless environment as your state. ",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "dafec184-ba52-538b-bdce-1f5775f72e46",
-							"altText": null,
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6zIKd85FV8AwFBKCBFtIsd/91a6efe2cada8ae7a37e0422e90b2e95/BDES-5042_-_Embedded-compute-workers-durable-objects.svg"
-								},
-								"description": "Illustration of a globe"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "small",
-						"imageTextAlignment": "top",
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "7ihayeoMmtCoAQNrk9MxEN",
-						"contentTypeId": "bladeKeyFeatures",
-						"backgroundColor": "white",
-						"title": "Key benefits",
-						"keyFeature": [
-							"Maintain strong consistency of state as code executes from a single data center.",
-							"Automatic failover to eliminate a single point of failure.",
-							"Schedule alarms to run at a regular cadence or batch requests. "
-						],
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"titleColor": null,
-						"variant": null,
+						"contentfulId": "2ZADSaIiSVtdwJqeBw0DAJ",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE DURABLE OBJECTS",
 						"description": null,
-						"featuresTextStyle": "body1",
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4uWGhaefbVRpFktK58r9jX",
+								"title": "State consistency from a global network",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Durable Objects allows you to store application state in a specific data center on our network, guaranteeing that all requests reach the same instance every time.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
+									"altText": "Internet globe orange",
+									"title": "Internet globe orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6nPwfR65LiojlJR1edFd70",
+								"title": "Real-time coordination",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Durable Objects automatically selects a coordination point close to your users, so you can minimize latency and make application changes in real time.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4ad77fba-3ae1-5ad0-a850-d814c56d9d9d",
+									"altText": "Reliability timer blue",
+									"title": "Reliability timer blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/41aBOr3gowykuADnSlJuCp/897c938c653f6d736e3832afe4fcab59/reliability-timer.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2OMhf7Kr8yNQt0U5T8skUc",
+								"title": "Embedded compute",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "With Durable Objects, your compute functions execute within the same serverless environment as your state — helping you build complex logic without impacting performance.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "f4f2db49-e40f-579d-b8d0-78c078cc9c15",
+									"altText": "Durable objects blue",
+									"title": "Durable objects blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kCZGnnEQKwkfLBcLYoxTB/a3226fadaee4f995d3351f65be75cba1/cloudflare-durable-objects.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "42erdr1Z9u6yE0KcrQTgGn",
+								"title": "On-demand scalability",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Durable Objects can scale from zero to millions of objects in seconds, ensuring consistent access to your applications — even during peak traffic periods.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
+										},
+										"description": "icon scale aqua"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
 						"htmlId": null
 					},
 					{
-						"contentTypeId": "bladeTable",
-						"contentfulId": "4TSO59nyhgppEjQvjwpfc5",
-						"locale": "en-US",
-						"sectionPadding": null,
-						"bladeBorder": "none",
-						"backgroundColor": "white",
-						"displayHeader": null,
-						"showFilter": null,
-						"sectionTitle": null,
-						"title": "Pricing plans",
-						"copy": "Durable Objects is only available with paid Workers plans.",
+						"contentfulId": "4NTXQCnZdfNYyv4M8tOBMR",
+						"title": "Build high-performing stateful applications from anywhere on our global network",
+						"copy": "A Durable Object is a special kind of Cloudflare Worker that processes requests in one of our data centers — available in over %{DataCenterCount} cities worldwide.\n\nEach Durable Object is single-threaded and has access to a stateful storage API, making it easy to build consistent, highly-available distributed applications with them.\n",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "3dafa86e-ec9e-5eea-a824-c5a12a921a93",
+							"altText": "Running Serverless Puppeteer with Workers and Durable Objects",
+							"title": "Running Serverless Puppeteer with Workers and Durable Objects",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/v4nFNhahVjDoRe4tyKqMI/86038271e0409f62d55646dadab98939/Running_Serverless_Puppeteer_with_Workers_and_Durable_Objects.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
-						"columnHeaders": [
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6Dqa8zmYSJgEOQFGgxyNUJ",
+						"title": "Learn how developers are building applications with Cloudflare Durable Objects",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "7gzuSchww5q85RMLY7oxra",
+							"elementName": "Durable Objects - ADDITIONAL OFFER BLADE - CTA",
+							"standardText": null,
+							"text": "Learn more",
+							"url": "https://workers.cloudflare.com/built-with/collections/durable-objects/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "fJbNl2pxLYDUjRkUw2gHM",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
 							{
-								"cellText": "Included with paid plan",
-								"cellTextLinkUrl": null,
-								"cellSubtitle": null,
-								"buttonText": null,
-								"buttonUrl": null,
-								"commonElements": null,
-								"imageAssetFile": null
+								"contentTypeId": "elementRichText",
+								"contentfulId": "40TcqyZjmUQgx85ipPCGPd",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"By harnessing the capabilities of Cloudflare's Workers, Workers KV, and Durable Objects, I have seamlessly integrated advanced functionalities into my projects without the need for significant infrastructure investments.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Developer — SIYA",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
 							},
 							{
-								"cellText": "Cost per additional units",
-								"cellTextLinkUrl": null,
-								"cellSubtitle": null,
-								"buttonText": null,
-								"buttonUrl": null,
-								"commonElements": null,
-								"imageAssetFile": null
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
 							}
 						],
-						"groupsInTable": [],
-						"rowsInTable": [
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "1S2Fe1AixFHHRl9YMV83QM",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "Top Durable Objects  use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
-								"contentfulId": "3CFBGUC5tpiPBYn5SuATl8",
-								"rowHeader2": {
-									"contentfulId": "bPyTC1efTcG7bQCprBRwY",
-									"cellText": "Read request units",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "2OMmojVFsKiUcd7pKfMdGF",
-										"cellText": "1,000,000 / month",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
+								"contentTypeId": "feature",
+								"contentfulId": "1jjG7q1gOZCDQNHJvwtXfZ",
+								"title": "Create collaborative applications",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Easily build, run, and scale collaborative applications — like real-time chat, video conferencing, game sessions, and more.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b815385d-6fa7-54c1-9020-d5394237a7ab",
+									"altText": "Applications icon",
+									"title": "Applications icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Gs1nPWmoZABBztrTHECMD/62d032e76ca646918a6420271edb612c/applications.svg"
+										},
+										"description": "Applications icon"
 									},
-									{
-										"contentfulId": "1B6ZafntByla8yW8SPKYia",
-										"cellText": "$0.20 / million",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"contentfulId": "65Yek9g0yuXAg1TUYGNZe1",
-								"rowHeader2": {
-									"contentfulId": "3sjeW3N4TyDm0f8luhcdl0",
-									"cellText": "Write requests",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "4AETa1zEZx1dsmjuQuLoHz",
-										"cellText": "1,000,000 / month",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
+								"contentTypeId": "feature",
+								"contentfulId": "xYtty0G2dBP1denIHgQip",
+								"title": "Build dedicated game servers",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Maintain accurate versions of multiplayer games to allow for customization and control over game settings.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "096de851-410f-5df1-8f9a-58dd4a411b44",
+									"altText": "Server 3 blue",
+									"title": "Server 3 blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xbnxzBLH0iZJ18futfvJx/42ab33f9795970fb54a118f354e3be47/server-3.png"
+										},
+										"description": null
 									},
-									{
-										"contentfulId": "1VyxQQVlSd3K5BXXANBtDm",
-										"cellText": "$1.00 / million",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"contentfulId": "1llpFa7SD8n8tX1WmQMcqK",
-								"rowHeader2": {
-									"contentfulId": "47xBJ4N4cnO6XHIBLgORxO",
-									"cellText": "Delete requests",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "1addD0XXqnYr7cz5tL0JF3",
-										"cellText": "1,000,000 / month",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
+								"contentTypeId": "feature",
+								"contentfulId": "1tfUYpUvfKln0oyWLaZt3o",
+								"title": "Create and design global queues",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Save time by automatically arranging inbound messages, suggestions, approvals, cases, and tasks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
+									"altText": "Internet globe orange",
+									"title": "Internet globe orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
+										},
+										"description": ""
 									},
-									{
-										"contentfulId": "5YKt7Pl3KWwDKHBZp7PHXC",
-										"cellText": "$1.00 / million",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "7nng6JokCBcsv63acVBuqD",
-								"rowHeader2": {
-									"contentfulId": "6hjIJU0Czmodlk2xrpyuw9",
-									"cellText": "Stored data",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"cellsInRow": [
-									{
-										"contentfulId": "3OQ0x7MmiF3aMnVEQKVOQZ",
-										"cellText": "1 GB",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "236y4fw6e9L82G5b2EywiD",
-										"cellText": "$0.20 / GB-month",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						],
-						"dataSource": null
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "7whTY0LVGGlU3dU89mW5Lp",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"https://workers.cloudflare.com/built-with/collections/durable-objects/\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "5tlm1U70Ci512zEEYsAoYZ",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3g4xOJwUBff3kBPcrrbB8e",
+								"title": "How Durable Objects works",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Durable Objects enables you to build collaborative applications and tools — without requiring you to build your own serialization and coordination primitives.",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-workers-durable-objects/",
+								"learnMoreText": "Read the blog post ",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5afpCfYy9E7A1TaOAzPoyK",
+								"title": "Making Durable Objects easy, fast, and accurate",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "We improved the speed and accuracy of Durable Objects to help developers write their code in an intuitive way, with optimal results.",
+								"learnMoreUrl": "https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three",
+								"learnMoreText": "Read the blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1qcIDW6SHKKfw6rEDKwb1j",
+								"title": "Introducing Durable Objects Alarms",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how to trigger a Durable Object and perform compute at customizable intervals.",
+								"learnMoreUrl": "https://blog.cloudflare.com/durable-objects-alarms",
+								"learnMoreText": "Read the blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
@@ -483,7 +927,7 @@
 						"buttonText2": null,
 						"buttonModalId2": null,
 						"buttonUrl2": null,
-						"bladeSizeType": "large",
+						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
 						"buttonOne": {
@@ -492,8 +936,8 @@
 							"contentTypeId": "button",
 							"contentfulId": "2pFFX647IWiAsFQlSJJ9LX",
 							"elementName": "Learn More - Dev platform  durable-objects - Use cases",
-							"standardText": "Learn More",
-							"text": null,
+							"standardText": null,
+							"text": "Learn more",
 							"url": "https://workers.cloudflare.com/built-with/collections/durable-objects/",
 							"loggedInUrl": null,
 							"buttonModal": null,
