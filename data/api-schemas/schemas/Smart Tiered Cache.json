@@ -127,6 +127,35 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"editable": {
+													"description": "Whether the setting is editable",
+													"type": "boolean"
+												},
+												"id": {
+													"description": "The identifier of the caching setting",
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "The time when the setting was last modified",
+													"format": "date-time",
+													"type": "string"
+												},
+												"value": {
+													"description": "The status of the feature being on / off",
+													"enum": [
+														"on",
+														"off"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"value",
+												"modified_on",
+												"editable"
+											],
 											"type": "object"
 										}
 									},
@@ -244,6 +273,35 @@
 										{
 											"properties": {
 												"result": {
+													"properties": {
+														"editable": {
+															"description": "Whether the setting is editable",
+															"type": "boolean"
+														},
+														"id": {
+															"description": "The identifier of the caching setting",
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "The time when the setting was last modified",
+															"format": "date-time",
+															"type": "string"
+														},
+														"value": {
+															"description": "The status of the feature being on / off",
+															"enum": [
+																"on",
+																"off"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"value",
+														"modified_on",
+														"editable"
+													],
 													"type": "object"
 												}
 											},
@@ -485,6 +543,35 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"editable": {
+													"description": "Whether the setting is editable",
+													"type": "boolean"
+												},
+												"id": {
+													"description": "The identifier of the caching setting",
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "The time when the setting was last modified",
+													"format": "date-time",
+													"type": "string"
+												},
+												"value": {
+													"description": "The status of the feature being on / off",
+													"enum": [
+														"on",
+														"off"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"value",
+												"modified_on",
+												"editable"
+											],
 											"type": "object"
 										}
 									},
@@ -602,6 +689,35 @@
 										{
 											"properties": {
 												"result": {
+													"properties": {
+														"editable": {
+															"description": "Whether the setting is editable",
+															"type": "boolean"
+														},
+														"id": {
+															"description": "The identifier of the caching setting",
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "The time when the setting was last modified",
+															"format": "date-time",
+															"type": "string"
+														},
+														"value": {
+															"description": "The status of the feature being on / off",
+															"enum": [
+																"on",
+																"off"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"value",
+														"modified_on",
+														"editable"
+													],
 													"type": "object"
 												}
 											},
@@ -746,7 +862,7 @@
 						"description": "Update enablement of Smart Tiered Cache",
 						"properties": {
 							"value": {
-								"description": "Enables Tiered Cache.",
+								"description": "Enable or disable the Smart Tiered Cache",
 								"enum": [
 									"on",
 									"off"
@@ -869,6 +985,35 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"editable": {
+													"description": "Whether the setting is editable",
+													"type": "boolean"
+												},
+												"id": {
+													"description": "The identifier of the caching setting",
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "The time when the setting was last modified",
+													"format": "date-time",
+													"type": "string"
+												},
+												"value": {
+													"description": "The status of the feature being on / off",
+													"enum": [
+														"on",
+														"off"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"value",
+												"modified_on",
+												"editable"
+											],
 											"type": "object"
 										}
 									},
@@ -986,6 +1131,35 @@
 										{
 											"properties": {
 												"result": {
+													"properties": {
+														"editable": {
+															"description": "Whether the setting is editable",
+															"type": "boolean"
+														},
+														"id": {
+															"description": "The identifier of the caching setting",
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "The time when the setting was last modified",
+															"format": "date-time",
+															"type": "string"
+														},
+														"value": {
+															"description": "The status of the feature being on / off",
+															"enum": [
+																"on",
+																"off"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"value",
+														"modified_on",
+														"editable"
+													],
 													"type": "object"
 												}
 											},
