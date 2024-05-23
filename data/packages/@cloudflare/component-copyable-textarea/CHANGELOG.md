@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.6
+
+### Patch Changes
+
+- @cloudflare/component-textarea@4.1.6
+
 ## 5.0.5
 
 ### Patch Changes

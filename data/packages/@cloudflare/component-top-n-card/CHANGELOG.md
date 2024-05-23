@@ -1,6 +1,22 @@
 # Change Log
 
+## 6.0.13
+
+### Patch Changes
+
+- @cloudflare/component-box@4.0.6
+- @cloudflare/component-button@8.3.8
+- @cloudflare/component-loading@6.1.7
+- @cloudflare/elements@3.0.8
+
 ## 6.0.12
+
+### Patch Changes
+
+- @cloudflare/component-box@4.0.5
+- @cloudflare/component-button@8.3.7
+- @cloudflare/component-loading@6.1.6
+- @cloudflare/elements@3.0.7
 
 ## 6.0.11
 

@@ -1,5 +1,20 @@
 # Change Log
 
+## 7.1.7
+
+### Patch Changes
+
+- @cloudflare/component-arrow-swivel@8.0.13
+- @cloudflare/component-box@4.0.6
+- @cloudflare/component-button@8.3.8
+- @cloudflare/component-forms@6.1.5
+- @cloudflare/component-input@8.1.6
+- @cloudflare/component-link@8.0.18
+- @cloudflare/component-select@5.0.6
+- @cloudflare/component-time-period-picker@6.0.12
+- @cloudflare/elements@3.0.8
+- @cloudflare/component-text@4.0.6
+
 ## 7.1.6
 
 ### Patch Changes

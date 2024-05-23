@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.12
+
+### Patch Changes
+
+- @cloudflare/elements@3.0.8
+
 ## 2.0.11
 
 ### Patch Changes

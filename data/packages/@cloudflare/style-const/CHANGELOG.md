@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.10.0
+
+### Minor Changes
+
+- 8045b4751c: feat: allow customizing dark mode key
+
 ## 5.9.0
 
 ### Minor Changes

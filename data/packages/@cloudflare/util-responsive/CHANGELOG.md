@@ -1,5 +1,12 @@
 # Change Log
 
+## 3.0.4
+
+### Patch Changes
+
+- @cloudflare/component-box@4.0.6
+- @cloudflare/component-listener@4.0.12
+
 ## 3.0.3
 
 ### Patch Changes

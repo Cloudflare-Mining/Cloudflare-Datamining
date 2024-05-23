@@ -1,10 +1,21 @@
 # Change Log
 
+## 9.2.5
+
+### Patch Changes
+
+- @cloudflare/component-label@5.0.8
+- @cloudflare/component-link@8.0.18
+- @cloudflare/elements@3.0.8
+
 ## 9.2.4
 
 ### Patch Changes
 
 - 20eb7bba90: add a word break to the PageHeader description for when a long zone name overflows the text
+  - @cloudflare/component-label@5.0.7
+  - @cloudflare/component-link@8.0.17
+  - @cloudflare/elements@3.0.7
 
 ## 9.2.3
 
