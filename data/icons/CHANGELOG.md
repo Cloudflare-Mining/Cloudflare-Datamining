@@ -1,5 +1,7 @@
 # Change Log
 
+## 12.7.1
+
 ## 12.7.0
 
 ### Minor Changes
