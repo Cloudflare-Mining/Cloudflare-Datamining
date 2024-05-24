@@ -54,16 +54,11 @@
 				},
 				"sys": {
 					"createdAt": "2022-09-19T13:21:34.697Z",
-					"updatedAt": "2024-05-22T01:43:07.246Z"
+					"updatedAt": "2024-05-24T04:58:20.221Z"
 				},
 				"contentfulId": "6hVrOo9YzTcYNQXIMnI3Cm",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "NEW",
-					"linkText": "Learn more",
-					"linkUrl": "https://blog.cloudflare.com/50-most-impersonated-brands-protect-phishing/",
-					"desktopText": "Cloudforce One customers are protected by deep phishing and brand protections to mitigate risks of spoofing and brand impersonation attacks."
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -75,19 +70,19 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudforce One",
 						"titleSize": null,
-						"subtitle": "Cloudflare Threat Intelligence and Operations",
+						"subtitle": "Unparalleled threat intelligence from the Cloudflare global network",
 						"subtitleSize": null,
-						"copy": "Cloudforce One packages the vital aspects of modern threat intelligence and operations to make organizations smarter, more responsive, and more secure. Cloudforce One is led by a world-class threat research team, experienced at disrupting global-scale threat actors.  \n",
+						"copy": "Cloudforce One combines our visibility into real-time attack traffic with a world-class threat research team for unmatched operational threat intelligence.\n\nWe process %{HTTPRequests} million HTTP requests per second and %{DNSGlobalTrafficRouting} million DNS queries per second on average, giving you a comprehensive view of current threats.\n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
-						"buttonText1": "Read more",
+						"buttonText1": "Talk to an expert",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://blog.cloudflare.com/cloudforce-one-is-now-ga/",
+						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": null,
-						"buttonText2": null,
+						"button1ExtraClass": "cloudforce-one-modal-form",
+						"buttonText2": "Get the datasheet",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
+						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eIirxSdzPuqIEL3ce5TTp/cc64212b4c7e11aba13567aa03da00ca/Cloudforce_One_data_sheet_Sept_2022_v1.pdf",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -102,7 +97,7 @@
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
+						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
@@ -117,416 +112,184 @@
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RCGYXUpO6qc2sJwJgf7hL/89c56a0c430fd5f3d990a117bef19fb2/BDES-5033_-_Cloudflare_Security_Center.svg"
-							},
-							"description": "Illustration of a cloud and sun"
-						},
-						"imageAssetFile": null
-					},
-					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "4PqjG4WHpAqtYuNSf7Aa2B",
-						"title": "Learn more about Cloudforce One ",
-						"titleSize": null,
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "boFfoSEbTmgJO3PjgIMK9",
-							"elementName": "Cloudforce One enablement blade button: Download datasheet",
-							"standardText": null,
-							"text": "Download datasheet",
-							"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eIirxSdzPuqIEL3ce5TTp/cc64212b4c7e11aba13567aa03da00ca/Cloudforce_One_data_sheet_Sept_2022_v1.pdf",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
-						"buttonTwo": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "4pYaBwI4nwsXqq7ySn8QWJ",
-							"elementName": "Cloudflare TV button: Cloudforce One",
-							"standardText": null,
-							"text": "Cloudflare TV session",
-							"url": "https://cloudflare.tv/event/DZy3bEvr",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
-						"sectionPadding": null,
-						"eyebrow": null
-					},
-					{
-						"contentfulId": "3LpUeKTV6cCcFP0zZNKB0J",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": "Why Cloudforce One is different",
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5vuYQ24TR6wf81wppvA1Al",
-								"title": "Threat data at breathtaking scale",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Only Cloudflare protects ~20% of the world's websites, allowing us to analyze a stunning amount of global data that nobody else has.  We convert this data to finished, actionable threat intelligence.   ",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4JWO6QJaZo4LJjfCHuAl0D",
-								"title": "Proven threat analytics and models",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "We run our vast threat data through dozens of layers of analytics and threat models to refine it into actionable threat intelligence, ready to be ingested into security tools.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5rTLknC7rKDW0FiXRLRsq7",
-								"title": "World-class threat researchers",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Cloudforce One calls on a world-class team of researchers, steeped in expertise analyzing and stopping nation-state and commercial-state cyber actors.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "CHBzCOxUH3t1ozEyzM0Ey",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": "The Cloudforce One offering",
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5YIPdGPKz2u1V7nnKWbZ6J",
-								"title": "Insights on adversaries",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "We empower security teams to make faster, more informed decisions through compelling research and insights about adversaries.\n\n- Threat briefings\n- In-depth attacker profiles including IoCs\n- Research on nation-state and commercial-state adversary TTPs\n- Industry-specific briefings",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tcvski4oLcMsNtT4gLKKL/befd9c43cababb41097bf7eef2d9fb07/innovation-thinking.svg"
-									},
-									"description": "Icon of illuminated light bulb"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5DwAZmz9iexloIi59YkdqL",
-								"title": "Finished threat intelligence ",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Incorporate differentiated, finished threat intelligence into your security postures and tools for more effective security.\n\n- Finished Threat feeds (STIX/TAXII)\n- Phishing and brand protections\n- Brand/phishing takedown service\n- Sinkholes and honeypots API\n",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kHGSanObTiJxXJfXotpe1/caf4f284b6882e7f89beed4050edafb7/target__2_.svg"
-									},
-									"description": "Icon of a reticle"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5ALuxryIb21NJCBpcqYZVX",
-								"title": "Threat Research RFIs",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Make our threat researchers an extension of your team. Directly access our experts for bespoke threat intelligence reports that profile any attack, threat or threat actor of interest. \n\n- RFI process for threat \n- Streamlined three-step process\n- Progress tracking\n- Unlimited threat lookups in Cloudflare Security Center\n",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KnnAFqeVZWjLjBkpKgUPP/72a0651706cf55851db3d7a8aeed13b4/search__1_.svg"
-									},
-									"description": "Icon of a magnifying glass"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeNetworkStats",
-						"contentfulId": "4MepePOQZGZ2RIgUbRKLyR",
-						"title": "Threat data analyzed",
-						"backgroundColor": "white",
-						"htmlId": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"variant": "inline",
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"bladeBorder": "none",
-						"learnMoreLink": null,
-						"bigImage": null,
-						"quotearticle": null,
-						"bigImageAssetFile": null,
-						"networkLocationImage": null,
-						"networkLocationImageAssetFile": null,
-						"networkLocationText": null,
-						"statsFeatures": [
-							{
-								"title": "36",
-								"description": "__million HTTP/S requests processed per second__"
-							},
-							{
-								"title": "1.7 ",
-								"description": "__trillion DNS requests analyzed per day__"
-							},
-							{
-								"title": "8 ",
-								"description": "__billion preemptive email campaign threat signals assessed daily__\n"
-							}
-						]
-					},
-					{
-						"contentfulId": "4R2OqGZUUNHBlrgF9tQfb3",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": "__As part of Cloudflare One, customers have access to powerful tools to strengthen security postures.__",
-						"title": "Cloudforce One tools for security analysts",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6i9L82yMKtoWG8bDZW6QRq",
-								"title": "Threat investigation portal",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Speed threat investigations with instant threat queries in Cloudflare Security Center's Investigate tab for context on IPs, domains, ASN, URLs and more.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KnnAFqeVZWjLjBkpKgUPP/72a0651706cf55851db3d7a8aeed13b4/search__1_.svg"
-									},
-									"description": "Icon of a magnifying glass"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2XPE8haD9NJIXyE9b9q5po",
-								"title": "Automated Sinkhole API",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "\nSinkholes created on-demand to monitor hosts infected with malware and prevent them from communicating with command-and-control (C2) servers.\n",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FjjSEPBAB14SBH5cdYMno/2a3ac5c295f975f484bc5bc74afb8dc9/no-security-shield.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5MkvXEm6HDGt4kIXGBRdBL",
-								"title": "Brand and phishing protections",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Brand and phishing protections preserve brand trust by identifying \"confusable\" domains created specifically for phishing your brand. ",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mrHPnKkDYBK3NVXbAhRdI/81ca8be9ff2769c6c8e19f693274dfbb/help-giving.svg"
-									},
-									"description": "Icon of a hand offering help"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "7a3r7iKa0ndW8jz3lV7KF7",
-						"title": "A Cloudforce One discussion ",
-						"copy": "Tune into our Cloudflare TV session on Cloudforce One.  Blake Darché, Head of Threat Intelligence for Cloudflare, Patrick Donahue, VP Product of Application Security, and Engineering Manager Jesse Kipp discuss Cloudforce One in detail.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls",
-							"muted",
-							"autoplay"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": "8d7eab21b7ba2f9b6c625f72a573406a",
-						"streamThumbnails": "1m13s",
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
+						"imageAssetFile": {
+							"id": "0bbff4c6-5a70-5bbc-a8d7-b57f31f47912",
+							"altText": "Cloudforce One Illustration",
+							"title": "Cloudforce One Illustration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PsqPBw24hXE7RKyDPwHsK/39919f10ca4e33f876dcc546161c95f2/BDES-5033_-_Cloudflare_Security_Center.svg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
-						"contentfulId": "6SvgeDGPwa9cYlmsPbua81",
-						"title": "What you gain with Cloudforce One ",
-						"copy": "\n- Reduced organizational security risk\n- More confident threat investigations and responses\n- Fresh insights on the actors/TTPs targeting your industry\n- Easy to operationalize threat feeds you can't get elsewhere\n- Cloudflare threat analysts that expand your team's capability \n- Tailored research on any pressing threat or actor",
+						"contentfulId": "40qfSNZ2Sod9VYr2tweCpt",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": " BENEFITS OF CLOUDFORCE ONE",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7ciSW52DqT1RiXXib3iZUi",
+								"title": "Insights on threats",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": " Make faster, more informed decisions based on industry-specific attack data from the Cloudflare global network, which is used as a reverse proxy by nearly 20% of all websites.*",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "f46bb671-ca3f-5b66-9c26-31f14275bcef",
+									"altText": "Target orange icon",
+									"title": "Target orange icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ljieC61A3bA8pHEMYLNlC/1e691047fee857a4d39a7168b1183182/target.png"
+										},
+										"description": "Target icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3t6cc0ihNXqiGAoTom0gN6",
+								"title": "Actionable threat intelligence",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Incorporate differentiated, finished threat intelligence (STIX/TAXII feeds) into your security tools.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "746c8e68-0542-59e1-a219-d6a178c3543e",
+									"altText": null,
+									"title": "Threat intelligence radar icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Yx4fQ4JQKWiXHNopSEGHV/ab0d928d56a15ae462f4bfd09e1bcf93/cloudflare-radar.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "26lEJHZCIGdMwpqHlo6tFM",
+								"title": "Faster, more in-depth investigations",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Speed up threat investigations with instant threat queries for context on IPs, domains, ASNs, URLs, and more. Or directly access our experts: RFIs are available for bespoke threat intelligence reports.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "0b7cd03c-c40f-5158-b2f1-51ebcde92c92",
+									"altText": "Performance cloud speed orange",
+									"title": "Performance cloud speed orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Hrl9MJuJGcsYRLaNNcCpS/3ca96c403b9a0195da1a8502d79ef76c/performance-cloud-speed.svg"
+										},
+										"description": "Cloud icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1xTYzo0ExOGOO1Kw1Fx98c",
+								"title": "Disrupt attacks",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "On-demand sinkholes prevent connections to command-and-control servers. Brand and phishing protection identifies domains created for phishing with your brand.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7e7d463f-0987-5271-9a49-1e1ab5cb93f9",
+									"altText": null,
+									"title": "Phishing Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1d9LyCHv5R4RRxDjm7shyv/baaec3fdbd12468b4f5ee0378874855b/Phishing-Icon-orange.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentfulId": "AbReAxItmQFTMUHnsYiFR",
+						"title": "Threat intelligence no one else has",
+						"copy": "We run our threat data, collected from our vast global network that spans %{DataCenterCount} cities, through layers of analytics and threat models to refine it into actionable threat intelligence, ready to be ingested into security tools.\n\nCloudforce One also calls on a world-class team of researchers with expertise analyzing and stopping nation-state and commercial-state cyber actors.\n",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -547,312 +310,850 @@
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RCGYXUpO6qc2sJwJgf7hL/89c56a0c430fd5f3d990a117bef19fb2/BDES-5033_-_Cloudflare_Security_Center.svg"
-							},
-							"description": "Illustration of a cloud and sun"
-						},
+						"image": null,
 						"imageAssetFile": {
-							"id": "051c4206-cf9e-543f-b084-c7d5bc607c44",
-							"altText": null,
-							"title": "Cloudforce One logo",
+							"id": "6ab6226e-8c48-5ee7-9ae7-f5f5d8c47197",
+							"altText": "Threat hunting with insights from Cloudlare's 2.5M+ customers and presence in 200+ cities around the world.  ",
+							"title": "Actionable Threat Intelligence",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PsqPBw24hXE7RKyDPwHsK/39919f10ca4e33f876dcc546161c95f2/BDES-5033_-_Cloudflare_Security_Center.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2MOuLwRDRBf6J8btVaqDyk/ebcd45764f06c8b9aee3d84385dc583a/Q0YtZ2xvYmVfMDMuanBn.jpeg"
 								},
-								"description": ""
+								"description": null
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
+						"imagePosition": true,
+						"imageSize": null,
 						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "FBxLdQYbMIAHLk9rhNB2t",
+						"title": "Learn how Cloudforce One gives organizations stronger security and better awareness",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
 						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "https://www.cloudflare.com/case-studies/",
-						"sectionPadding": null,
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "14krGTbTnqHa2gdqfYdOnr",
+							"elementName": "Cloudforce One - ADDITIONAL OFFER BLADE - CTA",
+							"standardText": null,
+							"text": "Get the datasheet",
+							"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eIirxSdzPuqIEL3ce5TTp/cc64212b4c7e11aba13567aa03da00ca/Cloudforce_One_data_sheet_Sept_2022_v1.pdf ",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "1LpmCUKjkdaPWHErlURMVL",
+						"htmlId": null,
+						"mainHeadline": null,
 						"backgroundColor": "white",
-						"title": "Trusted by millions of Internet properties",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6sA7q2z4FcMyi98L3mWign",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"Cloudflare helps my teams get at the data and the truth without having to pivot between tools. By consolidating our security under Cloudflare, we can automate and move much faster than a potential attacker.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Director of Cyber Security — Werner Enterprises",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": "Canva logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": "Delivery Hero logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": "eTeacher Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": "ezCater logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": "jetBlue logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": "OneTrust logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": "Politico logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": "Ziff Media Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": "INSEAD logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": "Kathmandu logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": "Kathmandu logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "1TDeRfGUPT9obErWOhWZVW",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Cloudforce One packages the vital aspects of modern threat intelligence and operations to make organizations smarter, more responsive, and more secure",
+						"eyebrowHeading": "Top  Cloudforce One use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7vrvXFr58XR8O1DXZIPjBN",
+								"title": "Threat briefings",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Interact directly with our experts for insights on threats to your business, including research on nation-state and commercial-state adversaries.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "746c8e68-0542-59e1-a219-d6a178c3543e",
+									"altText": null,
+									"title": "Threat intelligence radar icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Yx4fQ4JQKWiXHNopSEGHV/ab0d928d56a15ae462f4bfd09e1bcf93/cloudflare-radar.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "GLOQ1UvzV8mKzUUGJRQh0",
+								"title": "Brand and phishing protections",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Preserve brand trust by identifying \"confusable\" domains designed to imitate your brand in phishing attacks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7e7d463f-0987-5271-9a49-1e1ab5cb93f9",
+									"altText": null,
+									"title": "Phishing Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1d9LyCHv5R4RRxDjm7shyv/baaec3fdbd12468b4f5ee0378874855b/Phishing-Icon-orange.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7vbULqa5qmHPK2ylIcvBzw",
+								"title": "Industry-specific security insights",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Obtain the latest on the attackers and tactics, techniques, and procedures (TTPs) targeting your industry.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "eeecf189-a402-531f-8719-4ad6b40a15dd",
+									"altText": "Cloudflare Web Analytics - APPROVED WEB ICONS",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3syrCvrsRZBwc0rcoNjBjD/97577d88f336c7627c69f8a4cd238771/cloudflare-web-analytics.svg"
+										},
+										"description": "Cloudflare Web Analytics - APPROVED WEB ICONS"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "7KjJyc7YLdWTGXtmYL7acJ",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/application-services/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "1YuyXLnZC8mAqpsPrpF5wp",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Helping organizations worldwide protect themselves from attacks",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "4vUi87dz2IobOALVyPGPL9",
+							"elementName": "Cloudforce One - CASE STUDIES - CTA",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "https://www.cloudflare.com/case-studies/?usecase=Secure+websites+%26+applications",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
+						"contentfulId": "6N6SfOe8LBTlmEx8xvJcFR",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
 						"copy": null,
-						"logoList": [
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ovo10a1mEsAZ7ZwFKfFl/d0d561ddb71ecdb723357bb2f79bc979/logo_mars_gray_32px-wrapper.svg"
+								"contentTypeId": "feature",
+								"contentfulId": "6yBHWS3NZa92ErmPhAkDIy",
+								"title": "Cloudforce One data sheet",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Get more details about how Cloudforce One reduces security risk through a powerful package of security intelligence, tools, and operations.",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eIirxSdzPuqIEL3ce5TTp/cc64212b4c7e11aba13567aa03da00ca/Cloudforce_One_data_sheet_Sept_2022_v1.pdf",
+								"learnMoreText": "Get the data sheet",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "Mars logo"
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/75Iu2nwjYyY5rckEPqO9hr/57b676a2cf5fe6c1e2b3663d7131fda5/logo_loreal_gray_32px-wrapper.svg"
+								"contentTypeId": "feature",
+								"contentfulId": "1vIUdsP9PsgDxfjWBG0RA6",
+								"title": "Cloudforce One: GA Week",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Watch this Cloudflare TV session in which Blake Darché, Head of Threat Intelligence, Patrick Donahue, VP Product of Application Security, and Engineering Manager Jesse Kipp discuss Cloudforce One.",
+								"learnMoreUrl": "https://cloudflare.tv/ga-week/cloudforce-one-ga-week/DZy3bEvr",
+								"learnMoreText": "Watch video",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "L'Oreal logo"
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Gps1TUuUvlobFOEXbnJlI/df914dce0414a8cfccb70c090f271304/logo_doordash_gray_32px-wrapper.svg"
+								"contentTypeId": "feature",
+								"contentfulId": "50LqJlTUkMz49q2HZWdVfi",
+								"title": "Introducing Cloudforce One: our new threat operations and research team",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Read about Cloudforce One and the team that aims to research and disrupt attackers around the world.",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "Doordash logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67NI5PUHwR6yUSWHGPL1rM/1a2179da46b2df3eb6d8c4435bafeaa4/logo_garmin_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mAzLb3ofkkG38jtcP2Ys8/094958a88df30575d79254ee6615a82f/logo_ibm_gray_32px-wrapper.svg"
-								},
-								"description": "IBM logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TfcZ86qvZor2xtI2z4Vvr/ef54112582296119f4296869c34ba025/logo_23andme_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhur0vl8q716TyGFZuCIG/acb851172c83f325ae99e527ef4c216e/logo_shopify_color_32px-wrapper.svg"
-								},
-								"description": "Shopify logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lhZTNuuLxtB38r8n1VORb/9fbfad924669a02deb97668b9c8d163b/logo_lending-tree_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/47baOjkvX7lLtmTdWvCYI9/009360a8301d33def2ea3ffe22a922df/logo_labcorp_color_32px-wrapper.svg"
-								},
-								"description": "LabCorp logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26kszL2y2X7zTR2edZPDUY/1a9d00bc8c441346e6dd06bd82204972/logo_ncr_gray_32px-wrapper.svg"
-								},
-								"description": "NCR logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-								},
-								"description": "Thomson Reuters logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YRPa33UFrfL2zoZd2AXTq/658995f16c7ee4818875c254c18573d3/logo_zendesk_gray_32px-wrapper.svg"
-								},
-								"description": null
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
-						],
-						"logoListAssetFile": [
-							{
-								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
-								"altText": "Logo mars trusted by gray",
-								"title": "Logo mars trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xar1H4WcFHHkHRDzMypMh/1f8989ae11cb464cc640c7121d0be9a6/logo_mars_trusted-by_gray.svg"
-									},
-									"description": ""
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "2Oc4okySOLB4BYoX8M7mhF",
+						"title": "Get Cloudforce One for your enterprise",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "7HzW8vD8iEPtCIIWYEGT9z",
+							"elementName": "Cloudforce One - Talk to an expert - Modal form - CTA",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "2MRQiyPX9futERsRbPi7ly",
+								"modalName": "Cloudforce One - Modal form",
+								"modalId": "cloudforce-one-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "4G1QRxSpb0cMlordWcak91",
+									"bladeName": "Cloudforce One - Marketo modal form",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
 								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
 							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "w02hvvC6g2F6BzmLwmTOY",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
 							{
-								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
-								"altText": "Logo loreal trusted by gray",
-								"title": "Logo loreal trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xn47h0gWiUSwJ0PU3Ysvk/683779108bfd6eeb62fbac5135780fe6/logo_loreal_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
-								"altText": "Logo doordash trusted by gray",
-								"title": "Logo doordash trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fy2mc73AF9xqD18C5760R/f46ab68d38c9adb30a639f69589d8af0/doordash_134.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
-								"altText": "Logo garmin trusted by gray",
-								"title": "Logo garmin trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VUhUMEcvn3L3j88LttHzC/b2cf2b702aad874db9cb61b0028e9c40/logo_garmin_trusted-by_gray.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
-								"altText": "Logo ibm trusted by gray",
-								"title": "Logo ibm trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OMwO1Fr8BxHVum0iBbatc/979c1807f5810edc903d4b07c18e0cb0/logo_ibm_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "ffd4a407-4457-5421-8b20-54433e485cc7",
-								"altText": "Logo 23andme trusted by gray",
-								"title": "Logo 23andme trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TfcZ86qvZor2xtI2z4Vvr/ef54112582296119f4296869c34ba025/logo_23andme_color_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
-								"altText": "Logo shopify trusted by gray",
-								"title": "Logo shopify trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVeELky7fceWRpfBvN8qr/4e13aa3d8dd73e1f091f3de966fdc9cb/logo_shopify_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "5d11dee2-570b-5d45-86a2-634fc4c71ce1",
-								"altText": "Logo lending tree trusted by gray",
-								"title": "Logo lending tree trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lhZTNuuLxtB38r8n1VORb/9fbfad924669a02deb97668b9c8d163b/logo_lending-tree_color_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
-								"altText": "Logo labcorp trusted by gray",
-								"title": "Logo labcorp trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsuJijKk8EMH5s1ae56nx/b13406881aa864b7e17b2233a0d090ef/logo_labcorp_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "d20283f3-6fa3-50d0-91a1-715d8d303897",
-								"altText": "Logo ncr trusted by gray",
-								"title": "Logo ncr trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26kszL2y2X7zTR2edZPDUY/1a9d00bc8c441346e6dd06bd82204972/logo_ncr_gray_32px-wrapper.svg"
-									},
-									"description": "NCR logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
-								"altText": "Logo thomson reuters trusted by gray",
-								"title": "Logo thomson reuters trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-									},
-									"description": "Thomson Reuters logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7b63d2ac-0e8f-5b5b-aeab-27b7128928e8",
-								"altText": "Logo zendesk trusted by gray",
-								"title": "Logo zendesk trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YRPa33UFrfL2zoZd2AXTq/658995f16c7ee4818875c254c18573d3/logo_zendesk_gray_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2yBUv5S2HhAmpMLC7KvRij",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "* ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://w3techs.com/technologies/overview/proxy/all"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "https://w3techs.com/technologies/overview/proxy/all",
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
 							}
-						],
-						"logoUrlList": null
+						]
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "2MRQiyPX9futERsRbPi7ly",
+						"modalName": "Cloudforce One - Modal form",
+						"modalId": "cloudforce-one-modal-form",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "4G1QRxSpb0cMlordWcak91",
+							"bladeName": "Cloudforce One - Marketo modal form",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": "Talk to an expert",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": null,
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
