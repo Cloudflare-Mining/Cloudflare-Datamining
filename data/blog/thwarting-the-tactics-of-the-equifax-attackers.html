@@ -51,7 +51,7 @@ root@struts-demo:~$
 | john@smith | $2y$10$h9XJRX.EBnGFrWQlnt... |
 +------------+------------------------------+
 </code></pre>
-	<p>Without the right query validation, an attacker could escape out of this query, and carry out some extremely malicious queries. For example, if an attacker was looking to takeover another user’s account, and an attacker found that the query validation was inadequate, he could escape the query, and UPDATE the username, which is an email address in this instance, to his own. This can simply be done by entering the query string below into the email input field, instead of an email address.</p>
+	<p>Without the right query validation, an attacker could escape out of this query, and carry out some extremely malicious queries. For example, if an attacker was looking to <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention">takeover another user’s account</a>, and an attacker found that the query validation was inadequate, he could escape the query, and UPDATE the username, which is an email address in this instance, to his own. This can simply be done by entering the query string below into the email input field, instead of an email address.</p>
 	<pre><code>dontcare@bla.com’;UPDATE users SET user = ‘mr@robot’ WHERE user = ‘john@smith’;
 </code></pre>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/emaileg.png" alt="" loading="lazy"><br>
