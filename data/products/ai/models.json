@@ -404,32 +404,6 @@
 		]
 	},
 	{
-		"id": "ae426c8e-bab9-44f0-810b-194736a98f93",
-		"source": 2,
-		"name": "@hf/thebloke/codellama-7b-instruct-awq",
-		"description": "CodeLlama 7B Instruct AWQ is an efficient, accurate and blazing-fast low-bit weight quantized Code Llama variant.",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"tags": [
-			"codellama",
-			"experimental",
-			"text-generation"
-		],
-		"properties": [
-			{
-				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "info",
-				"value": "https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-AWQ"
-			}
-		]
-	},
-	{
 		"id": "a9abaef0-3031-47ad-8790-d311d8684c6c",
 		"source": 1,
 		"name": "@cf/runwayml/stable-diffusion-v1-5-inpainting",
@@ -1120,19 +1094,6 @@
 		]
 	},
 	{
-		"id": "2778e877-293c-4169-b93c-6544b71ba8f0",
-		"source": 1,
-		"name": "@cf/suno/bark-small",
-		"description": "Bark is a transformer-based text-to-audio model created by Suno. Bark can generate highly realistic, multilingual speech as well as other audio - including music, background noise and simple sound effects. ",
-		"task": {
-			"id": "b52660a1-9a95-4ab2-8b1d-f232be34604a",
-			"name": "Text-to-Speech",
-			"description": "Text-to-Speech (TTS) is the task of generating natural sounding speech given text input. TTS models can be extended to have a single model that generates speech for multiple speakers and multiple languages."
-		},
-		"tags": [],
-		"properties": []
-	},
-	{
 		"id": "2169496d-9c0e-4e49-8399-c44ee66bff7d",
 		"source": 1,
 		"name": "@cf/openai/whisper-tiny-en",
@@ -1149,19 +1110,6 @@
 				"value": "true"
 			}
 		]
-	},
-	{
-		"id": "200f0812-148c-48c1-915d-fb3277a94a08",
-		"source": 1,
-		"name": "@cf/openai/whisper-large-v3",
-		"description": "Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. ",
-		"task": {
-			"id": "dfce1c48-2a81-462e-a7fd-de97ce985207",
-			"name": "Automatic Speech Recognition",
-			"description": "Automatic speech recognition (ASR) models convert a speech signal, typically an audio input, to text."
-		},
-		"tags": [],
-		"properties": []
 	},
 	{
 		"id": "1dc9e589-df6b-4e66-ac9f-ceff42d64983",
