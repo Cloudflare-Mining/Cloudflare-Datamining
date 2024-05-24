@@ -300,16 +300,29 @@
 										"result_info": {
 											"properties": {
 												"count": {
-													"example": 1
+													"description": "The number of items on the current page.",
+													"example": 1,
+													"type": "integer"
 												},
 												"page": {
-													"example": 1
+													"description": "The page currently being requested.",
+													"example": 1,
+													"type": "integer"
 												},
 												"per_page": {
-													"example": 100
+													"description": "The number of items per page being returned.",
+													"example": 100,
+													"type": "integer"
 												},
 												"total_count": {
-													"example": 1
+													"description": "The total count of items.",
+													"example": 1,
+													"type": "integer"
+												},
+												"total_pages": {
+													"description": "The total count of pages.",
+													"example": 1,
+													"type": "integer"
 												}
 											},
 											"type": "object"
@@ -621,16 +634,29 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"example": 1
+															"description": "The number of items on the current page.",
+															"example": 1,
+															"type": "integer"
 														},
 														"page": {
-															"example": 1
+															"description": "The page currently being requested.",
+															"example": 1,
+															"type": "integer"
 														},
 														"per_page": {
-															"example": 100
+															"description": "The number of items per page being returned.",
+															"example": 100,
+															"type": "integer"
 														},
 														"total_count": {
-															"example": 1
+															"description": "The total count of items.",
+															"example": 1,
+															"type": "integer"
+														},
+														"total_pages": {
+															"description": "The total count of pages.",
+															"example": 1,
+															"type": "integer"
 														}
 													},
 													"type": "object"

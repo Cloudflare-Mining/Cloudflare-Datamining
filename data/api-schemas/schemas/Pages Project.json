@@ -1525,6 +1525,12 @@
 																						"name": "some-bucket"
 																					},
 																					"properties": {
+																						"jurisdiction": {
+																							"description": "Jurisdiction of the R2 bucket.",
+																							"example": "eu",
+																							"nullable": true,
+																							"type": "string"
+																						},
 																						"name": {
 																							"description": "Name of the R2 bucket.",
 																							"example": "some-bucket",
@@ -1835,6 +1841,12 @@
 																						"name": "some-bucket"
 																					},
 																					"properties": {
+																						"jurisdiction": {
+																							"description": "Jurisdiction of the R2 bucket.",
+																							"example": "eu",
+																							"nullable": true,
+																							"type": "string"
+																						},
 																						"name": {
 																							"description": "Name of the R2 bucket.",
 																							"example": "some-bucket",
@@ -2742,6 +2754,12 @@
 																								"name": "some-bucket"
 																							},
 																							"properties": {
+																								"jurisdiction": {
+																									"description": "Jurisdiction of the R2 bucket.",
+																									"example": "eu",
+																									"nullable": true,
+																									"type": "string"
+																								},
 																								"name": {
 																									"description": "Name of the R2 bucket.",
 																									"example": "some-bucket",
@@ -3052,6 +3070,12 @@
 																								"name": "some-bucket"
 																							},
 																							"properties": {
+																								"jurisdiction": {
+																									"description": "Jurisdiction of the R2 bucket.",
+																									"example": "eu",
+																									"nullable": true,
+																									"type": "string"
+																								},
 																								"name": {
 																									"description": "Name of the R2 bucket.",
 																									"example": "some-bucket",
@@ -4331,6 +4355,12 @@
 																	"name": "some-bucket"
 																},
 																"properties": {
+																	"jurisdiction": {
+																		"description": "Jurisdiction of the R2 bucket.",
+																		"example": "eu",
+																		"nullable": true,
+																		"type": "string"
+																	},
 																	"name": {
 																		"description": "Name of the R2 bucket.",
 																		"example": "some-bucket",
@@ -4641,6 +4671,12 @@
 																	"name": "some-bucket"
 																},
 																"properties": {
+																	"jurisdiction": {
+																		"description": "Jurisdiction of the R2 bucket.",
+																		"example": "eu",
+																		"nullable": true,
+																		"type": "string"
+																	},
 																	"name": {
 																		"description": "Name of the R2 bucket.",
 																		"example": "some-bucket",
