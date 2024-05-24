@@ -54,16 +54,11 @@
 				},
 				"sys": {
 					"createdAt": "2022-03-18T14:27:03.866Z",
-					"updatedAt": "2024-02-12T16:32:31.843Z"
+					"updatedAt": "2024-05-24T17:32:43.428Z"
 				},
 				"contentfulId": "4oTSpffYgFNj78MlHYQceF",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "Workshop",
-					"linkText": "Register now",
-					"linkUrl": "https://www.cloudflare.com/lp/securitybuildersworkshops",
-					"desktopText": "Deep-dive into the latest innovations for protecting your applications, employees, and networks."
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
@@ -2634,19 +2629,19 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": " Cloudflare CASB",
 						"titleSize": null,
-						"subtitle": "Easily secure workplace tools, granularly control user access, and protect sensitive data",
+						"subtitle": "A modern, SASE-native cloud access security broker (CASB)",
 						"subtitleSize": null,
-						"copy": "SaaS applications are mission critical for workforce collaboration, however they are hard to keep secure.\n\nCloudflare's cloud access security broker (CASB) service gives comprehensive visibility and control over SaaS apps, so you can easily prevent data leaks and compliance violations. With Zero Trust security, block insider threats, Shadow IT, risky data sharing, and bad actors.",
+						"copy": "Our CASB provides comprehensive visibility and control over your SaaS applications, so you can easily eliminate the risk of compromise, prevent data loss, and avoid compliance violations.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
-						"buttonText1": "Contact sales",
+						"buttonText1": "Talk to an expert",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "teams-ent-plan-contact-us",
-						"buttonText2": "Secure SaaS access",
+						"button1ExtraClass": "casb-talk-to-an-expert",
+						"buttonText2": "Get the product brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://www.cloudflare.com/products/zero-trust/secure-saas-access/",
+						"buttonUrl2": "https://cfl.re/dlp-casb-product-overview",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -2661,18 +2656,37 @@
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": true,
-						"button2OpenInNewTab": null,
+						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
-						"streamPosterAssetFile": null,
-						"streamPoster": null,
+						"streamPosterAssetFile": {
+							"id": "a712e928-bf05-584f-b53e-ab62b385ecff",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Gcuz5Tle1eAwpp0yGoHTm/4d366c9a14d7506a6f5cbee02460122e/CASB_Demo_Thumbnail.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Gcuz5Tle1eAwpp0yGoHTm/4d366c9a14d7506a6f5cbee02460122e/CASB_Demo_Thumbnail.png"
+							},
+							"description": ""
+						},
 						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
@@ -2694,45 +2708,39 @@
 						}
 					},
 					{
-						"contentfulId": "6IP0TgqHmZflRDE4nPgZ1H",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "The SaaS security conundrum",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"contentfulId": "4EjsExB6q4XP7gcKN0AERP",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE CASB",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4AOLCy1b2YmxvHYqMwepe1",
-								"title": null,
-								"makeTitleLink": null,
+								"contentfulId": "7w6h2D6wkQ1agaYwplPwwP",
+								"title": "Comprehensive visibility and control",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Every SaaS app is configured differently and requires a seperate security considerations. When organizations frequently adopt over 100 SaaS applications, IT teams are challenged with staying compliant and protecting sensitive data across a wide landscape.   ",
+								"description": "Use our API integrations to continuously scan SaaS applications for misconfigurations, exposed files, and suspicious activity — and remediate risks as they arise.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale ",
-									"title": "Network scale ",
+									"id": "f21a895b-0eae-52ee-8be4-07c61337b5e5",
+									"altText": "Eyeball ",
+									"title": "Eyeball ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25B0tY2bGsZrocxnifpnpx/2a328b9ddf2ec85b6c026f5b2d03ed42/network-scale.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RxU4Th10vNkTjyRF6FINt/add8468ec6e9c887d1c4fa78079b7969/eyeball.png"
 										},
-										"description": "Network scale orange"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -2746,29 +2754,101 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "312i9FE54GUA4FuCoyIaaF",
-								"title": null,
-								"makeTitleLink": null,
+								"contentfulId": "veKsqBvmcbcETZHZbtyEH",
+								"title": "Regulate access control",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "SaaS apps operate outside of the corporate network which limits visibility/control over how employees are moving data in and out them. Improperly storing and sharing data can create large security risks, but it is tough to protect what you can't see.",
+								"description": "Apply identity-aware, context-driven Zero Trust policies to control how and where users access your applications.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
+								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "35aabb7a-ab80-5f86-bb2d-c0bd82a10871",
-									"altText": "Cloud internet blue",
-									"title": "Cloud internet blue",
+									"id": "85b72606-4e5f-58f1-bdd8-2f22d34e428e",
+									"altText": "Ruleset icon",
+									"title": "Ruleset icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3T85OKKRCGnfnTwHlI8Qpe/ea9f2f9a3b57dc53b8066ef5a5b935cb/cloud-internet.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/BWKT2GPjWBacPIsuSQzfq/051691978b1dcd161745317f724eb2b4/cloudflare-ruleset-engine.svg"
 										},
-										"description": "Cloud icon"
+										"description": "cloudflare ruleset engine icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6BLX9DjvDlsKqbWtZeJzGF",
+								"title": "Granular data protection",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Apply consistent, granular DLP controls across cloud applications to block accidental or risky data sharing.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "5eb1a189-055f-5270-aa1f-72dbb7ba781e",
+									"altText": "Protect data",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7HT2IYivhPWOa5diAYbDGf/33e804481a5035226e355d8a45f99044/data_protection_icon__1_.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1yzh8S0RKWpioIzj3TRbqt",
+								"title": "Simplified compliance ",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Ensure better visibility across your application portfolio to minimize data loss and meet compliance requirements — including GDPR, CCPA, HIPAA, and more.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6177f6bc-b04b-5b79-aee5-000775bda020",
+									"altText": "Security Shield Protection Icon",
+									"title": "Security Shield Protection Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Y13tTigGFzx34DZk3iS9Y/5b93f092978693108467fdedd27338d4/security-shield-protection-2.svg"
+										},
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -2780,12 +2860,14 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
 					},
 					{
-						"contentfulId": "B3ErHtTwfj7lvMYa97usk",
-						"title": "Modern approach to CASB",
-						"copy": "Cloudflare places [Zero Trust access (ZTNA)](https://www.cloudflare.com/learning/access-management/what-is-ztna/), [gateway (SWG)](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/), and browser (RBI) controls in front of your SaaS applications to operate as an inline CASB, while avoiding another configuration. To secure the data at rest, simple API integrations are wielded to continuously scan your highly used applications for vulnerabilities and potential threats.",
+						"contentfulId": "6rxjHlFc65h1JquzM9fPPv",
+						"title": "Simplify the way you protect your SaaS applications",
+						"copy": "Cloudflare's multimode CASB helps deliver unified cloud security for SaaS applications. To secure data at rest, simple API integrations continuously scan your applications for vulnerabilities and potential risks.\n\nOur Zero Trust access (ZTNA), gateway (SWG), and browser isolation (RBI) controls are seamlessly deployed as an inline CASB — no additional configurations needed.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -2824,22 +2906,22 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
 						"backgroundColor": "white",
-						"bladeBorder": "border-top",
-						"imagePosition": false,
-						"imageSize": "extra-large",
-						"imageTextAlignment": "center",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "76X45fly1izOzqUS46yT4T",
-						"title": "Learn how to simplify the way you protect SaaS apps",
-						"titleSize": null,
+						"contentfulId": "31RGNlbxRMe1CLYmBS05oS",
+						"title": "Learn how CASB works within Cloudflare's SASE platform",
+						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
@@ -2853,35 +2935,29 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "1P2AbsMJzFi9K4EqJLGYHQ",
-							"elementName": "CASB Solution Page - Button 1",
+							"contentfulId": "7MgxprlZ4bY74dyLNgQ8Yo",
+							"elementName": "See reference architecture",
 							"standardText": null,
-							"text": "Read whitepaper",
-							"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Lg90xuPhKn5Rk1NQVhc8V/e4057b1d88d1d64cdb14e1d87481def0/Simplifying_SaaS_Security_White_Paper.pdf",
+							"text": "See reference architecture",
+							"url": "https://developers.cloudflare.com/reference-architecture/architectures/sase/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": false,
+							"openInNewTab": true,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"eyebrow": null
 					},
 					{
-						"contentfulId": "6xnoyXH2UDTHuuSZO5yvt2",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentfulId": "2JPamHBbQyNn8CHG0EDH8q",
+						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"subtitle": "Analyst Recognition",
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"eyebrowHeading": "ANALYST RECOGNITION ",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4v8WQXNxB95wnnT75RdlXq",
@@ -2937,7 +3013,7 @@
 								"imageOverlayText": null,
 								"imageAssetFile": {
 									"id": "d4edb6be-3c48-57b8-9a5b-2a935896d806",
-									"altText": null,
+									"altText": "Forrester logo",
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
@@ -2956,32 +3032,618 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "17G0YOl6ZHpik3DBwOgoMt",
+								"contentfulId": "3DYc4WV3cnqCB54Nbrg3q8",
 								"title": "Cloudflare named a \"Leader\" in 2023 KuppingerCole Leadership Compass for SASE",
-								"makeTitleLink": null,
+								"makeTitleLink": false,
 								"titleUrl": null,
-								"titleSize": "medium",
+								"titleSize": "small",
 								"description": "Through its 2023 SASE market analysis, KuppingerCole Analysts AG cited several Cloudflare strengths such as our large globally distributed presence and sophisticated traffic acceleration, massive backbone capacity, 100% uptime guarantee, and innovative Remote Browser Isolation.",
 								"learnMoreUrl": "https://www.cloudflare.com/lp/kuppingercole-leadership-compass-for-sase-report/",
 								"learnMoreText": "Read the report",
 								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": null,
+								"openLinkInNewTab": null,
+								"removeCardBorder": true,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": {
-									"id": "837d93d6-fa8b-5dc9-995b-9e109a13171f",
-									"altText": null,
-									"title": "KuppingerCole Logo narrow aspect ratio with space",
+									"id": "c7c82390-0282-54dd-8188-bbeeafd1b64c",
+									"altText": "KuppingerCole Analysts logo",
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wpjwgF59tFkXIL98qqzpi/5bca29e867ffdb7310a1cf62076ace53/kuppingercole_logo.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hiSh5d0E4RIzDpJjLeZjU/2f8abcb143b6e4660edd985f96f205ec/kuppingercole-thumbnail.png"
 										},
 										"description": "KuppingerCole Analysts logo"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "3iE3QvDLbprXd4NQzFE2B9",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1olrZM6wPyej0WK2I91fuR",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"Today, Cloudflare helps prevent our users from sharing sensitive data and code with tools like ChatGPT and Bard, enabling us to take advantage of AI safely. Going forward, we are excited for Cloudflare's continued innovations to protect data, and in particular, their vision and roadmap for services like DLP and CASB.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "CISO  — Applied Systems",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": "Canva logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": "Delivery Hero logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": "eTeacher Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": "ezCater logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": "jetBlue logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": "OneTrust logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": "Politico logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": "Ziff Media Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": "INSEAD logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": "Kathmandu logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": "Kathmandu logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "4gMhw5paj6NBSz9uufidyq",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Block shadow IT, control access to SaaS applications, and prevent risky sharing that may result in data loss or non-compliance.",
+						"eyebrowHeading": "Top CASB use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "30uCi5FiZuuhC9ev8NFhLw",
+								"title": "Stop shadow IT",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare logs every connection and request to reveal unsanctioned SaaS applications and what actions users are taking within them. Easily build policies to block or allow access to such apps.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "99e80fe1-da60-560e-b7ca-0c716e6bd26a",
+									"altText": "Discover shadow APIs",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DwkkQAWtYOeS3Ysr6IdXW/bb2241636309942a2b63675357cf048a/ransom-ddos.png"
+										},
+										"description": "Discover shadow APIs"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6rpo6jY3k8M3UHjuAnEntq",
+								"title": "Control application access",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Identify which SaaS, web, and private applications users are accessing — then apply data controls and identity/device-driven policies to shrink your attack surface.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "87f9101d-857c-5202-9a77-f2f35ff7e4a9",
+									"altText": "Cloudflare One  SASE Solution",
+									"title": "Cloudflare Access Orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/64ekoyPlI1bPZ9MvWEuxqu/9de135bc78a1e1559505fcb8b59788c0/cloudflare-access.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5pYBGmqWTAuKaPbca9tmDo",
+								"title": "Safeguard valuable IP and developer code",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Prevent users from sharing sensitive data in SaaS apps, and easily detect and remediate misconfigurations that risk data exposure and code leaks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "5eb1a189-055f-5270-aa1f-72dbb7ba781e",
+									"altText": "Protect data",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7HT2IYivhPWOa5diAYbDGf/33e804481a5035226e355d8a45f99044/data_protection_icon__1_.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "RfIGSkFRWfmidjCCJltqj",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/zero-trust/solutions/#secure-work-anywhere-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "1tQkpR5r4z4ZI3l4twbsEs",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Helping organizations worldwide progress toward Zero Trust",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "4C1Og3GcFE2yijQIN3EAsD",
+							"elementName": "CASB - See case studies - CTA",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "/case-studies/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
+						"contentfulId": "JqHOwelC9RN2P4GLgHtJY",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3USHbi9ikU1tUanheOJY3l",
+								"title": "Implement unified protection for data everywhere",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how Cloudflare enables more effective, productive, and agile data protection — and find out which use cases to prioritize first.",
+								"learnMoreUrl": "http://cfl.re/data-protection-solution-brief",
+								"learnMoreText": "Get the solution brief",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2SulHIV67Lud3IEw9qYaJ5",
+								"title": "Why sprawling cloud and SaaS applications put more data at risk",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "See why expanding cloud and SaaS environments, coding practices, and emerging AI tools demand a modern approach to security.",
+								"learnMoreUrl": "http://cfl.re/data-protection-infographic",
+								"learnMoreText": "View infographic",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "fDD1VVzJPRuxHcCURs0Nj",
+								"title": "Get the buyer's guide to SASE use cases",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Identify the starting point to your SASE journey, evaluate platform architectures, and plan vendor conversations with our in-depth guide.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/the-buyers-guide-to-sase-use-cases/",
+								"learnMoreText": "Read the guide",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -2993,550 +3655,46 @@
 						]
 					},
 					{
-						"contentfulId": "UdeCc2TpD6vWxQcLwEHpq",
-						"title": "Stop Shadow IT in its tracks",
-						"copy": "Cloudflare logs every connection and request to reveal unsanctioned SaaS applications and what actions users are taking within them. Easily build  policies to block or allow access to such apps. ",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "0bc6adee-303e-59d9-92dc-84cccb38a2f9",
-							"altText": "Cloudflare DLP",
-							"title": "DLP Hero Image",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26uhmFmWwMrImH6ZmNMGjE/07e5d8878b1f5b1ae89034c4a0a03870/BDES-4917_-_DPL-hero-illustration.svg"
-								},
-								"description": "Illustration of a laptop in front of a cloud"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-bottom",
-						"imagePosition": true,
-						"imageSize": "small",
-						"imageTextAlignment": "center",
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "6KInBrei8ldstIBqldhqPh",
-						"title": "Tighten access to apps",
-						"copy": "Gain control over how and where users access SaaS apps. Cloudflare sits between your identity provider and your applications, enabling you to apply identity-aware, context-driven [Zero Trust](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) rules and device-specific policies to the login process. ",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "ee643d53-791f-5672-b915-718476e91247",
-							"altText": "Teams access third party users spot illustration",
-							"title": "Teams access third party users spot illustration",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/38UH00faxflr7wqzdWv7L6/d7fc67f578f424277148a1d5b18c85fa/BDES-4917_-_teams-access-third-party-users-spot-illustration.svg"
-								},
-								"description": "Teams access third party users spot illustration"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-bottom",
-						"imagePosition": false,
-						"imageSize": "small",
-						"imageTextAlignment": "center",
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "4H6yKioHbIcpTHOYctGJaY",
-						"title": "Minimize threats with continuous scanning",
-						"copy": "Quickly rectify security concerns as they arise. Via API integrations, Cloudflare scans your SaaS applications to detect misconfigurations, exposed files, and suspicious activities. Continously analyzing data at rest helps you mitigate data exfiltration and be more compliant with security best practices.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "edfb3ef1-ef91-5aae-a192-63f8a1d8749e",
-							"altText": "Teams access zero trust spot illustration",
-							"title": "Teams access zero trust spot illustration",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wcDyWKh5GbybJu3JmkP13/005deea71416d0b781734b945b0fb56f/BDES-4917_-_teams-access-zero-trust-spot-illustration.svg"
-								},
-								"description": "Teams access zero trust spot illustration"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-bottom",
-						"imagePosition": true,
-						"imageSize": "small",
-						"imageTextAlignment": "center",
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "5Qb8rodJsGuzrYQt0h7G9J",
-						"quote": "\"At Delivery Hero, we always strive to deliver an amazing experience to our customers. Cloudflare Access helps us do the same for our internal teams: offering them a secure working environment, and removing the need for a VPN to access all of our applications across the globe.\"",
-						"quoteAuthor": "Willian Carminato",
-						"quoteTitle": "Senior Director, Engineering",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6l3uXN7rkllTveH1HRSct1/2725dc80c3773d23bbc382089c885a42/Delivery-Hero-grayscale.png"
-							},
-							"description": "Delivery Hero logo"
-						},
-						"imageAssetFile": null,
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": [
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "nFCpxv5Y0bB7k8T5zgIqd",
-								"quote": "\"OneTrust relies on Cloudflare to maintain our network perimeter, so we can focus on delivering technology that helps our customers be more trusted. With Cloudflare, we can easily build context-aware Zero Trust policies for secure access to our developer tools. Employees can connect to the tools they need so simply teams don't even know Cloudflare is powering the backend. It just works.\"",
-								"quoteAuthor": " ",
-								"quoteTitle": " ",
-								"learnMoreText": "Read the full case study",
-								"learnMoreUrl": "https://www.cloudflare.com/case-studies/onetrust/",
-								"imageAssetFile": {
-									"id": "b0533771-1377-54d0-b5fb-24373b391011",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5IFOzokqG5k7AgLKPz2ZKh/8f3c76bd541b003d079c37e231304db9/logo_onetrust_color.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HlvNepFMCN9Cx7UwfeP60/5895509fd0ffbb25388dbb57c757c2ec/logo_onetrust_color.svg"
-									},
-									"description": "OneTrust logo"
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "7x8wY6JR3fmPAz8tbzfgNu",
-								"quote": "\"JetBlue Travel Products needed a way to give crew-members secure and simple access to internally-managed benefit apps. Cloudflare Zero Trust Services gave us all that and more - a much more efficient way to connect business partners and crew-members to critical internal tools.\"",
-								"quoteAuthor": "Vitaliy Faida",
-								"quoteTitle": "General Manager, Data and DevSecOps",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": {
-									"id": "fdf3fa47-71de-5a9a-887d-1a150b7e06e9",
-									"altText": "Logo jetblue travel products gray",
-									"title": "Logo jetblue travel products gray",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 15662,
-										"height": 656,
-										"width": 3993,
-										"filename": "logo_jetblue-travel-products_gray.svg",
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_jetblue-travel-products_gray.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3tBAfFwO2Yhc864A66CjnS/212df44656a4eb8e927c0510f454ae04/logo_jetblue-travel-products_color__1_.svg"
-									},
-									"description": null
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "5gRnM1sTV9nMcNzSvuQhbU",
-								"quote": "\"Cloudflare Access saved us from having to develop our own Identity and Access Management (IAM) system. We don't have to build user permission functions into the apps that Access protects. We went all in; everyone in the company has a seat.\"",
-								"quoteAuthor": "Canva",
-								"quoteTitle": "Executive",
-								"learnMoreText": "Read the full case study",
-								"learnMoreUrl": "https://www.cloudflare.com/case-studies/canva/",
-								"imageAssetFile": {
-									"id": "5babca25-4e00-5099-a260-c2dfdd68fd2a",
-									"altText": "Logo canva gray",
-									"title": "Logo canva gray",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 5101,
-										"height": 336,
-										"width": 336,
-										"filename": "logo_canva_gray.svg",
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_canva_gray.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fp4AwIlUGV41zFxpDbyf8/b5508b7f025945b83cb9d0814fe38419/logo_canva_color_svg.svg"
-									},
-									"description": null
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "3Fvxw3qw8g7qcBRKrMKSOx",
-								"quote": "\"Zero Trust is very important, but it's also incredibly difficult to implement. The only way ezCater can succeed with this is to have the right partner. Cloudflare has given us the foundation for a successful Zero Trust implementation.\"",
-								"quoteAuthor": "Conor Sherman",
-								"quoteTitle": "Head of Security",
-								"learnMoreText": "Read the full case study",
-								"learnMoreUrl": "https://www.cloudflare.com/case-studies/ezcater/",
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2x1AgM10BcMFrIHXw3ye7k/d22413985484dfd7295fee3fb4e98621/ezCater-grayscale.png"
-									},
-									"description": "ezCater logo"
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "5Rds0S6GiNEYemn5cqoMRl",
-								"quote": "\"IT is evolving by leaps and bounds, and more sophisticated, more destructive cyber threats are emerging every day. Zero Trust is the only viable security model in this environment, and Cloudflare is making it a lot easier for eTeacher Group to get there.\"",
-								"quoteAuthor": "Boris Borovsky",
-								"quoteTitle": "CTO",
-								"learnMoreText": "Read the full case study",
-								"learnMoreUrl": "https://www.cloudflare.com/case-studies/eteacher-group/",
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NO0WFDZPeWVCTqYm9CFSI/ba4d1a2852e9f146fa447e018c933696/eteacher.png"
-									},
-									"description": null
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "3IT7MT9bMUSRrnz19tdGor",
-								"quote": "\"Discord is where the world builds relationships. Cloudflare Zero Trust Services helps us deliver on that mission, connecting our internal engineering team to the tools they need. With Cloudflare, we can rest easy knowing every request to our critical apps is evaluated for identity and context - a true Zero Trust approach.\"",
-								"quoteAuthor": "Mark Smith",
-								"quoteTitle": "Director of Infrastructure",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1z5c291RRNylmJt2v4b7sg/09df8721914be268063219bc968285c5/logo_discord_trusted-by_gray.svg"
-									},
-									"description": "Discord logo"
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "2WYT3ojqmGu21lNvikMlrH",
-								"quote": "\"POLITICO needed a way to control access to specific critical resources without the risk and overhead of connecting through a private corporate network. Cloudflare Access aligns with how and where our team works, while helping us embrace a Zero Trust security model, where every request to every app is evaluated for user identity - and no VPN is required.\"",
-								"quoteAuthor": "Michael Irwin",
-								"quoteTitle": "Senior Director, Technology Operations and Cybersecurity",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": {
-									"id": "489299a8-3a50-58be-86b6-c37dc96f2752",
-									"altText": "Logo politico gray",
-									"title": "Logo politico gray",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 3001,
-										"height": 788,
-										"width": 3979,
-										"filename": "logo_politico_gray.svg",
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_politico_gray.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IEd3mUna64stWsTxIq8nf/f6738d8c31d03e2245783e118c0d33df/logo_politico_color.svg"
-									},
-									"description": null
-								}
-							}
-						]
-					},
-					{
-						"contentfulId": "N8u6YqTO2WGcJM1WFXEbq",
-						"contentTypeId": "bladeResourceGrid",
-						"title": "Resources",
-						"description": null,
-						"sectionPadding": null,
-						"bladeBorder": "none",
-						"textColor": "black",
-						"backgroundColor": "white",
-						"htmlId": null,
-						"resourceList": [
-							{
-								"resourceMedia": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/dvlAEiPe69j0kzdbyea3A/ec1ba04e93663a9a263a70866f7dbf5d/Cloudflare_Integrated_DLP_CASB_Product_Overview.pdf"
-									},
-									"description": ""
-								},
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "Integrated DLP & CASB - Resource Card",
-								"callToAction": "Download PDF",
-								"id": "2a25a6d8-b57f-5ff5-a20f-62dfc8e9f095",
-								"resourceTitle": "Integrated DLP & CASB",
-								"resourceType": "Solution & Product Guides",
-								"topic": [
-									"Enable Zero Trust Security for Workforce"
-								],
-								"orderDate": "2023-10-09",
-								"industry": null,
-								"description": "Learn how Cloudflare's DLP and CASB services improve visibility and reduce risk of exfiltration as data moves across all web, SaaS, and self-hosted/private apps.",
-								"externalLinkUrl": null,
-								"hideFromResourceHub": false
-							},
-							{
-								"resourceMedia": null,
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": "843f7abe44cc1a24a7a50d5925983d87",
-								"title": "Demo: Cloudflare One for Data Protection",
-								"callToAction": "Watch Video",
-								"id": "f78999ea-8c7e-58b5-aeee-dadb29151cdf",
-								"resourceTitle": "Demo: Cloudflare One for Data Protection",
-								"resourceType": "Video",
-								"topic": [
-									"Enable Zero Trust Security for Workforce"
-								],
-								"orderDate": "2023-09-06",
-								"industry": null,
-								"description": "Cloudflare offers a unified SSE platform for managing data across all states, and in any environment. In this demo, see how Cloudflare One helps organizations to comply with regulations, mitigate the risks of data exposure across application environments, and secure developer code.",
-								"externalLinkUrl": null,
-								"hideFromResourceHub": false
-							},
-							{
-								"resourceMedia": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3WtU43YBLDkmg6t3DXMVVj/3c0e8434604846a888035400523c731d/Cloudflare_One_for_Data_Protection_-_Solution_Brief__Sep_2023_.pdf"
-									},
-									"description": ""
-								},
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "[Solution Brief] Cloudflare One for Data Protection - Resource Card",
-								"callToAction": "Download PDF",
-								"id": "0931c7af-ae6f-568f-ba7a-ef9d60eb2453",
-								"resourceTitle": "Cloudflare One for Data Protection",
-								"resourceType": "Solution & Product Guides",
-								"topic": [
-									"Enable Zero Trust Security for Workforce"
-								],
-								"orderDate": "2023-09-05",
-								"industry": null,
-								"description": "In this brief, learn how Cloudflare One enables more effective, more productive, and more agile data protection. Read about what use cases to prioritize, how our services work, and how customers are getting started.",
-								"externalLinkUrl": null,
-								"hideFromResourceHub": false
-							},
-							{
-								"resourceMedia": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/46p9yMaCOt38TxYCNjz5Z3/f4e922502bd73bdf2d75cf91b2f72d8b/Infographic_Cloudflare_One_for_Data_Protection.pdf"
-									},
-									"description": ""
-								},
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "Infographic: Cloudflare One for Data Protection",
-								"callToAction": "Download PDF",
-								"id": "5b2d9765-510c-5e5d-953b-f2a0d994ee3c",
-								"resourceTitle": "Infographic: How modern coding, AI, and cloud impact your data protection strategy.",
-								"resourceType": "Infographic",
-								"topic": [
-									"Enable Zero Trust Security for Workforce"
-								],
-								"orderDate": "2023-09-01",
-								"industry": null,
-								"description": "In this infographic, explore how uniquely modern risks like sprawling cloud and SaaS environments, modern coding practices, and emerging AI tools demand a modern approach to security.",
-								"externalLinkUrl": null,
-								"hideFromResourceHub": false
-							},
-							{
-								"resourceMedia": null,
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "Blog: How Cloudflare CASB and DLP work together to protect your data",
-								"callToAction": "Learn More",
-								"id": "def94e85-1814-5a0e-8ed7-e8cf711160f5",
-								"resourceTitle": "How Cloudflare CASB and DLP work together to protect your data",
-								"resourceType": "Blog",
-								"topic": [
-									"Enable Zero Trust Security for Workforce"
-								],
-								"orderDate": "2023-01-11",
-								"industry": null,
-								"description": "Find out how customers can connect their SaaS applications in just a few clicks and scan them for sensitive data - such as PII, PCI, and even custom regex - stored in documents, spreadsheets, PDFs, and other uploaded files.",
-								"externalLinkUrl": "https://blog.cloudflare.com/casb-dlp/",
-								"hideFromResourceHub": true
-							},
-							{
-								"resourceMedia": null,
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "Blog: Gateway + CASB: alphabetti spaghetti that spells better SaaS security",
-								"callToAction": "Learn More",
-								"id": "a5e27438-719d-5aec-8e54-2850c1d30f1d",
-								"resourceTitle": "Gateway + CASB: alphabetti spaghetti that spells better SaaS security",
-								"resourceType": "Blog",
-								"topic": [
-									"Enable Zero Trust Security for Workforce"
-								],
-								"orderDate": "2022-09-30",
-								"industry": null,
-								"description": "Find out how Cloudflare can surface SaaS risks with CASB and automatically generate fine-grained Gateway policies to remediate in just a few clicks. ",
-								"externalLinkUrl": "https://blog.cloudflare.com/gateway-casb-in-action/",
-								"hideFromResourceHub": true
-							}
-						],
-						"filterMenu": null
-					},
-					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "4sR9871cafTlGD36FnTJ1V",
-						"title": "Secure your SaaS applications with Cloudflare's CASB service.",
-						"titleSize": null,
+						"contentfulId": "QF8TvRc44hR9JoqtmKq2h",
+						"title": "Get Cloudflare CASB for your enterprise",
+						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
 						"buttonText2": null,
 						"buttonModalId2": null,
 						"buttonUrl2": null,
-						"bladeSizeType": "large",
+						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "57TN2tgIlxOwMXkdsmDyOB",
-							"elementName": "Contact us teams modal btn (white)",
+							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
+							"elementName": "Talk to an expert (modal form)",
 							"standardText": null,
-							"text": "Contact us",
-							"url": "#",
+							"text": "Talk to an expert",
+							"url": null,
 							"loggedInUrl": null,
 							"buttonModal": {
 								"contentTypeId": "formModal",
-								"contentfulId": "32lRbGoNPloHxSaXZJnGh6",
-								"modalName": "Teams Ent Plan - Contact Us ",
-								"modalId": "teams-ent-plan-contact-us",
+								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
+								"modalName": "ZT Access Talk to an expert",
+								"modalId": "zt-access-talk-to-an-expert",
 								"modalType": "single-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "1ujDGExdXSfyindmg265xQ",
-									"bladeName": "Zero Trust Ent Plan - Contact us",
+									"contentfulId": "5daBy41JohWg0zdFI6JHW",
+									"bladeName": "ZT Access - Talk to an expert - Marketo",
 									"backgroundColor": "white",
 									"marketoFormId": 1341,
 									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Zero Trust Contact Us - Ent Plan",
-									"marketoFormHeaderText": "Cloudflare Zero Trust",
-									"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
-									"showCommentBox": true,
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
 									"marketoFormThankYouText": null,
 									"marketoFormCustomSuccessMessage": null,
 									"marketoFormPdfDownload": null,
@@ -3546,14 +3704,14 @@
 									"sendAdRoll": null,
 									"meta_adRollCustomSegment": null,
 									"enableSandbox": null,
-									"marketoFormSubmitButtonText": "Contact us",
-									"marketoFormSubmitButtonColor": "blue",
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
 									"enableEmailVerification": null,
 									"disableEnterpriseEmailNotification": null,
 									"enableRingout": null
 								},
-								"title": "Request a Zero Trust discussion",
-								"regularCopy": "Fill out the form below, and an expert from our team will get in touch to schedule a customized discussion of your Zero Trust journey and how Cloudflare may be able to help.",
+								"title": null,
+								"regularCopy": null,
 								"splitFormDefaultTab": null,
 								"selfServeTabText": null,
 								"selfServeCopy": null,
@@ -3572,21 +3730,21 @@
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "32lRbGoNPloHxSaXZJnGh6",
-						"modalName": "Teams Ent Plan - Contact Us ",
-						"modalId": "teams-ent-plan-contact-us",
+						"contentfulId": "3gP8Km9uRyCzj0JuLgBWgo",
+						"modalName": "CASB - Talk to an expert",
+						"modalId": "casb-talk-to-an-expert",
 						"modalType": "single-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "1ujDGExdXSfyindmg265xQ",
-							"bladeName": "Zero Trust Ent Plan - Contact us",
+							"contentfulId": "3TsXpEz46FvZDHJuBbDb8q",
+							"bladeName": "CASB - Talk to an expert - Marketo",
 							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Zero Trust Contact Us - Ent Plan",
-							"marketoFormHeaderText": "Cloudflare Zero Trust",
-							"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
-							"showCommentBox": true,
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
 							"marketoFormThankYouText": null,
 							"marketoFormCustomSuccessMessage": null,
 							"marketoFormPdfDownload": null,
@@ -3596,14 +3754,14 @@
 							"sendAdRoll": null,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
-							"marketoFormSubmitButtonText": "Contact us",
-							"marketoFormSubmitButtonColor": "blue",
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
 							"enableEmailVerification": null,
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Request a Zero Trust discussion",
-						"regularCopy": "Fill out the form below, and an expert from our team will get in touch to schedule a customized discussion of your Zero Trust journey and how Cloudflare may be able to help.",
+						"title": "Talk to an expert",
+						"regularCopy": null,
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,
