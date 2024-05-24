@@ -667,6 +667,14 @@
 			"experiment"
 		]
 	},
+	"prg-persistent-cta-upgrade-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"cohort-1",
+			"cohort-2"
+		]
+	},
 	"prg-streaming-bundle-experiment": {
 		"enabled": false,
 		"branches": [
