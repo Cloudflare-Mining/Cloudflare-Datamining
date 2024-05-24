@@ -5,30 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations:<strong> Amsterdam, Netherlands, Austin, TX, Lisbon, Portugal, London, United Kingdom</strong></h4>
-<h4>About the department</h4>
-<p><span style="font-weight: 400;">Cloudflare runs one of the largest DNS infrastructures in the world. We run DNS for over 25 million Internet properties globally.&nbsp; We also operate the privacy and performance focused public DNS resolver 1.1.1.1 service. Many of our DNS systems are custom built internally, so we’ve developed a lot of proprietary technology that operates at scale, and we are iterating constantly to meet new scaling and reliability requirements.</span></p>
-<p><span style="font-weight: 400;">In this role, you will be part of a small elite team that builds and maintains one of the core Cloudflare systems. You will maintain and expand our DNS infrastructure and implement features for our customers. We like to think outside the box and come up with novel approaches.</span></p>
-<p><strong>Job description<br></strong></p>
+<p></p>
+<h4><strong>About this job</strong></h4>
+<p>Cloudflare provides cutting edge security and performance services to a significant portion of the Internet. Because Cloudflare’s network sits in front of so many websites, we regularly receive reports of abuse and legal requests relating to the customers for which we are an intermediary. We’re looking for a Senior Counsel to work closely with our Trust &amp; Safety and Public Policy teams in shaping Cloudflare’s global approach to intermediary legal issues, our abuse processes, and our responses to criminal and civil requests for customer data.</p>
+<p>The ideal candidate is comfortable confronting novel legal issues in a fast paced environment, while never losing sight of Cloudflare’s core principles. We’re looking for a self-starter who is enthusiastic to work as part of a great team building systems that must scale with a quickly growing company. As part of the job, you will:&nbsp;</p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be required to research and implement various DNS RFCs</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">As part of the job you will be researching new tools and&nbsp; technologies to&nbsp; elegantly and efficiently solve problems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be responsible for creating and maintaining documentation on software installations, tools, and procedures</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be working mainly with systems programming languages like Rust, Golang, C, C++ etc</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are expected to be versed in TCP/IP and Internet routing</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be involved in designing and operating highly scalable distributed systems that power Cloudflare products</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You will participate in open source projects that benefit the internet community</span></li>
+	<li>Work with the Trust &amp; Safety team to further develop playbooks for addressing reports of abuse on Cloudflare’s platform, taking into account differences among the various services Cloudflare offers.</li>
+	<li>Assist the Trust &amp; Safety team in identifying abuse reports raising novel issues, and coordinate across the Legal and Policy teams on responses.</li>
+	<li>Provide legal guidance to&nbsp; Trust &amp; Safety to help further develop Cloudflare’s policies and procedures for responding to legal requests for information.</li>
+	<li>Communicate with law enforcement, regulators, and civil litigants, and work with Cloudflare’s litigation team in opposing unlawful requests in court.</li>
+	<li>Provide advice to product and engineering teams to understand and proactively address new products from a Trust &amp; Safety perspective.</li>
+	<li>Work with the Policy and Trust &amp; Safety teams on communicating to the public about our approach, including through Cloudflare’s regular transparency reports.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Open source contributions is a big bonus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of DNSSEC and various security extensions to DNS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of HTTP, TLS and CDN Networks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of building Data Analytics pipeline</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building Distributed Systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with large scale Monitoring Systems including metric collection, metric pipeline, visualization, trend/statistical analysis etc</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good communicator, we work with many other groups and like to tell others about what we do in blogs, talks, and meetups</span></li>
+	<li>Communicate with business leaders across the company about intermediary liability issues, and provide training and resources to address future legal risks.</li>
 </ul>
+<p><strong>Location(s): Washington DC, Austin, San Francisco</strong></p>
+<p><strong>You Have:</strong></p>
+<ul>
+	<li>Admitted to practice law in the US</li>
+	<li>8+ years of law firm, government, or in-house experience (preferably with technology companies).&nbsp;</li>
+	<li>Familiarity with relevant laws, including, for example the Stored Communications Act, the Digital Millennium Copyright Act, and Section 230.</li>
+	<li>Preferred qualifications include familiarity with NCMEC reporting requirements, registrar obligations, and experience with online copyright and trademark issues.</li>
+	<li>Strong communication skills and cooperative team player. Lead with empathy and understanding while embracing diverse points of view. Flexibility to adapt and thrive in a fast paced environment.</li>
+	<li>Ability to work cross-functionally, with lawyers and non-lawyers, to establish principled, thoughtful, and effective solutions efficiently and in an amenable manner.</li>
+	<li>An ambitious mindset that enables you to successfully work independently and autonomously with limited guidance, but also to use good judgment and call out issues when needed.</li>
+</ul>
+<p></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
