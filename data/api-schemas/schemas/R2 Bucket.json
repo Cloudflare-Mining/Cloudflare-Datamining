@@ -1247,6 +1247,246 @@
 			]
 		}
 	},
+	"POST /accounts/{account_id}/r2/temp-access-credentials": {
+		"description": "Creates temporary access credentials on a bucket that can be optionally scoped to prefixes or objects.",
+		"operationId": "r2-create-temp-access-credentials",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": {
+							"bucket": "example-bucket",
+							"objects": [
+								"example-object"
+							],
+							"parentAccessKeyId": "example-access-key-id",
+							"permission": "object-read-write",
+							"prefixes": [
+								"example-prefix/"
+							],
+							"ttlSeconds": 3600
+						},
+						"properties": {
+							"bucket": {
+								"description": "Name of the GCS bucket",
+								"type": "string"
+							},
+							"objects": {
+								"description": "Optional object paths to scope the credentials to",
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"parentAccessKeyId": {
+								"description": "The parent access key id to use for signing",
+								"type": "string"
+							},
+							"permission": {
+								"description": "Permissions allowed on the credentials",
+								"enum": [
+									"admin-read-write",
+									"admin-read-only",
+									"object-read-write",
+									"object-read-only"
+								],
+								"type": "string"
+							},
+							"prefixes": {
+								"description": "Optional prefix paths to scope the credentials to",
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"ttlSeconds": {
+								"default": 900,
+								"description": "How long the credentials will live for in seconds",
+								"maximum": 604800,
+								"type": "number"
+							}
+						},
+						"required": [
+							"bucket",
+							"permission",
+							"ttlSeconds",
+							"parentAccessKeyId"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": {
+												"accessKeyId": "example-access-key-id",
+												"secretAccessKey": "example-secret-key",
+												"sessionToken": "example-session-token"
+											},
+											"properties": {
+												"accessKeyId": {
+													"description": "ID for new access key",
+													"type": "string"
+												},
+												"secretAccessKey": {
+													"description": "Secret access key",
+													"type": "string"
+												},
+												"sessionToken": {
+													"description": "Security token",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create temporary access credentials response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create temporary access credentials response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create Temporary Access Credentials",
+		"tags": [
+			"R2 Bucket"
+		]
+	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"description": "Sets configuration for Sippy for an existing R2 bucket.",
 		"operationId": "r2-put-bucket-sippy-config",
