@@ -3,7 +3,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image1-62.png" class="kg-image" alt="Computing Euclidean distance on 144 dimensions" loading="lazy"></figure>
 	<p>Late last year I read a blog post about <a href="https://blog.cloudflare.com/the-csam-scanning-tool">our CSAM image scanning tool</a>. I remember thinking: this is so cool! Image processing is always hard, and deploying a real image identification system at Cloudflare is no small achievement!</p>
 	<p>Some time later, I was chatting with Kornel: "We have all the pieces in the image processing pipeline, but we are struggling with the performance of one component." Scaling to Cloudflare needs ain't easy!</p>
-	<p>The problem was in the speed of the matching algorithm itself. Let me elaborate. As <a href="https://blog.cloudflare.com/the-csam-scanning-tool">John explained in his blog post</a>, the image matching algorithm creates a fuzzy hash from a processed image. The hash is exactly 144 bytes long. For example, it might look like this:</p><!--kg-card-begin: markdown-->
+	<p>The problem was in the speed of the matching algorithm itself. Let me elaborate. As John explained in his blog post <a href="https://blog.cloudflare.com/the-csam-scanning-tool">on the CSAM Scanning Tool</a>, the image matching algorithm creates a fuzzy hash from a processed image. The hash is exactly 144 bytes long. For example, it might look like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>00e308346a494a188e1043333147267a 653a16b94c33417c12b433095c318012
 5612442030d14a4ce82c623f4e224733 1dd84436734e4a5d6e25332e507a8218
 6e3b89174e30372d
