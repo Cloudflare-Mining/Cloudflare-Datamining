@@ -11,7 +11,7 @@ await fs.ensureDir(dir);
 
 const file = path.resolve(dir, 'models.json');
 
-const modelsURL = new URL(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/ai/models/search`);
+const modelsURL = new URL(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/ai/models/search?per_page=100`);
 let hasMore = true;
 
 let models = [];
@@ -25,6 +25,7 @@ while (hasMore) {
 		break;
 	}
 	const json = await res.json();
+	console.log(json);
 	if (!json.result) {
 		console.log(`models failed: ${json.errors[0].message}`);
 		break;
