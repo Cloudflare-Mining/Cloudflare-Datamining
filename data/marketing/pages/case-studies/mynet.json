@@ -1,0 +1,95 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/mynet/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Mynet",
+				"contentfulId": "uiSSxoO5aVaZr8cJf8WaG",
+				"nameUrlSlug": "mynet",
+				"metaTags": {
+					"metaTitle": "Mynet secures and streamlines game and fantasy sports platform operation with Cloudflare",
+					"metaDescription": "Mynet & Cloudflare | Case Study",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WIHPQsy5eRUxuGEFUbCel/921b13dc4729f14e1ab47bf056772c7d/Mynet_Corp.png"
+						},
+						"description": ""
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WIHPQsy5eRUxuGEFUbCel/921b13dc4729f14e1ab47bf056772c7d/Mynet_Corp.png"
+						},
+						"description": ""
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6WIHPQsy5eRUxuGEFUbCel/921b13dc4729f14e1ab47bf056772c7d/Mynet_Corp.png"
+						},
+						"description": ""
+					}
+				},
+				"orderDate": "2024-05-30",
+				"homepageUrl": "https://www.mynet.co.jp",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "Mynet uses Cloudflare's Zero Trust platform to secure its service infrastructure and ensure seamless, work-from-anywhere employee access to its mission-critical servers and tools.",
+				"longDescription": "## __Mynet secures and streamlines game and fantasy sports platform operation with Cloudflare__\n\nMynet takes over established games and operates them as a service on behalf of the game makers. Curating a library of games, the company has amassed an industry top-tier portfolio and the accumulated total of the titles is over 80 titles. Mynet refreshes games by adding new characters and features to promote community interest. \n\nAdding to their current games portfolio, Mynet also offers B.LEAGUE#LIVE, its mobile fantasy sports platform. As the multi-billion dollar global fantasy sports industry gains traction — showing compounded annual growth forecasts (CAGR) of over 14% in Japan and the Asia Pacific (APAC) through 2029 — Mynet and its 400+ employees are poised for rapid growth. The company has already surpassed expectations, with its fantasy sports season revenues for 2023-2024 reaching a record high 174% year-over-year sales increase.  \n\n### __Challenge: Prioritizing productivity while maintaining a safe, accessible online game servers environment__\n\nBecause it works with multiple game developers, Mynet's service operation efforts depend on its ability to maintain stringent security standards while providing employees with seamless access to critical tools across a wide variety of networks and devices.    \n\n\"Our main business model involves taking over, adapting, and operating games developed by other companies. This means we must safeguard against attacks while our employees connect to each game servers and manage debugging on devices like PCs and smartphones,\" explains Takahiro Maeda from Mynet's Infrastructure & Security Group. \"But, as we secure our infrastructure, we must prioritize productivity. We are constantly striving to strike the right balance between security and usability.\"\n\nDespite the company's best efforts to secure access to the servers for games services and internal mission critical business systems using a VPN, Mynet encountered the limitations of its perimeter security measures.\n\n\"We used to experience a malicious activity — an infrastructure intrusion through the VPN connection,\" says Maeda. \"The attackers gained unauthorized access to our game database servers and deleted some of our data.\" \n\nAlthough Mynet recovered their services and enhanced security protections, the company continued to struggle with the challenges of securing access to its infrastructure because of the inherent vulnerabilities of VPN technology. \n\n### __Eliminating operational challenges and connectivity bottlenecks to secure remote, work-from-anywhere employee access__\nThe limitations previously were perimeter security and remote access solutions which became even more apparent as Mynet adopted work-from-home and hybrid work strategies.  \n\n\"Mynet also shifted towards diverse remote and hybrid work environments, further exposing the inability of our traditional VPN to provide adequate security,\" says Maeda. \"Increased traffic to our VPN servers created connectivity bottlenecks and exacerbated our operational challenges.\" \n\nThe administrative burden of keeping its infrastructure secure and up to date was one of Mynet's biggest issues. To avoid disruption to employees and service operations, configuring the VPN required their IT team to test and apply security patches during non-working hours. Despite its laborious off-hours maintenance efforts, the company remained exposed to emergent zero-day vulnerabilities.\n\n\"We needed mechanisms and systems capable of detecting incidents, especially during remote work sessions,\" says Maeda, \"We needed more flexible, advanced security, higher availability, and observability than our current system could offer.\"\n\n### __Solution: Speed, usability, and reliability — reducing administrative burden and mitigating cyber risk with Cloudflare One__\n\"We evaluated the Zero Trust offerings from several vendors, but only Cloudflare offered us a practical, zero-cost analysis of the speed, usability, and reliability of their products,\" says Maeda. \n\nMynet chose [Cloudflare's SSE & SASE platform](https://www.cloudflare.com/zero-trust/) to secure and isolate its infrastructure and applications from threats on the public Internet. [Cloudflare Gateway](https://www.cloudflare.com/zero-trust/products/gateway/) also helps Mynet reduce cyber risk and improve administrative and employee efficiency by automatically analyzing traffic volumes and intelligently mitigating new threats in the connectivity cloud before they become problematic. \n\n\"The transition to Cloudflare was stress free. Our employees can work safely from anywhere without worrying about extra security considerations,\" says Maeda. \"Cloudflare has streamlined how we implement access controls across the organization. The time and money we save goes to further improving our services.\" \n\nMaeda reports Cloudflare has also improved usability and had a positive effect on productivity.  \n\n\"Now, we receive positive feedback rather than complaints from our employees. Cloudflare provides faster and much more stable performance overall,\" says Maeda. \"The connectivity cloud seamlessly bridges the connection between our private networks and the public Internet, providing a continuous connection without inconvenient disconnections or performance degradation over time which they experienced with VPN.\"\n\n### __Establishing secure, seamless \"work from anywhere\" employee access__\nLeveraging Cloudflare Access' seamless interaction with Microsoft EntraID, Mynet's third-party identity provider (IdP), Cloudflare provides secure, granular employee access to cloud console and  SaaS applications, and information-sensitive back office and administrative tools — all with a single sign-on (SSO). \n\nReplacing the company's cumbersome VPN appliances, Cloudflare's device client (WARP) and Cloudflare Access integrate natively with Microsoft Intune to allow Mynet to validate the compliance posture of every device that connects to its corporate network. \n\nMynet mainly relies on Cloudflare's DNS filtering to block security risks and route traffic through dedicated egress IPs provided by Cloudflare. The company has also addressed the improvement by identifying and logging individual users and service activity using Cloudflare's native integration with Datadog, the company's third-party cloud monitoring and analytics tool.  That couldn't be achieved when they were using VPN.\n\n\"Given the diversity of our servers and tools we are managing and employee work environments, managing device statuses and ensuring a safe, highly available network is imperative,\" says Maeda. \"Cloudflare provides secure access to every device and service within our environment, allowing us to respond flexibly to changes and define the exact conditions required for access to each of our resources.\"\n\n### __Planning ahead — Implementing  Workers, CASB, and Gateway__\nBased on its experiences, Mynet intends to expand its use of Cloudflare products, incorporating [Workers](https://www.cloudflare.com/developer-platform/workers/) — flexible applications deployed on the global network — and the Cloudflare API into its roadmap to further secure and automate day-to-day security operations. The company plans to adopt the [Cloud Access Security Broker (CASB)](https://www.cloudflare.com/zero-trust/products/casb/) service to bolster security for  its SaaS applications. It is also exploring use cases for Cloudflare Gateway's SSH command logging functionality.\n\nMaeda explains that Cloudflare's customer service has made as powerful an impression on the Mynet team as the technical quality of its products. \n\n\"During the onboarding process and throughout our engagement with Cloudflare, the customer service and engineering teams have kept us in the loop with regular status updates and Q&A sessions,\" he says. \"When we provided input or requested functional improvements, It surprised me how rapidly Cloudflare incorporated those changes and confirmed new features. That high level of customer service is one reason we intend to continue partnering with Cloudflare as our products evolve.\"\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Streamlined remote access and reduced administrative burden by eliminating quarterly security patches.\n- Mitigated latency and performance issues, drastically reducing employee-submitted complaint reports.\n- Enhanced device compliance and network security posture.\n- Reduced cyber risk with automated threat intelligence, freeing up security resources for platform operation \n",
+				"relatedCaseStudyLinks": [
+					{
+						"text": "Blibli",
+						"url": "/case-studies/blibli"
+					},
+					{
+						"text": "Sony Music Group (Japan)",
+						"url": "/case-studies/sonymusic"
+					},
+					{
+						"text": "Japan Airlines",
+						"url": "/case-studies/japan-airlines"
+					}
+				],
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/zero-trust/products/access/"
+					},
+					{
+						"title": "Gateway",
+						"url": "/zero-trust/products/gateway/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Takahiro Maeda",
+				"employeeQuoteText": "Cloudflare has streamlined how we implement access controls across the organization. The time and money we save goes to further improving our services.",
+				"employeeQuoteJobTitle": "Lead Engineer, Infrastructure & Security Group, Mynet Inc.",
+				"employeeQuoteName2": "Takahiro Maeda",
+				"employeeQuoteText2": "Cloudflare provides secure access to every device and service within our environment, allowing us to respond flexibly to changes and define the exact conditions required for access to each of our resources.",
+				"employeeQuoteJobTitle2": "Lead Engineer, Infrastructure & Security Group, Mynet Inc.",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/fVnhXIBbOiTjaEGe2B6fv/39a9e0c5e865118743bcc5b5c765d3a4/MynetLogo.jpeg"
+					},
+					"description": ""
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "uiSSxoO5aVaZr8cJf8WaG",
+			"pathname": "/case-studies/mynet/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": null
+		}
+	}
+}
