@@ -26,7 +26,6 @@ declare class DOMException extends Error {
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/code)
    */
   readonly code: number;
-  readonly stack: any;
   static readonly INDEX_SIZE_ERR: number;
   static readonly DOMSTRING_SIZE_ERR: number;
   static readonly HIERARCHY_REQUEST_ERR: number;
@@ -252,6 +251,7 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   ReadableStreamDefaultController: typeof ReadableStreamDefaultController;
   ReadableByteStreamController: typeof ReadableByteStreamController;
   WritableStreamDefaultController: typeof WritableStreamDefaultController;
+  TransformStreamDefaultController: typeof TransformStreamDefaultController;
   CompressionStream: typeof CompressionStream;
   DecompressionStream: typeof DecompressionStream;
   TextEncoderStream: typeof TextEncoderStream;
@@ -1158,6 +1158,7 @@ declare class DigestStream extends WritableStream<
 > {
   constructor(algorithm: string | SubtleCryptoHashAlgorithm);
   get digest(): Promise<ArrayBuffer>;
+  get bytesWritten(): number | bigint;
 }
 declare class TextDecoder {
   constructor(decoder?: string, options?: TextDecoderConstructorOptions);
@@ -2066,8 +2067,7 @@ declare abstract class WritableStreamDefaultController {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/error) */
   error(reason?: any): void;
 }
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController) */
-declare interface TransformStreamDefaultController<O = any> {
+declare abstract class TransformStreamDefaultController<O = any> {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/desiredSize) */
   get desiredSize(): number | null;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/enqueue) */
@@ -2575,6 +2575,7 @@ declare interface Socket {
 declare interface SocketOptions {
   secureTransport?: string;
   allowHalfOpen: boolean;
+  highWaterMark?: number | bigint;
 }
 declare interface SocketAddress {
   hostname: string;
@@ -3246,6 +3247,7 @@ declare abstract class BaseAiTranslation {
   postProcessedOutputs: AiTranslationOutput;
 }
 declare type AiOptions = {
+  gatewayId?: string;
   prefix?: string;
   extraHeaders?: object;
 };

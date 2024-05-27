@@ -26,7 +26,6 @@ declare class DOMException extends Error {
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/code)
    */
   readonly code: number;
-  readonly stack: any;
   static readonly INDEX_SIZE_ERR: number;
   static readonly DOMSTRING_SIZE_ERR: number;
   static readonly HIERARCHY_REQUEST_ERR: number;
@@ -1144,6 +1143,7 @@ declare class DigestStream extends WritableStream<
 > {
   constructor(algorithm: string | SubtleCryptoHashAlgorithm);
   get digest(): Promise<ArrayBuffer>;
+  get bytesWritten(): number | bigint;
 }
 declare class TextDecoder {
   constructor(decoder?: string, options?: TextDecoderConstructorOptions);
@@ -2504,6 +2504,7 @@ declare interface Socket {
 declare interface SocketOptions {
   secureTransport?: string;
   allowHalfOpen: boolean;
+  highWaterMark?: number | bigint;
 }
 declare interface SocketAddress {
   hostname: string;
@@ -3175,6 +3176,7 @@ declare abstract class BaseAiTranslation {
   postProcessedOutputs: AiTranslationOutput;
 }
 declare type AiOptions = {
+  gatewayId?: string;
   prefix?: string;
   extraHeaders?: object;
 };

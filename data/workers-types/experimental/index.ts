@@ -26,7 +26,6 @@ export declare class DOMException extends Error {
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/code)
    */
   readonly code: number;
-  readonly stack: any;
   static readonly INDEX_SIZE_ERR: number;
   static readonly DOMSTRING_SIZE_ERR: number;
   static readonly HIERARCHY_REQUEST_ERR: number;
@@ -252,6 +251,7 @@ export interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   ReadableStreamDefaultController: typeof ReadableStreamDefaultController;
   ReadableByteStreamController: typeof ReadableByteStreamController;
   WritableStreamDefaultController: typeof WritableStreamDefaultController;
+  TransformStreamDefaultController: typeof TransformStreamDefaultController;
   CompressionStream: typeof CompressionStream;
   DecompressionStream: typeof DecompressionStream;
   TextEncoderStream: typeof TextEncoderStream;
@@ -1160,6 +1160,7 @@ export declare class DigestStream extends WritableStream<
 > {
   constructor(algorithm: string | SubtleCryptoHashAlgorithm);
   get digest(): Promise<ArrayBuffer>;
+  get bytesWritten(): number | bigint;
 }
 export declare class TextDecoder {
   constructor(decoder?: string, options?: TextDecoderConstructorOptions);
@@ -2068,8 +2069,7 @@ export declare abstract class WritableStreamDefaultController {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/error) */
   error(reason?: any): void;
 }
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController) */
-export interface TransformStreamDefaultController<O = any> {
+export declare abstract class TransformStreamDefaultController<O = any> {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/desiredSize) */
   get desiredSize(): number | null;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/enqueue) */
@@ -2580,6 +2580,7 @@ export interface Socket {
 export interface SocketOptions {
   secureTransport?: string;
   allowHalfOpen: boolean;
+  highWaterMark?: number | bigint;
 }
 export interface SocketAddress {
   hostname: string;
@@ -3251,6 +3252,7 @@ export declare abstract class BaseAiTranslation {
   postProcessedOutputs: AiTranslationOutput;
 }
 export type AiOptions = {
+  gatewayId?: string;
   prefix?: string;
   extraHeaders?: object;
 };
