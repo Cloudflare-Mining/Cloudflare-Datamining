@@ -5,50 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Position Location: Austin, TX</h4>
-<h4><strong>Overview</strong></h4>
-<p>We are seeking a highly motivated and experienced Project Manager to support our Government Projects team. The Government Projects team works closely with Product and Engineering to bring new and innovative ideas to life. This role requires a strong focus on project management, customer satisfaction, on time completion of projects, supporting the team that provide technical consulting, implementation, and support services to government customers. The ideal candidate should have a strong background in professional services, project management, and customer relationship management.</p>
-<p>We believe that putting our people first, and fostering a creative, exciting, and stimulating environment is a prerequisite to achieving and surpassing our commercial goals.&nbsp;</p>
-<h4><strong>What you'll do</strong></h4>
-<p>As a Project Manager supporting the Government Projects team, you’ll be responsible for executing programs/initiatives that drive efficiency in successfully managing projects.&nbsp;</p>
-<h4><strong>Responsibilities will include:</strong></h4>
+<p><strong>Available Locations: UK, Germany, Portugal or Netherlands </strong></p>
+<p><strong>Database Platform</strong></p>
+<p>We build and manage an internal PostgreSQL platform and supporting tools that allow engineers to rapidly build, deploy and operate the services that make Cloudflare work. This platform spans multiple regions and colo facilities. The team is responsible for delivering a platform that’s easy for developers to use with operational visibility they need to deliver a high quality of service, while also keeping the platform stable and highly available.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Project manage implementation and delivery of solutions to customers.</li>
-	<li>Establish and maintain relationships with key customers, partners, and vendors to drive revenue growth and customer satisfaction.</li>
-	<li>Drive customer satisfaction by ensuring that solutions are delivered on-time, within budget, and meet customer expectations.</li>
-	<li>Develop and implement processes and methodologies that improve the efficiency and effectiveness of solution delivery.</li>
-	<li>Provide thought leadership and expertise to customers and the broader industry on best practices for implementing and using the company's products and services.</li>
-	<li>Develop proposals and value propositions for customer engagements from inception through delivery for new and upgraded services</li>
-	<li>Engage with relevant teams to create proposals, project plans, and timelines for service opportunities.</li>
-	<li>Collaborate with internal and external stakeholders to ensure a seamless transition from opportunity identification to project delivery.</li>
-	<li>Monitor and manage the progress of services engagements, ensuring timely delivery and adherence to project plans.</li>
-	<li>Collect feedback and document lessons learned from completed engagements for continuous improvement.</li>
-	<li>Creating internal guides and external customer-facing assets that support successful Project execution.</li>
-	<li>Making strategic recommendations on how the Project should evolve.</li>
-	<li>Working alongside and educating key field stakeholders, scaling and continuously improving to drive recommendations to ensure efficiency.</li>
-	<li>Building, tracking, and executing net new Projects that are top of mind and strategic to business Scale in a particular period.</li>
-	<li>Demonstrating a strong ability to communicate in order to drive consensus and buy-in across Projects.</li>
-	<li>Coordinating and collaborating with multiple cross-functional teams and stakeholders to drive Projects towards agreed deliverables, and ensure program roadmap items are being built and prioritized over time.</li>
+	<li>Develop automation solutions, command-line tools, and utilities to automate various aspects of database platform management, configuration, monitoring, scaling, backup and recovery.</li>
+	<li>Collaborate with cross-functional teams to understand requirements and design and implement automation solutions that meet the needs of the organization.</li>
+	<li>Drive the adoption of self-service capabilities for database lifecycle management, empowering teams to perform routine tasks independently</li>
+	<li>Design and implement APIs and interfaces for interacting with the database platform programmatically, enabling integration with other systems and tools.</li>
+	<li>Ensure the reliability, scalability and performance of automation solutions by implementing best practices and conducting testing.</li>
+	<li>Document automation solutions, APIs, and workflows to facilitate knowledge sharing and enable effective collaboration across teams.</li>
+	<li>Provide technical support and assistance to internal teams using automation tools and utilities, troubleshooting issues and resolving challenges as needed.</li>
 </ul>
-<h4><strong>Desired Skills</strong></h4>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li><strong>Qualifications</strong>-U.S. citizenship is required due to the nature of the work and government security clearance requirements.</li>
-	<li>Strong communication, interpersonal, teamwork, and organizational skills with superior verbal and written communication skills</li>
-	<li>Proven ability to consistently and positively contribute in a high-paced, changing work environment with the ability to prioritize multiple functions and tasks and manage work time efficiently</li>
-	<li>Self-directed, detail-oriented problem-solver with a burning desire to contribute to the organization's reputation and success</li>
-	<li>Strong project management skills that can help identify and solve problems quickly with minimal management guidance.</li>
-	<li>Ability to manage several competing priorities and stakeholders while building excellent cross-functional relationships.</li>
-	<li>Ability to engage up and down the organization (including SVP+) with confidence, poise, and gravitas.</li>
+	<li>Formal computer science background (BS/MS in Computer Science or equivalent)</li>
+	<li>Experience as a programmer with operational ownership of the software you’ve written.</li>
+	<li>Proficiency in programming languages such as Go, Python with a strong understanding of software engineering principles and best practices.</li>
+	<li>Experience with web technologies such as HTML, CSS, JavaScript.</li>
+	<li>Direct experience in shipping, supporting, and managing automation tools, distributed systems while catering to various cross-functional teams.</li>
+	<li>Experience with containerization technologies like Docker and Kubernetes.</li>
+	<li>Experience with configuration management software like SaltStack, Ansible, Terraform.</li>
+	<li>Experience with alerting and monitoring tools such as Prometheus, Grafana, and Kibana.</li>
+	<li>Knowledge of a traditional relational database system, preferably PostgreSQL.</li>
 </ul>
-<h4><strong>Required Education And Experience</strong></h4>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Minimum of 5 years of experience in professional services, project management, or a customer-facing role.</li>
-	<li>Proven track record of working across global stakeholders and making strategic recommendations to evolve high-profile, high-impact Projects.</li>
-	<li>Excellent spoken and written communication as well as receptive listening skills with the ability to present to different audiences.</li>
-	<li>Must be highly organized and possess exceptional time management skills, with the ability to effectively juggle multiple projects and deadlines</li>
-	<li>Sound business judgment, a proven ability to influence others, analytical skills, and a proven track record of taking ownership, leading data-driven analyses, and influencing results.</li>
+	<li>Experience designing multi-tenant database solutions, capacity planning, designing for failover, fault-tolerance, and disaster recovery.</li>
+	<li>Experience writing, debugging, and tuning SQL.</li>
+	<li>Experience working with Vue.js</li>
 </ul>
-<p>&nbsp;</p>
+<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
