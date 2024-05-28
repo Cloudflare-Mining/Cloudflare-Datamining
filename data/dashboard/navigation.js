@@ -111,7 +111,6 @@ const navigation = {
 		}, {
 			title: "navigation.account.logs",
 			url: "/logs",
-			labels: ["new"],
 			hasPermission: x => (0, o.iY)(x) && (0, p.S6)(x) && !!(0, e.z1)("account-logpush")(x)
 		}, {
 			title: "navigation.account.carbon",
@@ -616,7 +615,7 @@ const navigation = {
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
 		tabs: w.bB,
-		hasPermission: x => !(0, m.yD)(x) && (0, I.m7)(x)
+		hasPermission: x => !(0, m.yD)(x) && (0, T.m7)(x)
 	}, {
 		title: "navigation.zone.dns",
 		url: "/dns",
@@ -652,14 +651,14 @@ const navigation = {
 			title: "navigation.zone.email.routing",
 			navigationType: "global-settings",
 			url: "/email/routing",
-			tabs: T.hg,
+			tabs: I.hg,
 			hasPermission: x => (0, o.iY)(x) && !(0, m.yD)(x) && (0, o.$n)(x, "dns_records", "dns-record")
 		}, {
 			title: "navigation.zone.email.dmarc-reports",
 			navigationType: "global-settings",
 			url: "/email/dmarc-management",
 			labels: ["beta"],
-			hasPermission: x => (0, f.ig)(x) ? !1 : (0, o.$n)(x, "dns_records", "dns-record") && !!(0, y.ZB)(x, "email", "dmarc_visible")
+			hasPermission: x => (0, g.ig)(x) ? !1 : (0, o.$n)(x, "dns_records", "dns-record") && !!(0, y.ZB)(x, "email", "dmarc_visible")
 		}, {
 			title: "navigation.zone.email.security",
 			navigationType: "global-settings",
@@ -674,10 +673,10 @@ const navigation = {
 		hasPermission: x => {
 			const ge = (0, y.nA)(x);
 			if ((0, m.yD)(x) || !(0, o.wB)(x, "zone_settings", "spectrum.app") || !ge) return !1;
-			const fe = !!((0, h.l8)(x) || (0, y.DQ)(x)),
-				pe = !!(0, y.ZB)(x, "spectrum", "enabled"),
+			const ye = !!((0, h.l8)(x) || (0, y.DQ)(x)),
+				de = !!(0, y.ZB)(x, "spectrum", "enabled"),
 				j = !!(0, y.Ns)(ge);
-			return pe || fe || !j
+			return de || ye || !j
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -963,7 +962,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: g.az
+			tabs: f.az
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			navigationType: "global-settings",

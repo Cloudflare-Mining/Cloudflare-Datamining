@@ -159,5 +159,12 @@
 	},
 	toast: {
 		no_gateways: (0, t.d)`No Gateways Found. <0>Create an AI gateway</0> to observe your AI applications`
+	},
+	errors: {
+		gateway: {
+			already_exist: "A gateway with this id already exists",
+			invalid_format: "Invalid format to a gateway",
+			input_length: "Gateway slug must contain at most 24 characters"
+		}
 	}
 }
