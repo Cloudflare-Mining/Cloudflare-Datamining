@@ -31,3 +31,4 @@ jobs:
           npm run mine:dashboard -- --no-write
         env:
           DISCORD_WEBHOOK_DASHBOARD: ${{ secrets.DISCORD_WEBHOOK_DASHBOARD }}
+          STATIC_DASH_URL: ${{ secrets.STATIC_DASH_URL }}
