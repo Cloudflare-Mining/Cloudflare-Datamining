@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.2.0
+
+### Minor Changes
+
+- ab43c8fcb9: Render custom value component in FilterBuilder
+
 ## 7.1.7
 
 ### Patch Changes
