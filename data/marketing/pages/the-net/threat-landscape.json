@@ -397,8 +397,8 @@
 					},
 					{
 						"contentfulId": "afhPgsXKk1fDOpU4LI3E4",
-						"title": "Malware disguised as developer tools",
-						"copy": "Attackers are finding more effective ways to infiltrate organizations, developer systems being the latest <br> target — three signs of common scams and the strategies to spot and stop them.",
+						"title": "Three emerging security trends",
+						"copy": "Security programs face constant expansion, tasked with protecting an evolving attack surface, especially as organizations rush to build and deploy internal AI models — Here are 3 emerging trends requiring immediate attention from CISOs.",
 						"toggleText": null,
 						"button": [
 							{
@@ -408,8 +408,8 @@
 								"contentfulId": "4WfzZ3PqE9yMoulWov3ueq",
 								"elementName": "theNET - Threat Landscape hero - button",
 								"standardText": null,
-								"text": "Read (4 min)",
-								"url": "https://www.cloudflare.com/the-net/open-source-attacks",
+								"text": "Read (5 min)",
+								"url": "https://www.cloudflare.com/the-net/emerging-security-trends/",
 								"loggedInUrl": null,
 								"buttonModal": null,
 								"openInNewTab": false,
@@ -435,21 +435,7 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": {
-							"id": "eade4802-04a9-5ad8-b8fa-13fdeb291951",
-							"altText": null,
-							"title": "theNET - Threat Landscape - Malware disguised as developer tools - Image",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Hc1PP3sUjEtKFLYa2S82F/f3d548f6bc97ea1452845079acc477b2/malwaredisguisedasdevelopertools.jpg"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
+						"imageAssetFile": null,
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
@@ -484,6 +470,37 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "D7WZxZVzPPQwXtTOOwAIe",
+								"title": "Client-side attacks are mounting",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Two new PCI compliance requirements aim to secure client-side environments and protect customers who are being exploited by supply chain attacks",
+								"learnMoreUrl": "https://www.cloudflare.com/the-net/protect-client-side-environment/",
+								"learnMoreText": "Read (4 min)",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "b9122872-9a73-53a9-a89f-7bde3dddf8cd",
+									"altText": null,
+									"title": "theNET - CxO Digital Magazine - Threat Landscape - Client-side attacks are mounting - Image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "5iAyEO2J9BQgKDSdMltWmW",
@@ -546,78 +563,6 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2P6BTvm2u8OgzFzIQUamVJ/825e6fb4daaef1204415cb7fb62ff26a/securingthefuture.jpg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5oIKhUIKKwijiCNoR63ZGj",
-								"title": "Three ways to stay ahead of new API threats",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "There are 200 million public and private APIs in use, and growing — to securely leverage their power, organizations need purpose-built API management",
-								"learnMoreUrl": "https://www.cloudflare.com/the-net/api-centric-security/",
-								"learnMoreText": "Read (7 min)",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "7a273609-e957-5abf-85d1-64faeec562a9",
-									"altText": null,
-									"title": "theNET - Threat Landscape - Three ways to stay ahead of new API threats - Image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/29h5J1sZPARr0hgNjHRNkF/d90248cf45a5e2a32e520f4f024b6346/Threeways.jpg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6iG3GY6Ht9JDvlFcSpWt4o",
-								"title": "Are OSS attacks avoidable?",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Open source software attacks are preventable, but not prevented — 4 tips to minimize OSS risk and reduce the likelihood of attack",
-								"learnMoreUrl": "https://www.cloudflare.com/the-net/oss-attack-detection",
-								"learnMoreText": "Read (6 min)",
-								"displayBorder": false,
-								"openLinkInNewTab": false,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "97a08835-25ca-5826-ac11-12b1b5f1fb1b",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MeNDZJhpgAAmJfmZouiGb/358fff219ff14171069bbfef87356477/ossattacksavoidable.png"
 										},
 										"description": ""
 									},
@@ -716,6 +661,78 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5oIKhUIKKwijiCNoR63ZGj",
+								"title": "Three ways to stay ahead of new API threats",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "There are 200 million public and private APIs in use, and growing — to securely leverage their power, organizations need purpose-built API management",
+								"learnMoreUrl": "https://www.cloudflare.com/the-net/api-centric-security/",
+								"learnMoreText": "Read (7 min)",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "7a273609-e957-5abf-85d1-64faeec562a9",
+									"altText": null,
+									"title": "theNET - Threat Landscape - Three ways to stay ahead of new API threats - Image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/29h5J1sZPARr0hgNjHRNkF/d90248cf45a5e2a32e520f4f024b6346/Threeways.jpg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6iG3GY6Ht9JDvlFcSpWt4o",
+								"title": "Are OSS attacks avoidable?",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Open source software attacks are preventable, but not prevented — 4 tips to minimize OSS risk and reduce the likelihood of attack",
+								"learnMoreUrl": "https://www.cloudflare.com/the-net/oss-attack-detection",
+								"learnMoreText": "Read (6 min)",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "97a08835-25ca-5826-ac11-12b1b5f1fb1b",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3MeNDZJhpgAAmJfmZouiGb/358fff219ff14171069bbfef87356477/ossattacksavoidable.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4pnSDYfckfbOGHqOln0TiF",
