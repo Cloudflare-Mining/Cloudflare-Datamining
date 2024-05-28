@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>About the Role</strong></p>
-<p>Cloudflare’s Marketing Team is searching for a Strategic ABM Specialist (EMEA) to develop and execute the ABM strategy in EMEA, primarily for Enterprise and strategic segments. This is a key unit to focus largely on 1:1 ABM programs&nbsp;</p>
+<p>Cloudflare’s Marketing Team is searching for a Strategic ABM Marketing Manager (EMEA) to develop and execute the ABM strategy in EMEA, primarily for Enterprise and strategic segments. This is a key unit to focus largely on 1:1 ABM programs&nbsp;</p>
 <p>In this high impact role, you will put your creativity and marketing prowess to work to develop, launch, manage and measure highly targeted and customized 1:1 ABM programs that help penetrate aligned target accounts with defined stakeholders in meaningful ways to&nbsp; increase engagement and breadth in the account, and contribute to pipeline and revenue generation.&nbsp;</p>
 <p>Successful candidates are well versed in Enterprise level ABM with full funnel campaign management and a wide variety of online and offline tactics; have experience with account personalisation tactics; understand the motivations of technical and executive stakeholders;&nbsp; and have a successful track record of achieving Marketing Qualified Account (MQA)&nbsp; / Qualified Buying Groups (QBG)) KPIs and pipeline influence goals.&nbsp;</p>
 <p><strong>Responsibilities</strong>.&nbsp;</p>
