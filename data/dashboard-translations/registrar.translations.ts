@@ -208,11 +208,13 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		dnssec_request_error: "DNSSEC setting is currently unavailable.",
 		domain_locked_error: "The domain is currently locked and the DNSSEC setting cannot be updated."
 	},
-	add_years: {
+	renew: {
 		toggle_view: "Renew/Extend Domain",
 		renew: "Renew for",
 		due: (0, e.d)`Due today: <0>${"amount"}</0>`,
-		disabled_tooltip: "Domain state does not permit renewal. Please contact support for assistance."
+		disabled_tooltip: "Domain state does not permit renewal. Please contact support for assistance.",
+		notification_success_domain: "Successfully renewed %{domainName}!",
+		notification_success: "Domain successfully renewed"
 	},
 	domainPageNotifications: {
 		expiration: ["This domain will expire in <0>%{smart_count}</0> day. See registration options below.", "This domain will expire in <1>%{smart_count}</1> days. See registration options below."].join("||||"),
@@ -336,8 +338,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	search_try_again: "Please try searching a different domain name.",
 	search_domain_available: "<0>%{domainName}</0> is available",
 	search_domain_not_available: "<0>%{domainName}</0> is not available",
-	search_domain_price: "<0>%{domainPrice}</0>",
-	search_domain_renewal_price: "Renews at %{domainRenewalPrice}",
+	search_domain_price: "<0>%{domainRegistrationFee}</0>",
+	search_domain_renewal_price: "Renews at %{domainRenewalFee}",
 	search_domain_purchase: "Purchase",
 	search_domain_suggestions: "Suggested domain names",
 	search_domain_premium_domain_explanation: "Premium domains have non-standard pricing.",
@@ -420,14 +422,14 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	eligibility_unknown_domains_show: "Show %{smart_count} domain with unknown transfer eligibility* |||| Show %{smart_count} domains with unknown transfer eligibility*",
 	eligibility_unknown_domains_hide: "Hide %{smart_count} domain with unknown transfer eligibility* |||| Hide %{smart_count} domains with unknown transfer eligibility*",
 	unknown_eligibility_domains_description: "*These domains MAY be available for transfer, however we don't have enough information to make a determination at this moment. Don't worry, we're attempting to determine the current state of each  domain. This process may take some time so please try back in 5 minutes. If we are still unable to make a determination please contact support for assistance.",
-	instructions_enom: n,
-	instructions_godaddy: s,
+	instructions_enom: _,
+	instructions_godaddy: r,
 	instructions_namecheap: d,
-	instructions_network_solutions: l,
-	instructions_one_and_one: _,
-	instructions_unknown: i,
-	instructions_uk: c,
-	instructions_restrictions: r,
+	instructions_network_solutions: n,
+	instructions_one_and_one: o,
+	instructions_unknown: m,
+	instructions_uk: i,
+	instructions_restrictions: u,
 	instructions_restrictions_title: "Show restrictions",
 	instructions_known_title: "Transfer your domain from %{registrar}",
 	instructions_unknown_title: "Follow these instructions to transfer your domain",
@@ -922,5 +924,9 @@ Payment will be charged in US dollars.`,
 			no_permission: "Your account does not have permission to delete this domain.",
 			generic: (0, e.d)`Something went wrong and we were unable to delete the domain ${"domainName"}. Please try again later or contact support for assistance.`
 		}
+	},
+	no_access: {
+		title: "Insufficient permissions",
+		subtitle: "Contact your account administrator for access to Cloudflare Registrar"
 	}
 }

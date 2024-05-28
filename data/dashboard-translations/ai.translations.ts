@@ -2,11 +2,6 @@
 	access_cloudflares_api_directly_in_your_applications: "Call Workers AI from any deployment using the REST API.",
 	access_requested: "Access requested",
 	api_tokens: "API Tokens",
-	api_token_instructions: {
-		step_one: "Select **Create Token**.",
-		step_two: "Optionally, change the token name.",
-		step_three: "Finish by selecting **Continue to Summary** > **Create Token**."
-	},
 	api_spec: "API Spec",
 	api_spec_description: "Review the Workers AI API spec to build your application using the REST API",
 	beta_banner: (0, e.d)`Workers AI is now generally available! Learn more about our plans and pricing <0>here</0>`,
@@ -91,6 +86,8 @@
 	workers_ai_documentation: "Workers AI documentation",
 	explore_catalog: "Explore catalog",
 	explore_workers_templates: "Explore Workers Templates",
+	create_workers_ai_api_token: "Create a Workers AI API Token",
+	create_workers_ai_api_token_description: "Get read and edit access to the <0>Workers AI REST API</0>",
 	get_api_token: "Get API Token",
 	get_api_token_description: "To use Workers AI API, create a custom token with the correct *Read* permissions:",
 	get_account_id_header: "Get Account ID",
@@ -151,7 +148,6 @@
 	workers_ai_workers_templates: "Create from a Worker Template",
 	workers_ai_workers_templates_description: "Select from a set of model or task specific templates to deploy a Workers AI Worker",
 	use_rest_api: "Use REST API",
-	using_edge_ai_api: "Using Workers AI API ",
 	using_templates: "Build and deploy a Llama 2 Worker",
 	using_templates_description: "Get started with everything you need to run a Llama 2 model from a Worker.",
 	modelTasks: {

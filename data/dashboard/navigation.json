@@ -108,7 +108,8 @@
 				},
 				{
 					"title": "navigation.account.registrar.register_domains",
-					"url": "/domains/register"
+					"url": "/domains/register",
+					"hasPermission": null
 				},
 				{
 					"title": "navigation.account.registrar.domain_protection",
@@ -502,7 +503,7 @@
 		},
 		{
 			"title": "navigation.account.workers.ai",
-			"url": "/ai",
+			"url": "/ai/workers-ai",
 			"iconType": "workers-constellation",
 			"hasPermission": null,
 			"testId": "sidenav-ai-link",
@@ -524,10 +525,7 @@
 				},
 				{
 					"title": "navigation.account.workers.ai.ai-gateway",
-					"url": "/ai/ai-gateway/general",
-					"labels": [
-						"beta"
-					],
+					"url": "/ai/ai-gateway",
 					"testId": "sidenav-ai-gateway-link",
 					"hasPermission": null
 				}
@@ -689,6 +687,13 @@
 			"url": "/notifications",
 			"iconType": "notifications",
 			"hasPermission": null
+		},
+		{
+			"title": "navigation.account.account_inbox",
+			"url": "/account-inbox",
+			"iconType": "inbox",
+			"hasPermission": null,
+			"testId": "sidenav-account-inbox-link"
 		},
 		{
 			"title": "account.bulk_redirects.title",
@@ -1096,6 +1101,9 @@
 				{
 					"title": "navigation.zone.rules.page_rules",
 					"url": "/rules",
+					"labels": [
+						"deprecated"
+					],
 					"navigationType": "version"
 				},
 				{

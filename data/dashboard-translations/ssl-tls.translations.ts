@@ -18,7 +18,7 @@ No. Only URLs that are known to support HTTPS will be rewritten. We use data fro
 	crypto_custom_hostnames_card_title: "Custom Hostnames",
 	crypto_custom_hostnames_card_description: "Extend the security and performance benefits of Cloudflare\u2019s network to your customers via their own custom or vanity domains.",
 	crypto_custom_hostnames_card_documentation_label: "Cloudflare for SaaS documentation",
-	crypto_custom_hostnames_contact_csup: "Contact your Customer Success Manager to enable SSL for SaaS",
+	crypto_custom_hostnames_contact_csup: "Contact your Account Manager to enable SSL for SaaS",
 	crypto_custom_hostnames_controls_add_button: "Add Custom Hostname",
 	crypto_custom_hostnames_controls_enable: "Enable Cloudflare for SaaS",
 	crypto_custom_hostnames_create_modal_input_origin_server_error: "Please enter an origin server",
@@ -35,9 +35,9 @@ No. Only URLs that are known to support HTTPS will be rewritten. We use data fro
 	crypto_custom_hostnames_table_custom_hostnames: "Custom Hostname",
 	crypto_custom_hostnames_table_empty: "No custom hostnames.",
 	custom_hostnames_card_body: "Manage the hostnames and SSL certificates for third-parties that CNAME to your domain.",
-	custom_hostnames_card_body_quota: "<0>You are currently using %{used} of %{allocated} of your Custom Hostnames.</0> If you require more, please contact your Customer Success Manager.",
+	custom_hostnames_card_body_quota: "<0>You are currently using %{used} of %{allocated} of your Custom Hostnames.</0> If you require more, please contact your Account Manager.",
 	custom_hostnames_card_help_drawer: `#### What are Custom Hostnames?
-Custom hostnames are third party hostnames that CNAME to your domain in order to receive the performance and security benefits of Cloudflare. Before you can use this feature your account must be configured with assistance from Cloudflare. If you are not yet an Enterprise customer, please fill our the [Enterprise contact form](https://www.cloudflare.com/plans/enterprise/contact/) and someone will be in touch shortly. If you already are an Enterprise customer, please contact your Customer Success Manager.
+Custom hostnames are third party hostnames that CNAME to your domain in order to receive the performance and security benefits of Cloudflare. Before you can use this feature your account must be configured with assistance from Cloudflare. If you are not yet an Enterprise customer, please fill our the [Enterprise contact form](https://www.cloudflare.com/plans/enterprise/contact/) and someone will be in touch shortly. If you already are an Enterprise customer, please contact your Account Manager.
 
 #### How do I set up custom hostnames?
 For help setting up and validating custom hostnames, refer to [our SSL for SasS Documentation](https://developers.cloudflare.com/ssl/ssl-for-saas).
@@ -46,7 +46,7 @@ For help setting up and validating custom hostnames, refer to [our SSL for SasS 
 The refresh button can be used to request that Cloudflare check the status of the certificate issuance. Statuses transition automatically from Initializing to Pending Validation to Pending Issuance to Pending Deployment and then to Active. For uploaded certificates, statuses transition from Initializing to Pending Deployment and then to Active.
 
 #### What happens if I exceed my custom hostname quota?
-If you exceed your quota you will no longer be able to issue additional certificates. You will need to contact your Customer Success Manager to have this quota increased.`,
+If you exceed your quota you will no longer be able to issue additional certificates. You will need to contact your Account Manager to have this quota increased.`,
 	custom_hostnames_card_fallback_origin_label: "Fallback Origin",
 	custom_hostnames_card_fallback_origin_description: "Custom Hostnames will not complete verification until your Fallback Origin is active.",
 	custom_hostnames_card_fallback_origin_example: "Enter a hostname under your zone to act as the default origin server for your hostnames, e.g. fallback.%{zoneName} . The Fallback Origin needs to be a proxied DNS record in your zone.",
@@ -892,6 +892,9 @@ If no alternative CAs are valid within the trust store, Cloudflare will not be a
 		deprecating: "deprecating soon",
 		edge_certficiates_card_toast_info: "Attention: Cloudflare will deprecate DigiCert as a certificate authority. This update affects Universal SSL, Advanced Certificate Manager, and SSL for SaaS. Refer to the <0>DigiCert update documentation</0> to ensure that you are prepared for this change."
 	},
+	edge_certficiates_card_toast_info: {
+		lets_encrypt_chain: "Attention: Let's Encrypt's chain of trust will be changing on September 2024. Universal SSL certificates will be automatically switched to a more compatible certificate authority. Review our <0>documentation</0> for details and to understand the impacts on other certificate types."
+	},
 	acm: {
 		ca: "Certificate Authority",
 		title: "Advanced Certificate Manager",
@@ -912,7 +915,7 @@ If no alternative CAs are valid within the trust store, Cloudflare will not be a
 		quota: (0, t.d)`You have used ${"used"} out of ${"allocated"} Advanced certificates.`,
 		order_success: "Your Advanced certificate has been created will be automatically deployed to our edge and served to your visitors once it has been validated",
 		order_success_autodcv: "Your Advanced certificate has been created will be automatically validated and deployed to our edge and served to your visitors.",
-		blocked_ent: "Please contact your Customer Success Manager to purchase ACM.",
+		blocked_ent: "Please contact your Account Manager to purchase ACM.",
 		current_plan_paranthetical: " (current plan)",
 		banner_title: "Advanced Certificate Manager",
 		banner_description: "Unlock more control and flexibility for your Certificates and SSL/TLS settings"

@@ -44,6 +44,7 @@
 	discordServer: "Discord server",
 	downloadDemo: "Download index.html",
 	emptyStateMessage: "Get started with by creating your first Calls application",
+	errorFetchingData: "There was an error fetching data",
 	failedToCreateApplication: "Failed to create Application. Try again later.",
 	gettingStartedWithCalls: "Getting started with Calls",
 	gettingStartedWithCallsDetail: `Calls does not ship as a client-side SDK, but rather as a fully customizable [HTTPS API](${i.N.devDocs}) for simple RPC commands and server events. This enables you to choose how each client action (i.e. joining or leaving a room) maps to an API call.`,
@@ -71,6 +72,38 @@
 	quickLinks: "Quick Links",
 	requestBetaAccess: "Request beta access",
 	tagline: "Build real-time WebRTC apps using the Cloudflare Network. Never worry about scaling or regions again.",
+	subscribeDescription: "Use Cloudflare Calls to build real-time apps without worrying about scaling or regions. Cloudflare Calls serverless SFU (selective forwarding unit) allows you to build video conferencing apps, a fanout delivery system for broadcasting media or anything in between. Cloudflare Calls TURN service allows you to navigate through NATs and Firewalls with your WebRTC apps.",
+	freeUsageNote: "Free usage includes 1,000GB per month",
 	taglineWelcome: 'Think of Calls as a "Switchboard" or a selective forwarding unit (SFU) you can program. An SFU is a system that connects users with each other in real-time apps by intelligently managing and routing video, audio and data between the participants. Each Calls application is a separate environment, and users can only communicate with other users in the same application.',
-	viewUsage: "View usage"
+	contactAdminToEnable: "Contact your admin to enable Calls.",
+	viewUsage: "View usage",
+	getStarted: "Get Started",
+	subscriptionActivated: "Subscription activated",
+	billing: {
+		enterpriseBanner: {
+			admin: "You have access to a trial of Cloudflare Calls. Once you begin using Calls at scale, your Account Manager will follow up to discuss adding it to your existing contract.",
+			nonAdmin: "You have access to a trial of Cloudflare Calls. Once you begin using Calls at scale, your Account Manager will follow up with your account admin to discuss adding it to your existing contract."
+		},
+		contactYourAdminToAddCallsSubscription: (0, t.d)`Contact your account admin to add Calls subscription`,
+		selfServeBannerTitle: (0, t.d)`Pricing Plan Effective ${"date"}`,
+		selfServeBannerDescription: (0, t.d)`You have until ${"date"}, to add a subscription to your account. While your current SFU Applications and TURN Service Tokens will still function, you will be unable to create additional apps until you subscribe.`,
+		openBetaEndedBannerTitle: (0, t.d)`Subscribe to create SFU applications and TURN service keys`,
+		openBetaEndedBannerDescription: (0, t.d)`You need subscribe to create additional SFU apps and TURN service keys. Your existing applications and service keys will still function.`,
+		productDetails: {
+			getStartedWithCalls: "Get started with Calls",
+			includedFreeMonthlyUsageTitle: "Included free monthly usage",
+			includedFreeMonthlyUsageDescription: "This is a monthly usage-based model and you will be charged only when you exceed the included usage limit.",
+			realTimeGbs: "Real-time GBs",
+			realTimeGbsFree: "1,000GB / month free",
+			realTimeGbsPaid: "+ $0.05 per additional GB / month",
+			reviewAndSubscribe: "Review & subscribe",
+			zeroDollars: "$0.00",
+			zeroDollarsPlusAdditionalUsage: "$0.00 + additional usage",
+			plusApplicableTaxesAndFees: "*Plus applicable taxes and fees",
+			cardOnFile: (0, t.d)`Card on file (xxxx - xxxx - xxxx - ${"lastFour"})`,
+			addCallsSubscriptionToMyAccount: "Add Calls subscription to my account",
+			savePaymentDetailsAndAddCalls: "Save payment details & activate Calls",
+			disclaimer: (0, t.d)`By clicking “Add Calls subscription to my account”, you are completing this transaction and agreeing to our [Terms](https://www.cloudflare.com/terms/) and [Privacy Policy](https://www.cloudflare.com/privacypolicy/). Your subscription automatically renews and will be billed to your payment method on file, until canceled. You may cancel anytime in [Billing Subscriptions](${"subscriptionsLink"}) at least a day before each renewal date. For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare.`
+		}
+	}
 }
