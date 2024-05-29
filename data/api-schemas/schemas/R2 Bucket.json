@@ -519,6 +519,15 @@
 														"minLength": 3,
 														"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
 														"type": "string"
+													},
+													"storage_class": {
+														"default": "Standard",
+														"description": "Storage class for newly uploaded objects, unless specified otherwise.",
+														"enum": [
+															"Standard",
+															"InfrequentAccess"
+														],
+														"type": "string"
 													}
 												},
 												"type": "object"
@@ -717,6 +726,15 @@
 													"maxLength": 64,
 													"minLength": 3,
 													"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+													"type": "string"
+												},
+												"storage_class": {
+													"default": "Standard",
+													"description": "Storage class for newly uploaded objects, unless specified otherwise.",
+													"enum": [
+														"Standard",
+														"InfrequentAccess"
+													],
 													"type": "string"
 												}
 											},
@@ -1068,6 +1086,15 @@
 								"minLength": 3,
 								"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
 								"type": "string"
+							},
+							"storageClass": {
+								"default": "Standard",
+								"description": "Storage class for newly uploaded objects, unless specified otherwise.",
+								"enum": [
+									"Standard",
+									"InfrequentAccess"
+								],
+								"type": "string"
 							}
 						},
 						"required": [
@@ -1158,6 +1185,15 @@
 													"maxLength": 64,
 													"minLength": 3,
 													"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+													"type": "string"
+												},
+												"storage_class": {
+													"default": "Standard",
+													"description": "Storage class for newly uploaded objects, unless specified otherwise.",
+													"enum": [
+														"Standard",
+														"InfrequentAccess"
+													],
 													"type": "string"
 												}
 											},
