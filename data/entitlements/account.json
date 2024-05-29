@@ -360,6 +360,54 @@
 		}
 	},
 	{
+		"id": "authoritative_dns.custom_ns_ttl_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1551,
+			"key": "authoritative_dns.custom_ns_ttl_allowed",
+			"name": "Authoritative DNS - Custom NS TTL Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "authoritative_dns.custom_soa_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1552,
+			"key": "authoritative_dns.custom_soa_allowed",
+			"name": "Authoritative DNS - Custom SOA Record Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "authoritative_dns.custom_zone_mode_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1553,
+			"key": "authoritative_dns.custom_zone_mode_allowed",
+			"name": "Authoritative DNS - Custom Zone Mode Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "authoritative_dns.multi_provider_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1554,
+			"key": "authoritative_dns.multi_provider_allowed",
+			"name": "Authoritative DNS - Multi Provider Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "authoritative_dns.outgoing_zone_transfers_allowed",
 		"feature": {
 			"feature_set": "dns",
@@ -876,6 +924,18 @@
 		}
 	},
 	{
+		"id": "data_localization_suite.regional_services",
+		"feature": {
+			"feature_set": "data_localization_suite",
+			"id": 1168,
+			"key": "data_localization_suite.regional_services",
+			"name": "Data Localization Suite - Regional Services"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "ddos.botnet_feed_allowed",
 		"feature": {
 			"feature_set": "ddos",
@@ -1110,6 +1170,18 @@
 			"id": 961,
 			"key": "filters.mass_redirects_max_lists",
 			"name": "Mass URL Redirects - URL Lists"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "filters.mass_redirects_same_hostpath_limit",
+		"feature": {
+			"feature_set": "filters",
+			"id": 1222,
+			"key": "filters.mass_redirects_same_hostpath_limit",
+			"name": "Mass URL Redirects - Same hostname/path limit"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -2046,6 +2118,18 @@
 			"id": 878,
 			"key": "rulesets.bots_management_allowed",
 			"name": "Rulesets - Bots Management Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.bypass_zone_plan_restrictions",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1062,
+			"key": "rulesets.bypass_zone_plan_restrictions",
+			"name": "Rulesets - Bypass Zone Plan Restrictions"
 		},
 		"allocation": {
 			"type": "bool"
