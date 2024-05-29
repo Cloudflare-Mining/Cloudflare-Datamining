@@ -2537,6 +2537,14 @@
 						"compatEnableDate": "2024-06-03",
 						"compatEnableFlag": "fetch_standard_url"
 					}
+				},
+				{
+					"name": "nodeJsCompatV2",
+					"annotations": {
+						"compatDisableFlag": "no_nodejs_compat_v2",
+						"compatEnableFlag": "nodejs_compat_v2",
+						"experimental": "true"
+					}
 				}
 			]
 		},
