@@ -16,9 +16,6 @@
 				"name": "id",
 				"required": true,
 				"schema": {
-					"description": "gateway id",
-					"example": "my-gateway",
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
 			}
@@ -35,6 +32,8 @@
 											"type": "boolean"
 										},
 										"cache_ttl": {
+											"minimum": 0,
+											"nullable": true,
 											"type": "integer"
 										},
 										"collect_logs": {
@@ -47,6 +46,8 @@
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
+											"maxLength": 24,
+											"minLength": 3,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
@@ -55,17 +56,28 @@
 											"type": "string"
 										},
 										"rate_limiting_interval": {
+											"minimum": 0,
+											"nullable": true,
 											"type": "integer"
 										},
 										"rate_limiting_limit": {
+											"minimum": 0,
+											"nullable": true,
 											"type": "integer"
 										},
 										"rate_limiting_technique": {
+											"enum": [
+												"fixed",
+												"sliding"
+											],
 											"type": "string"
 										}
 									},
 									"required": [
 										"id",
+										"rate_limiting_interval",
+										"rate_limiting_limit",
+										"rate_limiting_technique",
 										"collect_logs",
 										"cache_ttl",
 										"cache_invalidate_on_update",
@@ -199,6 +211,8 @@
 				"schema": {
 					"description": "gateway id",
 					"example": "my-gateway",
+					"maxLength": 24,
+					"minLength": 3,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
@@ -217,6 +231,8 @@
 												"type": "boolean"
 											},
 											"cache_ttl": {
+												"minimum": 0,
+												"nullable": true,
 												"type": "integer"
 											},
 											"collect_logs": {
@@ -229,6 +245,8 @@
 											"id": {
 												"description": "gateway id",
 												"example": "my-gateway",
+												"maxLength": 24,
+												"minLength": 3,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 												"type": "string"
 											},
@@ -237,17 +255,28 @@
 												"type": "string"
 											},
 											"rate_limiting_interval": {
+												"minimum": 0,
+												"nullable": true,
 												"type": "integer"
 											},
 											"rate_limiting_limit": {
+												"minimum": 0,
+												"nullable": true,
 												"type": "integer"
 											},
 											"rate_limiting_technique": {
+												"enum": [
+													"fixed",
+													"sliding"
+												],
 												"type": "string"
 											}
 										},
 										"required": [
 											"id",
+											"rate_limiting_interval",
+											"rate_limiting_limit",
+											"rate_limiting_technique",
 											"collect_logs",
 											"cache_ttl",
 											"cache_invalidate_on_update",
@@ -355,6 +384,8 @@
 				"schema": {
 					"description": "gateway id",
 					"example": "my-gateway",
+					"maxLength": 24,
+					"minLength": 3,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
@@ -372,6 +403,8 @@
 											"type": "boolean"
 										},
 										"cache_ttl": {
+											"minimum": 0,
+											"nullable": true,
 											"type": "integer"
 										},
 										"collect_logs": {
@@ -384,6 +417,8 @@
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
+											"maxLength": 24,
+											"minLength": 3,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
@@ -392,17 +427,28 @@
 											"type": "string"
 										},
 										"rate_limiting_interval": {
+											"minimum": 0,
+											"nullable": true,
 											"type": "integer"
 										},
 										"rate_limiting_limit": {
+											"minimum": 0,
+											"nullable": true,
 											"type": "integer"
 										},
 										"rate_limiting_technique": {
+											"enum": [
+												"fixed",
+												"sliding"
+											],
 											"type": "string"
 										}
 									},
 									"required": [
 										"id",
+										"rate_limiting_interval",
+										"rate_limiting_limit",
+										"rate_limiting_technique",
 										"collect_logs",
 										"cache_ttl",
 										"cache_invalidate_on_update",
@@ -509,6 +555,8 @@
 				"schema": {
 					"description": "gateway id",
 					"example": "my-gateway",
+					"maxLength": 24,
+					"minLength": 3,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
@@ -766,6 +814,8 @@
 								"type": "boolean"
 							},
 							"cache_ttl": {
+								"minimum": 0,
+								"nullable": true,
 								"type": "integer"
 							},
 							"collect_logs": {
@@ -774,21 +824,34 @@
 							"id": {
 								"description": "gateway id",
 								"example": "my-gateway",
+								"maxLength": 24,
+								"minLength": 3,
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 								"type": "string"
 							},
 							"rate_limiting_interval": {
+								"minimum": 0,
+								"nullable": true,
 								"type": "integer"
 							},
 							"rate_limiting_limit": {
+								"minimum": 0,
+								"nullable": true,
 								"type": "integer"
 							},
 							"rate_limiting_technique": {
+								"enum": [
+									"fixed",
+									"sliding"
+								],
 								"type": "string"
 							}
 						},
 						"required": [
 							"id",
+							"rate_limiting_interval",
+							"rate_limiting_limit",
+							"rate_limiting_technique",
 							"collect_logs",
 							"cache_ttl",
 							"cache_invalidate_on_update"
@@ -812,6 +875,8 @@
 													"type": "boolean"
 												},
 												"cache_ttl": {
+													"minimum": 0,
+													"nullable": true,
 													"type": "integer"
 												},
 												"collect_logs": {
@@ -824,6 +889,8 @@
 												"id": {
 													"description": "gateway id",
 													"example": "my-gateway",
+													"maxLength": 24,
+													"minLength": 3,
 													"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 													"type": "string"
 												},
@@ -832,17 +899,28 @@
 													"type": "string"
 												},
 												"rate_limiting_interval": {
+													"minimum": 0,
+													"nullable": true,
 													"type": "integer"
 												},
 												"rate_limiting_limit": {
+													"minimum": 0,
+													"nullable": true,
 													"type": "integer"
 												},
 												"rate_limiting_technique": {
+													"enum": [
+														"fixed",
+														"sliding"
+													],
 													"type": "string"
 												}
 											},
 											"required": [
 												"id",
+												"rate_limiting_interval",
+												"rate_limiting_limit",
+												"rate_limiting_technique",
 												"collect_logs",
 												"cache_ttl",
 												"cache_invalidate_on_update",
@@ -963,6 +1041,8 @@
 				"schema": {
 					"description": "gateway id",
 					"example": "my-gateway",
+					"maxLength": 24,
+					"minLength": 3,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
 				}
@@ -977,22 +1057,35 @@
 								"type": "boolean"
 							},
 							"cache_ttl": {
+								"minimum": 0,
+								"nullable": true,
 								"type": "integer"
 							},
 							"collect_logs": {
 								"type": "boolean"
 							},
 							"rate_limiting_interval": {
+								"minimum": 0,
+								"nullable": true,
 								"type": "integer"
 							},
 							"rate_limiting_limit": {
+								"minimum": 0,
+								"nullable": true,
 								"type": "integer"
 							},
 							"rate_limiting_technique": {
+								"enum": [
+									"fixed",
+									"sliding"
+								],
 								"type": "string"
 							}
 						},
 						"required": [
+							"rate_limiting_interval",
+							"rate_limiting_limit",
+							"rate_limiting_technique",
 							"collect_logs",
 							"cache_ttl",
 							"cache_invalidate_on_update"
@@ -1014,6 +1107,8 @@
 											"type": "boolean"
 										},
 										"cache_ttl": {
+											"minimum": 0,
+											"nullable": true,
 											"type": "integer"
 										},
 										"collect_logs": {
@@ -1026,6 +1121,8 @@
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
+											"maxLength": 24,
+											"minLength": 3,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
@@ -1034,17 +1131,28 @@
 											"type": "string"
 										},
 										"rate_limiting_interval": {
+											"minimum": 0,
+											"nullable": true,
 											"type": "integer"
 										},
 										"rate_limiting_limit": {
+											"minimum": 0,
+											"nullable": true,
 											"type": "integer"
 										},
 										"rate_limiting_technique": {
+											"enum": [
+												"fixed",
+												"sliding"
+											],
 											"type": "string"
 										}
 									},
 									"required": [
 										"id",
+										"rate_limiting_interval",
+										"rate_limiting_limit",
+										"rate_limiting_technique",
 										"collect_logs",
 										"cache_ttl",
 										"cache_invalidate_on_update",
