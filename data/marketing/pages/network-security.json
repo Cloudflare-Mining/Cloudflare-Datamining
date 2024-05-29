@@ -64,7 +64,7 @@
 				},
 				"sys": {
 					"createdAt": "2021-08-24T21:04:50.356Z",
-					"updatedAt": "2024-05-29T18:57:06.203Z"
+					"updatedAt": "2024-05-29T19:24:47.164Z"
 				},
 				"contentfulId": "4NY5iZmVMdubMPdRwrBOtS",
 				"contentTypeId": "page",
@@ -813,12 +813,12 @@
 						"copy": "Secure your network against DDoS attacks of any size or kind — in under three seconds on average.",
 						"toggleText": null,
 						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
+						"learnMoreUrl": "https://www.cloudflare.com/ddos/",
+						"learnMoreText": "Learn more about DDoS protection",
 						"link": [],
 						"subheadline": null,
-						"button1Text": "Learn more about DDoS protection",
-						"button1Url": "https://www.cloudflare.com/ddos/",
+						"button1Text": null,
+						"button1Url": null,
 						"button1Color": "orange",
 						"button2Text": null,
 						"button2Url": null,
@@ -866,12 +866,12 @@
 						"copy": "Replace a patchwork of appliances and expensive proprietary circuits with a single global network.",
 						"toggleText": null,
 						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
+						"learnMoreUrl": "https://www.cloudflare.com/network-services/products/magic-wan/",
+						"learnMoreText": "Learn more about cloud enterprise networking",
 						"link": [],
 						"subheadline": null,
-						"button1Text": "Learn more about cloud-delivered enterprise networking",
-						"button1Url": "https://www.cloudflare.com/network-services/products/magic-wan/",
+						"button1Text": null,
+						"button1Url": null,
 						"button1Color": "orange",
 						"button2Text": null,
 						"button2Url": null,
@@ -919,12 +919,12 @@
 						"copy": "Set policies for all traffic entering and leaving your network, without piecing together solutions from different vendors or maintaining clunky hardware appliances.",
 						"toggleText": null,
 						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
+						"learnMoreUrl": "https://www.cloudflare.com/network-services/products/magic-firewall/",
+						"learnMoreText": "Learn more about FWaaS",
 						"link": [],
 						"subheadline": null,
-						"button1Text": "Learn more about Firewall-as-a-Service (FWaaS)",
-						"button1Url": "https://www.cloudflare.com/network-services/products/magic-firewall/",
+						"button1Text": null,
+						"button1Url": null,
 						"button1Color": "orange",
 						"button2Text": null,
 						"button2Url": null,
@@ -972,12 +972,12 @@
 						"copy": "Inspect and secure every connection from your branch offices, data centers, and remote employees to every destination on the Internet — without performance penalties.",
 						"toggleText": null,
 						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
+						"learnMoreUrl": "https://www.cloudflare.com/products/zero-trust/remote-workforces/",
+						"learnMoreText": "Learn more about securing remote workforces",
 						"link": [],
 						"subheadline": null,
-						"button1Text": "Learn more about securing remote workforces",
-						"button1Url": "https://www.cloudflare.com/products/zero-trust/remote-workforces/",
+						"button1Text": null,
+						"button1Url": null,
 						"button1Color": "orange",
 						"button2Text": null,
 						"button2Url": null,
@@ -1261,6 +1261,589 @@
 							}
 						],
 						"filterMenu": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "7iqXzKrHiCRh1fwHFmg9QX",
+						"bladeName": "Network security solutions — FAQ — Accordion blade",
+						"title": null,
+						"htmlId": null,
+						"sectionTitle": "Network security solutions FAQs",
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "31iz6fiyRcAsf3y2xaSjHy",
+								"title": "What is network security?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/network-layer/network-security/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Network security",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " refers to a comprehensive category of technologies and practices that protect the integrity and usability of internal networks (a group of two or more connected computing devices, but most often large enterprise networks). ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "It also includes the implementation of strategies that focus on ensuring cyber resiliency, business continuity, and connectivity between all of an organization's digital resources (including their users, apps, data, and ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/cloud/what-is-the-cloud/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "cloud",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " environments).",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1zMjttVrdq4YfV2Lcu8fTC",
+								"title": "What are network security solutions?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Network security solutions encompass a broad range of technologies and strategies designed to protect the integrity, confidentiality, and availability of data and resources within a network.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3U0ColET65SJCEyVE5WOFp",
+								"title": "What are the different types of network security solutions?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Network security solutions include access control, authentication, ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/ddos/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "DDoS protection",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/network-services/products/magic-wan/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "WAN-as-a-service",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/zero-trust/products/dlp/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "data loss prevention (DLP)",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/zero-trust/products/browser-isolation/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "remote browser isolation",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", and firewalls. These measures collectively enhance network security and resilience.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3g9X3ppt6l7QFTbDW93drd",
+								"title": "Why is network security important?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Network security is crucial in protecting organizations from a variety of threats that could compromise sensitive data, disrupt operations, and erode trust with customers and stakeholders. Common threats include unauthorized access, ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "distributed denial-of-service (DDoS) attacks",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", vulnerability exploits, ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/ddos/glossary/malware/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "malware",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", and data exfiltration. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "43McN1a1NUvqAlmbxYERNw",
+								"title": "Why is it important to invest in network security solutions?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "As cyber threats become more sophisticated, implementing robust network security solutions helps protect against ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/security/glossary/what-is-lateral-movement/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "lateral movement",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/security/customer-data-breach/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "data breaches",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/security/ransomware/what-is-ransomware/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "ransomware",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", and other attacks. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "This protection not only secures computing resources and data, but also ensures the performance and availability of critical systems. Investing in network security solutions is a fundamental component of maintaining business continuity and resilience in today's digital landscape.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
