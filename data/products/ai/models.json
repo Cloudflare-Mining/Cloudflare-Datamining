@@ -1094,6 +1094,32 @@
 		]
 	},
 	{
+		"id": "31097538-a3ff-4e6e-bb56-ad0e1f428b61",
+		"source": 1,
+		"name": "@cf/meta/llama-3-8b-instruct-awq",
+		"description": "Quantized (int4) generative text model with 8 billion parameters from Meta.",
+		"task": {
+			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+			"name": "Text Generation",
+			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+		},
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "beta",
+				"value": "true"
+			},
+			{
+				"property_id": "info",
+				"value": "https://llama.meta.com"
+			},
+			{
+				"property_id": "terms",
+				"value": "https://llama.meta.com/llama3/license/#"
+			}
+		]
+	},
+	{
 		"id": "2169496d-9c0e-4e49-8399-c44ee66bff7d",
 		"source": 1,
 		"name": "@cf/openai/whisper-tiny-en",
