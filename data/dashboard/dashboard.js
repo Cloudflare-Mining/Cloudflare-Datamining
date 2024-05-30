@@ -881,10 +881,10 @@
 				n.g.build = pn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "4d783f0219dd098c458977e718015052ea103a7a",
-					dashVersion: "47634a1fbd16039159b0400da0538bb2d9a41b2c",
+					commit: "426d0148e654c804c0acb2d0e334beedfea50ba1",
+					dashVersion: "dd4f63deb22f79487e6bc83ecb587f31d5c27f9a",
 					env: "production",
-					builtAt: 1717093265415,
+					builtAt: 1717100263923,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",
@@ -1876,12 +1876,6 @@
 				}, r().createElement(de, {
 					href: "https://www.cloudflare.com/enterprise-service-request"
 				}, (0, t.ZP)("footer.contact_sales"))), r().createElement(p.Dd, {
-					mb: 2
-				}, r().createElement(ce, {
-					target: "_blank",
-					rel: "noopener noreferrer",
-					href: "tel:+18889935273"
-				}, (0, t.ZP)("footer.call_sales"))), r().createElement(p.Dd, {
 					mt: 3
 				}, r().createElement(p.ZC, {
 					display: "flex",
