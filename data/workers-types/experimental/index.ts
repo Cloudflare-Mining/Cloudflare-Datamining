@@ -51,6 +51,8 @@ export declare class DOMException extends Error {
   static readonly TIMEOUT_ERR: number;
   static readonly INVALID_NODE_TYPE_ERR: number;
   static readonly DATA_CLONE_ERR: number;
+  get stack(): any;
+  set stack(value: any);
 }
 export type WorkerGlobalScopeEventMap = {
   fetch: FetchEvent;
@@ -252,6 +254,9 @@ export interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   ReadableByteStreamController: typeof ReadableByteStreamController;
   WritableStreamDefaultController: typeof WritableStreamDefaultController;
   TransformStreamDefaultController: typeof TransformStreamDefaultController;
+  Buffer: any;
+  process: any;
+  global: ServiceWorkerGlobalScope;
   CompressionStream: typeof CompressionStream;
   DecompressionStream: typeof DecompressionStream;
   TextEncoderStream: typeof TextEncoderStream;
@@ -366,6 +371,9 @@ export declare const caches: CacheStorage;
 export declare const scheduler: Scheduler;
 export declare const performance: Performance;
 export declare const origin: string;
+export declare const Buffer: any;
+export declare const process: any;
+export declare const global: ServiceWorkerGlobalScope;
 export declare const navigator: Navigator;
 export interface TestController {}
 export interface ExecutionContext {

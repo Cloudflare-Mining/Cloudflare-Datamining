@@ -51,6 +51,8 @@ export declare class DOMException extends Error {
   static readonly TIMEOUT_ERR: number;
   static readonly INVALID_NODE_TYPE_ERR: number;
   static readonly DATA_CLONE_ERR: number;
+  get stack(): any;
+  set stack(value: any);
 }
 export type WorkerGlobalScopeEventMap = {
   fetch: FetchEvent;
