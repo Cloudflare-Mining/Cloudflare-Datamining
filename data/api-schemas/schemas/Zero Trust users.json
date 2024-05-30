@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{identifier}/access/users": {
+	"GET /accounts/{account_id}/access/users": {
 		"description": "Gets a list of users for an account.",
 		"operationId": "zero-trust-users-get-users",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -322,13 +322,13 @@
 			"Zero Trust users"
 		]
 	},
-	"GET /accounts/{identifier}/access/users/{id}/active_sessions": {
+	"GET /accounts/{account_id}/access/users/{user_id}/active_sessions": {
 		"description": "Get active sessions for a single user.",
 		"operationId": "zero-trust-users-get-active-sessions",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "user_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -340,7 +340,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -629,13 +629,13 @@
 			"Zero Trust users"
 		]
 	},
-	"GET /accounts/{identifier}/access/users/{id}/active_sessions/{nonce}": {
+	"GET /accounts/{account_id}/access/users/{user_id}/active_sessions/{nonce}": {
 		"description": "Get an active session for a single user.",
 		"operationId": "zero-trust-users-get-active-session",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "user_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -647,7 +647,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1035,13 +1035,13 @@
 			"Zero Trust users"
 		]
 	},
-	"GET /accounts/{identifier}/access/users/{id}/failed_logins": {
+	"GET /accounts/{account_id}/access/users/{user_id}/failed_logins": {
 		"description": "Get all failed login attempts for a single user.",
 		"operationId": "zero-trust-users-get-failed-logins",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "user_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -1053,7 +1053,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1304,13 +1304,13 @@
 			"Zero Trust users"
 		]
 	},
-	"GET /accounts/{identifier}/access/users/{id}/last_seen_identity": {
+	"GET /accounts/{account_id}/access/users/{user_id}/last_seen_identity": {
 		"description": "Get last seen identity for a single user.",
 		"operationId": "zero-trust-users-get-last-seen-identity",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "id",
+				"name": "user_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -1322,7 +1322,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

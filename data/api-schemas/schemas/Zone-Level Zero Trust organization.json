@@ -1,11 +1,11 @@
 {
-	"GET /zones/{identifier}/access/organizations": {
+	"GET /zones/{zone_id}/access/organizations": {
 		"description": "Returns the configuration for your Zero Trust organization.",
 		"operationId": "zone-level-zero-trust-organization-get-your-zero-trust-organization",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -281,13 +281,13 @@
 			"Zone-Level Zero Trust organization"
 		]
 	},
-	"POST /zones/{identifier}/access/organizations": {
+	"POST /zones/{zone_id}/access/organizations": {
 		"description": "Sets up a Zero Trust organization for your account.",
 		"operationId": "zone-level-zero-trust-organization-create-your-zero-trust-organization",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -632,13 +632,13 @@
 			"Zone-Level Zero Trust organization"
 		]
 	},
-	"POST /zones/{identifier}/access/organizations/revoke_user": {
+	"POST /zones/{zone_id}/access/organizations/revoke_user": {
 		"description": "Revokes a user's access across all applications.",
 		"operationId": "zone-level-zero-trust-organization-revoke-all-access-tokens-for-a-user",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -799,13 +799,13 @@
 			"Zone-Level Zero Trust organization"
 		]
 	},
-	"PUT /zones/{identifier}/access/organizations": {
+	"PUT /zones/{zone_id}/access/organizations": {
 		"description": "Updates the configuration for your Zero Trust organization.",
 		"operationId": "zone-level-zero-trust-organization-update-your-zero-trust-organization",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"

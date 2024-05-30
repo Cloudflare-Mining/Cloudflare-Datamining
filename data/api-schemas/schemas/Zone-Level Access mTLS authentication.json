@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{identifier}/access/certificates/{uuid}": {
+	"DELETE /zones/{zone_id}/access/certificates/{certificate_id}": {
 		"description": "Deletes an mTLS certificate.",
 		"operationId": "zone-level-access-mtls-authentication-delete-an-mtls-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -219,13 +219,13 @@
 			"Zone-Level Access mTLS authentication"
 		]
 	},
-	"GET /zones/{identifier}/access/certificates": {
+	"GET /zones/{zone_id}/access/certificates": {
 		"description": "Lists all mTLS certificates.",
 		"operationId": "zone-level-access-mtls-authentication-list-mtls-certificates",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -502,13 +502,13 @@
 			"Zone-Level Access mTLS authentication"
 		]
 	},
-	"GET /zones/{identifier}/access/certificates/{uuid}": {
+	"GET /zones/{zone_id}/access/certificates/{certificate_id}": {
 		"description": "Fetches a single mTLS certificate.",
 		"operationId": "zone-level-access-mtls-authentication-get-an-mtls-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -520,7 +520,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -774,13 +774,13 @@
 			"Zone-Level Access mTLS authentication"
 		]
 	},
-	"GET /zones/{identifier}/access/certificates/settings": {
+	"GET /zones/{zone_id}/access/certificates/settings": {
 		"description": "List all mTLS hostname settings for this zone.",
 		"operationId": "zone-level-access-mtls-authentication-list-mtls-certificates-hostname-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1039,13 +1039,13 @@
 			"Zone-Level Access mTLS authentication"
 		]
 	},
-	"POST /zones/{identifier}/access/certificates": {
+	"POST /zones/{zone_id}/access/certificates": {
 		"description": "Adds a new mTLS root certificate to Access.",
 		"operationId": "zone-level-access-mtls-authentication-add-an-mtls-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1333,13 +1333,13 @@
 			"Zone-Level Access mTLS authentication"
 		]
 	},
-	"PUT /zones/{identifier}/access/certificates/{uuid}": {
+	"PUT /zones/{zone_id}/access/certificates/{certificate_id}": {
 		"description": "Updates a configured mTLS certificate.",
 		"operationId": "zone-level-access-mtls-authentication-update-an-mtls-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -1351,7 +1351,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1633,13 +1633,13 @@
 			"Zone-Level Access mTLS authentication"
 		]
 	},
-	"PUT /zones/{identifier}/access/certificates/settings": {
+	"PUT /zones/{zone_id}/access/certificates/settings": {
 		"description": "Updates an mTLS certificate's hostname settings.",
 		"operationId": "zone-level-access-mtls-authentication-update-an-mtls-certificate-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

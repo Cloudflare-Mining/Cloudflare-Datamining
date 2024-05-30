@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{identifier}/access/keys": {
+	"GET /accounts/{account_id}/access/keys": {
 		"description": "Gets the Access key rotation settings for an account.",
 		"operationId": "access-key-configuration-get-the-access-key-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -234,13 +234,13 @@
 			"Access key configuration"
 		]
 	},
-	"POST /accounts/{identifier}/access/keys/rotate": {
+	"POST /accounts/{account_id}/access/keys/rotate": {
 		"description": "Perfoms a key rotation for an account.",
 		"operationId": "access-key-configuration-rotate-access-keys",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -469,13 +469,13 @@
 			"Access key configuration"
 		]
 	},
-	"PUT /accounts/{identifier}/access/keys": {
+	"PUT /accounts/{account_id}/access/keys": {
 		"description": "Updates the Access key rotation settings for an account.",
 		"operationId": "access-key-configuration-update-the-access-key-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

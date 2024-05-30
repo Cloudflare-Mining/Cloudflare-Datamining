@@ -1,5 +1,5 @@
 {
-	"DELETE /zones/{identifier}/access/apps/{app_id}": {
+	"DELETE /zones/{zone_id}/access/apps/{app_id}": {
 		"description": "Deletes an application from Access.",
 		"operationId": "zone-level-access-applications-delete-an-access-application",
 		"parameters": [
@@ -28,7 +28,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -249,13 +249,13 @@
 			"Zone-Level Access applications"
 		]
 	},
-	"GET /zones/{identifier}/access/apps": {
+	"GET /zones/{zone_id}/access/apps": {
 		"description": "List all Access Applications in a zone.",
 		"operationId": "zone-level-access-applications-list-access-applications",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3268,7 +3268,7 @@
 			"Zone-Level Access applications"
 		]
 	},
-	"GET /zones/{identifier}/access/apps/{app_id}": {
+	"GET /zones/{zone_id}/access/apps/{app_id}": {
 		"description": "Fetches information about an Access application.",
 		"operationId": "zone-level-access-applications-get-an-access-application",
 		"parameters": [
@@ -3297,7 +3297,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6287,7 +6287,7 @@
 			"Zone-Level Access applications"
 		]
 	},
-	"GET /zones/{identifier}/access/apps/{app_id}/user_policy_checks": {
+	"GET /zones/{zone_id}/access/apps/{app_id}/user_policy_checks": {
 		"description": "Tests if a specific user has permission to access an application.",
 		"operationId": "zone-level-access-applications-test-access-policies",
 		"parameters": [
@@ -6316,7 +6316,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6632,13 +6632,13 @@
 			"Zone-Level Access applications"
 		]
 	},
-	"POST /zones/{identifier}/access/apps": {
+	"POST /zones/{zone_id}/access/apps": {
 		"description": "Adds a new application to Access.",
 		"operationId": "zone-level-access-applications-add-a-bookmark-application",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -15205,7 +15205,7 @@
 			"Zone-Level Access applications"
 		]
 	},
-	"POST /zones/{identifier}/access/apps/{app_id}/revoke_tokens": {
+	"POST /zones/{zone_id}/access/apps/{app_id}/revoke_tokens": {
 		"description": "Revokes all tokens issued for an application.",
 		"operationId": "zone-level-access-applications-revoke-service-tokens",
 		"parameters": [
@@ -15234,7 +15234,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -15376,7 +15376,7 @@
 			"Zone-Level Access applications"
 		]
 	},
-	"PUT /zones/{identifier}/access/apps/{app_id}": {
+	"PUT /zones/{zone_id}/access/apps/{app_id}": {
 		"description": "Updates an Access application.",
 		"operationId": "zone-level-access-applications-update-a-bookmark-application",
 		"parameters": [
@@ -15405,7 +15405,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

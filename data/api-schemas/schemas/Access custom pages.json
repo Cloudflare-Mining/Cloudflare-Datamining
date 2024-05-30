@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/access/custom_pages/{uuid}": {
+	"DELETE /accounts/{account_id}/access/custom_pages/{custom_page_id}": {
 		"description": "Delete a custom page",
 		"operationId": "access-custom-pages-delete-a-custom-page",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "custom_page_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -219,13 +219,13 @@
 			"Access custom pages"
 		]
 	},
-	"GET /accounts/{identifier}/access/custom_pages": {
+	"GET /accounts/{account_id}/access/custom_pages": {
 		"description": "List custom pages",
 		"operationId": "access-custom-pages-list-custom-pages",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -501,13 +501,13 @@
 			"Access custom pages"
 		]
 	},
-	"GET /accounts/{identifier}/access/custom_pages/{uuid}": {
+	"GET /accounts/{account_id}/access/custom_pages/{custom_page_id}": {
 		"description": "Fetches a custom page and also returns its HTML.",
 		"operationId": "access-custom-pages-get-a-custom-page",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "custom_page_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -519,7 +519,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -778,13 +778,13 @@
 			"Access custom pages"
 		]
 	},
-	"POST /accounts/{identifier}/access/custom_pages": {
+	"POST /accounts/{account_id}/access/custom_pages": {
 		"description": "Create a custom page",
 		"operationId": "access-custom-pages-create-a-custom-page",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1093,13 +1093,13 @@
 			"Access custom pages"
 		]
 	},
-	"PUT /accounts/{identifier}/access/custom_pages/{uuid}": {
+	"PUT /accounts/{account_id}/access/custom_pages/{custom_page_id}": {
 		"description": "Update a custom page",
 		"operationId": "access-custom-pages-update-a-custom-page",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "custom_page_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -1111,7 +1111,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{identifier}/access/apps/{uuid1}/policies/{uuid}": {
+	"DELETE /zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}": {
 		"description": "Delete an Access policy.",
 		"operationId": "zone-level-access-policies-delete-an-access-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "uuid1",
+				"name": "app_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -29,7 +29,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -250,13 +250,13 @@
 			"Zone-Level Access policies"
 		]
 	},
-	"GET /zones/{identifier}/access/apps/{uuid}/policies": {
+	"GET /zones/{zone_id}/access/apps/{app_id}/policies": {
 		"description": "Lists Access policies configured for an application.",
 		"operationId": "zone-level-access-policies-list-access-policies",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "app_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -268,7 +268,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1995,13 +1995,13 @@
 			"Zone-Level Access policies"
 		]
 	},
-	"GET /zones/{identifier}/access/apps/{uuid1}/policies/{uuid}": {
+	"GET /zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}": {
 		"description": "Fetches a single Access policy.",
 		"operationId": "zone-level-access-policies-get-an-access-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -2013,7 +2013,7 @@
 			},
 			{
 				"in": "path",
-				"name": "uuid1",
+				"name": "app_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -2025,7 +2025,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3729,13 +3729,13 @@
 			"Zone-Level Access policies"
 		]
 	},
-	"POST /zones/{identifier}/access/apps/{uuid}/policies": {
+	"POST /zones/{zone_id}/access/apps/{app_id}/policies": {
 		"description": "Create a new Access policy for an application.",
 		"operationId": "zone-level-access-policies-create-an-access-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "app_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -3747,7 +3747,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6938,13 +6938,13 @@
 			"Zone-Level Access policies"
 		]
 	},
-	"PUT /zones/{identifier}/access/apps/{uuid1}/policies/{uuid}": {
+	"PUT /zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}": {
 		"description": "Update a configured Access policy.",
 		"operationId": "zone-level-access-policies-update-an-access-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -6956,7 +6956,7 @@
 			},
 			{
 				"in": "path",
-				"name": "uuid1",
+				"name": "app_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -6968,7 +6968,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/access/service_tokens/{uuid}": {
+	"DELETE /accounts/{account_id}/access/service_tokens/{service_token_id}": {
 		"description": "Deletes a service token.",
 		"operationId": "access-service-tokens-delete-a-service-token",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "service_token_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -272,13 +272,13 @@
 			"Access service tokens"
 		]
 	},
-	"GET /accounts/{identifier}/access/service_tokens": {
+	"GET /accounts/{account_id}/access/service_tokens": {
 		"description": "Lists all service tokens.",
 		"operationId": "access-service-tokens-list-service-tokens",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -556,13 +556,13 @@
 			"Access service tokens"
 		]
 	},
-	"GET /accounts/{identifier}/access/service_tokens/{uuid}": {
+	"GET /accounts/{account_id}/access/service_tokens/{service_token_id}": {
 		"description": "Fetches a single service token.",
 		"operationId": "access-service-tokens-get-a-service-token",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "service_token_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -574,7 +574,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -829,13 +829,13 @@
 			"Access service tokens"
 		]
 	},
-	"POST /accounts/{identifier}/access/service_tokens": {
+	"POST /accounts/{account_id}/access/service_tokens": {
 		"description": "Generates a new service token. **Note:** This is the only time you can get the Client Secret. If you lose the Client Secret, you will have to rotate the Client Secret or create a new service token.",
 		"operationId": "access-service-tokens-create-a-service-token",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1108,13 +1108,13 @@
 			"Access service tokens"
 		]
 	},
-	"POST /accounts/{identifier}/access/service_tokens/{uuid}/refresh": {
+	"POST /accounts/{account_id}/access/service_tokens/{service_token_id}/refresh": {
 		"description": "Refreshes the expiration of a service token.",
 		"operationId": "access-service-tokens-refresh-a-service-token",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "service_token_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -1126,7 +1126,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1381,13 +1381,13 @@
 			"Access service tokens"
 		]
 	},
-	"POST /accounts/{identifier}/access/service_tokens/{uuid}/rotate": {
+	"POST /accounts/{account_id}/access/service_tokens/{service_token_id}/rotate": {
 		"description": "Generates a new Client Secret for a service token and revokes the old one.",
 		"operationId": "access-service-tokens-rotate-a-service-token",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "service_token_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -1399,7 +1399,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1648,13 +1648,13 @@
 			"Access service tokens"
 		]
 	},
-	"PUT /accounts/{identifier}/access/service_tokens/{uuid}": {
+	"PUT /accounts/{account_id}/access/service_tokens/{service_token_id}": {
 		"description": "Updates a configured service token.",
 		"operationId": "access-service-tokens-update-a-service-token",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "service_token_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -1666,7 +1666,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

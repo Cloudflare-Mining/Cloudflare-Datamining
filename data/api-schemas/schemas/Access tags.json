@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/access/tags/{name}": {
+	"DELETE /accounts/{account_id}/access/tags/{tag_name}": {
 		"description": "Delete a tag",
 		"operationId": "access-tags-delete-a-tag",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "name",
+				"name": "tag_name",
 				"required": true,
 				"schema": {
 					"description": "The name of the tag",
@@ -235,13 +235,13 @@
 			"Access tags"
 		]
 	},
-	"GET /accounts/{identifier}/access/tags": {
+	"GET /accounts/{account_id}/access/tags": {
 		"description": "List tags",
 		"operationId": "access-tags-list-tags",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -505,13 +505,13 @@
 			"Access tags"
 		]
 	},
-	"GET /accounts/{identifier}/access/tags/{name}": {
+	"GET /accounts/{account_id}/access/tags/{tag_name}": {
 		"description": "Get a tag",
 		"operationId": "access-tags-get-a-tag",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -523,7 +523,7 @@
 			},
 			{
 				"in": "path",
-				"name": "name",
+				"name": "tag_name",
 				"required": true,
 				"schema": {
 					"description": "The name of the tag",
@@ -762,13 +762,13 @@
 			"Access tags"
 		]
 	},
-	"POST /accounts/{identifier}/access/tags": {
+	"POST /accounts/{account_id}/access/tags": {
 		"description": "Create a tag",
 		"operationId": "access-tags-create-tag",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1041,13 +1041,13 @@
 			"Access tags"
 		]
 	},
-	"PUT /accounts/{identifier}/access/tags/{name}": {
+	"PUT /accounts/{account_id}/access/tags/{tag_name}": {
 		"description": "Update a tag",
 		"operationId": "access-tags-update-a-tag",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1059,7 +1059,7 @@
 			},
 			{
 				"in": "path",
-				"name": "name",
+				"name": "tag_name",
 				"required": true,
 				"schema": {
 					"description": "The name of the tag",

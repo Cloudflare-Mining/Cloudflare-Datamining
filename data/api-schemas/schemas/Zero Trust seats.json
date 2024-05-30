@@ -1,11 +1,11 @@
 {
-	"PATCH /accounts/{identifier}/access/seats": {
+	"PATCH /accounts/{account_id}/access/seats": {
 		"description": "Removes a user from a Zero Trust seat when both `access_seat` and `gateway_seat` are set to false.",
 		"operationId": "zero-trust-seats-update-a-user-seat",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

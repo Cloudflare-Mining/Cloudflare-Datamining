@@ -1,12 +1,12 @@
 {
-	"DELETE /accounts/{identifier}/access/bookmarks/{uuid}": {
+	"DELETE /accounts/{account_id}/access/bookmarks/{bookmark_id}": {
 		"deprecated": true,
 		"description": "Deletes a Bookmark application.",
 		"operationId": "access-bookmark-applications-(-deprecated)-delete-a-bookmark-application",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "bookmark_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -18,7 +18,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -248,14 +248,14 @@
 			"id": "bookmarks_deprecation"
 		}
 	},
-	"GET /accounts/{identifier}/access/bookmarks": {
+	"GET /accounts/{account_id}/access/bookmarks": {
 		"deprecated": true,
 		"description": "Lists Bookmark applications.",
 		"operationId": "access-bookmark-applications-(-deprecated)-list-bookmark-applications",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -531,14 +531,14 @@
 			"id": "bookmarks_deprecation"
 		}
 	},
-	"GET /accounts/{identifier}/access/bookmarks/{uuid}": {
+	"GET /accounts/{account_id}/access/bookmarks/{bookmark_id}": {
 		"deprecated": true,
 		"description": "Fetches a single Bookmark application.",
 		"operationId": "access-bookmark-applications-(-deprecated)-get-a-bookmark-application",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "bookmark_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -550,7 +550,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -803,14 +803,14 @@
 			"id": "bookmarks_deprecation"
 		}
 	},
-	"POST /accounts/{identifier}/access/bookmarks/{uuid}": {
+	"POST /accounts/{account_id}/access/bookmarks/{bookmark_id}": {
 		"deprecated": true,
 		"description": "Create a new Bookmark application.",
 		"operationId": "access-bookmark-applications-(-deprecated)-create-a-bookmark-application",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "bookmark_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -822,7 +822,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -1081,14 +1081,14 @@
 			"id": "bookmarks_deprecation"
 		}
 	},
-	"PUT /accounts/{identifier}/access/bookmarks/{uuid}": {
+	"PUT /accounts/{account_id}/access/bookmarks/{bookmark_id}": {
 		"deprecated": true,
 		"description": "Updates a configured Bookmark application.",
 		"operationId": "access-bookmark-applications-(-deprecated)-update-a-bookmark-application",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "bookmark_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -1100,7 +1100,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",

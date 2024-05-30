@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/access/identity_providers/{uuid}": {
+	"DELETE /accounts/{account_id}/access/identity_providers/{identity_provider_id}": {
 		"description": "Deletes an identity provider from Access.",
 		"operationId": "access-identity-providers-delete-an-access-identity-provider",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "identity_provider_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -238,13 +238,13 @@
 			"Access identity providers"
 		]
 	},
-	"GET /accounts/{identifier}/access/identity_providers": {
+	"GET /accounts/{account_id}/access/identity_providers": {
 		"description": "Lists all configured identity providers.",
 		"operationId": "access-identity-providers-list-access-identity-providers",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2141,13 +2141,13 @@
 			"Access identity providers"
 		]
 	},
-	"GET /accounts/{identifier}/access/identity_providers/{uuid}": {
+	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}": {
 		"description": "Fetches a configured identity provider.",
 		"operationId": "access-identity-providers-get-an-access-identity-provider",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "identity_provider_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -2159,7 +2159,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4122,13 +4122,13 @@
 			"Access identity providers"
 		]
 	},
-	"POST /accounts/{identifier}/access/identity_providers": {
+	"POST /accounts/{account_id}/access/identity_providers": {
 		"description": "Adds a new identity provider to Access.",
 		"operationId": "access-identity-providers-add-an-access-identity-provider",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -7852,13 +7852,13 @@
 			"Access identity providers"
 		]
 	},
-	"PUT /accounts/{identifier}/access/identity_providers/{uuid}": {
+	"PUT /accounts/{account_id}/access/identity_providers/{identity_provider_id}": {
 		"description": "Updates a configured identity provider.",
 		"operationId": "access-identity-providers-update-an-access-identity-provider",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "identity_provider_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -7870,7 +7870,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

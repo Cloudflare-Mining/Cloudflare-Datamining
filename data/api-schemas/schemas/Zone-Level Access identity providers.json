@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{identifier}/access/identity_providers/{uuid}": {
+	"DELETE /zones/{zone_id}/access/identity_providers/{identity_provider_id}": {
 		"description": "Deletes an identity provider from Access.",
 		"operationId": "zone-level-access-identity-providers-delete-an-access-identity-provider",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "identity_provider_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -238,13 +238,13 @@
 			"Zone-Level Access identity providers"
 		]
 	},
-	"GET /zones/{identifier}/access/identity_providers": {
+	"GET /zones/{zone_id}/access/identity_providers": {
 		"description": "Lists all configured identity providers.",
 		"operationId": "zone-level-access-identity-providers-list-access-identity-providers",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2058,13 +2058,13 @@
 			"Zone-Level Access identity providers"
 		]
 	},
-	"GET /zones/{identifier}/access/identity_providers/{uuid}": {
+	"GET /zones/{zone_id}/access/identity_providers/{identity_provider_id}": {
 		"description": "Fetches a configured identity provider.",
 		"operationId": "zone-level-access-identity-providers-get-an-access-identity-provider",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "identity_provider_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -2076,7 +2076,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3774,13 +3774,13 @@
 			"Zone-Level Access identity providers"
 		]
 	},
-	"POST /zones/{identifier}/access/identity_providers": {
+	"POST /zones/{zone_id}/access/identity_providers": {
 		"description": "Adds a new identity provider to Access.",
 		"operationId": "zone-level-access-identity-providers-add-an-access-identity-provider",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6974,13 +6974,13 @@
 			"Zone-Level Access identity providers"
 		]
 	},
-	"PUT /zones/{identifier}/access/identity_providers/{uuid}": {
+	"PUT /zones/{zone_id}/access/identity_providers/{identity_provider_id}": {
 		"description": "Updates a configured identity provider.",
 		"operationId": "zone-level-access-identity-providers-update-an-access-identity-provider",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "identity_provider_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -6992,7 +6992,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

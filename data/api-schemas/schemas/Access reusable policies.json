@@ -20,10 +20,9 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "The UUID of the policy",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -118,10 +117,9 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "UUID",
+													"description": "The UUID of the policy",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -899,10 +897,9 @@
 																"type": "array"
 															},
 															"id": {
-																"description": "UUID",
+																"description": "The UUID of the policy",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"readOnly": true,
 																"type": "string"
 															},
 															"include": {
@@ -2015,10 +2012,9 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "The UUID of the policy",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -2646,10 +2642,9 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "UUID",
+															"description": "The UUID of the policy",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
 															"type": "string"
 														},
 														"include": {
@@ -5871,10 +5866,9 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "UUID",
+															"description": "The UUID of the policy",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
 															"type": "string"
 														},
 														"include": {
@@ -6985,10 +6979,9 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "The UUID of the policy",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -9108,10 +9101,9 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "UUID",
+															"description": "The UUID of the policy",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
 															"type": "string"
 														},
 														"include": {

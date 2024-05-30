@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/access/groups/{uuid}": {
+	"DELETE /accounts/{account_id}/access/groups/{group_id}": {
 		"description": "Deletes an Access group.",
 		"operationId": "access-groups-delete-an-access-group",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "group_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -238,13 +238,13 @@
 			"Access groups"
 		]
 	},
-	"GET /accounts/{identifier}/access/groups": {
+	"GET /accounts/{account_id}/access/groups": {
 		"description": "Lists all Access groups.",
 		"operationId": "access-groups-list-access-groups",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2349,13 +2349,13 @@
 			"Access groups"
 		]
 	},
-	"GET /accounts/{identifier}/access/groups/{uuid}": {
+	"GET /accounts/{account_id}/access/groups/{group_id}": {
 		"description": "Fetches a single Access group.",
 		"operationId": "access-groups-get-an-access-group",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "group_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -2367,7 +2367,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4449,13 +4449,13 @@
 			"Access groups"
 		]
 	},
-	"POST /accounts/{identifier}/access/groups": {
+	"POST /accounts/{account_id}/access/groups": {
 		"description": "Creates a new Access group.",
 		"operationId": "access-groups-create-an-access-group",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -7944,13 +7944,13 @@
 			"Access groups"
 		]
 	},
-	"PUT /accounts/{identifier}/access/groups/{uuid}": {
+	"PUT /accounts/{account_id}/access/groups/{group_id}": {
 		"description": "Updates a configured Access group.",
 		"operationId": "access-groups-update-an-access-group",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "group_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -7962,7 +7962,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

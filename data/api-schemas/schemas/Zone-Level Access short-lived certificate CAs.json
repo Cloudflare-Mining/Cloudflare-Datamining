@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{identifier}/access/apps/{uuid}/ca": {
+	"DELETE /zones/{zone_id}/access/apps/{app_id}/ca": {
 		"description": "Deletes a short-lived certificate CA.",
 		"operationId": "zone-level-access-short-lived-certificate-c-as-delete-a-short-lived-certificate-ca",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "app_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -238,13 +238,13 @@
 			"Zone-Level Access short-lived certificate CAs"
 		]
 	},
-	"GET /zones/{identifier}/access/apps/{uuid}/ca": {
+	"GET /zones/{zone_id}/access/apps/{app_id}/ca": {
 		"description": "Fetches a short-lived certificate CA and its public key.",
 		"operationId": "zone-level-access-short-lived-certificate-c-as-get-a-short-lived-certificate-ca",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "app_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -256,7 +256,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -468,13 +468,13 @@
 			"Zone-Level Access short-lived certificate CAs"
 		]
 	},
-	"GET /zones/{identifier}/access/apps/ca": {
+	"GET /zones/{zone_id}/access/apps/ca": {
 		"description": "Lists short-lived certificate CAs and their public keys.",
 		"operationId": "zone-level-access-short-lived-certificate-c-as-list-short-lived-certificate-c-as",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -731,13 +731,13 @@
 			"Zone-Level Access short-lived certificate CAs"
 		]
 	},
-	"POST /zones/{identifier}/access/apps/{uuid}/ca": {
+	"POST /zones/{zone_id}/access/apps/{app_id}/ca": {
 		"description": "Generates a new short-lived certificate CA and public key.",
 		"operationId": "zone-level-access-short-lived-certificate-c-as-create-a-short-lived-certificate-ca",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "app_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -749,7 +749,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

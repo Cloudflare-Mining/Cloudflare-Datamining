@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/access/certificates/{uuid}": {
+	"DELETE /accounts/{account_id}/access/certificates/{certificate_id}": {
 		"description": "Deletes an mTLS certificate.",
 		"operationId": "access-mtls-authentication-delete-an-mtls-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -219,13 +219,13 @@
 			"Access mTLS authentication"
 		]
 	},
-	"GET /accounts/{identifier}/access/certificates": {
+	"GET /accounts/{account_id}/access/certificates": {
 		"description": "Lists all mTLS root certificates.",
 		"operationId": "access-mtls-authentication-list-mtls-certificates",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -503,13 +503,13 @@
 			"Access mTLS authentication"
 		]
 	},
-	"GET /accounts/{identifier}/access/certificates/{uuid}": {
+	"GET /accounts/{account_id}/access/certificates/{certificate_id}": {
 		"description": "Fetches a single mTLS certificate.",
 		"operationId": "access-mtls-authentication-get-an-mtls-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -521,7 +521,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -776,13 +776,13 @@
 			"Access mTLS authentication"
 		]
 	},
-	"GET /accounts/{identifier}/access/certificates/settings": {
+	"GET /accounts/{account_id}/access/certificates/settings": {
 		"description": "List all mTLS hostname settings for this account.",
 		"operationId": "access-mtls-authentication-list-mtls-certificates-hostname-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1041,13 +1041,13 @@
 			"Access mTLS authentication"
 		]
 	},
-	"POST /accounts/{identifier}/access/certificates": {
+	"POST /accounts/{account_id}/access/certificates": {
 		"description": "Adds a new mTLS root certificate to Access.",
 		"operationId": "access-mtls-authentication-add-an-mtls-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1336,13 +1336,13 @@
 			"Access mTLS authentication"
 		]
 	},
-	"PUT /accounts/{identifier}/access/certificates/{uuid}": {
+	"PUT /accounts/{account_id}/access/certificates/{certificate_id}": {
 		"description": "Updates a configured mTLS certificate.",
 		"operationId": "access-mtls-authentication-update-an-mtls-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "UUID",
@@ -1354,7 +1354,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1637,13 +1637,13 @@
 			"Access mTLS authentication"
 		]
 	},
-	"PUT /accounts/{identifier}/access/certificates/settings": {
+	"PUT /accounts/{account_id}/access/certificates/settings": {
 		"description": "Updates an mTLS certificate's hostname settings.",
 		"operationId": "access-mtls-authentication-update-an-mtls-certificate-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
