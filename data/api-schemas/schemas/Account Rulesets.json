@@ -473,7 +473,9 @@
 																				"block": "#/components/schemas/rulesets_BlockRule",
 																				"challenge": "#/components/schemas/rulesets_ChallengeRule",
 																				"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+																				"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
+																				"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
 																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -3944,6 +3946,264 @@
 																							}
 																						},
 																						"title": "Log Custom Field rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"ddos_dynamic"
+																								]
+																							},
+																							"description": {
+																								"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																							}
+																						},
+																						"title": "DDoS Dynamic rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"force_connection_close"
+																								]
+																							},
+																							"description": {
+																								"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																							}
+																						},
+																						"title": "Force Connection Close rule"
 																					}
 																				]
 																			}
@@ -5055,7 +5315,9 @@
 																				"block": "#/components/schemas/rulesets_BlockRule",
 																				"challenge": "#/components/schemas/rulesets_ChallengeRule",
 																				"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+																				"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
+																				"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
 																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -8526,6 +8788,264 @@
 																							}
 																						},
 																						"title": "Log Custom Field rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"ddos_dynamic"
+																								]
+																							},
+																							"description": {
+																								"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																							}
+																						},
+																						"title": "DDoS Dynamic rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"force_connection_close"
+																								]
+																							},
+																							"description": {
+																								"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																							}
+																						},
+																						"title": "Force Connection Close rule"
 																					}
 																				]
 																			}
@@ -9454,7 +9974,9 @@
 																				"block": "#/components/schemas/rulesets_BlockRule",
 																				"challenge": "#/components/schemas/rulesets_ChallengeRule",
 																				"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+																				"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
+																				"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
 																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -12925,6 +13447,264 @@
 																							}
 																						},
 																						"title": "Log Custom Field rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"ddos_dynamic"
+																								]
+																							},
+																							"description": {
+																								"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																							}
+																						},
+																						"title": "DDoS Dynamic rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"force_connection_close"
+																								]
+																							},
+																							"description": {
+																								"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																							}
+																						},
+																						"title": "Force Connection Close rule"
 																					}
 																				]
 																			}
@@ -13421,7 +14201,9 @@
 																				"block": "#/components/schemas/rulesets_BlockRule",
 																				"challenge": "#/components/schemas/rulesets_ChallengeRule",
 																				"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+																				"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
+																				"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
 																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -16892,6 +17674,264 @@
 																							}
 																						},
 																						"title": "Log Custom Field rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"ddos_dynamic"
+																								]
+																							},
+																							"description": {
+																								"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																							}
+																						},
+																						"title": "DDoS Dynamic rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"force_connection_close"
+																								]
+																							},
+																							"description": {
+																								"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																							}
+																						},
+																						"title": "Force Connection Close rule"
 																					}
 																				]
 																			}
@@ -17387,7 +18427,9 @@
 																				"block": "#/components/schemas/rulesets_BlockRule",
 																				"challenge": "#/components/schemas/rulesets_ChallengeRule",
 																				"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+																				"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
+																				"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
 																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -20858,6 +21900,264 @@
 																							}
 																						},
 																						"title": "Log Custom Field rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"ddos_dynamic"
+																								]
+																							},
+																							"description": {
+																								"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																							}
+																						},
+																						"title": "DDoS Dynamic rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"force_connection_close"
+																								]
+																							},
+																							"description": {
+																								"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																							}
+																						},
+																						"title": "Force Connection Close rule"
 																					}
 																				]
 																			}
@@ -21834,7 +23134,9 @@
 																				"block": "#/components/schemas/rulesets_BlockRule",
 																				"challenge": "#/components/schemas/rulesets_ChallengeRule",
 																				"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+																				"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
+																				"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
 																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -25307,6 +26609,264 @@
 																						"title": "Log Custom Field rule"
 																					}
 																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"ddos_dynamic"
+																								]
+																							},
+																							"description": {
+																								"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																							}
+																						},
+																						"title": "DDoS Dynamic rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"force_connection_close"
+																								]
+																							},
+																							"description": {
+																								"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																							}
+																						},
+																						"title": "Force Connection Close rule"
+																					}
+																				]
 																			}
 																		]
 																	},
@@ -25561,7 +27121,9 @@
 										"block": "#/components/schemas/rulesets_BlockRule",
 										"challenge": "#/components/schemas/rulesets_ChallengeRule",
 										"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+										"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 										"execute": "#/components/schemas/rulesets_ExecuteRule",
+										"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 										"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 										"log": "#/components/schemas/rulesets_LogRule",
 										"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -29034,6 +30596,264 @@
 												"title": "Log Custom Field rule"
 											}
 										]
+									},
+									{
+										"allOf": [
+											{
+												"properties": {
+													"action": {
+														"description": "The action to perform when the rule matches.",
+														"pattern": "^[a-z]+$",
+														"title": "Action",
+														"type": "string"
+													},
+													"action_parameters": {
+														"description": "The parameters configuring the rule's action.",
+														"title": "Action parameters",
+														"type": "object"
+													},
+													"categories": {
+														"description": "The categories of the rule.",
+														"example": [
+															"directory-traversal",
+															"header"
+														],
+														"items": {
+															"description": "A category of the rule.",
+															"example": "directory-traversal",
+															"minLength": 1,
+															"title": "Category",
+															"type": "string"
+														},
+														"minItems": 1,
+														"readOnly": true,
+														"title": "Categories",
+														"type": "array",
+														"uniqueItems": true
+													},
+													"description": {
+														"default": "",
+														"description": "An informative description of the rule.",
+														"title": "Description",
+														"type": "string"
+													},
+													"enabled": {
+														"allOf": [
+															{
+																"description": "Whether the rule should be executed.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															},
+															{
+																"default": true
+															}
+														]
+													},
+													"expression": {
+														"description": "The expression defining which traffic will match the rule.",
+														"example": "ip.src ne 1.1.1.1",
+														"minLength": 1,
+														"title": "Expression",
+														"type": "string"
+													},
+													"id": {
+														"description": "The unique ID of the rule.",
+														"example": "3a03d665bac047339bb530ecb439a90d",
+														"pattern": "^[0-9a-f]{32}$",
+														"title": "ID",
+														"type": "string"
+													},
+													"last_updated": {
+														"description": "The timestamp of when the rule was last modified.",
+														"example": "2000-01-01T00:00:00.000000Z",
+														"format": "date-time",
+														"readOnly": true,
+														"title": "Last updated",
+														"type": "string"
+													},
+													"logging": {
+														"description": "An object configuring the rule's logging behavior.",
+														"properties": {
+															"enabled": {
+																"description": "Whether to generate a log when the rule matches.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"title": "Logging",
+														"type": "object"
+													},
+													"ref": {
+														"description": "The reference of the rule (the rule ID by default).",
+														"example": "my_ref",
+														"minLength": 1,
+														"title": "Ref",
+														"type": "string"
+													},
+													"version": {
+														"description": "The version of the rule.",
+														"example": "1",
+														"pattern": "^[0-9]+$",
+														"readOnly": true,
+														"title": "Version",
+														"type": "string"
+													}
+												},
+												"required": [
+													"version",
+													"last_updated"
+												],
+												"title": "Rule",
+												"type": "object"
+											},
+											{
+												"properties": {
+													"action": {
+														"enum": [
+															"ddos_dynamic"
+														]
+													},
+													"description": {
+														"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+													}
+												},
+												"title": "DDoS Dynamic rule"
+											}
+										]
+									},
+									{
+										"allOf": [
+											{
+												"properties": {
+													"action": {
+														"description": "The action to perform when the rule matches.",
+														"pattern": "^[a-z]+$",
+														"title": "Action",
+														"type": "string"
+													},
+													"action_parameters": {
+														"description": "The parameters configuring the rule's action.",
+														"title": "Action parameters",
+														"type": "object"
+													},
+													"categories": {
+														"description": "The categories of the rule.",
+														"example": [
+															"directory-traversal",
+															"header"
+														],
+														"items": {
+															"description": "A category of the rule.",
+															"example": "directory-traversal",
+															"minLength": 1,
+															"title": "Category",
+															"type": "string"
+														},
+														"minItems": 1,
+														"readOnly": true,
+														"title": "Categories",
+														"type": "array",
+														"uniqueItems": true
+													},
+													"description": {
+														"default": "",
+														"description": "An informative description of the rule.",
+														"title": "Description",
+														"type": "string"
+													},
+													"enabled": {
+														"allOf": [
+															{
+																"description": "Whether the rule should be executed.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															},
+															{
+																"default": true
+															}
+														]
+													},
+													"expression": {
+														"description": "The expression defining which traffic will match the rule.",
+														"example": "ip.src ne 1.1.1.1",
+														"minLength": 1,
+														"title": "Expression",
+														"type": "string"
+													},
+													"id": {
+														"description": "The unique ID of the rule.",
+														"example": "3a03d665bac047339bb530ecb439a90d",
+														"pattern": "^[0-9a-f]{32}$",
+														"title": "ID",
+														"type": "string"
+													},
+													"last_updated": {
+														"description": "The timestamp of when the rule was last modified.",
+														"example": "2000-01-01T00:00:00.000000Z",
+														"format": "date-time",
+														"readOnly": true,
+														"title": "Last updated",
+														"type": "string"
+													},
+													"logging": {
+														"description": "An object configuring the rule's logging behavior.",
+														"properties": {
+															"enabled": {
+																"description": "Whether to generate a log when the rule matches.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"title": "Logging",
+														"type": "object"
+													},
+													"ref": {
+														"description": "The reference of the rule (the rule ID by default).",
+														"example": "my_ref",
+														"minLength": 1,
+														"title": "Ref",
+														"type": "string"
+													},
+													"version": {
+														"description": "The version of the rule.",
+														"example": "1",
+														"pattern": "^[0-9]+$",
+														"readOnly": true,
+														"title": "Version",
+														"type": "string"
+													}
+												},
+												"required": [
+													"version",
+													"last_updated"
+												],
+												"title": "Rule",
+												"type": "object"
+											},
+											{
+												"properties": {
+													"action": {
+														"enum": [
+															"force_connection_close"
+														]
+													},
+													"description": {
+														"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+													}
+												},
+												"title": "Force Connection Close rule"
+											}
+										]
 									}
 								]
 							},
@@ -29352,7 +31172,9 @@
 																				"block": "#/components/schemas/rulesets_BlockRule",
 																				"challenge": "#/components/schemas/rulesets_ChallengeRule",
 																				"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+																				"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
+																				"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
 																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -32825,6 +34647,264 @@
 																						"title": "Log Custom Field rule"
 																					}
 																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"ddos_dynamic"
+																								]
+																							},
+																							"description": {
+																								"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																							}
+																						},
+																						"title": "DDoS Dynamic rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"force_connection_close"
+																								]
+																							},
+																							"description": {
+																								"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																							}
+																						},
+																						"title": "Force Connection Close rule"
+																					}
+																				]
 																			}
 																		]
 																	},
@@ -33158,7 +35238,9 @@
 													"block": "#/components/schemas/rulesets_BlockRule",
 													"challenge": "#/components/schemas/rulesets_ChallengeRule",
 													"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+													"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 													"execute": "#/components/schemas/rulesets_ExecuteRule",
+													"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 													"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 													"log": "#/components/schemas/rulesets_LogRule",
 													"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -36631,6 +38713,264 @@
 															"title": "Log Custom Field rule"
 														}
 													]
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"action": {
+																	"description": "The action to perform when the rule matches.",
+																	"pattern": "^[a-z]+$",
+																	"title": "Action",
+																	"type": "string"
+																},
+																"action_parameters": {
+																	"description": "The parameters configuring the rule's action.",
+																	"title": "Action parameters",
+																	"type": "object"
+																},
+																"categories": {
+																	"description": "The categories of the rule.",
+																	"example": [
+																		"directory-traversal",
+																		"header"
+																	],
+																	"items": {
+																		"description": "A category of the rule.",
+																		"example": "directory-traversal",
+																		"minLength": 1,
+																		"title": "Category",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"readOnly": true,
+																	"title": "Categories",
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"description": {
+																	"default": "",
+																	"description": "An informative description of the rule.",
+																	"title": "Description",
+																	"type": "string"
+																},
+																"enabled": {
+																	"allOf": [
+																		{
+																			"description": "Whether the rule should be executed.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		},
+																		{
+																			"default": true
+																		}
+																	]
+																},
+																"expression": {
+																	"description": "The expression defining which traffic will match the rule.",
+																	"example": "ip.src ne 1.1.1.1",
+																	"minLength": 1,
+																	"title": "Expression",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The unique ID of the rule.",
+																	"example": "3a03d665bac047339bb530ecb439a90d",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																"last_updated": {
+																	"description": "The timestamp of when the rule was last modified.",
+																	"example": "2000-01-01T00:00:00.000000Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"title": "Last updated",
+																	"type": "string"
+																},
+																"logging": {
+																	"description": "An object configuring the rule's logging behavior.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether to generate a log when the rule matches.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"enabled"
+																	],
+																	"title": "Logging",
+																	"type": "object"
+																},
+																"ref": {
+																	"description": "The reference of the rule (the rule ID by default).",
+																	"example": "my_ref",
+																	"minLength": 1,
+																	"title": "Ref",
+																	"type": "string"
+																},
+																"version": {
+																	"description": "The version of the rule.",
+																	"example": "1",
+																	"pattern": "^[0-9]+$",
+																	"readOnly": true,
+																	"title": "Version",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"version",
+																"last_updated"
+															],
+															"title": "Rule",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"ddos_dynamic"
+																	]
+																},
+																"description": {
+																	"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																}
+															},
+															"title": "DDoS Dynamic rule"
+														}
+													]
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"action": {
+																	"description": "The action to perform when the rule matches.",
+																	"pattern": "^[a-z]+$",
+																	"title": "Action",
+																	"type": "string"
+																},
+																"action_parameters": {
+																	"description": "The parameters configuring the rule's action.",
+																	"title": "Action parameters",
+																	"type": "object"
+																},
+																"categories": {
+																	"description": "The categories of the rule.",
+																	"example": [
+																		"directory-traversal",
+																		"header"
+																	],
+																	"items": {
+																		"description": "A category of the rule.",
+																		"example": "directory-traversal",
+																		"minLength": 1,
+																		"title": "Category",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"readOnly": true,
+																	"title": "Categories",
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"description": {
+																	"default": "",
+																	"description": "An informative description of the rule.",
+																	"title": "Description",
+																	"type": "string"
+																},
+																"enabled": {
+																	"allOf": [
+																		{
+																			"description": "Whether the rule should be executed.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		},
+																		{
+																			"default": true
+																		}
+																	]
+																},
+																"expression": {
+																	"description": "The expression defining which traffic will match the rule.",
+																	"example": "ip.src ne 1.1.1.1",
+																	"minLength": 1,
+																	"title": "Expression",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The unique ID of the rule.",
+																	"example": "3a03d665bac047339bb530ecb439a90d",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																"last_updated": {
+																	"description": "The timestamp of when the rule was last modified.",
+																	"example": "2000-01-01T00:00:00.000000Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"title": "Last updated",
+																	"type": "string"
+																},
+																"logging": {
+																	"description": "An object configuring the rule's logging behavior.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether to generate a log when the rule matches.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"enabled"
+																	],
+																	"title": "Logging",
+																	"type": "object"
+																},
+																"ref": {
+																	"description": "The reference of the rule (the rule ID by default).",
+																	"example": "my_ref",
+																	"minLength": 1,
+																	"title": "Ref",
+																	"type": "string"
+																},
+																"version": {
+																	"description": "The version of the rule.",
+																	"example": "1",
+																	"pattern": "^[0-9]+$",
+																	"readOnly": true,
+																	"title": "Version",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"version",
+																"last_updated"
+															],
+															"title": "Rule",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"force_connection_close"
+																	]
+																},
+																"description": {
+																	"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																}
+															},
+															"title": "Force Connection Close rule"
+														}
+													]
 												}
 											]
 										},
@@ -36889,7 +39229,9 @@
 																				"block": "#/components/schemas/rulesets_BlockRule",
 																				"challenge": "#/components/schemas/rulesets_ChallengeRule",
 																				"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+																				"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
+																				"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
 																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -40362,6 +42704,264 @@
 																						"title": "Log Custom Field rule"
 																					}
 																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"ddos_dynamic"
+																								]
+																							},
+																							"description": {
+																								"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																							}
+																						},
+																						"title": "DDoS Dynamic rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"force_connection_close"
+																								]
+																							},
+																							"description": {
+																								"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																							}
+																						},
+																						"title": "Force Connection Close rule"
+																					}
+																				]
 																			}
 																		]
 																	},
@@ -40604,7 +43204,9 @@
 										"block": "#/components/schemas/rulesets_BlockRule",
 										"challenge": "#/components/schemas/rulesets_ChallengeRule",
 										"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+										"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 										"execute": "#/components/schemas/rulesets_ExecuteRule",
+										"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 										"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 										"log": "#/components/schemas/rulesets_LogRule",
 										"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -44077,6 +46679,264 @@
 												"title": "Log Custom Field rule"
 											}
 										]
+									},
+									{
+										"allOf": [
+											{
+												"properties": {
+													"action": {
+														"description": "The action to perform when the rule matches.",
+														"pattern": "^[a-z]+$",
+														"title": "Action",
+														"type": "string"
+													},
+													"action_parameters": {
+														"description": "The parameters configuring the rule's action.",
+														"title": "Action parameters",
+														"type": "object"
+													},
+													"categories": {
+														"description": "The categories of the rule.",
+														"example": [
+															"directory-traversal",
+															"header"
+														],
+														"items": {
+															"description": "A category of the rule.",
+															"example": "directory-traversal",
+															"minLength": 1,
+															"title": "Category",
+															"type": "string"
+														},
+														"minItems": 1,
+														"readOnly": true,
+														"title": "Categories",
+														"type": "array",
+														"uniqueItems": true
+													},
+													"description": {
+														"default": "",
+														"description": "An informative description of the rule.",
+														"title": "Description",
+														"type": "string"
+													},
+													"enabled": {
+														"allOf": [
+															{
+																"description": "Whether the rule should be executed.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															},
+															{
+																"default": true
+															}
+														]
+													},
+													"expression": {
+														"description": "The expression defining which traffic will match the rule.",
+														"example": "ip.src ne 1.1.1.1",
+														"minLength": 1,
+														"title": "Expression",
+														"type": "string"
+													},
+													"id": {
+														"description": "The unique ID of the rule.",
+														"example": "3a03d665bac047339bb530ecb439a90d",
+														"pattern": "^[0-9a-f]{32}$",
+														"title": "ID",
+														"type": "string"
+													},
+													"last_updated": {
+														"description": "The timestamp of when the rule was last modified.",
+														"example": "2000-01-01T00:00:00.000000Z",
+														"format": "date-time",
+														"readOnly": true,
+														"title": "Last updated",
+														"type": "string"
+													},
+													"logging": {
+														"description": "An object configuring the rule's logging behavior.",
+														"properties": {
+															"enabled": {
+																"description": "Whether to generate a log when the rule matches.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"title": "Logging",
+														"type": "object"
+													},
+													"ref": {
+														"description": "The reference of the rule (the rule ID by default).",
+														"example": "my_ref",
+														"minLength": 1,
+														"title": "Ref",
+														"type": "string"
+													},
+													"version": {
+														"description": "The version of the rule.",
+														"example": "1",
+														"pattern": "^[0-9]+$",
+														"readOnly": true,
+														"title": "Version",
+														"type": "string"
+													}
+												},
+												"required": [
+													"version",
+													"last_updated"
+												],
+												"title": "Rule",
+												"type": "object"
+											},
+											{
+												"properties": {
+													"action": {
+														"enum": [
+															"ddos_dynamic"
+														]
+													},
+													"description": {
+														"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+													}
+												},
+												"title": "DDoS Dynamic rule"
+											}
+										]
+									},
+									{
+										"allOf": [
+											{
+												"properties": {
+													"action": {
+														"description": "The action to perform when the rule matches.",
+														"pattern": "^[a-z]+$",
+														"title": "Action",
+														"type": "string"
+													},
+													"action_parameters": {
+														"description": "The parameters configuring the rule's action.",
+														"title": "Action parameters",
+														"type": "object"
+													},
+													"categories": {
+														"description": "The categories of the rule.",
+														"example": [
+															"directory-traversal",
+															"header"
+														],
+														"items": {
+															"description": "A category of the rule.",
+															"example": "directory-traversal",
+															"minLength": 1,
+															"title": "Category",
+															"type": "string"
+														},
+														"minItems": 1,
+														"readOnly": true,
+														"title": "Categories",
+														"type": "array",
+														"uniqueItems": true
+													},
+													"description": {
+														"default": "",
+														"description": "An informative description of the rule.",
+														"title": "Description",
+														"type": "string"
+													},
+													"enabled": {
+														"allOf": [
+															{
+																"description": "Whether the rule should be executed.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															},
+															{
+																"default": true
+															}
+														]
+													},
+													"expression": {
+														"description": "The expression defining which traffic will match the rule.",
+														"example": "ip.src ne 1.1.1.1",
+														"minLength": 1,
+														"title": "Expression",
+														"type": "string"
+													},
+													"id": {
+														"description": "The unique ID of the rule.",
+														"example": "3a03d665bac047339bb530ecb439a90d",
+														"pattern": "^[0-9a-f]{32}$",
+														"title": "ID",
+														"type": "string"
+													},
+													"last_updated": {
+														"description": "The timestamp of when the rule was last modified.",
+														"example": "2000-01-01T00:00:00.000000Z",
+														"format": "date-time",
+														"readOnly": true,
+														"title": "Last updated",
+														"type": "string"
+													},
+													"logging": {
+														"description": "An object configuring the rule's logging behavior.",
+														"properties": {
+															"enabled": {
+																"description": "Whether to generate a log when the rule matches.",
+																"example": true,
+																"title": "Enabled",
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"title": "Logging",
+														"type": "object"
+													},
+													"ref": {
+														"description": "The reference of the rule (the rule ID by default).",
+														"example": "my_ref",
+														"minLength": 1,
+														"title": "Ref",
+														"type": "string"
+													},
+													"version": {
+														"description": "The version of the rule.",
+														"example": "1",
+														"pattern": "^[0-9]+$",
+														"readOnly": true,
+														"title": "Version",
+														"type": "string"
+													}
+												},
+												"required": [
+													"version",
+													"last_updated"
+												],
+												"title": "Rule",
+												"type": "object"
+											},
+											{
+												"properties": {
+													"action": {
+														"enum": [
+															"force_connection_close"
+														]
+													},
+													"description": {
+														"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+													}
+												},
+												"title": "Force Connection Close rule"
+											}
+										]
 									}
 								]
 							},
@@ -44395,7 +47255,9 @@
 																				"block": "#/components/schemas/rulesets_BlockRule",
 																				"challenge": "#/components/schemas/rulesets_ChallengeRule",
 																				"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+																				"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
+																				"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
 																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -47866,6 +50728,264 @@
 																							}
 																						},
 																						"title": "Log Custom Field rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"ddos_dynamic"
+																								]
+																							},
+																							"description": {
+																								"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																							}
+																						},
+																						"title": "DDoS Dynamic rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"force_connection_close"
+																								]
+																							},
+																							"description": {
+																								"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																							}
+																						},
+																						"title": "Force Connection Close rule"
 																					}
 																				]
 																			}
@@ -48213,7 +51333,9 @@
 													"block": "#/components/schemas/rulesets_BlockRule",
 													"challenge": "#/components/schemas/rulesets_ChallengeRule",
 													"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+													"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 													"execute": "#/components/schemas/rulesets_ExecuteRule",
+													"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 													"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 													"log": "#/components/schemas/rulesets_LogRule",
 													"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -51686,6 +54808,264 @@
 															"title": "Log Custom Field rule"
 														}
 													]
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"action": {
+																	"description": "The action to perform when the rule matches.",
+																	"pattern": "^[a-z]+$",
+																	"title": "Action",
+																	"type": "string"
+																},
+																"action_parameters": {
+																	"description": "The parameters configuring the rule's action.",
+																	"title": "Action parameters",
+																	"type": "object"
+																},
+																"categories": {
+																	"description": "The categories of the rule.",
+																	"example": [
+																		"directory-traversal",
+																		"header"
+																	],
+																	"items": {
+																		"description": "A category of the rule.",
+																		"example": "directory-traversal",
+																		"minLength": 1,
+																		"title": "Category",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"readOnly": true,
+																	"title": "Categories",
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"description": {
+																	"default": "",
+																	"description": "An informative description of the rule.",
+																	"title": "Description",
+																	"type": "string"
+																},
+																"enabled": {
+																	"allOf": [
+																		{
+																			"description": "Whether the rule should be executed.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		},
+																		{
+																			"default": true
+																		}
+																	]
+																},
+																"expression": {
+																	"description": "The expression defining which traffic will match the rule.",
+																	"example": "ip.src ne 1.1.1.1",
+																	"minLength": 1,
+																	"title": "Expression",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The unique ID of the rule.",
+																	"example": "3a03d665bac047339bb530ecb439a90d",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																"last_updated": {
+																	"description": "The timestamp of when the rule was last modified.",
+																	"example": "2000-01-01T00:00:00.000000Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"title": "Last updated",
+																	"type": "string"
+																},
+																"logging": {
+																	"description": "An object configuring the rule's logging behavior.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether to generate a log when the rule matches.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"enabled"
+																	],
+																	"title": "Logging",
+																	"type": "object"
+																},
+																"ref": {
+																	"description": "The reference of the rule (the rule ID by default).",
+																	"example": "my_ref",
+																	"minLength": 1,
+																	"title": "Ref",
+																	"type": "string"
+																},
+																"version": {
+																	"description": "The version of the rule.",
+																	"example": "1",
+																	"pattern": "^[0-9]+$",
+																	"readOnly": true,
+																	"title": "Version",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"version",
+																"last_updated"
+															],
+															"title": "Rule",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"ddos_dynamic"
+																	]
+																},
+																"description": {
+																	"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																}
+															},
+															"title": "DDoS Dynamic rule"
+														}
+													]
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"action": {
+																	"description": "The action to perform when the rule matches.",
+																	"pattern": "^[a-z]+$",
+																	"title": "Action",
+																	"type": "string"
+																},
+																"action_parameters": {
+																	"description": "The parameters configuring the rule's action.",
+																	"title": "Action parameters",
+																	"type": "object"
+																},
+																"categories": {
+																	"description": "The categories of the rule.",
+																	"example": [
+																		"directory-traversal",
+																		"header"
+																	],
+																	"items": {
+																		"description": "A category of the rule.",
+																		"example": "directory-traversal",
+																		"minLength": 1,
+																		"title": "Category",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"readOnly": true,
+																	"title": "Categories",
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"description": {
+																	"default": "",
+																	"description": "An informative description of the rule.",
+																	"title": "Description",
+																	"type": "string"
+																},
+																"enabled": {
+																	"allOf": [
+																		{
+																			"description": "Whether the rule should be executed.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		},
+																		{
+																			"default": true
+																		}
+																	]
+																},
+																"expression": {
+																	"description": "The expression defining which traffic will match the rule.",
+																	"example": "ip.src ne 1.1.1.1",
+																	"minLength": 1,
+																	"title": "Expression",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The unique ID of the rule.",
+																	"example": "3a03d665bac047339bb530ecb439a90d",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																"last_updated": {
+																	"description": "The timestamp of when the rule was last modified.",
+																	"example": "2000-01-01T00:00:00.000000Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"title": "Last updated",
+																	"type": "string"
+																},
+																"logging": {
+																	"description": "An object configuring the rule's logging behavior.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether to generate a log when the rule matches.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"enabled"
+																	],
+																	"title": "Logging",
+																	"type": "object"
+																},
+																"ref": {
+																	"description": "The reference of the rule (the rule ID by default).",
+																	"example": "my_ref",
+																	"minLength": 1,
+																	"title": "Ref",
+																	"type": "string"
+																},
+																"version": {
+																	"description": "The version of the rule.",
+																	"example": "1",
+																	"pattern": "^[0-9]+$",
+																	"readOnly": true,
+																	"title": "Version",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"version",
+																"last_updated"
+															],
+															"title": "Rule",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"force_connection_close"
+																	]
+																},
+																"description": {
+																	"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																}
+															},
+															"title": "Force Connection Close rule"
+														}
+													]
 												}
 											]
 										},
@@ -51941,7 +55321,9 @@
 																				"block": "#/components/schemas/rulesets_BlockRule",
 																				"challenge": "#/components/schemas/rulesets_ChallengeRule",
 																				"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+																				"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
+																				"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
 																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -55412,6 +58794,264 @@
 																							}
 																						},
 																						"title": "Log Custom Field rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"ddos_dynamic"
+																								]
+																							},
+																							"description": {
+																								"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																							}
+																						},
+																						"title": "DDoS Dynamic rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"force_connection_close"
+																								]
+																							},
+																							"description": {
+																								"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																							}
+																						},
+																						"title": "Force Connection Close rule"
 																					}
 																				]
 																			}
@@ -55783,7 +59423,9 @@
 													"block": "#/components/schemas/rulesets_BlockRule",
 													"challenge": "#/components/schemas/rulesets_ChallengeRule",
 													"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+													"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 													"execute": "#/components/schemas/rulesets_ExecuteRule",
+													"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 													"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 													"log": "#/components/schemas/rulesets_LogRule",
 													"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -59256,6 +62898,264 @@
 															"title": "Log Custom Field rule"
 														}
 													]
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"action": {
+																	"description": "The action to perform when the rule matches.",
+																	"pattern": "^[a-z]+$",
+																	"title": "Action",
+																	"type": "string"
+																},
+																"action_parameters": {
+																	"description": "The parameters configuring the rule's action.",
+																	"title": "Action parameters",
+																	"type": "object"
+																},
+																"categories": {
+																	"description": "The categories of the rule.",
+																	"example": [
+																		"directory-traversal",
+																		"header"
+																	],
+																	"items": {
+																		"description": "A category of the rule.",
+																		"example": "directory-traversal",
+																		"minLength": 1,
+																		"title": "Category",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"readOnly": true,
+																	"title": "Categories",
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"description": {
+																	"default": "",
+																	"description": "An informative description of the rule.",
+																	"title": "Description",
+																	"type": "string"
+																},
+																"enabled": {
+																	"allOf": [
+																		{
+																			"description": "Whether the rule should be executed.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		},
+																		{
+																			"default": true
+																		}
+																	]
+																},
+																"expression": {
+																	"description": "The expression defining which traffic will match the rule.",
+																	"example": "ip.src ne 1.1.1.1",
+																	"minLength": 1,
+																	"title": "Expression",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The unique ID of the rule.",
+																	"example": "3a03d665bac047339bb530ecb439a90d",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																"last_updated": {
+																	"description": "The timestamp of when the rule was last modified.",
+																	"example": "2000-01-01T00:00:00.000000Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"title": "Last updated",
+																	"type": "string"
+																},
+																"logging": {
+																	"description": "An object configuring the rule's logging behavior.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether to generate a log when the rule matches.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"enabled"
+																	],
+																	"title": "Logging",
+																	"type": "object"
+																},
+																"ref": {
+																	"description": "The reference of the rule (the rule ID by default).",
+																	"example": "my_ref",
+																	"minLength": 1,
+																	"title": "Ref",
+																	"type": "string"
+																},
+																"version": {
+																	"description": "The version of the rule.",
+																	"example": "1",
+																	"pattern": "^[0-9]+$",
+																	"readOnly": true,
+																	"title": "Version",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"version",
+																"last_updated"
+															],
+															"title": "Rule",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"ddos_dynamic"
+																	]
+																},
+																"description": {
+																	"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																}
+															},
+															"title": "DDoS Dynamic rule"
+														}
+													]
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"action": {
+																	"description": "The action to perform when the rule matches.",
+																	"pattern": "^[a-z]+$",
+																	"title": "Action",
+																	"type": "string"
+																},
+																"action_parameters": {
+																	"description": "The parameters configuring the rule's action.",
+																	"title": "Action parameters",
+																	"type": "object"
+																},
+																"categories": {
+																	"description": "The categories of the rule.",
+																	"example": [
+																		"directory-traversal",
+																		"header"
+																	],
+																	"items": {
+																		"description": "A category of the rule.",
+																		"example": "directory-traversal",
+																		"minLength": 1,
+																		"title": "Category",
+																		"type": "string"
+																	},
+																	"minItems": 1,
+																	"readOnly": true,
+																	"title": "Categories",
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"description": {
+																	"default": "",
+																	"description": "An informative description of the rule.",
+																	"title": "Description",
+																	"type": "string"
+																},
+																"enabled": {
+																	"allOf": [
+																		{
+																			"description": "Whether the rule should be executed.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		},
+																		{
+																			"default": true
+																		}
+																	]
+																},
+																"expression": {
+																	"description": "The expression defining which traffic will match the rule.",
+																	"example": "ip.src ne 1.1.1.1",
+																	"minLength": 1,
+																	"title": "Expression",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The unique ID of the rule.",
+																	"example": "3a03d665bac047339bb530ecb439a90d",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																"last_updated": {
+																	"description": "The timestamp of when the rule was last modified.",
+																	"example": "2000-01-01T00:00:00.000000Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"title": "Last updated",
+																	"type": "string"
+																},
+																"logging": {
+																	"description": "An object configuring the rule's logging behavior.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether to generate a log when the rule matches.",
+																			"example": true,
+																			"title": "Enabled",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"enabled"
+																	],
+																	"title": "Logging",
+																	"type": "object"
+																},
+																"ref": {
+																	"description": "The reference of the rule (the rule ID by default).",
+																	"example": "my_ref",
+																	"minLength": 1,
+																	"title": "Ref",
+																	"type": "string"
+																},
+																"version": {
+																	"description": "The version of the rule.",
+																	"example": "1",
+																	"pattern": "^[0-9]+$",
+																	"readOnly": true,
+																	"title": "Version",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"version",
+																"last_updated"
+															],
+															"title": "Rule",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"action": {
+																	"enum": [
+																		"force_connection_close"
+																	]
+																},
+																"description": {
+																	"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																}
+															},
+															"title": "Force Connection Close rule"
+														}
+													]
 												}
 											]
 										},
@@ -59511,7 +63411,9 @@
 																				"block": "#/components/schemas/rulesets_BlockRule",
 																				"challenge": "#/components/schemas/rulesets_ChallengeRule",
 																				"compress_response": "#/components/schemas/rulesets_CompressResponseRule",
+																				"ddos_dynamic": "#/components/schemas/rulesets_DDoSDynamicRule",
 																				"execute": "#/components/schemas/rulesets_ExecuteRule",
+																				"force_connection_close": "#/components/schemas/rulesets_ForceConnectionCloseRule",
 																				"js_challenge": "#/components/schemas/rulesets_JsChallengeRule",
 																				"log": "#/components/schemas/rulesets_LogRule",
 																				"log_custom_field": "#/components/schemas/rulesets_LogCustomFieldRule",
@@ -62982,6 +66884,264 @@
 																							}
 																						},
 																						"title": "Log Custom Field rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"ddos_dynamic"
+																								]
+																							},
+																							"description": {
+																								"example": "Performs a specific action according to a set of internal guidelines defined by Cloudflare."
+																							}
+																						},
+																						"title": "DDoS Dynamic rule"
+																					}
+																				]
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"action": {
+																								"description": "The action to perform when the rule matches.",
+																								"pattern": "^[a-z]+$",
+																								"title": "Action",
+																								"type": "string"
+																							},
+																							"action_parameters": {
+																								"description": "The parameters configuring the rule's action.",
+																								"title": "Action parameters",
+																								"type": "object"
+																							},
+																							"categories": {
+																								"description": "The categories of the rule.",
+																								"example": [
+																									"directory-traversal",
+																									"header"
+																								],
+																								"items": {
+																									"description": "A category of the rule.",
+																									"example": "directory-traversal",
+																									"minLength": 1,
+																									"title": "Category",
+																									"type": "string"
+																								},
+																								"minItems": 1,
+																								"readOnly": true,
+																								"title": "Categories",
+																								"type": "array",
+																								"uniqueItems": true
+																							},
+																							"description": {
+																								"default": "",
+																								"description": "An informative description of the rule.",
+																								"title": "Description",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"allOf": [
+																									{
+																										"description": "Whether the rule should be executed.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									},
+																									{
+																										"default": true
+																									}
+																								]
+																							},
+																							"expression": {
+																								"description": "The expression defining which traffic will match the rule.",
+																								"example": "ip.src ne 1.1.1.1",
+																								"minLength": 1,
+																								"title": "Expression",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "The unique ID of the rule.",
+																								"example": "3a03d665bac047339bb530ecb439a90d",
+																								"pattern": "^[0-9a-f]{32}$",
+																								"title": "ID",
+																								"type": "string"
+																							},
+																							"last_updated": {
+																								"description": "The timestamp of when the rule was last modified.",
+																								"example": "2000-01-01T00:00:00.000000Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"title": "Last updated",
+																								"type": "string"
+																							},
+																							"logging": {
+																								"description": "An object configuring the rule's logging behavior.",
+																								"properties": {
+																									"enabled": {
+																										"description": "Whether to generate a log when the rule matches.",
+																										"example": true,
+																										"title": "Enabled",
+																										"type": "boolean"
+																									}
+																								},
+																								"required": [
+																									"enabled"
+																								],
+																								"title": "Logging",
+																								"type": "object"
+																							},
+																							"ref": {
+																								"description": "The reference of the rule (the rule ID by default).",
+																								"example": "my_ref",
+																								"minLength": 1,
+																								"title": "Ref",
+																								"type": "string"
+																							},
+																							"version": {
+																								"description": "The version of the rule.",
+																								"example": "1",
+																								"pattern": "^[0-9]+$",
+																								"readOnly": true,
+																								"title": "Version",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"version",
+																							"last_updated"
+																						],
+																						"title": "Rule",
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"action": {
+																								"enum": [
+																									"force_connection_close"
+																								]
+																							},
+																							"description": {
+																								"example": "Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection."
+																							}
+																						},
+																						"title": "Force Connection Close rule"
 																					}
 																				]
 																			}
