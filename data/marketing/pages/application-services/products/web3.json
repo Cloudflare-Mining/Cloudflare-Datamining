@@ -54,16 +54,11 @@
 				},
 				"sys": {
 					"createdAt": "2022-05-05T22:07:15.399Z",
-					"updatedAt": "2024-05-21T23:25:34.000Z"
+					"updatedAt": "2024-05-30T03:17:43.515Z"
 				},
 				"contentfulId": "3aUZe4eM7vegrapkAVkIBJ",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "LEARN MORE",
-					"linkText": "What is Web3?",
-					"linkUrl": "https://developers.cloudflare.com/web3/",
-					"desktopText": "On the fence about Web3?  Learn more about it.  "
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -73,21 +68,21 @@
 					{
 						"contentfulId": "475ZalIWMK1QFYpES784yx",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Your Gateway To Web3",
+						"title": "Cloudflare Web3",
 						"titleSize": null,
-						"subtitle": "Easy access to IPFS and Ethereum networks",
+						"subtitle": "Easily and securely access, maintain, and monitor Web3 infrastructure",
 						"subtitleSize": null,
-						"copy": "Web3 is held to be the next iteration of the World Wide Web, built on decentralized technologies like IPFS and Ethereum.  We manage, maintain, and monitor Web3 infrastructure, so you can focus on what matters: building applications. Leverage our industry-leading global network to create secure, reliable, and fast services built on Web3 technology.",
+						"copy": "Create secure, fast, and reliable applications built on Web3 technology — including the Ethereum network and InterPlanetary File System (IPFS).",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
-						"buttonText1": "Request demo",
+						"buttonText1": "Get started",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "web3-solutions-form-modal",
-						"buttonText2": "Get Started for Free",
+						"button1ExtraClass": null,
+						"buttonText2": "Read the developer docs",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=web3_ipfs_basic&add=web3_ethereum_basic",
+						"buttonUrl2": "https://developers.cloudflare.com/web3/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -98,8 +93,8 @@
 						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
@@ -132,40 +127,43 @@
 						}
 					},
 					{
-						"contentfulId": "188XSxtsfyBaFI6OBhl74k",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": "features",
-						"copy": null,
-						"title": "What is Web3?",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"contentfulId": "5ZxRPNHOwSAjWbKLqF5cT9",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE WEB3",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7pe7uApURI265sSSuVKyO5",
-								"title": "Decentralization",
-								"makeTitleLink": null,
+								"contentfulId": "whkLCb8ToimdwsihK60HS",
+								"title": "Secure access",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Web3 does not rely on any central provider or authority. Instead, data and files are decentralized and distributed across nodes on the network.",
+								"description": "Cloudflare enables you to securely access content from Web3 networks without installing or running any special software.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/12f51rJ3kDWqjD7WC9KayQ/e33c68a707f8a14418dd057b8e2551aa/connect-iot__1_.svg"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7eeb6aea-18f5-5736-9b17-69295f2df58c",
+									"altText": "Security shield protection orange",
+									"title": "Security shield protection orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
+										},
+										"description": null
 									},
-									"description": null
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -175,24 +173,33 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7cBTCpKYoG2BzCrwey4muc",
-								"title": "Implicit trust",
-								"makeTitleLink": null,
+								"contentfulId": "3d7pqdpbvWK23E37WRk8eA",
+								"title": "Faster performance",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Web3 inherently incorporates aspects of implicit trust using cryptographic hashes to ensure data has not been tampered with and users receive what they expect to receive. ",
+								"description": "With data centers in hundreds of cities worldwide, Cloudflare delivers content requested through our gateways from the closest location to your end users.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ukkjWW0zKGl8GFJ6TtgjI/fcbf42de763557fee20c20d1eb442461/key.svg"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
+									"altText": "internet globe",
+									"title": "internet globe",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
+										},
+										"description": "Orange icon of a globe"
 									},
-									"description": null
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -202,24 +209,33 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3mcEysxu4eqK0beeMoNiq0",
-								"title": "Peer-to-peer (P2P) networking",
-								"makeTitleLink": null,
+								"contentfulId": "6R5a9HZqIp2Z9k0XntrYET",
+								"title": "Streamlined maintenance",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "The Interplanetary File System (IPFS) provides a storage layer for Web3. IPFS is a protocol and peer-to-peer (P2P) distributed network for storing data across nodes within the network.",
+								"description": "Cloudflare — not your developers — maintains and monitors security, reliability, and performance for every gateway you create.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Tz4MFKkKlNBzAkA1z0Tdc/6c55e9705ce3bf24d4516761c3139fb4/network-scale__2_.svg"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
+									"altText": "Optimization gear ",
+									"title": "Optimization gear ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JreowuAuIySxXXXqycY4r/746dc87c57caa9f58423af84de3fa35a/optimization-gear.svg"
+										},
+										"description": ""
 									},
-									"description": "Icon of connected points"
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -227,12 +243,14 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
 					},
 					{
-						"contentfulId": "3TsN2VFGdV5SbYnXtKMZPE",
-						"title": "Fast, reliable, secure access to IPFS and Ethereum",
-						"copy": "The Cloudflare network spans more than %{DataCenterCount} cities in over %{CountryCount} countries and is uniquely positioned to provide fast, secure access to Web3 storage and services. Leverage our caching capabilities to deliver content as quickly as possible to users. Focus on building Web3 services and rely on us to provide secure, reliable, and fast-performing Web3 infrastructure.",
+						"contentfulId": "kerHg93goiP6ojUHA9brT",
+						"title": "Host content via secure, serverless interfaces to Web3 networks",
+						"copy": "Cloudflare's [IPFS gateway](https://developers.cloudflare.com/web3/ipfs-gateway/) provides a read-only, HTTP-accessible interface to the Interplanetary File System (IPFS) — enabling easy consumption for large customer bases that use traditional web clients.\n\nCloudflare's [Ethereum gateway](https://developers.cloudflare.com/web3/ethereum-gateway/) provides read and write access to the Ethereum network, so developers can use Ethereum in front-facing applications without any software installation.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -242,527 +260,6 @@
 						"button1Text": null,
 						"button1Url": null,
 						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CSgsL3Hz5mAO87XkxrYEB/96f948c622680be3d50ab6757a5fab01/cloudflare-network-globe-hero-illustration-1200x600.png"
-							},
-							"description": "Illustration of the global Cloudflare network"
-						},
-						"imageAssetFile": {
-							"id": "91607c87-8330-5692-9e49-55cb852ae613",
-							"altText": "Graphic depicting a globe with dots indicating Cloudflare data centers. ",
-							"title": "Cloudflare One Hero",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1BVKWhTGZi4Tt7AvNqMDZj/89cbef223021fa278baf35c5134139b0/BDES-4904_-_CloudflareNetwork-CloudflareOne-BlogIllustration_3x_1.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "3vrAzmZebwq9sjhhovhEny",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": "IPFS-pricing",
-						"copy": "IPFS Gateway provides a bridge between the current Web 2.0 model and the new decentralized and trustless model of Web3. With IPFS Gateway, customers can start leveraging IPFS and make content on IPFS easily accessible via HTTP. Customers can use our DNS to map IPFS content to a domain name.\n[Learn More](https://developers.cloudflare.com/web3/?_gl=1*f6491t*_ga*MjAyNDk1MDEzMC4xNjU0NjQxNDQ0*_gid*NDg0ODg4MzM4LjE2NzA4NTk2ODI.)",
-						"title": "IPFS Gateway Pricing",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "60ZSwDcIwwGUU9GmsSgJZ",
-								"title": "Basic $0 /mo",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Get started with our basic plan to test out the IPFS gateway, which is ideal for lower traffic applications or personal projects.\n- 50 GB up/down included per month\n- $0.25 / GB\n- 15 IPFS gateways\n- High reliability uptime SLA",
-								"learnMoreUrl": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=web3_ipfs_basic",
-								"learnMoreText": "Sign Up",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6hs4nBokbYKRpZb0cYCBaO",
-								"title": "Premium $5 /mo",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Upgrade to our premium IPFS gateway plan for higher traffic applications and critical infrastructure.\n- 100 GB up/down included per month\n- $0.10 / GB\n- 15 IPFS gateways\n- High reliability uptime SLA",
-								"learnMoreUrl": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=web3_ipfs_premium",
-								"learnMoreText": "Sign Up",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "7hV6eFwJ5mgZw6uw1tp9As",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": "Ether-pricing",
-						"copy": "Ethereum Gateway helps developers and anyone wanting to access the Ethereum blockchain by enabling them to do so without deploying their own Ethereum nodes, which is a resource-intensive process. Deploy and access distributed applications (DApps) quickly and easily with our gateway.\n[Learn More](https://developers.cloudflare.com/web3/?_gl=1*f6491t*_ga*MjAyNDk1MDEzMC4xNjU0NjQxNDQ0*_gid*NDg0ODg4MzM4LjE2NzA4NTk2ODI.)",
-						"title": "Ethereum Gateway Pricing",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1HfEZlL4RCLLhCraOpGc7b",
-								"title": "Basic $0 /mo",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Get started with our basic plan to test out the Ethereum gateway, which is ideal for lower traffic applications or personal projects.\n- 500,000 requests included per month\n- $10 / 1 million requests\n- 15 Ethereum gateways\n- TestNets\n- High reliability uptime SLA",
-								"learnMoreUrl": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=web3_ethereum_basic",
-								"learnMoreText": "Sign Up",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3YPwqSc7beSrp4F3DGowW",
-								"title": "Premium $5 /mo",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Upgrade to our premium Ethereum gateway plan for higher traffic applications and critical infrastructure.\n- 1 million requests included per month\n- $8 / 1 million requests\n- 15 Ethereum gateways\n- TestNets\n- High reliability uptime SLA",
-								"learnMoreUrl": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=web3_ethereum_premium",
-								"learnMoreText": "Sign Up",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "50Ju0QUVsCLLgVXQBQmggi",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "https://www.cloudflare.com/case-studies/",
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"title": "Trusted by millions of Internet properties",
-						"copy": null,
-						"logoList": [
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/vlONa0REZrndXWIi174vi/b7377290efc139831c5573daf1757ade/logo_allianz_trusted-by_gray.svg"
-								},
-								"description": "Allianz logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Gps1TUuUvlobFOEXbnJlI/df914dce0414a8cfccb70c090f271304/logo_doordash_gray_32px-wrapper.svg"
-								},
-								"description": "Doordash logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67NI5PUHwR6yUSWHGPL1rM/1a2179da46b2df3eb6d8c4435bafeaa4/logo_garmin_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/47baOjkvX7lLtmTdWvCYI9/009360a8301d33def2ea3ffe22a922df/logo_labcorp_color_32px-wrapper.svg"
-								},
-								"description": "LabCorp logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/75Iu2nwjYyY5rckEPqO9hr/57b676a2cf5fe6c1e2b3663d7131fda5/logo_loreal_gray_32px-wrapper.svg"
-								},
-								"description": "L'Oreal logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ovo10a1mEsAZ7ZwFKfFl/d0d561ddb71ecdb723357bb2f79bc979/logo_mars_gray_32px-wrapper.svg"
-								},
-								"description": "Mars logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/GUflUdoKWDzDLHBdpI0Qv/1c76a12d25dde493153711d29e902ed4/DHL_logo_rgb_black_small.png"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mAzLb3ofkkG38jtcP2Ys8/094958a88df30575d79254ee6615a82f/logo_ibm_gray_32px-wrapper.svg"
-								},
-								"description": "IBM logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhur0vl8q716TyGFZuCIG/acb851172c83f325ae99e527ef4c216e/logo_shopify_color_32px-wrapper.svg"
-								},
-								"description": "Shopify logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/467UAD91lfhgDi8BUPT7lc/1adfd012f0b66ff33cdb131f52c0351b/logo_sixt_trusted-by_gray.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-								},
-								"description": "Thomson Reuters logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/WfJskUftbIg2L9wkJlpvk/fb58bb010585e1139d31ada16363fa51/logo_insead_trusted-by_gray.svg"
-								},
-								"description": null
-							}
-						],
-						"logoListAssetFile": [
-							{
-								"id": "5ab637c1-ac51-5de5-b8a7-022db4ddf677",
-								"altText": "Logo allianz trusted by gray",
-								"title": "Logo allianz trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 3833,
-									"height": 96,
-									"width": 632,
-									"filename": "logo_allianz_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_allianz_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
-								"altText": "Logo doordash trusted by gray",
-								"title": "Logo doordash trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fy2mc73AF9xqD18C5760R/f46ab68d38c9adb30a639f69589d8af0/doordash_134.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
-								"altText": "Logo garmin trusted by gray",
-								"title": "Logo garmin trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VUhUMEcvn3L3j88LttHzC/b2cf2b702aad874db9cb61b0028e9c40/logo_garmin_trusted-by_gray.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
-								"altText": "Logo labcorp trusted by gray",
-								"title": "Logo labcorp trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsuJijKk8EMH5s1ae56nx/b13406881aa864b7e17b2233a0d090ef/logo_labcorp_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
-								"altText": "Logo loreal trusted by gray",
-								"title": "Logo loreal trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xn47h0gWiUSwJ0PU3Ysvk/683779108bfd6eeb62fbac5135780fe6/logo_loreal_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
-								"altText": "Logo ibm trusted by gray",
-								"title": "Logo ibm trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OMwO1Fr8BxHVum0iBbatc/979c1807f5810edc903d4b07c18e0cb0/logo_ibm_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
-								"altText": "Logo mars trusted by gray",
-								"title": "Logo mars trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xar1H4WcFHHkHRDzMypMh/1f8989ae11cb464cc640c7121d0be9a6/logo_mars_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "ad58e126-3478-5318-9fde-ca44ec6d103e",
-								"altText": "DHL logo",
-								"title": null,
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/GUflUdoKWDzDLHBdpI0Qv/1c76a12d25dde493153711d29e902ed4/DHL_logo_rgb_black_small.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
-								"altText": "Logo shopify trusted by gray",
-								"title": "Logo shopify trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVeELky7fceWRpfBvN8qr/4e13aa3d8dd73e1f091f3de966fdc9cb/logo_shopify_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "320d4b7c-3f9f-5ea6-901d-68f0f9dec99e",
-								"altText": "Logo sixt trusted by gray",
-								"title": "Logo sixt trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/467UAD91lfhgDi8BUPT7lc/1adfd012f0b66ff33cdb131f52c0351b/logo_sixt_trusted-by_gray.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": {
-									"size": 2291,
-									"height": 96,
-									"width": 632,
-									"filename": "logo_sixt_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_sixt_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
-								"altText": "Logo thomson reuters trusted by gray",
-								"title": "Logo thomson reuters trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-									},
-									"description": "Thomson Reuters logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "92e43b5a-2e1b-5233-a515-7aed979c976d",
-								"altText": "Logo insead gray",
-								"title": "Logo insead gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/WfJskUftbIg2L9wkJlpvk/fb58bb010585e1139d31ada16363fa51/logo_insead_trusted-by_gray.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": {
-									"size": 3266,
-									"height": 336,
-									"width": 336,
-									"filename": "logo_insead_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_insead_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							}
-						],
-						"logoUrlList": null
-					},
-					{
-						"contentfulId": "5Jzm0OVlZY0gV60bwCVluw",
-						"title": "IPFS Gateway",
-						"copy": "Cloudflare IPFS Gateway provides a bridge between the current Web 2.0 model and the new decentralized and trustless model of Web3. With Cloudflare IPFS Gateway, customers can start leveraging IPFS and make content on IPFS easily accessible via HTTP. Customers can use Cloudflare DNS to map IPFS content to a domain name.\n\nCloudflare IPFS Gateway allows customers to continue using HTTP while enjoying the benefits of IPFS. It allows for easy consumption for the larger user base using traditional web clients.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": "Learn more",
-						"button1Url": "https://developers.cloudflare.com/web3/",
-						"button1Color": "blue",
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "61a97122-11d7-5e9c-87ac-19f851116f23",
-							"altText": "Platform Week 22 - Serving Cloudflare Pages sites to the IPFS network",
-							"title": "Platform Week 22 - Serving Cloudflare Pages sites to the IPFS network",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/8hMbnmVZjo9OdJd0G8ZxO/a8debf9ca48f858204ac44637b0788c0/BDES-4904_-_Serving_Cloudflare_Pages_sites_to_the_IPFS_network.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": "dev-docs",
-						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "1h7hErKL402IlSWA3fsRwt",
-						"title": "Ethereum Gateway",
-						"copy": "Cloudflare Ethereum Gateway helps developers and anyone wanting to access the Ethereum blockchain by enabling them to do so without deploying their own Ethereum nodes, which is a resource-intensive process. Deploy and access distributed applications (DApps) quickly and easily with our gateway.\n\nCloudflare Ethereum Gateway also allows customers to use their own domains. JSON RPC queries over HTTP can be sent to a custom domain name.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": "Learn more",
-						"button1Url": "https://developers.cloudflare.com/web3/",
-						"button1Color": "blue",
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
@@ -792,25 +289,445 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundColor": "light-gray",
+						"sectionPadding": "tile--no-bottom-padding",
+						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
 						"imageSize": "medium",
-						"imageTextAlignment": null,
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "7DTh6zizVW1jwEkZ3RsPuF",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Get started today ",
-						"description": null,
-						"variant": "full-width",
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "2o6fGxg0Y18SktgzgvvFQ9",
 						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "73YO9QsbogVBP2z55Ece4b",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"It's just nice to have a company like Cloudflare build a product that enables us to use IPFS and serve our front-end to our users. It's super important to us that our users feel secure using our product.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Engineering Lead — Uniswap Labs",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": "Canva logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": "Delivery Hero logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": "eTeacher Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": "ezCater logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": "jetBlue logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": "OneTrust logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": "Politico logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": "Ziff Media Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": "INSEAD logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": "Kathmandu logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": "Kathmandu logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "4tJwRPOZlodZae6J2Ig2jt",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Cloudflare Web3 gateways allow you to retrieve and deliver content from the IPFS and Ethereum networks — without requiring you to set up or secure your own nodes first.",
+						"eyebrowHeading": "Top Cloudflare Web3 use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1OK8zKQpo0Lw501j6JMWCj",
+								"title": "Launch distributed applications (DApps)",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Easily deploy and access DApps without maintaining and monitoring your own nodes.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "84bf9920-ae71-533f-9d21-68e8f4517443",
+									"altText": "Platform apps ",
+									"title": "Platform apps ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zgjneatAin9CgQmzYl6Yq/b61aea1e89c05d2a7a3d458fe5b2d4db/platform-apps.svg"
+										},
+										"description": "Platform apps icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1LcERtZ2ibKcdTf4CmLsmu",
+								"title": "Serve content through custom domain names",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Deliver IPFS and Ethereum-hosted content from custom domain names via DNSLink protocols and JSON RPC queries over HTTP.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6bb3285c-bf75-5bac-82dd-58c220479c42",
+									"altText": "Reliability dns orange",
+									"title": "Reliability dns orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1IEgns2aHgVGiOuTOHIzv2/9eff990dd5e65ad51f5847a7612953d5/reliability-dns.svg"
+										},
+										"description": "DNS analytics icon\n"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "27HnjLFG47bWPKbvBqMeWB",
+								"title": "Cache content close to users",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "With the Cloudflare CDN, you can cache IPFS and Ethereum content as close to your end users as possible, helping improve performance and reliability.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "34b25a26-8efd-5aa4-bd47-facebc0adce4",
+									"altText": "Cache Reserve",
+									"title": "Cache Reserve",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Snx91INj9zhp6XXrKWttd/782b0f54013c68f613fc779daf8cdb47/server-1.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
 						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "347I10bstWPEGmgE2K0oFO",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/application-services/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "65FA73owR7q1XWqYVKgDEb",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Trusted by millions of Internet properties",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundImage": {
 							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
 							"altText": "Cloudflare Orange Background",
@@ -830,30 +747,213 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2mfrQ3Os9WlM8kr8YBbNic",
-							"elementName": "Talk to an expert - Primary CTA",
+							"contentfulId": "3xIzhQVegUXrYb5IVzKzQR",
+							"elementName": "See case studies (main)",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": "https://www.cloudflare.com/plans/enterprise/contact/",
+							"text": "See case studies",
+							"url": "/case-studies/",
 							"loggedInUrl": null,
 							"buttonModal": null,
-							"openInNewTab": true,
+							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": {
+						"secondaryCtaButton": null
+					},
+					{
+						"contentfulId": "2TKg3hXCXSnRxgtoZorZMh",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4swXA9z6CGZrFuuvy16nfx",
+								"title": "Build Web3 applications with Cloudflare",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "See how Cloudflare enables developers to create scalable Web3 applications on our global network.",
+								"learnMoreUrl": "https://blog.cloudflare.com/get-started-web3",
+								"learnMoreText": "Read the blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6yJJ7HlOoYLJQrt0juaxcs",
+								"title": "How Cloudflare IPFS Gateway works",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare IPFS Gateway allows users to continue using HTTP while enjoying the benefits of IPFS.",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1sAT84fNSzGSwMEFRIB6Sg/cebf06b3e7e3e0a5b565718d208dfede/Cloudflare_IPFS_Whitepaper.pdf",
+								"learnMoreText": "Get the whitepaper",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6oGSprxxBLNBTyM6HMQJxi",
+								"title": "How Cloudflare Ethereum Gateway works",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare Ethereum Gateway helps users access the Ethereum blockchain without deploying their own nodes.",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1RCrwliUIwSgQVdssVraEW/87f04dc055d823fea91165fb9597c10d/Cloudflare_Ethereum_Gateway_Whitepaper.pdf",
+								"learnMoreText": "Get the whitepaper",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "5OHO8KlS7sZjsAzz7aaHJz",
+						"title": "Get Cloudflare Web3 for your enterprise",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2eGoEkneAJ2DxKgIxsL4Mz",
-							"elementName": "Sign up for free - CTA",
+							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
+							"elementName": "Talk to an expert (modal form)",
 							"standardText": null,
-							"text": "Sign up for free ",
-							"url": "https://dash.cloudflare.com/sign-up",
+							"text": "Talk to an expert",
+							"url": null,
 							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
+								"modalName": "ZT Access Talk to an expert",
+								"modalId": "zt-access-talk-to-an-expert",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "5daBy41JohWg0zdFI6JHW",
+									"bladeName": "ZT Access - Talk to an expert - Marketo",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
 							"locale": "en-US"
-						}
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,

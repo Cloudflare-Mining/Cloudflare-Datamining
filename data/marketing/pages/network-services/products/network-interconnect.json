@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2020-07-30T21:52:57.763Z",
-					"updatedAt": "2024-05-21T23:32:09.375Z"
+					"updatedAt": "2024-05-30T03:14:35.985Z"
 				},
 				"contentfulId": "1Ax2HAMt68SiIUEKgwzd1l",
 				"contentTypeId": "page",
@@ -70,19 +70,19 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Network Interconnect",
 						"titleSize": null,
-						"subtitle": "Directly connect your on-premises networks to Cloudflare's network",
+						"subtitle": "Directly connect your on-premises and cloud networks to Cloudflare's network",
 						"subtitleSize": null,
-						"copy": "Your networks are at the core of delivering end-user experiences and supporting business initiatives. But often, the performance of your network traffic can be unpredictable due to intermediate networks outside of your control.\n\nConnect your network infrastructure directly to Cloudflare's network for a more reliable and secure experience than connecting over the public Internet.\n",
+						"copy": "Set up direct physical or partner delivered interconnections directly with the Cloudflare network: connections are available at over %{DataCenterCount} cities in %{CountryCount} countries. You can also connect virtually from over %{NetworkInterconnects} locations through our network interconnect partnerships.\n\nWith Cloudflare Network Interconnect, you get the power of Cloudflare at your network edge.\n",
 						"buttonColor": "orange",
 						"buttonColor2": null,
-						"buttonText1": "Contact us",
+						"buttonText1": "Talk to an expert",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "network-interconnect",
-						"buttonText2": null,
+						"button1ExtraClass": "talk-to-an-expert",
+						"buttonText2": "Get the product brief",
 						"buttonText2LoggedIn": "Looking for enterprise-grade solutions?",
-						"buttonUrl2": null,
+						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OYWSGpklil5pTOaOfbljq/8c76b73cac3a01645c55d10f22235da4/Cloudflare_Network_Interconnect_-_1_Pager__2024_.pdf",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -94,7 +94,7 @@
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
+						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
@@ -105,7 +105,7 @@
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
@@ -127,76 +127,28 @@
 						}
 					},
 					{
-						"contentfulId": "611YpJTkJr70JRlCmubMIZ",
-						"title": "The power of Cloudflare — at your physical network edge",
-						"copy": "With Cloudflare Network Interconnect, you can set up physical or virtual interconnections — enabling you to get faster performance and better security at lower costs than with connections over the public Internet.\n\nCloudflare's vast global network spans data centers in over %{DataCenterCount} cities in %{CountryCount} countries. In addition to physical connections at our data center locations, you can also connect virtually from over 1600 locations through our [network interconnect partnerships](https://blog.cloudflare.com/interconnect-anywhere/) with companies like Equinix, Megaport, PacketFabric, Console Connect, CoreSite and more.\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": "small",
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "37Mogm6C7nLal1KWSnmx35",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
+						"contentfulId": "2jaG3Miupv7WTuCqtTfU9b",
+						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE NETWORK INTERCONNECT",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "72SKp2YoiDowgxmm4cSCD",
-								"title": "Better performance",
-								"makeTitleLink": null,
+								"contentfulId": "3JYj80A1beq19A8hED2kk0",
+								"title": "Better performance and reliability",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "With no intermediary transit providers and associated hops between Cloudflare and your network, you get faster performance",
+								"description": "With no intermediary networks between you and Cloudflare, you get faster performance and reduce unpredictability.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3k9eTDWpZRh54RySn0JcgX/f9b0c2efa6c0060c23463555c833c9b1/icon-rocket-loader-white.png"
-									},
-									"description": "icon rocket loader white"
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
 									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
 									"altText": "Performance acceleration rocket ",
@@ -221,34 +173,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "17a9cyfhm9MAGgibiLNjgK",
+								"contentfulId": "5ga8jAv7PNttOYyiza7oBA",
 								"title": "More secure",
-								"makeTitleLink": null,
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Each provisioned link is reserved exclusively for the customer that provisions it — ensuring customer traffic is isolated and private",
+								"description": "Each interconnection is reserved exclusively for the customer that provisions it — ensuring customer traffic is isolated and private.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kHEahP0rJ0xZozm7WHpxF/f61ff561e3531441f764dc2525d9188a/icon-security-white.png"
-									},
-									"description": "icon security white"
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "c6776679-e543-5a80-9232-26ab70198b70",
-									"altText": "Security lock Orange",
-									"title": "Security lock Orange",
+									"id": "a2e13743-df8f-5dc4-b0d0-7886c680972f",
+									"altText": null,
+									"title": "Secure distributed remote workforces",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Cy6RUpurh3hxxzkZwh8Ax/e7758d8bd71b19216644a3612915c55a/cloudflare-security-center__1_.png"
 										},
-										"description": "Padlock icon"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -262,34 +209,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "27FJpqG1D5hvPnMYc5gjmQ",
+								"contentfulId": "5TyTUjzUTWro0x9DzVhM3D",
 								"title": "Lower costs",
-								"makeTitleLink": null,
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Customers can benefit from reduced transit provider costs and may also be able to lower egress costs in the event of cache-miss",
+								"description": "Customers can benefit from reduced transit provider costs and may also be able to lower egress costs in the event of cache-miss.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Rg59meZmqNLQsr4P7PghV/9d6b941e5e3fb8a4468dcfdadc1fd62a/icon-cost-white.png"
-									},
-									"description": "icon cost white"
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
-									"altText": "Price",
-									"title": "Price",
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
 										},
-										"description": ""
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -301,50 +243,14 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "4nI7gm2Y8er5nYoc6imP2u",
-						"quote": "\"Cloudflare Network Interconnect's high-performance private links enable us to effectively and efficiently serve the content delivery needs of our B2 Cloud Storage customers.\"",
-						"quoteAuthor": "Tim Nufire",
-						"quoteTitle": "Chief Cloud Officer",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PrlstPJL0GGKtlvgKzcWN/f79aece93d0659899bef6e395a8f6fe2/logo_backblaze-2.svg"
-							},
-							"description": "Backblaze logo"
-						},
-						"imageAssetFile": {
-							"id": "a91c7d42-0894-55e3-b0a6-ebcd21cc8fc6",
-							"altText": "Backblaze logo (grey scale)",
-							"title": "Backblaze logo (grey scale)",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PrlstPJL0GGKtlvgKzcWN/f79aece93d0659899bef6e395a8f6fe2/logo_backblaze-2.svg"
-								},
-								"description": "Backblaze logo"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
-					},
-					{
-						"contentfulId": "0ryuD0O4ekXFRG0TvrkZv",
-						"title": "How Cloudflare Network Interconnect benefits other Cloudflare products",
-						"copy": "Cloudflare's global network is like a network of highways that is designed to help deliver traffic in a fast, secure, and reliable manner. Extending that analogy, Cloudflare Network Interconnect is the on-ramp that allows our customers to interconnect their data centers directly with Cloudflare.  \n\nKeep reading to discover how Cloudflare Network Interconnect enhances the security and reliability of our entire product suite — for even faster and more private connections between your infrastructure and ours.",
+						"contentfulId": "77UwZlanqG7v3emxjNPc2y",
+						"title": "Direct physical or virtual partner connections with the Cloudflare network",
+						"copy": "Cloudflare Network Interconnect is the on-ramp that allows our customers to interconnect their data centers directly with Cloudflare, increasing the benefits from Cloudflare products like [Magic Transit](https://www.cloudflare.com/network-services/products/magic-transit/) (for DDoS), [Zero Trust](https://www.cloudflare.com/zero-trust/) (for user and device security), [Workers](https://workers.cloudflare.com/) (for building applications), and more.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -357,64 +263,10 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/684JwC6JCxvi1E8ofkgvsJ/a86c37444b225f2cb22a349cc9483c12/BDES-4906_-_network-map-spot-hero-illustration.svg"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "664b23a1-f7dd-5f1c-810a-763e14926f20",
-							"altText": "global-network",
-							"title": "global-network",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/684JwC6JCxvi1E8ofkgvsJ/a86c37444b225f2cb22a349cc9483c12/BDES-4906_-_network-map-spot-hero-illustration.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "38NukCwwgGlKsrHc9NrONk",
-						"title": "Cloudflare Magic Transit",
-						"copy": "[Magic Transit](https://www.cloudflare.com/magic-transit) is Cloudflare's offering for networks. It uses Border Gateway Protocol (BGP) to reroute incoming customer network traffic and block threats. \n\nWith Cloudflare Network Interconnect, clean traffic is delivered over secure and private links back to the customer network.\n\nNetwork interfaces to Cloudflare are not exposed to the public Internet, minimizing threat exposure and delivering a more consistent network performance.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
@@ -437,640 +289,690 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-top",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "304qLHvQFDXUZsyB3jDXLP",
-						"title": "Cloudflare Zero Trust",
-						"copy": "[Cloudflare Zero Trust](https://teams.cloudflare.com) replaces legacy on-premise VPN and Internet gateway hardware with Cloudflare's global network, bringing traffic filtering and user authentication to the edge.\n\nCloudflare Network Interconnect establishes direct connections from branch offices to Cloudflare — without backhauling traffic to centralized filtering appliances — to further improve the speed and reliability of application traffic.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/31GikzFtGvBpSUI70wYl1T/70d855590450c56671c7e1b537694c27/image_cloudflare-for-teams_zero-trust.png"
-							},
-							"description": "Cloudflare for Teams - Zero Trust"
-						},
-						"imageAssetFile": {
-							"id": "ac230b7a-8f00-5efb-8a07-044ba1b268f2",
-							"altText": "teams-access-zero-trust 1",
-							"title": "teams-access-zero-trust 1",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/64rkzfRlSKZAYVL0p5jiem/5d5e036c6d7f98ca6e0db9dd5978a858/BDES-4908_-_teams-access-zero-trust-spot-illustration.svg"
-								},
-								"description": "Teams access zero trust 1"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-top",
-						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "12ZnvsSO6OG6UfteoFqFQr",
-						"title": "Cloudflare CDN",
-						"copy": "[Cloudflare CDN](https://www.cloudflare.com/cdn) brings content closer to visitors, improving site speed and minimizing origin load. Static and dynamic content is delivered over low-latency Cloudflare links to visitors all over the world for a faster user experience.\n\nCloudflare Network Interconnect also helps reduce egress bandwidth costs in the event of cache-miss to the origin.\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3X1JCzCt6U2wgkcQYi62AE/ba7e8d90e35045984eb32b8fe5a70991/BDES-4908_-_cdn-global-hero-illustration.svg"
-							},
-							"description": "cdn global hero illustration"
-						},
-						"imageAssetFile": {
-							"id": "291c2f68-8754-5531-bf9a-6f269ec4856f",
-							"altText": "caching-hero",
-							"title": "caching-hero",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3X1JCzCt6U2wgkcQYi62AE/ba7e8d90e35045984eb32b8fe5a70991/BDES-4908_-_cdn-global-hero-illustration.svg"
-								},
-								"description": "cdn global hero illustration"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-top",
-						"imagePosition": false,
-						"imageSize": "medium",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "2hDWkqfgLw0OxPHrneXYF9",
-						"title": "Cloudflare Workers",
-						"copy": "[Cloudflare Workers](https://workers.cloudflare.com) is a serverless compute platform that gives developers the ability to deploy custom code and robust, full-fledged applications at the network edge. \n\nWhen integrated with Cloudflare Network Interconnect, Workers provides a secure connection to serverless cloud compute that does not traverse the public Internet, thereby enabling tighter network performance tolerances.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5TtcLTpF5teKoSXXRhlhHf/2b32bf75da2c3f7c421fd10e8112967e/BDES-4908_-_cloudflare-workers-use-cases-1.svg"
-							},
-							"description": "SaaS   Serverless"
-						},
-						"imageAssetFile": {
-							"id": "53bb4534-9d12-5567-b9d7-b811ed38f9c7",
-							"altText": "SaaS - Serverless image",
-							"title": "SaaS - Serverless image",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5TtcLTpF5teKoSXXRhlhHf/2b32bf75da2c3f7c421fd10e8112967e/BDES-4908_-_cloudflare-workers-use-cases-1.svg"
-								},
-								"description": "SaaS   Serverless"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-top",
-						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "1IscVo0EKZotBt1w5cEayw",
-						"title": "Cloudflare Network Interconnection Partnerships",
-						"copy": "Cloudflare partners with leading cloud exchanges and data centers in global markets to offer private, secure links over high-performance networks and physical connections.\n\nWhether you are connecting to Cloudflare via our global data centers or one of our partners' many locations, you can instantly provision connections to avoid idle capacity and wasted costs.\n\nLearn more about [Cloudflare's partnerships](https://www.cloudflare.com/network-interconnect-partnerships/).",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3apj6yJSjWQ9DMVqvje89a/377e78c8fd2c6c8d879afb56663f08fc/illustration_cloudflare-for-teams_fast-connections_svg.svg"
-							},
-							"description": "A series of arrows depicting low lag and fast responses"
-						},
-						"imageAssetFile": {
-							"id": "f7c883a4-09d0-57b9-bfb6-5d2b1a7223bc",
-							"altText": "illustration cloudflare-for-teams fast-connections svg",
-							"title": "illustration cloudflare-for-teams fast-connections svg",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3apj6yJSjWQ9DMVqvje89a/377e78c8fd2c6c8d879afb56663f08fc/illustration_cloudflare-for-teams_fast-connections_svg.svg"
-								},
-								"description": "A series of arrows depicting low lag and fast responses"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Connect to Cloudflare: Physically or virtually",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "https://www.cloudflare.com/case-studies/",
 						"sectionPadding": null,
 						"backgroundColor": "white",
-						"title": "Trusted by millions of Internet properties",
-						"copy": null,
-						"logoList": [
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ovo10a1mEsAZ7ZwFKfFl/d0d561ddb71ecdb723357bb2f79bc979/logo_mars_gray_32px-wrapper.svg"
-								},
-								"description": "Mars logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/75Iu2nwjYyY5rckEPqO9hr/57b676a2cf5fe6c1e2b3663d7131fda5/logo_loreal_gray_32px-wrapper.svg"
-								},
-								"description": "L'Oreal logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Gps1TUuUvlobFOEXbnJlI/df914dce0414a8cfccb70c090f271304/logo_doordash_gray_32px-wrapper.svg"
-								},
-								"description": "Doordash logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67NI5PUHwR6yUSWHGPL1rM/1a2179da46b2df3eb6d8c4435bafeaa4/logo_garmin_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mAzLb3ofkkG38jtcP2Ys8/094958a88df30575d79254ee6615a82f/logo_ibm_gray_32px-wrapper.svg"
-								},
-								"description": "IBM logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TfcZ86qvZor2xtI2z4Vvr/ef54112582296119f4296869c34ba025/logo_23andme_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhur0vl8q716TyGFZuCIG/acb851172c83f325ae99e527ef4c216e/logo_shopify_color_32px-wrapper.svg"
-								},
-								"description": "Shopify logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lhZTNuuLxtB38r8n1VORb/9fbfad924669a02deb97668b9c8d163b/logo_lending-tree_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/47baOjkvX7lLtmTdWvCYI9/009360a8301d33def2ea3ffe22a922df/logo_labcorp_color_32px-wrapper.svg"
-								},
-								"description": "LabCorp logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26kszL2y2X7zTR2edZPDUY/1a9d00bc8c441346e6dd06bd82204972/logo_ncr_gray_32px-wrapper.svg"
-								},
-								"description": "NCR logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-								},
-								"description": "Thomson Reuters logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YRPa33UFrfL2zoZd2AXTq/658995f16c7ee4818875c254c18573d3/logo_zendesk_gray_32px-wrapper.svg"
-								},
-								"description": null
-							}
-						],
-						"logoListAssetFile": [
-							{
-								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
-								"altText": "Logo mars trusted by gray",
-								"title": "Logo mars trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xar1H4WcFHHkHRDzMypMh/1f8989ae11cb464cc640c7121d0be9a6/logo_mars_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
-								"altText": "Logo loreal trusted by gray",
-								"title": "Logo loreal trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xn47h0gWiUSwJ0PU3Ysvk/683779108bfd6eeb62fbac5135780fe6/logo_loreal_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
-								"altText": "Logo doordash trusted by gray",
-								"title": "Logo doordash trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fy2mc73AF9xqD18C5760R/f46ab68d38c9adb30a639f69589d8af0/doordash_134.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
-								"altText": "Logo garmin trusted by gray",
-								"title": "Logo garmin trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VUhUMEcvn3L3j88LttHzC/b2cf2b702aad874db9cb61b0028e9c40/logo_garmin_trusted-by_gray.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
-								"altText": "Logo ibm trusted by gray",
-								"title": "Logo ibm trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OMwO1Fr8BxHVum0iBbatc/979c1807f5810edc903d4b07c18e0cb0/logo_ibm_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "ffd4a407-4457-5421-8b20-54433e485cc7",
-								"altText": "Logo 23andme trusted by gray",
-								"title": "Logo 23andme trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TfcZ86qvZor2xtI2z4Vvr/ef54112582296119f4296869c34ba025/logo_23andme_color_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
-								"altText": "Logo shopify trusted by gray",
-								"title": "Logo shopify trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVeELky7fceWRpfBvN8qr/4e13aa3d8dd73e1f091f3de966fdc9cb/logo_shopify_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "5d11dee2-570b-5d45-86a2-634fc4c71ce1",
-								"altText": "Logo lending tree trusted by gray",
-								"title": "Logo lending tree trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lhZTNuuLxtB38r8n1VORb/9fbfad924669a02deb97668b9c8d163b/logo_lending-tree_color_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
-								"altText": "Logo labcorp trusted by gray",
-								"title": "Logo labcorp trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsuJijKk8EMH5s1ae56nx/b13406881aa864b7e17b2233a0d090ef/logo_labcorp_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "d20283f3-6fa3-50d0-91a1-715d8d303897",
-								"altText": "Logo ncr trusted by gray",
-								"title": "Logo ncr trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26kszL2y2X7zTR2edZPDUY/1a9d00bc8c441346e6dd06bd82204972/logo_ncr_gray_32px-wrapper.svg"
-									},
-									"description": "NCR logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
-								"altText": "Logo thomson reuters trusted by gray",
-								"title": "Logo thomson reuters trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-									},
-									"description": "Thomson Reuters logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7b63d2ac-0e8f-5b5b-aeab-27b7128928e8",
-								"altText": "Logo zendesk trusted by gray",
-								"title": "Logo zendesk trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YRPa33UFrfL2zoZd2AXTq/658995f16c7ee4818875c254c18573d3/logo_zendesk_gray_32px-wrapper.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							}
-						],
-						"logoUrlList": null
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
+						"togglesTo": []
 					},
 					{
-						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "2zrYEgOB9B7FDksk3RTVnC",
-						"title": "Additional Resources",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "71TlizS7aiZ8PeMU3pQ9M3",
+						"title": "Learn how to develop a strategy for your network modernization",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"backgroundImage": null,
-						"cards": [
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2Dvfm3Spk5VBq9a4bsHglX",
+							"elementName": "Get the white paper - CTA",
+							"standardText": null,
+							"text": "Get the whitepaper",
+							"url": "https://www.cloudflare.com/lp/developing-a-strategy-for-network-modernization/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "5GJdWsOiF1f34qjwMEIRXB",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
 							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "2jeL7iYjnvFxVkFt8PZrz4",
-								"heading": "Blog",
-								"description": "Simplifying how enterprises connect to Cloudflare with Express Cloudflare Network Interconnect",
-								"category": "Insights",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "KN1292nGhO2QqQOui92sE",
-									"elementName": "Blog Link",
-									"standardText": null,
-									"text": "Learn more",
-									"url": "https://blog.cloudflare.com/announcing-express-cni",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "03b2dff5-f366-5916-899a-15ff34b69a03",
-									"altText": "Simplifying how enterprises connect to Cloudflare with Express Cloudflare Network Interconnect",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/YN2A2OAMnoSn9gqBb5VYl/c2d52224c2b05a6a9f8cd18daaa59a4c/image5-6.png"
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5zGokZjlTg4JwZv61P94b9",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
-										"description": "Simplifying how enterprises connect to Cloudflare with Express Cloudflare Network Interconnect"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "Gm7wyONzjDwNcuELUMA38",
-								"heading": "Blog",
-								"description": "Cloud CNI privately connects your clouds to Cloudflare",
-								"category": "Insights",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "77SbCRm1QTwAj9ieoDRrte",
-									"elementName": "Blog link",
-									"standardText": null,
-									"text": "Learn more",
-									"url": "https://blog.cloudflare.com/cloud-cni",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "550b8564-cc13-51a8-a14b-dbb7f67f1760",
-									"altText": "Cloud CNI privately connects your clouds to Cloudflare",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/58hYlMfGGLtGeqqkRFhwji/57c2b0b4c67d0530ebb931618510df94/image3-23.png"
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"Everything that we do is focused on building a solution that can scale while providing the level of service that our customers expect. Cloudflare solutions give us that scalability and free up our teams' time and energy to focus on proactive features and solutions.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
 										},
-										"description": "Cloud CNI privately connects your clouds to Cloudflare"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "3yzBUgUY5uWVxYvyoVDP6O",
-								"heading": "Blog",
-								"description": "Introducing Cloudflare Network Interconnect",
-								"category": "Insights",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "3abhZaAvFHTfmtXfG1QOMc",
-									"elementName": "Blog Link - Introducing Cloudflare Network Interconnect",
-									"standardText": null,
-									"text": "Learn more",
-									"url": "https://blog.cloudflare.com/cloudflare-network-interconnect/",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "526eec10-eec9-56e8-9eee-48442cd21df1",
-									"altText": "Introducing Cloudflare Network Interconnect",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ebI1lm2Y14lDGcpwd6Sfv/8c3cc9ea78191605415c97046ae3b96b/Cloudflare_Network_Interconnect__2x.png"
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
-										"description": "Introducing Cloudflare Network Interconnect"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "CTO — Kinsta",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
 								}
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": "Canva logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": "Delivery Hero logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": "eTeacher Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": "ezCater logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": "jetBlue logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": "OneTrust logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": "Politico logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": "Ziff Media Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": "INSEAD logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": "Kathmandu logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": "Kathmandu logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "17K0NF5WE6DArLfk46MveM",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Cloudflare Network Interconnect gives you a direct connection to all Cloudflare services, helping you accelerate and secure on-premises and cloud networks.",
+						"eyebrowHeading": "Top Network Interconnect use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Two Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3cHrsOjEBvpmHI5N798Xip",
+								"title": "Complement ZTNA with connections to application networks",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare Zero Trust replaces legacy access VPNs with Cloudflare's global network. Cloudflare Network Interconnect establishes direct connections from Cloudflare to your private applications hosted on-premises or in public clouds.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "eb93065c-06f0-53bf-8f24-82f814b29726",
+									"altText": "security-shield-zero-trust",
+									"title": "security-shield-zero-trust",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/35yeieyQns5B8WsFes9Z20/8bf36cbf9edf546c30cc9e3e08235255/cloudflare-zero-trust.svg"
+										},
+										"description": "Shield with arrow icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "iEclbRSguZuQEwetoHlKm",
+								"title": "Reduce attack surface",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Privately connect to Cloudflare so that your application networks have no internet facing exposure.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "213e44f5-f2f9-5afa-930f-b9559ccedf63",
+									"altText": "Connect 2 ",
+									"title": "Connect 2 ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jOaaLoYqpJdNuiEEK853k/ff1f3528caf01138a2e07d11e37d4246/connect-2.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4eUBCZIkWKT9fZMJ8oJ6mU",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/network-services/solutions/#protect-accelerate-network-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/network-services/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "4ytzKTfH9MAV8qRttAs6k3",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Helping organizations worldwide protect and accelerate their networks",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "5HApvLAvSdwHI9D5XopPH3",
+							"elementName": "See case studies - ALL",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "/case-studies/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
+						"contentfulId": "22yh5YmQjiljdQ70m2Pz5h",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5MDiXQ7BnKb5QGNVu0htiR",
+								"title": "Cloudflare Network Interconnect documentation",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how to implement Network Interconnect and how it fits into your architecture.",
+								"learnMoreUrl": "https://developers.cloudflare.com/network-interconnect/",
+								"learnMoreText": "Read documentation",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3ogd9XxlOgd6O1VNvPGA5T",
+								"title": "Simplifying how enterprises connect to Cloudflare with Express Cloudflare Network Interconnect",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "CNI is a connection between a customer's network router and Cloudflare, which facilitates the direct exchange of information between networks instead of via the Internet.",
+								"learnMoreUrl": "https://blog.cloudflare.com/announcing-express-cni",
+								"learnMoreText": "Read blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4TvhbLxGJvKeF2rmwv4fBD",
+								"title": "Cloud CNI privately connects your clouds to Cloudflare",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "We're excited to announce that we support direct cloud interconnection with our Cloudflare Network Interconnect, allowing Cloudflare to be your one-stop shop for all your interconnection needs.",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloud-cni/",
+								"learnMoreText": "Read blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "1vpr60W3QGc0O3gPem3y06",
+						"title": "Get Cloudflare Network Interconnect for your enterprise",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1fLiWAHkQqZOwpjs7aU3Nw",
+							"elementName": "Talk to an expert (modal form)",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "4X33NKLPG0gT4v6Vb1X0ca",
+								"modalName": "ZT Access Talk to an expert",
+								"modalId": "zt-access-talk-to-an-expert",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "5daBy41JohWg0zdFI6JHW",
+									"bladeName": "ZT Access - Talk to an expert - Marketo",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "qAhSapPfDVF3vlTqCqVdU",
-						"modalName": "Network Interconnect",
-						"modalId": "network-interconnect",
+						"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
+						"modalName": "Talk to an expert",
+						"modalId": "talk-to-an-expert",
 						"modalType": "single-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "2yaJN47588uTWjChidEeON",
-							"bladeName": "Network Interconnect (Product Page)",
+							"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
+							"bladeName": "Enterprise General Sales Inquiry",
 							"backgroundColor": "white",
-							"marketoFormId": 2148,
+							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - GBL - Cloudflare Network Interconnect Product Page",
-							"marketoFormHeaderText": "Cloudflare Network Interconnect Request",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": "Talk to an expert",
 							"marketoFormDefaultComment": null,
-							"showCommentBox": false,
+							"showCommentBox": null,
 							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": "If you have any additional information, please email interconnection@cloudflare.com",
+							"marketoFormCustomSuccessMessage": null,
 							"marketoFormPdfDownload": null,
 							"marketoFormPdfDownloadI18n": [],
 							"marketoFormAssetDownloadButtonText": null,
@@ -1084,7 +986,7 @@
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Cloudflare Network Interconnect Request",
+						"title": null,
 						"regularCopy": null,
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,

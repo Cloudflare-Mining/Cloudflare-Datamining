@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2019-01-31T19:03:22.084Z",
-					"updatedAt": "2024-05-23T10:49:29.888Z"
+					"updatedAt": "2024-05-30T03:12:57.334Z"
 				},
 				"contentfulId": "3pnxtnd3x6OMcA2uAIG8YU",
 				"contentTypeId": "page",
@@ -70,16 +70,16 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Logs",
 						"titleSize": null,
-						"subtitle": "Granular Insights Into Your Traffic",
+						"subtitle": "Get a complete understanding of your app's traffic",
 						"subtitleSize": null,
-						"copy": "Improve your application's performance and security by tuning your Cloudflare configuration. Investigate and debug errors and security mitigations reported by your end users. Build customized analytics in the tools you already use.",
+						"copy": "Cloudflare provides detailed logs of your HTTP requests. Use these logs to debug, identify configuration adjustments to improve performance and security, and create custom analytics.",
 						"buttonColor": "orange",
 						"buttonColor2": null,
-						"buttonText1": "Contact Us",
+						"buttonText1": "Talk to an expert",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "cloudflare-logs-product-contact-sales",
+						"button1ExtraClass": "talk-to-an-expert",
 						"buttonText2": null,
 						"buttonText2LoggedIn": null,
 						"buttonUrl2": null,
@@ -96,25 +96,20 @@
 						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": null,
+						"imageSize": "Medium",
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": "Currently available for Enterprise customers. Contact Cloudflare Support or your Customer Success Manager to activate today. See our [developer documentation](https://developers.cloudflare.com/logs/) for details.",
+						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "show",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2JpYAOMkEm0DkqXrCd2Bhu/373a154b8d0c9a76f47d7c98e3a348be/cloudflare-logs-hero.png"
-							},
-							"description": "Granular insights from your data"
-						},
+						"image": null,
 						"imageAssetFile": {
 							"id": "ab4db9e9-211f-59de-8563-a4bfd2933260",
 							"altText": "Logs hero illustration",
@@ -132,9 +127,166 @@
 						}
 					},
 					{
-						"contentfulId": "6CGMHnpc8gYp6UN8U439wH",
+						"contentfulId": "KCdnKNu5ZUc8vsovNNrUj",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE LOGS",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "56rwPA8JwIs1euQnQKRXEU",
+								"title": "Identify attacks and debug errors",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Investigate potential threats in HTTP traffic. Identify and debug errors affecting end users.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
+									"altText": "Traffic attack blue",
+									"title": "Traffic attack blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d282e08b82411f75db51ff233bb34247/traffic-attack-browser__1_.svg"
+										},
+										"description": "Prevent financial and identity theft icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5HfQD8tao8aN8mi9yoDPlY",
+								"title": "Tune your Cloudflare configuration",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Logs can help you improve your application's performance and security by adjusting your Cloudflare configuration.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/932f409beb6e487be25979fcc5cbf525/performance-acceleration-rocket.png"
+										},
+										"description": "Performance acceleration rocket orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3JO1MqSu3dchoDeZhor0z2",
+								"title": "Create custom analytics",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Build custom analytics in the tools you already use.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "082acf6d-2836-52a9-a97d-f6a571c67183",
+									"altText": "Icon of a graph going up",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/yXs0Mrat5Fwc9hqisn4li/2741ce0d3466e09e4775ea7f5caa894b/analytics-data.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "Sa4fe23HKNMHg35wyBrlI",
+								"title": "Push or pull logs to anywhere",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Push logs to your preferred storage provider, or pull logs via our API.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7dcf0b32-5e52-5e8a-be1e-2324e1aab71c",
+									"altText": "Code api ",
+									"title": "Code api ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5M2SLF9OIQYKSeaL46suWO/87ec742e674be44e38dab4ee620c2a42/code-api.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "1ESHnMzQNkZonyb1IJLRRp",
 						"title": "Get comprehensive metadata on your domain's requests",
-						"copy": "__Challenge__: Optimizing user experience while keeping attackers at bay is difficult without a deep understanding of your traffic－down to the individual request.\n\n__Solution__: Cloudflare provides detailed logs of your HTTP requests. Use these logs to debug, identify configuration adjustments to improve performance and security, and create custom analytics. Combine request logs with other data sources, such as application server logs, for end-to-end visibility.",
+						"copy": "Cloudflare Logs provide customers with a deep understanding of their traffic down to the individual HTTP request.\n\nOrganizations can have their logs sent to their preferred storage provider and use the tools you already know to gain insights, or write custom scripts to retrieve their logs continually using our powerful REST API.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -147,112 +299,15 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5HfeLoYBjvKsmyYPDvQA40/00fa497c46a56acbe53a0bc0e0fabb0c/Screen_Shot_2019-01-30_at_1.54.02_PM.png"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "9975afde-5d44-50ab-80f6-4a68c7cf3322",
-							"altText": "Cloudflare provides detailed logs of HTTP requests.",
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7nhJABV0xGJkCtMfEDWSLz/451b6bd12d344b195843e7710eb5997a/Comprehensive-metadata-domain___s-requests.svg"
-								},
-								"description": "Comprehensive-metadata-on-domain-requests"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "643XrswQWrXKyUQaQbU7SH",
-						"quote": "\"Cloudflare's Logpush and ready-made dashboards have allowed us to obtain complete end-to-end visibility of our network and has ensured that we can build a holistic threat intel view for our entire platform.\"",
-						"quoteAuthor": "Steven Rogers, Senior Systems Security Specialist",
-						"quoteTitle": "Ansarada",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-gray",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AmwHccYWSBkgWWhJ3P8Gm/cd6767d056940903a8047847c77ab106/logo-ansarada-color.png"
-							},
-							"description": "Ansarada logo"
-						},
-						"imageAssetFile": {
-							"id": "55db8fc4-385a-5c7d-bbea-470c266bbb48",
-							"altText": "logo-ansarada-color",
-							"title": "logo-ansarada-color",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2AmwHccYWSBkgWWhJ3P8Gm/cd6767d056940903a8047847c77ab106/logo-ansarada-color.png"
-								},
-								"description": "Ansarada logo"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
-					},
-					{
-						"contentfulId": "2JtrUjrYdaOGyQe8GMqACE",
-						"title": "Push directly to your preferred storage provider",
-						"copy": "Have your Cloudflare request logs sent to your preferred storage provider and use the tools you already know to gain insights. Correlate with logs from other services for a comprehensive view of your systems.\n \nReduce deployment time and configuration errors by using our Dashboard UI and auto-generated bucket policies. Quickly configure dozens or hundreds of domains using an API.\n\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KK6LyrGktjzO4TMy4l5vT/a0b9e039bba6f2eaf2003657847fea0f/logs-destinations.png"
-							},
-							"description": ""
-						},
+						"image": null,
 						"imageAssetFile": {
 							"id": "97648a12-b981-5ea9-aa7c-81fdfdf0c251",
 							"altText": "Cloudflare request logs can be sent to a preferred storage provider.",
@@ -270,116 +325,688 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "5c4f9t0wYwEyu4Qg8uGa8E",
-						"title": "Pull logs with a REST API",
-						"copy": "Write custom scripts to retrieve your logs continually using our powerful REST API. Build and operate your own log retrieval service to meet your specific log analysis requirements.\n \nPull logs as you need them by specifying time ranges and data fields. Control volume using count and sample parameters.\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7siAHhIttFrrysFn3ZTb4b/fdd6bd2a5a3b6d3cfde970d16065fec9/Pull-logs-with-a-REST-API.svg"
-							},
-							"description": "Pull-logs-with-a-REST-API"
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "1Qi7NLjkW0myIgVtCoMfjV",
+						"title": "Learn how Cloudflare Logs maintains data privacy",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "4BlzKmEhjxIbcUWzKzcVPR",
+							"elementName": "Get the whitepaper - CTA",
+							"standardText": null,
+							"text": "Get the whitepaper",
+							"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Q4mtd7RL9I6UyCEYYsQPk/cfcccb4a75aa8286afa358b4ac36b085/How_Cloudflare_helps_address_data_protection_and_locality_obligations_in_Europe_-_June_2022.pdf",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
 						},
-						"imageAssetFile": {
-							"id": "95c5fed7-ce1f-536a-905f-99ecfe9f353c",
-							"altText": "Pull logs with a REST API",
-							"title": "Pull-logs-with-a-REST-API",
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "5PkzzkEw85ZQhojbzX7EXC",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1n7DgXVYN5KVcLnr1pagRa",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"Cloudflare's Logpush and ready-made dashboards have allowed us to obtain complete end-to-end visibility of our network and [have] ensured that we can build a holistic threat intel view for our entire platform.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " Senior Sytems Security Specialist, Ansarada",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": "Canva logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": "Delivery Hero logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": "eTeacher Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": "ezCater logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": "jetBlue logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": "OneTrust logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": "Politico logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": "Ziff Media Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": "INSEAD logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": "Kathmandu logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": "Kathmandu logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "24PexURHxdSHE5I09bOvP7",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Cloudflare Logs helps you optimize your application's security and performance",
+						"eyebrowHeading": "Top Logs use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Two Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "68vKnhiDS3MqJOu9MJqy6m",
+								"title": "Optimize user experience",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Use Cloudflare Logs to identify configuration adjustments to improve performance.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "85c4fbc4-0db5-571b-8e57-5e56edf68d42",
+									"altText": "Cloudflare Logs",
+									"title": "Logs Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lXkpwZauF5faOHKlfU1nh/8147f968d6de55800a02c83cbf088de3/documentation-rules.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1wjEGhKbnd7nyyE61i1KSs",
+								"title": "End-to-end visibility",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Combine request logs with other data sources, such as application server logs, for a complete view.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b815385d-6fa7-54c1-9020-d5394237a7ab",
+									"altText": "Applications icon",
+									"title": "Applications icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Gs1nPWmoZABBztrTHECMD/62d032e76ca646918a6420271edb612c/applications.svg"
+										},
+										"description": "Applications icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "6ERNjfSr6g9m1W5koqEN4x",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#web-app-performance-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "1ldMim6nGgZgoSHiKZhQS9",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Helping organizations worldwide accelerate and protect their applications",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7siAHhIttFrrysFn3ZTb4b/fdd6bd2a5a3b6d3cfde970d16065fec9/Pull-logs-with-a-REST-API.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
 								},
-								"description": "Pull-logs-with-a-REST-API"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "border-top",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "5HApvLAvSdwHI9D5XopPH3",
+							"elementName": "See case studies - ALL",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "/case-studies/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "7LXSmZvjOwUW2Q4eQSCq4M",
-						"contentTypeId": "bladeKeyFeatures",
-						"backgroundColor": "light-blue",
-						"title": "Key Features",
-						"keyFeature": [
-							"Retrieve request logs over HTTP with a REST API",
-							"Specify time ranges, sample rates, and timestamp formats",
-							"Select from 50+ fields related to client, origin, firewall, cache, and Cloudflare routing",
-							"Have your logs pushed to your preferred cloud storage provider",
-							"Receive compressed files  (approximately 5-10% of original size)",
-							"Reduce setup time using dashboard integrations with Amazon S3, Azure Blob, Datadog, Elastic, Google Data Studio, Looker, Datadog, Splunk, and Sumo Logic",
-							"Supports the following zone-scoped data sets: Firewall events, HTTP requests, NEL reports, and Spectrum events",
-							"Supports the following account-scoped data sets: Audits logs, Gateway DNS, and Gateway HTTP"
-						],
+						"contentfulId": "10mobUt9TB5DC7uoF1M1D4",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": null,
 						"bladeBorder": "none",
 						"sectionPadding": null,
-						"titleColor": null,
-						"variant": null,
-						"description": null,
-						"featuresTextStyle": null,
-						"htmlId": null
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4cEEixz7mOjjkMz8flGYro",
+								"title": "Cloudflare Logs documentation",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how to use Cloudflare Logs for debugging, identifying configuration adjustments, and creating analytics.",
+								"learnMoreUrl": "https://developers.cloudflare.com/logs/",
+								"learnMoreText": "See documentation",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1X9u56ezuMTLUtczVSybp8",
+								"title": "How the Cloudflare network maintains data privacy",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "This paper breaks down how Cloudflare uses security measures to protect request metadata as it crosses our network.",
+								"learnMoreUrl": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/1S0GCmfDE4rA1CK5dCK9kL/1410444a21bedc1aefaa9e332b4a1e34/Data_Transit_Privacy_Whitepaper_V2.pdf",
+								"learnMoreText": "Get the whitepaper",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "41bJe4c3wfEAz8LfEgSmrh",
+								"title": "Cloudflare Logs tutorials",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn to manage and analyze your Cloudflare Logs.",
+								"learnMoreUrl": "https://developers.cloudflare.com/logs/tutorials/",
+								"learnMoreText": "Go to tutorials",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "4FQgRDlgs2NdH32hKJ8Ti7",
+						"title": "Get Cloudflare Logs for your enterprise",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "4Xz8W7auMR2dIP0Kp0tpJW",
+							"elementName": "Talk to an expert",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
+								"modalName": "Talk to an expert",
+								"modalId": "talk-to-an-expert",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
+									"bladeName": "Enterprise General Sales Inquiry",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "3b6seMcybgWVrlofX82jaE",
-						"modalName": "Cloudflare Logs - Product Page: Form Modal",
-						"modalId": "cloudflare-logs-product-contact-sales",
+						"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
+						"modalName": "Talk to an expert",
+						"modalId": "talk-to-an-expert",
 						"modalType": "single-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "3eNj9lUUCJGInZSwDnR395",
-							"bladeName": "Cloudflare Logs - Product Page: Marketo Form (1341)",
+							"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
+							"bladeName": "Enterprise General Sales Inquiry",
 							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Contact Us Cloudflare Logs",
-							"marketoFormHeaderText": null,
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": "Talk to an expert",
 							"marketoFormDefaultComment": null,
-							"showCommentBox": true,
+							"showCommentBox": null,
 							"marketoFormThankYouText": null,
 							"marketoFormCustomSuccessMessage": null,
 							"marketoFormPdfDownload": null,
@@ -395,8 +1022,8 @@
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Contact Sales",
-						"regularCopy": "Cloudflare Logs",
+						"title": null,
+						"regularCopy": null,
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,

@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-05-11T12:04:29.252Z",
-					"updatedAt": "2024-05-25T01:40:40.260Z"
+					"updatedAt": "2024-05-30T03:19:28.614Z"
 				},
 				"contentfulId": "6c2CpRkK67PXP4LRz6s2JX",
 				"contentTypeId": "page",
@@ -68,21 +68,21 @@
 					{
 						"contentfulId": "tbMXbdl947mR3liButqiw",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Zero egress fee object storage",
+						"title": "Cloudflare R2",
 						"titleSize": null,
-						"subtitle": "R2 gives you the freedom to create the multi-cloud architectures you desire with an S3-compatible object storage. ",
+						"subtitle": "Global object storage with zero egress fees",
 						"subtitleSize": null,
-						"copy": "- Global object storage\n- Dynamic functionality via integration with Cloudflare Workers \n- Avoid vendor lock-in with our S3-compatible API \n- Easy migration from existing cloud storage providers",
+						"copy": "Powered by our programmable global network, R2 enables you to create flexible, multicloud architectures with S3-compatible object storage.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
-						"buttonText1": "Read the docs",
+						"buttonText1": "Get started",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://developers.cloudflare.com/r2/get-started/",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/r2",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Get Started for Free",
+						"buttonText2": "Get the product brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://dash.cloudflare.com/sign-up/r2",
+						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HSbIrd6CzxRpgCux0awBz/7b47dca6524b926dc5b42fd0366672b3/R2_Object_Storage_-_Product_Brief_2023.pdf",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -98,17 +98,22 @@
 						"popupText": null,
 						"button1OpenInNewTab": true,
 						"button2OpenInNewTab": true,
-						"streamThumbnails": "39s",
+						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
-						"streamPoster": null,
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+							},
+							"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+						},
 						"imageSize": "Medium",
 						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
@@ -130,200 +135,130 @@
 						}
 					},
 					{
-						"contentfulId": "3Ga1PwtQNF0RlO7vpjUGHN",
-						"title": "No more egress charges",
-						"copy": "You shouldn't have to pay to access your data. Pay no egress charges for data accessed from R2. Our affordable and consistent pricing reduces costs and frees up resources across your organization.\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "8f903c3c-8aea-5883-b152-745a73132d61",
-							"altText": null,
-							"title": "R2-zero-egress-fees",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/jbqDuVI2ZJI7jf2X4tmfE/39185b3813c12eed320c1da645658c85/BDES-4909_-_r2-zero-egress__1_.svg"
+						"contentfulId": "61K6K8GWmy6z9qVfqK22fc",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF CLOUDFLARE R2",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2YHznl0J5cgVAMVZRzYMs0",
+								"title": "S3-compatible object storage",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Our S3-compatible API gives you added flexibility — allowing you to access a wide range of S3 tools, libraries, and extensions.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "efd45c7a-1ca1-5b55-b5ae-7f697427546b",
+									"altText": "Cloudflare R2 distributed storage",
+									"title": "R2 Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20XuCGpQeiIcEBqL8eYZhq/41b6bb30b987d56e97de94cbbf51dcdb/cloud-upload.svg"
+										},
+										"description": "Cloud upload icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "Diagram of egress fees"
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "6V6Ci7BkyKtMV0pVo3SYJc",
-						"title": "See how much you can save with R2",
-						"titleSize": null,
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "5FoB4PZO9a6wuThC5fWuXl",
-							"elementName": "Calculate Your Savings enablement button",
-							"standardText": null,
-							"text": "Calculate your savings",
-							"url": "https://r2-calculator.cloudflare.com/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
-					},
-					{
-						"contentfulId": "9pE9NXDGZBvcy23sxB9Qd",
-						"title": "Migrate with ease",
-						"copy": "Rapidly move your objects with Cloudflare's automated migration service. Migrate objects all at once or over time, you're in control. ",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "280df306-0bb0-5b32-a2c1-0cb09a7f673d",
-							"altText": "R2 Super Slurper",
-							"title": "R2 Super Slurper",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/clTpukCc9EdbyJ3rMZmjy/853d7c1636fc5f2e2fccb0df976dacdc/R2_Super_Slurper.png"
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1EbJ3JN4ZU7uhSvSwfwxyX",
+								"title": "No egress charges",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Our affordable, consistent pricing helps free up resources across your organization — and you never have to pay egress fees for data accessed from R2.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "R2 Super Slurper"
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "5cwBbt3eGMkwppcbuuXICu",
-						"title": "Enhance and extend",
-						"copy": "Deploy edge functions with Cloudflare Workers, using the In-Worker API to perform authentication, route requests, enhance decisions, and more. The S3-compatible API allows you to access the wide range of S3 tools, libraries, and extensions.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "01c1f325-aa86-586f-a967-9093e1710bdc",
-							"altText": "Flexible API",
-							"title": "Flexible API",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wGaHMaouk0PKMteJSVqml/1f31bf1e7bf9c1bd3db085b600316143/BDES-4909_-_r2-flexible__1_.svg"
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "384CIJcvqx8DAD6MSjz1vJ",
+								"title": "Easy migration from existing providers",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Our automated migration service helps migrate your objects all at once or over time — whatever aligns with your current needs.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "f4f2db49-e40f-579d-b8d0-78c078cc9c15",
+									"altText": "Durable objects blue",
+									"title": "Durable objects blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kCZGnnEQKwkfLBcLYoxTB/a3226fadaee4f995d3351f65be75cba1/cloudflare-durable-objects.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "Illustration of building blocks"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "small",
-						"imageTextAlignment": null,
-						"togglesTo": []
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
 					},
 					{
-						"contentfulId": "7JfKn72fHccrlgg8PZCCaK",
-						"title": "Build a flexible, robust, & portable multi-cloud architecture",
-						"copy": "You're no longer constrained by vendor lock-in or exorbitant egress fees to move your data to your preferred locations. Accelerate multi-cloud adoption when you avoid hefty egress bills when moving data between clouds.",
+						"contentfulId": "6KAs90xZejQAeogTx8xZhD",
+						"title": "Avoid vendor lock-in with our global object storage",
+						"copy": "Cloudflare R2 allows you to store large amounts of unstructured data — without the costly egress fees or vendor lock-in associated with other cloud storage providers.\n\nR2 natively integrates with Cloudflare Workers, so you can easily perform authentication, route requests, and deploy edge functions across our network of %{DataCenterCount}+ data centers.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -362,23 +297,23 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
 						"imageSize": "medium",
-						"imageTextAlignment": null,
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "6dAwHpcQw5aNP5C7I8Eaf9",
-						"title": "Want to learn more about R2 object storage?",
-						"titleSize": null,
-						"backgroundColor": "white",
+						"contentfulId": "2GDwg7cZusn3025TBSq2lB",
+						"title": "Reduce cloud spend and avoid hidden costs",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
 						"buttonText2": null,
@@ -391,58 +326,478 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "1aS7ZFOijDXoFFiX9ie8vk",
-							"elementName": "R2 Product Page Button",
+							"contentfulId": "Vk1HHAj1VFGGSrhyWsYJH",
+							"elementName": "Get the ebook",
 							"standardText": null,
-							"text": "Speak to a specialist",
-							"url": null,
+							"text": "Get the ebook",
+							"url": "https://www.cloudflare.com/lp/say-goodbye-to-egress-fees/",
 							"loggedInUrl": null,
-							"buttonModal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "7HKPKdN8NyJuuIz6x0XBYI",
-								"modalName": "R2 Product Page Modal Form",
-								"modalId": "r2-product-page-modal-form",
-								"modalType": "split-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "7uQTdBu6g82MhQrzAgjaJu",
-									"bladeName": "R2 Product Page Marketo Form",
-									"backgroundColor": "white",
-									"marketoFormId": 2733,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "[INB] Q3'22 WEB - GBL - R2 web inquiry",
-									"marketoFormHeaderText": "Is R2 right for you?",
-									"marketoFormDefaultComment": null,
-									"showCommentBox": false,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": [],
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
-									"meta_adRollCustomSegment": null,
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": null,
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
-								},
-								"title": null,
-								"regularCopy": "Fill out the form below and an R2 specialist will be in touch shortly to discuss your specific needs.",
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
+							"buttonModal": null,
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "5MeBo5xxmROj5pBs3UYKjb",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6TCH2tz4T0K56QbP9FlgUT",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"After investigating a wide range of alternatives, we went with Cloudflare's R2 storage — and as a result are thrilled that our engine distribution costs have decreased by 98%, while delivering top-notch performance.\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Prisma",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": "Canva logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": "Delivery Hero logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": "eTeacher Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": "ezCater logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": "jetBlue logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": "OneTrust logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": "Politico logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": "Ziff Media Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": "INSEAD logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": "Kathmandu logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": "Kathmandu logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "5PTEt0bryMnMPtT2ZNruab",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "R2 helps you create portable multicloud architectures, effortlessly move data between cloud providers, and optimize content storage and delivery.",
+						"eyebrowHeading": "Top R2 use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6RMJ9ruC8LQkvdlN8CtYoX",
+								"title": "Migrate data from S3 and Google Cloud Storage (GCS)",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Move your data (including training data for AI models) to R2 and take advantage of our zero egress fee policy — whether you are permanently migrating your data or not.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "111dcd6d-8214-592f-8fbb-1fb4e22472f1",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6FZL1lm8PZDzqYf6ZsXqoG",
+								"title": "Optimize dynamic content storage and delivery",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "With our Cache API and Workers, you can significantly extend cache lifetimes for large files and provide low-latency access to assets.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6d5531b7-edaf-5b05-8686-6f455b1c5c6d",
+									"altText": "Optimization web blue",
+									"title": "Optimization web blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76OxPWvxXlUbcfGr05wpg5/429150d8058c40452ee038bd9198ba4d/optimization-web.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1e63ADYz8E8wTy3c9MnpiZ",
+								"title": "Configure object lifecycles",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Quickly and easily define rules that govern your object lifecycle stages and actions — helping automate data management, lower storage costs, enforce compliance, and streamline  your workflows.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "85b72606-4e5f-58f1-bdd8-2f22d34e428e",
+									"altText": "Ruleset icon",
+									"title": "Ruleset icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/BWKT2GPjWBacPIsuSQzfq/051691978b1dcd161745317f724eb2b4/cloudflare-ruleset-engine.svg"
+										},
+										"description": "cloudflare ruleset engine icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "17ht0gKiAF2eZCLP4wtlMf",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/developer-platform/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "2JaU5RorpeTdZM8o5Sm5c7",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Trusted by millions of Internet properties",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "3xIzhQVegUXrYb5IVzKzQR",
+							"elementName": "See case studies (main)",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "/case-studies/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
 					},
 					{
 						"contentTypeId": "bladeTable",
@@ -579,30 +934,134 @@
 						"dataSource": null
 					},
 					{
-						"contentfulId": "3XIOErHhLOGGO1ffE7wsAM",
-						"contentTypeId": "bladeKeyFeatures",
-						"backgroundColor": "light-blue",
-						"title": "Key Features",
-						"keyFeature": [
-							"In-workers API",
-							"S3-compatible API",
-							"Migration tools",
-							"Integration with Cloudflare's CDN",
-							"Integration with Workers",
-							"Zero egress fees"
-						],
+						"contentfulId": "3RA2AH9F1dZjNLbiaQrmuG",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
-						"sectionPadding": null,
-						"titleColor": "blue1",
-						"variant": null,
-						"description": null,
-						"featuresTextStyle": "body1",
-						"htmlId": null
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5vwg9kkJtjdDHCJPVnEF5y",
+								"title": "Explore the developer's guide to media optimization",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "See how R2 can help you host, store, and deliver rich media experiences — without driving up costs.",
+								"learnMoreUrl": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/76OowVPNaxwlbzZC9z5LpN/f8620e467799b0920ebd01fdb222798b/A_Developers_Guide_to_Media_Optimization.pdf",
+								"learnMoreText": "Get the guide",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "QqbkRdz4nDhCCpGkZSVJI",
+								"title": "Train LLMs on any cloud provider, anywhere in the world",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Building large language models (LLMs) requires robust data storage infrastructure. Cloudflare R2 can help.",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-r2-mosaicml-train-llms-anywhere-faster-cheaper",
+								"learnMoreText": "Read the blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "184SUYj0huGeJTgHJ25Nr9",
+								"title": "Reduce egress fees with R2",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Object storage becomes exponentially more expensive as data volume and egress costs increase. Learn how Cloudflare helps optimize your object storage with R2.",
+								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4242403/",
+								"learnMoreText": "Watch the webinar",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "5FazdcGOJc0YmPnmqkBI3N",
-						"title": "See what companies are building with R2 object storage.",
+						"contentfulId": "1BBlx7AhoYoQtkxLwIdWKi",
+						"title": "See how much you can save with R2",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -610,18 +1069,18 @@
 						"buttonText2": null,
 						"buttonModalId2": null,
 						"buttonUrl2": null,
-						"bladeSizeType": "large",
+						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "4tSZatpaBoTp0xQhhd6zT5",
-							"elementName": "Learn More - Dev platform /r2/ - Use Cases",
-							"standardText": "Learn More",
-							"text": null,
-							"url": "https://workers.cloudflare.com/built-with/collections/built-with-r2/",
+							"contentfulId": "1XNnDmEGSbjWIxvAugKKHG",
+							"elementName": "Calculate your savings - CTA",
+							"standardText": null,
+							"text": "Calculate your savings",
+							"url": "https://r2-calculator.cloudflare.com/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,

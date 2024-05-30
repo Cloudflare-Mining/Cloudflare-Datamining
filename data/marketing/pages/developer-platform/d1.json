@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-09-28T14:15:51.055Z",
-					"updatedAt": "2024-05-22T03:43:48.307Z"
+					"updatedAt": "2024-05-30T03:16:10.188Z"
 				},
 				"contentfulId": "1XocSe8FmOosqpYDlsG6hu",
 				"contentTypeId": "page",
@@ -68,21 +68,21 @@
 					{
 						"contentfulId": "3O9uxhlKbXtomgFTQjl3ct",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "D1 Database",
+						"title": "Cloudflare D1",
 						"titleSize": "medium",
-						"subtitle": "Build natively serverless SQL databases",
+						"subtitle": "Create serverless SQL databases",
 						"subtitleSize": null,
-						"copy": "Deploying and maintaining a database shouldn't be harder than building the application around it. Create a serverless relational database in seconds with D1. With a familiar SQL query language, point-in-time recovery, and cost-effective pricing you are empowered to build the next big thing.\n\n- Built on SQLite \n- Native serverless architecture\n- SQL based dialect\n- Built-in JSON parsing and querying functions\n- Support for full-text search and triggers\n",
+						"copy": "Create a serverless relational database in seconds with D1. With a familiar SQL query language, point-in-time recovery, and cost-effective pricing, you are empowered to build the next big thing.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
-						"buttonText1": "Read our documentation",
+						"buttonText1": "Get started",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://developers.cloudflare.com/d1/get-started/",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up/",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Get started",
+						"buttonText2": "View documentation",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://dash.cloudflare.com/sign-up",
+						"buttonUrl2": "https://developers.cloudflare.com/d1/get-started/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -96,8 +96,8 @@
 						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
@@ -130,115 +130,166 @@
 						}
 					},
 					{
-						"contentfulId": "23ffxRitlIIU6K5cakY3WB",
-						"title": "Build and deploy unlimited databases",
-						"copy": "Databases are a key part of building any full-stack application. Build infinitely scalable composable databases with Cloudflare's D1 database. ",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "4f70971c-7e33-5729-aa33-293902a9e729",
-							"altText": "Build and deploy unlimited databases",
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5GFzCrNZj9bom7quRxQ42J/c5e52810a342575c2f39805b1b866fda/D1_SQLite.png"
+						"contentfulId": "1WwRfKqHXfC0VMVeNUJhqx",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF D1",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7l7ul5KeEPns5nElQMjQVz",
+								"title": "Built-in database solution",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "D1 is built on one of the most widely used SQL query engines in the world, enabling you to use familiar drivers and ORMs.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "111dcd6d-8214-592f-8fbb-1fb4e22472f1",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": ""
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "50GG50cPWCnESbmjoZKgK7",
+								"title": "Scale infinitely",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Our natively serverless architecture enables developers to scale databases, increasing the pace of innovation.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
+										},
+										"description": "icon scale aqua"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "69K9rz5xFvqJS6SFcpbimR",
+								"title": "Rely on Time Travel",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "With always-on Time Travel, easily roll your database back to any specific minute in the last 30 days.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "672bae7e-7843-5f70-80c8-25b6483c2b51",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/62tme9kTrisdGyf3VkBsvv/4096a715634cf9a3807e0a59c9d5dab4/time.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "21drkzH2Sh8JvDCo09M0ip",
+								"title": "Benefit from cost-effective pricing",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "D1 bills on queries you issue and any storage above your plan's limits. You are not billed for hours or capacity units.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
+									"altText": "Price",
+									"title": "Price",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
+						"htmlId": null
 					},
 					{
-						"contentfulId": "18OXP8YqZuJDd4HoU7dkNt",
-						"title": "Infinite scalability with cost effective pricing",
-						"copy": "Implementations are often a massive point of friction, slowing down the innovation process. Our natively serverless architecture enables developers to scale databases without excessive costs.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "6cdad93f-62fc-59d1-888b-cbfe9087b335",
-							"altText": "Infinite scalability with cost effective pricing",
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/swfYnopcrJ4sg6r1lQFw5/f69fb09e0bcafa83a1653d29b4caf411/Database_connections.png"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "5SqiKDrgoJpg7X8qbHJbaN",
-						"title": " Built on one of the most popular and widely used SQL query engines in the world",
-						"copy": "No need for your teams to familiarize themselves with a proprietary query language, D1 uses a SQL based query language enabling you to use the drivers and ORMs you're familiar with.",
+						"contentfulId": "2YPiEEYcBsGmTBGSRDboEC",
+						"title": "Support globally distributed applications",
+						"copy": "D1 is built on SQLite, has built-in JSON parsing and querying functions, and offers asynchronous read replication and support for full-text search triggers.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -277,161 +328,21 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
-						"contentTypeId": "bladeTable",
-						"contentfulId": "3TtVd65KvQvx0ZAnAGXomu",
-						"locale": "en-US",
-						"sectionPadding": "tile--no-bottom-padding",
-						"bladeBorder": "none",
-						"backgroundColor": "white",
-						"displayHeader": null,
-						"showFilter": null,
-						"sectionTitle": null,
-						"title": "Pricing ",
-						"copy": "&nbsp;",
-						"htmlId": null,
-						"columnHeaders": [
-							{
-								"cellText": "Workers Free ( $0/mo)",
-								"cellTextLinkUrl": null,
-								"cellSubtitle": null,
-								"buttonText": null,
-								"buttonUrl": null,
-								"commonElements": null,
-								"imageAssetFile": null
-							},
-							{
-								"cellText": "Workers Paid ( $5/mo)",
-								"cellTextLinkUrl": null,
-								"cellSubtitle": null,
-								"buttonText": null,
-								"buttonUrl": null,
-								"commonElements": null,
-								"imageAssetFile": null
-							}
-						],
-						"groupsInTable": [],
-						"rowsInTable": [
-							{
-								"contentfulId": "5LYnuroUvk2tl28gPs0zdz",
-								"rowHeader2": {
-									"contentfulId": "4p7jr5sRMvu7wxpoagNOtX",
-									"cellText": "Rows Read",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "zGJX39fCI1oOfZfemntn1",
-										"cellText": "5 million / Day",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "6kSn6MCHpafoVmLqxmL8qa",
-										"cellText": "First 25B / month included + $0.001 / million rows",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "6Zxf1kVDzqz61hiyWMAj3H",
-								"rowHeader2": {
-									"contentfulId": "2XLJwDWw6iHIvoQu5P4uNJ",
-									"cellText": "Rows Written",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "461dkTx7mhRFjsjAE08lWd",
-										"cellText": "100K / day",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "FJBW1Qomb5magCNvJHi03",
-										"cellText": "First 50M / month included + $1.00 / million rows",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "5Q5gduzjeOXc2W4hqiab9Y",
-								"rowHeader2": {
-									"contentfulId": "7md6rwLCdTReVKzS6rtCVk",
-									"cellText": "Storage",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "6EfAtq3uVw9gBogoVw6w0I",
-										"cellText": "5GB (total)",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "6jgDcKCY7USGpFLmdenNET",
-										"cellText": "First 5GB included + $0.75 / GB-month",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							}
-						],
-						"dataSource": null
-					},
-					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "4V7gHmFX7xedd9B7Frljoo",
-						"htmlContent": "D1 bills based on:\n<br>\n<ul>\n<li> <b>Usage</b>: Queries you issue against D1 will count as rows read, rows written, or both (for transactions or batches).</li>\n<li> <b>Scale-to-zero</b>: You are not billed for hours or capacity units. If you are not issuing queries against your database, you are not billed for compute.</li>\n<li> <b>Storage</b>: You are only billed for storage above the included limits of your plan.</li>\n</ul>",
-						"htmlId": null
-					},
-					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "5JTvIgcmbNzCTSLCof4y7I",
-						"title": "Learn more about D1 Pricing",
+						"contentfulId": "WCwV7z5pSScdbKD7bhKZe",
+						"title": "Learn how to increase developer velocity with the Cloudflare's connectivity cloud",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -446,11 +357,508 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "7zg260zkIpAH0pma2Qlm8J",
-							"elementName": "Cloudflare D1 Database - button",
-							"standardText": "Learn More",
-							"text": null,
-							"url": "https://developers.cloudflare.com/d1/platform/pricing/",
+							"contentfulId": "7rQSXv4h3SyG7uxYI9jjXr",
+							"elementName": "D1 - Learn more - CTA",
+							"standardText": null,
+							"text": "Learn more",
+							"url": "/lp/increase-developer-velocity-with-a-connectivity-cloud/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
+						"htmlId": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": "Canva logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": "Delivery Hero logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": "eTeacher Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": "ezCater logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": "jetBlue logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": "OneTrust logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": "Politico logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": "Ziff Media Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": "INSEAD logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": "Kathmandu logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": "Kathmandu logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "6r3w6KoFfpBo4ZJCP3Wl11",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Meet all your relational SQL needs and see how incredibly easy it is to build a database.",
+						"eyebrowHeading": "Top D1 use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7pjHnwK6Q3jPBcmCskbrtS",
+								"title": "Build and deploy unlimited databases",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Databases are a key part of building full-stack applications. Build infinitely scalable composable databases with D1.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
+										},
+										"description": "icon scale aqua"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "zcfJS2v7MMmxNPLKf2JK2",
+								"title": "Connect databases with Hyperdrive",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Combine D1 and Workers for globally distributed apps and use Hyperdrive to query databases in legacy clouds.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
+									"altText": "Cloudflare workers ",
+									"title": "Cloudflare workers ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP5LKSCVMZzy2mn0MsQyq/6d0239e7354806aa1b0dfcfec7ac7b6b/cloudflare-workers.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1hWROFJopJxSwH7sxeywuF",
+								"title": "Build production-scale applications",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "With support for up to 10 GB databases and 50,000 databases per account, unlock the ability to build production-scale applications.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "c83156b2-55b7-5045-8877-3e9545d7e4cb",
+									"altText": "Automatic Platform Optimization",
+									"title": "APO Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2B4PkhT3iJxxMZBCF5BC9a/1e5dd87f75bf1efefb452d8819953939/optimization-web.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "3c5HXfszQHRivcx7hIgbJs",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/developer-platform/solutions/#build-deploy-code-solutions\" target=\"_blank\" class=\"inline-link-style\">Explore more use cases<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/developer-platform/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "6gEBQQr2mZXfjWTEyeyCW7",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "See what global companies are building with Cloudflare",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2ywy2J7P6yB6EJl2ODhI65",
+							"elementName": "View use cases",
+							"standardText": null,
+							"text": "View use cases",
+							"url": "https://workers.cloudflare.com/built-with/features/D1/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
+						"contentfulId": "6A72Uz1tXuGm2dNikNelhD",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "D1 Resources",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "13nxBRjA8X0BbG2ORQR72u",
+								"title": "Get started with D1",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Find out how to create your first database using D1, create a schema, and connect a Cloudflare Worker to your D1 database.",
+								"learnMoreUrl": "https://developers.cloudflare.com/d1/get-started/",
+								"learnMoreText": "Read documentation",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3QNTUc6JYwNucu8APjXmS2",
+								"title": "Interact with your data stored in D1",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare and Prisma make it easier than ever to interact with your data to deploy globally available apps.",
+								"learnMoreUrl": "https://blog.cloudflare.com/prisma-orm-and-d1/",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3DohAvcmuiw4K7GjliWQZv",
+								"title": "Alpha database migration guide",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Find out how to recreate alpha D1 databases on our production-ready system.",
+								"learnMoreUrl": "https://developers.cloudflare.com/d1/platform/alpha-migration/",
+								"learnMoreText": "View guide",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6nhwytOZiBE6CxFRArGVAb",
+						"title": "Get D1 for your enterprise",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "3HaMNOup8HZ1mMD7705sWS",
+							"elementName": "Get started - CTA",
+							"standardText": null,
+							"text": "Get started",
+							"url": "https://dash.cloudflare.com/sign-up/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,
