@@ -2669,6 +2669,7 @@
 	},
 	"AccountMagicTransitTunnelHealthChecksAdaptiveGroupsDimensions": {
 		"__description": "",
+		"active": "Returns 1 if the colo had traffic for this tunnel in the last 6 hours, otherwise 0",
 		"datetime": "The time the healthcheck request was sent",
 		"datetimeFifteenMinutes": "The time the healthcheck request was sent, truncated to multiple of 15 minutes",
 		"datetimeFiveMinutes": "The time the healthcheck request was sent, truncated to multiple of 5 minutes",
