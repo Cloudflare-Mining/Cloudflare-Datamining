@@ -7792,7 +7792,7 @@
 									{
 										"contentTypeId": "planElementFeatureValueText",
 										"contentfulId": "1KLBtBYLzbvfuGZjsgJOTc",
-										"textValue": "Up to 40 rules",
+										"textValue": "Up to 65 rules",
 										"plan": {
 											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
 											"contentTypeId": "planElementPlan",
@@ -7853,7 +7853,7 @@
 									{
 										"contentTypeId": "planElementFeatureValueText",
 										"contentfulId": "3UxuPpZjsfKbdCBTL3imwj",
-										"textValue": "Up to 100 rules",
+										"textValue": "Up to 155 rules",
 										"plan": {
 											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
 											"contentTypeId": "planElementPlan",
@@ -7888,7 +7888,7 @@
 									{
 										"contentTypeId": "planElementFeatureValueText",
 										"contentfulId": "5ygZ7UTrerkfJrnTWBtOko",
-										"textValue": "Up to 200 rules",
+										"textValue": "Up to 310 rules",
 										"plan": {
 											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
 											"contentTypeId": "planElementPlan",
@@ -7923,7 +7923,7 @@
 									{
 										"contentTypeId": "planElementFeatureValueText",
 										"contentfulId": "29VkFFJEegJ6l45kDconGw",
-										"textValue": "Up to 500 rules",
+										"textValue": "Up to 760 rules",
 										"plan": {
 											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
 											"contentTypeId": "planElementPlan",
@@ -45381,156 +45381,6 @@
 									"standardText": null,
 									"text": "Activate",
 									"url": "https://dash.cloudflare.com/?to=/:account/stream",
-									"loggedInUrl": null,
-									"buttonModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								}
-							},
-							{
-								"locale": "en-US",
-								"entryTitle": "AddOns-Additional Page Rules",
-								"contentfulId": "1hTzMCiowXL2Yip9rGxSPW",
-								"contentTypeId": "elementAddOn",
-								"iconAssetFile": {
-									"id": "85eb53f2-2d37-568a-b481-40c2986f72f6",
-									"altText": "Numeric add ",
-									"title": "Numeric add ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/9eroQWJXldnzzLBEOvuRy/d13a8eafebdc0d0ffc51cde93e139994/numeric-add.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"title": "Additional Page Rules",
-								"description": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Page Rules allow you to customize Cloudflare's functionality to match the unique needs of your domain or subdomain, helping to optimize speed, harden security, increase reliability, maximize bandwidth savings, and much more. ",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								},
-								"category": "Reliability",
-								"pricingText": "$5 for 5 rules",
-								"learnMoreLink": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "64pmWvfn4IWiBcEPOJMw2v",
-									"elementName": "AddOns-Additional Page Rules-Learn more",
-									"standardText": null,
-									"text": "Learn more",
-									"url": "/features-page-rules/",
-									"elementModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"callToAction": {
-									"buttonAssetFile": null,
-									"buttonTextLoggedIn": null,
-									"contentTypeId": "button",
-									"contentfulId": "1IfVAlPyeUOld52fmPZKE1",
-									"elementName": "AddOns-Additional Page Rules-Button",
-									"standardText": null,
-									"text": "Activate",
-									"url": "https://dash.cloudflare.com/page-rules",
-									"loggedInUrl": null,
-									"buttonModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								}
-							},
-							{
-								"locale": "en-US",
-								"entryTitle": "AddOns-Cloudflare Apps",
-								"contentfulId": "68IAHaDjoGZ4xB45Pldvf2",
-								"contentTypeId": "elementAddOn",
-								"iconAssetFile": {
-									"id": "84bf9920-ae71-533f-9d21-68e8f4517443",
-									"altText": "Platform apps ",
-									"title": "Platform apps ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4zgjneatAin9CgQmzYl6Yq/b61aea1e89c05d2a7a3d458fe5b2d4db/platform-apps.svg"
-										},
-										"description": "Platform apps icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"title": "Cloudflare Apps",
-								"description": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare Apps is a simple and powerful way for millions of site owners to get access to tools previously only available to technical experts.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								},
-								"category": "Reliability",
-								"pricingText": "Free for all plans",
-								"learnMoreLink": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "52XDSTz8EVT7wF4KrBg3Hq",
-									"elementName": "AddOns-Cloudflare Apps-Learn More-Link",
-									"standardText": null,
-									"text": "Learn more",
-									"url": "https://cloudflareapps.com/apps/",
-									"elementModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"callToAction": {
-									"buttonAssetFile": null,
-									"buttonTextLoggedIn": null,
-									"contentTypeId": "button",
-									"contentfulId": "6j46qRDy1ofQn0ZQnh1bN0",
-									"elementName": "AddOns-Cloudflare Apps-Activate Button",
-									"standardText": null,
-									"text": "Activate",
-									"url": "/apps/",
 									"loggedInUrl": null,
 									"buttonModal": null,
 									"openInNewTab": false,
