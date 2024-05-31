@@ -5,36 +5,22 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Job Locations: Remote, Mexico City, MX</strong></h4>
-<h4><strong>To the attention of candidates (Mexico City):&nbsp;</strong></h4>
-<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Sun-Thursday” or “Tues-Sat” 5-day working week schedule. &nbsp;Candidates MUST have right-to-work in Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
-<h4>About the Department</h4>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h4>What You’ll Do</h4>
-<p><span style="font-weight: 400;">Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for our Content Delivery products: Workers, Speed, Images, Stream, CDN and others.</span></p>
-<h4>Examples of desirable skills, knowledge and experience</h4>
+<p><strong>Available Locations</strong>: Remote US or Austin, Texas&nbsp;</p>
+<p><strong>About the role&nbsp;</strong></p>
+<p>The Director of cybersecurity strategy will establish and lead the development of strategy to enhance a global security program, ensure global regulatory compliance, and strengthen our enterprise security posture of today by identifying and recommending cutting-edge practices. This role is a thought leadership partner to security leaders, as well as our technology and business partners, who will work collaboratively on a forward leaning vision that drives impact in alignment with business objectives. You are comfortable in all forms of communications across various stakeholders, and able to influence and gain adoption to support success.&nbsp;&nbsp;&nbsp;</p>
+<p><strong>What You’ll Do</strong></p>
+<p>This leader will support both building and alignment on execution to see the strategic plan come to life. The strategy will be a living document that continues to evolve and adapt to current cyber threats and the evolving business climate.&nbsp; Staying up on the latest industry trends, threats, emerging technologies and compliance will be a key part of this role.&nbsp; Working very closely within each pillar of security, this leader will need to be comfortable in all core security domains.&nbsp; Strategic focus to include not only the future vision, but how we manage operations and the target operating model for success today.&nbsp; A key aspect of success will be partnering with our transformation team to break down the strategy incrementally and support the building of roadmaps to deliver results aligned with overarching business strategy.&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><span style="font-weight: 400;">You have worked as part of a team in a customer-facing role and want to progress your career as a support professional</span></li>
-	<li><span style="font-weight: 400;">You have solved issues from the network to the application layer</span></li>
-	<li><span style="font-weight: 400;">You have resolved front-end dashboard and API issues</span></li>
-	<li><span style="font-weight: 400;">You have analyzed and tuned website performance issues</span></li>
-	<li><span style="font-weight: 400;">You understand Javascript or other scripting languages&nbsp;</span></li>
-	<li><span style="font-weight: 400;">You have developed or maintained internet applications</span></li>
-	<li><span style="font-weight: 400;">You have experience with video encoding and streaming solutions</span></li>
-	<li><span style="font-weight: 400;">You have worked with SQLite or other database servers</span></li>
-	<li><span style="font-weight: 400;">You are comfortable communicating through various support channels and always put the customer first</span></li>
-	<li><span style="font-weight: 400;">You are a motivated self-starter and always looking to expand your existing skill set</span></li>
+	<li>8-10+ years of experience within the cybersecurity, IT risk management, business resiliency domain, with a minimum of 3 years developing strategy for global cybersecurity organizations</li>
+	<li>Has experience in speaking at public forums and presenting at key industry events&nbsp;</li>
+	<li>Highly skilled communicator and influencer with the ability to reflect and question positively and effectively&nbsp;</li>
+	<li>Extensive industry knowledge with an eye towards the future</li>
+	<li>Proven ability to forge and sustain effective partnerships internally and externally</li>
+	<li>Proven ability to articulate a clear vision&nbsp;</li>
+	<li>Experience understanding and interpreting how to comply with regulatory and global validation requirements for compliance&nbsp;</li>
+	<li>Vast knowledge across all domains of security, with a keen focus on GRC, access, detection, resiliency and defensive AI</li>
 </ul>
-<h4>Bonus Points</h4>
-<ul>
-	<li><span style="font-weight: 400;">You are fluent in Portuguese, Spanish, German, Japanese, French or Mandarin</span></li>
-	<li><span style="font-weight: 400;">You are familiar with Cloudflare and have a site actively using our platform</span></li>
-	<li><span style="font-weight: 400;">You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump) and developer tools (git/wrangler/npm)</span></li>
-	<li><span style="font-weight: 400;">You are familiar with Nginx, Apache, IIS or any other web servers</span></li>
-	<li><span style="font-weight: 400;">You are committed to gaining a deeper understanding of the following technologies: DNS /&nbsp; SSL / CDN - Cache / Cloudflare Workers</span></li>
-	<li><span style="font-weight: 400;">You have experience with Cloudflare Workers&nbsp;&nbsp;</span></li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

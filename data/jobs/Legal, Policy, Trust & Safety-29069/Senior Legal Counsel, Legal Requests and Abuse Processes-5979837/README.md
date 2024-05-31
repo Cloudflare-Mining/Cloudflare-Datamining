@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p></p>
+<p>&nbsp;</p>
 <h4><strong>About this job</strong></h4>
 <p>Cloudflare provides cutting edge security and performance services to a significant portion of the Internet. Because Cloudflare’s network sits in front of so many websites, we regularly receive reports of abuse and legal requests relating to the customers for which we are an intermediary. We’re looking for a Senior Counsel to work closely with our Trust &amp; Safety and Public Policy teams in shaping Cloudflare’s global approach to intermediary legal issues, our abuse processes, and our responses to criminal and civil requests for customer data.</p>
 <p>The ideal candidate is comfortable confronting novel legal issues in a fast paced environment, while never losing sight of Cloudflare’s core principles. We’re looking for a self-starter who is enthusiastic to work as part of a great team building systems that must scale with a quickly growing company. As part of the job, you will:&nbsp;</p>
@@ -31,7 +31,40 @@
 	<li>Ability to work cross-functionally, with lawyers and non-lawyers, to establish principled, thoughtful, and effective solutions efficiently and in an amenable manner.</li>
 	<li>An ambitious mindset that enables you to successfully work independently and autonomously with limited guidance, but also to use good judgment and call out issues when needed.</li>
 </ul>
-<p></p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Bay Area-based hires: Estimated annual salary of $215,000 - $263,000.</li>
+</ul>
+<p>[Commissions: If applicable include this line:] This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
