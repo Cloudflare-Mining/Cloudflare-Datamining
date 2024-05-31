@@ -54,16 +54,11 @@
 				},
 				"sys": {
 					"createdAt": "2020-07-21T21:59:08.098Z",
-					"updatedAt": "2024-05-28T14:26:49.097Z"
+					"updatedAt": "2024-05-31T03:55:09.228Z"
 				},
 				"contentfulId": "4nvosA9owqSSriYZgPe19D",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "NEWS",
-					"linkText": "READ",
-					"linkUrl": "https://blog.cloudflare.com/introducing-dcv-delegation/",
-					"desktopText": "Cut down on management overhead by auto-renewing all certificates on all your domains with DCV delegation"
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -75,19 +70,19 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "SSL for SaaS ",
 						"titleSize": null,
-						"subtitle": "Protect customers' data with strong encryption",
+						"subtitle": "A tool for SaaS providers to manage customers' websites and SSL certificates at scale",
 						"subtitleSize": null,
-						"copy": "Protecting customer data is not only a security best practice but also what your customers and auditors expect. \n\nCloudflare partners with SaaS Providers to make encryption easy so your customers will have more confidence than ever in your service, knowing their data is safe.  ",
+						"copy": "Make encryption easy so your customers can have more confidence in your service and, their end users' data is safe.  ",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
-						"buttonText1": "Contact Sales",
+						"buttonText1": "Talk to an expert",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://www.cloudflare.com/plans/enterprise/contact/",
+						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": null,
-						"buttonText2": "Learn More",
+						"button1ExtraClass": "ssl-for-saas-providers-modal-form",
+						"buttonText2": "Get started",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://blog.cloudflare.com/cloudflare-for-saas/",
+						"buttonUrl2": "https://dash.cloudflare.com/sign-up/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -98,7 +93,7 @@
 						"streamCaptions": null,
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": true,
+						"button1OpenInNewTab": false,
 						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
@@ -107,10 +102,10 @@
 						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": "Looking for website SSL? View our [free SSL service.](https://www.cloudflare.com/application-services/products/ssl/)",
+						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
@@ -132,91 +127,39 @@
 						}
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "3KeYliGAQ9PqX9S56244jU",
-						"quote": "\"Cloudflare has been leading the way when it comes to SSL technology.\"",
-						"quoteAuthor": "Kerry Munz",
-						"quoteTitle": "Director of Engineering – Platform Infrastructure",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/0RyhchNB3H9bMFimFHROx/104d8f35371ac9d70b65341b3b77ee57/trustedby-hubspot-black-01.svg"
-							},
-							"description": "Trusted by Hubspot Black"
-						},
-						"imageAssetFile": {
-							"id": "2d4a322a-a94b-52e5-b521-a223272e98cf",
-							"altText": "Logo hubspot gray",
-							"title": "Logo hubspot gray",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 5561,
-								"height": 1124,
-								"width": 3993,
-								"filename": "logo_hubspot_gray.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_hubspot_gray.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
-					},
-					{
-						"contentfulId": "7s0Fta62Uplf0YPevhfkFe",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "What's New with SSL for SaaS",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"contentfulId": "1iaQZzl2GaHJjtOslUpQaE",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "BENEFITS OF SSL FOR SaaS",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3dVBW9BovHdAgJXMhMLC34",
-								"title": "Apex Proxy Flexibility",
-								"makeTitleLink": null,
+								"contentfulId": "3zk58WIg4TMWUgDqUqQcns",
+								"title": "Branded visitor experiences",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Allow your customers to proxy their apex to your application, regardless of their DNS provider. Either bring your own IP or we'll supply a set for your end customer, so they can point to your application with an A record. \n",
+								"description": "Achieve higher SEO rankings with branded domains while keeping the benefits of a fully managed TLS certificate. ",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TXVyxQpn8JDy6JnItQqnk/a9f2772160d33f5ebc4a603dd85105e5/location-pin.svg"
-									},
-									"description": null
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "74767d4a-bc44-5cc7-835d-2268677137b8",
-									"altText": "location pin",
-									"title": "location pin",
+									"id": "ed89e1b6-b883-56ee-9049-129c549b05a4",
+									"altText": "Certificate manager blue",
+									"title": "Certificate manager blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TXVyxQpn8JDy6JnItQqnk/a9f2772160d33f5ebc4a603dd85105e5/location-pin.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ftQwbhNJDFPvNDk70rnd4/6bb0ad425b7047e1625b7064d3350e57/certificate-manager.png"
 										},
-										"description": null
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -230,34 +173,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5XHJjt8kOixOLteHRRmDil",
-								"title": "Bring your own IP",
-								"makeTitleLink": null,
+								"contentfulId": "7yCN2YygZl6M6D5svg7cvt",
+								"title": "Secure and performant customer assets",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Bring your own IP range to announce at Cloudflare's edge. With BYOIP + SSL for SaaS solution you are able to manage the IP assignments of your customers. ",
+								"description": "Protect customer domains from on-path attacks and network snooping with SSL/TLS certificates. Use the HTTP/2 protocol for greater speed improvements.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
-									},
-									"description": "Orange icon of a globe"
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
-									"altText": "internet globe",
-									"title": "internet globe",
+									"id": "0b7cd03c-c40f-5158-b2f1-51ebcde92c92",
+									"altText": "Performance cloud speed orange",
+									"title": "Performance cloud speed orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Hrl9MJuJGcsYRLaNNcCpS/3ca96c403b9a0195da1a8502d79ef76c/performance-cloud-speed.svg"
 										},
-										"description": "Orange icon of a globe"
+										"description": "Cloud icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -271,24 +209,33 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2kIBN0cSBkoVjnfTYDgtcr",
-								"title": "Custom SSL Certification Support",
-								"makeTitleLink": null,
+								"contentfulId": "1xutq8dcGykHIjUpJfeePg",
+								"title": "Rapid global SSL deployments",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Upload your customer's certificate whenever necessary. For your security-conscious customers, we offer CSR support, meaning their private keys stay on Cloudflare, while they use the CA of their choice.",
+								"description": "Cloudflare deploys new certificates across its global network of data centers in %{DataCenterCount} cities, bringing HTTPS online in minutes.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/jxNhWkuSuUabzGMRfJ5B4/a9f630ab1476676f90589d686251c62d/certificate.svg"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "422bd8a5-669d-5467-b609-053c2f5b3a58",
+									"altText": "Server 1 blue",
+									"title": "Server 1 blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Snx91INj9zhp6XXrKWttd/782b0f54013c68f613fc779daf8cdb47/server-1.svg"
+										},
+										"description": ""
 									},
-									"description": "Icon of SSL certificate"
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -296,53 +243,452 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
+						],
+						"sectionPadding": "tile--no-top-padding",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "5eX4wGhF87uegT2ogWEXlS",
+						"title": "Speed up your customer onboarding flow",
+						"copy": "Cloudflare manages the entire SSL lifecycle, from private key creation and protection through domain validation, issuance, renewal, and reissuance.\n\nWith SSL for SaaS, you can send a single API call as part of your onboarding — all your customer has to do is add the initial CNAME into your domain.\n",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "37ed62b9-b66f-5979-9e6d-c97f36f04e54",
+							"altText": "Illustration of an app security award",
+							"title": "What is SSL",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sSwxF7eNrXTMRryc20XjG/20cf9f5c70f8b9fe5f63226abbce1e1e/What-is-ssl.svg"
+								},
+								"description": "What is ssl"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "HOW IT WORKS",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6AWOoa8TP7cvwtUnWPts17",
+						"title": "Learn how to deploy TLS in complex enterprise environments",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "3jmtPLEghpiOvVJaiMC0UD",
+							"elementName": "SSL for SaaS Providers - OPTIONAL OFFER BLADE - CTA",
+							"standardText": null,
+							"text": "Get the whitepaper",
+							"url": "/lp/maximize-tls/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "3kOOtIDYStcZSvN9ILXCut",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2sLc7LWHqtI7MTPZQeIEQM",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What our customers are saying",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "blockquote",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"",
+															"marks": [],
+															"content": null
+														},
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "With SSL for SaaS we have implemented a simpler flow because Cloudflare's API handles the provisioning, serving, automated renewal, and maintenance of our customers' SSL certificates. Plus, end-to-end HTTPS now means we have bolstered privacy and performance for our customers, and can leverage browser features, like Local Storage, that we couldn't use before.",
+															"marks": [],
+															"content": null
+														},
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "\"",
+															"marks": [],
+															"content": null
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "CTO",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " — Olo ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
 						]
 					},
 					{
-						"contentfulId": "1VCUKH6SelzXxv1enRS1lK",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "3cpskmHBDMCVfJkKozxUwH",
+						"title": " ",
 						"htmlId": null,
-						"copy": null,
+						"companyLogos": [
+							{
+								"id": "0ca09ead-334b-5ed5-b5c3-b18389be5ce7",
+								"altText": "Canva logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4viUxyMpMP2RMNZPdZ7yvg/0cc1dbaa671266f44e423780e5dc6eab/Rectangle_18982.svg"
+									},
+									"description": "Canva logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2679c99c-7bb0-5b5e-b07f-742d6334befc",
+								"altText": "Delivery Hero",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RzzoJgqWASgFRqCiXlKB2/b6402d2609d6185b352684fbea2bb6b8/Rectangle_18983.svg"
+									},
+									"description": "Delivery Hero logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "71416492-8cf1-58cd-a1ca-232618fcad84",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6iyfTpDQLpqaSPahf3btuN/404170b1047c7d625e757e06676542f0/Rectangle_18984.svg"
+									},
+									"description": "eTeacher Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d48a87b8-d546-50ca-b31a-0439597bbb4b",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Kz5iIUGSUY2b6yUfLzzAq/eec3c564bfe468800defb3fd59041679/Rectangle_18985.svg"
+									},
+									"description": "ezCater logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "12600957-d5b3-5435-9e4f-de3f316e992d",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JilriQJOjHDeo5PLxpaL1/cb01588862c50074d14dc8ec1275a018/Rectangle_18986.svg"
+									},
+									"description": "jetBlue logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fb800c3d-57ce-549a-9504-2443f77e4d36",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Twp9mEBzXPlpg9mQAQDKC/38eaa808ab78d5df7471fed633621f17/Rectangle_18988.svg"
+									},
+									"description": "OneTrust logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f8132bf5-f13a-54bb-bdc0-eef87cf85d4a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3sICYz4HrLKbdeJZm5iIuU/12cbb009d265c0a18d1081ca692a60bf/Rectangle_18989.svg"
+									},
+									"description": "Politico logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9d744864-2db3-5618-8dc5-2c8ff541fb1a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TMJRCzcsNRAErWglqulU4/0a2749b6edf738afacb5891d2e0e4df1/Rectangle_18990.svg"
+									},
+									"description": "Ziff Media Group logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4f18c896-d417-53b0-80f1-9961725bb24f",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5MS7ODlEhi1d2X2vuGYZmi/bbea1aeabc363f4c7ef58964598e4f4c/Rectangle_18987.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3bc6a62b-ddce-596c-9232-b43d04e40897",
+								"altText": "INSEAD logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mWCkhK3lLYfFTwORjDCz3/76d8a284d49a8ec8cb1e36c681715e24/Rectangle_18991.svg"
+									},
+									"description": "INSEAD logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c67cd09c-ae43-54d0-ba38-434d293bf814",
+								"altText": "Kathmandu logo",
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TUZBMdbPrZt2Doq1HZ2fN/62f816ed0118f102644b4d24c24f850e/Rectangle_18991.svg"
+									},
+									"description": "Kathmandu logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentfulId": "5s1vk2T74YcwRVypMa0gIe",
+						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"eyebrowHeading": "Top SSL for SaaS use cases",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5PIXe2Ut2eL9ccZKgqJofD",
-								"title": "Wildcard Custom Hostnames",
-								"makeTitleLink": null,
+								"contentfulId": "3dL50uv5MqOaCh35sfTaI6",
+								"title": "Apex proxy flexibility",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Extend encryption, performance, and security to any customer subdomain with wildcard custom hostnames. \n",
+								"description": "Allow your customers to proxy their apex to your application, regardless of their DNS provider.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mhkGGaI0VAsbd7xLNXzqW/1c5ddf364dcfc65894bb094f136491c0/cloudflare-browser__1_.svg"
-									},
-									"description": null
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "18d95ea2-9763-5241-9d4a-9c5558925d27",
-									"altText": "wildcard browser",
-									"title": "wildcard browser",
+									"id": "e29e0a6c-57e1-5296-b7fe-a4bb365da279",
+									"altText": "Location pin blue",
+									"title": "Location pin blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mhkGGaI0VAsbd7xLNXzqW/1c5ddf364dcfc65894bb094f136491c0/cloudflare-browser__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2n70a7lYG4c0JERRzgrv3H/3eef13377e4c1de176da77c48ef8b52b/location-pin.svg"
 										},
-										"description": null
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -356,24 +702,69 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "17YVxgZvv4OPEOQBeSfc0M",
-								"title": "Custom Origins",
-								"makeTitleLink": null,
+								"contentfulId": "1uSMGaUglEyI1yVTGtfkuL",
+								"title": "Bring your own IP",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Bring your own IP range to announce at the Cloudflare edge and manage your customers' IP assignments.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
+									"altText": "Internet globe orange",
+									"title": "Internet globe orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2koMMJMJ1JUVQs8BFwxoYw",
+								"title": "Custom origins",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
 								"description": "Route customers to your origin of choice as your company scales.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74ytBs0tigVcRYRWNWOQxJ/ab467048de7f87b4c6b590214012f7e7/performance-routing.svg"
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "30718739-82ff-5bc7-9c5d-e161248e8da9",
+									"altText": "Performance routing ",
+									"title": "Performance routing ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/59OgNgdovYpxBuSbeO2TiK/f59c3c3b38689a5bc282dd9880ff977c/performance-routing.svg"
+										},
+										"description": "Smart routing icon"
 									},
-									"description": null
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -383,34 +774,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2zlQIdalDUtsxpDtZKA9JM",
-								"title": "Customizable Domain Configurations",
-								"makeTitleLink": null,
+								"contentfulId": "4ct4rtGjbsxhSjoLJuoNNa",
+								"title": "Wildcard custom hostnames",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Add specific rules to customer domains for maximum customization.\n",
+								"description": "Extend encryption, performance, and security to any customer subdomain with wildcard custom hostnames.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6v0V9auYB51k3bGacGFcFU/2d9d4cff6b2724a344bafdd58c626b7c/edit.svg"
-									},
-									"description": null
-								},
+								"removeCardBorder": false,
+								"icon": null,
 								"iconAssetFile": {
-									"id": "d3a1397f-749f-53fb-a138-465d4eb5a274",
-									"altText": "edit",
-									"title": "edit",
+									"id": "953cbaaa-193d-59ff-9633-351fbea8ef99",
+									"altText": "Cloudflare browser blue",
+									"title": "Cloudflare browser blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6v0V9auYB51k3bGacGFcFU/2d9d4cff6b2724a344bafdd58c626b7c/edit.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HCrh1LL2UxeUZAEgQo9Oi/81d48b27248ae38a890b8e82adec9896/cloudflare-browser.svg"
 										},
-										"description": null
+										"description": "Cloudflare browser orange"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -422,208 +808,65 @@
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						]
-					},
-					{
-						"contentfulId": "5ivrCB2ursLrGPTcjGZoDg",
-						"title": "Common problems for SaaS Providers when addressing SSL end customer needs:",
-						"copy": null,
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": "small",
+						],
 						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
+						"htmlId": null
 					},
 					{
-						"contentfulId": "6IF7aLxnZtAfKMIgmQb3KE",
-						"title": "Unencrypted but branded vanity domain",
-						"copy": "Custom vanity domains without SSL lack the performance benefits of SSL and secure data transfer, making them vulnerable to snooping and content modification or injection.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "4156d2db-e25b-5c2b-b09b-ce9d211445b8",
-							"altText": null,
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3GWb1NnwleftcnNiKMccPo/61e5e34db50027363c7a2cc27f917002/ssl-for-saas-scenario-1.svg"
-								},
-								"description": "Illustration showing an unencrypted but branded vanity domain"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "1DzcC36UBFR2BfQUjrO5Li",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/application-services/solutions/#protect-websites-applications-solutions \" class=\"inline-link-style\">Explore use cases<svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/zero-trust/solutions/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "5jc7mCG9tZFUJLQaw9iwxo",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": null,
+						"description": "Helping organizations extend the benefits of Cloudflare to their customers",
+						"variant": "inline",
 						"htmlId": null,
-						"titleSize": null,
 						"sectionPadding": "tile--no-top-bottom-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "6HA6r65ha2JXpvBrxW0kHn",
-						"title": "Encrypted but unbranded domain",
-						"copy": "Domains with SSL enabled through a SaaS provider lack a custom vanity domain, resulting in brand degradation and lower SEO rankings.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "ca906cfc-4a1b-5787-bac5-0a177df9dd72",
-							"altText": null,
-							"title": null,
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PLiCTvB1LEFbkiwNPmjOo/b49cd6dbdfc1cfb14e9be470359d14ca/ssl-for-saas-scenario-2.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
 								},
-								"description": "Illustration showing an encrypted but unbranded domain"
+								"description": ""
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "5RNNSFx9ViPXWMR5oRpa31",
-						"title": "Encrypted and branded domain",
-						"copy": "Providing encrypted and branded domains often means manually managing SSL lifecycles — resulting in long deployment times and overhead costs — or building a complex and automated in-house solution",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "5b78104d-dad4-5bcd-9f0d-2a7b3725aa59",
-							"altText": null,
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/gUN7xUAX4DStQfkQjnu0O/e5e560e6b56d4f50912ddbb0d151edb9/ssl-for-saas-scenario-3.svg"
-								},
-								"description": "Illustration showing an encrypted and branded domain"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "6gPQidaITbjaFImW1CFQca",
+							"elementName": "SSL for SaaS Providers - CASE STUDIES - CTA",
+							"standardText": null,
+							"text": "See case studies",
+							"url": "https://www.cloudflare.com/case-studies/?product=SSL+for+SaaS",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
 						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
+						"secondaryCtaButton": null
 					},
 					{
-						"contentfulId": "23a60FI4VtLaq6M98w16TW",
+						"contentfulId": "3fc3W91n92g5bcaWu3KkOr",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": "Benefits of SSL for SaaS",
+						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "border-top",
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
 						"sectionPadding": null,
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
@@ -631,164 +874,108 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "69Qfi6iRm1cAG7KQVGcVEg",
-								"title": "Branded visitor experiences",
-								"makeTitleLink": null,
+								"contentfulId": "7FPJNfpMEOthgaRkHXHq2K",
+								"title": "Cloudflare for SaaS",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "You can offer branded domains to your customers, all while enjoying the added benefits of a fully managed SSL certificate. Branded domains offer end customers higher SEO rankings and improved visitor trust.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7K1m9K98pgvEKT4yabpZLV/fb5c290897dd4e6d3b040ec4345eced6/cloudflare-registrar.svg"
-									},
-									"description": "World wide web icon"
-								},
-								"iconAssetFile": {
-									"id": "cde61019-3234-56a4-8b39-49ff01e3a806",
-									"altText": "Cloudflare registrar blue",
-									"title": "Cloudflare registrar blue",
+								"description": "Learn about Cloudflare's suite of easy-to-use products that help SaaS providers deliver the fastest, most secure apps to market.",
+								"learnMoreUrl": "/saas/",
+								"learnMoreText": "View page",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/rg2oKaLEh6klxdGgN2OyN/b0fb57e51670a4176d85bcdcb7ef2f78/cloudflare-registrar.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": "www icon"
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3gDvqvUbOnkl3R6ZJAzSEa",
-								"title": "Secure and performant customer assets",
-								"makeTitleLink": null,
+								"contentfulId": "6UHlsaWMiHgJyueQgjvfYT",
+								"title": "How Cloudflare built a robust TLS certificate pipeline",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "With SSL/TLS certificates, protect your end customers' domains from on-path attackers and network snooping. Additionally, the HTTP/2 protocol becomes available for even greater speed improvements.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YZDquysdwv0IC1kV0hC6n/e0128d5452432cec311a40aaeb684c65/security-lock__1_.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": {
-									"id": "b914043d-ea00-5a37-81d5-dd4b3b25da06",
-									"altText": "security-lock-226x301-cfb9db4",
-									"title": "security-lock-226x301-cfb9db4",
+								"description": "Find out how we ensure customers can always obtain a TLS certificate for their domain and optimize for future scale.",
+								"learnMoreUrl": "https://blog.cloudflare.com/shortening-lets-encrypt-change-of-trust-no-impact-to-cloudflare-customers/ ",
+								"learnMoreText": "Read blog post",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YZDquysdwv0IC1kV0hC6n/e0128d5452432cec311a40aaeb684c65/security-lock__1_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": null
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4vTLpsOm5ouuJjik7QKVal",
-								"title": "Automated SSL lifecycle management",
-								"makeTitleLink": null,
+								"contentfulId": "fEsKXpzpRsjCfg7NLAKac",
+								"title": "Maximize the power of TLS",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "You don't have to worry about any part of the SSL lifecycle. Cloudflare manages the entire process, from private key creation and protection through domain validation, issuance, renewal, and reissuance.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LaRddEaKEWlYXXx8Y2UST/4a87c8fe7df63554665ed7b673ba5846/security-shield-protection-2.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": {
-									"id": "eaeddebf-b730-5e34-b5cd-2dcca8d4cba2",
-									"altText": "security-shield-protection-230x301-664b7d5",
-									"title": "security-shield-protection-230x301-664b7d5",
+								"description": "Streamline TLS management with Cloudflare edge certificates and increase the productivity of your security team.",
+								"learnMoreUrl": "/lp/maximize-tls/",
+								"learnMoreText": "Read the whitepaper",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "2ea2b03b-b35f-525f-8903-0fa37d95a7e3",
+									"altText": "Resources card - Thin top orange line  - image",
+									"title": "Resources card - Thin top orange line  - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LaRddEaKEWlYXXx8Y2UST/4a87c8fe7df63554665ed7b673ba5846/security-shield-protection-2.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
 										},
-										"description": null
+										"description": "Resources card - Thin top orange line  - image"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "754KpbZ19zDTC8Ix7Q9bR8",
-								"title": "Rapid global SSL deployments",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "During the SSL issuance process, Cloudflare deploys new certificates across its global network of data centers in 200 cities, bringing HTTPS online within minutes.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oSAE8BQTzD1sgQCgrArww/f79da788e5497cd68b5851f995b132af/share.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": {
-									"id": "f2eb93a9-5084-50de-8f8c-5182cce34fa9",
-									"altText": "share icon",
-									"title": "share icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oSAE8BQTzD1sgQCgrArww/f79da788e5497cd68b5851f995b132af/share.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
@@ -796,32 +983,120 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "2GbXdJw8ftLtb1QcpsJGwB",
-						"quote": "\"With SSL for SaaS we have implemented a simpler flow because Cloudflare's API handles the provisioning, serving, automated renewal and maintenance of our customers' SSL certificates. Plus, end-to-end HTTPS now means we have bolstered privacy and performance for our customers, and can leverage browser features, like Local Storage, that we couldn't use before.\"",
-						"quoteAuthor": "Andrew Murray",
-						"quoteTitle": "CTO of Olo",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "1ZvlYN8CtCSyDuECldBKyv",
+						"title": "Want to learn more about SSL for SaaS Providers?",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
 						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3i6fxeTuXs2uZL01ZEnhQK/d8671958b195fa79e94f970ca3818972/olologo.png"
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "46UqfxwG33LATF4Bx2zHjO",
+							"elementName": "SSL for SaaS Providers - Talk to an expert - CTA",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "5FcYfwJ5vP9b3uI6ri8kHo",
+								"modalName": "SSL for SaaS Providers - Modal form",
+								"modalId": "ssl-for-saas-providers-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "4CcreI8AGzCYF4z79bKe4V",
+									"bladeName": "SSL for SaaS Providers - Marketo modal form",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
 							},
-							"description": "Olo logo"
+							"openInNewTab": false,
+							"locale": "en-US"
 						},
-						"imageAssetFile": null,
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": []
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "5FcYfwJ5vP9b3uI6ri8kHo",
+						"modalName": "SSL for SaaS Providers - Modal form",
+						"modalId": "ssl-for-saas-providers-modal-form",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "4CcreI8AGzCYF4z79bKe4V",
+							"bladeName": "SSL for SaaS Providers - Marketo modal form",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": "Talk to an expert",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": null,
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
