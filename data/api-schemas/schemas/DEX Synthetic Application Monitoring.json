@@ -18,7 +18,7 @@
 			{
 				"description": "Start time for connection period in RFC3339 (ISO 8601) format.",
 				"in": "query",
-				"name": "timeStart",
+				"name": "from",
 				"required": true,
 				"schema": {
 					"example": "2023-08-20T20:45:00Z",
@@ -28,7 +28,7 @@
 			{
 				"description": "End time for connection period in RFC3339 (ISO 8601) format.",
 				"in": "query",
-				"name": "timeEnd",
+				"name": "to",
 				"required": true,
 				"schema": {
 					"example": "2023-08-24T20:45:00Z",
@@ -296,7 +296,7 @@
 		],
 		"summary": "List Cloudflare colos",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -322,7 +322,7 @@
 			},
 			{
 				"in": "query",
-				"name": "time_end",
+				"name": "to",
 				"required": true,
 				"schema": {
 					"description": "Timestamp in ISO format",
@@ -332,7 +332,7 @@
 			},
 			{
 				"in": "query",
-				"name": "time_start",
+				"name": "from",
 				"required": true,
 				"schema": {
 					"description": "Timestamp in ISO format",
@@ -433,6 +433,23 @@
 				"schema": {
 					"description": "WARP client version",
 					"example": "1.0.0",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Source:\n  * `hourly` - device details aggregated hourly, up to 7 days prior\n  * `last_seen` - device details, up to 24 hours prior\n  * `raw` - device details, up to 7 days prior\n",
+				"in": "query",
+				"name": "source",
+				"required": true,
+				"schema": {
+					"default": "last_seen",
+					"description": "Specifies fleet status details source",
+					"enum": [
+						"last_seen",
+						"hourly",
+						"raw"
+					],
+					"example": "last_seen",
 					"type": "string"
 				}
 			}
@@ -789,7 +806,7 @@
 		],
 		"summary": "List fleet status devices",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1204,7 +1221,7 @@
 		],
 		"summary": "List fleet status details by dimension",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1230,7 +1247,7 @@
 			},
 			{
 				"in": "query",
-				"name": "time_end",
+				"name": "to",
 				"required": true,
 				"schema": {
 					"description": "Timestamp in ISO format",
@@ -1240,7 +1257,7 @@
 			},
 			{
 				"in": "query",
-				"name": "time_start",
+				"name": "from",
 				"required": true,
 				"schema": {
 					"description": "Timestamp in ISO format",
@@ -1458,7 +1475,7 @@
 		],
 		"summary": "List fleet status aggregate details by dimension",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1509,7 +1526,7 @@
 			{
 				"description": "Start time for aggregate metrics in ISO ms",
 				"in": "query",
-				"name": "timeStart",
+				"name": "from",
 				"required": true,
 				"schema": {
 					"example": 1689520412000,
@@ -1519,7 +1536,7 @@
 			{
 				"description": "End time for aggregate metrics in ISO ms",
 				"in": "query",
-				"name": "timeEnd",
+				"name": "to",
 				"required": true,
 				"schema": {
 					"example": 1689606812000,
@@ -2255,7 +2272,7 @@
 		],
 		"summary": "Get details and aggregate metrics for an http test",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2306,7 +2323,7 @@
 			{
 				"description": "Start time for aggregate metrics in ISO format",
 				"in": "query",
-				"name": "timeStart",
+				"name": "from",
 				"required": true,
 				"schema": {
 					"example": "2023-09-20T17:00:00Z",
@@ -2316,7 +2333,7 @@
 			{
 				"description": "End time for aggregate metrics in ISO format",
 				"in": "query",
-				"name": "timeEnd",
+				"name": "to",
 				"required": true,
 				"schema": {
 					"example": "2023-09-20T17:00:00Z",
@@ -2611,7 +2628,7 @@
 		],
 		"summary": "Get percentiles for an http test",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3485,7 +3502,7 @@
 		],
 		"summary": "List DEX test analytics",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3741,7 +3758,7 @@
 		],
 		"summary": "Get count of devices targeted",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -3955,16 +3972,10 @@
 												"testName": {
 													"description": "name of the tracroute test",
 													"type": "string"
-												},
-												"time_start": {
-													"description": "date time of this traceroute test",
-													"example": "2023-07-16 15:00:00+00",
-													"type": "string"
 												}
 											},
 											"required": [
 												"resultId",
-												"time_start",
 												"hops"
 											],
 											"type": "object"
@@ -4081,7 +4092,7 @@
 		],
 		"summary": "Get details for a specific traceroute test run",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -4132,7 +4143,7 @@
 			{
 				"description": "Start time for aggregate metrics in ISO ms",
 				"in": "query",
-				"name": "timeStart",
+				"name": "from",
 				"required": true,
 				"schema": {
 					"example": 1689520412000,
@@ -4142,7 +4153,7 @@
 			{
 				"description": "End time for aggregate metrics in ISO ms",
 				"in": "query",
-				"name": "timeEnd",
+				"name": "to",
 				"required": true,
 				"schema": {
 					"example": 1689606812000,
@@ -4823,7 +4834,7 @@
 		],
 		"summary": "Get details and aggregate metrics for a traceroute test",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -4872,7 +4883,7 @@
 			{
 				"description": "Start time for aggregate metrics in ISO ms",
 				"in": "query",
-				"name": "timeStart",
+				"name": "from",
 				"required": true,
 				"schema": {
 					"example": 1689520412000,
@@ -4882,7 +4893,7 @@
 			{
 				"description": "End time for aggregate metrics in ISO ms",
 				"in": "query",
-				"name": "timeEnd",
+				"name": "to",
 				"required": true,
 				"schema": {
 					"example": 1689606812000,
@@ -5210,7 +5221,7 @@
 		],
 		"summary": "Get network path breakdown for a traceroute test",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -5261,7 +5272,7 @@
 			{
 				"description": "Start time for aggregate metrics in ISO format",
 				"in": "query",
-				"name": "timeStart",
+				"name": "from",
 				"required": true,
 				"schema": {
 					"example": "2023-09-20T17:00:00Z",
@@ -5271,7 +5282,7 @@
 			{
 				"description": "End time for aggregate metrics in ISO format",
 				"in": "query",
-				"name": "timeEnd",
+				"name": "to",
 				"required": true,
 				"schema": {
 					"example": "2023-09-20T17:00:00Z",
@@ -5566,7 +5577,7 @@
 		],
 		"summary": "Get percentiles for a traceroute test",
 		"tags": [
-			"DEX Synthetic Application Montitoring"
+			"DEX Synthetic Application Monitoring"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
