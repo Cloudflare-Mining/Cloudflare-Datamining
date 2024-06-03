@@ -2953,12 +2953,43 @@
 			}
 		},
 		"buffer": {
+			"atob": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"btoa": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
 			"constants": {
 				"MAX_LENGTH": "number",
 				"MAX_STRING_LENGTH": "number"
 			},
 			"kMaxLength": "number",
 			"kStringMaxLength": "number",
+			"Blob": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
+					"prototype": "undefined",
+					"type": "string",
+					"size": "number",
+					"slice": "function",
+					"arrayBuffer": "function",
+					"text": "function",
+					"stream": "function"
+				}
+			},
 			"Buffer": {
 				"__proto": "function",
 				"__type": "function",
@@ -4624,6 +4655,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
@@ -5301,6 +5333,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
@@ -5811,6 +5844,13 @@
 				"name": "string",
 				"_prototype": {}
 			},
+			"getMaxListeners": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
 			"setMaxListeners": {
 				"__proto": "function",
 				"__type": "function",
@@ -6001,6 +6041,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
@@ -6167,6 +6208,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
@@ -6538,6 +6580,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
@@ -6941,6 +6984,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
@@ -7545,6 +7589,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
@@ -8192,6 +8237,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
@@ -8854,6 +8900,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
@@ -9516,6 +9563,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
@@ -9579,6 +9627,13 @@
 				"name": "string"
 			},
 			"getEventListeners": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"getMaxListeners": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -9775,6 +9830,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
@@ -9941,6 +9997,7 @@
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
+				"getMaxListeners": "function",
 				"setMaxListeners": "function",
 				"listenerCount": "function",
 				"EventEmitter": "function",
