@@ -1,0 +1,16 @@
+{
+	"id": "dc044411-83e2-49ea-ac89-eb00f0555e36",
+	"alias": "mta-sts-template-workers",
+	"visibility": "public",
+	"install_target": "worker",
+	"name": "MTA-STS",
+	"description": "MTA-STS is an RFC that allows a domain to signal that email delivered to it should only use the specified MX records and that STARTTLS should be enforced.",
+	"icon_url": null,
+	"category": "workers-databases",
+	"latest_version": "0.0.1",
+	"flags": [
+		"exclude_permissions_step",
+		"template_only"
+	],
+	"installed_version": null
+}
