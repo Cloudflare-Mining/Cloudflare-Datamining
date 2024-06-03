@@ -4,9 +4,9 @@
 				"use strict";
 				for (var t = [], n = 0; n < 256; ++n) t[n] = (n + 256).toString(16).substr(1);
 				e.exports = function(e, n) {
-					var i = n || 0,
-						r = t;
-					return [r[e[i++]], r[e[i++]], r[e[i++]], r[e[i++]], "-", r[e[i++]], r[e[i++]], "-", r[e[i++]], r[e[i++]], "-", r[e[i++]], r[e[i++]], "-", r[e[i++]], r[e[i++]], r[e[i++]], r[e[i++]], r[e[i++]], r[e[i++]]].join("")
+					var r = n || 0,
+						i = t;
+					return [i[e[r++]], i[e[r++]], i[e[r++]], i[e[r++]], "-", i[e[r++]], i[e[r++]], "-", i[e[r++]], i[e[r++]], "-", i[e[r++]], i[e[r++]], "-", i[e[r++]], i[e[r++]], i[e[r++]], i[e[r++]], i[e[r++]], i[e[r++]]].join("")
 				}
 			},
 			944: function(e) {
@@ -18,37 +18,37 @@
 						return t(n), n
 					}
 				} else {
-					var i = new Array(16);
+					var r = new Array(16);
 					e.exports = function() {
-						for (var e, t = 0; t < 16; t++) 0 == (3 & t) && (e = 4294967296 * Math.random()), i[t] = e >>> ((3 & t) << 3) & 255;
-						return i
+						for (var e, t = 0; t < 16; t++) 0 == (3 & t) && (e = 4294967296 * Math.random()), r[t] = e >>> ((3 & t) << 3) & 255;
+						return r
 					}
 				}
 			},
 			508: function(e, t, n) {
 				"use strict";
-				var i = n(944),
-					r = n(343);
+				var r = n(944),
+					i = n(343);
 				e.exports = function(e, t, n) {
 					var o = t && n || 0;
 					"string" == typeof e && (t = "binary" === e ? new Array(16) : null, e = null);
-					var a = (e = e || {}).random || (e.rng || i)();
+					var a = (e = e || {}).random || (e.rng || r)();
 					if (a[6] = 15 & a[6] | 64, a[8] = 63 & a[8] | 128, t)
 						for (var c = 0; c < 16; ++c) t[o + c] = a[c];
-					return t || r(a)
+					return t || i(a)
 				}
 			},
 			168: function(e, t, n) {
 				"use strict";
-				var i = this && this.__assign || function() {
-					return i = Object.assign || function(e) {
-						for (var t, n = 1, i = arguments.length; n < i; n++)
-							for (var r in t = arguments[n]) Object.prototype.hasOwnProperty.call(t, r) && (e[r] = t[r]);
+				var r = this && this.__assign || function() {
+					return r = Object.assign || function(e) {
+						for (var t, n = 1, r = arguments.length; n < r; n++)
+							for (var i in t = arguments[n]) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 						return e
-					}, i.apply(this, arguments)
+					}, r.apply(this, arguments)
 				};
 				t.__esModule = !0;
-				var r = n(699),
+				var i = n(699),
 					o = n(752),
 					a = n(104),
 					c = n(508);
@@ -61,16 +61,16 @@
 								var n = new URL(e);
 								return "".concat(n.protocol, "://").concat(n.host).concat(n.pathname)
 							} catch (e) {} else {
-								var i = window.location.pathname;
-								i && i.length > 0 && (t += i)
+								var r = window.location.pathname;
+								r && r.length > 0 && (t += r)
 							}
 						return t
 					}
 
 					function t(e, t) {
 						for (var n in e) {
-							var i = e[n];
-							void 0 !== t && ("number" == typeof i || "string" == typeof i ? t[n] = i : Array.isArray(i) && (t[n] = JSON.parse(JSON.stringify(i))))
+							var r = e[n];
+							void 0 !== t && ("number" == typeof r || "string" == typeof r ? t[n] = r : Array.isArray(r) && (t[n] = JSON.parse(JSON.stringify(r))))
 						}
 					}! function() {
 						var n, u, s = window.performance || window.webkitPerformance || window.msPerformance || window.mozPerformance,
@@ -83,7 +83,7 @@
 							if (d) {
 								var m = d.getAttribute(f);
 								if (m) try {
-									p = i(i({}, p), JSON.parse(m))
+									p = r(r({}, p), JSON.parse(m))
 								} catch (e) {} else {
 									var g = d.getAttribute("src");
 									if (g && "function" == typeof URLSearchParams) {
@@ -102,36 +102,37 @@
 									if ("hidden" === document.visibilityState) {
 										if (L && R()) {
 											var t = e();
-											(null == w ? void 0 : w.url) == t && (null == w ? void 0 : w.triggered) || P(), x(t)
+											(null == w ? void 0 : w.url) == t && (null == w ? void 0 : w.triggered) || P(), _(t)
 										}!b && w && (b = !0, B())
 									} else "visible" === document.visibilityState && (new Date).getTime()
 								}));
 								var E = {};
-								"function" == typeof PerformanceObserver && ((0, a.onLCP)(F), (0, a.onFID)(F), (0, a.onFCP)(F), (0, a.onINP)(F), (0, a.onTTFB)(F), PerformanceObserver.supportedEntryTypes && PerformanceObserver.supportedEntryTypes.includes("layout-shift") && (0, a.onCLS)(F));
+								"function" == typeof PerformanceObserver && ((0, a.onLCP)(x), (0, a.onFID)(x), (0, a.onFCP)(x), (0, a.onINP)(x), (0, a.onTTFB)(x), PerformanceObserver.supportedEntryTypes && PerformanceObserver.supportedEntryTypes.includes("layout-shift") && (0, a.onCLS)(x));
 								var L = p && (void 0 === p.spa || !0 === p.spa),
 									C = p.send && p.send.to ? p.send.to : void 0 === p.version ? "https://cloudflareinsights.com/cdn-cgi/rum" : null,
-									P = function(i) {
-										var a = function(i) {
+									P = function(r) {
+										var a = function(r) {
 											var o, a, c = s.timing,
 												u = s.memory,
-												f = i || e(),
+												f = r || e(),
 												d = {
 													memory: {},
 													timings: {},
 													resources: [],
 													referrer: (o = document.referrer || "", a = v[v.length - 1], L && w && a ? a.url : o),
-													eventType: r.EventType.Load,
+													eventType: i.EventType.Load,
 													firstPaint: 0,
 													firstContentfulPaint: 0,
-													startTime: I(),
+													startTime: F(),
 													versions: {
 														fl: p ? p.version : "",
-														js: "2024.5.0",
+														js: "2024.6.0",
 														timings: 1
 													},
 													pageloadId: l,
 													location: f,
-													nt: S
+													nt: S,
+													serverTimings: I()
 												};
 											if (null == n) {
 												if ("function" == typeof s.getEntriesByType) {
@@ -140,8 +141,8 @@
 												}
 												1 === d.versions.timings && t(c, d.timings), t(u, d.memory)
 											} else O(d);
-											return d.firstPaint = _("first-paint"), d.firstContentfulPaint = _("first-contentful-paint"), p && (p.icTag && (d.icTag = p.icTag), d.siteToken = p.token), void 0 !== n && (delete d.timings, delete d.memory), d
-										}(i);
+											return d.firstPaint = k("first-paint"), d.firstContentfulPaint = k("first-contentful-paint"), p && (p.icTag && (d.icTag = p.icTag), d.siteToken = p.token), void 0 !== n && (delete d.timings, delete d.memory), d
+										}(r);
 										a && p && (a.resources = [], p && ((0, o.sendObjectBeacon)("", a, (function() {}), !1, C), void 0 !== p.forward && void 0 !== p.forward.url && (0, o.sendObjectBeacon)("", a, (function() {}), !1, p.forward.url)))
 									},
 									B = function() {
@@ -151,24 +152,25 @@
 											try {
 												n = "function" == typeof s.getEntriesByType ? new URL(null == t ? void 0 : t.name).pathname : u ? new URL(u).pathname : window.location.pathname
 											} catch (e) {}
-											var i = {
+											var r = {
 												referrer: document.referrer || "",
-												eventType: r.EventType.WebVitalsV2,
+												eventType: i.EventType.WebVitalsV2,
 												versions: {
-													js: "2024.5.0"
+													js: "2024.6.0"
 												},
 												pageloadId: l,
 												location: e(),
 												landingPath: n,
-												startTime: I(),
-												nt: S
+												startTime: F(),
+												nt: S,
+												serverTimings: I()
 											};
-											return p && (p.version && (i.versions.fl = p.version), p.icTag && (i.icTag = p.icTag), i.siteToken = p.token), E && ["lcp", "fid", "cls", "fcp", "ttfb", "inp"].forEach((function(e) {
-												i[e] = {
+											return p && (p.version && (r.versions.fl = p.version), p.icTag && (r.icTag = p.icTag), r.siteToken = p.token), E && ["lcp", "fid", "cls", "fcp", "ttfb", "inp"].forEach((function(e) {
+												r[e] = {
 													value: -1,
 													path: void 0
-												}, E[e] && void 0 !== E[e].value && (i[e] = E[e])
-											})), O(i), i
+												}, E[e] && void 0 !== E[e].value && (r[e] = E[e])
+											})), O(r), r
 										}();
 										p && (0, o.sendObjectBeacon)("", t, (function() {}), !0, C)
 									},
@@ -189,7 +191,7 @@
 											return e.id === l
 										})).length
 									},
-									x = function(e) {
+									_ = function(e) {
 										v.push({
 											id: l,
 											url: e,
@@ -197,26 +199,26 @@
 										}), v.length > 3 && v.shift()
 									};
 								L && (u = e(), function(t) {
-									var i = t.pushState;
-									if (i) {
-										var r = function() {
+									var r = t.pushState;
+									if (r) {
+										var i = function() {
 											l = c()
 										};
 										t.pushState = function(o, a, c) {
 											n = e(c);
 											var u = e(),
 												s = !0;
-											return n == u && (s = !1), s && (R() && ((null == w ? void 0 : w.url) == u && (null == w ? void 0 : w.triggered) || P(u), x(u)), r()), i.apply(t, [o, a, c])
+											return n == u && (s = !1), s && (R() && ((null == w ? void 0 : w.url) == u && (null == w ? void 0 : w.triggered) || P(u), _(u)), i()), r.apply(t, [o, a, c])
 										}, window.addEventListener("popstate", (function(t) {
-											R() && ((null == w ? void 0 : w.url) == n && (null == w ? void 0 : w.triggered) || P(n), x(n)), n = e(), r()
+											R() && ((null == w ? void 0 : w.url) == n && (null == w ? void 0 : w.triggered) || P(n), _(n)), n = e(), i()
 										}))
 									}
 								}(window.history))
 							}
 						}
 
-						function F(e) {
-							var t, n, i, r, o, a, c, u = window.location.pathname;
+						function x(e) {
+							var t, n, r, i, o, a, c, u = window.location.pathname;
 							switch (S || (S = e.navigationType), "INP" !== e.name && (E[e.name.toLowerCase()] = {
 									value: e.value,
 									path: u
@@ -228,7 +230,7 @@
 									(c = e.attribution) && E.fid && (E.fid.element = c.eventTarget, E.fid.name = c.eventType);
 									break;
 								case "LCP":
-									(c = e.attribution) && E.lcp && (E.lcp.element = c.element, E.lcp.size = null === (i = c.lcpEntry) || void 0 === i ? void 0 : i.size, E.lcp.url = c.url, E.lcp.rld = c.resourceLoadDelay, E.lcp.rlt = c.resourceLoadTime, E.lcp.erd = c.elementRenderDelay, E.lcp.it = null === (r = c.lcpResourceEntry) || void 0 === r ? void 0 : r.initiatorType, E.lcp.fp = null === (a = null === (o = c.lcpEntry) || void 0 === o ? void 0 : o.element) || void 0 === a ? void 0 : a.getAttribute("fetchpriority"));
+									(c = e.attribution) && E.lcp && (E.lcp.element = c.element, E.lcp.size = null === (r = c.lcpEntry) || void 0 === r ? void 0 : r.size, E.lcp.url = c.url, E.lcp.rld = c.resourceLoadDelay, E.lcp.rlt = c.resourceLoadTime, E.lcp.erd = c.elementRenderDelay, E.lcp.it = null === (i = c.lcpResourceEntry) || void 0 === i ? void 0 : i.initiatorType, E.lcp.fp = null === (a = null === (o = c.lcpEntry) || void 0 === o ? void 0 : o.element) || void 0 === a ? void 0 : a.getAttribute("fetchpriority"));
 									break;
 								case "INP":
 									(null == E.inp || Number(E.inp.value) < Number(e.value)) && (E.inp = {
@@ -238,19 +240,60 @@
 							}
 						}
 
-						function I() {
+						function F() {
 							return s.timeOrigin
+						}
+
+						function I() {
+							if (p && p.serverTiming) {
+								for (var e = [], t = 0, n = ["navigation", "resource"]; t < n.length; t++)
+									for (var r = n[t], i = 0, o = s.getEntriesByType(r); i < o.length; i++) {
+										var a = o[i],
+											c = a.name,
+											u = a.serverTiming;
+										if (u) {
+											if ("resource" === r) {
+												var f = p.serverTiming.location_startswith;
+												if (!f || !Array.isArray(f)) continue;
+												for (var d = !1, l = 0, v = f; l < v.length; l++) {
+													var m = v[l];
+													if (c.startsWith(m)) {
+														d = !0;
+														break
+													}
+												}
+												if (!d) continue
+											}
+											for (var g = 0, y = u; g < y.length; g++) {
+												var h = y[g],
+													T = h.name,
+													w = h.description,
+													S = h.duration;
+												if (p.serverTiming.name && p.serverTiming.name[T]) try {
+													var b = new URL(c);
+													e.push({
+														location: "resource" === r ? "".concat(b.origin).concat(b.pathname) : void 0,
+														name: T,
+														dur: S,
+														desc: w
+													})
+												} catch (e) {}
+											}
+										}
+									}
+								return e
+							}
 						}
 
 						function O(e) {
 							if ("function" == typeof s.getEntriesByType) {
 								var n = s.getEntriesByType("navigation"),
-									i = {};
-								e.timingsV2 = {}, n && n[0] && (n[0].nextHopProtocol && (i.nextHopProtocol = n[0].nextHopProtocol), n[0].transferSize && (i.transferSize = n[0].transferSize), n[0].decodedBodySize && (i.decodedBodySize = n[0].decodedBodySize), e.dt = n[0].deliveryType), t(i, e.timingsV2)
+									r = {};
+								e.timingsV2 = {}, n && n[0] && (n[0].nextHopProtocol && (r.nextHopProtocol = n[0].nextHopProtocol), n[0].transferSize && (r.transferSize = n[0].transferSize), n[0].decodedBodySize && (r.decodedBodySize = n[0].decodedBodySize), e.dt = n[0].deliveryType), t(r, e.timingsV2)
 							}
 						}
 
-						function _(e) {
+						function k(e) {
 							var t;
 							if ("first-contentful-paint" === e && E.fcp && E.fcp.value) return E.fcp.value;
 							if ("function" == typeof s.getEntriesByType) {
@@ -266,15 +309,15 @@
 			},
 			752: function(e, t) {
 				"use strict";
-				t.__esModule = !0, t.sendObjectBeacon = void 0, t.sendObjectBeacon = function(e, t, n, i, r) {
-					void 0 === i && (i = !1), void 0 === r && (r = null);
-					var o = r || (t.siteToken && t.versions.fl ? "/cdn-cgi/rum?".concat(e) : "/cdn-cgi/beacon/performance?".concat(e)),
+				t.__esModule = !0, t.sendObjectBeacon = void 0, t.sendObjectBeacon = function(e, t, n, r, i) {
+					void 0 === r && (r = !1), void 0 === i && (i = null);
+					var o = i || (t.siteToken && t.versions.fl ? "/cdn-cgi/rum?".concat(e) : "/cdn-cgi/beacon/performance?".concat(e)),
 						a = !0;
 					if (navigator && "string" == typeof navigator.userAgent) try {
 						var c = navigator.userAgent.match(/Chrome\/([0-9]+)/);
 						c && c[0].toLowerCase().indexOf("chrome") > -1 && parseInt(c[1]) < 81 && (a = !1)
 					} catch (e) {}
-					if (navigator && "function" == typeof navigator.sendBeacon && a && i) {
+					if (navigator && "function" == typeof navigator.sendBeacon && a && r) {
 						t.st = 1;
 						var u = JSON.stringify(t),
 							s = navigator.sendBeacon && navigator.sendBeacon.bind(navigator);
@@ -292,13 +335,13 @@
 			},
 			699: function(e, t) {
 				"use strict";
-				var n, i;
-				t.__esModule = !0, t.FetchPriority = t.EventType = void 0, (i = t.EventType || (t.EventType = {}))[i.Load = 1] = "Load", i[i.Additional = 2] = "Additional", i[i.WebVitalsV2 = 3] = "WebVitalsV2", (n = t.FetchPriority || (t.FetchPriority = {})).High = "high", n.Low = "low", n.Auto = "auto"
+				var n, r;
+				t.__esModule = !0, t.FetchPriority = t.EventType = void 0, (r = t.EventType || (t.EventType = {}))[r.Load = 1] = "Load", r[r.Additional = 2] = "Additional", r[r.WebVitalsV2 = 3] = "WebVitalsV2", (n = t.FetchPriority || (t.FetchPriority = {})).High = "high", n.Low = "low", n.Auto = "auto"
 			},
 			104: function(e, t) {
 				! function(e) {
 					"use strict";
-					var t, n, i, r, o, a = function() {
+					var t, n, r, i, o, a = function() {
 							return window.performance && performance.getEntriesByType && performance.getEntriesByType("navigation")[0]
 						},
 						c = function(e) {
@@ -319,11 +362,11 @@
 							var n = "";
 							try {
 								for (; e && 9 !== e.nodeType;) {
-									var i = e,
-										r = i.id ? "#" + i.id : u(i) + (i.classList && i.classList.value && i.classList.value.trim() && i.classList.value.trim().length ? "." + i.classList.value.trim().replace(/\s+/g, ".") : "");
-									if (n.length + r.length > (t || 100) - 1) return n || r;
-									if (n = n ? r + ">" + n : r, i.id) break;
-									e = i.parentNode
+									var r = e,
+										i = r.id ? "#" + r.id : u(r) + (r.classList && r.classList.value && r.classList.value.trim() && r.classList.value.trim().length ? "." + r.classList.value.trim().replace(/\s+/g, ".") : "");
+									if (n.length + i.length > (t || 100) - 1) return n || i;
+									if (n = n ? i + ">" + n : i, r.id) break;
+									e = r.parentNode
 								}
 							} catch (e) {}
 							return n
@@ -343,36 +386,36 @@
 						},
 						p = function(e, t) {
 							var n = a(),
-								i = "navigate";
-							return d() >= 0 ? i = "back-forward-cache" : n && (document.prerendering || v() > 0 ? i = "prerender" : document.wasDiscarded ? i = "restore" : n.type && (i = n.type.replace(/_/g, "-"))), {
+								r = "navigate";
+							return d() >= 0 ? r = "back-forward-cache" : n && (document.prerendering || v() > 0 ? r = "prerender" : document.wasDiscarded ? r = "restore" : n.type && (r = n.type.replace(/_/g, "-"))), {
 								name: e,
 								value: void 0 === t ? -1 : t,
 								rating: "good",
 								delta: 0,
 								entries: [],
 								id: "v3-".concat(Date.now(), "-").concat(Math.floor(8999999999999 * Math.random()) + 1e12),
-								navigationType: i
+								navigationType: r
 							}
 						},
 						m = function(e, t, n) {
 							try {
 								if (PerformanceObserver.supportedEntryTypes.includes(e)) {
-									var i = new PerformanceObserver((function(e) {
+									var r = new PerformanceObserver((function(e) {
 										Promise.resolve().then((function() {
 											t(e.getEntries())
 										}))
 									}));
-									return i.observe(Object.assign({
+									return r.observe(Object.assign({
 										type: e,
 										buffered: !0
-									}, n || {})), i
+									}, n || {})), r
 								}
 							} catch (e) {}
 						},
-						g = function(e, t, n, i) {
-							var r, o;
+						g = function(e, t, n, r) {
+							var i, o;
 							return function(a) {
-								t.value >= 0 && (a || i) && ((o = t.value - (r || 0)) || void 0 === r) && (r = t.value, t.delta = o, t.rating = function(e, t) {
+								t.value >= 0 && (a || r) && ((o = t.value - (i || 0)) || void 0 === i) && (i = t.value, t.delta = o, t.rating = function(e, t) {
 									return e > t[1] ? "poor" : e > t[0] ? "needs-improvement" : "good"
 								}(t.value, n), e(t))
 							}
@@ -428,31 +471,31 @@
 						B = [1800, 3e3],
 						A = function(e, t) {
 							t = t || {}, P((function() {
-								var n, i = C(),
-									r = p("FCP"),
+								var n, r = C(),
+									i = p("FCP"),
 									o = m("paint", (function(e) {
 										e.forEach((function(e) {
-											"first-contentful-paint" === e.name && (o.disconnect(), e.startTime < i.firstHiddenTime && (r.value = Math.max(e.startTime - v(), 0), r.entries.push(e), n(!0)))
+											"first-contentful-paint" === e.name && (o.disconnect(), e.startTime < r.firstHiddenTime && (i.value = Math.max(e.startTime - v(), 0), i.entries.push(e), n(!0)))
 										}))
 									}));
-								o && (n = g(e, r, B, t.reportAllChanges), l((function(i) {
-									r = p("FCP"), n = g(e, r, B, t.reportAllChanges), y((function() {
-										r.value = performance.now() - i.timeStamp, n(!0)
+								o && (n = g(e, i, B, t.reportAllChanges), l((function(r) {
+									i = p("FCP"), n = g(e, i, B, t.reportAllChanges), y((function() {
+										i.value = performance.now() - r.timeStamp, n(!0)
 									}))
 								})))
 							}))
 						},
 						R = [.1, .25],
-						x = {
+						_ = {
 							passive: !0,
 							capture: !0
 						},
-						F = new Date,
-						I = function(e, r) {
-							t || (t = r, n = e, i = new Date, M(removeEventListener), O())
+						x = new Date,
+						F = function(e, i) {
+							t || (t = i, n = e, r = new Date, k(removeEventListener), I())
 						},
-						O = function() {
-							if (n >= 0 && n < i - F) {
+						I = function() {
+							if (n >= 0 && n < r - x) {
 								var e = {
 									entryType: "first-input",
 									name: t.type,
@@ -461,36 +504,36 @@
 									startTime: t.timeStamp,
 									processingStart: t.timeStamp + n
 								};
-								r.forEach((function(t) {
+								i.forEach((function(t) {
 									t(e)
-								})), r = []
+								})), i = []
 							}
 						},
-						_ = function(e) {
+						O = function(e) {
 							if (e.cancelable) {
 								var t = (e.timeStamp > 1e12 ? new Date : performance.now()) - e.timeStamp;
 								"pointerdown" == e.type ? function(e, t) {
 									var n = function() {
-											I(e, t), r()
-										},
-										i = function() {
-											r()
+											F(e, t), i()
 										},
 										r = function() {
-											removeEventListener("pointerup", n, x), removeEventListener("pointercancel", i, x)
+											i()
+										},
+										i = function() {
+											removeEventListener("pointerup", n, _), removeEventListener("pointercancel", r, _)
 										};
-									addEventListener("pointerup", n, x), addEventListener("pointercancel", i, x)
-								}(t, e) : I(t, e)
+									addEventListener("pointerup", n, _), addEventListener("pointercancel", r, _)
+								}(t, e) : F(t, e)
 							}
 						},
-						M = function(e) {
+						k = function(e) {
 							["mousedown", "keydown", "touchstart", "pointerdown"].forEach((function(t) {
-								return e(t, _, x)
+								return e(t, O, _)
 							}))
 						},
-						k = [100, 300],
-						N = function(e, i) {
-							i = i || {}, P((function() {
+						M = [100, 300],
+						N = function(e, r) {
+							r = r || {}, P((function() {
 								var o, a = C(),
 									c = p("FID"),
 									u = function(e) {
@@ -500,11 +543,11 @@
 										e.forEach(u)
 									},
 									f = m("first-input", s);
-								o = g(e, c, k, i.reportAllChanges), f && h(T((function() {
+								o = g(e, c, M, r.reportAllChanges), f && h(T((function() {
 									s(f.takeRecords()), f.disconnect()
 								}))), f && l((function() {
 									var a;
-									c = p("FID"), o = g(e, c, k, i.reportAllChanges), r = [], n = -1, t = null, M(addEventListener), a = u, r.push(a), O()
+									c = p("FID"), o = g(e, c, M, r.reportAllChanges), i = [], n = -1, t = null, k(addEventListener), a = u, i.push(a), I()
 								}))
 							}))
 						},
@@ -526,10 +569,10 @@
 								durationThreshold: 0
 							}))
 						},
-						J = [200, 500],
-						U = 0,
+						U = [200, 500],
+						J = 0,
 						W = function() {
-							return H() - U
+							return H() - J
 						},
 						Q = [],
 						X = {},
@@ -539,12 +582,12 @@
 							if (n || Q.length < 10 || e.duration > t.latency) {
 								if (n) n.entries.push(e), n.latency = Math.max(n.latency, e.duration);
 								else {
-									var i = {
+									var r = {
 										id: e.interactionId,
 										latency: e.duration,
 										entries: [e]
 									};
-									X[i.id] = i, Q.push(i)
+									X[r.id] = r, Q.push(r)
 								}
 								Q.sort((function(e, t) {
 									return t.latency - e.latency
@@ -566,38 +609,38 @@
 						ee = function(e, t) {
 							t = t || {};
 							var n = p("TTFB"),
-								i = g(e, n, Z, t.reportAllChanges);
+								r = g(e, n, Z, t.reportAllChanges);
 							$((function() {
-								var r = a();
-								if (r) {
-									var o = r.responseStart;
+								var i = a();
+								if (i) {
+									var o = i.responseStart;
 									if (o <= 0 || o > performance.now()) return;
-									n.value = Math.max(o - v(), 0), n.entries = [r], i(!0), l((function() {
-										n = p("TTFB", 0), (i = g(e, n, Z, t.reportAllChanges))(!0)
+									n.value = Math.max(o - v(), 0), n.entries = [i], r(!0), l((function() {
+										n = p("TTFB", 0), (r = g(e, n, Z, t.reportAllChanges))(!0)
 									}))
 								}
 							}))
 						};
-					e.CLSThresholds = R, e.FCPThresholds = B, e.FIDThresholds = k, e.INPThresholds = J, e.LCPThresholds = K, e.TTFBThresholds = Z, e.onCLS = function(e, t) {
+					e.CLSThresholds = R, e.FCPThresholds = B, e.FIDThresholds = M, e.INPThresholds = U, e.LCPThresholds = K, e.TTFBThresholds = Z, e.onCLS = function(e, t) {
 						! function(e, t) {
 							t = t || {}, A(T((function() {
-								var n, i = p("CLS", 0),
-									r = 0,
+								var n, r = p("CLS", 0),
+									i = 0,
 									o = [],
 									a = function(e) {
 										e.forEach((function(e) {
 											if (!e.hadRecentInput) {
 												var t = o[0],
 													n = o[o.length - 1];
-												r && e.startTime - n.startTime < 1e3 && e.startTime - t.startTime < 5e3 ? (r += e.value, o.push(e)) : (r = e.value, o = [e])
+												i && e.startTime - n.startTime < 1e3 && e.startTime - t.startTime < 5e3 ? (i += e.value, o.push(e)) : (i = e.value, o = [e])
 											}
-										})), r > i.value && (i.value = r, i.entries = o, n())
+										})), i > r.value && (r.value = i, r.entries = o, n())
 									},
 									c = m("layout-shift", a);
-								c && (n = g(e, i, R, t.reportAllChanges), h((function() {
+								c && (n = g(e, r, R, t.reportAllChanges), h((function() {
 									a(c.takeRecords()), n(!0)
 								})), l((function() {
-									r = 0, i = p("CLS", 0), n = g(e, i, R, t.reportAllChanges), y((function() {
+									i = 0, r = p("CLS", 0), n = g(e, r, R, t.reportAllChanges), y((function() {
 										return n()
 									}))
 								})), setTimeout(n, 0))
@@ -609,9 +652,9 @@
 										return e && e.value > t.value ? e : t
 									}));
 									if (t && t.sources && t.sources.length) {
-										var n = (i = t.sources).find((function(e) {
+										var n = (r = t.sources).find((function(e) {
 											return e.node && 1 === e.node.nodeType
-										})) || i[0];
+										})) || r[0];
 										if (n) return void(e.attribution = {
 											largestShiftTarget: s(n.node),
 											largestShiftTime: t.startTime,
@@ -622,7 +665,7 @@
 										})
 									}
 								}
-								var i;
+								var r;
 								e.attribution = {}
 							}(t), e(t)
 						}), t)
@@ -633,11 +676,11 @@
 									var t = a(),
 										n = e.entries[e.entries.length - 1];
 									if (t) {
-										var i = t.activationStart || 0,
-											r = Math.max(0, t.responseStart - i);
+										var r = t.activationStart || 0,
+											i = Math.max(0, t.responseStart - r);
 										return void(e.attribution = {
-											timeToFirstByte: r,
-											firstByteToFCP: e.value - r,
+											timeToFirstByte: i,
+											firstByteToFCP: e.value - i,
 											loadState: c(e.entries[0].startTime),
 											navigationEntry: t,
 											fcpEntry: n
@@ -669,7 +712,7 @@
 							t = t || {}, P((function() {
 								var n;
 								z();
-								var i, r = p("INP"),
+								var r, i = p("INP"),
 									o = function(e) {
 										e.forEach((function(e) {
 											e.interactionId && G(e), "first-input" === e.entryType && !Q.some((function(t) {
@@ -679,18 +722,18 @@
 											})) && G(e)
 										}));
 										var t, n = (t = Math.min(Q.length - 1, Math.floor(W() / 50)), Q[t]);
-										n && n.latency !== r.value && (r.value = n.latency, r.entries = n.entries, i())
+										n && n.latency !== i.value && (i.value = n.latency, i.entries = n.entries, r())
 									},
 									a = m("event", o, {
 										durationThreshold: null !== (n = t.durationThreshold) && void 0 !== n ? n : 40
 									});
-								i = g(e, r, J, t.reportAllChanges), a && ("PerformanceEventTiming" in window && "interactionId" in PerformanceEventTiming.prototype && a.observe({
+								r = g(e, i, U, t.reportAllChanges), a && ("PerformanceEventTiming" in window && "interactionId" in PerformanceEventTiming.prototype && a.observe({
 									type: "first-input",
 									buffered: !0
 								}), h((function() {
-									o(a.takeRecords()), r.value < 0 && W() > 0 && (r.value = 0, r.entries = []), i(!0)
+									o(a.takeRecords()), i.value < 0 && W() > 0 && (i.value = 0, i.entries = []), r(!0)
 								})), l((function() {
-									Q = [], U = H(), r = p("INP"), i = g(e, r, J, t.reportAllChanges)
+									Q = [], J = H(), i = p("INP"), r = g(e, i, U, t.reportAllChanges)
 								})))
 							}))
 						}((function(t) {
@@ -715,25 +758,25 @@
 					}, e.onLCP = function(e, t) {
 						! function(e, t) {
 							t = t || {}, P((function() {
-								var n, i = C(),
-									r = p("LCP"),
+								var n, r = C(),
+									i = p("LCP"),
 									o = function(e) {
 										var t = e[e.length - 1];
-										t && t.startTime < i.firstHiddenTime && (r.value = Math.max(t.startTime - v(), 0), r.entries = [t], n())
+										t && t.startTime < r.firstHiddenTime && (i.value = Math.max(t.startTime - v(), 0), i.entries = [t], n())
 									},
 									a = m("largest-contentful-paint", o);
 								if (a) {
-									n = g(e, r, K, t.reportAllChanges);
+									n = g(e, i, K, t.reportAllChanges);
 									var c = T((function() {
-										Y[r.id] || (o(a.takeRecords()), a.disconnect(), Y[r.id] = !0, n(!0))
+										Y[i.id] || (o(a.takeRecords()), a.disconnect(), Y[i.id] = !0, n(!0))
 									}));
 									["keydown", "click"].forEach((function(e) {
 										addEventListener(e, (function() {
 											return setTimeout(c, 0)
 										}), !0)
-									})), h(c), l((function(i) {
-										r = p("LCP"), n = g(e, r, K, t.reportAllChanges), y((function() {
-											r.value = performance.now() - i.timeStamp, Y[r.id] = !0, n(!0)
+									})), h(c), l((function(r) {
+										i = p("LCP"), n = g(e, i, K, t.reportAllChanges), y((function() {
+											i.value = performance.now() - r.timeStamp, Y[i.id] = !0, n(!0)
 										}))
 									}))
 								}
@@ -744,24 +787,24 @@
 									var t = a();
 									if (t) {
 										var n = t.activationStart || 0,
-											i = e.entries[e.entries.length - 1],
-											r = i.url && performance.getEntriesByType("resource").filter((function(e) {
-												return e.name === i.url
+											r = e.entries[e.entries.length - 1],
+											i = r.url && performance.getEntriesByType("resource").filter((function(e) {
+												return e.name === r.url
 											}))[0],
 											o = Math.max(0, t.responseStart - n),
-											c = Math.max(o, r ? (r.requestStart || r.startTime) - n : 0),
-											u = Math.max(c, r ? r.responseEnd - n : 0),
-											f = Math.max(u, i ? i.startTime - n : 0),
+											c = Math.max(o, i ? (i.requestStart || i.startTime) - n : 0),
+											u = Math.max(c, i ? i.responseEnd - n : 0),
+											f = Math.max(u, r ? r.startTime - n : 0),
 											d = {
-												element: s(i.element),
+												element: s(r.element),
 												timeToFirstByte: o,
 												resourceLoadDelay: c - o,
 												resourceLoadTime: u - c,
 												elementRenderDelay: f - u,
 												navigationEntry: t,
-												lcpEntry: i
+												lcpEntry: r
 											};
-										return i.url && (d.url = i.url), r && (d.lcpResourceEntry = r), void(e.attribution = d)
+										return r.url && (d.url = r.url), i && (d.lcpResourceEntry = i), void(e.attribution = d)
 									}
 								}
 								e.attribution = {
@@ -778,13 +821,13 @@
 								if (e.entries.length) {
 									var t = e.entries[0],
 										n = t.activationStart || 0,
-										i = Math.max(t.domainLookupStart - n, 0),
-										r = Math.max(t.connectStart - n, 0),
+										r = Math.max(t.domainLookupStart - n, 0),
+										i = Math.max(t.connectStart - n, 0),
 										o = Math.max(t.requestStart - n, 0);
 									e.attribution = {
-										waitingTime: i,
-										dnsTime: r - i,
-										connectionTime: o - r,
+										waitingTime: r,
+										dnsTime: i - r,
+										connectionTime: o - i,
 										requestTime: e.value - o,
 										navigationEntry: t
 									}
@@ -801,12 +844,12 @@
 			}
 		},
 		t = {};
-	! function n(i) {
-		var r = t[i];
-		if (void 0 !== r) return r.exports;
-		var o = t[i] = {
+	! function n(r) {
+		var i = t[r];
+		if (void 0 !== i) return i.exports;
+		var o = t[r] = {
 			exports: {}
 		};
-		return e[i].call(o.exports, o, o.exports, n), o.exports
+		return e[r].call(o.exports, o, o.exports, n), o.exports
 	}(168)
 }();
