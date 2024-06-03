@@ -5,39 +5,63 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations<br><br></strong>Hybrid: Amsterdam, Lisbon, London, Munich or Paris<br>Remote: France, Germany, Netherlands, Portugal or UK<strong><br><br>About the Department</strong></p>
-<p>Production Engineering is responsible for the world’s most reliable, observable, performant, and safe network ecosystem. Our customers rely on our products and systems to safely modify, troubleshoot, and release products without external impact.</p>
-<p>Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.</p>
-<p>We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behavior is and we are capable of determining and exposing anomalous behavior.</p>
-<p>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>In this role, you can expect to:</strong></p>
+<p><strong>About the Role</strong></p>
+<p>&nbsp;</p>
+<p>As an IT Operations and Service Desk Technician, you will play a dual role in ensuring the seamless operation of our company's IT infrastructure and providing top-notch service desk support. You will be instrumental in installing, configuring, monitoring, and maintaining computer systems, while also serving as the first point of contact for IT support, handling inquiries, and resolving technical issues for end-users. Your responsibilities will span across troubleshooting hardware and software faults, offering timely solutions, and contributing to our IT knowledge base.&nbsp; This role will provide support for our corporate events, on-site management of computer inventory, new hire onboarding, and work with teams across the organization.&nbsp; This role reports to the IT Operations Lead for APJC.</p>
+<p>&nbsp;</p>
+<p><strong>About the Team</strong></p>
+<p>&nbsp;</p>
+<p>You will join a team of technical support professionals that provide enterprise level service for our corporate teams globally.&nbsp; We strive to provide helpful and knowledgeable technical assistance on a daily basis.&nbsp; We’re focused on providing a positive customer service and user experience.&nbsp; Also, we’re obsessed with providing the best user experience possible.</p>
+<p>&nbsp;</p>
+<p><strong>What You'll Do</strong></p>
+<p>&nbsp;</p>
 <ul>
-	<li>Design, deliver, and operate software that progresses Cloudflare's Observability competency</li>
-	<li>Solve scaling bottlenecks in critical services in our Metrics &amp; Alerting pipeline</li>
-	<li>Work on highly distributed and scalable systems</li>
-	<li>Participate in the constant cycle of knowledge sharing and mentoring</li>
-	<li>Participate in the global on-call rotation for the services your team owns</li>
-	<li>Research and introduce cutting-edge technologies</li>
-	<li>Contribute to open-source</li>
+	<li>Act as the primary contact for IT support within the organization, managing service desk tickets and responding to user requests in a timely manner.</li>
+	<li>Install, configure, and update hardware and software, ensuring optimal workstation performance.</li>
+	<li>Troubleshoot system and network problems, diagnosing and solving hardware or software faults with a focus on minimizing downtime.</li>
+	<li>Maintain security through monitoring access and adherence to IT policies, including internet security and data privacy protocols.</li>
+	<li>Guide and support users in the use of IT equipment and software, providing necessary training and documentation.</li>
+	<li>Organize and perform regular maintenance and system upgrades to ensure technology infrastructure runs smoothly.</li>
+	<li>Record and document issues and resolutions within the IT service management system, maintaining detailed logs of all IT incidents.</li>
+	<li>Evaluate user needs and system functionality, ensuring that IT facilities meet these needs.</li>
+	<li>Stay current with system information, changes, and updates to provide effective advice and solutions.</li>
+	<li>Support the development and implementation of new systems and services, including user acceptance testing.</li>
+	<li>Provide on-site and remote technical support</li>
+	<li>Seek guidance from the team when needed</li>
+	<li>Provide audio and video support for company events</li>
+	<li>Create and update technical documentation</li>
 </ul>
-<p>We are a small team, well-funded, growing and focused on building an extraordinary company. This is a systems engineering role and is a superb opportunity to be part of a high performing team to help to support Cloudflare’s mission and help build a better internet.</p>
-<p>You may be a good fit for our team if you have:</p>
+<p>&nbsp;</p>
+<p><strong>What You'll Bring</strong></p>
+<p>&nbsp;</p>
 <ul>
-	<li>Proficiency in distributed Linux environments</li>
-	<li>Proficiency in designing high-scale distributed systems</li>
-	<li>Proficiency in high-level programming languages (e.g., Golang)</li>
-	<li>Proficiency in Prometheus, Alertmanager, Thanos</li>
-	<li>Proficiency in networking protocols Layer 2-7 of the OSI model</li>
-	<li>Experience working in a fast, high-growth environment</li>
-	<li>Experience working in a 24/7/365 service environment</li>
-	<li>Exquisite written and verbal communication skills</li>
-	<li>Familiarity with Internetworking and BGP</li>
-	<li>Strong bias for action</li>
+	<li>Proven experience in IT support, with a solid foundation in both IT operations and service desk responsibilities.</li>
+	<li>Strong problem-solving skills and the ability to diagnose and resolve technical issues efficiently.</li>
+	<li>Familiarity with computer operating systems, hardware, networking, and software applications.</li>
+	<li>Experience with IT service desk software and IT service management principles.</li>
+	<li>Knowledge of internet security and data protection standards.</li>
+	<li>Relevant IT certifications (e.g., CompTIA A+, ITIL Foundation, Microsoft Certified IT Professional) are highly desirable.</li>
+	<li>A degree in Computer Science, Information Technology, or a related field.</li>
+	<li>Excellent communication skills, with an emphasis on providing exceptional customer service.</li>
+	<li>Ability to manage time effectively and work under pressure to meet deadlines.</li>
+	<li>Commitment to continuous learning and improvement in IT service delivery.</li>
 </ul>
-<p><strong>Bonus points if you have:</strong></p>
+<p>&nbsp;</p>
+<p><strong>Working Conditions</strong></p>
 <ul>
-	<li>Experience with high-bandwidth transit Internetworking and routing</li>
-	<li>Passion for code simplicity and performance</li>
+	<li>Flexibility to work varying shifts, including evenings and weekends, to accommodate business needs and support 24/7 operations.</li>
+	<li>May involve lifting and transporting IT equipment and peripherals.</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Experience with Jira Service Desk, JAMF, InTune</li>
+	<li>Experience working in the technology industry</li>
+	<li>Experience working in a Service Desk, Help Desk, or Call Center environment</li>
+	<li>Microsoft Support Certification</li>
+	<li>Apple Support Certification</li>
+	<li>ITIL Foundations</li>
+	<li>HDI Support Center Agent</li>
+	<li>CompTIA A+ Certified</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
