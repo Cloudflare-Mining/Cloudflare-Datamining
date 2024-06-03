@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.0
+
+### Minor Changes
+
+- 1dc86e6cf5: Use selectItem when value changes
+
 ## 2.0.12
 
 ### Patch Changes
