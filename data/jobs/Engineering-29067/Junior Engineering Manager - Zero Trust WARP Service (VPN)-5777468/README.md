@@ -5,37 +5,56 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>Location: The preferred location is San Francisco, CA</p>
-<p>As the Director of Business Development for the SPX China team at Cloudflare, you will spearhead efforts to drive growth and expand Cloudflare's China Network business. Your focus will be on leveraging your expertise in China-related business and Mandarin proficiency to develop strategies, build partnerships, and generate revenue in the Chinese market. Reporting to the Vice President of SPX for Mainland China, you will play a pivotal role in advancing Cloudflare's presence and success in China.</p>
-<p>&nbsp;</p>
-<p><strong>Responsibilities:</strong></p>
+<p><strong>Available Locations:&nbsp;<span class="collapsed-field-text">Canada (Alberta, Ontario or Quebec), Portugal and US</span>&nbsp;<br><br>What You'll Do</strong></p>
+<p>We are looking for a <strong>Junior Engineer Manager</strong> to lead the <a href="https://www.cloudflare.com/zero-trust/">Zero Trust</a> team working on <strong>WARP’s edge service</strong>, which uses Cloudflare’s global network to securely route tunnelled traffic from millions of devices running <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/">WARP</a> to the Internet.</p>
+<p>You will play a key role in shaping the team’s engineering strategy, working with other engineering teams, product management, and external stakeholders to implement customer-impacting features and meet the team’s ambitious goals of <strong>quality</strong>,<strong> reliability</strong>, and <strong>high-availability</strong>. You will work closely with your team to maintain the<strong> code quality</strong> and to build solid, <strong>testable, </strong>and<strong> well-documented</strong> code.</p>
+<p>As a manager in our team, you will be expected to <strong>lead</strong>, <strong>inspire</strong>, and <strong>foster a culture of diversity</strong>. You will communicate <strong>clearly</strong> and with <strong>empathy</strong>, and work towards building a <strong>cohesive and collaborative</strong> team. You will be expected to interact with our customers and internal stakeholders, to identify gaps and areas of improvements in our product and processes alike, and to work with your own stakeholders to transform those into <strong>innovative</strong>, <strong>actionable</strong>, and <strong>achievable</strong> <strong>solutions</strong>.</p>
+<p>The team predominantly uses <strong>Rust</strong> to implement high-performance networking code that runs on our Linux-based edge. You will be most successful in this role if you have a strong understanding of <strong>networking protocols</strong> (IP, TCP, UDP, DNS, QUIC, H/3, proxying, etc.) and <strong>operational principles</strong> (observability, alerting, tracing, incident management, SLIs &amp; SLOs, capacity planning, etc.)</p>
+<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Strategic Planning: Develop and execute comprehensive business development strategies tailored to the Chinese market, with a primary focus on expanding Cloudflare's China Network business.</li>
-	<li>Partnership Cultivation: Identify, evaluate, and negotiate partnerships with key stakeholders such as ISPs, cloud service providers, and technology partners to enhance Cloudflare's footprint and offerings in China.</li>
+	<li>Demonstrable experience leading a geographically distributed team</li>
+	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
+	<li>Excellent <strong>operational principles</strong> (observability, alerting, tracing, incident management, SLIs &amp; SLOs, capacity planning, etc.)</li>
+	<li>Excel at planning, and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>A strong understanding of how <strong>VPN technologies</strong> work, and the trade-offs between privacy, security, and anonymity</li>
+	<li>Strong understanding of <strong>networking protocols</strong> (IP, TCP, UDP, DNS, QUIC, H/3, proxying, etc.)</li>
+	<li>Good understanding of, and experience with, <strong>security protocols</strong> and standards</li>
+	<li>Good experience with <strong>debugging network-related problems</strong></li>
 </ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location and experience.</p>
 <ul>
-	<li>Market Analysis: Conduct thorough analysis of the Chinese market, including regulatory frameworks, competitive landscapes, and emerging trends, to identify growth opportunities and inform strategic decision-making.</li>
-	<li>Client Engagement: Foster and nurture relationships with key clients, prospects, and industry influencers in China. Lead client engagements, including presentations, negotiations, and contract discussions, to drive business growth and revenue generation.</li>
-	<li>Team Leadership: Provide leadership and direction to the SPX China team, including sales, marketing, and technical support functions, ensuring alignment with organizational goals and successful execution of business development initiatives.</li>
-	<li>Revenue Generation: Drive revenue growth through the identification of new business opportunities, development of strategic partnerships, and implementation of innovative solutions tailored to the Chinese market.</li>
-	<li>Cross-functional Collaboration: Collaborate closely with internal teams, including product management, marketing, legal, and finance, to ensure alignment and support for business development initiatives in China.</li>
-	<li>Regulatory Compliance: Stay abreast of regulatory requirements and compliance standards in China related to internet services and cybersecurity. Ensure Cloudflare's operations and offerings in China adhere to local regulations and policies.</li>
+	<li>For Colorado-based hires: Estimated annual salary of $162,000 - $233,000</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $195,000 - $261,000</li>
+	<li>For Bay Area-based hires: Estimated annual salary of $205,000 - $275,000</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Qualifications:</strong></p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Bachelor's degree in business administration, marketing, or related field (MBA preferred).</li>
-	<li>Minimum of 8 years of experience in business development, sales, or related roles, with a strong focus on the Chinese market.</li>
-	<li>Proven track record of success in driving revenue growth and building strategic partnerships in China.</li>
-	<li>Deep understanding of the Chinese market dynamics, regulatory landscapes, and cultural nuances.</li>
-	<li>Fluency in Mandarin Chinese is essential. Proficiency in English is highly desirable.</li>
-	<li>Excellent negotiation, communication, and interpersonal skills.</li>
-	<li>Leadership experience with the ability to inspire and motivate cross-functional teams.</li>
-	<li>Strategic thinker with a results-oriented mindset and a focus on achieving revenue targets and business objectives.</li>
-	<li>Experience in the technology industry, preferably with knowledge of cloud services, cybersecurity, or networking.</li>
-	<li>Willingness to travel within China and internationally as required.</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
