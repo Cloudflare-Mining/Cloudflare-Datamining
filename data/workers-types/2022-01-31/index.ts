@@ -1758,11 +1758,11 @@ export interface R2MultipartOptions {
   storageClass?: string;
 }
 export interface R2Checksums {
-  readonly md5?: ArrayBuffer;
-  readonly sha1?: ArrayBuffer;
-  readonly sha256?: ArrayBuffer;
-  readonly sha384?: ArrayBuffer;
-  readonly sha512?: ArrayBuffer;
+  readonly md5?: ArrayBufferView;
+  readonly sha1?: ArrayBufferView;
+  readonly sha256?: ArrayBufferView;
+  readonly sha384?: ArrayBufferView;
+  readonly sha512?: ArrayBufferView;
   toJSON(): R2StringChecksums;
 }
 export interface R2StringChecksums {
@@ -3380,6 +3380,7 @@ export interface RequestInitCfProperties extends Record<string, unknown> {
   minify?: RequestInitCfPropertiesImageMinify;
   mirage?: boolean;
   polish?: "lossy" | "lossless" | "off";
+  r2?: RequestInitCfPropertiesR2;
   /**
    * Redirects the request to an alternate origin server. You can use this,
    * for example, to implement load balancing across several origins.
@@ -3563,6 +3564,12 @@ export interface RequestInitCfPropertiesImageMinify {
   javascript?: boolean;
   css?: boolean;
   html?: boolean;
+}
+export interface RequestInitCfPropertiesR2 {
+  /**
+   * Colo id of bucket that an object is stored in
+   */
+  bucketColoId?: number;
 }
 /**
  * Request metadata provided by Cloudflare's edge.
