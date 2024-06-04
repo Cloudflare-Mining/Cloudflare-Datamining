@@ -644,7 +644,7 @@ By default your certificate will be renewed after 1 year.`,
 
 **Note:** SSL certificate issuance may take up to 24 hours.`,
 	ssl_recommender_title: "SSL/TLS Recommender",
-	ssl_recommender_description: "To check if your website can use a more secure SSL/TLS mode, enable the SSL/TLS Recommender. Receive an email with Cloudflare\u2019s recommendation.",
+	ssl_recommender_description: "Check if your domain can use a stronger SSL/TLS encryption mode. SSL/TLS Recommender runs a periodic origin scan and sends you an email if a more secure option is possible.",
 	ssl_recommender_help_header: "About SSL/TLS Recommender",
 	ssl_recommender_help_paragraph1: "After enabling the SSL/TLS Recommender, the zone owner will receive an email if a recommendation for a more secure SSL/TLS mode is available. If no email is received, the recommendation is to keep the current mode. You are not required to use the recommendation. The Recommender runs periodically and sends notifications if new recommendations become available. The recommendation is never lower than your current SSL/TLS mode.",
 	ssl_recommender_help_paragraph2: "The SSL/TLS Recommender is not intended to resolve issues with website or domain functionality. If your website is not functional at its current mode, no recommendation will be provided. <0>Learn more about SSL/TLS Recommender</0>.",
@@ -652,19 +652,10 @@ By default your certificate will be renewed after 1 year.`,
 	ssl_disable_https_warning: `Disabling SSL will also disable **Always use HTTPS**.
 Do you want to continue?`,
 	ssl_help: `#### Why isn't my site working over HTTPS?
-If you have recently signed up for Cloudflare, and your certificate status above shows "Authorizing Certificate", HTTPS is not yet available for your site because Cloudflare does not have a certificate for it. Provisioning typically takes around 15 minutes for paid plans and up to 24 hours for Free. Contact Support if you do not have a certificate after that time.
-If the status above shows "Active Certificate" there are [several other common problems that can appear](https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/) when accessing your site over HTTPS.
+Certificate provisioning typically takes around 15 minutes for paid plans and up to 24 hours for Free plans. Contact support if you do not have a certificate after that time. If the certificate is already "active" under the Edge Certificates tab, but you still cannot access your site over HTTPS, refer to the [troubleshooting documentation](https://developers.cloudflare.com/ssl/troubleshooting/).
 
-#### What SSL setting should I use?
-This setting controls [how Cloudflare's servers connect to your origin for HTTPS requests](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/). We recommend enabling the Full SSL (Strict) setting if possible. Common use cases for each are:
-
-**Off:** No visitors will be able to view your site over HTTPS; they will be redirected to HTTP.
-
-**Flexible SSL:** You cannot configure HTTPS support on your origin, even with a certificate that is not valid for your site. Visitors will be able to access your site over HTTPS, but connections to your origin will be made over HTTP. Note: You may [encounter a redirect loop with some origin configurations](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/).
-
-**Full SSL:** Your origin supports HTTPS, but the certificate installed does not match your domain or is self-signed. Cloudflare will connect to your origin over HTTPS, but will not validate the certificate.
-
-**Full (strict):** Your origin has a valid certificate (not expired and signed by a trusted CA or Cloudflare Origin CA) installed. Cloudflare will connect over HTTPS and verify the cert on each request.
+#### What encryption mode should I use?
+Cloudflare strongly recommends using Full or Full (strict) modes to prevent malicious connections to your origin. For details on each available mode, refer to the [encryption modes documentation](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/).
 `,
 	ssl_ct_alerting_description: "Receive an email when a Certificate Authority issues a certificate for your domain.",
 	ssl_ct_alerting_title: "Certificate Transparency Monitoring",
@@ -690,29 +681,29 @@ We have created a [detailed article around using Certificate Transparency Monito
 	ssl_ct_alerting_add_email: "Add Email",
 	tls_analytics_title: "Traffic Served Over TLS",
 	tls_analytics_help: `#### About TLS Analytics
- This shows the division between unencrypted and encrypted 'HTTPS' requests using TLS. Redirects from HTTP to HTTPS are counted as unencrypted requests. When a page rule or origin server redirect to HTTPS is used, a percentage of unencrypted traffic is normal
+ Consider how many requests to your domain were encrypted (TLS v1.2 or TLS 1.3) and how many were not, in the last 24 hours. Since redirects from HTTP to HTTPS are counted as unencrypted requests, having a percentage of unencrypted traffic is normal.
 
-**Note:** In order to increase the amount of traffic served over HTTPS, you should [redirect all visitors to HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/).`,
+**Note:** To increase the amount of traffic served over HTTPS, [redirect all visitors to HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/).`,
 	tls_analytics_no_requests: "No requests in the last 24 hours.",
 	tls_analytics_24hr: "Last 24 hours",
 	ssl_setting_off: "Off (not secure)",
-	ssl_setting_off_description: "No encryption applied",
-	ssl_setting_off_tooltip: "Turning Off SSL will disable HTTPS and shows your visitors that your website is not secure.",
+	ssl_setting_off_description: "No encryption applied. Turning off SSL disables HTTPS and causes browsers to show a warning that your website is not secure.",
+	ssl_setting_off_tooltip: "Turning Off SSL disables HTTPS and shows visitors that your website is not secure.",
 	ssl_setting_flexible: "Flexible",
-	ssl_setting_flexible_description: "Encrypts traffic between the browser and Cloudflare",
+	ssl_setting_flexible_description: "Enable encryption only between your visitors and Cloudflare. This avoids browser security warnings, but all connections between Cloudflare and your origin are made through HTTP.",
 	ssl_setting_full: "Full",
-	ssl_setting_full_description: "Encrypts end-to-end, using a self signed certificate on the server",
+	ssl_setting_full_description: "Enable encryption end-to-end. Use this mode when your origin server supports SSL certification but does not use a valid, publicly trusted certificate.",
 	ssl_setting_strict: "Full (strict)",
-	ssl_setting_strict_description: "Encrypts end-to-end, but requires a trusted CA or Cloudflare Origin CA certificate on the server",
+	ssl_setting_strict_description: "(Recommended mode) Enable encryption end-to-end and enforce validation on origin certificates. Use Cloudflare\u2019s Origin CA to generate certificates for your origin.",
 	ssl_setting_origin_pull: "Strict (SSL-Only Origin Pull)",
-	ssl_setting_origin_pull_description: "Same as Full (strict), but ensures that the request to the origin is always encrypted",
+	ssl_setting_origin_pull_description: "Enforce encryption between Cloudflare and your origin. Use this mode to guarantee connections to your origin will always be encrypted, regardless of your visitor\u2019s request.",
 	ssl_setting_header_prefix: "Your SSL/TLS encryption mode is",
 	ssl_setting_change_encryption_mode_prefix: "You are switching your SSL mode from",
 	ssl_setting_change_encryption_mode: "Are you sure you want to make that change?",
 	ssl_setting_label_browser: "Browser",
 	ssl_setting_label_cloudflare: "Cloudflare",
 	ssl_setting_label_origin: "Origin Server",
-	ssl_setting_more_info: "Learn more about [End-to-end encryption with Cloudflare](https://developers.cloudflare.com/ssl/get-started).",
+	ssl_setting_more_info: "Learn more about [Cloudflare encryption modes](https://developers.cloudflare.com/ssl/get-started).",
 	ssl_api_title_get_setting: "Get SSL setting",
 	ssl_api_title_patch: "Change SSL setting",
 	ssl_api_title_get_verification: "Get verification status",
@@ -858,7 +849,7 @@ If no alternative CAs are valid within the trust store, Cloudflare will not be a
 	custom_origin_trust_store_upload_modal_label: "Upload a CA to your private trust store below",
 	custom_origin_trust_store_upload_modal_pem_error: "PEM format is required",
 	overview: "Overview",
-	overview_description: "Encrypt your web traffic to prevent data theft and other tampering.",
+	overview_description: "Choose how Cloudflare encrypts traffic between your visitors and Cloudflare, and between Cloudflare and your origin server, to prevent data theft and other tampering.",
 	overview_documentation_label: "SSL/TLS documentation",
 	expanded_row_header: "Review <0></0> Certificate for %{hostnames}",
 	sans: "Subject Alternative Names (SAN)s",
