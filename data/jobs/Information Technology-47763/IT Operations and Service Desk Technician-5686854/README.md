@@ -7,7 +7,7 @@
 </div>
 <p><strong>About the Role</strong></p>
 <p>&nbsp;</p>
-<p>As an IT Operations and Service Desk Technician, you will play a dual role in ensuring the seamless operation of our company's IT infrastructure and providing top-notch service desk support. You will be instrumental in installing, configuring, monitoring, and maintaining computer systems, while also serving as the first point of contact for IT support, handling inquiries, and resolving technical issues for end-users. Your responsibilities will span across troubleshooting hardware and software faults, offering timely solutions, and contributing to our IT knowledge base.&nbsp; This role will provide support for our corporate events, on-site management of computer inventory, new hire onboarding, and work with teams across the organization.&nbsp; This role reports to the IT Operations Lead for APJC.</p>
+<p>As an IT Operations and Service Desk Technician, you will play a dual role in ensuring the seamless operation of our company's IT infrastructure and providing top-notch service desk support. You will be instrumental in installing, configuring, monitoring, and maintaining computer systems, while also serving as the first point of contact for IT support, handling inquiries, and resolving technical issues for end-users. Your responsibilities will span across troubleshooting hardware and software faults, offering timely solutions, and contributing to our IT knowledge base.&nbsp; This role will provide support for our corporate events, on-site management of computer inventory, new hire onboarding, and work with teams across the organization.&nbsp; This role reports to the IT Operations Lead/Manager.</p>
 <p>&nbsp;</p>
 <p><strong>About the Team</strong></p>
 <p>&nbsp;</p>
