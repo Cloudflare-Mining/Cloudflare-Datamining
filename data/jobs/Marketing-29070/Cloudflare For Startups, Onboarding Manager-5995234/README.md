@@ -5,32 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>London or Remote UK, Munich or Remote Germany, Amsterdam or Remote Netherlands</p>
-<p><strong>About The Team</strong></p>
-<p>We build security products for our customers and work mostly in Go, Python and Rust. One of our challenges is designing architecture that can withstand a huge scale of 50 million peak requests per second. Our flagship products are <a href="https://developers.cloudflare.com/page-shield/">Page Shield</a>, <a href="https://developers.cloudflare.com/security-center/">Security Center</a> and <a href="https://developers.cloudflare.com/waf/">Web Application Firewall </a>(WAF).&nbsp;</p>
-<p>Software engineers will work with our Product Managers and Security Analysts to define managed protection products which aim to protect customers against application and network vulnerabilities (at L3 and L7), by analysing data passing through our network. We also build systems to help customers understand this data themselves.</p>
-<p><strong>What you'll do</strong></p>
-<p>You will work in the Application Security portfolio and take a cross-functional role to ensure we protect our customers from L3-L7 attacks on a variety of levels.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>What You'll Do:</strong></p>
+<p>Join Cloudflare to manage and improve the onboarding experience for the Cloudflare for Startups program. This job will play a crucial role in improving and maintaining the growing demand of customer onboardings. The ideal candidate is process driven, organized, communicative, and willing to own the entire onboarding lifecycle for Cloudflare for Startup participants. This role requires a proactive individual with a proven track record of improving processes, exceptional multitasking abilities, and experience in customer-facing or program management roles.</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Minimum 3 years of commercial software development experience</li>
-	<li>Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</li>
-	<li>Proven experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</li>
-	<li>Proven ability in sustainable collaboration across cross-functional teams to define, drive and scope solutions, communicate trade offs, execute and deliver.</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>A drive for continuous improvement when it comes to both operations and new product development</li>
-	<li>Demonstrated ability to deliver and listen to feedback.</li>
-	<li>Proven ability to deliver performance (what) with the right behaviors (how)</li>
+	<li>Oversee and streamline the onboarding process for startups in the Cloudflare for Startups program</li>
+	<li>Manage and report on a tight SLA from application to successful onboarding.</li>
+	<li>Ensure a smooth and efficient onboarding experience for new startups.</li>
+	<li>Collaborate with the Cloudflare for Startups Lead, Shared Services, Engineering, Billing, and other teams to manage and improve the overall process.</li>
+	<li>Help answer any questions and/or requests from startups and accelerators in need of assistance throughout their onboarding journey.</li>
+	<li>Identify and implement improvements to the onboarding process to enhance efficiency and effectiveness.</li>
+	<li>Develop and maintain documentation and resources to support the onboarding process.</li>
+	<li>Help support new accelerators and ensure successful implementation across GTM systems.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<p>These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</p>
+<p><strong>Examples of Desirable Skills, Knowledge, and Experience:</strong></p>
 <ul>
-	<li>Knowledge of Rust, Go</li>
-	<li>Deep knowledge of web servers and web protocols</li>
-	<li>Distributed systems</li>
-	<li>Logging pipelines</li>
-	<li>Production API design</li>
-	<li>Web security issues and industry standards</li>
+	<li>Minimum of 2-3 years of experience in a customer-facing, operational, and/or program management role.</li>
+	<li>Proven track record of improving processes and enhancing operational efficiency.</li>
+	<li>Exceptional multitasking and organizational skills.</li>
+	<li>Experience in SaaS or technology industries is a plus.</li>
+	<li>Strong communication and interpersonal skills.</li>
+	<li>Proficient in Excel/Google Sheets.</li>
+	<li>Prior experience with CRM tools like Salesforce, Coda, Tableau or Big Query is a plus.</li>
+	<li>Ability to work independently and as part of a cross-functional team.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
