@@ -5,36 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Avaialable Location - Mexico or Mexico City Remote</strong></p>
-<p><strong>Job Description:&nbsp;</strong>As a Field Marketing Coordinator for US Field Marketing, you will play a crucial role in our marketing efforts by supporting Field Marketing Managers on execution details to drive engagement and growth within our target accounts in the region. You will collaborate closely with marketing teams including Field Marketing, Programs, and Event organizations to execute marketing events, campaigns and initiatives to drive pipeline. Your primary responsibilities will include:</p>
+<p><strong>Available Locations: </strong>Remote - US</p>
+<h4><strong>What You'll Do:&nbsp;</strong></h4>
+<p>Join Cloudflare to lead and manage Cloudflare's Startup Program, operationalizing and growing Cloudflare for Startups.&nbsp; Since 2020, over 2,000 startups have leveraged the Cloudflare for Startups program to build their business on Cloudflare. This role involves heavy cross-functional work to drive operational efficiencies, lead GTM strategy, and improve the overall customer journey for our Startup Program. The ideal candidate should be a proactive, customer-oriented individual with a track record in building high-velocity, high-impact programs at scale, a self-starter who can drive cross-functional projects, and a visionary who can grow the program long term.</p>
+<h4><strong>Responsibilities:</strong></h4>
 <ul>
-	<li>Coordinating details for event preparation and execution including:</li>
-	<ul>
-		<li>Conducting event venue research–finding facilities, meeting spaces, restaurants, etc.</li>
-		<li>Building event landing/registration pages&nbsp;</li>
-		<li>Calendar management to share event plans internally</li>
-		<li>Updating Wiki/reference pages for events to be used by Sales</li>
-		<li>Building campaign briefs documenting details about the event plans/initiatives</li>
-		<li>Procurement system and process support–purchase orders, contracts, invoice processing</li>
-		<li>Creating Salesforce.com campaigns for events and managing list uploads after events</li>
-	</ul>
-	<li>Developing target lists focused on the best targets to invite to generate leads, accelerate pipeline growth, and increase customer retention.</li>
-	<li>Managing post-event data to help marketing and sales teams to ensure target accounts are followed-up with&nbsp;</li>
-	<li>Building newsletter content to keep Sales teams informed of upcoming events, activities, and campaigns in their area</li>
-	<li>Monitoring and reporting on key metrics, including account engagement, conversion rates, and ROI, to measure the effectiveness of field marketing initiatives.</li>
-	<li>Building post-event email templates for follow-up after events to ensure continued engagement</li>
+	<li>Lead the overall GTM strategy and vision of the Startup Program.</li>
+	<li>Grow overall awareness, interest, and sign ups to the Startup Program.</li>
+	<li>Manage strategic partnerships with Startup Accelerators, Incubators, and VCs.</li>
+	<li>Work cross-functionally with teams like Self-Serve, Marketing, Product, Billing, Business Intelligence, Finance, and Legal to improve the overall startup customer journey.</li>
+	<li>Partner with Developer Advocacy and Marketing to acquire and grow startups through activities such as events, webinars, workshops, and customer case studies.</li>
+	<li>Engage in community programs and activities to foster long-term customer relationships.</li>
+	<li>Revamp startup graduation process with Account Managers and other GTM leads.</li>
+	<li>Drive and implement improvements around the Startup Program, included but not limited to program tiering and credits.</li>
+	<li>Collaborate with Product and Developer GTM to drive Cloudflare’s Developer Platform adoption.</li>
+	<li>Run community initiatives to engage current and past startup program customers.</li>
+	<li>Own and grow Cloudflare’s Workers Launchpad Funding Program.</li>
+	<li>Present updates to leadership, articulating growth and improvements to the overall program.</li>
 </ul>
-<p><strong>Qualifications:</strong></p>
+<h4><strong>Examples of Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Bachelor's degree in Marketing, Business Administration, or a related field.</li>
-	<li>Minimum 1 year of experience in Field Marketing, with a total of 2-3 years of marketing experience preferred.</li>
-	<li>Proficiency in English is required with excellent written and verbal communication skills.</li>
-	<li>Experience in Salesforce.com, G-Suite, and Procurement systems&nbsp;</li>
-	<li>Strong attention to detail and organizational skills, with the ability to prioritize tasks and meet deadlines effectively.</li>
-	<li>Experience working with event or field marketing is desirable.</li>
+	<li>Minimum of 7+ years of program management, product management, and/or GTM experience.</li>
+	<li>Experience in Venture Capital or early stage startups is a plus.</li>
+	<li>Experience in scaling a SaaS customer-facing program.</li>
+	<li>Independent, self-motivated professional with excellent time management and organizational skills.</li>
+	<li>Experience working with Accelerators, Incubators, Venture Capitalists, and/or Startups.</li>
+	<li>Ability to multi-task and adjust priorities to meet deadlines.</li>
+	<li>Proficient in Excel/Google Sheets.</li>
+	<li>Prior experience with Salesforce CRM, Tableau, Big Query, BoostUp is a plus.</li>
+	<li>Prior Product Led Growth (PLG) experience is a plus.</li>
+	<li>Strong analytical capabilities with ability to handle and interpret large data sets.</li>
+	<li>Proven ability to nurture and grow customer relationships over a long-term horizon.</li>
 </ul>
-<p><strong>To the attention of candidates (Mexico City): </strong><strong><br></strong><strong>Candidates MUST have right-to-work in Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></p>
-<p><br><br></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
