@@ -386,18 +386,6 @@
 																}
 															]
 														},
-														"kind": {
-															"description": "The kind of the ruleset.",
-															"enum": [
-																"managed",
-																"custom",
-																"root",
-																"zone"
-															],
-															"example": "root",
-															"title": "Kind",
-															"type": "string"
-														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
@@ -463,6 +451,18 @@
 												},
 												{
 													"properties": {
+														"kind": {
+															"description": "The kind of the ruleset.",
+															"enum": [
+																"managed",
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root",
+															"title": "Kind",
+															"type": "string"
+														},
 														"rules": {
 															"description": "The list of rules in the ruleset.",
 															"items": {
@@ -4786,18 +4786,6 @@
 																	}
 																]
 															},
-															"kind": {
-																"description": "The kind of the ruleset.",
-																"enum": [
-																	"managed",
-																	"custom",
-																	"root",
-																	"zone"
-																],
-																"example": "root",
-																"title": "Kind",
-																"type": "string"
-															},
 															"last_updated": {
 																"description": "The timestamp of when the ruleset was last modified.",
 																"example": "2000-01-01T00:00:00.000000Z",
@@ -4862,6 +4850,20 @@
 														"type": "object"
 													},
 													{
+														"properties": {
+															"kind": {
+																"description": "The kind of the ruleset.",
+																"enum": [
+																	"managed",
+																	"custom",
+																	"root",
+																	"zone"
+																],
+																"example": "root",
+																"title": "Kind",
+																"type": "string"
+															}
+														},
 														"required": [
 															"name",
 															"kind",
@@ -5228,18 +5230,6 @@
 																}
 															]
 														},
-														"kind": {
-															"description": "The kind of the ruleset.",
-															"enum": [
-																"managed",
-																"custom",
-																"root",
-																"zone"
-															],
-															"example": "root",
-															"title": "Kind",
-															"type": "string"
-														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
@@ -5305,6 +5295,18 @@
 												},
 												{
 													"properties": {
+														"kind": {
+															"description": "The kind of the ruleset.",
+															"enum": [
+																"managed",
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root",
+															"title": "Kind",
+															"type": "string"
+														},
 														"rules": {
 															"description": "The list of rules in the ruleset.",
 															"items": {
@@ -9432,18 +9434,6 @@
 																	}
 																]
 															},
-															"kind": {
-																"description": "The kind of the ruleset.",
-																"enum": [
-																	"managed",
-																	"custom",
-																	"root",
-																	"zone"
-																],
-																"example": "root",
-																"title": "Kind",
-																"type": "string"
-															},
 															"last_updated": {
 																"description": "The timestamp of when the ruleset was last modified.",
 																"example": "2000-01-01T00:00:00.000000Z",
@@ -9508,6 +9498,20 @@
 														"type": "object"
 													},
 													{
+														"properties": {
+															"kind": {
+																"description": "The kind of the ruleset.",
+																"enum": [
+																	"managed",
+																	"custom",
+																	"root",
+																	"zone"
+																],
+																"example": "root",
+																"title": "Kind",
+																"type": "string"
+															}
+														},
 														"required": [
 															"name",
 															"kind",
@@ -9887,18 +9891,6 @@
 																}
 															]
 														},
-														"kind": {
-															"description": "The kind of the ruleset.",
-															"enum": [
-																"managed",
-																"custom",
-																"root",
-																"zone"
-															],
-															"example": "root",
-															"title": "Kind",
-															"type": "string"
-														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
@@ -9964,6 +9956,18 @@
 												},
 												{
 													"properties": {
+														"kind": {
+															"description": "The kind of the ruleset.",
+															"enum": [
+																"managed",
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root",
+															"title": "Kind",
+															"type": "string"
+														},
 														"rules": {
 															"description": "The list of rules in the ruleset.",
 															"items": {
@@ -14114,18 +14118,6 @@
 																}
 															]
 														},
-														"kind": {
-															"description": "The kind of the ruleset.",
-															"enum": [
-																"managed",
-																"custom",
-																"root",
-																"zone"
-															],
-															"example": "root",
-															"title": "Kind",
-															"type": "string"
-														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
@@ -14191,6 +14183,18 @@
 												},
 												{
 													"properties": {
+														"kind": {
+															"description": "The kind of the ruleset.",
+															"enum": [
+																"managed",
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root",
+															"title": "Kind",
+															"type": "string"
+														},
 														"rules": {
 															"description": "The list of rules in the ruleset.",
 															"items": {
@@ -18340,18 +18344,6 @@
 																}
 															]
 														},
-														"kind": {
-															"description": "The kind of the ruleset.",
-															"enum": [
-																"managed",
-																"custom",
-																"root",
-																"zone"
-															],
-															"example": "root",
-															"title": "Kind",
-															"type": "string"
-														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
@@ -18417,6 +18409,18 @@
 												},
 												{
 													"properties": {
+														"kind": {
+															"description": "The kind of the ruleset.",
+															"enum": [
+																"managed",
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root",
+															"title": "Kind",
+															"type": "string"
+														},
 														"rules": {
 															"description": "The list of rules in the ruleset.",
 															"items": {
@@ -22568,18 +22572,6 @@
 																	}
 																]
 															},
-															"kind": {
-																"description": "The kind of the ruleset.",
-																"enum": [
-																	"managed",
-																	"custom",
-																	"root",
-																	"zone"
-																],
-																"example": "root",
-																"title": "Kind",
-																"type": "string"
-															},
 															"last_updated": {
 																"description": "The timestamp of when the ruleset was last modified.",
 																"example": "2000-01-01T00:00:00.000000Z",
@@ -22644,6 +22636,20 @@
 														"type": "object"
 													},
 													{
+														"properties": {
+															"kind": {
+																"description": "The kind of the ruleset.",
+																"enum": [
+																	"managed",
+																	"custom",
+																	"root",
+																	"zone"
+																],
+																"example": "root",
+																"title": "Kind",
+																"type": "string"
+															}
+														},
 														"required": [
 															"name",
 															"kind",
@@ -23047,18 +23053,6 @@
 																}
 															]
 														},
-														"kind": {
-															"description": "The kind of the ruleset.",
-															"enum": [
-																"managed",
-																"custom",
-																"root",
-																"zone"
-															],
-															"example": "root",
-															"title": "Kind",
-															"type": "string"
-														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
@@ -23124,6 +23118,18 @@
 												},
 												{
 													"properties": {
+														"kind": {
+															"description": "The kind of the ruleset.",
+															"enum": [
+																"managed",
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root",
+															"title": "Kind",
+															"type": "string"
+														},
 														"rules": {
 															"description": "The list of rules in the ruleset.",
 															"items": {
@@ -31085,18 +31091,6 @@
 																}
 															]
 														},
-														"kind": {
-															"description": "The kind of the ruleset.",
-															"enum": [
-																"managed",
-																"custom",
-																"root",
-																"zone"
-															],
-															"example": "root",
-															"title": "Kind",
-															"type": "string"
-														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
@@ -31162,6 +31156,18 @@
 												},
 												{
 													"properties": {
+														"kind": {
+															"description": "The kind of the ruleset.",
+															"enum": [
+																"managed",
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root",
+															"title": "Kind",
+															"type": "string"
+														},
 														"rules": {
 															"description": "The list of rules in the ruleset.",
 															"items": {
@@ -35153,18 +35159,6 @@
 											}
 										]
 									},
-									"kind": {
-										"description": "The kind of the ruleset.",
-										"enum": [
-											"managed",
-											"custom",
-											"root",
-											"zone"
-										],
-										"example": "root",
-										"title": "Kind",
-										"type": "string"
-									},
 									"last_updated": {
 										"description": "The timestamp of when the ruleset was last modified.",
 										"example": "2000-01-01T00:00:00.000000Z",
@@ -35230,6 +35224,18 @@
 							},
 							{
 								"properties": {
+									"kind": {
+										"description": "The kind of the ruleset.",
+										"enum": [
+											"managed",
+											"custom",
+											"root",
+											"zone"
+										],
+										"example": "root",
+										"title": "Kind",
+										"type": "string"
+									},
 									"rules": {
 										"description": "The list of rules in the ruleset.",
 										"items": {
@@ -39142,18 +39148,6 @@
 																}
 															]
 														},
-														"kind": {
-															"description": "The kind of the ruleset.",
-															"enum": [
-																"managed",
-																"custom",
-																"root",
-																"zone"
-															],
-															"example": "root",
-															"title": "Kind",
-															"type": "string"
-														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
@@ -39219,6 +39213,18 @@
 												},
 												{
 													"properties": {
+														"kind": {
+															"description": "The kind of the ruleset.",
+															"enum": [
+																"managed",
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root",
+															"title": "Kind",
+															"type": "string"
+														},
 														"rules": {
 															"description": "The list of rules in the ruleset.",
 															"items": {
@@ -47168,18 +47174,6 @@
 																}
 															]
 														},
-														"kind": {
-															"description": "The kind of the ruleset.",
-															"enum": [
-																"managed",
-																"custom",
-																"root",
-																"zone"
-															],
-															"example": "root",
-															"title": "Kind",
-															"type": "string"
-														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
@@ -47245,6 +47239,18 @@
 												},
 												{
 													"properties": {
+														"kind": {
+															"description": "The kind of the ruleset.",
+															"enum": [
+																"managed",
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root",
+															"title": "Kind",
+															"type": "string"
+														},
 														"rules": {
 															"description": "The list of rules in the ruleset.",
 															"items": {
@@ -51248,18 +51254,6 @@
 											}
 										]
 									},
-									"kind": {
-										"description": "The kind of the ruleset.",
-										"enum": [
-											"managed",
-											"custom",
-											"root",
-											"zone"
-										],
-										"example": "root",
-										"title": "Kind",
-										"type": "string"
-									},
 									"last_updated": {
 										"description": "The timestamp of when the ruleset was last modified.",
 										"example": "2000-01-01T00:00:00.000000Z",
@@ -51325,6 +51319,18 @@
 							},
 							{
 								"properties": {
+									"kind": {
+										"description": "The kind of the ruleset.",
+										"enum": [
+											"managed",
+											"custom",
+											"root",
+											"zone"
+										],
+										"example": "root",
+										"title": "Kind",
+										"type": "string"
+									},
 									"rules": {
 										"description": "The list of rules in the ruleset.",
 										"items": {
@@ -55234,18 +55240,6 @@
 																}
 															]
 														},
-														"kind": {
-															"description": "The kind of the ruleset.",
-															"enum": [
-																"managed",
-																"custom",
-																"root",
-																"zone"
-															],
-															"example": "root",
-															"title": "Kind",
-															"type": "string"
-														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
@@ -55311,6 +55305,18 @@
 												},
 												{
 													"properties": {
+														"kind": {
+															"description": "The kind of the ruleset.",
+															"enum": [
+																"managed",
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root",
+															"title": "Kind",
+															"type": "string"
+														},
 														"rules": {
 															"description": "The list of rules in the ruleset.",
 															"items": {
@@ -59338,18 +59344,6 @@
 											}
 										]
 									},
-									"kind": {
-										"description": "The kind of the ruleset.",
-										"enum": [
-											"managed",
-											"custom",
-											"root",
-											"zone"
-										],
-										"example": "root",
-										"title": "Kind",
-										"type": "string"
-									},
 									"last_updated": {
 										"description": "The timestamp of when the ruleset was last modified.",
 										"example": "2000-01-01T00:00:00.000000Z",
@@ -63324,18 +63318,6 @@
 																}
 															]
 														},
-														"kind": {
-															"description": "The kind of the ruleset.",
-															"enum": [
-																"managed",
-																"custom",
-																"root",
-																"zone"
-															],
-															"example": "root",
-															"title": "Kind",
-															"type": "string"
-														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
@@ -63401,6 +63383,18 @@
 												},
 												{
 													"properties": {
+														"kind": {
+															"description": "The kind of the ruleset.",
+															"enum": [
+																"managed",
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root",
+															"title": "Kind",
+															"type": "string"
+														},
 														"rules": {
 															"description": "The list of rules in the ruleset.",
 															"items": {
