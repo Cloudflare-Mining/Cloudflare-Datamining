@@ -355,6 +355,10 @@
 													"tenant_url": {
 														"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\"",
 														"type": "string"
+													},
+													"well_known_url": {
+														"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1",
+														"type": "string"
 													}
 												},
 												"required": [
@@ -363,6 +367,7 @@
 													"integration_type",
 													"reference_id",
 													"tenant_url",
+													"well_known_url",
 													"active",
 													"created_at"
 												],
@@ -611,6 +616,10 @@
 												"tenant_url": {
 													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\"",
 													"type": "string"
+												},
+												"well_known_url": {
+													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1",
+													"type": "string"
 												}
 											},
 											"required": [
@@ -619,6 +628,7 @@
 												"integration_type",
 												"reference_id",
 												"tenant_url",
+												"well_known_url",
 												"active",
 												"created_at"
 											],
@@ -864,6 +874,10 @@
 												"tenant_url": {
 													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\"",
 													"type": "string"
+												},
+												"well_known_url": {
+													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1",
+													"type": "string"
 												}
 											},
 											"required": [
@@ -872,6 +886,7 @@
 												"integration_type",
 												"reference_id",
 												"tenant_url",
+												"well_known_url",
 												"active",
 												"created_at"
 											],
@@ -1141,6 +1156,10 @@
 												"tenant_url": {
 													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\"",
 													"type": "string"
+												},
+												"well_known_url": {
+													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1",
+													"type": "string"
 												}
 											},
 											"required": [
@@ -1149,6 +1168,7 @@
 												"integration_type",
 												"reference_id",
 												"tenant_url",
+												"well_known_url",
 												"active",
 												"created_at"
 											],
@@ -1425,6 +1445,10 @@
 												"tenant_url": {
 													"description": "The base URL for the tenant. E.g. \"https://tenant.okta.com\"",
 													"type": "string"
+												},
+												"well_known_url": {
+													"description": "The URL for the Shared Signals Framework configuration, e.g. \"/.well-known/sse-configuration/{integration_uuid}/\". https://openid.net/specs/openid-sse-framework-1_0.html#rfc.section.6.2.1",
+													"type": "string"
 												}
 											},
 											"required": [
@@ -1433,6 +1457,7 @@
 												"integration_type",
 												"reference_id",
 												"tenant_url",
+												"well_known_url",
 												"active",
 												"created_at"
 											],
