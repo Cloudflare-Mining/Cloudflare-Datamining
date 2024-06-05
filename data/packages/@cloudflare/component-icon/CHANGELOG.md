@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.9.0
+
+### Minor Changes
+
+- 3428322565: Added `certificate` and `vectorize` icons
+
 ## 12.8.0
 
 ### Minor Changes
