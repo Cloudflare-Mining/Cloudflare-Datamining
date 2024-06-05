@@ -1096,6 +1096,256 @@
 			"pro": true
 		}
 	},
+	"GET /radar/bgp/routes/ases": {
+		"description": "List all ASes on current global routing tables with routing statistics",
+		"operationId": "radar-get-bgp-routes-asns",
+		"parameters": [
+			{
+				"description": "Location Alpha2 code.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Location Alpha2 code.",
+					"example": "US",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Return order results by given type",
+				"in": "query",
+				"name": "sortBy",
+				"schema": {
+					"description": "Return order results by given type",
+					"enum": [
+						"cone",
+						"pfxs",
+						"ipv4",
+						"ipv6",
+						"rpki_valid",
+						"rpki_invalid",
+						"rpki_unknown"
+					],
+					"example": "ipv4",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Sort by value ascending or descending",
+				"in": "query",
+				"name": "sortOrder",
+				"schema": {
+					"default": "desc",
+					"description": "Sort by value ascending or descending",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"asns": {
+											"items": {
+												"properties": {
+													"asn": {
+														"type": "integer"
+													},
+													"coneSize": {
+														"description": "AS's customer cone size",
+														"type": "integer"
+													},
+													"country": {
+														"description": "2-letter country code for the AS's registration country",
+														"example": "US",
+														"type": "string"
+													},
+													"ipv4Count": {
+														"description": "number of IPv4 addresses originated by the AS",
+														"type": "integer"
+													},
+													"ipv6Count": {
+														"description": "number of IPv6 addresses originated by the AS",
+														"example": "1.21e24",
+														"type": "string"
+													},
+													"name": {
+														"description": "name of the AS",
+														"type": "string"
+													},
+													"pfxsCount": {
+														"description": "number of total IP prefixes originated by the AS",
+														"type": "integer"
+													},
+													"rpkiInvalid": {
+														"description": "number of RPKI invalid prefixes originated by the AS",
+														"type": "integer"
+													},
+													"rpkiUnknown": {
+														"description": "number of RPKI unknown prefixes originated by the AS",
+														"type": "integer"
+													},
+													"rpkiValid": {
+														"description": "number of RPKI valid prefixes originated by the AS",
+														"type": "integer"
+													}
+												},
+												"required": [
+													"asn",
+													"name",
+													"coneSize",
+													"country",
+													"ipv4Count",
+													"ipv6Count",
+													"pfxsCount",
+													"rpkiValid",
+													"rpkiInvalid",
+													"rpkiUnknown"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"meta": {
+											"properties": {
+												"dataTime": {
+													"description": "the timestamp of when the data is generated",
+													"example": "2024-06-03T14:00:00",
+													"type": "string"
+												},
+												"queryTime": {
+													"description": "the timestamp of the query",
+													"example": "2024-06-03T14:00:00",
+													"type": "string"
+												},
+												"totalPeers": {
+													"description": "total number of route collector peers used to generate this data",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"dataTime",
+												"queryTime",
+												"totalPeers"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"asns",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List ASes from global routing tables",
+		"tags": [
+			"Radar BGP"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/bgp/routes/moas": {
 		"description": "List all Multi-origin AS (MOAS) prefixes on the global routing tables.",
 		"operationId": "radar-get-bgp-pfx2as-moas",
