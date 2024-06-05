@@ -22,6 +22,7 @@ declare const _default: {
     'caret-right': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-up': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'case-study': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    certificate: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     chart: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     clipboard: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloud-internet': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -32,6 +33,7 @@ declare const _default: {
     'cloudflare-security-application': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-security-network': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-zero-trust': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'code-edit': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     code: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     copy: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'credit-card': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -146,6 +148,7 @@ declare const _default: {
     'user-multi': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'user-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     user: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    vectorize: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     version: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'waiting-room': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'web-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

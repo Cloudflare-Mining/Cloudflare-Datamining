@@ -20,6 +20,7 @@ import CaretLeft from './CaretLeft';
 import CaretRight from './CaretRight';
 import CaretUp from './CaretUp';
 import CaseStudy from './CaseStudy';
+import Certificate from './Certificate';
 import Chart from './Chart';
 import Clipboard from './Clipboard';
 import CloudInternet from './CloudInternet';
@@ -30,6 +31,7 @@ import CloudflareMagicWan from './CloudflareMagicWan';
 import CloudflareSecurityApplication from './CloudflareSecurityApplication';
 import CloudflareSecurityNetwork from './CloudflareSecurityNetwork';
 import CloudflareZeroTrust from './CloudflareZeroTrust';
+import CodeEdit from './CodeEdit';
 import Code from './Code';
 import Copy from './Copy';
 import CreditCard from './CreditCard';
@@ -144,6 +146,7 @@ import Upload from './Upload';
 import UserMulti from './UserMulti';
 import UserOutline from './UserOutline';
 import User from './User';
+import Vectorize from './Vectorize';
 import Version from './Version';
 import WaitingRoom from './WaitingRoom';
 import WebAnalyticsLogo from './WebAnalyticsLogo';
@@ -185,6 +188,7 @@ export default {
   'caret-right': CaretRight,
   'caret-up': CaretUp,
   'case-study': CaseStudy,
+  certificate: Certificate,
   chart: Chart,
   clipboard: Clipboard,
   'cloud-internet': CloudInternet,
@@ -195,6 +199,7 @@ export default {
   'cloudflare-security-application': CloudflareSecurityApplication,
   'cloudflare-security-network': CloudflareSecurityNetwork,
   'cloudflare-zero-trust': CloudflareZeroTrust,
+  'code-edit': CodeEdit,
   code: Code,
   copy: Copy,
   'credit-card': CreditCard,
@@ -309,6 +314,7 @@ export default {
   'user-multi': UserMulti,
   'user-outline': UserOutline,
   user: User,
+  vectorize: Vectorize,
   version: Version,
   'waiting-room': WaitingRoom,
   'web-analytics-logo': WebAnalyticsLogo,
