@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.8.0
+
+### Minor Changes
+
+- 65aebc2c8f: feat: DES-8285 add code-edit icon
+
 ## 12.7.1
 
 ## 12.7.0
