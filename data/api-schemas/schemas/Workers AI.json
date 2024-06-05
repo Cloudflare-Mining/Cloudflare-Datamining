@@ -100,6 +100,116 @@
 			"pro": true
 		}
 	},
+	"GET /accounts/{account_id}/ai/models/schema": {
+		"operationId": "workers-ai-get-model-schema",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Model Name",
+				"in": "query",
+				"name": "model",
+				"required": true,
+				"schema": {
+					"description": "Model Name",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Model Schema"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Model Schema",
+		"tags": [
+			"Workers AI"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /accounts/{account_id}/ai/models/search": {
 		"operationId": "workers-ai-search-model",
 		"parameters": [
@@ -346,116 +456,6 @@
 			}
 		],
 		"summary": "Task Search",
-		"tags": [
-			"Workers AI"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.ai"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /accounts/{account_id}/models/schema": {
-		"operationId": "workers-ai-get-model-input-output-schema",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Model Name",
-				"in": "query",
-				"name": "model",
-				"required": true,
-				"schema": {
-					"description": "Model Name",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Model Schema"
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request"
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Model Input/Output Schema",
 		"tags": [
 			"Workers AI"
 		],
