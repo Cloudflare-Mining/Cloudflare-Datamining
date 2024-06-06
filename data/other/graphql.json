@@ -2193,7 +2193,10 @@
 	},
 	"AccountHyperdriveQueriesAdaptiveGroupsSum": {
 		"__description": "",
+		"clientWriteLatency": "Total latency (in milliseconds) of sending query results back to client",
 		"connectionLatency": "Total latency (in milliseconds) of retrieving a connection to the origin database",
+		"originReadLatency": "Total latency (in milliseconds) of receiving responses from origin to Hyperdrive",
+		"originWriteLatency": "Total latency (in milliseconds) of sending queries to origin from Hyperdrive",
 		"queryBytes": "Total size (in bytes) of queries handled by Hyperdrive",
 		"queryLatency": "Total latency (in milliseconds) of serving a query using Hyperdrive",
 		"resultBytes": "Total size (in bytes) of query results served by Hyperdrive"
