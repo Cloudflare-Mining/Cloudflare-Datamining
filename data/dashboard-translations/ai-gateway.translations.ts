@@ -34,6 +34,10 @@
 			success: "Success",
 			error: "Error"
 		},
+		type: {
+			universal: "Universal",
+			worker_ai: "Workers AI"
+		},
 		details: {
 			provider: "Provider",
 			model: "Model",
@@ -108,7 +112,7 @@
 		title: "Create a new AI Gateway",
 		description: "Select a name to identify your Gateway in the dashboard, and a unique URL slug for your API endpoint.",
 		gateway: "Gateway name",
-		url: "Gateway URL slug"
+		url: "Gateway ID"
 	},
 	providers_modal: {
 		title: "Connect to your applications with API Endpoints",

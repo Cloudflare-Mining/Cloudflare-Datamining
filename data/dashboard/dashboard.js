@@ -297,7 +297,7 @@
 				z = n.n(D),
 				se = n("../../../common/intl/intl-core/src/errors.ts"),
 				Ee = n("../../../../node_modules/@sentry/utils/esm/object.js"),
-				Oe = n("../react/common/middleware/sparrow/errors.ts");
+				Ie = n("../react/common/middleware/sparrow/errors.ts");
 			const U = "https://a32e52f8871f439f850537cab9b0645a@sentry10.cfdata.org/218",
 				ue = !0,
 				we = [/cloudflare\.com/, /staging\.cloudflare\.com/, /cloudflare\.lol/, /127\.0\.0\.1/, /webpack/, /localhost/],
@@ -336,8 +336,8 @@
 						const ie = X.find(Ce => Ce instanceof Error);
 						if (U && ie) {
 							let Ce, Me = !0;
-							if (ie instanceof Oe.ez) {
-								const Le = ie instanceof Oe.oV ? ie.invalidProperties : void 0;
+							if (ie instanceof Ie.ez) {
+								const Le = ie instanceof Ie.oV ? ie.invalidProperties : void 0;
 								Ce = {
 									tags: {
 										"sparrow.eventName": ie.eventName
@@ -508,7 +508,7 @@
 				Te = n.n(ye),
 				Re = n("../react/utils/translator.tsx"),
 				Ge = n("../../../common/intl/intl-react/src/index.ts"),
-				Ie = n("../../../dash/intl/intl-translations/src/index.ts"),
+				Oe = n("../../../dash/intl/intl-translations/src/index.ts"),
 				Je = n("../../../../node_modules/query-string/query-string.js"),
 				rt = n.n(Je),
 				T = n("../react/common/actions/userActions.ts"),
@@ -555,7 +555,7 @@
 			}
 			let He = rt().parse(location.search);
 			const ct = b => {
-					const k = (0, pe.$8)() ? [(0, Ie.Fy)(Ie.if.changes), (0, Ie.Fy)(Ie.if.common), (0, Ie.Fy)(Ie.if.navigation), (0, Ie.Fy)(Ie.if.overview), (0, Ie.Fy)(Ie.if.onboarding), (0, Ie.Fy)(Ie.if.invite), (0, Ie.Fy)(Ie.if.login), (0, Ie.Fy)(Ie.if.dns), (0, Ie.Fy)(Ie.n4.ssl_tls)] : [(0, Ie.Fy)(Ie.if.common), (0, Ie.Fy)(Ie.if.invite), (0, Ie.Fy)(Ie.if.login), (0, Ie.Fy)(Ie.if.onboarding)];
+					const k = (0, pe.$8)() ? [(0, Oe.Fy)(Oe.if.changes), (0, Oe.Fy)(Oe.if.common), (0, Oe.Fy)(Oe.if.navigation), (0, Oe.Fy)(Oe.if.overview), (0, Oe.Fy)(Oe.if.onboarding), (0, Oe.Fy)(Oe.if.invite), (0, Oe.Fy)(Oe.if.login), (0, Oe.Fy)(Oe.if.dns), (0, Oe.Fy)(Oe.n4.ssl_tls), (0, Oe.Fy)(Oe.if.message_inbox)] : [(0, Oe.Fy)(Oe.if.common), (0, Oe.Fy)(Oe.if.invite), (0, Oe.Fy)(Oe.if.login), (0, Oe.Fy)(Oe.if.onboarding)];
 					He.lang ? ft(b) : _e.Z.get(H.th) && pt(b, _e.Z.get(H.ly));
 					const X = async ie => (await Promise.all(k.map(Me => Me(ie)))).reduce((Me, Le) => be({}, Me, Le), {});
 					return Ae().createElement(Ge.RD.Provider, {
@@ -754,7 +754,7 @@
 				}, [b.search])
 			};
 			var Qt = n("../react/common/components/SAMLSubmit/SAMLSubmit.tsx");
-			const Jt = Ae().lazy(() => Promise.all([n.e(2480), n.e(99992), n.e(4616), n.e(72019), n.e(14868), n.e(91561), n.e(95283), n.e(7484), n.e(39760), n.e(2180), n.e(22734), n.e(35812), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+			const Jt = Ae().lazy(() => Promise.all([n.e(2480), n.e(99992), n.e(4616), n.e(72019), n.e(14868), n.e(91561), n.e(2554), n.e(7484), n.e(39760), n.e(2180), n.e(22734), n.e(35812), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				Xt = Ae().lazy(() => Promise.all([n.e(99992), n.e(91561), n.e(2180), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var Wt = ({
 					userIsAuthed: b
@@ -881,10 +881,10 @@
 				n.g.build = pn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "c22a0ddb96342cca5c8197ba31f69d3de08c05f1",
-					dashVersion: "dd7c14a7fcb3b623d8d74423799043ecaf98a723",
+					commit: "11569efe88b67e387f529803002c3f02580e79df",
+					dashVersion: "3a8406f7a004e49083bd80887f985264bd3a88de",
 					env: "production",
-					builtAt: 1717619154870,
+					builtAt: 1717694273268,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",
@@ -2277,8 +2277,8 @@
 								starZone: async (D, z) => {
 									var se;
 									const Ee = !F(D, z),
-										Oe = A(z);
-									if (Ee && !Oe) {
+										Ie = A(z);
+									if (Ee && !Ie) {
 										console.log("can not star zone - account is at limit");
 										return
 									}
@@ -3078,11 +3078,11 @@
 			}
 
 			function Ee(T) {
-				var I = Oe(T, "string");
+				var I = Ie(T, "string");
 				return typeof I == "symbol" ? I : String(I)
 			}
 
-			function Oe(T, I) {
+			function Ie(T, I) {
 				if (typeof T != "object" || T === null) return T;
 				var H = T[Symbol.toPrimitive];
 				if (H !== void 0) {
@@ -3302,7 +3302,7 @@
 				}) => I => H => it()(H) ? H.then(pe => T(pe)) : I(H), ye, r.Z, Ve.Z, we.qR],
 				Ge = T => (0, s.Wq)(ae, ze({}, ue, T));
 
-			function Ie() {
+			function Oe() {
 				const T = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__,
 					H = e.compose((0, e.applyMiddleware)(...Re), $e.w({
 						actionTransformer: ge,
@@ -3321,7 +3321,7 @@
 			});
 
 			function rt() {
-				return Je || (Je = Ie()), Je
+				return Je || (Je = Oe()), Je
 			}
 		},
 		"../react/app/reducerRegistry.js": function(V, E, n) {
@@ -5698,7 +5698,7 @@
 				},
 				se = j => D(j, "custom_pages"),
 				Ee = j => !!j && j["webhooks.webhooks.enabled"],
-				Oe = j => te(j, "bots", "enabled"),
+				Ie = j => te(j, "bots", "enabled"),
 				U = j => te(j, "billing", "annual_subscriptions_enable"),
 				ue = j => j ? Boolean(te(j, "ConstellationAI", "v2_ui")) : !1,
 				we = j => j ? Boolean(te(j, "ConstellationAI", "ai-emergency-waitlist")) : !1,
@@ -5715,7 +5715,7 @@
 				Ze = (0, t.P1)("accountRoles", tt),
 				qe = (j, ae) => {
 					const ye = ze.getMemberships(j),
-						Te = ye && ye.find(Ie => Ie.account.id === ae);
+						Te = ye && ye.find(Oe => Oe.account.id === ae);
 					if (Te) return Te.account.name.replace(" Account", " account");
 					const Re = ze.getMembership(j),
 						Ge = Re && Re.account;
@@ -5723,7 +5723,7 @@
 				},
 				Ke = (j, ae) => {
 					const ye = ze.getMemberships(j),
-						Te = ye && ye.find(Ie => Ie.account.id === ae);
+						Te = ye && ye.find(Oe => Oe.account.id === ae);
 					if (Te) return Te.account.settings.access_approval_expiry;
 					const Re = ze.getMembership(j),
 						Ge = Re && Re.account;
@@ -5796,7 +5796,7 @@
 					return c
 				},
 				Hq: function() {
-					return Oe
+					return Ie
 				},
 				Ms: function() {
 					return O
@@ -5988,7 +5988,7 @@
 				},
 				se = U => a(U, "foundation_dns.advanced_nameservers_allowed") || l(U, "foundation_dns.advanced_nameservers_allowed"),
 				Ee = (U, ue) => ((0, e.el)(window.location.pathname) ? u : g)(U, ue),
-				Oe = U => a(U, "authoritative_dns.multi_provider_allowed") || l(U, "authoritative_dns.multi_provider_allowed")
+				Ie = U => a(U, "authoritative_dns.multi_provider_allowed") || l(U, "authoritative_dns.multi_provider_allowed")
 		},
 		"../react/common/selectors/languagePreferenceSelector.ts": function(V, E, n) {
 			"use strict";
@@ -6186,7 +6186,7 @@
 					return C
 				},
 				ZB: function() {
-					return Oe
+					return Ie
 				},
 				cU: function() {
 					return xe
@@ -6462,7 +6462,7 @@
 					const he = a(M);
 					return he && he.betas ? he.betas.includes(ee) : !1
 				},
-				Oe = (M, ...ee) => p()(M, ["zoneFlags", "data", ...ee]),
+				Ie = (M, ...ee) => p()(M, ["zoneFlags", "data", ...ee]),
 				U = (M, ...ee) => p()(M, ["accountFlags", "data", ...ee]),
 				ue = M => M.accountFlags.isRequesting,
 				we = M => M.zoneFlags.isRequesting,
@@ -6807,9 +6807,9 @@
 			function* R(A, D, z) {
 				const se = {
 					categories: (z.markets || ["none"]).map(Ee => {
-						const Oe = N.XZ.find(U => U.key === Ee);
-						return !Ee || !Oe ? N.iK.categories : Oe.categories
-					}).reduce((Ee, Oe) => Ee.concat(Oe), []).filter((Ee, Oe, U) => U.indexOf(Ee) === Oe).join(","),
+						const Ie = N.XZ.find(U => U.key === Ee);
+						return !Ee || !Ie ? N.iK.categories : Ie.categories
+					}).reduce((Ee, Ie) => Ee.concat(Ie), []).filter((Ee, Ie, U) => U.indexOf(Ee) === Ie).join(","),
 					excludeApps: D.map(Ee => Ee.appId).join(",")
 				};
 				return yield(0, e.RE)(_.RX, Z.Nw, _.Jb.recommendedApps.name, _.Jb.recommendedApps.url(se), $.Ux.transformers.transformAppIdsToApps.bind(null, A))
@@ -6874,11 +6874,11 @@
 				for (;;) {
 					const {
 						zoneId: A
-					} = yield(0, e.qn)(Z.U4.GetInstalledAppsAssetsSaga), z = (yield(0, e.RE)(_.RX, Z.Nw, _.Jb.installs.default.name, _.Jb.installs.default.url(A))).filter(U => U.app.installable && U.versionTag !== U.app.infoVersion), se = z.reduce((U, ue) => (U[ue.app.alias] = (0, e.RE)(_.RX, Z.Nw, _.Jb.app.name, _.Jb.app.url(ue.app.alias || ue.appId), $.Ux.transformers.addAppVersionInfo.bind(null, ue)), U), {}), Ee = yield(0, e.$6)(se), Oe = z.map(U => ({
+					} = yield(0, e.qn)(Z.U4.GetInstalledAppsAssetsSaga), z = (yield(0, e.RE)(_.RX, Z.Nw, _.Jb.installs.default.name, _.Jb.installs.default.url(A))).filter(U => U.app.installable && U.versionTag !== U.app.infoVersion), se = z.reduce((U, ue) => (U[ue.app.alias] = (0, e.RE)(_.RX, Z.Nw, _.Jb.app.name, _.Jb.app.url(ue.app.alias || ue.appId), $.Ux.transformers.addAppVersionInfo.bind(null, ue)), U), {}), Ee = yield(0, e.$6)(se), Ie = z.map(U => ({
 						install: U,
 						app: Ee[U.app.alias]
 					}));
-					yield(0, e.gz)(Z.Nw.setUpdatableInstalls(Oe))
+					yield(0, e.gz)(Z.Nw.setUpdatableInstalls(Ie))
 				}
 			}
 
@@ -6935,11 +6935,11 @@
 							appsList: z,
 							installsList: se,
 							metadata: Ee
-						} = yield(0, e.Ys)(S), Oe = te({}, Ee.value, {
+						} = yield(0, e.Ys)(S), Ie = te({}, Ee.value, {
 							id: A,
 							markets: [D]
 						});
-						yield(0, e.RE)(_.JX, Z.Nw, _.Jb.metadata.post.name, _.Jb.metadata.post.url(A), Oe), yield(0, e.RE)(R, z.value, se.value, Oe)
+						yield(0, e.RE)(_.JX, Z.Nw, _.Jb.metadata.post.name, _.Jb.metadata.post.url(A), Ie), yield(0, e.RE)(R, z.value, se.value, Ie)
 					} catch {}
 				}
 			}
@@ -9291,7 +9291,7 @@
 					return _
 				},
 				Gc: function() {
-					return Ie
+					return Oe
 				},
 				IO: function() {
 					return pe
@@ -9958,7 +9958,7 @@
 				return m.transferIn && m.transferIn.approve_transfer === EApiTransferStatus.REJECTED || !1
 			}
 
-			function Oe(m) {
+			function Ie(m) {
 				return m.transferIn && m.transferIn.can_cancel_transfer || !1
 			}
 
@@ -10189,7 +10189,7 @@
 				return m === y.W7.PENDING_UPDATE
 			}
 
-			function Ie(m) {
+			function Oe(m) {
 				return m ? Object.values(y.wR).filter(P => P !== y.wR.OFFBOARDED).includes(m) : !1
 			}
 
@@ -11618,10 +11618,11 @@
 						},
 						modules: "https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules",
 						routes: "https://developers.cloudflare.com/workers/platform/routes/#matching-behavior",
+						routesAndDomains: "https://developers.cloudflare.com/workers/configuration/routing",
 						routesDNS: "https://developers.cloudflare.com/workers/platform/triggers/routes/#subdomains-must-have-a-dns-record",
 						customDomains: "https://developers.cloudflare.com/workers/platform/routing/custom-domains",
 						fetchEvent: "https://developers.cloudflare.com/workers/runtime-apis/fetch-event",
-						scheduledWorkers: "https://developers.cloudflare.com/workers/platform/cron-triggers",
+						scheduledWorkers: "https://developers.cloudflare.com/workers/configuration/cron-triggers",
 						emailWorkers: "https://developers.cloudflare.com/email-routing/email-workers/",
 						cronSyntax: "https://developers.cloudflare.com/workers/platform/cron-triggers#supported-cron-expressions",
 						scheduledEvents: "https://developers.cloudflare.com/workers/runtime-apis/scheduled-event",
@@ -11658,7 +11659,8 @@
 						versions: "https://developers.cloudflare.com/workers/configuration/versions-and-deployments",
 						gradualRollouts: "https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments",
 						rollbacks: "https://developers.cloudflare.com/workers/configuration/versions-and-deployments/rollbacks",
-						moduleSyntax: "https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#migrate-from-service-workers-to-es-modules"
+						moduleSyntax: "https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#migrate-from-service-workers-to-es-modules",
+						configureQueues: "https://developers.cloudflare.com/queues/configuration/configure-queues/"
 					},
 					serverlist: "https://blog.cloudflare.com/tag/serverlist/",
 					discord: "https://discord.cloudflare.com/",
@@ -13391,7 +13393,7 @@
 					return [ge, []]
 				},
 				Ee = (ge, fe) => Object.entries(fe).reduce((_e, [ve, Pe]) => (ge.includes(ve) || (_e[ve] = Pe), _e), {}),
-				Oe = ge => (fe, _e, ve) => {
+				Ie = ge => (fe, _e, ve) => {
 					const [Pe, M, ee] = z(_e, ve);
 					if (M) throw M;
 					return ee && console.error(ee), ge(fe, _e, Pe)
@@ -13446,7 +13448,7 @@
 						debug: !1,
 						url: "https://sparrow.cloudflare.com",
 						enabled: Ze() && !(0, s.gm)() && Ke(),
-						middlewares: [S, Oe, f, we]
+						middlewares: [S, Ie, f, we]
 					}, ge))
 				},
 				tt = () => {
@@ -14343,25 +14345,25 @@
 				let se = 0;
 				const Ee = F.replace(B, "").split(x);
 				if (Ee.length === 1) return [ce(se, F, z)];
-				const Oe = [],
+				const Ie = [],
 					U = Ee.shift();
 				if (U) {
 					const ue = ce(se, U, z);
-					Oe.push(ue), typeof ue != "string" && se++
+					Ie.push(ue), typeof ue != "string" && se++
 				}
 				for (const [ue, we, $e] of q(Ee)) {
 					A[ue] || window.console && console.warn(`Missing Component for translation key: ${F}, index: ${ue}. Fragment will be used.`);
 					const Fe = A[ue] || e.Fragment,
 						xe = D[ue] || {},
 						Be = ce(0, we);
-					if (Oe.push(e.createElement(Fe, R({
+					if (Ie.push(e.createElement(Fe, R({
 							key: se
 						}, xe), Be)), se++, $e) {
 						const We = ce(se, $e);
-						Oe.push(We), typeof We != "string" && se++
+						Ie.push(We), typeof We != "string" && se++
 					}
 				}
-				return Oe
+				return Ie
 			}
 
 			function q(F) {
@@ -14379,11 +14381,11 @@
 				values: z,
 				applyMarkdown: se,
 				Components: Ee,
-				componentProps: Oe,
+				componentProps: Ie,
 				testId: U
 			}) {
 				return e.createElement(y, null, ue => {
-					z && Object.keys(z).forEach(xe => z[xe] = $()(z[xe])), Oe && Oe.forEach(xe => {
+					z && Object.keys(z).forEach(xe => z[xe] = $()(z[xe])), Ie && Ie.forEach(xe => {
 						Object.keys(xe).forEach(Be => {
 							typeof xe[Be] == "string" && (xe[Be] = $()(xe[Be]))
 						})
@@ -14395,7 +14397,7 @@
 						$e = se ? (0, Z.Z)(ue.t(F.toString(), we), {
 							__dangerouslyDontSanitizeMarkdown: !0
 						}) : ue.t(F.toString(), we),
-						Fe = de($e, Ee, Oe, U);
+						Fe = de($e, Ee, Ie, U);
 					return Fe.length > 1 ? e.createElement(e.Fragment, null, Fe) : Fe[0]
 				})
 			}
