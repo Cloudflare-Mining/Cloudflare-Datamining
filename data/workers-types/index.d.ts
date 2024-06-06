@@ -851,7 +851,7 @@ declare interface CustomEventCustomEventInit {
 }
 declare class Blob {
   constructor(
-    bits?: ((ArrayBuffer | ArrayBufferView) | string | Blob)[],
+    type?: ((ArrayBuffer | ArrayBufferView) | string | Blob)[],
     options?: BlobOptions,
   );
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/size) */
@@ -1750,11 +1750,11 @@ declare interface R2MultipartOptions {
   storageClass?: string;
 }
 declare interface R2Checksums {
-  readonly md5?: ArrayBufferView;
-  readonly sha1?: ArrayBufferView;
-  readonly sha256?: ArrayBufferView;
-  readonly sha384?: ArrayBufferView;
-  readonly sha512?: ArrayBufferView;
+  readonly md5?: ArrayBuffer;
+  readonly sha1?: ArrayBuffer;
+  readonly sha256?: ArrayBuffer;
+  readonly sha384?: ArrayBuffer;
+  readonly sha512?: ArrayBuffer;
   toJSON(): R2StringChecksums;
 }
 declare interface R2StringChecksums {
@@ -3124,8 +3124,14 @@ declare abstract class BaseAiTranslation {
   inputs: AiTranslationInput;
   postProcessedOutputs: AiTranslationOutput;
 }
+declare type GatewayOptions = {
+  id: string;
+  cacheTtl?: number;
+  skipCache?: boolean;
+  metadata?: Record<string, number | string | boolean | null | bigint>;
+};
 declare type AiOptions = {
-  gatewayId?: string;
+  gateway?: GatewayOptions;
   prefix?: string;
   extraHeaders?: object;
 };
