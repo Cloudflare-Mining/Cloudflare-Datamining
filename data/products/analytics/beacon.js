@@ -70,7 +70,7 @@
 					function t(e, t) {
 						for (var n in e) {
 							var r = e[n];
-							void 0 !== t && ("number" == typeof r || "string" == typeof r ? t[n] = r : Array.isArray(r) && (t[n] = JSON.parse(JSON.stringify(r))))
+							void 0 !== t && ("number" != typeof r && "string" != typeof r || (t[n] = r))
 						}
 					}! function() {
 						var n, u, s = window.performance || window.webkitPerformance || window.msPerformance || window.mozPerformance,
@@ -100,7 +100,7 @@
 								var w, S, b = !1;
 								document.addEventListener("visibilitychange", (function() {
 									if ("hidden" === document.visibilityState) {
-										if (L && R()) {
+										if (L && A()) {
 											var t = e();
 											(null == w ? void 0 : w.url) == t && (null == w ? void 0 : w.triggered) || P(), _(t)
 										}!b && w && (b = !0, B())
@@ -126,7 +126,7 @@
 													startTime: F(),
 													versions: {
 														fl: p ? p.version : "",
-														js: "2024.6.0",
+														js: "2024.6.1",
 														timings: 1
 													},
 													pageloadId: l,
@@ -156,7 +156,7 @@
 												referrer: document.referrer || "",
 												eventType: i.EventType.WebVitalsV2,
 												versions: {
-													js: "2024.6.0"
+													js: "2024.6.1"
 												},
 												pageloadId: l,
 												location: e(),
@@ -174,7 +174,7 @@
 										}();
 										p && (0, o.sendObjectBeacon)("", t, (function() {}), !0, C)
 									},
-									A = function() {
+									R = function() {
 										var t = window.__cfRl && window.__cfRl.done || window.__cfQR && window.__cfQR.done;
 										t ? t.then(P) : P(), w = {
 											id: l,
@@ -183,10 +183,10 @@
 											triggered: !0
 										}
 									};
-								"complete" === window.document.readyState ? A() : window.addEventListener("load", (function() {
-									window.setTimeout(A)
+								"complete" === window.document.readyState ? R() : window.addEventListener("load", (function() {
+									window.setTimeout(R)
 								}));
-								var R = function() {
+								var A = function() {
 										return L && 0 === v.filter((function(e) {
 											return e.id === l
 										})).length
@@ -208,9 +208,9 @@
 											n = e(c);
 											var u = e(),
 												s = !0;
-											return n == u && (s = !1), s && (R() && ((null == w ? void 0 : w.url) == u && (null == w ? void 0 : w.triggered) || P(u), _(u)), i()), r.apply(t, [o, a, c])
+											return n == u && (s = !1), s && (A() && ((null == w ? void 0 : w.url) == u && (null == w ? void 0 : w.triggered) || P(u), _(u)), i()), r.apply(t, [o, a, c])
 										}, window.addEventListener("popstate", (function(t) {
-											R() && ((null == w ? void 0 : w.url) == n && (null == w ? void 0 : w.triggered) || P(n), _(n)), n = e(), i()
+											A() && ((null == w ? void 0 : w.url) == n && (null == w ? void 0 : w.triggered) || P(n), _(n)), n = e(), i()
 										}))
 									}
 								}(window.history))
@@ -469,7 +469,7 @@
 							}), !0) : e()
 						},
 						B = [1800, 3e3],
-						A = function(e, t) {
+						R = function(e, t) {
 							t = t || {}, P((function() {
 								var n, r = C(),
 									i = p("FCP"),
@@ -485,7 +485,7 @@
 								})))
 							}))
 						},
-						R = [.1, .25],
+						A = [.1, .25],
 						_ = {
 							passive: !0,
 							capture: !0
@@ -532,7 +532,7 @@
 							}))
 						},
 						M = [100, 300],
-						N = function(e, r) {
+						D = function(e, r) {
 							r = r || {}, P((function() {
 								var o, a = C(),
 									c = p("FID"),
@@ -551,16 +551,16 @@
 								}))
 							}))
 						},
-						D = 0,
+						N = 0,
 						V = 1 / 0,
 						j = 0,
 						q = function(e) {
 							e.forEach((function(e) {
-								e.interactionId && (V = Math.min(V, e.interactionId), j = Math.max(j, e.interactionId), D = j ? (j - V) / 7 + 1 : 0)
+								e.interactionId && (V = Math.min(V, e.interactionId), j = Math.max(j, e.interactionId), N = j ? (j - V) / 7 + 1 : 0)
 							}))
 						},
 						H = function() {
-							return o ? D : performance.interactionCount || 0
+							return o ? N : performance.interactionCount || 0
 						},
 						z = function() {
 							"interactionCount" in performance || o || (o = m("event", q, {
@@ -621,9 +621,9 @@
 								}
 							}))
 						};
-					e.CLSThresholds = R, e.FCPThresholds = B, e.FIDThresholds = M, e.INPThresholds = U, e.LCPThresholds = K, e.TTFBThresholds = Z, e.onCLS = function(e, t) {
+					e.CLSThresholds = A, e.FCPThresholds = B, e.FIDThresholds = M, e.INPThresholds = U, e.LCPThresholds = K, e.TTFBThresholds = Z, e.onCLS = function(e, t) {
 						! function(e, t) {
-							t = t || {}, A(T((function() {
+							t = t || {}, R(T((function() {
 								var n, r = p("CLS", 0),
 									i = 0,
 									o = [],
@@ -637,10 +637,10 @@
 										})), i > r.value && (r.value = i, r.entries = o, n())
 									},
 									c = m("layout-shift", a);
-								c && (n = g(e, r, R, t.reportAllChanges), h((function() {
+								c && (n = g(e, r, A, t.reportAllChanges), h((function() {
 									a(c.takeRecords()), n(!0)
 								})), l((function() {
-									i = 0, r = p("CLS", 0), n = g(e, r, R, t.reportAllChanges), y((function() {
+									i = 0, r = p("CLS", 0), n = g(e, r, A, t.reportAllChanges), y((function() {
 										return n()
 									}))
 								})), setTimeout(n, 0))
@@ -670,7 +670,7 @@
 							}(t), e(t)
 						}), t)
 					}, e.onFCP = function(e, t) {
-						A((function(t) {
+						R((function(t) {
 							! function(e) {
 								if (e.entries.length) {
 									var t = a(),
@@ -695,7 +695,7 @@
 							}(t), e(t)
 						}), t)
 					}, e.onFID = function(e, t) {
-						N((function(t) {
+						D((function(t) {
 							! function(e) {
 								var t = e.entries[0];
 								e.attribution = {
