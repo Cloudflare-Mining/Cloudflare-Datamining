@@ -5517,7 +5517,12 @@
 				"name": "string",
 				"_prototype": {}
 			},
-			"timingSafeEqual": "undefined",
+			"timingSafeEqual": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
 			"getFips": {
 				"__proto": "function",
 				"__type": "function",
