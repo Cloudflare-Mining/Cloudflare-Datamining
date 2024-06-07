@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"beta": "0.20230908.0",
 		"latest-2": "2.14.2",
-		"latest": "3.20240524.2"
+		"latest": "3.20240605.0"
 	},
 	"versions": {
 		"0.1.0": {
@@ -6792,68 +6792,68 @@
 			"name": "miniflare",
 			"version": "3.20240524.1",
 			"dependencies": {
-				"@cspotcode/source-map-support": "0.8.1",
+				"ws": "^8.11.0",
+				"zod": "^3.20.6",
 				"acorn": "^8.8.0",
-				"acorn-walk": "^8.2.0",
-				"capnp-ts": "^0.7.0",
-				"exit-hook": "^2.2.1",
-				"glob-to-regexp": "^0.4.1",
-				"stoppable": "^1.1.0",
+				"youch": "^3.2.2",
 				"undici": "^5.28.2",
 				"workerd": "1.20240524.0",
-				"ws": "^8.11.0",
-				"youch": "^3.2.2",
-				"zod": "^3.20.6"
+				"capnp-ts": "^0.7.0",
+				"exit-hook": "^2.2.1",
+				"stoppable": "^1.1.0",
+				"acorn-walk": "^8.2.0",
+				"glob-to-regexp": "^0.4.1",
+				"@cspotcode/source-map-support": "0.8.1"
 			},
 			"devDependencies": {
-				"@ava/typescript": "^4.0.0",
-				"@cloudflare/workers-types": "^4.20240524.0",
-				"@microsoft/api-extractor": "^7.36.3",
-				"@types/debug": "^4.1.7",
-				"@types/estree": "^1.0.0",
-				"@types/glob-to-regexp": "^0.4.1",
-				"@types/http-cache-semantics": "^4.0.1",
-				"@types/node": "^18.11.9",
-				"@types/rimraf": "^3.0.2",
-				"@types/stoppable": "^1.1.1",
-				"@types/which": "^2.0.1",
-				"@types/ws": "^8.5.3",
-				"@typescript-eslint/eslint-plugin": "^6.9.0",
-				"@typescript-eslint/parser": "^6.9.0",
 				"ava": "^5.2.0",
-				"capnpc-ts": "^0.7.0",
-				"concurrently": "^8.2.2",
-				"devalue": "^4.3.0",
-				"devtools-protocol": "^0.0.1182435",
-				"esbuild": "^0.16.17",
-				"eslint": "^8.6.0",
-				"eslint-config-prettier": "^9.0.0",
-				"eslint-plugin-es": "^4.1.0",
-				"eslint-plugin-import": "2.26.x",
-				"eslint-plugin-prettier": "^5.0.1",
-				"expect-type": "^0.15.0",
-				"http-cache-semantics": "^4.1.0",
 				"kleur": "^4.1.5",
-				"rimraf": "^3.0.2",
-				"source-map": "^0.6.0",
 				"which": "^2.0.2",
-				"@cloudflare/kv-asset-handler": "0.3.2"
+				"eslint": "^8.6.0",
+				"rimraf": "^3.0.2",
+				"devalue": "^4.3.0",
+				"esbuild": "^0.16.17",
+				"@types/ws": "^8.5.3",
+				"capnpc-ts": "^0.7.0",
+				"source-map": "^0.6.0",
+				"@types/node": "^18.11.9",
+				"expect-type": "^0.15.0",
+				"@types/debug": "^4.1.7",
+				"@types/which": "^2.0.1",
+				"concurrently": "^8.2.2",
+				"@types/estree": "^1.0.0",
+				"@types/rimraf": "^3.0.2",
+				"@ava/typescript": "^4.0.0",
+				"@types/stoppable": "^1.1.1",
+				"eslint-plugin-es": "^4.1.0",
+				"devtools-protocol": "^0.0.1182435",
+				"eslint-plugin-import": "2.26.x",
+				"http-cache-semantics": "^4.1.0",
+				"@types/glob-to-regexp": "^0.4.1",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-prettier": "^5.0.1",
+				"@microsoft/api-extractor": "^7.36.3",
+				"@cloudflare/workers-types": "^4.20240524.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"@types/http-cache-semantics": "^4.0.1",
+				"@cloudflare/kv-asset-handler": "0.3.2",
+				"@typescript-eslint/eslint-plugin": "^6.9.0"
 			},
 			"bin": {
 				"miniflare": "bootstrap.js"
 			},
 			"dist": {
-				"integrity": "sha512-5d3pRxvd5pT7lX1SsBH9+AjXuyHJnChSNOnYhubfi7pxMek4ZfULwhnUmNUp1R7b2xKuzqdFDZa0fsZuUoFxlw==",
 				"shasum": "38477cce5123d05ae87ac68e9addf0d0d30534d2",
 				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-3.20240524.1.tgz",
 				"fileCount": 32,
-				"unpackedSize": 1256974,
+				"integrity": "sha512-5d3pRxvd5pT7lX1SsBH9+AjXuyHJnChSNOnYhubfi7pxMek4ZfULwhnUmNUp1R7b2xKuzqdFDZa0fsZuUoFxlw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQC765tVvgacO0JRkIkkw7pDp/E0n938rxhb0B8LsdiPTAIgBT2ywhAoTzvEE0OSXWdWaFXsuzLo/Jc5WfV0R5PTV88="
+						"sig": "MEUCIQC765tVvgacO0JRkIkkw7pDp/E0n938rxhb0B8LsdiPTAIgBT2ywhAoTzvEE0OSXWdWaFXsuzLo/Jc5WfV0R5PTV88=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 1256974
 			},
 			"engines": {
 				"node": ">=16.13"
@@ -6863,6 +6863,77 @@
 			"name": "miniflare",
 			"version": "3.20240524.2",
 			"dependencies": {
+				"ws": "^8.11.0",
+				"zod": "^3.20.6",
+				"acorn": "^8.8.0",
+				"youch": "^3.2.2",
+				"undici": "^5.28.2",
+				"workerd": "1.20240524.0",
+				"capnp-ts": "^0.7.0",
+				"exit-hook": "^2.2.1",
+				"stoppable": "^1.1.0",
+				"acorn-walk": "^8.2.0",
+				"glob-to-regexp": "^0.4.1",
+				"@cspotcode/source-map-support": "0.8.1"
+			},
+			"devDependencies": {
+				"ava": "^5.2.0",
+				"kleur": "^4.1.5",
+				"which": "^2.0.2",
+				"eslint": "^8.6.0",
+				"rimraf": "^3.0.2",
+				"devalue": "^4.3.0",
+				"esbuild": "^0.16.17",
+				"@types/ws": "^8.5.3",
+				"capnpc-ts": "^0.7.0",
+				"source-map": "^0.6.0",
+				"@types/node": "^18.11.9",
+				"expect-type": "^0.15.0",
+				"@types/debug": "^4.1.7",
+				"@types/which": "^2.0.1",
+				"concurrently": "^8.2.2",
+				"@types/estree": "^1.0.0",
+				"@types/rimraf": "^3.0.2",
+				"@ava/typescript": "^4.0.0",
+				"@types/stoppable": "^1.1.1",
+				"eslint-plugin-es": "^4.1.0",
+				"devtools-protocol": "^0.0.1182435",
+				"eslint-plugin-import": "2.26.x",
+				"http-cache-semantics": "^4.1.0",
+				"@types/glob-to-regexp": "^0.4.1",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-prettier": "^5.0.1",
+				"@microsoft/api-extractor": "^7.36.3",
+				"@cloudflare/workers-types": "^4.20240524.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"@types/http-cache-semantics": "^4.0.1",
+				"@cloudflare/kv-asset-handler": "0.3.2",
+				"@typescript-eslint/eslint-plugin": "^6.9.0"
+			},
+			"bin": {
+				"miniflare": "bootstrap.js"
+			},
+			"dist": {
+				"shasum": "b95f7f44ab31de4d681c2859fcf82a9cde54e43a",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-3.20240524.2.tgz",
+				"fileCount": 32,
+				"integrity": "sha512-Js+8cB61KJG0z2HuQTPLT9S6FwTBuMZfjtml3azUarLYsCF91N+PhIkvNpbkwCXcfRvscdjJ0RlT6lBQYEuIwA==",
+				"signatures": [
+					{
+						"sig": "MEUCIBgv0U8TBQ9+zK8tSlyLO1+U4Jm980T4/aW1WaWP7JuXAiEAm+w3hMqvt4qu0Ia768O5gQpOnjewO1Shs6AWFDw5Hh8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 1260287
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"3.20240605.0": {
+			"name": "miniflare",
+			"version": "3.20240605.0",
+			"dependencies": {
 				"@cspotcode/source-map-support": "0.8.1",
 				"acorn": "^8.8.0",
 				"acorn-walk": "^8.2.0",
@@ -6871,14 +6942,14 @@
 				"glob-to-regexp": "^0.4.1",
 				"stoppable": "^1.1.0",
 				"undici": "^5.28.2",
-				"workerd": "1.20240524.0",
+				"workerd": "1.20240605.0",
 				"ws": "^8.11.0",
 				"youch": "^3.2.2",
 				"zod": "^3.20.6"
 			},
 			"devDependencies": {
 				"@ava/typescript": "^4.0.0",
-				"@cloudflare/workers-types": "^4.20240524.0",
+				"@cloudflare/workers-types": "^4.20240605.0",
 				"@microsoft/api-extractor": "^7.36.3",
 				"@types/debug": "^4.1.7",
 				"@types/estree": "^1.0.0",
@@ -6914,15 +6985,15 @@
 				"miniflare": "bootstrap.js"
 			},
 			"dist": {
-				"integrity": "sha512-Js+8cB61KJG0z2HuQTPLT9S6FwTBuMZfjtml3azUarLYsCF91N+PhIkvNpbkwCXcfRvscdjJ0RlT6lBQYEuIwA==",
-				"shasum": "b95f7f44ab31de4d681c2859fcf82a9cde54e43a",
-				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-3.20240524.2.tgz",
+				"integrity": "sha512-wE59RULU5zo6eYhL8j3wYdoOQ5istlkMruEr5pYvykL0LJecjKlFc8/cu4WJ5JdkdhutE1320Awi7WEICcolEw==",
+				"shasum": "abea65a968840935a9e95d58428f921f1763e7c5",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-3.20240605.0.tgz",
 				"fileCount": 32,
-				"unpackedSize": 1260287,
+				"unpackedSize": 1260030,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIBgv0U8TBQ9+zK8tSlyLO1+U4Jm980T4/aW1WaWP7JuXAiEAm+w3hMqvt4qu0Ia768O5gQpOnjewO1Shs6AWFDw5Hh8="
+						"sig": "MEYCIQCHxHcJj9Az/alJ3ZoIJ7S/Fu4QnqA4UYmgrKepYfRomAIhAO4QN0GAzWy7L5LND4CN10VVN9DCF70B9xFRumJzTK/c"
 					}
 				]
 			},

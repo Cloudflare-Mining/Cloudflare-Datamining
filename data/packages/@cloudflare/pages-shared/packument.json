@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-shared",
 	"dist-tags": {
-		"latest": "0.11.41"
+		"latest": "0.11.42"
 	},
 	"versions": {
 		"0.0.1": {
@@ -2229,27 +2229,27 @@
 				"miniflare": "3.20240524.1"
 			},
 			"devDependencies": {
-				"@miniflare/storage-memory": "^2.14.2",
-				"@cloudflare/workers-types": "^4.20240524.0",
-				"@miniflare/cache": "^2.14.2",
-				"@miniflare/core": "^2.14.2",
-				"@miniflare/html-rewriter": "^2.14.2",
-				"concurrently": "^7.3.0",
 				"glob": "^8.0.3",
+				"concurrently": "^7.3.0",
+				"@miniflare/core": "^2.14.2",
+				"@miniflare/cache": "^2.14.2",
+				"@miniflare/html-rewriter": "^2.14.2",
+				"@cloudflare/workers-types": "^4.20240524.0",
+				"@miniflare/storage-memory": "^2.14.2",
 				"@cloudflare/workers-tsconfig": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-TZeaTiJxur4NP8XQ8llyIXH2X/1wqbi3KtjjSXJCHOeUk+FMyiiPI+nr+wDNjQn8nMtJ3K9iW6xy8iY3VgUdkQ==",
 				"shasum": "3f4ad0728df53b966474db4280fa3f103fbe2ad7",
 				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.11.40.tgz",
 				"fileCount": 17,
-				"unpackedSize": 53768,
+				"integrity": "sha512-TZeaTiJxur4NP8XQ8llyIXH2X/1wqbi3KtjjSXJCHOeUk+FMyiiPI+nr+wDNjQn8nMtJ3K9iW6xy8iY3VgUdkQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQD5r0JLAA0oZ4sVcxkcHB7P4liclTxnB8tsi1AbAL7atQIhANbnZQ/NcHeGkhNr/iLHWHPfGvOvp3cl+N9ee1PsoZP2"
+						"sig": "MEYCIQD5r0JLAA0oZ4sVcxkcHB7P4liclTxnB8tsi1AbAL7atQIhANbnZQ/NcHeGkhNr/iLHWHPfGvOvp3cl+N9ee1PsoZP2",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 53768
 			}
 		},
 		"0.11.41": {
@@ -2259,8 +2259,38 @@
 				"miniflare": "3.20240524.2"
 			},
 			"devDependencies": {
-				"@miniflare/storage-memory": "^2.14.2",
+				"glob": "^8.0.3",
+				"concurrently": "^7.3.0",
+				"@miniflare/core": "^2.14.2",
+				"@miniflare/cache": "^2.14.2",
+				"@miniflare/html-rewriter": "^2.14.2",
 				"@cloudflare/workers-types": "^4.20240524.0",
+				"@miniflare/storage-memory": "^2.14.2",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "1116742dd41b466bdc7c382444b5fd32a2000a97",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.11.41.tgz",
+				"fileCount": 17,
+				"integrity": "sha512-t2nAoInWp1lMQxKHRpJSRYKg56iJUMAOLflHi9RQ9SX/nSthUdiwnliQHoqtbTEW73qfiZloq0OkR+pqVfgL7g==",
+				"signatures": [
+					{
+						"sig": "MEUCIBsyaLoymo4hGqwfHHXPjbICt+DLwRXCx0eBjdlFhFPLAiEAyPbuM8fKdxF8GizDdGgXKrfX/OA4u2Q94XOCjY2JkVc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 53768
+			}
+		},
+		"0.11.42": {
+			"name": "@cloudflare/pages-shared",
+			"version": "0.11.42",
+			"dependencies": {
+				"miniflare": "3.20240605.0"
+			},
+			"devDependencies": {
+				"@miniflare/storage-memory": "^2.14.2",
+				"@cloudflare/workers-types": "^4.20240605.0",
 				"@miniflare/cache": "^2.14.2",
 				"@miniflare/core": "^2.14.2",
 				"@miniflare/html-rewriter": "^2.14.2",
@@ -2269,15 +2299,15 @@
 				"@cloudflare/workers-tsconfig": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-t2nAoInWp1lMQxKHRpJSRYKg56iJUMAOLflHi9RQ9SX/nSthUdiwnliQHoqtbTEW73qfiZloq0OkR+pqVfgL7g==",
-				"shasum": "1116742dd41b466bdc7c382444b5fd32a2000a97",
-				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.11.41.tgz",
+				"integrity": "sha512-xYXQwsrUo9I/3bZiRDnJFxPPap6j/7kiKRIY8TZSG9vE+YZTMh4JAvXkyF+/OhAqw/glwnahZPQaRebxrVRjRg==",
+				"shasum": "4a777ba394ed2468ff50728843de7eeeb62a951b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.11.42.tgz",
 				"fileCount": 17,
-				"unpackedSize": 53768,
+				"unpackedSize": 54831,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIBsyaLoymo4hGqwfHHXPjbICt+DLwRXCx0eBjdlFhFPLAiEAyPbuM8fKdxF8GizDdGgXKrfX/OA4u2Q94XOCjY2JkVc="
+						"sig": "MEUCICGgv5dSCPGCmW0ED60SXsHQhSnOUA7DlM3vDVL2c9S8AiEA+lIKHDuIg3mdEK8qzie0HKK9TsePjiesbGsBFNFAOY0="
 					}
 				]
 			}
