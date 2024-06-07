@@ -854,6 +854,14 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
+			"magic": {
+				"read": true,
+				"edit": true
+			},
 			"waf": {
 				"read": true,
 				"edit": true
@@ -862,15 +870,7 @@
 				"read": true,
 				"edit": true
 			},
-			"magic": {
-				"read": true,
-				"edit": true
-			},
 			"billing": {
-				"read": true,
-				"edit": true
-			},
-			"dns_records": {
 				"read": true,
 				"edit": true
 			},
@@ -1438,6 +1438,14 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"dns_records": {
+				"read": true,
+				"edit": false
+			},
+			"magic": {
+				"read": true,
+				"edit": false
+			},
 			"waf": {
 				"read": true,
 				"edit": false
@@ -1446,15 +1454,7 @@
 				"read": true,
 				"edit": false
 			},
-			"magic": {
-				"read": true,
-				"edit": false
-			},
 			"billing": {
-				"read": true,
-				"edit": false
-			},
-			"dns_records": {
 				"read": true,
 				"edit": false
 			},
@@ -1586,6 +1586,14 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
+			"magic": {
+				"read": true,
+				"edit": true
+			},
 			"waf": {
 				"read": true,
 				"edit": true
@@ -1594,17 +1602,9 @@
 				"read": true,
 				"edit": true
 			},
-			"magic": {
-				"read": true,
-				"edit": true
-			},
 			"billing": {
 				"read": true,
 				"edit": false
-			},
-			"dns_records": {
-				"read": true,
-				"edit": true
 			},
 			"lb": {
 				"read": true,
