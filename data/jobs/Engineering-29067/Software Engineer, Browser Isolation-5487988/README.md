@@ -29,6 +29,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <p>Members of the Browser Isolation team contribute to all areas of the product. These include everything from making patches to Chromium, orchestrating tasks at the edge, and working on our build infrastructure. We’re looking for engineers at all levels who are excited to work broadly across our technology and service stack<strong>.</strong></p>
 <ul>
+	<li>3+ years of relevant experience required</li>
 	<li>Experience coding in Go and Typescript</li>
 	<li>Solid experience coding in C++ / OOD methodologies</li>
 	<li>Linux/UNIX systems knowledge</li>
