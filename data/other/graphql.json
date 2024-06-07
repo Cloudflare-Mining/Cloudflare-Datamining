@@ -5858,6 +5858,9 @@
 		"workersZoneInvocationsAdaptiveGroups": "",
 		"workersZoneSubrequestsAdaptiveGroups": "",
 		"zarazActionsAdaptiveGroups": "",
+		"zarazAnalyticsIdentitiesAdaptiveGroups": "",
+		"zarazAnalyticsTrackAdaptiveGroups": "",
+		"zarazAnalyticsTriggersAdaptiveGroups": "",
 		"zarazTrackAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": ""
 	},
@@ -6055,6 +6058,102 @@
 	},
 	"ZoneZarazActionsAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"ZoneZarazAnalyticsIdentitiesAdaptiveGroups": {
+		"__description": "Zaraz Analytics Identities - zaraz.identify calls",
+		"count": "Number of processed Zaraz Track requests",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneZarazAnalyticsIdentitiesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"clientId": "Client ID",
+		"date": "Date when track was called",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"identity": "Identity"
+	},
+	"ZoneZarazAnalyticsIdentitiesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneZarazAnalyticsIdentitiesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneZarazAnalyticsTrackAdaptiveGroups": {
+		"__description": "Zaraz Analytics Track - counts zaraz.track calls",
+		"count": "Number of processed Zaraz Track requests",
+		"dimensions": "List of dimensions to group by",
+		"uniq": ""
+	},
+	"ZoneZarazAnalyticsTrackAdaptiveGroupsDimensions": {
+		"__description": "",
+		"clientId": "Client ID",
+		"colors": "Colors",
+		"country": "Country",
+		"date": "Date when track was called",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"ip": "IP",
+		"language": "Language",
+		"pageTitle": "Page Title",
+		"referrer": "Referrer",
+		"resolution": "Screen Resolution",
+		"timezoneOffset": "Timezone Offset",
+		"trackData": "Track Data",
+		"trackName": "Track Name",
+		"ua": "User Agent",
+		"urlPath": "URL Path",
+		"viewport": "Viewport"
+	},
+	"ZoneZarazAnalyticsTrackAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneZarazAnalyticsTrackAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneZarazAnalyticsTrackAdaptiveGroupsUniq": {
+		"__description": "",
+		"clientIdCount": "Number of distinct client IDs"
+	},
+	"ZoneZarazAnalyticsTriggersAdaptiveGroups": {
+		"__description": "Zaraz Analytics Triggers (a trigger is a set of rules that can trigger a zaraz action)",
+		"count": "Number of processed Zaraz Triggers",
+		"dimensions": "List of dimensions to group by",
+		"uniq": ""
+	},
+	"ZoneZarazAnalyticsTriggersAdaptiveGroupsDimensions": {
+		"__description": "",
+		"clientId": "Client ID",
+		"colors": "Colors",
+		"country": "Country",
+		"date": "The date when trigger was triggerd",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"ip": "IP",
+		"language": "Language",
+		"pageTitle": "Page Title",
+		"referrer": "Referrer",
+		"resolution": "Screen Resolution",
+		"timezoneOffset": "Timezone Offset",
+		"triggerName": "Trigger Name",
+		"ua": "User Agent",
+		"urlPath": "URL Path",
+		"viewport": "Viewport"
+	},
+	"ZoneZarazAnalyticsTriggersAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneZarazAnalyticsTriggersAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneZarazAnalyticsTriggersAdaptiveGroupsUniq": {
+		"__description": "",
+		"clientIdCount": "Number of distinct client IDs"
 	},
 	"ZoneZarazTrackAdaptiveGroups": {
 		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
@@ -6272,6 +6371,9 @@
 		"workersZoneInvocationsAdaptiveGroups": "Workers invocations with adaptive sampling",
 		"workersZoneSubrequestsAdaptiveGroups": "Workers subrequests with adaptive sampling",
 		"zarazActionsAdaptiveGroups": "Zaraz Actions Analytics",
+		"zarazAnalyticsIdentitiesAdaptiveGroups": "Zaraz Analytics Identities - zaraz.identify calls",
+		"zarazAnalyticsTrackAdaptiveGroups": "Zaraz Analytics Track - counts zaraz.track calls",
+		"zarazAnalyticsTriggersAdaptiveGroups": "Zaraz Analytics Triggers (a trigger is a set of rules that can trigger a zaraz action)",
 		"zarazTrackAdaptiveGroups": "Zaraz Track Analytics - counts zaraz.track calls",
 		"zarazTriggersAdaptiveGroups": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
 		"zoneTag": ""
