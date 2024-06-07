@@ -379,8 +379,11 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
-						"schema": {}
+					"application/pdf": {
+						"schema": {
+							"format": "binary",
+							"type": "string"
+						}
 					}
 				},
 				"description": "Download LOA Document response"

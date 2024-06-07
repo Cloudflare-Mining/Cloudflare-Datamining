@@ -2077,6 +2077,7 @@
 																	"can_delete": {
 																		"description": "Controls whether the membership can be deleted via the API or not.",
 																		"example": true,
+																		"readOnly": true,
 																		"type": "boolean"
 																	},
 																	"created_at": {
@@ -2086,10 +2087,9 @@
 																		"type": "string"
 																	},
 																	"identifier": {
-																		"description": "Identifier",
+																		"description": "The identifier for the membership (eg. a zone or account tag).",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
-																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"kind": {
@@ -2294,6 +2294,7 @@
 																			"can_delete": {
 																				"description": "Controls whether the membership can be deleted via the API or not.",
 																				"example": true,
+																				"readOnly": true,
 																				"type": "boolean"
 																			},
 																			"created_at": {
@@ -2303,10 +2304,9 @@
 																				"type": "string"
 																			},
 																			"identifier": {
-																				"description": "Identifier",
+																				"description": "The identifier for the membership (eg. a zone or account tag).",
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
-																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"kind": {
@@ -2927,6 +2927,50 @@
 								"example": true,
 								"nullable": true,
 								"type": "boolean"
+							},
+							"ips": {
+								"items": {
+									"description": "An IPv4 or IPv6 address.",
+									"example": "192.0.2.1",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"memberships": {
+								"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
+								"items": {
+									"properties": {
+										"can_delete": {
+											"description": "Controls whether the membership can be deleted via the API or not.",
+											"example": true,
+											"readOnly": true,
+											"type": "boolean"
+										},
+										"created_at": {
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"identifier": {
+											"description": "The identifier for the membership (eg. a zone or account tag).",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"type": "string"
+										},
+										"kind": {
+											"description": "The type of the membership.",
+											"enum": [
+												"zone",
+												"account"
+											],
+											"example": "zone",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
 							}
 						}
 					}
@@ -3107,6 +3151,7 @@
 																	"can_delete": {
 																		"description": "Controls whether the membership can be deleted via the API or not.",
 																		"example": true,
+																		"readOnly": true,
 																		"type": "boolean"
 																	},
 																	"created_at": {
@@ -3116,10 +3161,9 @@
 																		"type": "string"
 																	},
 																	"identifier": {
-																		"description": "Identifier",
+																		"description": "The identifier for the membership (eg. a zone or account tag).",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
-																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"kind": {
@@ -3324,6 +3368,7 @@
 																			"can_delete": {
 																				"description": "Controls whether the membership can be deleted via the API or not.",
 																				"example": true,
+																				"readOnly": true,
 																				"type": "boolean"
 																			},
 																			"created_at": {
@@ -3333,10 +3378,9 @@
 																				"type": "string"
 																			},
 																			"identifier": {
-																				"description": "Identifier",
+																				"description": "The identifier for the membership (eg. a zone or account tag).",
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
-																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"kind": {
