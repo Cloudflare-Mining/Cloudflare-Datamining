@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-02-17T21:08:17.161Z",
-					"updatedAt": "2024-05-08T16:25:49.331Z"
+					"updatedAt": "2024-06-07T20:23:05.662Z"
 				},
 				"contentfulId": "x0lE9M9ULYDsTWSHOOWCw",
 				"contentTypeId": "page",
@@ -65,12 +65,6 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
-					{
-						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
-						"contentTypeId": "bladePadding",
-						"height": 1,
-						"backgroundColor": "blue5"
-					},
 					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "jrU0xzMiWoIyZTBhzxeHb",
@@ -169,21 +163,21 @@
 					{
 						"contentfulId": "2URYPKsu0rpofaYqunIURH",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Modern security and performance",
+						"title": "Secure and accelerate your network with Cloudflare",
 						"titleSize": null,
-						"subtitle": "Protect & accelerate networks",
+						"subtitle": "Speed up your network modernization journey without security or performance tradeoffs ",
 						"subtitleSize": null,
-						"copy": "Traditional solutions just aren't designed to fulfill the Internet's basic needs: security, performance, and reliability. Modernize your network approach.",
-						"buttonColor": "blue",
+						"copy": "See how Cloudflare's networking services can help you accelerate cloud migration, block attacks, embrace SASE, and meet other critical corporate networking needs.",
+						"buttonColor": null,
 						"buttonColor2": "orange",
-						"buttonText1": "View solutions",
+						"buttonText1": "Talk to an expert",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#protect-accelerate-network-solutions",
+						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": null,
-						"buttonText2": "Analyst report",
+						"button1ExtraClass": "network-services-solutions-hub-modal-form",
+						"buttonText2": null,
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "/lp/frost-radar-global-cdn-report/",
+						"buttonUrl2": null,
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -209,127 +203,17 @@
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": {
 							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ppbhWQdeBEYtqhIkEvO7g/2194b8a5c42d9f9107a7f32456495de5/cloudflare_magic-firewall.svg"
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/wCgDS8QpvmLVzAOFk90xo/446e409003d2eee97b6fa0e475ae7cca/Firewall.png"
 							},
-							"description": "Illustration of a shield with a brick wall"
+							"description": ""
 						},
 						"imageAssetFile": null
-					},
-					{
-						"contentfulId": "7pYUt2JBcmsLxWORt7j5JX",
-						"contentTypeId": "bladePadding",
-						"height": 1,
-						"backgroundColor": "white"
-					},
-					{
-						"contentfulId": "4INRzOUCkMIWaAD4rqDw3f",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": "Why choose Cloudflare?",
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2yBAyumiied8iGcchB7L08",
-								"title": "Ultra-low time to mitigate",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "A vast library of known attacks and malicious traffic is identified at a Cloudflare data center closest to the source within seconds.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Y3kSXK7xp7Cjdqe9IBsNB/f4d127e723cd1e68383cf0d19c0ee76f/security-shield-protection-1__1_.svg"
-									},
-									"description": "Shield icon"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4saJwPRBC3HzTza6gtgOFb",
-								"title": "Traffic acceleration",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "With every bit we move, the network gets smarter and faster. Integrated with Argo Smart Routing, Cloudflare will deliver clean, fast traffic back to your network.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Mtllo8wcJj5SbpbGaKW1t/78ed8abcb0b0a15c03ac8c409cdf0057/performance-routing.svg"
-									},
-									"description": "Orange routing icon"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4kICAd6pKqHoxMNqh1lcTU",
-								"title": "Connect, secure, accelerate",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Get Cloudflare's built-in services — like DDoS mitigation, branch connectivity, software-defined Zero-Trust, firewalling — on a single global network.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/wdOAIflt3tDJlW2ifk81C/9056eadf80485d2ff5218ebd953be21b/star.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "7pYUt2JBcmsLxWORt7j5JX",
-						"contentTypeId": "bladePadding",
-						"height": 1,
-						"backgroundColor": "white"
 					},
 					{
 						"locale": "en-US",
@@ -353,16 +237,16 @@
 								"contentfulId": "3TlbkHKK54qrbEfPj4VIKg",
 								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "5d41833d-cca5-5fce-97d7-1831ad890edf",
-									"altText": "Cloudflare Network Interconnect",
-									"title": "Network Interconnect Icon",
+									"id": "e56a845f-f0f6-511e-9c1f-91f0b76c1ac3",
+									"altText": "Cloudflare Magic Wan - round icon",
+									"title": "Cloudflare Magic Wan - round icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7aU7DHZskhmjX7SujehheP/fca202a530d551462a50c08051f31225/connect-2.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ajAtoz734BFqAkbGbgTCS/903190ecf5ab330b1122c099058dffec/cloudflare-magic-wan-round-icon.svg"
 										},
-										"description": ""
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -556,16 +440,16 @@
 								"contentfulId": "1DdyWry6xtva2mmr6EekUl",
 								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "35aabb7a-ab80-5f86-bb2d-c0bd82a10871",
-									"altText": "Cloud internet blue",
-									"title": "Cloud internet blue",
+									"id": "98a9eb7e-3973-5fd7-9ae1-7bccff96ab10",
+									"altText": "Cloud internet - round icon",
+									"title": "Cloud internet - round icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3T85OKKRCGnfnTwHlI8Qpe/ea9f2f9a3b57dc53b8066ef5a5b935cb/cloud-internet.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ZxHKglDUxnaaSMmRlFkmY/1bf61a4a6133db3755fefd09420aa248/cloud-internet.svg"
 										},
-										"description": "Cloud icon"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -832,16 +716,16 @@
 								"contentfulId": "6f7kcovMgMDZfGB4VTE6Kr",
 								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
-									"altText": "Security shield ddos protection blue",
-									"title": "Security shield ddos protection blue",
+									"id": "9eabd9c9-47d6-57c5-9b8f-492b552e3bcd",
+									"altText": "Security shield protection - rounded",
+									"title": "Security shield protection - rounded",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/55y2bIedUp3xasd2gIlWj8/3f70c8d3a4dcdac03aebd74e557edd8f/security-shield-protection-1.svg"
 										},
-										"description": "Shield icon"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -870,14 +754,25 @@
 													"content": null
 												},
 												{
-													"nodeType": "text",
+													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": null
+														"uri": "https://www.cloudflare.com/network-security/"
 													},
-													"value": "network security solution that offers DDoS protection, traffic acceleration, and much more from every Cloudflare data center",
-													"marks": [],
-													"content": null
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "network security solution",
+															"marks": [],
+															"content": null
+														}
+													]
 												},
 												{
 													"nodeType": "text",
@@ -885,7 +780,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " utilizing:",
+													"value": " that offers DDoS protection, traffic acceleration, and much more from every Cloudflare data center utilizing:",
 													"marks": [],
 													"content": null
 												}
@@ -981,16 +876,16 @@
 								"contentfulId": "6KduRACIC3wZfzh4i52sAw",
 								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale ",
-									"title": "Network scale ",
+									"id": "b602de5c-c2ca-59f0-b2d7-792f086a6e4f",
+									"altText": "Network scale - round icon",
+									"title": "Network scale - round icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25B0tY2bGsZrocxnifpnpx/2a328b9ddf2ec85b6c026f5b2d03ed42/network-scale.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/uqbvhbshoSSW1ojFLmYw5/19ca72a652c5ec0eb2b4ffbad63a172c/network-scale-rounded-icon.svg"
 										},
-										"description": "Network scale orange"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -1117,65 +1012,229 @@
 						]
 					},
 					{
-						"contentfulId": "66tCW00IlXZIUzXQpIR8go",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Network and WAN insights",
-						"description": "Read the \"CIO's Guide to WAN Transformation\" eBook and also the new theNET article to help regain control of complex network environments",
-						"variant": "full-width",
-						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
+						"contentfulId": "3WqpfF0Kq5v5qsrOxpTxOl",
+						"title": "Cloudflare's connectivity cloud streamlines your network modernization",
+						"copy": "Cloudflare unifies comprehensive web security and performance services on a single, composable, cloud-native platform, making it simpler to block more attacks, improve user experiences, and boost visibility across your entire web portfolio. Our connectivity cloud offers:",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "17944fc9-4d02-5a08-aaa7-ed7576ee1d1c",
+							"altText": "Network Performance Update - illustration",
+							"title": "Network Performance Update - illustration",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6YCQVh0qdcJk4ly2xcTqq3/62f3b1dc18453486cad89f439492630d/Network_Performance_Update.png"
 								},
-								"description": ""
+								"description": null
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "5bil5B6YNbiGt2UUouLdPe",
-							"elementName": "CTA link - /lp/cios-guide-to-wan-transformation-ebook/",
-							"standardText": null,
-							"text": "Read the eBook",
-							"url": "/lp/cios-guide-to-wan-transformation-ebook/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "4cf04N7TgQcTI64SfKuLXZ",
-							"elementName": "CTA link - /the-net/building-cyber-resilience/complex-network-environments/",
-							"standardText": null,
-							"text": "Read the article",
-							"url": "/the-net/building-cyber-resilience/complex-network-environments/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						}
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "WHY CLOUDFLARE",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "7isB4lk3SsqAiYRe7TUk1X",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": null,
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "wmcQooQgfV3aDCsHGtih7",
+								"title": "Future-proof network coverage",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare integrates with %{NetworkInterconnects} other networks and offers near-infinite scalability, providing reliable connectivity from source to destination.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6a3960ee-a810-5100-a55a-ffcb4d676e43",
+									"altText": "network virtual backbone",
+									"title": "network virtual backbone",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/CkLyY6q1HXN55s43SIWIo/cb5618f644a9f8aa08f02566e51b4e8c/network-virtual-backbone.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5EG86LLzGEoMSeZIR1aFZ8",
+								"title": "Global reliability",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Our connectivity cloud sits within 50ms of all Internet users, and offers a 100% uptime SLA.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4ad77fba-3ae1-5ad0-a850-d814c56d9d9d",
+									"altText": "Reliability timer blue",
+									"title": "Reliability timer blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/41aBOr3gowykuADnSlJuCp/897c938c653f6d736e3832afe4fcab59/reliability-timer.svg"
+										},
+										"description": "Stopwatch icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "mFS70StqfycOke7MlQ2mE",
+								"title": "Disruption-free adaptability",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Every Cloudflare service can run on every server in every network location, meaning there's no downtime or redesign needed to add new capabilities.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "2d2824a8-bb61-5964-9353-cf496e347032",
+									"altText": "Server origin blue",
+									"title": "Server origin blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rgAX5Pezx1EHevEZ8b9vc/67012f637f6d9f7741c8d6aeb7fcfbfb/server-origin.svg"
+										},
+										"description": "Origin server icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7txitDXo56V6jUYYNcEgnS",
+								"title": "Better security and reliability",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Our entire connectivity cloud is cloud-native, making services easier to manage and more adaptable to threats. ",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
+									"altText": "Reliability load balancer blue",
+									"title": "Reliability load balancer blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PEDzEKI6wwUPTe3RiUqC4/f7af6ded9a2e49325d277e1fa1e442e4/reliability-load-balancer.svg"
+										},
+										"description": "Load balancer icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4vChMkx4DROwTH9NhOLgKR",
+						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nZandalo uses Cloudflare to protect its network<br> from constant attacks\n</div>",
+						"htmlId": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "7Jiqwwjl6WRoiZfNHOfVNX",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "Half & Half",
 						"columns": [
 							{
@@ -1188,7 +1247,7 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-6",
+											"nodeType": "paragraph",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1202,7 +1261,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "CASE STUDY",
+													"value": "Fashion retailer Zandalo's corporate network was being bombarded with DDoS attacks, causing serious fulfillment backlogs.",
 													"marks": [],
 													"content": null
 												}
@@ -1223,282 +1282,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare optimizes security and performance for Zalando with Magic Transit for fast, accurate customer fulfillment.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-5",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Protecting an internal network critical to customer fulfillment operations with Magic Transit",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Zalando's enterprise network connects their fulfillment centers, the fashion store, outlet retail locations, and company headquarters. If their network were to go offline, a cascade of problems could ensue.\n\n",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare Magic Transit — a cloud-based solution using Cloudflare's global network — protects entire IP subnets from DDoS attacks while also accelerating network traffic. It also enhances productivity and reduces operational costs while blocking 200 potential attacks for Zalando each week.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-6",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/case-studies/zalando/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "View case study",
-															"marks": [
-																{
-																	"type": "bold"
-																}
-															],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
+													"value": "The company adopted Magic Transit, Cloudflare's network DDoS mitigation service. Now, they're easily blocking over 200 attacks per week and freeing up engineering time for more strategic work. ",
 													"marks": [],
 													"content": null
 												}
@@ -1517,24 +1301,49 @@
 									"nodeType": "document",
 									"content": [
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"We're focused on automation, standardization, and resiliency so that we can grow in an orderly and secure fashion. Cloudflare helps us ensure the resiliency of our internal network.\"",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "embedded-asset-block",
 											"data": {
 												"target": {
 													"sys": {
-														"id": "2pfZs4PJvzKzV63wmcP9Kx",
+														"id": "4opxZAC7A2uYgv3IhGr5RL",
 														"type": "Link",
 														"linkType": "Asset"
 													},
 													"related_asset": [
 														{
-															"contentfulId": "2pfZs4PJvzKzV63wmcP9Kx",
+															"contentfulId": "4opxZAC7A2uYgv3IhGr5RL",
 															"locale": "en-US",
-															"title": "Solution Hub - Case Study - Zalando Logo",
+															"title": "Zalando-logo-push-right",
 															"file": {
-																"name": "Case-Study-Logo_Zalando.jpg",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2pfZs4PJvzKzV63wmcP9Kx/19221aff2c463acb66162b11bb6f8f3c/Case-Study-Logo_Zalando.jpg",
+																"name": "Zalando-logo-push-right.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4opxZAC7A2uYgv3IhGr5RL/70d5fd6559eedf098852e47d1a866096/Zalando-logo-push-right.png",
 																"internal": {
-																	"mediaType": "image/jpeg"
+																	"mediaType": "image/png"
 																}
 															}
 														}
@@ -1575,122 +1384,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "blockquote",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "paragraph",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "\"Cloudflare Magic Transit is a 'set it and forget it' DDoS solution, which is exactly what we needed.",
-															"marks": [],
-															"content": null
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "We're a busy team, and we don't have time for a tool that requires constant oversight.\"",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Santiago Serra • Network Architect",
-													"marks": [],
-													"content": null
-												}
-											]
 										}
 									]
 								}
@@ -1699,9 +1392,9 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "1NHLglCgE8DzVyY26V7Yny",
-						"title": "Ready to get started? ",
-						"titleSize": null,
+						"contentfulId": "58a7u8eWnUDwxkmVY0Alzj",
+						"title": "Contact a Cloudflare enterprise representative",
+						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
@@ -1715,148 +1408,103 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "oSViiR1JNxpJad3UloLTX",
-							"elementName": "Compare plans & pricing plans/network-services/ btn ",
+							"contentfulId": "6su9GLG8mTYluvikE7Vsnd",
+							"elementName": "Solution Hub: Protect & accelerate networks - Contact a Cloudflare enterprise representative - CTA",
 							"standardText": null,
-							"text": "Compare plans & pricing",
-							"url": "/plans/network-services/",
+							"text": "Get in touch",
+							"url": null,
 							"loggedInUrl": null,
-							"buttonModal": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "3YgYugb1osXsIHngWemJzI",
+								"modalName": "Network Services: Solutions Hub - Modal form",
+								"modalId": "network-services-solutions-hub-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "6qVnTtzpF9cub8sfbg1eSf",
+									"bladeName": "Network Services: Solutions Hub - Marketo modal form",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Talk to an expert",
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
-					},
-					{
-						"contentfulId": "5sFvM4jgFUBpVzXHvre1zB",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": "Additional resources",
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5vfeWaJcPFNAQ1U9ZurCTx",
-								"title": "Cloudflare DDoS Named A 'Leader' in The Forrester Wave™",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "According to Forrester, 'Cloudflare protects against DDoS from the edge, and fast,' and 'customer references view Cloudflare's edge network as a compelling way to protect and deliver applications.'",
-								"learnMoreUrl": "/forrester-wave-ddos-mitigation-2021/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "61f40778-ce2e-5992-9170-ca390a015f08",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/19F9Ub2nYgRXjIC36NexSk/310b82de44e0f5e7ce96804009561d27/Forrester-Guide-2021_Report_Thumbnail.jpg"
-										},
-										"description": "Illustration of a globe and a cloud"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3jqKhDQJXnzaQOnTw2sF9W",
-								"title": "Blibli & Cloudflare",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Blibli mitigates DDoS and bot attacks and secures its workspace with Cloudflare Zero Trust solutions.",
-								"learnMoreUrl": "/case-studies/blibli/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "dede96bd-c80f-5cba-8690-12d9d5495974",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OPR1ZUdZ5VFmj34t5pepe/aa95a9677e1f6edbc0d4012479a58df5/Blibli_Case-Study_Thumbnail.jpg"
-										},
-										"description": "Blibli logo"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7AO2AUAao9AS5Gl2YtWgso",
-								"title": "Visma & Cloudflare",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Cloudflare and Visma Enterprise team up to enable protection with Cloudflare Magic Transit, which provides DDoS protection for network infrastructure. After activating Magic Transit, Visma Enterprise saw immediate effects.",
-								"learnMoreUrl": "/case-studies/visma-enterprise/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "35394be1-3d32-5b30-92d1-3578b2e0c252",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/tJQDHhtabSO3j2hGbj5J1/7f385bf80ad0cb12b290888a2dd4de76/Visma_Case-Study_Thumbnail.jpg"
-										},
-										"description": "Visma logo"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "3YgYugb1osXsIHngWemJzI",
+						"modalName": "Network Services: Solutions Hub - Modal form",
+						"modalId": "network-services-solutions-hub-modal-form",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "6qVnTtzpF9cub8sfbg1eSf",
+							"bladeName": "Network Services: Solutions Hub - Marketo modal form",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Talk to an expert",
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {

@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-01-26T22:16:59.804Z",
-					"updatedAt": "2024-06-01T02:45:40.276Z"
+					"updatedAt": "2024-06-07T20:09:42.399Z"
 				},
 				"contentfulId": "73OYCTp6Jdyqe1KTghpKF8",
 				"contentTypeId": "page",
@@ -68,7 +68,7 @@
 					{
 						"contentTypeId": "bladeHalfWidthHero",
 						"contentfulId": "2v6ttoCoNv7Gra8rKPM5VF",
-						"entityTitle": "Data compliance and security - Hero",
+						"entityTitle": "Data compliance and security - HERO",
 						"leftHalf": {
 							"contentTypeId": "elementHalfWidthHeroContent",
 							"contentfulId": "6yuiM5VxiyVTKGLM1yP5oP",
@@ -80,16 +80,68 @@
 								"buttonTextLoggedIn": null,
 								"contentTypeId": "button",
 								"contentfulId": "1EAUrKclj8lxbNbCqRZkYm",
-								"elementName": "Data compliance and security - Primary CTA - 0",
+								"elementName": "Data compliance and security - Request a consultation - CTA",
 								"standardText": null,
 								"text": "Request a consultation",
-								"url": "/plans/enterprise/contact/",
+								"url": null,
+								"loggedInUrl": null,
+								"buttonModal": {
+									"contentTypeId": "formModal",
+									"contentfulId": "5g7pNscvkVbkhuLxewKtHp",
+									"modalName": "Data compliance and security - Modal form",
+									"modalId": "data-compliance-and-security-modal-form",
+									"modalType": "single-form",
+									"marketoForm": {
+										"contentTypeId": "marketoEmbeddedForm",
+										"contentfulId": "3Aj5bS7JAaFtXW1Y2qWxNu",
+										"bladeName": "Data compliance and security - Marketo modal form",
+										"backgroundColor": "white",
+										"marketoFormId": 1341,
+										"marketoFormLeadSource": "Inbound - Web Form",
+										"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+										"marketoFormHeaderText": null,
+										"marketoFormDefaultComment": null,
+										"showCommentBox": null,
+										"marketoFormThankYouText": null,
+										"marketoFormCustomSuccessMessage": null,
+										"marketoFormPdfDownload": null,
+										"marketoFormPdfDownloadI18n": [],
+										"marketoFormAssetDownloadButtonText": null,
+										"marketoFormSuccessRedirectUrl": null,
+										"sendAdRoll": null,
+										"meta_adRollCustomSegment": null,
+										"enableSandbox": null,
+										"marketoFormSubmitButtonText": null,
+										"marketoFormSubmitButtonColor": null,
+										"enableEmailVerification": null,
+										"disableEnterpriseEmailNotification": null,
+										"enableRingout": null
+									},
+									"title": "Request a consultation ",
+									"regularCopy": null,
+									"splitFormDefaultTab": null,
+									"selfServeTabText": null,
+									"selfServeCopy": null,
+									"enterpriseTabText": null,
+									"enterpriseCopy": null
+								},
+								"openInNewTab": false,
+								"locale": "en-US"
+							},
+							"secondaryCta": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "7ALu1tkpbmOXOuQVq93w46",
+								"elementName": "Data compliance and security - Get the solution brief - CTA",
+								"standardText": null,
+								"text": "Get the solution brief",
+								"url": "https://cfl.re/3R3POqI",
 								"loggedInUrl": null,
 								"buttonModal": null,
 								"openInNewTab": true,
 								"locale": "en-US"
 							},
-							"secondaryCta": null,
 							"tertiaryCta": null
 						},
 						"rightHalf": {
@@ -117,10 +169,72 @@
 						"htmlId": null
 					},
 					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "4hwT96yuJAAjnWOBjaNcrl",
-						"htmlContent": "  <div style=\"text-align:left; max-width: 635px; padding-top: 64px;\" class=\"headline-2\">\n           Compliance challenges with point and legacy security solutions\n        </div>",
-						"htmlId": null
+						"contentfulId": "2fdUIcT5KoqvWxx6Qb5uZ6",
+						"title": "Compliance challenges with point and legacy security solutions.",
+						"copy": "Manual processes create complexity, introduce risk, and slow down the business. This further leads to security and performance tradeoffs, drives up TCO, and limits the success of compliance programs.",
+						"toggleText": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "1OYv9iiG5vpJapYDQy4ZGz",
+								"elementName": "Data compliance and security - PROBLEM STATEMENT - CTA",
+								"standardText": null,
+								"text": "Read the whitepaper",
+								"url": "/lp/3-challenges-of-securing-and-connecting-application-services/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "9c385c20-f39e-5f71-a0ab-c1a125599127",
+							"altText": "Problem statement illustration",
+							"title": "Problem statement illustration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/fmynTeV9AEZ9pXQjY9gUD/51f3b0c9c274206ecc5ceb030a422b1e/Platform-Consolidation.svg"
+								},
+								"description": "Platform consolidation illustration"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "PROBLEM",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
 					},
 					{
 						"contentfulId": "5MLN5mM6T8SxUan33mwVRq",
@@ -240,54 +354,30 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"htmlId": null
-					},
-					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "45poL3FyqzfQ7nLnPxdnGk",
-						"htmlContent": "  <div style=\"text-align:center; padding-top: 64px;\" class=\"headline-2\">\n           Protect data, streamline audits, and reduce risk with Cloudflare\n        </div>",
-						"htmlId": null
-					},
-					{
-						"contentTypeId": "bladeNetworkStats",
-						"contentfulId": "6zhULeyTChfG3IdwhiJGqh",
-						"title": null,
-						"backgroundColor": "white",
-						"htmlId": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"variant": "stacked",
-						"sectionPadding": "default",
-						"bladeBorder": "none",
-						"learnMoreLink": null,
-						"bigImage": null,
-						"quotearticle": null,
-						"bigImageAssetFile": null,
-						"networkLocationImage": null,
-						"networkLocationImageAssetFile": null,
-						"networkLocationText": null,
-						"statsFeatures": [
-							{
-								"title": "65% ",
-								"description": "reduced likelihood and related costs of data breach*\n"
-							},
-							{
-								"title": "24% ",
-								"description": "reduction on annual cyber insurance premiums*"
-							},
-							{
-								"title": "59% ",
-								"description": "reduced time spent on managing systems/processes*"
-							}
-						]
 					},
 					{
 						"contentfulId": "4ACd0Ricrvn5IgfiEXR1Ux",
 						"title": "A composable way to streamline compliance and manage evolving risk",
-						"copy": null,
+						"copy": "Compliance and security leaders can streamline compliance with one control plane and composable security controls via Cloudflare's connectivity cloud. ",
 						"toggleText": null,
-						"button": [],
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "2dnKAvCNZbKDVRsxFPEjZ7",
+								"elementName": "Data compliance and security - SOLUTION STATEMENT - CTA",
+								"standardText": null,
+								"text": "Download solution brief",
+								"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/28FIkPpiNHLKMfIwkT5z3R/c5ccc8a3fbe1acb13e3eb266460f4640/Data-Compliance-Solution_Brief.pdf",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": true,
+								"locale": "en-US"
+							}
+						],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],
@@ -324,16 +414,647 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "SOLUTION",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": false,
-						"imageSize": "large",
+						"imageSize": "medium",
 						"imageTextAlignment": null,
 						"togglesTo": []
+					},
+					{
+						"contentfulId": "3tF2rgjG0GZS3EdDJkE4VF",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "Minimize risk, streamline compliance",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5O4TEI9r4f9TQpVLOD1ETt",
+								"title": "Reduce total cost of ownership",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare can reduce TCO by up to 50%.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
+									"altText": "Price",
+									"title": "Price",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ABXXM79uTTFbsc925v8O/4b2b331f5a1475d45705d9c5fc61b85c/price.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3yDpOm3izlMIvmvTDzwN6e",
+								"title": "Minimize risk",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare can reduce policy and compliance risk by up to 50%.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "334ee5c2-19cd-5236-8789-9dd80bebdedb",
+									"altText": "Security shield protection 2",
+									"title": "Security shield protection 2",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YZDquysdwv0IC1kV0hC6n/e0128d5452432cec311a40aaeb684c65/security-lock__1_.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1zZQaDzkk8N1HCbzrph7Yj",
+								"title": "Improve experience & performance",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Performance is improved by 50% without making security or performance tradeoffs.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
+									"altText": "Performance acceleration bolt orange",
+									"title": "Performance acceleration bolt orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/3901da8ee3ead1d525cb74be33363bec/performance-acceleration-bolt.png"
+										},
+										"description": "Lightning bolt icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "45poL3FyqzfQ7nLnPxdnGk",
+						"htmlContent": "  <div style=\"text-align:center; padding-top: 64px;\" class=\"headline-2\">\n           Protect data, streamline audits, and reduce risk with Cloudflare\n        </div>",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeNetworkStats",
+						"contentfulId": "6zhULeyTChfG3IdwhiJGqh",
+						"title": null,
+						"backgroundColor": "white",
+						"htmlId": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"variant": "stacked",
+						"sectionPadding": "tile--no-bottom-padding",
+						"bladeBorder": "none",
+						"learnMoreLink": null,
+						"bigImage": null,
+						"quotearticle": null,
+						"bigImageAssetFile": null,
+						"networkLocationImage": null,
+						"networkLocationImageAssetFile": null,
+						"networkLocationText": null,
+						"statsFeatures": [
+							{
+								"title": "65% ",
+								"description": "reduced likelihood and related costs of data breach*\n"
+							},
+							{
+								"title": "24% ",
+								"description": "reduction on annual cyber insurance premiums*"
+							},
+							{
+								"title": "59% ",
+								"description": "reduced time spent on managing systems/processes*"
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeFeaturedCompanyLogos",
+						"contentfulId": "5Mq1dWpH2MeMsUMZBY5h3u",
+						"title": "Global leaders, including 30% of the Fortune 1000, rely on Cloudflare",
+						"htmlId": "company-Logos",
+						"companyLogos": [
+							{
+								"id": "3e79297d-861e-57b1-a1fa-f060fd8b04b6",
+								"altText": "Broadcom logo",
+								"title": "Broadcom",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tI7zPMdgwOu8KsxmJDy3S/9309834cae3b3c861cf791c446abba0e/featured_logo_broadcom.png"
+									},
+									"description": "Broadcom logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "6bab8727-c5b1-51be-a2a6-dd5f7277944f",
+								"altText": "Colgate Palmolive logo",
+								"title": "Colgate Palmolive",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVlcVxBM7oHC0gQhqhAhg/696a2e2e1211f5ee5ce104036faf364b/featured_logo_colgate_palmolive.png"
+									},
+									"description": "Colgate-Palmolive logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "323ff65d-ba14-504d-b500-be5f9e390ba7",
+								"altText": "DHL logo",
+								"title": "DHL",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1k3b3CsMHw3Tr3r9oRrUeU/b4c0c681dc6f7fdf13c1a55ebfc9a9cb/featured_logo_dhl.png"
+									},
+									"description": "DHL logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "117ee30a-282a-5fab-b478-fbe6b0d69cdb",
+								"altText": "Doordash logo",
+								"title": "Doordash",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OWBxeEeZgpxcoAFt3BIOf/ddd74305e760b3872a476d3c427c0466/featured_logo_doordash.png"
+									},
+									"description": "DoorDash logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "39287d4d-f0e8-57fe-9a88-8167fa0722ef",
+								"altText": "Garmin logo",
+								"title": "Garmin",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20TBr23zGqzXgbfSvnY1BK/bfcac6ddc997cad19bccbbc449a520af/featured_logo_garmin.png"
+									},
+									"description": "Garmin logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "42cf8aae-46de-5880-9fd7-0503132a132c",
+								"altText": "GPC logo",
+								"title": "GPC",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dfLsRXpaFsOQxkDsYnLdX/58164c9bea5b98ba3e5ff853ecf97e20/featured_logo_GPC.png"
+									},
+									"description": "GPC Genuine Parts Company logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "1328899d-c8af-5126-a77c-da738ce40380",
+								"altText": "Ted Baker London logo",
+								"title": null,
+								"activeAsset": "Brandfolder Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/0DjBw0DSC6Pp0T94SCiMz/41d22554fcbce22cffbd9a119ed8fc41/ted_baker_logo_homepage.png"
+									},
+									"description": " Ted Baker logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "95e00df8-fcd0-5888-b156-42769ae84dc4",
+								"altText": "LabCorp logo",
+								"title": "LabCorp",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/k1sJUCRn8BrepRd04ZvyA/4bd1ed0b631c2c1f887cb99a9ac80a12/featured_logo_labcorp.png"
+									},
+									"description": "LabCorp logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "4e7bdfb6-f045-5a8f-8442-c598fb96a027",
+								"altText": "L'Oreal logo",
+								"title": "L'Oreal",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/XBApB6LjRjaNIy0Cktw9k/fb5aa40999cbbc782642a25c17a0ca9e/featured_logo_loreal.png"
+									},
+									"description": "L'Oreal logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "a1b10eb3-9e13-51a4-94ac-052317747aa5",
+								"altText": "Mars logo",
+								"title": "Mars",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6i0JyE7PJxW63fNovIs3FR/6f0bec5cb4b1a9f4884086a2cdd50f39/featured_logo_mars.png"
+									},
+									"description": "Mars logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "18018637-f4be-521a-8329-48bc173433f1",
+								"altText": "NCR logo",
+								"title": "NCR",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gBYWcUrgtwrxZsPK0iaa3/3bb40c3761934f3f5a8851052030139f/featured_logo_ncr.png"
+									},
+									"description": "NCR logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "400536c0-a8c2-59e9-a27e-b1631f9b444e",
+								"altText": "Shopify logo",
+								"title": "Shopify",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6snCzkIRG6x4TVqNqdp8ud/11de2531f20dfa0d859d5993775eb197/featured_logo_shopify.png"
+									},
+									"description": "Shopify logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "a82fef0a-849a-5d8c-87d7-4484f63a2562",
+								"altText": "National Oilwell Varco logo",
+								"title": "National Oilwell Varco",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SfHC30bLvnVt2Q8VdY7pX/5988ddfdcf17de6cd65938bf73fcfe45/featured_logo_varco.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3ce88696-8ccb-5bd4-b14d-d4d4f2feec32",
+								"altText": "Intercontinental Exchange Holdings logo",
+								"title": "Intercontinental Exchange Holdings",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/69GbqaMe5hplmWO0KfO0x7/09f5cffe177333fddafa08027b7268c4/featured_logo_ice.png"
+									},
+									"description": "Intercontinental Exchange logo"
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "8fab8575-999d-502b-97e8-489ed1772640",
+								"altText": "Carrefour logo",
+								"title": "Carrefour",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/56RBCbyjHHeUgoKnzPt5u1/25166e153ba52ecfa97879c966fab007/featured_logo_carrefour.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "3a802750-7324-584d-a36d-3e5c2314478f",
+								"altText": "DeliveryHero logo",
+								"title": "DeliveryHero",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UR7JNrSk2DMlK6s3OSHGo/d362c6c86d8d67d7ef576307b5d8be86/featured_logo_delivery_hero.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "accfac33-a9fd-5c4f-a63a-776cdbdea261",
+								"altText": "Cintas logo",
+								"title": "Cintas",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5tirSMVcFPrH1glC4WGhg3/25ca2004e1d05d7814bf928cfd75ed1f/featured_logo_cintas.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "25d2f1c8-e74e-5229-9739-a81634cdd187",
+								"altText": "Thomson Reuters logo",
+								"title": "Thomson Reuters",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DiOULNDmkC76Go9zjnSXs/2fe09a5f27700c5cf6f24b26570a8190/featured_logo_thomson_reuters.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "947cdcdc-5f08-56bc-99b0-6625112b0f89",
+								"altText": "Dropbox logo",
+								"title": "Dropbox",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TezkcyrSKECJ3033CXgDZ/b98a9e661827064f20431c4521343cb1/featured_logo_dropbox.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "c160dc97-0190-5165-8c3a-03d71053bcd8",
+								"altText": "Pitney Bowes logo",
+								"title": "Pitney Bowes",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tbBFmgYoEQD6Yx5IcPjOr/67854bf21f4a0ece3a4683040b70bc03/featured_logo_pitney_bowes.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "fec1a3df-3c16-56bf-bc49-c7a9a2bcd401",
+								"altText": "IBM logo",
+								"title": "IBM",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CdLkPlavqnIjAC2IXGtoV/8f905b918b212c08c2616ef91d114c0d/trustedby-ibm-black.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "33f3f7e2-7590-5ba4-917b-5441d0a183fa",
+								"altText": "Melbourne Airport logo",
+								"title": "Melbourne Airport",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mTtJdvzUAqci4DXlDuZMg/e2bbf87df44278ec8ba30e6afe09e670/featured_logo_melbourne_airport.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "1c533476-07f0-5785-8705-305ae8a1ed85",
+								"altText": "Polestar logo",
+								"title": "Polestar",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/oqhmwGXDLMCdeH1SYvPMH/7a4f9a1fe781b73b41bc2c17e5358daa/featured_logo_polestar.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "31bdab15-eded-5be0-9a4c-ff7728fa3c0f",
+								"altText": "Falabella logo",
+								"title": "Falabella",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5J9gWjrgVqesMQ6Kg0HB3r/eee9c2abc323fbb80746bf98e7ded2cf/featured_logo_falabella.png"
+									},
+									"description": ""
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"sectionPadding": null
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "2gL3isEr75WtCn3fKdsvIR",
+						"title": "Ready to have a conversation with a specialist?",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "3r7JIP8xrFqK068ZrnFiDC",
+							"elementName": "Data compliance and security - Ready to have a conversation with a specialist? - CTA",
+							"standardText": null,
+							"text": "Request a consultation",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "5g7pNscvkVbkhuLxewKtHp",
+								"modalName": "Data compliance and security - Modal form",
+								"modalId": "data-compliance-and-security-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "3Aj5bS7JAaFtXW1Y2qWxNu",
+									"bladeName": "Data compliance and security - Marketo modal form",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Request a consultation ",
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
+						"contentfulId": "7vS7QLUaJEbMSgXcTuWmrl",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "The Cloudflare connectivity cloud is built for compliance",
+						"eyebrowHeading": "HOW IT WORKS",
+						"description": null,
+						"textLayout": "center",
+						"columnsLayout": "One Column",
+						"columnContent": [
+							{
+								"contentTypeId": "elementColumnImageContent",
+								"contentfulId": "2BE3Ee7hWbv0TAoaImMgzh",
+								"image": {
+									"contentfulId": "6PvbbCjWibKD2x1Li35ayb",
+									"locale": "en-US",
+									"title": "Attack Timeline - Everywhere Security",
+									"file": {
+										"name": "attack-timeline-solution.png",
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PvbbCjWibKD2x1Li35ayb/82ae314d643535b660384283ecc4fded/attack-timeline-solution.png",
+										"internal": {
+											"mediaType": "image/png"
+										}
+									}
+								},
+								"heading": null,
+								"copy": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
 					},
 					{
 						"contentfulId": "643UOKVRPFJfFeI6WLMsoH",
@@ -489,118 +1210,13 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"htmlId": null
-					},
-					{
-						"contentfulId": "3YpyN89CkxCQTKQfCWD52i",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Want to learn more about data compliance with Cloudflare?",
-						"description": null,
-						"variant": "full-width",
-						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "1JuM9FI1PUOYVFOH8rH9x8",
-							"elementName": "Request a consultation - CTA (link to: /plans/enterprise/contact/)",
-							"standardText": null,
-							"text": "Request a consultation",
-							"url": "/plans/enterprise/contact/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "1xPyUJDm6AnHmecdwCNcdS",
-							"elementName": "Download solution brief - CTA ",
-							"standardText": null,
-							"text": "Download solution brief",
-							"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/28FIkPpiNHLKMfIwkT5z3R/c5ccc8a3fbe1acb13e3eb266460f4640/Data-Compliance-Solution_Brief.pdf",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						}
-					},
-					{
-						"contentfulId": "6tcPy5ptCCHDGZRl9PE4Pb",
-						"title": "Certifications",
-						"copy": "Learn about Cloudflare's adherence to industry-standard security compliance certifications and regulations.\n\nCloudflare was built to help you and your customers be more secure on the Internet. Learn about the certifications that help us preserve that security.\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": "https://www.cloudflare.com/trust-hub/compliance-resources/",
-						"learnMoreText": "View all certifications",
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "55e1c71b-7cac-5297-9bab-308c006766b4",
-							"altText": "Certifications and compliance image",
-							"title": "Certifications and compliance image",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/65thN4IXd6ftP4oh7GScYS/8f451fb82cf08f534dea28600b6d23c7/Infographic-all.png"
-								},
-								"description": "Certifications and compliance logos image"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "4znttYBDiM50YKlFwPQPKp",
-						"htmlContent": "  <div style=\"text-align:left; padding-top: 64px;\" class=\"headline-2\">\n Flo, the leading women's health app, helps safeguard customer data with Cloudflare\n        </div>",
+						"htmlContent": "  <div style=\"text-align:left;\" class=\"headline-2\">\n Flo, the leading women's health app, helps safeguard,<br> customer data with Cloudflare\n        </div>",
 						"htmlId": null
 					},
 					{
@@ -638,58 +1254,6 @@
 														"uri": null
 													},
 													"value": "When it comes to securing customer data, there's nothing that requires more vigilance than personal health. \n\nThat's why Flo Health, the leading women's health app, has made security and privacy core to the company's mission — and why it chose Cloudflare to provide an extra layer of protection.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/case-studies/womens-health-app-flo-safeguards-customer-data/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "View case study",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -733,27 +1297,6 @@
 											]
 										},
 										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Roman Bugaev, Chief Technology Officer",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
 											"nodeType": "embedded-asset-block",
 											"data": {
 												"target": {
@@ -769,7 +1312,7 @@
 															"title": "Flo logo",
 															"file": {
 																"name": "Flo-logo.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JG3SgrdkCERoN8VcHqdnc/7d9bb17bab2b0e49260cf4481e23e301/Flo-logo.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JG3SgrdkCERoN8VcHqdnc/994f3411a7c19dc79edaded013454123/Flo-logo.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -819,9 +1362,242 @@
 						]
 					},
 					{
+						"contentfulId": "31OcmQJjipsIKYXqWUsKj8",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Data compliance case studies",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "22PU1lF3d7N2dM1XFxsoaw",
+								"title": "Flo",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Flo, the Leading Women's Health App, Helps Safeguard Customer Data With Cloudflare",
+								"learnMoreUrl": "/case-studies/womens-health-app-flo-safeguards-customer-data/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "fb0f3a47-cb4d-5330-9a48-8bdcd7cdee33",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Njao8RXctjHh7b4kiXgUJ/4b0a5a122d0168f0fb59f99efbf6d24d/idDV54nHz-_1717783874930.jpeg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7lQGtIMV1MD0m5pzSMbogC",
+								"title": "PhonePe",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "PhonePe protects over 33 million merchants and provides a frictionless and low-latency customer experience to over 400 million registered users, using Cloudflare.",
+								"learnMoreUrl": "/case-studies/phonepe/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "024b12c3-0e59-5f3c-85d9-187291d98ca2",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2XA1rfTKifg326JagRGwCn/eb27003dec7927b9ea6bef697d3a33a6/PhonePe_idwlva8idc_4.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5IjP3ZQfRRqQkxeIfFt7LX",
+								"title": "Temple & Webster",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Temple & Webster has deployed Cloudflare to replace legacy performance and security solutions, secure employee access and accelerate regulatory compliance",
+								"learnMoreUrl": "/case-studies/templeandwebster/",
+								"learnMoreText": "Read case study",
+								"displayBorder": true,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "395693a3-431e-5c12-a0fe-c4f72040afe2",
+									"altText": "Temple & Webster icon logo",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fwQXUkZ7zLnq4YNWPj4j/7c61349816593653873bbaad947ce7d2/carrefour_logo.png"
+										},
+										"description": "Temple & Webster icon logo"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "igJ291lUfWHUwUJ4lDYdt",
+								"title": "Porsche Informatik",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Porsche Informatik relies on Cloudflare to manage traffic for its brand and dealer network, protect its websites from the internet, and automate cloud migration tasks",
+								"learnMoreUrl": "/case-studies/porsche-informatik/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "8235fda8-5152-54b9-8231-2b749fe32321",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LlF9ZpO52O9ommBnCcweI/be0177e05270403e7fbd34d5f76f34d0/pi.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "n7asUsBb1sU6EgWDtJXWi",
+								"title": "Stax",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Stax improved regulatory compliance, protected client information, and provided their developers with secure, highly available access to company tools",
+								"learnMoreUrl": "/case-studies/stax/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "c1a0cda8-de2f-5fad-8612-e59836f60c69",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1TbnyP4Z9pfZezjjZoxB8c/405a759f9c0fd4b8075eff3ad8b810de/staxio_logo.jpeg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5zFfa5LcjZqDb1on2tSYPl",
+								"title": "Drata",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Drata, a continuous security and compliance automation platform, chose Cloudflare Zero Trust and application services to secure its infrastructure and thwart persistent online attacks",
+								"learnMoreUrl": "/case-studies/drata/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7361d171-0bb1-527d-83be-7ede13a20a36",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ENIeXDyeO5KrbDRtpY0Vh/7153ba04269aad0920c85d0e42172c8e/idZxpAuQnI_1717784084876.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
 						"contentTypeId": "bladeCardCarousel",
 						"contentfulId": "3bAt1JF7fytWcmZsONrX94",
-						"title": "Data compliance resources",
+						"title": "Resources",
 						"htmlId": null,
 						"backgroundImage": null,
 						"cards": [
@@ -927,66 +1703,110 @@
 						]
 					},
 					{
-						"contentfulId": "3YpyN89CkxCQTKQfCWD52i",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Want to learn more about data compliance with Cloudflare?",
-						"description": null,
-						"variant": "full-width",
+						"contentfulId": "2lhj9NJFWuMr2eFVGOiCFA",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
+						"copy": null,
+						"title": "Learn about other ways our connectivity cloud can meet your business' needs",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 2 columns",
+						"bladeBorder": "none",
 						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
-								},
-								"description": ""
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "44omO8BhiqXJNbTXVdAo7O",
+								"title": "Digital modernization ",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare helps business modernize their applications and networks, and gain efficiency and cost savings via platform consolidation.\n",
+								"learnMoreUrl": "/modernization/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "1JuM9FI1PUOYVFOH8rH9x8",
-							"elementName": "Request a consultation - CTA (link to: /plans/enterprise/contact/)",
-							"standardText": null,
-							"text": "Request a consultation",
-							"url": "/plans/enterprise/contact/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "1xPyUJDm6AnHmecdwCNcdS",
-							"elementName": "Download solution brief - CTA ",
-							"standardText": null,
-							"text": "Download solution brief",
-							"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/28FIkPpiNHLKMfIwkT5z3R/c5ccc8a3fbe1acb13e3eb266460f4640/Data-Compliance-Solution_Brief.pdf",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						}
-					},
-					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "7D8fpN5cAWKJ4nnJAmSfOH",
-						"htmlContent": "<style>\n  .custom-legend{ font-size:14px; font-style:italic}\n  .margins{ margin-top:40px; margin-bottom:40px}\n</style>\n<div class=\"margins\">\n<span class=\"custom-legend\">* 65% stat: Citation 1: <a  href=\"https://www.ibm.com/reports/data-breach\" target=\"_blank\" class=\"inline-link-style\"> IBM Cost of Breach 2022 report</a></span><br>\n<span class=\"custom-legend\">* 24% stat: Citation 2: 2023 Cloudflare TechValidate Survey of Cloudflare App Service Customers.</span><br>\n<span class=\"custom-legend\">* 59% stat: Citation 3: 2023 Cloudflare TechValidate Survey of Cloudflare App Service Customers.</span><br> </div>",
-						"htmlId": null
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3lr26TzT5U2ahfRWGshD8T",
+								"title": "Everywhere security",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Secure your people, apps and networks more efficiently and effectively with Cloudflare's connectivity cloud. \n",
+								"learnMoreUrl": "/cybersecurity/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "5g7pNscvkVbkhuLxewKtHp",
+						"modalName": "Data compliance and security - Modal form",
+						"modalId": "data-compliance-and-security-modal-form",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "3Aj5bS7JAaFtXW1Y2qWxNu",
+							"bladeName": "Data compliance and security - Marketo modal form",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Request a consultation ",
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
