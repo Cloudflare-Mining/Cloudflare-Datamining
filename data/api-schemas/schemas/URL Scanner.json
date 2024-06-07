@@ -1,4 +1,163 @@
 {
+	"GET /accounts/{accountId}/urlscanner/response/{responseId}": {
+		"description": "Returns the plain text response of the network request.",
+		"operationId": "urlscanner-get-response-text",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "responseId",
+				"required": true,
+				"schema": {
+					"description": "Response id/hash",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"description": "Account Id",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"text/plain": {
+						"schema": {
+							"description": "Web resource text",
+							"type": "string"
+						}
+					}
+				},
+				"description": "Returns the plain text response of the network request."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "Scan ID is not a valid uuid.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether request was successful or not",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"errors",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid params."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "Scan not found.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether request was successful or not",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"errors",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Scan not found."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get raw response",
+		"tags": [
+			"URL Scanner"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.url-scanner.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /accounts/{accountId}/urlscanner/scan": {
 		"description": "Search scans by date and webpages' requests, including full URL (after redirects), hostname, and path. <br/> A successful scan will appear in search results a few minutes after finishing but may take much longer if the system in under load. By default, only successfully completed scans will appear in search results, unless searching by `scanId`. Please take into account that older scans may be removed from the search index at an unspecified time.",
 		"operationId": "urlscanner-search-scans",
