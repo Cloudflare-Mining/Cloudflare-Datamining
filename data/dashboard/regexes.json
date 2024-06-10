@@ -505,6 +505,7 @@
 	"/label:\\s*([^\\s;\\n{]+)\\s*(;|$)/g",
 	"/local.cloudflareapps.com/",
 	"/localhost/",
+	"/log_explorer.\\w+.enabled/",
 	"/lookup_json_string\\(http\\.request\\.jwt\\.claims\\[\"([^\"]+)\"\\]\\[0\\],\\s*\"([^\"]+)\"\\)/",
 	"/mac os x/i",
 	"/matrix3d\\((.*)\\)/",
