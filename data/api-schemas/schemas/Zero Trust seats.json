@@ -8,11 +8,18 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						},
+						{
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					]
 				}
 			}
 		],
@@ -33,10 +40,9 @@
 									"type": "boolean"
 								},
 								"seat_uid": {
-									"description": "Identifier",
-									"example": "023e105f4ecef8ad9ca31a8372d0c353",
-									"maxLength": 32,
-									"readOnly": true,
+									"description": "The unique API identifier for the Zero Trust seat.",
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+									"maxLength": 36,
 									"type": "string"
 								}
 							},
@@ -185,10 +191,9 @@
 														"type": "boolean"
 													},
 													"seat_uid": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
-														"readOnly": true,
+														"description": "The unique API identifier for the Zero Trust seat.",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
 														"type": "string"
 													},
 													"updated_at": {

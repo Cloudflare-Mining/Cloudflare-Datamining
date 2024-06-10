@@ -1103,6 +1103,11 @@
 																			},
 																			{
 																				"properties": {
+																					"access_token_lifetime": {
+																						"description": "The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.",
+																						"example": "5m",
+																						"type": "string"
+																					},
 																					"allow_pkce_without_client_secret": {
 																						"description": "If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used.",
 																						"example": true,
@@ -4124,6 +4129,11 @@
 																		},
 																		{
 																			"properties": {
+																				"access_token_lifetime": {
+																					"description": "The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.",
+																					"example": "5m",
+																					"type": "string"
+																				},
 																				"allow_pkce_without_client_secret": {
 																					"description": "If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used.",
 																					"example": true,
@@ -7381,6 +7391,11 @@
 													},
 													{
 														"properties": {
+															"access_token_lifetime": {
+																"description": "The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.",
+																"example": "5m",
+																"type": "string"
+															},
 															"allow_pkce_without_client_secret": {
 																"description": "If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used.",
 																"example": true,
@@ -10255,6 +10270,11 @@
 																				},
 																				{
 																					"properties": {
+																						"access_token_lifetime": {
+																							"description": "The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.",
+																							"example": "5m",
+																							"type": "string"
+																						},
 																						"allow_pkce_without_client_secret": {
 																							"description": "If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used.",
 																							"example": true,
@@ -13042,6 +13062,11 @@
 																		},
 																		{
 																			"properties": {
+																				"access_token_lifetime": {
+																					"description": "The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.",
+																					"example": "5m",
+																					"type": "string"
+																				},
 																				"allow_pkce_without_client_secret": {
 																					"description": "If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used.",
 																					"example": true,
@@ -16148,6 +16173,11 @@
 													},
 													{
 														"properties": {
+															"access_token_lifetime": {
+																"description": "The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.",
+																"example": "5m",
+																"type": "string"
+															},
 															"allow_pkce_without_client_secret": {
 																"description": "If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used.",
 																"example": true,
@@ -19022,6 +19052,11 @@
 																				},
 																				{
 																					"properties": {
+																						"access_token_lifetime": {
+																							"description": "The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.",
+																							"example": "5m",
+																							"type": "string"
+																						},
 																						"allow_pkce_without_client_secret": {
 																							"description": "If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used.",
 																							"example": true,
@@ -21809,6 +21844,11 @@
 																		},
 																		{
 																			"properties": {
+																				"access_token_lifetime": {
+																					"description": "The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.",
+																					"example": "5m",
+																					"type": "string"
+																				},
 																				"allow_pkce_without_client_secret": {
 																					"description": "If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used.",
 																					"example": true,
