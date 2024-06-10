@@ -14,6 +14,6 @@
 	"PostureEvaluatedResult": "bool; Whether this posture upload passes the associated posture check, given the requirements posture check at the time of the timestamp.",
 	"PostureExpectedJSON": "object; JSON object of what the posture check expects from the Zero Trust client.",
 	"PostureReceivedJSON": "object; JSON object of what the Zero Trust client actually uploads.",
-	"Timestamp": "int or string; The date and time the corresponding device posture upload was performed (for example, '2021-07-27T00:01:07Z').",
+	"Timestamp": "int or string; The date and time the corresponding device posture upload was performed (for example, '2021-07-27T00:01:07Z'). To specify the timestamp format, refer to [Output types](https://developers.cloudflare.com/logs/reference/log-output-options/#output-types).",
 	"UserUID": "string; The uid of the user who registered the device."
 }
