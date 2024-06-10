@@ -563,6 +563,9 @@
 	"magic-cloud-networking": {
 		"enabled": true
 	},
+	"magic-firewall-rate-limit": {
+		"enabled": false
+	},
 	"magic-interconnects": {
 		"enabled": true
 	},
@@ -703,6 +706,13 @@
 		]
 	},
 	"prg-streaming-bundle-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
+	"prg-waf-sidebar-nav-experiment": {
 		"enabled": false,
 		"branches": [
 			"baseline",
