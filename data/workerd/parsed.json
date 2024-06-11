@@ -4083,6 +4083,31 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/io/features.capnp:Features",
+			"enumerants": [
+				{
+					"name": "test",
+					"annotations": {}
+				},
+				{
+					"name": "blobAsArrayBuffer",
+					"annotations": {}
+				},
+				{
+					"name": "blobAsText",
+					"annotations": {}
+				},
+				{
+					"name": "blobAsStream",
+					"annotations": {}
+				},
+				{
+					"name": "blobGetData",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/io/outcome.capnp:EventOutcome",
 			"enumerants": [
 				{
@@ -4411,6 +4436,7 @@
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.neededByFl",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableAllDates",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.experimental",
+		"workerd/src/workerd/io/features.capnp",
 		"workerd/src/workerd/io/outcome.capnp",
 		"workerd/src/workerd/io/script-version.capnp",
 		"workerd/src/workerd/jsg/modules.capnp",
