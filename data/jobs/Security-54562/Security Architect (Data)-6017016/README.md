@@ -5,63 +5,46 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="text-decoration: underline;"><strong>Available</strong><strong> Locations: Remote US, London, UK</strong></span></p>
-<p><strong>What You'll Do:&nbsp;</strong></p>
-<p>Join Cloudflare's Self-Serve team as a Product Advocate, helping customers on the Developer Platform scale up their product adoption and identify new use cases to help them grow. This customer-facing position involves working directly with Self-Serve customers to enhance adoption, focus on retention, and escalate their engagement to the point of needing a contractual commitment. As a quota-carrying representative, you'll collaborate closely with the Self Serve, Product, Product Marketing, Developer Relations, and GTM teams to strategically expand our developer business. The ideal candidate should be a proactive, customer-oriented individual with a track record in customer-facing roles, adept at problem-solving and thriving in a fast-paced setting.</p>
-<p><strong>Responsibilities:</strong></p>
+<p><strong>Available Locations: Lisbon, Portugal, Mexico City, Mexico or Washington, DC or Remote US&nbsp;</strong></p>
+<p><strong>About the role&nbsp;</strong></p>
+<p>As an Enterprise Security Architect you will play a key role in effectively designing defensible network architectures, defensible builds &amp; configurations, security platforms and automation, assisting in secure tool and product development, and will help establish security standards and guidelines across the enterprise. This role will lead security project work with technology peers for successful delivery and coach technology staff on appropriate security standards, processes, protocols and needs as they implement new technology into the organization.</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Serve as a GTM expert in our Developer Platform, especially in Storage Products (e.g. R2, D1, KV, Durable Objects), Application and Compute (e.g. Pages and Workers), Media (e.g. Images and Stream), and AI (e.g. Workers AI, Vectorize, AI Gateway).</li>
-	<li>Identify and determine ideal use cases for current and future developer customers, Expand customer consumption and spend over time, and minimize churn through high touch account coverage.</li>
-	<li>Run targeted campaigns both jointly with developer marketing teams and on a more ad hoc basis to increase usage and promote new product adoption.</li>
-	<li>Collaborate with Developer Advocacy and Marketing to convert top of the funnel developer awareness into customer engagement through targeted outreach and support marketing efforts including events, webinars, and customer case studies.</li>
-	<li>Enhance the customer experience for Startup Program participants, acting as their main GTM contact from onboarding to program completion.</li>
-	<li>Collaborate with Account Executives to support Developer Pay-As-You-Go Customers, selling the way the customer intends to buy, either by helping customers grow with Self-Serve adoption, or work with Account Executives on developer opportunities when customers require a contract commitment.</li>
-	<li>Regularly provide insights and updates on customer trends and stories to the broader Developer GTM Team.</li>
+	<li>Works out and designs complex security solutions.</li>
+	<li>Leads projects to implement secure enterprise systems and identifies issues that could compromise data integrity or security.</li>
+	<li>Develops security policies, procedures, and guidelines and recommends necessary changes to a given project team to ensure the company’s systems are fully compliant with all applicable regulatory requirements and privacy laws.</li>
+	<li>Creating and implementing enterprise security architecture models</li>
+	<li>Utilizes open communication and managerial courage to ensure the standards, expectations and goals of the organization are respected and upheld.</li>
+	<li>Serving as an advisor to engineering and development teams in security best practices and design.</li>
+	<li>Leads security-related projects from inception to successful completion and is capable of effectively coaching technology staff on appropriate security protocols and needs as they implement new technology into the organization.</li>
+	<li>Works on complex issues where analysis of situations or data requires an in-depth evaluation of variable factors.&nbsp;</li>
+	<li>Determines methods and procedures on new assignments and may coordinate activities of other personnel.</li>
+	<li>Having wide-ranging experience, uses professional concepts and company objectives to resolve complex issues in creative and effective ways</li>
+	<li>Exercises judgment in selecting methods, techniques and evaluation criteria for obtaining results.</li>
+	<li>Ensures an organization's security strategy is aligned with companies business goals.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li>Minimum of 5+ years of Cloud Sales experience, preferably with a focus on developer-centric selling.</li>
-	<li>Independent, self-motivated professional with excellent time management.</li>
-	<li>Excellent verbal and written communication skills.</li>
-	<li>Ability to multi-task and adjust priorities to meet deadlines.</li>
-	<li>Proficient building models in Excel/Google Sheets and working knowledge of SQL.</li>
-	<li>Prior experience with Salesforce CRM, Tableau, Big Query, BoostUp is a plus.</li>
-	<li>Strong analytical capabilities with ability to handle and interpret large data sets.</li>
-	<li>Proven ability to nurture and grow customer relationships over a long-term horizon.</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado-based hires: Estimated annual On Target Earnings of $135,000 - $216,000.</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires:): Estimated annual On Target Earnings of $145,000 - $224,000</li>
-	<li>For Bay Area-based hires: Estimated annual On Target Earnings of of $152,000 - $237,000.</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>10+ years of experience in an IT/Security related field, 5 of which as a security architect.</li>
+	<li>In-depth understanding of security concepts.</li>
+	<li>Understand how business, engineering, IT, and security processes align, and how to research, test, and implement solutions to complex objectives.</li>
+	<li>Able to anticipate challenges and steer the company towards growth.</li>
+	<li>In depth knowledge of the following:</li>
+	<ul>
+		<li>Database security concepts and practices</li>
+		<li>Securing data in transit, at rest and access</li>
+		<li>Cyber attacks (i.e. SQL/NoSQL injections, buffer overflow, etc.),&nbsp;</li>
+		<li>Data types and what and how they need to be protected</li>
+		<li>Defining data flows</li>
+		<li>Applicable regulatory compliance requirements</li>
+		<li>Discovering and classifying data and databases</li>
+		<li>Designing, creating, and maintaining data storage systems</li>
+		<li>Developing application programming interfaces (APIs)&nbsp;</li>
+		<li>Structured query language (SQL) and the like</li>
+		<li>Data structures, modeling, integration, security, optimization, etc</li>
+		<li>Data warehouse / lakes</li>
+		<li>NIST Frameworks</li>
+	</ul>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
