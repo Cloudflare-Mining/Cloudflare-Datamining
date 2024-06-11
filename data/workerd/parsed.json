@@ -2544,6 +2544,14 @@
 						"compatDisableFlag": "no_nodejs_compat_v2",
 						"compatEnableFlag": "nodejs_compat_v2"
 					}
+				},
+				{
+					"name": "globalFetchStrictlyPublic",
+					"annotations": {
+						"compatDisableFlag": "global_fetch_private_origin",
+						"compatEnableFlag": "global_fetch_strictly_public",
+						"experimental": "true"
+					}
 				}
 			]
 		},
