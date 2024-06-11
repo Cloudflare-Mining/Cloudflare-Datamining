@@ -46,7 +46,7 @@
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
-											"maxLength": 24,
+											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
@@ -211,7 +211,7 @@
 				"schema": {
 					"description": "gateway id",
 					"example": "my-gateway",
-					"maxLength": 24,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
@@ -245,7 +245,7 @@
 											"id": {
 												"description": "gateway id",
 												"example": "my-gateway",
-												"maxLength": 24,
+												"maxLength": 64,
 												"minLength": 1,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 												"type": "string"
@@ -384,7 +384,7 @@
 				"schema": {
 					"description": "gateway id",
 					"example": "my-gateway",
-					"maxLength": 24,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
@@ -417,7 +417,7 @@
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
-											"maxLength": 24,
+											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
@@ -555,7 +555,7 @@
 				"schema": {
 					"description": "gateway id",
 					"example": "my-gateway",
-					"maxLength": 24,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
@@ -830,7 +830,7 @@
 							"id": {
 								"description": "gateway id",
 								"example": "my-gateway",
-								"maxLength": 24,
+								"maxLength": 64,
 								"minLength": 1,
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 								"type": "string"
@@ -895,7 +895,7 @@
 												"id": {
 													"description": "gateway id",
 													"example": "my-gateway",
-													"maxLength": 24,
+													"maxLength": 64,
 													"minLength": 1,
 													"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 													"type": "string"
@@ -1047,7 +1047,7 @@
 				"schema": {
 					"description": "gateway id",
 					"example": "my-gateway",
-					"maxLength": 24,
+					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"type": "string"
@@ -1127,7 +1127,7 @@
 										"id": {
 											"description": "gateway id",
 											"example": "my-gateway",
-											"maxLength": 24,
+											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
