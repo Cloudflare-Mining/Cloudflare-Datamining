@@ -32,7 +32,7 @@
 					"plPL": "English for Locale",
 					"elGR": "English for Locale",
 					"nbNO": "English for Locale",
-					"arAR": "English for Locale"
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "network-services",
 				"topNavOptions": "default",
@@ -54,28 +54,17 @@
 				},
 				"sys": {
 					"createdAt": "2021-06-08T19:25:16.953Z",
-					"updatedAt": "2024-04-15T23:31:29.851Z"
+					"updatedAt": "2024-06-12T06:17:46.358Z"
 				},
 				"contentfulId": "4rcC5cOcXa6TXIpqRIz8kq",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "Analyst report",
-					"linkText": "Get the report",
-					"linkUrl": "/lp/frost-radar-global-cdn-report/",
-					"desktopText": "Cloudflare named a leader in the 2023 Frost Radar Global Content Delivery Network report"
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
-					{
-						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
-						"contentTypeId": "bladePadding",
-						"height": 1,
-						"backgroundColor": "blue5"
-					},
 					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "jrU0xzMiWoIyZTBhzxeHb",
@@ -172,228 +161,197 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeHalfWidthHero",
-						"contentfulId": "4juUTkrmFFUWS1jtG5FOJO",
-						"entityTitle": "Network Services - (WM) Hero",
-						"leftHalf": {
-							"contentTypeId": "elementHalfWidthHeroContent",
-							"contentfulId": "H2GH5agXJ3zoEcfXJfFyR",
-							"title": "Secure & Accelerate Networks",
-							"eyebrow": null,
-							"copy": "__Securely connect data centers, cloud services, and branch offices with Cloudflare's connectivity cloud__\n\n- Transform your WAN for the secure hybrid work era\n- Protect network infrastructure and services against novel security threats with peerless built-in intelligence\n- Improve network performance with our programmable, deeply interconnected network",
-							"primaryCta": {
-								"buttonAssetFile": null,
-								"buttonTextLoggedIn": null,
-								"contentTypeId": "button",
-								"contentfulId": "77gOA54yQ5w2I8jEfNPLjv",
-								"elementName": "Network Services - Primary button",
-								"standardText": null,
-								"text": "View services",
-								"url": "#network-services",
-								"loggedInUrl": null,
-								"buttonModal": null,
-								"openInNewTab": false,
-								"locale": "en-US"
-							},
-							"secondaryCta": null,
-							"tertiaryCta": null
-						},
-						"rightHalf": {
-							"contentTypeId": "elementHalfWidthHeroImage",
-							"contentfulId": "11eHBzSHDI8HOQ6pAJDi5F",
-							"entityTitle": "Network Services - hero image",
-							"imageAsset": {
-								"id": "6405b701-f1d7-5ca8-bf08-973f24022073",
-								"altText": "Network Services",
-								"title": null,
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25PIwQKJRSuTCRhkS2MBlF/12da3e1567fe5324d9e36eed7de50a4a/Network_Services_Hub_Hero.svg"
-									},
-									"description": "Illustration of Earth"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							}
-						},
-						"promotionalBanner": {
-							"pillText": "Analyst report",
-							"linkText": "Get the report",
-							"linkUrl": "/lp/frost-radar-global-cdn-report/",
-							"desktopText": "Cloudflare named a leader in the 2023 Frost Radar Global Content Delivery Network report"
-						},
-						"sectionPadding": null,
-						"htmlId": null
-					},
-					{
-						"contentfulId": "5ibVm7g1YEBt6O8HZk60C3",
-						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": null,
-						"eyebrowHeading": null,
-						"description": null,
-						"textLayout": "left",
-						"columnsLayout": "Two Columns",
-						"columnContent": [
-							{
-								"contentTypeId": "elementColumnContent",
-								"contentfulId": "3x1yjtLpKQZfxp4Bp27vAy",
-								"title": "THE CLOUDFLARE DIFFERENCE",
-								"heading": "Superior security. Unparalleled connectivity.",
-								"copy": "[Read the CIO's Guide to WAN Transformation](https://www.cloudflare.com/lp/cios-guide-to-wan-transformation-ebook/)"
-							},
-							{
-								"contentTypeId": "elementColumnStackedContent",
-								"contentfulId": "7hxokxAhO5zOFO64s1HV5P",
-								"contentList": [
-									{
-										"contentTypeId": "feature",
-										"contentfulId": "4X2fwXLzVCygr3amEk6uQL",
-										"title": "Any-to-any connectivity",
-										"makeTitleLink": false,
-										"titleUrl": null,
-										"titleSize": "small",
-										"description": "Easily connect your users with on-premises infrastructure and public, private, and hybrid clouds — with peerless performance and reliability.",
-										"learnMoreUrl": null,
-										"learnMoreText": null,
-										"displayBorder": false,
-										"openLinkInNewTab": null,
-										"removeCardBorder": false,
-										"icon": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jxszSMXRhwiwHDa1VPXFw/cc6439cd93a107bd0986bb6d5dcd8a97/network-scale.svg"
-											},
-											"description": null
-										},
-										"iconAssetFile": null,
-										"imageOverlaySuperheader": null,
-										"imageOverlayText": null,
-										"imageAssetFile": null,
-										"streamId": null,
-										"streamThumbnail": null,
-										"streamThumbnailAssetFile": null
-									},
-									{
-										"contentTypeId": "feature",
-										"contentfulId": "6QY1Z2ckBijmiO4Yo6uQBk",
-										"title": "Unified security",
-										"makeTitleLink": false,
-										"titleUrl": null,
-										"titleSize": "small",
-										"description": "Configure and enforce security policies throughout your network with cloud-native firewall-as-a-service, industry-leading DDoS protection, and seamless Zero Trust security.",
-										"learnMoreUrl": null,
-										"learnMoreText": null,
-										"displayBorder": false,
-										"openLinkInNewTab": null,
-										"removeCardBorder": false,
-										"icon": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rVmRBDX3KhZOe2FREoYOz/24f44a8dbe53111346d97dc59b7510ed/security-shield-protection-1.svg"
-											},
-											"description": "Orange icon of a shield"
-										},
-										"iconAssetFile": null,
-										"imageOverlaySuperheader": null,
-										"imageOverlayText": null,
-										"imageAssetFile": null,
-										"streamId": null,
-										"streamThumbnail": null,
-										"streamThumbnailAssetFile": null
-									},
-									{
-										"contentTypeId": "feature",
-										"contentfulId": "1yhwDo2NLejZzpAiMuuzb5",
-										"title": "Simplified management",
-										"makeTitleLink": false,
-										"titleUrl": null,
-										"titleSize": "small",
-										"description": "Simplify security and accelerate network performance — across any location — from a single pane of glass featuring deep request-level analytics and machine learning-assisted policy.",
-										"learnMoreUrl": null,
-										"learnMoreText": null,
-										"displayBorder": false,
-										"openLinkInNewTab": null,
-										"removeCardBorder": false,
-										"icon": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/33GNJqvGvxFGKoIUAnvthw/6f39a21f15f2ba3bee13d3cfbc63976f/cloudflare-magic-wan.svg"
-											},
-											"description": null
-										},
-										"iconAssetFile": null,
-										"imageOverlaySuperheader": null,
-										"imageOverlayText": null,
-										"imageAssetFile": null,
-										"streamId": null,
-										"streamThumbnail": null,
-										"streamThumbnailAssetFile": null
-									}
-								]
-							}
-						],
-						"sectionPadding": "tile--no-bottom-padding",
-						"htmlId": null
-					},
-					{
-						"contentfulId": "2Z6TKMCXtRzhJD1sUnMaj7",
-						"title": "Make Cloudflare's connectivity cloud your enterprise perimeter.",
-						"copy": "- Simplify site-to-site connectivity and avoid traffic backhaul to hub sites.\n- Enforce consistent security policies with cloud-native firewall-as-a-service and DDoS mitigation. \n- Integrate with existing MPLS, SD-WAN or broadband networks using anycast IPSec or GRE tunnels\n",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
+						"contentfulId": "2joDmn38lYK7JQ3Uyi4O4h",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Secure, accelerate, and transform enterprise networks",
+						"titleSize": null,
+						"subtitle": "Securely connect data centers, branch offices, and cloud services with Cloudflare's connectivity cloud",
+						"subtitleSize": "medium",
+						"copy": "Instead of building and operating infrastructure, use the Cloudflare network to expand coverage for your business operations around the world.",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "Talk to an expert",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "#",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": "talk-to-an-expert",
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
 						"streamOptions": [
-							"controls"
+							"controls",
+							"captions"
 						],
 						"streamCaptions": "en",
-						"streamVideoId": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
-						"streamPoster": null,
+						"sectionPadding": null,
 						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Medium",
+						"imagePosition": false,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "f21e4191-4237-596e-a910-7b689238ea1c",
-							"altText": "Network Services - how it works",
-							"title": "Network Services - how it works",
+							"id": "6405b701-f1d7-5ca8-bf08-973f24022073",
+							"altText": "Network Services",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7dLMQ8fR8tBAnumWfiDx0m/0a318196378ef0560547423c50deea93/Network_Services_-_how_it_works.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25PIwQKJRSuTCRhkS2MBlF/12da3e1567fe5324d9e36eed7de50a4a/Network_Services_Hub_Hero.svg"
 								},
-								"description": ""
+								"description": "Illustration of Earth"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "A single, powerful network",
-						"htmlId": null,
-						"titleSize": null,
+						}
+					},
+					{
+						"contentfulId": "15MfHITBUBwxU83rrSMcGv",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Superior security. Unparalleled connectivity.",
+						"eyebrowHeading": "Benefits",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2jtTiqzxZlCLg9kwySs9qb",
+								"title": "Any-to-any connectivity",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Connect users, offices, and cloud infrastructure, with peerless performance and reliability.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "80c8640e-3262-5b63-ade4-ade5469f0f71",
+									"altText": "Connect 3 blue",
+									"title": "Connect 3 blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/33GNJqvGvxFGKoIUAnvthw/6f39a21f15f2ba3bee13d3cfbc63976f/cloudflare-magic-wan.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3e34JpMTqc5XCHNh5qgJUO",
+								"title": "Comprehensive networking services",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Use Cloudflare to connect and secure inbound traffic, outbound traffic, and east-west traffic across the cloud and your organization.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
+									"altText": "Traffic legit orange",
+									"title": "Traffic legit orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
+										},
+										"description": "Global traffic management icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5KshW0zvQ0LwSq4gEeg26V",
+								"title": "Centralized management and visibility",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Manage networking and security from a single pane of glass with comprehensive real time visibility.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "f21a895b-0eae-52ee-8be4-07c61337b5e5",
+									"altText": "Eyeball ",
+									"title": "Eyeball ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RxU4Th10vNkTjyRF6FINt/add8468ec6e9c887d1c4fa78079b7969/eyeball.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
 						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": []
+						"htmlId": null
 					},
 					{
 						"contentfulId": "7h81Fll4ljJZ5oXY42TKul",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": "What do analysts say about us?",
-						"eyebrowHeading": null,
+						"eyebrowHeading": "Analyst Recognition",
 						"description": null,
-						"textLayout": "center",
+						"textLayout": "left",
 						"columnsLayout": "Two Columns",
 						"columnContent": [
 							{
@@ -469,413 +427,951 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"htmlId": null
 					},
 					{
-						"contentfulId": "1lNrgp27r2p8dUknnmmCzv",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "theNET",
-						"description": "Regain control of complex network environments",
-						"variant": "inline",
-						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
-								},
-								"description": ""
+						"contentfulId": "6yH5jwTLBtwzv22VH5Jr4R",
+						"contentTypeId": "bladeTabs",
+						"anchorTag": null,
+						"sectionPadding": "tile--no-bottom-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"heading": "How Cloudflare transforms and accelerates networks",
+						"tabPosition": "top",
+						"tabs": [
+							{
+								"contentfulId": "1yonODz5eSI3lHJPZ0oaxx",
+								"contentTypeId": "elementTab",
+								"title": "Connect",
+								"description": null,
+								"tabContent": [
+									{
+										"contentTypeId": "bladeRichTextColumnGroup",
+										"contentfulId": "6nwv4hbEQy6N3kLrOeSXKZ",
+										"htmlId": null,
+										"mainHeadline": null,
+										"backgroundColor": "white",
+										"bladeBorder": "none",
+										"sectionPadding": "tile--no-top-padding",
+										"columnLayout": "One Third & Two Thirds",
+										"columns": [
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "3QYbupaEhlBYU0vkz4KJ51",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Modernize your network by augmenting or replacing your MPLS circuits or SD-WAN with Cloudflare. Connect using anycast IPsec or GRE tunnels, or use direct physical/virtual connections with ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/network-services/products/network-interconnect/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Cloudflare Network Interconnect",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ".",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														},
+														{
+															"nodeType": "unordered-list",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Connect users to Internet, cloud, and on-premises resources",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Connect offices and data centers over hybrid infrastructure",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Use Cloudflare's global network to expand capacity and coverage as your business grows",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/network-services/products/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "View all products",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "\n",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											},
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "1CQN44gn9PB4LTYy5m8e0l",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "embedded-asset-block",
+															"data": {
+																"target": {
+																	"sys": {
+																		"id": "5iQla4oEzMGsDbdYH5OzQ9",
+																		"type": "Link",
+																		"linkType": "Asset"
+																	},
+																	"related_asset": [
+																		{
+																			"contentfulId": "5iQla4oEzMGsDbdYH5OzQ9",
+																			"locale": "en-US",
+																			"title": "Network services",
+																			"file": {
+																				"name": "Thumbnail.png",
+																				"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iQla4oEzMGsDbdYH5OzQ9/609ab08efcfcc733b23d30709c0a6521/Thumbnail.png",
+																				"internal": {
+																					"mediaType": "image/png"
+																				}
+																			}
+																		}
+																	],
+																	"entry_elementMarkdown": [],
+																	"entry_assetFile": [],
+																	"entry_button": [],
+																	"entry_elementLink": [],
+																	"entry_page": [],
+																	"entry_elementIcon": [],
+																	"entry_bladeTable": [],
+																	"entry_bladeThreeFeatures": [],
+																	"entry_bladeFourFeatures": []
+																},
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": []
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											}
+										]
+									}
+								]
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
+							{
+								"contentfulId": "6M3RrBipKeD21ekGq41xtT",
+								"contentTypeId": "elementTab",
+								"title": "Secure",
+								"description": null,
+								"tabContent": [
+									{
+										"contentTypeId": "bladeRichTextColumnGroup",
+										"contentfulId": "423dLzVyRpl025Yv2XxE1e",
+										"htmlId": null,
+										"mainHeadline": null,
+										"backgroundColor": "white",
+										"bladeBorder": "none",
+										"sectionPadding": "tile--no-top-padding",
+										"columnLayout": "One Third & Two Thirds",
+										"columns": [
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "53rJfQFmlH6WKrWR1UsHxu",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "With unmatched threat intelligence from the Cloudflare global network, which processes %{HTTPRequests} million HTTP requests per second on average, Cloudflare detects and mitigates threats outside and inside the network.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														},
+														{
+															"nodeType": "unordered-list",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Cloud-native firewall-as-a-service",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "DDoS protection with %{NetworkCapacity} of network capacity",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Easy-to-implement Zero Trust security",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/network-services/products/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "View all products",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											},
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "7gXGCsh6FYY0chvvUpRDM8",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "embedded-asset-block",
+															"data": {
+																"target": {
+																	"sys": {
+																		"id": "5iQla4oEzMGsDbdYH5OzQ9",
+																		"type": "Link",
+																		"linkType": "Asset"
+																	},
+																	"related_asset": [
+																		{
+																			"contentfulId": "5iQla4oEzMGsDbdYH5OzQ9",
+																			"locale": "en-US",
+																			"title": "Network services",
+																			"file": {
+																				"name": "Thumbnail.png",
+																				"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iQla4oEzMGsDbdYH5OzQ9/609ab08efcfcc733b23d30709c0a6521/Thumbnail.png",
+																				"internal": {
+																					"mediaType": "image/png"
+																				}
+																			}
+																		}
+																	],
+																	"entry_elementMarkdown": [],
+																	"entry_assetFile": [],
+																	"entry_button": [],
+																	"entry_elementLink": [],
+																	"entry_page": [],
+																	"entry_elementIcon": [],
+																	"entry_bladeTable": [],
+																	"entry_bladeThreeFeatures": [],
+																	"entry_bladeFourFeatures": []
+																},
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": []
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "6vQ9NnNnMEqHA1DDqM9uwb",
+								"contentTypeId": "elementTab",
+								"title": "Accelerate",
+								"description": null,
+								"tabContent": [
+									{
+										"contentTypeId": "bladeRichTextColumnGroup",
+										"contentfulId": "6yjPLJ2zyLdXEtBKpMreTm",
+										"htmlId": null,
+										"mainHeadline": null,
+										"backgroundColor": "white",
+										"bladeBorder": "none",
+										"sectionPadding": "tile--no-top-padding",
+										"columnLayout": "One Third & Two Thirds",
+										"columns": [
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "2Wy7N9bA9LVFYd9u5Ink8a",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "The Cloudflare global network has a programmable, deeply interconnected network with locations in %{DataCenterCount} cities all over the world. Network requests are processed as close to users as possible.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														},
+														{
+															"nodeType": "unordered-list",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Simplify site-to-site connectivity",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Avoid traffic backhaul to hub sites",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Improve performance using dynamic traffic intelligence from the Cloudflare network",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/network-services/products/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "View all products",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											},
+											{
+												"contentTypeId": "elementRichText",
+												"contentfulId": "46qDUMgeY9BHBf4i3nSDvp",
+												"title": null,
+												"htmlId": null,
+												"elementPosition": "relative",
+												"column": {
+													"nodeType": "document",
+													"content": [
+														{
+															"nodeType": "embedded-asset-block",
+															"data": {
+																"target": {
+																	"sys": {
+																		"id": "5iQla4oEzMGsDbdYH5OzQ9",
+																		"type": "Link",
+																		"linkType": "Asset"
+																	},
+																	"related_asset": [
+																		{
+																			"contentfulId": "5iQla4oEzMGsDbdYH5OzQ9",
+																			"locale": "en-US",
+																			"title": "Network services",
+																			"file": {
+																				"name": "Thumbnail.png",
+																				"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iQla4oEzMGsDbdYH5OzQ9/609ab08efcfcc733b23d30709c0a6521/Thumbnail.png",
+																				"internal": {
+																					"mediaType": "image/png"
+																				}
+																			}
+																		}
+																	],
+																	"entry_elementMarkdown": [],
+																	"entry_assetFile": [],
+																	"entry_button": [],
+																	"entry_elementLink": [],
+																	"entry_page": [],
+																	"entry_elementIcon": [],
+																	"entry_bladeTable": [],
+																	"entry_bladeThreeFeatures": [],
+																	"entry_bladeFourFeatures": []
+																},
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": []
+														},
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "5VuELBOQyiV65oFlZPCL4y",
+						"title": "The CIO's guide to WAN transformation",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "7bUSrGZYSEZVAKbMXHoLsG",
-							"elementName": "CTA link /the-net/building-cyber-resilience/complex-network-environments/",
+							"contentfulId": "2ORNORkQSzowTFNCQYFpiz",
+							"elementName": "Get the guide",
 							"standardText": null,
-							"text": "Read the article",
-							"url": "/the-net/building-cyber-resilience/complex-network-environments/",
+							"text": "Get the guide",
+							"url": "https://www.cloudflare.com/lp/cios-guide-to-wan-transformation-ebook/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "5na3DYPdrYTozDX2G8H5SX",
+						"contentfulId": "5KgP48EMzFS4ZjiWJvAI3t",
 						"title": "Top use cases",
 						"htmlId": null,
 						"backgroundImage": null,
 						"cards": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4mpbxM45rk25dXEpYfdTz3",
+								"contentfulId": "5QVZ3JMlTqCib9dm9c2xkE",
 								"title": "WAN transformation",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
 								"description": "Modernize and accelerate your WAN for hybrid work environments and SaaS applications.",
-								"learnMoreUrl": "/network-services/products/magic-wan/",
-								"learnMoreText": "Explore use case",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Tz4MFKkKlNBzAkA1z0Tdc/6c55e9705ce3bf24d4516761c3139fb4/network-scale__2_.svg"
-									},
-									"description": "Icon of connected points"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2szLeEyrrno0zam8falakb",
-								"title": "L3 DDOS protection",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Mitigate DDoS attacks to ensure uptime and reliability for your network infrastructure.",
-								"learnMoreUrl": "/network-services/products/magic-transit/",
-								"learnMoreText": "Explore use case",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rVmRBDX3KhZOe2FREoYOz/24f44a8dbe53111346d97dc59b7510ed/security-shield-protection-1.svg"
-									},
-									"description": "Orange icon of a shield"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "r8g07E2gLxDTg5mXgXL8T",
-								"title": "Connect your network to Cloudflare",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Directly connect your on-premises networks to Cloudflare's network for a more reliable, secure experience.",
-								"learnMoreUrl": "/network-services/products/network-interconnect/",
-								"learnMoreText": "Explore use case",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6DyXElMZQu0qt5ORcMhsle/8aa93ca9fe210114984f0d576fb3d0fe/cloud-internet.svg"
-									},
-									"description": ""
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "2W85VZg6W4EkPW7bh1V0cj",
-						"htmlContent": "<div style=\"text-align: center; margin-bottom:100px; margin-top: 40px;\">\n    <a href=\"/network-services/solutions/\" class=\"inline-link-style\">Explore use cases <svg width=\"6\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"http://www.w3.org/2000/svg\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg> </a>\n</div>",
-						"htmlId": null
-					},
-					{
-						"contentfulId": "4fMPO87khmhjANFTa0gLNE",
-						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Get the connectivity and security you need",
-						"eyebrowHeading": "CLOUDFLARE NETWORK SERVICES",
-						"description": "Securely connect data centers, cloud services, and branch offices with Cloudflare's connectivity cloud for network services.",
-						"textLayout": "left",
-						"columnsLayout": "Three Columns",
-						"columnContent": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "LPZ4TCSe0Wr193pufWoP3",
-								"title": "Cloudflare One (SASE)",
-								"makeTitleLink": true,
-								"titleUrl": "/cloudflare-one/",
-								"titleSize": null,
-								"description": "Modernize your network architecture using the SASE framework with Zero Trust security built-in.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
-									"altText": "internet globe",
-									"title": "internet globe",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
-										},
-										"description": "Orange icon of a globe"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5mEHPtiI4Kxbd7jnTBr5kS",
-								"title": "Magic WAN",
-								"makeTitleLink": true,
-								"titleUrl": "/network-services/products/magic-wan/",
-								"titleSize": "small",
-								"description": "Connect and secure your branch offices, headquarters, data centers, cloud VPCs and SD-WANs using the Cloudflare network.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale ",
-									"title": "Network scale ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25B0tY2bGsZrocxnifpnpx/2a328b9ddf2ec85b6c026f5b2d03ed42/network-scale.svg"
-										},
-										"description": "Network scale orange"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "46dyUmGzTDOHatERrfqham",
-								"title": "Magic Transit",
-								"makeTitleLink": true,
-								"titleUrl": "/network-services/products/magic-transit/",
-								"titleSize": "small",
-								"description": "Protect your networks, data centers and multi-cloud infrastructure from DDoS attacks.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
-									"altText": "Security shield ddos protection blue",
-									"title": "Security shield ddos protection blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
-										},
-										"description": "Shield icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5eOUJTsDZCKywsLkGurDiB",
-								"title": "Magic Firewall",
-								"makeTitleLink": true,
-								"titleUrl": "/network-services/products/magic-firewall/",
-								"titleSize": "small",
-								"description": "Enforce consistent network security policies across your entire WAN, without backhauling traffic or creating choke points.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "81936886-7ce4-51c1-8472-58f3698d44a0",
-									"altText": "Cloudflare Firewall as a Service - Magic Firewall",
-									"title": "Firewall as a service icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/xAb8mJ3D3jImhUIC6I781/4e5fcde46add21ab9e397610b06c8e32/security-waf.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3Fcoj38Pc8cknB8OEzXoMg",
-								"title": "Network Interconnect",
-								"makeTitleLink": true,
-								"titleUrl": "/network-services/products/network-interconnect/",
-								"titleSize": "small",
-								"description": "Improve network performance and security by connecting your network infrastructure directly to the Cloudflare network at over 1,600 locations.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "5d41833d-cca5-5fce-97d7-1831ad890edf",
-									"altText": "Cloudflare Network Interconnect",
-									"title": "Network Interconnect Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7aU7DHZskhmjX7SujehheP/fca202a530d551462a50c08051f31225/connect-2.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3vmqvGou8H07iFeZXrGhR7",
-								"title": "Argo Smart Routing",
-								"makeTitleLink": true,
-								"titleUrl": "/application-services/products/argo-smart-routing/",
-								"titleSize": "small",
-								"description": "Supercharge your network performance and improve reliability using dynamic  traffic intelligence from the Cloudflare network.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ae4cb6d0-1d8b-5d1c-b4a3-a9247ed3aefe",
-									"altText": "Cloudflare Argo Smart Routing",
-									"title": "Argo Smart Routing Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7Mtllo8wcJj5SbpbGaKW1t/78ed8abcb0b0a15c03ac8c409cdf0057/performance-routing.svg"
-										},
-										"description": "Orange routing icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1TioFMJtraemYIfEQcuiZg",
-								"title": "Spectrum (TCP / UDP)",
-								"makeTitleLink": true,
-								"titleUrl": "/application-services/products/cloudflare-spectrum/",
-								"titleSize": "small",
-								"description": "Protect any TCP or UDP applications against DDoS threats and improve performance.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "dc0ee946-9622-540c-8a6d-c314b6490868",
-									"altText": "Cloudflare spectrum ",
-									"title": "Cloudflare spectrum ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2T3J8PnA7cR4xTHFkPxUU9/461bac855603fa5ae05e5300feb30082/cloudflare-spectrum.svg"
-										},
-										"description": "Shield icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5jTix4RRJT5w1uasQOASrH",
-								"title": "Magic Network Monitoring",
-								"makeTitleLink": true,
-								"titleUrl": "network-services/products/magic-network-monitoring/",
-								"titleSize": "small",
-								"description": "Establish end to end network visibility, DDoS alerting, and traffic volume anomaly detection with cloud based network flow monitoring.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -903,452 +1399,898 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "66tAvb32CozTkmXw00DRWw",
+								"title": "Layer 3 DDoS protection",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Mitigate DDoS attacks to ensure uptime and reliability for your network infrastructure.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
+									"altText": "Security shield ddos protection blue",
+									"title": "Security shield ddos protection blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
+										},
+										"description": "Shield icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "BgG9kQ41AkYOgHpEZ6urr",
+								"title": "Connect your network to Cloudflare",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Directly connect your on-premises networks to Cloudflare's network for a more reliable, secure experience.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "efd45c7a-1ca1-5b55-b5ae-7f697427546b",
+									"altText": "Cloudflare R2 distributed storage",
+									"title": "R2 Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20XuCGpQeiIcEBqL8eYZhq/41b6bb30b987d56e97de94cbbf51dcdb/cloud-upload.svg"
+										},
+										"description": "Cloud upload icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
-						],
-						"sectionPadding": null,
-						"htmlId": "network-services"
+						]
 					},
 					{
-						"contentfulId": "TTsUeyjBB2fsMJSIgC52I",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Redefine your corporate network",
-						"description": null,
-						"variant": "full-width",
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "7m9xPQDurhwYNsvbMb4VqA",
+						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nConsolidating security across employees, applications, and networks to accelerate digital transformation\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "6HkJZC18sa1G2d0aTj71bW",
 						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
-								},
-								"description": ""
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3mpGnO0ocB7gjUrzWs3Z5",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Applied has increasingly prioritized digital transformation initiatives to help it serve larger, more demanding enterprise customers. When Chief Information Security Officer Tanner Randolph started in 2021, this meant re-evaluating Applied's technology architecture, seeking opportunities to become more agile, more efficient, and more secure. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Starting in 2022, Applied Systems began consolidating large swaths of security and networking functionalities on Cloudflare.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "/case-studies/applied-systems/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Read case study",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3701psLYab2wbf2qOcyX4T",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"Cloudflare scales with us… Cloudflare can handle the increased traffic without us adding network appliances or buying additional bandwidth. Using our previous vendors would have more than doubled our costs.\"",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "6rP03Si8CMu3IL40TSDp0b",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "6rP03Si8CMu3IL40TSDp0b",
+															"locale": "en-US",
+															"title": "logo Applied",
+															"file": {
+																"name": "logo-applied.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6rP03Si8CMu3IL40TSDp0b/73b8423c469cc426cfa8e26ff27f0518/logo-applied.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentfulId": "38GLdLKIzgL2kBw4lpcpQE",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Network services case studies",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5zRmR0z1iP9xP3EzDsFTCy",
+								"title": "Melbourne Airport",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Melbourne Airport streamlined their complex cyber security infrastructure and mitigated DDoS threats from potential hacktivists by using Cloudflare to ensure uptime for all traveler services.",
+								"learnMoreUrl": "/case-studies/melbourne-airport/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "33f3f7e2-7590-5ba4-917b-5441d0a183fa",
+									"altText": "Melbourne Airport logo",
+									"title": "Melbourne Airport",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Iha0HosjMDt8uK8upnI57/1150b5042134d9d2ba81fb26881f5a2b/Melbourne.jpeg"
+										},
+										"description": "HP - Customer Logo - Melbourne Airport"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3cTVvdKdwIppO051J39GXC",
+								"title": "Wikimedia Foundation",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Cloudflare Magic Transit got Wikimedia's network back online after a massive DDoS attack, and it continues to safeguard the security and reliability of their data centers.",
+								"learnMoreUrl": "/case-studies/wikimedia-foundation/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "801fb38d-2844-5e1d-ad97-4e74345f6e89",
+									"altText": "Wikimedia icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XuTaNUcPlPyFBU1XnRR6p/c035e7121ad77ad30fb1cc80cad5e3c6/Wikimedia.jpeg"
+										},
+										"description": "Wikimedia logo icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7BJsW6VfDtk0ysKbSONN5g",
+								"title": "Nasadiya Technologies",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Using Cloudflare's connectivity cloud, Nasadiya Technologies delivers content to readers across India and around the world while protecting its online publishing platform, against plagiarism.",
+								"learnMoreUrl": "/case-studies/nasadiya-technologies/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "814c7b44-140f-5b55-a6d8-8aba0e82bd56",
+									"altText": "Nasadiya Technologies logo",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IY888ZaLLVflKwNU8qGFW/a2eb3a92e331e837d58acd3426e8f50a/Nasadiya_.jpeg"
+										},
+										"description": "Nasadiya Technologies logo"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "umYCMwtlZHuyeiAv4o2BV",
+								"title": "Werner Enterprises",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Werner Enterprises moved its legacy applications to the cloud, protected its users from email-borne threats, and consolidated its network security with Cloudflare.",
+								"learnMoreUrl": "/case-studies/werner-enterprises/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ac8077ab-9184-5990-907d-63d0348e72b2",
+									"altText": "Werner logo icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3BH5pb2uOqH9oqfaLaF6v9/96e92682133505f3c4686dcd3f450632/Werner.jpeg"
+										},
+										"description": "Werner logo icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4w0tvBUDyfeNyiltFW6JcM",
+								"title": "Applied Systems",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Applied Systems unifies security and networking with Cloudflare, reducing risk, improving productivity for employees, and delivering superior cloud-native experiences for customers.",
+								"learnMoreUrl": "/case-studies/applied-systems/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4b452b20-3c59-5962-903e-55c925ef1f17",
+									"altText": "Applied Systems icon logo",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26oWSVt3IOwdHm3fBbcNHS/c7030e8f1d796638a234324cceaa7747/Applied.png"
+										},
+										"description": "Applied Systems icon logo"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "78jeaN0HVcSvdK6u9nsLFX",
+						"title": "Protecting hybrid workforces both now and in the future",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "5GbH8ZZvDuQl2DYa5BGaAs",
-							"elementName": "Network Services - Lead generation - primary CTA",
+							"contentfulId": "gyv0nuTcUSR6LqlCkiSqb",
+							"elementName": "Read the article - CTA",
 							"standardText": null,
-							"text": "Talk to an expert",
-							"url": "plans/enterprise/contact/",
+							"text": "Read the article",
+							"url": "https://www.cloudflare.com/the-net/securing-future/hybrid-work/",
 							"loggedInUrl": null,
 							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
+					},
+					{
+						"contentfulId": "61F6tjBkb0Ng2b484oMUsu",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "Network services products",
+						"description": null,
+						"textLayout": "center",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2phIgMoXZUaNAHFmAFf0sj",
+								"title": "Magic WAN",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Connect and secure your branch offices, headquarters, data centers, cloud VPCs and SD-WANs using the Cloudflare network.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "c43d6149-497e-54db-bc03-c855a69ea623",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ty7OGFTFfdBGEROzSrX6b/cfb6482714406e9e466d3f1e8729923a/cloudflare-magic-wan.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7nsYYRervFniLewzbpFUkM",
+								"title": "Magic Transit",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Protect your networks, data centers and multi-cloud infrastructure from DDoS attacks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6c1a7dbf-de50-516a-8295-fbd7b8aa493b",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2D1eZ3ZcUYawa5Wvgz2Wkw/8e78e5e560b0b7ca47cc5d9a2c43a58d/cloudflare-magic-transit.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2fu5IJByfs2xe9tDbaaIm9",
+								"title": "Magic Firewall",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Enforce consistent network security policies across your entire WAN, without backhauling traffic or creating choke points.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "81936886-7ce4-51c1-8472-58f3698d44a0",
+									"altText": "Cloudflare Firewall as a Service - Magic Firewall",
+									"title": "Firewall as a service icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/xAb8mJ3D3jImhUIC6I781/4e5fcde46add21ab9e397610b06c8e32/security-waf.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "7w78F1e59cWFzCmwoCuoap",
+						"htmlContent": "<div style=\"text-align: center; cursor:pointer; margin-bottom:64px; margin-top: -60px;\">\n    <a href=\"/network-services/products/\" target=\"_blank\" class=\"inline-link-style\">View all<svg width=\"4\" height=\"10\"\n            viewBox=\"0 0 6 10\" fill=\"currentColor\" aria-label=\"chevron\" xmlns=\"https://www.cloudflare.com/network-services/products/\"\n            class=\"dib v-mid ml1\">\n            <path\n                d=\"M1.00003 -4.37127e-08L-3.93401e-07 1.00003L4 5L0.000271373 9.00025L1.00003 10L6.00003 5L1.00003 -4.37127e-08Z\">\n            </path>\n        </svg>  </a>\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "9nqpVG4wAI6l4jVDvrdBg",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Resources",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5fJVFXQNUhpWhKYSKWdvdz",
+								"title": "Developing a strategy for your network modernization",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Read Cloudflare's perspective on common network modernization challenges and how to overcome them.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/developing-a-strategy-for-network-modernization/",
+								"learnMoreText": "Get the whitepaper",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4XhmVU3ez6KKxm5ftwWBbm",
+								"title": "How to reduce cloud costs in an uncertain economy",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn where the hidden fees are, cost effective alternatives, and ways to make the cloud a money-saving option again.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/reducing-cloud-costs-in-an-uncertain-economy/",
+								"learnMoreText": "Get the whitepaper",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "gkSASiJzq10zgi7ZeZGm2",
+								"title": "Everywhere Security",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Protect modern organizations from threats without stifling innovation.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/everywhere-security-ebook/",
+								"learnMoreText": "Get the ebook",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "7AaB7F9XfPL1hSiyrG7Yqb",
+						"title": "Start protecting, accelerating, and transforming your network today",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "4Xz8W7auMR2dIP0Kp0tpJW",
+							"elementName": "Talk to an expert",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
+								"modalName": "Talk to an expert",
+								"modalId": "talk-to-an-expert",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
+									"bladeName": "Enterprise General Sales Inquiry",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
-					},
-					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "40NxadBKJY0xfXo8QiOViq",
-						"quote": "\"Thomson Reuters operates on-premise and cloud networks around the world. I'm excited about Cloudflare Magic Transit — the potential to unify our IP transit, DDoS mitigation, and traffic steering solutions into something we can manage with a single pane of glass will be game-changing. Cloudflare continues to impress me with its network's scale, in terms of geography, capacity, and product breadth.\"",
-						"quoteAuthor": "Jesse Haraldson",
-						"quoteTitle": "Principal Software Architect",
-						"learnMoreText": null,
+						"buttonTwo": null,
 						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Ncngk1LIzwyE1H6dnowmt/0c039762f0740cf43dcca2ecc88b01bc/logo_thomson-reuters_gray.svg"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "62e042a8-6bf4-587b-8b53-04f9fce4b79e",
-							"altText": "Logo thomson reuters gray",
-							"title": "Logo thomson reuters gray",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 40327,
-								"height": 608,
-								"width": 4000,
-								"filename": "logo_thomson-reuters_gray.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_thomson-reuters_gray.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"imageLinkUrl": null,
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": [
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "4FQPwEcNcdUHKcFKA3nMrx",
-								"quote": "\"Increased cloud adoption coupled with the recent pivot to remote workers has increased the volume of Internet, SaaS, and IaaS traffic, straining traditional network architectures such as MPLS.\n\n\nWAN architectures that offer a global scale, integrated enterprise network security functions, and direct, secure connectivity to remote users are key to organizations looking to increase their operational agility and lower total costs of ownership.\"",
-								"quoteAuthor": "Ghassan Abdo",
-								"quoteTitle": "IDC Research VP, WW Telecom, Virtualization & CDN ",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": {
-									"id": "2bed05c3-494b-54fa-b09d-68885b297d72",
-									"altText": "IDC Logo",
-									"title": "IDC Logo",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1x21a1PiedETpIEpKJGLh5/553487404c01d38c662122a562c2fcc5/IDC_logo.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1x21a1PiedETpIEpKJGLh5/553487404c01d38c662122a562c2fcc5/IDC_logo.png"
-									},
-									"description": null
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "2HIKcy2Wp2z2BMKLGGsqqx",
-								"quote": " \"Our network team is excited by Magic WAN. Cloudflare has built a global network-as-a-service platform that will help network teams manage complex edge and multi-cloud environments much more efficiently. Operating a single global WAN with built-in security and fast routing functionality — regardless of the HQ, data center, branch office, or end user location — is a game-changer in WAN technology.\"",
-								"quoteAuthor": "Sander Petersson",
-								"quoteTitle": "Head of Infrastructure",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": {
-									"id": "a05273a1-9237-5d50-aa1f-af1e0682f6af",
-									"altText": "FlightRadar24 (FR24)",
-									"title": "FlightRadar24 (FR24)",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/GJq3vRqCqVsbd1oaaFocH/a4ff7eaff80b8e8a0ebe4a9146bbc6f2/FR24.png"
-										},
-										"description": "Flightradar24 logo"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/GJq3vRqCqVsbd1oaaFocH/a4ff7eaff80b8e8a0ebe4a9146bbc6f2/FR24.png"
-									},
-									"description": "Flightradar24 logo"
-								}
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeFeaturedCompanyLogos",
-						"contentfulId": "7o2qaHahYzoridf9vE6ZT4",
-						"title": "30% of Fortune 1000 companies rely on Cloudflare",
-						"htmlId": null,
-						"companyLogos": [
-							{
-								"id": "208d6f14-12c9-5f01-9628-1ac561ab3a23",
-								"altText": "Shopify Logo",
-								"title": "Shopify Logo",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qWZqvPhHknK8R30DVAo8i/5901938d5a777f1e65a2a555a75ad18e/shopify_logo.jpg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "c160dc97-0190-5165-8c3a-03d71053bcd8",
-								"altText": "Pitney Bowes logo",
-								"title": "Pitney Bowes",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tbBFmgYoEQD6Yx5IcPjOr/67854bf21f4a0ece3a4683040b70bc03/featured_logo_pitney_bowes.png"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "25d2f1c8-e74e-5229-9739-a81634cdd187",
-								"altText": "Thomson Reuters logo",
-								"title": "Thomson Reuters",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DiOULNDmkC76Go9zjnSXs/2fe09a5f27700c5cf6f24b26570a8190/featured_logo_thomson_reuters.png"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "117ee30a-282a-5fab-b478-fbe6b0d69cdb",
-								"altText": "Doordash logo",
-								"title": "Doordash",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OWBxeEeZgpxcoAFt3BIOf/ddd74305e760b3872a476d3c427c0466/featured_logo_doordash.png"
-									},
-									"description": "DoorDash logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "3e79297d-861e-57b1-a1fa-f060fd8b04b6",
-								"altText": "Broadcom logo",
-								"title": "Broadcom",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tI7zPMdgwOu8KsxmJDy3S/9309834cae3b3c861cf791c446abba0e/featured_logo_broadcom.png"
-									},
-									"description": "Broadcom logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6bab8727-c5b1-51be-a2a6-dd5f7277944f",
-								"altText": "Colgate Palmolive logo",
-								"title": "Colgate Palmolive",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVlcVxBM7oHC0gQhqhAhg/696a2e2e1211f5ee5ce104036faf364b/featured_logo_colgate_palmolive.png"
-									},
-									"description": "Colgate-Palmolive logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "323ff65d-ba14-504d-b500-be5f9e390ba7",
-								"altText": "DHL logo",
-								"title": "DHL",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1k3b3CsMHw3Tr3r9oRrUeU/b4c0c681dc6f7fdf13c1a55ebfc9a9cb/featured_logo_dhl.png"
-									},
-									"description": "DHL logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "39287d4d-f0e8-57fe-9a88-8167fa0722ef",
-								"altText": "Garmin logo",
-								"title": "Garmin",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20TBr23zGqzXgbfSvnY1BK/bfcac6ddc997cad19bccbbc449a520af/featured_logo_garmin.png"
-									},
-									"description": "Garmin logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "42cf8aae-46de-5880-9fd7-0503132a132c",
-								"altText": "GPC logo",
-								"title": "GPC",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dfLsRXpaFsOQxkDsYnLdX/58164c9bea5b98ba3e5ff853ecf97e20/featured_logo_GPC.png"
-									},
-									"description": "GPC Genuine Parts Company logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "859ec126-9aca-515e-8d05-ddb785a172c4",
-								"altText": "Japan Airlines",
-								"title": "Japan Airlines",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/tH3aestvswYHJh07lZJjO/1f3ac239df323a6316c6f5900eb0b30c/featured_logo_japan_airlines.png"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "95e00df8-fcd0-5888-b156-42769ae84dc4",
-								"altText": "LabCorp logo",
-								"title": "LabCorp",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/k1sJUCRn8BrepRd04ZvyA/4bd1ed0b631c2c1f887cb99a9ac80a12/featured_logo_labcorp.png"
-									},
-									"description": "LabCorp logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "4e7bdfb6-f045-5a8f-8442-c598fb96a027",
-								"altText": "L'Oreal logo",
-								"title": "L'Oreal",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/XBApB6LjRjaNIy0Cktw9k/fb5aa40999cbbc782642a25c17a0ca9e/featured_logo_loreal.png"
-									},
-									"description": "L'Oreal logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							}
-						],
-						"sectionPadding": null
-					},
-					{
-						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "32v6Txzd8UY6FDlU1NGzhZ",
-						"title": "Resources",
-						"htmlId": null,
-						"backgroundImage": null,
-						"cards": [
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "4iL2vBlCS6MLjGYeEOkUeL",
-								"heading": "Whitepaper",
-								"description": "Read Cloudflare's perspective on common network modernization challenges and how to overcome them.\n",
-								"category": "Library",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "241r1deIDjmGcyydLZlBHn",
-									"elementName": "Network Services - Resources - CTA  /lp/developing-a-strategy-for-network-modernization",
-									"standardText": null,
-									"text": "Get the whitepaper",
-									"url": "/lp/developing-a-strategy-for-network-modernization",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "629293d0-f0b9-5a6a-96b8-aa8b66d58411",
-									"altText": "Everywhere Security thumbnail",
-									"title": "Everywhere Security thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SyLGo74ZnWbnUeaRhVUcR/01be2e8cb4ccda2dccf74b67b99e0c3a/Network_Modernization.png"
-										},
-										"description": "Developing a strategy for your network modernization - Thumbnail"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1RHOMFXKLJ8bzQgauftnWh",
-								"heading": "Whitepaper",
-								"description": "How to reduce cloud costs in an uncertain economy\n",
-								"category": "Library",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "5Muib2V6FF3D1JpizSHYOn",
-									"elementName": "Network Services - Resources - CTA  /lp/reducing-cloud-costs-in-an-uncertain-economy/",
-									"standardText": null,
-									"text": "Get the whitepaper",
-									"url": "/lp/reducing-cloud-costs-in-an-uncertain-economy/",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "6a148340-226f-5d2f-a8dd-8315c98e4dc1",
-									"altText": "Reducing Cloud costs thumbnail ",
-									"title": "Reducing Cloud Costs - Resources - Thumbnail ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5IfDhqvQeLFCmUT7rBfN7o/a6a209fa103a09e39bcf22b663d4a4ed/Reducing_Cloud_Costs.png"
-										},
-										"description": "Reducing Cloud Costs thumbnail"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "5k9OJ5BUyRaml2lQghfZWd",
-								"heading": "Ebook",
-								"description": "Protect modern organizations from threats without stifling innovation\n",
-								"category": "Library",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "6J03soh23dm6lCUCoUUNGe",
-									"elementName": "Network Services - Resources - CTA  /lp/everywhere-security-ebook/",
-									"standardText": null,
-									"text": "Get the ebook",
-									"url": "https://www.cloudflare.com/lp/everywhere-security-ebook/",
-									"elementModal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "d1b12ae8-2555-557d-81e9-8eebecec2c1f",
-									"altText": "Ebook Thumbnail",
-									"title": "Ebook Thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tGnS2OjpSmmok16lr0mI3/db2a34b69b1001d0d0b529148def3c45/Ebook-generic-106x186-300dpi.png"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							}
-						]
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "5a1ymxApHEqHHRNjyMbcEm",
+						"modalName": "Talk to an expert",
+						"modalId": "talk-to-an-expert",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "GArhAEENzeQ3aQ4esVZPR",
+							"bladeName": "Enterprise General Sales Inquiry",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": "Talk to an expert",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": null,
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
