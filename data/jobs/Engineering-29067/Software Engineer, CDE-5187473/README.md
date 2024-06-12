@@ -6,32 +6,34 @@
 	</div>
 </div>
 <p><strong>What you’ll do</strong></p>
-<p>In this role, you’ll help build and maintain the CASB (Cloud Access Security Broker) offering, a critical new component of our Zero Trust Platform. CASB integrates with customers’ SaaS applications to detect and monitor for a wide range of security issues from misconfigurations and shadow IT, to critical data leakage and access risks. As a senior engineer on the team, you will focus on building new functionality into our API integration-based stack while also ensuring the performance and reliability of our services which ingest millions of data points each day. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security challenges our customers face across their SaaS applications.</p>
+<p>In this role, you’ll help build and maintain the CDE (Cloud Data Extraction) offering, a critical new component of our Zero Trust Platform. The Cloud Data Extraction team focuses on large-scale data extraction out of cloud data stores like AWS S3, AWS RDS, GCP BigQuery, and Azure Cache for Redis and much more wherein content is scanned for sensitive data like PII, PHI, etc. and ultimately flagged to a customer’s security team for triage and remediation. This new offering is critical to the security of our customers, and is a new product that will accompany other products in our portfolio of data security solutions.</p>
 <p><strong>Technologies we use:</strong></p>
 <ul>
-	<li>CASB core services are written in Python with Celery as our task queue.</li>
-	<li>Our REST API is written in Python, with Django Rest Framework.</li>
-	<li>We utilize Postgres as our data store and Redis as our cache and message broker.</li>
-	<li>Our scanning engine relies heavily on Kafka.</li>
-	<li>Our frontend is written in Typescript and React.</li>
-	<li>For service monitoring we use Prometheus and Grafana.</li>
-	<li>For service logging we use Elasticsearch and Kibana.</li>
-	<li>For product analytics we use Clickhouse and BigQuery.&nbsp;</li>
+	<li>CDE core backend and API services are written in Go</li>
+	<li>Our frontend is written in Typescript and React</li>
+	<li>We deploy our solutions in AWS Lambda and Kubernetes environments</li>
+	<li>We utilize Postgres, Clickhouse, and a number of cloud native data store technologies</li>
+	<li>Redis is our cache</li>
+	<li>Kafka plays a large role at Cloudflare and this team with message streaming</li>
+	<li>For service monitoring we use Prometheus and Grafana</li>
+	<li>For service logging we use Sentry, Elasticsearch and Kibana</li>
 </ul>
+<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>Minimum 3 years of professional experience building and managing reliable and performant software systems at scale, preferably with Python and/or Postgres.</li>
-	<li>Passion for making the digital world a more secure place</li>
-	<li>Excellent debugging and optimization skills</li>
+	<li>3-5+ years of professional experience building and managing reliable and performant software systems at scale, preferably with some experience in our tech stack.</li>
+	<li>Excellent debugging and optimization skills.</li>
+	<li>Passion for making the digital world a more secure place.</li>
 	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
 	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
 </ul>
 <p><strong>Bonus</strong></p>
 <ul>
 	<li>Frontend programming experience in Typescript/Javascript</li>
-	<li>Previous experience working with third-party API integrations</li>
+	<li>Previous experience with building ETL or ETL-like technologies.</li>
 	<li>Previous experience working on security products</li>
 </ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
