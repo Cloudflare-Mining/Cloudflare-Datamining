@@ -1,44 +1,44 @@
 {
 	"name": "@cloudflare/component-forms-hook-form",
 	"dist-tags": {
-		"latest": "2.0.20"
+		"latest": "2.0.21"
 	},
 	"versions": {
 		"1.0.1": {
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.0.1",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.16",
-				"@cloudflare/component-forms": "^5.4.0",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.4.0",
+				"@cloudflare/component-button": "^7.0.16"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "1aa306e15d186a4be789e92dd411e7dc74cd1cd5",
-				"integrity": "sha512-xqtMVwXN8vj2N0DWaqfaOl1BYQHi5BvtyM3FuPmGlUURRDUwFeAKIL0X1atsxXr+cmQBJxCHc2DBr1YZmUAEFA==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.0.1.tgz",
 				"fileCount": 83,
-				"unpackedSize": 251450,
+				"integrity": "sha512-xqtMVwXN8vj2N0DWaqfaOl1BYQHi5BvtyM3FuPmGlUURRDUwFeAKIL0X1atsxXr+cmQBJxCHc2DBr1YZmUAEFA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDarvpCK7CRBivfaBF/AK5U2LFXlV+HYjKfAuPpoMJ25wIhAMa7YMOQnT8u04Hi/fZGoYRKBVO8niTwkDGHSKXr6yaZ"
+						"sig": "MEYCIQDarvpCK7CRBivfaBF/AK5U2LFXlV+HYjKfAuPpoMJ25wIhAMa7YMOQnT8u04Hi/fZGoYRKBVO8niTwkDGHSKXr6yaZ",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 251450
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -50,37 +50,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.0.2",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.17",
-				"@cloudflare/component-forms": "^5.4.1",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.4.1",
+				"@cloudflare/component-button": "^7.0.17"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "2314ada45472ed78387827216ef9e80d7ba2d201",
-				"integrity": "sha512-GR+Zm2zxuD/QxL3emF5WtWkNSSsjf0rwH47oWLm5Cy+2Rm1YH3pjPbLga6u/2sRUalPispnkLhOlF4dhzmzfYQ==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.0.2.tgz",
 				"fileCount": 83,
-				"unpackedSize": 251554,
+				"integrity": "sha512-GR+Zm2zxuD/QxL3emF5WtWkNSSsjf0rwH47oWLm5Cy+2Rm1YH3pjPbLga6u/2sRUalPispnkLhOlF4dhzmzfYQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQD310UTCVh0g+xf++TjZEYxfRgZP+UcLB7QL8/i9gHDrQIhAPvw9CWMN/A+f2zY60X+uRXkozlpI/XeUZMr70dC7LTi"
+						"sig": "MEYCIQD310UTCVh0g+xf++TjZEYxfRgZP+UcLB7QL8/i9gHDrQIhAPvw9CWMN/A+f2zY60X+uRXkozlpI/XeUZMr70dC7LTi",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 251554
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -92,37 +92,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.0.3",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.18",
-				"@cloudflare/component-forms": "^5.4.2",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.4.2",
+				"@cloudflare/component-button": "^7.0.18"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "aac9923d2fa2b6eb9d5f72e8e7bb3fa12dbde100",
-				"integrity": "sha512-XF94Sf69joSxFHGtJl4J7iE++E4cvxlI7pXoRbjwjBm8SCPTNdw2kcO5w1J4gzL4U9vgM83dvj1dnYA+Oa7Vew==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.0.3.tgz",
 				"fileCount": 83,
-				"unpackedSize": 251658,
+				"integrity": "sha512-XF94Sf69joSxFHGtJl4J7iE++E4cvxlI7pXoRbjwjBm8SCPTNdw2kcO5w1J4gzL4U9vgM83dvj1dnYA+Oa7Vew==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDtrDsoQ7Q8rs9+91LgcrixvR16cTLXYQCKLpHqV8kfQQIhALA04abRVjLssXElhJXRvwwWIqHOyqVfL8PzhKyqtM2I"
+						"sig": "MEYCIQDtrDsoQ7Q8rs9+91LgcrixvR16cTLXYQCKLpHqV8kfQQIhALA04abRVjLssXElhJXRvwwWIqHOyqVfL8PzhKyqtM2I",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 251658
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -134,37 +134,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.0.4",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.19",
-				"@cloudflare/component-forms": "^5.4.3",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.4.3",
+				"@cloudflare/component-button": "^7.0.19"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "00d03e906dc312527cf6e7c897dd228934b64f1d",
-				"integrity": "sha512-5s3W5kkxp/TlbQ2Es9NQjjdpORtb0YEto5S/fH7DlKHU3Ekahg0NzvHCng5IgoKS/Xv4mdfSzmobH3MlShzXAg==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.0.4.tgz",
 				"fileCount": 83,
-				"unpackedSize": 251762,
+				"integrity": "sha512-5s3W5kkxp/TlbQ2Es9NQjjdpORtb0YEto5S/fH7DlKHU3Ekahg0NzvHCng5IgoKS/Xv4mdfSzmobH3MlShzXAg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCMkNOqrwV7PRNFvNqyFAMRk41Rtskz2hSTYChXRzYvcAIgJ7BAQ8pvQ3nCHjXRyt8FehxhUMnp8FZa7F1rogNY6H8="
+						"sig": "MEUCIQCMkNOqrwV7PRNFvNqyFAMRk41Rtskz2hSTYChXRzYvcAIgJ7BAQ8pvQ3nCHjXRyt8FehxhUMnp8FZa7F1rogNY6H8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 251762
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -176,37 +176,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.0.5",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.20",
-				"@cloudflare/component-forms": "^5.4.4",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.4.4",
+				"@cloudflare/component-button": "^7.0.20"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "35c769af773c23e9cb07d2cbfebeff38e3122564",
-				"integrity": "sha512-g3RqO59c0HWK9cbguQUZamGAIP/SGIK+JNxcSAF7CY3vh9WhHoOLL8aqKhZPq/wbnAg43DGhH0PoC8n8TI7aJQ==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.0.5.tgz",
 				"fileCount": 83,
-				"unpackedSize": 251866,
+				"integrity": "sha512-g3RqO59c0HWK9cbguQUZamGAIP/SGIK+JNxcSAF7CY3vh9WhHoOLL8aqKhZPq/wbnAg43DGhH0PoC8n8TI7aJQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDTcPsc1Uq2fYIiXvh95Npi/dTtDTuhIBcOtB4//kcGCwIgLgv6QZgnhoM5XUE2LzwmR+R/g71V+CMoSrbYkOpeR0Y="
+						"sig": "MEUCIQDTcPsc1Uq2fYIiXvh95Npi/dTtDTuhIBcOtB4//kcGCwIgLgv6QZgnhoM5XUE2LzwmR+R/g71V+CMoSrbYkOpeR0Y=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 251866
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -218,37 +218,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.0.6",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.21",
-				"@cloudflare/component-forms": "^5.4.5",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.4.5",
+				"@cloudflare/component-button": "^7.0.21"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "9a3a1ce431990af0a9372e6ae6f04a58eef6fcbd",
-				"integrity": "sha512-GuJz/1sp/neLuHfGmHGek6W0rb1tdHVEbCAob1VuX07rXukR4ij03tjEFkJRN5i9ynMk3Tp+Fu+1Qc1gSeXMeA==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.0.6.tgz",
 				"fileCount": 83,
-				"unpackedSize": 251970,
+				"integrity": "sha512-GuJz/1sp/neLuHfGmHGek6W0rb1tdHVEbCAob1VuX07rXukR4ij03tjEFkJRN5i9ynMk3Tp+Fu+1Qc1gSeXMeA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCnAF5Tc/80sa+I4HVz2pOPNQo3YWImvX5GAzuxgsr7IwIhANxbMZsWRMn9QocRZtfjAqDLAogRv9W+mtUqM867NnTw"
+						"sig": "MEYCIQCnAF5Tc/80sa+I4HVz2pOPNQo3YWImvX5GAzuxgsr7IwIhANxbMZsWRMn9QocRZtfjAqDLAogRv9W+mtUqM867NnTw",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 251970
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -260,37 +260,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.0.7",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.21",
-				"@cloudflare/component-forms": "^5.4.6",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.4.6",
+				"@cloudflare/component-button": "^7.0.21"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "25be939aa8ba583d625bd7131741901de3265c9e",
-				"integrity": "sha512-9Yypu2Uve4FeIoQGOEfBTyL6cc6DWKGXDzcU/C+QiE/RJglj4t60ftzPSIHQncpFnDl0W6w7faX/ac3Bu/Vk8w==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.0.7.tgz",
 				"fileCount": 83,
-				"unpackedSize": 252036,
+				"integrity": "sha512-9Yypu2Uve4FeIoQGOEfBTyL6cc6DWKGXDzcU/C+QiE/RJglj4t60ftzPSIHQncpFnDl0W6w7faX/ac3Bu/Vk8w==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDLegs5M+GeNYBbKrjO+TRyr61E0jCfxL83WEQYM4zsNgIhAJecOSTxDwxQkF2tuMPP6my/oMizHgXNRXqlg9OZgUZ0"
+						"sig": "MEYCIQDLegs5M+GeNYBbKrjO+TRyr61E0jCfxL83WEQYM4zsNgIhAJecOSTxDwxQkF2tuMPP6my/oMizHgXNRXqlg9OZgUZ0",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 252036
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -302,37 +302,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.0.8",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.21",
-				"@cloudflare/component-forms": "^5.4.7",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.4.7",
+				"@cloudflare/component-button": "^7.0.21"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "a044f229fde5bd4f992365fae462a8a313e540ba",
-				"integrity": "sha512-C7r3d0DPnT0SyrQldbsUHnydvbWVqWd1nPHtZciRFFgC0m02+LTOB2XEg4QIAs8jiIbJWLnZMY0etilnxzKrVA==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.0.8.tgz",
 				"fileCount": 83,
-				"unpackedSize": 252102,
+				"integrity": "sha512-C7r3d0DPnT0SyrQldbsUHnydvbWVqWd1nPHtZciRFFgC0m02+LTOB2XEg4QIAs8jiIbJWLnZMY0etilnxzKrVA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIBABuhTgASpyOFul+aF3Zvb1D0CR0hSI2rP1Skk1IMIVAiBV4ROB+XpX09ZIDXhq3h9GLmrBmjdMXZXkV1CqhLIx7Q=="
+						"sig": "MEQCIBABuhTgASpyOFul+aF3Zvb1D0CR0hSI2rP1Skk1IMIVAiBV4ROB+XpX09ZIDXhq3h9GLmrBmjdMXZXkV1CqhLIx7Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 252102
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -344,37 +344,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.0.9",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.21",
-				"@cloudflare/component-forms": "^5.4.8",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.4.8",
+				"@cloudflare/component-button": "^7.0.21"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "c25493fc1447a543bced456955ec5f45df9a8648",
-				"integrity": "sha512-747neCL2XBUjvYFnFqQhQm9XomIhFbiy5kztnZf3hpOTgEuXAF5P6G9HawnCOahlpk3mRLila7ezPN4+QlRTeg==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.0.9.tgz",
 				"fileCount": 83,
-				"unpackedSize": 252168,
+				"integrity": "sha512-747neCL2XBUjvYFnFqQhQm9XomIhFbiy5kztnZf3hpOTgEuXAF5P6G9HawnCOahlpk3mRLila7ezPN4+QlRTeg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIG/DoIyRJbdmZdtjdM/RKPPGfx0PhVj8PsNa9o6UJ5dpAiEA9/oyWXytGfzcBUa/Ag82CXRldhie17rIuTpuduJn5C8="
+						"sig": "MEUCIG/DoIyRJbdmZdtjdM/RKPPGfx0PhVj8PsNa9o6UJ5dpAiEA9/oyWXytGfzcBUa/Ag82CXRldhie17rIuTpuduJn5C8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 252168
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -386,37 +386,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.0.10",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.22",
-				"@cloudflare/component-forms": "^5.4.9",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.4.9",
+				"@cloudflare/component-button": "^7.0.22"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "0b84c651748dd435f17c6d9fed965f33946cee15",
-				"integrity": "sha512-zS4syVyRG+jyGS2Pdjvf/ChkeafFdGLERtCbyYCJcHWKe02wkTP/VYO+fHsYn9y3UTLBwCe45GbmP/H7RN4ySg==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.0.10.tgz",
 				"fileCount": 83,
-				"unpackedSize": 252274,
+				"integrity": "sha512-zS4syVyRG+jyGS2Pdjvf/ChkeafFdGLERtCbyYCJcHWKe02wkTP/VYO+fHsYn9y3UTLBwCe45GbmP/H7RN4ySg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQC65zoPnzpzAepgqk/X/Hcp1S/M7VDCx6t6BQJtuwdQDwIhAJMusuA4scrx98UzOLdTXQR2mgHPidvXItGtrt9fawgX"
+						"sig": "MEYCIQC65zoPnzpzAepgqk/X/Hcp1S/M7VDCx6t6BQJtuwdQDwIhAJMusuA4scrx98UzOLdTXQR2mgHPidvXItGtrt9fawgX",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 252274
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -428,37 +428,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.1.0",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.22",
-				"@cloudflare/component-forms": "^5.5.0",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.5.0",
+				"@cloudflare/component-button": "^7.0.22"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "2184a4a980b4b56336a646dc79fa309148738c8c",
-				"integrity": "sha512-9GNZwqBx+MdpvpS17GnnIStfXlMZcd14uAv2K0gqygN58mlCMebAc7GjHZd/55l+3atrJazDlU7E4SzWbiajyg==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.1.0.tgz",
 				"fileCount": 83,
-				"unpackedSize": 252718,
+				"integrity": "sha512-9GNZwqBx+MdpvpS17GnnIStfXlMZcd14uAv2K0gqygN58mlCMebAc7GjHZd/55l+3atrJazDlU7E4SzWbiajyg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDRN8dcjF0IYBfVY4CWwVf8P0ozUZapgFGGu5gn6JtKfwIhALuZ3D690Ce/k0wP/zMQ0HbZSg91lJpzFsJ8ZCcLzXyG"
+						"sig": "MEYCIQDRN8dcjF0IYBfVY4CWwVf8P0ozUZapgFGGu5gn6JtKfwIhALuZ3D690Ce/k0wP/zMQ0HbZSg91lJpzFsJ8ZCcLzXyG",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 252718
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -470,37 +470,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.1.1",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.23",
-				"@cloudflare/component-forms": "^5.5.1",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.5.1",
+				"@cloudflare/component-button": "^7.0.23"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "a50f8dad4e43c6c3536b67cbfae5a186e725505b",
-				"integrity": "sha512-rMAQYcOccRjuSAsxTurmkk+wwBDxRdM0m/IMUHn1Fd5Y2okFb5l1Mvw9HxYM7iCCLxorJbVeDdatU+zXOpi5Pw==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.1.1.tgz",
 				"fileCount": 83,
-				"unpackedSize": 252822,
+				"integrity": "sha512-rMAQYcOccRjuSAsxTurmkk+wwBDxRdM0m/IMUHn1Fd5Y2okFb5l1Mvw9HxYM7iCCLxorJbVeDdatU+zXOpi5Pw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCfggR6k41PwiV2G9oMbA0oZr+PgRxQfz9DfLiP+TwMgwIgLT6UGpzxpGIom6DXREH0AaF9hhA5hPi+F5aru1Fhzwc="
+						"sig": "MEUCIQCfggR6k41PwiV2G9oMbA0oZr+PgRxQfz9DfLiP+TwMgwIgLT6UGpzxpGIom6DXREH0AaF9hhA5hPi+F5aru1Fhzwc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 252822
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -512,37 +512,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.1.2",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.24",
-				"@cloudflare/component-forms": "^5.5.2",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.5.2",
+				"@cloudflare/component-button": "^7.0.24"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "54e8a8a5f82d743ec578358993e27920978a26a0",
-				"integrity": "sha512-RViLsbT+1icem/mTEZUfEi+bUbnoe3Opvunhp+ZMz24m2Iggj1Q7MzKzyl1m+TWe9QoQHB/gOKZPiGBnI/gJ7Q==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.1.2.tgz",
 				"fileCount": 83,
-				"unpackedSize": 252926,
+				"integrity": "sha512-RViLsbT+1icem/mTEZUfEi+bUbnoe3Opvunhp+ZMz24m2Iggj1Q7MzKzyl1m+TWe9QoQHB/gOKZPiGBnI/gJ7Q==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQD9hlN5XmI2OeihsvK743jh5rZUdLcJDckuwlzRMYZBHwIhAOhhnBF2g3sFz+BrpBshB/fHKoIBFGZFPfGXc7lLBluw"
+						"sig": "MEYCIQD9hlN5XmI2OeihsvK743jh5rZUdLcJDckuwlzRMYZBHwIhAOhhnBF2g3sFz+BrpBshB/fHKoIBFGZFPfGXc7lLBluw",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 252926
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -554,37 +554,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "1.1.3",
 			"dependencies": {
-				"@cloudflare/component-button": "^7.0.25",
-				"@cloudflare/component-forms": "^5.5.3",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^5.5.3",
+				"@cloudflare/component-button": "^7.0.25"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^11.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^11.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "f175c775fd1b6408769cc35d535e7c55363e4c40",
-				"integrity": "sha512-jKMSrghtJt9lTWbd1bTNmYuQp+ZD0miUrrnOnn0M1iGuU+DXYSH8+XDlPLCxVCbZaiy22ZoIVue6nykQ7b1wrw==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-1.1.3.tgz",
 				"fileCount": 83,
-				"unpackedSize": 253030,
+				"integrity": "sha512-jKMSrghtJt9lTWbd1bTNmYuQp+ZD0miUrrnOnn0M1iGuU+DXYSH8+XDlPLCxVCbZaiy22ZoIVue6nykQ7b1wrw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIFoM6J7iYMFoncFiMm+UOMf6vRFKaiQTYVSvGfXTkXb2AiEAuVaJh9mlb1sKwwTF72yF8gBdz9l7V8SVNfMvTQwdO/Q="
+						"sig": "MEUCIFoM6J7iYMFoncFiMm+UOMf6vRFKaiQTYVSvGfXTkXb2AiEAuVaJh9mlb1sKwwTF72yF8gBdz9l7V8SVNfMvTQwdO/Q=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 253030
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -596,37 +596,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.0",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.0.0",
-				"@cloudflare/component-forms": "^6.0.0",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.0",
+				"@cloudflare/component-button": "^8.0.0"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "95096f87f7a7eea3d9b621863a6308fec7d33b84",
-				"integrity": "sha512-f/yhK5SAlRPDw+4dlRnwcy+UNqMx87n0XePVEpCU6ooo1QOo0woDPizDfpVjsI+WRnOZoFLjYIlXAOlF116/+A==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.0.tgz",
 				"fileCount": 83,
-				"unpackedSize": 253246,
+				"integrity": "sha512-f/yhK5SAlRPDw+4dlRnwcy+UNqMx87n0XePVEpCU6ooo1QOo0woDPizDfpVjsI+WRnOZoFLjYIlXAOlF116/+A==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCt6AfOfw/dUxzN9xux9KLRkEp5YXRhkmI/VdDhGGB9UwIgMKD+jyzwNRGzanN7ac4e4R1w5HIjdT5Iop0ipeyDw3k="
+						"sig": "MEUCIQCt6AfOfw/dUxzN9xux9KLRkEp5YXRhkmI/VdDhGGB9UwIgMKD+jyzwNRGzanN7ac4e4R1w5HIjdT5Iop0ipeyDw3k=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 253246
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -638,37 +638,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.1",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.0.1",
-				"@cloudflare/component-forms": "^6.0.1",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.1",
+				"@cloudflare/component-button": "^8.0.1"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "22780460e6fc1738a281c58cf5086369bb833ea4",
-				"integrity": "sha512-2rxyNNKyEeLD8a2xRgu4SPj3opwW2MaLV5PSoXcF2Un4ZhRLWYwCqKuN9gIKDMGuRPah5eDXPlg9YFVqNubnGA==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.1.tgz",
 				"fileCount": 83,
-				"unpackedSize": 253349,
+				"integrity": "sha512-2rxyNNKyEeLD8a2xRgu4SPj3opwW2MaLV5PSoXcF2Un4ZhRLWYwCqKuN9gIKDMGuRPah5eDXPlg9YFVqNubnGA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIAktIRj8SAffWOmpY6AOO8GTHMvuxVagHsU64Jzcs/GMAiAM5llPWG5kegWa3zsP0BFBr9uo3as7EXA8blN/4UJdpg=="
+						"sig": "MEQCIAktIRj8SAffWOmpY6AOO8GTHMvuxVagHsU64Jzcs/GMAiAM5llPWG5kegWa3zsP0BFBr9uo3as7EXA8blN/4UJdpg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 253349
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -680,37 +680,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.2",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.0.2",
-				"@cloudflare/component-forms": "^6.0.2",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.2",
+				"@cloudflare/component-button": "^8.0.2"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "d5df73aa0edcfa1d12570bc14ae321c564929918",
-				"integrity": "sha512-Jm+og7svTwHGuFxYC79Pmvo/Vt2+Tksz0L92eEtzB+5jgUfDAUmrv5hOaIZPRPfoBfMTZ6XjUd/WtNK/j6LsXg==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.2.tgz",
 				"fileCount": 83,
-				"unpackedSize": 253452,
+				"integrity": "sha512-Jm+og7svTwHGuFxYC79Pmvo/Vt2+Tksz0L92eEtzB+5jgUfDAUmrv5hOaIZPRPfoBfMTZ6XjUd/WtNK/j6LsXg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDjFvHyGvXN0jgL/dvtEMavftjRakNOY0a+v3089QaIoQIgPsdy1pPpv+bTdq4HcT08sbHe9NYUx3uKVSHAd5TgQV4="
+						"sig": "MEUCIQDjFvHyGvXN0jgL/dvtEMavftjRakNOY0a+v3089QaIoQIgPsdy1pPpv+bTdq4HcT08sbHe9NYUx3uKVSHAd5TgQV4=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 253452
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -722,37 +722,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.3",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.1.0",
-				"@cloudflare/component-forms": "^6.0.3",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.3",
+				"@cloudflare/component-button": "^8.1.0"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "9181d06cf19b1d9e9d174ce68224b834f316c982",
-				"integrity": "sha512-IXSIXJUNcUtTdWc5qiU3GHoMAdZyxI2ei3h0pH2WecOMOs6cT2iRusPIJZwYn1BS0LQmMGofVk+6qISQX2BGAA==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.3.tgz",
 				"fileCount": 83,
-				"unpackedSize": 253595,
+				"integrity": "sha512-IXSIXJUNcUtTdWc5qiU3GHoMAdZyxI2ei3h0pH2WecOMOs6cT2iRusPIJZwYn1BS0LQmMGofVk+6qISQX2BGAA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCPQ33J/NsNuwGLxqWZhbrowMOzaKpGyiU1sYTQzEMRXAIgECKmcfE/5uTJgg86nWafznTctz/fWBaUJJclWXlZZls="
+						"sig": "MEUCIQCPQ33J/NsNuwGLxqWZhbrowMOzaKpGyiU1sYTQzEMRXAIgECKmcfE/5uTJgg86nWafznTctz/fWBaUJJclWXlZZls=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 253595
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -764,37 +764,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.4",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.1.1",
-				"@cloudflare/component-forms": "^6.0.4",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.4",
+				"@cloudflare/component-button": "^8.1.1"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "2bbef0097abbee641899df5710c9499d87072732",
-				"integrity": "sha512-ZggvzquNR8lMY9jsfhkDcDI+Ba6BhybPDFc46oAvHXBN2wOqfto5qDco/VkcgmHGCV++7q1kINk7hJ4I92dAyw==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.4.tgz",
 				"fileCount": 83,
-				"unpackedSize": 253698,
+				"integrity": "sha512-ZggvzquNR8lMY9jsfhkDcDI+Ba6BhybPDFc46oAvHXBN2wOqfto5qDco/VkcgmHGCV++7q1kINk7hJ4I92dAyw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIDCVNWUj8x7jDaOEghQEGzXDGbIkYlu3YPwa+qnkDy/wAiEArGXekKodDIjqszBt5VNukzblXY80SHecCNpXjHDlF6c="
+						"sig": "MEUCIDCVNWUj8x7jDaOEghQEGzXDGbIkYlu3YPwa+qnkDy/wAiEArGXekKodDIjqszBt5VNukzblXY80SHecCNpXjHDlF6c=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 253698
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -806,37 +806,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.5",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.2.0",
-				"@cloudflare/component-forms": "^6.0.5",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.5",
+				"@cloudflare/component-button": "^8.2.0"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "7b0b3a89ed8741f1416fed5d929ea46b27e55f53",
-				"integrity": "sha512-+XS6B3Wwner4HYqJfpNkNuMacnUMMV2GENB9IBpI29Vx2ZMjF01nBIGh3ZU5foCmKghaavPRrcYo49uvkX8IZA==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.5.tgz",
 				"fileCount": 83,
-				"unpackedSize": 253841,
+				"integrity": "sha512-+XS6B3Wwner4HYqJfpNkNuMacnUMMV2GENB9IBpI29Vx2ZMjF01nBIGh3ZU5foCmKghaavPRrcYo49uvkX8IZA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIFRpD/XOSdZ4cL/O8v7EFiaJ0tmmrqgiQPHIpiP1G5f2AiEAjKoOVFHyzSPs6PnUKWMKYh+g6FCpkRAK97wn3+eLZYc="
+						"sig": "MEUCIFRpD/XOSdZ4cL/O8v7EFiaJ0tmmrqgiQPHIpiP1G5f2AiEAjKoOVFHyzSPs6PnUKWMKYh+g6FCpkRAK97wn3+eLZYc=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 253841
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -848,37 +848,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.6",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.2.1",
-				"@cloudflare/component-forms": "^6.0.6",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.6",
+				"@cloudflare/component-button": "^8.2.1"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "167c92abb17b4999ee6f236ee250fd135539e665",
-				"integrity": "sha512-nZrt642+X0476V062MFVK3LjmYAQX/9aiShno3lYHS9fNAXaLVYZvGGDSLf1hmhmGQIU+9/wkuAsRP90ce89Og==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.6.tgz",
 				"fileCount": 83,
-				"unpackedSize": 253944,
+				"integrity": "sha512-nZrt642+X0476V062MFVK3LjmYAQX/9aiShno3lYHS9fNAXaLVYZvGGDSLf1hmhmGQIU+9/wkuAsRP90ce89Og==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIDK1ETeKhwfnrzq27bAPlgHtuIAFshuobb9bFgdwjFXrAiEAytFq4prUTk4MzT6ulaYMA4AB0FMovBrcUntVV+/SHsk="
+						"sig": "MEUCIDK1ETeKhwfnrzq27bAPlgHtuIAFshuobb9bFgdwjFXrAiEAytFq4prUTk4MzT6ulaYMA4AB0FMovBrcUntVV+/SHsk=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 253944
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -890,37 +890,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.7",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.0",
-				"@cloudflare/component-forms": "^6.0.7",
-				"@cloudflare/elements": "^3.0.0",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.0",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.7",
+				"@cloudflare/component-button": "^8.3.0"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "cb2dce02cd5ef028ac77ec3e50a624660ec7f524",
-				"integrity": "sha512-064xSQXqHWoQzUmOVnTlBIpA+GoiCgNtoDt39C+KPSHM6GVWAaMGYwjZlgBTNazIbQQHDLfKjl8XfEx3T/ZMlA==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.7.tgz",
 				"fileCount": 83,
-				"unpackedSize": 254087,
+				"integrity": "sha512-064xSQXqHWoQzUmOVnTlBIpA+GoiCgNtoDt39C+KPSHM6GVWAaMGYwjZlgBTNazIbQQHDLfKjl8XfEx3T/ZMlA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCGuR9a+cIApwxGGUYLOVFGfDKpB173yKx5+1yQQ4EVPwIgbvliRj24BMC0/XDkNkHNKYeQe+6kX54CskmEz95qQTA="
+						"sig": "MEUCIQCGuR9a+cIApwxGGUYLOVFGfDKpB173yKx5+1yQQ4EVPwIgbvliRj24BMC0/XDkNkHNKYeQe+6kX54CskmEz95qQTA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 254087
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -932,37 +932,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.8",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.1",
-				"@cloudflare/component-forms": "^6.0.8",
-				"@cloudflare/elements": "^3.0.4",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.4",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.8",
+				"@cloudflare/component-button": "^8.3.1"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "be81e50a4b08871f2f1beb50cdbaf55faf756e13",
-				"integrity": "sha512-IKdmYivQcUwI5KGBNWTcmFI/hQjpVf2zCFu2cIiyoBG0U9UKWHZM0YLwKaTi1TJ1WMf8JhT580Fkpq/aYuH8CA==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.8.tgz",
 				"fileCount": 83,
-				"unpackedSize": 254200,
+				"integrity": "sha512-IKdmYivQcUwI5KGBNWTcmFI/hQjpVf2zCFu2cIiyoBG0U9UKWHZM0YLwKaTi1TJ1WMf8JhT580Fkpq/aYuH8CA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQC00tcNLQsMzbJJSDWpjdx3U5bjQL943MfNakWXhXStPwIgRS3XHAiM4NPSlQ1tWxI2j8stkdraWbmjJ0yVSkhBNYA="
+						"sig": "MEUCIQC00tcNLQsMzbJJSDWpjdx3U5bjQL943MfNakWXhXStPwIgRS3XHAiM4NPSlQ1tWxI2j8stkdraWbmjJ0yVSkhBNYA=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 254200
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -974,37 +974,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.9",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.2",
-				"@cloudflare/component-forms": "^6.0.9",
-				"@cloudflare/elements": "^3.0.4",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.4",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.9",
+				"@cloudflare/component-button": "^8.3.2"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "da65103b401407671d106af08748caca896638f2",
-				"integrity": "sha512-i/pZ+MHKFqsFs4+xyWwL6HHTveUuFyZBanlMuqd534STpnX8B5eqf1rHfrS6lLYGViYmJ9uJGn/eOKFqbgy4TQ==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.9.tgz",
 				"fileCount": 83,
-				"unpackedSize": 254303,
+				"integrity": "sha512-i/pZ+MHKFqsFs4+xyWwL6HHTveUuFyZBanlMuqd534STpnX8B5eqf1rHfrS6lLYGViYmJ9uJGn/eOKFqbgy4TQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIHdPUVe4lJQ4Pdvqfhs4vSKegHj1Ir/Y8wSfr1ISJI34AiEAsmqmg/CH49FEJtNtHGQHXFXKOHhlP2ODGrwiUg1ntvU="
+						"sig": "MEUCIHdPUVe4lJQ4Pdvqfhs4vSKegHj1Ir/Y8wSfr1ISJI34AiEAsmqmg/CH49FEJtNtHGQHXFXKOHhlP2ODGrwiUg1ntvU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 254303
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -1016,37 +1016,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.10",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.3",
-				"@cloudflare/component-forms": "^6.0.10",
-				"@cloudflare/elements": "^3.0.4",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.4",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.10",
+				"@cloudflare/component-button": "^8.3.3"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "be8e6c4ad67b7c7a0a8eba8fee9b43b4d96b6ab1",
-				"integrity": "sha512-1a0of9sGaMWy4PV5B6G8BBBXSryUdtv6m25ITauxL4imxwGbcWPMP3/3ZLXT9oicW7rkQuEMVnMP7DOP7u2k1w==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.10.tgz",
 				"fileCount": 83,
-				"unpackedSize": 254450,
+				"integrity": "sha512-1a0of9sGaMWy4PV5B6G8BBBXSryUdtv6m25ITauxL4imxwGbcWPMP3/3ZLXT9oicW7rkQuEMVnMP7DOP7u2k1w==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCbeG+/Uxxa0PmZ6yqkGGDxPgl+yKxJ/oA2QbTTOX05xgIgENMnMRMAETATcv/cuZV97kOjnlgwMELSNzmFPDD0dAE="
+						"sig": "MEUCIQCbeG+/Uxxa0PmZ6yqkGGDxPgl+yKxJ/oA2QbTTOX05xgIgENMnMRMAETATcv/cuZV97kOjnlgwMELSNzmFPDD0dAE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 254450
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -1058,37 +1058,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.11",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.4",
-				"@cloudflare/component-forms": "^6.0.11",
-				"@cloudflare/elements": "^3.0.5",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.5",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.0.11",
+				"@cloudflare/component-button": "^8.3.4"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "3480f94a2cc258f1c221c08e3a3722e662c0bbe5",
-				"integrity": "sha512-nXQ2TONomhCdZz15RfIiQPMgihixeP5Whp6CtJ6Yw71hVtgxR2ltcQQ7XgJk2rzZRvUObKGoVtWXZ9cyQSo14A==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.11.tgz",
 				"fileCount": 83,
-				"unpackedSize": 254584,
+				"integrity": "sha512-nXQ2TONomhCdZz15RfIiQPMgihixeP5Whp6CtJ6Yw71hVtgxR2ltcQQ7XgJk2rzZRvUObKGoVtWXZ9cyQSo14A==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCYLs0OTaCTLb+1CfUElclDtDofbk5k1m4h0OUchNIQhwIhALjn2oh7UXyQpLp6/U03Qtpc6g3q4KF3VW4OjxjUYnFp"
+						"sig": "MEYCIQCYLs0OTaCTLb+1CfUElclDtDofbk5k1m4h0OUchNIQhwIhALjn2oh7UXyQpLp6/U03Qtpc6g3q4KF3VW4OjxjUYnFp",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 254584
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -1100,37 +1100,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.12",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.4",
-				"@cloudflare/component-forms": "^6.1.0",
-				"@cloudflare/elements": "^3.0.5",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.5",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.1.0",
+				"@cloudflare/component-button": "^8.3.4"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "1c7c9200c0266cd407ac82729a7d2ade323f2fe3",
-				"integrity": "sha512-1ltBH/hRWtbH09PgVwS2/gckywM5BBn/Mg1qdji6qW6nYyVb8YSKBMvRI5byfi9fpC1A+v8jZF+eXHcoBHvPnQ==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.12.tgz",
 				"fileCount": 83,
-				"unpackedSize": 254688,
+				"integrity": "sha512-1ltBH/hRWtbH09PgVwS2/gckywM5BBn/Mg1qdji6qW6nYyVb8YSKBMvRI5byfi9fpC1A+v8jZF+eXHcoBHvPnQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCKntnp8y2iIM1ojKM1ohoKeMPZJT74Pm/p4UZr2XfqxQIgUq2ft+3ZfL+PFzXfoxiaERCkM/Bp8uhH4i2n72ViPMU="
+						"sig": "MEUCIQCKntnp8y2iIM1ojKM1ohoKeMPZJT74Pm/p4UZr2XfqxQIgUq2ft+3ZfL+PFzXfoxiaERCkM/Bp8uhH4i2n72ViPMU=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 254688
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -1142,37 +1142,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.13",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.4",
-				"@cloudflare/component-forms": "^6.1.1",
-				"@cloudflare/elements": "^3.0.5",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.5",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.1.1",
+				"@cloudflare/component-button": "^8.3.4"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "44cbad5a3ef4ee74fa2cde811c54105660f55f90",
-				"integrity": "sha512-yYngWlerR4PRotFsInLvLQasTUkbHYifFS0My9H/9K/s4DXFO9VZjqsmuCJYGS5gjNlO8AmQ4PjaWOgVIaMukw==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.13.tgz",
 				"fileCount": 83,
-				"unpackedSize": 254755,
+				"integrity": "sha512-yYngWlerR4PRotFsInLvLQasTUkbHYifFS0My9H/9K/s4DXFO9VZjqsmuCJYGS5gjNlO8AmQ4PjaWOgVIaMukw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCFuXw0zfKLizjGqD0PMmxz0RjJflYSme1UAixjlovm1QIhAKOcsoCzAUjHV8NeFX+iQgUClR2C2OJkFIMsmzLGjHoU"
+						"sig": "MEYCIQCFuXw0zfKLizjGqD0PMmxz0RjJflYSme1UAixjlovm1QIhAKOcsoCzAUjHV8NeFX+iQgUClR2C2OJkFIMsmzLGjHoU",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 254755
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -1184,37 +1184,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.14",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.5",
-				"@cloudflare/component-forms": "^6.1.2",
-				"@cloudflare/elements": "^3.0.5",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.5",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.1.2",
+				"@cloudflare/component-button": "^8.3.5"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "402b989e507a1af465e5a14a0cb2b2805e6d6000",
-				"integrity": "sha512-pdXCOdBE/OUcXuQhA1/wZUcbtMkLdgdHsFEhMyYZIcuXNnhtymrirHuBAhAsIMSb2KyTevtPNFh1IPPoTnVSfA==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.14.tgz",
 				"fileCount": 83,
-				"unpackedSize": 254859,
+				"integrity": "sha512-pdXCOdBE/OUcXuQhA1/wZUcbtMkLdgdHsFEhMyYZIcuXNnhtymrirHuBAhAsIMSb2KyTevtPNFh1IPPoTnVSfA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIFGyfGOV/lFGVX3bsP6Zn5eHahPQIWNtxYLVZ+91uSMBAiAt9/ZGJm0hftzTxNjlzIuZ7++X95iNj7dTVr30+0ZN5Q=="
+						"sig": "MEQCIFGyfGOV/lFGVX3bsP6Zn5eHahPQIWNtxYLVZ+91uSMBAiAt9/ZGJm0hftzTxNjlzIuZ7++X95iNj7dTVr30+0ZN5Q==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 254859
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -1226,37 +1226,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.15",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.6",
-				"@cloudflare/component-forms": "^6.1.3",
-				"@cloudflare/elements": "^3.0.6",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.6",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.1.3",
+				"@cloudflare/component-button": "^8.3.6"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "efc6c71e1d2e07ece66c999a76e700e838bedaea",
-				"integrity": "sha512-MdAQQz/xNjinhlHHV3FaVsm6dHwSZ8NwYPc37RQSjAFDCP4Yl9fKopFHot7u1mk9H9Ln58pDAvqcNYqUn40BVg==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.15.tgz",
 				"fileCount": 83,
-				"unpackedSize": 254992,
+				"integrity": "sha512-MdAQQz/xNjinhlHHV3FaVsm6dHwSZ8NwYPc37RQSjAFDCP4Yl9fKopFHot7u1mk9H9Ln58pDAvqcNYqUn40BVg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIHodUZ5JRQ7SwEss9YVba09BPEXCcdV2ljJQ3ArLuM4kAiEAgqy5lqJye+1Lw872pHiBFDJNO0lXzmNb2DbouK7P26s="
+						"sig": "MEUCIHodUZ5JRQ7SwEss9YVba09BPEXCcdV2ljJQ3ArLuM4kAiEAgqy5lqJye+1Lw872pHiBFDJNO0lXzmNb2DbouK7P26s=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 254992
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -1268,37 +1268,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.16",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.7",
-				"@cloudflare/component-forms": "^6.1.4",
-				"@cloudflare/elements": "^3.0.7",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.7",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.1.4",
+				"@cloudflare/component-button": "^8.3.7"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "289eaf9b005484159f118f284c54c9677c42cef7",
-				"integrity": "sha512-UQZD8awFKjhVd03OxUZEG5T1nM5GNeDmJ+7o5cmsK+QQr2XRReKXh4YdUNUnQCW/543ixUhf/BJN+XNtuieh8A==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.16.tgz",
 				"fileCount": 83,
-				"unpackedSize": 255125,
+				"integrity": "sha512-UQZD8awFKjhVd03OxUZEG5T1nM5GNeDmJ+7o5cmsK+QQr2XRReKXh4YdUNUnQCW/543ixUhf/BJN+XNtuieh8A==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIEHiiuC9EM4iqnzx6uEJfbStY7ItienMrM2lad3J+tTkAiEArgRa9sQfTKpFBMts5UIzp4KUkknAnTQvL7KZ4GzHLDg="
+						"sig": "MEUCIEHiiuC9EM4iqnzx6uEJfbStY7ItienMrM2lad3J+tTkAiEArgRa9sQfTKpFBMts5UIzp4KUkknAnTQvL7KZ4GzHLDg=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 255125
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -1310,37 +1310,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.17",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.8",
-				"@cloudflare/component-forms": "^6.1.5",
-				"@cloudflare/elements": "^3.0.8",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.8",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.1.5",
+				"@cloudflare/component-button": "^8.3.8"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "b61b4894d15585a592be65edccc90d83b4901e1f",
-				"integrity": "sha512-8+1rU7MYmEF3SAUdiVRfgbSI6Zm9hCqVZyka62Dw3KbUMmkeFsbrbnrYCXmdcRszhMkT8J9HcgzmyVEiAO8hSw==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.17.tgz",
 				"fileCount": 83,
-				"unpackedSize": 255258,
+				"integrity": "sha512-8+1rU7MYmEF3SAUdiVRfgbSI6Zm9hCqVZyka62Dw3KbUMmkeFsbrbnrYCXmdcRszhMkT8J9HcgzmyVEiAO8hSw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIGIESOlzR9e3Cj8w2SCkKO7kopeqjLW1wYRwo3NnYzuiAiEAgZ/AzZtoDFjaMkxMWvhniMCilQI/OrM9aDo4rCk4rjM="
+						"sig": "MEUCIGIESOlzR9e3Cj8w2SCkKO7kopeqjLW1wYRwo3NnYzuiAiEAgZ/AzZtoDFjaMkxMWvhniMCilQI/OrM9aDo4rCk4rjM=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 255258
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -1352,37 +1352,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.18",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.8",
-				"@cloudflare/component-forms": "^6.1.6",
-				"@cloudflare/elements": "^3.0.8",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.8",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.1.6",
+				"@cloudflare/component-button": "^8.3.8"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "8b3b14ccb810dad29c5c4c9c247dc239165fd4bf",
-				"integrity": "sha512-OzzeyEt7oQU+cF0CynFGxQ9HCr9lfb1ZkUM9v9Oy3qRWVSbytjFHMmoQFcLqI47/csMV4XlOsrCl0bVdQ5lOVA==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.18.tgz",
 				"fileCount": 83,
-				"unpackedSize": 255325,
+				"integrity": "sha512-OzzeyEt7oQU+cF0CynFGxQ9HCr9lfb1ZkUM9v9Oy3qRWVSbytjFHMmoQFcLqI47/csMV4XlOsrCl0bVdQ5lOVA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIGUUIxcTUMz2oB3vxFRz58X32rgabV9VDxXaZomU2o7ZAiEA6ExrV/CnEp7vqm+eQKnYdG2r/0MqHD0Suf77tjIpny8="
+						"sig": "MEUCIGUUIxcTUMz2oB3vxFRz58X32rgabV9VDxXaZomU2o7ZAiEA6ExrV/CnEp7vqm+eQKnYdG2r/0MqHD0Suf77tjIpny8=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 255325
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -1394,37 +1394,37 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.19",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.9",
-				"@cloudflare/component-forms": "^6.1.7",
-				"@cloudflare/elements": "^3.0.8",
-				"@cloudflare/intl-react": "^1.9.80",
-				"@cloudflare/types": "^6.15.15",
+				"yup": "^0.27.0",
 				"deepmerge": "4.3.1",
 				"react-hook-form": "7.44.3",
-				"yup": "^0.27.0"
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.8",
+				"@cloudflare/intl-react": "^1.9.80",
+				"@cloudflare/component-forms": "^6.1.7",
+				"@cloudflare/component-button": "^8.3.9"
 			},
 			"devDependencies": {
 				"@testing-library/react": "12.1.5"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^12.0.0",
-				"@cloudflare/style-const": "^5.7.2",
-				"@cloudflare/style-container": "^7.10.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
 			},
 			"dist": {
 				"shasum": "92587783c91257f3d412573ac0f54ee52a88c2c7",
-				"integrity": "sha512-8GPWDLuek4DJhCubeajwfhi33Pzu34hgoQHR2GMJsaEOSDLs0Q7WaVKs9rEWLPXC3CHo29itTTcGEU4IdK7Pcw==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.19.tgz",
 				"fileCount": 83,
-				"unpackedSize": 255429,
+				"integrity": "sha512-8GPWDLuek4DJhCubeajwfhi33Pzu34hgoQHR2GMJsaEOSDLs0Q7WaVKs9rEWLPXC3CHo29itTTcGEU4IdK7Pcw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIHp7/00elFHriKs4AOWGxQOF+9gJHpqHhc3R8KHZHDhFAiAzCzOGtlM5zCqIwnxgbnLtddBzgIsMBI8gjZKFDC3lhg=="
+						"sig": "MEQCIHp7/00elFHriKs4AOWGxQOF+9gJHpqHhc3R8KHZHDhFAiAzCzOGtlM5zCqIwnxgbnLtddBzgIsMBI8gjZKFDC3lhg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 255429
 			},
 			"stratus": {
 				"srcDirectory": "./src",
@@ -1436,8 +1436,50 @@
 			"name": "@cloudflare/component-forms-hook-form",
 			"version": "2.0.20",
 			"dependencies": {
-				"@cloudflare/component-button": "^8.3.10",
+				"yup": "^0.27.0",
+				"deepmerge": "4.3.1",
+				"react-hook-form": "7.44.3",
+				"@cloudflare/types": "^6.15.15",
+				"@cloudflare/elements": "^3.0.8",
+				"@cloudflare/intl-react": "^1.9.80",
 				"@cloudflare/component-forms": "^6.1.8",
+				"@cloudflare/component-button": "^8.3.10"
+			},
+			"devDependencies": {
+				"@testing-library/react": "12.1.5"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/component-icon": "^12.0.0",
+				"@cloudflare/style-container": "^7.10.0"
+			},
+			"dist": {
+				"shasum": "52e0a0fdcb9327afd0e43154a5e78a6f882a6ed5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.20.tgz",
+				"fileCount": 83,
+				"integrity": "sha512-/n8JXeQZvikvq3AgzwIqvH0a2DmV5Epbie7SO7CzRKHr4PQLyHhcdnWZJUlqEskPMjs1EDxVSVE4RXx6IXHuWw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDi9FFKoaQXVJKMU2jKgEOh/j21GI4gERONmqk45/jVIQIgNDmOh+HS+aLq3GB1obnaOJ+t3sfBq+7riqZzh9YtLqY=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 255535
+			},
+			"stratus": {
+				"srcDirectory": "./src",
+				"isStandAloneApp": false,
+				"autoGeneratedReadme": true
+			}
+		},
+		"2.0.21": {
+			"name": "@cloudflare/component-forms-hook-form",
+			"version": "2.0.21",
+			"dependencies": {
+				"@cloudflare/component-button": "^8.3.11",
+				"@cloudflare/component-forms": "^6.1.9",
 				"@cloudflare/elements": "^3.0.8",
 				"@cloudflare/intl-react": "^1.9.80",
 				"@cloudflare/types": "^6.15.15",
@@ -1456,15 +1498,15 @@
 				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
 			},
 			"dist": {
-				"shasum": "52e0a0fdcb9327afd0e43154a5e78a6f882a6ed5",
-				"integrity": "sha512-/n8JXeQZvikvq3AgzwIqvH0a2DmV5Epbie7SO7CzRKHr4PQLyHhcdnWZJUlqEskPMjs1EDxVSVE4RXx6IXHuWw==",
-				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.20.tgz",
+				"shasum": "b5611f8979d601d2a3d98ffefac04dad227afc04",
+				"integrity": "sha512-oC4Yy+Rbjdne+fBFF4Eu9B/FzCPlNrQ2Nl1xFOEXwXMDzCTYLe4/5xMjyAVnhh2XZfWJzbH8j0fl7Dvbb1RwXQ==",
+				"tarball": "https://registry.npmjs.org/@cloudflare/component-forms-hook-form/-/component-forms-hook-form-2.0.21.tgz",
 				"fileCount": 83,
-				"unpackedSize": 255535,
+				"unpackedSize": 255640,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDi9FFKoaQXVJKMU2jKgEOh/j21GI4gERONmqk45/jVIQIgNDmOh+HS+aLq3GB1obnaOJ+t3sfBq+7riqZzh9YtLqY="
+						"sig": "MEQCIFiXTEbEKrDuoOifEpaaso2lRnveg3un5scxv4Fcs7PsAiAuKif3IX+SkNuzmGlI8f0kYdKr3kPL4FlWirQBlLgyKA=="
 					}
 				]
 			},

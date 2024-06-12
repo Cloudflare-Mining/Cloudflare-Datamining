@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.10.0
+
+### Minor Changes
+
+- d52c7c5258: Added Cloud Email Security icon (type=cloud-email-security)
+
 ## 12.9.0
 
 ### Minor Changes
