@@ -16,7 +16,7 @@
 	"proxy_ips.error.get_address_maps_failed": "There was an error fetching address maps",
 	"proxy_ips.address_map_table.domains.tooltip": "...and %{smart_count} additional domain configured.||||...and %{smart_count} additional domains configured",
 	"proxy_ips.address_map_table.ip_addresses.tooltip": "...and %{smart_count} additional IP address configured.||||...and %{smart_count} additional IP addresses configured",
-	"proxy_ips.homepage.title": "Proxy IPs",
+	"proxy_ips.homepage.title": "Address Maps",
 	"proxy_ips.homepage.description": "Return custom IPs, or static Cloudflare IPs, in requests for proxied hostnames.",
 	"proxy_ips.homepage.address_map_card.title": "Address Maps",
 	"proxy_ips.homepage.address_map_card.description": "If you customize the IPs Cloudflare uses, by leasing static Cloudflare IPs or bringing your own IPs (BYOIP), use Address Maps to specify which IPs to return for which hostnames. Static IPs are bound to their Cloudflare-created address map which you can edit, but you cannot create other maps with your static IPs.",
@@ -58,6 +58,6 @@
 	"proxy_ips.disable_map_modal.description": "Disabling this Address Map will likely change the IP addresses used for these zones.",
 	"proxy_ips.disable_map_modal.cancel_text": "Leave Map Enabled",
 	"proxy_ips.disable_map_modal.confirm_text": "Disable Map",
-	"proxy_ips.links.back_to_proxy_ips": "Back to Proxy IPs",
+	"proxy_ips.links.back_to_proxy_ips": "Back to Address Maps",
 	"proxy_ips.links.create_address_map.label": "Create new address map"
 }
