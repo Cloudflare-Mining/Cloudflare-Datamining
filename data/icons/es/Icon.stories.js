@@ -15,6 +15,11 @@ var withStyleProvider = Story => /*#__PURE__*/React.createElement(StyleProvider,
   renderer: renderer
 }, /*#__PURE__*/React.createElement(Story, null));
 
+export var CloudflareEmailSecurity = () => /*#__PURE__*/React.createElement(Icon, {
+  type: "cloudflare-email-security",
+  size: 36
+});
+CloudflareEmailSecurity.decorators = [withStyleProvider];
 export var CloudMulti = () => /*#__PURE__*/React.createElement(Icon, {
   type: "cloud-multi",
   size: 36

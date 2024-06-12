@@ -1,4 +1,5 @@
 import Dlp from './Dlp';
+import Timer from './Timer';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
 import AddMember from './AddMember';
 import Add from './Add';
@@ -27,6 +28,7 @@ import CloudInternet from './CloudInternet';
 import CloudMulti from './CloudMulti';
 import CloudflareAccess from './CloudflareAccess';
 import CloudflareDex from './CloudflareDex';
+import CloudflareEmailSecurity from './CloudflareEmailSecurity';
 import CloudflareMagicWan from './CloudflareMagicWan';
 import CloudflareSecurityApplication from './CloudflareSecurityApplication';
 import CloudflareSecurityNetwork from './CloudflareSecurityNetwork';
@@ -135,7 +137,6 @@ import TailWorker from './TailWorker';
 import Teams from './Teams';
 import Terraform from './Terraform';
 import Time from './Time';
-import Timer from './Timer';
 import Trace from './Trace';
 import TrafficAttackBrowser from './TrafficAttackBrowser';
 import Turnstile from './Turnstile';
@@ -167,6 +168,7 @@ import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
 export default {
   dlp: Dlp,
+  timer: Timer,
   'account-analytics-logo': AccountAnalyticsLogo,
   'add-member': AddMember,
   add: Add,
@@ -195,6 +197,7 @@ export default {
   'cloud-multi': CloudMulti,
   'cloudflare-access': CloudflareAccess,
   'cloudflare-dex': CloudflareDex,
+  'cloudflare-email-security': CloudflareEmailSecurity,
   'cloudflare-magic-wan': CloudflareMagicWan,
   'cloudflare-security-application': CloudflareSecurityApplication,
   'cloudflare-security-network': CloudflareSecurityNetwork,
@@ -303,7 +306,6 @@ export default {
   teams: Teams,
   terraform: Terraform,
   time: Time,
-  timer: Timer,
   trace: Trace,
   'traffic-attack-browser': TrafficAttackBrowser,
   turnstile: Turnstile,
