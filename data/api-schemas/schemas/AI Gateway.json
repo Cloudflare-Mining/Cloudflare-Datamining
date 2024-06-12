@@ -680,10 +680,16 @@
 											"request": {
 												"type": "string"
 											},
+											"request_content_type": {
+												"type": "string"
+											},
 											"request_type": {
 												"type": "string"
 											},
 											"response": {
+												"type": "string"
+											},
+											"response_content_type": {
 												"type": "string"
 											},
 											"status_code": {
