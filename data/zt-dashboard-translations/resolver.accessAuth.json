@@ -1,4 +1,5 @@
 {
+	"access_api_error_internal_server_error": "Something went wrong during your request",
 	"add": "Add",
 	"add_attribute": "+ Add attribute",
 	"add_certificate": "+ Add Certificate",
@@ -133,6 +134,7 @@
 	"login_customisation_subtitle": "Users will see this page when attempting to visit an application that is behind Access.",
 	"login_methods_empty": "No identity providers are currently configured.",
 	"login_methods_header": "Login methods",
+	"must_have_pii_access_risk_score_sharing": "You must have PII access to turn on Risk Score sharing.",
 	"name": "Name",
 	"next": "Next",
 	"no_config_needed": "No configuration needed.",
@@ -223,5 +225,7 @@
 	"team_domain_required": "Please enter a team name.",
 	"team_domain_subtitle": "Your team domain is unique to your Cloudflare account. This is where users will find the App Launcher.",
 	"team_domain_taken": "This team name is already taken.",
-	"test": "Test"
+	"test": "Test",
+	"well_known_config_url": "Well-known Config URL",
+	"well_known_config_url_description": "The Shared Signals Framework config address. This is copied to the receiving application."
 }
