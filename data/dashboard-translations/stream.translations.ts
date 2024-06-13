@@ -38,7 +38,7 @@ You will only be billed each month based on how many minutes you stream. If you 
 	billing: {
 		select_plan: "Select Plan",
 		bundle_modal_selection_description: "You can purchase Cloudflare Images on its own or bundle it with Cloudflare Stream.",
-		bundle_page_selection_description: "Cloudflare Stream is the most affordable and easy-to-use streaming platform.",
+		bundle_page_selection_description: "Cloudflare Stream is the most affordable and easy-to-use streaming platform. Purchase Cloudflare Stream on its own or bundle it with Cloudflare Images.",
 		bundle_page_existing_subsciption_description: `Cloudflare Stream is the most affordable and easy-to-use streaming platform.
 **You have an existing subscription to Cloudflare Images. You can purchase Starter or Creator bundles only when your Cloudflare Images subscription is canceled and has ended.**`,
 		bundle_cloudflare_stream_title: "Cloudflare Stream",
