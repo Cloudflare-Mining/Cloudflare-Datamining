@@ -7,7 +7,13 @@
 				"in": "path",
 				"name": "account_id",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "eb78d65290b24279ba6f44721b3ea3c4",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -409,7 +415,13 @@
 				"in": "path",
 				"name": "account_id",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "eb78d65290b24279ba6f44721b3ea3c4",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
 			}
 		],
 		"responses": {

@@ -1437,11 +1437,19 @@
 													"example": [
 														{
 															"id": "c8fed203ed3043cba015a93ad1616f1f",
+															"meta": {
+																"label": "load_balancer_admin",
+																"scopes": "com.cloudflare.api.account"
+															},
 															"name": "Zone Read"
 														},
 														{
 															"id": "82e64a83756745bbbb1c9c2701bf816b",
-															"name": "DNS Read"
+															"meta": {
+																"label": "fbm_user",
+																"scopes": "com.cloudflare.api.account"
+															},
+															"name": "Magic Network Monitoring"
 														}
 													],
 													"items": {
@@ -1453,9 +1461,17 @@
 																"readOnly": true,
 																"type": "string"
 															},
+															"meta": {
+																"description": "Attributes associated to the permission group.",
+																"example": {
+																	"label": "load_balancer_admin",
+																	"scopes": "com.cloudflare.api.account"
+																},
+																"type": "object"
+															},
 															"name": {
 																"description": "Name of the group.",
-																"example": "Load Balancers Write",
+																"example": "Load Balancer",
 																"readOnly": true,
 																"type": "string"
 															}
@@ -1945,11 +1961,19 @@
 															"example": [
 																{
 																	"id": "c8fed203ed3043cba015a93ad1616f1f",
+																	"meta": {
+																		"label": "load_balancer_admin",
+																		"scopes": "com.cloudflare.api.account"
+																	},
 																	"name": "Zone Read"
 																},
 																{
 																	"id": "82e64a83756745bbbb1c9c2701bf816b",
-																	"name": "DNS Read"
+																	"meta": {
+																		"label": "fbm_user",
+																		"scopes": "com.cloudflare.api.account"
+																	},
+																	"name": "Magic Network Monitoring"
 																}
 															],
 															"items": {
@@ -1961,9 +1985,17 @@
 																		"readOnly": true,
 																		"type": "string"
 																	},
+																	"meta": {
+																		"description": "Attributes associated to the permission group.",
+																		"example": {
+																			"label": "load_balancer_admin",
+																			"scopes": "com.cloudflare.api.account"
+																		},
+																		"type": "object"
+																	},
 																	"name": {
 																		"description": "Name of the group.",
-																		"example": "Load Balancers Write",
+																		"example": "Load Balancer",
 																		"readOnly": true,
 																		"type": "string"
 																	}

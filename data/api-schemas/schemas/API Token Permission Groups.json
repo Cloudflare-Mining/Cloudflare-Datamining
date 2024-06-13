@@ -1,0 +1,460 @@
+{
+	"GET /user/tokens/permission_groups": {
+		"description": "Find all available permission groups for API Tokens",
+		"operationId": "permission-groups-list-permission-groups",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": [
+												{
+													"id": "7cf72faf220841aabcfdfab81c43c4f6",
+													"name": "Billing Read",
+													"scopes": [
+														"com.cloudflare.api.account"
+													]
+												},
+												{
+													"id": "9d24387c6e8544e2bc4024a03991339f",
+													"name": "Load Balancing: Monitors and Pools Read",
+													"scopes": [
+														"com.cloudflare.api.account"
+													]
+												},
+												{
+													"id": "d2a1802cc9a34e30852f8b33869b2f3c",
+													"name": "Load Balancing: Monitors and Pools Write",
+													"scopes": [
+														"com.cloudflare.api.account"
+													]
+												},
+												{
+													"id": "8b47d2786a534c08a1f94ee8f9f599ef",
+													"name": "Workers KV Storage Read",
+													"scopes": [
+														"com.cloudflare.api.account"
+													]
+												},
+												{
+													"id": "f7f0eda5697f475c90846e879bab8666",
+													"name": "Workers KV Storage Write",
+													"scopes": [
+														"com.cloudflare.api.account"
+													]
+												},
+												{
+													"id": "1a71c399035b4950a1bd1466bbe4f420",
+													"name": "Workers Scripts Read",
+													"scopes": [
+														"com.cloudflare.api.account"
+													]
+												},
+												{
+													"id": "e086da7e2179491d91ee5f35b3ca210a",
+													"name": "Workers Scripts Write",
+													"scopes": [
+														"com.cloudflare.api.account"
+													]
+												}
+											],
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Token Permission Groups response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": [
+														{
+															"id": "7cf72faf220841aabcfdfab81c43c4f6",
+															"name": "Billing Read",
+															"scopes": [
+																"com.cloudflare.api.account"
+															]
+														},
+														{
+															"id": "9d24387c6e8544e2bc4024a03991339f",
+															"name": "Load Balancing: Monitors and Pools Read",
+															"scopes": [
+																"com.cloudflare.api.account"
+															]
+														},
+														{
+															"id": "d2a1802cc9a34e30852f8b33869b2f3c",
+															"name": "Load Balancing: Monitors and Pools Write",
+															"scopes": [
+																"com.cloudflare.api.account"
+															]
+														},
+														{
+															"id": "8b47d2786a534c08a1f94ee8f9f599ef",
+															"name": "Workers KV Storage Read",
+															"scopes": [
+																"com.cloudflare.api.account"
+															]
+														},
+														{
+															"id": "f7f0eda5697f475c90846e879bab8666",
+															"name": "Workers KV Storage Write",
+															"scopes": [
+																"com.cloudflare.api.account"
+															]
+														},
+														{
+															"id": "1a71c399035b4950a1bd1466bbe4f420",
+															"name": "Workers Scripts Read",
+															"scopes": [
+																"com.cloudflare.api.account"
+															]
+														},
+														{
+															"id": "e086da7e2179491d91ee5f35b3ca210a",
+															"name": "Workers Scripts Write",
+															"scopes": [
+																"com.cloudflare.api.account"
+															]
+														}
+													],
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Token Permission Groups response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List Token Permission Groups",
+		"tags": [
+			"API Token Permission Groups"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.token.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
