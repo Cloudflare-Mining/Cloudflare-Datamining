@@ -11,7 +11,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -23,7 +22,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -359,7 +357,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -371,7 +368,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -717,7 +713,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -729,7 +724,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1065,7 +1059,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1077,7 +1070,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1089,7 +1081,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1425,7 +1416,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1555,7 +1545,6 @@
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"readOnly": true,
 														"type": "string"
 													},
 													"default_sni": {
@@ -1581,13 +1570,11 @@
 														"description": "Identifier",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
 														"type": "string"
 													},
 													"modified_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"readOnly": true,
 														"type": "string"
 													}
 												},
@@ -1729,7 +1716,6 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"readOnly": true,
 																"type": "string"
 															},
 															"default_sni": {
@@ -1755,13 +1741,11 @@
 																"description": "Identifier",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
-																"readOnly": true,
 																"type": "string"
 															},
 															"modified_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"readOnly": true,
 																"type": "string"
 															}
 														},
@@ -1887,7 +1871,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1899,7 +1882,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -2010,7 +1992,6 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"default_sni": {
@@ -2036,13 +2017,11 @@
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"readOnly": true,
 															"type": "string"
 														},
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													},
@@ -2057,7 +2036,6 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"ip": {
@@ -2083,7 +2061,6 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"identifier": {
@@ -2227,7 +2204,6 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"default_sni": {
@@ -2253,13 +2229,11 @@
 																	"description": "Identifier",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"modified_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string"
 																}
 															},
@@ -2274,7 +2248,6 @@
 																			"created_at": {
 																				"example": "2014-01-01T05:20:00.12345Z",
 																				"format": "date-time",
-																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"ip": {
@@ -2300,7 +2273,6 @@
 																			"created_at": {
 																				"example": "2014-01-01T05:20:00.12345Z",
 																				"format": "date-time",
-																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"identifier": {
@@ -2447,7 +2419,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -2459,7 +2430,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -2598,7 +2568,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"default_sni": {
@@ -2624,13 +2593,11 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
 													"type": "string"
 												},
 												"modified_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -2749,7 +2716,6 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"default_sni": {
@@ -2775,13 +2741,11 @@
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"readOnly": true,
 															"type": "string"
 														},
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													},
@@ -2905,7 +2869,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -2949,7 +2912,6 @@
 										"created_at": {
 											"example": "2014-01-01T05:20:00.12345Z",
 											"format": "date-time",
-											"readOnly": true,
 											"type": "string"
 										},
 										"identifier": {
@@ -3084,7 +3046,6 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"default_sni": {
@@ -3110,13 +3071,11 @@
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"readOnly": true,
 															"type": "string"
 														},
 														"modified_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													},
@@ -3131,7 +3090,6 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"ip": {
@@ -3157,7 +3115,6 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"identifier": {
@@ -3301,7 +3258,6 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"default_sni": {
@@ -3327,13 +3283,11 @@
 																	"description": "Identifier",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"modified_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string"
 																}
 															},
@@ -3348,7 +3302,6 @@
 																			"created_at": {
 																				"example": "2014-01-01T05:20:00.12345Z",
 																				"format": "date-time",
-																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"ip": {
@@ -3374,7 +3327,6 @@
 																			"created_at": {
 																				"example": "2014-01-01T05:20:00.12345Z",
 																				"format": "date-time",
-																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"identifier": {
@@ -3521,7 +3473,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -3533,7 +3484,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -3879,7 +3829,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -3891,7 +3840,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -4227,7 +4175,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -4239,7 +4186,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -4251,7 +4197,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
