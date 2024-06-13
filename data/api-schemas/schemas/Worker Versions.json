@@ -24,6 +24,32 @@
 					"maxLength": 32,
 					"type": "string"
 				}
+			},
+			{
+				"description": "Only return versions that can be used in a deployment. Ignores pagination.",
+				"in": "query",
+				"name": "deployable",
+				"schema": {
+					"default": false,
+					"type": "boolean"
+				}
+			},
+			{
+				"description": "Current page.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Items per-page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer"
+				}
 			}
 		],
 		"responses": {
