@@ -2720,735 +2720,332 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"oneOf": [
+							"allOf": [
 								{
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
 											"properties": {
-												"result": {
-													"properties": {
-														"id": {
-															"description": "Membership identifier tag.",
-															"example": "4536bcfad5faccb111b47003c79917fa",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"roles": {
-															"description": "Roles assigned to this member.",
-															"items": {
-																"properties": {
-																	"description": {
-																		"description": "Description of role's permissions.",
-																		"example": "Administrative access to the entire Account",
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"id": {
-																		"description": "Role identifier tag.",
-																		"example": "3536bcfad5faccb999b47003c79917fb",
-																		"maxLength": 32,
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "Role name.",
-																		"example": "Account Administrator",
-																		"maxLength": 120,
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"permissions": {
-																		"allOf": [
-																			{
-																				"example": {
-																					"analytics": {
-																						"read": true,
-																						"write": false
-																					},
-																					"zones": {
-																						"read": true,
-																						"write": true
-																					}
-																				},
-																				"properties": {
-																					"analytics": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					"billing": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					"cache_purge": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					"dns": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					"dns_records": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					"lb": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					"logs": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					"organization": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					"ssl": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					"waf": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					"zone_settings": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					},
-																					"zones": {
-																						"example": {
-																							"read": true,
-																							"write": false
-																						},
-																						"properties": {
-																							"read": {
-																								"example": true,
-																								"type": "boolean"
-																							},
-																							"write": {
-																								"example": true,
-																								"type": "boolean"
-																							}
-																						},
-																						"type": "object"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			{
-																				"readOnly": true
-																			}
-																		]
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"description",
-																	"permissions"
-																],
-																"type": "object"
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
 															},
-															"type": "array"
+															"message": {
+																"type": "string"
+															}
 														},
-														"status": {
-															"description": "A member's status in the account.",
-															"enum": [
-																"accepted",
-																"pending"
-															],
-															"example": "accepted",
-															"readOnly": true
-														},
-														"user": {
-															"description": "Details of the user associated to the membership.",
-															"properties": {
-																"email": {
-																	"description": "The contact email address of the user.",
-																	"example": "user@example.com",
-																	"maxLength": 90,
-																	"type": "string"
-																},
-																"first_name": {
-																	"description": "User's first name",
-																	"example": "John",
-																	"maxLength": 60,
-																	"nullable": true,
-																	"type": "string"
-																},
-																"id": {
-																	"description": "Identifier",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"type": "string"
-																},
-																"last_name": {
-																	"description": "User's last name",
-																	"example": "Appleseed",
-																	"maxLength": 60,
-																	"nullable": true,
-																	"type": "string"
-																},
-																"two_factor_authentication_enabled": {
-																	"default": false,
-																	"description": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.",
-																	"readOnly": true,
-																	"type": "boolean"
-																}
-															},
-															"readOnly": true,
-															"required": [
-																"email"
-															],
-															"type": "object"
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"type": "object"
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
 												}
 											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
 											"type": "object"
 										}
 									],
-									"title": "response_with_roles"
+									"type": "object"
 								},
 								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
+									"properties": {
+										"result": {
 											"properties": {
-												"result": {
+												"id": {
+													"description": "Membership identifier tag.",
+													"example": "4536bcfad5faccb111b47003c79917fa",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"policies": {
+													"description": "Access policy for the membership",
+													"items": {
+														"properties": {
+															"access": {
+																"description": "Allow or deny operations against the resources.",
+																"enum": [
+																	"allow",
+																	"deny"
+																],
+																"example": "allow",
+																"type": "string"
+															},
+															"id": {
+																"description": "Policy identifier.",
+																"example": "f267e341f3dd4697bd3b9f71dd96247f",
+																"readOnly": true,
+																"type": "string"
+															},
+															"permission_groups": {
+																"description": "A set of permission groups that are specified to the policy.",
+																"example": [
+																	{
+																		"id": "c8fed203ed3043cba015a93ad1616f1f",
+																		"meta": {
+																			"label": "load_balancer_admin",
+																			"scopes": "com.cloudflare.api.account"
+																		},
+																		"name": "Zone Read"
+																	},
+																	{
+																		"id": "82e64a83756745bbbb1c9c2701bf816b",
+																		"meta": {
+																			"label": "fbm_user",
+																			"scopes": "com.cloudflare.api.account"
+																		},
+																		"name": "Magic Network Monitoring"
+																	}
+																],
+																"items": {
+																	"description": "A named group of permissions that map to a group of operations against resources.",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the group.",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the permission group.",
+																			"example": {
+																				"label": "load_balancer_admin",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"type": "object"
+																		},
+																		"name": {
+																			"description": "Name of the group.",
+																			"example": "Load Balancer",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"resource_groups": {
+																"description": "A list of resource groups that the policy applies to.",
+																"items": {
+																	"description": "A group of scoped resources.",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the group.",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the resource group.",
+																			"example": {
+																				"editable": "false"
+																			},
+																			"type": "object"
+																		},
+																		"name": {
+																			"description": "Name of the resource group.",
+																			"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"scope": {
+																			"description": "The scope associated to the resource group",
+																			"items": {
+																				"description": "A scope is a combination of scope objects which provides additional context.",
+																				"properties": {
+																					"key": {
+																						"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																						"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																						"readOnly": true
+																					},
+																					"objects": {
+																						"description": "A list of scope objects for additional context.",
+																						"items": {
+																							"description": "A scope object represents any resource that can have actions applied against invite.",
+																							"properties": {
+																								"key": {
+																									"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																									"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																									"readOnly": true
+																								}
+																							},
+																							"required": [
+																								"key"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"key",
+																					"objects"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"scope"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"title": "list_member_policy"
+													},
+													"type": "array"
+												},
+												"roles": {
+													"description": "Roles assigned to this Member.",
+													"items": {
+														"properties": {
+															"description": {
+																"description": "Description of role's permissions.",
+																"example": "Administrative access to the entire Organization",
+																"readOnly": true,
+																"type": "string"
+															},
+															"id": {
+																"description": "Role identifier tag.",
+																"example": "3536bcfad5faccb999b47003c79917fb",
+																"maxLength": 32,
+																"type": "string"
+															},
+															"name": {
+																"description": "Role Name.",
+																"example": "Organization Admin",
+																"maxLength": 120,
+																"readOnly": true,
+																"type": "string"
+															},
+															"permissions": {
+																"description": "Access permissions for this User.",
+																"items": {
+																	"example": "#zones:read",
+																	"maxLength": 160,
+																	"type": "string"
+																},
+																"readOnly": true,
+																"type": "array"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"description",
+															"permissions"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"status": {
+													"description": "A member's status in the account.",
+													"enum": [
+														"accepted",
+														"pending"
+													],
+													"example": "accepted",
+													"readOnly": true
+												},
+												"user": {
+													"description": "Details of the user associated to the membership.",
 													"properties": {
+														"email": {
+															"description": "The contact email address of the user.",
+															"example": "user@example.com",
+															"maxLength": 90,
+															"type": "string"
+														},
+														"first_name": {
+															"description": "User's first name",
+															"example": "John",
+															"maxLength": 60,
+															"nullable": true,
+															"type": "string"
+														},
 														"id": {
-															"description": "Membership identifier tag.",
-															"example": "4536bcfad5faccb111b47003c79917fa",
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
 															"type": "string"
 														},
-														"policies": {
-															"description": "Access policy for the membership",
-															"items": {
-																"properties": {
-																	"access": {
-																		"description": "Allow or deny operations against the resources.",
-																		"enum": [
-																			"allow",
-																			"deny"
-																		],
-																		"example": "allow",
-																		"type": "string"
-																	},
-																	"id": {
-																		"description": "Policy identifier.",
-																		"example": "f267e341f3dd4697bd3b9f71dd96247f",
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"permission_groups": {
-																		"description": "A set of permission groups that are specified to the policy.",
-																		"example": [
-																			{
-																				"id": "c8fed203ed3043cba015a93ad1616f1f",
-																				"meta": {
-																					"label": "load_balancer_admin",
-																					"scopes": "com.cloudflare.api.account"
-																				},
-																				"name": "Zone Read"
-																			},
-																			{
-																				"id": "82e64a83756745bbbb1c9c2701bf816b",
-																				"meta": {
-																					"label": "fbm_user",
-																					"scopes": "com.cloudflare.api.account"
-																				},
-																				"name": "Magic Network Monitoring"
-																			}
-																		],
-																		"items": {
-																			"description": "A named group of permissions that map to a group of operations against resources.",
-																			"properties": {
-																				"id": {
-																					"description": "Identifier of the group.",
-																					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																					"readOnly": true,
-																					"type": "string"
-																				},
-																				"meta": {
-																					"description": "Attributes associated to the permission group.",
-																					"example": {
-																						"label": "load_balancer_admin",
-																						"scopes": "com.cloudflare.api.account"
-																					},
-																					"type": "object"
-																				},
-																				"name": {
-																					"description": "Name of the group.",
-																					"example": "Load Balancer",
-																					"readOnly": true,
-																					"type": "string"
-																				}
-																			},
-																			"required": [
-																				"id"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
-																	},
-																	"resource_groups": {
-																		"description": "A list of resource groups that the policy applies to.",
-																		"items": {
-																			"description": "A group of scoped resources.",
-																			"properties": {
-																				"id": {
-																					"description": "Identifier of the group.",
-																					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																					"readOnly": true,
-																					"type": "string"
-																				},
-																				"meta": {
-																					"description": "Attributes associated to the resource group.",
-																					"example": {
-																						"editable": "false"
-																					},
-																					"type": "object"
-																				},
-																				"name": {
-																					"description": "Name of the resource group.",
-																					"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-																					"readOnly": true,
-																					"type": "string"
-																				},
-																				"scope": {
-																					"description": "The scope associated to the resource group",
-																					"items": {
-																						"description": "A scope is a combination of scope objects which provides additional context.",
-																						"properties": {
-																							"key": {
-																								"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-																								"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-																								"readOnly": true
-																							},
-																							"objects": {
-																								"description": "A list of scope objects for additional context.",
-																								"items": {
-																									"description": "A scope object represents any resource that can have actions applied against invite.",
-																									"properties": {
-																										"key": {
-																											"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-																											"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-																											"readOnly": true
-																										}
-																									},
-																									"required": [
-																										"key"
-																									],
-																									"type": "object"
-																								},
-																								"type": "array"
-																							}
-																						},
-																						"required": [
-																							"key",
-																							"objects"
-																						],
-																						"type": "object"
-																					},
-																					"type": "array"
-																				}
-																			},
-																			"required": [
-																				"id",
-																				"scope"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
-																	}
-																},
-																"title": "list_member_policy"
-															},
-															"type": "array"
+														"last_name": {
+															"description": "User's last name",
+															"example": "Appleseed",
+															"maxLength": 60,
+															"nullable": true,
+															"type": "string"
 														},
-														"roles": {
-															"description": "Roles assigned to this Member.",
-															"items": {
-																"properties": {
-																	"description": {
-																		"description": "Description of role's permissions.",
-																		"example": "Administrative access to the entire Organization",
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"id": {
-																		"description": "Role identifier tag.",
-																		"example": "3536bcfad5faccb999b47003c79917fb",
-																		"maxLength": 32,
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "Role Name.",
-																		"example": "Organization Admin",
-																		"maxLength": 120,
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"permissions": {
-																		"description": "Access permissions for this User.",
-																		"items": {
-																			"example": "#zones:read",
-																			"maxLength": 160,
-																			"type": "string"
-																		},
-																		"readOnly": true,
-																		"type": "array"
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"description",
-																	"permissions"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"status": {
-															"description": "A member's status in the account.",
-															"enum": [
-																"accepted",
-																"pending"
-															],
-															"example": "accepted",
-															"readOnly": true
-														},
-														"user": {
-															"description": "Details of the user associated to the membership.",
-															"properties": {
-																"email": {
-																	"description": "The contact email address of the user.",
-																	"example": "user@example.com",
-																	"maxLength": 90,
-																	"type": "string"
-																},
-																"first_name": {
-																	"description": "User's first name",
-																	"example": "John",
-																	"maxLength": 60,
-																	"nullable": true,
-																	"type": "string"
-																},
-																"id": {
-																	"description": "Identifier",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"type": "string"
-																},
-																"last_name": {
-																	"description": "User's last name",
-																	"example": "Appleseed",
-																	"maxLength": 60,
-																	"nullable": true,
-																	"type": "string"
-																},
-																"two_factor_authentication_enabled": {
-																	"default": false,
-																	"description": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.",
-																	"readOnly": true,
-																	"type": "boolean"
-																}
-															},
+														"two_factor_authentication_enabled": {
+															"default": false,
+															"description": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.",
 															"readOnly": true,
-															"required": [
-																"email"
-															],
-															"type": "object"
+															"type": "boolean"
 														}
 													},
+													"readOnly": true,
+													"required": [
+														"email"
+													],
 													"type": "object"
 												}
 											},
 											"type": "object"
 										}
-									],
-									"title": "Response with Policies"
+									},
+									"type": "object"
 								}
-							]
+							],
+							"title": "Response with Policies"
 						}
 					}
 				},
