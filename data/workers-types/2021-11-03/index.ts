@@ -864,6 +864,7 @@ export declare class Blob {
   slice(start?: number, end?: number, type?: string): Blob;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/arrayBuffer) */
   arrayBuffer(): Promise<ArrayBuffer>;
+  bytes(): Promise<Uint8Array>;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/text) */
   text(): Promise<string>;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/stream) */
@@ -1344,6 +1345,7 @@ export declare abstract class Body {
   readonly body: ReadableStream | null;
   readonly bodyUsed: boolean;
   arrayBuffer(): Promise<ArrayBuffer>;
+  bytes(): Promise<Uint8Array>;
   text(): Promise<string>;
   json<T>(): Promise<T>;
   formData(): Promise<FormData>;
@@ -4712,6 +4714,15 @@ export interface VectorizeVectorMutation {
   ids: string[];
   /* Total count of the number of processed vectors. */
   count: number;
+}
+/**
+ * Results of an operation that performed a mutation on a set of vectors
+ * with the v2 version of Vectorize.
+ * Here, `mutationId` is the identifier for the last mutation processed by Vectorize.
+ */
+export interface VectorizeVectorMutationV2 {
+  /* The identifier for the last mutation processed by Vectorize. */
+  mutationId: string;
 }
 export declare abstract class VectorizeIndex {
   /**
