@@ -876,7 +876,6 @@ const navigation = {
 		}, {
 			title: "navigation.zone.rules.page_rules",
 			url: "/rules",
-			labels: ["legacy"],
 			navigationType: "version"
 		}, {
 			title: "navigation.zone.rules.settings",
