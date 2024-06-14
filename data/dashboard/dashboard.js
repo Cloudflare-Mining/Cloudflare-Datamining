@@ -755,8 +755,8 @@
 				}, [b.search])
 			};
 			var Jt = n("../react/common/components/SAMLSubmit/SAMLSubmit.tsx");
-			const Xt = Ae().lazy(() => Promise.all([n.e(2480), n.e(99992), n.e(4616), n.e(72019), n.e(19462), n.e(91561), n.e(2554), n.e(7484), n.e(39760), n.e(2180), n.e(22734), n.e(35812), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
-				Ke = Ae().lazy(() => Promise.all([n.e(99992), n.e(91561), n.e(2180), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
+			const Xt = Ae().lazy(() => Promise.all([n.e(2480), n.e(99992), n.e(4616), n.e(72019), n.e(19462), n.e(36273), n.e(2554), n.e(7484), n.e(39760), n.e(2180), n.e(22734), n.e(94452), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				Ke = Ae().lazy(() => Promise.all([n.e(99992), n.e(36273), n.e(2180), n.e(69088), n.e(94452), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var sn = ({
 					userIsAuthed: b
 				}) => {
@@ -882,10 +882,10 @@
 				n.g.build = mn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "7780c4caea1120491eb451ca076052f49298c6a8",
-					dashVersion: "33806c7e0f77c3448e1849db1573f20dc4dbf4e6",
+					commit: "cfe442b69e1761e2f3f45bf65560428e23b30cf8",
+					dashVersion: "f3d9fc181b99405af9a150763e57a2d4d229ab97",
 					env: "production",
-					builtAt: 1718358290368,
+					builtAt: 1718377886014,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",

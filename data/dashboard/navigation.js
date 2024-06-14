@@ -245,12 +245,12 @@ const navigation = {
 			url: "/network-security/ddos",
 			hasPermission: T => {
 				const ge = !!(0, a.Wq)(T) && !!(0, a.fO)(T);
-				return (0, ne.EL)(T) && ge
+				return (0, oe.EL)(T) && ge
 			}
 		}, {
 			title: "navigation.account.l3l4.ddos.ddos_protection",
 			url: "/network-security/ddos-protection/settings",
-			hasPermission: T => (0, ne.EL)(T) && (0, a.Tk)(T)
+			hasPermission: T => (0, oe.EL)(T) && (0, a.Tk)(T)
 		}]
 	}, {
 		title: "navigation.account.ip_addresses",
@@ -384,7 +384,7 @@ const navigation = {
 		url: "/workers-for-platforms",
 		iconType: "workers-for-platforms",
 		testId: "workers-for-platforms",
-		hasPermission: T => (0, a.iY)(T) && (0, K.k)(T)
+		hasPermission: T => (0, a.iY)(T) && (0, Y.k)(T)
 	}, {
 		title: "navigation.account.workers.ai",
 		url: "/ai/workers-ai",
@@ -606,7 +606,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: T => !!(0, q.V)(T)
+			hasPermission: T => !!(0, ee.V)(T)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -615,7 +615,7 @@ const navigation = {
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
 		tabs: N.bB,
-		hasPermission: T => !(0, l.yD)(T) && (0, D.m7)(T)
+		hasPermission: T => !(0, l.yD)(T) && (0, A.m7)(T)
 	}, {
 		title: "navigation.zone.dns",
 		url: "/dns",
@@ -675,8 +675,8 @@ const navigation = {
 			if ((0, l.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !ge) return !1;
 			const Ee = !!((0, h.l8)(T) || (0, y.DQ)(T)),
 				de = !!(0, y.ZB)(T, "spectrum", "enabled"),
-				j = !!(0, y.Ns)(ge);
-			return de || Ee || !j
+				K = !!(0, y.Ns)(ge);
+			return de || Ee || !K
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -795,7 +795,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: B.x
+			tabs: U.x
 		}]
 	}, {
 		title: "navigation.zone.caching",
@@ -852,12 +852,12 @@ const navigation = {
 			url: "/rules/snippets",
 			labels: ["alpha"],
 			navigationType: "version",
-			hasPermission: T => (!!(0, R.GM)(T) || !!(0, e.z1)("snippets-enabled")(T)) && (0, a.$n)(T, "waf", "page-rule", "read")
+			hasPermission: T => (!!(0, j.GM)(T) || !!(0, e.z1)("snippets-enabled")(T)) && (0, a.$n)(T, "waf", "page-rule", "read")
 		}, {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: A.m
+			tabs: D.m
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			url: "/rules/redirect-rules",
@@ -1023,5 +1023,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: k.G
+	support: R.G
 }
