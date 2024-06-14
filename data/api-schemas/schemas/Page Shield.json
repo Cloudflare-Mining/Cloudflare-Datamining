@@ -1,7 +1,7 @@
 {
 	"DELETE /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"description": "Delete a Page Shield policy by ID.",
-		"operationId": "page-shield-delete-a-page-shield-policy",
+		"operationId": "page-shield-delete-policy",
 		"parameters": [
 			{
 				"in": "path",
@@ -20,10 +20,10 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "The ID of the policy.",
-					"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"minLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -36,134 +36,70 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"action": {
-													"description": "The action to take if the expression matches",
-													"enum": [
-														"allow",
-														"log"
-													],
-													"example": "allow",
-													"type": "string"
-												},
-												"description": {
-													"description": "A description for the policy",
-													"example": "Checkout page CSP policy",
-													"type": "string"
-												},
-												"enabled": {
-													"description": "Whether the policy is enabled",
-													"example": true,
-													"type": "boolean"
-												},
-												"expression": {
-													"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
-													"example": "ends_with(http.request.uri.path, \"/checkout\")",
-													"type": "string"
-												},
-												"id": {
-													"description": "The ID of the policy",
-													"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
-													"type": "string"
-												},
-												"value": {
-													"description": "The policy which will be applied",
-													"example": "script-src 'none';",
-													"type": "string"
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
 											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
 										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
 									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -189,7 +125,7 @@
 	},
 	"GET /zones/{zone_id}/page_shield": {
 		"description": "Fetches the Page Shield settings.",
-		"operationId": "page-shield-get-page-shield-settings",
+		"operationId": "page-shield-get-settings",
 		"parameters": [
 			{
 				"in": "path",
@@ -213,111 +149,73 @@
 								{
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
 															},
-															"type": "array"
+															"message": {
+																"type": "string"
+															}
 														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
+													"type": "array"
 												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
 												}
+											},
+											"required": [
+												"success"
 											],
 											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
+													"nullable": true,
 													"type": "object"
 												}
 											}
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -343,7 +241,13 @@
 													"example": true,
 													"type": "boolean"
 												}
-											}
+											},
+											"required": [
+												"enabled",
+												"updated_at",
+												"use_cloudflare_reporting_endpoint",
+												"use_connection_url_path"
+											]
 										}
 									}
 								}
@@ -357,233 +261,70 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"allOf": [
-														{
-															"properties": {
-																"errors": {
-																	"example": [],
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"minimum": 1000,
-																				"type": "integer"
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"type": "array"
-																},
-																"messages": {
-																	"example": [],
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"minimum": 1000,
-																				"type": "integer"
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"type": "array"
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Whether the API call was successful",
-																	"enum": [
-																		true
-																	],
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																}
-															}
-														}
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "object"
-														}
-													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"enabled": {
-															"description": "When true, indicates that Page Shield is enabled.",
-															"example": true,
-															"type": "boolean"
-														},
-														"updated_at": {
-															"description": "The timestamp of when Page Shield was last updated.",
-															"example": "2022-10-12T17:56:52.083582+01:00",
-															"type": "string"
-														},
-														"use_cloudflare_reporting_endpoint": {
-															"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
-															"example": true,
-															"type": "boolean"
-														},
-														"use_connection_url_path": {
-															"description": "When true, the paths associated with connections URLs will also be analyzed.",
-															"example": true,
-															"type": "boolean"
-														}
-													}
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
 											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
 										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
 									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -609,7 +350,7 @@
 	},
 	"GET /zones/{zone_id}/page_shield/connections": {
 		"description": "Lists all connections detected by Page Shield.",
-		"operationId": "page-shield-list-page-shield-connections",
+		"operationId": "page-shield-list-connections",
 		"parameters": [
 			{
 				"in": "path",
@@ -797,20 +538,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -821,20 +548,12 @@
 												}
 											},
 											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+												"success"
 											],
 											"type": "object"
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -856,11 +575,26 @@
 															"description": "Total results available without any search parameters",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages",
+															"example": 100,
+															"type": "number"
 														}
 													},
+													"required": [
+														"page",
+														"per_page",
+														"count",
+														"total_count",
+														"total_pages"
+													],
 													"type": "object"
 												}
-											}
+											},
+											"required": [
+												"result_info"
+											]
 										}
 									],
 									"type": "object"
@@ -871,66 +605,91 @@
 											"items": {
 												"properties": {
 													"added_at": {
-														"example": "2021-08-18T10:51:10.09615Z"
+														"example": "2021-08-18T10:51:10.09615Z",
+														"format": "date-time",
+														"type": "string"
 													},
 													"domain_reported_malicious": {
-														"example": false
+														"example": false,
+														"type": "boolean"
 													},
 													"first_page_url": {
-														"example": "blog.cloudflare.com/page"
+														"example": "blog.cloudflare.com/page",
+														"type": "string"
 													},
 													"first_seen_at": {
-														"example": "2021-08-18T10:51:08Z"
+														"example": "2021-08-18T10:51:08Z",
+														"format": "date-time",
+														"type": "string"
 													},
 													"host": {
-														"example": "blog.cloudflare.com"
+														"example": "blog.cloudflare.com",
+														"type": "string"
 													},
 													"id": {
-														"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
 													},
 													"last_seen_at": {
-														"example": "2021-09-02T09:57:54Z"
+														"example": "2021-09-02T09:57:54Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"malicious_domain_categories": {
+														"example": [
+															"Malware"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"malicious_url_categories": {
+														"example": [
+															"Malware"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
 													},
 													"page_urls": {
 														"example": [
 															"blog.cloudflare.com/page1",
 															"blog.cloudflare.com/page2"
-														]
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
 													},
 													"url": {
-														"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+														"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js",
+														"type": "string"
 													},
 													"url_contains_cdn_cgi_path": {
-														"example": false
+														"example": false,
+														"type": "boolean"
+													},
+													"url_reported_malicious": {
+														"example": false,
+														"type": "boolean"
 													}
-												}
+												},
+												"required": [
+													"id",
+													"url",
+													"added_at",
+													"first_seen_at",
+													"last_seen_at",
+													"host",
+													"url_contains_cdn_cgi_path"
+												]
 											},
 											"type": "array"
-										},
-										"result_info": {
-											"properties": {
-												"count": {
-													"description": "Total number of results for the requested service",
-													"example": 1,
-													"type": "number"
-												},
-												"page": {
-													"description": "Current page within paginated list of results",
-													"example": 1,
-													"type": "number"
-												},
-												"per_page": {
-													"description": "Number of results per page of results",
-													"example": 20,
-													"type": "number"
-												},
-												"total_count": {
-													"description": "Total results available without any search parameters",
-													"example": 2000,
-													"type": "number"
-												}
-											},
-											"type": "object"
 										}
 									},
 									"type": "object"
@@ -945,280 +704,70 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"properties": {
-															"added_at": {
-																"example": "2021-08-18T10:51:10.09615Z"
-															},
-															"domain_reported_malicious": {
-																"example": false
-															},
-															"first_page_url": {
-																"example": "blog.cloudflare.com/page"
-															},
-															"first_seen_at": {
-																"example": "2021-08-18T10:51:08Z"
-															},
-															"host": {
-																"example": "blog.cloudflare.com"
-															},
-															"id": {
-																"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
-															},
-															"last_seen_at": {
-																"example": "2021-09-02T09:57:54Z"
-															},
-															"page_urls": {
-																"example": [
-																	"blog.cloudflare.com/page1",
-																	"blog.cloudflare.com/page2"
-																]
-															},
-															"url": {
-																"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
-															},
-															"url_contains_cdn_cgi_path": {
-																"example": false
-															}
-														}
-													},
-													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
 											},
-											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
+											"message": {
+												"type": "string"
+											}
 										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
 									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1244,7 +793,7 @@
 	},
 	"GET /zones/{zone_id}/page_shield/connections/{connection_id}": {
 		"description": "Fetches a connection detected by Page Shield by connection ID.",
-		"operationId": "page-shield-get-a-page-shield-connection",
+		"operationId": "page-shield-get-connection",
 		"parameters": [
 			{
 				"in": "path",
@@ -1263,10 +812,10 @@
 				"name": "connection_id",
 				"required": true,
 				"schema": {
-					"description": "The ID of the resource.",
-					"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"minLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1278,41 +827,169 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"added_at": {
-											"example": "2021-08-18T10:51:10.09615Z"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
 										},
-										"domain_reported_malicious": {
-											"example": false
-										},
-										"first_page_url": {
-											"example": "blog.cloudflare.com/page"
-										},
-										"first_seen_at": {
-											"example": "2021-08-18T10:51:08Z"
-										},
-										"host": {
-											"example": "blog.cloudflare.com"
-										},
-										"id": {
-											"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
-										},
-										"last_seen_at": {
-											"example": "2021-09-02T09:57:54Z"
-										},
-										"page_urls": {
-											"example": [
-												"blog.cloudflare.com/page1",
-												"blog.cloudflare.com/page2"
-											]
-										},
-										"url": {
-											"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
-										},
-										"url_contains_cdn_cgi_path": {
-											"example": false
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
 										}
-									}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"added_at": {
+													"example": "2021-08-18T10:51:10.09615Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"domain_reported_malicious": {
+													"example": false,
+													"type": "boolean"
+												},
+												"first_page_url": {
+													"example": "blog.cloudflare.com/page",
+													"type": "string"
+												},
+												"first_seen_at": {
+													"example": "2021-08-18T10:51:08Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"host": {
+													"example": "blog.cloudflare.com",
+													"type": "string"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"last_seen_at": {
+													"example": "2021-09-02T09:57:54Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"malicious_domain_categories": {
+													"example": [
+														"Malware"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"malicious_url_categories": {
+													"example": [
+														"Malware"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"page_urls": {
+													"example": [
+														"blog.cloudflare.com/page1",
+														"blog.cloudflare.com/page2"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"url": {
+													"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js",
+													"type": "string"
+												},
+												"url_contains_cdn_cgi_path": {
+													"example": false,
+													"type": "boolean"
+												},
+												"url_reported_malicious": {
+													"example": false,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"id",
+												"url",
+												"added_at",
+												"first_seen_at",
+												"last_seen_at",
+												"host",
+												"url_contains_cdn_cgi_path"
+											]
+										}
+									},
+									"required": [
+										"result"
+									]
 								}
 							]
 						}
@@ -1324,133 +1001,70 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"added_at": {
-													"example": "2021-08-18T10:51:10.09615Z"
-												},
-												"domain_reported_malicious": {
-													"example": false
-												},
-												"first_page_url": {
-													"example": "blog.cloudflare.com/page"
-												},
-												"first_seen_at": {
-													"example": "2021-08-18T10:51:08Z"
-												},
-												"host": {
-													"example": "blog.cloudflare.com"
-												},
-												"id": {
-													"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
-												},
-												"last_seen_at": {
-													"example": "2021-09-02T09:57:54Z"
-												},
-												"page_urls": {
-													"example": [
-														"blog.cloudflare.com/page1",
-														"blog.cloudflare.com/page2"
-													]
-												},
-												"url": {
-													"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
-												},
-												"url_contains_cdn_cgi_path": {
-													"example": false
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
 											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
 										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
 									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1474,9 +1088,786 @@
 			"pro": false
 		}
 	},
+	"GET /zones/{zone_id}/page_shield/cookies": {
+		"description": "Lists all cookies collected by Page Shield.",
+		"operationId": "page-shield-list-cookies",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hosts",
+				"schema": {
+					"description": "Includes cookies that match one or more URL-encoded hostnames separated by commas.\n\nWildcards are supported at the start and end of each hostname to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "blog.cloudflare.com,www.example*,*cloudflare.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"description": "The current page number of the paginated results.\n",
+					"example": 2,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"description": "The number of results per page.",
+					"example": 100,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"description": "The field used to sort returned cookies.",
+					"enum": [
+						"first_seen_at",
+						"last_seen_at"
+					],
+					"example": "first_seen_at",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"description": "The direction used to sort returned cookies.'",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "asc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page_url",
+				"schema": {
+					"description": "Includes connections that match one or more page URLs (separated by commas) where they were last seen\n\nWildcards are supported at the start and end of each page URL to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "example.com/page,*/checkout,example.com/*,*checkout*",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "export",
+				"schema": {
+					"description": "Export the list of cookies as a file. Cannot be used with per_page or page options.",
+					"enum": [
+						"csv"
+					],
+					"example": "csv",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Filters the returned cookies that match the specified name.\nWildcards are supported at the start and end to support starts with, ends with\nand contains. e.g. session*\n",
+					"example": "session_id",
+					"maxLength": 1024,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "secure",
+				"schema": {
+					"description": "Filters the returned cookies that are set with Secure",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "http_only",
+				"schema": {
+					"description": "Filters the returned cookies that are set with HttpOnly",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "same_site",
+				"schema": {
+					"description": "Filters the returned cookies that match the specified same_site attribute",
+					"enum": [
+						"lax",
+						"strict",
+						"none"
+					],
+					"example": "strict",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "type",
+				"schema": {
+					"description": "Filters the returned cookies that match the specified type attribute",
+					"enum": [
+						"first_party",
+						"unknown"
+					],
+					"example": "first_party",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "path",
+				"schema": {
+					"description": "Filters the returned cookies that match the specified path attribute",
+					"example": "/",
+					"maxLength": 1024,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "domain",
+				"schema": {
+					"description": "Filters the returned cookies that match the specified domain attribute",
+					"example": "example.com",
+					"maxLength": 1024,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"required": [
+														"page",
+														"per_page",
+														"count",
+														"total_count",
+														"total_pages"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"result_info"
+											]
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"domain_attribute": {
+														"example": "cloudflare.com",
+														"type": "string"
+													},
+													"expires_attribute": {
+														"example": "2021-10-02T09:57:54Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"first_seen_at": {
+														"example": "2021-08-18T10:51:08Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"host": {
+														"example": "blog.cloudflare.com",
+														"type": "string"
+													},
+													"http_only_attribute": {
+														"example": true,
+														"type": "boolean"
+													},
+													"id": {
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"last_seen_at": {
+														"example": "2021-09-02T09:57:54Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"max_age_attribute": {
+														"example": 3600,
+														"type": "integer"
+													},
+													"name": {
+														"example": "session_id",
+														"type": "string"
+													},
+													"page_urls": {
+														"example": [
+															"blog.cloudflare.com/page1",
+															"blog.cloudflare.com/page2"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"path_attribute": {
+														"example": "/",
+														"type": "string"
+													},
+													"same_site_attribute": {
+														"enum": [
+															"lax",
+															"strict",
+															"none"
+														],
+														"example": "strict",
+														"type": "string"
+													},
+													"secure_attribute": {
+														"example": true,
+														"type": "boolean"
+													},
+													"type": {
+														"enum": [
+															"first_party",
+															"unknown"
+														],
+														"example": "first_party",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"type",
+													"name",
+													"host",
+													"first_seen_at",
+													"last_seen_at"
+												]
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Page Shield cookies response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Page Shield cookies response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Page Shield Cookies",
+		"tags": [
+			"Page Shield"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/page_shield/cookies/{cookie_id}": {
+		"description": "Fetches a cookie collected by Page Shield by cookie ID.",
+		"operationId": "page-shield-get-cookie",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "cookie_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"domain_attribute": {
+													"example": "cloudflare.com",
+													"type": "string"
+												},
+												"expires_attribute": {
+													"example": "2021-10-02T09:57:54Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"first_seen_at": {
+													"example": "2021-08-18T10:51:08Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"host": {
+													"example": "blog.cloudflare.com",
+													"type": "string"
+												},
+												"http_only_attribute": {
+													"example": true,
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"last_seen_at": {
+													"example": "2021-09-02T09:57:54Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"max_age_attribute": {
+													"example": 3600,
+													"type": "integer"
+												},
+												"name": {
+													"example": "session_id",
+													"type": "string"
+												},
+												"page_urls": {
+													"example": [
+														"blog.cloudflare.com/page1",
+														"blog.cloudflare.com/page2"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"path_attribute": {
+													"example": "/",
+													"type": "string"
+												},
+												"same_site_attribute": {
+													"enum": [
+														"lax",
+														"strict",
+														"none"
+													],
+													"example": "strict",
+													"type": "string"
+												},
+												"secure_attribute": {
+													"example": true,
+													"type": "boolean"
+												},
+												"type": {
+													"enum": [
+														"first_party",
+														"unknown"
+													],
+													"example": "first_party",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"type",
+												"name",
+												"host",
+												"first_seen_at",
+												"last_seen_at"
+											]
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Page Shield cookie response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get a Page Shield cookie response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a Page Shield cookie",
+		"tags": [
+			"Page Shield"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
 	"GET /zones/{zone_id}/page_shield/policies": {
 		"description": "Lists all Page Shield policies.",
-		"operationId": "page-shield-list-page-shield-policies",
+		"operationId": "page-shield-list-policies",
 		"parameters": [
 			{
 				"in": "path",
@@ -1543,20 +1934,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -1567,20 +1944,12 @@
 												}
 											},
 											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+												"success"
 											],
 											"type": "object"
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -1602,11 +1971,26 @@
 															"description": "Total results available without any search parameters",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages",
+															"example": 100,
+															"type": "number"
 														}
 													},
+													"required": [
+														"page",
+														"per_page",
+														"count",
+														"total_count",
+														"total_pages"
+													],
 													"type": "object"
 												}
-											}
+											},
+											"required": [
+												"result_info"
+											]
 										}
 									],
 									"type": "object"
@@ -1615,179 +1999,8 @@
 									"properties": {
 										"result": {
 											"items": {
-												"properties": {
-													"action": {
-														"description": "The action to take if the expression matches",
-														"enum": [
-															"allow",
-															"log"
-														],
-														"example": "allow",
-														"type": "string"
-													},
-													"description": {
-														"description": "A description for the policy",
-														"example": "Checkout page CSP policy",
-														"type": "string"
-													},
-													"enabled": {
-														"description": "Whether the policy is enabled",
-														"example": true,
-														"type": "boolean"
-													},
-													"expression": {
-														"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
-														"example": "ends_with(http.request.uri.path, \"/checkout\")",
-														"type": "string"
-													},
-													"id": {
-														"description": "The ID of the policy",
-														"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
-														"type": "string"
-													},
-													"value": {
-														"description": "The policy which will be applied",
-														"example": "script-src 'none';",
-														"type": "string"
-													}
-												}
-											},
-											"type": "array"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "List Page Shield policies response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
+												"allOf": [
+													{
 														"properties": {
 															"action": {
 																"description": "The action to take if the expression matches",
@@ -1813,110 +2026,126 @@
 																"example": "ends_with(http.request.uri.path, \"/checkout\")",
 																"type": "string"
 															},
-															"id": {
-																"description": "The ID of the policy",
-																"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
-																"type": "string"
-															},
 															"value": {
 																"description": "The policy which will be applied",
 																"example": "script-src 'none';",
 																"type": "string"
 															}
-														}
+														},
+														"required": [
+															"description",
+															"action",
+															"expression",
+															"enabled",
+															"value"
+														]
 													},
-													"type": "array"
-												}
+													{
+														"properties": {
+															"id": {
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"required": [
+															"id"
+														]
+													}
+												],
+												"required": [
+													"id",
+													"description",
+													"action",
+													"expression",
+													"enabled",
+													"value"
+												]
 											},
-											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
+											"type": "array"
 										}
 									},
 									"required": [
-										"success",
-										"errors",
-										"messages",
 										"result"
 									],
 									"type": "object"
 								}
 							]
+						}
+					}
+				},
+				"description": "List Page Shield policies response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1942,7 +2171,7 @@
 	},
 	"GET /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"description": "Fetches a Page Shield policy by ID.",
-		"operationId": "page-shield-get-a-page-shield-policy",
+		"operationId": "page-shield-get-policy",
 		"parameters": [
 			{
 				"in": "path",
@@ -1961,10 +2190,10 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "The ID of the policy.",
-					"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"minLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1976,42 +2205,148 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"action": {
-											"description": "The action to take if the expression matches",
-											"enum": [
-												"allow",
-												"log"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
 											],
-											"example": "allow",
-											"type": "string"
+											"type": "object"
 										},
-										"description": {
-											"description": "A description for the policy",
-											"example": "Checkout page CSP policy",
-											"type": "string"
-										},
-										"enabled": {
-											"description": "Whether the policy is enabled",
-											"example": true,
-											"type": "boolean"
-										},
-										"expression": {
-											"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
-											"example": "ends_with(http.request.uri.path, \"/checkout\")",
-											"type": "string"
-										},
-										"id": {
-											"description": "The ID of the policy",
-											"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
-											"type": "string"
-										},
-										"value": {
-											"description": "The policy which will be applied",
-											"example": "script-src 'none';",
-											"type": "string"
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
 										}
-									}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"action": {
+															"description": "The action to take if the expression matches",
+															"enum": [
+																"allow",
+																"log"
+															],
+															"example": "allow",
+															"type": "string"
+														},
+														"description": {
+															"description": "A description for the policy",
+															"example": "Checkout page CSP policy",
+															"type": "string"
+														},
+														"enabled": {
+															"description": "Whether the policy is enabled",
+															"example": true,
+															"type": "boolean"
+														},
+														"expression": {
+															"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+															"example": "ends_with(http.request.uri.path, \"/checkout\")",
+															"type": "string"
+														},
+														"value": {
+															"description": "The policy which will be applied",
+															"example": "script-src 'none';",
+															"type": "string"
+														}
+													},
+													"required": [
+														"description",
+														"action",
+														"expression",
+														"enabled",
+														"value"
+													]
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													]
+												}
+											],
+											"required": [
+												"id",
+												"description",
+												"action",
+												"expression",
+												"enabled",
+												"value"
+											]
+										}
+									},
+									"required": [
+										"result"
+									]
 								}
 							]
 						}
@@ -2023,134 +2358,70 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"action": {
-													"description": "The action to take if the expression matches",
-													"enum": [
-														"allow",
-														"log"
-													],
-													"example": "allow",
-													"type": "string"
-												},
-												"description": {
-													"description": "A description for the policy",
-													"example": "Checkout page CSP policy",
-													"type": "string"
-												},
-												"enabled": {
-													"description": "Whether the policy is enabled",
-													"example": true,
-													"type": "boolean"
-												},
-												"expression": {
-													"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
-													"example": "ends_with(http.request.uri.path, \"/checkout\")",
-													"type": "string"
-												},
-												"id": {
-													"description": "The ID of the policy",
-													"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
-													"type": "string"
-												},
-												"value": {
-													"description": "The policy which will be applied",
-													"example": "script-src 'none';",
-													"type": "string"
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
 											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
 										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
 									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2176,7 +2447,7 @@
 	},
 	"GET /zones/{zone_id}/page_shield/scripts": {
 		"description": "Lists all scripts detected by Page Shield.",
-		"operationId": "page-shield-list-page-shield-scripts",
+		"operationId": "page-shield-list-scripts",
 		"parameters": [
 			{
 				"in": "path",
@@ -2375,20 +2646,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -2399,20 +2656,12 @@
 												}
 											},
 											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+												"success"
 											],
 											"type": "object"
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -2434,11 +2683,26 @@
 															"description": "Total results available without any search parameters",
 															"example": 2000,
 															"type": "number"
+														},
+														"total_pages": {
+															"description": "Total number of pages",
+															"example": 100,
+															"type": "number"
 														}
 													},
+													"required": [
+														"page",
+														"per_page",
+														"count",
+														"total_count",
+														"total_pages"
+													],
 													"type": "object"
 												}
-											}
+											},
+											"required": [
+												"result_info"
+											]
 										}
 									],
 									"type": "object"
@@ -2449,83 +2713,129 @@
 											"items": {
 												"properties": {
 													"added_at": {
-														"example": "2021-08-18T10:51:10.09615Z"
+														"example": "2021-08-18T10:51:10.09615Z",
+														"format": "date-time",
+														"type": "string"
 													},
 													"dataflow_score": {
-														"example": 10
+														"description": "The dataflow score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
 													},
 													"domain_reported_malicious": {
-														"example": false
+														"example": false,
+														"type": "boolean"
 													},
 													"fetched_at": {
-														"example": "2021-09-02T10:17:54Z"
+														"description": "The timestamp of when the script was last fetched.",
+														"nullable": true,
+														"type": "string"
 													},
 													"first_page_url": {
-														"example": "blog.cloudflare.com/page"
+														"example": "blog.cloudflare.com/page",
+														"type": "string"
 													},
 													"first_seen_at": {
-														"example": "2021-08-18T10:51:08Z"
+														"example": "2021-08-18T10:51:08Z",
+														"format": "date-time",
+														"type": "string"
 													},
 													"hash": {
-														"example": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+														"description": "The computed hash of the analyzed script.",
+														"maxLength": 64,
+														"minLength": 64,
+														"nullable": true,
+														"type": "string"
 													},
 													"host": {
-														"example": "blog.cloudflare.com"
+														"example": "blog.cloudflare.com",
+														"type": "string"
 													},
 													"id": {
-														"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
 													},
 													"js_integrity_score": {
-														"example": 10
+														"description": "The integrity score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
 													},
 													"last_seen_at": {
-														"example": "2021-09-02T09:57:54Z"
+														"example": "2021-09-02T09:57:54Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"malicious_domain_categories": {
+														"example": [
+															"Malware"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"malicious_url_categories": {
+														"example": [
+															"Malware"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
 													},
 													"obfuscation_score": {
-														"example": 20
+														"description": "The obfuscation score of the JavaScript content.",
+														"maximum": 99,
+														"minimum": 1,
+														"nullable": true,
+														"type": "integer"
 													},
 													"page_urls": {
 														"example": [
 															"blog.cloudflare.com/page1",
 															"blog.cloudflare.com/page2"
-														]
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
 													},
 													"url": {
-														"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+														"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js",
+														"type": "string"
 													},
 													"url_contains_cdn_cgi_path": {
-														"example": false
+														"example": false,
+														"type": "boolean"
+													},
+													"url_reported_malicious": {
+														"example": false,
+														"type": "boolean"
 													}
-												}
+												},
+												"required": [
+													"id",
+													"url",
+													"added_at",
+													"first_seen_at",
+													"last_seen_at",
+													"host",
+													"url_contains_cdn_cgi_path"
+												]
 											},
 											"type": "array"
-										},
-										"result_info": {
-											"properties": {
-												"count": {
-													"description": "Total number of results for the requested service",
-													"example": 1,
-													"type": "number"
-												},
-												"page": {
-													"description": "Current page within paginated list of results",
-													"example": 1,
-													"type": "number"
-												},
-												"per_page": {
-													"description": "Number of results per page of results",
-													"example": 20,
-													"type": "number"
-												},
-												"total_count": {
-													"description": "Total results available without any search parameters",
-													"example": 2000,
-													"type": "number"
-												}
-											},
-											"type": "object"
 										}
 									},
+									"required": [
+										"result"
+									],
 									"type": "object"
 								}
 							]
@@ -2538,295 +2848,70 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"properties": {
-															"added_at": {
-																"example": "2021-08-18T10:51:10.09615Z"
-															},
-															"dataflow_score": {
-																"example": 10
-															},
-															"domain_reported_malicious": {
-																"example": false
-															},
-															"fetched_at": {
-																"example": "2021-09-02T10:17:54Z"
-															},
-															"first_page_url": {
-																"example": "blog.cloudflare.com/page"
-															},
-															"first_seen_at": {
-																"example": "2021-08-18T10:51:08Z"
-															},
-															"hash": {
-																"example": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-															},
-															"host": {
-																"example": "blog.cloudflare.com"
-															},
-															"id": {
-																"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
-															},
-															"js_integrity_score": {
-																"example": 10
-															},
-															"last_seen_at": {
-																"example": "2021-09-02T09:57:54Z"
-															},
-															"obfuscation_score": {
-																"example": 20
-															},
-															"page_urls": {
-																"example": [
-																	"blog.cloudflare.com/page1",
-																	"blog.cloudflare.com/page2"
-																]
-															},
-															"url": {
-																"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
-															},
-															"url_contains_cdn_cgi_path": {
-																"example": false
-															}
-														}
-													},
-													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
 											},
-											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
+											"message": {
+												"type": "string"
+											}
 										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
 									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2852,7 +2937,7 @@
 	},
 	"GET /zones/{zone_id}/page_shield/scripts/{script_id}": {
 		"description": "Fetches a script detected by Page Shield by script ID.",
-		"operationId": "page-shield-get-a-page-shield-script",
+		"operationId": "page-shield-get-script",
 		"parameters": [
 			{
 				"in": "path",
@@ -2871,10 +2956,10 @@
 				"name": "script_id",
 				"required": true,
 				"schema": {
-					"description": "The ID of the resource.",
-					"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"minLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -2886,112 +2971,262 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"added_at": {
-											"example": "2021-08-18T10:51:10.09615Z"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
+											],
+											"type": "object"
 										},
-										"dataflow_score": {
-											"example": 10
-										},
-										"domain_reported_malicious": {
-											"example": false
-										},
-										"fetched_at": {
-											"example": "2021-09-02T10:17:54Z"
-										},
-										"first_page_url": {
-											"example": "blog.cloudflare.com/page"
-										},
-										"first_seen_at": {
-											"example": "2021-08-18T10:51:08Z"
-										},
-										"hash": {
-											"example": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-										},
-										"host": {
-											"example": "blog.cloudflare.com"
-										},
-										"id": {
-											"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
-										},
-										"js_integrity_score": {
-											"example": 10
-										},
-										"last_seen_at": {
-											"example": "2021-09-02T09:57:54Z"
-										},
-										"obfuscation_score": {
-											"example": 20
-										},
-										"page_urls": {
-											"example": [
-												"blog.cloudflare.com/page1",
-												"blog.cloudflare.com/page2"
-											]
-										},
-										"url": {
-											"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
-										},
-										"url_contains_cdn_cgi_path": {
-											"example": false
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
 										}
-									}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
-										"versions": {
-											"example": [
+										"result": {
+											"allOf": [
 												{
-													"dataflow_score": 2,
-													"fetched_at": "2021-08-18T10:51:08Z",
-													"hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b423",
-													"js_integrity_score": 2,
-													"obfuscation_score": 10
-												}
-											],
-											"items": {
-												"description": "The version of the analyzed script.",
-												"properties": {
-													"dataflow_score": {
-														"description": "The dataflow score of the JavaScript content.",
-														"maximum": 99,
-														"minimum": 1,
-														"nullable": true,
-														"type": "integer"
+													"properties": {
+														"added_at": {
+															"example": "2021-08-18T10:51:10.09615Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"dataflow_score": {
+															"description": "The dataflow score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
+														"domain_reported_malicious": {
+															"example": false,
+															"type": "boolean"
+														},
+														"fetched_at": {
+															"description": "The timestamp of when the script was last fetched.",
+															"nullable": true,
+															"type": "string"
+														},
+														"first_page_url": {
+															"example": "blog.cloudflare.com/page",
+															"type": "string"
+														},
+														"first_seen_at": {
+															"example": "2021-08-18T10:51:08Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"hash": {
+															"description": "The computed hash of the analyzed script.",
+															"maxLength": 64,
+															"minLength": 64,
+															"nullable": true,
+															"type": "string"
+														},
+														"host": {
+															"example": "blog.cloudflare.com",
+															"type": "string"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"js_integrity_score": {
+															"description": "The integrity score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
+														"last_seen_at": {
+															"example": "2021-09-02T09:57:54Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"malicious_domain_categories": {
+															"example": [
+																"Malware"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"malicious_url_categories": {
+															"example": [
+																"Malware"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"obfuscation_score": {
+															"description": "The obfuscation score of the JavaScript content.",
+															"maximum": 99,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
+														"page_urls": {
+															"example": [
+																"blog.cloudflare.com/page1",
+																"blog.cloudflare.com/page2"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"url": {
+															"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js",
+															"type": "string"
+														},
+														"url_contains_cdn_cgi_path": {
+															"example": false,
+															"type": "boolean"
+														},
+														"url_reported_malicious": {
+															"example": false,
+															"type": "boolean"
+														}
 													},
-													"fetched_at": {
-														"description": "The timestamp of when the script was last fetched.",
-														"nullable": true,
-														"type": "string"
-													},
-													"hash": {
-														"description": "The computed hash of the analyzed script.",
-														"maxLength": 64,
-														"minLength": 64,
-														"nullable": true,
-														"type": "string"
-													},
-													"js_integrity_score": {
-														"description": "The integrity score of the JavaScript content.",
-														"maximum": 99,
-														"minimum": 1,
-														"nullable": true,
-														"type": "integer"
-													},
-													"obfuscation_score": {
-														"description": "The obfuscation score of the JavaScript content.",
-														"maximum": 99,
-														"minimum": 1,
-														"nullable": true,
-														"type": "integer"
-													}
+													"required": [
+														"id",
+														"url",
+														"added_at",
+														"first_seen_at",
+														"last_seen_at",
+														"host",
+														"url_contains_cdn_cgi_path"
+													]
 												},
-												"type": "object"
-											},
-											"nullable": true,
-											"type": "array"
+												{
+													"properties": {
+														"versions": {
+															"example": [
+																{
+																	"dataflow_score": 2,
+																	"fetched_at": "2021-08-18T10:51:08Z",
+																	"hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b423",
+																	"js_integrity_score": 2,
+																	"obfuscation_score": 10
+																}
+															],
+															"items": {
+																"description": "The version of the analyzed script.",
+																"properties": {
+																	"dataflow_score": {
+																		"description": "The dataflow score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"fetched_at": {
+																		"description": "The timestamp of when the script was last fetched.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"hash": {
+																		"description": "The computed hash of the analyzed script.",
+																		"maxLength": 64,
+																		"minLength": 64,
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"js_integrity_score": {
+																		"description": "The integrity score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"obfuscation_score": {
+																		"description": "The obfuscation score of the JavaScript content.",
+																		"maximum": 99,
+																		"minimum": 1,
+																		"nullable": true,
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														}
+													}
+												}
+											]
 										}
-									}
+									},
+									"required": [
+										"result"
+									]
 								}
 							]
 						}
@@ -3005,176 +3240,48 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"added_at": {
-													"example": "2021-08-18T10:51:10.09615Z"
-												},
-												"dataflow_score": {
-													"example": 10
-												},
-												"domain_reported_malicious": {
-													"example": false
-												},
-												"fetched_at": {
-													"example": "2021-09-02T10:17:54Z"
-												},
-												"first_page_url": {
-													"example": "blog.cloudflare.com/page"
-												},
-												"first_seen_at": {
-													"example": "2021-08-18T10:51:08Z"
-												},
-												"hash": {
-													"example": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-												},
-												"host": {
-													"example": "blog.cloudflare.com"
-												},
-												"id": {
-													"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
-												},
-												"js_integrity_score": {
-													"example": 10
-												},
-												"last_seen_at": {
-													"example": "2021-09-02T09:57:54Z"
-												},
-												"obfuscation_score": {
-													"example": 20
-												},
-												"page_urls": {
-													"example": [
-														"blog.cloudflare.com/page1",
-														"blog.cloudflare.com/page2"
-													]
-												},
-												"url": {
-													"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
-												},
-												"url_contains_cdn_cgi_path": {
-													"example": false
-												}
-											}
-										},
-										{
-											"properties": {
-												"versions": {
-													"example": [
-														{
-															"dataflow_score": 2,
-															"fetched_at": "2021-08-18T10:51:08Z",
-															"hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b423",
-															"js_integrity_score": 2,
-															"obfuscation_score": 10
-														}
-													],
-													"items": {
-														"description": "The version of the analyzed script.",
-														"properties": {
-															"dataflow_score": {
-																"description": "The dataflow score of the JavaScript content.",
-																"maximum": 99,
-																"minimum": 1,
-																"nullable": true,
-																"type": "integer"
-															},
-															"fetched_at": {
-																"description": "The timestamp of when the script was last fetched.",
-																"nullable": true,
-																"type": "string"
-															},
-															"hash": {
-																"description": "The computed hash of the analyzed script.",
-																"maxLength": 64,
-																"minLength": 64,
-																"nullable": true,
-																"type": "string"
-															},
-															"js_integrity_score": {
-																"description": "The integrity score of the JavaScript content.",
-																"maximum": 99,
-																"minimum": 1,
-																"nullable": true,
-																"type": "integer"
-															},
-															"obfuscation_score": {
-																"description": "The obfuscation score of the JavaScript content.",
-																"maximum": 99,
-																"minimum": 1,
-																"nullable": true,
-																"type": "integer"
-															}
-														},
-														"type": "object"
-													},
-													"nullable": true,
-													"type": "array"
-												}
-											}
-										}
-									]
-								},
-								{
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
-												}
-											],
-											"example": []
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"result": {
 											"enum": [
@@ -3194,9 +3301,7 @@
 									},
 									"required": [
 										"success",
-										"errors",
-										"messages",
-										"result"
+										"errors"
 									],
 									"type": "object"
 								}
@@ -3226,7 +3331,7 @@
 	},
 	"POST /zones/{zone_id}/page_shield/policies": {
 		"description": "Create a Page Shield policy.",
-		"operationId": "page-shield-create-a-page-shield-policy",
+		"operationId": "page-shield-create-policy",
 		"parameters": [
 			{
 				"in": "path",
@@ -3275,7 +3380,14 @@
 								"example": "script-src 'none';",
 								"type": "string"
 							}
-						}
+						},
+						"required": [
+							"description",
+							"action",
+							"expression",
+							"enabled",
+							"value"
+						]
 					}
 				}
 			},
@@ -3288,42 +3400,148 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"action": {
-											"description": "The action to take if the expression matches",
-											"enum": [
-												"allow",
-												"log"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
 											],
-											"example": "allow",
-											"type": "string"
+											"type": "object"
 										},
-										"description": {
-											"description": "A description for the policy",
-											"example": "Checkout page CSP policy",
-											"type": "string"
-										},
-										"enabled": {
-											"description": "Whether the policy is enabled",
-											"example": true,
-											"type": "boolean"
-										},
-										"expression": {
-											"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
-											"example": "ends_with(http.request.uri.path, \"/checkout\")",
-											"type": "string"
-										},
-										"id": {
-											"description": "The ID of the policy",
-											"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
-											"type": "string"
-										},
-										"value": {
-											"description": "The policy which will be applied",
-											"example": "script-src 'none';",
-											"type": "string"
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
 										}
-									}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"action": {
+															"description": "The action to take if the expression matches",
+															"enum": [
+																"allow",
+																"log"
+															],
+															"example": "allow",
+															"type": "string"
+														},
+														"description": {
+															"description": "A description for the policy",
+															"example": "Checkout page CSP policy",
+															"type": "string"
+														},
+														"enabled": {
+															"description": "Whether the policy is enabled",
+															"example": true,
+															"type": "boolean"
+														},
+														"expression": {
+															"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+															"example": "ends_with(http.request.uri.path, \"/checkout\")",
+															"type": "string"
+														},
+														"value": {
+															"description": "The policy which will be applied",
+															"example": "script-src 'none';",
+															"type": "string"
+														}
+													},
+													"required": [
+														"description",
+														"action",
+														"expression",
+														"enabled",
+														"value"
+													]
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													]
+												}
+											],
+											"required": [
+												"id",
+												"description",
+												"action",
+												"expression",
+												"enabled",
+												"value"
+											]
+										}
+									},
+									"required": [
+										"result"
+									]
 								}
 							]
 						}
@@ -3335,134 +3553,70 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"action": {
-													"description": "The action to take if the expression matches",
-													"enum": [
-														"allow",
-														"log"
-													],
-													"example": "allow",
-													"type": "string"
-												},
-												"description": {
-													"description": "A description for the policy",
-													"example": "Checkout page CSP policy",
-													"type": "string"
-												},
-												"enabled": {
-													"description": "Whether the policy is enabled",
-													"example": true,
-													"type": "boolean"
-												},
-												"expression": {
-													"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
-													"example": "ends_with(http.request.uri.path, \"/checkout\")",
-													"type": "string"
-												},
-												"id": {
-													"description": "The ID of the policy",
-													"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
-													"type": "string"
-												},
-												"value": {
-													"description": "The policy which will be applied",
-													"example": "script-src 'none';",
-													"type": "string"
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
 											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
 										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
 									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -3488,7 +3642,7 @@
 	},
 	"PUT /zones/{zone_id}/page_shield": {
 		"description": "Updates Page Shield settings.",
-		"operationId": "page-shield-update-page-shield-settings",
+		"operationId": "page-shield-update-settings",
 		"parameters": [
 			{
 				"in": "path",
@@ -3583,20 +3737,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -3607,10 +3747,7 @@
 														}
 													},
 													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
+														"success"
 													],
 													"type": "object"
 												},
@@ -3668,7 +3805,13 @@
 													"example": true,
 													"type": "boolean"
 												}
-											}
+											},
+											"required": [
+												"enabled",
+												"updated_at",
+												"use_cloudflare_reporting_endpoint",
+												"use_connection_url_path"
+											]
 										}
 									}
 								}
@@ -3682,233 +3825,70 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"allOf": [
-														{
-															"properties": {
-																"errors": {
-																	"example": [],
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"minimum": 1000,
-																				"type": "integer"
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"type": "array"
-																},
-																"messages": {
-																	"example": [],
-																	"items": {
-																		"properties": {
-																			"code": {
-																				"minimum": 1000,
-																				"type": "integer"
-																			},
-																			"message": {
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"code",
-																			"message"
-																		],
-																		"type": "object",
-																		"uniqueItems": true
-																	},
-																	"type": "array"
-																},
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																},
-																"success": {
-																	"description": "Whether the API call was successful",
-																	"enum": [
-																		true
-																	],
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"required": [
-																"success",
-																"errors",
-																"messages",
-																"result"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"result": {
-																	"anyOf": [
-																		{
-																			"type": "object"
-																		},
-																		{
-																			"items": {},
-																			"type": "array"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
-																}
-															}
-														}
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "object"
-														}
-													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"enabled": {
-															"description": "When true, indicates that Page Shield is enabled.",
-															"example": true,
-															"type": "boolean"
-														},
-														"updated_at": {
-															"description": "The timestamp of when Page Shield was last updated.",
-															"example": "2022-10-12T17:56:52.083582+01:00",
-															"type": "string"
-														},
-														"use_cloudflare_reporting_endpoint": {
-															"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
-															"example": true,
-															"type": "boolean"
-														},
-														"use_connection_url_path": {
-															"description": "When true, the paths associated with connections URLs will also be analyzed.",
-															"example": true,
-															"type": "boolean"
-														}
-													}
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
 											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
 										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
 									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -3934,7 +3914,7 @@
 	},
 	"PUT /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"description": "Update a Page Shield policy by ID.",
-		"operationId": "page-shield-update-a-page-shield-policy",
+		"operationId": "page-shield-update-policy",
 		"parameters": [
 			{
 				"in": "path",
@@ -3953,10 +3933,10 @@
 				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "The ID of the policy.",
-					"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"minLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -4008,42 +3988,148 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"action": {
-											"description": "The action to take if the expression matches",
-											"enum": [
-												"allow",
-												"log"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success"
 											],
-											"example": "allow",
-											"type": "string"
+											"type": "object"
 										},
-										"description": {
-											"description": "A description for the policy",
-											"example": "Checkout page CSP policy",
-											"type": "string"
-										},
-										"enabled": {
-											"description": "Whether the policy is enabled",
-											"example": true,
-											"type": "boolean"
-										},
-										"expression": {
-											"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
-											"example": "ends_with(http.request.uri.path, \"/checkout\")",
-											"type": "string"
-										},
-										"id": {
-											"description": "The ID of the policy",
-											"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
-											"type": "string"
-										},
-										"value": {
-											"description": "The policy which will be applied",
-											"example": "script-src 'none';",
-											"type": "string"
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											}
 										}
-									}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"action": {
+															"description": "The action to take if the expression matches",
+															"enum": [
+																"allow",
+																"log"
+															],
+															"example": "allow",
+															"type": "string"
+														},
+														"description": {
+															"description": "A description for the policy",
+															"example": "Checkout page CSP policy",
+															"type": "string"
+														},
+														"enabled": {
+															"description": "Whether the policy is enabled",
+															"example": true,
+															"type": "boolean"
+														},
+														"expression": {
+															"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+															"example": "ends_with(http.request.uri.path, \"/checkout\")",
+															"type": "string"
+														},
+														"value": {
+															"description": "The policy which will be applied",
+															"example": "script-src 'none';",
+															"type": "string"
+														}
+													},
+													"required": [
+														"description",
+														"action",
+														"expression",
+														"enabled",
+														"value"
+													]
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													]
+												}
+											],
+											"required": [
+												"id",
+												"description",
+												"action",
+												"expression",
+												"enabled",
+												"value"
+											]
+										}
+									},
+									"required": [
+										"result"
+									]
 								}
 							]
 						}
@@ -4055,134 +4141,70 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"action": {
-													"description": "The action to take if the expression matches",
-													"enum": [
-														"allow",
-														"log"
-													],
-													"example": "allow",
-													"type": "string"
-												},
-												"description": {
-													"description": "A description for the policy",
-													"example": "Checkout page CSP policy",
-													"type": "string"
-												},
-												"enabled": {
-													"description": "Whether the policy is enabled",
-													"example": true,
-													"type": "boolean"
-												},
-												"expression": {
-													"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
-													"example": "ends_with(http.request.uri.path, \"/checkout\")",
-													"type": "string"
-												},
-												"id": {
-													"description": "The ID of the policy",
-													"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
-													"type": "string"
-												},
-												"value": {
-													"description": "The policy which will be applied",
-													"example": "script-src 'none';",
-													"type": "string"
-												}
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
 											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
 										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
 									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
 						}
 					}
 				},
