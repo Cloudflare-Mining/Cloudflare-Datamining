@@ -526,6 +526,14 @@
 													"description": "The unique identifier for the indicator feed",
 													"type": "integer"
 												},
+												"is_attributable": {
+													"description": "Whether the indicator feed can be attributed to a provider",
+													"type": "boolean"
+												},
+												"is_public": {
+													"description": "Whether the indicator feed is exposed to customers",
+													"type": "boolean"
+												},
 												"latest_upload_status": {
 													"description": "Status of the latest snapshot uploaded",
 													"enum": [
@@ -545,6 +553,14 @@
 												},
 												"name": {
 													"description": "The name of the indicator feed",
+													"type": "string"
+												},
+												"provider_id": {
+													"description": "The unique identifier for the provider",
+													"type": "string"
+												},
+												"provider_name": {
+													"description": "The provider of the indicator feed",
 													"type": "string"
 												}
 											}
@@ -668,6 +684,14 @@
 															"description": "The unique identifier for the indicator feed",
 															"type": "integer"
 														},
+														"is_attributable": {
+															"description": "Whether the indicator feed can be attributed to a provider",
+															"type": "boolean"
+														},
+														"is_public": {
+															"description": "Whether the indicator feed is exposed to customers",
+															"type": "boolean"
+														},
 														"latest_upload_status": {
 															"description": "Status of the latest snapshot uploaded",
 															"enum": [
@@ -687,6 +711,14 @@
 														},
 														"name": {
 															"description": "The name of the indicator feed",
+															"type": "string"
+														},
+														"provider_id": {
+															"description": "The unique identifier for the provider",
+															"type": "string"
+														},
+														"provider_name": {
+															"description": "The provider of the indicator feed",
 															"type": "string"
 														}
 													}
@@ -1753,6 +1785,11 @@
 								"description": "The new is_public value of the feed",
 								"example": true,
 								"type": "boolean"
+							},
+							"name": {
+								"description": "The new name of the feed",
+								"example": "indicator_list",
+								"type": "string"
 							}
 						}
 					}
