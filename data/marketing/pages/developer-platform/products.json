@@ -54,28 +54,17 @@
 				},
 				"sys": {
 					"createdAt": "2023-02-17T21:14:31.904Z",
-					"updatedAt": "2024-05-08T16:28:17.534Z"
+					"updatedAt": "2024-06-14T20:20:42.157Z"
 				},
 				"contentfulId": "2kXG1kUekGaMzWX9zmJw2k",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "Analyst report",
-					"linkText": "Read the report",
-					"linkUrl": "/lp/forrester-wave-edge-development-q4-2023/",
-					"desktopText": "Cloudflare named a Leader in The Forrester Wave™: Edge Development Platforms, Q4 2023"
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
-					{
-						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
-						"contentTypeId": "bladePadding",
-						"height": 1,
-						"backgroundColor": "blue5"
-					},
 					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "4LaxHtBBObJl5KDpeDW3ZR",
@@ -167,22 +156,22 @@
 					{
 						"contentfulId": "7fnjq74NPSytZIDcIyaBsJ",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Developer Platform",
+						"title": "Cloudflare's developer services",
 						"titleSize": null,
-						"subtitle": "Unleash innovation: build, deploy, and deliver trusted applications anywhere",
+						"subtitle": " Build, deploy, and deliver applications from a unified, platform of cloud-native services",
 						"subtitleSize": null,
-						"copy": "The Cloudflare Developer Platform offers everything your teams need to deliver serverless applications. Compute, storage, and services to deploy your full-stack applications including image optimization, and video streaming.",
+						"copy": "Cloudflare offers everything your teams need to deliver trusted serverless applications — including compute, storage, and full-stack services like image optimization and video streaming.",
 						"buttonColor": "blue",
 						"buttonColor2": "blue-outline",
-						"buttonText1": "Start Building",
+						"buttonText1": "Start building",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "https://dash.cloudflare.com/sign-up/workers-and-pages",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Developer Docs",
+						"buttonText2": "Talk to an expert",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://developers.cloudflare.com/",
-						"button2ExtraClass": null,
+						"buttonUrl2": "#",
+						"button2ExtraClass": "developer-platform-product-hub-modal-form",
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
@@ -195,7 +184,7 @@
 						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
+						"button1OpenInNewTab": true,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
 						"sectionPadding": null,
@@ -229,829 +218,1372 @@
 						}
 					},
 					{
-						"contentTypeId": "bladeSubNav",
-						"contentfulId": "6U4WR25Ir29mBSOqTNSEz0",
-						"menuTitle": null,
-						"mobileOnlyMenuTitle": null,
-						"stickyNav": true,
+						"locale": "en-US",
+						"entryTitle": "Developer Platform Hub - PRODUCT LIST - Compute",
 						"htmlId": null,
-						"menuItems": [
-							{
-								"contentfulId": "5EAtNjG55e5DIGAEhEhuOb",
-								"linkText": "Compute Solutions",
-								"page": null,
-								"url": "/developer-platform/products#compute",
-								"subMenuItems": []
-							},
-							{
-								"contentfulId": "4PV3NS4kpuwNF0Te4dnz2k",
-								"linkText": "Storage Solutions",
-								"page": null,
-								"url": "#storage",
-								"subMenuItems": []
-							},
-							{
-								"contentfulId": "4moPbEa4F9M84ToMpJHCbV",
-								"linkText": "Web/App Development",
-								"page": null,
-								"url": "#webdev",
-								"subMenuItems": []
-							}
-						]
-					},
-					{
-						"contentfulId": "79xZmMlGklnp95KihZDm4O",
+						"contentfulId": "86WKXEI2iyTQSs0LjKkcr",
+						"contentTypeId": "bladeAddOns",
+						"caption": null,
+						"title": "Compute",
+						"grouped": false,
+						"description": null,
+						"variant": null,
+						"callToAction": null,
+						"sectionPadding": "default",
+						"bladeBorder": "none",
 						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": "compute",
-						"copy": "Run workloads on our infinitely scalable global network.",
-						"title": "Build applications on the Cloudflare network",
-						"subtitle": "Compute Solutions",
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
+						"addOns": [
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "2e3oGnNQW9nN2MGlseJAw7",
-								"title": "Cloudflare Workers",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Deploy serverless code instantly across the globe to give it exceptional performance, reliability, and scale.",
-								"learnMoreUrl": "developer-platform/workers/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
+								"locale": "en-US",
+								"entryTitle": "Pages",
+								"contentfulId": "g9ezhMMgq7TWLXB66xGcz",
+								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
-									"altText": "Cloudflare workers ",
-									"title": "Cloudflare workers ",
+									"id": "ae977bfa-835e-5f80-99d7-73d808392179",
+									"altText": "Cloudflare pages - round icon",
+									"title": "Cloudflare pages - round icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP5LKSCVMZzy2mn0MsQyq/6d0239e7354806aa1b0dfcfec7ac7b6b/cloudflare-workers.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5FvvAEoDxwm8hxHiY4GEu8",
-								"title": "Cloudflare Email Routing",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Create and manage custom email addresses for your domain. ",
-								"learnMoreUrl": "developer-platform/email-routing/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "7ffa9292-726c-5be7-b2cb-66a931078912",
-									"altText": "Cloudflare Email Routing",
-									"title": "Email Routing Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sx6clrdwhC89NzanpRoQN/ff7d6e3719a6ba46094ccf72c395cfe8/cloudflare-email-forwarding.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "4zwknM5LKhzeJ9C8aHNeR4",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": "storage",
-						"copy": "Storage solutions to meet your needs from storing session state to objects.",
-						"title": "Store your data on the Cloudflare network",
-						"subtitle": "Storage",
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3o7wnjt1uEQQTXGlLo9qwO",
-								"title": "R2 Object Storage",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Create multi-cloud architectures with an S3-compatible distributed object storage",
-								"learnMoreUrl": "developer-platform/r2/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "efd45c7a-1ca1-5b55-b5ae-7f697427546b",
-									"altText": "Cloudflare R2 distributed storage",
-									"title": "R2 Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20XuCGpQeiIcEBqL8eYZhq/41b6bb30b987d56e97de94cbbf51dcdb/cloud-upload.svg"
-										},
-										"description": "Cloud upload icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2yxK2DAiCqZWg8B56IkLRG",
-								"title": "Workers KV",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Build highly dynamic APIs and sites which respond as quickly as a cached static file would with our key-value store. ",
-								"learnMoreUrl": "developer-platform/workers-kv/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "56731bae-c970-512b-9483-7daa578f8ffa",
-									"altText": "code-api.png",
-									"title": "code-api.png",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3svCT8cJUghQV8YLBsfTTI/4505d22b366ab61aca59b881a72445d1/code-api.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3RRIlMHdveHCw825OhewU5/91fc90a46a7a65dd9df21122529a92ba/cloudflare-pages.svg"
 										},
 										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "43tUVEAqydOFziWIamFSf6",
-								"title": "Durable Objects",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Build stateful edge applications, such as chat rooms, shopping carts, or whiteboards, with a strongly consistent data store.",
-								"learnMoreUrl": "developer-platform/durable-objects/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "f4f2db49-e40f-579d-b8d0-78c078cc9c15",
-									"altText": "Durable objects blue",
-									"title": "Durable objects blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kCZGnnEQKwkfLBcLYoxTB/a3226fadaee4f995d3351f65be75cba1/cloudflare-durable-objects.svg"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
+								"title": "Pages",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Create full-stack applications from the most popular frameworks with minimal configuration. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "366nyyvHjyf6k6jV6cVV9J",
+									"elementName": "Pages - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/developer-platform/pages/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
 							},
 							{
-								"contentTypeId": "feature",
-								"contentfulId": "7AYB5M4LUEzQs0gd38xp9U",
-								"title": "D1",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Build natively serverless SQL databases with point-in-time recovery.",
-								"learnMoreUrl": "https://www.cloudflare.com/developer-platform/d1/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
+								"locale": "en-US",
+								"entryTitle": "Workers",
+								"contentfulId": "4vce7QNGPGDjxL0Rl8G1G9",
+								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
-									"id": "096de851-410f-5df1-8f9a-58dd4a411b44",
-									"altText": "Server 3 blue",
-									"title": "Server 3 blue",
+									"id": "41fffb02-d7ba-5a30-b78d-c3c14ccc8389",
+									"altText": "Cloudflare workers - round icon",
+									"title": "Cloudflare workers - round icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xbnxzBLH0iZJ18futfvJx/42ab33f9795970fb54a118f354e3be47/server-3.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/42VPeBh7EFITUMtlBi5RpS/c96e5a8d273949a2aaa19e1638025629/cloudflare-workers.svg"
 										},
 										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4JWeHLMkpQOCQZESUC0OE7",
-								"title": "Hyperdrive",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Make your regional databases feel globally distributed",
-								"learnMoreUrl": "developer-platform/products/hyperdrive",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "89f5dec1-f829-5b65-a7f3-4a7b3b36e85a",
-									"altText": "Hyperdrive",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pBDJ1pCdhrSlxSq72G4FF/5ba17d35b9cc0cddbf82491c32da1e9e/BDES-4936-SQL-Query-Cache-Icon-18.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
+								"title": "Workers",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Deploy functions as a service to region: Earth for exceptional performance, reliability, and scale. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "5kpkP1Fkldrqb1MNPvoJs0",
+									"elementName": "Workers - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/developer-platform/workers/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								}
 							}
 						]
 					},
 					{
-						"contentfulId": "7DHww9eF4ViGZggE5SX5dk",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Analyst Report\t",
-						"description": "Cloudflare is a Leader in the 2024 GigaOm Radar for CDN",
-						"variant": "inline",
+						"locale": "en-US",
+						"entryTitle": "Developer Platform Hub - PRODUCT LIST - Media ",
 						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
+						"contentfulId": "3XLdhei3oEbdUFdkrn2BLH",
+						"contentTypeId": "bladeAddOns",
+						"caption": null,
+						"title": "Media",
+						"grouped": false,
+						"description": null,
+						"variant": null,
+						"callToAction": null,
+						"sectionPadding": "tile--no-top-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"addOns": [
+							{
+								"locale": "en-US",
+								"entryTitle": "Images",
+								"contentfulId": "2mO57KpPcDBB8p0lkKnj88",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "0b6e8b3d-659c-5272-a7d2-f8e665ab6441",
+									"altText": "Image - round icon",
+									"title": "Image - round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4X818rfaWjwgffnxkJMFq3/5f0580c3c6225b16713366236f22e59d/image.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Images",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Build a highly scalable image pipeline to resize, optimize, store, and deliver images. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "2VZ4u6RHafjNwuUJ5sOYGD",
+									"elementName": "Images - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/developer-platform/cloudflare-images/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Stream",
+								"contentfulId": "1q8gTPj7OwTy36XaaBA1Ky",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "7292f3e3-3784-5bed-ae67-61b0de40dbe3",
+									"altText": "Cloudflare stream delivery - round icon",
+									"title": "Cloudflare stream delivery - round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6B9uqno4ocG86Zk9VDR0o5/bf1f8e1bf108c1e648627f330d226fcd/cloudflare-stream-delivery.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Stream",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Ingest, encode, record, and play live and on-demand videos. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "7BE5RvYtWCO3UXrm4Civ8B",
+									"elementName": "Stream - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/products/cloudflare-stream/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							}
+						]
+					},
+					{
+						"locale": "en-US",
+						"entryTitle": "Developer Platform Hub - PRODUCT LIST - AI",
+						"htmlId": null,
+						"contentfulId": "6o7dmXaZpsnpgDcbP3L0ep",
+						"contentTypeId": "bladeAddOns",
+						"caption": null,
+						"title": "AI ",
+						"grouped": false,
+						"description": null,
+						"variant": null,
+						"callToAction": null,
+						"sectionPadding": "tile--no-top-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"addOns": [
+							{
+								"locale": "en-US",
+								"entryTitle": "AI Gateway",
+								"contentfulId": "5y2mEmmI7nmomVJN0Yz0kD",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "ab8938ce-2b31-5b4b-adfb-f0d12bf01e6f",
+									"altText": "Cloudflare gateway - round icon",
+									"title": "Cloudflare gateway - round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/8HlS7m1BzF0IUvTv7c4Ws/15a20a69eeb8e5bc4edd739d5af03679/cloudflare-gateway.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "AI Gateway",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Manage and scale generative AI workloads with an AI ops platform.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "wHl5Pv118yJzjm8DfeYo7",
+									"elementName": "AI Gateway - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://developers.cloudflare.com/ai-gateway/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Vectorize",
+								"contentfulId": "2Fv21WwXFuvs35auQ56leH",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "99ded5c6-c752-5476-a4e9-3ce332d39bda",
+									"altText": "Vectorize - round icon",
+									"title": "Vectorize - round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1FRaVOGSEiUINBJtPqujh6/a17b34e1f2fe0c10b44db3f9b78e05ca/optimization-scale.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Vectorize",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Store and query embeddings as close to users as possible without having to think about scale.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "1RbboKOhV297VbvnVAOK7e",
+									"elementName": "Vectorize - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://developers.cloudflare.com/vectorize/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Workers AI ",
+								"contentfulId": "1eSLb5VMeDopYZYMDVUJpl",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "41fffb02-d7ba-5a30-b78d-c3c14ccc8389",
+									"altText": "Cloudflare workers - round icon",
+									"title": "Cloudflare workers - round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/42VPeBh7EFITUMtlBi5RpS/c96e5a8d273949a2aaa19e1638025629/cloudflare-workers.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Workers AI ",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Scale AI inference to meet growing user demands without infrastructure headaches.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "1VHz8NNPrzkAnJBWaJ5Zpd",
+									"elementName": "Workers AI ",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://developers.cloudflare.com/workers-ai/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								}
+							}
+						]
+					},
+					{
+						"locale": "en-US",
+						"entryTitle": "Developer Platform Hub - PRODUCT LIST - Storage & Databases ",
+						"htmlId": null,
+						"contentfulId": "zQGTn9xhZlJaff94kCuWO",
+						"contentTypeId": "bladeAddOns",
+						"caption": null,
+						"title": "Storage & Databases ",
+						"grouped": false,
+						"description": null,
+						"variant": null,
+						"callToAction": null,
+						"sectionPadding": "tile--no-top-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"addOns": [
+							{
+								"locale": "en-US",
+								"entryTitle": "D1",
+								"contentfulId": "6cGIgQVWAglFqNwG7QxJxH",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "ab1acbba-e3cc-5882-8f08-9c1f8d2590f4",
+									"altText": "D1 - round icon",
+									"title": "D1 - round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/61xRFxqQybyjzLYli6RPSi/06984152ef789e5dd5cf2793fc616ac0/icon_D1.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "D1",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Build natively serverless relational SQL databases with point-in-time recovery. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "PyBnlP1wV4MOv7uBRyGof",
+									"elementName": "D1 - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/developer-platform/d1/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Durable Objects",
+								"contentfulId": "1IenNxJ2q9ZYRRB3hkD52D",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "06652870-0c89-5c3e-9ef1-aa2ebb3eb10a",
+									"altText": "Cloudflare durable objects - round icon",
+									"title": "Cloudflare durable objects - round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74PzLc4Xqvr9a2l2PVcMwn/a212e7ac676928ca5332ad660452a545/cloudflare-durable-objects.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Durable Objects",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Maintain strong consistency of state across multiple clients, events, and connections.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "5XS5hcWSHSfX506hBqc27i",
+									"elementName": "Durable Objects - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/developer-platform/durable-objects/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Hyperdrive",
+								"contentfulId": "4YCUufWEDr5xe4RxRLBEel",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "32aeb3d1-f633-5b37-9df7-5797fb59df3c",
+									"altText": "Hyperdrive - round icon",
+									"title": "Hyperdrive - round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2iAkFF1OFRMrfk4LqDoyFs/5d5fc7d917625ddc7c3e74229656c2b7/drive.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Hyperdrive",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Make your regional databases feel globally distributed.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "7yZ2uGrIB0TMr5Hq6bMPVU",
+									"elementName": "Hyperdrive - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/developer-platform/products/hyperdrive/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "R2",
+								"contentfulId": "3mtxbnnvtMvg9mg00o5M1r",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "abeb3ab9-0e3b-5712-8fcc-c31ae8df91e9",
+									"altText": "Performance acceleration - round icon",
+									"title": "Performance acceleration - round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Evpbhn5V2yuAXlvlF76De/18e95fe70d3d127831eca3fa8e284414/performance-acceleration-bolt.svg"
+										},
+										"description": "Performance acceleration bolt"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "R2",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Deliver high performance applications with zero-egress fee object storage. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "3FwTEk9N4tVnxX5RIypQta",
+									"elementName": "R2 - CTA",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/developer-platform/r2/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "Workers KV ",
+								"contentfulId": "68bRuaPZSW3Yd3yGNiWHeJ",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "7e73695d-ea7b-59a6-8e11-bc0aea5ab90c",
+									"altText": "Workers KV - round icon",
+									"title": "Workers KV - round icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XS3lmXOTskEmxZcdOTW61/2af3fd8112e8a06a7d88f2a65b48dc85/Workers_Profile.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Workers KV ",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Store, modify, and query key-value data across  %{DataCenterCount} global locations. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": null,
+								"pricingText": null,
+								"learnMoreLink": null,
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "1BgdvZah2FtllaxTt77Okv",
+									"elementName": "Workers KV  - round icon",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/developer-platform/workers-kv/",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							}
+						]
+					},
+					{
+						"contentfulId": "6pEfHSENdY4mrmA0kzYjMw",
+						"title": "The modern digital core for migrating or building new applications",
+						"copy": "Cloudflare's connectivity cloud is a secure and distributed compute, storage, and application environment that helps you regain control of complex infrastructure and escalating costs — and innovate faster. It offers:",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "1c31723e-bc8d-5cd6-8870-c9f1ea7da452",
+							"altText": "Developer Week 2024",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5RfmK7OekGBLIXSGl93E4A/f3a6d58a667a642f09e666812de426ac/Developer_Week_2024_-_Hero.png"
 								},
-								"description": ""
+								"description": "Developer Week 2024 logo"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"primaryCtaButton": {
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "WHY CLOUDFLARE",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "3OEZx2h5GJXtYpd3yoLJcM",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": null,
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2wvfLKuETLr7ldQaO8pNEf",
+								"title": "Fast, secure customer experiences",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Security and performance services run in every server in every location where your code lives, and single-pass inspection and request processing reduces delays.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "9a9f45e5-8256-5cff-bb15-7336fb732376",
+									"altText": "Performance 1 blue",
+									"title": "Performance 1 blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Clytt8pBf5fsuPgtVafD7/42d2f39e656cdeebf1d7fa80c979a4c9/performance-1.svg"
+										},
+										"description": "Rotating arrows icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "79v5E6gNAeCCsKe8iIo6Pc",
+								"title": "Automatic, near-infinite scale",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Applications and code are automatically deployed to region: Earth with little to no configuration, and take advantage of our %{NetworkCapacity} (and growing) network capacity.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "f705f70f-6061-5494-a41c-589d683ec8a2",
+									"altText": "network-scale",
+									"title": "network-scale",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6voDUQ7XmHDJ9zX0u2IrkW/e347d8fff227565dd30e1e9c85f1fe97/network-scale__1_.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3rwZPtsaoYMngZv6nzjOoW",
+								"title": "Streamlined AI adoption",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Our connectivity cloud is optimized for AI training, inference, security, and optimization — and offer zero egress fee storage.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "f441c10c-5184-5c39-af1b-76a1116d8c27",
+									"altText": "AI solution - GPU icon",
+									"title": "AI solution - GPU icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xqfKPG0Y1SWdMCtG2Usj1/d2b08ddd0263c0a61f4f0e366bcb78bb/GPU-icon.png"
+										},
+										"description": "GPU icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4XzPuTz1K8W7PbZNscfPSD",
+								"title": "Faster development",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "A straight line from writing code to production deployment, driving faster feature and application development and automating key optimizations and configurations.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "f5307774-0846-5238-a3c7-d4da0a685dd6",
+									"altText": "Performance arrow up",
+									"title": "Performance arrow up",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Gpwto8WV76iRI4GJ9xlPS/d2f9700bb6e89cd972dc8c1b6d8722d3/performance-arrow-up.svg"
+										},
+										"description": "Improved performance icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": "tile--no-top-padding",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "35g55cUslT7GhstoPhNy02",
+						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nCloudflare developer services help SYBO<br> save $60,000 per month in bandwidth costs\n</div>",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "5VRRUT1Ycdo49OjBVWXd8k",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4C9nXSMpNCXOM4N9co0l26",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Mobile game company SYBO needed to establish more reliable, higher-performing connections between its servers and erratic mobile ISPs in different regions",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "They adopted R2, Cloudflare's globally distributed, egress fee-free object storage service. Now, they save big on bandwidth, and Cloudflare's built-in caching services deliver performance improvements as high as 80%. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1UkOyqBdKcnneisDsB0Wij",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " \"With Cloudflare R2 and caching, we can now serve up to a petabyte of traffic and save around $60,000 each month. Cloudflare substantially expands our ability to experiment and enter new markets.\"",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "28cuh8nUHZcu0OAb6s2D3u",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "28cuh8nUHZcu0OAb6s2D3u",
+															"locale": "en-US",
+															"title": "SYBO logo push righ",
+															"file": {
+																"name": "SYBO-logo-push-right.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/28cuh8nUHZcu0OAb6s2D3u/5f75ca9c856ebcdbba9a6ee3b7e1ec04/SYBO-logo-push-right.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6d0oUT4rTwqvL6u8xFLhYa",
+						"title": "Contact a Cloudflare enterprise representative",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "2VivbsKRvsiibYrw5uktMQ",
-							"elementName": "CTA link - /lp/gigaom-radar-cdn/",
+							"contentfulId": "7B807YKAHdty2UqlvZfMvk",
+							"elementName": "Developer Platform Hub - Contact a Cloudflare enterprise representative - CTA",
 							"standardText": null,
-							"text": "Read report",
-							"url": "/lp/gigaom-radar-cdn/",
+							"text": "Get in touch",
+							"url": null,
 							"loggedInUrl": null,
-							"buttonModal": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "16JF5nv8v3PCLgAqzjusaJ",
+								"modalName": "Developer Platform - Product Hub - Modal form",
+								"modalId": "developer-platform-product-hub-modal-form",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "7ppEPMHPowVa8Lo6JOyPkd",
+									"bladeName": "Developer Platform - Product Hub - MarketoModal form",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Talk to an expert",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
-						"secondaryCtaButton": null
-					},
-					{
-						"contentfulId": "417MeZ1txYMgIdZymrSGWx",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": "webdev",
-						"copy": "Give developers access to the best tooling possible to build, debug, and diagnose on the Cloudflare platform. ",
-						"title": "Build blazing fast, trusted websites on the connectivity cloud",
-						"subtitle": "Website Development",
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "13L47iHnlEcnN5V2vVDrLt",
-								"title": "Pages (JAMstack)",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Create full-stack applications that are instantly deployed to the Cloudflare global network. Deployment requires minimal configuration with many decisions made automatically allowing you to innovate faster.",
-								"learnMoreUrl": "developer-platform/pages/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ff54a79c-6e83-5f9a-8f7d-d5e7cde2830b",
-									"altText": "Cloudflare pages ",
-									"title": "Cloudflare pages ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rIXjlpJ2OZi1vJ2uZw5Xv/69410abc83b0ca971b5452a6dd641e5b/cloudflare-pages.svg"
-										},
-										"description": "Cloudflare pages orange"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4bqX461H8SEOerO0DJdLyZ",
-								"title": "Stream",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Ingest, encode, record, and play [live](https://www.cloudflare.com/developer-platform/solutions/live-streaming/) or on-demand videos.",
-								"learnMoreUrl": "products/cloudflare-stream/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "08e29c98-f860-5f57-8de5-a2d65dc17f11",
-									"altText": "Cloudflare stream delivery blue",
-									"title": "Cloudflare stream delivery blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6uZVCcQ0QrCNctcZMrzPMS/30bd1c225dde4080bc283c1fe63d7e9a/cloudflare-stream-delivery.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "515xGGBDnTO3ewZsaxyu2U",
-								"title": "Images",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Build a highly scalable image pipeline to resize, optimize, store, and deliver images.",
-								"learnMoreUrl": "developer-platform/cloudflare-images/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "134a8bb8-faef-533e-96a2-dabd4762da64",
-									"altText": "Cloudflare Images",
-									"title": "Cloudflare Images Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6cdHgwhn8poW5M4IegENwA/f0640421be98265b555ba988953252c2/image.svg"
-										},
-										"description": "Orange image icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "4WwG5BV10an78fqFsQr2fX",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "https://www.cloudflare.com/case-studies/",
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"title": "Trusted by millions of Internet properties",
-						"copy": null,
-						"logoList": [
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/vlONa0REZrndXWIi174vi/b7377290efc139831c5573daf1757ade/logo_allianz_trusted-by_gray.svg"
-								},
-								"description": "Allianz logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Gps1TUuUvlobFOEXbnJlI/df914dce0414a8cfccb70c090f271304/logo_doordash_gray_32px-wrapper.svg"
-								},
-								"description": "Doordash logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67NI5PUHwR6yUSWHGPL1rM/1a2179da46b2df3eb6d8c4435bafeaa4/logo_garmin_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/47baOjkvX7lLtmTdWvCYI9/009360a8301d33def2ea3ffe22a922df/logo_labcorp_color_32px-wrapper.svg"
-								},
-								"description": "LabCorp logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/75Iu2nwjYyY5rckEPqO9hr/57b676a2cf5fe6c1e2b3663d7131fda5/logo_loreal_gray_32px-wrapper.svg"
-								},
-								"description": "L'Oreal logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ovo10a1mEsAZ7ZwFKfFl/d0d561ddb71ecdb723357bb2f79bc979/logo_mars_gray_32px-wrapper.svg"
-								},
-								"description": "Mars logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/GUflUdoKWDzDLHBdpI0Qv/1c76a12d25dde493153711d29e902ed4/DHL_logo_rgb_black_small.png"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mAzLb3ofkkG38jtcP2Ys8/094958a88df30575d79254ee6615a82f/logo_ibm_gray_32px-wrapper.svg"
-								},
-								"description": "IBM logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhur0vl8q716TyGFZuCIG/acb851172c83f325ae99e527ef4c216e/logo_shopify_color_32px-wrapper.svg"
-								},
-								"description": "Shopify logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/467UAD91lfhgDi8BUPT7lc/1adfd012f0b66ff33cdb131f52c0351b/logo_sixt_trusted-by_gray.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-								},
-								"description": "Thomson Reuters logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/WfJskUftbIg2L9wkJlpvk/fb58bb010585e1139d31ada16363fa51/logo_insead_trusted-by_gray.svg"
-								},
-								"description": null
-							}
-						],
-						"logoListAssetFile": [
-							{
-								"id": "5ab637c1-ac51-5de5-b8a7-022db4ddf677",
-								"altText": "Logo allianz trusted by gray",
-								"title": "Logo allianz trusted by gray",
-								"activeAsset": "Brandfolder Asset",
-								"locale": "en-US",
-								"contentfulAsset": null,
-								"brandfolderAsset": {
-									"size": 3833,
-									"height": 96,
-									"width": 632,
-									"filename": "logo_allianz_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_allianz_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
-								"altText": "Logo doordash trusted by gray",
-								"title": "Logo doordash trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fy2mc73AF9xqD18C5760R/f46ab68d38c9adb30a639f69589d8af0/doordash_134.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
-								"altText": "Logo garmin trusted by gray",
-								"title": "Logo garmin trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6VUhUMEcvn3L3j88LttHzC/b2cf2b702aad874db9cb61b0028e9c40/logo_garmin_trusted-by_gray.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
-								"altText": "Logo labcorp trusted by gray",
-								"title": "Logo labcorp trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsuJijKk8EMH5s1ae56nx/b13406881aa864b7e17b2233a0d090ef/logo_labcorp_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
-								"altText": "Logo loreal trusted by gray",
-								"title": "Logo loreal trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4xn47h0gWiUSwJ0PU3Ysvk/683779108bfd6eeb62fbac5135780fe6/logo_loreal_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
-								"altText": "Logo ibm trusted by gray",
-								"title": "Logo ibm trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OMwO1Fr8BxHVum0iBbatc/979c1807f5810edc903d4b07c18e0cb0/logo_ibm_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
-								"altText": "Logo mars trusted by gray",
-								"title": "Logo mars trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Xar1H4WcFHHkHRDzMypMh/1f8989ae11cb464cc640c7121d0be9a6/logo_mars_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "ad58e126-3478-5318-9fde-ca44ec6d103e",
-								"altText": "DHL logo",
-								"title": null,
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/GUflUdoKWDzDLHBdpI0Qv/1c76a12d25dde493153711d29e902ed4/DHL_logo_rgb_black_small.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
-								"altText": "Logo shopify trusted by gray",
-								"title": "Logo shopify trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVeELky7fceWRpfBvN8qr/4e13aa3d8dd73e1f091f3de966fdc9cb/logo_shopify_trusted-by_gray.svg"
-									},
-									"description": ""
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "320d4b7c-3f9f-5ea6-901d-68f0f9dec99e",
-								"altText": "Logo sixt trusted by gray",
-								"title": "Logo sixt trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/467UAD91lfhgDi8BUPT7lc/1adfd012f0b66ff33cdb131f52c0351b/logo_sixt_trusted-by_gray.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": {
-									"size": 2291,
-									"height": 96,
-									"width": 632,
-									"filename": "logo_sixt_trusted-by_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_sixt_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
-								"altText": "Logo thomson reuters trusted by gray",
-								"title": "Logo thomson reuters trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-									},
-									"description": "Thomson Reuters logo"
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "92e43b5a-2e1b-5233-a515-7aed979c976d",
-								"altText": "Logo insead gray",
-								"title": "Logo insead gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/WfJskUftbIg2L9wkJlpvk/fb58bb010585e1139d31ada16363fa51/logo_insead_trusted-by_gray.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": {
-									"size": 3266,
-									"height": 336,
-									"width": 336,
-									"filename": "logo_insead_gray.svg",
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_insead_gray.svg"
-									}
-								},
-								"brandfolderAssetMobile": null
-							}
-						],
-						"logoUrlList": null
-					},
-					{
-						"contentfulId": "5T3C9EhSOAJuDdnHgX9Vtu",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Get started today",
-						"description": null,
-						"variant": "full-width",
-						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
-								},
-								"description": ""
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "2mfrQ3Os9WlM8kr8YBbNic",
-							"elementName": "Talk to an expert - Primary CTA",
-							"standardText": null,
-							"text": "Talk to an expert",
-							"url": "https://www.cloudflare.com/plans/enterprise/contact/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "5xFU6gr0wno1IS53drNqbs",
-							"elementName": "Compare plans - Developer Platform - Secondary CTA",
-							"standardText": null,
-							"text": "Compare plans ",
-							"url": "https://www.cloudflare.com/plans/developer-platform/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						}
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "16JF5nv8v3PCLgAqzjusaJ",
+						"modalName": "Developer Platform - Product Hub - Modal form",
+						"modalId": "developer-platform-product-hub-modal-form",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "7ppEPMHPowVa8Lo6JOyPkd",
+							"bladeName": "Developer Platform - Product Hub - MarketoModal form",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": "Talk to an expert",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": null,
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
