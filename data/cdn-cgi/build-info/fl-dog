@@ -1,8 +1,10 @@
 {
 	"nginx-fl": [
 		"2024.6.4",
-		"2024.6.4~asan",
-		"2024.6.4~blue"
+		"2024.6.4~blue",
+		"2024.6.5",
+		"2024.6.5~asan",
+		"2024.6.5~blue"
 	],
 	"nginx-fl-conf": [
 		"2024.3.0-28"
@@ -59,7 +61,8 @@
 		"20240614-0"
 	],
 	"nginx-fl-protocols": [
-		"2024.1.0-7-g8c8ad3a"
+		"2024.1.0-7-g8c8ad3a",
+		"2024.6.0"
 	],
 	"nginx-fl-perfassets": [
 		"2023.7.0"
@@ -114,5 +117,8 @@
 	],
 	"nginx-fl-rulesets": [
 		"2024.6.5"
+	],
+	"nginx-fl-fpw-apirouting-features": [
+		"2024.5.1"
 	]
 }
