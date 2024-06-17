@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-08-18T14:39:25.317Z",
-					"updatedAt": "2024-02-26T15:13:30.078Z"
+					"updatedAt": "2024-06-17T15:49:46.245Z"
 				},
 				"contentfulId": "TJgkCIHH4dEPCsH0qNpaO",
 				"contentTypeId": "page",
@@ -450,8 +450,12 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Learn 5 simple projects toward a Zero Trust future",
-													"marks": [],
+													"value": "5 simple projects to advance Zero Trust adoption",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -608,7 +612,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " is widely recognized as a difficult journey. In many ways, this reputation is well deserved. Zero Trust requires work that security and IT are justifiably cautious about: re-thinking default-allow policies and perimeter-based network architecture, collaboration between functionally different teams, and putting faith in new security services. Organizations may postpone this transformation for a variety of reasons, including:",
+													"value": " is widely recognized as a difficult journey. In many ways, this reputation is well deserved. Zero Trust requires work that Security and IT are justifiably cautious about: rethinking default-allow policies and perimeter-based network architecture, enabling collaboration between functionally different teams, and putting faith in new security services. Organizations may postpone this transformation for a variety of reasons, including:",
 													"marks": [],
 													"content": null
 												}
@@ -743,7 +747,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Possible disruption to employee productivity",
+																	"value": "Disruption to employee productivity",
 																	"marks": [],
 																	"content": null
 																}
@@ -768,7 +772,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "While the Zero Trust framework is quite complex on the whole — the",
+													"value": "The Zero Trust framework is quite complex on the whole — the",
 													"marks": [],
 													"content": null
 												},
@@ -799,28 +803,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " consists of 27 steps — but, some of which require comparatively little effort, even for small teams with limited time.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
+													"value": " consists of 28 comprehensive projects. However, some projects require comparatively little effort, even for small teams with limited time.",
 													"marks": [],
 													"content": null
 												}
@@ -837,28 +820,7 @@
 											"content": []
 										},
 										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -897,7 +859,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "In a networking context, Zero Trust security requires that every request moving into, out of, or within a corporate network is inspected, authenticated, encrypted, and logged. It's based on the idea that no request should be implicitly trusted, no matter where it comes from or where it's going. ",
+													"value": "In a networking context, Zero Trust security requires that every request moving into, out of, or within a corporate network is inspected, authenticated, encrypted, and logged. It's based on the idea that no request should be implicitly trusted, no matter where it comes from or where it's going.",
 													"marks": [],
 													"content": null
 												}
@@ -918,7 +880,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Making early progress towards Zero Trust means establishing these capabilities where they are not currently present. For organizations starting from scratch, this often means extending these capabilities beyond a single 'network perimeter.'",
+													"value": "Making early progress toward Zero Trust means establishing these capabilities where they are not currently present. For organizations starting from scratch, this often means extending capabilities beyond a single 'network perimeter.'",
 													"marks": [],
 													"content": null
 												}
@@ -939,7 +901,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Here are five of the simplest Zero Trust adoption projects, focusing on securing users, applications, networks, and Internet traffic. They won't achieve comprehensive Zero Trust alone, but do offer immediate benefits, and create early momentum for broader transformation.",
+													"value": "Here are five of the simplest Zero Trust adoption projects: focusing on securing users, applications, networks, and Internet traffic. They won't achieve comprehensive Zero Trust alone, but they do offer immediate benefits and can create early momentum for broader transformation.",
 													"marks": [],
 													"content": null
 												}
@@ -1023,7 +985,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1062,7 +1024,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "In a Zero Trust approach, the network must be extremely confident that requests come from the entity they claim to. This means establishing safeguards against user credentials being stolen via phishing or data leaks. ",
+													"value": "In a Zero Trust approach, the network must be extremely confident that requests come from trusted entities. Organizations need to establish safeguards against user credentials being stolen via phishing or data leaks. ",
 													"marks": [],
 													"content": null
 												},
@@ -1114,7 +1076,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Organizations that already have an identity provider in place can set up MFA directly within that provider — e.g. through one-time codes or push notification apps sent to employee mobile devices. For applications not directly integrated with your IdP consider using an Application Reverse Proxy in front of the application to enforce MFA.",
+													"value": "Organizations that already have an identity provider in place can set up MFA directly within that provider — e.g., through one-time codes or push notification apps sent to employee mobile devices. For applications not directly integrated with your identity provider (IdP), consider using an application reverse proxy in front of the application to enforce MFA.",
 													"marks": [],
 													"content": null
 												}
@@ -1135,8 +1097,8 @@
 															"locale": "en-US",
 															"title": "Zero Trust Table One",
 															"file": {
-																"name": "zero-trust-table-one.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/63yrWzLixgWGtqk6vs1Kdm/f9ce638c4113b9bb4c18883d94e54df5/zero-trust-table-one.png",
+																"name": "p1.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/63yrWzLixgWGtqk6vs1Kdm/da45ce6d2c922ce4565d64d56f77bc2e/p1.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -1174,7 +1136,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Organizations with no identity provider in place can take a different approach to MFA. Social platforms like Google, LinkedIn, and Facebook, or one-time passwords (OTP), are another way to double-check user identities. This is a common way to bootstrap access for third-party contractors without adding them to a corporate identity provider, and can also be applied within the company itself.",
+													"value": "Organizations with no identity provider in place can take a different approach to MFA. Using social platforms such as Google, LinkedIn, and Facebook, or one-time passwords (OTP), can help double-check user identities. These are common ways to DIY access for third-party contractors without adding them to a corporate identity provider, and these strategies can also be applied within the company itself.",
 													"marks": [],
 													"content": null
 												}
@@ -1258,7 +1220,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1325,7 +1287,7 @@
 											]
 										},
 										{
-											"nodeType": "ordered-list",
+											"nodeType": "unordered-list",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1444,10 +1406,49 @@
 														{
 															"contentfulId": "2HBOxaNjfvlWm40K0UKxws",
 															"locale": "en-US",
-															"title": "Roadmap to ZT - Project 2 Image",
+															"title": "Roadmap to ZT - Project 2 Image - 2a",
 															"file": {
-																"name": "Screen Shot 2022-11-28 at 11.53.15 AM.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HBOxaNjfvlWm40K0UKxws/8f39c252a5b110d47a9ef211b9fdca8f/Screen_Shot_2022-11-28_at_11.53.15_AM.png",
+																"name": "p2a.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HBOxaNjfvlWm40K0UKxws/f591f3213c1f326a4c0ab818705b97ba/p2a.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "1rO00820eYXtRqg4e6eeT1",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "1rO00820eYXtRqg4e6eeT1",
+															"locale": "en-US",
+															"title": "Roadmap to ZT - Project 2 Image - 2b",
+															"file": {
+																"name": "p2b.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1rO00820eYXtRqg4e6eeT1/35280ac68a2dbe5a8078f669413591cb/p2b.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -1548,7 +1549,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1587,7 +1588,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Email is not always included in the Zero Trust conversation. Yet, it is the number one way most organizations communicate, the most-used SaaS application, and the most common entry point for attackers. It deserves Zero Trust principles to complement the usual threat filters and inspections.",
+													"value": "Email is the number one way most organizations communicate, the most-used SaaS application, and the most common entry point for attackers. Organizations should apply Zero Trust principles to email to complement their standard threat filters and inspections.",
 													"marks": [],
 													"content": null
 												}
@@ -1608,7 +1609,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Deploying cloud email security is a critical step in achieving this. Additionally, security should consider an option to quarantine links in an isolated browser that are not suspicious enough to completely block.",
+													"value": "Additionally, Security should consider using an isolated browser to quarantine links that are not suspicious enough to completely block.",
 													"marks": [],
 													"content": null
 												}
@@ -1629,8 +1630,8 @@
 															"locale": "en-US",
 															"title": "ZT Roadmap Project 3 Article",
 															"file": {
-																"name": "project-3-table-image-revised.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Q4higS3CUSx0vTqnb7O9q/1a87304784a9a50d7c7d862298c3f47f/project-3-table-image-revised.png",
+																"name": "p3.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Q4higS3CUSx0vTqnb7O9q/007ecdf7fa2861fefc4e3711d7a46886/p3.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -1731,7 +1732,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1770,7 +1771,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Open inbound network ports are a common attack vector and should be given Zero Trust protection.",
+													"value": "Open inbound network ports are a common attack vector and should be given Zero Trust protection, only accepting traffic from known, trusted, verified sources.",
 													"marks": [],
 													"content": null
 												}
@@ -1791,7 +1792,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "They can be found using scanning technology — from there, a Zero Trust Reverse Proxy can securely expose a web application to the public Internet without opening any inbound ports. The application's only publicly visible record is its DNS record — which can be protected with Zero Trust authentication and logging capabilities.",
+													"value": "These ports can be found using scanning technology. Then, A Zero Trust reverse proxy can securely expose a web application to the public Internet without opening any inbound ports. The application's only publicly visible record is its DNS record — which can be protected with Zero Trust authentication and logging capabilities.",
 													"marks": [],
 													"content": null
 												}
@@ -1864,8 +1865,8 @@
 															"locale": "en-US",
 															"title": "Zero Trust Project Four ",
 															"file": {
-																"name": "zero-trust-article-project-4.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2moHg0TJi50HN3nc3SUL4M/69c54900223a14a6719868246d288aa9/zero-trust-article-project-4.png",
+																"name": "p4.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2moHg0TJi50HN3nc3SUL4M/cb8896d65b95b771b9e9ed2373b674f0/p4.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -1966,7 +1967,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -2005,7 +2006,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "DNS filtering is the practice of preventing users from accessing websites and other Internet resources that are known or highly suspected to be malicious. It is not always included in the Zero Trust conversation because it does not involve traffic inspection or logging. But, it can ultimately control where users (or groups of users) can transfer and upload data — which aligns well with the broader Zero Trust philosophy. ",
+													"value": "DNS filtering is the practice of preventing users from accessing websites and other Internet resources that are known or highly suspected to be malicious. It is not always included in the Zero Trust conversation because it does not involve traffic inspection or logging. However, it can ultimately control where users (or groups of users) can transfer and upload data — which aligns well with the broader Zero Trust philosophy.",
 													"marks": [],
 													"content": null
 												}
@@ -2047,8 +2048,8 @@
 															"locale": "en-US",
 															"title": "Zero Trust Project Five",
 															"file": {
-																"name": "zero-trust-project-5.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4F9gXlPxxRREG8KD3LUpdD/fd52b59841c409f96cc7a64197c25cc2/zero-trust-project-5.png",
+																"name": "p5.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4F9gXlPxxRREG8KD3LUpdD/ac984e637ec7576badba148ca8ec2332/p5.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -2124,7 +2125,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -2182,7 +2183,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Implementing these projects",
+															"value": "Implementing these five projects",
 															"marks": [],
 															"content": null
 														}
@@ -2194,7 +2195,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " can be a relatively straightforward foray into Zero Trust. And any organization that accomplishes them will have made significant progress towards better, more modern security.",
+													"value": " can be a relatively straightforward foray into Zero Trust. And any organization that completes these projects will have made significant progress toward better, more modern security.",
 													"marks": [],
 													"content": null
 												}
@@ -2267,38 +2268,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare offers all of these services through ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/zero-trust/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "Cloudflare Zero Trust",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": ". It can verify, filter, isolate, and inspect all network traffic, all on one uniform and composable platform for easy setup and operations. And, its secure virtual backbone — using a %{DataCenterCount}+ city global network with over %{NetworkInterconnects} interconnections — offers significant security, performance, and reliability benefits compared with the public Internet.",
+													"value": "All of these services are built into the Cloudflare connectivity cloud: a unified platform of cloud-native services designed to help organizations regain control of their IT environment. Cloudflare is the leading connectivity cloud company. It empowers organizations to make their employees, applications, and networks faster and more secure everywhere, while reducing complexity and cost. Powered by one of the world's largest and most interconnected networks, Cloudflare blocks billions of threats online for its customers every day. ",
 													"marks": [],
 													"content": null
 												}
@@ -3190,9 +3160,6 @@
 															"marks": [
 																{
 																	"type": "italic"
-																},
-																{
-																	"type": "underline"
 																}
 															],
 															"content": null
@@ -3206,7 +3173,11 @@
 														"uri": null
 													},
 													"value": "\"",
-													"marks": [],
+													"marks": [
+														{
+															"type": "underline"
+														}
+													],
 													"content": null
 												}
 											]
