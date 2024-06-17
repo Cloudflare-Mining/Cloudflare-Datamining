@@ -663,6 +663,10 @@
 		"name": "Cloudflare Images",
 		"description": "Can edit Cloudflare Images assets",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
 			"image": {
 				"read": true,
 				"edit": true
