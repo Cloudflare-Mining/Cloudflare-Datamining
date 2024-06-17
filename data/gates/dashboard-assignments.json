@@ -170,9 +170,6 @@
 	"deployment-rollbacks": {
 		"true": 100
 	},
-	"deprecate-security-level": {
-		"true": 100
-	},
 	"deprecate-workers-usage-models": {
 		"true": 100
 	},
@@ -367,6 +364,14 @@
 		"baseline": 35,
 		"cohort-2": 34,
 		"cohort-1": 31
+	},
+	"prg-plans-page-copy-experiment": {
+		"baseline": 50,
+		"experiment": 50
+	},
+	"prg-waf-sidebar-nav-experiment": {
+		"experiment": 50,
+		"baseline": 50
 	},
 	"proxy-ips-ui": {
 		"true": 100
