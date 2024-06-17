@@ -545,16 +545,6 @@
 		"id": "mirage2.api.title.patch"
 	},
 	{
-		"uri": "/zones/:zone_identifier/settings/mobile_redirect",
-		"method": "GET",
-		"id": "zone-settings-get-mobile-redirect-setting"
-	},
-	{
-		"uri": "/zones/:zone_identifier/settings/mobile_redirect",
-		"method": "PATCH",
-		"id": "zone-settings-change-mobile-redirect-setting"
-	},
-	{
 		"uri": "/zones/:zone_identifier/settings/nel",
 		"method": "GET",
 		"id": "nel.api.title.get"

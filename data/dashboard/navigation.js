@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: T => (0, e.z1)(E.Mr)(T) && (0, J.z7)(T) && !!(0, J.z$)(T).length
+		hasPermission: T => (0, e.z1)(E.Mr)(T) && (0, H.z7)(T) && !!(0, H.z$)(T).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -176,7 +176,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: W.T
+		hasPermission: B.T
 	}, {
 		title: "navigation.account.group_title.application_services",
 		url: "/",
@@ -245,12 +245,12 @@ const navigation = {
 			url: "/network-security/ddos",
 			hasPermission: T => {
 				const ge = !!(0, a.Wq)(T) && !!(0, a.fO)(T);
-				return (0, oe.EL)(T) && ge
+				return (0, te.EL)(T) && ge
 			}
 		}, {
 			title: "navigation.account.l3l4.ddos.ddos_protection",
 			url: "/network-security/ddos-protection/settings",
-			hasPermission: T => (0, oe.EL)(T) && (0, a.Tk)(T)
+			hasPermission: T => (0, te.EL)(T) && (0, a.Tk)(T)
 		}]
 	}, {
 		title: "navigation.account.ip_addresses",
@@ -375,7 +375,7 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: T => {
-				const ge = (0, u.tJ)(T);
+				const ge = (0, c.tJ)(T);
 				return !(0, p.ky)(ge, [v.uD.EnterpriseTrial])
 			}
 		}]
@@ -572,7 +572,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: T => {
 				const ge = (0, y.nA)(T);
-				return ge ? !!(!(0, l.yD)(T) && !!(0, y.ZB)(T, "origin_reachability_dash", "dash_view") && (0, y.tU)(ge, "enterprise") && !!(0, c.Ek)(T, "httpRequestsAdaptiveGroups")) : !1
+				return ge ? !!(!(0, l.yD)(T) && !!(0, y.ZB)(T, "origin_reachability_dash", "dash_view") && (0, y.tU)(ge, "enterprise") && !!(0, u.Ek)(T, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
@@ -580,7 +580,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: T => {
 				const ge = (0, y.nA)(T);
-				return ge ? !!(!(0, l.yD)(T) && !!(0, y.ZB)(T, "edge_reachability_dash", "dash_view") && (0, y.tU)(ge, "enterprise") && !!(0, c.Ek)(T, "nelReportsAdaptiveGroups")) : !1
+				return ge ? !!(!(0, l.yD)(T) && !!(0, y.ZB)(T, "edge_reachability_dash", "dash_view") && (0, y.tU)(ge, "enterprise") && !!(0, u.Ek)(T, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -606,7 +606,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: T => !!(0, ee.V)(T)
+			hasPermission: T => !!(0, J.V)(T)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -615,7 +615,7 @@ const navigation = {
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
 		tabs: N.bB,
-		hasPermission: T => !(0, l.yD)(T) && (0, A.m7)(T)
+		hasPermission: T => !(0, l.yD)(T) && (0, D.m7)(T)
 	}, {
 		title: "navigation.zone.dns",
 		url: "/dns",
@@ -673,10 +673,10 @@ const navigation = {
 		hasPermission: T => {
 			const ge = (0, y.nA)(T);
 			if ((0, l.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !ge) return !1;
-			const Ee = !!((0, h.l8)(T) || (0, y.DQ)(T)),
-				de = !!(0, y.ZB)(T, "spectrum", "enabled"),
-				K = !!(0, y.Ns)(ge);
-			return de || Ee || !K
+			const ve = !!((0, h.l8)(T) || (0, y.DQ)(T)),
+				ue = !!(0, y.ZB)(T, "spectrum", "enabled"),
+				G = !!(0, y.Ns)(ge);
+			return ue || ve || !G
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -808,7 +808,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: Q
+			tabs: W
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -857,7 +857,7 @@ const navigation = {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: D.m
+			tabs: C.m
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			url: "/rules/redirect-rules",
@@ -921,7 +921,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
-			hasPermission: T => !(0, l.yD)(T) && !!(0, c.Ek)(T, "healthCheckEventsAdaptiveGroups")
+			hasPermission: T => !(0, l.yD)(T) && !!(0, u.Ek)(T, "healthCheckEventsAdaptiveGroups")
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",

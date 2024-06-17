@@ -755,7 +755,7 @@
 				}, [b.search])
 			};
 			var Jt = n("../react/common/components/SAMLSubmit/SAMLSubmit.tsx");
-			const Xt = Ae().lazy(() => Promise.all([n.e(2480), n.e(99992), n.e(4616), n.e(72019), n.e(19462), n.e(36273), n.e(2554), n.e(7484), n.e(39760), n.e(2180), n.e(22734), n.e(94452), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+			const Xt = Ae().lazy(() => Promise.all([n.e(2480), n.e(99992), n.e(4616), n.e(72019), n.e(19462), n.e(36273), n.e(72793), n.e(7484), n.e(39760), n.e(2180), n.e(22734), n.e(94452), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				Ke = Ae().lazy(() => Promise.all([n.e(99992), n.e(36273), n.e(2180), n.e(69088), n.e(94452), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var sn = ({
 					userIsAuthed: b
@@ -882,10 +882,10 @@
 				n.g.build = mn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "cfe442b69e1761e2f3f45bf65560428e23b30cf8",
-					dashVersion: "f3d9fc181b99405af9a150763e57a2d4d229ab97",
+					commit: "749ed47418f45e49bd8327174fbbbea9243e1a40",
+					dashVersion: "383100526c24246f8cc10c32588644f2992c7ce1",
 					env: "production",
-					builtAt: 1718377886014,
+					builtAt: 1718654957682,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",
@@ -8952,6 +8952,7 @@
 				VIEW_PAGE_SHIELD_SETTINGS: "view page shield settings",
 				VIEW_DETECTED_SCRIPTS: "view detected scripts",
 				VIEW_DETECTED_CONNECTIONS: "view detected connections",
+				VIEW_DETECTED_COOKIES: "view detected cookies",
 				MANAGE_PAGE_SHIELD_POLICY: "manage page shield policy",
 				VIEW_PAGE_SHIELD_POLICIES: "view page shield policies"
 			}
@@ -11244,7 +11245,8 @@
 					projectIntegrationsRoot: (0, e.BC)`/${"accountId"}/pages/view/${"projectName"}/integrations`,
 					projectIntegrations: (0, e.BC)`/${"accountId"}/pages/view/${"projectName"}/integrations/${"deploymentType"}(preview|production)`,
 					projectIntegrationsSetupFlow: (0, e.BC)`/${"accountId"}/pages/view/${"projectName"}/integrations/${"deploymentType"}(preview|production)/${"integrationId"}/integrations-setup`,
-					projectSettings: (0, e.BC)`/${"accountId"}/pages/view/${"projectName"}/settings`,
+					projectSettingsRoot: (0, e.BC)`/${"accountId"}/pages/view/${"projectName"}/settings`,
+					projectSettings: (0, e.BC)`/${"accountId"}/pages/view/${"projectName"}/settings/${"environment"}(preview|production)`,
 					projectBuild: (0, e.BC)`/${"accountId"}/pages/view/${"projectName"}/build`,
 					projectManage: (0, e.BC)`/${"accountId"}/pages/view/${"projectName"}/manage`,
 					projectSettingsBuildDeployment: (0, e.BC)`/${"accountId"}/pages/view/${"projectName"}/settings/builds-deployments`,

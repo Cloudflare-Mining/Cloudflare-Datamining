@@ -13,7 +13,7 @@
 		addCard: "Add card",
 		invalid_email: "Invalid email",
 		back_to_zone: (0, e.d)`Back to ${"zoneName"}`,
-		email_notification: "Please <0>verify your account email address</0> to access all Registrar features such as Registration and Transfer.",
+		email_notification: "Please <0>verify your email address</0> to register and transfer domains",
 		invalid_auth_code: "The registry has indicated that the authorization code is not correct. Please re-enter the code again. If you continue to receive an authorization code error, please request a new code from your current registrar.",
 		registrar_managed: "As this is a Cloudflare Registrar managed account, no payment is needed.",
 		error_message: "Something went wrong. Please try again or contact support for assistance.",
@@ -926,7 +926,12 @@ Payment will be charged in US dollars.`,
 		}
 	},
 	no_access: {
-		title: "Insufficient permissions",
-		subtitle: "Contact your account administrator for access to Cloudflare Registrar"
+		permissions: {
+			title: "Insufficient permissions",
+			subtitle: "Contact your account administrator for access to Cloudflare Registrar"
+		},
+		unverified_email: {
+			title: "Email not verified"
+		}
 	}
 }
