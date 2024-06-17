@@ -882,10 +882,10 @@
 				n.g.build = mn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "749ed47418f45e49bd8327174fbbbea9243e1a40",
-					dashVersion: "383100526c24246f8cc10c32588644f2992c7ce1",
+					commit: "8e62338b5b01065d903b6ca3bcaaf9d909073bfe",
+					dashVersion: "e2d34b9d5e3b8167eda79a4d07cddb469e5b9783",
 					env: "production",
-					builtAt: 1718654957682,
+					builtAt: 1718662545803,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",
