@@ -782,6 +782,56 @@
 												"minimum": 0,
 												"type": "number"
 											},
+											"tools": {
+												"items": {
+													"properties": {
+														"function": {
+															"properties": {
+																"description": {
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"parameters": {
+																	"properties": {
+																		"properties": {
+																			"additionalProperties": {
+																				"properties": {
+																					"description": {
+																						"type": "string"
+																					},
+																					"type": {
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"type": "object"
+																		},
+																		"required": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"type": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"type": {
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"type": "array"
+											},
 											"top_k": {
 												"maximum": 50,
 												"minimum": 1,
@@ -1060,6 +1110,20 @@
 													"properties": {
 														"response": {
 															"type": "string"
+														},
+														"tool_calls": {
+															"items": {
+																"properties": {
+																	"arguments": {
+																		"type": "object"
+																	},
+																	"name": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
 														}
 													},
 													"type": "object"
