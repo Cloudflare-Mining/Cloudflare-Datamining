@@ -6,33 +6,63 @@
 	</div>
 </div>
 <p><strong>Available Locations:&nbsp;</strong>Remote - US&nbsp;</p>
-<h4><strong>Senior Technical Program Manager - Engineering PMO</strong></h4>
-<h4>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Product Engineering.&nbsp; Your main responsibility will be to work cross functionally across product, engineering, design, marketing, security, billing, technical operations, infrastructure, legal, and more to build and execute on the overall strategy.&nbsp;</h4>
-<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
-<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
-<p><strong>This position will be based in Austin, TX, San Francisco, CA or Remote, USA. You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</strong></p>
+<p><strong>About the Department</strong></p>
 <h4>&nbsp;</h4>
-<p><strong>Major areas of responsibilities</strong></p>
+<p>As a Product Manager at Cloudflare, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
+<h4>&nbsp;</h4>
+<p><strong>About the Role</strong></p>
+<h4>&nbsp;</h4>
+<p>We are hiring a PM to help build products that enable customers to transform their corporate network.</p>
+<h4>&nbsp;</h4>
+<p>Cloudflare provides a full stack of networking-as-a-service products that allow customers to build and operate secure, reliable, and fast networks without purchasing traditional network hardware. Cloudflare’s network underpins mission-critical infrastructure, always-on applications, small businesses, and everything in between. Our customers rely on the performance, security, reliability, and visibility provided by our network to power their business.&nbsp;</p>
+<h4>&nbsp;</h4>
+<p>We’re looking for a PM to define and execute on the vision to replace “next generation” network firewalls with a modern, network-as-a-service offering leveraging the full power and threat data of the Cloudflare network. Traditional network firewalls, and their virtualized equivalents, all suffer from the same scale, cost, and administration challenges of other network hardware that Cloudflare replaces. It’s time to build a better solution and reinvent the market.</p>
+<h4>&nbsp;</h4>
+<p>As Product Manager for Magic Firewall, your job will be to:</p>
+<h4>&nbsp;</h4>
 <ul>
-	<li>Understand technical requirements of assigned engineering programs</li>
-	<li>Effectively balance risk and achieve business objectives&nbsp;</li>
-	<li>Obtain clear requirements, plans, and decisions to proactively tackle critical gaps and mitigate risk</li>
-	<li>Drive creation and roll out of scalable processes to meet product and engineering team goals</li>
-	<li>Set up regular feedback cycles and ensure buy-in from contributors on program plan &amp; roadmap</li>
-	<li>Provide regular status updates to stakeholders and senior management<br><br></li>
+	<li>Ensure customers are able to easily analyze and secure network traffic to and from any network location—whether on the Internet or across the corporate environment.</li>
+	<li>Build innovative solutions to customers’ network security problems that leverage the unique strengths of Cloudflare: a massive, highly interconnected network spanning the world, threat intelligence distilled from an unparalleled vantage point on the Internet, and a high-velocity engineering organization that ships early and often.</li>
+	<li>Harness cutting edge machine learning (ML) and big data analysis techniques to build solutions that detect and mitigate network security threats with minimal customer involvement.</li>
+	<li>Think through how to make a great, easy-to-use product that customers love, and drive the full product life cycle from core user needs discovery through to pricing and packaging. Ship continuous software and process improvements to support your products’ sustained growth.&nbsp;</li>
 </ul>
-<p><strong>Desirable skills and knowledge&nbsp;</strong></p>
+<h4>&nbsp;</h4>
+<p><strong>What You’ll Do</strong></p>
+<h4>&nbsp;</h4>
+<p>As a member of the growing team of product managers your responsibilities include:</p>
 <ul>
-	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
-	<li>Knowledge of network architecture and working with infrastructure teams a plus</li>
-	<li>10+ years experience in technical program management and a desire for continuous improvement</li>
-	<li>Proven track record on creating realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
-	<li>Experience working with multiple time zones and multiple cross functional teams</li>
-	<li>Strong competency with Confluence, JIRA (admin-level experience strongly preferred), and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)&nbsp;&nbsp;</li>
-	<li>Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
+	<li>Own the product vision for your area. Ensure that it aligns with the overall product and company vision.</li>
+	<li>Represent the customer. Be the champion and voice of customers. Build intimate, personal customer relationships. Bring the customer's voice into the creation process.</li>
+	<li>Manage the roadmap. Make tough tactical prioritization decisions while helping the company think long-term. Build trust with stakeholders by maintaining an understandable, accurate roadmap.</li>
+	<li>Author use cases and prioritize requirements. Translate market observations and customer feedback into a prioritized product backlog. Author use cases based on specific real-world product applications and extrapolate detailed product requirements for the scenarios.</li>
+	<li>Collaborate across teams. We win or lose as a team. Product managers play a critical role in creating alignment between engineering teams and other stakeholders. A collaborative attitude is essential to the job.</li>
+	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
+	<li>Develop new opportunities. With your finger on the pulse of the market, the customers and the engineering teams, you are uniquely positioned to bring new products to market that solve real customer problems.&nbsp;</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4>&nbsp;</h4>
+<p>You are entrepreneurial-minded and thrive in a fast-paced and goal-driven environment. You have outstanding communication and collaboration skills and are able to work with a diverse group, get consensus, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details. You have several years of experience working with enterprise, SaaS, or security technologies. You have a passion for building SaaS products and want to solve the problems of performance, security, and reliability of the Internet.&nbsp;&nbsp;&nbsp;</p>
+<ul>
+	<li>2+ years of product management or equivalent experience with demonstrated ability to discover opportunities, and then define and deliver products.</li>
+	<li>Exceptional communication, presentation, organizational, and analytical skills.</li>
+	<li>Demonstrated ability to lead, drive consensus, and deliver in a matrix organization with multiple stakeholders.</li>
+	<li>Must be able to define and manage complex process and/or product issues of a broad scope using independent judgment.</li>
+	<li>Experience balancing execution, agility, and culture at a fast growing business.</li>
+	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications and data systems. You've preferably been working full time on a software delivery team.</li>
+	<li>Deep customer and stakeholder empathy. You must be not only the voice of the customer, but at various times the voice of marketing, finance, engineering, support and ops. You must be able to channel many points of view.</li>
+	<li>Experience working with data analysis at scale. An understanding of how to make big data small.</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Scripting/programming experience (Python, Go, etc.) and familiarity with data analysis tools (eg SQL, pandas).</li>
+	<li>Theoretical and practical knowledge of how the Internet works at layers 1 through 7.</li>
+	<li>Experience in building or operating large-scale IP networks. Specific expertise in BGP and DNS a plus.</li>
+	<li>Hands-on experience with tools used for interacting with, debugging, and testing networks and applications (e.g. curl, dig, mtr, iperf, Wireshark, etc.)</li>
+	<li>Ability to validate early ideas through quantitative and qualitative methods (A/B and multivariate testing, user testing, etc).&nbsp;</li>
+	<li>Scripting/programming experience&nbsp;</li>
+	<li>A solid understanding of RESTful API design &amp; documentation.</li>
+	<li>Experience developing pricing for new enterprise SaaS products.</li>
+	<li>Capacity planning, cost modeling, and operations research experience.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
