@@ -6,19 +6,19 @@
 	</div>
 </div>
 <h4>Available Locations: US Remote, Austin, TX or San Francisco, CA preferred</h4>
-<h4>About the department</h4>
+<p><strong>Job Summary</strong></p>
 <p>Do you love thinking analytically? Are you passionate about using your financial knowledge to navigate complex challenges? If your answer to both questions above is “yes”, we might have an amazing opportunity for you.</p>
 <p>We are seeking a motivated self-starter to join the Cloudflare Treasury team. As our newest Treasury team member, you will join a team that is responsible for global treasury operations, direct forecasting and free cash flow management, investment portfolio oversight, foreign currency risk management, and debt related activities. Strong analytical background, project management skills, and deep passion to push for clarity and drive results will be keys to your success. At the same time, this is an amazing opportunity to work for a high growth tech company that will consistently expose you to a dynamic and challenging environment.</p>
 <p>This is an ideal opportunity for a finance professional that is looking for the next step in their career. There will be opportunities to interact with senior business leaders and work with cross-functional teams on strategic projects.&nbsp;</p>
-<p>&nbsp;</p>
-<h4>What you'll do</h4>
+<p><strong>Key Responsibilities&nbsp;</strong></p>
 <ul>
 	<li>Manage global cash management activities including payments, cash positioning, funding, and interest income forecasting</li>
 	<li>Lead M&amp;A integration related activities from a treasury perspective</li>
 	<li>Generate monthly and quarterly reporting, including fulfilling internal and external audit requirements</li>
+	<li>Improve benchmarking of external asset managers and develop strategies to optimize investment performance</li>
 	<li>Drive the implementation, streamlining and documentation of various treasury operations and procedures, considering compliance and business needs</li>
-	<li>Assist with roll out of global FX program leading FX forecasting, execution, and reporting</li>
-	<li>Become subject matter expert on treasury management system with oversight on cash management, financial transaction accounting, and payment related modules</li>
+	<li>Assist with roll out of global FX program, including leading FX forecasting, execution, and reporting</li>
+	<li>Become subject matter expert on treasury management system with oversight on cash management, financial transaction accounting, and payment related modules&nbsp;</li>
 	<li>Partner with Head of Treasury to lead process enhancement and automation initiatives collaborating with finance &amp; IT stakeholders</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>

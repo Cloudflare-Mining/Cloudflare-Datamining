@@ -6,9 +6,9 @@
 	</div>
 </div>
 <h4>Available Locations: Remote US (Austin, TX or San Francisco, CA preferred)</h4>
-<h4>About the position</h4>
-<p>Help shape the future of Cloudflare! We are seeking a motivated and experienced Treasury Analyst to join the Cloudflare Treasury team who will play a significant role within our organization. The role will support primarily global cash management and banking activities however will also include exposure to strategic treasury projects including the roll out of our global FX program. The primary focus of this role is liquidity management, which includes cash positioning, forecasting, internal and external reporting, bank account management and payment execution. This is an amazing opportunity to work for a high growth tech company that will consistently expose you to a dynamic and challenging environment.</p>
-<h4>What you'll do</h4>
+<p><strong>Job Summary</strong></p>
+<p>Help shape the future of Cloudflare! We are seeking a motivated and experienced Treasury Analyst to join the Cloudflare Treasury team who will play a significant role within our organization. The role will support primarily global cash management and banking activities as well as have involvement in strategic treasury projects such as the roll out of our global FX program. The primary focus of this role is liquidity management, which includes cash positioning, forecasting, internal and external reporting, bank account management and payment execution. This is an amazing opportunity to work for a high growth tech company that will consistently expose you to a dynamic and challenging environment.</p>
+<p><strong>Key Responsibilities&nbsp;</strong></p>
 <ul>
 	<li>Support day-to-day treasury operations including intercompany fundings, reporting, and payment processing</li>
 	<li>Leverage innovation to lead process enhancement and automation initiatives, streamlining treasury reporting and deliverables</li>
