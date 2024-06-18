@@ -335,6 +335,22 @@
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
 				}
+			},
+			{
+				"in": "query",
+				"name": "type",
+				"schema": {
+					"description": "The type of list.",
+					"enum": [
+						"SERIAL",
+						"URL",
+						"DOMAIN",
+						"EMAIL",
+						"IP"
+					],
+					"example": "SERIAL",
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -456,7 +472,6 @@
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"readOnly": true,
 														"type": "string"
 													},
 													"description": {
@@ -490,7 +505,6 @@
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"readOnly": true,
 														"type": "string"
 													}
 												},
@@ -626,7 +640,6 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"readOnly": true,
 																"type": "string"
 															},
 															"description": {
@@ -660,7 +673,6 @@
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"readOnly": true,
 																"type": "string"
 															}
 														},
@@ -896,7 +908,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"description": {
@@ -930,7 +941,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -1043,7 +1053,6 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"description": {
@@ -1077,7 +1086,6 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													},
@@ -1328,7 +1336,6 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"value": {
@@ -1496,7 +1503,6 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"value": {
@@ -1682,7 +1688,6 @@
 										"created_at": {
 											"example": "2014-01-01T05:20:00.12345Z",
 											"format": "date-time",
-											"readOnly": true,
 											"type": "string"
 										},
 										"value": {
@@ -1808,7 +1813,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"description": {
@@ -1842,7 +1846,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -1955,7 +1958,6 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"description": {
@@ -1989,7 +1991,6 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													},
@@ -2131,7 +2132,6 @@
 										"created_at": {
 											"example": "2014-01-01T05:20:00.12345Z",
 											"format": "date-time",
-											"readOnly": true,
 											"type": "string"
 										},
 										"value": {
@@ -2263,7 +2263,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"description": {
@@ -2284,7 +2283,6 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"readOnly": true,
 																"type": "string"
 															},
 															"value": {
@@ -2317,7 +2315,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											}
@@ -2423,7 +2420,6 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"description": {
@@ -2444,7 +2440,6 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"value": {
@@ -2477,7 +2472,6 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													}
@@ -2734,7 +2728,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"description": {
@@ -2768,7 +2761,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -2881,7 +2873,6 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"description": {
@@ -2915,7 +2906,6 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													},

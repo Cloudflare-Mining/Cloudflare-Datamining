@@ -472,7 +472,6 @@
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"readOnly": true,
 														"type": "string"
 													},
 													"deleted_at": {
@@ -571,27 +570,27 @@
 																"description": "Configure how browser isolation behaves.",
 																"properties": {
 																	"dcp": {
-																		"description": "Set to true to enable copy-pasting.",
+																		"description": "Set to false to enable copy-pasting.",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"dd": {
-																		"description": "Set to true to enable downloading.",
+																		"description": "Set to false to enable downloading.",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"dk": {
-																		"description": "Set to true to enable keyboard usage.",
+																		"description": "Set to false to enable keyboard usage.",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"dp": {
-																		"description": "Set to true to enable printing.",
+																		"description": "Set to false to enable printing.",
 																		"example": false,
 																		"type": "boolean"
 																	},
 																	"du": {
-																		"description": "Set to true to enable uploading.",
+																		"description": "Set to false to enable uploading.",
 																		"example": false,
 																		"type": "boolean"
 																	}
@@ -717,6 +716,11 @@
 																	}
 																},
 																"type": "object"
+															},
+															"ignore_cname_category_matches": {
+																"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+																"example": true,
+																"type": "boolean"
 															},
 															"insecure_disable_dnssec_validation": {
 																"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
@@ -873,7 +877,6 @@
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"readOnly": true,
 														"type": "string"
 													}
 												},
@@ -1025,7 +1028,6 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"readOnly": true,
 																"type": "string"
 															},
 															"deleted_at": {
@@ -1124,27 +1126,27 @@
 																		"description": "Configure how browser isolation behaves.",
 																		"properties": {
 																			"dcp": {
-																				"description": "Set to true to enable copy-pasting.",
+																				"description": "Set to false to enable copy-pasting.",
 																				"example": false,
 																				"type": "boolean"
 																			},
 																			"dd": {
-																				"description": "Set to true to enable downloading.",
+																				"description": "Set to false to enable downloading.",
 																				"example": false,
 																				"type": "boolean"
 																			},
 																			"dk": {
-																				"description": "Set to true to enable keyboard usage.",
+																				"description": "Set to false to enable keyboard usage.",
 																				"example": false,
 																				"type": "boolean"
 																			},
 																			"dp": {
-																				"description": "Set to true to enable printing.",
+																				"description": "Set to false to enable printing.",
 																				"example": false,
 																				"type": "boolean"
 																			},
 																			"du": {
-																				"description": "Set to true to enable uploading.",
+																				"description": "Set to false to enable uploading.",
 																				"example": false,
 																				"type": "boolean"
 																			}
@@ -1270,6 +1272,11 @@
 																			}
 																		},
 																		"type": "object"
+																	},
+																	"ignore_cname_category_matches": {
+																		"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"insecure_disable_dnssec_validation": {
 																		"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
@@ -1426,7 +1433,6 @@
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
-																"readOnly": true,
 																"type": "string"
 															}
 														},
@@ -1678,7 +1684,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"deleted_at": {
@@ -1777,27 +1782,27 @@
 															"description": "Configure how browser isolation behaves.",
 															"properties": {
 																"dcp": {
-																	"description": "Set to true to enable copy-pasting.",
+																	"description": "Set to false to enable copy-pasting.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dd": {
-																	"description": "Set to true to enable downloading.",
+																	"description": "Set to false to enable downloading.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dk": {
-																	"description": "Set to true to enable keyboard usage.",
+																	"description": "Set to false to enable keyboard usage.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dp": {
-																	"description": "Set to true to enable printing.",
+																	"description": "Set to false to enable printing.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"du": {
-																	"description": "Set to true to enable uploading.",
+																	"description": "Set to false to enable uploading.",
 																	"example": false,
 																	"type": "boolean"
 																}
@@ -1923,6 +1928,11 @@
 																}
 															},
 															"type": "object"
+														},
+														"ignore_cname_category_matches": {
+															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+															"example": true,
+															"type": "boolean"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
@@ -2079,7 +2089,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -2208,7 +2217,6 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"deleted_at": {
@@ -2307,27 +2315,27 @@
 																	"description": "Configure how browser isolation behaves.",
 																	"properties": {
 																		"dcp": {
-																			"description": "Set to true to enable copy-pasting.",
+																			"description": "Set to false to enable copy-pasting.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dd": {
-																			"description": "Set to true to enable downloading.",
+																			"description": "Set to false to enable downloading.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dk": {
-																			"description": "Set to true to enable keyboard usage.",
+																			"description": "Set to false to enable keyboard usage.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dp": {
-																			"description": "Set to true to enable printing.",
+																			"description": "Set to false to enable printing.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"du": {
-																			"description": "Set to true to enable uploading.",
+																			"description": "Set to false to enable uploading.",
 																			"example": false,
 																			"type": "boolean"
 																		}
@@ -2453,6 +2461,11 @@
 																		}
 																	},
 																	"type": "object"
+																},
+																"ignore_cname_category_matches": {
+																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+																	"example": true,
+																	"type": "boolean"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
@@ -2609,7 +2622,6 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													},
@@ -2844,27 +2856,27 @@
 										"description": "Configure how browser isolation behaves.",
 										"properties": {
 											"dcp": {
-												"description": "Set to true to enable copy-pasting.",
+												"description": "Set to false to enable copy-pasting.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dd": {
-												"description": "Set to true to enable downloading.",
+												"description": "Set to false to enable downloading.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dk": {
-												"description": "Set to true to enable keyboard usage.",
+												"description": "Set to false to enable keyboard usage.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dp": {
-												"description": "Set to true to enable printing.",
+												"description": "Set to false to enable printing.",
 												"example": false,
 												"type": "boolean"
 											},
 											"du": {
-												"description": "Set to true to enable uploading.",
+												"description": "Set to false to enable uploading.",
 												"example": false,
 												"type": "boolean"
 											}
@@ -2990,6 +3002,11 @@
 											}
 										},
 										"type": "object"
+									},
+									"ignore_cname_category_matches": {
+										"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+										"example": true,
+										"type": "boolean"
 									},
 									"insecure_disable_dnssec_validation": {
 										"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
@@ -3267,7 +3284,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"deleted_at": {
@@ -3366,27 +3382,27 @@
 															"description": "Configure how browser isolation behaves.",
 															"properties": {
 																"dcp": {
-																	"description": "Set to true to enable copy-pasting.",
+																	"description": "Set to false to enable copy-pasting.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dd": {
-																	"description": "Set to true to enable downloading.",
+																	"description": "Set to false to enable downloading.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dk": {
-																	"description": "Set to true to enable keyboard usage.",
+																	"description": "Set to false to enable keyboard usage.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dp": {
-																	"description": "Set to true to enable printing.",
+																	"description": "Set to false to enable printing.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"du": {
-																	"description": "Set to true to enable uploading.",
+																	"description": "Set to false to enable uploading.",
 																	"example": false,
 																	"type": "boolean"
 																}
@@ -3512,6 +3528,11 @@
 																}
 															},
 															"type": "object"
+														},
+														"ignore_cname_category_matches": {
+															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+															"example": true,
+															"type": "boolean"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
@@ -3668,7 +3689,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -3797,7 +3817,6 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"deleted_at": {
@@ -3896,27 +3915,27 @@
 																	"description": "Configure how browser isolation behaves.",
 																	"properties": {
 																		"dcp": {
-																			"description": "Set to true to enable copy-pasting.",
+																			"description": "Set to false to enable copy-pasting.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dd": {
-																			"description": "Set to true to enable downloading.",
+																			"description": "Set to false to enable downloading.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dk": {
-																			"description": "Set to true to enable keyboard usage.",
+																			"description": "Set to false to enable keyboard usage.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dp": {
-																			"description": "Set to true to enable printing.",
+																			"description": "Set to false to enable printing.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"du": {
-																			"description": "Set to true to enable uploading.",
+																			"description": "Set to false to enable uploading.",
 																			"example": false,
 																			"type": "boolean"
 																		}
@@ -4042,6 +4061,11 @@
 																		}
 																	},
 																	"type": "object"
+																},
+																"ignore_cname_category_matches": {
+																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+																	"example": true,
+																	"type": "boolean"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
@@ -4198,7 +4222,6 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													},
@@ -4444,27 +4467,27 @@
 										"description": "Configure how browser isolation behaves.",
 										"properties": {
 											"dcp": {
-												"description": "Set to true to enable copy-pasting.",
+												"description": "Set to false to enable copy-pasting.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dd": {
-												"description": "Set to true to enable downloading.",
+												"description": "Set to false to enable downloading.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dk": {
-												"description": "Set to true to enable keyboard usage.",
+												"description": "Set to false to enable keyboard usage.",
 												"example": false,
 												"type": "boolean"
 											},
 											"dp": {
-												"description": "Set to true to enable printing.",
+												"description": "Set to false to enable printing.",
 												"example": false,
 												"type": "boolean"
 											},
 											"du": {
-												"description": "Set to true to enable uploading.",
+												"description": "Set to false to enable uploading.",
 												"example": false,
 												"type": "boolean"
 											}
@@ -4590,6 +4613,11 @@
 											}
 										},
 										"type": "object"
+									},
+									"ignore_cname_category_matches": {
+										"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+										"example": true,
+										"type": "boolean"
 									},
 									"insecure_disable_dnssec_validation": {
 										"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
@@ -4867,7 +4895,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"deleted_at": {
@@ -4966,27 +4993,27 @@
 															"description": "Configure how browser isolation behaves.",
 															"properties": {
 																"dcp": {
-																	"description": "Set to true to enable copy-pasting.",
+																	"description": "Set to false to enable copy-pasting.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dd": {
-																	"description": "Set to true to enable downloading.",
+																	"description": "Set to false to enable downloading.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dk": {
-																	"description": "Set to true to enable keyboard usage.",
+																	"description": "Set to false to enable keyboard usage.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"dp": {
-																	"description": "Set to true to enable printing.",
+																	"description": "Set to false to enable printing.",
 																	"example": false,
 																	"type": "boolean"
 																},
 																"du": {
-																	"description": "Set to true to enable uploading.",
+																	"description": "Set to false to enable uploading.",
 																	"example": false,
 																	"type": "boolean"
 																}
@@ -5112,6 +5139,11 @@
 																}
 															},
 															"type": "object"
+														},
+														"ignore_cname_category_matches": {
+															"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+															"example": true,
+															"type": "boolean"
 														},
 														"insecure_disable_dnssec_validation": {
 															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
@@ -5268,7 +5300,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -5397,7 +5428,6 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"deleted_at": {
@@ -5496,27 +5526,27 @@
 																	"description": "Configure how browser isolation behaves.",
 																	"properties": {
 																		"dcp": {
-																			"description": "Set to true to enable copy-pasting.",
+																			"description": "Set to false to enable copy-pasting.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dd": {
-																			"description": "Set to true to enable downloading.",
+																			"description": "Set to false to enable downloading.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dk": {
-																			"description": "Set to true to enable keyboard usage.",
+																			"description": "Set to false to enable keyboard usage.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"dp": {
-																			"description": "Set to true to enable printing.",
+																			"description": "Set to false to enable printing.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"du": {
-																			"description": "Set to true to enable uploading.",
+																			"description": "Set to false to enable uploading.",
 																			"example": false,
 																			"type": "boolean"
 																		}
@@ -5642,6 +5672,11 @@
 																		}
 																	},
 																	"type": "object"
+																},
+																"ignore_cname_category_matches": {
+																	"description": "Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.",
+																	"example": true,
+																	"type": "boolean"
 																},
 																"insecure_disable_dnssec_validation": {
 																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
@@ -5798,7 +5833,6 @@
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													},

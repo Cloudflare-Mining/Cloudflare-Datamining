@@ -1,14 +1,17 @@
 {
-	"DELETE /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
-		"description": "Deletes a configured Zero Trust Gateway proxy endpoint.",
-		"operationId": "zero-trust-gateway-proxy-endpoints-delete-proxy-endpoint",
+	"DELETE /accounts/{account_id}/gateway/certificates/{certificate_id}": {
+		"description": "Deletes a gateway-managed Zero Trust certificate.",
+		"operationId": "zero-trust-certificates-delete-zero-trust-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "proxy_endpoint_id",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086"
+					"description": "Certificate UUID tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
 				}
 			},
 			{
@@ -114,346 +117,55 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "Delete a proxy endpoint response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
 											"properties": {
-												"result": {
-													"type": "object"
-												}
-											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Delete a proxy endpoint response failure"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Delete a proxy endpoint",
-		"tags": [
-			"Zero Trust Gateway proxy endpoints"
-		]
-	},
-	"GET /accounts/{account_id}/gateway/proxy_endpoints": {
-		"description": "Fetches all Zero Trust Gateway proxy endpoints for an account.",
-		"operationId": "zero-trust-gateway-proxy-endpoints-list-proxy-endpoints",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
+												"binding_status": {
+													"description": "The deployment status of the certificate on Cloudflare's edge.",
 													"enum": [
-														true
+														"pending_deployment",
+														"active",
+														"pending_deletion",
+														"inactive"
 													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"properties": {
+													"type": "string"
+												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"type": "string"
 												},
-												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086"
+												"enabled": {
+													"description": "Use this certificate for Gateway TLS interception",
+													"type": "boolean"
 												},
-												"ips": {
-													"description": "A list of CIDRs to restrict ingress connections.",
-													"items": {
-														"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
-														"example": "192.0.2.1/32",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"name": {
-													"description": "The name of the proxy endpoint.",
-													"example": "Devops team",
+												"expires_on": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
 													"type": "string"
 												},
-												"subdomain": {
-													"description": "The subdomain to be used as the destination in the proxy client.",
-													"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+												"id": {
+													"description": "Certificate UUID tag.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
+												},
+												"type": {
+													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
+													"enum": [
+														"custom",
+														"gateway_managed"
+													],
+													"example": "gateway_managed",
 													"type": "string"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"type": "string"
+												},
+												"uploaded_on": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -464,7 +176,7 @@
 						}
 					}
 				},
-				"description": "List proxy endpoints response"
+				"description": "Delete Zero Trust certificate response"
 			},
 			"4XX": {
 				"content": {
@@ -556,34 +268,51 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"binding_status": {
+															"description": "The deployment status of the certificate on Cloudflare's edge.",
+															"enum": [
+																"pending_deployment",
+																"active",
+																"pending_deletion",
+																"inactive"
+															],
+															"type": "string"
+														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"type": "string"
 														},
-														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086"
+														"enabled": {
+															"description": "Use this certificate for Gateway TLS interception",
+															"type": "boolean"
 														},
-														"ips": {
-															"description": "A list of CIDRs to restrict ingress connections.",
-															"items": {
-																"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
-																"example": "192.0.2.1/32",
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"name": {
-															"description": "The name of the proxy endpoint.",
-															"example": "Devops team",
+														"expires_on": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
 															"type": "string"
 														},
-														"subdomain": {
-															"description": "The subdomain to be used as the destination in the proxy client.",
-															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+														"id": {
+															"description": "Certificate UUID tag.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
+														},
+														"type": {
+															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
+															"enum": [
+																"custom",
+																"gateway_managed"
+															],
+															"example": "gateway_managed",
 															"type": "string"
 														},
 														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"uploaded_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"type": "string"
@@ -683,7 +412,7 @@
 						}
 					}
 				},
-				"description": "List proxy endpoints response failure"
+				"description": "Delete Zero Trust certificate response failure"
 			}
 		},
 		"security": [
@@ -692,23 +421,15 @@
 				"api_key": []
 			}
 		],
-		"summary": "List proxy endpoints",
+		"summary": "Delete Zero Trust certificate",
 		"tags": [
-			"Zero Trust Gateway proxy endpoints"
+			"Zero Trust certificates"
 		]
 	},
-	"GET /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
-		"description": "Fetches a single Zero Trust Gateway proxy endpoint.",
-		"operationId": "zero-trust-gateway-proxy-endpoints-proxy-endpoint-details",
+	"GET /accounts/{account_id}/gateway/certificates": {
+		"description": "Fetches all Zero Trust certificates for an account.",
+		"operationId": "zero-trust-certificates-list-zero-trust-certificates",
 		"parameters": [
-			{
-				"in": "path",
-				"name": "proxy_endpoint_id",
-				"required": true,
-				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086"
-				}
-			},
 			{
 				"in": "path",
 				"name": "account_id",
@@ -828,34 +549,51 @@
 										"result": {
 											"items": {
 												"properties": {
+													"binding_status": {
+														"description": "The deployment status of the certificate on Cloudflare's edge.",
+														"enum": [
+															"pending_deployment",
+															"active",
+															"pending_deletion",
+															"inactive"
+														],
+														"type": "string"
+													},
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
 														"type": "string"
 													},
-													"id": {
-														"example": "ed35569b41ce4d1facfe683550f54086"
+													"enabled": {
+														"description": "Use this certificate for Gateway TLS interception",
+														"type": "boolean"
 													},
-													"ips": {
-														"description": "A list of CIDRs to restrict ingress connections.",
-														"items": {
-															"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
-															"example": "192.0.2.1/32",
-															"type": "string"
-														},
-														"type": "array"
-													},
-													"name": {
-														"description": "The name of the proxy endpoint.",
-														"example": "Devops team",
+													"expires_on": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
 														"type": "string"
 													},
-													"subdomain": {
-														"description": "The subdomain to be used as the destination in the proxy client.",
-														"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+													"id": {
+														"description": "Certificate UUID tag.",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"type": "string"
+													},
+													"type": {
+														"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
+														"enum": [
+															"custom",
+															"gateway_managed"
+														],
+														"example": "gateway_managed",
 														"type": "string"
 													},
 													"updated_at": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"uploaded_on": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
 														"type": "string"
@@ -871,7 +609,7 @@
 						}
 					}
 				},
-				"description": "Get a proxy endpoint response"
+				"description": "List Zero Trust certificates response"
 			},
 			"4XX": {
 				"content": {
@@ -984,34 +722,51 @@
 												"result": {
 													"items": {
 														"properties": {
+															"binding_status": {
+																"description": "The deployment status of the certificate on Cloudflare's edge.",
+																"enum": [
+																	"pending_deployment",
+																	"active",
+																	"pending_deletion",
+																	"inactive"
+																],
+																"type": "string"
+															},
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"type": "string"
 															},
-															"id": {
-																"example": "ed35569b41ce4d1facfe683550f54086"
+															"enabled": {
+																"description": "Use this certificate for Gateway TLS interception",
+																"type": "boolean"
 															},
-															"ips": {
-																"description": "A list of CIDRs to restrict ingress connections.",
-																"items": {
-																	"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
-																	"example": "192.0.2.1/32",
-																	"type": "string"
-																},
-																"type": "array"
-															},
-															"name": {
-																"description": "The name of the proxy endpoint.",
-																"example": "Devops team",
+															"expires_on": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
 																"type": "string"
 															},
-															"subdomain": {
-																"description": "The subdomain to be used as the destination in the proxy client.",
-																"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+															"id": {
+																"description": "Certificate UUID tag.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"type": "string"
+															},
+															"type": {
+																"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
+																"enum": [
+																	"custom",
+																	"gateway_managed"
+																],
+																"example": "gateway_managed",
 																"type": "string"
 															},
 															"updated_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"uploaded_on": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
 																"type": "string"
@@ -1113,7 +868,7 @@
 						}
 					}
 				},
-				"description": "Get a proxy endpoint response failure"
+				"description": "List Zero Trust certificates response failure"
 			}
 		},
 		"security": [
@@ -1122,21 +877,24 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a proxy endpoint",
+		"summary": "List Zero Trust certificates",
 		"tags": [
-			"Zero Trust Gateway proxy endpoints"
+			"Zero Trust certificates"
 		]
 	},
-	"PATCH /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
-		"description": "Updates a configured Zero Trust Gateway proxy endpoint.",
-		"operationId": "zero-trust-gateway-proxy-endpoints-update-proxy-endpoint",
+	"GET /accounts/{account_id}/gateway/certificates/{certificate_id}": {
+		"description": "Fetches a single Zero Trust certificate.",
+		"operationId": "zero-trust-certificates-zero-trust-certificate-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "proxy_endpoint_id",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086"
+					"description": "Certificate UUID tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
 				}
 			},
 			{
@@ -1148,31 +906,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"ips": {
-								"description": "A list of CIDRs to restrict ingress connections.",
-								"items": {
-									"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
-									"example": "192.0.2.1/32",
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"name": {
-								"description": "The name of the proxy endpoint.",
-								"example": "Devops team",
-								"type": "string"
-							}
-						}
-					}
-				}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -1262,34 +995,51 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"binding_status": {
+													"description": "The deployment status of the certificate on Cloudflare's edge.",
+													"enum": [
+														"pending_deployment",
+														"active",
+														"pending_deletion",
+														"inactive"
+													],
+													"type": "string"
+												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"type": "string"
 												},
-												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086"
+												"enabled": {
+													"description": "Use this certificate for Gateway TLS interception",
+													"type": "boolean"
 												},
-												"ips": {
-													"description": "A list of CIDRs to restrict ingress connections.",
-													"items": {
-														"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
-														"example": "192.0.2.1/32",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"name": {
-													"description": "The name of the proxy endpoint.",
-													"example": "Devops team",
+												"expires_on": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
 													"type": "string"
 												},
-												"subdomain": {
-													"description": "The subdomain to be used as the destination in the proxy client.",
-													"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+												"id": {
+													"description": "Certificate UUID tag.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
+												},
+												"type": {
+													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
+													"enum": [
+														"custom",
+														"gateway_managed"
+													],
+													"example": "gateway_managed",
 													"type": "string"
 												},
 												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"uploaded_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"type": "string"
@@ -1303,7 +1053,7 @@
 						}
 					}
 				},
-				"description": "Update a proxy endpoint response"
+				"description": "Get Zero Trust certificate details response"
 			},
 			"4XX": {
 				"content": {
@@ -1395,34 +1145,51 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"binding_status": {
+															"description": "The deployment status of the certificate on Cloudflare's edge.",
+															"enum": [
+																"pending_deployment",
+																"active",
+																"pending_deletion",
+																"inactive"
+															],
+															"type": "string"
+														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"type": "string"
 														},
-														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086"
+														"enabled": {
+															"description": "Use this certificate for Gateway TLS interception",
+															"type": "boolean"
 														},
-														"ips": {
-															"description": "A list of CIDRs to restrict ingress connections.",
-															"items": {
-																"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
-																"example": "192.0.2.1/32",
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"name": {
-															"description": "The name of the proxy endpoint.",
-															"example": "Devops team",
+														"expires_on": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
 															"type": "string"
 														},
-														"subdomain": {
-															"description": "The subdomain to be used as the destination in the proxy client.",
-															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+														"id": {
+															"description": "Certificate UUID tag.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
+														},
+														"type": {
+															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
+															"enum": [
+																"custom",
+																"gateway_managed"
+															],
+															"example": "gateway_managed",
 															"type": "string"
 														},
 														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"uploaded_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"type": "string"
@@ -1522,7 +1289,7 @@
 						}
 					}
 				},
-				"description": "Update a proxy endpoint response failure"
+				"description": "Get Zero Trust certificate details response failure"
 			}
 		},
 		"security": [
@@ -1531,14 +1298,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a proxy endpoint",
+		"summary": "Get Zero Trust certificate details",
 		"tags": [
-			"Zero Trust Gateway proxy endpoints"
+			"Zero Trust certificates"
 		]
 	},
-	"POST /accounts/{account_id}/gateway/proxy_endpoints": {
-		"description": "Creates a new Zero Trust Gateway proxy endpoint.",
-		"operationId": "zero-trust-gateway-proxy-endpoints-create-proxy-endpoint",
+	"POST /accounts/{account_id}/gateway/certificates": {
+		"description": "Creates a new Zero Trust certificate.",
+		"operationId": "zero-trust-certificates-create-zero-trust-certificate",
 		"parameters": [
 			{
 				"in": "path",
@@ -1554,29 +1321,16 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"ips": {
-								"description": "A list of CIDRs to restrict ingress connections.",
-								"items": {
-									"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
-									"example": "192.0.2.1/32",
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"name": {
-								"description": "The name of the proxy endpoint.",
-								"example": "Devops team",
-								"type": "string"
+							"validity_period_days": {
+								"description": "Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.",
+								"example": 1826,
+								"type": "integer"
 							}
 						},
-						"required": [
-							"name",
-							"ips"
-						]
+						"type": "object"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
@@ -1667,34 +1421,51 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"binding_status": {
+													"description": "The deployment status of the certificate on Cloudflare's edge.",
+													"enum": [
+														"pending_deployment",
+														"active",
+														"pending_deletion",
+														"inactive"
+													],
+													"type": "string"
+												},
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"type": "string"
 												},
-												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086"
+												"enabled": {
+													"description": "Use this certificate for Gateway TLS interception",
+													"type": "boolean"
 												},
-												"ips": {
-													"description": "A list of CIDRs to restrict ingress connections.",
-													"items": {
-														"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
-														"example": "192.0.2.1/32",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"name": {
-													"description": "The name of the proxy endpoint.",
-													"example": "Devops team",
+												"expires_on": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
 													"type": "string"
 												},
-												"subdomain": {
-													"description": "The subdomain to be used as the destination in the proxy client.",
-													"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+												"id": {
+													"description": "Certificate UUID tag.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
+												},
+												"type": {
+													"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
+													"enum": [
+														"custom",
+														"gateway_managed"
+													],
+													"example": "gateway_managed",
 													"type": "string"
 												},
 												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"uploaded_on": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
 													"type": "string"
@@ -1708,7 +1479,7 @@
 						}
 					}
 				},
-				"description": "Create a proxy endpoint response"
+				"description": "Create Zero Trust certificate response"
 			},
 			"4XX": {
 				"content": {
@@ -1800,34 +1571,51 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"binding_status": {
+															"description": "The deployment status of the certificate on Cloudflare's edge.",
+															"enum": [
+																"pending_deployment",
+																"active",
+																"pending_deletion",
+																"inactive"
+															],
+															"type": "string"
+														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"type": "string"
 														},
-														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086"
+														"enabled": {
+															"description": "Use this certificate for Gateway TLS interception",
+															"type": "boolean"
 														},
-														"ips": {
-															"description": "A list of CIDRs to restrict ingress connections.",
-															"items": {
-																"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
-																"example": "192.0.2.1/32",
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"name": {
-															"description": "The name of the proxy endpoint.",
-															"example": "Devops team",
+														"expires_on": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
 															"type": "string"
 														},
-														"subdomain": {
-															"description": "The subdomain to be used as the destination in the proxy client.",
-															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+														"id": {
+															"description": "Certificate UUID tag.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
+														},
+														"type": {
+															"description": "The type of certificate, either BYO-PKI (custom) or Gateway-managed.",
+															"enum": [
+																"custom",
+																"gateway_managed"
+															],
+															"example": "gateway_managed",
 															"type": "string"
 														},
 														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"uploaded_on": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
 															"type": "string"
@@ -1927,7 +1715,7 @@
 						}
 					}
 				},
-				"description": "Create a proxy endpoint response failure"
+				"description": "Create Zero Trust certificate response failure"
 			}
 		},
 		"security": [
@@ -1936,9 +1724,9 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a proxy endpoint",
+		"summary": "Create Zero Trust certificate",
 		"tags": [
-			"Zero Trust Gateway proxy endpoints"
+			"Zero Trust certificates"
 		]
 	}
 }

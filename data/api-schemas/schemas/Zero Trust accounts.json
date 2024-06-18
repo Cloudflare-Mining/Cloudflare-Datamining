@@ -970,8 +970,23 @@
 																	},
 																	"type": "object"
 																},
+																"certificate": {
+																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
+																	"properties": {
+																		"id": {
+																			"description": "UUID of certificate to be used for interception.",
+																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																},
 																"custom_certificate": {
-																	"description": "Custom certificate settings for BYO-PKI.",
+																	"deprecated": true,
+																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
 																	"properties": {
 																		"binding_status": {
 																			"description": "Certificate status (internal).",
@@ -1055,13 +1070,11 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													}
@@ -1301,8 +1314,23 @@
 																			},
 																			"type": "object"
 																		},
+																		"certificate": {
+																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
+																			"properties": {
+																				"id": {
+																					"description": "UUID of certificate to be used for interception.",
+																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id"
+																			],
+																			"type": "object"
+																		},
 																		"custom_certificate": {
-																			"description": "Custom certificate settings for BYO-PKI.",
+																			"deprecated": true,
+																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
 																			"properties": {
 																				"binding_status": {
 																					"description": "Certificate status (internal).",
@@ -1386,13 +1414,11 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string"
 																}
 															}
@@ -1868,7 +1894,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/gateway/configuration": {
-		"description": "Patches the current Zero Trust account configuration. This endpoint can update a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, or `custom_certificate`, without updating the entire configuration object. Returns an error if any collection of settings is not properly configured.",
+		"description": "Patches the current Zero Trust account configuration. This endpoint can update a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, or `certificate`, without updating the entire configuration object. Returns an error if any collection of settings is not properly configured.",
 		"operationId": "zero-trust-accounts-patch-zero-trust-account-configuration",
 		"parameters": [
 			{
@@ -2016,8 +2042,23 @@
 										},
 										"type": "object"
 									},
+									"certificate": {
+										"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
+										"properties": {
+											"id": {
+												"description": "UUID of certificate to be used for interception.",
+												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id"
+										],
+										"type": "object"
+									},
 									"custom_certificate": {
-										"description": "Custom certificate settings for BYO-PKI.",
+										"deprecated": true,
+										"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
 										"properties": {
 											"binding_status": {
 												"description": "Certificate status (internal).",
@@ -2322,8 +2363,23 @@
 																	},
 																	"type": "object"
 																},
+																"certificate": {
+																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
+																	"properties": {
+																		"id": {
+																			"description": "UUID of certificate to be used for interception.",
+																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																},
 																"custom_certificate": {
-																	"description": "Custom certificate settings for BYO-PKI.",
+																	"deprecated": true,
+																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
 																	"properties": {
 																		"binding_status": {
 																			"description": "Certificate status (internal).",
@@ -2407,13 +2463,11 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													}
@@ -2653,8 +2707,23 @@
 																			},
 																			"type": "object"
 																		},
+																		"certificate": {
+																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
+																			"properties": {
+																				"id": {
+																					"description": "UUID of certificate to be used for interception.",
+																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id"
+																			],
+																			"type": "object"
+																		},
 																		"custom_certificate": {
-																			"description": "Custom certificate settings for BYO-PKI.",
+																			"deprecated": true,
+																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
 																			"properties": {
 																				"binding_status": {
 																					"description": "Certificate status (internal).",
@@ -2738,13 +2807,11 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string"
 																}
 															}
@@ -3776,8 +3843,23 @@
 										},
 										"type": "object"
 									},
+									"certificate": {
+										"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
+										"properties": {
+											"id": {
+												"description": "UUID of certificate to be used for interception.",
+												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id"
+										],
+										"type": "object"
+									},
 									"custom_certificate": {
-										"description": "Custom certificate settings for BYO-PKI.",
+										"deprecated": true,
+										"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
 										"properties": {
 											"binding_status": {
 												"description": "Certificate status (internal).",
@@ -4082,8 +4164,23 @@
 																	},
 																	"type": "object"
 																},
+																"certificate": {
+																	"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
+																	"properties": {
+																		"id": {
+																			"description": "UUID of certificate to be used for interception.",
+																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																},
 																"custom_certificate": {
-																	"description": "Custom certificate settings for BYO-PKI.",
+																	"deprecated": true,
+																	"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
 																	"properties": {
 																		"binding_status": {
 																			"description": "Certificate status (internal).",
@@ -4167,13 +4264,11 @@
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
-															"readOnly": true,
 															"type": "string"
 														}
 													}
@@ -4413,8 +4508,23 @@
 																			},
 																			"type": "object"
 																		},
+																		"certificate": {
+																			"description": "Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.",
+																			"properties": {
+																				"id": {
+																					"description": "UUID of certificate to be used for interception.",
+																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id"
+																			],
+																			"type": "object"
+																		},
 																		"custom_certificate": {
-																			"description": "Custom certificate settings for BYO-PKI.",
+																			"deprecated": true,
+																			"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
 																			"properties": {
 																				"binding_status": {
 																					"description": "Certificate status (internal).",
@@ -4498,13 +4608,11 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string"
 																}
 															}
