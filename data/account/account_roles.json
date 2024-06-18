@@ -798,6 +798,30 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"ces_integration": {
+				"read": true,
+				"edit": true
+			},
+			"ces_search": {
+				"read": true,
+				"edit": false,
+				"action": true,
+				"preview": true,
+				"raw": true,
+				"trace": true
+			},
+			"ces_phishguard": {
+				"read": true,
+				"edit": false
+			},
+			"ces_settings": {
+				"read": true,
+				"edit": true
+			},
+			"ces_analytics": {
+				"read": true,
+				"edit": false
+			},
 			"dex": {
 				"read": true,
 				"edit": true
@@ -862,11 +886,31 @@
 				"read": true,
 				"edit": true
 			},
+			"ces_integration": {
+				"read": true,
+				"edit": true
+			},
+			"ces_search": {
+				"read": true,
+				"edit": false,
+				"action": true,
+				"preview": true,
+				"raw": true,
+				"trace": true
+			},
 			"magic": {
 				"read": true,
 				"edit": true
 			},
 			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"ces_phishguard": {
+				"read": true,
+				"edit": false
+			},
+			"ces_settings": {
 				"read": true,
 				"edit": true
 			},
@@ -877,6 +921,10 @@
 			"billing": {
 				"read": true,
 				"edit": true
+			},
+			"ces_analytics": {
+				"read": true,
+				"edit": false
 			},
 			"lb": {
 				"read": true,
@@ -1446,6 +1494,10 @@
 				"read": true,
 				"edit": false
 			},
+			"ces_integration": {
+				"read": true,
+				"edit": false
+			},
 			"magic": {
 				"read": true,
 				"edit": false
@@ -1454,11 +1506,30 @@
 				"read": true,
 				"edit": false
 			},
+			"ces_phishguard": {
+				"read": true,
+				"edit": false
+			},
+			"ces_settings": {
+				"read": true,
+				"edit": false
+			},
+			"ces_search": {
+				"read": true,
+				"edit": false,
+				"trace": true,
+				"raw": true,
+				"preview": true
+			},
 			"organization": {
 				"read": true,
 				"edit": false
 			},
 			"billing": {
+				"read": true,
+				"edit": false
+			},
+			"ces_analytics": {
 				"read": true,
 				"edit": false
 			},
@@ -1594,6 +1665,18 @@
 				"read": true,
 				"edit": true
 			},
+			"ces_integration": {
+				"read": true,
+				"edit": true
+			},
+			"ces_search": {
+				"read": true,
+				"edit": false,
+				"action": true,
+				"preview": true,
+				"raw": true,
+				"trace": true
+			},
 			"magic": {
 				"read": true,
 				"edit": true
@@ -1602,11 +1685,23 @@
 				"read": true,
 				"edit": true
 			},
+			"ces_phishguard": {
+				"read": true,
+				"edit": false
+			},
+			"ces_settings": {
+				"read": true,
+				"edit": true
+			},
 			"organization": {
 				"read": true,
 				"edit": true
 			},
 			"billing": {
+				"read": true,
+				"edit": false
+			},
+			"ces_analytics": {
 				"read": true,
 				"edit": false
 			},
