@@ -5,39 +5,26 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>Position Overview:</p>
-<p>We are seeking a skilled and experienced Senior Engineering Manager to lead our API Shield product engineering team and Application Security Platform team. The ideal candidate will have a strong background in both technical leadership and domain expertise in API security, and platform and service. Candidates with prior research, data science, and fraud detection methodologies are strongly preferred.</p>
-<p>About the team:</p>
-<p>The API Shield team at Cloudflare is a diverse and talented group of engineers and data scientists dedicated to staying ahead of emerging threats and trends in the field API Security and protecting our clients and their customers from attack and fraudulent activities. Our team operates at the intersection of cutting-edge technology and domain expertise, leveraging advanced machine learning algorithms, data science and analytics, and engineering to develop innovative solutions for API Security. We foster a collaborative and inclusive work environment where creativity and critical thinking are encouraged, and where every team member has the opportunity to make a meaningful impact.</p>
-<p>Responsibilities:</p>
+<h4>Locations: Remote US or Remote Canada (Alberta, British Columbia, Ontario or Quebec), or Remote Lisbon, Portugal&nbsp;</h4>
+<h4><strong>What you'll do</strong></h4>
+<p>The Zero Trust team is looking for a<strong> Manual Test Engineer</strong> to test and debug our Zero Trust client on physical devices similar to our customers’ devices and infrastructure. You will be working with<strong> Cloudflare WARP</strong> and<strong> Cloudflare Tunnel</strong>, which are network and security-focused applications that enable secure communications between our customers’ devices and their private infrastructure.</p>
+<p>As a Manual Test Engineer, you will <strong>create, maintain, and execute a suite of manual tests</strong>. You will regularly set up,<strong> configure, test, debug, and troubleshoot network-related features</strong>. You will collaborate closely with WARP client development teams and QA Engineers to understand all features and define and refine product test strategies. Your responsibilities will include <strong>maintaining a collection of test devices</strong>, efficiently setting them up and configuring them to test various scenarios, and reporting quality status to all stakeholders.&nbsp;</p>
+<p><strong>What you’ll bring</strong></p>
+<p>We expect you to be familiar with <strong>mobile and client device networking configurations</strong> and understand how data is routed to public and private cloud environments. Your passion for understanding how services work will be crucial in debugging issues at all levels. Additionally, you should be adept at distilling complex scenarios into actionable bug reports and working towards resolution with development, product, and QA team members.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Lead and manage a multidisciplinary team of engineers, data scientists, and security experts that are responsible for developing and maintaining Cloudflare’s industry leading API Shield product, and all its encompassing systems and tools.</li>
-	<li>In addition, you will lead a newly formed cross-functional team within Cloudflare’s Application Security organization. The new team is to expand on an innovative system the API Shield team has built and make it into a cross-team platform to support and serve other products needs in the Application Security organization.</li>
-	<li>Collaborate with cross-functional teams including product management, security researcher and analysts to define and prioritize technical initiatives that enhance our API Shield product capabilities.</li>
-	<li>Drive the design, implementation, and optimization of scalable, high-performance systems the teams are responsible for.</li>
-	<li>Provide technical guidance and mentorship to team members, fostering a culture of continuous learning and innovation.</li>
-	<li>Oversee the end-to-end development lifecycle, from requirements gathering and design to deployment and monitoring, ensuring timely delivery of high-quality solutions.</li>
-	<li>Stay abreast of the latest developments in security, data science, and fraud detection technologies, and incorporate best practices and emerging trends into our technical strategy.</li>
-	<li>Collaborate with external partners and stakeholders to identify opportunities for collaboration and technology integration.</li>
+	<li>Extremely <strong>curious to understand</strong> how a feature works and what edge cases may cause a poor customer experience</li>
+	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
+	<li>Experience with manual <strong>E2E testing of network-based apps</strong>, especially VPNs (e.g. DNS, protocols, throttling, packet loss, etc.)</li>
+	<li>Strong knowledge of L3 to L7 networking technologies such as <strong>IP, TCP, UDP, DNS, QUIC, H/3, proxying, routing, switching</strong></li>
+	<li>Strong knowledge and understanding of <strong>macOS, Windows, Linux, and mobile client (iOS,</strong> <strong>Android)</strong> platforms and their internals.</li>
+	<li>Strong <strong>attention to detail</strong> for building test plans and <strong>analytical mindset</strong> when debugging issues</li>
+	<li>Proficiency with running <strong>traffic captures, gathering logs</strong>,<strong> </strong>and preparing test data for reporting</li>
+	<li>Experience setting up and maintaining <strong>device labs</strong></li>
+	<li>Experience using one or more <strong>Mobile Device Management platforms</strong> (MDMs)</li>
+	<li>Can interpret Python code to understand automated tests and framework capabilities</li>
+	<li>Experience with how mobile devices handle switching between cellular and Wi-Fi, roaming, throttling, etc</li>
 </ul>
-<p>Requirements:</p>
-<ul>
-	<li>At minimum, Bachelor's degree or higher in Computer Science, Engineering, or a related field. M.S. and Ph.D degrees are highly desirable.&nbsp;</li>
-	<li>8+ years of experience in software engineering, with at least 4 years in a leadership or management role.</li>
-	<li>Strong background in API security, data science, and fraud detection, with hands-on experience in designing and implementing security and fraud detection algorithms and systems.</li>
-	<li>Proficiency in programming languages such as Python, Go, or Rust, and experience with data analysis and machine learning frameworks such as TensorFlow, PyTorch, or scikit-learn.</li>
-	<li>Experience with big data technologies such as Kafka, and familiarity with Clickhouse.</li>
-	<li>Excellent communication and interpersonal skills, with the ability to effectively collaborate with cross-functional teams and communicate technical concepts to non-technical stakeholders.</li>
-	<li>Proven track record of successfully leading and motivating teams in a fast-paced, dynamic environment.</li>
-</ul>
-<p>Preferred Qualifications:</p>
-<ul>
-	<li>Advanced degree (Master's or Ph.D.) in Computer Science, Engineering, Statistics, or a related field.</li>
-	<li>Experience with building and deploying production-grade machine learning models at scale.</li>
-	<li>Familiarity with regulatory compliance requirements related to fraud detection and data privacy (e.g., GDPR).</li>
-	<li>Experience working in the fintech, e-commerce, or cybersecurity industries.</li>
-</ul>
-<p>Location: London, United Kingdom</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
