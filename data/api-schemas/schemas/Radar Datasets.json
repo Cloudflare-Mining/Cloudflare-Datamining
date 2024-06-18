@@ -199,16 +199,6 @@
 					"example": "ranking_top_1000",
 					"type": "string"
 				}
-			},
-			{
-				"description": "Filter dataset alias by date",
-				"in": "query",
-				"name": "date",
-				"schema": {
-					"description": "Filter dataset alias by date",
-					"nullable": true,
-					"type": "string"
-				}
 			}
 		],
 		"responses": {
@@ -346,15 +336,10 @@
 										"dataset"
 									],
 									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
-								"success"
+								"result"
 							],
 							"type": "object"
 						}

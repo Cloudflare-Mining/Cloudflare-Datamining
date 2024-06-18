@@ -2069,13 +2069,17 @@
 					"example": "1.1.1.0/24",
 					"items": {
 						"properties": {
-							"location": {
+							"in": {
 								"example": "query",
 								"type": "string"
 							},
 							"name": {
 								"example": "prefix",
 								"type": "string"
+							},
+							"test": {
+								"example": 12,
+								"type": "number"
 							},
 							"type": {
 								"description": "Network prefix, IPv4 or IPv6.",
@@ -2084,8 +2088,9 @@
 							}
 						},
 						"required": [
-							"name",
-							"location"
+							"in",
+							"test",
+							"name"
 						],
 						"type": "object"
 					},
@@ -2173,7 +2178,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -2448,13 +2454,17 @@
 					"example": "1.1.1.0/24",
 					"items": {
 						"properties": {
-							"location": {
+							"in": {
 								"example": "query",
 								"type": "string"
 							},
 							"name": {
 								"example": "prefix",
 								"type": "string"
+							},
+							"test": {
+								"example": 12,
+								"type": "number"
 							},
 							"type": {
 								"description": "Network prefix, IPv4 or IPv6.",
@@ -2463,8 +2473,9 @@
 							}
 						},
 						"required": [
-							"name",
-							"location"
+							"in",
+							"test",
+							"name"
 						],
 						"type": "object"
 					},

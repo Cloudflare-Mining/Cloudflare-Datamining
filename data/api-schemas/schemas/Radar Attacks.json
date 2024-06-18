@@ -160,7 +160,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -523,7 +524,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -901,7 +903,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -1267,7 +1270,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -1612,7 +1616,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -1985,7 +1990,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -2670,7 +2676,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -5281,6 +5288,21 @@
 				}
 			},
 			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN_MAX"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -5327,7 +5349,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -5670,7 +5693,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -6008,7 +6032,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -6356,7 +6381,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -6704,7 +6730,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -7011,7 +7038,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -7409,7 +7437,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -7835,7 +7864,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -8267,7 +8297,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -8711,7 +8742,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -9134,7 +9166,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -9516,7 +9549,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -9866,7 +9900,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -12919,7 +12954,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -13238,6 +13274,21 @@
 				}
 			},
 			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN_MAX"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
@@ -13284,7 +13335,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -13615,7 +13667,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -13918,7 +13971,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -14218,7 +14272,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
@@ -14544,7 +14599,8 @@
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
-																		"type": "object"
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"linkedUrl": {
 																		"type": "string"
