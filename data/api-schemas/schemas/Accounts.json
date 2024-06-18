@@ -734,6 +734,10 @@
 									"settings": {
 										"description": "Account settings",
 										"properties": {
+											"abuse_contact_email": {
+												"description": "Sets an abuse contact email to notify for abuse reports.",
+												"type": "string"
+											},
 											"default_nameservers": {
 												"default": "cloudflare.standard",
 												"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.",
