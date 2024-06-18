@@ -1,5 +1,191 @@
 [
 	{
+		"id": "dfed41846ee1b4952dbeec65c7195e31",
+		"name": "Email Security Reporting",
+		"description": "Read access to CES Home, PhishGuard, and Submission Transparency",
+		"permissions": {
+			"ces_phishguard": {
+				"read": true,
+				"edit": false
+			},
+			"ces_analytics": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "3390240245b5d4d8be9f8c5789dca2d7",
+		"name": "Email Security Readonly",
+		"description": "Read access to all of CES, cannot see Raw Email, take action on emails, or make Submissions (Requires Cloudflare Zero Trust PII)",
+		"permissions": {
+			"ces_integration": {
+				"read": true,
+				"edit": false
+			},
+			"ces_phishguard": {
+				"read": true,
+				"edit": false
+			},
+			"ces_settings": {
+				"read": true,
+				"edit": false
+			},
+			"ces_search": {
+				"read": true,
+				"edit": false,
+				"trace": true,
+				"preview": true
+			},
+			"ces_analytics": {
+				"read": true,
+				"edit": false
+			},
+			"access": {
+				"read": true,
+				"edit": false
+			},
+			"teams": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "d9290f651ced29c9524b79aa5ac4fcaf",
+		"name": "Email Security Analyst",
+		"description": "Write acccess to all of CES, except Settings which is read only (Requires Cloudflare Zero Trust PII)",
+		"permissions": {
+			"ces_integration": {
+				"read": true,
+				"edit": false
+			},
+			"ces_search": {
+				"read": true,
+				"edit": false,
+				"action": true,
+				"trace": true,
+				"raw": true,
+				"preview": true
+			},
+			"ces_phishguard": {
+				"read": true,
+				"edit": false
+			},
+			"ces_settings": {
+				"read": true,
+				"edit": false
+			},
+			"ces_analytics": {
+				"read": true,
+				"edit": false
+			},
+			"access": {
+				"read": true,
+				"edit": true
+			},
+			"teams": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "70035ec03549c8799c170a2afc25c139",
+		"name": "Email Configuration Admin",
+		"description": "Write acccess to all of CES, CASB, DLP, Gateway and Tunnels, except Mail Preview, Raw Email, on-demand reports, actions on emails, and Submissions, Submission Transparency. (Requires Cloudflare Zero Trust PII)",
+		"permissions": {
+			"ces_integration": {
+				"read": true,
+				"edit": true
+			},
+			"ces_phishguard": {
+				"read": true,
+				"edit": false
+			},
+			"ces_settings": {
+				"read": true,
+				"edit": true
+			},
+			"ces_search": {
+				"read": true,
+				"edit": false,
+				"trace": true
+			},
+			"ces_analytics": {
+				"read": true,
+				"edit": false
+			},
+			"access": {
+				"read": true,
+				"edit": true
+			},
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "43801681f525f111da3f15d07ffafdf1",
+		"name": "Email Integration Admin",
+		"description": "Write acccess to CES account integration only, CASB, DLP, Gateway and Tunnels",
+		"permissions": {
+			"ces_integration": {
+				"read": true,
+				"edit": true
+			},
+			"ces_settings": {
+				"read": true,
+				"edit": true
+			},
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "2d805933d825eb7ee214b294ae7d2e43",
 		"name": "Vectorize Readonly",
 		"description": "Can read Vectorize configurations.",
