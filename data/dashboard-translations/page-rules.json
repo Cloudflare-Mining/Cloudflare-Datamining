@@ -53,7 +53,7 @@
 	"managed_header_modifications.group.add_client_certificate_headers": "Add TLS client auth headers",
 	"managed_header_modifications.group.remove_x-powered-by_headers": "Remove &quot;X-Powered-By&quot; headers",
 	"managed_header_modifications.group.add_true_client_ip_headers": "Add &quot;True-Client-IP&quot; header",
-	"managed_header_modifications.group.add_bot_protection_headers.description": "Adds HTTP request headers with bot-related values: bot score, verified bot, threat score, and JA3 fingerprint.",
+	"managed_header_modifications.group.add_bot_protection_headers.description": "Adds HTTP request headers with bot-related values: bot score, verified bot, threat score, JA3 and JA4 fingerprints.",
 	"managed_header_modifications.group.add_client_certificate_headers.description": "Adds HTTP request headers with <0>Mutual TLS (mTLS) client authentication values</0>.",
 	"managed_header_modifications.group.add_visitor_location_headers.description": "Adds HTTP request headers with location information for the visitor's IP address, including city, country, continent, longitude, and latitude.",
 	"managed_header_modifications.group.remove_visitor_ip_headers.description": "Removes HTTP request headers that may contain the visitor's IP address. Unavailable when &quot;Add True-Client-IP header&quot; is enabled.",
