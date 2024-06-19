@@ -299,7 +299,7 @@
 						}
 					}
 				},
-				"description": "Returns a list of Gateway"
+				"description": "Returns a list of Gateways"
 			},
 			"400": {
 				"content": {
@@ -349,7 +349,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Gateway's",
+		"summary": "List Gateways",
 		"tags": [
 			"AI Gateway"
 		],
@@ -662,7 +662,6 @@
 												"type": "integer"
 											},
 											"id": {
-												"format": "uuid",
 												"type": "string"
 											},
 											"metadata": {
@@ -789,6 +788,419 @@
 			}
 		],
 		"summary": "List Gateway Logs",
+		"tags": [
+			"AI Gateway"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{id}/logs/{logId}": {
+		"operationId": "aig-config-get-gateway-log-detail",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "0d37909e38d3e99c29fa2cd343ac421a",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "logId",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"cached": {
+											"type": "boolean"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"duration": {
+											"type": "integer"
+										},
+										"id": {
+											"type": "string"
+										},
+										"metadata": {
+											"type": "string"
+										},
+										"model": {
+											"type": "string"
+										},
+										"path": {
+											"type": "string"
+										},
+										"provider": {
+											"type": "string"
+										},
+										"request": {
+											"type": "string"
+										},
+										"request_content_type": {
+											"type": "string"
+										},
+										"request_type": {
+											"type": "string"
+										},
+										"response": {
+											"type": "string"
+										},
+										"response_content_type": {
+											"type": "string"
+										},
+										"status_code": {
+											"type": "integer"
+										},
+										"step": {
+											"type": "integer"
+										},
+										"success": {
+											"type": "boolean"
+										},
+										"tokens_in": {
+											"type": "integer"
+										},
+										"tokens_out": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"id",
+										"created_at",
+										"provider",
+										"model",
+										"path",
+										"duration",
+										"request",
+										"response",
+										"success",
+										"cached",
+										"tokens_in",
+										"tokens_out"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the log details"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Gateway Log Detail",
+		"tags": [
+			"AI Gateway"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{id}/logs/{logId}/request": {
+		"operationId": "aig-config-get-gateway-log-request",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "0d37909e38d3e99c29fa2cd343ac421a",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "logId",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the request body from a specific log"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Gateway Log Request",
+		"tags": [
+			"AI Gateway"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{id}/logs/{logId}/response": {
+		"operationId": "aig-config-get-gateway-log-response",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "0d37909e38d3e99c29fa2cd343ac421a",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "logId",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the response body from a specific log"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Gateway Log Response",
 		"tags": [
 			"AI Gateway"
 		],
