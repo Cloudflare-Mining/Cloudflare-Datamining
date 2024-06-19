@@ -4603,12 +4603,14 @@
 				"wrap": "function",
 				"Stream": "function",
 				"_isUint8Array": "function",
+				"_isArrayBufferView": "function",
 				"_uint8ArrayToBuffer": "function",
 				"addAbortSignal": "function",
 				"compose": "function",
 				"destroy": "function",
 				"finished": "function",
 				"isReadable": "function",
+				"isWritable": "function",
 				"isErrored": "function",
 				"isDisturbed": "function",
 				"pipeline": "function",
@@ -4655,6 +4657,9 @@
 						}
 					}
 				},
+				"getDefaultHighWaterMark": "function",
+				"setDefaultHighWaterMark": "function",
+				"isDestroyed": "function",
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
@@ -5281,12 +5286,14 @@
 				"wrap": "function",
 				"Stream": "function",
 				"_isUint8Array": "function",
+				"_isArrayBufferView": "function",
 				"_uint8ArrayToBuffer": "function",
 				"addAbortSignal": "function",
 				"compose": "function",
 				"destroy": "function",
 				"finished": "function",
 				"isReadable": "function",
+				"isWritable": "function",
 				"isErrored": "function",
 				"isDisturbed": "function",
 				"pipeline": "function",
@@ -5333,6 +5340,9 @@
 						}
 					}
 				},
+				"getDefaultHighWaterMark": "function",
+				"setDefaultHighWaterMark": "function",
+				"isDestroyed": "function",
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
@@ -6516,12 +6526,14 @@
 					"prototype": "undefined",
 					"Stream": "undefined",
 					"_isUint8Array": "undefined",
+					"_isArrayBufferView": "undefined",
 					"_uint8ArrayToBuffer": "undefined",
 					"addAbortSignal": "undefined",
 					"compose": "undefined",
 					"destroy": "undefined",
 					"finished": "undefined",
 					"isReadable": "undefined",
+					"isWritable": "undefined",
 					"isErrored": "undefined",
 					"isDisturbed": "undefined",
 					"pipeline": "undefined",
@@ -6530,16 +6542,21 @@
 					"Duplex": "undefined",
 					"Transform": "undefined",
 					"PassThrough": "undefined",
-					"promises": "undefined"
+					"promises": "undefined",
+					"getDefaultHighWaterMark": "undefined",
+					"setDefaultHighWaterMark": "undefined",
+					"isDestroyed": "undefined"
 				},
 				"Stream": "function",
 				"_isUint8Array": "function",
+				"_isArrayBufferView": "function",
 				"_uint8ArrayToBuffer": "function",
 				"addAbortSignal": "function",
 				"compose": "function",
 				"destroy": "function",
 				"finished": "function",
 				"isReadable": "function",
+				"isWritable": "function",
 				"isErrored": "function",
 				"isDisturbed": "function",
 				"pipeline": "function",
@@ -6586,6 +6603,9 @@
 						}
 					}
 				},
+				"getDefaultHighWaterMark": "function",
+				"setDefaultHighWaterMark": "function",
+				"isDestroyed": "function",
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
@@ -6602,6 +6622,17 @@
 				"init": "function"
 			},
 			"_isUint8Array": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"_isArrayBufferView": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -6653,6 +6684,17 @@
 				"finished": "function"
 			},
 			"isReadable": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"isWritable": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -6938,12 +6980,14 @@
 				"toWeb": "function",
 				"Stream": "function",
 				"_isUint8Array": "function",
+				"_isArrayBufferView": "function",
 				"_uint8ArrayToBuffer": "function",
 				"addAbortSignal": "function",
 				"compose": "function",
 				"destroy": "function",
 				"finished": "function",
 				"isReadable": "function",
+				"isWritable": "function",
 				"isErrored": "function",
 				"isDisturbed": "function",
 				"pipeline": "function",
@@ -6990,6 +7034,9 @@
 						}
 					}
 				},
+				"getDefaultHighWaterMark": "function",
+				"setDefaultHighWaterMark": "function",
+				"isDestroyed": "function",
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
@@ -7543,12 +7590,14 @@
 				"from": "function",
 				"Stream": "function",
 				"_isUint8Array": "function",
+				"_isArrayBufferView": "function",
 				"_uint8ArrayToBuffer": "function",
 				"addAbortSignal": "function",
 				"compose": "function",
 				"destroy": "function",
 				"finished": "function",
 				"isReadable": "function",
+				"isWritable": "function",
 				"isErrored": "function",
 				"isDisturbed": "function",
 				"pipeline": "function",
@@ -7595,6 +7644,9 @@
 						}
 					}
 				},
+				"getDefaultHighWaterMark": "function",
+				"setDefaultHighWaterMark": "function",
+				"isDestroyed": "function",
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
@@ -8191,12 +8243,14 @@
 				"wrap": "function",
 				"Stream": "function",
 				"_isUint8Array": "function",
+				"_isArrayBufferView": "function",
 				"_uint8ArrayToBuffer": "function",
 				"addAbortSignal": "function",
 				"compose": "function",
 				"destroy": "function",
 				"finished": "function",
 				"isReadable": "function",
+				"isWritable": "function",
 				"isErrored": "function",
 				"isDisturbed": "function",
 				"pipeline": "function",
@@ -8243,6 +8297,9 @@
 						}
 					}
 				},
+				"getDefaultHighWaterMark": "function",
+				"setDefaultHighWaterMark": "function",
+				"isDestroyed": "function",
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
@@ -8854,12 +8911,14 @@
 				"wrap": "function",
 				"Stream": "function",
 				"_isUint8Array": "function",
+				"_isArrayBufferView": "function",
 				"_uint8ArrayToBuffer": "function",
 				"addAbortSignal": "function",
 				"compose": "function",
 				"destroy": "function",
 				"finished": "function",
 				"isReadable": "function",
+				"isWritable": "function",
 				"isErrored": "function",
 				"isDisturbed": "function",
 				"pipeline": "function",
@@ -8906,6 +8965,9 @@
 						}
 					}
 				},
+				"getDefaultHighWaterMark": "function",
+				"setDefaultHighWaterMark": "function",
+				"isDestroyed": "function",
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
@@ -9517,12 +9579,14 @@
 				"wrap": "function",
 				"Stream": "function",
 				"_isUint8Array": "function",
+				"_isArrayBufferView": "function",
 				"_uint8ArrayToBuffer": "function",
 				"addAbortSignal": "function",
 				"compose": "function",
 				"destroy": "function",
 				"finished": "function",
 				"isReadable": "function",
+				"isWritable": "function",
 				"isErrored": "function",
 				"isDisturbed": "function",
 				"pipeline": "function",
@@ -9569,6 +9633,9 @@
 						}
 					}
 				},
+				"getDefaultHighWaterMark": "function",
+				"setDefaultHighWaterMark": "function",
+				"isDestroyed": "function",
 				"on": "function",
 				"once": "function",
 				"getEventListeners": "function",
@@ -9620,6 +9687,35 @@
 						"reject": "undefined",
 						"withResolvers": "undefined"
 					}
+				}
+			},
+			"getDefaultHighWaterMark": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"setDefaultHighWaterMark": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"isDestroyed": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
 				}
 			},
 			"on": {
@@ -10308,6 +10404,12 @@
 					"name": "string"
 				},
 				"isUint32Array": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isExternal": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
