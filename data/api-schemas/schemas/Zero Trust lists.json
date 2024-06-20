@@ -1338,6 +1338,12 @@
 															"format": "date-time",
 															"type": "string"
 														},
+														"description": {
+															"description": "The description of the list item, if present",
+															"example": "Austin office IP",
+															"minimum": 0,
+															"type": "string"
+														},
 														"value": {
 															"description": "The value of the item in a list.",
 															"example": "8GE8721REF",
@@ -1503,6 +1509,12 @@
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
 																	"format": "date-time",
+																	"type": "string"
+																},
+																"description": {
+																	"description": "The description of the list item, if present",
+																	"example": "Austin office IP",
+																	"minimum": 0,
 																	"type": "string"
 																},
 																"value": {
@@ -1688,6 +1700,12 @@
 										"created_at": {
 											"example": "2014-01-01T05:20:00.12345Z",
 											"format": "date-time",
+											"type": "string"
+										},
+										"description": {
+											"description": "The description of the list item, if present",
+											"example": "Austin office IP",
+											"minimum": 0,
 											"type": "string"
 										},
 										"value": {
@@ -2134,6 +2152,12 @@
 											"format": "date-time",
 											"type": "string"
 										},
+										"description": {
+											"description": "The description of the list item, if present",
+											"example": "Austin office IP",
+											"minimum": 0,
+											"type": "string"
+										},
 										"value": {
 											"description": "The value of the item in a list.",
 											"example": "8GE8721REF",
@@ -2283,6 +2307,12 @@
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
 																"format": "date-time",
+																"type": "string"
+															},
+															"description": {
+																"description": "The description of the list item, if present",
+																"example": "Austin office IP",
+																"minimum": 0,
 																"type": "string"
 															},
 															"value": {
@@ -2440,6 +2470,12 @@
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
 																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "The description of the list item, if present",
+																		"example": "Austin office IP",
+																		"minimum": 0,
 																		"type": "string"
 																	},
 																	"value": {

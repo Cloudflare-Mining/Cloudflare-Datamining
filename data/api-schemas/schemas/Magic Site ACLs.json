@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_id}/magic/sites/{site_id}/acls/{acl_identifier}": {
+	"DELETE /accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}": {
 		"description": "Remove a specific Site ACL.",
 		"operationId": "magic-site-acls-delete-acl",
 		"parameters": [
@@ -29,7 +29,7 @@
 			},
 			{
 				"in": "path",
-				"name": "acl_identifier",
+				"name": "acl_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -771,7 +771,7 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_id}/magic/sites/{site_id}/acls/{acl_identifier}": {
+	"GET /accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}": {
 		"description": "Get a specific Site ACL.",
 		"operationId": "magic-site-acls-acl-details",
 		"parameters": [
@@ -801,7 +801,7 @@
 			},
 			{
 				"in": "path",
-				"name": "acl_identifier",
+				"name": "acl_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1161,7 +1161,7 @@
 			"pro": false
 		}
 	},
-	"PATCH /accounts/{account_id}/magic/sites/{site_id}/acls/{acl_identifier}": {
+	"PATCH /accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}": {
 		"description": "Patch a specific Site ACL.",
 		"operationId": "magic-site-acls-patch-acl",
 		"parameters": [
@@ -1191,7 +1191,7 @@
 			},
 			{
 				"in": "path",
-				"name": "acl_identifier",
+				"name": "acl_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2174,7 +2174,7 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_id}/magic/sites/{site_id}/acls/{acl_identifier}": {
+	"PUT /accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}": {
 		"description": "Update a specific Site ACL.",
 		"operationId": "magic-site-acls-update-acl",
 		"parameters": [
@@ -2204,7 +2204,7 @@
 			},
 			{
 				"in": "path",
-				"name": "acl_identifier",
+				"name": "acl_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

@@ -408,13 +408,13 @@
 			"pro": false
 		}
 	},
-	"DELETE /accounts/{account_id}/magic/routes/{route_identifier}": {
+	"DELETE /accounts/{account_id}/magic/routes/{route_id}": {
 		"description": "Disable and remove a specific Magic static route.",
 		"operationId": "magic-static-routes-delete-route",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "route_identifier",
+				"name": "route_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1315,13 +1315,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_id}/magic/routes/{route_identifier}": {
+	"GET /accounts/{account_id}/magic/routes/{route_id}": {
 		"description": "Get a specific Magic static route.",
 		"operationId": "magic-static-routes-route-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "route_identifier",
+				"name": "route_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2849,13 +2849,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_id}/magic/routes/{route_identifier}": {
+	"PUT /accounts/{account_id}/magic/routes/{route_id}": {
 		"description": "Update a specific Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes.",
 		"operationId": "magic-static-routes-update-route",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "route_identifier",
+				"name": "route_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_id}/magic/ipsec_tunnels/{tunnel_identifier}": {
+	"DELETE /accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}": {
 		"description": "Disables and removes a specific static IPsec Tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"operationId": "magic-ipsec-tunnels-delete-ipsec-tunnel",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "tunnel_identifier",
+				"name": "ipsec_tunnel_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -979,13 +979,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_id}/magic/ipsec_tunnels/{tunnel_identifier}": {
+	"GET /accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}": {
 		"description": "Lists details for a specific IPsec tunnel.",
 		"operationId": "magic-ipsec-tunnels-list-ipsec-tunnel-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "tunnel_identifier",
+				"name": "ipsec_tunnel_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2049,13 +2049,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_id}/magic/ipsec_tunnels/{tunnel_identifier}/psk_generate": {
+	"POST /accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}/psk_generate": {
 		"description": "Generates a Pre Shared Key for a specific IPsec tunnel used in the IKE session. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After a PSK is generated, the PSK is immediately persisted to Cloudflare's edge and cannot be retrieved later. Note the PSK in a safe place.",
 		"operationId": "magic-ipsec-tunnels-generate-pre-shared-key-(-psk)-for-ipsec-tunnels",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "tunnel_identifier",
+				"name": "ipsec_tunnel_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3085,13 +3085,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_id}/magic/ipsec_tunnels/{tunnel_identifier}": {
+	"PUT /accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}": {
 		"description": "Updates a specific IPsec tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"operationId": "magic-ipsec-tunnels-update-ipsec-tunnel",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "tunnel_identifier",
+				"name": "ipsec_tunnel_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
