@@ -238,5 +238,21 @@
 	"magic.account.address_space.configuration.title": "Your address space",
 	"magic.account.address_space.configuration.description": "When route propagation is on for a cloud on-ramp, Cloudflare will install the below CIDR prefixes to your cloud network route tables to direct traffic to Magic WAN. To see default route info for your cloud click <0>here</0>.",
 	"magic.account.address_space.configuration.documentation": "Magic WAN address space documentation",
-	"magic.cidr_prefixes": "CIDR prefixes"
+	"magic.cidr_prefixes": "CIDR prefixes",
+	"magic.firewall.rate_limit.rules.title": "Rate limiting rules",
+	"magic.firewall.rate_limit.rules.add": "Add a rule",
+	"magic.firewall.rate_limit.rules.description": "Manage the custom rate limiting rules currently deployed to your network.",
+	"magic.firewall.rate_limit.rules.edit_page.add": "Create a rule",
+	"magic.firewall.rate_limit.rules.edit_page.edit": "Edit a rule",
+	"magic.firewall.rate_limit.rules.edit_page.period.header": "Period",
+	"magic.firewall.rate_limit.rules.edit_page.period.text": "1 second",
+	"magic.firewall.rate_limit.rules.edit_page.when_packet_match": "When incoming packets matchu2026",
+	"magic.firewall.rate_limit.rules.edit_page.when_ratelimit": "When rate exceeds...",
+	"magic.firewall.rate_limit.rules.edit_page.then_action": "Then take action...",
+	"magic.firewall.rate_limit.rules.edit_page.action": "Action",
+	"magic.firewall.rate_limit.rules.edit_page.back": "rule list",
+	"magic.firewall.rate_limit.rules.edit_page.bits_or_packets": "Packets or Bits (required)",
+	"magic.firewall.rate_limit.rules.edit_page.bits": "Bits",
+	"magic.firewall.rate_limit.rules.edit_page.packets": "Packets",
+	"magic.firewall.rate_limit.rules.edit_page.value": "Value"
 }

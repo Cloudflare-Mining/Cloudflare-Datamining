@@ -891,11 +891,12 @@ Payment will be charged in US dollars.`,
 		card: {
 			title: (0, e.d)`Delete domain ${"domainName"}`,
 			description: "This domain registration is eligible for deletion.",
-			description_delete_not_available: "Domain delete isn't available at this time, contact support if you would like to delete this domain.<0></0>This domain is currently not able to be deleted due to one of the following reasons:",
+			description_delete_not_available: 'Domain deletion is not available at this time, refer to our <a href="https://developers.cloudflare.com/registrar/account-options/domain-management/#delete-a-domain-registration" rel="noopener noreferrer" target="_blank">delete a domain documentation</a> if you would like to delete this domain.<0></0>This domain is currently not able to be deleted due to one of the following <a href="https://developers.cloudflare.com/registrar/faq/#domain-deletions" rel="noopener noreferrer" target="_blank">reasons</a>:',
 			description_delete_not_available_reason_1: "The status of the domain does not permit deletions",
 			description_delete_not_available_reason_2: "There is an administrative lock on the domain",
 			description_delete_not_available_reason_3: "You are not a Super Admin on the account",
 			description_delete_not_available_reason_4: "Domain is temporarily blocked for deletion",
+			description_delete_not_available_reason_uk: "Domains with .uk extension cannot be deleted.",
 			button: "Delete"
 		},
 		warning_modal: {
