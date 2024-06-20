@@ -693,6 +693,9 @@
 			"experiment"
 		]
 	},
+	"prg-dynamic-dash-banners": {
+		"enabled": false
+	},
 	"prg-free-trial": {
 		"enabled": false
 	},
@@ -706,6 +709,13 @@
 	},
 	"prg-plans-page-copy-experiment": {
 		"enabled": true,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
+	"prg-rotating-banners-experiment": {
+		"enabled": false,
 		"branches": [
 			"baseline",
 			"experiment"
