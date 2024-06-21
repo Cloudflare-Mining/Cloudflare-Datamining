@@ -33,6 +33,7 @@
 	<li>Skills in effective outreach messaging and content creation</li>
 	<li>Excellent written and verbal communication skills and stellar presentation skills</li>
 	<li>Preferred but not required: Knowledge of the Benelux or Nordics markets&nbsp;</li>
+	<li>Dutch language</li>
 </ul>
 <p><strong>Other attributes:</strong></p>
 <ul>
