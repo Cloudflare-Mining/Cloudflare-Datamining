@@ -5,46 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="collapsed-field-text">Remote Australia, Singapore</span> &nbsp;&nbsp;</strong></p>
-<p>Production Engineering is responsible for the world’s most reliable, observable, performant, and safe network ecosystem. Our customers rely on our products and systems to safely modify, troubleshoot, and release products without external impact.</p>
-<p>Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.</p>
-<p>We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behavior is and we are capable of determining and exposing anomalous behavior.</p>
-<p>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>In this role, you can expect to:</strong></p>
+<p><strong>Available Locations:&nbsp;</strong>Singapore</p>
+<p><strong>What You’ll Do</strong></p>
+<p>Cloudflare’s business requires a world class legal team to help the company deal with complex matters by anticipating complications and distractions and guiding the company around those obstacles. We’re looking for a new team member who can help foster our unique corporate philosophy and approach, in which the security and privacy of our customers are paramount. This role is ideal for someone who is a proactive self-starter and strategic thinker, who has a thirst for knowledge and continued growth, all while working as part of a great team.</p>
+<p>&nbsp;</p>
+<p>We are looking for an exceptionally talented, energetic, and friendly program manager to join our legal team as a Regional Program Manager, Legal Compliance (APJC) based in Singapore. You will play a key role executing the day-to-day nuts and bolts of our legal compliance within the APJC region, including company compliance with new laws and regulations, establishing corporate presence in new countries, internal investigations, conflicts of interest disclosures, gifts and entertainment requests, training and communications, as well as project management of other cross-functional compliance initiatives. The perfect candidate is passionate about compliance and can channel that passion into solving complex problems and novel legal issues in a fast-paced environment. As part of the job, you will:&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li><strong>Develop Software: </strong>Design, write, and deliver software that improves Cloudflare's Edge platform</li>
-	<li><strong>Work on large scale systems: </strong>Scale and evolve systems through software and automation to improve reliability and velocity</li>
-	<li><strong>Maintain and manage distributed systems: </strong>Manage and be part of the on-call rotation that supports the largest distributed edge system in the world.</li>
-	<li><strong>Document, Propose and Implement: </strong>Collaborate with other engineers to design and implement scalable solutions that support our growing user base.&nbsp;</li>
-	<li><strong>Guide and mentor: </strong>Participate in the constant cycle of knowledge sharing and mentoring.</li>
-	<li><strong>Optimize and Automate: </strong>Research and introduce cutting-edge technologies. Develop and maintain sustainable tools that work on an extremely large scale.</li>
-	<li><strong>Open Source: </strong>Contribute to open-source</li>
+	<li>Manage Cloudflare’s <strong>company compliance with new laws and regulations in the APJC region</strong>, working closely with our public policy, legal compliance and regional legal teams;&nbsp;</li>
+	<li>Manage compliance initiatives associated with setting up <strong>corporate presence in new countries</strong> within the APJC region;</li>
+	<li>Support Cloudflare’s <strong>internal investigations program</strong>, including management of investigation case files, conducting witness interviews, collecting supporting documentation, and drafting final reports;</li>
+	<li>Assist with the administration of Cloudflare’s <strong>compliance training and education program</strong>, including the design of regional compliance training content, target audience identification, and effectiveness measurement;</li>
+	<li>Assist with Cloudflare’s <strong>conflict of interest disclosure process</strong>, including review and approval of potential employee conflicts and gift and entertainment requests,<strong> </strong>as well as policy training;&nbsp;</li>
+	<li>Assist with execution of a regular integrity and <strong>compliance communications strategy within the region</strong>; and</li>
+	<li>Project manage a variety of other <strong>cross-functional compliance initiatives</strong>.</li>
 </ul>
-<p>We are growing quickly and focused on building an extraordinary company. This is a systems reliability engineering role and is a superb opportunity to be part of a high performing team and help to support Cloudflare’s mission and help build a better internet.</p>
-<p>You will build services and APIs to constantly improve availability, performance and uptime.&nbsp;</p>
-<h3><strong>You may be a good fit for our team if you have:</strong></h3>
+<p>&nbsp;</p>
+<p>The above list is representative and additional responsibilities may be assigned, as required by the need for the compliance program to support Cloudflare’s Legal team with agility in a dynamic environment.</p>
+<p>&nbsp;</p>
+<p><strong>Requirements:</strong></p>
 <ul>
-	<li>Up to 8 years of experience managing distributed systems</li>
-	<li>Proficiency in distributed Linux/Unix environments</li>
-	<li>Proficiency in high-level programming (e.g., Golang, Python)</li>
-	<li>Proficiency in configuration management (e.g., Saltstack, Chef, Puppet, Ansible)</li>
-	<li>Proficiency in networking protocols Layer 3-7 of the OSI model</li>
-	<li>Experience in performance analysis, debugging, and troubleshooting</li>
-	<li>Experience in SQL databases (e.g., Postgres, MySQL)</li>
-	<li>Experienced with being part of a rotation that tends to high priority reliability objectives</li>
-	<li>Experience in load balancing and reverse proxies (e.g., Nginx)</li>
-	<li>Familiarity with Key/Value stores (e.g., Redis)</li>
-	<li>​​​Familiarity with Internetworking and BGP</li>
-	<li>Exquisite written and verbal communication skills</li>
-	<li>Strong bias for action</li>
+	<li>Minimum 6 years of program or project management experience</li>
+	<li>Experience with an in-house legal department preferred; experience at a tech company, especially as part of a compliance team, is a huge plus</li>
+	<li>Experience conducting and participating in complex investigations and witness interviews highly desirable</li>
+	<li>Detail-oriented, well-organized, and technically-adept</li>
+	<li>Excellent written and oral communication skills</li>
+	<li>Strong interpersonal skills and experience in working cross-functionally with a variety of teams, with lawyers and non-lawyers, including engineering teams, sales teams, and product teams, to establish effective solutions efficiently and in an amenable manner.&nbsp;</li>
+	<li>Experience with the following software tools helpful not not required: Google Suite, Navex (EthicsPoint, Disclosure Management), Certa, Moodys RDC, Workday LMS, Marketo</li>
+	<li>The ability to manage multiple matters / projects for multiple teams.</li>
+	<li>Self-starter with the ability to learn in a fast-paced environment with minimal supervision</li>
+	<li>An ambitious mindset that enables you to successfully work independently with little guidance, but also to use good judgment and call out issues when needed.</li>
+	<li>Experience delivering in-person and/or virtual trainings and workshops</li>
 </ul>
-<h3><strong>Bonus points if you have:</strong></h3>
-<ul>
-	<li>Experience with continuous integration and delivery (CI/CD)</li>
-	<li>Experience working in a 24/7/365 service environment</li>
-	<li>Experience with high-bandwidth transit Internetworking and routing</li>
-	<li>Passion for tooling and automation</li>
-</ul>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
