@@ -19,14 +19,6 @@
 		},
 		period: (0, e.d)`Last <0>${"days"}</0> days: <1>${"iniDate"}</1> - Today`
 	},
-	models: {
-		labels: {
-			beta: "Beta",
-			lora: "LoRA",
-			function_calling: "Function calling",
-			deprecating: (0, e.d)`Deprecating ${"date"}`
-		}
-	},
 	sidebar: {
 		cost_summary: {
 			title: "Cost Summary",
