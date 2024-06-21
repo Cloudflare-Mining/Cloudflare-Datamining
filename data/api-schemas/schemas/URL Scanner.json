@@ -367,6 +367,14 @@
 					"description": "Account Id",
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "full",
+				"schema": {
+					"description": "Whether to return full report (scan summary and network log).",
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
