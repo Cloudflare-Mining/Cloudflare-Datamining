@@ -2552,6 +2552,14 @@
 						"compatEnableFlag": "global_fetch_strictly_public",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "newModuleRegistry",
+					"annotations": {
+						"compatDisableFlag": "legacy_module_registry",
+						"compatEnableFlag": "new_module_registry",
+						"experimental": "true"
+					}
 				}
 			]
 		},
