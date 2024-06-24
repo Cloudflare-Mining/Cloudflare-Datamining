@@ -700,7 +700,7 @@
 			var Lt = n("../react/app/components/Persistence/index.tsx"),
 				Rt = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				kt = n("../react/app/components/LoadingSuspense.tsx");
-			const Mt = be().lazy(() => Promise.all([n.e(2480), n.e(99992), n.e(4616), n.e(72019), n.e(19462), n.e(5668), n.e(7484), n.e(39760), n.e(2180), n.e(22734), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Mt = be().lazy(() => Promise.all([n.e(2480), n.e(49298), n.e(4616), n.e(72019), n.e(19462), n.e(5668), n.e(7484), n.e(39760), n.e(96988), n.e(22734), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Nt = () => be().createElement(kt.Z, null, be().createElement(Mt, null));
 			const jt = () => (je.useEffect(() => X, []), null);
 			var Ut = n("../../../../node_modules/moment/moment.js"),
@@ -759,8 +759,8 @@
 				}
 			};
 			var Jt = n("../react/common/components/SAMLSubmit/SAMLSubmit.tsx");
-			const Xt = be().lazy(() => Promise.all([n.e(2480), n.e(99992), n.e(4616), n.e(72019), n.e(19462), n.e(36273), n.e(72793), n.e(7484), n.e(39760), n.e(2180), n.e(22734), n.e(94452), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
-				Ve = be().lazy(() => Promise.all([n.e(99992), n.e(36273), n.e(2180), n.e(69088), n.e(94452), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
+			const Xt = be().lazy(() => Promise.all([n.e(2480), n.e(49298), n.e(4616), n.e(72019), n.e(19462), n.e(36273), n.e(72793), n.e(7484), n.e(39760), n.e(96988), n.e(22734), n.e(94452), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				Ve = be().lazy(() => Promise.all([n.e(49298), n.e(36273), n.e(96988), n.e(69088), n.e(94452), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var sn = ({
 					userIsAuthed: b
 				}) => {
@@ -889,10 +889,10 @@
 				n.g.build = mn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "98560592a1ec152441d0ce75a2aa27fa90ffe268",
-					dashVersion: "6497bcb9f7c3f7b9e90bd8b0720159c31317ace8",
+					commit: "e04e1d083adfc82fec1ef8dae1046f4af052dd62",
+					dashVersion: "839b18227e9b1619a1c004646b34d66392c022ed",
 					env: "production",
-					builtAt: 1719241865768,
+					builtAt: 1719247069577,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",
