@@ -1,0 +1,43 @@
+<div class="content-intro">
+	<div><strong>About Us</strong></div>
+	<div>
+		<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
+	</div>
+</div>
+<h4><strong>Location: Austin, TX</strong></h4>
+<p><strong>About the team</strong></p>
+<p>Cloudflare is building a brand new way of running globally distributed compute for both CPU and GPU workloads, and we need a strong Engineering Manager to lead this effort. Our edge network&nbsp;<a href="https://www.cloudflare.com/network/">spans the world</a> and lets us treat the entire network as a compute resource to build ultra-low latency applications. This is the core of how we ship great new products every year —&nbsp;and this team is taking this way of building, and growing it into a platform of its own with both internal and external use cases.</p>
+<p>This team works on some of the most challenging compute problems at Cloudflare — secure sandboxing of GPU and AI workloads, high throughput networking with VMMs, intelligent scheduling of compute workloads across Cloudflare’s network, and building distributed, fault-tolerant control plane for the platform.</p>
+<p><strong>About the role</strong></p>
+<p>You will be leading a strong, tenured engineering team adept at solving everything from low level compute challenges, such as virtual machines, to advanced distributed systems problems like global workload scheduling. This is a role where being close to the details matters — you will&nbsp; both help the people on your team grow, plan and excel, and be hands-on yourself, working directly with domain experts at Cloudflare in networking, compute, scheduling and more.</p>
+<p>You will work with an experienced Product Manager to define engineering and product roadmaps and build the products you believe in.</p>
+<p>You will be given the flexibility to make the team your own with ample opportunity for growth as more applications for compute on Cloudflare’s edge become clear. You will become part of a great team of supportive colleagues solving engaging and thrilling challenges.</p>
+<p><strong>Skills &amp; Technologies</strong></p>
+<p>You should have experience leading a team of skilled engineers to define roadmaps and solve customer problems.</p>
+<p>You should have a strong technical background with understanding of Linux and distributed system problems and common solutions.&nbsp;</p>
+<p><strong>You should be familiar with at least some of these:</strong></p>
+<ul>
+	<li>Linux workload isolation technologies such as LXC or gVisor and VMMs such as Firecracker, Cloud-Hypervisor, QEMU</li>
+	<li>Programming systems in Golang, Typescript, Rust, SQL</li>
+	<li>Serverless technologies such as Cloudflare Workers</li>
+	<li>Container orchestration systems such as HashiCorp Nomad, Kubernetes or Marathon</li>
+</ul>
+<p><strong>You should have prior experience</strong></p>
+<ul>
+	<li>Managing people, delivering effective feedback, and growing your team’s capacity and competencies</li>
+	<li>Building an open and inclusive team culture and the policies and systems needed to support it</li>
+	<li>Leading projects which span multiple teams outside of your own, and helping others understand the “why” behind the work that needs to get done</li>
+</ul>
+<div class="content-conclusion">
+	<p><strong>What Makes Cloudflare Special?</strong></p>
+	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
+	<p><a href="https://blog.cloudflare.com/protecting-free-expression-online/"><strong>Project Galileo</strong></a><span style="font-weight: 400;">: We equip politically and artistically important organizations and journalists with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.</span></p>
+	<p><strong><a href="https://www.cloudflare.com/athenian/">Athenian Project</a></strong><span style="font-weight: 400;">: We created Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration.</span></p>
+	<p><a href="https://blog.cloudflare.com/tag/path-forward/"><strong>Path Forward Partnership</strong></a><span style="font-weight: 400;">: Since 2016, we have partnered with Path Forward, a nonprofit organization, to create 16-week positions for mid-career professionals who want to get back to the workplace after taking time off to care for a child, parent, or loved one.</span></p>
+	<p><a href="https://1.1.1.1/"><strong>1.1.1.1</strong></a><span style="font-weight: 400;">: We released</span><a href="https://1.1.1.1/"> <span style="font-weight: 400;">1.1.1.1</span></a><span style="font-weight: 400;"> to help fix the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. This is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released. Here’s the deal - we don’t store client IP addresses never, ever. We will continue to abide by our</span><a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver"> privacy commitment</a><span style="font-weight: 400;"> and ensure that no user data is sold to advertisers or used to target consumers.</span></p>
+	<p><span style="font-weight: 400;">Sound like something you’d like to be a part of? We’d love to hear from you!</span></p>
+	<p><span style="font-weight: 400;">This position may require access to information protected under U.S. export control laws, including the U.S. Export Administration Regulations. Please note that any offer of employment may be conditioned on your authorization to receive software or technology controlled under these U.S. export laws without sponsorship for an export license.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare is proud to be an equal opportunity employer. &nbsp;We are committed to providing equal employment opportunity for all people and place great value in both diversity and inclusiveness. &nbsp;All qualified applicants will be considered for employment without regard to their, or any other person's, perceived or actual</span> <span style="font-weight: 400;">race, color, religion, sex, gender, gender identity, gender expression, sexual orientation, national origin, ancestry, citizenship, age, physical or mental disability, medical condition, family care status, or any other basis protected by law. </span><span style="font-weight: 400;">We are an AA/Veterans/Disabled Employer.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare provides reasonable accommodations to qualified individuals with disabilities. &nbsp;Please tell us if you require a reasonable accommodation to apply for a job. Examples of reasonable accommodations include, but are not limited to, changing the application process, providing documents in an alternate format, using a sign language interpreter, or using specialized equipment. &nbsp;If you require a reasonable accommodation to apply for a job, please contact us via e-mail at </span><span style="font-weight: 400;">hr@cloudflare.com</span><span style="font-weight: 400;"> or via mail at 101 Townsend St. San Francisco, CA 94107.</span></p>
+</div>
