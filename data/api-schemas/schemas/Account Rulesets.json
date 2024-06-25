@@ -3469,6 +3469,19 @@
 																																"title": "Check presence of headers",
 																																"type": "array"
 																															},
+																															"contains": {
+																																"additionalProperties": {
+																																	"description": "Check if the corresponding header contains any of the values in the list.",
+																																	"items": {
+																																		"type": "string"
+																																	},
+																																	"title": "Header values",
+																																	"type": "array"
+																																},
+																																"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																																"title": "Header contains",
+																																"type": "object"
+																															},
 																															"exclude_origin": {
 																																"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
 																																"title": "Exclude origin header",
@@ -8313,6 +8326,19 @@
 																																"title": "Check presence of headers",
 																																"type": "array"
 																															},
+																															"contains": {
+																																"additionalProperties": {
+																																	"description": "Check if the corresponding header contains any of the values in the list.",
+																																	"items": {
+																																		"type": "string"
+																																	},
+																																	"title": "Header values",
+																																	"type": "array"
+																																},
+																																"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																																"title": "Header contains",
+																																"type": "object"
+																															},
 																															"exclude_origin": {
 																																"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
 																																"title": "Exclude origin header",
@@ -12974,6 +13000,19 @@
 																																"title": "Check presence of headers",
 																																"type": "array"
 																															},
+																															"contains": {
+																																"additionalProperties": {
+																																	"description": "Check if the corresponding header contains any of the values in the list.",
+																																	"items": {
+																																		"type": "string"
+																																	},
+																																	"title": "Header values",
+																																	"type": "array"
+																																},
+																																"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																																"title": "Header contains",
+																																"type": "object"
+																															},
 																															"exclude_origin": {
 																																"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
 																																"title": "Exclude origin header",
@@ -17201,6 +17240,19 @@
 																																"title": "Check presence of headers",
 																																"type": "array"
 																															},
+																															"contains": {
+																																"additionalProperties": {
+																																	"description": "Check if the corresponding header contains any of the values in the list.",
+																																	"items": {
+																																		"type": "string"
+																																	},
+																																	"title": "Header values",
+																																	"type": "array"
+																																},
+																																"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																																"title": "Header contains",
+																																"type": "object"
+																															},
 																															"exclude_origin": {
 																																"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
 																																"title": "Exclude origin header",
@@ -21426,6 +21478,19 @@
 																																},
 																																"title": "Check presence of headers",
 																																"type": "array"
+																															},
+																															"contains": {
+																																"additionalProperties": {
+																																	"description": "Check if the corresponding header contains any of the values in the list.",
+																																	"items": {
+																																		"type": "string"
+																																	},
+																																	"title": "Header values",
+																																	"type": "array"
+																																},
+																																"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																																"title": "Header contains",
+																																"type": "object"
 																															},
 																															"exclude_origin": {
 																																"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
@@ -26136,6 +26201,19 @@
 																																"title": "Check presence of headers",
 																																"type": "array"
 																															},
+																															"contains": {
+																																"additionalProperties": {
+																																	"description": "Check if the corresponding header contains any of the values in the list.",
+																																	"items": {
+																																		"type": "string"
+																																	},
+																																	"title": "Header values",
+																																	"type": "array"
+																																},
+																																"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																																"title": "Header contains",
+																																"type": "object"
+																															},
 																															"exclude_origin": {
 																																"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
 																																"title": "Exclude origin header",
@@ -30122,6 +30200,19 @@
 																						},
 																						"title": "Check presence of headers",
 																						"type": "array"
+																					},
+																					"contains": {
+																						"additionalProperties": {
+																							"description": "Check if the corresponding header contains any of the values in the list.",
+																							"items": {
+																								"type": "string"
+																							},
+																							"title": "Header values",
+																							"type": "array"
+																						},
+																						"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																						"title": "Header contains",
+																						"type": "object"
 																					},
 																					"exclude_origin": {
 																						"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
@@ -34173,6 +34264,19 @@
 																																},
 																																"title": "Check presence of headers",
 																																"type": "array"
+																															},
+																															"contains": {
+																																"additionalProperties": {
+																																	"description": "Check if the corresponding header contains any of the values in the list.",
+																																	"items": {
+																																		"type": "string"
+																																	},
+																																	"title": "Header values",
+																																	"type": "array"
+																																},
+																																"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																																"title": "Header contains",
+																																"type": "object"
 																															},
 																															"exclude_origin": {
 																																"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
@@ -38240,6 +38344,19 @@
 																									"title": "Check presence of headers",
 																									"type": "array"
 																								},
+																								"contains": {
+																									"additionalProperties": {
+																										"description": "Check if the corresponding header contains any of the values in the list.",
+																										"items": {
+																											"type": "string"
+																										},
+																										"title": "Header values",
+																										"type": "array"
+																									},
+																									"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																									"title": "Header contains",
+																									"type": "object"
+																								},
 																								"exclude_origin": {
 																									"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
 																									"title": "Exclude origin header",
@@ -42231,6 +42348,19 @@
 																																"title": "Check presence of headers",
 																																"type": "array"
 																															},
+																															"contains": {
+																																"additionalProperties": {
+																																	"description": "Check if the corresponding header contains any of the values in the list.",
+																																	"items": {
+																																		"type": "string"
+																																	},
+																																	"title": "Header values",
+																																	"type": "array"
+																																},
+																																"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																																"title": "Header contains",
+																																"type": "object"
+																															},
 																															"exclude_origin": {
 																																"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
 																																"title": "Exclude origin header",
@@ -46205,6 +46335,19 @@
 																						},
 																						"title": "Check presence of headers",
 																						"type": "array"
+																					},
+																					"contains": {
+																						"additionalProperties": {
+																							"description": "Check if the corresponding header contains any of the values in the list.",
+																							"items": {
+																								"type": "string"
+																							},
+																							"title": "Header values",
+																							"type": "array"
+																						},
+																						"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																						"title": "Header contains",
+																						"type": "object"
 																					},
 																					"exclude_origin": {
 																						"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
@@ -50256,6 +50399,19 @@
 																																},
 																																"title": "Check presence of headers",
 																																"type": "array"
+																															},
+																															"contains": {
+																																"additionalProperties": {
+																																	"description": "Check if the corresponding header contains any of the values in the list.",
+																																	"items": {
+																																		"type": "string"
+																																	},
+																																	"title": "Header values",
+																																	"type": "array"
+																																},
+																																"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																																"title": "Header contains",
+																																"type": "object"
 																															},
 																															"exclude_origin": {
 																																"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
@@ -54335,6 +54491,19 @@
 																									"title": "Check presence of headers",
 																									"type": "array"
 																								},
+																								"contains": {
+																									"additionalProperties": {
+																										"description": "Check if the corresponding header contains any of the values in the list.",
+																										"items": {
+																											"type": "string"
+																										},
+																										"title": "Header values",
+																										"type": "array"
+																									},
+																									"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																									"title": "Header contains",
+																									"type": "object"
+																								},
 																								"exclude_origin": {
 																									"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
 																									"title": "Exclude origin header",
@@ -58322,6 +58491,19 @@
 																																},
 																																"title": "Check presence of headers",
 																																"type": "array"
+																															},
+																															"contains": {
+																																"additionalProperties": {
+																																	"description": "Check if the corresponding header contains any of the values in the list.",
+																																	"items": {
+																																		"type": "string"
+																																	},
+																																	"title": "Header values",
+																																	"type": "array"
+																																},
+																																"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																																"title": "Header contains",
+																																"type": "object"
 																															},
 																															"exclude_origin": {
 																																"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
@@ -62382,6 +62564,19 @@
 																									"title": "Check presence of headers",
 																									"type": "array"
 																								},
+																								"contains": {
+																									"additionalProperties": {
+																										"description": "Check if the corresponding header contains any of the values in the list.",
+																										"items": {
+																											"type": "string"
+																										},
+																										"title": "Header values",
+																										"type": "array"
+																									},
+																									"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																									"title": "Header contains",
+																									"type": "object"
+																								},
 																								"exclude_origin": {
 																									"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
 																									"title": "Exclude origin header",
@@ -66369,6 +66564,19 @@
 																																},
 																																"title": "Check presence of headers",
 																																"type": "array"
+																															},
+																															"contains": {
+																																"additionalProperties": {
+																																	"description": "Check if the corresponding header contains any of the values in the list.",
+																																	"items": {
+																																		"type": "string"
+																																	},
+																																	"title": "Header values",
+																																	"type": "array"
+																																},
+																																"description": "For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.",
+																																"title": "Header contains",
+																																"type": "object"
 																															},
 																															"exclude_origin": {
 																																"description": "Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.",
