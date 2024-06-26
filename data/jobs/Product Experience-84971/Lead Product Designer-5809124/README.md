@@ -5,25 +5,25 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Remote - US (except for SF Bay Area)</p>
-<p><strong>About our team:</strong></p>
-<p><span style="font-weight: 400;">We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Senior Product Designer to join our team.</span></p>
-<p><span style="font-weight: 400;">Your work will impact and influence the user experience of a product used by millions of people daily</span><span style="font-weight: 400;">. As a Senior Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Senior Product Designers to lead by example and coach the team into doing their best work.</span></p>
-<p><span style="font-weight: 400;">If you're a systems-thinking Senior Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</span></p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Locations: </strong>Remote - US (except for SF Bay Area)</p>
+<h4><strong>About our team:</strong></h4>
+<p>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Lead Product Designer to join our team.</p>
+<p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Lead Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Lead Product Designers to lead by example and coach the team into doing their best work.</p>
+<p>If you're a systems-thinking Lead Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li><span style="font-weight: 400;">Demonstrate talent and passion for designing end-to-end developer experiences.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Distill complex problems into approachable steps through researching, sketching, and sharing ideas with your cross-functional team.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with product managers and engineering leaders to work through technical tradeoffs that affect product roadmaps.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with other designers on the developer platform design team to collaborate on shared patterns, product vision, and design goals.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Facilitate design reviews with cross-functional teams.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Share what you learn internally and with the broader public designer, developer, and product communities.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Influence and contribute to the internal design process and team culture, supporting the team's current and long-term objectives.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Bring in new tools and techniques to improve workflows, create designs, map out user flows, and share our work.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Make time to mentor other designers on the team and share your craft, learning as you teach.</span></li>
-	<li style="font-weight: 400;">Find ways to grow design's impact within the organization, spending time to share design decisions throughout the organization that would benefit other teams and product areas<strong>.</strong></li>
+	<li>Demonstrate talent and passion for designing end-to-end developer experiences.</li>
+	<li>Distill complex problems into approachable steps through researching, sketching, and sharing ideas with your cross-functional team.</li>
+	<li>Partner with product managers and engineering leaders to work through technical tradeoffs that affect product roadmaps.</li>
+	<li>Partner with other designers on the developer platform design team to collaborate on shared patterns, product vision, and design goals.</li>
+	<li>Facilitate design reviews with cross-functional teams.</li>
+	<li>Share what you learn internally and with the broader public designer, developer, and product communities.</li>
+	<li>Influence and contribute to the internal design process and team culture, supporting the team's current and long-term objectives.</li>
+	<li>Bring in new tools and techniques to improve workflows, create designs, map out user flows, and share our work.</li>
+	<li>Make time to mentor other designers on the team and share your craft, learning as you teach.</li>
+	<li>Find ways to grow design's impact within the organization, spending time to share design decisions throughout the organization that would benefit other teams and product areas<strong>.</strong></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<h4><strong>Examples of desirable skills, knowledge, and experience</strong></h4>
 <ul>
 	<li>Minimum 10 years working in professional UX / product design roles.</li>
 	<li>Deep understanding of human-centered design.</li>
