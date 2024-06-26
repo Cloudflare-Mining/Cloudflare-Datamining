@@ -499,6 +499,9 @@
 					"schema": {
 						"oneOf": [
 							{
+								"title": "Dumb Pipe"
+							},
+							{
 								"properties": {
 									"text": {
 										"minLength": 1,
@@ -547,27 +550,6 @@
 									"prompt"
 								],
 								"title": "Text To Image",
-								"type": "object"
-							},
-							{
-								"properties": {
-									"sentences": {
-										"items": {
-											"minLength": 1,
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"source": {
-										"minLength": 1,
-										"type": "string"
-									}
-								},
-								"required": [
-									"source",
-									"sentences"
-								],
-								"title": "Sentence Similarity",
 								"type": "object"
 							},
 							{
@@ -975,6 +957,9 @@
 								"result": {
 									"oneOf": [
 										{
+											"title": "Dumb Pipe"
+										},
+										{
 											"items": {
 												"properties": {
 													"label": {
@@ -993,13 +978,6 @@
 											"format": "binary",
 											"title": "Text To Image",
 											"type": "string"
-										},
-										{
-											"items": {
-												"type": "number"
-											},
-											"title": "Sentence Similarity",
-											"type": "array"
 										},
 										{
 											"properties": {
