@@ -615,6 +615,16 @@
 		"id": "zone-settings-change-pseudo-i-pv4-setting"
 	},
 	{
+		"uri": "/zones/:zone_identifier/settings/replace_insecure_js",
+		"method": "GET",
+		"id": "zone-settings-get-replace-insecure-js"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/replace_insecure_js",
+		"method": "PATCH",
+		"id": "zone-settings-change-replace-insecure-js"
+	},
+	{
 		"uri": "/zones/:zone_identifier/settings/response_buffering",
 		"method": "GET",
 		"id": "zone-settings-get-response-buffering-setting"
