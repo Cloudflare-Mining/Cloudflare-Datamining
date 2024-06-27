@@ -1,6 +1,6 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image2-12.png" class="kg-image" alt="Cloudflare incident on June 20, 2024" loading="lazy" width="1600" height="900"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/06/image2-12.png" class="kg-image" alt="Automatically replacing polyfill.io links with Cloudflare’s mirror for a safer Internet" loading="lazy" width="1600" height="900"></figure>
 	<p>polyfill.io, a popular JavaScript library service, can no longer be trusted and should be removed from websites.</p>
 	<p><a href="https://sansec.io/research/polyfill-supply-chain-attack">Multiple reports</a>, corroborated with data seen by our own client-side security system, <a href="https://developers.cloudflare.com/page-shield">Page Shield</a>, have shown that the polyfill service was being used, and could be used again, to inject malicious JavaScript code into users’ browsers. This is a real threat to the Internet at large given the popularity of this library.</p>
 	<p>We have, over the last 24 hours, released an automatic JavaScript URL rewriting service that will rewrite any link to polyfill.io found in a website proxied by Cloudflare <a href="https://cdnjs.cloudflare.com/polyfill">to a link to our mirror under cdnjs</a>. This will avoid breaking site functionality while mitigating the risk of a supply chain attack.</p>
