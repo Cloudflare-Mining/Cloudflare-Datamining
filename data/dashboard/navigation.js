@@ -64,7 +64,7 @@ const navigation = {
 		hasPermission: z => !!(0, e.z1)("dash-account-home-v2")(z)
 	}, {
 		title: "navigation.root.websites",
-		url: z => (0, e.z1)("dash-account-home-v2")(z) ? "/websites" : "/",
+		url: "/websites",
 		iconType: "internet-browser"
 	}, {
 		title: "navigation.account.discover",
