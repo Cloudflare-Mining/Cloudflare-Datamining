@@ -64,7 +64,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-09-25T18:33:38.335Z",
-					"updatedAt": "2024-06-20T22:25:45.387Z"
+					"updatedAt": "2024-06-27T20:25:59.000Z"
 				},
 				"contentfulId": "6uaQczf0ul5MHIZFti7zy1",
 				"contentTypeId": "page",
@@ -480,17 +480,17 @@
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "1MSu4xu9AztUfuW1Yri5Q0",
+						"contentfulId": "43DpG6tcqXxP7UTqStIvaa",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "One Third & Two Thirds",
+						"columnLayout": "Half & Half",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "y8MT9StOeVUWhZ5nojkrh",
+								"contentfulId": "67JLNkhEEYN1SB2EYVLW0w",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": null,
@@ -502,18 +502,18 @@
 											"data": {
 												"target": {
 													"sys": {
-														"id": "5B778j7RrqY8p304vNu7Tl",
+														"id": "4ejaIgcWXX2kmkizJqbiUA",
 														"type": "Link",
 														"linkType": "Asset"
 													},
 													"related_asset": [
 														{
-															"contentfulId": "5B778j7RrqY8p304vNu7Tl",
+															"contentfulId": "4ejaIgcWXX2kmkizJqbiUA",
 															"locale": "en-US",
-															"title": "Forrester Report",
+															"title": "og Connectivity Cloud Lillypad Header Illustration",
 															"file": {
-																"name": "Forrester Report Thumbnail 1.png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5B778j7RrqY8p304vNu7Tl/bef8260c6b2c05904e37796f132754f6/Forrester_Report_Thumbnail_1.png",
+																"name": "og Connectivity Cloud Lillypad Header Illustration.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ejaIgcWXX2kmkizJqbiUA/bcb1d6b9c4a93c5b25e3d0bac04109bb/og_Connectivity_Cloud_Lillypad_Header_Illustration.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -562,7 +562,7 @@
 							},
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "50YOYEQGtjM6LQcUWPPE58",
+								"contentfulId": "3aFOF5t0EiqDc43Exxu9Zc",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": null,
@@ -584,7 +584,28 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Forrester findings: IT and security teams are experiencing a loss of control",
+													"value": "Connectivity cloud explained: Executive guide",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Read about the challenges and risks of an everywhere world and a new approach to solving modern IT, security, and development challenges with a Connectivity Cloud.",
 													"marks": [],
 													"content": null
 												}
@@ -613,7 +634,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "/lp/forrester-connectivity-cloud-paper"
+														"uri": "https://www.cloudflare.com/lp/connectivity-cloud-explained/"
 													},
 													"value": null,
 													"marks": null,
@@ -624,7 +645,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "View the study >",
+															"value": "Get the ebook >",
 															"marks": [],
 															"content": null
 														}
@@ -837,39 +858,6 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "6ZFljrWGTkwvhHtgrFfBDF",
-								"heading": "Ebook",
-								"description": "The CISO's guide to securing your API infrastructure",
-								"category": "Library",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "3veMHNbxc8dwYoYAp0IxJK",
-									"elementName": "CISO's Guide to API Security Link",
-									"standardText": null,
-									"text": "Get the ebook",
-									"url": "https://www.cloudflare.com/lp/ciso-guide-to-api-security/",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "bae2793c-aebb-5321-ba98-0d1cf06c3213",
-									"altText": null,
-									"title": "CISO",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6SNbR796NI2ndt0WYRuE8b/7a4395e5a7f5ff2b3dea07b185f53573/CISO_Guide_320_180.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
 								"contentfulId": "5TzevnXr4kscxBi5DuCkza",
 								"heading": "Whitepaper",
 								"description": "How to solve the top four limitations of remote browsing",
@@ -896,6 +884,39 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bWnO822472EL2RMh16Lud/fec3ede9490277f6e9ce31351368faf1/Browser_Isolation_Security_320_180.png"
 										},
 										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "36mSC2WHm6ep1XqE1tFME",
+								"heading": "Report",
+								"description": "Forrester findings: IT and security teams are experiencing a loss of control",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5noLazcw7cFtPcNu3iR2bb",
+									"elementName": "Forrester findings link",
+									"standardText": null,
+									"text": "Read the report",
+									"url": "/lp/forrester-connectivity-cloud-paper/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "9720916d-0913-5768-98b9-34156a50912b",
+									"altText": "Regaining Control With Connectivity Cloud",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ydSMv3s8asZveQI4qcyze/d9ab3842027dc355e5f70137c8a245e2/Forrester_Report_Thumbnail_1_1.png"
+										},
+										"description": "Regaining Control With Connectivity Cloud"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
