@@ -6,11 +6,11 @@
 	</div>
 </div>
 <p>Product Manager - Cloud Email Security Detections &amp; Managed Services, Cloudflare Zero Trust</p>
-<p>Locations: Austin, TX and Remote</p>
+<p>Locations: Remote US with preference near a Cloudflare Office (Austin, TX or Champaign, IL or New York, NY)</p>
 <p><strong>About Us</strong></p>
 <p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
 <p>We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</p>
-<h2>About the Role</h2>
+<h3>About the Role</h3>
 <p>We are looking for an energetic and growth-minded product manager to own Cloudflare Cloud Email Security’s detections &amp; managed services.</p>
 <p>In the last couple years, Cloudflare has entered the next phase of our product journey on top of our network to solve another challenge facing every organization on the planet: protecting the people and teams within an organization from the emails that can not only stop them from doing their jobs, but lead to cybersecurity attacks.</p>
 <p>Our solution has been Cloud Email Security, which is trusted by companies in the Fortune 100, as well as government organizations, and enterprises around the world. Our solution leverages AI, ML, NLP, and Computer Vision and a swatch of signals to innovatively identify attack patterns and signals for deeper investigation to ultimately prevent phish from staying in inboxes. While the solution has been great at stopping phish, bad actors continue to innovate at breakneck speeds and we need to continue to accelerate our pace as well.&nbsp;</p>
