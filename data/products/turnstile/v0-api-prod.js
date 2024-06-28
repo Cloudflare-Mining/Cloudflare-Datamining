@@ -505,7 +505,7 @@
 
 	function $t(e, a) {
 		var r, o, c, u = ut(a.params, K),
-			g = "h/".concat("b", "/"),
+			g = "h/".concat("g", "/"),
 			b = "".concat(u, "/cdn-cgi/challenge-platform/").concat(g, "feedback-reports/").concat(Ee(e), "/").concat(a.displayLanguage, "/"),
 			_ = document.getElementById(e);
 		_ || p("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
@@ -598,7 +598,7 @@
 
 	function nr(e, a) {
 		var r = e._pState;
-		return r ? (a.isReady = r.isReady, a.isRecaptchaCompatibilityMode = r.isRecaptchaCompatibilityMode, a.lastWidgetIdx = r.lastWidgetIdx, a.scriptWasLoadedAsync = r.scriptWasLoadedAsync, a.upgradeAttempts = r.upgradeAttempts, a.upgradeCount = r.upgradeCount + 1, a.turnstileLoadInitTimeMs = D(), a.watchCatInterval = null, a.watchCatSeq = r.watchCatSeq, a.widgetMap = r.widgetMap, !0) : !1
+		return r ? (a.isReady = r.isReady, a.isRecaptchaCompatibilityMode = r.isRecaptchaCompatibilityMode, a.lastWidgetIdx = r.lastWidgetIdx, a.scriptWasLoadedAsync = r.scriptWasLoadedAsync, a.upgradeAttempts = r.upgradeAttempts, a.upgradeCompletedCount = r.upgradeCompletedCount + 1, a.turnstileLoadInitTimeMs = D(), a.watchCatInterval = null, a.watchCatSeq = r.watchCatSeq, a.widgetMap = r.widgetMap, !0) : !1
 	}
 	var yr = 900,
 		hr = 3;
@@ -686,7 +686,7 @@
 			widgetMap: new Map,
 			lastWidgetIdx: 0,
 			upgradeAttempts: 0,
-			upgradeCount: 0,
+			upgradeCompletedCount: 0,
 			apiVersion: 1,
 			watchCatInterval: null,
 			watchCatSeq: 0
@@ -870,7 +870,7 @@
 						f = document.querySelector("#".concat(d));
 					(!d || !f) && p("Widget ".concat(i, " to reset was not found."), 3330), t.params.appearance === q.INTERACTION_ONLY && ir(f), t.params.sitekey === null && p("Unexpected Error: Sitekey is null", 3347);
 					var m;
-					f.src = lt(i, t.params.sitekey, t.params, (m = t.rcV) !== null && m !== void 0 ? m : j, K, "b", ot(t)), vt(d), t.retryTimeout && window.clearTimeout(t.retryTimeout)
+					f.src = lt(i, t.params.sitekey, t.params, (m = t.rcV) !== null && m !== void 0 ? m : j, K, "g", ot(t)), vt(d), t.retryTimeout && window.clearTimeout(t.retryTimeout)
 				} else p("Widget ".concat(i, " to reset was not found."), 3331)
 			},
 			l = function(n) {
@@ -975,7 +975,7 @@
 							widgetInitStartTimeMs: 0
 						})), ft(y, K);
 						var je = y.widgetMap.get(_e);
-						je || p("Turnstile Initialization Error ", 3606), W.style.display = "none", W.style.border = "none", W.style.overflow = "hidden", W.setAttribute("src", lt(_e, L, s, j, K, "b", ot(je))), W.onerror = function() {
+						je || p("Turnstile Initialization Error ", 3606), W.style.display = "none", W.style.border = "none", W.style.overflow = "hidden", W.setAttribute("src", lt(_e, L, s, j, K, "g", ot(je))), W.onerror = function() {
 							if (H) {
 								H == null || H(String(Ot.code));
 								return
@@ -1036,7 +1036,7 @@
 					switch (A.label) {
 						case 0:
 							if (d = v.params.sitekey, f = or(), !f) return x("Cannot determine Turnstile's embedded location, aborting clearance redemption."), r(v, n, !1), [2];
-							m = "h/".concat("b", "/"), E = new URL(f), T = "https", s = "", w = "".concat(T, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(m, "rc/").concat(t).concat(s), A.label = 1;
+							m = "h/".concat("g", "/"), E = new URL(f), T = "https", s = "", w = "".concat(T, "://").concat(E.host, "/cdn-cgi/challenge-platform/").concat(m, "rc/").concat(t).concat(s), A.label = 1;
 						case 1:
 							return A.trys.push([1, 6, , 7]), [4, fetch(w, {
 								method: "POST",
@@ -1230,7 +1230,7 @@
 								cData: t.cData,
 								chlPageData: t.chlPageData,
 								rcV: t.rcV,
-								ch: "c7e29c8c8b6e",
+								ch: "d2a97f6b6ec9",
 								url: or(),
 								retry: t.params.retry,
 								"expiry-interval": t.params["expiry-interval"],
@@ -1244,7 +1244,7 @@
 								turnstileAgeMs: D() - y.turnstileLoadInitTimeMs,
 								widgetAgeMs: D() - t.widgetRenderStartTimeMs,
 								upgradeAttempts: y.upgradeAttempts,
-								upgradeCount: y.upgradeCount,
+								upgradeCompletedCount: y.upgradeCompletedCount,
 								timeRenderMs: t.widgetRenderEndTimeMs - t.widgetRenderStartTimeMs,
 								timeToInitMs: t.widgetInitStartTimeMs - t.widgetRenderEndTimeMs,
 								timeToParamsMs: t.widgetParamsStartTimeMs - t.widgetInitStartTimeMs,
