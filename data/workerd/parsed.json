@@ -2156,6 +2156,19 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/io/compatibility-date.capnp:ImpliedByAfterDate",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {}
+				},
+				{
+					"name": "date",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags",
 			"fields": [
 				{
@@ -2542,7 +2555,8 @@
 					"name": "nodeJsCompatV2",
 					"annotations": {
 						"compatDisableFlag": "no_nodejs_compat_v2",
-						"compatEnableFlag": "nodejs_compat_v2"
+						"compatEnableFlag": "nodejs_compat_v2",
+						"impliedByAfterDate": "unhandled type"
 					}
 				},
 				{
@@ -4452,6 +4466,7 @@
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.neededByFl",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableAllDates",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.experimental",
+		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.impliedByAfterDate",
 		"workerd/src/workerd/io/features.capnp",
 		"workerd/src/workerd/io/outcome.capnp",
 		"workerd/src/workerd/io/script-version.capnp",
