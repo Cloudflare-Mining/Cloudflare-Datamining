@@ -1104,39 +1104,6 @@
 							},
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "7dMo8m13HIt8zpZYyIEbzq",
-								"title": "How do you secure API keys?",
-								"htmlId": null,
-								"elementPosition": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "API access keys, which detach authentication from user credentials and instead send secret text strings along with API requests, allow for more secure access to APIs. However, API keys can still face risks from man-in-the-middle attacks, improper developer usage, and problematic storage of secrets in source code. JSON web tokens (JWTs) offer a more secure and flexible alternative to static API keys as long as the JWTs are signed using secure cryptographic algorithms, they avoid sensitive data in the payload, and they enforce token expiration.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
 								"contentfulId": "5pnVBWbp0fy9yElnnxMtzv",
 								"title": "How do you test your API security?",
 								"htmlId": null,
@@ -1160,39 +1127,6 @@
 														"uri": null
 													},
 													"value": "Different metrics can help IT, security, and app development stakeholders assess their API security levels. For example, an organization with a robust API security model should have a current API asset inventory that shows all APIs are data compliant and use strong authentication or authorization methods. Audits should also be done to identify exposed/leaked credentials used in API requests, and to scan for identifiable information (PII), credit card data, or personal health care information in API requests/responses. The ability to set adaptive, intelligent rate limits on APIs, as determined by observable traffic patterns for each endpoint— also signals more advanced API security. ",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "2zQELNpdbq5VdPHmMKqCpk",
-								"title": "What are the various forms of API abuse?",
-								"htmlId": null,
-								"elementPosition": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "API abuse refers to malicious exploitation of APIs by exploiting business logic flaws and application vulnerabilities that obstruct or worsen the user experience for a real user. Most often in today's APIs, data exposure, unauthorized actions, security controls bypass, service disruption and elevation privileges occur due to lack of authentication and authorization controls known as broken object level authorization (BOLA) and broken function level authorization (BFLA). ",
 													"marks": [],
 													"content": null
 												}
