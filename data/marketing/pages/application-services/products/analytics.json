@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-12-05T07:52:08.885Z",
-					"updatedAt": "2024-06-26T07:46:25.488Z"
+					"updatedAt": "2024-06-29T12:07:00.395Z"
 				},
 				"contentfulId": "cDF3GgVg4gomgOuk4k6uE",
 				"contentTypeId": "page",
@@ -673,42 +673,6 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1nDjgSuS1zTw3B0eUqwTNN",
-								"title": "Load Balancing Analytics",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Investigate and monitor load balance behavior during peak traffic and failover periods.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "242e7c8b-2bc5-5a5a-8dfa-8798e0b2b0bb",
-									"altText": "Analytics network",
-									"title": "Analytics network ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/43PVIP7xl52gR53bMu92mz/9992969dcf14d61f8c151a799c1c694c/analytics-network.png"
-										},
-										"description": "Analytics network orange"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
 							}
 						],
 						"sectionPadding": "tile--no-bottom-padding",
@@ -743,20 +707,7 @@
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "51FRqnxOyStjn4GIhnZUPj",
-							"elementName": "Cloudflare Analytics - Case studies CTA - /case-studies/",
-							"standardText": null,
-							"text": "See case studies",
-							"url": "https://www.cloudflare.com/case-studies/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
+						"primaryCtaButton": null,
 						"secondaryCtaButton": null
 					},
 					{
@@ -29681,6 +29632,67 @@
 										"name": "Number of Custom Lists (account level)",
 										"description": "Create custom lists of IP addresses, hostnames, and ASNs to use and reference in your custom WAF rules. For example, create a custom IP address range to block.",
 										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6mL2Oeiu4wKNL5XzFRL2zA",
+												"textValue": "1",
+												"plan": {
+													"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Free Plan",
+													"name": "Free",
+													"description": "For personal or hobby projects that aren't business-critical.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0/month",
+													"monthlyPricingText": "$0/month",
+													"annualPricingText": "$0/month",
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+														"elementName": "Add a website (Free Plan CTA)",
+														"standardText": null,
+														"text": "Add a Website",
+														"url": "https://dash.cloudflare.com/sign-up?pt=f",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+														"elementName": "Add a website (Free Plan CTA)",
+														"standardText": null,
+														"text": "Add a Website",
+														"url": "https://dash.cloudflare.com/sign-up?pt=f",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"annualPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+														"elementName": "Add a website (Free Plan CTA)",
+														"standardText": null,
+														"text": "Add a Website",
+														"url": "https://dash.cloudflare.com/sign-up?pt=f",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													}
+												}
+											},
 											{
 												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "3Z56e4ceeFrFnXp3SoEDOx",
