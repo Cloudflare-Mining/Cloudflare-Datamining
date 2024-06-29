@@ -113,7 +113,21 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": null
+						"imageAssetFile": {
+							"id": "fd65107e-f35d-5c32-8525-627f4d123c14",
+							"altText": "Illustration of Cloudflare Zaraz",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jOh8VA5PPm5PsHTtAIx5q/777911fb4df328fe59be136b7e4e594e/Announcing_Cloudflare_Network_Interconnect_2.0.svg"
+								},
+								"description": "Illustration of Cloudflare Zaraz"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
 						"contentfulId": "7dvm7BnDowpjNk5tDXuQ6O",
@@ -324,6 +338,38 @@
 						"imageSize": "medium",
 						"imageTextAlignment": null,
 						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "3tvGIrzrA8Bz1YhyEpkvP6",
+						"title": "Zaraz uses Workers to make 3rd party tools secure and fast",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "51V7xEUnt3YVxVGznuroNn",
+							"elementName": "Zaraz - Additional offer CTA",
+							"standardText": null,
+							"text": "Read the blog",
+							"url": "https://blog.cloudflare.com/zaraz-use-workers-to-make-third-party-tools-secure-and-fast",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
