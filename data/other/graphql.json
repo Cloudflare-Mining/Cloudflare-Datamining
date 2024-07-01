@@ -2649,6 +2649,7 @@
 		"tcpUrgentPointer": "Value of the Urgent Pointer header field in the TCP packet",
 		"tcpWindowScale": "Value of the Window Scale option header field in the TCP packet",
 		"tcpWindowSize": "Value of the Window Size header field in the TCP packet",
+		"trafficType": "Custom protocol or traffic type for Magic Wan and Magic Transit traffic - Unidirectional and Bidirectional Tunnel Health Check",
 		"udpChecksum": "Value of the Checkusm header field in the UDP packet",
 		"udpPayloadLength": "Value of the Payload Length header field in the UDP packet"
 	},
@@ -6069,7 +6070,7 @@
 	},
 	"ZoneZarazAnalyticsIdentitiesAdaptiveGroups": {
 		"__description": "Zaraz Analytics Identities - zaraz.identify calls",
-		"count": "Number of processed Zaraz Track requests",
+		"count": "Number of processed Zaraz identify requests",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneZarazAnalyticsIdentitiesAdaptiveGroupsDimensions": {
@@ -6109,6 +6110,7 @@
 		"pageTitle": "Page Title",
 		"referrer": "Referrer",
 		"resolution": "Screen Resolution",
+		"sessionId": "Session ID",
 		"timezoneOffset": "Timezone Offset",
 		"trackData": "Track Data",
 		"trackName": "Track Name",
@@ -6124,7 +6126,8 @@
 	},
 	"ZoneZarazAnalyticsTrackAdaptiveGroupsUniq": {
 		"__description": "",
-		"clientIdCount": "Number of distinct client IDs"
+		"clientIdCount": "Number of distinct client IDs",
+		"sessionIdCount": "Number of distinct session IDs"
 	},
 	"ZoneZarazAnalyticsTriggersAdaptiveGroups": {
 		"__description": "Zaraz Analytics Triggers (a trigger is a set of rules that can trigger a zaraz action)",
@@ -6147,6 +6150,7 @@
 		"pageTitle": "Page Title",
 		"referrer": "Referrer",
 		"resolution": "Screen Resolution",
+		"sessionId": "Session ID",
 		"timezoneOffset": "Timezone Offset",
 		"triggerName": "Trigger Name",
 		"ua": "User Agent",
@@ -6161,7 +6165,8 @@
 	},
 	"ZoneZarazAnalyticsTriggersAdaptiveGroupsUniq": {
 		"__description": "",
-		"clientIdCount": "Number of distinct client IDs"
+		"clientIdCount": "Number of distinct client IDs",
+		"sessionIdCount": "Number of distinct session IDs"
 	},
 	"ZoneZarazTrackAdaptiveGroups": {
 		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
