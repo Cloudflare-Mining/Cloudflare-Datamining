@@ -2547,7 +2547,8 @@
 															"readOnly": true
 														},
 														"queue_id": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"queue_name": {
 															"example": "example-queue",
@@ -2708,7 +2709,8 @@
 																	"readOnly": true
 																},
 																"queue_id": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"queue_name": {
 																	"example": "example-queue",
@@ -4447,7 +4449,8 @@
 															"readOnly": true
 														},
 														"queue_id": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"queue_name": {
 															"example": "renamed-example-queue",
@@ -4608,7 +4611,8 @@
 																	"readOnly": true
 																},
 																"queue_id": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"queue_name": {
 																	"example": "renamed-example-queue",
