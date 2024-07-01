@@ -6,29 +6,24 @@
 	</div>
 </div>
 <h4><strong>Location: Austin, TX</strong></h4>
-<p><strong>About the team</strong></p>
-<p>Cloudflare is building a brand new way of running globally distributed compute for both CPU and GPU workloads, and we need a strong Engineering Manager to lead this effort. Our edge network&nbsp;<a href="https://www.cloudflare.com/network/">spans the world</a> and lets us treat the entire network as a compute resource to build ultra-low latency applications. This is the core of how we ship great new products every year —&nbsp;and this team is taking this way of building, and growing it into a platform of its own with both internal and external use cases.</p>
-<p>This team works on some of the most challenging compute problems at Cloudflare — secure sandboxing of GPU and AI workloads, high throughput networking with VMMs, intelligent scheduling of compute workloads across Cloudflare’s network, and building distributed, fault-tolerant control plane for the platform.</p>
-<p><strong>About the role</strong></p>
-<p>You will be leading a strong, tenured engineering team adept at solving everything from low level compute challenges, such as virtual machines, to advanced distributed systems problems like global workload scheduling. This is a role where being close to the details matters — you will&nbsp; both help the people on your team grow, plan and excel, and be hands-on yourself, working directly with domain experts at Cloudflare in networking, compute, scheduling and more.</p>
-<p>You will work with an experienced Product Manager to define engineering and product roadmaps and build the products you believe in.</p>
-<p>You will be given the flexibility to make the team your own with ample opportunity for growth as more applications for compute on Cloudflare’s edge become clear. You will become part of a great team of supportive colleagues solving engaging and thrilling challenges.</p>
-<p><strong>Skills &amp; Technologies</strong></p>
-<p>You should have experience leading a team of skilled engineers to define roadmaps and solve customer problems.</p>
-<p>You should have a strong technical background with understanding of Linux and distributed system problems and common solutions.&nbsp;</p>
-<p><strong>You should be familiar with at least some of these:</strong></p>
+<h4><strong>What you'll do</strong></h4>
+<p>You will lead multiple teams of passionate, talented managers and engineers that are building the systems that decentralize applications deployed on millions of sites. You will play an active part in shaping the product and team that will build core infrastructure. You will make sure our company hits our ambitious engineering goals.&nbsp; You will change the way people build applications.</p>
+<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel at understanding how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering a wide array of software from scalable distributed systems all the way to client side libraries. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Linux workload isolation technologies such as LXC or gVisor and VMMs such as Firecracker, Cloud-Hypervisor, QEMU</li>
-	<li>Programming systems in Golang, Typescript, Rust, SQL</li>
-	<li>Serverless technologies such as Cloudflare Workers</li>
-	<li>Container orchestration systems such as HashiCorp Nomad, Kubernetes or Marathon</li>
+	<li>Excel at building high performing teams, recruit top talent, and retain key engineers and managers</li>
+	<li>Strong technical background in software development, including hands-on experience building backend systems, front end user interfaces, and client side libraries and frameworks</li>
+	<li>Skilled at strategic planning, overseeing execution of complex projects that span many teams, and commitment to delivering results on tight deadlines</li>
+	<li>Obsessed with building products that customers love</li>
+	<li>Demonstrated ability to implement tools, processes, and internal systems which enable your teams to remove blockages and deliver reliable software predictably</li>
+	<li>Comfortable managing teams/projections with tight deadlines and short release cycles</li>
+	<li>Establishes and upholds high-performance standards by identifying KPIs, setting ambitious yet achievable goals, delivering continuous feedback, and fostering a culture of accountability.</li>
 </ul>
-<p><strong>You should have prior experience</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Managing people, delivering effective feedback, and growing your team’s capacity and competencies</li>
-	<li>Building an open and inclusive team culture and the policies and systems needed to support it</li>
-	<li>Leading projects which span multiple teams outside of your own, and helping others understand the “why” behind the work that needs to get done</li>
+	<li>Experience participating in the Javascript ecosystem and standards bodies</li>
 </ul>
+<p><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
