@@ -294,7 +294,7 @@
 			var L = n("../react/common/selectors/languagePreferenceSelector.ts"),
 				A = n("../flags.js"),
 				R = n("../utils/getDashVersion.ts"),
-				W = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?5628"),
+				W = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?09ed"),
 				re = n.n(W),
 				_e = n("../../../common/intl/intl-core/src/errors.ts"),
 				we = n("../../../../node_modules/@sentry/utils/esm/object.js"),
@@ -700,7 +700,7 @@
 			var Lt = n("../react/app/components/Persistence/index.tsx"),
 				Rt = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				kt = n("../react/app/components/LoadingSuspense.tsx");
-			const Mt = be().lazy(() => Promise.all([n.e(2480), n.e(49298), n.e(4616), n.e(72019), n.e(19462), n.e(5668), n.e(7484), n.e(39760), n.e(96988), n.e(22734), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Mt = be().lazy(() => Promise.all([n.e(2480), n.e(49298), n.e(4616), n.e(72019), n.e(19462), n.e(5668), n.e(7484), n.e(39760), n.e(99718), n.e(22734), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Nt = () => be().createElement(kt.Z, null, be().createElement(Mt, null));
 			const jt = () => (je.useEffect(() => X, []), null);
 			var Ut = n("../../../../node_modules/moment/moment.js"),
@@ -759,8 +759,8 @@
 				}
 			};
 			var Jt = n("../react/common/components/SAMLSubmit/SAMLSubmit.tsx");
-			const Xt = be().lazy(() => Promise.all([n.e(2480), n.e(49298), n.e(4616), n.e(72019), n.e(19462), n.e(36273), n.e(72793), n.e(7484), n.e(39760), n.e(96988), n.e(22734), n.e(94452), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
-				Ve = be().lazy(() => Promise.all([n.e(49298), n.e(36273), n.e(96988), n.e(69088), n.e(94452), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
+			const Xt = be().lazy(() => Promise.all([n.e(2480), n.e(49298), n.e(4616), n.e(72019), n.e(19462), n.e(36273), n.e(72793), n.e(7484), n.e(39760), n.e(99718), n.e(22734), n.e(94452), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				Ve = be().lazy(() => Promise.all([n.e(49298), n.e(36273), n.e(99718), n.e(69088), n.e(94452), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var an = ({
 					userIsAuthed: b
 				}) => {
@@ -891,10 +891,10 @@
 				n.g.build = pn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "e6079aa2a776ed66b1bec21f4b425ba33b7fef73",
-					dashVersion: "cf24b53ec93b6f707d526819e5558deca271f825",
+					commit: "47b31a2ead558dbdbc8e30bd8e1a6d07acb0fbac",
+					dashVersion: "6670e2207c45d958d57349c6fcd752e5ef1b5989",
 					env: "production",
-					builtAt: 1719596128599,
+					builtAt: 1719843375469,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",
@@ -1124,7 +1124,7 @@
 				f = n("../react/utils/bootstrap.ts"),
 				i = n("../react/app/components/DeepLink/actions.ts"),
 				u = n("../react/app/components/DeepLink/selectors.ts"),
-				l = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?5628"),
+				l = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?09ed"),
 				E = n.n(l);
 
 			function t(ne) {
@@ -1637,7 +1637,7 @@
 				d = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				f = n("../../../../node_modules/@cloudflare/component-icon/es/index.js"),
 				i = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
-				u = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?5628"),
+				u = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?09ed"),
 				l = n.n(u),
 				E = n("../react/common/components/Apple/utils.tsx"),
 				t = n("../react/utils/translator.tsx"),
@@ -2252,7 +2252,7 @@
 			var e = n("webpack/sharing/consume/default/react/react"),
 				r = n.n(e),
 				s = n("../react/app/redux/index.ts"),
-				d = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?5628"),
+				d = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?09ed"),
 				f = n.n(d),
 				i = n("../react/utils/bootstrap.ts"),
 				u = n("../react/common/selectors/zoneSelectors.ts"),
@@ -4826,7 +4826,7 @@
 					return c
 				}
 			});
-			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?5628"),
+			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?09ed"),
 				r = n.n(e),
 				s = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
 				d = n("../react/pages/onboarding/components/AppleLogin/constants.ts"),
@@ -8869,7 +8869,7 @@
 					return E
 				}
 			});
-			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?5628"),
+			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?09ed"),
 				r = n.n(e);
 
 			function s(t) {
@@ -10491,7 +10491,7 @@
 			});
 			var e = n("../../../../node_modules/moment/moment.js"),
 				r = n.n(e),
-				s = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?5628"),
+				s = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?09ed"),
 				d = n.n(s),
 				f = n("../react/pages/home/domain-registration/bulk-transfer-util.ts");
 
@@ -10688,7 +10688,7 @@
 					return l
 				}
 			});
-			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?5628"),
+			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?09ed"),
 				r = n.n(e);
 
 			function s(o) {
@@ -12237,7 +12237,7 @@
 				f = n("../react/utils/translator.tsx"),
 				i = n("../../../../node_modules/@cloudflare/util-cache/es/index.js"),
 				u = n("../react/pages/onboarding/components/AppleLogin/constants.ts"),
-				l = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?5628"),
+				l = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?09ed"),
 				E = n.n(l),
 				t = n("../../../../node_modules/@sentry/core/esm/exports.js");
 
@@ -12890,7 +12890,7 @@
 					return Ke
 				}
 			});
-			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?5628"),
+			var e = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow?09ed"),
 				r = n.n(e),
 				s = n("../react/utils/bootstrap.ts"),
 				d = n("../react/app/providers/storeContainer.js"),
