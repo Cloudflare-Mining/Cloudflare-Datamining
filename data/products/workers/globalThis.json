@@ -478,6 +478,17 @@
 		"length": "number",
 		"name": "string"
 	},
+	"EventSource": {
+		"CLOSED": "number",
+		"CONNECTING": "number",
+		"OPEN": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": "object",
+		"from": "function",
+		"length": "number",
+		"name": "string"
+	},
 	"EventTarget": {
 		"__proto": "function",
 		"__type": "function",
@@ -2476,6 +2487,7 @@
 		"ErrorEvent",
 		"EvalError",
 		"Event",
+		"EventSource",
 		"EventTarget",
 		"ExtendableEvent",
 		"FetchEvent",
@@ -4270,8 +4282,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -4333,8 +4345,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -4410,8 +4422,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -4687,7 +4699,8 @@
 				"EventEmitterAsyncResource": "function",
 				"captureRejections": "boolean",
 				"defaultMaxListeners": "number",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"Hmac": {
 				"__proto": "function",
@@ -4953,8 +4966,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -5016,8 +5029,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -5093,8 +5106,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -5370,7 +5383,8 @@
 				"EventEmitterAsyncResource": "function",
 				"captureRejections": "boolean",
 				"defaultMaxListeners": "number",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"createHash": {
 				"__proto": "function",
@@ -5440,6 +5454,20 @@
 				"_prototype": {}
 			},
 			"pbkdf2Sync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"scrypt": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"scryptSync": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -6069,7 +6097,8 @@
 					"defaultMaxListeners": "undefined",
 					"kMaxEventTargetListeners": "undefined",
 					"kMaxEventTargetListenersWarned": "undefined",
-					"init": "undefined"
+					"init": "undefined",
+					"addAbortListener": "undefined"
 				},
 				"on": "function",
 				"once": "function",
@@ -6086,7 +6115,8 @@
 				"defaultMaxListeners": "number",
 				"kMaxEventTargetListeners": "symbol",
 				"kMaxEventTargetListenersWarned": "symbol",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"usingDomains": "boolean",
 			"captureRejectionSymbol": "symbol",
@@ -6251,7 +6281,8 @@
 				"EventEmitterAsyncResource": "function",
 				"captureRejections": "boolean",
 				"defaultMaxListeners": "number",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"captureRejections": "boolean",
 			"defaultMaxListeners": "number",
@@ -6268,6 +6299,13 @@
 					"name": "undefined",
 					"prototype": "undefined"
 				}
+			},
+			"addAbortListener": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
 			}
 		},
 		"path": {
@@ -6633,7 +6671,8 @@
 				"EventEmitterAsyncResource": "function",
 				"captureRejections": "boolean",
 				"defaultMaxListeners": "number",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"_isUint8Array": {
 				"__proto": "function",
@@ -7064,7 +7103,8 @@
 				"EventEmitterAsyncResource": "function",
 				"captureRejections": "boolean",
 				"defaultMaxListeners": "number",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"Readable": {
 				"__proto": "function",
@@ -7248,8 +7288,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -7311,8 +7351,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -7388,8 +7428,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -7592,14 +7632,14 @@
 					"prototype": "undefined",
 					"ReadableState": "undefined",
 					"_fromList": "undefined",
-					"fromWeb": "undefined",
 					"toWeb": "undefined",
+					"fromWeb": "undefined",
 					"from": "undefined"
 				},
 				"ReadableState": "function",
 				"_fromList": "function",
-				"fromWeb": "function",
 				"toWeb": "function",
+				"fromWeb": "function",
 				"wrap": "function",
 				"from": "function",
 				"Stream": "function",
@@ -7674,7 +7714,8 @@
 				"EventEmitterAsyncResource": "function",
 				"captureRejections": "boolean",
 				"defaultMaxListeners": "number",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"Duplex": {
 				"__proto": "function",
@@ -7901,8 +7942,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -7964,8 +8005,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -8041,8 +8082,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -8327,7 +8368,8 @@
 				"EventEmitterAsyncResource": "function",
 				"captureRejections": "boolean",
 				"defaultMaxListeners": "number",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"Transform": {
 				"__proto": "function",
@@ -8572,8 +8614,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -8635,8 +8677,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -8712,8 +8754,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -8995,7 +9037,8 @@
 				"EventEmitterAsyncResource": "function",
 				"captureRejections": "boolean",
 				"defaultMaxListeners": "number",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"PassThrough": {
 				"__proto": "function",
@@ -9240,8 +9283,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -9303,8 +9346,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -9380,8 +9423,8 @@
 							"prototype": "undefined",
 							"ReadableState": "undefined",
 							"_fromList": "undefined",
-							"fromWeb": "undefined",
 							"toWeb": "undefined",
+							"fromWeb": "undefined",
 							"wrap": "function",
 							"from": "undefined",
 							"destroy": "function",
@@ -9663,7 +9706,8 @@
 				"EventEmitterAsyncResource": "function",
 				"captureRejections": "boolean",
 				"defaultMaxListeners": "number",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"promises": {
 				"pipeline": {
@@ -9944,7 +9988,8 @@
 					"defaultMaxListeners": "undefined",
 					"kMaxEventTargetListeners": "undefined",
 					"kMaxEventTargetListenersWarned": "undefined",
-					"init": "undefined"
+					"init": "undefined",
+					"addAbortListener": "undefined"
 				},
 				"on": "function",
 				"once": "function",
@@ -9961,7 +10006,8 @@
 				"defaultMaxListeners": "number",
 				"kMaxEventTargetListeners": "symbol",
 				"kMaxEventTargetListenersWarned": "symbol",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"usingDomains": "boolean",
 			"captureRejectionSymbol": "symbol",
@@ -10126,7 +10172,8 @@
 				"EventEmitterAsyncResource": "function",
 				"captureRejections": "boolean",
 				"defaultMaxListeners": "number",
-				"init": "function"
+				"init": "function",
+				"addAbortListener": "function"
 			},
 			"captureRejections": "boolean",
 			"defaultMaxListeners": "number",
@@ -10143,6 +10190,13 @@
 					"name": "undefined",
 					"prototype": "undefined"
 				}
+			},
+			"addAbortListener": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
 			}
 		},
 		"string_decoder": {
