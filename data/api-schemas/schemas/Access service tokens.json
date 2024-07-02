@@ -11,7 +11,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -23,7 +22,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -125,7 +123,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"duration": {
@@ -142,7 +139,6 @@
 															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
 															"type": "string"
 														}
 													]
@@ -155,7 +151,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -284,7 +279,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -407,7 +401,6 @@
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"readOnly": true,
 														"type": "string"
 													},
 													"duration": {
@@ -424,7 +417,6 @@
 																"description": "UUID",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"readOnly": true,
 																"type": "string"
 															}
 														]
@@ -437,7 +429,6 @@
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
 														"format": "date-time",
-														"readOnly": true,
 														"type": "string"
 													}
 												},
@@ -568,7 +559,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -580,7 +570,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -682,7 +671,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"duration": {
@@ -699,7 +687,6 @@
 															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
 															"type": "string"
 														}
 													]
@@ -712,7 +699,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -841,7 +827,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -972,7 +957,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"duration": {
@@ -992,7 +976,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											}
@@ -1120,7 +1103,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1132,7 +1114,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1234,7 +1215,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"duration": {
@@ -1251,7 +1231,6 @@
 															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
 															"type": "string"
 														}
 													]
@@ -1264,7 +1243,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -1393,7 +1371,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1405,7 +1382,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1512,7 +1488,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"duration": {
@@ -1532,7 +1507,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											}
@@ -1660,7 +1634,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1672,7 +1645,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1795,7 +1767,6 @@
 												"created_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												},
 												"duration": {
@@ -1812,7 +1783,6 @@
 															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
 															"type": "string"
 														}
 													]
@@ -1825,7 +1795,6 @@
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
-													"readOnly": true,
 													"type": "string"
 												}
 											},
