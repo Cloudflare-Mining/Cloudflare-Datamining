@@ -77,6 +77,9 @@
 			active_tooltip: "Request received in the last 30 days"
 		}
 	},
+	common: {
+		no_data: "No data available"
+	},
 	models_list: {
 		common: {
 			documentation: "Documentation",

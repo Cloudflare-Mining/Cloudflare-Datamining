@@ -442,6 +442,18 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 		za: "Zhuang / Chuang",
 		zu: "Zulu"
 	},
+	caption_error_messages: {
+		10062: "This feature is not enabled for your account.",
+		10063: "The video has a generated caption for this language. To re-generate, please delete the caption and retry.",
+		10064: "The video duration is too long to automatically generate a caption.",
+		10066: "The video must contain audio to generate a caption.",
+		10001: "The authentication credentials are not authorized to perform the request. Verify the credentials and try again.",
+		10067: "The video must be ready to stream prior to generating captions.",
+		10068: "Requested language is not currently supported.",
+		10005: "There is an existing caption for this language. Please delete caption and retry.",
+		10069: "Multi-audio is not supported.",
+		10016: "You have hit the threshold for in-progress generated captions. Wait a few minutes and try again."
+	},
 	uploading_caption: (0, e.d)`Uploading ${"language"} captions (${"percentProgress"}%)`,
 	error_fetching_captions: "There was an error fetching captions",
 	caption_upload_success: (0, e.d)`${"language"} captions uploaded.`,

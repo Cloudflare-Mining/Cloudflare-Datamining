@@ -45,7 +45,10 @@
 			tokens: "Tokens",
 			request: "Request",
 			response: "Response",
-			custom_metadata: "Custom Metadata"
+			custom_metadata: "Custom Metadata",
+			full_content: "Full content",
+			response_not_available: "Not available",
+			request_not_available: "Not available"
 		}
 	},
 	settings: {
