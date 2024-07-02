@@ -5,12 +5,12 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin - US, France, Germany, Netherlands, Portugal, UK</strong></p>
+<p><strong>Available Locations: Austin or Remote US, Munich or Remote Germany, Amsterdam or Remote Netherlands, Lisbon or Remote Portugal, London or Remote UK</strong></p>
 <p><strong>About the Department</strong></p>
 <p>Cloudflare’s Production Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month, representing over 20% of global Internet traffic. Production Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
 <p>The Release Manager Team within the Production Engineering organization is responsible for&nbsp; ensuring that we can deliver new features to production in a manner that supports both rapid innovation and safe change at scale to provide the speed and reliability that Cloudflare is known for.</p>
 <p><strong>What you’ll do</strong></p>
-<p>In this role you’ll help us build the deployment mechanisms that allow speed of innovation and safety through health meditation.&nbsp; You will be joining a<a href="https://blog.cloudflare.com/cloudflares-first-year-in-lisbon/"> global team</a> of bright, hard-working, and supportive engineers who really care about their craft and will be accelerating innovation across all products that Cloudflare offers.<br><br>Technologies we use:</p>
+<p>In this role you’ll help us build the deployment mechanisms that allow speed of innovation and safety through health meditation. You will be joining a<a href="https://blog.cloudflare.com/cloudflares-first-year-in-lisbon/"> global team</a> of bright, hard-working, and supportive engineers who really care about their craft and will be accelerating innovation across all products that Cloudflare offers.<br><br>Technologies we use:</p>
 <ul>
 	<li>
 		<p>Salt</p>
