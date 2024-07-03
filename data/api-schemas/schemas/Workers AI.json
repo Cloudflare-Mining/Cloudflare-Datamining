@@ -526,6 +526,18 @@
 										},
 										"type": "array"
 									},
+									"lora_weights": {
+										"items": {
+											"type": "number"
+										},
+										"type": "array"
+									},
+									"loras": {
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
 									"mask": {
 										"items": {
 											"type": "number"
