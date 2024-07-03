@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/turnstile-firebase-app-check",
 	"dist-tags": {
-		"latest": "0.0.4"
+		"latest": "0.0.5"
 	},
 	"versions": {
 		"0.0.1": {
@@ -89,21 +89,47 @@
 				"firebase": "^10.7.2"
 			},
 			"devDependencies": {
+				"gts": "^5.2.0",
+				"typescript": "^5.3.3",
+				"@types/node": "20.8.2",
+				"@types/cloudflare-turnstile": "^0.1.3"
+			},
+			"dist": {
+				"shasum": "de5c99c257f802649c5c2f808a58fd33861213d5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/turnstile-firebase-app-check/-/turnstile-firebase-app-check-0.0.4.tgz",
+				"fileCount": 16,
+				"integrity": "sha512-WadjoOqYsIqFr3SmE3lhbMPAID5yyPsOMq4kEvpjvcsaQzok/nZhuRcBL0jQFu45rg/VT9fZK+CWl0baHuBTTg==",
+				"signatures": [
+					{
+						"sig": "MEUCIDcIFM40TBC+jgVAp11pZTFXo30hkKVggAXmgPCFljliAiEAoYExD1Gic1z6A6DTr8RbeaJKzdKacv4Qfa+QJh/Q5L0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 160853
+			}
+		},
+		"0.0.5": {
+			"name": "@cloudflare/turnstile-firebase-app-check",
+			"version": "0.0.5",
+			"dependencies": {
+				"firebase": "^10.7.2"
+			},
+			"devDependencies": {
 				"@types/cloudflare-turnstile": "^0.1.3",
 				"@types/node": "20.8.2",
 				"gts": "^5.2.0",
 				"typescript": "^5.3.3"
 			},
 			"dist": {
-				"shasum": "de5c99c257f802649c5c2f808a58fd33861213d5",
-				"integrity": "sha512-WadjoOqYsIqFr3SmE3lhbMPAID5yyPsOMq4kEvpjvcsaQzok/nZhuRcBL0jQFu45rg/VT9fZK+CWl0baHuBTTg==",
-				"tarball": "https://registry.npmjs.org/@cloudflare/turnstile-firebase-app-check/-/turnstile-firebase-app-check-0.0.4.tgz",
-				"fileCount": 16,
-				"unpackedSize": 160853,
+				"shasum": "fed8acab6868df5240c0ae4fd826d68bbae49868",
+				"integrity": "sha512-OnlqtYTf52vA34k9cUBH8nEyJAd1ZwEwJMUIxr2Yvm8Tsbml34uz7rqNssSLUvgWyKGQdj/y/3FzHgSEl/MhPQ==",
+				"tarball": "https://registry.npmjs.org/@cloudflare/turnstile-firebase-app-check/-/turnstile-firebase-app-check-0.0.5.tgz",
+				"fileCount": 10,
+				"unpackedSize": 156187,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIDcIFM40TBC+jgVAp11pZTFXo30hkKVggAXmgPCFljliAiEAoYExD1Gic1z6A6DTr8RbeaJKzdKacv4Qfa+QJh/Q5L0="
+						"sig": "MEUCIHYT5sd18IHkDyv0N92AZrX+f5iEkefY52FHLfXL8xORAiEA7+W8u6wsHwbJpT6JN/NB0aJw3Qj0eazI0fXGtQ1rVAw="
 					}
 				]
 			}
