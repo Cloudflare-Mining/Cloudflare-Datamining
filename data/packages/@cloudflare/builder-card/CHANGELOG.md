@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.0.17
+
+### Patch Changes
+
+- @cloudflare/component-card@10.0.17
+
 ## 9.0.16
 
 ### Patch Changes
