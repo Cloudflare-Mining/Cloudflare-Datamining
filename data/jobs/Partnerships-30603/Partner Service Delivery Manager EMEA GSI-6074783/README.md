@@ -5,30 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations - </strong>Austin preferred or Remote US</p>
-<hr>
-<p><strong>About the Team</strong></p>
-<p>The BI team at Cloudflare is responsible for building and managing the cloud data analytics platform. Our focus is on developing a centralized cloud data analytics platform using open source technologies for internal Business Partners and Machine Learning teams. The team aims to make data more accessible, meet Cloudflare's critical business needs, and provide self-service reporting and analytics tools to support current and new business initiatives.</p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today, Cloudflare runs one of the world’s largest distributed networks that powers more than 1.5 trillion pageviews each month across 5 million Internet properties. More than 10 percent of all global Internet requests flow through Cloudflare’s network. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Our customers range from Fortune 500 companies and nonprofits to small businesses and budding entrepreneurs. Every day, about 12,000 new customers sign up. We’re working to create a faster, more secure, and more reliable experience for anyone online and given the scale at which we operate, our mission is big. Our team is hard at work shaping the future of the Internet by solving some of its toughest challenges. Come join us.</p>
+<p>&nbsp;</p>
+<p><strong>About the Department</strong></p>
+<p>The Partner team works hard to grow the Partner ecosystem around Cloudflare. Channel Account Managers, Partner Development teams, Partner Service Delivery Managers and Partner Solutions Engineers all support partner businesses as they grow and scale with Cloudflare. All working together help our customers adopt Cloudflare and create great Internet-enabled experiences.</p>
+<p>&nbsp;</p>
 <p><strong>About the Role</strong></p>
-<p>This role will report to BI Team and work closely with the Finance &amp; BizOps team who is responsible for developing and maintaining key GTM metrics reporting and incubating new initiatives that cover across product, go-to-market and finance. This role will help develop analytics solutions and scale internal data processes. Success in this role comes from marrying a strong data background with acute business acumen and curiosity to deliver highly strategic and compelling insights.</p>
-<p><strong>What you'll do</strong></p>
+<p>In this specialized role, you'll focus on service delivery and operational success for partnerships with Global Systems Integrators (GSIs). You will work on intricate, multi-tiered projects, engage in high-level strategic discussions with C-suite executives at partner organizations, and assist GSIs in architecting and deploying service offerings based on Cloudflare technologies. This technical role involves working closely with partners' technical stakeholders to ensure they have the right delivery skills. Your responsibilities will include ensuring GSIs have the right delivery skillset for Cloudflare solutions, proactively supporting them in their service delivery engagements, and collaborating closely with them to launch new service offerings in the market. This role requires a deep understanding of the unique challenges and opportunities within the GSI landscape, enabling you to drive strategic initiatives and develop strong, productive relationships with these critical partners.</p>
+<p>&nbsp;</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Partner closely with internal stakeholders to gain a strong grasp of business, finance, and product analytical needs</li>
-	<li>Fundamental understanding of the data landscape i.e., tooling, tech stack, source systems etc.</li>
-	<li>Work closely with the Data Engineering team to improve the data collection and quality.</li>
-	<li>Design, build and support data or insight solutions to drive decision-making and/or incubate new data capabilities or business programs. Example projects include but not limited to product adoption scoring, product performance reporting, variable billing forecasting, product costing and margin analysis and GTM metrics reporting automation</li>
-	<li>Present the insights in an audience relevant manner, with key takeaways and recommendations being presented in a crisp and concise manner.</li>
-	<li>Deeply embedded in the Finance Biz Ops team and act as a technical advisor to the team in addressing data challenges and scaling solutions / programs from incubation stage to a longer-team high performing state</li>
+	<li>Collaborate with GSIs: Engage in high-level strategic discussions with executives and key technical stakeholders at GSI partner organizations.</li>
+	<li>Technical Enablement: Ensure GSIs have the necessary technical delivery skillsets for Cloudflare solutions by providing resources.</li>
+	<li>Project Management: Oversee intricate, multi-tiered projects, ensuring successful implementation and deployment of Cloudflare technologies. Provide governance and oversight on global projects, ensuring that deliverables are met on time and within scope.</li>
+	<li>Proactive Support: Provide proactive support to GSIs during their service delivery engagements to ensure successful outcomes.</li>
+	<li>Service Offering Development: Assist GSIs in architecting, deploying, and launching new service offerings based on Cloudflare technologies.</li>
+	<li>Relationship Management: Maintain strong, productive relationships with GSIs, understanding their unique challenges and opportunities.</li>
+	<li>Quality Assurance: Monitor and ensure the quality of service delivery by GSIs, addressing any issues and facilitating improvements as needed.</li>
+	<li>Feedback Loop: Act as a liaison between GSIs and internal Cloudflare teams to communicate feedback, challenges, and opportunities for improvement.</li>
+	<li>Cross-Functional Collaboration: Work closely with internal departments such as sales, enablement, product, and engineering to ensure both partner and customer success.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p>&nbsp;</p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required.</li>
-	<li>5 + years of data analyst experience with 1+ years of proven industry experience in a large scale environment (PBs scale, globally distributed teams).</li>
-	<li>Proven results oriented analysis that helped support positive change in the business strategy.</li>
-	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
-	<li>Strong experience in Python, R, SQL, Google BigQuery, Google Looker Studio or Tableau (or any other Big data/Cloud equivalent) etc.</li>
-	<li>Capable of multitasking and thriving in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
-	<li>Capable of working closely with business to ensure data initiatives are aligned with business needs and are of high quality.</li>
+	<li>Consulting Background: Significant experience in a consulting environment, ideally within a GSI, is required.</li>
+	<li>Enterprise IT Expertise: Must possess a deep understanding of enterprise IT architectures and how they integrate with broader business processes.</li>
+	<li>Project Management: A proven track record of managing complex, multi-tiered projects with multiple stakeholders, including C-suite executives and technical teams, is essential.</li>
+	<li>Regulatory Awareness: Must have a strong understanding of global compliance, data protection regulations, and industry standards</li>
+	<li>Technical Knowledge: Familiarity with multi-cloud and hybrid cloud environments.</li>
+	<li>Communication Skills: Excellent communication and interpersonal skills, with the ability to lead strategic discussions and presentations.</li>
+	<li>Ownership and Accountability: Strong sense of ownership and accountability for the service delivery partner ecosystem in the region</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Industry Specialization: Experience in key verticals such as healthcare, finance, or manufacturing will be advantageous.</li>
+	<li>Technical Knowledge: Deep understanding of multi-cloud and hybrid cloud environments is a plus.</li>
+	<li>Change Management: Exceptional skills in managing and driving change within large and complex organizations.</li>
+	<li>English is a must; proficiency in French and/or German is a plus and highly valued.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
