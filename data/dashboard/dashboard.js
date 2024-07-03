@@ -700,7 +700,7 @@
 			var Lt = n("../react/app/components/Persistence/index.tsx"),
 				Rt = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				kt = n("../react/app/components/LoadingSuspense.tsx");
-			const Mt = be().lazy(() => Promise.all([n.e(2480), n.e(49298), n.e(4616), n.e(72019), n.e(19462), n.e(5668), n.e(7484), n.e(39760), n.e(7271), n.e(22734), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Mt = be().lazy(() => Promise.all([n.e(2480), n.e(49298), n.e(4616), n.e(72019), n.e(99186), n.e(5668), n.e(7484), n.e(39760), n.e(7271), n.e(22734), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Nt = () => be().createElement(kt.Z, null, be().createElement(Mt, null));
 			const jt = () => (je.useEffect(() => X, []), null);
 			var Ut = n("../../../../node_modules/moment/moment.js"),
@@ -759,7 +759,7 @@
 				}
 			};
 			var Jt = n("../react/common/components/SAMLSubmit/SAMLSubmit.tsx");
-			const Xt = be().lazy(() => Promise.all([n.e(2480), n.e(49298), n.e(4616), n.e(72019), n.e(19462), n.e(36273), n.e(72793), n.e(7484), n.e(39760), n.e(7271), n.e(22734), n.e(94452), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+			const Xt = be().lazy(() => Promise.all([n.e(2480), n.e(49298), n.e(4616), n.e(72019), n.e(99186), n.e(36273), n.e(8445), n.e(7484), n.e(39760), n.e(7271), n.e(22734), n.e(94452), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				Ve = be().lazy(() => Promise.all([n.e(49298), n.e(36273), n.e(7271), n.e(69088), n.e(94452), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var an = ({
 					userIsAuthed: b
@@ -891,10 +891,10 @@
 				n.g.build = pn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "d7bbd58df663a5b19fe11b4fe8f6efccd9205ffa",
-					dashVersion: "8fed103099c11111962b9687aa1e704f09965583",
+					commit: "4621093aa0133b2c4a937805db7c555bdc3eff0e",
+					dashVersion: "f482a6c59d9ef72f99647960d0225ec8c6fffda5",
 					env: "production",
-					builtAt: 1720010487445,
+					builtAt: 1720035601112,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",
