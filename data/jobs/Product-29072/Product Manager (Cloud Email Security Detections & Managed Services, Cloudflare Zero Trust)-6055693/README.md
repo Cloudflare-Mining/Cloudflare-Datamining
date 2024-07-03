@@ -33,8 +33,8 @@
 	<li>Manage product releases in close collaboration with engineering and security teams</li>
 	<li>Manage product pricing for managed services</li>
 	<li>Engage with customers for product adoption and future direction and manage the product roadmap</li>
-	<li>Familiarity with modern software development practices used to build and deploy applications.</li>
-	<li>Experience with customer research. You know when and how to get feedback from the customer base to keep projects moving in the right direction.</li>
+	<li>Familiarity with modern software development practices used to build and deploy applications</li>
+	<li>Experience with customer research. You know when and how to get feedback from the customer base to keep projects moving in the right direction</li>
 </ul>
 <p>Bonus Points</p>
 <ul>
