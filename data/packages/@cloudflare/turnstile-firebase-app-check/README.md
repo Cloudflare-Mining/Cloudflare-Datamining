@@ -5,7 +5,7 @@ of a `CustomProvider` using Firebase App Check tokens.
 
 ## Sample code
 
-```
+```js
 const app = initializeApp(firebaseConfig);
 
 const siteKey = 'YOUR-SITEKEY';
