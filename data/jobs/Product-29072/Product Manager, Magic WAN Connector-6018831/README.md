@@ -7,28 +7,20 @@
 </div>
 <p><strong>Available Locations:&nbsp;</strong>Remote - US&nbsp;</p>
 <p><strong>About the Department</strong></p>
-<h4>&nbsp;</h4>
 <p>As a Product Manager at Cloudflare, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
-<h4>&nbsp;</h4>
 <p><strong>About the Role</strong></p>
-<h4>&nbsp;</h4>
 <p>We are hiring a PM to help build products that enable customers to transform their corporate network.</p>
-<h4>&nbsp;</h4>
 <p>Cloudflare provides a full stack of networking-as-a-service products that allow customers to build and operate secure, reliable, and fast networks without purchasing traditional network hardware. Cloudflare’s network underpins mission-critical infrastructure, always-on applications, small businesses, and everything in between. Our customers rely on the performance, security, reliability, and visibility provided by our network to power their business.&nbsp;</p>
-<h4>&nbsp;</h4>
 <p>We’re looking for a PM to define and execute on the vision to replace “next generation” network firewalls with a modern, network-as-a-service offering leveraging the full power and threat data of the Cloudflare network. Traditional network firewalls, and their virtualized equivalents, all suffer from the same scale, cost, and administration challenges of other network hardware that Cloudflare replaces. It’s time to build a better solution and reinvent the market.</p>
-<h4>&nbsp;</h4>
-<p>As Product Manager for Magic Firewall, your job will be to:</p>
-<h4>&nbsp;</h4>
+<p>As Product Manager for <strong>Magic WAN Connector</strong>, your job will be to:</p>
 <ul>
 	<li>Ensure customers are able to easily analyze and secure network traffic to and from any network location—whether on the Internet or across the corporate environment.</li>
 	<li>Build innovative solutions to customers’ network security problems that leverage the unique strengths of Cloudflare: a massive, highly interconnected network spanning the world, threat intelligence distilled from an unparalleled vantage point on the Internet, and a high-velocity engineering organization that ships early and often.</li>
 	<li>Harness cutting edge machine learning (ML) and big data analysis techniques to build solutions that detect and mitigate network security threats with minimal customer involvement.</li>
-	<li>Think through how to make a great, easy-to-use product that customers love, and drive the full product life cycle from core user needs discovery through to pricing and packaging. Ship continuous software and process improvements to support your products’ sustained growth.&nbsp;</li>
+	<li>Think through how to make a great, easy-to-use product that customers love, and drive the full product life cycle from core user needs discovery through to pricing and packaging. Ship continuous software and process improvements to support your products’ sustained growth.</li>
+	<li>Work with business development and partner teams to deliver frictionless solutions to our GTM teams.&nbsp;</li>
 </ul>
-<h4>&nbsp;</h4>
 <p><strong>What You’ll Do</strong></p>
-<h4>&nbsp;</h4>
 <p>As a member of the growing team of product managers your responsibilities include:</p>
 <ul>
 	<li>Own the product vision for your area. Ensure that it aligns with the overall product and company vision.</li>
@@ -39,11 +31,14 @@
 	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
 	<li>Develop new opportunities. With your finger on the pulse of the market, the customers and the engineering teams, you are uniquely positioned to bring new products to market that solve real customer problems.&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<h4>&nbsp;</h4>
+<p><strong>Desired skills, knowledge and experience</strong></p>
 <p>You are entrepreneurial-minded and thrive in a fast-paced and goal-driven environment. You have outstanding communication and collaboration skills and are able to work with a diverse group, get consensus, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details. You have several years of experience working with enterprise, SaaS, or security technologies. You have a passion for building SaaS products and want to solve the problems of performance, security, and reliability of the Internet.&nbsp;&nbsp;&nbsp;</p>
 <ul>
-	<li>2+ years of product management or equivalent experience with demonstrated ability to discover opportunities, and then define and deliver products.</li>
+	<li>Minimum of 4 years of product management or equivalent experience with demonstrated ability to discover opportunities, and then define and deliver products.</li>
+	<li>Experience in building or operating large-scale IP networks. Specific expertise in BGP and DNS a plus.</li>
+	<li>Theoretical and practical knowledge of how the Internet works at layers 1 through 7.</li>
+	<li>Experience developing pricing for new enterprise SaaS products.</li>
+	<li>Ability to partner with business development and partner teams to develop new GTM motions.</li>
 	<li>Exceptional communication, presentation, organizational, and analytical skills.</li>
 	<li>Demonstrated ability to lead, drive consensus, and deliver in a matrix organization with multiple stakeholders.</li>
 	<li>Must be able to define and manage complex process and/or product issues of a broad scope using independent judgment.</li>
@@ -54,14 +49,10 @@
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Scripting/programming experience (Python, Go, etc.) and familiarity with data analysis tools (eg SQL, pandas).</li>
-	<li>Theoretical and practical knowledge of how the Internet works at layers 1 through 7.</li>
-	<li>Experience in building or operating large-scale IP networks. Specific expertise in BGP and DNS a plus.</li>
 	<li>Hands-on experience with tools used for interacting with, debugging, and testing networks and applications (e.g. curl, dig, mtr, iperf, Wireshark, etc.)</li>
 	<li>Ability to validate early ideas through quantitative and qualitative methods (A/B and multivariate testing, user testing, etc).&nbsp;</li>
 	<li>Scripting/programming experience&nbsp;</li>
 	<li>A solid understanding of RESTful API design &amp; documentation.</li>
-	<li>Experience developing pricing for new enterprise SaaS products.</li>
 	<li>Capacity planning, cost modeling, and operations research experience.</li>
 </ul>
 <p><strong>Compensation</strong></p>
