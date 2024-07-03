@@ -1103,6 +1103,198 @@
 																					"last_updated"
 																				],
 																				"type": "object"
+																			},
+																			{
+																				"example": {
+																					"api_routing": {
+																						"last_updated": "2014-01-01T05:20:00.12345Z",
+																						"route": "https://api.example.com/api/service"
+																					}
+																				},
+																				"properties": {
+																					"api_routing": {
+																						"description": "API Routing settings on endpoint.",
+																						"properties": {
+																							"last_updated": {
+																								"example": "2014-01-01T05:20:00.12345Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"type": "string"
+																							},
+																							"route": {
+																								"description": "Target route.",
+																								"example": "https://api.example.com/api/service",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"readOnly": true,
+																				"type": "object"
+																			},
+																			{
+																				"example": {
+																					"confidence_intervals": {
+																						"last_updated": "2014-01-01T05:20:00.12345Z",
+																						"suggested_threshold": {
+																							"confidence_intervals": {
+																								"p90": {
+																									"lower": 23.1,
+																									"upper": 23.9
+																								},
+																								"p95": {
+																									"lower": 22,
+																									"upper": 24.1
+																								},
+																								"p99": {
+																									"lower": 20.2,
+																									"upper": 30
+																								}
+																							},
+																							"mean": 23.5
+																						}
+																					}
+																				},
+																				"properties": {
+																					"confidence_intervals": {
+																						"properties": {
+																							"last_updated": {
+																								"example": "2014-01-01T05:20:00.12345Z",
+																								"format": "date-time",
+																								"readOnly": true,
+																								"type": "string"
+																							},
+																							"suggested_threshold": {
+																								"properties": {
+																									"confidence_intervals": {
+																										"properties": {
+																											"p90": {
+																												"description": "Upper and lower bound for percentile estimate",
+																												"properties": {
+																													"lower": {
+																														"description": "Lower bound for percentile estimate",
+																														"example": 20.5,
+																														"type": "number"
+																													},
+																													"upper": {
+																														"description": "Upper bound for percentile estimate",
+																														"example": 30.4,
+																														"type": "number"
+																													}
+																												},
+																												"readOnly": true,
+																												"type": "object"
+																											},
+																											"p95": {
+																												"description": "Upper and lower bound for percentile estimate",
+																												"properties": {
+																													"lower": {
+																														"description": "Lower bound for percentile estimate",
+																														"example": 20.5,
+																														"type": "number"
+																													},
+																													"upper": {
+																														"description": "Upper bound for percentile estimate",
+																														"example": 30.4,
+																														"type": "number"
+																													}
+																												},
+																												"readOnly": true,
+																												"type": "object"
+																											},
+																											"p99": {
+																												"description": "Upper and lower bound for percentile estimate",
+																												"properties": {
+																													"lower": {
+																														"description": "Lower bound for percentile estimate",
+																														"example": 20.5,
+																														"type": "number"
+																													},
+																													"upper": {
+																														"description": "Upper bound for percentile estimate",
+																														"example": 30.4,
+																														"type": "number"
+																													}
+																												},
+																												"readOnly": true,
+																												"type": "object"
+																											}
+																										},
+																										"type": "object"
+																									},
+																									"mean": {
+																										"description": "Suggested threshold.",
+																										"example": 25.5,
+																										"type": "number"
+																									}
+																								},
+																								"type": "object"
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"readOnly": true,
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"schema_info": {
+																						"properties": {
+																							"active_schema": {
+																								"description": "Schema active on endpoint.",
+																								"properties": {
+																									"created_at": {
+																										"example": "2014-01-01T05:20:00.12345Z",
+																										"format": "date-time",
+																										"readOnly": true,
+																										"type": "string"
+																									},
+																									"id": {
+																										"description": "UUID identifier",
+																										"example": "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
+																										"format": "uuid",
+																										"maxLength": 36,
+																										"minLength": 36,
+																										"readOnly": true,
+																										"type": "string"
+																									},
+																									"is_learned": {
+																										"description": "True if schema is Cloudflare-provided.",
+																										"example": true,
+																										"type": "boolean"
+																									},
+																									"name": {
+																										"description": "Schema file name.",
+																										"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
+																										"type": "string"
+																									}
+																								},
+																								"type": "object"
+																							},
+																							"learned_available": {
+																								"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
+																								"example": true,
+																								"type": "boolean"
+																							},
+																							"mitigation_action": {
+																								"description": "Action taken on requests failing validation.",
+																								"enum": [
+																									"none",
+																									"log",
+																									"block"
+																								],
+																								"example": "block",
+																								"nullable": true,
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					}
+																				},
+																				"readOnly": true,
+																				"type": "object"
 																			}
 																		],
 																		"readOnly": true,
@@ -1582,6 +1774,198 @@
 																				"last_updated"
 																			],
 																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"api_routing": {
+																					"last_updated": "2014-01-01T05:20:00.12345Z",
+																					"route": "https://api.example.com/api/service"
+																				}
+																			},
+																			"properties": {
+																				"api_routing": {
+																					"description": "API Routing settings on endpoint.",
+																					"properties": {
+																						"last_updated": {
+																							"example": "2014-01-01T05:20:00.12345Z",
+																							"format": "date-time",
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"route": {
+																							"description": "Target route.",
+																							"example": "https://api.example.com/api/service",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		},
+																		{
+																			"example": {
+																				"confidence_intervals": {
+																					"last_updated": "2014-01-01T05:20:00.12345Z",
+																					"suggested_threshold": {
+																						"confidence_intervals": {
+																							"p90": {
+																								"lower": 23.1,
+																								"upper": 23.9
+																							},
+																							"p95": {
+																								"lower": 22,
+																								"upper": 24.1
+																							},
+																							"p99": {
+																								"lower": 20.2,
+																								"upper": 30
+																							}
+																						},
+																						"mean": 23.5
+																					}
+																				}
+																			},
+																			"properties": {
+																				"confidence_intervals": {
+																					"properties": {
+																						"last_updated": {
+																							"example": "2014-01-01T05:20:00.12345Z",
+																							"format": "date-time",
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"suggested_threshold": {
+																							"properties": {
+																								"confidence_intervals": {
+																									"properties": {
+																										"p90": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"example": 20.5,
+																													"type": "number"
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"example": 30.4,
+																													"type": "number"
+																												}
+																											},
+																											"readOnly": true,
+																											"type": "object"
+																										},
+																										"p95": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"example": 20.5,
+																													"type": "number"
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"example": 30.4,
+																													"type": "number"
+																												}
+																											},
+																											"readOnly": true,
+																											"type": "object"
+																										},
+																										"p99": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"example": 20.5,
+																													"type": "number"
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"example": 30.4,
+																													"type": "number"
+																												}
+																											},
+																											"readOnly": true,
+																											"type": "object"
+																										}
+																									},
+																									"type": "object"
+																								},
+																								"mean": {
+																									"description": "Suggested threshold.",
+																									"example": 25.5,
+																									"type": "number"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"schema_info": {
+																					"properties": {
+																						"active_schema": {
+																							"description": "Schema active on endpoint.",
+																							"properties": {
+																								"created_at": {
+																									"example": "2014-01-01T05:20:00.12345Z",
+																									"format": "date-time",
+																									"readOnly": true,
+																									"type": "string"
+																								},
+																								"id": {
+																									"description": "UUID identifier",
+																									"example": "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
+																									"format": "uuid",
+																									"maxLength": 36,
+																									"minLength": 36,
+																									"readOnly": true,
+																									"type": "string"
+																								},
+																								"is_learned": {
+																									"description": "True if schema is Cloudflare-provided.",
+																									"example": true,
+																									"type": "boolean"
+																								},
+																								"name": {
+																									"description": "Schema file name.",
+																									"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						},
+																						"learned_available": {
+																							"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
+																							"example": true,
+																							"type": "boolean"
+																						},
+																						"mitigation_action": {
+																							"description": "Action taken on requests failing validation.",
+																							"enum": [
+																								"none",
+																								"log",
+																								"block"
+																							],
+																							"example": "block",
+																							"nullable": true,
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
 																		}
 																	],
 																	"readOnly": true,
@@ -1907,6 +2291,198 @@
 																						"parameter_schemas",
 																						"last_updated"
 																					],
+																					"type": "object"
+																				},
+																				{
+																					"example": {
+																						"api_routing": {
+																							"last_updated": "2014-01-01T05:20:00.12345Z",
+																							"route": "https://api.example.com/api/service"
+																						}
+																					},
+																					"properties": {
+																						"api_routing": {
+																							"description": "API Routing settings on endpoint.",
+																							"properties": {
+																								"last_updated": {
+																									"example": "2014-01-01T05:20:00.12345Z",
+																									"format": "date-time",
+																									"readOnly": true,
+																									"type": "string"
+																								},
+																								"route": {
+																									"description": "Target route.",
+																									"example": "https://api.example.com/api/service",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"readOnly": true,
+																					"type": "object"
+																				},
+																				{
+																					"example": {
+																						"confidence_intervals": {
+																							"last_updated": "2014-01-01T05:20:00.12345Z",
+																							"suggested_threshold": {
+																								"confidence_intervals": {
+																									"p90": {
+																										"lower": 23.1,
+																										"upper": 23.9
+																									},
+																									"p95": {
+																										"lower": 22,
+																										"upper": 24.1
+																									},
+																									"p99": {
+																										"lower": 20.2,
+																										"upper": 30
+																									}
+																								},
+																								"mean": 23.5
+																							}
+																						}
+																					},
+																					"properties": {
+																						"confidence_intervals": {
+																							"properties": {
+																								"last_updated": {
+																									"example": "2014-01-01T05:20:00.12345Z",
+																									"format": "date-time",
+																									"readOnly": true,
+																									"type": "string"
+																								},
+																								"suggested_threshold": {
+																									"properties": {
+																										"confidence_intervals": {
+																											"properties": {
+																												"p90": {
+																													"description": "Upper and lower bound for percentile estimate",
+																													"properties": {
+																														"lower": {
+																															"description": "Lower bound for percentile estimate",
+																															"example": 20.5,
+																															"type": "number"
+																														},
+																														"upper": {
+																															"description": "Upper bound for percentile estimate",
+																															"example": 30.4,
+																															"type": "number"
+																														}
+																													},
+																													"readOnly": true,
+																													"type": "object"
+																												},
+																												"p95": {
+																													"description": "Upper and lower bound for percentile estimate",
+																													"properties": {
+																														"lower": {
+																															"description": "Lower bound for percentile estimate",
+																															"example": 20.5,
+																															"type": "number"
+																														},
+																														"upper": {
+																															"description": "Upper bound for percentile estimate",
+																															"example": 30.4,
+																															"type": "number"
+																														}
+																													},
+																													"readOnly": true,
+																													"type": "object"
+																												},
+																												"p99": {
+																													"description": "Upper and lower bound for percentile estimate",
+																													"properties": {
+																														"lower": {
+																															"description": "Lower bound for percentile estimate",
+																															"example": 20.5,
+																															"type": "number"
+																														},
+																														"upper": {
+																															"description": "Upper bound for percentile estimate",
+																															"example": 30.4,
+																															"type": "number"
+																														}
+																													},
+																													"readOnly": true,
+																													"type": "object"
+																												}
+																											},
+																											"type": "object"
+																										},
+																										"mean": {
+																											"description": "Suggested threshold.",
+																											"example": 25.5,
+																											"type": "number"
+																										}
+																									},
+																									"type": "object"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"readOnly": true,
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"schema_info": {
+																							"properties": {
+																								"active_schema": {
+																									"description": "Schema active on endpoint.",
+																									"properties": {
+																										"created_at": {
+																											"example": "2014-01-01T05:20:00.12345Z",
+																											"format": "date-time",
+																											"readOnly": true,
+																											"type": "string"
+																										},
+																										"id": {
+																											"description": "UUID identifier",
+																											"example": "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
+																											"format": "uuid",
+																											"maxLength": 36,
+																											"minLength": 36,
+																											"readOnly": true,
+																											"type": "string"
+																										},
+																										"is_learned": {
+																											"description": "True if schema is Cloudflare-provided.",
+																											"example": true,
+																											"type": "boolean"
+																										},
+																										"name": {
+																											"description": "Schema file name.",
+																											"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
+																											"type": "string"
+																										}
+																									},
+																									"type": "object"
+																								},
+																								"learned_available": {
+																									"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
+																									"example": true,
+																									"type": "boolean"
+																								},
+																								"mitigation_action": {
+																									"description": "Action taken on requests failing validation.",
+																									"enum": [
+																										"none",
+																										"log",
+																										"block"
+																									],
+																									"example": "block",
+																									"nullable": true,
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"readOnly": true,
 																					"type": "object"
 																				}
 																			],
@@ -2873,6 +3449,198 @@
 																							"last_updated"
 																						],
 																						"type": "object"
+																					},
+																					{
+																						"example": {
+																							"api_routing": {
+																								"last_updated": "2014-01-01T05:20:00.12345Z",
+																								"route": "https://api.example.com/api/service"
+																							}
+																						},
+																						"properties": {
+																							"api_routing": {
+																								"description": "API Routing settings on endpoint.",
+																								"properties": {
+																									"last_updated": {
+																										"example": "2014-01-01T05:20:00.12345Z",
+																										"format": "date-time",
+																										"readOnly": true,
+																										"type": "string"
+																									},
+																									"route": {
+																										"description": "Target route.",
+																										"example": "https://api.example.com/api/service",
+																										"type": "string"
+																									}
+																								},
+																								"type": "object"
+																							}
+																						},
+																						"readOnly": true,
+																						"type": "object"
+																					},
+																					{
+																						"example": {
+																							"confidence_intervals": {
+																								"last_updated": "2014-01-01T05:20:00.12345Z",
+																								"suggested_threshold": {
+																									"confidence_intervals": {
+																										"p90": {
+																											"lower": 23.1,
+																											"upper": 23.9
+																										},
+																										"p95": {
+																											"lower": 22,
+																											"upper": 24.1
+																										},
+																										"p99": {
+																											"lower": 20.2,
+																											"upper": 30
+																										}
+																									},
+																									"mean": 23.5
+																								}
+																							}
+																						},
+																						"properties": {
+																							"confidence_intervals": {
+																								"properties": {
+																									"last_updated": {
+																										"example": "2014-01-01T05:20:00.12345Z",
+																										"format": "date-time",
+																										"readOnly": true,
+																										"type": "string"
+																									},
+																									"suggested_threshold": {
+																										"properties": {
+																											"confidence_intervals": {
+																												"properties": {
+																													"p90": {
+																														"description": "Upper and lower bound for percentile estimate",
+																														"properties": {
+																															"lower": {
+																																"description": "Lower bound for percentile estimate",
+																																"example": 20.5,
+																																"type": "number"
+																															},
+																															"upper": {
+																																"description": "Upper bound for percentile estimate",
+																																"example": 30.4,
+																																"type": "number"
+																															}
+																														},
+																														"readOnly": true,
+																														"type": "object"
+																													},
+																													"p95": {
+																														"description": "Upper and lower bound for percentile estimate",
+																														"properties": {
+																															"lower": {
+																																"description": "Lower bound for percentile estimate",
+																																"example": 20.5,
+																																"type": "number"
+																															},
+																															"upper": {
+																																"description": "Upper bound for percentile estimate",
+																																"example": 30.4,
+																																"type": "number"
+																															}
+																														},
+																														"readOnly": true,
+																														"type": "object"
+																													},
+																													"p99": {
+																														"description": "Upper and lower bound for percentile estimate",
+																														"properties": {
+																															"lower": {
+																																"description": "Lower bound for percentile estimate",
+																																"example": 20.5,
+																																"type": "number"
+																															},
+																															"upper": {
+																																"description": "Upper bound for percentile estimate",
+																																"example": 30.4,
+																																"type": "number"
+																															}
+																														},
+																														"readOnly": true,
+																														"type": "object"
+																													}
+																												},
+																												"type": "object"
+																											},
+																											"mean": {
+																												"description": "Suggested threshold.",
+																												"example": 25.5,
+																												"type": "number"
+																											}
+																										},
+																										"type": "object"
+																									}
+																								},
+																								"type": "object"
+																							}
+																						},
+																						"readOnly": true,
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"schema_info": {
+																								"properties": {
+																									"active_schema": {
+																										"description": "Schema active on endpoint.",
+																										"properties": {
+																											"created_at": {
+																												"example": "2014-01-01T05:20:00.12345Z",
+																												"format": "date-time",
+																												"readOnly": true,
+																												"type": "string"
+																											},
+																											"id": {
+																												"description": "UUID identifier",
+																												"example": "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
+																												"format": "uuid",
+																												"maxLength": 36,
+																												"minLength": 36,
+																												"readOnly": true,
+																												"type": "string"
+																											},
+																											"is_learned": {
+																												"description": "True if schema is Cloudflare-provided.",
+																												"example": true,
+																												"type": "boolean"
+																											},
+																											"name": {
+																												"description": "Schema file name.",
+																												"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
+																												"type": "string"
+																											}
+																										},
+																										"type": "object"
+																									},
+																									"learned_available": {
+																										"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
+																										"example": true,
+																										"type": "boolean"
+																									},
+																									"mitigation_action": {
+																										"description": "Action taken on requests failing validation.",
+																										"enum": [
+																											"none",
+																											"log",
+																											"block"
+																										],
+																										"example": "block",
+																										"nullable": true,
+																										"type": "string"
+																									}
+																								},
+																								"type": "object"
+																							}
+																						},
+																						"readOnly": true,
+																						"type": "object"
 																					}
 																				],
 																				"readOnly": true,
@@ -3228,6 +3996,198 @@
 																									"parameter_schemas",
 																									"last_updated"
 																								],
+																								"type": "object"
+																							},
+																							{
+																								"example": {
+																									"api_routing": {
+																										"last_updated": "2014-01-01T05:20:00.12345Z",
+																										"route": "https://api.example.com/api/service"
+																									}
+																								},
+																								"properties": {
+																									"api_routing": {
+																										"description": "API Routing settings on endpoint.",
+																										"properties": {
+																											"last_updated": {
+																												"example": "2014-01-01T05:20:00.12345Z",
+																												"format": "date-time",
+																												"readOnly": true,
+																												"type": "string"
+																											},
+																											"route": {
+																												"description": "Target route.",
+																												"example": "https://api.example.com/api/service",
+																												"type": "string"
+																											}
+																										},
+																										"type": "object"
+																									}
+																								},
+																								"readOnly": true,
+																								"type": "object"
+																							},
+																							{
+																								"example": {
+																									"confidence_intervals": {
+																										"last_updated": "2014-01-01T05:20:00.12345Z",
+																										"suggested_threshold": {
+																											"confidence_intervals": {
+																												"p90": {
+																													"lower": 23.1,
+																													"upper": 23.9
+																												},
+																												"p95": {
+																													"lower": 22,
+																													"upper": 24.1
+																												},
+																												"p99": {
+																													"lower": 20.2,
+																													"upper": 30
+																												}
+																											},
+																											"mean": 23.5
+																										}
+																									}
+																								},
+																								"properties": {
+																									"confidence_intervals": {
+																										"properties": {
+																											"last_updated": {
+																												"example": "2014-01-01T05:20:00.12345Z",
+																												"format": "date-time",
+																												"readOnly": true,
+																												"type": "string"
+																											},
+																											"suggested_threshold": {
+																												"properties": {
+																													"confidence_intervals": {
+																														"properties": {
+																															"p90": {
+																																"description": "Upper and lower bound for percentile estimate",
+																																"properties": {
+																																	"lower": {
+																																		"description": "Lower bound for percentile estimate",
+																																		"example": 20.5,
+																																		"type": "number"
+																																	},
+																																	"upper": {
+																																		"description": "Upper bound for percentile estimate",
+																																		"example": 30.4,
+																																		"type": "number"
+																																	}
+																																},
+																																"readOnly": true,
+																																"type": "object"
+																															},
+																															"p95": {
+																																"description": "Upper and lower bound for percentile estimate",
+																																"properties": {
+																																	"lower": {
+																																		"description": "Lower bound for percentile estimate",
+																																		"example": 20.5,
+																																		"type": "number"
+																																	},
+																																	"upper": {
+																																		"description": "Upper bound for percentile estimate",
+																																		"example": 30.4,
+																																		"type": "number"
+																																	}
+																																},
+																																"readOnly": true,
+																																"type": "object"
+																															},
+																															"p99": {
+																																"description": "Upper and lower bound for percentile estimate",
+																																"properties": {
+																																	"lower": {
+																																		"description": "Lower bound for percentile estimate",
+																																		"example": 20.5,
+																																		"type": "number"
+																																	},
+																																	"upper": {
+																																		"description": "Upper bound for percentile estimate",
+																																		"example": 30.4,
+																																		"type": "number"
+																																	}
+																																},
+																																"readOnly": true,
+																																"type": "object"
+																															}
+																														},
+																														"type": "object"
+																													},
+																													"mean": {
+																														"description": "Suggested threshold.",
+																														"example": 25.5,
+																														"type": "number"
+																													}
+																												},
+																												"type": "object"
+																											}
+																										},
+																										"type": "object"
+																									}
+																								},
+																								"readOnly": true,
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"schema_info": {
+																										"properties": {
+																											"active_schema": {
+																												"description": "Schema active on endpoint.",
+																												"properties": {
+																													"created_at": {
+																														"example": "2014-01-01T05:20:00.12345Z",
+																														"format": "date-time",
+																														"readOnly": true,
+																														"type": "string"
+																													},
+																													"id": {
+																														"description": "UUID identifier",
+																														"example": "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
+																														"format": "uuid",
+																														"maxLength": 36,
+																														"minLength": 36,
+																														"readOnly": true,
+																														"type": "string"
+																													},
+																													"is_learned": {
+																														"description": "True if schema is Cloudflare-provided.",
+																														"example": true,
+																														"type": "boolean"
+																													},
+																													"name": {
+																														"description": "Schema file name.",
+																														"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
+																														"type": "string"
+																													}
+																												},
+																												"type": "object"
+																											},
+																											"learned_available": {
+																												"description": "True if a Cloudflare-provided learned schema is available for this endpoint.",
+																												"example": true,
+																												"type": "boolean"
+																											},
+																											"mitigation_action": {
+																												"description": "Action taken on requests failing validation.",
+																												"enum": [
+																													"none",
+																													"log",
+																													"block"
+																												],
+																												"example": "block",
+																												"nullable": true,
+																												"type": "string"
+																											}
+																										},
+																										"type": "object"
+																									}
+																								},
+																								"readOnly": true,
 																								"type": "object"
 																							}
 																						],
