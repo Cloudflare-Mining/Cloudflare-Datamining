@@ -22,24 +22,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -376,24 +362,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"

@@ -23,24 +23,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -351,24 +337,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -730,24 +702,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -1114,24 +1072,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -1461,24 +1405,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -1817,24 +1747,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -2197,24 +2113,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -2535,24 +2437,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -2908,24 +2796,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -3247,24 +3121,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -3593,24 +3453,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -3681,6 +3527,24 @@
 						"enum": [
 							"IPv4",
 							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -3903,24 +3767,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -4204,24 +4054,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -4518,24 +4354,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -4846,24 +4668,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -4934,6 +4742,24 @@
 						"enum": [
 							"IPv4",
 							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L3/4 attack types.",
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -5150,24 +4976,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -5534,24 +5346,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -5873,24 +5671,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -6222,24 +6006,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -6571,24 +6341,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -6901,24 +6657,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -7244,24 +6986,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -7628,24 +7356,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -8060,24 +7774,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -8488,24 +8188,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -8933,24 +8619,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -9373,24 +9045,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -9425,11 +9083,12 @@
 				}
 			},
 			{
-				"description": "Array of L7 attack types.",
+				"description": "This field is deprecated, please use the new `mitigationProduct`.",
 				"in": "query",
 				"name": "attack",
 				"schema": {
-					"description": "Array of L7 attack types.",
+					"deprecated": true,
+					"description": "This field is deprecated, please use the new `mitigationProduct`.",
 					"items": {
 						"enum": [
 							"DDOS",
@@ -9496,6 +9155,123 @@
 					],
 					"example": "MIN0_MAX",
 					"type": "string"
+				}
+			},
+			{
+				"description": "Filter for ip version.",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http method.",
+				"in": "query",
+				"name": "httpMethod",
+				"schema": {
+					"description": "Filter for http method.",
+					"example": "GET",
+					"items": {
+						"enum": [
+							"GET",
+							"POST",
+							"DELETE",
+							"PUT",
+							"HEAD",
+							"PURGE",
+							"OPTIONS",
+							"PROPFIND",
+							"MKCOL",
+							"PATCH",
+							"ACL",
+							"BCOPY",
+							"BDELETE",
+							"BMOVE",
+							"BPROPFIND",
+							"BPROPPATCH",
+							"CHECKIN",
+							"CHECKOUT",
+							"CONNECT",
+							"COPY",
+							"LABEL",
+							"LOCK",
+							"MERGE",
+							"MKACTIVITY",
+							"MKWORKSPACE",
+							"MOVE",
+							"NOTIFY",
+							"ORDERPATCH",
+							"POLL",
+							"PROPPATCH",
+							"REPORT",
+							"SEARCH",
+							"SUBSCRIBE",
+							"TRACE",
+							"UNCHECKOUT",
+							"UNLOCK",
+							"UNSUBSCRIBE",
+							"UPDATE",
+							"VERSIONCONTROL",
+							"BASELINECONTROL",
+							"XMSENUMATTS",
+							"RPC_OUT_DATA",
+							"RPC_IN_DATA",
+							"JSON",
+							"COOK",
+							"TRACK"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L7 mitigation products.",
+				"in": "query",
+				"name": "mitigationProduct",
+				"schema": {
+					"description": "Array of L7 mitigation products.",
+					"items": {
+						"enum": [
+							"DDOS",
+							"WAF",
+							"BOT_MANAGEMENT",
+							"ACCESS_RULES",
+							"IP_REPUTATION",
+							"API_SHIELD",
+							"DATA_LOSS_PREVENTION"
+						],
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -9759,24 +9535,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -10157,24 +9919,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -10490,24 +10238,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -10866,24 +10600,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -11275,24 +10995,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -11660,24 +11366,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -12054,24 +11746,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -12427,24 +12105,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -12830,24 +12494,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -12902,6 +12552,123 @@
 					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 					"example": "EU,NA",
 					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for ip version.",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http method.",
+				"in": "query",
+				"name": "httpMethod",
+				"schema": {
+					"description": "Filter for http method.",
+					"example": "GET",
+					"items": {
+						"enum": [
+							"GET",
+							"POST",
+							"DELETE",
+							"PUT",
+							"HEAD",
+							"PURGE",
+							"OPTIONS",
+							"PROPFIND",
+							"MKCOL",
+							"PATCH",
+							"ACL",
+							"BCOPY",
+							"BDELETE",
+							"BMOVE",
+							"BPROPFIND",
+							"BPROPPATCH",
+							"CHECKIN",
+							"CHECKOUT",
+							"CONNECT",
+							"COPY",
+							"LABEL",
+							"LOCK",
+							"MERGE",
+							"MKACTIVITY",
+							"MKWORKSPACE",
+							"MOVE",
+							"NOTIFY",
+							"ORDERPATCH",
+							"POLL",
+							"PROPPATCH",
+							"REPORT",
+							"SEARCH",
+							"SUBSCRIBE",
+							"TRACE",
+							"UNCHECKOUT",
+							"UNLOCK",
+							"UNSUBSCRIBE",
+							"UPDATE",
+							"VERSIONCONTROL",
+							"BASELINECONTROL",
+							"XMSENUMATTS",
+							"RPC_OUT_DATA",
+							"RPC_IN_DATA",
+							"JSON",
+							"COOK",
+							"TRACK"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L7 mitigation products.",
+				"in": "query",
+				"name": "mitigationProduct",
+				"schema": {
+					"description": "Array of L7 mitigation products.",
+					"items": {
+						"enum": [
+							"DDOS",
+							"WAF",
+							"BOT_MANAGEMENT",
+							"ACCESS_RULES",
+							"IP_REPUTATION",
+							"API_SHIELD",
+							"DATA_LOSS_PREVENTION"
+						],
 						"type": "string"
 					},
 					"type": "array"
@@ -13144,24 +12911,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -13229,6 +12982,123 @@
 					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 					"example": "EU,NA",
 					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for ip version.",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http method.",
+				"in": "query",
+				"name": "httpMethod",
+				"schema": {
+					"description": "Filter for http method.",
+					"example": "GET",
+					"items": {
+						"enum": [
+							"GET",
+							"POST",
+							"DELETE",
+							"PUT",
+							"HEAD",
+							"PURGE",
+							"OPTIONS",
+							"PROPFIND",
+							"MKCOL",
+							"PATCH",
+							"ACL",
+							"BCOPY",
+							"BDELETE",
+							"BMOVE",
+							"BPROPFIND",
+							"BPROPPATCH",
+							"CHECKIN",
+							"CHECKOUT",
+							"CONNECT",
+							"COPY",
+							"LABEL",
+							"LOCK",
+							"MERGE",
+							"MKACTIVITY",
+							"MKWORKSPACE",
+							"MOVE",
+							"NOTIFY",
+							"ORDERPATCH",
+							"POLL",
+							"PROPPATCH",
+							"REPORT",
+							"SEARCH",
+							"SUBSCRIBE",
+							"TRACE",
+							"UNCHECKOUT",
+							"UNLOCK",
+							"UNSUBSCRIBE",
+							"UPDATE",
+							"VERSIONCONTROL",
+							"BASELINECONTROL",
+							"XMSENUMATTS",
+							"RPC_OUT_DATA",
+							"RPC_IN_DATA",
+							"JSON",
+							"COOK",
+							"TRACK"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L7 mitigation products.",
+				"in": "query",
+				"name": "mitigationProduct",
+				"schema": {
+					"description": "Array of L7 mitigation products.",
+					"items": {
+						"enum": [
+							"DDOS",
+							"WAF",
+							"BOT_MANAGEMENT",
+							"ACCESS_RULES",
+							"IP_REPUTATION",
+							"API_SHIELD",
+							"DATA_LOSS_PREVENTION"
+						],
 						"type": "string"
 					},
 					"type": "array"
@@ -13530,24 +13400,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -13615,6 +13471,123 @@
 					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 					"example": "EU,NA",
 					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for ip version.",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http method.",
+				"in": "query",
+				"name": "httpMethod",
+				"schema": {
+					"description": "Filter for http method.",
+					"example": "GET",
+					"items": {
+						"enum": [
+							"GET",
+							"POST",
+							"DELETE",
+							"PUT",
+							"HEAD",
+							"PURGE",
+							"OPTIONS",
+							"PROPFIND",
+							"MKCOL",
+							"PATCH",
+							"ACL",
+							"BCOPY",
+							"BDELETE",
+							"BMOVE",
+							"BPROPFIND",
+							"BPROPPATCH",
+							"CHECKIN",
+							"CHECKOUT",
+							"CONNECT",
+							"COPY",
+							"LABEL",
+							"LOCK",
+							"MERGE",
+							"MKACTIVITY",
+							"MKWORKSPACE",
+							"MOVE",
+							"NOTIFY",
+							"ORDERPATCH",
+							"POLL",
+							"PROPPATCH",
+							"REPORT",
+							"SEARCH",
+							"SUBSCRIBE",
+							"TRACE",
+							"UNCHECKOUT",
+							"UNLOCK",
+							"UNSUBSCRIBE",
+							"UPDATE",
+							"VERSIONCONTROL",
+							"BASELINECONTROL",
+							"XMSENUMATTS",
+							"RPC_OUT_DATA",
+							"RPC_IN_DATA",
+							"JSON",
+							"COOK",
+							"TRACK"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L7 mitigation products.",
+				"in": "query",
+				"name": "mitigationProduct",
+				"schema": {
+					"description": "Array of L7 mitigation products.",
+					"items": {
+						"enum": [
+							"DDOS",
+							"WAF",
+							"BOT_MANAGEMENT",
+							"ACCESS_RULES",
+							"IP_REPUTATION",
+							"API_SHIELD",
+							"DATA_LOSS_PREVENTION"
+						],
 						"type": "string"
 					},
 					"type": "array"
@@ -13847,24 +13820,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -13919,6 +13878,123 @@
 					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 					"example": "EU,NA",
 					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for ip version.",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http method.",
+				"in": "query",
+				"name": "httpMethod",
+				"schema": {
+					"description": "Filter for http method.",
+					"example": "GET",
+					"items": {
+						"enum": [
+							"GET",
+							"POST",
+							"DELETE",
+							"PUT",
+							"HEAD",
+							"PURGE",
+							"OPTIONS",
+							"PROPFIND",
+							"MKCOL",
+							"PATCH",
+							"ACL",
+							"BCOPY",
+							"BDELETE",
+							"BMOVE",
+							"BPROPFIND",
+							"BPROPPATCH",
+							"CHECKIN",
+							"CHECKOUT",
+							"CONNECT",
+							"COPY",
+							"LABEL",
+							"LOCK",
+							"MERGE",
+							"MKACTIVITY",
+							"MKWORKSPACE",
+							"MOVE",
+							"NOTIFY",
+							"ORDERPATCH",
+							"POLL",
+							"PROPPATCH",
+							"REPORT",
+							"SEARCH",
+							"SUBSCRIBE",
+							"TRACE",
+							"UNCHECKOUT",
+							"UNLOCK",
+							"UNSUBSCRIBE",
+							"UPDATE",
+							"VERSIONCONTROL",
+							"BASELINECONTROL",
+							"XMSENUMATTS",
+							"RPC_OUT_DATA",
+							"RPC_IN_DATA",
+							"JSON",
+							"COOK",
+							"TRACK"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L7 mitigation products.",
+				"in": "query",
+				"name": "mitigationProduct",
+				"schema": {
+					"description": "Array of L7 mitigation products.",
+					"items": {
+						"enum": [
+							"DDOS",
+							"WAF",
+							"BOT_MANAGEMENT",
+							"ACCESS_RULES",
+							"IP_REPUTATION",
+							"API_SHIELD",
+							"DATA_LOSS_PREVENTION"
+						],
 						"type": "string"
 					},
 					"type": "array"
@@ -14161,24 +14237,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -14220,6 +14282,123 @@
 					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 					"example": "EU,NA",
 					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for ip version.",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http method.",
+				"in": "query",
+				"name": "httpMethod",
+				"schema": {
+					"description": "Filter for http method.",
+					"example": "GET",
+					"items": {
+						"enum": [
+							"GET",
+							"POST",
+							"DELETE",
+							"PUT",
+							"HEAD",
+							"PURGE",
+							"OPTIONS",
+							"PROPFIND",
+							"MKCOL",
+							"PATCH",
+							"ACL",
+							"BCOPY",
+							"BDELETE",
+							"BMOVE",
+							"BPROPFIND",
+							"BPROPPATCH",
+							"CHECKIN",
+							"CHECKOUT",
+							"CONNECT",
+							"COPY",
+							"LABEL",
+							"LOCK",
+							"MERGE",
+							"MKACTIVITY",
+							"MKWORKSPACE",
+							"MOVE",
+							"NOTIFY",
+							"ORDERPATCH",
+							"POLL",
+							"PROPPATCH",
+							"REPORT",
+							"SEARCH",
+							"SUBSCRIBE",
+							"TRACE",
+							"UNCHECKOUT",
+							"UNLOCK",
+							"UNSUBSCRIBE",
+							"UPDATE",
+							"VERSIONCONTROL",
+							"BASELINECONTROL",
+							"XMSENUMATTS",
+							"RPC_OUT_DATA",
+							"RPC_IN_DATA",
+							"JSON",
+							"COOK",
+							"TRACK"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L7 mitigation products.",
+				"in": "query",
+				"name": "mitigationProduct",
+				"schema": {
+					"description": "Array of L7 mitigation products.",
+					"items": {
+						"enum": [
+							"DDOS",
+							"WAF",
+							"BOT_MANAGEMENT",
+							"ACCESS_RULES",
+							"IP_REPUTATION",
+							"API_SHIELD",
+							"DATA_LOSS_PREVENTION"
+						],
 						"type": "string"
 					},
 					"type": "array"
@@ -14462,24 +14641,10 @@
 				"name": "dateRange",
 				"schema": {
 					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"example": "7d",
 					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
 					"type": "array"
@@ -14547,6 +14712,123 @@
 					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
 					"example": "EU,NA",
 					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for ip version.",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http version.",
+				"in": "query",
+				"name": "httpVersion",
+				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
+					"items": {
+						"enum": [
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for http method.",
+				"in": "query",
+				"name": "httpMethod",
+				"schema": {
+					"description": "Filter for http method.",
+					"example": "GET",
+					"items": {
+						"enum": [
+							"GET",
+							"POST",
+							"DELETE",
+							"PUT",
+							"HEAD",
+							"PURGE",
+							"OPTIONS",
+							"PROPFIND",
+							"MKCOL",
+							"PATCH",
+							"ACL",
+							"BCOPY",
+							"BDELETE",
+							"BMOVE",
+							"BPROPFIND",
+							"BPROPPATCH",
+							"CHECKIN",
+							"CHECKOUT",
+							"CONNECT",
+							"COPY",
+							"LABEL",
+							"LOCK",
+							"MERGE",
+							"MKACTIVITY",
+							"MKWORKSPACE",
+							"MOVE",
+							"NOTIFY",
+							"ORDERPATCH",
+							"POLL",
+							"PROPPATCH",
+							"REPORT",
+							"SEARCH",
+							"SUBSCRIBE",
+							"TRACE",
+							"UNCHECKOUT",
+							"UNLOCK",
+							"UNSUBSCRIBE",
+							"UPDATE",
+							"VERSIONCONTROL",
+							"BASELINECONTROL",
+							"XMSENUMATTS",
+							"RPC_OUT_DATA",
+							"RPC_IN_DATA",
+							"JSON",
+							"COOK",
+							"TRACK"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of L7 mitigation products.",
+				"in": "query",
+				"name": "mitigationProduct",
+				"schema": {
+					"description": "Array of L7 mitigation products.",
+					"items": {
+						"enum": [
+							"DDOS",
+							"WAF",
+							"BOT_MANAGEMENT",
+							"ACCESS_RULES",
+							"IP_REPUTATION",
+							"API_SHIELD",
+							"DATA_LOSS_PREVENTION"
+						],
 						"type": "string"
 					},
 					"type": "array"
