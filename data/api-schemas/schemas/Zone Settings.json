@@ -2816,7 +2816,8 @@
 																				"enabled": true,
 																				"include_subdomains": true,
 																				"max_age": 86400,
-																				"nosniff": true
+																				"nosniff": true,
+																				"preload": false
 																			}
 																		},
 																		"properties": {
@@ -2840,6 +2841,11 @@
 																					},
 																					"nosniff": {
 																						"description": "Whether or not to include 'X-Content-Type-Options: nosniff' header.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"preload": {
+																						"description": "Enable automatic preload of the HSTS configuration.",
 																						"example": true,
 																						"type": "boolean"
 																					}
@@ -6568,7 +6574,8 @@
 																			"enabled": true,
 																			"include_subdomains": true,
 																			"max_age": 86400,
-																			"nosniff": true
+																			"nosniff": true,
+																			"preload": false
 																		}
 																	},
 																	"properties": {
@@ -6592,6 +6599,11 @@
 																				},
 																				"nosniff": {
 																					"description": "Whether or not to include 'X-Content-Type-Options: nosniff' header.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"preload": {
+																					"description": "Enable automatic preload of the HSTS configuration.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -10506,7 +10518,8 @@
 															"enabled": true,
 															"include_subdomains": true,
 															"max_age": 86400,
-															"nosniff": true
+															"nosniff": true,
+															"preload": false
 														}
 													},
 													"properties": {
@@ -10530,6 +10543,11 @@
 																},
 																"nosniff": {
 																	"description": "Whether or not to include 'X-Content-Type-Options: nosniff' header.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"preload": {
+																	"description": "Enable automatic preload of the HSTS configuration.",
 																	"example": true,
 																	"type": "boolean"
 																}
@@ -14118,7 +14136,8 @@
 																				"enabled": true,
 																				"include_subdomains": true,
 																				"max_age": 86400,
-																				"nosniff": true
+																				"nosniff": true,
+																				"preload": false
 																			}
 																		},
 																		"properties": {
@@ -14142,6 +14161,11 @@
 																					},
 																					"nosniff": {
 																						"description": "Whether or not to include 'X-Content-Type-Options: nosniff' header.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"preload": {
+																						"description": "Enable automatic preload of the HSTS configuration.",
 																						"example": true,
 																						"type": "boolean"
 																					}
@@ -17808,7 +17832,8 @@
 														"enabled": true,
 														"include_subdomains": true,
 														"max_age": 86400,
-														"nosniff": true
+														"nosniff": true,
+														"preload": false
 													}
 												},
 												"properties": {
@@ -17832,6 +17857,11 @@
 															},
 															"nosniff": {
 																"description": "Whether or not to include 'X-Content-Type-Options: nosniff' header.",
+																"example": true,
+																"type": "boolean"
+															},
+															"preload": {
+																"description": "Enable automatic preload of the HSTS configuration.",
 																"example": true,
 																"type": "boolean"
 															}
@@ -21418,7 +21448,8 @@
 																			"enabled": true,
 																			"include_subdomains": true,
 																			"max_age": 86400,
-																			"nosniff": true
+																			"nosniff": true,
+																			"preload": false
 																		}
 																	},
 																	"properties": {
@@ -21442,6 +21473,11 @@
 																				},
 																				"nosniff": {
 																					"description": "Whether or not to include 'X-Content-Type-Options: nosniff' header.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"preload": {
+																					"description": "Enable automatic preload of the HSTS configuration.",
 																					"example": true,
 																					"type": "boolean"
 																				}
