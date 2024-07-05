@@ -4267,6 +4267,140 @@
 		"__description": "Mutations are not supported",
 		"do": ""
 	},
+	"OrganizationFilter_InputObject": {
+		"__description": ""
+	},
+	"OrganizationHttpRequestsAdaptiveGroups": {
+		"__description": "Aggregated HTTP requests data with adaptive sampling",
+		"avg": "The average value used for sample interval",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "The number of values for a metric per dimension",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
+		"ratio": "The ratio of a range of status codes, between 0 and 1",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"OrganizationHttpRequestsAdaptiveGroupsAvg": {
+		"__description": "",
+		"crossZoneSubrequests": "The proportion of requests that were inititiated by a Cloudflare Worker on another zone",
+		"edgeDnsResponseTimeMs": "",
+		"edgeTimeToFirstByteMs": "",
+		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
+		"sampleInterval": ""
+	},
+	"OrganizationHttpRequestsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "The number of values for a metric per dimension, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"OrganizationHttpRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
+		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"botManagementDecision": "Judgement of the bot management system",
+		"botScore": "The final score originated from bot management detections.",
+		"botScoreBucketBy10": "Range of the bot management score",
+		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
+		"cacheReserveUsed": "Used Cache Reserve to serve the response",
+		"cacheStatus": "",
+		"clientASNDescription": "The ASN of the visitor as string",
+		"clientAsn": "",
+		"clientCountryName": "Country from which request originated",
+		"clientDeviceType": "",
+		"clientIP": "",
+		"clientRefererHost": "The referrer host",
+		"clientRequestHTTPHost": "Host requested by the client",
+		"clientRequestHTTPMethodName": "HTTP method of client request",
+		"clientRequestHTTPProtocol": "HTTP protocol version",
+		"clientRequestPath": "Path of client request",
+		"clientRequestQuery": "Query parameters of client request",
+		"clientRequestReferer": "HTTP request referrer",
+		"clientRequestScheme": "HTTP request URI scheme (http/https)",
+		"clientSSLProtocol": "SSL protocol version",
+		"coloCode": "",
+		"contentScanHasFailed": "1 if not all contents for this request where successfully scanned, else 0",
+		"contentScanNumMaliciousObj": "Number of scannable content objects that are malicious",
+		"contentScanNumObj": "Number of scannable content objects",
+		"contentScanObjResults": "Array of scan results in order of detection",
+		"contentScanObjSizes": "Array of scan sizes in order of detection",
+		"contentScanObjTypes": "Array of content types in order of detection",
+		"date": "The date the event occurred at the edge",
+		"datetime": "The date and time the event occurred at the edge",
+		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to a multiple of 15 minutes",
+		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to a multiple of 5 minutes",
+		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
+		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
+		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
+		"edgeResponseContentTypeName": "",
+		"edgeResponseStatus": "",
+		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
+		"httpApplicationVersion": "<small>DEPRECATED (Field is replaced with <code>zoneVersion</code>):</small> Version associated with HTTP Application",
+		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
+		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
+		"ja4": "JA4 TLS fingerprint",
+		"leakedCredentialCheckResult": "The distinct result of checking for leaked credentials",
+		"originASN": "",
+		"originASNDescription": "ASN associated with origin",
+		"originIP": "",
+		"originResponseDurationMs": "",
+		"originResponseStatus": "HTTP response status code returned by the origin",
+		"requestSource": "",
+		"sampleInterval": "ABR sample interval",
+		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
+		"securitySource": "The Cloudflare security product triggered by this request",
+		"upperTierColoName": "",
+		"userAgent": "",
+		"userAgentBrowser": "Browser parsed from the user agent",
+		"userAgentOS": "OS parsed from the user agent",
+		"wafAttackScore": "Beta. Overall request score generated by the WAF detection module",
+		"wafAttackScoreClass": "Beta. Overall request score class generated by the WAF detection module",
+		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
+		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
+		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
+		"xRequestedWith": "The X-Requested-With header of the client request",
+		"zoneVersion": "The version of a zone"
+	},
+	"OrganizationHttpRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"OrganizationHttpRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"OrganizationHttpRequestsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"edgeDnsResponseTimeMsP50": "50th percentile DNS Response Time (milliseconds)",
+		"edgeDnsResponseTimeMsP95": "95th percentile DNS Response Time (milliseconds)",
+		"edgeDnsResponseTimeMsP99": "99th percentile DNS Response Time (milliseconds)",
+		"edgeTimeToFirstByteMsP50": "50th percentile Time To First Byte (milliseconds)",
+		"edgeTimeToFirstByteMsP95": "95th percentile Time To First Byte (milliseconds)",
+		"edgeTimeToFirstByteMsP99": "99th percentile Time To First Byte (milliseconds)",
+		"originResponseDurationMsP50": "50th percentile Origin Response Duration (milliseconds)",
+		"originResponseDurationMsP95": "95th percentile Origin Response Duration (milliseconds)",
+		"originResponseDurationMsP99": "99th percentile Origin Response Duration (milliseconds)"
+	},
+	"OrganizationHttpRequestsAdaptiveGroupsRatio": {
+		"__description": "",
+		"status4xx": "",
+		"status5xx": ""
+	},
+	"OrganizationHttpRequestsAdaptiveGroupsSum": {
+		"__description": "",
+		"crossZoneSubrequests": "The number of requests that were inititiated by a Cloudflare Worker on another zone",
+		"edgeDnsResponseTimeMs": "",
+		"edgeResponseBytes": "",
+		"edgeTimeToFirstByteMs": "",
+		"originResponseDurationMs": "",
+		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
+	},
+	"OrganizationHttpRequestsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"edgeResponseBytes": "Confidence interval for the corresponding point estimate"
+	},
+	"OrganizationSettings": {
+		"__description": "Access and limitations for an organization",
+		"httpRequestsAdaptiveGroups": ""
+	},
 	"Query": {
 		"__description": "",
 		"cost": "",
@@ -5868,8 +6002,11 @@
 		"workersZoneSubrequestsAdaptiveGroups": "",
 		"zarazActionsAdaptiveGroups": "",
 		"zarazAnalyticsIdentitiesAdaptiveGroups": "",
+		"zarazAnalyticsOrderedTrackAdaptiveGroups": "",
 		"zarazAnalyticsTrackAdaptiveGroups": "",
+		"zarazAnalyticsTrackTrafficSourcesAdaptiveGroups": "",
 		"zarazAnalyticsTriggersAdaptiveGroups": "",
+		"zarazAnalyticsTriggersTrafficSourcesAdaptiveGroups": "",
 		"zarazTrackAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": ""
 	},
@@ -6089,6 +6226,41 @@
 	"ZoneZarazAnalyticsIdentitiesAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroups": {
+		"__description": "Zaraz Analytics Tracks ordered per session",
+		"count": "Number of processed Zaraz Track requests",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroupsDimensions": {
+		"__description": "",
+		"clientId": "Client ID",
+		"colors": "Colors",
+		"country": "Country",
+		"date": "Date when track was called",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"ip": "IP",
+		"language": "Language",
+		"orderInSession": "Track reverse order number within its session (last track having orderInSession 1)",
+		"pageTitle": "Page Title",
+		"resolution": "Screen Resolution",
+		"sessionId": "Session ID",
+		"timezoneOffset": "Timezone Offset",
+		"trackData": "Track Data",
+		"trackName": "Track Name",
+		"trafficSrc": "Traffic source",
+		"ua": "User Agent",
+		"urlPath": "URL Path",
+		"viewport": "Viewport"
+	},
+	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneZarazAnalyticsTrackAdaptiveGroups": {
 		"__description": "Zaraz Analytics Track - counts zaraz.track calls",
 		"count": "Number of processed Zaraz Track requests",
@@ -6108,12 +6280,12 @@
 		"ip": "IP",
 		"language": "Language",
 		"pageTitle": "Page Title",
-		"referrer": "Referrer",
 		"resolution": "Screen Resolution",
 		"sessionId": "Session ID",
 		"timezoneOffset": "Timezone Offset",
 		"trackData": "Track Data",
 		"trackName": "Track Name",
+		"trafficSrc": "Traffic source",
 		"ua": "User Agent",
 		"urlPath": "URL Path",
 		"viewport": "Viewport"
@@ -6128,6 +6300,41 @@
 		"__description": "",
 		"clientIdCount": "Number of distinct client IDs",
 		"sessionIdCount": "Number of distinct session IDs"
+	},
+	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroups": {
+		"__description": "Zaraz Analytics Track Traffic Sources",
+		"count": "Number of unique sessions",
+		"dimensions": "List of dimensions to group by",
+		"uniq": ""
+	},
+	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"clientId": "Client ID",
+		"exitPage": "URL Path at session end",
+		"firstTrafficSrc": "Referrer at session start",
+		"landingPage": "URL Path at session start",
+		"sessionEnd": "Date when the session ended",
+		"sessionEndFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"sessionEndFiveMinutes": "The date and time truncated to five minutes",
+		"sessionEndHour": "The date and time truncated to the hour",
+		"sessionEndMinute": "The date and time truncated to the minute",
+		"sessionId": "Session ID",
+		"sessionStart": "Date when the session started",
+		"sessionStartFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"sessionStartFiveMinutes": "The date and time truncated to five minutes",
+		"sessionStartHour": "The date and time truncated to the hour",
+		"sessionStartMinute": "The date and time truncated to the minute",
+		"tracks": "Unique track names within a session"
+	},
+	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroupsUniq": {
+		"__description": "",
+		"clientIdCount": "Number of distinct client IDs"
 	},
 	"ZoneZarazAnalyticsTriggersAdaptiveGroups": {
 		"__description": "Zaraz Analytics Triggers (a trigger is a set of rules that can trigger a zaraz action)",
@@ -6148,10 +6355,10 @@
 		"ip": "IP",
 		"language": "Language",
 		"pageTitle": "Page Title",
-		"referrer": "Referrer",
 		"resolution": "Screen Resolution",
 		"sessionId": "Session ID",
 		"timezoneOffset": "Timezone Offset",
+		"trafficSrc": "Traffic Source",
 		"triggerName": "Trigger Name",
 		"ua": "User Agent",
 		"urlPath": "URL Path",
@@ -6167,6 +6374,39 @@
 		"__description": "",
 		"clientIdCount": "Number of distinct client IDs",
 		"sessionIdCount": "Number of distinct session IDs"
+	},
+	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroups": {
+		"__description": "Zaraz Analytics Triggers Traffic Sources",
+		"count": "Number of unique sessions",
+		"dimensions": "List of dimensions to group by",
+		"uniq": ""
+	},
+	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"clientId": "Client ID",
+		"firstTrafficSrc": "Referrer at session start",
+		"sessionEnd": "Date when the session ended",
+		"sessionEndFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"sessionEndFiveMinutes": "The date and time truncated to five minutes",
+		"sessionEndHour": "The date and time truncated to the hour",
+		"sessionEndMinute": "The date and time truncated to the minute",
+		"sessionId": "Session ID",
+		"sessionStart": "Date when the session started",
+		"sessionStartFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"sessionStartFiveMinutes": "The date and time truncated to five minutes",
+		"sessionStartHour": "The date and time truncated to the hour",
+		"sessionStartMinute": "The date and time truncated to the minute",
+		"triggers": "Unique trigger names within a session"
+	},
+	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroupsUniq": {
+		"__description": "",
+		"clientIdCount": "Number of distinct client IDs"
 	},
 	"ZoneZarazTrackAdaptiveGroups": {
 		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
@@ -6324,6 +6564,12 @@
 	"int8": {
 		"__description": "Scalar type int8"
 	},
+	"organization": {
+		"__description": "",
+		"httpRequestsAdaptiveGroups": "Aggregated HTTP requests data with adaptive sampling",
+		"organizationTag": "",
+		"settings": ""
+	},
 	"string": {
 		"__description": "Scalar type string"
 	},
@@ -6343,6 +6589,7 @@
 		"__description": "",
 		"accounts": "",
 		"budget": "",
+		"organizations": "",
 		"zones": ""
 	},
 	"zone": {
@@ -6385,8 +6632,11 @@
 		"workersZoneSubrequestsAdaptiveGroups": "Workers subrequests with adaptive sampling",
 		"zarazActionsAdaptiveGroups": "Zaraz Actions Analytics",
 		"zarazAnalyticsIdentitiesAdaptiveGroups": "Zaraz Analytics Identities - zaraz.identify calls",
+		"zarazAnalyticsOrderedTrackAdaptiveGroups": "Zaraz Analytics Tracks ordered per session",
 		"zarazAnalyticsTrackAdaptiveGroups": "Zaraz Analytics Track - counts zaraz.track calls",
+		"zarazAnalyticsTrackTrafficSourcesAdaptiveGroups": "Zaraz Analytics Track Traffic Sources",
 		"zarazAnalyticsTriggersAdaptiveGroups": "Zaraz Analytics Triggers (a trigger is a set of rules that can trigger a zaraz action)",
+		"zarazAnalyticsTriggersTrafficSourcesAdaptiveGroups": "Zaraz Analytics Triggers Traffic Sources",
 		"zarazTrackAdaptiveGroups": "Zaraz Track Analytics - counts zaraz.track calls",
 		"zarazTriggersAdaptiveGroups": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
 		"zoneTag": ""
