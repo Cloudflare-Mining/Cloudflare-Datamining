@@ -1,0 +1,128 @@
+<div class="mb2 gray5">6 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/07/image3-4.png" class="kg-image" alt="UK election day 2024: traffic trends and attacks on political parties" loading="lazy" width="1999" height="1126"></figure>
+	<p>The 2024 <a href="https://en.wikipedia.org/wiki/2024_United_Kingdom_general_election">UK general election</a>, the first since Brexit officially began (January 31, 2020) and after 14 years of Conservative leadership, saw the Labour Party secure a majority. This blog post examines Internet traffic trends and cyberattack activity on election day, highlighting notable declines in traffic during the afternoon and evening as well as a DDoS attack on a political party shortly after polls closed.</p>
+	<p>For context, 2024 is considered “the year of elections,” with elections taking place in over 60 countries. We’ve covered elections in <a href="https://blog.cloudflare.com/internet-insights-on-2024-elections-in-the-netherlands-south-africa-iceland-india-and-mexico">South Africa, India, Iceland, Mexico</a>, the <a href="https://blog.cloudflare.com/exploring-the-2024-eu-election-internet-traffic-trends-and-cybersecurity-insights">European Union</a>, <a href="https://blog.cloudflare.com/first-round-of-french-election-2024-party-attacks-and-a-modest-traffic-dip">France</a>, and also the <a href="https://blog.cloudflare.com/how-the-first-2024-us-presidential-debate-influenced-internet-traffic-and-security-trends">2024 US presidential debate</a>. We also continuously update our <a href="https://radar.cloudflare.com/reports/elections-2024">election report</a> on Cloudflare Radar.</p>
+	<p>The UK’s snap election on Thursday, July 4, 2024, typical of British <a href="https://www.standard.co.uk/news/politics/why-are-uk-general-elections-always-on-a-thursday-b1168631.html">Thursday weekday</a> elections, contrasts with weekend elections in other countries. Polling stations were open from 07:00 to 22:00.</p>
+	<p>Generally, <a href="https://blog.cloudflare.com/tag/election-security">election days</a> do not result in drastic changes to Internet traffic. Traffic typically dips during voting hours but not as sharply as during major events like national holidays, and rises in the evening as results are announced.</p>
+	<p>On July 4, 2024, traffic initially rose slightly from the previous week, then fell around noon (-2%). Significant declines began only after 16:00, with noticeable drops at 16:45 and again at 22:00 as polls closed.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed-1.png" class="kg-image" alt="" loading="lazy" width="1600" height="417"></figure>
+	<h3 id="internet-traffic-dips-across-uk-countries">Internet traffic dips across UK countries</h3>
+	<p>Traffic shifts during voting day, compared to the previous week, are more revealing when viewed in detail. The map and table below summarize the traffic changes observed at the country level within the UK, where the greatest impact was observed in Northern Ireland (-10%), followed by Scotland (-6%), Wales (-5%), and England (-3%), all after 16:00.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/07/Screenshot-2024-07-05-at-14.17.05.png" class="kg-image" alt="" loading="lazy" width="1626" height="1274"></figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Country</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Drop in traffic (%)</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time of drop in traffic (local)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Northern Ireland</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-10%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">July 4, 16:00</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Scotland</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-6%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">July 4, 20:00</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Wales</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-5%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">July 4, 17:00</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">England</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-3%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">July 4, 16:00</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><br></p>
+	<p>Next, examining the day’s traffic changes, we observed a clear drop in Northern Ireland around 13:00 local time and during off-work hours between 16:00 and 20:00, before it began to increase again.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--1-.png" class="kg-image" alt="" loading="lazy" width="1600" height="405"></figure>
+	<p>In Scotland, traffic fell by about 5% from 16:00 to 21:00 local time compared to the previous week.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--2-.png" class="kg-image" alt="" loading="lazy" width="1600" height="407"></figure>
+	<p>In Wales, decreases occurred at 07:00 (4% drop), between 16:00 and 18:00 (around 5% drop), and at 21:00.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--3-.png" class="kg-image" alt="" loading="lazy" width="1600" height="403"></figure>
+	<p>And in England, traffic decreased by approximately 3% between 16:00 and 18:00 and about 2% between 20:00 and 22:00.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--4-.png" class="kg-image" alt="" loading="lazy" width="1600" height="406"></figure>
+	<p>In all the countries within the UK, traffic clearly increased after 23:00 local time when the voting polls had already closed and the first results started to arrive. Peak increases were reached at different times: Wales saw a 3% increase at 01:00; Northern Ireland and England experienced their highest increases of 12% and 11% respectively at 02:00; and Scotland had a 9% increase at 02:00 followed by a 12% spike at 04:00.</p>
+	<h3 id="dns-trends-news-outlets-bring-results">DNS trends: news outlets bring results</h3>
+	<p>Switching focus to domain trends, our <a href="http://1.1.1.1">1.1.1.1</a> resolver DNS data reveals a more targeted impact from the UK elections. Analyzing the participating parties, DNS traffic significantly increased on election day, peaking at 22:00 and midnight local time (up to 600% growth), and then again at 04:00 (671%).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--5-.png" class="kg-image" alt="" loading="lazy" width="1600" height="408"></figure>
+	<p>Among the main parties, Labour, led by Keir Starmer, outperformed the Conservative Party on election day. Labour’s DNS traffic spiked at 22:00 local time, with an 866% increase from the previous week.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--6-.png" class="kg-image" alt="" loading="lazy" width="1600" height="398"></figure>
+	<p>Analyzing official government and election-related websites, the UK differs from other countries in how results are shared. Official results weren’t continuously updated as they came in. The largest spike in DNS traffic, a 172% increase from the previous week, occurred on election morning around 07:00 local time. This increase likely happened because UK citizens were searching for the correct polling stations and other voting resources.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--7-.png" class="kg-image" alt="" loading="lazy" width="1600" height="415"></figure>
+	<p>News sites and microblogging social media platforms in the UK experienced significant increases in usage after the polling stations closed at 22:00 local time. In the UK, news sites not only provide initial projections but also final results. DNS traffic for UK news media outlets surged 74% compared to the previous week, peaking at 104% at midnight and 04:00.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--8-.png" class="kg-image" alt="" loading="lazy" width="1600" height="422"></figure>
+	<p>For microblogging social media in Great Britain, traffic was already 25% higher than the previous week when the polls closed (22:00), peaking at 27% at midnight and remaining elevated through the night.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--9-.png" class="kg-image" alt="" loading="lazy" width="1600" height="413"></figure>
+	<p>We saw last week in the US, during the Biden vs Trump debate, that video streaming social platforms such as YouTube or TikTok, were used to watch through news outlets channels the debate live, with DNS traffic surging. How about the UK? DNS traffic was 10% higher than in the previous week starting at midnight, and at 01:00 local time was 15% higher.</p>
+	<h3 id="attacks-political-parties-included-impact">Attacks: political parties included impact</h3>
+	<p>Focusing on attacks, those are usually constant, and aren’t necessarily driven always by elections. But, as we’ve seen at the start of the <a href="https://blog.cloudflare.com/one-year-of-war-in-ukraine">war in Ukraine</a> or more recently in the <a href="https://blog.cloudflare.com/dutch-political-websites-hit-by-cyber-attacks-as-eu-voting-starts">Netherlands</a> or in <a href="https://blog.cloudflare.com/first-round-of-french-election-2024-party-attacks-and-a-modest-traffic-dip">France</a>, specific events do trigger attacks. DDoS (<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">Distributed Denial of Service</a>) attacks remain a common method employed by attackers.</p>
+	<p>In recent days, there has been DDoS activity targeting political parties in the UK that participated in these elections. Our data shows that two parties experienced attacks that were blocked by Cloudflare. One party, represented in blue, suffered an attack on June 16, which lasted over four hours and peaked at 60,000 requests per second (rps).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--10-.png" class="kg-image" alt="" loading="lazy" width="1600" height="659"></figure>
+	<p>The party shown in yellow was hit by four DDoS attacks on different days: June 13, 19, 26, and in the early hours of July 5 (UTC), just after the election’s first predictions were broadcast, giving a majority to the Labour Party. This was the most significant attack in recent days, peaking at 156,000 rps. It began at 01:47 local time (00:47 UTC) and ended four minutes later. Here’s a closer look at that July 5, 2024, attack:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/07/unnamed--11-.png" class="kg-image" alt="" loading="lazy" width="1600" height="469"></figure>
+	<p>Although these rates are small on Cloudflare’s scale, they can be devastating for unprotected websites unaccustomed to such levels of traffic.</p>
+	<h3 id="conclusion-high-intensity-election-year">Conclusion: high intensity election year</h3>
+	<p>Even if major political events don’t always bring notable changes to Internet traffic, our data shows that in the UK, traffic decreased more significantly in the afternoon and evening, especially as voting stations remained open until 22:00.</p>
+	<p>After voting ended, news sites became the go-to resource for UK residents seeking initial predictions and results.</p>
+	<p>We also observed attacks targeting political parties in the UK, further highlighting that this election year is marked by cyberattacks aimed at influencing politically related websites.</p>
+	<p>If you want to follow more trends and insights about the Internet and elections in particular, you can check <a href="https://radar.cloudflare.com">Cloudflare Radar</a>, and more specifically our new <a href="https://radar.cloudflare.com/reports/elections-2024">2024 Elections Insights</a> report, which will be updated as elections take place throughout the year.</p>
+</div>
