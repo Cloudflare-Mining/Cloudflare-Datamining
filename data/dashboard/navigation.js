@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: O => (0, e.z1)(A.Mr)(O) && (0, Z.z7)(O) && !!(0, Z.z$)(O).length
+		hasPermission: O => (0, e.z1)(v.Mr)(O) && (0, Z.z7)(O) && !!(0, Z.z$)(O).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -111,7 +111,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.logs",
 			url: "/logs",
-			hasPermission: O => (0, o.iY)(O) && (0, d.S6)(O) && !!(0, e.z1)("account-logpush")(O)
+			hasPermission: O => (0, o.iY)(O) && (0, m.S6)(O) && !!(0, e.z1)("account-logpush")(O)
 		}, {
 			title: "navigation.account.carbon",
 			url: "/carbon",
@@ -595,7 +595,7 @@ const navigation = {
 			title: "navigation.zone.analytics.logs",
 			url: "/analytics/logs",
 			navigationType: "both",
-			hasPermission: O => (0, d.Xu)(O)
+			hasPermission: O => (0, m.Xu)(O)
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
 			url: "/analytics/instant-logs",
@@ -658,7 +658,7 @@ const navigation = {
 			navigationType: "global-settings",
 			url: "/email/dmarc-management",
 			labels: ["beta"],
-			hasPermission: O => (0, v.ig)(O) ? !1 : (0, o.$n)(O, "dns_records", "dns-record") && !!(0, g.ZB)(O, "email", "dmarc_visible")
+			hasPermission: O => (0, C.ig)(O) ? !1 : (0, o.$n)(O, "dns_records", "dns-record") && !!(0, g.ZB)(O, "email", "dmarc_visible")
 		}, {
 			title: "navigation.zone.email.security",
 			navigationType: "global-settings",
@@ -673,7 +673,7 @@ const navigation = {
 		hasPermission: O => {
 			const Ee = (0, g.nA)(O);
 			if ((0, s.yD)(O) || !(0, o.wB)(O, "zone_settings", "spectrum.app") || !Ee) return !1;
-			const Ce = !!((0, C.l8)(O) || (0, g.DQ)(O)),
+			const Ce = !!((0, E.l8)(O) || (0, g.DQ)(O)),
 				de = !!(0, g.ZB)(O, "spectrum", "enabled"),
 				X = !!(0, g.Ns)(Ee);
 			return de || Ce || !X
@@ -723,7 +723,7 @@ const navigation = {
 			title: "navigation.zone.security.analytics",
 			navigationType: "version",
 			url: "/security/analytics",
-			hasPermission: O => (0, m.B_)(O) && (0, o.$n)(O, "waf", "firewall.rule")
+			hasPermission: O => (0, d.B_)(O) && (0, o.$n)(O, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.events",
 			url: "/security/events",
