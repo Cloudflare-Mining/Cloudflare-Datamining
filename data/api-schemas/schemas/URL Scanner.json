@@ -4,6 +4,7 @@
 		"operationId": "urlscanner-search-scans",
 		"parameters": [
 			{
+				"description": "Account Id",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
@@ -13,6 +14,7 @@
 				}
 			},
 			{
+				"description": "Scan uuid",
 				"in": "query",
 				"name": "scanId",
 				"schema": {
@@ -22,6 +24,7 @@
 				}
 			},
 			{
+				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -31,6 +34,7 @@
 				}
 			},
 			{
+				"description": "Pagination cursor to get the next set of results.",
 				"in": "query",
 				"name": "next_cursor",
 				"schema": {
@@ -39,6 +43,7 @@
 				}
 			},
 			{
+				"description": "Filter scans requested after date (inclusive).",
 				"in": "query",
 				"name": "date_start",
 				"schema": {
@@ -48,6 +53,7 @@
 				}
 			},
 			{
+				"description": "Filter scans requested before date (inclusive).",
 				"in": "query",
 				"name": "date_end",
 				"schema": {
@@ -57,6 +63,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by URL of _any_ request made by the webpage",
 				"in": "query",
 				"name": "url",
 				"schema": {
@@ -66,6 +73,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by hostname of _any_ request made by the webpage.",
 				"in": "query",
 				"name": "hostname",
 				"schema": {
@@ -75,6 +83,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by url path of _any_ request made by the webpage.",
 				"in": "query",
 				"name": "path",
 				"schema": {
@@ -84,6 +93,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by IP address (IPv4 or IPv6) of _any_ request made by the webpage.",
 				"in": "query",
 				"name": "ip",
 				"schema": {
@@ -93,6 +103,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by Autonomous System Number (ASN) of _any_ request made by the webpage.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -102,6 +113,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by hash of any html/js/css request made by the webpage.",
 				"in": "query",
 				"name": "hash",
 				"schema": {
@@ -110,6 +122,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by submitted or scanned URL",
 				"in": "query",
 				"name": "page_url",
 				"schema": {
@@ -118,6 +131,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by main page hostname (domain of effective URL).",
 				"in": "query",
 				"name": "page_hostname",
 				"schema": {
@@ -126,6 +140,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by exact match of effective URL path (also supports suffix search).",
 				"in": "query",
 				"name": "page_path",
 				"schema": {
@@ -134,6 +149,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by main page Autonomous System Number (ASN).",
 				"in": "query",
 				"name": "page_asn",
 				"schema": {
@@ -142,6 +158,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by  main page IP address (IPv4 or IPv6).",
 				"in": "query",
 				"name": "page_ip",
 				"schema": {
@@ -150,6 +167,7 @@
 				}
 			},
 			{
+				"description": "Return only scans created by account.",
 				"in": "query",
 				"name": "account_scans",
 				"schema": {
@@ -158,6 +176,7 @@
 				}
 			},
 			{
+				"description": "Filter scans by malicious verdict.",
 				"in": "query",
 				"name": "is_malicious",
 				"schema": {
@@ -350,6 +369,7 @@
 		"operationId": "urlscanner-get-scan",
 		"parameters": [
 			{
+				"description": "Scan uuid",
 				"in": "path",
 				"name": "scanId",
 				"required": true,
@@ -360,6 +380,7 @@
 				}
 			},
 			{
+				"description": "Account Id",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
@@ -369,6 +390,7 @@
 				}
 			},
 			{
+				"description": "Whether to return full report (scan summary and network log).",
 				"in": "query",
 				"name": "full",
 				"schema": {
@@ -1905,6 +1927,7 @@
 		"operationId": "urlscanner-get-scan-har",
 		"parameters": [
 			{
+				"description": "Scan uuid",
 				"in": "path",
 				"name": "scanId",
 				"required": true,
@@ -1915,6 +1938,7 @@
 				}
 			},
 			{
+				"description": "Account Id",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
@@ -2543,6 +2567,7 @@
 		"operationId": "urlscanner-get-scan-screenshot",
 		"parameters": [
 			{
+				"description": "Scan uuid",
 				"in": "path",
 				"name": "scanId",
 				"required": true,
@@ -2553,6 +2578,7 @@
 				}
 			},
 			{
+				"description": "Account Id",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
@@ -2562,6 +2588,7 @@
 				}
 			},
 			{
+				"description": "Target device type",
 				"in": "query",
 				"name": "resolution",
 				"schema": {
@@ -2851,6 +2878,7 @@
 		"operationId": "urlscanner-create-scan",
 		"parameters": [
 			{
+				"description": "Account Id",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
