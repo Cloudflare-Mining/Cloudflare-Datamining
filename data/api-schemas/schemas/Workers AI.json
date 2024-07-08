@@ -680,7 +680,7 @@
 												"type": "number"
 											},
 											"prompt": {
-												"maxLength": 6144,
+												"maxLength": 131072,
 												"minLength": 1,
 												"type": "string"
 											},
@@ -737,7 +737,7 @@
 												"items": {
 													"properties": {
 														"content": {
-															"maxLength": 6144,
+															"maxLength": 131072,
 															"type": "string"
 														},
 														"role": {
