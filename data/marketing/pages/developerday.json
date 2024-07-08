@@ -16,6 +16,7 @@
 					"koKR": "English for Locale",
 					"ptBR": "English for Locale",
 					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -30,7 +31,8 @@
 					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale",
 					"elGR": "English for Locale",
-					"nbNO": "English for Locale"
+					"nbNO": "English for Locale",
+					"arAR": "No Page for Locale"
 				},
 				"relativePath": "developerday",
 				"topNavOptions": "default",
@@ -43,10 +45,16 @@
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/49k9tBcCLmmYYdGSIydkIj/a477d74edc2fab759ac43409bfa54a39/Developer_Platform_HP_How_It_Works.jpg"
-						}
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/33a7lHKoGJbFvec4yrieT0/f843dc34cef5ddb61d226bbcb6302402/Developer-Day_logo.png"
+						},
+						"description": ""
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2023-05-01T20:59:58.702Z",
+					"updatedAt": "2024-07-08T15:50:41.907Z"
 				},
 				"contentfulId": "5w7vXNTAv6VK8AUag8DM5f",
 				"contentTypeId": "page",
@@ -61,16 +69,18 @@
 						"contentfulId": "4kMaXih9gXPvUGTnuPg1VQ",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Developer Day 2023",
+						"titleSize": null,
 						"subtitle": "November 8, 2023 Convene at Willis Tower, Chicago, IL",
-						"copy": "Developer Day is a single track conference featuring talks from industry experts on trends in web standards, frameworks, AI, and developer experience. \n\nAre you ready to build better web applications? \n",
+						"subtitleSize": null,
+						"copy": "Developer Day is a single track conference featuring talks from industry experts on trends in web standards, frameworks, AI, and developer experience. \n\nAre you ready to build better web applications? Our call for papers is open and registration will be opening soon. \n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Apply to Speak",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": null,
+						"buttonUrl1": "https://events.www.cloudflare.com/developerday/",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Register to Attend",
+						"buttonText2": null,
 						"buttonText2LoggedIn": null,
 						"buttonUrl2": null,
 						"button2ExtraClass": null,
@@ -104,8 +114,9 @@
 						"imageLayout": null,
 						"image": {
 							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/49k9tBcCLmmYYdGSIydkIj/a477d74edc2fab759ac43409bfa54a39/Developer_Platform_HP_How_It_Works.jpg"
-							}
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/33a7lHKoGJbFvec4yrieT0/f843dc34cef5ddb61d226bbcb6302402/Developer-Day_logo.png"
+							},
+							"description": ""
 						},
 						"imageAssetFile": null
 					},
@@ -128,14 +139,19 @@
 								"contentTypeId": "feature",
 								"contentfulId": "X7ISYyZP3a7WyRs8NnvRv",
 								"title": "Interactive Sessions",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Get hands-on with the latest technologies",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
+								"removeCardBorder": null,
 								"icon": null,
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": {
 									"id": "7f6357a0-1835-57e2-9591-6db89f0bacc2",
 									"altText": null,
@@ -145,7 +161,8 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AevNtRDuAAO3BCjiaBJRG/4c647f39d9e24a5503b53dd9fefa95f8/HandsOn.png"
-										}
+										},
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -158,14 +175,19 @@
 								"contentTypeId": "feature",
 								"contentfulId": "7DthiMJ1HjMPspOnkLPcPu",
 								"title": "Network with peers",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Meet like-minded developers building the web of the future.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
+								"removeCardBorder": null,
 								"icon": null,
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": {
 									"id": "32364086-f459-58f2-a1e8-c9859360f6b8",
 									"altText": null,
@@ -175,7 +197,8 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1h3YSGRMSWaWomGd4TBop0/3f6301423265cd774c05c857d9c07da0/Network_with_Peers.png"
-										}
+										},
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -188,14 +211,19 @@
 								"contentTypeId": "feature",
 								"contentfulId": "2EYOXjYt8WcDeL6naJlWX5",
 								"title": "Learn",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Hear about best practices in frameworks, AI,  emerging technologies, and more.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
+								"removeCardBorder": null,
 								"icon": null,
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": {
 									"id": "d0af429e-64c6-5183-8dfc-5edfa39a534c",
 									"altText": null,
@@ -205,7 +233,8 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/YojgFOUChPZeaaiuRCCtU/7604eb2a12bf9f41762cef6ca3a8c793/Learn.png"
-										}
+										},
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -218,7 +247,7 @@
 					}
 				],
 				"noindex": false,
-				"formModal": null,
+				"formModal": [],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
