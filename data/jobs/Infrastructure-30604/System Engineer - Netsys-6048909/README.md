@@ -14,8 +14,6 @@
 <p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
 <ul>
 	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>3+ years of experience with React or equivalent frameworks (Angular, Vue)</li>
-	<li>3+ years of proven experience in hands-on server-side</li>
 	<li>Solid foundation on configuration management frameworks: Ansible, Chef, Saltstack.</li>
 	<li>Knowledge of programming languages like Python or Golang.</li>
 	<li>Highly Proficient with modern Unix/Linux operating systems/distributions</li>
@@ -28,8 +26,7 @@
 	<li>Knowledge of Networking engineering, with competencies in Layer 2 and Layer 3 protocols and vendor equipment: Cisco, Juniper, etc.</li>
 	<li>Experience building and maintaining large distributed systems</li>
 	<li>Experience managing internal and/or external customer requirements and expectations</li>
-	<li>Knowledge of Javascript (Reactor and other frontend frameworks)</li>
-	<li>&nbsp;</li>
+	<li>Knowledge of Javascript (React and other frontend frameworks)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
