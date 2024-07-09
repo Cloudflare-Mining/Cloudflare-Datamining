@@ -12,7 +12,7 @@
 <p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
 <p>&nbsp;</p>
 <p><strong>About the role</strong></p>
-<p>Cloudflare is looking for an exceptional Senior Administrative Support Specialist to support our Chief Partnerships Officer.</p>
+<p>Cloudflare is looking for an exceptional Senior Administrative Support Specialist to support our Chief Partner Officer.</p>
 <p>Your job is to keep our leaders organized, prioritized, and productive while we grow from 2000+ employees and beyond. This role requires superior attention to detail, great organizational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude. The ideal candidate is an assistant who understands the value of cultivating relationships and being a reflection of the people they support.&nbsp;</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
