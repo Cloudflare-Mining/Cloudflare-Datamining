@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "[ZT PMM] Zero Trust - Access Product Page (Dec '22 Test)",
+				"pageName": "Zero Trust - Access Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -24,12 +24,12 @@
 					"nlNL": "English for Locale",
 					"idID": "English for Locale",
 					"thTH": "English for Locale",
-					"ruRU": "English for Locale",
+					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "English for Locale",
+					"plPL": "Translated for Locale",
 					"elGR": "English for Locale",
 					"nbNO": "English for Locale",
 					"arAR": "No Page for Locale"
@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-12-12T23:17:20.205Z",
-					"updatedAt": "2024-05-30T12:40:37.654Z"
+					"updatedAt": "2024-07-09T15:22:25.841Z"
 				},
 				"contentfulId": "6i25SFoslu816yV8btesox",
 				"contentTypeId": "page",
@@ -2531,12 +2531,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "1W4axQ0Gvqv05qZyrTyJTm",
-						"htmlContent": "<style>\n.wrapper { background-color: #003682; margin: 0; padding: 20px; width: 100vw;margin-left: calc((100vw - 100%) / -2);  }\n.content { color: #ffffff; margin: 0px auto;  width: fit-content; }\n.link-helper {color: #ffffff !important; margin-left: 5px; text-decoration: underline !important; text-underline-offset: 4px;}\n.link-helper:hover { text-decoration: underline; color: #ffffff !important; text-underline-offset: 4px; }\n</style>\n\n    <section class=\" wrapper\" id=\"contentful-psa-banner\">\n        <div class=\"content\">\n            <span>Cloudflare extends Zero Trust access controls to infrastructure. </span>\n   <a class=\"link-helper\"  href=\"https://blog.cloudflare.com/cloudflare-acquires-bastionzero\"> <strong>Announcement ></strong></a>    \n\n        </div>\n    </section>",
-						"htmlId": null
-					},
-					{
 						"contentfulId": "2vxob4tZyNDIBvupgwgldh",
 						"contentTypeId": "bladePadding",
 						"height": 1,
@@ -2942,42 +2936,6 @@
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4v8WQXNxB95wnnT75RdlXq",
-								"title": "Cloudflare named in the 2024 Gartner® Magic Quadrant™ for Security Service Edge (SSE)",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "We believe this recognition is a testament to Cloudflare's single-vendor SASE platform and its ability to modernize your network and consolidate more use cases.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2024/",
-								"learnMoreText": "Read the report",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "f053b586-67f1-5992-9cde-a4dded1d993f",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7DAcMsPy1sPuMUvgcPnvVq/46cbc26b237c578e3b9faa8d4fe4a645/gartner-analyst-thumbnail.png"
-										},
-										"description": "Gartner logo"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4CC2MIgkd7TTouUsYZNn5M",
@@ -12652,7 +12610,9 @@
 				"pt-BR",
 				"es-ES",
 				"es-LA",
-				"zh-Hans-CN"
+				"ru-RU",
+				"zh-Hans-CN",
+				"pl-PL"
 			],
 			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
