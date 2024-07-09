@@ -39,22 +39,10 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": {
-					"metaTitle": "Regional databases, globally distributed ",
-					"metaDescription": "Cloudflare Hyperdrive accelerates queries made to your existing databases, dramatically reducing latency no matter where users are connecting from.  ",
-					"twitterCustomImage": null,
-					"metaImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
-						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
-					},
-					"facebookCustomImage": null,
-					"author": []
-				},
+				"metaTags": null,
 				"sys": {
 					"createdAt": "2023-09-28T13:22:46.260Z",
-					"updatedAt": "2024-07-05T22:10:11.583Z"
+					"updatedAt": "2024-07-09T22:03:12.809Z"
 				},
 				"contentfulId": "4i1usPVo6625lvcdhccDpy",
 				"contentTypeId": "page",
@@ -130,95 +118,6 @@
 						}
 					},
 					{
-						"contentfulId": "39wqD67NflKuoWGOUVPGWS",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": "BENEFITS OF HYPERDRIVE",
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1Mpls5531gAmp7tSyP9UQn",
-								"title": "Avoid the latency tax ",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Hyperdrive eliminates redundant and repeated round-trips to your existing databases, shaving off up to hundreds of milliseconds from each query. Your most popular read queries are intelligently cached, further improving performance and reducing database load.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "cf4ea2a8-e521-5e00-b419-d37f0d022a21",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3N8BBS7ZzK6dXvfsFvEhiU/ecaedb5f4b4362529731c42477b96329/performance-cloud-speed_outline.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1RFAMXCLB9sjQkMMXfporq",
-								"title": "Bring the drivers and libraries you love",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Hyperdrive currently supports any Postgres or Postgres-compatible databases, including those at major cloud providers, eliminating the need to move data or re-write your application. On top of that, Hyperdrive works with existing database drivers and libraries: no need to throw away the tools you love. ",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "111dcd6d-8214-592f-8fbb-1fb4e22472f1",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
-										},
-										"description": ""
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "6oeUdYZnksfmXwdTM4AvcG",
 						"title": "See a demo of Hyperdrive",
@@ -232,20 +131,7 @@
 						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "9Imr3fdxBO2KnKvMLC5sD",
-							"elementName": "See a demo Hyperdrive",
-							"standardText": null,
-							"text": "See a demo",
-							"url": "https://hyperdrive-demo.pages.dev/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": true,
-							"locale": "en-US"
-						},
+						"buttonOne": null,
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
