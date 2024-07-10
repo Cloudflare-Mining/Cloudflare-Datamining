@@ -10,7 +10,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -65,20 +64,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -91,8 +76,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -233,7 +217,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -486,20 +469,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -512,8 +481,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -728,7 +696,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -951,20 +918,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -977,8 +930,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -1128,7 +1080,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1351,20 +1302,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -1377,8 +1314,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -1528,7 +1464,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1751,20 +1686,6 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
@@ -1777,8 +1698,7 @@
 									"required": [
 										"success",
 										"errors",
-										"messages",
-										"result"
+										"messages"
 									],
 									"type": "object"
 								},
@@ -1928,7 +1848,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -2009,20 +1928,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -2035,8 +1940,7 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
 										},
