@@ -1,7 +1,7 @@
 {
-	"GET /radar/connection_tampering/summary": {
-		"description": "Distribution of connection tampering types over a given time period.",
-		"operationId": "radar-get-connection-tampering-summary",
+	"GET /radar/tcp_resets_timeouts/summary": {
+		"description": "Percentage distribution by connection stage of TCP connections terminated within the first 10 packets by a reset or timeout, for a given time period.",
+		"operationId": "radar-get-tcp-resets-timeouts-summary",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -205,27 +205,27 @@
 										"summary_0": {
 											"properties": {
 												"later_in_flow": {
-													"description": "Connections matching signatures for tampering later in the connection, after the transfer of multiple data packets.",
+													"description": "Connection resets within the first 10 packets from the client, but after the server has received multiple data packets.",
 													"example": "10",
 													"type": "string"
 												},
 												"no_match": {
-													"description": "Connections that do not match any tampering signatures.",
+													"description": "All other connections.",
 													"example": "65",
 													"type": "string"
 												},
 												"post_ack": {
-													"description": "Connections matching signatures for tampering after the receipt of a SYN packet and ACK packet, meaning the TCP connection was successfully established but the server did not receive any subsequent packets.",
+													"description": "Connection resets or timeouts after the server received both a SYN packet and an ACK packet, meaning the connection was successfully established.",
 													"example": "5",
 													"type": "string"
 												},
 												"post_psh": {
-													"description": "Connections matching signatures for tampering after the receipt of a packet with PSH flag set, following connection establishment.",
+													"description": "Connection resets or timeouts after the server received a packet with PSH flag set, following connection establishment.",
 													"example": "10",
 													"type": "string"
 												},
 												"post_syn": {
-													"description": "Connections matching signatures for tampering after the receipt of only a single SYN packet, and before the handshake completes.",
+													"description": "Connection resets or timeouts after the server received only a single SYN packet.",
 													"example": "10",
 													"type": "string"
 												}
@@ -307,9 +307,9 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Connection Tampering Summary",
+		"summary": "Get TCP Resets Timeouts Summary",
 		"tags": [
-			"Radar Connection Tampering"
+			"Radar TCP Resets Timeouts"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -323,9 +323,9 @@
 			"pro": true
 		}
 	},
-	"GET /radar/connection_tampering/timeseries_groups": {
-		"description": "Distribution of connection tampering types over time.",
-		"operationId": "radar-get-connection-tampering-timeseries-group",
+	"GET /radar/tcp_resets_timeouts/timeseries_groups": {
+		"description": "Percentage distribution by connection stage of TCP connections terminated within the first 10 packets by a reset or timeout, over time.",
+		"operationId": "radar-get-tcp-resets-timeouts-timeseries-group",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -555,45 +555,45 @@
 										"serie_0": {
 											"properties": {
 												"later_in_flow": {
-													"description": "Connections matching signatures for tampering later in the connection, after the transfer of multiple data packets.",
+													"description": "Connection resets within the first 10 packets from the client, but after the server has received multiple data packets.",
 													"items": {
-														"description": "Connections matching signatures for tampering later in the connection, after the transfer of multiple data packets.",
+														"description": "Connection resets within the first 10 packets from the client, but after the server has received multiple data packets.",
 														"example": "10",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"no_match": {
-													"description": "Connections that do not match any tampering signatures.",
+													"description": "All other connections.",
 													"items": {
-														"description": "Connections that do not match any tampering signatures.",
+														"description": "All other connections.",
 														"example": "65",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"post_ack": {
-													"description": "Connections matching signatures for tampering after the receipt of a SYN packet and ACK packet, meaning the TCP connection was successfully established but the server did not receive any subsequent packets.",
+													"description": "Connection resets or timeouts after the server received both a SYN packet and an ACK packet, meaning the connection was successfully established.",
 													"items": {
-														"description": "Connections matching signatures for tampering after the receipt of a SYN packet and ACK packet, meaning the TCP connection was successfully established but the server did not receive any subsequent packets.",
+														"description": "Connection resets or timeouts after the server received both a SYN packet and an ACK packet, meaning the connection was successfully established.",
 														"example": "5",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"post_psh": {
-													"description": "Connections matching signatures for tampering after the receipt of a packet with PSH flag set, following connection establishment.",
+													"description": "Connection resets or timeouts after the server received a packet with PSH flag set, following connection establishment.",
 													"items": {
-														"description": "Connections matching signatures for tampering after the receipt of a packet with PSH flag set, following connection establishment.",
+														"description": "Connection resets or timeouts after the server received a packet with PSH flag set, following connection establishment.",
 														"example": "10",
 														"type": "string"
 													},
 													"type": "array"
 												},
 												"post_syn": {
-													"description": "Connections matching signatures for tampering after the receipt of only a single SYN packet, and before the handshake completes.",
+													"description": "Connection resets or timeouts after the server received only a single SYN packet.",
 													"items": {
-														"description": "Connections matching signatures for tampering after the receipt of only a single SYN packet, and before the handshake completes.",
+														"description": "Connection resets or timeouts after the server received only a single SYN packet.",
 														"example": "10",
 														"type": "string"
 													},
@@ -685,9 +685,9 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Connection Tampering Time Series",
+		"summary": "Get TCP Resets Timeouts Time Series",
 		"tags": [
-			"Radar Connection Tampering"
+			"Radar TCP Resets Timeouts"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
