@@ -5,30 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations - </strong>Austin preferred or Remote US</p>
-<hr>
-<p><strong>About the Team</strong></p>
-<p>The BI team at Cloudflare is responsible for building and managing the cloud data analytics platform. Our focus is on developing a centralized cloud data analytics platform using open source technologies for internal Business Partners and Machine Learning teams. The team aims to make data more accessible, meet Cloudflare's critical business needs, and provide self-service reporting and analytics tools to support current and new business initiatives.</p>
-<p><strong>About the Role</strong></p>
-<p>This role will report to BI Team and work closely with the Finance &amp; BizOps team who is responsible for developing and maintaining key GTM metrics reporting and incubating new initiatives that cover across product, go-to-market and finance. This role will help develop analytics solutions and scale internal data processes. Success in this role comes from marrying a strong data background with acute business acumen and curiosity to deliver highly strategic and compelling insights.</p>
-<p><strong>What you'll do</strong></p>
+<p>We are looking for a thoughtful, detail-oriented team member to join our global Trust and Safety Legal Support Team. In this role, you will address legal requests seeking customer information and perform account reviews to assist in combating abuse in line with Cloudflare’s Terms of Service. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies.&nbsp;</p>
+<p><strong>Responsibilities</strong><strong>:</strong></p>
 <ul>
-	<li>Partner closely with internal stakeholders to gain a strong grasp of business, finance, and product analytical needs</li>
-	<li>Fundamental understanding of the data landscape i.e., tooling, tech stack, source systems etc.</li>
-	<li>Work closely with the Data Engineering team to improve the data collection and quality.</li>
-	<li>Design, build and support data or insight solutions to drive decision-making and/or incubate new data capabilities or business programs. Example projects include but not limited to product adoption scoring, product performance reporting, variable billing forecasting, product costing and margin analysis and GTM metrics reporting automation</li>
-	<li>Present the insights in an audience relevant manner, with key takeaways and recommendations being presented in a crisp and concise manner.</li>
-	<li>Deeply embedded in the Finance Biz Ops team and act as a technical advisor to the team in addressing data challenges and scaling solutions / programs from incubation stage to a longer-team high performing state</li>
+	<li>Be part of a world class globally-distributed team.</li>
+	<li>Help administer efficient and compliant handling of legal requests, including but not limited to requests for information (subpoenas, court orders, etc) from law enforcement and government officials and in response to third-party civil matters.</li>
+	<li>Be responsible for performing operations seamlessly and timely Service-Level Agreement (SLA) delivery along with maintaining a high level of quality and accuracy.&nbsp;</li>
+	<li>Partner with cross functional teams including Public Policy, Legal, and Product Engineering teams to ensure our policies and processes are carried out in a scalable fashion.</li>
+	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
+	<li>Participate in a rotating weekend coverage duty.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p><strong>Requirements</strong><strong>:</strong></p>
 <ul>
-	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required.</li>
-	<li>5 + years of data analyst experience with 1+ years of proven industry experience in a large scale environment (PBs scale, globally distributed teams).</li>
-	<li>Proven results oriented analysis that helped support positive change in the business strategy.</li>
-	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
-	<li>Strong experience in Python, R, SQL, Google BigQuery, Google Looker Studio or Tableau (or any other Big data/Cloud equivalent) etc.</li>
-	<li>Capable of multitasking and thriving in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
-	<li>Capable of working closely with business to ensure data initiatives are aligned with business needs and are of high quality.</li>
+	<li>1-3 years of legal support experience processing requests for user information, legal documents, or other relevant background experience in Trust &amp; Safety.</li>
+	<li>Demonstrate working knowledge of DNS and how the Internet works.</li>
+	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
+	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks to completion.</li>
+	<li>Comfortable navigating ambiguous matters.&nbsp;</li>
+	<li>A great attitude and team player.&nbsp;</li>
+</ul>
+<p><strong>Bonus Points:</strong></p>
+<ul>
+	<li>Experience with the global legal considerations related to legal requests seeking customer information.&nbsp;</li>
+	<li>You’ve interacted with law enforcement officials and agencies.</li>
+	<li>Hands-on experience with Cloudflare’s products and services.&nbsp;</li>
+	<li>Japanese fluency.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
