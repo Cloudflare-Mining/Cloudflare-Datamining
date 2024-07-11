@@ -520,11 +520,18 @@
 										"default": 7.5,
 										"type": "number"
 									},
+									"height": {
+										"maximum": 1024,
+										"type": "integer"
+									},
 									"image": {
 										"items": {
 											"type": "number"
 										},
 										"type": "array"
+									},
+									"image_b64": {
+										"type": "string"
 									},
 									"lora_weights": {
 										"items": {
@@ -544,6 +551,9 @@
 										},
 										"type": "array"
 									},
+									"negative_prompt": {
+										"type": "string"
+									},
 									"num_steps": {
 										"default": 20,
 										"maximum": 20,
@@ -553,9 +563,16 @@
 										"minLength": 1,
 										"type": "string"
 									},
+									"seed": {
+										"type": "integer"
+									},
 									"strength": {
 										"default": 1,
 										"type": "number"
+									},
+									"width": {
+										"maximum": 1024,
+										"type": "integer"
 									}
 								},
 								"required": [
