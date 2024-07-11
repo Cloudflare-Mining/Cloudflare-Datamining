@@ -6,7 +6,7 @@
 			"labels": [
 				"new"
 			],
-			"iconType": "cloud-multi",
+			"iconType": "globe",
 			"hasPermission": null
 		},
 		{
@@ -130,6 +130,14 @@
 				{
 					"title": "navigation.account.account_analytics",
 					"url": "/analytics",
+					"labels": [
+						"beta"
+					],
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.account_http_traffic",
+					"url": "/http-traffic",
 					"labels": [
 						"beta"
 					],
