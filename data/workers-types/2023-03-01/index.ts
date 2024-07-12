@@ -286,16 +286,16 @@ export interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   FixedLengthStream: typeof FixedLengthStream;
   IdentityTransformStream: typeof IdentityTransformStream;
   HTMLRewriter: typeof HTMLRewriter;
-  GPUAdapter: typeof gpuGPUAdapter;
-  GPUOutOfMemoryError: typeof gpuGPUOutOfMemoryError;
-  GPUValidationError: typeof gpuGPUValidationError;
-  GPUInternalError: typeof gpuGPUInternalError;
-  GPUDeviceLostInfo: typeof gpuGPUDeviceLostInfo;
-  GPUBufferUsage: typeof gpuGPUBufferUsage;
-  GPUShaderStage: typeof gpuGPUShaderStage;
-  GPUMapMode: typeof gpuGPUMapMode;
-  GPUTextureUsage: typeof gpuGPUTextureUsage;
-  GPUColorWrite: typeof gpuGPUColorWrite;
+  GPUAdapter: typeof GPUAdapter;
+  GPUOutOfMemoryError: typeof GPUOutOfMemoryError;
+  GPUValidationError: typeof GPUValidationError;
+  GPUInternalError: typeof GPUInternalError;
+  GPUDeviceLostInfo: typeof GPUDeviceLostInfo;
+  GPUBufferUsage: typeof GPUBufferUsage;
+  GPUShaderStage: typeof GPUShaderStage;
+  GPUMapMode: typeof GPUMapMode;
+  GPUTextureUsage: typeof GPUTextureUsage;
+  GPUColorWrite: typeof GPUColorWrite;
 }
 export declare function addEventListener<
   Type extends keyof WorkerGlobalScopeEventMap,
@@ -442,7 +442,7 @@ export declare abstract class Navigator {
       | FormData,
   ): boolean;
   readonly userAgent: string;
-  readonly gpu: gpuGPU;
+  readonly gpu: GPU;
 }
 /**
  * Provides access to performance-related information for the current page. It's part of the High Resolution Time API, but is enhanced by the Performance Timeline API, the Navigation Timing API, the User Timing API, and the Resource Timing API.
@@ -2523,65 +2523,61 @@ export interface SocketInfo {
   remoteAddress?: string;
   localAddress?: string;
 }
-export interface gpuGPU {
-  requestAdapter(
-    param1?: gpuGPURequestAdapterOptions,
-  ): Promise<gpuGPUAdapter | null>;
+export interface GPU {
+  requestAdapter(param1?: GPURequestAdapterOptions): Promise<GPUAdapter | null>;
 }
-export declare abstract class gpuGPUAdapter {
-  requestDevice(param1?: gpuGPUDeviceDescriptor): Promise<gpuGPUDevice>;
-  requestAdapterInfo(unmaskHints?: string[]): Promise<gpuGPUAdapterInfo>;
-  get features(): gpuGPUSupportedFeatures;
-  get limits(): gpuGPUSupportedLimits;
+export declare abstract class GPUAdapter {
+  requestDevice(param1?: GPUDeviceDescriptor): Promise<GPUDevice>;
+  requestAdapterInfo(unmaskHints?: string[]): Promise<GPUAdapterInfo>;
+  get features(): GPUSupportedFeatures;
+  get limits(): GPUSupportedLimits;
 }
-export interface gpuGPUDevice extends EventTarget {
-  createBuffer(param1: gpuGPUBufferDescriptor): gpuGPUBuffer;
+export interface GPUDevice extends EventTarget {
+  createBuffer(param1: GPUBufferDescriptor): GPUBuffer;
   createBindGroupLayout(
-    descriptor: gpuGPUBindGroupLayoutDescriptor,
-  ): gpuGPUBindGroupLayout;
-  createBindGroup(descriptor: gpuGPUBindGroupDescriptor): gpuGPUBindGroup;
-  createSampler(descriptor: gpuGPUSamplerDescriptor): gpuGPUSampler;
-  createShaderModule(
-    descriptor: gpuGPUShaderModuleDescriptor,
-  ): gpuGPUShaderModule;
+    descriptor: GPUBindGroupLayoutDescriptor,
+  ): GPUBindGroupLayout;
+  createBindGroup(descriptor: GPUBindGroupDescriptor): GPUBindGroup;
+  createSampler(descriptor: GPUSamplerDescriptor): GPUSampler;
+  createShaderModule(descriptor: GPUShaderModuleDescriptor): GPUShaderModule;
   createPipelineLayout(
-    descriptor: gpuGPUPipelineLayoutDescriptor,
-  ): gpuGPUPipelineLayout;
+    descriptor: GPUPipelineLayoutDescriptor,
+  ): GPUPipelineLayout;
   createComputePipeline(
-    descriptor: gpuGPUComputePipelineDescriptor,
-  ): gpuGPUComputePipeline;
+    descriptor: GPUComputePipelineDescriptor,
+  ): GPUComputePipeline;
   createRenderPipeline(
-    descriptor: gpuGPURenderPipelineDescriptor,
-  ): gpuGPURenderPipeline;
+    descriptor: GPURenderPipelineDescriptor,
+  ): GPURenderPipeline;
   createCommandEncoder(
-    descriptor?: gpuGPUCommandEncoderDescriptor,
-  ): gpuGPUCommandEncoder;
-  createTexture(param1: gpuGPUTextureDescriptor): gpuGPUTexture;
+    descriptor?: GPUCommandEncoderDescriptor,
+  ): GPUCommandEncoder;
+  createTexture(param1: GPUTextureDescriptor): GPUTexture;
   destroy(): void;
-  createQuerySet(descriptor: gpuGPUQuerySetDescriptor): gpuGPUQuerySet;
+  createQuerySet(descriptor: GPUQuerySetDescriptor): GPUQuerySet;
   pushErrorScope(filter: string): void;
-  popErrorScope(): Promise<gpuGPUError | null>;
-  get queue(): gpuGPUQueue;
-  get lost(): Promise<gpuGPUDeviceLostInfo>;
-  get features(): gpuGPUSupportedFeatures;
-  get limits(): gpuGPUSupportedLimits;
+  popErrorScope(): Promise<GPUError | null>;
+  get queue(): GPUQueue;
+  get lost(): Promise<GPUDeviceLostInfo>;
+  get features(): GPUSupportedFeatures;
+  get limits(): GPUSupportedLimits;
 }
-export interface gpuGPUDeviceDescriptor {
+export interface GPUDeviceDescriptor {
   label?: string;
   requiredFeatures?: string[];
   requiredLimits?: Record<string, number | bigint>;
-  defaultQueue?: gpuGPUQueueDescriptor;
+  defaultQueue?: GPUQueueDescriptor;
 }
-export interface gpuGPUBufferDescriptor {
+export interface GPUBufferDescriptor {
   label: string;
   size: number | bigint;
   usage: number;
   mappedAtCreation: boolean;
 }
-export interface gpuGPUQueueDescriptor {
+export interface GPUQueueDescriptor {
   label?: string;
 }
-export declare abstract class gpuGPUBufferUsage {
+export declare abstract class GPUBufferUsage {
   static readonly MAP_READ: number;
   static readonly MAP_WRITE: number;
   static readonly COPY_SRC: number;
@@ -2593,7 +2589,7 @@ export declare abstract class gpuGPUBufferUsage {
   static readonly INDIRECT: number;
   static readonly QUERY_RESOLVE: number;
 }
-export interface gpuGPUBuffer {
+export interface GPUBuffer {
   getMappedRange(size?: number | bigint, param2?: number | bigint): ArrayBuffer;
   unmap(): void;
   destroy(): void;
@@ -2606,59 +2602,59 @@ export interface gpuGPUBuffer {
   get usage(): number;
   get mapState(): string;
 }
-export declare abstract class gpuGPUShaderStage {
+export declare abstract class GPUShaderStage {
   static readonly VERTEX: number;
   static readonly FRAGMENT: number;
   static readonly COMPUTE: number;
 }
-export interface gpuGPUBindGroupLayoutDescriptor {
+export interface GPUBindGroupLayoutDescriptor {
   label?: string;
-  entries: gpuGPUBindGroupLayoutEntry[];
+  entries: GPUBindGroupLayoutEntry[];
 }
-export interface gpuGPUBindGroupLayoutEntry {
+export interface GPUBindGroupLayoutEntry {
   binding: number;
   visibility: number;
-  buffer?: gpuGPUBufferBindingLayout;
-  sampler?: gpuGPUSamplerBindingLayout;
-  texture?: gpuGPUTextureBindingLayout;
-  storageTexture?: gpuGPUStorageTextureBindingLayout;
+  buffer?: GPUBufferBindingLayout;
+  sampler?: GPUSamplerBindingLayout;
+  texture?: GPUTextureBindingLayout;
+  storageTexture?: GPUStorageTextureBindingLayout;
 }
-export interface gpuGPUStorageTextureBindingLayout {
+export interface GPUStorageTextureBindingLayout {
   access?: string;
   format: string;
   viewDimension?: string;
 }
-export interface gpuGPUTextureBindingLayout {
+export interface GPUTextureBindingLayout {
   sampleType?: string;
   viewDimension?: string;
   multisampled?: boolean;
 }
-export interface gpuGPUSamplerBindingLayout {
+export interface GPUSamplerBindingLayout {
   type?: string;
 }
-export interface gpuGPUBufferBindingLayout {
+export interface GPUBufferBindingLayout {
   type?: string;
   hasDynamicOffset?: boolean;
   minBindingSize?: number | bigint;
 }
-export interface gpuGPUBindGroupLayout {}
-export interface gpuGPUBindGroup {}
-export interface gpuGPUBindGroupDescriptor {
+export interface GPUBindGroupLayout {}
+export interface GPUBindGroup {}
+export interface GPUBindGroupDescriptor {
   label?: string;
-  layout: gpuGPUBindGroupLayout;
-  entries: gpuGPUBindGroupEntry[];
+  layout: GPUBindGroupLayout;
+  entries: GPUBindGroupEntry[];
 }
-export interface gpuGPUBindGroupEntry {
+export interface GPUBindGroupEntry {
   binding: number;
-  resource: gpuGPUBufferBinding | gpuGPUSampler;
+  resource: GPUBufferBinding | GPUSampler;
 }
-export interface gpuGPUBufferBinding {
-  buffer: gpuGPUBuffer;
+export interface GPUBufferBinding {
+  buffer: GPUBuffer;
   offset?: number | bigint;
   size?: number | bigint;
 }
-export interface gpuGPUSampler {}
-export interface gpuGPUSamplerDescriptor {
+export interface GPUSampler {}
+export interface GPUSamplerDescriptor {
   label?: string;
   addressModeU?: string;
   addressModeV?: string;
@@ -2671,76 +2667,74 @@ export interface gpuGPUSamplerDescriptor {
   compare: string;
   maxAnisotropy?: number;
 }
-export interface gpuGPUShaderModule {
-  getCompilationInfo(): Promise<gpuGPUCompilationInfo>;
+export interface GPUShaderModule {
+  getCompilationInfo(): Promise<GPUCompilationInfo>;
 }
-export interface gpuGPUShaderModuleDescriptor {
+export interface GPUShaderModuleDescriptor {
   label?: string;
   code: string;
 }
-export interface gpuGPUPipelineLayout {}
-export interface gpuGPUPipelineLayoutDescriptor {
+export interface GPUPipelineLayout {}
+export interface GPUPipelineLayoutDescriptor {
   label?: string;
-  bindGroupLayouts: gpuGPUBindGroupLayout[];
+  bindGroupLayouts: GPUBindGroupLayout[];
 }
-export interface gpuGPUComputePipeline {
-  getBindGroupLayout(index: number): gpuGPUBindGroupLayout;
+export interface GPUComputePipeline {
+  getBindGroupLayout(index: number): GPUBindGroupLayout;
 }
-export interface gpuGPUComputePipelineDescriptor {
+export interface GPUComputePipelineDescriptor {
   label?: string;
-  compute: gpuGPUProgrammableStage;
-  layout: string | gpuGPUPipelineLayout;
+  compute: GPUProgrammableStage;
+  layout: string | GPUPipelineLayout;
 }
-export interface gpuGPUProgrammableStage {
-  module: gpuGPUShaderModule;
+export interface GPUProgrammableStage {
+  module: GPUShaderModule;
   entryPoint: string;
   constants?: Record<string, number>;
 }
-export interface gpuGPUCommandEncoder {
+export interface GPUCommandEncoder {
   get label(): string;
   beginComputePass(
-    descriptor?: gpuGPUComputePassDescriptor,
-  ): gpuGPUComputePassEncoder;
-  beginRenderPass(
-    descriptor: gpuGPURenderPassDescriptor,
-  ): gpuGPURenderPassEncoder;
+    descriptor?: GPUComputePassDescriptor,
+  ): GPUComputePassEncoder;
+  beginRenderPass(descriptor: GPURenderPassDescriptor): GPURenderPassEncoder;
   copyBufferToBuffer(
-    source: gpuGPUBuffer,
+    source: GPUBuffer,
     sourceOffset: number | bigint,
-    destination: gpuGPUBuffer,
+    destination: GPUBuffer,
     destinationOffset: number | bigint,
     size: number | bigint,
   ): void;
-  finish(param0?: gpuGPUCommandBufferDescriptor): gpuGPUCommandBuffer;
+  finish(param0?: GPUCommandBufferDescriptor): GPUCommandBuffer;
   copyTextureToBuffer(
-    source: gpuGPUImageCopyTexture,
-    destination: gpuGPUImageCopyBuffer,
-    copySize: Iterable<number> | gpuGPUExtent3DDict,
+    source: GPUImageCopyTexture,
+    destination: GPUImageCopyBuffer,
+    copySize: Iterable<number> | GPUExtent3DDict,
   ): void;
   copyBufferToTexture(
-    source: gpuGPUImageCopyBuffer,
-    destination: gpuGPUImageCopyTexture,
-    copySize: Iterable<number> | gpuGPUExtent3DDict,
+    source: GPUImageCopyBuffer,
+    destination: GPUImageCopyTexture,
+    copySize: Iterable<number> | GPUExtent3DDict,
   ): void;
   copyTextureToTexture(
-    source: gpuGPUImageCopyTexture,
-    destination: gpuGPUImageCopyTexture,
-    copySize: Iterable<number> | gpuGPUExtent3DDict,
+    source: GPUImageCopyTexture,
+    destination: GPUImageCopyTexture,
+    copySize: Iterable<number> | GPUExtent3DDict,
   ): void;
   clearBuffer(
-    buffer: gpuGPUBuffer,
+    buffer: GPUBuffer,
     offset?: number | bigint,
     size?: number | bigint,
   ): void;
 }
-export interface gpuGPUCommandEncoderDescriptor {
+export interface GPUCommandEncoderDescriptor {
   label?: string;
 }
-export interface gpuGPUComputePassEncoder {
-  setPipeline(pipeline: gpuGPUComputePipeline): void;
+export interface GPUComputePassEncoder {
+  setPipeline(pipeline: GPUComputePipeline): void;
   setBindGroup(
     index: number,
-    bindGroup: gpuGPUBindGroup | null,
+    bindGroup: GPUBindGroup | null,
     dynamicOffsets?: Iterable<number>,
   ): void;
   dispatchWorkgroups(
@@ -2750,52 +2744,52 @@ export interface gpuGPUComputePassEncoder {
   ): void;
   end(): void;
 }
-export interface gpuGPUComputePassDescriptor {
+export interface GPUComputePassDescriptor {
   label?: string;
-  timestampWrites?: gpuGPUComputePassTimestampWrites;
+  timestampWrites?: GPUComputePassTimestampWrites;
 }
-export interface gpuGPUQuerySet {}
-export interface gpuGPUQuerySetDescriptor {
+export interface GPUQuerySet {}
+export interface GPUQuerySetDescriptor {
   label?: string;
 }
-export interface gpuGPUComputePassTimestampWrites {
-  querySet: gpuGPUQuerySet;
+export interface GPUComputePassTimestampWrites {
+  querySet: GPUQuerySet;
   beginningOfPassWriteIndex?: number;
   endOfPassWriteIndex?: number;
 }
-export interface gpuGPUCommandBufferDescriptor {
+export interface GPUCommandBufferDescriptor {
   label?: string;
 }
-export interface gpuGPUCommandBuffer {}
-export interface gpuGPUQueue {
-  submit(commandBuffers: gpuGPUCommandBuffer[]): void;
+export interface GPUCommandBuffer {}
+export interface GPUQueue {
+  submit(commandBuffers: GPUCommandBuffer[]): void;
   writeBuffer(
-    buffer: gpuGPUBuffer,
+    buffer: GPUBuffer,
     bufferOffset: number | bigint,
     data: ArrayBuffer | ArrayBufferView,
     dataOffset?: number | bigint,
     size?: number | bigint,
   ): void;
 }
-export declare abstract class gpuGPUMapMode {
+export declare abstract class GPUMapMode {
   static readonly READ: number;
   static readonly WRITE: number;
 }
-export interface gpuGPURequestAdapterOptions {
+export interface GPURequestAdapterOptions {
   powerPreference: string;
   forceFallbackAdapter?: boolean;
 }
-export interface gpuGPUAdapterInfo {
+export interface GPUAdapterInfo {
   get vendor(): string;
   get architecture(): string;
   get device(): string;
   get description(): string;
 }
-export interface gpuGPUSupportedFeatures {
+export interface GPUSupportedFeatures {
   has(name: string): boolean;
   keys(): string[];
 }
-export interface gpuGPUSupportedLimits {
+export interface GPUSupportedLimits {
   get maxTextureDimension1D(): number;
   get maxTextureDimension2D(): number;
   get maxTextureDimension3D(): number;
@@ -2828,17 +2822,17 @@ export interface gpuGPUSupportedLimits {
   get maxComputeWorkgroupSizeZ(): number;
   get maxComputeWorkgroupsPerDimension(): number;
 }
-export declare abstract class gpuGPUError {
+export declare abstract class GPUError {
   get message(): string;
 }
-export declare abstract class gpuGPUOutOfMemoryError extends gpuGPUError {}
-export declare abstract class gpuGPUInternalError extends gpuGPUError {}
-export declare abstract class gpuGPUValidationError extends gpuGPUError {}
-export declare abstract class gpuGPUDeviceLostInfo {
+export declare abstract class GPUOutOfMemoryError extends GPUError {}
+export declare abstract class GPUInternalError extends GPUError {}
+export declare abstract class GPUValidationError extends GPUError {}
+export declare abstract class GPUDeviceLostInfo {
   get message(): string;
   get reason(): string;
 }
-export interface gpuGPUCompilationMessage {
+export interface GPUCompilationMessage {
   get message(): string;
   get type(): string;
   get lineNum(): number;
@@ -2846,19 +2840,19 @@ export interface gpuGPUCompilationMessage {
   get offset(): number;
   get length(): number;
 }
-export interface gpuGPUCompilationInfo {
-  get messages(): gpuGPUCompilationMessage[];
+export interface GPUCompilationInfo {
+  get messages(): GPUCompilationMessage[];
 }
-export declare abstract class gpuGPUTextureUsage {
+export declare abstract class GPUTextureUsage {
   static readonly COPY_SRC: number;
   static readonly COPY_DST: number;
   static readonly TEXTURE_BINDING: number;
   static readonly STORAGE_BINDING: number;
   static readonly RENDER_ATTACHMENT: number;
 }
-export interface gpuGPUTextureDescriptor {
+export interface GPUTextureDescriptor {
   label: string;
-  size: number[] | gpuGPUExtent3DDict;
+  size: number[] | GPUExtent3DDict;
   mipLevelCount?: number;
   sampleCount?: number;
   dimension?: string;
@@ -2866,13 +2860,13 @@ export interface gpuGPUTextureDescriptor {
   usage: number;
   viewFormats?: string[];
 }
-export interface gpuGPUExtent3DDict {
+export interface GPUExtent3DDict {
   width: number;
   height?: number;
   depthOrArrayLayers?: number;
 }
-export interface gpuGPUTexture {
-  createView(descriptor?: gpuGPUTextureViewDescriptor): gpuGPUTextureView;
+export interface GPUTexture {
+  createView(descriptor?: GPUTextureViewDescriptor): GPUTextureView;
   destroy(): void;
   get width(): number;
   get height(): number;
@@ -2882,8 +2876,8 @@ export interface gpuGPUTexture {
   get format(): string;
   get usage(): number;
 }
-export interface gpuGPUTextureView {}
-export interface gpuGPUTextureViewDescriptor {
+export interface GPUTextureView {}
+export interface GPUTextureViewDescriptor {
   label: string;
   format: string;
   dimension: string;
@@ -2893,91 +2887,91 @@ export interface gpuGPUTextureViewDescriptor {
   baseArrayLayer?: number;
   arrayLayerCount: number;
 }
-export declare abstract class gpuGPUColorWrite {
+export declare abstract class GPUColorWrite {
   static readonly RED: number;
   static readonly GREEN: number;
   static readonly BLUE: number;
   static readonly ALPHA: number;
   static readonly ALL: number;
 }
-export interface gpuGPURenderPipeline {}
-export interface gpuGPURenderPipelineDescriptor {
+export interface GPURenderPipeline {}
+export interface GPURenderPipelineDescriptor {
   label?: string;
-  layout: string | gpuGPUPipelineLayout;
-  vertex: gpuGPUVertexState;
-  primitive?: gpuGPUPrimitiveState;
-  depthStencil?: gpuGPUDepthStencilState;
-  multisample?: gpuGPUMultisampleState;
-  fragment?: gpuGPUFragmentState;
+  layout: string | GPUPipelineLayout;
+  vertex: GPUVertexState;
+  primitive?: GPUPrimitiveState;
+  depthStencil?: GPUDepthStencilState;
+  multisample?: GPUMultisampleState;
+  fragment?: GPUFragmentState;
 }
-export interface gpuGPUVertexState {
-  module: gpuGPUShaderModule;
+export interface GPUVertexState {
+  module: GPUShaderModule;
   entryPoint: string;
   constants?: Record<string, number>;
-  buffers?: gpuGPUVertexBufferLayout[];
+  buffers?: GPUVertexBufferLayout[];
 }
-export interface gpuGPUVertexBufferLayout {
+export interface GPUVertexBufferLayout {
   arrayStride: number | bigint;
   stepMode?: string;
-  attributes: gpuGPUVertexAttribute[];
+  attributes: GPUVertexAttribute[];
 }
-export interface gpuGPUVertexAttribute {
+export interface GPUVertexAttribute {
   format: string;
   offset: number | bigint;
   shaderLocation: number;
 }
-export interface gpuGPUPrimitiveState {
+export interface GPUPrimitiveState {
   topology?: string;
   stripIndexFormat?: string;
   frontFace?: string;
   cullMode?: string;
   unclippedDepth?: boolean;
 }
-export interface gpuGPUStencilFaceState {
+export interface GPUStencilFaceState {
   compare?: string;
   failOp?: string;
   depthFailOp?: string;
   passOp?: string;
 }
-export interface gpuGPUDepthStencilState {
+export interface GPUDepthStencilState {
   format: string;
   depthWriteEnabled: boolean;
   depthCompare: string;
-  stencilFront?: gpuGPUStencilFaceState;
-  stencilBack?: gpuGPUStencilFaceState;
+  stencilFront?: GPUStencilFaceState;
+  stencilBack?: GPUStencilFaceState;
   stencilReadMask?: number;
   stencilWriteMask?: number;
   depthBias?: number;
   depthBiasSlopeScale?: number;
   depthBiasClamp?: number;
 }
-export interface gpuGPUMultisampleState {
+export interface GPUMultisampleState {
   count?: number;
   mask?: number;
   alphaToCoverageEnabled?: boolean;
 }
-export interface gpuGPUFragmentState {
-  module: gpuGPUShaderModule;
+export interface GPUFragmentState {
+  module: GPUShaderModule;
   entryPoint: string;
   constants?: Record<string, number>;
-  targets: gpuGPUColorTargetState[];
+  targets: GPUColorTargetState[];
 }
-export interface gpuGPUColorTargetState {
+export interface GPUColorTargetState {
   format: string;
-  blend: gpuGPUBlendState;
+  blend: GPUBlendState;
   writeMask?: number;
 }
-export interface gpuGPUBlendState {
-  color: gpuGPUBlendComponent;
-  alpha: gpuGPUBlendComponent;
+export interface GPUBlendState {
+  color: GPUBlendComponent;
+  alpha: GPUBlendComponent;
 }
-export interface gpuGPUBlendComponent {
+export interface GPUBlendComponent {
   operation?: string;
   srcFactor?: string;
   dstFactor?: string;
 }
-export interface gpuGPURenderPassEncoder {
-  setPipeline(pipeline: gpuGPURenderPipeline): void;
+export interface GPURenderPassEncoder {
+  setPipeline(pipeline: GPURenderPipeline): void;
   draw(
     vertexCount: number,
     instanceCount?: number,
@@ -2986,30 +2980,30 @@ export interface gpuGPURenderPassEncoder {
   ): void;
   end(): void;
 }
-export interface gpuGPURenderPassDescriptor {
+export interface GPURenderPassDescriptor {
   label?: string;
-  colorAttachments: gpuGPURenderPassColorAttachment[];
-  depthStencilAttachment?: gpuGPURenderPassDepthStencilAttachment;
-  occlusionQuerySet?: gpuGPUQuerySet;
-  timestampWrites?: gpuGPURenderPassTimestampWrites;
+  colorAttachments: GPURenderPassColorAttachment[];
+  depthStencilAttachment?: GPURenderPassDepthStencilAttachment;
+  occlusionQuerySet?: GPUQuerySet;
+  timestampWrites?: GPURenderPassTimestampWrites;
   maxDrawCount?: number | bigint;
 }
-export interface gpuGPURenderPassColorAttachment {
-  view: gpuGPUTextureView;
+export interface GPURenderPassColorAttachment {
+  view: GPUTextureView;
   depthSlice?: number;
-  resolveTarget?: gpuGPUTextureView;
-  clearValue?: number[] | gpuGPUColorDict;
+  resolveTarget?: GPUTextureView;
+  clearValue?: number[] | GPUColorDict;
   loadOp: string;
   storeOp: string;
 }
-export interface gpuGPUColorDict {
+export interface GPUColorDict {
   r: number;
   g: number;
   b: number;
   a: number;
 }
-export interface gpuGPURenderPassDepthStencilAttachment {
-  view: gpuGPUTextureView;
+export interface GPURenderPassDepthStencilAttachment {
+  view: GPUTextureView;
   depthClearValue?: number;
   depthLoadOp?: string;
   depthStoreOp?: string;
@@ -3019,24 +3013,24 @@ export interface gpuGPURenderPassDepthStencilAttachment {
   stencilStoreOp?: string;
   stencilReadOnly?: boolean;
 }
-export interface gpuGPURenderPassTimestampWrites {
-  querySet: gpuGPUQuerySet;
+export interface GPURenderPassTimestampWrites {
+  querySet: GPUQuerySet;
   beginningOfPassWriteIndex?: number;
   endOfPassWriteIndex?: number;
 }
-export interface gpuGPUImageCopyTexture {
-  texture: gpuGPUTexture;
+export interface GPUImageCopyTexture {
+  texture: GPUTexture;
   mipLevel?: number;
-  origin?: number[] | gpuGPUOrigin3DDict;
+  origin?: number[] | GPUOrigin3DDict;
   aspect?: string;
 }
-export interface gpuGPUImageCopyBuffer {
-  buffer: gpuGPUBuffer;
+export interface GPUImageCopyBuffer {
+  buffer: GPUBuffer;
   offset?: number | bigint;
   bytesPerRow?: number;
   rowsPerImage?: number;
 }
-export interface gpuGPUOrigin3DDict {
+export interface GPUOrigin3DDict {
   x?: number;
   y?: number;
   z?: number;
@@ -4082,7 +4076,7 @@ export interface IncomingRequestCfPropertiesTLSClientAuthPlaceholder {
   certNotAfter: "";
 }
 /** Possible outcomes of TLS verification */
-export type CertVerificationStatus =
+export declare type CertVerificationStatus =
   /** Authentication succeeded */
   | "SUCCESS"
   /** No certificate was presented */
@@ -4100,7 +4094,7 @@ export type CertVerificationStatus =
 /**
  * An upstream endpoint's response to a TCP `keepalive` message from Cloudflare.
  */
-export type IncomingRequestCfPropertiesEdgeRequestKeepAliveStatus =
+export declare type IncomingRequestCfPropertiesEdgeRequestKeepAliveStatus =
   | 0 /** Unknown */
   | 1 /** no keepalives (not found) */
   | 2 /** no connection re-use, opening keepalive connection failed */
@@ -4108,7 +4102,7 @@ export type IncomingRequestCfPropertiesEdgeRequestKeepAliveStatus =
   | 4 /** connection re-use, refused by the origin server (`TCP FIN`) */
   | 5; /** connection re-use, accepted by the origin server */
 /** ISO 3166-1 Alpha-2 codes */
-export type Iso3166Alpha2Code =
+export declare type Iso3166Alpha2Code =
   | "AD"
   | "AE"
   | "AF"
@@ -4359,7 +4353,14 @@ export type Iso3166Alpha2Code =
   | "ZM"
   | "ZW";
 /** The 2-letter continent codes Cloudflare uses */
-export type ContinentCode = "AF" | "AN" | "AS" | "EU" | "NA" | "OC" | "SA";
+export declare type ContinentCode =
+  | "AF"
+  | "AN"
+  | "AS"
+  | "EU"
+  | "NA"
+  | "OC"
+  | "SA";
 export type CfProperties<HostMetadata = unknown> =
   | IncomingRequestCfProperties<HostMetadata>
   | RequestInitCfProperties;
@@ -4460,7 +4461,7 @@ export interface SendEmail {
 export declare abstract class EmailEvent extends ExtendableEvent {
   readonly message: ForwardableEmailMessage;
 }
-export type EmailExportedHandler<Env = unknown> = (
+export declare type EmailExportedHandler<Env = unknown> = (
   message: ForwardableEmailMessage,
   env: Env,
   ctx: ExecutionContext,
@@ -4588,6 +4589,20 @@ export interface PubSubMessage {
 export interface JsonWebKeyWithKid extends JsonWebKey {
   // Key Identifier of the JWK
   readonly kid: string;
+}
+export interface RateLimitOptions {
+  key: string;
+}
+export interface RateLimitOutcome {
+  success: boolean;
+}
+export interface RateLimit {
+  /**
+   * Rate limit a request based on the provided options.
+   * @see https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/
+   * @returns A promise that resolves with the outcome of the rate limit.
+   */
+  limit(options: RateLimitOptions): Promise<RateLimitOutcome>;
 }
 // Namespace for RPC utility types. Unfortunately, we can't use a `module` here as these types need
 // to referenced by `Fetcher`. This is included in the "importable" version of the types which

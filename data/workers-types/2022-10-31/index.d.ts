@@ -54,7 +54,7 @@ declare class DOMException extends Error {
   get stack(): any;
   set stack(value: any);
 }
-declare type WorkerGlobalScopeEventMap = {
+type WorkerGlobalScopeEventMap = {
   fetch: FetchEvent;
   scheduled: ScheduledEvent;
   queue: QueueEvent;
@@ -65,7 +65,7 @@ declare abstract class WorkerGlobalScope extends EventTarget<WorkerGlobalScopeEv
   EventTarget: typeof EventTarget;
 }
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console) */
-declare interface Console {
+interface Console {
   "assert"(condition?: boolean, ...data: any[]): void;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/clear_static) */
   clear(): void;
@@ -106,8 +106,8 @@ declare interface Console {
   warn(...data: any[]): void;
 }
 declare const console: Console;
-declare type BufferSource = ArrayBufferView | ArrayBuffer;
-declare type TypedArray =
+type BufferSource = ArrayBufferView | ArrayBuffer;
+type TypedArray =
   | Int8Array
   | Uint8Array
   | Uint8ClampedArray
@@ -198,7 +198,7 @@ declare namespace WebAssembly {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope)
  */
-declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
+interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   DOMException: typeof DOMException;
   WorkerGlobalScope: typeof WorkerGlobalScope;
   btoa(data: string): string;
@@ -281,16 +281,16 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   FixedLengthStream: typeof FixedLengthStream;
   IdentityTransformStream: typeof IdentityTransformStream;
   HTMLRewriter: typeof HTMLRewriter;
-  GPUAdapter: typeof gpuGPUAdapter;
-  GPUOutOfMemoryError: typeof gpuGPUOutOfMemoryError;
-  GPUValidationError: typeof gpuGPUValidationError;
-  GPUInternalError: typeof gpuGPUInternalError;
-  GPUDeviceLostInfo: typeof gpuGPUDeviceLostInfo;
-  GPUBufferUsage: typeof gpuGPUBufferUsage;
-  GPUShaderStage: typeof gpuGPUShaderStage;
-  GPUMapMode: typeof gpuGPUMapMode;
-  GPUTextureUsage: typeof gpuGPUTextureUsage;
-  GPUColorWrite: typeof gpuGPUColorWrite;
+  GPUAdapter: typeof GPUAdapter;
+  GPUOutOfMemoryError: typeof GPUOutOfMemoryError;
+  GPUValidationError: typeof GPUValidationError;
+  GPUInternalError: typeof GPUInternalError;
+  GPUDeviceLostInfo: typeof GPUDeviceLostInfo;
+  GPUBufferUsage: typeof GPUBufferUsage;
+  GPUShaderStage: typeof GPUShaderStage;
+  GPUMapMode: typeof GPUMapMode;
+  GPUTextureUsage: typeof GPUTextureUsage;
+  GPUColorWrite: typeof GPUColorWrite;
 }
 declare function addEventListener<Type extends keyof WorkerGlobalScopeEventMap>(
   type: Type,
@@ -363,45 +363,42 @@ declare const scheduler: Scheduler;
 declare const performance: Performance;
 declare const origin: string;
 declare const navigator: Navigator;
-declare interface TestController {}
-declare interface ExecutionContext {
+interface TestController {}
+interface ExecutionContext {
   waitUntil(promise: Promise<any>): void;
   passThroughOnException(): void;
 }
-declare type ExportedHandlerFetchHandler<
-  Env = unknown,
-  CfHostMetadata = unknown,
-> = (
+type ExportedHandlerFetchHandler<Env = unknown, CfHostMetadata = unknown> = (
   request: Request<CfHostMetadata, IncomingRequestCfProperties<CfHostMetadata>>,
   env: Env,
   ctx: ExecutionContext,
 ) => Response | Promise<Response>;
-declare type ExportedHandlerTailHandler<Env = unknown> = (
+type ExportedHandlerTailHandler<Env = unknown> = (
   events: TraceItem[],
   env: Env,
   ctx: ExecutionContext,
 ) => void | Promise<void>;
-declare type ExportedHandlerTraceHandler<Env = unknown> = (
+type ExportedHandlerTraceHandler<Env = unknown> = (
   traces: TraceItem[],
   env: Env,
   ctx: ExecutionContext,
 ) => void | Promise<void>;
-declare type ExportedHandlerScheduledHandler<Env = unknown> = (
+type ExportedHandlerScheduledHandler<Env = unknown> = (
   controller: ScheduledController,
   env: Env,
   ctx: ExecutionContext,
 ) => void | Promise<void>;
-declare type ExportedHandlerQueueHandler<Env = unknown, Message = unknown> = (
+type ExportedHandlerQueueHandler<Env = unknown, Message = unknown> = (
   batch: MessageBatch<Message>,
   env: Env,
   ctx: ExecutionContext,
 ) => void | Promise<void>;
-declare type ExportedHandlerTestHandler<Env = unknown> = (
+type ExportedHandlerTestHandler<Env = unknown> = (
   controller: TestController,
   env: Env,
   ctx: ExecutionContext,
 ) => void | Promise<void>;
-declare interface ExportedHandler<
+interface ExportedHandler<
   Env = unknown,
   QueueHandlerMessage = unknown,
   CfHostMetadata = unknown,
@@ -414,7 +411,7 @@ declare interface ExportedHandler<
   email?: EmailExportedHandler<Env>;
   queue?: ExportedHandlerQueueHandler<Env, QueueHandlerMessage>;
 }
-declare interface StructuredSerializeOptions {
+interface StructuredSerializeOptions {
   transfer?: any[];
 }
 declare abstract class PromiseRejectionEvent extends Event {
@@ -435,24 +432,24 @@ declare abstract class Navigator {
       | FormData,
   ): boolean;
   readonly userAgent: string;
-  readonly gpu: gpuGPU;
+  readonly gpu: GPU;
 }
 /**
  * Provides access to performance-related information for the current page. It's part of the High Resolution Time API, but is enhanced by the Performance Timeline API, the Navigation Timing API, the User Timing API, and the Resource Timing API.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance)
  */
-declare interface Performance {
+interface Performance {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/timeOrigin) */
   readonly timeOrigin: number;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/now) */
   now(): number;
 }
-declare interface AlarmInvocationInfo {
+interface AlarmInvocationInfo {
   readonly isRetry: boolean;
   readonly retryCount: number;
 }
-declare interface DurableObject {
+interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
   alarm?(): void | Promise<void>;
   webSocketMessage?(
@@ -467,7 +464,7 @@ declare interface DurableObject {
   ): void | Promise<void>;
   webSocketError?(ws: WebSocket, error: unknown): void | Promise<void>;
 }
-declare type DurableObjectStub<
+type DurableObjectStub<
   T extends Rpc.DurableObjectBranded | undefined = undefined,
 > = Fetcher<
   T,
@@ -476,12 +473,12 @@ declare type DurableObjectStub<
   readonly id: DurableObjectId;
   readonly name?: string;
 };
-declare interface DurableObjectId {
+interface DurableObjectId {
   toString(): string;
   equals(other: DurableObjectId): boolean;
   readonly name?: string;
 }
-declare interface DurableObjectNamespace<
+interface DurableObjectNamespace<
   T extends Rpc.DurableObjectBranded | undefined = undefined,
 > {
   newUniqueId(
@@ -497,11 +494,11 @@ declare interface DurableObjectNamespace<
     jurisdiction: DurableObjectJurisdiction,
   ): DurableObjectNamespace<T>;
 }
-declare type DurableObjectJurisdiction = "eu" | "fedramp";
-declare interface DurableObjectNamespaceNewUniqueIdOptions {
+type DurableObjectJurisdiction = "eu" | "fedramp";
+interface DurableObjectNamespaceNewUniqueIdOptions {
   jurisdiction?: DurableObjectJurisdiction;
 }
-declare type DurableObjectLocationHint =
+type DurableObjectLocationHint =
   | "wnam"
   | "enam"
   | "sam"
@@ -511,10 +508,10 @@ declare type DurableObjectLocationHint =
   | "oc"
   | "afr"
   | "me";
-declare interface DurableObjectNamespaceGetDurableObjectOptions {
+interface DurableObjectNamespaceGetDurableObjectOptions {
   locationHint?: DurableObjectLocationHint;
 }
-declare interface DurableObjectState {
+interface DurableObjectState {
   waitUntil(promise: Promise<any>): void;
   readonly id: DurableObjectId;
   readonly storage: DurableObjectStorage;
@@ -528,7 +525,7 @@ declare interface DurableObjectState {
   getHibernatableWebSocketEventTimeout(): number | null;
   getTags(ws: WebSocket): string[];
 }
-declare interface DurableObjectTransaction {
+interface DurableObjectTransaction {
   get<T = unknown>(
     key: string,
     options?: DurableObjectGetOptions,
@@ -559,7 +556,7 @@ declare interface DurableObjectTransaction {
   ): Promise<void>;
   deleteAlarm(options?: DurableObjectSetAlarmOptions): Promise<void>;
 }
-declare interface DurableObjectStorage {
+interface DurableObjectStorage {
   get<T = unknown>(
     key: string,
     options?: DurableObjectGetOptions,
@@ -595,7 +592,7 @@ declare interface DurableObjectStorage {
   sync(): Promise<void>;
   transactionSync<T>(closure: () => T): T;
 }
-declare interface DurableObjectListOptions {
+interface DurableObjectListOptions {
   start?: string;
   startAfter?: string;
   end?: string;
@@ -605,19 +602,19 @@ declare interface DurableObjectListOptions {
   allowConcurrency?: boolean;
   noCache?: boolean;
 }
-declare interface DurableObjectGetOptions {
+interface DurableObjectGetOptions {
   allowConcurrency?: boolean;
   noCache?: boolean;
 }
-declare interface DurableObjectGetAlarmOptions {
+interface DurableObjectGetAlarmOptions {
   allowConcurrency?: boolean;
 }
-declare interface DurableObjectPutOptions {
+interface DurableObjectPutOptions {
   allowConcurrency?: boolean;
   allowUnconfirmed?: boolean;
   noCache?: boolean;
 }
-declare interface DurableObjectSetAlarmOptions {
+interface DurableObjectSetAlarmOptions {
   allowConcurrency?: boolean;
   allowUnconfirmed?: boolean;
 }
@@ -626,10 +623,10 @@ declare class WebSocketRequestResponsePair {
   get request(): string;
   get response(): string;
 }
-declare interface AnalyticsEngineDataset {
+interface AnalyticsEngineDataset {
   writeDataPoint(event?: AnalyticsEngineDataPoint): void;
 }
-declare interface AnalyticsEngineDataPoint {
+interface AnalyticsEngineDataPoint {
   indexes?: ((ArrayBuffer | string) | null)[];
   doubles?: number[];
   blobs?: ((ArrayBuffer | string) | null)[];
@@ -743,20 +740,20 @@ declare class Event {
   static readonly AT_TARGET: number;
   static readonly BUBBLING_PHASE: number;
 }
-declare interface EventInit {
+interface EventInit {
   bubbles?: boolean;
   cancelable?: boolean;
   composed?: boolean;
 }
-declare type EventListener<EventType extends Event = Event> = (
+type EventListener<EventType extends Event = Event> = (
   event: EventType,
 ) => void;
-declare interface EventListenerObject<EventType extends Event = Event> {
+interface EventListenerObject<EventType extends Event = Event> {
   handleEvent(event: EventType): void;
 }
-declare type EventListenerOrEventListenerObject<
-  EventType extends Event = Event,
-> = EventListener<EventType> | EventListenerObject<EventType>;
+type EventListenerOrEventListenerObject<EventType extends Event = Event> =
+  | EventListener<EventType>
+  | EventListenerObject<EventType>;
 declare class EventTarget<
   EventMap extends Record<string, Event> = Record<string, Event>,
 > {
@@ -800,16 +797,16 @@ declare class EventTarget<
    */
   dispatchEvent(event: EventMap[keyof EventMap]): boolean;
 }
-declare interface EventTargetEventListenerOptions {
+interface EventTargetEventListenerOptions {
   capture?: boolean;
 }
-declare interface EventTargetAddEventListenerOptions {
+interface EventTargetAddEventListenerOptions {
   capture?: boolean;
   passive?: boolean;
   once?: boolean;
   signal?: AbortSignal;
 }
-declare interface EventTargetHandlerObject {
+interface EventTargetHandlerObject {
   handleEvent: (event: Event) => any | undefined;
 }
 declare class AbortController {
@@ -848,10 +845,10 @@ declare abstract class AbortSignal extends EventTarget {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/throwIfAborted) */
   throwIfAborted(): void;
 }
-declare interface Scheduler {
+interface Scheduler {
   wait(delay: number, maybeOptions?: SchedulerWaitOptions): Promise<void>;
 }
-declare interface SchedulerWaitOptions {
+interface SchedulerWaitOptions {
   signal?: AbortSignal;
 }
 declare abstract class ExtendableEvent extends Event {
@@ -867,7 +864,7 @@ declare class CustomEvent<T = any> extends Event {
    */
   get detail(): T;
 }
-declare interface CustomEventCustomEventInit {
+interface CustomEventCustomEventInit {
   bubbles?: boolean;
   cancelable?: boolean;
   composed?: boolean;
@@ -892,7 +889,7 @@ declare class Blob {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/stream) */
   stream(): ReadableStream;
 }
-declare interface BlobOptions {
+interface BlobOptions {
   type?: string;
 }
 declare class File extends Blob {
@@ -906,7 +903,7 @@ declare class File extends Blob {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/File/lastModified) */
   get lastModified(): number;
 }
-declare interface FileOptions {
+interface FileOptions {
   type?: string;
   lastModified?: number;
 }
@@ -923,7 +920,7 @@ declare abstract class Cache {
   ): Promise<Response | undefined>;
   put(request: RequestInfo, response: Response): Promise<void>;
 }
-declare interface CacheQueryOptions {
+interface CacheQueryOptions {
   ignoreMethod?: boolean;
 }
 declare abstract class Crypto {
@@ -1044,11 +1041,11 @@ declare abstract class CryptoKey {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey/usages) */
   readonly usages: string[];
 }
-declare interface CryptoKeyPair {
+interface CryptoKeyPair {
   publicKey: CryptoKey;
   privateKey: CryptoKey;
 }
-declare interface JsonWebKey {
+interface JsonWebKey {
   kty: string;
   use?: string;
   key_ops?: string[];
@@ -1068,12 +1065,12 @@ declare interface JsonWebKey {
   oth?: RsaOtherPrimesInfo[];
   k?: string;
 }
-declare interface RsaOtherPrimesInfo {
+interface RsaOtherPrimesInfo {
   r?: string;
   d?: string;
   t?: string;
 }
-declare interface SubtleCryptoDeriveKeyAlgorithm {
+interface SubtleCryptoDeriveKeyAlgorithm {
   name: string;
   salt?: ArrayBuffer;
   iterations?: number;
@@ -1081,7 +1078,7 @@ declare interface SubtleCryptoDeriveKeyAlgorithm {
   $public?: CryptoKey;
   info?: ArrayBuffer;
 }
-declare interface SubtleCryptoEncryptAlgorithm {
+interface SubtleCryptoEncryptAlgorithm {
   name: string;
   iv?: ArrayBuffer;
   additionalData?: ArrayBuffer;
@@ -1090,7 +1087,7 @@ declare interface SubtleCryptoEncryptAlgorithm {
   length?: number;
   label?: ArrayBuffer;
 }
-declare interface SubtleCryptoGenerateKeyAlgorithm {
+interface SubtleCryptoGenerateKeyAlgorithm {
   name: string;
   hash?: string | SubtleCryptoHashAlgorithm;
   modulusLength?: number;
@@ -1098,45 +1095,45 @@ declare interface SubtleCryptoGenerateKeyAlgorithm {
   length?: number;
   namedCurve?: string;
 }
-declare interface SubtleCryptoHashAlgorithm {
+interface SubtleCryptoHashAlgorithm {
   name: string;
 }
-declare interface SubtleCryptoImportKeyAlgorithm {
+interface SubtleCryptoImportKeyAlgorithm {
   name: string;
   hash?: string | SubtleCryptoHashAlgorithm;
   length?: number;
   namedCurve?: string;
   compressed?: boolean;
 }
-declare interface SubtleCryptoSignAlgorithm {
+interface SubtleCryptoSignAlgorithm {
   name: string;
   hash?: string | SubtleCryptoHashAlgorithm;
   dataLength?: number;
   saltLength?: number;
 }
-declare interface CryptoKeyKeyAlgorithm {
+interface CryptoKeyKeyAlgorithm {
   name: string;
 }
-declare interface CryptoKeyAesKeyAlgorithm {
+interface CryptoKeyAesKeyAlgorithm {
   name: string;
   length: number;
 }
-declare interface CryptoKeyHmacKeyAlgorithm {
+interface CryptoKeyHmacKeyAlgorithm {
   name: string;
   hash: CryptoKeyKeyAlgorithm;
   length: number;
 }
-declare interface CryptoKeyRsaKeyAlgorithm {
+interface CryptoKeyRsaKeyAlgorithm {
   name: string;
   modulusLength: number;
   publicExponent: ArrayBuffer | (ArrayBuffer | ArrayBufferView);
   hash?: CryptoKeyKeyAlgorithm;
 }
-declare interface CryptoKeyEllipticKeyAlgorithm {
+interface CryptoKeyEllipticKeyAlgorithm {
   name: string;
   namedCurve: string;
 }
-declare interface CryptoKeyArbitraryKeyAlgorithm {
+interface CryptoKeyArbitraryKeyAlgorithm {
   name: string;
   hash?: CryptoKeyKeyAlgorithm;
   namedCurve?: string;
@@ -1193,14 +1190,14 @@ declare class TextEncoder {
   ): TextEncoderEncodeIntoResult;
   get encoding(): string;
 }
-declare interface TextDecoderConstructorOptions {
+interface TextDecoderConstructorOptions {
   fatal: boolean;
   ignoreBOM: boolean;
 }
-declare interface TextDecoderDecodeOptions {
+interface TextDecoderDecodeOptions {
   stream: boolean;
 }
-declare interface TextEncoderEncodeIntoResult {
+interface TextEncoderEncodeIntoResult {
   read: number;
   written: number;
 }
@@ -1217,7 +1214,7 @@ declare class ErrorEvent extends Event {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/error) */
   get error(): any;
 }
-declare interface ErrorEventErrorEventInit {
+interface ErrorEventErrorEventInit {
   message?: string;
   filename?: string;
   lineno?: number;
@@ -1251,7 +1248,7 @@ declare class FormData {
   ): void;
   [Symbol.iterator](): IterableIterator<[key: string, value: File | string]>;
 }
-declare interface ContentOptions {
+interface ContentOptions {
   html?: boolean;
 }
 declare class HTMLRewriter {
@@ -1263,23 +1260,23 @@ declare class HTMLRewriter {
   onDocument(handlers: HTMLRewriterDocumentContentHandlers): HTMLRewriter;
   transform(response: Response): Response;
 }
-declare interface HTMLRewriterElementContentHandlers {
+interface HTMLRewriterElementContentHandlers {
   element?(element: Element): void | Promise<void>;
   comments?(comment: Comment): void | Promise<void>;
   text?(element: Text): void | Promise<void>;
 }
-declare interface HTMLRewriterDocumentContentHandlers {
+interface HTMLRewriterDocumentContentHandlers {
   doctype?(doctype: Doctype): void | Promise<void>;
   comments?(comment: Comment): void | Promise<void>;
   text?(text: Text): void | Promise<void>;
   end?(end: DocumentEnd): void | Promise<void>;
 }
-declare interface Doctype {
+interface Doctype {
   readonly name: string | null;
   readonly publicId: string | null;
   readonly systemId: string | null;
 }
-declare interface Element {
+interface Element {
   tagName: string;
   readonly attributes: IterableIterator<string[]>;
   readonly removed: boolean;
@@ -1298,13 +1295,13 @@ declare interface Element {
   setInnerContent(content: string, options?: ContentOptions): Element;
   onEndTag(handler: (tag: EndTag) => void | Promise<void>): void;
 }
-declare interface EndTag {
+interface EndTag {
   name: string;
   before(content: string, options?: ContentOptions): EndTag;
   after(content: string, options?: ContentOptions): EndTag;
   remove(): EndTag;
 }
-declare interface Comment {
+interface Comment {
   text: string;
   readonly removed: boolean;
   before(content: string, options?: ContentOptions): Comment;
@@ -1312,7 +1309,7 @@ declare interface Comment {
   replace(content: string, options?: ContentOptions): Comment;
   remove(): Comment;
 }
-declare interface Text {
+interface Text {
   readonly text: string;
   readonly lastInTextNode: boolean;
   readonly removed: boolean;
@@ -1321,7 +1318,7 @@ declare interface Text {
   replace(content: string, options?: ContentOptions): Text;
   remove(): Text;
 }
-declare interface DocumentEnd {
+interface DocumentEnd {
   append(content: string, options?: ContentOptions): DocumentEnd;
 }
 declare abstract class FetchEvent extends ExtendableEvent {
@@ -1331,7 +1328,7 @@ declare abstract class FetchEvent extends ExtendableEvent {
   respondWith(promise: Response | Promise<Response>): void;
   passThroughOnException(): void;
 }
-declare type HeadersInit =
+type HeadersInit =
   | Headers
   | Iterable<Iterable<string>>
   | Record<string, string>;
@@ -1355,7 +1352,7 @@ declare class Headers {
   values(): IterableIterator<string>;
   [Symbol.iterator](): IterableIterator<[key: string, value: string]>;
 }
-declare type BodyInit =
+type BodyInit =
   | ReadableStream<Uint8Array>
   | string
   | ArrayBuffer
@@ -1396,7 +1393,7 @@ declare class Response extends Body {
   get webSocket(): WebSocket | null;
   get cf(): any | undefined;
 }
-declare interface ResponseInit {
+interface ResponseInit {
   status?: number;
   statusText?: string;
   headers?: HeadersInit;
@@ -1404,10 +1401,10 @@ declare interface ResponseInit {
   webSocket?: WebSocket | null;
   encodeBody?: "automatic" | "manual";
 }
-declare type RequestInfo<
-  CfHostMetadata = unknown,
-  Cf = CfProperties<CfHostMetadata>,
-> = Request<CfHostMetadata, Cf> | string | URL;
+type RequestInfo<CfHostMetadata = unknown, Cf = CfProperties<CfHostMetadata>> =
+  | Request<CfHostMetadata, Cf>
+  | string
+  | URL;
 declare class Request<
   CfHostMetadata = unknown,
   Cf = CfProperties<CfHostMetadata>,
@@ -1460,7 +1457,7 @@ declare class Request<
    */
   get keepalive(): boolean;
 }
-declare interface RequestInit<Cf = CfProperties> {
+interface RequestInit<Cf = CfProperties> {
   /** A string to set request's method. */
   method?: string;
   /** A Headers object, an object literal, or an array of two-item arrays to set request's headers. */
@@ -1476,10 +1473,9 @@ declare interface RequestInit<Cf = CfProperties> {
   /** An AbortSignal to set request's signal. */
   signal?: AbortSignal | null;
 }
-declare type Service<
-  T extends Rpc.WorkerEntrypointBranded | undefined = undefined,
-> = Fetcher<T>;
-declare type Fetcher<
+type Service<T extends Rpc.WorkerEntrypointBranded | undefined = undefined> =
+  Fetcher<T>;
+type Fetcher<
   T extends Rpc.EntrypointBranded | undefined = undefined,
   Reserved extends string = never,
 > = (T extends Rpc.EntrypointBranded
@@ -1488,16 +1484,16 @@ declare type Fetcher<
   fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
   connect(address: SocketAddress | string, options?: SocketOptions): Socket;
 };
-declare interface FetcherPutOptions {
+interface FetcherPutOptions {
   expiration?: number;
   expirationTtl?: number;
 }
-declare interface KVNamespaceListKey<Metadata, Key extends string = string> {
+interface KVNamespaceListKey<Metadata, Key extends string = string> {
   name: Key;
   expiration?: number;
   metadata?: Metadata;
 }
-declare type KVNamespaceListResult<Metadata, Key extends string = string> =
+type KVNamespaceListResult<Metadata, Key extends string = string> =
   | {
       list_complete: false;
       keys: KVNamespaceListKey<Metadata, Key>[];
@@ -1509,7 +1505,7 @@ declare type KVNamespaceListResult<Metadata, Key extends string = string> =
       keys: KVNamespaceListKey<Metadata, Key>[];
       cacheStatus: string | null;
     };
-declare interface KVNamespace<Key extends string = string> {
+interface KVNamespace<Key extends string = string> {
   get(
     key: Key,
     options?: Partial<KVNamespaceGetOptions<undefined>>,
@@ -1583,49 +1579,49 @@ declare interface KVNamespace<Key extends string = string> {
   ): Promise<KVNamespaceGetWithMetadataResult<ReadableStream, Metadata>>;
   delete(key: Key): Promise<void>;
 }
-declare interface KVNamespaceListOptions {
+interface KVNamespaceListOptions {
   limit?: number;
   prefix?: string | null;
   cursor?: string | null;
 }
-declare interface KVNamespaceGetOptions<Type> {
+interface KVNamespaceGetOptions<Type> {
   type: Type;
   cacheTtl?: number;
 }
-declare interface KVNamespacePutOptions {
+interface KVNamespacePutOptions {
   expiration?: number;
   expirationTtl?: number;
   metadata?: any | null;
 }
-declare interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
+interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
   value: Value | null;
   metadata: Metadata | null;
   cacheStatus: string | null;
 }
-declare type QueueContentType = "text" | "bytes" | "json" | "v8";
-declare interface Queue<Body = unknown> {
+type QueueContentType = "text" | "bytes" | "json" | "v8";
+interface Queue<Body = unknown> {
   send(message: Body, options?: QueueSendOptions): Promise<void>;
   sendBatch(
     messages: Iterable<MessageSendRequest<Body>>,
     options?: QueueSendBatchOptions,
   ): Promise<void>;
 }
-declare interface QueueSendOptions {
+interface QueueSendOptions {
   contentType?: QueueContentType;
   delaySeconds?: number;
 }
-declare interface QueueSendBatchOptions {
+interface QueueSendBatchOptions {
   delaySeconds?: number;
 }
-declare interface MessageSendRequest<Body = unknown> {
+interface MessageSendRequest<Body = unknown> {
   body: Body;
   contentType?: QueueContentType;
   delaySeconds?: number;
 }
-declare interface QueueRetryOptions {
+interface QueueRetryOptions {
   delaySeconds?: number;
 }
-declare interface Message<Body = unknown> {
+interface Message<Body = unknown> {
   readonly id: string;
   readonly timestamp: Date;
   readonly body: Body;
@@ -1633,26 +1629,26 @@ declare interface Message<Body = unknown> {
   retry(options?: QueueRetryOptions): void;
   ack(): void;
 }
-declare interface QueueEvent<Body = unknown> extends ExtendableEvent {
+interface QueueEvent<Body = unknown> extends ExtendableEvent {
   readonly messages: readonly Message<Body>[];
   readonly queue: string;
   retryAll(options?: QueueRetryOptions): void;
   ackAll(): void;
 }
-declare interface MessageBatch<Body = unknown> {
+interface MessageBatch<Body = unknown> {
   readonly messages: readonly Message<Body>[];
   readonly queue: string;
   retryAll(options?: QueueRetryOptions): void;
   ackAll(): void;
 }
-declare interface R2Error extends Error {
+interface R2Error extends Error {
   readonly name: string;
   readonly code: number;
   readonly message: string;
   readonly action: string;
   readonly stack: any;
 }
-declare interface R2ListOptions {
+interface R2ListOptions {
   limit?: number;
   prefix?: string;
   cursor?: string;
@@ -1701,7 +1697,7 @@ declare abstract class R2Bucket {
   delete(keys: string | string[]): Promise<void>;
   list(options?: R2ListOptions): Promise<R2Objects>;
 }
-declare interface R2MultipartUpload {
+interface R2MultipartUpload {
   readonly key: string;
   readonly uploadId: string;
   uploadPart(
@@ -1711,7 +1707,7 @@ declare interface R2MultipartUpload {
   abort(): Promise<void>;
   complete(uploadedParts: R2UploadedPart[]): Promise<R2Object>;
 }
-declare interface R2UploadedPart {
+interface R2UploadedPart {
   partNumber: number;
   etag: string;
 }
@@ -1729,7 +1725,7 @@ declare abstract class R2Object {
   readonly storageClass: string;
   writeHttpMetadata(headers: Headers): void;
 }
-declare interface R2ObjectBody extends R2Object {
+interface R2ObjectBody extends R2Object {
   get body(): ReadableStream;
   get bodyUsed(): boolean;
   arrayBuffer(): Promise<ArrayBuffer>;
@@ -1737,7 +1733,7 @@ declare interface R2ObjectBody extends R2Object {
   json<T>(): Promise<T>;
   blob(): Promise<Blob>;
 }
-declare type R2Range =
+type R2Range =
   | {
       offset: number;
       length?: number;
@@ -1749,18 +1745,18 @@ declare type R2Range =
   | {
       suffix: number;
     };
-declare interface R2Conditional {
+interface R2Conditional {
   etagMatches?: string;
   etagDoesNotMatch?: string;
   uploadedBefore?: Date;
   uploadedAfter?: Date;
   secondsGranularity?: boolean;
 }
-declare interface R2GetOptions {
+interface R2GetOptions {
   onlyIf?: R2Conditional | Headers;
   range?: R2Range | Headers;
 }
-declare interface R2PutOptions {
+interface R2PutOptions {
   onlyIf?: R2Conditional | Headers;
   httpMetadata?: R2HTTPMetadata | Headers;
   customMetadata?: Record<string, string>;
@@ -1771,12 +1767,12 @@ declare interface R2PutOptions {
   sha512?: ArrayBuffer | string;
   storageClass?: string;
 }
-declare interface R2MultipartOptions {
+interface R2MultipartOptions {
   httpMetadata?: R2HTTPMetadata | Headers;
   customMetadata?: Record<string, string>;
   storageClass?: string;
 }
-declare interface R2Checksums {
+interface R2Checksums {
   readonly md5?: ArrayBuffer;
   readonly sha1?: ArrayBuffer;
   readonly sha256?: ArrayBuffer;
@@ -1784,14 +1780,14 @@ declare interface R2Checksums {
   readonly sha512?: ArrayBuffer;
   toJSON(): R2StringChecksums;
 }
-declare interface R2StringChecksums {
+interface R2StringChecksums {
   md5?: string;
   sha1?: string;
   sha256?: string;
   sha384?: string;
   sha512?: string;
 }
-declare interface R2HTTPMetadata {
+interface R2HTTPMetadata {
   contentType?: string;
   contentLanguage?: string;
   contentDisposition?: string;
@@ -1799,7 +1795,7 @@ declare interface R2HTTPMetadata {
   cacheControl?: string;
   cacheExpiry?: Date;
 }
-declare type R2Objects = {
+type R2Objects = {
   objects: R2Object[];
   delimitedPrefixes: string[];
 } & (
@@ -1816,16 +1812,16 @@ declare abstract class ScheduledEvent extends ExtendableEvent {
   readonly cron: string;
   noRetry(): void;
 }
-declare interface ScheduledController {
+interface ScheduledController {
   readonly scheduledTime: number;
   readonly cron: string;
   noRetry(): void;
 }
-declare interface QueuingStrategy<T = any> {
+interface QueuingStrategy<T = any> {
   highWaterMark?: number | bigint;
   size?: (chunk: T) => number | bigint;
 }
-declare interface UnderlyingSink<W = any> {
+interface UnderlyingSink<W = any> {
   type?: string;
   start?: (controller: WritableStreamDefaultController) => void | Promise<void>;
   write?: (
@@ -1835,14 +1831,14 @@ declare interface UnderlyingSink<W = any> {
   abort?: (reason: any) => void | Promise<void>;
   close?: () => void | Promise<void>;
 }
-declare interface UnderlyingByteSource {
+interface UnderlyingByteSource {
   type: "bytes";
   autoAllocateChunkSize?: number;
   start?: (controller: ReadableByteStreamController) => void | Promise<void>;
   pull?: (controller: ReadableByteStreamController) => void | Promise<void>;
   cancel?: (reason: any) => void | Promise<void>;
 }
-declare interface UnderlyingSource<R = any> {
+interface UnderlyingSource<R = any> {
   type?: "" | undefined;
   start?: (
     controller: ReadableStreamDefaultController<R>,
@@ -1853,7 +1849,7 @@ declare interface UnderlyingSource<R = any> {
   cancel?: (reason: any) => void | Promise<void>;
   expectedLength?: number | bigint;
 }
-declare interface Transformer<I = any, O = any> {
+interface Transformer<I = any, O = any> {
   readableType?: string;
   writableType?: string;
   start?: (
@@ -1869,7 +1865,7 @@ declare interface Transformer<I = any, O = any> {
   cancel?: (reason: any) => void | Promise<void>;
   expectedLength?: number;
 }
-declare interface StreamPipeOptions {
+interface StreamPipeOptions {
   /**
    * Pipes this readable stream to a given writable stream destination. The way in which the piping process behaves under various error conditions can be customized with a number of passed options. It returns a promise that fulfills when the piping process completes successfully, or rejects if any errors were encountered.
    *
@@ -1892,7 +1888,7 @@ declare interface StreamPipeOptions {
   preventCancel?: boolean;
   signal?: AbortSignal;
 }
-declare type ReadableStreamReadResult<R = any> =
+type ReadableStreamReadResult<R = any> =
   | {
       done: false;
       value: R;
@@ -1906,7 +1902,7 @@ declare type ReadableStreamReadResult<R = any> =
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream)
  */
-declare interface ReadableStream<R = any> {
+interface ReadableStream<R = any> {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/locked) */
   get locked(): boolean;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/cancel) */
@@ -1967,10 +1963,10 @@ declare class ReadableStreamBYOBReader {
     view: T,
   ): Promise<ReadableStreamReadResult<T>>;
 }
-declare interface ReadableStreamBYOBReaderReadableStreamBYOBReaderReadOptions {
+interface ReadableStreamBYOBReaderReadableStreamBYOBReaderReadOptions {
   min?: number;
 }
-declare interface ReadableStreamGetReaderOptions {
+interface ReadableStreamGetReaderOptions {
   /**
    * Creates a ReadableStreamBYOBReader and locks the stream to the new reader.
    *
@@ -1979,7 +1975,7 @@ declare interface ReadableStreamGetReaderOptions {
   mode: "byob";
 }
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest) */
-declare interface ReadableStreamBYOBRequest {
+interface ReadableStreamBYOBRequest {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/view) */
   get view(): Uint8Array | null;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/respond) */
@@ -1989,7 +1985,7 @@ declare interface ReadableStreamBYOBRequest {
   get atLeast(): number | null;
 }
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController) */
-declare interface ReadableStreamDefaultController<R = any> {
+interface ReadableStreamDefaultController<R = any> {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/desiredSize) */
   get desiredSize(): number | null;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/close) */
@@ -2000,7 +1996,7 @@ declare interface ReadableStreamDefaultController<R = any> {
   error(reason: any): void;
 }
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController) */
-declare interface ReadableByteStreamController {
+interface ReadableByteStreamController {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/byobRequest) */
   get byobRequest(): ReadableStreamBYOBRequest | null;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/desiredSize) */
@@ -2017,14 +2013,14 @@ declare interface ReadableByteStreamController {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController)
  */
-declare interface WritableStreamDefaultController {
+interface WritableStreamDefaultController {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/signal) */
   get signal(): AbortSignal;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/error) */
   error(reason?: any): void;
 }
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController) */
-declare interface TransformStreamDefaultController<O = any> {
+interface TransformStreamDefaultController<O = any> {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/desiredSize) */
   get desiredSize(): number | null;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/enqueue) */
@@ -2034,7 +2030,7 @@ declare interface TransformStreamDefaultController<O = any> {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/terminate) */
   terminate(): void;
 }
-declare interface ReadableWritablePair<R = any, W = any> {
+interface ReadableWritablePair<R = any, W = any> {
   /**
    * Provides a convenient, chainable way of piping this readable stream through a transform stream (or any other { writable, readable } pair). It simply pipes the stream into the writable side of the supplied pair, and returns the readable side for further use.
    *
@@ -2097,10 +2093,10 @@ declare class IdentityTransformStream extends TransformStream<
 > {
   constructor(queuingStrategy?: IdentityTransformStreamQueuingStrategy);
 }
-declare interface IdentityTransformStreamQueuingStrategy {
+interface IdentityTransformStreamQueuingStrategy {
   highWaterMark?: number | bigint;
 }
-declare interface ReadableStreamValuesOptions {
+interface ReadableStreamValuesOptions {
   preventCancel?: boolean;
 }
 declare class CompressionStream extends TransformStream<
@@ -2128,7 +2124,7 @@ declare class TextDecoderStream extends TransformStream<
   get fatal(): boolean;
   get ignoreBOM(): boolean;
 }
-declare interface TextDecoderStreamTextDecoderStreamInit {
+interface TextDecoderStreamTextDecoderStreamInit {
   fatal?: boolean;
   ignoreBOM?: boolean;
 }
@@ -2148,7 +2144,7 @@ declare class CountQueuingStrategy implements QueuingStrategy {
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy/size) */
   get size(): (chunk?: any) => number;
 }
-declare interface QueuingStrategyInit {
+interface QueuingStrategyInit {
   /**
    * Creates a new ByteLengthQueuingStrategy with the provided high water mark.
    *
@@ -2156,7 +2152,7 @@ declare interface QueuingStrategyInit {
    */
   highWaterMark: number;
 }
-declare interface ScriptVersion {
+interface ScriptVersion {
   id?: string;
   tag?: string;
   message?: string;
@@ -2165,7 +2161,7 @@ declare abstract class TailEvent extends ExtendableEvent {
   readonly events: TraceItem[];
   readonly traces: TraceItem[];
 }
-declare interface TraceItem {
+interface TraceItem {
   readonly event:
     | (
         | TraceItemFetchEventInfo
@@ -2190,84 +2186,84 @@ declare interface TraceItem {
   readonly scriptTags?: string[];
   readonly outcome: string;
 }
-declare interface TraceItemAlarmEventInfo {
+interface TraceItemAlarmEventInfo {
   readonly scheduledTime: Date;
 }
-declare interface TraceItemCustomEventInfo {}
-declare interface TraceItemScheduledEventInfo {
+interface TraceItemCustomEventInfo {}
+interface TraceItemScheduledEventInfo {
   readonly scheduledTime: number;
   readonly cron: string;
 }
-declare interface TraceItemQueueEventInfo {
+interface TraceItemQueueEventInfo {
   readonly queue: string;
   readonly batchSize: number;
 }
-declare interface TraceItemEmailEventInfo {
+interface TraceItemEmailEventInfo {
   readonly mailFrom: string;
   readonly rcptTo: string;
   readonly rawSize: number;
 }
-declare interface TraceItemTailEventInfo {
+interface TraceItemTailEventInfo {
   readonly consumedEvents: TraceItemTailEventInfoTailItem[];
 }
-declare interface TraceItemTailEventInfoTailItem {
+interface TraceItemTailEventInfoTailItem {
   readonly scriptName: string | null;
 }
-declare interface TraceItemFetchEventInfo {
+interface TraceItemFetchEventInfo {
   readonly response?: TraceItemFetchEventInfoResponse;
   readonly request: TraceItemFetchEventInfoRequest;
 }
-declare interface TraceItemFetchEventInfoRequest {
+interface TraceItemFetchEventInfoRequest {
   readonly cf?: any;
   readonly headers: Record<string, string>;
   readonly method: string;
   readonly url: string;
   getUnredacted(): TraceItemFetchEventInfoRequest;
 }
-declare interface TraceItemFetchEventInfoResponse {
+interface TraceItemFetchEventInfoResponse {
   readonly status: number;
 }
-declare interface TraceItemJsRpcEventInfo {
+interface TraceItemJsRpcEventInfo {
   readonly rpcMethod: string;
 }
-declare interface TraceItemHibernatableWebSocketEventInfo {
+interface TraceItemHibernatableWebSocketEventInfo {
   readonly getWebSocketEvent:
     | TraceItemHibernatableWebSocketEventInfoMessage
     | TraceItemHibernatableWebSocketEventInfoClose
     | TraceItemHibernatableWebSocketEventInfoError;
 }
-declare interface TraceItemHibernatableWebSocketEventInfoMessage {
+interface TraceItemHibernatableWebSocketEventInfoMessage {
   readonly webSocketEventType: string;
 }
-declare interface TraceItemHibernatableWebSocketEventInfoClose {
+interface TraceItemHibernatableWebSocketEventInfoClose {
   readonly webSocketEventType: string;
   readonly code: number;
   readonly wasClean: boolean;
 }
-declare interface TraceItemHibernatableWebSocketEventInfoError {
+interface TraceItemHibernatableWebSocketEventInfoError {
   readonly webSocketEventType: string;
 }
-declare interface TraceLog {
+interface TraceLog {
   readonly timestamp: number;
   readonly level: string;
   readonly message: any;
 }
-declare interface TraceException {
+interface TraceException {
   readonly timestamp: number;
   readonly message: string;
   readonly name: string;
   readonly stack?: string;
 }
-declare interface TraceDiagnosticChannelEvent {
+interface TraceDiagnosticChannelEvent {
   readonly timestamp: number;
   readonly channel: string;
   readonly message: any;
 }
-declare interface TraceMetrics {
+interface TraceMetrics {
   readonly cpuTime: number;
   readonly wallTime: number;
 }
-declare interface UnsafeTraceMetrics {
+interface UnsafeTraceMetrics {
   fromTrace(item: TraceItem): TraceMetrics;
 }
 declare class URL {
@@ -2373,7 +2369,7 @@ declare class URLPattern {
     baseURL?: string,
   ): URLPatternURLPatternResult | null;
 }
-declare interface URLPatternURLPatternInit {
+interface URLPatternURLPatternInit {
   protocol?: string;
   username?: string;
   password?: string;
@@ -2384,11 +2380,11 @@ declare interface URLPatternURLPatternInit {
   hash?: string;
   baseURL?: string;
 }
-declare interface URLPatternURLPatternComponentResult {
+interface URLPatternURLPatternComponentResult {
   input: string;
   groups: Record<string, string>;
 }
-declare interface URLPatternURLPatternResult {
+interface URLPatternURLPatternResult {
   inputs: (string | URLPatternURLPatternInit)[];
   protocol: URLPatternURLPatternComponentResult;
   username: URLPatternURLPatternComponentResult;
@@ -2399,7 +2395,7 @@ declare interface URLPatternURLPatternResult {
   search: URLPatternURLPatternComponentResult;
   hash: URLPatternURLPatternComponentResult;
 }
-declare interface URLPatternURLPatternOptions {
+interface URLPatternURLPatternOptions {
   ignoreCase?: boolean;
 }
 declare class CloseEvent extends Event {
@@ -2423,7 +2419,7 @@ declare class CloseEvent extends Event {
    */
   readonly wasClean: boolean;
 }
-declare interface CloseEventInit {
+interface CloseEventInit {
   code?: number;
   reason?: string;
   wasClean?: boolean;
@@ -2432,10 +2428,10 @@ declare class MessageEvent extends Event {
   constructor(type: string, initializer: MessageEventInit);
   readonly data: ArrayBuffer | string;
 }
-declare interface MessageEventInit {
+interface MessageEventInit {
   data: ArrayBuffer | string;
 }
-declare type WebSocketEventMap = {
+type WebSocketEventMap = {
   close: CloseEvent;
   message: MessageEvent;
   open: Event;
@@ -2497,7 +2493,7 @@ declare const WebSocketPair: {
     1: WebSocket;
   };
 };
-declare interface Socket {
+interface Socket {
   get readable(): ReadableStream;
   get writable(): WritableStream;
   get closed(): Promise<void>;
@@ -2505,81 +2501,77 @@ declare interface Socket {
   close(): Promise<void>;
   startTls(options?: TlsOptions): Socket;
 }
-declare interface SocketOptions {
+interface SocketOptions {
   secureTransport?: string;
   allowHalfOpen: boolean;
   highWaterMark?: number | bigint;
 }
-declare interface SocketAddress {
+interface SocketAddress {
   hostname: string;
   port: number;
 }
-declare interface TlsOptions {
+interface TlsOptions {
   expectedServerHostname?: string;
 }
-declare interface SocketInfo {
+interface SocketInfo {
   remoteAddress?: string;
   localAddress?: string;
 }
-declare interface gpuGPU {
-  requestAdapter(
-    param1?: gpuGPURequestAdapterOptions,
-  ): Promise<gpuGPUAdapter | null>;
+interface GPU {
+  requestAdapter(param1?: GPURequestAdapterOptions): Promise<GPUAdapter | null>;
 }
-declare abstract class gpuGPUAdapter {
-  requestDevice(param1?: gpuGPUDeviceDescriptor): Promise<gpuGPUDevice>;
-  requestAdapterInfo(unmaskHints?: string[]): Promise<gpuGPUAdapterInfo>;
-  get features(): gpuGPUSupportedFeatures;
-  get limits(): gpuGPUSupportedLimits;
+declare abstract class GPUAdapter {
+  requestDevice(param1?: GPUDeviceDescriptor): Promise<GPUDevice>;
+  requestAdapterInfo(unmaskHints?: string[]): Promise<GPUAdapterInfo>;
+  get features(): GPUSupportedFeatures;
+  get limits(): GPUSupportedLimits;
 }
-declare interface gpuGPUDevice extends EventTarget {
-  createBuffer(param1: gpuGPUBufferDescriptor): gpuGPUBuffer;
+interface GPUDevice extends EventTarget {
+  createBuffer(param1: GPUBufferDescriptor): GPUBuffer;
   createBindGroupLayout(
-    descriptor: gpuGPUBindGroupLayoutDescriptor,
-  ): gpuGPUBindGroupLayout;
-  createBindGroup(descriptor: gpuGPUBindGroupDescriptor): gpuGPUBindGroup;
-  createSampler(descriptor: gpuGPUSamplerDescriptor): gpuGPUSampler;
-  createShaderModule(
-    descriptor: gpuGPUShaderModuleDescriptor,
-  ): gpuGPUShaderModule;
+    descriptor: GPUBindGroupLayoutDescriptor,
+  ): GPUBindGroupLayout;
+  createBindGroup(descriptor: GPUBindGroupDescriptor): GPUBindGroup;
+  createSampler(descriptor: GPUSamplerDescriptor): GPUSampler;
+  createShaderModule(descriptor: GPUShaderModuleDescriptor): GPUShaderModule;
   createPipelineLayout(
-    descriptor: gpuGPUPipelineLayoutDescriptor,
-  ): gpuGPUPipelineLayout;
+    descriptor: GPUPipelineLayoutDescriptor,
+  ): GPUPipelineLayout;
   createComputePipeline(
-    descriptor: gpuGPUComputePipelineDescriptor,
-  ): gpuGPUComputePipeline;
+    descriptor: GPUComputePipelineDescriptor,
+  ): GPUComputePipeline;
   createRenderPipeline(
-    descriptor: gpuGPURenderPipelineDescriptor,
-  ): gpuGPURenderPipeline;
+    descriptor: GPURenderPipelineDescriptor,
+  ): GPURenderPipeline;
   createCommandEncoder(
-    descriptor?: gpuGPUCommandEncoderDescriptor,
-  ): gpuGPUCommandEncoder;
-  createTexture(param1: gpuGPUTextureDescriptor): gpuGPUTexture;
+    descriptor?: GPUCommandEncoderDescriptor,
+  ): GPUCommandEncoder;
+  createTexture(param1: GPUTextureDescriptor): GPUTexture;
   destroy(): void;
-  createQuerySet(descriptor: gpuGPUQuerySetDescriptor): gpuGPUQuerySet;
+  createQuerySet(descriptor: GPUQuerySetDescriptor): GPUQuerySet;
   pushErrorScope(filter: string): void;
-  popErrorScope(): Promise<gpuGPUError | null>;
-  get queue(): gpuGPUQueue;
-  get lost(): Promise<gpuGPUDeviceLostInfo>;
-  get features(): gpuGPUSupportedFeatures;
-  get limits(): gpuGPUSupportedLimits;
+  popErrorScope(): Promise<GPUError | null>;
+  get queue(): GPUQueue;
+  get lost(): Promise<GPUDeviceLostInfo>;
+  get features(): GPUSupportedFeatures;
+  get limits(): GPUSupportedLimits;
 }
-declare interface gpuGPUDeviceDescriptor {
+interface GPUDeviceDescriptor {
   label?: string;
   requiredFeatures?: string[];
   requiredLimits?: Record<string, number | bigint>;
-  defaultQueue?: gpuGPUQueueDescriptor;
+  defaultQueue?: GPUQueueDescriptor;
 }
-declare interface gpuGPUBufferDescriptor {
+interface GPUBufferDescriptor {
   label: string;
   size: number | bigint;
   usage: number;
   mappedAtCreation: boolean;
 }
-declare interface gpuGPUQueueDescriptor {
+interface GPUQueueDescriptor {
   label?: string;
 }
-declare abstract class gpuGPUBufferUsage {
+declare abstract class GPUBufferUsage {
   static readonly MAP_READ: number;
   static readonly MAP_WRITE: number;
   static readonly COPY_SRC: number;
@@ -2591,7 +2583,7 @@ declare abstract class gpuGPUBufferUsage {
   static readonly INDIRECT: number;
   static readonly QUERY_RESOLVE: number;
 }
-declare interface gpuGPUBuffer {
+interface GPUBuffer {
   getMappedRange(size?: number | bigint, param2?: number | bigint): ArrayBuffer;
   unmap(): void;
   destroy(): void;
@@ -2604,59 +2596,59 @@ declare interface gpuGPUBuffer {
   get usage(): number;
   get mapState(): string;
 }
-declare abstract class gpuGPUShaderStage {
+declare abstract class GPUShaderStage {
   static readonly VERTEX: number;
   static readonly FRAGMENT: number;
   static readonly COMPUTE: number;
 }
-declare interface gpuGPUBindGroupLayoutDescriptor {
+interface GPUBindGroupLayoutDescriptor {
   label?: string;
-  entries: gpuGPUBindGroupLayoutEntry[];
+  entries: GPUBindGroupLayoutEntry[];
 }
-declare interface gpuGPUBindGroupLayoutEntry {
+interface GPUBindGroupLayoutEntry {
   binding: number;
   visibility: number;
-  buffer?: gpuGPUBufferBindingLayout;
-  sampler?: gpuGPUSamplerBindingLayout;
-  texture?: gpuGPUTextureBindingLayout;
-  storageTexture?: gpuGPUStorageTextureBindingLayout;
+  buffer?: GPUBufferBindingLayout;
+  sampler?: GPUSamplerBindingLayout;
+  texture?: GPUTextureBindingLayout;
+  storageTexture?: GPUStorageTextureBindingLayout;
 }
-declare interface gpuGPUStorageTextureBindingLayout {
+interface GPUStorageTextureBindingLayout {
   access?: string;
   format: string;
   viewDimension?: string;
 }
-declare interface gpuGPUTextureBindingLayout {
+interface GPUTextureBindingLayout {
   sampleType?: string;
   viewDimension?: string;
   multisampled?: boolean;
 }
-declare interface gpuGPUSamplerBindingLayout {
+interface GPUSamplerBindingLayout {
   type?: string;
 }
-declare interface gpuGPUBufferBindingLayout {
+interface GPUBufferBindingLayout {
   type?: string;
   hasDynamicOffset?: boolean;
   minBindingSize?: number | bigint;
 }
-declare interface gpuGPUBindGroupLayout {}
-declare interface gpuGPUBindGroup {}
-declare interface gpuGPUBindGroupDescriptor {
+interface GPUBindGroupLayout {}
+interface GPUBindGroup {}
+interface GPUBindGroupDescriptor {
   label?: string;
-  layout: gpuGPUBindGroupLayout;
-  entries: gpuGPUBindGroupEntry[];
+  layout: GPUBindGroupLayout;
+  entries: GPUBindGroupEntry[];
 }
-declare interface gpuGPUBindGroupEntry {
+interface GPUBindGroupEntry {
   binding: number;
-  resource: gpuGPUBufferBinding | gpuGPUSampler;
+  resource: GPUBufferBinding | GPUSampler;
 }
-declare interface gpuGPUBufferBinding {
-  buffer: gpuGPUBuffer;
+interface GPUBufferBinding {
+  buffer: GPUBuffer;
   offset?: number | bigint;
   size?: number | bigint;
 }
-declare interface gpuGPUSampler {}
-declare interface gpuGPUSamplerDescriptor {
+interface GPUSampler {}
+interface GPUSamplerDescriptor {
   label?: string;
   addressModeU?: string;
   addressModeV?: string;
@@ -2669,76 +2661,74 @@ declare interface gpuGPUSamplerDescriptor {
   compare: string;
   maxAnisotropy?: number;
 }
-declare interface gpuGPUShaderModule {
-  getCompilationInfo(): Promise<gpuGPUCompilationInfo>;
+interface GPUShaderModule {
+  getCompilationInfo(): Promise<GPUCompilationInfo>;
 }
-declare interface gpuGPUShaderModuleDescriptor {
+interface GPUShaderModuleDescriptor {
   label?: string;
   code: string;
 }
-declare interface gpuGPUPipelineLayout {}
-declare interface gpuGPUPipelineLayoutDescriptor {
+interface GPUPipelineLayout {}
+interface GPUPipelineLayoutDescriptor {
   label?: string;
-  bindGroupLayouts: gpuGPUBindGroupLayout[];
+  bindGroupLayouts: GPUBindGroupLayout[];
 }
-declare interface gpuGPUComputePipeline {
-  getBindGroupLayout(index: number): gpuGPUBindGroupLayout;
+interface GPUComputePipeline {
+  getBindGroupLayout(index: number): GPUBindGroupLayout;
 }
-declare interface gpuGPUComputePipelineDescriptor {
+interface GPUComputePipelineDescriptor {
   label?: string;
-  compute: gpuGPUProgrammableStage;
-  layout: string | gpuGPUPipelineLayout;
+  compute: GPUProgrammableStage;
+  layout: string | GPUPipelineLayout;
 }
-declare interface gpuGPUProgrammableStage {
-  module: gpuGPUShaderModule;
+interface GPUProgrammableStage {
+  module: GPUShaderModule;
   entryPoint: string;
   constants?: Record<string, number>;
 }
-declare interface gpuGPUCommandEncoder {
+interface GPUCommandEncoder {
   get label(): string;
   beginComputePass(
-    descriptor?: gpuGPUComputePassDescriptor,
-  ): gpuGPUComputePassEncoder;
-  beginRenderPass(
-    descriptor: gpuGPURenderPassDescriptor,
-  ): gpuGPURenderPassEncoder;
+    descriptor?: GPUComputePassDescriptor,
+  ): GPUComputePassEncoder;
+  beginRenderPass(descriptor: GPURenderPassDescriptor): GPURenderPassEncoder;
   copyBufferToBuffer(
-    source: gpuGPUBuffer,
+    source: GPUBuffer,
     sourceOffset: number | bigint,
-    destination: gpuGPUBuffer,
+    destination: GPUBuffer,
     destinationOffset: number | bigint,
     size: number | bigint,
   ): void;
-  finish(param0?: gpuGPUCommandBufferDescriptor): gpuGPUCommandBuffer;
+  finish(param0?: GPUCommandBufferDescriptor): GPUCommandBuffer;
   copyTextureToBuffer(
-    source: gpuGPUImageCopyTexture,
-    destination: gpuGPUImageCopyBuffer,
-    copySize: Iterable<number> | gpuGPUExtent3DDict,
+    source: GPUImageCopyTexture,
+    destination: GPUImageCopyBuffer,
+    copySize: Iterable<number> | GPUExtent3DDict,
   ): void;
   copyBufferToTexture(
-    source: gpuGPUImageCopyBuffer,
-    destination: gpuGPUImageCopyTexture,
-    copySize: Iterable<number> | gpuGPUExtent3DDict,
+    source: GPUImageCopyBuffer,
+    destination: GPUImageCopyTexture,
+    copySize: Iterable<number> | GPUExtent3DDict,
   ): void;
   copyTextureToTexture(
-    source: gpuGPUImageCopyTexture,
-    destination: gpuGPUImageCopyTexture,
-    copySize: Iterable<number> | gpuGPUExtent3DDict,
+    source: GPUImageCopyTexture,
+    destination: GPUImageCopyTexture,
+    copySize: Iterable<number> | GPUExtent3DDict,
   ): void;
   clearBuffer(
-    buffer: gpuGPUBuffer,
+    buffer: GPUBuffer,
     offset?: number | bigint,
     size?: number | bigint,
   ): void;
 }
-declare interface gpuGPUCommandEncoderDescriptor {
+interface GPUCommandEncoderDescriptor {
   label?: string;
 }
-declare interface gpuGPUComputePassEncoder {
-  setPipeline(pipeline: gpuGPUComputePipeline): void;
+interface GPUComputePassEncoder {
+  setPipeline(pipeline: GPUComputePipeline): void;
   setBindGroup(
     index: number,
-    bindGroup: gpuGPUBindGroup | null,
+    bindGroup: GPUBindGroup | null,
     dynamicOffsets?: Iterable<number>,
   ): void;
   dispatchWorkgroups(
@@ -2748,52 +2738,52 @@ declare interface gpuGPUComputePassEncoder {
   ): void;
   end(): void;
 }
-declare interface gpuGPUComputePassDescriptor {
+interface GPUComputePassDescriptor {
   label?: string;
-  timestampWrites?: gpuGPUComputePassTimestampWrites;
+  timestampWrites?: GPUComputePassTimestampWrites;
 }
-declare interface gpuGPUQuerySet {}
-declare interface gpuGPUQuerySetDescriptor {
+interface GPUQuerySet {}
+interface GPUQuerySetDescriptor {
   label?: string;
 }
-declare interface gpuGPUComputePassTimestampWrites {
-  querySet: gpuGPUQuerySet;
+interface GPUComputePassTimestampWrites {
+  querySet: GPUQuerySet;
   beginningOfPassWriteIndex?: number;
   endOfPassWriteIndex?: number;
 }
-declare interface gpuGPUCommandBufferDescriptor {
+interface GPUCommandBufferDescriptor {
   label?: string;
 }
-declare interface gpuGPUCommandBuffer {}
-declare interface gpuGPUQueue {
-  submit(commandBuffers: gpuGPUCommandBuffer[]): void;
+interface GPUCommandBuffer {}
+interface GPUQueue {
+  submit(commandBuffers: GPUCommandBuffer[]): void;
   writeBuffer(
-    buffer: gpuGPUBuffer,
+    buffer: GPUBuffer,
     bufferOffset: number | bigint,
     data: ArrayBuffer | ArrayBufferView,
     dataOffset?: number | bigint,
     size?: number | bigint,
   ): void;
 }
-declare abstract class gpuGPUMapMode {
+declare abstract class GPUMapMode {
   static readonly READ: number;
   static readonly WRITE: number;
 }
-declare interface gpuGPURequestAdapterOptions {
+interface GPURequestAdapterOptions {
   powerPreference: string;
   forceFallbackAdapter?: boolean;
 }
-declare interface gpuGPUAdapterInfo {
+interface GPUAdapterInfo {
   get vendor(): string;
   get architecture(): string;
   get device(): string;
   get description(): string;
 }
-declare interface gpuGPUSupportedFeatures {
+interface GPUSupportedFeatures {
   has(name: string): boolean;
   keys(): string[];
 }
-declare interface gpuGPUSupportedLimits {
+interface GPUSupportedLimits {
   get maxTextureDimension1D(): number;
   get maxTextureDimension2D(): number;
   get maxTextureDimension3D(): number;
@@ -2826,17 +2816,17 @@ declare interface gpuGPUSupportedLimits {
   get maxComputeWorkgroupSizeZ(): number;
   get maxComputeWorkgroupsPerDimension(): number;
 }
-declare abstract class gpuGPUError {
+declare abstract class GPUError {
   get message(): string;
 }
-declare abstract class gpuGPUOutOfMemoryError extends gpuGPUError {}
-declare abstract class gpuGPUInternalError extends gpuGPUError {}
-declare abstract class gpuGPUValidationError extends gpuGPUError {}
-declare abstract class gpuGPUDeviceLostInfo {
+declare abstract class GPUOutOfMemoryError extends GPUError {}
+declare abstract class GPUInternalError extends GPUError {}
+declare abstract class GPUValidationError extends GPUError {}
+declare abstract class GPUDeviceLostInfo {
   get message(): string;
   get reason(): string;
 }
-declare interface gpuGPUCompilationMessage {
+interface GPUCompilationMessage {
   get message(): string;
   get type(): string;
   get lineNum(): number;
@@ -2844,19 +2834,19 @@ declare interface gpuGPUCompilationMessage {
   get offset(): number;
   get length(): number;
 }
-declare interface gpuGPUCompilationInfo {
-  get messages(): gpuGPUCompilationMessage[];
+interface GPUCompilationInfo {
+  get messages(): GPUCompilationMessage[];
 }
-declare abstract class gpuGPUTextureUsage {
+declare abstract class GPUTextureUsage {
   static readonly COPY_SRC: number;
   static readonly COPY_DST: number;
   static readonly TEXTURE_BINDING: number;
   static readonly STORAGE_BINDING: number;
   static readonly RENDER_ATTACHMENT: number;
 }
-declare interface gpuGPUTextureDescriptor {
+interface GPUTextureDescriptor {
   label: string;
-  size: number[] | gpuGPUExtent3DDict;
+  size: number[] | GPUExtent3DDict;
   mipLevelCount?: number;
   sampleCount?: number;
   dimension?: string;
@@ -2864,13 +2854,13 @@ declare interface gpuGPUTextureDescriptor {
   usage: number;
   viewFormats?: string[];
 }
-declare interface gpuGPUExtent3DDict {
+interface GPUExtent3DDict {
   width: number;
   height?: number;
   depthOrArrayLayers?: number;
 }
-declare interface gpuGPUTexture {
-  createView(descriptor?: gpuGPUTextureViewDescriptor): gpuGPUTextureView;
+interface GPUTexture {
+  createView(descriptor?: GPUTextureViewDescriptor): GPUTextureView;
   destroy(): void;
   get width(): number;
   get height(): number;
@@ -2880,8 +2870,8 @@ declare interface gpuGPUTexture {
   get format(): string;
   get usage(): number;
 }
-declare interface gpuGPUTextureView {}
-declare interface gpuGPUTextureViewDescriptor {
+interface GPUTextureView {}
+interface GPUTextureViewDescriptor {
   label: string;
   format: string;
   dimension: string;
@@ -2891,91 +2881,91 @@ declare interface gpuGPUTextureViewDescriptor {
   baseArrayLayer?: number;
   arrayLayerCount: number;
 }
-declare abstract class gpuGPUColorWrite {
+declare abstract class GPUColorWrite {
   static readonly RED: number;
   static readonly GREEN: number;
   static readonly BLUE: number;
   static readonly ALPHA: number;
   static readonly ALL: number;
 }
-declare interface gpuGPURenderPipeline {}
-declare interface gpuGPURenderPipelineDescriptor {
+interface GPURenderPipeline {}
+interface GPURenderPipelineDescriptor {
   label?: string;
-  layout: string | gpuGPUPipelineLayout;
-  vertex: gpuGPUVertexState;
-  primitive?: gpuGPUPrimitiveState;
-  depthStencil?: gpuGPUDepthStencilState;
-  multisample?: gpuGPUMultisampleState;
-  fragment?: gpuGPUFragmentState;
+  layout: string | GPUPipelineLayout;
+  vertex: GPUVertexState;
+  primitive?: GPUPrimitiveState;
+  depthStencil?: GPUDepthStencilState;
+  multisample?: GPUMultisampleState;
+  fragment?: GPUFragmentState;
 }
-declare interface gpuGPUVertexState {
-  module: gpuGPUShaderModule;
+interface GPUVertexState {
+  module: GPUShaderModule;
   entryPoint: string;
   constants?: Record<string, number>;
-  buffers?: gpuGPUVertexBufferLayout[];
+  buffers?: GPUVertexBufferLayout[];
 }
-declare interface gpuGPUVertexBufferLayout {
+interface GPUVertexBufferLayout {
   arrayStride: number | bigint;
   stepMode?: string;
-  attributes: gpuGPUVertexAttribute[];
+  attributes: GPUVertexAttribute[];
 }
-declare interface gpuGPUVertexAttribute {
+interface GPUVertexAttribute {
   format: string;
   offset: number | bigint;
   shaderLocation: number;
 }
-declare interface gpuGPUPrimitiveState {
+interface GPUPrimitiveState {
   topology?: string;
   stripIndexFormat?: string;
   frontFace?: string;
   cullMode?: string;
   unclippedDepth?: boolean;
 }
-declare interface gpuGPUStencilFaceState {
+interface GPUStencilFaceState {
   compare?: string;
   failOp?: string;
   depthFailOp?: string;
   passOp?: string;
 }
-declare interface gpuGPUDepthStencilState {
+interface GPUDepthStencilState {
   format: string;
   depthWriteEnabled: boolean;
   depthCompare: string;
-  stencilFront?: gpuGPUStencilFaceState;
-  stencilBack?: gpuGPUStencilFaceState;
+  stencilFront?: GPUStencilFaceState;
+  stencilBack?: GPUStencilFaceState;
   stencilReadMask?: number;
   stencilWriteMask?: number;
   depthBias?: number;
   depthBiasSlopeScale?: number;
   depthBiasClamp?: number;
 }
-declare interface gpuGPUMultisampleState {
+interface GPUMultisampleState {
   count?: number;
   mask?: number;
   alphaToCoverageEnabled?: boolean;
 }
-declare interface gpuGPUFragmentState {
-  module: gpuGPUShaderModule;
+interface GPUFragmentState {
+  module: GPUShaderModule;
   entryPoint: string;
   constants?: Record<string, number>;
-  targets: gpuGPUColorTargetState[];
+  targets: GPUColorTargetState[];
 }
-declare interface gpuGPUColorTargetState {
+interface GPUColorTargetState {
   format: string;
-  blend: gpuGPUBlendState;
+  blend: GPUBlendState;
   writeMask?: number;
 }
-declare interface gpuGPUBlendState {
-  color: gpuGPUBlendComponent;
-  alpha: gpuGPUBlendComponent;
+interface GPUBlendState {
+  color: GPUBlendComponent;
+  alpha: GPUBlendComponent;
 }
-declare interface gpuGPUBlendComponent {
+interface GPUBlendComponent {
   operation?: string;
   srcFactor?: string;
   dstFactor?: string;
 }
-declare interface gpuGPURenderPassEncoder {
-  setPipeline(pipeline: gpuGPURenderPipeline): void;
+interface GPURenderPassEncoder {
+  setPipeline(pipeline: GPURenderPipeline): void;
   draw(
     vertexCount: number,
     instanceCount?: number,
@@ -2984,30 +2974,30 @@ declare interface gpuGPURenderPassEncoder {
   ): void;
   end(): void;
 }
-declare interface gpuGPURenderPassDescriptor {
+interface GPURenderPassDescriptor {
   label?: string;
-  colorAttachments: gpuGPURenderPassColorAttachment[];
-  depthStencilAttachment?: gpuGPURenderPassDepthStencilAttachment;
-  occlusionQuerySet?: gpuGPUQuerySet;
-  timestampWrites?: gpuGPURenderPassTimestampWrites;
+  colorAttachments: GPURenderPassColorAttachment[];
+  depthStencilAttachment?: GPURenderPassDepthStencilAttachment;
+  occlusionQuerySet?: GPUQuerySet;
+  timestampWrites?: GPURenderPassTimestampWrites;
   maxDrawCount?: number | bigint;
 }
-declare interface gpuGPURenderPassColorAttachment {
-  view: gpuGPUTextureView;
+interface GPURenderPassColorAttachment {
+  view: GPUTextureView;
   depthSlice?: number;
-  resolveTarget?: gpuGPUTextureView;
-  clearValue?: number[] | gpuGPUColorDict;
+  resolveTarget?: GPUTextureView;
+  clearValue?: number[] | GPUColorDict;
   loadOp: string;
   storeOp: string;
 }
-declare interface gpuGPUColorDict {
+interface GPUColorDict {
   r: number;
   g: number;
   b: number;
   a: number;
 }
-declare interface gpuGPURenderPassDepthStencilAttachment {
-  view: gpuGPUTextureView;
+interface GPURenderPassDepthStencilAttachment {
+  view: GPUTextureView;
   depthClearValue?: number;
   depthLoadOp?: string;
   depthStoreOp?: string;
@@ -3017,24 +3007,24 @@ declare interface gpuGPURenderPassDepthStencilAttachment {
   stencilStoreOp?: string;
   stencilReadOnly?: boolean;
 }
-declare interface gpuGPURenderPassTimestampWrites {
-  querySet: gpuGPUQuerySet;
+interface GPURenderPassTimestampWrites {
+  querySet: GPUQuerySet;
   beginningOfPassWriteIndex?: number;
   endOfPassWriteIndex?: number;
 }
-declare interface gpuGPUImageCopyTexture {
-  texture: gpuGPUTexture;
+interface GPUImageCopyTexture {
+  texture: GPUTexture;
   mipLevel?: number;
-  origin?: number[] | gpuGPUOrigin3DDict;
+  origin?: number[] | GPUOrigin3DDict;
   aspect?: string;
 }
-declare interface gpuGPUImageCopyBuffer {
-  buffer: gpuGPUBuffer;
+interface GPUImageCopyBuffer {
+  buffer: GPUBuffer;
   offset?: number | bigint;
   bytesPerRow?: number;
   rowsPerImage?: number;
 }
-declare interface gpuGPUOrigin3DDict {
+interface GPUOrigin3DDict {
   x?: number;
   y?: number;
   z?: number;
@@ -3082,14 +3072,14 @@ declare class EventSource {
   static readonly CLOSED: number;
   static from(stream: ReadableStream): EventSource;
 }
-declare interface EventSourceEventSourceInit {
+interface EventSourceEventSourceInit {
   withCredentials?: boolean;
   fetcher?: Fetcher;
 }
-declare type AiImageClassificationInput = {
+type AiImageClassificationInput = {
   image: number[];
 };
-declare type AiImageClassificationOutput = {
+type AiImageClassificationOutput = {
   score?: number;
   label?: string;
 }[];
@@ -3097,7 +3087,7 @@ declare abstract class BaseAiImageClassification {
   inputs: AiImageClassificationInput;
   postProcessedOutputs: AiImageClassificationOutput;
 }
-declare type AiImageToTextInput = {
+type AiImageToTextInput = {
   image: number[];
   prompt?: string;
   max_tokens?: number;
@@ -3111,17 +3101,17 @@ declare type AiImageToTextInput = {
   raw?: boolean;
   messages?: RoleScopedChatInput[];
 };
-declare type AiImageToTextOutput = {
+type AiImageToTextOutput = {
   description: string;
 };
 declare abstract class BaseAiImageToText {
   inputs: AiImageToTextInput;
   postProcessedOutputs: AiImageToTextOutput;
 }
-declare type AiObjectDetectionInput = {
+type AiObjectDetectionInput = {
   image: number[];
 };
-declare type AiObjectDetectionOutput = {
+type AiObjectDetectionOutput = {
   score?: number;
   label?: string;
 }[];
@@ -3129,19 +3119,19 @@ declare abstract class BaseAiObjectDetection {
   inputs: AiObjectDetectionInput;
   postProcessedOutputs: AiObjectDetectionOutput;
 }
-declare type AiSentenceSimilarityInput = {
+type AiSentenceSimilarityInput = {
   source: string;
   sentences: string[];
 };
-declare type AiSentenceSimilarityOutput = number[];
+type AiSentenceSimilarityOutput = number[];
 declare abstract class BaseAiSentenceSimilarity {
   inputs: AiSentenceSimilarityInput;
   postProcessedOutputs: AiSentenceSimilarityOutput;
 }
-declare type AiSpeechRecognitionInput = {
+type AiSpeechRecognitionInput = {
   audio: number[];
 };
-declare type AiSpeechRecognitionOutput = {
+type AiSpeechRecognitionOutput = {
   text?: string;
   words?: {
     word: string;
@@ -3154,21 +3144,21 @@ declare abstract class BaseAiSpeechRecognition {
   inputs: AiSpeechRecognitionInput;
   postProcessedOutputs: AiSpeechRecognitionOutput;
 }
-declare type AiSummarizationInput = {
+type AiSummarizationInput = {
   input_text: string;
   max_length?: number;
 };
-declare type AiSummarizationOutput = {
+type AiSummarizationOutput = {
   summary: string;
 };
 declare abstract class BaseAiSummarization {
   inputs: AiSummarizationInput;
   postProcessedOutputs: AiSummarizationOutput;
 }
-declare type AiTextClassificationInput = {
+type AiTextClassificationInput = {
   text: string;
 };
-declare type AiTextClassificationOutput = {
+type AiTextClassificationOutput = {
   score?: number;
   label?: string;
 }[];
@@ -3176,10 +3166,10 @@ declare abstract class BaseAiTextClassification {
   inputs: AiTextClassificationInput;
   postProcessedOutputs: AiTextClassificationOutput;
 }
-declare type AiTextEmbeddingsInput = {
+type AiTextEmbeddingsInput = {
   text: string | string[];
 };
-declare type AiTextEmbeddingsOutput = {
+type AiTextEmbeddingsOutput = {
   shape: number[];
   data: number[][];
 };
@@ -3187,11 +3177,11 @@ declare abstract class BaseAiTextEmbeddings {
   inputs: AiTextEmbeddingsInput;
   postProcessedOutputs: AiTextEmbeddingsOutput;
 }
-declare type RoleScopedChatInput = {
+type RoleScopedChatInput = {
   role: "user" | "assistant" | "system" | "tool";
   content: string;
 };
-declare type AiTextGenerationToolInput = {
+type AiTextGenerationToolInput = {
   type: "function";
   function: {
     name: string;
@@ -3208,7 +3198,7 @@ declare type AiTextGenerationToolInput = {
     };
   };
 };
-declare type AiTextGenerationInput = {
+type AiTextGenerationInput = {
   prompt?: string;
   raw?: boolean;
   stream?: boolean;
@@ -3223,7 +3213,7 @@ declare type AiTextGenerationInput = {
   messages?: RoleScopedChatInput[];
   tools?: AiTextGenerationToolInput[];
 };
-declare type AiTextGenerationOutput =
+type AiTextGenerationOutput =
   | {
       response?: string;
       tool_calls?: {
@@ -3236,7 +3226,7 @@ declare abstract class BaseAiTextGeneration {
   inputs: AiTextGenerationInput;
   postProcessedOutputs: AiTextGenerationOutput;
 }
-declare type AiTextToImageInput = {
+type AiTextToImageInput = {
   prompt: string;
   image?: number[];
   mask?: number[];
@@ -3244,53 +3234,52 @@ declare type AiTextToImageInput = {
   strength?: number;
   guidance?: number;
 };
-declare type AiTextToImageOutput = Uint8Array;
+type AiTextToImageOutput = Uint8Array;
 declare abstract class BaseAiTextToImage {
   inputs: AiTextToImageInput;
   postProcessedOutputs: AiTextToImageOutput;
 }
-declare type AiTranslationInput = {
+type AiTranslationInput = {
   text: string;
   target_lang: string;
   source_lang?: string;
 };
-declare type AiTranslationOutput = {
+type AiTranslationOutput = {
   translated_text?: string;
 };
 declare abstract class BaseAiTranslation {
   inputs: AiTranslationInput;
   postProcessedOutputs: AiTranslationOutput;
 }
-declare type GatewayOptions = {
+type GatewayOptions = {
   id: string;
   cacheTtl?: number;
   skipCache?: boolean;
   metadata?: Record<string, number | string | boolean | null | bigint>;
 };
-declare type AiOptions = {
+type AiOptions = {
   gateway?: GatewayOptions;
   prefix?: string;
   extraHeaders?: object;
 };
-declare type BaseAiTextClassificationModels =
-  "@cf/huggingface/distilbert-sst-2-int8";
-declare type BaseAiTextToImageModels =
+type BaseAiTextClassificationModels = "@cf/huggingface/distilbert-sst-2-int8";
+type BaseAiTextToImageModels =
   | "@cf/stabilityai/stable-diffusion-xl-base-1.0"
   | "@cf/runwayml/stable-diffusion-v1-5-inpainting"
   | "@cf/runwayml/stable-diffusion-v1-5-img2img"
   | "@cf/lykon/dreamshaper-8-lcm"
   | "@cf/bytedance/stable-diffusion-xl-lightning";
-declare type BaseAiTextEmbeddingsModels =
+type BaseAiTextEmbeddingsModels =
   | "@cf/baai/bge-small-en-v1.5"
   | "@cf/baai/bge-base-en-v1.5"
   | "@cf/baai/bge-large-en-v1.5";
-declare type BaseAiSpeechRecognitionModels =
+type BaseAiSpeechRecognitionModels =
   | "@cf/openai/whisper"
   | "@cf/openai/whisper-tiny-en"
   | "@cf/openai/whisper-sherpa";
-declare type BaseAiImageClassificationModels = "@cf/microsoft/resnet-50";
-declare type BaseAiObjectDetectionModels = "@cf/facebook/detr-resnet-50";
-declare type BaseAiTextGenerationModels =
+type BaseAiImageClassificationModels = "@cf/microsoft/resnet-50";
+type BaseAiObjectDetectionModels = "@cf/facebook/detr-resnet-50";
+type BaseAiTextGenerationModels =
   | "@cf/meta/llama-3-8b-instruct"
   | "@cf/meta/llama-3-8b-instruct-awq"
   | "@cf/meta/llama-2-7b-chat-int8"
@@ -3326,9 +3315,9 @@ declare type BaseAiTextGenerationModels =
   | "@cf/meta-llama/llama-2-7b-chat-hf-lora"
   | "@cf/fblgit/una-cybertron-7b-v2-bf16"
   | "@cf/fblgit/una-cybertron-7b-v2-awq";
-declare type BaseAiTranslationModels = "@cf/meta/m2m100-1.2b";
-declare type BaseAiSummarizationModels = "@cf/facebook/bart-large-cnn";
-declare type BaseAiImageToTextModels =
+type BaseAiTranslationModels = "@cf/meta/m2m100-1.2b";
+type BaseAiSummarizationModels = "@cf/facebook/bart-large-cnn";
+type BaseAiImageToTextModels =
   | "@cf/unum/uform-gen2-qwen-500m"
   | "@cf/llava-hf/llava-1.5-7b-hf";
 declare abstract class Ai {
@@ -3383,7 +3372,7 @@ declare abstract class Ai {
     options?: AiOptions,
   ): Promise<BaseAiImageToText["postProcessedOutputs"]>;
 }
-declare interface BasicImageTransformations {
+interface BasicImageTransformations {
   /**
    * Maximum width in image pixels. The value must be an integer.
    */
@@ -3449,7 +3438,7 @@ declare interface BasicImageTransformations {
    */
   rotate?: 0 | 90 | 180 | 270 | 360;
 }
-declare interface BasicImageTransformationsGravityCoordinates {
+interface BasicImageTransformationsGravityCoordinates {
   x: number;
   y: number;
 }
@@ -3462,7 +3451,7 @@ declare interface BasicImageTransformationsGravityCoordinates {
  * Note: Currently, these properties cannot be tested in the
  * playground.
  */
-declare interface RequestInitCfProperties extends Record<string, unknown> {
+interface RequestInitCfProperties extends Record<string, unknown> {
   cacheEverything?: boolean;
   /**
    * A request's cache key is what determines if two requests are
@@ -3513,8 +3502,7 @@ declare interface RequestInitCfProperties extends Record<string, unknown> {
    */
   resolveOverride?: string;
 }
-declare interface RequestInitCfPropertiesImageDraw
-  extends BasicImageTransformations {
+interface RequestInitCfPropertiesImageDraw extends BasicImageTransformations {
   /**
    * Absolute URL of the image file to use for the drawing. It can be any of
    * the supported file formats. For drawing of watermarks or non-rectangular
@@ -3551,8 +3539,7 @@ declare interface RequestInitCfPropertiesImageDraw
   bottom?: number;
   right?: number;
 }
-declare interface RequestInitCfPropertiesImage
-  extends BasicImageTransformations {
+interface RequestInitCfPropertiesImage extends BasicImageTransformations {
   /**
    * Device Pixel Ratio. Default 1. Multiplier for width/height that makes it
    * easier to specify higher-DPI sizes in <img srcset>.
@@ -3677,12 +3664,12 @@ declare interface RequestInitCfPropertiesImage
    */
   compression?: "fast";
 }
-declare interface RequestInitCfPropertiesImageMinify {
+interface RequestInitCfPropertiesImageMinify {
   javascript?: boolean;
   css?: boolean;
   html?: boolean;
 }
-declare interface RequestInitCfPropertiesR2 {
+interface RequestInitCfPropertiesR2 {
   /**
    * Colo id of bucket that an object is stored in
    */
@@ -3691,14 +3678,13 @@ declare interface RequestInitCfPropertiesR2 {
 /**
  * Request metadata provided by Cloudflare's edge.
  */
-declare type IncomingRequestCfProperties<HostMetadata = unknown> =
+type IncomingRequestCfProperties<HostMetadata = unknown> =
   IncomingRequestCfPropertiesBase &
     IncomingRequestCfPropertiesBotManagementEnterprise &
     IncomingRequestCfPropertiesCloudflareForSaaSEnterprise<HostMetadata> &
     IncomingRequestCfPropertiesGeographicInformation &
     IncomingRequestCfPropertiesCloudflareAccessOrApiShield;
-declare interface IncomingRequestCfPropertiesBase
-  extends Record<string, unknown> {
+interface IncomingRequestCfPropertiesBase extends Record<string, unknown> {
   /**
    * [ASN](https://www.iana.org/assignments/as-numbers/as-numbers.xhtml) of the incoming request.
    *
@@ -3776,7 +3762,7 @@ declare interface IncomingRequestCfPropertiesBase
    */
   tlsExportedAuthenticator?: IncomingRequestCfPropertiesExportedAuthenticatorMetadata;
 }
-declare interface IncomingRequestCfPropertiesBotManagementBase {
+interface IncomingRequestCfPropertiesBotManagementBase {
   /**
    * Cloudflare’s [level of certainty](https://developers.cloudflare.com/bots/concepts/bot-score/) that a request comes from a bot,
    * represented as an integer percentage between `1` (almost certainly a bot) and `99` (almost certainly human).
@@ -3803,7 +3789,7 @@ declare interface IncomingRequestCfPropertiesBotManagementBase {
    */
   detectionIds: number[];
 }
-declare interface IncomingRequestCfPropertiesBotManagement {
+interface IncomingRequestCfPropertiesBotManagement {
   /**
    * Results of Cloudflare's Bot Management analysis
    */
@@ -3815,7 +3801,7 @@ declare interface IncomingRequestCfPropertiesBotManagement {
    */
   clientTrustScore: number;
 }
-declare interface IncomingRequestCfPropertiesBotManagementEnterprise
+interface IncomingRequestCfPropertiesBotManagementEnterprise
   extends IncomingRequestCfPropertiesBotManagement {
   /**
    * Results of Cloudflare's Bot Management analysis
@@ -3828,9 +3814,7 @@ declare interface IncomingRequestCfPropertiesBotManagementEnterprise
     ja3Hash: string;
   };
 }
-declare interface IncomingRequestCfPropertiesCloudflareForSaaSEnterprise<
-  HostMetadata,
-> {
+interface IncomingRequestCfPropertiesCloudflareForSaaSEnterprise<HostMetadata> {
   /**
    * Custom metadata set per-host in [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/).
    *
@@ -3839,7 +3823,7 @@ declare interface IncomingRequestCfPropertiesCloudflareForSaaSEnterprise<
    */
   hostMetadata: HostMetadata;
 }
-declare interface IncomingRequestCfPropertiesCloudflareAccessOrApiShield {
+interface IncomingRequestCfPropertiesCloudflareAccessOrApiShield {
   /**
    * Information about the client certificate presented to Cloudflare.
    *
@@ -3861,7 +3845,7 @@ declare interface IncomingRequestCfPropertiesCloudflareAccessOrApiShield {
 /**
  * Metadata about the request's TLS handshake
  */
-declare interface IncomingRequestCfPropertiesExportedAuthenticatorMetadata {
+interface IncomingRequestCfPropertiesExportedAuthenticatorMetadata {
   /**
    * The client's [`HELLO` message](https://www.rfc-editor.org/rfc/rfc5246#section-7.4.1.2), encoded in hexadecimal
    *
@@ -3890,7 +3874,7 @@ declare interface IncomingRequestCfPropertiesExportedAuthenticatorMetadata {
 /**
  * Geographic data about the request's origin.
  */
-declare interface IncomingRequestCfPropertiesGeographicInformation {
+interface IncomingRequestCfPropertiesGeographicInformation {
   /**
    * The [ISO 3166-1 Alpha 2](https://www.iso.org/iso-3166-country-codes.html) country code the request originated from.
    *
@@ -3967,7 +3951,7 @@ declare interface IncomingRequestCfPropertiesGeographicInformation {
   metroCode?: string;
 }
 /** Data about the incoming request's TLS certificate */
-declare interface IncomingRequestCfPropertiesTLSClientAuth {
+interface IncomingRequestCfPropertiesTLSClientAuth {
   /** Always `"1"`, indicating that the certificate was presented */
   certPresented: "1";
   /**
@@ -4060,7 +4044,7 @@ declare interface IncomingRequestCfPropertiesTLSClientAuth {
   certNotAfter: string;
 }
 /** Placeholder values for TLS Client Authorization */
-declare interface IncomingRequestCfPropertiesTLSClientAuthPlaceholder {
+interface IncomingRequestCfPropertiesTLSClientAuthPlaceholder {
   certPresented: "0";
   certVerified: "NONE";
   certRevoked: "0";
@@ -4358,10 +4342,10 @@ declare type Iso3166Alpha2Code =
   | "ZW";
 /** The 2-letter continent codes Cloudflare uses */
 declare type ContinentCode = "AF" | "AN" | "AS" | "EU" | "NA" | "OC" | "SA";
-declare type CfProperties<HostMetadata = unknown> =
+type CfProperties<HostMetadata = unknown> =
   | IncomingRequestCfProperties<HostMetadata>
   | RequestInitCfProperties;
-declare interface D1Meta {
+interface D1Meta {
   duration: number;
   size_after: number;
   rows_read: number;
@@ -4370,15 +4354,15 @@ declare interface D1Meta {
   changed_db: boolean;
   changes: number;
 }
-declare interface D1Response {
+interface D1Response {
   success: true;
   meta: D1Meta & Record<string, unknown>;
   error?: never;
 }
-declare type D1Result<T = unknown> = D1Response & {
+type D1Result<T = unknown> = D1Response & {
   results: T[];
 };
-declare interface D1ExecResult {
+interface D1ExecResult {
   count: number;
   duration: number;
 }
@@ -4405,11 +4389,11 @@ declare abstract class D1PreparedStatement {
 // but this will ensure type checking on older versions still passes.
 // TypeScript's interface merging will ensure our empty interface is effectively
 // ignored when `Disposable` is included in the standard lib.
-declare interface Disposable {}
+interface Disposable {}
 /**
  * An email message that can be sent from a Worker.
  */
-declare interface EmailMessage {
+interface EmailMessage {
   /**
    * Envelope From attribute of the email message.
    */
@@ -4422,7 +4406,7 @@ declare interface EmailMessage {
 /**
  * An email message that is sent to a consumer Worker and can be rejected/forwarded.
  */
-declare interface ForwardableEmailMessage extends EmailMessage {
+interface ForwardableEmailMessage extends EmailMessage {
   /**
    * Stream of the email message content.
    */
@@ -4452,7 +4436,7 @@ declare interface ForwardableEmailMessage extends EmailMessage {
 /**
  * A binding that allows a Worker to send email messages.
  */
-declare interface SendEmail {
+interface SendEmail {
   send(message: EmailMessage): Promise<void>;
 }
 declare abstract class EmailEvent extends ExtendableEvent {
@@ -4470,7 +4454,7 @@ declare module "cloudflare:email" {
   };
   export { _EmailMessage as EmailMessage };
 }
-declare interface Hyperdrive {
+interface Hyperdrive {
   /**
    * Connect directly to Hyperdrive as if it's your database, returning a TCP socket.
    *
@@ -4517,8 +4501,8 @@ declare interface Hyperdrive {
    */
   readonly database: string;
 }
-declare type Params<P extends string = any> = Record<P, string | string[]>;
-declare type EventContext<Env, P extends string, Data> = {
+type Params<P extends string = any> = Record<P, string | string[]>;
+type EventContext<Env, P extends string, Data> = {
   request: Request<unknown, IncomingRequestCfProperties<unknown>>;
   functionPath: string;
   waitUntil: (promise: Promise<any>) => void;
@@ -4532,12 +4516,12 @@ declare type EventContext<Env, P extends string, Data> = {
   params: Params<P>;
   data: Data;
 };
-declare type PagesFunction<
+type PagesFunction<
   Env = unknown,
   Params extends string = any,
   Data extends Record<string, unknown> = Record<string, unknown>,
 > = (context: EventContext<Env, Params, Data>) => Response | Promise<Response>;
-declare type EventPluginContext<Env, P extends string, Data, PluginArgs> = {
+type EventPluginContext<Env, P extends string, Data, PluginArgs> = {
   request: Request<unknown, IncomingRequestCfProperties<unknown>>;
   functionPath: string;
   waitUntil: (promise: Promise<any>) => void;
@@ -4552,7 +4536,7 @@ declare type EventPluginContext<Env, P extends string, Data, PluginArgs> = {
   data: Data;
   pluginArgs: PluginArgs;
 };
-declare type PagesPluginFunction<
+type PagesPluginFunction<
   Env = unknown,
   Params extends string = any,
   Data extends Record<string, unknown> = Record<string, unknown>,
@@ -4567,7 +4551,7 @@ declare module "assets:*" {
 // The message includes metadata about the broker, the client, and the payload
 // itself.
 // https://developers.cloudflare.com/pub-sub/
-declare interface PubSubMessage {
+interface PubSubMessage {
   // Message ID
   readonly mid: number;
   // MQTT broker FQDN in the form mqtts://BROKER.NAMESPACE.cloudflarepubsub.com:PORT
@@ -4593,9 +4577,23 @@ declare interface PubSubMessage {
   payload: string | Uint8Array;
 }
 // JsonWebKey extended by kid parameter
-declare interface JsonWebKeyWithKid extends JsonWebKey {
+interface JsonWebKeyWithKid extends JsonWebKey {
   // Key Identifier of the JWK
   readonly kid: string;
+}
+interface RateLimitOptions {
+  key: string;
+}
+interface RateLimitOutcome {
+  success: boolean;
+}
+interface RateLimit {
+  /**
+   * Rate limit a request based on the provided options.
+   * @see https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/
+   * @returns A promise that resolves with the outcome of the rate limit.
+   */
+  limit(options: RateLimitOptions): Promise<RateLimitOutcome>;
 }
 // Namespace for RPC utility types. Unfortunately, we can't use a `module` here as these types need
 // to referenced by `Fetcher`. This is included in the "importable" version of the types which
@@ -4804,19 +4802,15 @@ declare module "cloudflare:sockets" {
 /**
  * Data types supported for holding vector metadata.
  */
-declare type VectorizeVectorMetadataValue =
-  | string
-  | number
-  | boolean
-  | string[];
+type VectorizeVectorMetadataValue = string | number | boolean | string[];
 /**
  * Additional information to associate with a vector.
  */
-declare type VectorizeVectorMetadata =
+type VectorizeVectorMetadata =
   | VectorizeVectorMetadataValue
   | Record<string, VectorizeVectorMetadataValue>;
-declare type VectorFloatArray = Float32Array | Float64Array;
-declare interface VectorizeError {
+type VectorFloatArray = Float32Array | Float64Array;
+interface VectorizeError {
   code?: number;
   error: string;
 }
@@ -4825,11 +4819,11 @@ declare interface VectorizeError {
  *
  * This list is expected to grow as support for more operations are released.
  */
-declare type VectorizeVectorMetadataFilterOp = "$eq" | "$ne";
+type VectorizeVectorMetadataFilterOp = "$eq" | "$ne";
 /**
  * Filter criteria for vector metadata used to limit the retrieved query result set.
  */
-declare type VectorizeVectorMetadataFilter = {
+type VectorizeVectorMetadataFilter = {
   [field: string]:
     | Exclude<VectorizeVectorMetadataValue, string[]>
     | null
@@ -4844,8 +4838,8 @@ declare type VectorizeVectorMetadataFilter = {
  * Supported distance metrics for an index.
  * Distance metrics determine how other "similar" vectors are determined.
  */
-declare type VectorizeDistanceMetric = "euclidean" | "cosine" | "dot-product";
-declare interface VectorizeQueryOptions {
+type VectorizeDistanceMetric = "euclidean" | "cosine" | "dot-product";
+interface VectorizeQueryOptions {
   topK?: number;
   namespace?: string;
   returnValues?: boolean;
@@ -4855,7 +4849,7 @@ declare interface VectorizeQueryOptions {
 /**
  * Information about the configuration of an index.
  */
-declare type VectorizeIndexConfig =
+type VectorizeIndexConfig =
   | {
       dimensions: number;
       metric: VectorizeDistanceMetric;
@@ -4866,7 +4860,7 @@ declare type VectorizeIndexConfig =
 /**
  * Metadata about an existing index.
  */
-declare interface VectorizeIndexDetails {
+interface VectorizeIndexDetails {
   /** The unique ID of the index */
   readonly id: string;
   /** The name of the index. */
@@ -4881,7 +4875,7 @@ declare interface VectorizeIndexDetails {
 /**
  * Represents a single vector value set along with its associated metadata.
  */
-declare interface VectorizeVector {
+interface VectorizeVector {
   /** The ID for the vector. This can be user-defined, and must be unique. It should uniquely identify the object, and is best set based on the ID of what the vector represents. */
   id: string;
   /** The vector values */
@@ -4894,7 +4888,7 @@ declare interface VectorizeVector {
 /**
  * Represents a matched vector for a query along with its score and (if specified) the matching vector information.
  */
-declare type VectorizeMatch = Pick<Partial<VectorizeVector>, "values"> &
+type VectorizeMatch = Pick<Partial<VectorizeVector>, "values"> &
   Omit<VectorizeVector, "values"> & {
     /** The score or rank for similarity, when returned as a result */
     score: number;
@@ -4902,7 +4896,7 @@ declare type VectorizeMatch = Pick<Partial<VectorizeVector>, "values"> &
 /**
  * A set of vector {@link VectorizeMatch} for a particular query.
  */
-declare interface VectorizeMatches {
+interface VectorizeMatches {
   matches: VectorizeMatch[];
   count: number;
 }
@@ -4910,7 +4904,7 @@ declare interface VectorizeMatches {
  * Results of an operation that performed a mutation on a set of vectors.
  * Here, `ids` is a list of vectors that were successfully processed.
  */
-declare interface VectorizeVectorMutation {
+interface VectorizeVectorMutation {
   /* List of ids of vectors that were successfully processed. */
   ids: string[];
   /* Total count of the number of processed vectors. */
@@ -4921,7 +4915,7 @@ declare interface VectorizeVectorMutation {
  * with the v2 version of Vectorize.
  * Here, `mutationId` is the identifier for the last mutation processed by Vectorize.
  */
-declare interface VectorizeVectorMutationV2 {
+interface VectorizeVectorMutationV2 {
   /* The identifier for the last mutation processed by Vectorize. */
   mutationId: string;
 }
@@ -4970,7 +4964,7 @@ declare abstract class VectorizeIndex {
  * The interface for "version_metadata" binding
  * providing metadata about the Worker Version using this binding.
  */
-declare type WorkerVersionMetadata = {
+type WorkerVersionMetadata = {
   /** The ID of the Worker Version using this binding */
   id: string;
   /** The tag of the Worker Version using this binding */
@@ -4978,7 +4972,7 @@ declare type WorkerVersionMetadata = {
   /** The timestamp of when the Worker Version was uploaded */
   timestamp: string;
 };
-declare interface DynamicDispatchLimits {
+interface DynamicDispatchLimits {
   /**
    * Limit CPU time in milliseconds.
    */
@@ -4988,7 +4982,7 @@ declare interface DynamicDispatchLimits {
    */
   subRequests?: number;
 }
-declare interface DynamicDispatchOptions {
+interface DynamicDispatchOptions {
   /**
    * Limit resources of invoked Worker script.
    */
@@ -5000,7 +4994,7 @@ declare interface DynamicDispatchOptions {
     [key: string]: any;
   };
 }
-declare interface DispatchNamespace {
+interface DispatchNamespace {
   /**
    * @param name Name of the Worker script.
    * @param args Arguments to Worker script.
