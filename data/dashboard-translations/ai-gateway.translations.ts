@@ -113,7 +113,7 @@
 	},
 	gateway_modal: {
 		title: "Create a new AI Gateway",
-		description: "Select a name to identify your Gateway in the dashboard, and a unique URL slug for your API endpoint.",
+		description: "Choose an identifier for your Gateway and API endpoint.",
 		gateway: "Gateway name",
 		url: "Gateway ID"
 	},
