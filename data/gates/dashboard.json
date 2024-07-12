@@ -712,7 +712,11 @@
 		"enabled": false
 	},
 	"prg-images-checkout-consolidation-experiment": {
-		"enabled": false
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
 	},
 	"prg-persistent-cta-upgrade-experiment": {
 		"enabled": true,
