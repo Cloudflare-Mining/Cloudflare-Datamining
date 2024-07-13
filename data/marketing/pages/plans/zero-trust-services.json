@@ -324,6 +324,18 @@
 												"specialLinkType": null,
 												"openInNewWindow": false,
 												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
+												"contentfulId": "22EyQRZFBFVZUl5fFpZB55",
+												"locale": "en-US",
+												"title": "SaaS",
+												"description": "For software services",
+												"url": "https://www.cloudflare.com/saas/",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
 											}
 										],
 										"navIcon": null,
@@ -2331,6 +2343,18 @@
 												"title": "Explore our Trust Hub",
 												"description": "Explore our trust & safety resources",
 												"url": "https://www.cloudflare.com/trust-hub/",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
+											},
+											{
+												"contentTypeId": "elementNavLink",
+												"contentfulId": "uFqJvu0N1UtOwWc05JYVe",
+												"locale": "en-US",
+												"title": "Legal documentation",
+												"description": "Explore our legal resources",
+												"url": "https://www.cloudflare.com/privacypolicy/",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -4768,6 +4792,119 @@
 										"contentTypeId": "planElementFeatures",
 										"name": "Authentication via Identity Providers (IdPs)",
 										"description": "Authenticate via enterprise and social IdPs, including multiple IdPs concurrently. Can also use generic SAML and OIDC connectors.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5IsYTlNZoyZXe9fLjOlVP2",
+												"value": true,
+												"plan": {
+													"contentfulId": "kFF1UZHLyJ67qlqJFQPqr",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Free Plan",
+													"name": "Free Plan",
+													"description": "Essential security controls to keep employees and apps protected online. Best for teams under 50 users, or proof-of-concept tests.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0 forever",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "1b1zcvHXVhf5RnmejD8Q8c",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Free_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4jx090thS6z7YJ0aeVaa5K",
+												"value": true,
+												"plan": {
+													"contentfulId": "3C1bIOtMfHrC9NVKhAmiYw",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Pay as you go",
+													"name": "Pay-as-you-go",
+													"description": "Protects access to anything on your network and the Internet. Best for teams over 50 users that do not require enterprise support services.",
+													"pricingDescription": "Billed monthly",
+													"price": 7,
+													"currency": "$",
+													"customPricingText": "$7/user/month",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3aVc8bojzITFwNl96YpnNM",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Standard_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
+												"value": true,
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "Annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "70fOWLJrcnV0CyXw322wDA",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Enterprise_Plan-CTA",
+														"standardText": null,
+														"text": "Talk to an expert",
+														"url": "/products/zero-trust/plans/enterprise/",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "1zJPSaEqkl7CUveYEPQhzV",
+										"contentTypeId": "planElementFeatures",
+										"name": "Identity-based context",
+										"description": "Configure contextual access based on IdP groups, geolocation, device posture, session duration, external APIs, etc.",
 										"planValues": [
 											{
 												"contentTypeId": "planElementFeatureValueBoolean",
@@ -7572,6 +7709,119 @@
 								"name": "SaaS app protection",
 								"features": [
 									{
+										"contentfulId": "UGyJ72xKrZVjaZiazJ1Ey",
+										"contentTypeId": "planElementFeatures",
+										"name": "Inline access and traffic controls for every SaaS app",
+										"description": "All access controls, data controls, and threat protection capabilities (as outlined in prior sections) apply consistently across SaaS apps.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5IsYTlNZoyZXe9fLjOlVP2",
+												"value": true,
+												"plan": {
+													"contentfulId": "kFF1UZHLyJ67qlqJFQPqr",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Free Plan",
+													"name": "Free Plan",
+													"description": "Essential security controls to keep employees and apps protected online. Best for teams under 50 users, or proof-of-concept tests.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0 forever",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "1b1zcvHXVhf5RnmejD8Q8c",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Free_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4jx090thS6z7YJ0aeVaa5K",
+												"value": true,
+												"plan": {
+													"contentfulId": "3C1bIOtMfHrC9NVKhAmiYw",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Pay as you go",
+													"name": "Pay-as-you-go",
+													"description": "Protects access to anything on your network and the Internet. Best for teams over 50 users that do not require enterprise support services.",
+													"pricingDescription": "Billed monthly",
+													"price": 7,
+													"currency": "$",
+													"customPricingText": "$7/user/month",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3aVc8bojzITFwNl96YpnNM",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Standard_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
+												"value": true,
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "Annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "70fOWLJrcnV0CyXw322wDA",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Enterprise_Plan-CTA",
+														"standardText": null,
+														"text": "Talk to an expert",
+														"url": "/products/zero-trust/plans/enterprise/",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
 										"contentfulId": "1KUBtBBlAo17xfH0ZvNZGp",
 										"contentTypeId": "planElementFeatures",
 										"name": "SaaS app tenant controls",
@@ -8062,6 +8312,232 @@
 								"contentTypeId": "planElementFeaturesGroup",
 								"name": "Visibility",
 								"features": [
+									{
+										"contentfulId": "5VCpU1Dpp8wj51aDfAE5iB",
+										"contentTypeId": "planElementFeatures",
+										"name": "Activity log retention",
+										"description": "On contract plans, DNS logs are stored 6 months, and HTTP and network logs for 30 days.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "57IiMa8ZXIxNAk0id3INwV",
+												"textValue": "24 hours",
+												"plan": {
+													"contentfulId": "kFF1UZHLyJ67qlqJFQPqr",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Free Plan",
+													"name": "Free Plan",
+													"description": "Essential security controls to keep employees and apps protected online. Best for teams under 50 users, or proof-of-concept tests.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0 forever",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "1b1zcvHXVhf5RnmejD8Q8c",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Free_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "7toW60f2s93frdHrJJPqzU",
+												"textValue": "30 days",
+												"plan": {
+													"contentfulId": "3C1bIOtMfHrC9NVKhAmiYw",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Pay as you go",
+													"name": "Pay-as-you-go",
+													"description": "Protects access to anything on your network and the Internet. Best for teams over 50 users that do not require enterprise support services.",
+													"pricingDescription": "Billed monthly",
+													"price": 7,
+													"currency": "$",
+													"customPricingText": "$7/user/month",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3aVc8bojzITFwNl96YpnNM",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Standard_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6b3SJ4mCgJrfcfkoNjqIw3",
+												"textValue": "6 months",
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "Annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "70fOWLJrcnV0CyXw322wDA",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Enterprise_Plan-CTA",
+														"standardText": null,
+														"text": "Talk to an expert",
+														"url": "/products/zero-trust/plans/enterprise/",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "43CAORYxMx2PgCWnbSRyPP",
+										"contentTypeId": "planElementFeatures",
+										"name": "Access and authentication logs",
+										"description": "Comprehensive details for all requests, users, and devices, including block reasons. Block policy decisions are stored for a week, and authentication logs for 6 months.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5IsYTlNZoyZXe9fLjOlVP2",
+												"value": true,
+												"plan": {
+													"contentfulId": "kFF1UZHLyJ67qlqJFQPqr",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Free Plan",
+													"name": "Free Plan",
+													"description": "Essential security controls to keep employees and apps protected online. Best for teams under 50 users, or proof-of-concept tests.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0 forever",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "1b1zcvHXVhf5RnmejD8Q8c",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Free_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4jx090thS6z7YJ0aeVaa5K",
+												"value": true,
+												"plan": {
+													"contentfulId": "3C1bIOtMfHrC9NVKhAmiYw",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Pay as you go",
+													"name": "Pay-as-you-go",
+													"description": "Protects access to anything on your network and the Internet. Best for teams over 50 users that do not require enterprise support services.",
+													"pricingDescription": "Billed monthly",
+													"price": 7,
+													"currency": "$",
+													"customPricingText": "$7/user/month",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3aVc8bojzITFwNl96YpnNM",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Standard_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
+												"value": true,
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "Annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "70fOWLJrcnV0CyXw322wDA",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Enterprise_Plan-CTA",
+														"standardText": null,
+														"text": "Talk to an expert",
+														"url": "/products/zero-trust/plans/enterprise/",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
 									{
 										"contentfulId": "2MuCxW30IX25WsspNKhtvb",
 										"contentTypeId": "planElementFeatures",
