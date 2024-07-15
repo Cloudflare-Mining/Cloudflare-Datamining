@@ -635,12 +635,6 @@
 																		"maxLength": 32,
 																		"type": "string"
 																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
-																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
 																		"properties": {
@@ -760,12 +754,6 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"type": "string"
-																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
 																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
@@ -902,12 +890,6 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"type": "string"
-																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
 																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
@@ -1054,12 +1036,6 @@
 																		"maxLength": 32,
 																		"type": "string"
 																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
-																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
 																		"properties": {
@@ -1176,12 +1152,6 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"type": "string"
-																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
 																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
@@ -1328,12 +1298,6 @@
 																		"maxLength": 32,
 																		"type": "string"
 																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
-																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
 																		"properties": {
@@ -1479,12 +1443,6 @@
 																		"maxLength": 32,
 																		"type": "string"
 																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
-																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
 																		"properties": {
@@ -1621,12 +1579,6 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"type": "string"
-																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
 																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
@@ -1842,12 +1794,6 @@
 																		"maxLength": 32,
 																		"type": "string"
 																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
-																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
 																		"properties": {
@@ -1969,12 +1915,6 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"type": "string"
-																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
 																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
@@ -2127,12 +2067,6 @@
 																		"maxLength": 32,
 																		"type": "string"
 																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
-																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
 																		"properties": {
@@ -2245,12 +2179,6 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"type": "string"
-																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
 																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
@@ -2365,12 +2293,6 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"type": "string"
-																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
 																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
@@ -2516,12 +2438,6 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"type": "string"
-																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
 																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
@@ -2690,12 +2606,6 @@
 																		"maxLength": 32,
 																		"type": "string"
 																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
-																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
 																		"properties": {
@@ -2834,12 +2744,6 @@
 																		"maxLength": 32,
 																		"type": "string"
 																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
-																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
 																		"properties": {
@@ -2976,12 +2880,6 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"type": "string"
-																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
 																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
@@ -3128,12 +3026,6 @@
 																		"maxLength": 32,
 																		"type": "string"
 																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
-																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
 																		"properties": {
@@ -3247,12 +3139,6 @@
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"type": "string"
-																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
 																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
@@ -3393,12 +3279,6 @@
 																		"maxLength": 32,
 																		"type": "string"
 																	},
-																	"locked": {
-																		"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																		"example": false,
-																		"readOnly": true,
-																		"type": "boolean"
-																	},
 																	"meta": {
 																		"description": "Extra Cloudflare-specific information about the record.",
 																		"properties": {
@@ -3476,7 +3356,6 @@
 													"name",
 													"content",
 													"proxiable",
-													"locked",
 													"created_on",
 													"modified_on"
 												],
@@ -3655,12 +3534,6 @@
 																				"maxLength": 32,
 																				"type": "string"
 																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
-																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
 																				"properties": {
@@ -3780,12 +3653,6 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"type": "string"
-																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
 																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
@@ -3922,12 +3789,6 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"type": "string"
-																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
 																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
@@ -4074,12 +3935,6 @@
 																				"maxLength": 32,
 																				"type": "string"
 																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
-																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
 																				"properties": {
@@ -4196,12 +4051,6 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"type": "string"
-																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
 																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
@@ -4348,12 +4197,6 @@
 																				"maxLength": 32,
 																				"type": "string"
 																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
-																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
 																				"properties": {
@@ -4499,12 +4342,6 @@
 																				"maxLength": 32,
 																				"type": "string"
 																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
-																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
 																				"properties": {
@@ -4641,12 +4478,6 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"type": "string"
-																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
 																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
@@ -4862,12 +4693,6 @@
 																				"maxLength": 32,
 																				"type": "string"
 																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
-																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
 																				"properties": {
@@ -4989,12 +4814,6 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"type": "string"
-																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
 																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
@@ -5147,12 +4966,6 @@
 																				"maxLength": 32,
 																				"type": "string"
 																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
-																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
 																				"properties": {
@@ -5265,12 +5078,6 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"type": "string"
-																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
 																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
@@ -5385,12 +5192,6 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"type": "string"
-																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
 																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
@@ -5536,12 +5337,6 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"type": "string"
-																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
 																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
@@ -5710,12 +5505,6 @@
 																				"maxLength": 32,
 																				"type": "string"
 																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
-																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
 																				"properties": {
@@ -5854,12 +5643,6 @@
 																				"maxLength": 32,
 																				"type": "string"
 																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
-																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
 																				"properties": {
@@ -5996,12 +5779,6 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"type": "string"
-																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
 																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
@@ -6148,12 +5925,6 @@
 																				"maxLength": 32,
 																				"type": "string"
 																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
-																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
 																				"properties": {
@@ -6267,12 +6038,6 @@
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"type": "string"
-																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
 																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
@@ -6413,12 +6178,6 @@
 																				"maxLength": 32,
 																				"type": "string"
 																			},
-																			"locked": {
-																				"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																				"example": false,
-																				"readOnly": true,
-																				"type": "boolean"
-																			},
 																			"meta": {
 																				"description": "Extra Cloudflare-specific information about the record.",
 																				"properties": {
@@ -6496,7 +6255,6 @@
 															"name",
 															"content",
 															"proxiable",
-															"locked",
 															"created_on",
 															"modified_on"
 														],
@@ -6788,12 +6546,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -6913,12 +6665,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -7055,12 +6801,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -7207,12 +6947,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -7329,12 +7063,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -7481,12 +7209,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -7632,12 +7354,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -7774,12 +7490,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -7995,12 +7705,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -8122,12 +7826,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -8280,12 +7978,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -8398,12 +8090,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -8518,12 +8204,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -8669,12 +8349,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -8843,12 +8517,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -8987,12 +8655,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -9129,12 +8791,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -9281,12 +8937,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -9400,12 +9050,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -9546,12 +9190,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -9629,7 +9267,6 @@
 												"name",
 												"content",
 												"proxiable",
-												"locked",
 												"created_on",
 												"modified_on"
 											],
@@ -9785,12 +9422,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -9910,12 +9541,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -10052,12 +9677,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -10204,12 +9823,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -10326,12 +9939,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -10478,12 +10085,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -10629,12 +10230,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -10771,12 +10366,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -10992,12 +10581,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -11119,12 +10702,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -11277,12 +10854,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -11395,12 +10966,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -11515,12 +11080,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -11666,12 +11225,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -11840,12 +11393,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -11984,12 +11531,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -12126,12 +11667,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -12278,12 +11813,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -12397,12 +11926,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -12543,12 +12066,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -12626,7 +12143,6 @@
 														"name",
 														"content",
 														"proxiable",
-														"locked",
 														"created_on",
 														"modified_on"
 													],
@@ -12976,12 +12492,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -13101,12 +12611,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -13243,12 +12747,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -13395,12 +12893,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -13517,12 +13009,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -13669,12 +13155,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -13820,12 +13300,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -13962,12 +13436,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -14183,12 +13651,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -14310,12 +13772,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -14468,12 +13924,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -14586,12 +14036,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -14706,12 +14150,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -14857,12 +14295,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -15031,12 +14463,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -15175,12 +14601,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -15317,12 +14737,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -15469,12 +14883,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -15588,12 +14996,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -15734,12 +15136,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -15817,7 +15213,6 @@
 							"name",
 							"content",
 							"proxiable",
-							"locked",
 							"created_on",
 							"modified_on"
 						],
@@ -15967,12 +15362,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -16092,12 +15481,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -16234,12 +15617,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -16386,12 +15763,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -16508,12 +15879,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -16660,12 +16025,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -16811,12 +16170,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -16953,12 +16306,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -17174,12 +16521,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -17301,12 +16642,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -17459,12 +16794,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -17577,12 +16906,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -17697,12 +17020,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -17848,12 +17165,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -18022,12 +17333,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -18166,12 +17471,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -18308,12 +17607,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -18460,12 +17753,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -18579,12 +17866,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -18725,12 +18006,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -18808,7 +18083,6 @@
 												"name",
 												"content",
 												"proxiable",
-												"locked",
 												"created_on",
 												"modified_on"
 											],
@@ -18964,12 +18238,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -19089,12 +18357,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -19231,12 +18493,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -19383,12 +18639,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -19505,12 +18755,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -19657,12 +18901,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -19808,12 +19046,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -19950,12 +19182,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -20171,12 +19397,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -20298,12 +19518,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -20456,12 +19670,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -20574,12 +19782,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -20694,12 +19896,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -20845,12 +20041,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -21019,12 +20209,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -21163,12 +20347,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -21305,12 +20483,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -21457,12 +20629,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -21576,12 +20742,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -21722,12 +20882,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -21805,7 +20959,6 @@
 														"name",
 														"content",
 														"proxiable",
-														"locked",
 														"created_on",
 														"modified_on"
 													],
@@ -22001,12 +21154,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -22126,12 +21273,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -22268,12 +21409,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -22420,12 +21555,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -22542,12 +21671,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -22694,12 +21817,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -22845,12 +21962,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -22987,12 +22098,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -23208,12 +22313,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -23335,12 +22434,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -23493,12 +22586,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -23611,12 +22698,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -23731,12 +22812,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -23882,12 +22957,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -24056,12 +23125,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -24200,12 +23263,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -24342,12 +23399,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -24494,12 +23545,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -24613,12 +23658,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -24759,12 +23798,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -24842,7 +23875,6 @@
 							"name",
 							"content",
 							"proxiable",
-							"locked",
 							"created_on",
 							"modified_on"
 						],
@@ -24992,12 +24024,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -25117,12 +24143,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -25259,12 +24279,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -25411,12 +24425,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -25533,12 +24541,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -25685,12 +24687,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -25836,12 +24832,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -25978,12 +24968,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -26199,12 +25183,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -26326,12 +25304,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -26484,12 +25456,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -26602,12 +25568,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -26722,12 +25682,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -26873,12 +25827,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -27047,12 +25995,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -27191,12 +26133,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -27333,12 +26269,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -27485,12 +26415,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -27604,12 +26528,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -27750,12 +26668,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -27833,7 +26745,6 @@
 												"name",
 												"content",
 												"proxiable",
-												"locked",
 												"created_on",
 												"modified_on"
 											],
@@ -27989,12 +26900,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -28114,12 +27019,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -28256,12 +27155,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -28408,12 +27301,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -28530,12 +27417,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -28682,12 +27563,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -28833,12 +27708,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -28975,12 +27844,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -29196,12 +28059,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -29323,12 +28180,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -29481,12 +28332,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -29599,12 +28444,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -29719,12 +28558,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -29870,12 +28703,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -30044,12 +28871,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -30188,12 +29009,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -30330,12 +29145,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -30482,12 +29291,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -30601,12 +29404,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -30747,12 +29544,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -30830,7 +29621,6 @@
 														"name",
 														"content",
 														"proxiable",
-														"locked",
 														"created_on",
 														"modified_on"
 													],
@@ -31853,12 +30643,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -31978,12 +30762,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -32120,12 +30898,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -32272,12 +31044,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -32394,12 +31160,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -32546,12 +31306,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -32697,12 +31451,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -32839,12 +31587,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -33060,12 +31802,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -33187,12 +31923,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -33345,12 +32075,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -33463,12 +32187,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -33583,12 +32301,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -33734,12 +32446,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -33908,12 +32614,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -34052,12 +32752,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -34194,12 +32888,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -34346,12 +33034,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -34465,12 +33147,6 @@
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"maxLength": 32,
 												"type": "string"
-											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
 											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
@@ -34611,12 +33287,6 @@
 												"maxLength": 32,
 												"type": "string"
 											},
-											"locked": {
-												"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-												"example": false,
-												"readOnly": true,
-												"type": "boolean"
-											},
 											"meta": {
 												"description": "Extra Cloudflare-specific information about the record.",
 												"properties": {
@@ -34694,7 +33364,6 @@
 							"name",
 							"content",
 							"proxiable",
-							"locked",
 							"created_on",
 							"modified_on"
 						],
@@ -34844,12 +33513,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -34969,12 +33632,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -35111,12 +33768,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -35263,12 +33914,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -35385,12 +34030,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -35537,12 +34176,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -35688,12 +34321,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -35830,12 +34457,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -36051,12 +34672,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -36178,12 +34793,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -36336,12 +34945,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -36454,12 +35057,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -36574,12 +35171,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -36725,12 +35316,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -36899,12 +35484,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -37043,12 +35622,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -37185,12 +35758,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -37337,12 +35904,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -37456,12 +36017,6 @@
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
 																	"type": "string"
-																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
 																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
@@ -37602,12 +36157,6 @@
 																	"maxLength": 32,
 																	"type": "string"
 																},
-																"locked": {
-																	"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																	"example": false,
-																	"readOnly": true,
-																	"type": "boolean"
-																},
 																"meta": {
 																	"description": "Extra Cloudflare-specific information about the record.",
 																	"properties": {
@@ -37685,7 +36234,6 @@
 												"name",
 												"content",
 												"proxiable",
-												"locked",
 												"created_on",
 												"modified_on"
 											],
@@ -37841,12 +36389,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -37966,12 +36508,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -38108,12 +36644,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -38260,12 +36790,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -38382,12 +36906,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -38534,12 +37052,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -38685,12 +37197,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -38827,12 +37333,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -39048,12 +37548,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -39175,12 +37669,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -39333,12 +37821,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -39451,12 +37933,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -39571,12 +38047,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -39722,12 +38192,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -39896,12 +38360,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -40040,12 +38498,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -40182,12 +38634,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -40334,12 +38780,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -40453,12 +38893,6 @@
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
 																			"type": "string"
-																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
 																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
@@ -40599,12 +39033,6 @@
 																			"maxLength": 32,
 																			"type": "string"
 																		},
-																		"locked": {
-																			"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
-																			"example": false,
-																			"readOnly": true,
-																			"type": "boolean"
-																		},
 																		"meta": {
 																			"description": "Extra Cloudflare-specific information about the record.",
 																			"properties": {
@@ -40682,7 +39110,6 @@
 														"name",
 														"content",
 														"proxiable",
-														"locked",
 														"created_on",
 														"modified_on"
 													],

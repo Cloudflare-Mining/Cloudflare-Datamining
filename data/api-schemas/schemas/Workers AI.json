@@ -499,9 +499,6 @@
 					"schema": {
 						"oneOf": [
 							{
-								"title": "Dumb Pipe"
-							},
-							{
 								"properties": {
 									"text": {
 										"minLength": 1,
@@ -985,9 +982,6 @@
 							"properties": {
 								"result": {
 									"oneOf": [
-										{
-											"title": "Dumb Pipe"
-										},
 										{
 											"items": {
 												"properties": {
