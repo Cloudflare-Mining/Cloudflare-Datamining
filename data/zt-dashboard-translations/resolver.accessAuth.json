@@ -214,6 +214,8 @@
 	"scim_segret_regenerate_title": "Regenerate SCIM Secret",
 	"scim_toggle_description": "System for Cross-domain Identity Management (SCIM) allows for automatic synchronization of users and groups between your identity provider and Access.",
 	"scim_toggle_label": "Enable SCIM",
+	"scim_toggle_warning_desc": "Turning off this setting removes all users and groups in SCIM storage.",
+	"scim_toggle_warning_title": "Are you sure you want to turn off SCIM?",
 	"scim_user_deprovisioning_toggle_description": "Revoke access from users who have been disabled or removed from your identity provider. This will revoke all active Access and WARP sessions.",
 	"scim_user_deprovisioning_toggle_label": "Enable user deprovisioning",
 	"scim_user_group_sync_description": "Determines how user information is updated from your identity provider. Changing your user group sync type will require reauthentication.",
