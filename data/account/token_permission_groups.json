@@ -520,6 +520,22 @@
 		]
 	},
 	{
+		"id": "9e5a9912439940fca5898b5b8dc6d1a5",
+		"name": "Cloud Email Security: Read",
+		"description": "Grants read access to Cloudflare Cloud Email Security",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "a3567c13e074447fb101babac3463566",
+		"name": "Cloud Email Security: Write",
+		"description": "Grants write access to Cloudflare Cloud Email Security",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "65ec50cbde3d4c838bbe7500024d5745",
 		"name": "Cloudchamber Read",
 		"description": "Grants read access to Cloudchamber deployments",
@@ -619,6 +635,14 @@
 		"id": "5b5c774a5d174ca88d046c8889648b3f",
 		"name": "Cloudflare One Warp Connectors Write",
 		"description": "Grants write access to Warp Connectors",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "f5d857f67f144e3c8bacea88c17d4a13",
+		"name": "Cloudflare Zero Trust PII",
+		"description": "Can access Cloudflare Zero Trust PII.",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
