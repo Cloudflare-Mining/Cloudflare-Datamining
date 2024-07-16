@@ -560,7 +560,7 @@
 													},
 													"maximum_cache_ttl": {
 														"default": 900,
-														"description": "Maximum DNS Cache TTL.",
+														"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
 														"example": 900,
 														"maximum": 36000,
 														"minimum": 30,
@@ -568,7 +568,7 @@
 													},
 													"minimum_cache_ttl": {
 														"default": 60,
-														"description": "Minimum DNS Cache TTL.",
+														"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
 														"example": 60,
 														"maximum": 36000,
 														"minimum": 30,
@@ -588,7 +588,7 @@
 														"type": "string"
 													},
 													"negative_cache_ttl": {
-														"description": "Negative DNS Cache TTL.",
+														"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
 														"example": 900,
 														"maximum": 36000,
 														"minimum": 30,
@@ -831,7 +831,7 @@
 															},
 															"maximum_cache_ttl": {
 																"default": 900,
-																"description": "Maximum DNS Cache TTL.",
+																"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
 																"example": 900,
 																"maximum": 36000,
 																"minimum": 30,
@@ -839,7 +839,7 @@
 															},
 															"minimum_cache_ttl": {
 																"default": 60,
-																"description": "Minimum DNS Cache TTL.",
+																"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
 																"example": 60,
 																"maximum": 36000,
 																"minimum": 30,
@@ -859,7 +859,7 @@
 																"type": "string"
 															},
 															"negative_cache_ttl": {
-																"description": "Negative DNS Cache TTL.",
+																"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
 																"example": 900,
 																"maximum": 36000,
 																"minimum": 30,
@@ -1216,7 +1216,7 @@
 												},
 												"maximum_cache_ttl": {
 													"default": 900,
-													"description": "Maximum DNS Cache TTL.",
+													"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
 													"example": 900,
 													"maximum": 36000,
 													"minimum": 30,
@@ -1224,7 +1224,7 @@
 												},
 												"minimum_cache_ttl": {
 													"default": 60,
-													"description": "Minimum DNS Cache TTL.",
+													"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
 													"example": 60,
 													"maximum": 36000,
 													"minimum": 30,
@@ -1244,7 +1244,7 @@
 													"type": "string"
 												},
 												"negative_cache_ttl": {
-													"description": "Negative DNS Cache TTL.",
+													"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
 													"example": 900,
 													"maximum": 36000,
 													"minimum": 30,
@@ -1464,7 +1464,7 @@
 														},
 														"maximum_cache_ttl": {
 															"default": 900,
-															"description": "Maximum DNS Cache TTL.",
+															"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
@@ -1472,7 +1472,7 @@
 														},
 														"minimum_cache_ttl": {
 															"default": 60,
-															"description": "Minimum DNS Cache TTL.",
+															"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
 															"example": 60,
 															"maximum": 36000,
 															"minimum": 30,
@@ -1492,7 +1492,7 @@
 															"type": "string"
 														},
 														"negative_cache_ttl": {
-															"description": "Negative DNS Cache TTL.",
+															"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
@@ -1765,7 +1765,7 @@
 									},
 									"maximum_cache_ttl": {
 										"default": 900,
-										"description": "Maximum DNS Cache TTL.",
+										"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
 										"example": 900,
 										"maximum": 36000,
 										"minimum": 30,
@@ -1773,7 +1773,7 @@
 									},
 									"minimum_cache_ttl": {
 										"default": 60,
-										"description": "Minimum DNS Cache TTL.",
+										"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
 										"example": 60,
 										"maximum": 36000,
 										"minimum": 30,
@@ -1793,7 +1793,7 @@
 										"type": "string"
 									},
 									"negative_cache_ttl": {
-										"description": "Negative DNS Cache TTL.",
+										"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
 										"example": 900,
 										"maximum": 36000,
 										"minimum": 30,
@@ -2011,7 +2011,7 @@
 												},
 												"maximum_cache_ttl": {
 													"default": 900,
-													"description": "Maximum DNS Cache TTL.",
+													"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
 													"example": 900,
 													"maximum": 36000,
 													"minimum": 30,
@@ -2019,7 +2019,7 @@
 												},
 												"minimum_cache_ttl": {
 													"default": 60,
-													"description": "Minimum DNS Cache TTL.",
+													"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
 													"example": 60,
 													"maximum": 36000,
 													"minimum": 30,
@@ -2039,7 +2039,7 @@
 													"type": "string"
 												},
 												"negative_cache_ttl": {
-													"description": "Negative DNS Cache TTL.",
+													"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
 													"example": 900,
 													"maximum": 36000,
 													"minimum": 30,
@@ -2259,7 +2259,7 @@
 														},
 														"maximum_cache_ttl": {
 															"default": 900,
-															"description": "Maximum DNS Cache TTL.",
+															"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
@@ -2267,7 +2267,7 @@
 														},
 														"minimum_cache_ttl": {
 															"default": 60,
-															"description": "Minimum DNS Cache TTL.",
+															"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
 															"example": 60,
 															"maximum": 36000,
 															"minimum": 30,
@@ -2287,7 +2287,7 @@
 															"type": "string"
 														},
 														"negative_cache_ttl": {
-															"description": "Negative DNS Cache TTL.",
+															"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
@@ -2516,7 +2516,7 @@
 							},
 							"maximum_cache_ttl": {
 								"default": 900,
-								"description": "Maximum DNS Cache TTL.",
+								"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
 								"example": 900,
 								"maximum": 36000,
 								"minimum": 30,
@@ -2524,7 +2524,7 @@
 							},
 							"minimum_cache_ttl": {
 								"default": 60,
-								"description": "Minimum DNS Cache TTL.",
+								"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
 								"example": 60,
 								"maximum": 36000,
 								"minimum": 30,
@@ -2537,7 +2537,7 @@
 								"type": "string"
 							},
 							"negative_cache_ttl": {
-								"description": "Negative DNS Cache TTL.",
+								"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
 								"example": 900,
 								"maximum": 36000,
 								"minimum": 30,
@@ -2744,7 +2744,7 @@
 												},
 												"maximum_cache_ttl": {
 													"default": 900,
-													"description": "Maximum DNS Cache TTL.",
+													"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
 													"example": 900,
 													"maximum": 36000,
 													"minimum": 30,
@@ -2752,7 +2752,7 @@
 												},
 												"minimum_cache_ttl": {
 													"default": 60,
-													"description": "Minimum DNS Cache TTL.",
+													"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
 													"example": 60,
 													"maximum": 36000,
 													"minimum": 30,
@@ -2772,7 +2772,7 @@
 													"type": "string"
 												},
 												"negative_cache_ttl": {
-													"description": "Negative DNS Cache TTL.",
+													"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
 													"example": 900,
 													"maximum": 36000,
 													"minimum": 30,
@@ -2992,7 +2992,7 @@
 														},
 														"maximum_cache_ttl": {
 															"default": 900,
-															"description": "Maximum DNS Cache TTL.",
+															"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
@@ -3000,7 +3000,7 @@
 														},
 														"minimum_cache_ttl": {
 															"default": 60,
-															"description": "Minimum DNS Cache TTL.",
+															"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
 															"example": 60,
 															"maximum": 36000,
 															"minimum": 30,
@@ -3020,7 +3020,7 @@
 															"type": "string"
 														},
 														"negative_cache_ttl": {
-															"description": "Negative DNS Cache TTL.",
+															"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
