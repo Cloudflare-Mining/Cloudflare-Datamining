@@ -1,5 +1,11 @@
 # Change Log
 
+## 10.1.0
+
+### Minor Changes
+
+- 077d121634: Adds tracking to CardDrawers when they are opened
+
 ## 10.0.18
 
 ### Patch Changes

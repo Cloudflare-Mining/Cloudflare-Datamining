@@ -1,5 +1,12 @@
 # Change Log
 
+## 9.0.19
+
+### Patch Changes
+
+- Updated dependencies [077d121634]
+  - @cloudflare/component-card@10.1.0
+
 ## 9.0.18
 
 ### Patch Changes
