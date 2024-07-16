@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.11.0
+
+### Minor Changes
+
+- 164309d7e9: add warp and connector icons
+
 ## 12.10.0
 
 ### Minor Changes

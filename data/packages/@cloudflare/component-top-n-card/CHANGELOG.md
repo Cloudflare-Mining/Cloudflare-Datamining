@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.18
+
+### Patch Changes
+
+- @cloudflare/component-button@8.3.12
+
 ## 6.0.17
 
 ## 6.0.16
