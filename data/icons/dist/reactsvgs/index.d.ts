@@ -1,7 +1,6 @@
 /// <reference types="react" />
 declare const _default: {
     dlp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'account-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'add-member': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     add: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -37,6 +36,7 @@ declare const _default: {
     'cloudflare-zero-trust': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'code-edit': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     code: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    connector: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     copy: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'credit-card': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     d1: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -139,6 +139,7 @@ declare const _default: {
     teams: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     terraform: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     trace: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'traffic-attack-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     turnstile: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -152,6 +153,7 @@ declare const _default: {
     vectorize: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     version: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'waiting-room': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    warp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'web-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     web3: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'workers-bundled': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

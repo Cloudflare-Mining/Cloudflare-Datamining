@@ -1,5 +1,4 @@
 import Dlp from './Dlp';
-import Timer from './Timer';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
 import AddMember from './AddMember';
 import Add from './Add';
@@ -35,6 +34,7 @@ import CloudflareSecurityNetwork from './CloudflareSecurityNetwork';
 import CloudflareZeroTrust from './CloudflareZeroTrust';
 import CodeEdit from './CodeEdit';
 import Code from './Code';
+import Connector from './Connector';
 import Copy from './Copy';
 import CreditCard from './CreditCard';
 import D1 from './D1';
@@ -137,6 +137,7 @@ import TailWorker from './TailWorker';
 import Teams from './Teams';
 import Terraform from './Terraform';
 import Time from './Time';
+import Timer from './Timer';
 import Trace from './Trace';
 import TrafficAttackBrowser from './TrafficAttackBrowser';
 import Turnstile from './Turnstile';
@@ -150,6 +151,7 @@ import User from './User';
 import Vectorize from './Vectorize';
 import Version from './Version';
 import WaitingRoom from './WaitingRoom';
+import Warp from './Warp';
 import WebAnalyticsLogo from './WebAnalyticsLogo';
 import Web3 from './Web3';
 import WorkersBundled from './WorkersBundled';
@@ -168,7 +170,6 @@ import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
 export default {
   dlp: Dlp,
-  timer: Timer,
   'account-analytics-logo': AccountAnalyticsLogo,
   'add-member': AddMember,
   add: Add,
@@ -204,6 +205,7 @@ export default {
   'cloudflare-zero-trust': CloudflareZeroTrust,
   'code-edit': CodeEdit,
   code: Code,
+  connector: Connector,
   copy: Copy,
   'credit-card': CreditCard,
   d1: D1,
@@ -306,6 +308,7 @@ export default {
   teams: Teams,
   terraform: Terraform,
   time: Time,
+  timer: Timer,
   trace: Trace,
   'traffic-attack-browser': TrafficAttackBrowser,
   turnstile: Turnstile,
@@ -319,6 +322,7 @@ export default {
   vectorize: Vectorize,
   version: Version,
   'waiting-room': WaitingRoom,
+  warp: Warp,
   'web-analytics-logo': WebAnalyticsLogo,
   web3: Web3,
   'workers-bundled': WorkersBundled,
