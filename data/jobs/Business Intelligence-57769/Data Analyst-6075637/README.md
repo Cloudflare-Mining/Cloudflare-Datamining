@@ -5,67 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: US Remote</h4>
-<h4>About the role</h4>
-<p>Cloudflare is looking for a Sr. Analyst Relations Manager to help scale our AR program. This is a great opportunity to work with Cloudflare’s communications team to continue to shape our global story around our Cloudflare One portfolio (SASE, SSE and Zero Trust), in a role with potential for growth. You’ll be responsible for driving strategic programs and initiatives with the industry analyst community. In this role you’ll get to work with a wide range of Cloudflare executives, product management, product marketing, and other technical leads to help further drive our market position; including effective communication of vision, strategy, product direction, customer success, and competitive position.</p>
-<h4>What you'll do</h4>
+<h4><strong>Available locations -&nbsp;</strong>Austin, TX Highly preferred. Open to Remote US</h4>
+<hr>
+<h4><strong>About the team</strong></h4>
+<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for an experienced Data Analyst to join our Austin or Lisbon teams to scale our product analytics initiatives. You will work with a wide array of datasets to analyze and build interactive reports and self-serve dashboards which will influence our critical business initiatives and will provide actionable insights to Product and Finance teams.</p>
+<p>Success in this role comes from marrying a strong data background with acute product and business acumen to deliver highly strategic and compelling insights that accelerate our business growth and influence our product decisions within Cloudflare.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Execute on current AR Plan and evolve on strategy and expansion of analyst relationships into various markets. &nbsp;</li>
-	<li>Communicate Cloudflare news to the analyst community and handle inbound analyst requests in a timely and effective manner, including surveys, inquiries, briefings and customers requests.</li>
-	<li>Drive program management of key reports surveys including Gartner Magic Quadrants, Forrester Wave’s and IDC MarketScapes. Work with product marketing and sales leaders to develop sales enablement materials in support of major report placements.</li>
-	<li>Manage the strategy, coordination and preparation of presentations, briefing sheets, talking points and materials needed for key spokespeople ahead of analyst interactions.</li>
-	<li>Assist marketing team to use analysts strategically in support of marketing efforts including website, speaking opportunities, presentations and report sponsorship for lead generation. &nbsp;</li>
-	<li>Monitor research and disseminate analyst insights on market and competitors to key internal stakeholders.&nbsp;</li>
+	<li>Provide quantitative support, market understanding and a strategic perspective to our partners throughout the organization</li>
+	<li>Partner and align with data engineers, data analysts, data scientists, business stakeholders, product managers and internal teams to enable data driven solutions to key business problems</li>
+	<li>Take initiative and ask questions to iteratively define, build, and maintain new business metrics</li>
+	<li>Develop and automate reports and iteratively build and prototype dashboards to provide insights at scale</li>
+	<li>Weave stories with data to help stakeholders understand analytic insights</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>5-7+ years experience in high-tech analyst relations, public relations, or communications in either a corporate or agency role. Candidates should have 2-3+ years of prior analyst relations experience.</li>
-	<li>Ability to operate independently and as a team in “the trenches”—we’re a dynamic team and everyone pitches in to get the job done.</li>
-	<li>Excellent communication, writing and presentation skills.</li>
-	<li>Creative, hardworking, and flexible professionalism—you are able to thrive in a fast-paced and changing environment.</li>
-	<li>Strong project management and attention to detail is a must.&nbsp;</li>
-	<li>Ability to multitask, manage deadlines and communicate priorities to cross-functional teams.</li>
-	<li>Enterprise software experience preferred. Knowledge of security (SASE, SSE, Zero Trust), cloud, a plus.</li>
-	<li>Ability to understand and operate in a highly technical environment.</li>
-	<li>Some travel required.</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>Ability to perform impact analysis of metric definition changes to connected data processes&nbsp;</li>
+	<li>Experience with data visualization tools such as Tableau, Google Data Studio etc.&nbsp;</li>
+	<li>Strong expertise in writing advanced SQL queries</li>
+	<li>Experience in translating analysis results into business recommendations and business questions into an analysis framework</li>
+	<li>Knowledge of data management, data modeling and data warehousing fundamentals</li>
+	<li>Experience in presenting analysis findings to business stakeholders</li>
+	<li>Experience with statistical analysis programming languages (Python, etc)</li>
 </ul>
-<p></p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li>For Colorado-based hires and Washington hires: Estimated annual salary of $137,000 - $167,000</li>
-	<li>For New York City-based and California (excluding Bay Area): Estimated annual salary of $153,000 - $187,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $161,000 - $197,000</li>
+	<li>Experience in front-end development, JavaScript, and/or other scripting languages is a plus</li>
+	<li>Experience with a fast-growing SaaS business based company preferred</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
-<p></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
