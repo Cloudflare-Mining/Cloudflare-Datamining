@@ -349,6 +349,10 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete D1 Database",
@@ -755,6 +759,10 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List D1 Databases",
@@ -1141,6 +1149,10 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get D1 Database",
@@ -1173,6 +1185,19 @@
 							"name": {
 								"example": "my-database",
 								"pattern": "^[a-z0-9][a-z0-9-_]*$",
+								"type": "string"
+							},
+							"primary_location_hint": {
+								"description": "Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.",
+								"enum": [
+									"wnam",
+									"enam",
+									"weur",
+									"eeur",
+									"apac",
+									"oc"
+								],
+								"example": "wnam",
 								"type": "string"
 							}
 						},
@@ -1529,9 +1554,965 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Create D1 Database",
+		"tags": [
+			"D1"
+		]
+	},
+	"POST /accounts/{account_id}/d1/database/{database_id}/export": {
+		"description": "Returns a URL where the SQL contents of your D1 can be downloaded. Note: this process may take\nsome time for larger DBs, during which your D1 will be unavailable to serve queries. To avoid\nblocking your DB unnecessarily, an in-progress export must be continually polled or will automatically cancel.\n",
+		"operationId": "cloudflare-d1-export-database",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "database_id",
+				"required": true,
+				"schema": {
+					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"current_bookmark": {
+								"description": "To poll an in-progress export, provide the current bookmark (returned by your first polling response)",
+								"type": "string"
+							},
+							"dump_options": {
+								"properties": {
+									"no_data": {
+										"description": "Export only the table definitions, not their contents",
+										"type": "boolean"
+									},
+									"no_schema": {
+										"description": "Export only each table's contents, not its definition",
+										"type": "boolean"
+									},
+									"tables": {
+										"description": "Filter the export to just one or more tables. Passing an empty array is the same as not passing anything and means: export all tables.",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
+								"type": "object"
+							},
+							"output_format": {
+								"description": "Specifies that you will poll this endpoint until the export completes",
+								"enum": [
+									"polling"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"output_format"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"at_bookmark": {
+													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the export task.",
+													"type": "string"
+												},
+												"error": {
+													"description": "Only present when status = 'error'. Contains the error message.",
+													"type": "string"
+												},
+												"messages": {
+													"description": "Logs since the last time you polled",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"result": {
+													"description": "Only present when status = 'complete'",
+													"properties": {
+														"filename": {
+															"description": "The generated SQL filename.",
+															"type": "string"
+														},
+														"signed_url": {
+															"description": "The URL to download the exported SQL. Available for one hour.",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"status": {
+													"enum": [
+														"complete",
+														"error"
+													],
+													"type": "string"
+												},
+												"success": {
+													"type": "boolean"
+												},
+												"type": {
+													"enum": [
+														"export"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Polled successfully, task no longer running (errored or complete)"
+			},
+			"202": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"at_bookmark": {
+													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the export task.",
+													"type": "string"
+												},
+												"messages": {
+													"description": "Logs since the last time you polled",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"status": {
+													"enum": [
+														"active"
+													],
+													"type": "string"
+												},
+												"success": {
+													"type": "boolean"
+												},
+												"type": {
+													"enum": [
+														"export"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Polled successfully, task is currently running"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Poll failed (API error)"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Export D1 Database as SQL",
+		"tags": [
+			"D1"
+		]
+	},
+	"POST /accounts/{account_id}/d1/database/{database_id}/import": {
+		"description": "Generates a temporary URL for uploading an SQL file to, then instructing the D1 to import it\nand polling it for status updates. Imports block the D1 for their duration.\n",
+		"operationId": "cloudflare-d1-import-database",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "database_id",
+				"required": true,
+				"schema": {
+					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"action": {
+										"description": "Indicates you have a new SQL file to upload.",
+										"enum": [
+											"init"
+										],
+										"type": "string"
+									},
+									"etag": {
+										"description": "Required when action is 'init' or 'ingest'. An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting.",
+										"type": "string"
+									}
+								},
+								"required": [
+									"action",
+									"etag"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"action": {
+										"description": "Indicates you've finished uploading to tell the D1 to start consuming it",
+										"enum": [
+											"ingest"
+										],
+										"type": "string"
+									},
+									"etag": {
+										"description": "An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting.",
+										"type": "string"
+									},
+									"filename": {
+										"description": "The filename you have successfully uploaded.",
+										"type": "string"
+									}
+								},
+								"required": [
+									"action",
+									"etag",
+									"filename"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"action": {
+										"description": "Indicates you've finished uploading to tell the D1 to start consuming it",
+										"enum": [
+											"poll"
+										],
+										"type": "string"
+									},
+									"current_bookmark": {
+										"description": "This identifies the currently-running import, checking its status.",
+										"type": "string"
+									}
+								},
+								"required": [
+									"action",
+									"current_bookmark"
+								],
+								"type": "object"
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"at_bookmark": {
+													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the import. Only returned if an import process is currently running or recently finished.",
+													"type": "string"
+												},
+												"error": {
+													"description": "Only present when status = 'error'. Contains the error message that prevented the import from succeeding.",
+													"type": "string"
+												},
+												"filename": {
+													"description": "Derived from the database ID and etag, to use in avoiding repeated uploads. Only returned when for the 'init' action.",
+													"type": "string"
+												},
+												"messages": {
+													"description": "Logs since the last time you polled",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"result": {
+													"description": "Only present when status = 'complete'",
+													"properties": {
+														"final_bookmark": {
+															"description": "The time-travel bookmark if you need restore your D1 to directly after the import succeeded.",
+															"type": "string"
+														},
+														"meta": {
+															"properties": {
+																"changed_db": {
+																	"type": "boolean"
+																},
+																"changes": {
+																	"type": "number"
+																},
+																"duration": {
+																	"type": "number"
+																},
+																"last_row_id": {
+																	"type": "number"
+																},
+																"rows_read": {
+																	"type": "number"
+																},
+																"rows_written": {
+																	"type": "number"
+																},
+																"size_after": {
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														},
+														"num_queries": {
+															"description": "The total number of queries that were executed during the import.",
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"status": {
+													"enum": [
+														"complete",
+														"error"
+													],
+													"type": "string"
+												},
+												"success": {
+													"type": "boolean"
+												},
+												"type": {
+													"enum": [
+														"import"
+													],
+													"type": "string"
+												},
+												"upload_url": {
+													"description": "The R2 presigned URL to use for uploading. Only returned when for the 'init' action.",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Successful action. Import is either ready to start, under way, or finished (succeeded or failed)."
+			},
+			"202": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"at_bookmark": {
+													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the import.",
+													"type": "string"
+												},
+												"messages": {
+													"description": "Logs since the last time you polled",
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"status": {
+													"enum": [
+														"active"
+													],
+													"type": "string"
+												},
+												"success": {
+													"type": "boolean"
+												},
+												"type": {
+													"enum": [
+														"import"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Polled successfully, task is currently running"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Poll failed (API error)"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Import SQL into your D1 Database",
 		"tags": [
 			"D1"
 		]
@@ -1578,6 +2559,7 @@
 								"type": "array"
 							},
 							"sql": {
+								"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
 								"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
 								"type": "string"
 							}
@@ -1954,6 +2936,10 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Query D1 Database",
@@ -2003,6 +2989,7 @@
 								"type": "array"
 							},
 							"sql": {
+								"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
 								"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
 								"type": "string"
 							}
@@ -2399,6 +3386,10 @@
 		"security": [
 			{
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			},
 			{
 				"api_email": [],
