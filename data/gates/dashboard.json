@@ -1164,6 +1164,14 @@
 	"web-analytics-in-speed-site-recommendations": {
 		"enabled": false
 	},
+	"welcome-page-cards-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variant-a",
+			"variant-b"
+		]
+	},
 	"workers-ai-analytics-ui": {
 		"enabled": true
 	},
