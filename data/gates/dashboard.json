@@ -708,6 +708,13 @@
 	"prg-dynamic-dash-banners": {
 		"enabled": true
 	},
+	"prg-dynamic-login-banners": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"prg-free-trial": {
 		"enabled": false
 	},
