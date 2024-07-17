@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: R => (0, e.z1)(E.Mr)(R) && (0, Q.z7)(R) && !!(0, Q.z$)(R).length
+		hasPermission: R => (0, e.z1)(A.Mr)(R) && (0, U.z7)(R) && !!(0, U.z$)(R).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -181,7 +181,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: F.T
+		hasPermission: Z.T
 	}, {
 		title: "navigation.account.group_title.application_services",
 		url: "/",
@@ -610,7 +610,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: R => !!(0, V.V)(R)
+			hasPermission: R => !!(0, H.V)(R)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -619,7 +619,7 @@ const navigation = {
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
 		tabs: M.bB,
-		hasPermission: R => !(0, s.yD)(R) && (0, b.m7)(R)
+		hasPermission: R => !(0, s.yD)(R) && (0, D.m7)(R)
 	}, {
 		title: "navigation.zone.dns",
 		url: "/dns",
@@ -659,7 +659,7 @@ const navigation = {
 			title: "navigation.zone.email.routing",
 			navigationType: "global-settings",
 			url: "/email/routing",
-			tabs: N.hg,
+			tabs: S.hg,
 			hasPermission: R => (0, o.iY)(R) && !(0, s.yD)(R) && (0, o.$n)(R, "dns_records", "dns-record")
 		}, {
 			title: "navigation.zone.email.dmarc-reports",
@@ -683,8 +683,8 @@ const navigation = {
 			if ((0, s.yD)(R) || !(0, o.wB)(R, "zone_settings", "spectrum.app") || !ve) return !1;
 			const me = !!((0, l.l8)(R) || (0, f.DQ)(R)),
 				$ = !!(0, f.ZB)(R, "spectrum", "enabled"),
-				H = !!(0, f.Ns)(ve);
-			return $ || me || !H
+				V = !!(0, f.Ns)(ve);
+			return $ || me || !V
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -741,13 +741,13 @@ const navigation = {
 			title: "navigation.zone.security.waf",
 			url: "/security/waf",
 			navigationType: "version",
-			tabs: D.gn,
+			tabs: T.gn,
 			hasPermission: R => (0, o.$n)(R, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
-			tabs: D.mt,
+			tabs: T.mt,
 			hasPermission: R => (0, o.$n)(R, "page_shield", "script-monitor")
 		}, {
 			title: "navigation.zone.security.bots",
@@ -768,7 +768,7 @@ const navigation = {
 				const ve = (0, f.nA)(R);
 				return ve ? !!(0, f.ZB)(R, "firewall", "api_shield_tab") && (0, f.tU)(ve, "business") && (0, o.$n)(R, "waf", "firewall.rule") : !1
 			},
-			tabs: D.Dw
+			tabs: T.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
@@ -865,7 +865,7 @@ const navigation = {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: A.m
+			tabs: E.m
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			url: "/rules/redirect-rules",

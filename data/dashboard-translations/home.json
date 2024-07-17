@@ -63,5 +63,15 @@
 	"billing.billable_usage.ssl_for_saas.tooltip": "You will be charged %{price1} for every custom hostname.",
 	"billing.billable_usage.cache_reserve_paid.tooltip": "Cache Reserve usage costs: \n\n* %{price1} / 1 million read operations \n* %{price2} / 1 million write operations \n* %{price3} / 1 GB-month storage",
 	"billing.billable_usage.r2_paid.tooltip": "R2 Storage has included usage and additional usage costs: \n\n* 10 million Class B operations + %{price1} / 1 million Class B operations \n* 1 million Class A operations + %{price2} / 1 million Class A operations \n* 10 GB-Month storage + %{price3} / 1 GB-Month storage",
-	"billing.billable_usage.r2_ent_ss.tooltip": "R2 Storage has included usage and additional usage costs: \n\n* 10 million Class B operations + %{price1} / 1 million Class B operations \n* 1 million Class A operations + %{price2} / 1 million Class A operations \n* 10 GB-Month storage + %{price3} / 1 GB-Month storage"
+	"billing.billable_usage.r2_ent_ss.tooltip": "R2 Storage has included usage and additional usage costs: \n\n* 10 million Class B operations + %{price1} / 1 million Class B operations \n* 1 million Class A operations + %{price2} / 1 million Class A operations \n* 10 GB-Month storage + %{price3} / 1 GB-Month storage",
+	"billing.billable_usage.d1.rows_read.labelY": "Number of rows",
+	"billing.billable_usage.d1.rows_read.cumulative_total": "Cumulative total this month: %{number} rows",
+	"billing.billable_usage.d1.rows_read.title": "D1 Rows Read",
+	"billing.billable_usage.d1.rows_written.cumulative_total": "Cumulative total this month: %{number} rows",
+	"billing.billable_usage.d1.rows_written.labelY": "Number of rows",
+	"billing.billable_usage.d1.rows_written.title": "D1 Rows Written",
+	"billing.billable_usage.d1.storage.cumulative_total": "Cumulative total this month: %{number}",
+	"billing.billable_usage.d1.storage.labelY": "Storage used",
+	"billing.billable_usage.d1.storage.title": "D1 Storage",
+	"billing.billable_usage.d1.tooltip": "5 GB of D1 storage, 25 billion rows read, and 50 million rows written are included every month. You will be charged %{price1} per additional 1 GB of storage, %{price2} per additional 1 million rows read, and %{price3} per additional 1 million rows written."
 }

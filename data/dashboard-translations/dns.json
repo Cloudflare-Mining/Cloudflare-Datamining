@@ -420,6 +420,7 @@
 	"dns.warnings.new_alert": "New Alert",
 	"dns.warnings.spf.deprecation": "The SPF record type was deprecated in RFC 7208 and is no longer supported by Cloudflare. Consider using a TXT record instead.",
 	"dns.warnings.large_ttl.deprecated": "TTLs exceeding 24 hours (86400 seconds) are ignored by most resolvers and no longer supported by Cloudflare. Consider reducing the TTL.",
+	"dns.warnings.non_arpa_ptr": "PTR records only make sense on reverse zones (zones below in-addr.arpa or ip6.arpa).",
 	"dns.warnings.leaked_origin": "Some of your DNS-only records are exposing IP addresses that are proxied through Cloudflare. Make sure to proxy all A, AAAA, and CNAME records pointing to proxied records to ensure your origin server is fully protected.",
 	"dns.warnings.localized.managed_cname": "This record is managed externally. To request changes, please contact your provider.",
 	"dns.warnings.localized.leaked_origin.proxied": "This record exposes the IP address used in the %{record_type} record on %{origin}. Enable the proxy status to protect your origin server. [Learn more](https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records/).",
