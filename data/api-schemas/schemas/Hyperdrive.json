@@ -499,6 +499,11 @@
 															},
 															"origin": {
 																"properties": {
+																	"access_client_id": {
+																		"description": "The Client ID of the Access token to use when connecting to the origin database",
+																		"example": "0123456789abcdef0123456789abcdef.access",
+																		"type": "string"
+																	},
 																	"database": {
 																		"description": "The name of your origin database.",
 																		"example": "postgres",
@@ -532,7 +537,6 @@
 																},
 																"required": [
 																	"host",
-																	"port",
 																	"scheme",
 																	"database",
 																	"user"
@@ -951,6 +955,11 @@
 														},
 														"origin": {
 															"properties": {
+																"access_client_id": {
+																	"description": "The Client ID of the Access token to use when connecting to the origin database",
+																	"example": "0123456789abcdef0123456789abcdef.access",
+																	"type": "string"
+																},
 																"database": {
 																	"description": "The name of your origin database.",
 																	"example": "postgres",
@@ -984,7 +993,6 @@
 															},
 															"required": [
 																"host",
-																"port",
 																"scheme",
 																"database",
 																"user"
@@ -1300,6 +1308,11 @@
 									},
 									"origin": {
 										"properties": {
+											"access_client_id": {
+												"description": "The Client ID of the Access token to use when connecting to the origin database",
+												"example": "0123456789abcdef0123456789abcdef.access",
+												"type": "string"
+											},
 											"database": {
 												"description": "The name of your origin database.",
 												"example": "postgres",
@@ -1333,7 +1346,6 @@
 										},
 										"required": [
 											"host",
-											"port",
 											"scheme",
 											"database",
 											"user"
@@ -1349,6 +1361,11 @@
 								"allOf": [
 									{
 										"properties": {
+											"access_client_id": {
+												"description": "The Client ID of the Access token to use when connecting to the origin database",
+												"example": "0123456789abcdef0123456789abcdef.access",
+												"type": "string"
+											},
 											"database": {
 												"description": "The name of your origin database.",
 												"example": "postgres",
@@ -1382,7 +1399,6 @@
 										},
 										"required": [
 											"host",
-											"port",
 											"scheme",
 											"database",
 											"user"
@@ -1391,6 +1407,11 @@
 									}
 								],
 								"properties": {
+									"access_client_secret": {
+										"description": "The Client Secret of the Access token to use when connecting to the origin database",
+										"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+										"type": "string"
+									},
 									"password": {
 										"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
 										"example": "password1234!",
@@ -1543,6 +1564,11 @@
 														},
 														"origin": {
 															"properties": {
+																"access_client_id": {
+																	"description": "The Client ID of the Access token to use when connecting to the origin database",
+																	"example": "0123456789abcdef0123456789abcdef.access",
+																	"type": "string"
+																},
 																"database": {
 																	"description": "The name of your origin database.",
 																	"example": "postgres",
@@ -1576,7 +1602,6 @@
 															},
 															"required": [
 																"host",
-																"port",
 																"scheme",
 																"database",
 																"user"
@@ -1880,6 +1905,11 @@
 									},
 									"origin": {
 										"properties": {
+											"access_client_id": {
+												"description": "The Client ID of the Access token to use when connecting to the origin database",
+												"example": "0123456789abcdef0123456789abcdef.access",
+												"type": "string"
+											},
 											"database": {
 												"description": "The name of your origin database.",
 												"example": "postgres",
@@ -1913,7 +1943,6 @@
 										},
 										"required": [
 											"host",
-											"port",
 											"scheme",
 											"database",
 											"user"
@@ -1929,6 +1958,11 @@
 								"allOf": [
 									{
 										"properties": {
+											"access_client_id": {
+												"description": "The Client ID of the Access token to use when connecting to the origin database",
+												"example": "0123456789abcdef0123456789abcdef.access",
+												"type": "string"
+											},
 											"database": {
 												"description": "The name of your origin database.",
 												"example": "postgres",
@@ -1962,7 +1996,6 @@
 										},
 										"required": [
 											"host",
-											"port",
 											"scheme",
 											"database",
 											"user"
@@ -1971,6 +2004,11 @@
 									}
 								],
 								"properties": {
+									"access_client_secret": {
+										"description": "The Client Secret of the Access token to use when connecting to the origin database",
+										"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+										"type": "string"
+									},
 									"password": {
 										"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
 										"example": "password1234!",
@@ -2127,6 +2165,11 @@
 														},
 														"origin": {
 															"properties": {
+																"access_client_id": {
+																	"description": "The Client ID of the Access token to use when connecting to the origin database",
+																	"example": "0123456789abcdef0123456789abcdef.access",
+																	"type": "string"
+																},
 																"database": {
 																	"description": "The name of your origin database.",
 																	"example": "postgres",
@@ -2160,7 +2203,6 @@
 															},
 															"required": [
 																"host",
-																"port",
 																"scheme",
 																"database",
 																"user"
@@ -2476,6 +2518,11 @@
 									},
 									"origin": {
 										"properties": {
+											"access_client_id": {
+												"description": "The Client ID of the Access token to use when connecting to the origin database",
+												"example": "0123456789abcdef0123456789abcdef.access",
+												"type": "string"
+											},
 											"database": {
 												"description": "The name of your origin database.",
 												"example": "postgres",
@@ -2509,7 +2556,6 @@
 										},
 										"required": [
 											"host",
-											"port",
 											"scheme",
 											"database",
 											"user"
@@ -2525,6 +2571,11 @@
 								"allOf": [
 									{
 										"properties": {
+											"access_client_id": {
+												"description": "The Client ID of the Access token to use when connecting to the origin database",
+												"example": "0123456789abcdef0123456789abcdef.access",
+												"type": "string"
+											},
 											"database": {
 												"description": "The name of your origin database.",
 												"example": "postgres",
@@ -2558,7 +2609,6 @@
 										},
 										"required": [
 											"host",
-											"port",
 											"scheme",
 											"database",
 											"user"
@@ -2567,6 +2617,11 @@
 									}
 								],
 								"properties": {
+									"access_client_secret": {
+										"description": "The Client Secret of the Access token to use when connecting to the origin database",
+										"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+										"type": "string"
+									},
 									"password": {
 										"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
 										"example": "password1234!",
@@ -2723,6 +2778,11 @@
 														},
 														"origin": {
 															"properties": {
+																"access_client_id": {
+																	"description": "The Client ID of the Access token to use when connecting to the origin database",
+																	"example": "0123456789abcdef0123456789abcdef.access",
+																	"type": "string"
+																},
 																"database": {
 																	"description": "The name of your origin database.",
 																	"example": "postgres",
@@ -2756,7 +2816,6 @@
 															},
 															"required": [
 																"host",
-																"port",
 																"scheme",
 																"database",
 																"user"
