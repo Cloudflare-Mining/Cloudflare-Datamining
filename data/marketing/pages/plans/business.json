@@ -164,6 +164,33 @@
 							},
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "7al6cYr6CGo47pMXlamXio",
+								"title": "Defend against website attacks",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare's Web Application Firewall (WAF) defends websites by analyzing incoming traffic, blocking malicious requests, and allowing only legitimate traffic, protecting against OWASP threats like SQL injection, cross-site scripting, and against zero-day (new) vulnerabilities.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
+									},
+									"description": "Orange icon of a globe"
+								},
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "18EXmijQdN9vyUMs1h8wbb",
 								"title": "Reduce the risk of reputation damage from a cyber attack",
 								"makeTitleLink": null,
@@ -232,6 +259,33 @@
 								"icon": {
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2czdDDWjckbUIowJ63J5oY/95fc5276398cb2286e19d2d6fc4699b6/payments-credit-card.svg"
+									},
+									"description": ""
+								},
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "wKwwVmcu3RFJzKgD5DaBp",
+								"title": "Identify advanced attack variations and their malicious payloads.",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "WAF Attack Score Lite classifies each request to your site using a machine learning algorithm, assigning a likelihood score of the request being malicious. Create WAF Custom Rules based on the Attack Score to block likely attacks that may bypass other security settings.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2eqTx9rVx8e8hWVrR3Fpwo/81277b48e7e6e16f0684176c4729981b/support-chat.svg"
 									},
 									"description": ""
 								},
@@ -316,6 +370,38 @@
 								"featureList3": null
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "45aFuwWHXJOvl1bKAjiDqy",
+						"title": "Ready to use Cloudflare?",
+						"titleSize": null,
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "large",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2XT8dzpI6vVeVOJZlgAxjm",
+							"elementName": "Get Business business plan cta btn",
+							"standardText": null,
+							"text": "Get Business",
+							"url": "https://dash.cloudflare.com/sign-up?to=/:account/:zone/billing/checkout&add=cf_biz",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"locale": "en-US",
