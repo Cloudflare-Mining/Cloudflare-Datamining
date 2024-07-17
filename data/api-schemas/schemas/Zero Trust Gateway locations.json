@@ -481,10 +481,6 @@
 																	},
 																	"networks": {
 																		"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																		"example": [
-																			"2001:85a3::/64",
-																			"192.0.2.1/32"
-																		],
 																		"items": {
 																			"properties": {
 																				"network": {
@@ -517,10 +513,6 @@
 																	},
 																	"networks": {
 																		"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																		"example": [
-																			"2001:85a3::/64",
-																			"192.0.2.1/32"
-																		],
 																		"items": {
 																			"properties": {
 																				"network": {
@@ -785,10 +777,6 @@
 																			},
 																			"networks": {
 																				"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																				"example": [
-																					"2001:85a3::/64",
-																					"192.0.2.1/32"
-																				],
 																				"items": {
 																					"properties": {
 																						"network": {
@@ -821,10 +809,6 @@
 																			},
 																			"networks": {
 																				"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																				"example": [
-																					"2001:85a3::/64",
-																					"192.0.2.1/32"
-																				],
 																				"items": {
 																					"properties": {
 																						"network": {
@@ -1186,10 +1170,6 @@
 																},
 																"networks": {
 																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																	"example": [
-																		"2001:85a3::/64",
-																		"192.0.2.1/32"
-																	],
 																	"items": {
 																		"properties": {
 																			"network": {
@@ -1222,10 +1202,6 @@
 																},
 																"networks": {
 																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																	"example": [
-																		"2001:85a3::/64",
-																		"192.0.2.1/32"
-																	],
 																	"items": {
 																		"properties": {
 																			"network": {
@@ -1467,10 +1443,6 @@
 																		},
 																		"networks": {
 																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																			"example": [
-																				"2001:85a3::/64",
-																				"192.0.2.1/32"
-																			],
 																			"items": {
 																				"properties": {
 																					"network": {
@@ -1503,10 +1475,6 @@
 																		},
 																		"networks": {
 																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																			"example": [
-																				"2001:85a3::/64",
-																				"192.0.2.1/32"
-																			],
 																			"items": {
 																				"properties": {
 																					"network": {
@@ -1752,6 +1720,108 @@
 								"example": false,
 								"type": "boolean"
 							},
+							"endpoints": {
+								"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+								"properties": {
+									"doh": {
+										"properties": {
+											"enabled": {
+												"description": "True if the endpoint is enabled for this location.",
+												"example": true,
+												"type": "boolean"
+											},
+											"networks": {
+												"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"items": {
+													"properties": {
+														"network": {
+															"description": "The IP address or IP CIDR.",
+															"example": "2001:85a3::/64",
+															"type": "string"
+														}
+													},
+													"required": [
+														"network"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"require_token": {
+												"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"dot": {
+										"properties": {
+											"enabled": {
+												"description": "True if the endpoint is enabled for this location.",
+												"example": true,
+												"type": "boolean"
+											},
+											"networks": {
+												"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"items": {
+													"properties": {
+														"network": {
+															"description": "The IP address or IP CIDR.",
+															"example": "2001:85a3::/64",
+															"type": "string"
+														}
+													},
+													"required": [
+														"network"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
+									"ipv4": {
+										"properties": {
+											"enabled": {
+												"description": "True if the endpoint is enabled for this location.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"ipv6": {
+										"properties": {
+											"enabled": {
+												"description": "True if the endpoint is enabled for this location.",
+												"example": true,
+												"type": "boolean"
+											},
+											"networks": {
+												"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"items": {
+													"properties": {
+														"network": {
+															"description": "The IPv6 address or IPv6 CIDR.",
+															"example": "2001:85a3::/64",
+															"type": "string"
+														}
+													},
+													"required": [
+														"network"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
 							"name": {
 								"description": "The name of the location.",
 								"example": "Austin Office Location",
@@ -1909,10 +1979,6 @@
 																},
 																"networks": {
 																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																	"example": [
-																		"2001:85a3::/64",
-																		"192.0.2.1/32"
-																	],
 																	"items": {
 																		"properties": {
 																			"network": {
@@ -1945,10 +2011,6 @@
 																},
 																"networks": {
 																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																	"example": [
-																		"2001:85a3::/64",
-																		"192.0.2.1/32"
-																	],
 																	"items": {
 																		"properties": {
 																			"network": {
@@ -2190,10 +2252,6 @@
 																		},
 																		"networks": {
 																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																			"example": [
-																				"2001:85a3::/64",
-																				"192.0.2.1/32"
-																			],
 																			"items": {
 																				"properties": {
 																					"network": {
@@ -2226,10 +2284,6 @@
 																		},
 																		"networks": {
 																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																			"example": [
-																				"2001:85a3::/64",
-																				"192.0.2.1/32"
-																			],
 																			"items": {
 																				"properties": {
 																					"network": {
@@ -2483,6 +2537,108 @@
 								"example": false,
 								"type": "boolean"
 							},
+							"endpoints": {
+								"description": "The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.",
+								"properties": {
+									"doh": {
+										"properties": {
+											"enabled": {
+												"description": "True if the endpoint is enabled for this location.",
+												"example": true,
+												"type": "boolean"
+											},
+											"networks": {
+												"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"items": {
+													"properties": {
+														"network": {
+															"description": "The IP address or IP CIDR.",
+															"example": "2001:85a3::/64",
+															"type": "string"
+														}
+													},
+													"required": [
+														"network"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"require_token": {
+												"description": "True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"dot": {
+										"properties": {
+											"enabled": {
+												"description": "True if the endpoint is enabled for this location.",
+												"example": true,
+												"type": "boolean"
+											},
+											"networks": {
+												"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"items": {
+													"properties": {
+														"network": {
+															"description": "The IP address or IP CIDR.",
+															"example": "2001:85a3::/64",
+															"type": "string"
+														}
+													},
+													"required": [
+														"network"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
+									"ipv4": {
+										"properties": {
+											"enabled": {
+												"description": "True if the endpoint is enabled for this location.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"ipv6": {
+										"properties": {
+											"enabled": {
+												"description": "True if the endpoint is enabled for this location.",
+												"example": true,
+												"type": "boolean"
+											},
+											"networks": {
+												"description": "A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
+												"items": {
+													"properties": {
+														"network": {
+															"description": "The IPv6 address or IPv6 CIDR.",
+															"example": "2001:85a3::/64",
+															"type": "string"
+														}
+													},
+													"required": [
+														"network"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
 							"name": {
 								"description": "The name of the location.",
 								"example": "Austin Office Location",
@@ -2640,10 +2796,6 @@
 																},
 																"networks": {
 																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																	"example": [
-																		"2001:85a3::/64",
-																		"192.0.2.1/32"
-																	],
 																	"items": {
 																		"properties": {
 																			"network": {
@@ -2676,10 +2828,6 @@
 																},
 																"networks": {
 																	"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																	"example": [
-																		"2001:85a3::/64",
-																		"192.0.2.1/32"
-																	],
 																	"items": {
 																		"properties": {
 																			"network": {
@@ -2921,10 +3069,6 @@
 																		},
 																		"networks": {
 																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																			"example": [
-																				"2001:85a3::/64",
-																				"192.0.2.1/32"
-																			],
 																			"items": {
 																				"properties": {
 																					"network": {
@@ -2957,10 +3101,6 @@
 																		},
 																		"networks": {
 																			"description": "A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.",
-																			"example": [
-																				"2001:85a3::/64",
-																				"192.0.2.1/32"
-																			],
 																			"items": {
 																				"properties": {
 																					"network": {
