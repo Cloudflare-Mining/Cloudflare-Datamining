@@ -610,7 +610,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: R => !!(0, H.V)(R)
+			hasPermission: R => !!(0, V.V)(R)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -618,8 +618,8 @@ const navigation = {
 		navigationType: "global-settings",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: M.bB,
-		hasPermission: R => !(0, s.yD)(R) && (0, D.m7)(R)
+		tabs: y.bB,
+		hasPermission: R => !(0, s.yD)(R) && (0, T.m7)(R)
 	}, {
 		title: "navigation.zone.dns",
 		url: "/dns",
@@ -666,7 +666,7 @@ const navigation = {
 			navigationType: "global-settings",
 			url: "/email/dmarc-management",
 			labels: ["beta"],
-			hasPermission: R => (0, y.ig)(R) ? !1 : (0, o.$n)(R, "dns_records", "dns-record") && !!(0, f.ZB)(R, "email", "dmarc_visible")
+			hasPermission: R => (0, h.ig)(R) ? !1 : (0, o.$n)(R, "dns_records", "dns-record") && !!(0, f.ZB)(R, "email", "dmarc_visible")
 		}, {
 			title: "navigation.zone.email.security",
 			navigationType: "global-settings",
@@ -683,8 +683,8 @@ const navigation = {
 			if ((0, s.yD)(R) || !(0, o.wB)(R, "zone_settings", "spectrum.app") || !ve) return !1;
 			const me = !!((0, l.l8)(R) || (0, f.DQ)(R)),
 				$ = !!(0, f.ZB)(R, "spectrum", "enabled"),
-				V = !!(0, f.Ns)(ve);
-			return $ || me || !V
+				H = !!(0, f.Ns)(ve);
+			return $ || me || !H
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -741,13 +741,13 @@ const navigation = {
 			title: "navigation.zone.security.waf",
 			url: "/security/waf",
 			navigationType: "version",
-			tabs: T.gn,
+			tabs: D.gn,
 			hasPermission: R => (0, o.$n)(R, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
-			tabs: T.mt,
+			tabs: D.mt,
 			hasPermission: R => (0, o.$n)(R, "page_shield", "script-monitor")
 		}, {
 			title: "navigation.zone.security.bots",
@@ -768,7 +768,7 @@ const navigation = {
 				const ve = (0, f.nA)(R);
 				return ve ? !!(0, f.ZB)(R, "firewall", "api_shield_tab") && (0, f.tU)(ve, "business") && (0, o.$n)(R, "waf", "firewall.rule") : !1
 			},
-			tabs: T.Dw
+			tabs: D.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
@@ -974,7 +974,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: h.az
+			tabs: M.az
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			navigationType: "global-settings",
@@ -995,7 +995,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.plans",
 			navigationType: "global-settings",
 			url: "/zaraz/plans",
-			hasPermission: R => !!(0, X.GM)(R) && !!(0, e.z1)("zaraz-plans-page-access")(R)
+			hasPermission: R => !!(0, J.GM)(R) && !!(0, e.z1)("zaraz-plans-page-access")(R)
 		}]
 	}, {
 		title: "navigation.zone.web3.title",
