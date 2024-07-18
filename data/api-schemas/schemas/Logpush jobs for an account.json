@@ -308,6 +308,7 @@
 		"operationId": "get-accounts-account_identifier-logpush-datasets-dataset-fields",
 		"parameters": [
 			{
+				"example": "gateway_dns",
 				"in": "path",
 				"name": "dataset_id",
 				"required": true,
@@ -625,6 +626,7 @@
 		"operationId": "get-accounts-account_identifier-logpush-datasets-dataset-jobs",
 		"parameters": [
 			{
+				"example": "gateway_dns",
 				"in": "path",
 				"name": "dataset_id",
 				"required": true,
@@ -653,6 +655,45 @@
 			"200": {
 				"content": {
 					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": [
+								{
+									"dataset": "gateway_dns",
+									"destination_conf": "s3://mybucket/logs?region=us-west-2",
+									"enabled": false,
+									"error_message": null,
+									"id": 1,
+									"kind": "",
+									"last_complete": null,
+									"last_error": null,
+									"max_upload_bytes": 5000000,
+									"max_upload_interval_seconds": 30,
+									"max_upload_records": 1000,
+									"name": "example.com",
+									"output_options": {
+										"CVE-2021-4428": false,
+										"batch_prefix": "",
+										"batch_suffix": "",
+										"field_delimiter": ",",
+										"field_names": [
+											"Datetime",
+											"DstIP",
+											"SrcIP"
+										],
+										"output_type": "ndjson",
+										"record_delimiter": "",
+										"record_prefix": "{",
+										"record_suffix": "}\n",
+										"record_template": "",
+										"sample_rate": 1,
+										"timestamp_format": "unixnano"
+									}
+								}
+							],
+							"success": true
+						},
 						"schema": {
 							"allOf": [
 								{
@@ -1357,6 +1398,45 @@
 			"200": {
 				"content": {
 					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": [
+								{
+									"dataset": "gateway_dns",
+									"destination_conf": "s3://mybucket/logs?region=us-west-2",
+									"enabled": false,
+									"error_message": null,
+									"id": 1,
+									"kind": "",
+									"last_complete": null,
+									"last_error": null,
+									"max_upload_bytes": 5000000,
+									"max_upload_interval_seconds": 30,
+									"max_upload_records": 1000,
+									"name": "example.com",
+									"output_options": {
+										"CVE-2021-4428": false,
+										"batch_prefix": "",
+										"batch_suffix": "",
+										"field_delimiter": ",",
+										"field_names": [
+											"Datetime",
+											"DstIP",
+											"SrcIP"
+										],
+										"output_type": "ndjson",
+										"record_delimiter": "",
+										"record_prefix": "{",
+										"record_suffix": "}\n",
+										"record_template": "",
+										"sample_rate": 1,
+										"timestamp_format": "unixnano"
+									}
+								}
+							],
+							"success": true
+						},
 						"schema": {
 							"allOf": [
 								{
@@ -2071,6 +2151,43 @@
 			"200": {
 				"content": {
 					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"dataset": "gateway_dns",
+								"destination_conf": "s3://mybucket/logs?region=us-west-2",
+								"enabled": false,
+								"error_message": null,
+								"id": 1,
+								"kind": "",
+								"last_complete": null,
+								"last_error": null,
+								"max_upload_bytes": 5000000,
+								"max_upload_interval_seconds": 30,
+								"max_upload_records": 1000,
+								"name": "example.com",
+								"output_options": {
+									"CVE-2021-4428": false,
+									"batch_prefix": "",
+									"batch_suffix": "",
+									"field_delimiter": ",",
+									"field_names": [
+										"Datetime",
+										"DstIP",
+										"SrcIP"
+									],
+									"output_type": "ndjson",
+									"record_delimiter": "",
+									"record_prefix": "{",
+									"record_suffix": "}\n",
+									"record_template": "",
+									"sample_rate": 1,
+									"timestamp_format": "unixnano"
+								}
+							},
+							"success": true
+						},
 						"schema": {
 							"allOf": [
 								{
@@ -2806,6 +2923,35 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"example": {
+						"dataset": "gateway_dns",
+						"destination_conf": "s3://mybucket/logs?region=us-west-2",
+						"enabled": false,
+						"kind": "",
+						"max_upload_bytes": 5000000,
+						"max_upload_interval_seconds": 30,
+						"max_upload_records": 1000,
+						"name": "example.com",
+						"output_options": {
+							"CVE-2021-4428": false,
+							"batch_prefix": "",
+							"batch_suffix": "",
+							"field_delimiter": ",",
+							"field_names": [
+								"Datetime",
+								"DstIP",
+								"SrcIP"
+							],
+							"output_type": "ndjson",
+							"record_delimiter": "",
+							"record_prefix": "{",
+							"record_suffix": "}\n",
+							"record_template": "",
+							"sample_rate": 1,
+							"timestamp_format": "unixnano"
+						},
+						"ownership_challenge\"": "00000000000000000000"
+					},
 					"schema": {
 						"properties": {
 							"dataset": {
@@ -3009,6 +3155,43 @@
 			"200": {
 				"content": {
 					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"dataset": "gateway_dns",
+								"destination_conf": "s3://mybucket/logs?region=us-west-2",
+								"enabled": false,
+								"error_message": null,
+								"id": 1,
+								"kind": "",
+								"last_complete": null,
+								"last_error": null,
+								"max_upload_bytes": 5000000,
+								"max_upload_interval_seconds": 30,
+								"max_upload_records": 1000,
+								"name": "example.com",
+								"output_options": {
+									"CVE-2021-4428": false,
+									"batch_prefix": "",
+									"batch_suffix": "",
+									"field_delimiter": ",",
+									"field_names": [
+										"Datetime",
+										"DstIP",
+										"SrcIP"
+									],
+									"output_type": "ndjson",
+									"record_delimiter": "",
+									"record_prefix": "{",
+									"record_suffix": "}\n",
+									"record_template": "",
+									"sample_rate": 1,
+									"timestamp_format": "unixnano"
+								}
+							},
+							"success": true
+						},
 						"schema": {
 							"allOf": [
 								{
@@ -5064,6 +5247,33 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"example": {
+						"destination_conf": "s3://mybucket/logs?region=us-west-2",
+						"enabled": false,
+						"kind": "",
+						"max_upload_bytes": 5000000,
+						"max_upload_interval_seconds": 30,
+						"max_upload_records": 1000,
+						"output_options": {
+							"CVE-2021-4428": false,
+							"batch_prefix": "",
+							"batch_suffix": "",
+							"field_delimiter": ",",
+							"field_names": [
+								"Datetime",
+								"DstIP",
+								"SrcIP"
+							],
+							"output_type": "ndjson",
+							"record_delimiter": "",
+							"record_prefix": "{",
+							"record_suffix": "}\n",
+							"record_template": "",
+							"sample_rate": 1,
+							"timestamp_format": "unixnano"
+						},
+						"ownership_challenge\"": "00000000000000000000"
+					},
 					"schema": {
 						"properties": {
 							"destination_conf": {
@@ -5248,6 +5458,43 @@
 			"200": {
 				"content": {
 					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"dataset": "gateway_dns",
+								"destination_conf": "s3://mybucket/logs?region=us-west-2",
+								"enabled": false,
+								"error_message": null,
+								"id": 1,
+								"kind": "",
+								"last_complete": null,
+								"last_error": null,
+								"max_upload_bytes": 5000000,
+								"max_upload_interval_seconds": 30,
+								"max_upload_records": 1000,
+								"name": "example.com",
+								"output_options": {
+									"CVE-2021-4428": false,
+									"batch_prefix": "",
+									"batch_suffix": "",
+									"field_delimiter": ",",
+									"field_names": [
+										"Datetime",
+										"DstIP",
+										"SrcIP"
+									],
+									"output_type": "ndjson",
+									"record_delimiter": "",
+									"record_prefix": "{",
+									"record_suffix": "}\n",
+									"record_template": "",
+									"sample_rate": 1,
+									"timestamp_format": "unixnano"
+								}
+							},
+							"success": true
+						},
 						"schema": {
 							"allOf": [
 								{
