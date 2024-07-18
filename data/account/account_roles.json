@@ -377,6 +377,10 @@
 		"name": "Cloudflare R2 Read",
 		"description": "Can read R2 buckets, objects, and associated configurations.",
 		"permissions": {
+			"r2_bucket_item": {
+				"read": true,
+				"edit": false
+			},
 			"analytics": {
 				"read": true,
 				"edit": false
@@ -404,6 +408,10 @@
 		"name": "Cloudflare R2 Admin",
 		"description": "Can edit R2 buckets, objects, and associated configurations.",
 		"permissions": {
+			"r2_bucket_item": {
+				"read": true,
+				"edit": true
+			},
 			"analytics": {
 				"read": true,
 				"edit": false
@@ -1068,6 +1076,20 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"pii": true,
+				"report": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"billing": {
+				"read": true,
+				"edit": true
+			},
 			"dns_records": {
 				"read": true,
 				"edit": true
@@ -1104,10 +1126,6 @@
 				"read": true,
 				"edit": true
 			},
-			"billing": {
-				"read": true,
-				"edit": true
-			},
 			"ces_analytics": {
 				"read": true,
 				"edit": false
@@ -1133,6 +1151,10 @@
 				"read": true,
 				"edit": true
 			},
+			"r2_bucket_item": {
+				"read": true,
+				"edit": true
+			},
 			"waitingroom": {
 				"read": true,
 				"edit": true
@@ -1144,10 +1166,6 @@
 			"analytics": {
 				"read": true,
 				"edit": false
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": true
 			},
 			"worker": {
 				"read": true,
@@ -1193,12 +1211,6 @@
 			"stream": {
 				"read": true,
 				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"pii": true,
-				"report": true
 			},
 			"healthchecks": {
 				"read": true,
@@ -1469,6 +1481,10 @@
 				"read": true,
 				"edit": true
 			},
+			"r2_bucket_item": {
+				"read": true,
+				"edit": true
+			},
 			"integration": {
 				"read": true,
 				"edit": false,
@@ -1676,6 +1692,19 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"billing": {
+				"read": true,
+				"edit": false
+			},
 			"dns_records": {
 				"read": true,
 				"edit": false
@@ -1711,10 +1740,6 @@
 				"read": true,
 				"edit": false
 			},
-			"billing": {
-				"read": true,
-				"edit": false
-			},
 			"ces_analytics": {
 				"read": true,
 				"edit": false
@@ -1735,6 +1760,10 @@
 				"read": true,
 				"edit": false
 			},
+			"r2_bucket_item": {
+				"read": true,
+				"edit": false
+			},
 			"integration": {
 				"read": true,
 				"edit": false
@@ -1748,10 +1777,6 @@
 				"edit": false
 			},
 			"analytics": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
 				"read": true,
 				"edit": false
 			},
@@ -1799,11 +1824,6 @@
 				"read": true,
 				"edit": false
 			},
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
-			},
 			"healthchecks": {
 				"read": true,
 				"edit": false
@@ -1847,6 +1867,19 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"billing": {
+				"read": true,
+				"edit": false
+			},
 			"dns_records": {
 				"read": true,
 				"edit": true
@@ -1883,10 +1916,6 @@
 				"read": true,
 				"edit": true
 			},
-			"billing": {
-				"read": true,
-				"edit": false
-			},
 			"ces_analytics": {
 				"read": true,
 				"edit": false
@@ -1912,6 +1941,10 @@
 				"read": true,
 				"edit": true
 			},
+			"r2_bucket_item": {
+				"read": true,
+				"edit": true
+			},
 			"waitingroom": {
 				"read": true,
 				"edit": true
@@ -1923,10 +1956,6 @@
 			"analytics": {
 				"read": true,
 				"edit": false
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": true
 			},
 			"worker": {
 				"read": true,
@@ -1976,11 +2005,6 @@
 			"page_shield": {
 				"read": true,
 				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
 			},
 			"healthchecks": {
 				"read": true,
