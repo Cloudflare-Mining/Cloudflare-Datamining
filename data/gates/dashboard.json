@@ -473,6 +473,14 @@
 	"dx-welcome-page": {
 		"enabled": true
 	},
+	"dx-welcome-page-cards-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variant-a",
+			"variant-b"
+		]
+	},
 	"dx-welcome-slide": {
 		"enabled": false,
 		"branches": [
