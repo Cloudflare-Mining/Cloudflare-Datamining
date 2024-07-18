@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.0
+
+### Major Changes
+
+- ecfb4b3712: Delays tooltip by default, adds option to show immediately
+
 ## 4.7.4
 
 ### Patch Changes
