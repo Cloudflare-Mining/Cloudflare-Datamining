@@ -508,6 +508,14 @@
 					"maxLength": 32,
 					"type": "string"
 				}
+			},
+			{
+				"description": "If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.",
+				"in": "query",
+				"name": "force",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"requestBody": {
