@@ -142,7 +142,8 @@ export const BucketBindingValue = eg.object({
 
 export const ServiceBindingValue = eg.object({
   service: eg.string,
-  environment: eg.string
+  environment: eg.string,
+  entrypoint: eg.string.optional
 });
 
 export type ServiceBindingValue = TypeFromCodec<typeof ServiceBindingValue>;

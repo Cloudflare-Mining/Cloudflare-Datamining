@@ -1,7 +1,7 @@
-import { User } from './user';
-import { Permissions } from './permissions';
 import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { Permissions } from './permissions';
 import { MembershipsPolicy } from './policy';
+import { User } from './user';
 
 export type ElementType<T> =
   // is type T an array of elements of type U? If so, return U. Otherwise, return the "never" type (the input is not an array).
@@ -10,7 +10,8 @@ export type ElementType<T> =
 export const AccountSettings = eg.object({
   access_approval_expiry: eg.union([eg.string, eg.null]),
   enforce_twofactor: eg.boolean,
-  api_access_enabled: eg.boolean
+  api_access_enabled: eg.boolean,
+  abuse_contact_email: eg.union([eg.string, eg.null])
 });
 
 export type AccountSettings = TypeFromCodec<typeof AccountSettings>;
@@ -226,29 +227,6 @@ export const AccountLegoContract = eg.object({
 });
 export type AccountLegoContract = TypeFromCodec<typeof AccountLegoContract>;
 
-export const AccountFirewallRuleAction = eg.union([
-  eg.literal('allow'),
-  eg.literal('block'),
-  eg.literal('challenge'),
-  eg.literal('js_challenge'),
-  eg.literal('log'),
-  eg.literal('managed_challenge'),
-  eg.literal('skip'),
-  eg.literal('ddos_dynamic'),
-  eg.literal('select_config')
-]);
-
-export const AccountFirewallSensitivityLevels = eg.union([
-  eg.literal('default'),
-  eg.literal('medium'),
-  eg.literal('low'),
-  eg.literal('eoff')
-]);
-
-export type AccountFirewallRuleAction = TypeFromCodec<
-  typeof AccountFirewallRuleAction
->;
-
 const baseRuleProperties = {
   id: eg.string,
   expression: eg.string.optional,
@@ -259,76 +237,7 @@ const baseRuleProperties = {
   ref: eg.string.optional
 };
 
-export const AccountFirewallRule = eg.object({
-  ...baseRuleProperties,
-  action: AccountFirewallRuleAction,
-  categories: eg.array(eg.string).optional,
-  action_parameters: eg.object({
-    ruleset: eg.string.optional
-  }).optional,
-  score_threshold: eg.number.optional,
-  created: eg.string.optional,
-  allowed_override_actions: eg.array(eg.string).optional
-});
-
-export type AccountFirewallRule = TypeFromCodec<typeof AccountFirewallRule>;
-
-const CategoryOverride = eg.object({
-  category: eg.string,
-  action: AccountFirewallRuleAction.optional,
-  enabled: eg.boolean.optional,
-  sensitivity_level: AccountFirewallSensitivityLevels.optional
-});
-
-export type CategoryOverride = TypeFromCodec<typeof CategoryOverride>;
-
-const RuleOverride = eg.object({
-  id: eg.string,
-  action: AccountFirewallRuleAction.optional,
-  enabled: eg.boolean.optional,
-  sensitivity_level: AccountFirewallSensitivityLevels.optional
-});
-
-export type RuleOverride = TypeFromCodec<typeof RuleOverride>;
-
-export const AccountFirewallRuleOverride = eg.object({
-  ...baseRuleProperties,
-  action: eg.literal('execute'),
-  action_parameters: eg.object({
-    id: eg.string,
-    version: eg.string.optional,
-    matched_data: eg.object({ public_key: eg.union([eg.string, eg.null]) })
-      .optional,
-    overrides: eg.object({
-      action: AccountFirewallRuleAction.optional,
-      enabled: eg.boolean.optional,
-      categories: eg.array(CategoryOverride).optional,
-      rules: eg.array(RuleOverride).optional,
-      sensitivity_level: AccountFirewallSensitivityLevels.optional
-    }).optional,
-    increment: eg.number.optional
-  })
-});
-
-export type AccountFirewallRuleOverride = TypeFromCodec<
-  typeof AccountFirewallRuleOverride
->;
-
-// Bypass rules/rulesets with skip action: https://wiki.cfops.it/x/bodSF
-const AccountFirewallRuleSkipOverride = eg.object({
-  ...baseRuleProperties,
-  action: eg.literal('skip'),
-  action_parameters: eg.object({
-    rulesets: eg.array(eg.string).optional,
-    ruleset: eg.literal('current').optional,
-    rules: eg.record(eg.string, eg.array(eg.string)).optional
-  }),
-  logging: eg.object({
-    enabled: eg.boolean
-  }).optional
-});
-
-export const AccountFirewallRuleHTTPApplication = eg.object({
+export const AccountFirewallRulesetHTTPApplication = eg.object({
   ...baseRuleProperties,
   action: eg.literal('select_config'),
   position: eg.object({
@@ -343,297 +252,25 @@ export const AccountFirewallRuleHTTPApplication = eg.object({
   })
 });
 
-export type AccountFirewallRuleHTTPApplication = TypeFromCodec<
-  typeof AccountFirewallRuleHTTPApplication
->;
-
-export type AccountFirewallRuleSkipOverride = TypeFromCodec<
-  typeof AccountFirewallRuleSkipOverride
->;
-
-export const AccountFirewallRulesetKind = eg.union([
-  eg.literal('root'),
-  eg.literal('managed'),
-  eg.literal('custom')
-]);
-
-export const AccountFirewallRuleset = eg.object({
-  id: eg.string,
-  name: eg.string,
-  description: eg.string,
-  kind: AccountFirewallRulesetKind,
-  version: eg.string,
-  last_updated: eg.string,
-  rules: eg.array(AccountFirewallRule).optional,
-  phase: eg.string.optional
-});
-
-export type AccountFirewallRuleset = TypeFromCodec<
-  typeof AccountFirewallRuleset
->;
-
-export const AccountFirewallRulesetOverride = eg.object({
-  id: eg.string,
-  name: eg.string,
-  description: eg.string,
-  kind: AccountFirewallRulesetKind,
-  phase: eg.string.optional,
-  version: eg.string,
-  last_updated: eg.string,
-  rules: eg.array(
-    eg.union([AccountFirewallRuleOverride, AccountFirewallRuleSkipOverride])
-  ).optional
-});
-
-export type AccountFirewallRulesetOverride = TypeFromCodec<
-  typeof AccountFirewallRulesetOverride
->;
-
-export const AccountFirewallRulesetHTTPApplication = eg.object({
-  id: eg.string,
-  name: eg.string,
-  description: eg.string,
-  kind: AccountFirewallRulesetKind,
-  phase: eg.string.optional,
-  version: eg.string,
-  last_updated: eg.string,
-  rules: eg.array(AccountFirewallRuleHTTPApplication)
-});
-
 export type AccountFirewallRulesetHTTPApplication = TypeFromCodec<
   typeof AccountFirewallRulesetHTTPApplication
 >;
 
-const RuleRateLimit = eg.object({
-  characteristics: eg.array(eg.string),
-  period: eg.number,
-  requests_per_period: eg.number,
-  mitigation_timeout: eg.number,
-  requests_to_origin: eg.boolean,
-  counting_expression: eg.string
-});
-
-// Common properties across all rules.
-const BaseRule = eg.object({
-  description: eg.string,
-  enabled: eg.boolean,
-  id: eg.string.optional,
-  last_updated: eg.string.optional,
-  version: eg.string.optional,
-  expression: eg.string.optional,
-  ratelimit: RuleRateLimit.optional,
-  action: eg.string.optional,
-  action_parameters: eg.object({
-    id: eg.string,
-    version: eg.string
-  }).optional
-});
-
-// Common properties across all rulesets.
-const BaseRuleset = eg.object({
+export const RulesetOverrideHTTPApplication = eg.object({
   id: eg.string,
   name: eg.string,
   description: eg.string,
+  kind: eg.union([
+    eg.literal('root'),
+    eg.literal('managed'),
+    eg.literal('custom')
+  ]),
+  phase: eg.string.optional,
   version: eg.string,
   last_updated: eg.string,
-  enabled: eg.boolean
+  rules: eg.array(AccountFirewallRulesetHTTPApplication)
 });
 
-// Properties unique to phase http_request_firewall_custom of kind root.
-const AccountCustomRulesetEntrypoint = eg.intersection([
-  BaseRuleset,
-  eg.object({
-    kind: eg.literal('root'),
-    phase: eg.literal('http_request_firewall_custom'),
-    rules: eg.array(
-      eg.intersection([
-        BaseRule,
-        eg.object({
-          action: eg.literal('execute'),
-          action_parameters: eg.object({
-            id: eg.string,
-            version: eg.string,
-            // TODO: set override type
-            override: eg.any.optional,
-            matched_data: eg.object({
-              public_key: eg.string
-            }).optional
-          }),
-          expression: eg.string
-        })
-      ])
-    ).optional
-  })
-]);
-
-export type AccountCustomRulesetEntrypoint = TypeFromCodec<
-  typeof AccountCustomRulesetEntrypoint
+export type RulesetOverrideHTTPApplication = TypeFromCodec<
+  typeof RulesetOverrideHTTPApplication
 >;
-
-// Properties unique to phase 'http_request_firewall_managed' of kind root.
-const AccountManagedEntrypoint = eg.intersection([
-  BaseRuleset,
-  eg.object({
-    kind: eg.literal('root'),
-    phase: eg.literal('http_request_firewall_managed'),
-    rules: eg.array(
-      eg.intersection([
-        BaseRule,
-        eg.object({
-          action: eg.literal('execute'),
-          action_parameters: eg.object({
-            id: eg.string,
-            version: eg.string
-          }),
-          expression: eg.string
-        })
-      ])
-    ).optional
-  })
-]);
-
-export type AccountManagedEntrypoint = TypeFromCodec<
-  typeof AccountManagedEntrypoint
->;
-
-const CustomRuleActions = eg.union([
-  eg.literal('managed_challenge'),
-  eg.literal('log'),
-  eg.literal('block'),
-  eg.literal('js_challenge'),
-  eg.literal('skip'),
-  eg.literal('challenge')
-]);
-
-// Properties unique to phase http_request_firewall_custom of kind custom.
-const AccountCustomRuleset = eg.intersection([
-  BaseRuleset,
-  eg.object({
-    kind: eg.literal('custom'),
-    phase: eg.literal('http_request_firewall_custom'),
-    rules: eg.array(
-      eg.intersection([
-        eg.object({
-          action: CustomRuleActions
-        }),
-        BaseRule
-      ])
-    )
-  })
-]);
-
-export type AccountCustomRuleset = TypeFromCodec<typeof AccountCustomRuleset>;
-
-// Properties unique to phase http_ratelimit of kind custom.
-const AccountRateLimitingRuleset = eg.intersection([
-  BaseRuleset,
-  eg.object({
-    kind: eg.literal('custom'),
-    phase: eg.literal('http_ratelimit'),
-    rules: eg.array(
-      eg.intersection([
-        eg.object({
-          action: CustomRuleActions,
-          ratelimit: RuleRateLimit
-        }),
-        BaseRule
-      ])
-    )
-  })
-]);
-
-export type AccountRateLimitingRuleset = TypeFromCodec<
-  typeof AccountRateLimitingRuleset
->;
-
-export type AccountRateLimitingRule = ElementType<
-  AccountRateLimitingRuleset['rules']
->;
-
-const AccountIDSRuleset = eg.intersection([
-  BaseRuleset,
-  eg.object({
-    kind: eg.literal('managed'),
-    phase: eg.literal('magic_transit_ids_managed'),
-    rules: eg.array(
-      eg.intersection([
-        eg.object({
-          action: eg.literal('execute'),
-          action_parameters: eg.object({
-            id: eg.string,
-            version: eg.string
-          })
-        }),
-        BaseRule
-      ])
-    )
-  })
-]);
-
-const AccountIDSEntrypoint = eg.intersection([
-  BaseRuleset,
-  eg.object({
-    kind: eg.literal('root'),
-    phase: eg.literal('magic_transit_ids_managed'),
-    rules: eg.array(
-      eg.intersection([
-        eg.object({
-          id: eg.string,
-          action: eg.literal('execute'),
-          action_parameters: eg.object({
-            id: eg.string,
-            version: eg.string
-          })
-        }),
-        BaseRule
-      ])
-    )
-  })
-]);
-
-export type AccountIDSRuleset = TypeFromCodec<typeof AccountIDSRuleset>;
-export type AccountIDSEntrypoint = TypeFromCodec<typeof AccountIDSEntrypoint>;
-
-const AccountRedirectRuleset = eg.intersection([
-  BaseRuleset,
-  eg.object({
-    kind: eg.literal('root'),
-    phase: eg.literal('http_request_redirect'),
-    rules: eg.array(
-      eg.object({
-        ...baseRuleProperties,
-        action: eg.literal('redirect'),
-        action_parameters: eg.object({
-          id: eg.string,
-          from_list: eg.object({
-            key: eg.string,
-            name: eg.string
-          })
-        })
-      })
-    )
-  })
-]);
-
-export type AccountRedirectRuleset = TypeFromCodec<
-  typeof AccountRedirectRuleset
->;
-
-const GenericRuleset = eg.union([
-  AccountRateLimitingRuleset,
-  AccountCustomRulesetEntrypoint,
-  AccountCustomRuleset,
-  AccountIDSRuleset,
-  AccountManagedEntrypoint,
-  AccountIDSEntrypoint,
-  AccountRedirectRuleset
-]);
-
-export type GenericRulesetType = TypeFromCodec<typeof GenericRuleset>;
-export type BaseRule = ElementType<
-  GenericRulesetType['rules'] & TypeFromCodec<typeof BaseRule>
->;
-
-export type GenericRuleset = Omit<GenericRulesetType, 'rules'> & {
-  rules: Array<BaseRule>;
-};

@@ -24,7 +24,6 @@ export const DNSRecord = eg.object({
   created_on: eg.string.optional,
   id: eg.string.optional, // Secondary DNS records do not have ids
   data: eg.any.optional,
-  locked: eg.boolean.optional,
   meta: DNSRecordMeta.optional, // May not always exist (DNS-7417)
   modified_on: eg.string.optional,
   name: eg.string,
@@ -69,11 +68,7 @@ export const DNSFirewallCluster = eg.object({
   minimum_cache_ttl: eg.number,
   deprecate_any_requests: eg.boolean,
   upstream_ips: eg.array(eg.string),
-  origin_ips: eg.array(eg.string).optional,
-  dns_firewall_ips: eg.array(eg.string),
-  attack_mitigation: eg.object({
-    only_when_origin_unhealthy: eg.boolean.optional
-  }).optional
+  dns_firewall_ips: eg.array(eg.string)
 });
 
 export type DNSFirewallCluster = TypeFromCodec<typeof DNSFirewallCluster>;

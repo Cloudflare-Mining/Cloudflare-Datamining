@@ -143,3 +143,15 @@ export const StatuspageComponent = eg.object({
   parent_component_id: eg.string.optional
 });
 export type StatuspageComponent = TypeFromCodec<typeof StatuspageComponent>;
+
+export type AlertHistory = {
+  id: string;
+  name: string;
+  description: string;
+  alert_body: string;
+  alert_type: string;
+  mechanism: string;
+  mechanism_type: string;
+  policy_id: string;
+  sent: string;
+};

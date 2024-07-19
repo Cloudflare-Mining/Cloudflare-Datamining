@@ -28,6 +28,10 @@ export const CfPlanId = eg.union([
   eg.literal('CF_BIZ_PLUS'),
   eg.literal('cf_ent'),
   eg.literal('CF_ENT'),
+  eg.literal('cf_ent_app_sec_adv'),
+  eg.literal('CF_ENT_APP_SEC_ADV'),
+  eg.literal('cf_ent_app_sec_core'),
+  eg.literal('CF_ENT_APP_SEC_CORE'),
   eg.literal('cf_ent_trial'),
   eg.literal('CF_ENT_TRIAL'),
   eg.literal('cf_free'),
@@ -41,7 +45,11 @@ export const CfPlanId = eg.union([
   eg.literal('cf_lite'),
   eg.literal('CF_LITE'),
   eg.literal('cf_pro_plus'),
-  eg.literal('CF_PRO_PLUS')
+  eg.literal('CF_PRO_PLUS'),
+  eg.literal('ibm_ent'),
+  eg.literal('IBM_ENT'),
+  eg.literal('sfcc_ent'),
+  eg.literal('SFCC_ENT')
 ]);
 export type CfPlanId = TypeFromCodec<typeof CfPlanId>;
 
@@ -77,6 +85,10 @@ export const ProductPlanId = eg.union([
   eg.literal('ARGO_ENT_CONTRACT'),
   eg.literal('browser_blaster_basic'),
   eg.literal('BROWSER_BLASTER_BASIC'),
+  eg.literal('calls_paid'),
+  eg.literal('CALLS_PAID'),
+  eg.literal('calls_ent'),
+  eg.literal('CALLS_ENT'),
   eg.literal('load_balancing_basic'),
   eg.literal('LOAD_BALANCING_BASIC'),
   eg.literal('load_balancing_basic_plus'),
@@ -243,7 +255,12 @@ export const ProductPlanId = eg.union([
   eg.literal('ratelimiting_advanced_ent_tryout'),
   eg.literal('RATELIMITING_ADVANCED_ENT_TRYOUT'),
   eg.literal('teams_ent_tryout'),
-  eg.literal('TEAMS_ENT_TRYOUT')
+  eg.literal('TEAMS_ENT_TRYOUT'),
+  eg.literal('workers_for_platforms'),
+  eg.literal('WORKERS_FOR_PLATFORMS'),
+  eg.literal('workers_for_platforms_ent'),
+  eg.literal('WORKERS_FOR_PLATFORMS_ENT'),
+  eg.literal('zaraz_paid')
 ]);
 export type ProductPlanId = TypeFromCodec<typeof ProductPlanId>;
 

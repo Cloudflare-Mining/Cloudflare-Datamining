@@ -1,6 +1,7 @@
 import { eg } from '@cloudflare/util-en-garde';
 
 export * from './account';
+export * from './accountRulesets';
 export * from './alert';
 export * from './apiKey';
 export * from './apiToken';
@@ -28,11 +29,24 @@ export * from './two-factor';
 export * from './user';
 export * from './zone';
 export * from './ratePlan';
+export * from './servicesPlan';
 export * from './settings';
 export * from './spectrum';
 export * from './zendesk';
 export * from './railgun';
 export * from './oAuthConsentApp';
+export * from './phases/fields';
+export * from './phases/http_ratelimit';
+export * from './phases/http_request_firewall_custom';
+export * from './phases/http_request_firewall_managed';
+export * from './phases/http_request_redirect';
+export * from './phases/magic_transit_ids_managed';
+export * from './phases/magic_transit_managed';
+export * from './phases/magic_transit';
+export * from './phases/magic_transit_ratelimit';
+export * from './phases/override';
+export * from './phases/utils';
+export * from './phases/ddos_l4';
 
 export type APIResponse<
   ExpectedData = {},
@@ -71,6 +85,10 @@ export type APIResponseBody<
 export type APIResponseBodyError = {
   code?: number;
   message: string;
+  // Ruleset error
+  source?: {
+    pointer?: string;
+  };
 };
 
 export type APIResponseBodyResult = {

@@ -186,6 +186,25 @@ export const BillingTransaction = eg.object({
 
 export type BillingTransaction = TypeFromCodec<typeof BillingTransaction>;
 
+export const BillingInvoice = eg.object({
+  id: eg.string,
+  closed: eg.boolean,
+  source: eg.string,
+  source_id: eg.string,
+  currency: eg.string,
+  issue_date: eg.string,
+  total_amount: eg.number,
+  total_amount_remaining: eg.number,
+});
+
+export type BillingInvoice = TypeFromCodec<typeof BillingInvoice>;
+
+export const BillingUnpaidInvoices = eg.object({
+  invoices: eg.array(BillingInvoice).optional
+});
+
+export type BillingUnpaidInvoices = TypeFromCodec<typeof BillingUnpaidInvoices>;
+
 export const BillingPayment = eg.object({
   payment_applications: eg.array(
     eg.object({
