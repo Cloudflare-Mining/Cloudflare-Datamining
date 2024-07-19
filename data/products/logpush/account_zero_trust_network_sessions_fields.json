@@ -6,7 +6,7 @@
 	"ClientTLSCipher": "string; TLS cipher suite used in the connection between the client and Cloudflare.",
 	"ClientTLSHandshakeDurationMs": "int; Duration of handshaking the TLS connection between the client and Cloudflare in milliseconds.",
 	"ClientTLSVersion": "string; TLS protocol version used in the connection between the client and Cloudflare.",
-	"ConnectionCloseReason": "string; The reason for closing the connection, only applicable for TCP. Possible values are CLIENT_CLOSED | CLIENT_IDLE_TIMEOUT | CLIENT_TLS_ERROR | CLIENT_ERROR | ORIGIN_CLOSED | ORIGIN_TLS_ERROR | ORIGIN_ERROR | ORIGIN_UNREACHABLE | PROXY_CONN_REFUSED | UNKNOWN | MISMATCHED_IP_VERSIONS.",
+	"ConnectionCloseReason": "string; The reason for closing the connection, only applicable for TCP. Possible values are CLIENT_CLOSED | CLIENT_IDLE_TIMEOUT | CLIENT_TLS_ERROR | CLIENT_ERROR | ORIGIN_CLOSED | ORIGIN_TLS_ERROR | ORIGIN_ERROR | ORIGIN_UNREACHABLE | ORIGIN_UNROUTABLE | PROXY_CONN_REFUSED | UNKNOWN | MISMATCHED_IP_VERSIONS | TOO_MANY_ACTIVE_SESSIONS_FOR_ACCOUNT | TOO_MANY_ACTIVE_SESSIONS_FOR_USER | TOO_MANY_NEW_SESSIONS_FOR_ACCOUNT | TOO_MANY_NEW_SESSIONS_FOR_USER.",
 	"ConnectionReuse": "bool; Whether the TCP connection was reused for multiple HTTP requests.",
 	"DestinationTunnelID": "string; Identifier of the Cloudflare One connector to which the network session was routed to, if any, such as Cloudflare Tunnel or WARP device.",
 	"DetectedProtocol": "string; Detected traffic protocol of the network session.",
