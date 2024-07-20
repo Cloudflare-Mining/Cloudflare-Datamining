@@ -3052,7 +3052,21 @@
 									"contentTypeId": "elementFeaturedSolution",
 									"title": "App and infrastructure services",
 									"description": "Give your digital products and services top-notch security, reliability, and performance for customers everywhere.",
-									"icon": null,
+									"icon": {
+										"id": "c1c2d3b3-368e-548e-9550-88c80d9f266d",
+										"altText": "Trusted Apps and Infrastructure",
+										"title": "Trusted Apps and Infrastructure",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PDJxm9gpmdAMR1JSTQRSl/1ad54dc5651ec6d7edd26c3785766bd5/Apps_Infrastructure.svg_01.svg"
+											},
+											"description": ""
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									},
 									"elementLink": {
 										"contentTypeId": "elementLink",
 										"contentfulId": "7EFrKu7N5PxQhTZvSONRtx",
@@ -4179,6 +4193,39 @@
 								},
 								{
 									"contentTypeId": "elementResourceCard",
+									"contentfulId": "4QUJGRc8odnsaElWKlbtoT",
+									"heading": "Press",
+									"description": "Cloudflare powers hyper-local AI Inference with NVIDIA accelerated computing",
+									"category": "News",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "5XVp3adtrccNPKYbF0axsZ",
+										"elementName": "PR Link",
+										"standardText": null,
+										"text": "Read more",
+										"url": "/press-releases/2023/cloudflare-powers-hyper-local-ai-inference-with-nvidia",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
+										"altText": "Press Release Header",
+										"title": "Press Release Header",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/f02c97e3cb43bd31b419e6eaa943749e/Press-releases.svg"
+											},
+											"description": ""
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
+								{
+									"contentTypeId": "elementResourceCard",
 									"contentfulId": "6OYpx4c6WAsnwVXZ9yZOQA",
 									"heading": "Press",
 									"description": "Cloudflare enters multicloud networking market with Magic Cloud Networking",
@@ -4348,7 +4395,17 @@
 									"heading": "Video",
 									"description": "Cloudflare's CIO discusses advice on important CIO priorities",
 									"category": "Insights",
-									"link": null,
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "1Hh49xmZdUm9jeHiA9kGeH",
+										"elementName": "Learn more -  CF.tv segment (Juan fireside chat)",
+										"standardText": null,
+										"text": "Watch now",
+										"url": "https://cloudflare.tv/cio-week/fireside-chat-with-juan-rodriguez-estevez/Mg6QNmZl",
+										"elementModal": null,
+										"openInNewTab": true,
+										"locale": "en-US"
+									},
 									"image": {
 										"id": "b0293b9a-8477-5ee6-932b-ff1c22e1d53e",
 										"altText": "Cloudflare's CIO discusses advice on important CIO priorities",
@@ -4590,6 +4647,28 @@
 									"description": "The world's leading enterprises trust Cloudflare to deliver speed, security and reliability everywhere.",
 									"learnMoreUrl": "/enterprise/",
 									"learnMoreText": "Learn more",
+									"displayBorder": false,
+									"openLinkInNewTab": null,
+									"removeCardBorder": false,
+									"icon": null,
+									"iconAssetFile": null,
+									"imageOverlaySuperheader": null,
+									"imageOverlayText": null,
+									"imageAssetFile": null,
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
+								},
+								{
+									"contentTypeId": "feature",
+									"contentfulId": "4HZisPG4ivyRsJo3BSl1tz",
+									"title": "Pay-as-you-go",
+									"makeTitleLink": null,
+									"titleUrl": null,
+									"titleSize": null,
+									"description": "Get easy, instant access to Cloudflare security, and performance services.",
+									"learnMoreUrl": "/plans/",
+									"learnMoreText": "Get started",
 									"displayBorder": false,
 									"openLinkInNewTab": null,
 									"removeCardBorder": false,
