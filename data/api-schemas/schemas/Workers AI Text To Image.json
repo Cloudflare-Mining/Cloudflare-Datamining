@@ -34,6 +34,18 @@
 							"image_b64": {
 								"type": "string"
 							},
+							"lora_weights": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"loras": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
 							"mask": {
 								"items": {
 									"type": "number"
@@ -191,6 +203,18 @@
 							},
 							"image_b64": {
 								"type": "string"
+							},
+							"lora_weights": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"loras": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
 							},
 							"mask": {
 								"items": {
@@ -350,6 +374,18 @@
 							"image_b64": {
 								"type": "string"
 							},
+							"lora_weights": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"loras": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
 							"mask": {
 								"items": {
 									"type": "number"
@@ -508,6 +544,18 @@
 							"image_b64": {
 								"type": "string"
 							},
+							"lora_weights": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"loras": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
 							"mask": {
 								"items": {
 									"type": "number"
@@ -665,6 +713,18 @@
 							},
 							"image_b64": {
 								"type": "string"
+							},
+							"lora_weights": {
+								"items": {
+									"type": "number"
+								},
+								"type": "array"
+							},
+							"loras": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
 							},
 							"mask": {
 								"items": {
