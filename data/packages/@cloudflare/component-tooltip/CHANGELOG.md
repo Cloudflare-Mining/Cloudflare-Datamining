@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.0
+
+### Minor Changes
+
+- 0a4b7280c9: Fix bug where multiple tooltips on one page with delay do not dismiss correctly
+
 ## 5.0.0
 
 ### Major Changes
