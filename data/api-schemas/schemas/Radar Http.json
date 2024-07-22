@@ -3555,6 +3555,20 @@
 				}
 			},
 			{
+				"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE_CHANGE",
+						"MIN0_MAX"
+					],
+					"example": "MIN0_MAX",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
