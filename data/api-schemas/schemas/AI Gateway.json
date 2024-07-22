@@ -1,4 +1,169 @@
 {
+	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/prompts/{id}": {
+		"operationId": "aig-config-delete-prompt",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "prompt id",
+					"example": "my-prompt",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"data": {
+											"maxLength": 8192,
+											"minLength": 1,
+											"type": "string"
+										},
+										"gateway_id": {
+											"description": "gateway id",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"id": {
+											"description": "prompt id",
+											"example": "my-prompt",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"gateway_id",
+										"data",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns if the Prompt was deleted successfully"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a Prompt",
+		"tags": [
+			"AI Gateway"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"operationId": "aig-config-delete-gateway",
 		"parameters": [
@@ -191,7 +356,7 @@
 				"name": "per_page",
 				"schema": {
 					"default": 20,
-					"maximum": 50,
+					"maximum": 100,
 					"minimum": 5,
 					"type": "integer"
 				}
@@ -350,6 +515,200 @@
 			}
 		],
 		"summary": "List Gateways",
+		"tags": [
+			"AI Gateway"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/prompts": {
+		"operationId": "aig-config-list-prompt",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 100,
+					"minimum": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Order By Column Name",
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"description": "Order By Column Name",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"description": "prompt id",
+					"example": "my-prompt",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"data": {
+												"maxLength": 8192,
+												"minLength": 1,
+												"type": "string"
+											},
+											"gateway_id": {
+												"description": "gateway id",
+												"example": "my-gateway",
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+												"type": "string"
+											},
+											"id": {
+												"description": "prompt id",
+												"example": "my-prompt",
+												"maxLength": 32,
+												"minLength": 1,
+												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+												"type": "string"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"gateway_id",
+											"data",
+											"created_at",
+											"modified_at"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a list of Prompts"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Prompts",
 		"tags": [
 			"AI Gateway"
 		],
@@ -1018,6 +1377,433 @@
 			}
 		],
 		"summary": "Create a new Gateway",
+		"tags": [
+			"AI Gateway"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/prompts": {
+		"operationId": "aig-config-create-prompt",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"data": {
+								"maxLength": 8192,
+								"minLength": 1,
+								"type": "string"
+							},
+							"id": {
+								"description": "prompt id",
+								"example": "my-prompt",
+								"maxLength": 32,
+								"minLength": 1,
+								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+								"type": "string"
+							}
+						},
+						"required": [
+							"id",
+							"data"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"task": {
+											"properties": {
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"data": {
+													"maxLength": 8192,
+													"minLength": 1,
+													"type": "string"
+												},
+												"gateway_id": {
+													"description": "gateway id",
+													"example": "my-gateway",
+													"maxLength": 64,
+													"minLength": 1,
+													"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+													"type": "string"
+												},
+												"id": {
+													"description": "prompt id",
+													"example": "my-prompt",
+													"maxLength": 32,
+													"minLength": 1,
+													"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+													"type": "string"
+												},
+												"modified_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"gateway_id",
+												"data",
+												"created_at",
+												"modified_at"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"task"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created Prompt"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new Prompt",
+		"tags": [
+			"AI Gateway"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/prompts/{id}": {
+		"operationId": "aig-config-update-prompt",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "prompt id",
+					"example": "my-prompt",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "gateway_id",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"data": {
+								"maxLength": 8192,
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"data"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"data": {
+											"maxLength": 8192,
+											"minLength": 1,
+											"type": "string"
+										},
+										"gateway_id": {
+											"description": "gateway id",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"id": {
+											"description": "prompt id",
+											"example": "my-prompt",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"gateway_id",
+										"data",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated Prompt"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a Prompt",
 		"tags": [
 			"AI Gateway"
 		],
