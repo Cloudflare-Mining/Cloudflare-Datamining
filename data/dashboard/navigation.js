@@ -620,7 +620,7 @@ const navigation = {
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
 		tabs: y.bB,
-		hasPermission: k => !(0, c.yD)(k) && (0, T.m7)(k)
+		hasPermission: k => !(0, c.yD)(k) && (0, O.m7)(k)
 	}, {
 		title: "navigation.zone.dns",
 		url: "/dns",
@@ -667,7 +667,7 @@ const navigation = {
 			navigationType: "global-settings",
 			url: "/email/dmarc-management",
 			labels: ["beta"],
-			hasPermission: k => (0, I.ig)(k) ? !1 : (0, o.$n)(k, "dns_records", "dns-record") && !!(0, f.ZB)(k, "email", "dmarc_visible")
+			hasPermission: k => (0, b.ig)(k) ? !1 : (0, o.$n)(k, "dns_records", "dns-record") && !!(0, f.ZB)(k, "email", "dmarc_visible")
 		}, {
 			title: "navigation.zone.email.security",
 			navigationType: "global-settings",
