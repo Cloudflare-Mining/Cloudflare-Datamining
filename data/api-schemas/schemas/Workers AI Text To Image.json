@@ -34,18 +34,6 @@
 							"image_b64": {
 								"type": "string"
 							},
-							"lora_weights": {
-								"items": {
-									"type": "number"
-								},
-								"type": "array"
-							},
-							"loras": {
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							},
 							"mask": {
 								"items": {
 									"type": "number"
@@ -90,36 +78,7 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												},
-												"tool_calls": {
-													"items": {
-														"properties": {
-															"arguments": {
-																"type": "object"
-															},
-															"name": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
-								},
+								"result": {},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -127,9 +86,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -236,18 +192,6 @@
 							"image_b64": {
 								"type": "string"
 							},
-							"lora_weights": {
-								"items": {
-									"type": "number"
-								},
-								"type": "array"
-							},
-							"loras": {
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							},
 							"mask": {
 								"items": {
 									"type": "number"
@@ -292,36 +236,7 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												},
-												"tool_calls": {
-													"items": {
-														"properties": {
-															"arguments": {
-																"type": "object"
-															},
-															"name": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
-								},
+								"result": {},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -329,9 +244,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -438,18 +350,6 @@
 							"image_b64": {
 								"type": "string"
 							},
-							"lora_weights": {
-								"items": {
-									"type": "number"
-								},
-								"type": "array"
-							},
-							"loras": {
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							},
 							"mask": {
 								"items": {
 									"type": "number"
@@ -494,36 +394,7 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												},
-												"tool_calls": {
-													"items": {
-														"properties": {
-															"arguments": {
-																"type": "object"
-															},
-															"name": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
-								},
+								"result": {},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -531,9 +402,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -640,18 +508,6 @@
 							"image_b64": {
 								"type": "string"
 							},
-							"lora_weights": {
-								"items": {
-									"type": "number"
-								},
-								"type": "array"
-							},
-							"loras": {
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							},
 							"mask": {
 								"items": {
 									"type": "number"
@@ -696,36 +552,7 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												},
-												"tool_calls": {
-													"items": {
-														"properties": {
-															"arguments": {
-																"type": "object"
-															},
-															"name": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
-								},
+								"result": {},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -733,9 +560,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -842,18 +666,6 @@
 							"image_b64": {
 								"type": "string"
 							},
-							"lora_weights": {
-								"items": {
-									"type": "number"
-								},
-								"type": "array"
-							},
-							"loras": {
-								"items": {
-									"type": "string"
-								},
-								"type": "array"
-							},
 							"mask": {
 								"items": {
 									"type": "number"
@@ -898,36 +710,7 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {
-									"oneOf": [
-										{
-											"properties": {
-												"response": {
-													"type": "string"
-												},
-												"tool_calls": {
-													"items": {
-														"properties": {
-															"arguments": {
-																"type": "object"
-															},
-															"name": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"format": "binary",
-											"type": "string"
-										}
-									]
-								},
+								"result": {},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -935,9 +718,6 @@
 							},
 							"type": "object"
 						}
-					},
-					"text/event-stream": {
-						"schema": {}
 					}
 				},
 				"description": "Successful response"
