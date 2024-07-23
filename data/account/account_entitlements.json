@@ -144,6 +144,22 @@
 		"deleted_date": ""
 	},
 	{
+		"id": "custom_pages.enabled",
+		"feature": {
+			"feature_set": "custom_pages",
+			"id": 1104,
+			"key": "custom_pages.enabled",
+			"name": "Custom Pages enabled"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2024-07-23T16:10:15.000000",
+		"edited_date": "2024-07-23T16:10:15.000000",
+		"deleted_date": ""
+	},
+	{
 		"id": "notifications.webhooks_enabled",
 		"feature": {
 			"feature_set": "notifications",
@@ -264,11 +280,11 @@
 			"name": "R2 - Infrequent Access Enabled"
 		},
 		"allocation": {
-			"value": false,
+			"value": true,
 			"type": "bool"
 		},
 		"created_date": "2024-05-24T13:38:09.000000",
-		"edited_date": "2024-05-24T13:38:09.000000",
+		"edited_date": "2024-07-23T16:10:15.000000",
 		"deleted_date": ""
 	}
 ]
