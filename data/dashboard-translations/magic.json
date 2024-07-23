@@ -247,12 +247,16 @@
 	"magic.firewall.rate_limit.rules.edit_page.period.header": "Period",
 	"magic.firewall.rate_limit.rules.edit_page.period.text": "1 second",
 	"magic.firewall.rate_limit.rules.edit_page.when_packet_match": "When incoming packets matchu2026",
-	"magic.firewall.rate_limit.rules.edit_page.when_ratelimit": "When rate exceeds...",
-	"magic.firewall.rate_limit.rules.edit_page.then_action": "Then take action...",
+	"magic.firewall.rate_limit.rules.edit_page.when_packet_match_expression": "and expression (optional)...",
+	"magic.firewall.rate_limit.rules.edit_page.when_ratelimit": "and rate exceeds...",
+	"magic.firewall.rate_limit.rules.edit_page.then_action": "then take action...",
 	"magic.firewall.rate_limit.rules.edit_page.action": "Action",
-	"magic.firewall.rate_limit.rules.edit_page.back": "rule list",
-	"magic.firewall.rate_limit.rules.edit_page.bits_or_packets": "Packets or Bits (required)",
+	"magic.firewall.rate_limit.rules.edit_page.back": "Rate limiting rules",
+	"magic.firewall.rate_limit.rules.edit_page.bits_or_packets": "Packets or Bits",
 	"magic.firewall.rate_limit.rules.edit_page.bits": "Bits",
 	"magic.firewall.rate_limit.rules.edit_page.packets": "Packets",
-	"magic.firewall.rate_limit.rules.edit_page.value": "Value"
+	"magic.firewall.rate_limit.rules.edit_page.value": "Value",
+	"magic.firewall.rate_limit.rules.edit_page.field": "Field",
+	"magic.firewall.rate_limit.rules.edit_page.operator": "Operator",
+	"magic.firewall.rate_limit.rules.operators.eq": "equals"
 }

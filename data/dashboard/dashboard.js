@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "8d241fb3-fa51-544b-85b2-a1326c6c7e50")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "95d34062-c962-55b4-bd4a-14e3631fe520")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -894,10 +894,10 @@
 				n.g.build = un({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "48eab44e05803a49452263b1f5149816d8f2cfa4",
-					dashVersion: "25495293",
+					commit: "e92b7df02ce68513e28dfb6dea859ee12ce69cea",
+					dashVersion: "25535164",
 					env: "production",
-					builtAt: 1721668614318,
+					builtAt: 1721750362613,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",
@@ -10604,6 +10604,7 @@
 					accountMtlsCertificates: (0, e.BC)`/accounts/${"accountId"}/mtls_certificates`,
 					accountSettings: (0, e.BC)`/accounts/${"accountId"}/workers/account-settings`,
 					builds: {
+						builds_by_script_id: (0, e.BC)`/accounts/${"accountId"}/builds/workers/${"scriptTag"}/builds`,
 						build_tokens: (0, e.BC)`/accounts/${"accountId"}/builds/tokens`,
 						repo_connections: (0, e.BC)`/accounts/${"accountId"}/builds/repos/connections`,
 						repo_connection: (0, e.BC)`/accounts/${"accountId"}/builds/repos/connections/${"repo_connection_uuid"}`,
@@ -12068,12 +12069,15 @@
 					severity: t.eg.string.optional,
 					domain: t.eg.any.optional,
 					exact: t.eg.any.optional,
-					previous_selection: t.eg.any.optional,
+					fees: t.eg.any.optional,
 					new_selection: t.eg.any.optional,
+					numDomainsInCart: t.eg.any.optional,
 					payment_method: t.eg.string.optional,
 					payment_option: t.eg.string.optional,
+					premium: t.eg.any.optional,
+					previous_selection: t.eg.any.optional,
+					pricing_local: t.eg.any.optional,
 					selection: t.eg.any.optional,
-					numDomainsInCart: t.eg.any.optional,
 					uniqueTopLevelDomains: t.eg.any.optional
 				})),
 				Be = (te, se) => {
@@ -13103,4 +13107,4 @@
 	}
 ]);
 
-//# debugId=8d241fb3-fa51-544b-85b2-a1326c6c7e50
+//# debugId=95d34062-c962-55b4-bd4a-14e3631fe520
