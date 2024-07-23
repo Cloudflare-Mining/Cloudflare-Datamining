@@ -25,24 +25,24 @@
             type: "object",
             properties: {
                 key: {
-                        type: "string",
-                        description: "The key to store the value under.",
-				},
+                    type: "string",
+                    description: "The key to store the value under.",
+                },
                 value: {
-                        type: "string",
-                        description: "The value to store.",
-				},
+                    type: "string",
+                    description: "The value to store.",
+                },
             },
-			required: ["key", "value"],
-		},
+            required: ["key", "value"],
+        },
         function: async ({ key, value }) =&gt; {
                 await env.KV.put(key, value);
 
                 return JSON.stringify({
                     success: true,
-			});
-		}
-	}]
+                });
+         }
+    }]
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
