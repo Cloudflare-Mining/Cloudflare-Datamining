@@ -2006,31 +2006,9 @@
 					"description": "Array of BGP network prefixes.",
 					"example": "1.1.1.0/24",
 					"items": {
-						"properties": {
-							"in": {
-								"example": "query",
-								"type": "string"
-							},
-							"name": {
-								"example": "prefix",
-								"type": "string"
-							},
-							"test": {
-								"example": 12,
-								"type": "number"
-							},
-							"type": {
-								"description": "Network prefix, IPv4 or IPv6.",
-								"example": "1.1.1.0/24",
-								"type": "string"
-							}
-						},
-						"required": [
-							"in",
-							"test",
-							"name"
-						],
-						"type": "object"
+						"description": "Network prefix, IPv4 or IPv6.",
+						"example": "1.1.1.0/24",
+						"type": "string"
 					},
 					"type": "array"
 				}
@@ -2377,31 +2355,9 @@
 					"description": "Array of BGP network prefixes.",
 					"example": "1.1.1.0/24",
 					"items": {
-						"properties": {
-							"in": {
-								"example": "query",
-								"type": "string"
-							},
-							"name": {
-								"example": "prefix",
-								"type": "string"
-							},
-							"test": {
-								"example": 12,
-								"type": "number"
-							},
-							"type": {
-								"description": "Network prefix, IPv4 or IPv6.",
-								"example": "1.1.1.0/24",
-								"type": "string"
-							}
-						},
-						"required": [
-							"in",
-							"test",
-							"name"
-						],
-						"type": "object"
+						"description": "Network prefix, IPv4 or IPv6.",
+						"example": "1.1.1.0/24",
+						"type": "string"
 					},
 					"type": "array"
 				}
