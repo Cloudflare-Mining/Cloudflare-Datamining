@@ -5,41 +5,25 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Contract Type: Fixed Term 11 Month<br>Available Location: Amsterdam, Netherlands</strong></p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for a Field Marketing Associate to support marketing efforts in the Benelux and Nordics. Working closely with the regional Marketing Manager for Northern Europe, you will help to create, deliver and execute impactful marketing programs to drive awareness and develop qualified pipeline for Cloudflare’s sales team — specifically targeting Enterprise, Field and Mid-Market accounts within the region. In this position you’ll positively contribute to developing and executing campaigns and events to generate leads that contribute to sales pipeline, revenue and brand awareness.</p>
-<p>The right candidate will have a builder mindset, a strong knowledge of B2B demand generation best practices, be digitally savvy, have a natural inclination to measure the effectiveness of marketing activities, strong project management skills, and the ability to drive program execution while managing the expectations of various stakeholders.</p>
-<p><strong>Key Responsibilities</strong></p>
+<h3><strong>Available Locations: Lisbon, Portugal</strong></h3>
+<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-Whatyou'lldo"><strong>What you'll do</strong></h3>
+<p>The Durable Objects (DO) and D1 team is responsible for DO, Cloudflare's&nbsp;distributed coordination API with strongly consistent storage, and D1, Cloudflare's first SQL database optimized for the edge. In this role, you will work with a top-notch engineering team to expand Cloudflare's capabilities by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
+<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Reporting into the Northern Europe Field Marketing Manager, based in the Netherlands</li>
-	<li>Demand generation – Work closely with the EMEA Centers of Excellence, EMEA Business Development Team and EMEA Sales Team to support demand and lead generation programs for Benelux and Nordics ensuring operational success</li>
-	<li>Design and execute on regional marketing activities to excite and enable sales teams and ensure growth in the region. Activities to include but not limited to; events, direct mailers, webinars, call-out campaigns, digital, email campaigns, content development, brand awareness</li>
-	<li>Events - Work closely with the EMEA Events team to identify appropriate events across target markets, ensure success of events from messaging, branding, promotions, and follow-up.</li>
-	<li>Manage supporting logistics for field events &amp; webinars, including printing, promotional items, supporting materials, shipping and receiving, as well as supporting on site.</li>
-	<li>Optimise, research and assess new ways to drive new leads, leveraging various media, targeted lists, scheduled meeting programs and other opportunities</li>
-	<li>Support and track regional success of partner activities (lead generations, opportunities created)</li>
-	<li>Provide regular reporting cadence on all marketing activities to track performance, contribution to pipeline and ROI, and adjust where necessary</li>
-	<li>Execute inbound and outbound marketing campaigns targeting specific personas to increase awareness of Cloudflare and generate demand, thereby contributing to pipeline and revenue for the region.</li>
-	<li>Manage development of localised demand generation assets with content and product marketing</li>
+	<li>Min 5 years experience working with distributed systems or developing on cloud platforms.</li>
+	<li>Experience managing high volume software applications.</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Java, C#, Rust, or C++.</li>
 </ul>
-<p><strong>Required skills, knowledge and experience</strong></p>
+<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-BonusPoints"><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Excellent written and verbal communication skills&nbsp;</li>
-	<li>3+ years of events and field marketing with campaign execution, ideally in the Benelux or Nordic Previous experience in field marketing to large enterprise prospects, ideally within B2B SaaS or cyber security&nbsp;</li>
-	<li>Knowledge and experience of Salesforce</li>
-	<li>Data-driven marketer who has the passion to learn best practices from the industry and implement in campaign strategies</li>
-	<li>Exceptional organizational skills, with rigorous attention to detail</li>
-	<li>Ability to work effectively in a fast-paced and ever-changing environment with tight deadline</li>
-	<li>Skills in effective outreach messaging and content creation</li>
-	<li>Excellent written and verbal communication skills and stellar presentation skills</li>
-	<li>Preferred but not required: Knowledge of the Benelux or Nordics markets&nbsp;</li>
-	<li>Dutch language</li>
-</ul>
-<p><strong>Other attributes:</strong></p>
-<ul>
-	<li>Motivated, positive and above all a team player</li>
-	<li>Extreme curiosity</li>
-	<li>Builder mindset</li>
+	<li>Previous experience working on database internals such as a SQL query planner.&nbsp;</li>
+	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly.</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;a large-scale Linux-based distributed system.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
