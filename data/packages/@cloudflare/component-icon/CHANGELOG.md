@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.12.0
+
+### Minor Changes
+
+- 739944c589: Adds thumbs up/down svgs to the Icon component.
+
 ## 12.11.0
 
 ### Minor Changes
