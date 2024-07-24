@@ -1,4 +1,5 @@
 import Dlp from './Dlp';
+import Timer from './Timer';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
 import AddMember from './AddMember';
 import Add from './Add';
@@ -136,8 +137,11 @@ import Subtract from './Subtract';
 import TailWorker from './TailWorker';
 import Teams from './Teams';
 import Terraform from './Terraform';
+import ThumbsDownOutline from './ThumbsDownOutline';
+import ThumbsDownSolid from './ThumbsDownSolid';
+import ThumbsUpOutline from './ThumbsUpOutline';
+import ThumbsUpSolid from './ThumbsUpSolid';
 import Time from './Time';
-import Timer from './Timer';
 import Trace from './Trace';
 import TrafficAttackBrowser from './TrafficAttackBrowser';
 import Turnstile from './Turnstile';
@@ -170,6 +174,7 @@ import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
 export default {
   dlp: Dlp,
+  timer: Timer,
   'account-analytics-logo': AccountAnalyticsLogo,
   'add-member': AddMember,
   add: Add,
@@ -307,8 +312,11 @@ export default {
   'tail-worker': TailWorker,
   teams: Teams,
   terraform: Terraform,
+  'thumbs-down-outline': ThumbsDownOutline,
+  'thumbs-down-solid': ThumbsDownSolid,
+  'thumbs-up-outline': ThumbsUpOutline,
+  'thumbs-up-solid': ThumbsUpSolid,
   time: Time,
-  timer: Timer,
   trace: Trace,
   'traffic-attack-browser': TrafficAttackBrowser,
   turnstile: Turnstile,

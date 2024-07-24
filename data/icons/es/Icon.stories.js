@@ -40,3 +40,19 @@ export var Spectrum = () => /*#__PURE__*/React.createElement(Icon, {
   size: 36
 });
 Spectrum.decorators = [withStyleProvider];
+export var ThumbsUp = () => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Icon, {
+  type: "thumbs-up-solid",
+  size: 36
+}), /*#__PURE__*/React.createElement(Icon, {
+  type: "thumbs-up-outline",
+  size: 36
+}));
+ThumbsUp.decorators = [withStyleProvider];
+export var ThumbsDown = () => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Icon, {
+  type: "thumbs-down-solid",
+  size: 36
+}), /*#__PURE__*/React.createElement(Icon, {
+  type: "thumbs-down-outline",
+  size: 36
+}));
+ThumbsDown.decorators = [withStyleProvider];
