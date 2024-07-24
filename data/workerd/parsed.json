@@ -2574,6 +2574,14 @@
 						"compatEnableFlag": "new_module_registry",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "cacheOptionEnabled",
+					"annotations": {
+						"compatDisableFlag": "cache_option_disabled",
+						"compatEnableFlag": "cache_option_enabled",
+						"experimental": "true"
+					}
 				}
 			]
 		},
