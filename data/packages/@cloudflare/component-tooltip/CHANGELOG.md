@@ -1,10 +1,17 @@
 # Change Log
 
+## 5.1.1
+
+### Patch Changes
+
+- db8427aad9: This changeset is in attempts to fix an issue with Tooltip KV registry where 5.1.0 didn't get the code it should have
+
 ## 5.1.0
 
 ### Minor Changes
 
 - 0a4b7280c9: Fix bug where multiple tooltips on one page with delay do not dismiss correctly
+- efc3f4a27d: Fix Tooltip to clear internal timers on unmount
 
 ## 5.0.0
 
