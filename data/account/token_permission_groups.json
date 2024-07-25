@@ -664,6 +664,22 @@
 		]
 	},
 	{
+		"id": "cf9353ed7978436e8fb20c03fce26449",
+		"name": "Cloudforce One Read",
+		"description": "Grants read access to Cloudforce One",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "677767156f294485b497a8f103172e7d",
+		"name": "Cloudforce One Write",
+		"description": "Grants read access to Cloudforce One",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "20e5ea084b2f491c86b8d8d90abff905",
 		"name": "Config Settings Read",
 		"description": "Grants read access to config settings phase",
@@ -1403,6 +1419,22 @@
 		"id": "8d28297797f24fb8a0c332fe0866ec89",
 		"name": "Pages Write",
 		"description": "Grants write access to Cloudflare Pages",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "14b9cf2f410f4c0c9a16bb10a81c0e0b",
+		"name": "Pipelines Read",
+		"description": "Grants read access to Cloudflare Pipelines",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "e34111af393449539859485aa5ddd5bd",
+		"name": "Pipelines Write",
+		"description": "Grants write access to Cloudflare Pipelines",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
