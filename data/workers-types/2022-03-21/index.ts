@@ -1626,12 +1626,6 @@ export declare class Request<
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/keepalive)
    */
   get keepalive(): boolean;
-  /**
-   * Returns the cache mode associated with request, which is a string indicating how the request will interact with the browser's cache when fetching.
-   *
-   * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/cache)
-   */
-  get cache(): string | undefined;
 }
 export interface RequestInit<Cf = CfProperties> {
   /* A string to set request's method. */
@@ -1644,8 +1638,6 @@ export interface RequestInit<Cf = CfProperties> {
   redirect?: string;
   fetcher?: Fetcher | null;
   cf?: Cf;
-  /* A string indicating how the request will interact with the browser's cache to set request's cache. */
-  cache?: string;
   /* A cryptographic hash of the resource to be fetched by request. Sets request's integrity. */
   integrity?: string;
   /* An AbortSignal to set request's signal. */
@@ -4665,7 +4657,7 @@ export declare abstract class D1PreparedStatement {
   bind(...values: unknown[]): D1PreparedStatement;
   first<T = unknown>(colName: string): Promise<T | null>;
   first<T = Record<string, unknown>>(): Promise<T | null>;
-  run(): Promise<D1Response>;
+  run<T = Record<string, unknown>>(): Promise<D1Result<T>>;
   all<T = Record<string, unknown>>(): Promise<D1Result<T>>;
   raw<T = unknown[]>(options: {
     columnNames: true;
@@ -5072,11 +5064,23 @@ export type VectorizeVectorMetadataFilter = {
  * Distance metrics determine how other "similar" vectors are determined.
  */
 export type VectorizeDistanceMetric = "euclidean" | "cosine" | "dot-product";
-export interface VectorizeQueryOptions {
+/**
+ * Metadata return levels for a Vectorize query.
+ *
+ * Default to "none".
+ *
+ * @property all      Full metadata for the vector return set, including all fields (including those un-indexed) without truncation. This is a more expensive retrieval, as it requires additional fetching & reading of un-indexed data.
+ * @property indexed  Return all metadata fields configured for indexing in the vector return set. This level of retrieval is "free" in that no additional overhead is incurred returning this data. However, note that indexed metadata is subject to truncation (especially for larger strings).
+ * @property none     No indexed metadata will be returned.
+ */
+export type VectorizeMetadataRetrievalLevel = "all" | "indexed" | "none";
+export interface VectorizeQueryOptions<
+  MetadataReturn extends boolean | VectorizeMetadataRetrievalLevel = boolean,
+> {
   topK?: number;
   namespace?: string;
   returnValues?: boolean;
-  returnMetadata?: boolean;
+  returnMetadata?: MetadataReturn;
   filter?: VectorizeVectorMetadataFilter;
 }
 /**
@@ -5115,7 +5119,7 @@ export interface VectorizeVector {
   values: VectorFloatArray | number[];
   /** The namespace this vector belongs to. */
   namespace?: string;
-  /** Metadata associated with the vector. Includes the values of the other fields and potentially additional details. */
+  /** Metadata associated with the vector. Includes the values of other fields and potentially additional details. */
   metadata?: Record<string, VectorizeVectorMetadata>;
 }
 /**
@@ -5127,7 +5131,7 @@ export type VectorizeMatch = Pick<Partial<VectorizeVector>, "values"> &
     score: number;
   };
 /**
- * A set of vector {@link VectorizeMatch} for a particular query.
+ * A set of matching {@link VectorizeMatch} for a particular query.
  */
 export interface VectorizeMatches {
   matches: VectorizeMatch[];
@@ -5136,6 +5140,9 @@ export interface VectorizeMatches {
 /**
  * Results of an operation that performed a mutation on a set of vectors.
  * Here, `ids` is a list of vectors that were successfully processed.
+ *
+ * This type is exclusively for the Vectorize **beta** and will be deprecated once Vectorize RC is released.
+ * See {@link VectorizeAsyncMutation} for its post-beta equivalent.
  */
 export interface VectorizeVectorMutation {
   /* List of ids of vectors that were successfully processed. */
@@ -5144,14 +5151,19 @@ export interface VectorizeVectorMutation {
   count: number;
 }
 /**
- * Results of an operation that performed a mutation on a set of vectors
- * with the v2 version of Vectorize.
- * Here, `mutationId` is the identifier for the last mutation processed by Vectorize.
+ * Result type indicating a mutation on the Vectorize Index.
+ * Actual mutations are processed async where the `mutationId` is the unique identifier for the operation.
  */
-export interface VectorizeVectorMutationV2 {
-  /* The identifier for the last mutation processed by Vectorize. */
+export interface VectorizeAsyncMutation {
+  /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId: string;
 }
+/**
+ * A Vectorize Vector Search Index for querying vectors/embeddings.
+ *
+ * This type is exclusively for the Vectorize **beta** and will be deprecated once Vectorize RC is released.
+ * See {@link Vectorize} for its new implementation.
+ */
 export declare abstract class VectorizeIndex {
   /**
    * Get information about the currently bound index.
@@ -5186,6 +5198,52 @@ export declare abstract class VectorizeIndex {
    * @returns A promise that resolves with the ids & count of records that were successfully processed (and thus deleted).
    */
   public deleteByIds(ids: string[]): Promise<VectorizeVectorMutation>;
+  /**
+   * Get a list of vectors with a matching id.
+   * @param ids List of vector ids that should be returned.
+   * @returns A promise that resolves with the raw unscored vectors matching the id set.
+   */
+  public getByIds(ids: string[]): Promise<VectorizeVector[]>;
+}
+/**
+ * A Vectorize Vector Search Index for querying vectors/embeddings.
+ *
+ * Mutations in this version are async, returning a mutation id.
+ */
+export declare abstract class Vectorize {
+  /**
+   * Get information about the currently bound index.
+   * @returns A promise that resolves with information about the current index.
+   */
+  public describe(): Promise<VectorizeIndexDetails>;
+  /**
+   * Use the provided vector to perform a similarity search across the index.
+   * @param vector Input vector that will be used to drive the similarity search.
+   * @param options Configuration options to massage the returned data.
+   * @returns A promise that resolves with matched and scored vectors.
+   */
+  public query(
+    vector: VectorFloatArray | number[],
+    options: VectorizeQueryOptions<VectorizeMetadataRetrievalLevel>,
+  ): Promise<VectorizeMatches>;
+  /**
+   * Insert a list of vectors into the index dataset. If a provided id exists, an error will be thrown.
+   * @param vectors List of vectors that will be inserted.
+   * @returns A promise that resolves with a unique identifier of a mutation containing the insert changeset.
+   */
+  public insert(vectors: VectorizeVector[]): Promise<VectorizeAsyncMutation>;
+  /**
+   * Upsert a list of vectors into the index dataset. If a provided id exists, it will be replaced with the new values.
+   * @param vectors List of vectors that will be upserted.
+   * @returns A promise that resolves with a unique identifier of a mutation containing the upsert changeset.
+   */
+  public upsert(vectors: VectorizeVector[]): Promise<VectorizeAsyncMutation>;
+  /**
+   * Delete a list of vectors with a matching id.
+   * @param ids List of vector ids that should be deleted.
+   * @returns A promise that resolves with a unique identifier of a mutation containing the delete changeset.
+   */
+  public deleteByIds(ids: string[]): Promise<VectorizeAsyncMutation>;
   /**
    * Get a list of vectors with a matching id.
    * @param ids List of vector ids that should be returned.
