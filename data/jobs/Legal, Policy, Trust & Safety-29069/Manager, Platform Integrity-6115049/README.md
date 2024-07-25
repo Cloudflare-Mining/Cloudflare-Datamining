@@ -5,8 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: PA, NJ, NY, Austin, TX</strong></p>
 <p>We are looking for a Fraud Investigations Manager to join our global Trust &amp; Safety team, and lead our team of Fraud Analysts. As manager, you will further develop and enhance our fraud policies and procedures, to ensure optimal gains, recovery and loss prevention. You will be leading a global team of highly skilled fraud analysts, and getting your hands dirty with the team to analyze our fraud data, to create, modify and enhance our review processes. You will be providing regular statistical analysis to Sr. Leadership, including Customer Support, Finance and Marketing leadership teams, on the performance of their products and support services. You will also partner with the Trust &amp; Safety Platform Operations team to provide support as needed on abuse investigations. This is a position where you will also gain familiarity with the inner workings of Cloudflare’s technologies and policies.&nbsp;&nbsp;</p>
-<p><strong>Locations: PA, NJ, NYC, Austin</strong></p>
 <p><strong>Responsibilities:</strong></p>
 <ul>
 	<li>Lead and manage the Fraud team with effective leadership, ability to hire and retain talented staff, ability to train and develop a team in fraud expertise</li>
@@ -40,6 +40,40 @@
 	<li>You have working knowledge of the Domain Name System (DNS) and Domain Registrar Services</li>
 	<li>You have a working knowledge of how a hosting provider operates</li>
 </ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado-based hires: Estimated annual salary of $107,000 - $131,000</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $129,000 - $157,000</li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
