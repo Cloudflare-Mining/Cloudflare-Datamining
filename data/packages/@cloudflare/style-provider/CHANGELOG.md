@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.3.0
+
+### Minor Changes
+
+- 2972dc31fd: Add support for fela multiple selectors plugin
+
 ## 3.2.4
 
 ## 3.2.3

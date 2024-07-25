@@ -1,5 +1,12 @@
 # Change Log
 
+## 7.2.9
+
+### Patch Changes
+
+- @cloudflare/component-forms@6.1.13
+- @cloudflare/component-time-period-picker@6.0.20
+
 ## 7.2.8
 
 ### Patch Changes
