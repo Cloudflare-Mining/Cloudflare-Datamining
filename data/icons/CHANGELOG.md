@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.12.1
+
+### Patch Changes
+
+- 5fdef6ffb0: fix Connector SVG prop names
+
 ## 12.12.0
 
 ### Minor Changes
