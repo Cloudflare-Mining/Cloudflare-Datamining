@@ -126,6 +126,7 @@
 													"type": "string"
 												},
 												"duration": {
+													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
 													"type": "string"
@@ -404,6 +405,7 @@
 														"type": "string"
 													},
 													"duration": {
+														"default": "8760h",
 														"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 														"example": "60m",
 														"type": "string"
@@ -674,6 +676,7 @@
 													"type": "string"
 												},
 												"duration": {
+													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
 													"type": "string"
@@ -837,6 +840,7 @@
 					"schema": {
 						"properties": {
 							"duration": {
+								"default": "8760h",
 								"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 								"example": "60m",
 								"type": "string"
@@ -960,6 +964,7 @@
 													"type": "string"
 												},
 												"duration": {
+													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
 													"type": "string"
@@ -1124,6 +1129,7 @@
 					"schema": {
 						"properties": {
 							"duration": {
+								"default": "8760h",
 								"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 								"example": "60m",
 								"type": "string"
@@ -1239,6 +1245,7 @@
 													"type": "string"
 												},
 												"duration": {
+													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
 													"type": "string"

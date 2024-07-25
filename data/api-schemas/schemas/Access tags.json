@@ -775,28 +775,9 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "A tag",
-						"properties": {
-							"created_at": {
-								"example": "2014-01-01T05:20:00.12345Z",
-								"format": "date-time",
-								"type": "string"
-							},
-							"name": {
-								"description": "The name of the tag",
-								"example": "engineers",
-								"type": "string"
-							},
-							"updated_at": {
-								"example": "2014-01-01T05:20:00.12345Z",
-								"format": "date-time",
-								"type": "string"
-							}
-						},
-						"required": [
-							"name"
-						],
-						"type": "object"
+						"description": "The name of the tag",
+						"example": "engineers",
+						"type": "string"
 					}
 				}
 			}
