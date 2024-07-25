@@ -365,6 +365,11 @@
 															"type": "object"
 														},
 														"type": "array"
+													},
+													"tunnel_protocol": {
+														"description": "Determines which tunnel protocol to use.",
+														"example": "wireguard",
+														"type": "string"
 													}
 												},
 												"type": "object"
@@ -716,6 +721,11 @@
 																	"type": "object"
 																},
 																"type": "array"
+															},
+															"tunnel_protocol": {
+																"description": "Determines which tunnel protocol to use.",
+																"example": "wireguard",
+																"type": "string"
 															}
 														},
 														"type": "object"
@@ -2619,6 +2629,11 @@
 															"type": "object"
 														},
 														"type": "array"
+													},
+													"tunnel_protocol": {
+														"description": "Determines which tunnel protocol to use.",
+														"example": "wireguard",
+														"type": "string"
 													}
 												},
 												"type": "object"
@@ -2970,6 +2985,11 @@
 																	"type": "object"
 																},
 																"type": "array"
+															},
+															"tunnel_protocol": {
+																"description": "Determines which tunnel protocol to use.",
+																"example": "wireguard",
+																"type": "string"
 															}
 														},
 														"type": "object"
@@ -3375,6 +3395,11 @@
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"example": true,
 													"type": "boolean"
+												},
+												"tunnel_protocol": {
+													"description": "Determines which tunnel protocol to use.",
+													"example": "wireguard",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -3668,6 +3693,11 @@
 															"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 															"example": true,
 															"type": "boolean"
+														},
+														"tunnel_protocol": {
+															"description": "Determines which tunnel protocol to use.",
+															"example": "wireguard",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -4137,6 +4167,11 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"tunnel_protocol": {
+													"description": "Determines which tunnel protocol to use.",
+													"example": "wireguard",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -4485,6 +4520,11 @@
 																"type": "object"
 															},
 															"type": "array"
+														},
+														"tunnel_protocol": {
+															"description": "Determines which tunnel protocol to use.",
+															"example": "wireguard",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -7269,6 +7309,11 @@
 								"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 								"example": true,
 								"type": "boolean"
+							},
+							"tunnel_protocol": {
+								"description": "Determines which tunnel protocol to use.",
+								"example": "wireguard",
+								"type": "string"
 							}
 						}
 					}
@@ -7556,6 +7601,11 @@
 													"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 													"example": true,
 													"type": "boolean"
+												},
+												"tunnel_protocol": {
+													"description": "Determines which tunnel protocol to use.",
+													"example": "wireguard",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -7849,6 +7899,11 @@
 															"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 															"example": true,
 															"type": "boolean"
+														},
+														"tunnel_protocol": {
+															"description": "Determines which tunnel protocol to use.",
+															"example": "wireguard",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -8075,6 +8130,11 @@
 								"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 								"example": true,
 								"type": "boolean"
+							},
+							"tunnel_protocol": {
+								"description": "Determines which tunnel protocol to use.",
+								"example": "wireguard",
+								"type": "string"
 							}
 						}
 					}
@@ -8417,6 +8477,11 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"tunnel_protocol": {
+													"description": "Determines which tunnel protocol to use.",
+													"example": "wireguard",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -8765,6 +8830,11 @@
 																"type": "object"
 															},
 															"type": "array"
+														},
+														"tunnel_protocol": {
+															"description": "Determines which tunnel protocol to use.",
+															"example": "wireguard",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -8990,6 +9060,11 @@
 								"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
 								"example": true,
 								"type": "boolean"
+							},
+							"tunnel_protocol": {
+								"description": "Determines which tunnel protocol to use.",
+								"example": "wireguard",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -9337,6 +9412,11 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"tunnel_protocol": {
+													"description": "Determines which tunnel protocol to use.",
+													"example": "wireguard",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -9685,6 +9765,11 @@
 																"type": "object"
 															},
 															"type": "array"
+														},
+														"tunnel_protocol": {
+															"description": "Determines which tunnel protocol to use.",
+															"example": "wireguard",
+															"type": "string"
 														}
 													},
 													"type": "object"

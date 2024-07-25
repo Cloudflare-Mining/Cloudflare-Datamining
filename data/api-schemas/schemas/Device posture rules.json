@@ -849,6 +849,89 @@
 															},
 															{
 																"properties": {
+																	"certificate_id": {
+																		"description": "UUID of Cloudflare managed certificate.",
+																		"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																		"maxLength": 36,
+																		"type": "string"
+																	},
+																	"check_private_key": {
+																		"description": "Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"cn": {
+																		"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																		"example": "${hostname}.com.${serial_number}",
+																		"type": "string"
+																	},
+																	"extended_key_usage": {
+																		"description": "List of values indicating purposes for which the certificate public key can be used",
+																		"example": [
+																			"clientAuth",
+																			"emailProtection"
+																		],
+																		"items": {
+																			"enum": [
+																				"clientAuth",
+																				"emailProtection"
+																			],
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"locations": {
+																		"properties": {
+																			"paths": {
+																				"description": "List of paths to check for client certificate on linux.",
+																				"example": [
+																					"/path1",
+																					"/path2"
+																				],
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"trust_stores": {
+																				"description": "List of trust stores to check for client certificate.",
+																				"example": [
+																					"system",
+																					"user"
+																				],
+																				"items": {
+																					"enum": [
+																						"system",
+																						"user"
+																					],
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"operating_system": {
+																		"description": "Operating System",
+																		"enum": [
+																			"windows",
+																			"mac",
+																			"linux"
+																		],
+																		"example": "windows",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"certificate_id",
+																	"check_private_key",
+																	"operating_system"
+																],
+																"title": "Client Certificate V2",
+																"type": "object"
+															},
+															{
+																"properties": {
 																	"compliance_status": {
 																		"description": "Compliance Status",
 																		"enum": [
@@ -1165,6 +1248,7 @@
 															"os_version",
 															"domain_joined",
 															"client_certificate",
+															"client_certificate_v2",
 															"unique_client_id",
 															"kolide",
 															"tanium_s2s",
@@ -1652,6 +1736,89 @@
 																	},
 																	{
 																		"properties": {
+																			"certificate_id": {
+																				"description": "UUID of Cloudflare managed certificate.",
+																				"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																				"maxLength": 36,
+																				"type": "string"
+																			},
+																			"check_private_key": {
+																				"description": "Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"cn": {
+																				"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																				"example": "${hostname}.com.${serial_number}",
+																				"type": "string"
+																			},
+																			"extended_key_usage": {
+																				"description": "List of values indicating purposes for which the certificate public key can be used",
+																				"example": [
+																					"clientAuth",
+																					"emailProtection"
+																				],
+																				"items": {
+																					"enum": [
+																						"clientAuth",
+																						"emailProtection"
+																					],
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"locations": {
+																				"properties": {
+																					"paths": {
+																						"description": "List of paths to check for client certificate on linux.",
+																						"example": [
+																							"/path1",
+																							"/path2"
+																						],
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"trust_stores": {
+																						"description": "List of trust stores to check for client certificate.",
+																						"example": [
+																							"system",
+																							"user"
+																						],
+																						"items": {
+																							"enum": [
+																								"system",
+																								"user"
+																							],
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"operating_system": {
+																				"description": "Operating System",
+																				"enum": [
+																					"windows",
+																					"mac",
+																					"linux"
+																				],
+																				"example": "windows",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"certificate_id",
+																			"check_private_key",
+																			"operating_system"
+																		],
+																		"title": "Client Certificate V2",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
 																			"compliance_status": {
 																				"description": "Compliance Status",
 																				"enum": [
@@ -1968,6 +2135,7 @@
 																	"os_version",
 																	"domain_joined",
 																	"client_certificate",
+																	"client_certificate_v2",
 																	"unique_client_id",
 																	"kolide",
 																	"tanium_s2s",
@@ -2557,6 +2725,89 @@
 														},
 														{
 															"properties": {
+																"certificate_id": {
+																	"description": "UUID of Cloudflare managed certificate.",
+																	"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																	"maxLength": 36,
+																	"type": "string"
+																},
+																"check_private_key": {
+																	"description": "Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"cn": {
+																	"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																	"example": "${hostname}.com.${serial_number}",
+																	"type": "string"
+																},
+																"extended_key_usage": {
+																	"description": "List of values indicating purposes for which the certificate public key can be used",
+																	"example": [
+																		"clientAuth",
+																		"emailProtection"
+																	],
+																	"items": {
+																		"enum": [
+																			"clientAuth",
+																			"emailProtection"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"locations": {
+																	"properties": {
+																		"paths": {
+																			"description": "List of paths to check for client certificate on linux.",
+																			"example": [
+																				"/path1",
+																				"/path2"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"trust_stores": {
+																			"description": "List of trust stores to check for client certificate.",
+																			"example": [
+																				"system",
+																				"user"
+																			],
+																			"items": {
+																				"enum": [
+																					"system",
+																					"user"
+																				],
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"operating_system": {
+																	"description": "Operating System",
+																	"enum": [
+																		"windows",
+																		"mac",
+																		"linux"
+																	],
+																	"example": "windows",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"certificate_id",
+																"check_private_key",
+																"operating_system"
+															],
+															"title": "Client Certificate V2",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"compliance_status": {
 																	"description": "Compliance Status",
 																	"enum": [
@@ -2873,6 +3124,7 @@
 														"os_version",
 														"domain_joined",
 														"client_certificate",
+														"client_certificate_v2",
 														"unique_client_id",
 														"kolide",
 														"tanium_s2s",
@@ -3339,6 +3591,89 @@
 																},
 																{
 																	"properties": {
+																		"certificate_id": {
+																			"description": "UUID of Cloudflare managed certificate.",
+																			"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																			"maxLength": 36,
+																			"type": "string"
+																		},
+																		"check_private_key": {
+																			"description": "Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"cn": {
+																			"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																			"example": "${hostname}.com.${serial_number}",
+																			"type": "string"
+																		},
+																		"extended_key_usage": {
+																			"description": "List of values indicating purposes for which the certificate public key can be used",
+																			"example": [
+																				"clientAuth",
+																				"emailProtection"
+																			],
+																			"items": {
+																				"enum": [
+																					"clientAuth",
+																					"emailProtection"
+																				],
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"locations": {
+																			"properties": {
+																				"paths": {
+																					"description": "List of paths to check for client certificate on linux.",
+																					"example": [
+																						"/path1",
+																						"/path2"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"trust_stores": {
+																					"description": "List of trust stores to check for client certificate.",
+																					"example": [
+																						"system",
+																						"user"
+																					],
+																					"items": {
+																						"enum": [
+																							"system",
+																							"user"
+																						],
+																						"type": "string"
+																					},
+																					"type": "array"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"operating_system": {
+																			"description": "Operating System",
+																			"enum": [
+																				"windows",
+																				"mac",
+																				"linux"
+																			],
+																			"example": "windows",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"certificate_id",
+																		"check_private_key",
+																		"operating_system"
+																	],
+																	"title": "Client Certificate V2",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"compliance_status": {
 																			"description": "Compliance Status",
 																			"enum": [
@@ -3655,6 +3990,7 @@
 																"os_version",
 																"domain_joined",
 																"client_certificate",
+																"client_certificate_v2",
 																"unique_client_id",
 																"kolide",
 																"tanium_s2s",
@@ -4124,6 +4460,89 @@
 									},
 									{
 										"properties": {
+											"certificate_id": {
+												"description": "UUID of Cloudflare managed certificate.",
+												"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+												"maxLength": 36,
+												"type": "string"
+											},
+											"check_private_key": {
+												"description": "Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.",
+												"example": true,
+												"type": "boolean"
+											},
+											"cn": {
+												"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+												"example": "${hostname}.com.${serial_number}",
+												"type": "string"
+											},
+											"extended_key_usage": {
+												"description": "List of values indicating purposes for which the certificate public key can be used",
+												"example": [
+													"clientAuth",
+													"emailProtection"
+												],
+												"items": {
+													"enum": [
+														"clientAuth",
+														"emailProtection"
+													],
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"locations": {
+												"properties": {
+													"paths": {
+														"description": "List of paths to check for client certificate on linux.",
+														"example": [
+															"/path1",
+															"/path2"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"trust_stores": {
+														"description": "List of trust stores to check for client certificate.",
+														"example": [
+															"system",
+															"user"
+														],
+														"items": {
+															"enum": [
+																"system",
+																"user"
+															],
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"type": "object"
+											},
+											"operating_system": {
+												"description": "Operating System",
+												"enum": [
+													"windows",
+													"mac",
+													"linux"
+												],
+												"example": "windows",
+												"type": "string"
+											}
+										},
+										"required": [
+											"certificate_id",
+											"check_private_key",
+											"operating_system"
+										],
+										"title": "Client Certificate V2",
+										"type": "object"
+									},
+									{
+										"properties": {
 											"compliance_status": {
 												"description": "Compliance Status",
 												"enum": [
@@ -4440,6 +4859,7 @@
 									"os_version",
 									"domain_joined",
 									"client_certificate",
+									"client_certificate_v2",
 									"unique_client_id",
 									"kolide",
 									"tanium_s2s",
@@ -4904,6 +5324,89 @@
 														},
 														{
 															"properties": {
+																"certificate_id": {
+																	"description": "UUID of Cloudflare managed certificate.",
+																	"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																	"maxLength": 36,
+																	"type": "string"
+																},
+																"check_private_key": {
+																	"description": "Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"cn": {
+																	"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																	"example": "${hostname}.com.${serial_number}",
+																	"type": "string"
+																},
+																"extended_key_usage": {
+																	"description": "List of values indicating purposes for which the certificate public key can be used",
+																	"example": [
+																		"clientAuth",
+																		"emailProtection"
+																	],
+																	"items": {
+																		"enum": [
+																			"clientAuth",
+																			"emailProtection"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"locations": {
+																	"properties": {
+																		"paths": {
+																			"description": "List of paths to check for client certificate on linux.",
+																			"example": [
+																				"/path1",
+																				"/path2"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"trust_stores": {
+																			"description": "List of trust stores to check for client certificate.",
+																			"example": [
+																				"system",
+																				"user"
+																			],
+																			"items": {
+																				"enum": [
+																					"system",
+																					"user"
+																				],
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"operating_system": {
+																	"description": "Operating System",
+																	"enum": [
+																		"windows",
+																		"mac",
+																		"linux"
+																	],
+																	"example": "windows",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"certificate_id",
+																"check_private_key",
+																"operating_system"
+															],
+															"title": "Client Certificate V2",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"compliance_status": {
 																	"description": "Compliance Status",
 																	"enum": [
@@ -5220,6 +5723,7 @@
 														"os_version",
 														"domain_joined",
 														"client_certificate",
+														"client_certificate_v2",
 														"unique_client_id",
 														"kolide",
 														"tanium_s2s",
@@ -5686,6 +6190,89 @@
 																},
 																{
 																	"properties": {
+																		"certificate_id": {
+																			"description": "UUID of Cloudflare managed certificate.",
+																			"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																			"maxLength": 36,
+																			"type": "string"
+																		},
+																		"check_private_key": {
+																			"description": "Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"cn": {
+																			"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																			"example": "${hostname}.com.${serial_number}",
+																			"type": "string"
+																		},
+																		"extended_key_usage": {
+																			"description": "List of values indicating purposes for which the certificate public key can be used",
+																			"example": [
+																				"clientAuth",
+																				"emailProtection"
+																			],
+																			"items": {
+																				"enum": [
+																					"clientAuth",
+																					"emailProtection"
+																				],
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"locations": {
+																			"properties": {
+																				"paths": {
+																					"description": "List of paths to check for client certificate on linux.",
+																					"example": [
+																						"/path1",
+																						"/path2"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"trust_stores": {
+																					"description": "List of trust stores to check for client certificate.",
+																					"example": [
+																						"system",
+																						"user"
+																					],
+																					"items": {
+																						"enum": [
+																							"system",
+																							"user"
+																						],
+																						"type": "string"
+																					},
+																					"type": "array"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"operating_system": {
+																			"description": "Operating System",
+																			"enum": [
+																				"windows",
+																				"mac",
+																				"linux"
+																			],
+																			"example": "windows",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"certificate_id",
+																		"check_private_key",
+																		"operating_system"
+																	],
+																	"title": "Client Certificate V2",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"compliance_status": {
 																			"description": "Compliance Status",
 																			"enum": [
@@ -6002,6 +6589,7 @@
 																"os_version",
 																"domain_joined",
 																"client_certificate",
+																"client_certificate_v2",
 																"unique_client_id",
 																"kolide",
 																"tanium_s2s",
@@ -6482,6 +7070,89 @@
 									},
 									{
 										"properties": {
+											"certificate_id": {
+												"description": "UUID of Cloudflare managed certificate.",
+												"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+												"maxLength": 36,
+												"type": "string"
+											},
+											"check_private_key": {
+												"description": "Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.",
+												"example": true,
+												"type": "boolean"
+											},
+											"cn": {
+												"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+												"example": "${hostname}.com.${serial_number}",
+												"type": "string"
+											},
+											"extended_key_usage": {
+												"description": "List of values indicating purposes for which the certificate public key can be used",
+												"example": [
+													"clientAuth",
+													"emailProtection"
+												],
+												"items": {
+													"enum": [
+														"clientAuth",
+														"emailProtection"
+													],
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"locations": {
+												"properties": {
+													"paths": {
+														"description": "List of paths to check for client certificate on linux.",
+														"example": [
+															"/path1",
+															"/path2"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"trust_stores": {
+														"description": "List of trust stores to check for client certificate.",
+														"example": [
+															"system",
+															"user"
+														],
+														"items": {
+															"enum": [
+																"system",
+																"user"
+															],
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"type": "object"
+											},
+											"operating_system": {
+												"description": "Operating System",
+												"enum": [
+													"windows",
+													"mac",
+													"linux"
+												],
+												"example": "windows",
+												"type": "string"
+											}
+										},
+										"required": [
+											"certificate_id",
+											"check_private_key",
+											"operating_system"
+										],
+										"title": "Client Certificate V2",
+										"type": "object"
+									},
+									{
+										"properties": {
 											"compliance_status": {
 												"description": "Compliance Status",
 												"enum": [
@@ -6798,6 +7469,7 @@
 									"os_version",
 									"domain_joined",
 									"client_certificate",
+									"client_certificate_v2",
 									"unique_client_id",
 									"kolide",
 									"tanium_s2s",
@@ -7262,6 +7934,89 @@
 														},
 														{
 															"properties": {
+																"certificate_id": {
+																	"description": "UUID of Cloudflare managed certificate.",
+																	"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																	"maxLength": 36,
+																	"type": "string"
+																},
+																"check_private_key": {
+																	"description": "Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"cn": {
+																	"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																	"example": "${hostname}.com.${serial_number}",
+																	"type": "string"
+																},
+																"extended_key_usage": {
+																	"description": "List of values indicating purposes for which the certificate public key can be used",
+																	"example": [
+																		"clientAuth",
+																		"emailProtection"
+																	],
+																	"items": {
+																		"enum": [
+																			"clientAuth",
+																			"emailProtection"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"locations": {
+																	"properties": {
+																		"paths": {
+																			"description": "List of paths to check for client certificate on linux.",
+																			"example": [
+																				"/path1",
+																				"/path2"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"trust_stores": {
+																			"description": "List of trust stores to check for client certificate.",
+																			"example": [
+																				"system",
+																				"user"
+																			],
+																			"items": {
+																				"enum": [
+																					"system",
+																					"user"
+																				],
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"operating_system": {
+																	"description": "Operating System",
+																	"enum": [
+																		"windows",
+																		"mac",
+																		"linux"
+																	],
+																	"example": "windows",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"certificate_id",
+																"check_private_key",
+																"operating_system"
+															],
+															"title": "Client Certificate V2",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"compliance_status": {
 																	"description": "Compliance Status",
 																	"enum": [
@@ -7578,6 +8333,7 @@
 														"os_version",
 														"domain_joined",
 														"client_certificate",
+														"client_certificate_v2",
 														"unique_client_id",
 														"kolide",
 														"tanium_s2s",
@@ -8044,6 +8800,89 @@
 																},
 																{
 																	"properties": {
+																		"certificate_id": {
+																			"description": "UUID of Cloudflare managed certificate.",
+																			"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																			"maxLength": 36,
+																			"type": "string"
+																		},
+																		"check_private_key": {
+																			"description": "Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"cn": {
+																			"description": "Common Name that is protected by the client certificate. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables.",
+																			"example": "${hostname}.com.${serial_number}",
+																			"type": "string"
+																		},
+																		"extended_key_usage": {
+																			"description": "List of values indicating purposes for which the certificate public key can be used",
+																			"example": [
+																				"clientAuth",
+																				"emailProtection"
+																			],
+																			"items": {
+																				"enum": [
+																					"clientAuth",
+																					"emailProtection"
+																				],
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"locations": {
+																			"properties": {
+																				"paths": {
+																					"description": "List of paths to check for client certificate on linux.",
+																					"example": [
+																						"/path1",
+																						"/path2"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"trust_stores": {
+																					"description": "List of trust stores to check for client certificate.",
+																					"example": [
+																						"system",
+																						"user"
+																					],
+																					"items": {
+																						"enum": [
+																							"system",
+																							"user"
+																						],
+																						"type": "string"
+																					},
+																					"type": "array"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"operating_system": {
+																			"description": "Operating System",
+																			"enum": [
+																				"windows",
+																				"mac",
+																				"linux"
+																			],
+																			"example": "windows",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"certificate_id",
+																		"check_private_key",
+																		"operating_system"
+																	],
+																	"title": "Client Certificate V2",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"compliance_status": {
 																			"description": "Compliance Status",
 																			"enum": [
@@ -8360,6 +9199,7 @@
 																"os_version",
 																"domain_joined",
 																"client_certificate",
+																"client_certificate_v2",
 																"unique_client_id",
 																"kolide",
 																"tanium_s2s",
