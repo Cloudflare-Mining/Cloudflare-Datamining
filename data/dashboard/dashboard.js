@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "51b9942b-9f46-571b-8d6a-5fc2104dc707")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "ec4827c6-7c9b-5a25-83f7-0a4bca866550")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -707,7 +707,7 @@
 			var Ct = n("../react/app/components/Persistence/index.tsx"),
 				bt = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				Tt = n("../react/app/components/LoadingSuspense.tsx");
-			const At = fe().lazy(() => Promise.all([n.e(11240), n.e(2480), n.e(10008), n.e(56064), n.e(57518), n.e(94012), n.e(72019), n.e(44705), n.e(5668), n.e(41480), n.e(7484), n.e(39760), n.e(99062), n.e(82465), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const At = fe().lazy(() => Promise.all([n.e(78317), n.e(2480), n.e(10008), n.e(56064), n.e(57518), n.e(94012), n.e(72019), n.e(44705), n.e(5668), n.e(41480), n.e(7484), n.e(39760), n.e(99062), n.e(82465), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Wt = () => fe().createElement(Tt.Z, null, fe().createElement(At, null));
 			const zt = () => (Se.useEffect(() => F, []), null);
 			var Ht = n("../../../../node_modules/moment/moment.js"),
@@ -765,8 +765,8 @@
 						devPanelEnabled: z
 					}
 				},
-				tn = fe().lazy(() => Promise.all([n.e(11240), n.e(2480), n.e(10008), n.e(56064), n.e(57518), n.e(94012), n.e(72019), n.e(44705), n.e(14696), n.e(8445), n.e(41480), n.e(7484), n.e(39760), n.e(99062), n.e(82465), n.e(45800), n.e(91984), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
-				nn = fe().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(11240), n.e(57518), n.e(14696), n.e(26337), n.e(99062), n.e(69088), n.e(91984), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
+				tn = fe().lazy(() => Promise.all([n.e(78317), n.e(2480), n.e(10008), n.e(56064), n.e(57518), n.e(94012), n.e(72019), n.e(44705), n.e(14696), n.e(8445), n.e(41480), n.e(7484), n.e(39760), n.e(99062), n.e(82465), n.e(45800), n.e(91984), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				nn = fe().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(78317), n.e(57518), n.e(14696), n.e(26337), n.e(99062), n.e(69088), n.e(91984), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var on = ({
 					userIsAuthed: E
 				}) => {
@@ -894,10 +894,10 @@
 				n.g.build = un({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "ac353495536af5346a84d107835e6274c0e54d34",
-					dashVersion: "25579504",
+					commit: "6112c9f0d08419c4718c6e40c636a05ee59ea889",
+					dashVersion: "25619101",
 					env: "production",
-					builtAt: 1721844278466,
+					builtAt: 1721920810347,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",
@@ -10588,8 +10588,8 @@
 					createEnvironment: (0, e.BC)`/${"accountId"}/workers/services/${"serviceId"}/${"environmentName"}/environment/new`,
 					apiKey: (0, e.BC)`/profile/api-tokens`,
 					signUp: (0, e.BC)`/sign-up/workers`,
-					dns: (0, e.BC)`/${"accountId"}/${"zoneId"}/dns`,
-					ssl: (0, e.BC)`/${"accountId"}/${"zoneId"}/ssl-tls/edge-certificates`,
+					dns: (0, e.BC)`/${"accountId"}/${"zoneName"}/dns`,
+					ssl: (0, e.BC)`/${"accountId"}/${"zoneName"}/ssl-tls/edge-certificates`,
 					analyticsEngine: (0, e.BC)`/${"accountId"}/workers/analytics-engine`,
 					emailRouting: (0, e.BC)`/${"accountId"}/${"zoneName"}/email/routing/routes`,
 					emailRoutingRule: (0, e.BC)`/${"accountId"}/${"zoneName"}/email/routing/routes/${"ruleId"}`,
@@ -11389,7 +11389,7 @@
 			}, a = () => window.location.hostname.includes("dash.staging.cloudflare") || window.location.hostname.includes("dash.cloudflare"), h = x => `/${x.replace(s,"").replace(/^\//,"")}`, y = x => j("add-site", x), P = x => j("billing", x), j = (x, oe) => oe ? `/${oe}${x?`/${x}`:""}` : `/?to=/:account/${x}`, R = () => {
 				const x = location ? location.pathname.match(/^\/([0-9a-f]{32})/) || location.pathname.match(/^\/a\/([0-9a-f]{32})/) : null;
 				return x ? x[1] : null
-			}, U = (x, oe) => o().stringify(g({}, o().parse(x), oe)), d = (x = "") => x.toString().replace(/([\/]{1,})$/, ""), O = ["/login", "/sign-up", "/two-factor", "/forgot-password", "/forgot-email", "/login-help", "/profile", "/zones"], q = /^\/(\w*)\/(([^./]*\.[^./]*))+(\/.*)?/, Q = /^\/(\w{32,})(\/[^.]*)?/, Y = x => O.includes(x), W = x => !Y(x), V = x => !Y(x) && Q.test(x), F = x => !Y(x) && q.test(x), N = x => q.exec(x), S = x => {
+			}, U = (x, oe) => o().stringify(g({}, o().parse(x), oe)), d = (x = "") => x.toString().replace(/([\/]{1,})$/, ""), O = ["/login", "/sign-up", "/two-factor", "/forgot-password", "/forgot-email", "/login-help", "/profile", "/zones", "/organizations"], q = /^\/(\w*)\/(([^./]*\.[^./]*))+(\/.*)?/, Q = /^\/(\w{32,})(\/[^.]*)?/, Y = x => O.includes(x), W = x => !Y(x), V = x => !Y(x) && Q.test(x), F = x => !Y(x) && q.test(x), N = x => q.exec(x), S = x => {
 				if (F(x)) return x.split("/").filter(oe => oe.length > 0)[1]
 			}, w = x => Q.exec(x), Z = x => {
 				if (V(x)) {
@@ -13107,4 +13107,4 @@
 	}
 ]);
 
-//# debugId=51b9942b-9f46-571b-8d6a-5fc2104dc707
+//# debugId=ec4827c6-7c9b-5a25-83f7-0a4bca866550

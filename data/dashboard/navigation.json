@@ -248,7 +248,7 @@
 			"hasPermission": null
 		},
 		{
-			"title": "navigation.account.group_title.application_services",
+			"title": "account.home",
 			"url": "/",
 			"labels": [
 				"separator"
@@ -276,7 +276,7 @@
 			"hasPermission": null
 		},
 		{
-			"title": "navigation.account.group_title.network_services",
+			"title": "account.home",
 			"url": "/",
 			"labels": [
 				"separator"
@@ -356,7 +356,7 @@
 			"hasPermission": null
 		},
 		{
-			"title": "navigation.account.group_title.cloudflare_one",
+			"title": "account.home",
 			"url": "/",
 			"labels": [
 				"separator"
@@ -432,7 +432,7 @@
 			]
 		},
 		{
-			"title": "navigation.account.group_title.developer_platform",
+			"title": "account.home",
 			"url": "/",
 			"labels": [
 				"separator"
@@ -632,7 +632,7 @@
 			"hasPermission": null
 		},
 		{
-			"title": "navigation.account.group_title.account_management",
+			"title": "account.home",
 			"url": "/",
 			"labels": [
 				"separator"
@@ -1256,23 +1256,174 @@
 		},
 		{
 			"title": "navigation.account.zero_trust.analytics",
-			"iconType": "cloudflare-zero-trust"
+			"iconType": "cloudflare-zero-trust",
+			"pages": [
+				{
+					"title": "navigation.account.zero_trust.analytics.access"
+				},
+				{
+					"title": "navigation.account.zero_trust.analytics.gateway"
+				},
+				{
+					"title": "navigation.account.zero_trust.analytics.analytics_and_reporting"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.zero_trust.risk_score",
+			"iconType": "cloudflare-zero-trust",
+			"pages": [
+				{
+					"title": "navigation.account.zero_trust.risk_score.user_risk_scoring"
+				},
+				{
+					"title": "navigation.account.zero_trust.risk_score.risk_behaviors"
+				}
+			]
 		},
 		{
 			"title": "navigation.account.zero_trust.gateway",
-			"iconType": "cloudflare-zero-trust"
+			"iconType": "cloudflare-zero-trust",
+			"pages": [
+				{
+					"title": "navigation.account.zero_trust.gateway.dns_locations"
+				},
+				{
+					"title": "navigation.account.zero_trust.gateway.firewall_policies"
+				},
+				{
+					"title": "navigation.account.zero_trust.gateway.proxy_endpoints"
+				},
+				{
+					"title": "navigation.account.zero_trust.gateway.egress_policies"
+				},
+				{
+					"title": "navigation.account.zero_trust.gateway.resolver_policies"
+				}
+			]
 		},
 		{
 			"title": "navigation.account.zero_trust.access",
-			"iconType": "cloudflare-zero-trust"
+			"iconType": "cloudflare-zero-trust",
+			"pages": [
+				{
+					"title": "navigation.account.zero_trust.access.applications"
+				},
+				{
+					"title": "navigation.account.zero_trust.access.access_groups"
+				},
+				{
+					"title": "navigation.account.zero_trust.access.service_auth"
+				},
+				{
+					"title": "navigation.account.zero_trust.access.tags"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.zero_trust.networks",
+			"iconType": "cloudflare-zero-trust",
+			"pages": [
+				{
+					"title": "navigation.account.zero_trust.networks.tunnels"
+				},
+				{
+					"title": "navigation.account.zero_trust.networks.routes"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.zero_trust.casb",
+			"iconType": "cloudflare-zero-trust",
+			"pages": [
+				{
+					"title": "navigation.account.zero_trust.casb.findings"
+				},
+				{
+					"title": "navigation.account.zero_trust.casb.integrations"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.zero_trust.dlp",
+			"iconType": "cloudflare-zero-trust",
+			"pages": [
+				{
+					"title": "navigation.account.zero_trust.dlp.profiles"
+				},
+				{
+					"title": "navigation.account.zero_trust.dlp.datasets"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.zero_trust.dex",
+			"iconType": "cloudflare-zero-trust",
+			"pages": [
+				{
+					"title": "navigation.account.zero_trust.dex.monitoring"
+				},
+				{
+					"title": "navigation.account.zero_trust.dex.tests"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.zero_trust.email_security",
+			"iconType": "cloudflare-zero-trust",
+			"pages": [
+				{
+					"title": "navigation.account.zero_trust.email_security.monitoring"
+				},
+				{
+					"title": "navigation.account.zero_trust.email_security.investigation"
+				},
+				{
+					"title": "navigation.account.zero_trust.email_security.settings"
+				},
+				{
+					"title": "navigation.account.zero_trust.email_security.directories"
+				},
+				{
+					"title": "navigation.account.zero_trust.email_security.phishGuard"
+				}
+			]
 		},
 		{
 			"title": "navigation.account.zero_trust.my_team",
-			"iconType": "cloudflare-zero-trust"
+			"iconType": "cloudflare-zero-trust",
+			"pages": [
+				{
+					"title": "navigation.account.zero_trust.my_team.devices"
+				},
+				{
+					"title": "navigation.account.zero_trust.my_team.users"
+				},
+				{
+					"title": "navigation.account.zero_trust.my_team.lists"
+				}
+			]
 		},
 		{
 			"title": "navigation.account.zero_trust.logs",
-			"iconType": "cloudflare-zero-trust"
+			"iconType": "cloudflare-zero-trust",
+			"pages": [
+				{
+					"title": "navigation.account.zero_trust.logs.admin"
+				},
+				{
+					"title": "navigation.account.zero_trust.logs.access"
+				},
+				{
+					"title": "navigation.account.zero_trust.logs.gateway"
+				},
+				{
+					"title": "navigation.account.zero_trust.logs.logpush"
+				},
+				{
+					"title": "navigation.account.zero_trust.logs.posture"
+				}
+			]
 		},
 		{
 			"title": "navigation.account.zero_trust.settings",
