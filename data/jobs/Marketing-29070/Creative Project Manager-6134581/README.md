@@ -5,58 +5,24 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Location: Austin TX</h4>
-<h4>About the department</h4>
-<p>Cloudflare’s Billing Engineering Team built and maintains all the internal/external billing related services, product provisioning services and services related to entitlements. This is a vital team centric to every product launch, campaign or initiative Cloudlfare undertakes. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
-<p>Billing Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.</p>
-<h4>What you'll do</h4>
-<p>We are looking for an engineer to join our Billing Team; an energetic team focused person who is growth mindset oriented, able to drive his work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
-<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
-<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>About the role:</strong></p>
+<p>Cloudflare is looking for a Creative Project Manager to join the Corporate Marketing team. We believe in working hard, creating high quality creative work and most importantly: having fun along the way. We work on a wide range of interesting &amp; impactful projects including: brand advertising campaigns (digital and out of home), videos &amp; motion graphics, event + trade show creative, corporate events, global office creative, interactive design (corporate website, digital campaigns), and more.&nbsp;</p>
+<p><strong>What we’re looking for:</strong></p>
+<p>We are seeking a Creative Project Manager to be a key player in our Corporate Marketing team responsible for the management of creative studio projects. You are excited to work with partners across the company to build an environment that fosters strategic design thinking to create a cohesive and consistent Cloudflare brand experience. In this role you will serve as the liaison between the Brand Creative Studio and our global internal and external stakeholders to establish expectations as well as monitoring project timelines, workloads, and project objectives to ensure that they all stay on track.&nbsp;</p>
+<p><strong>You will:</strong></p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>Minimum 3 years professional experience as a developer/engineer</li>
-	<li>Knowledge of Golang or desire to learn it</li>
-	<li>Solid understanding of RESTful APIs and service security</li>
-	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
-	<li>Experience with modern Unix/Linux development and runtime environment</li>
+	<li>Build relationships with regional event managers, global field marketers and vendors.</li>
+	<li>Analyze project requests and document project priorities.</li>
+	<li>Work closely with the EMEA, APJC and AMER event and field teams to gather and review their trade show booth specifications, content and event collateral and to ensure everything is in order for the design team to execute.</li>
+	<li>Monitor and manage workloads of the Brand Creative team, and ensure projects meet deadlines, brand standards, and uphold the bar for high quality.</li>
+	<li>Set up check in calls, document current processes, suggest and implement improvements as needed.&nbsp;</li>
+	<li>Communicate with stakeholders about Cloudflare's brand standards and processes, and SLA’s through a culture of open collaboration, accessibility, and knowledge sharing.</li>
 </ul>
-<p><strong>Bonus</strong></p>
+<p><strong>You have:</strong></p>
 <ul>
-	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
-	<li>Familiarity with event driven architecture</li>
-	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>8+ years experience in project management for an agency or in-house design team.</li>
+	<li>Detailed understanding of the creative process for tradeshow booths and events, print, digital, and video.</li>
+	<li>Use/understand the tools of the trade to share feedback, and ensure work is on track (e.g. Adobe Creative Suite, Figma, Google Suite, Asana.com, Jira).</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
