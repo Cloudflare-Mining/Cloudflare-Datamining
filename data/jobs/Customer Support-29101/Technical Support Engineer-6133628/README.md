@@ -5,31 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Singapore</strong></h3>
-<p>Overview:</p>
-<p>The Manager of Renewals will be responsible for providing guidance and leadership to a highly motivated team of Renewals Managers (RMs) that focus on renewing and managing existing named accounts. Strong sales, customer management, business acumen and the ability to quickly assess and understand a customer’s needs are essential to success in this role, in addition to inspiring, coaching and guiding the team to success. Your team would work through both proactive and reactive activity for the renewal and retention of customers by carefully managing and monitoring their customer base, outreach, forecasting and implementing the correct renewal strategy.</p>
-<p>What you will do:</p>
+<p><strong>Available Location: Tokyo, Japan</strong></p>
+<p><strong>About the Department</strong></p>
+<p><span style="font-weight: 400;">The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</span></p>
+<p><strong>What You’ll do</strong></p>
+<p><span style="font-weight: 400;">Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare’s technology and gain a deeper understanding of internet technologies.</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Lead, mentor, and develop a regional RM team that is focused on customer success, retention, and upsells</li>
-	<li>Guide team through renewal opportunities, forecasting, negotiation and close of renewals prior to contract expiration</li>
-	<li>Accurately forecast projected revenue attainment and performance of RM team</li>
-	<li>Mentor team members through observation of their work and develop learning plans to improve their abilities, skills and knowledge of the Cloudflare platform, RM strategies, and client facing skills.</li>
-	<li>Work with sales leaders to drive sales through optimizing processes, training of team, and development of a culture of collaboration, learning, and success.</li>
-	<li>Provide monthly/quarterly updates to sales teams</li>
-	<li>Conduct quarterly business reviews</li>
-	<li>Potential travel up to 25%</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are comfortable communicating in writing and always put the customer first</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are a motivated self-starter who always looking to expand your skill sets</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You take initiatives and capable of learning new technologies / systems / features with little guidance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You enjoy troubleshooting and solving unknown technical problems and issues</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are inquisitive and able to communicate to different kind of audiences</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have a solid grasp of problem solving with command line tools (dig/traceroute/curl/tcpdump)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You understand how the Internet works</span></li>
 </ul>
-<p>Experience and Skills:</p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>3+ years of experience in sales leadership</li>
-	<li>5+ years of full sales cycle management in tech/software</li>
-	<li>Proven track record of success in sales as an account executive, or equivalent</li>
-	<li>Demonstrated ability to effectively navigate customer objections and challenges toward a win-win outcome and renewal</li>
-	<li>Demonstrated ability to work under the pressure of a constantly changing and rapidly evolving work environment and industry</li>
-	<li>Experience with forecasting and deal management</li>
-	<li>Experience leading high transaction/volume teams with short sales cycles.</li>
-	<li>Bachelor's Degree or equivalent work experience</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience writing scripts in Bash, Python, JavaScript, or other scripting language</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience installing and configuring web servers like Apache, Nginx, and IIS</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are familiar with Cloudflare and have a site actively using our platform</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have web development, hosting, or customer support experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have the ability to read and write in multiple languages</span></li>
 </ul>
+<h4>&nbsp;</h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
