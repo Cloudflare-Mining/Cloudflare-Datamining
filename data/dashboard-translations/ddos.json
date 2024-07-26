@@ -10,7 +10,7 @@
 	"ddos.ddos_protection.advanced_tcp_protection.table.empty.tcp_flow": "No Out-of-state TCP Protection rules",
 	"ddos.ddos_protection.advanced_tcp_protection.table.empty.description": "The results will appear here once you add at least one rule.",
 	"ddos.ddos_protection.settings.getting_started": "Getting started",
-	"ddos.ddos_protection.settings.getting_started.description": "Follow the steps described to get started with Advanced TCP Protection and Advanced DNS Protection.",
+	"ddos.ddos_protection.settings.getting_started.description": "Follow these steps to get started with Advanced TCP Protection and Advanced DNS Protection.",
 	"ddos.ddos_protection.settings.getting_started.thresholds": "1. Thresholds",
 	"ddos.ddos_protection.settings.getting_started.thresholds.description": "Thresholds are based on your network's unique traffic, they define the sensitivity levels, and are configured by Cloudflare.",
 	"ddos.ddos_protection.settings.getting_started.add_prefixes": "2. Add prefixes",
@@ -36,7 +36,8 @@
 	"ddos.ddos_protection.advanced_dns_protection.form.back": "Back to Advanced DNS Protection",
 	"ddos.ddos_protection.advanced_dns_protection.form.error_loading_rule": "Back to Advanced DNS Protection",
 	"ddos.ddos_protection.advanced_dns_protection.filters.rule_builder.set_sensitivity": "Set sensitivity",
-	"ddos.ddos_protection.advanced_dns_protection.filters.rule_builder.set_sensitivity.description": "Sensitivity levels are based on the thresholds and determine when to initiate mitigation. A higher sensitivity level means that the mitigation system will begin mitigating faster. A lower sensitivity provides more tolerance for potentially suspicious DNS queries.",
+	"ddos.ddos_protection.advanced_dns_protection.filters.rule_builder.advanced_dns_protection.set_sensitivity.description": "Sensitivity levels are based on the thresholds and determine when to initiate mitigation. A higher sensitivity level means that the mitigation system will begin mitigating faster. A lower sensitivity provides more tolerance for potentially suspicious DNS queries.",
+	"ddos.ddos_protection.advanced_dns_protection.filters.rule_builder.advanced_tcp_protection.set_sensitivity.description": "Sensitivity levels are based on the thresholds and determine when to initiate mitigation. A higher sensitivity level means that the mitigation system will begin mitigating faster. A lower sensitivity provides more tolerance for potentially suspicious TCP packets.",
 	"ddos.ddos_protection.advanced_dns_protection.filters.rule_builder.profile_sensitivity": "Profile sensitivity",
 	"ddos.ddos_protection.advanced_dns_protection.filters.rule_builder.profile_sensitivity.description": "The sensitivity to DNS queries that have not been recently seen."
 }
