@@ -227,6 +227,50 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7Bv4YabxI0SwzFPnlOLrDQ",
+								"title": "ECDSA and DNSSEC",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Elliptic curve cryptography solves many of the final hurdles for widespread DNSSEC adoption. [Keep reading](https://www.cloudflare.com/dns/dnssec/ecdsa-and-dnssec/)",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2GxhuTvvegNwa2oprwRXWR/10262c66684d459d3302f6e804777f74/icon-key-blue.png"
+									},
+									"description": "icon key blue"
+								},
+								"iconAssetFile": {
+									"id": "e036c4cb-7de2-5706-803b-ec399ed8ab34",
+									"altText": "Key",
+									"title": "Key icon",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1201,
+										"height": 1849,
+										"width": 3994,
+										"filename": "key.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/key.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
@@ -6151,6 +6195,67 @@
 								"planValues": [
 									{
 										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "1KLBtBYLzbvfuGZjsgJOTc",
+										"textValue": "Up to 65 rules",
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"monthlyPricingText": "$0/month",
+											"annualPricingText": "$0/month",
+											"billingCycle": "monthly",
+											"customPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Add a Website",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"monthlyPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Add a Website",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"annualPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Add a Website",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											}
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueText",
 										"contentfulId": "3UxuPpZjsfKbdCBTL3imwj",
 										"textValue": "Up to 155 rules",
 										"plan": {
@@ -6431,6 +6536,67 @@
 								"name": "Bot Mitigation",
 								"description": "Manage good and bad bots in real-time with speed and accuracy by harnessing the data from the millions of Internet properties on Cloudflare.",
 								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "50QkfuSTjPWuDMGPHtsSnS",
+										"textValue": "Simple bots",
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"monthlyPricingText": "$0/month",
+											"annualPricingText": "$0/month",
+											"billingCycle": "monthly",
+											"customPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Add a Website",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"monthlyPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Add a Website",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"annualPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Add a Website",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											}
+										}
+									},
 									{
 										"contentTypeId": "planElementFeatureValueText",
 										"contentfulId": "3F9wsV7pX5Tid2JkN0mObT",
