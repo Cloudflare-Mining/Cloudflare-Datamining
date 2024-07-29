@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p><img src="https://blog.cloudflare.com/content/images/2017/04/dk-dnssec-2.png" alt="" loading="lazy"></p>
-	<p>We’ve been working with registrars and registries in the IETF on making DNSSEC easier for domain owners, and over the next two weeks we’ll be starting out by enabling DNSSEC automatically for .dk domains.</p>
+	<p>We’ve been working with <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrars</a> and registries in the IETF on making DNSSEC easier for domain owners, and over the next two weeks we’ll be starting out by enabling DNSSEC automatically for .dk domains.</p>
 	<h3 id="dnssecaprimer">DNSSEC: A Primer</h3>
 	<p>Before we get into the details of how we've improved the DNSSEC experience, we should explain why DNSSEC is important and the function it plays in keeping the web safe.</p>
 	<p>DNSSEC’s role is to verify the integrity of DNS answers. When DNS was written in the early 1980’s, it was only a few researchers and academics on the internet. They all knew and trusted each other, and couldn’t imagine a world in which someone malicious would try to operate online. As a result, DNS relies on trust to operate. When a client asks for the address of a hostname like www.cloudflare.com, without DNSSEC it will trust basically any server that returns the response, even if it wasn’t the same server it originally asked. With DNSSEC, every DNS answer is signed so clients can verify answers haven’t been manipulated over transit.</p>

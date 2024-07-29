@@ -6,7 +6,7 @@
 	<ol>
 		<li>Secondary DNS as passive backup - The secondary DNS server sits idle until the primary server goes down, at which point a failover can occur and the secondary can start serving records.</li>
 		<li>Secondary DNS as active backup - The secondary DNS server works alongside the primary server to serve records.</li>
-		<li>Secondary DNS with a hidden primary - The nameserver records at the registrar point towards the secondary servers only, essentially treating them as the primary nameservers.</li>
+		<li>Secondary DNS with a hidden primary - The nameserver records at the <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> point towards the secondary servers only, essentially treating them as the primary nameservers.</li>
 	</ol>
 	<h3 id="what-is-secondary-dns-override">What is secondary DNS Override?</h3>
 	<p>Secondary DNS Override builds on the Secondary DNS with a hidden primary model by allowing our customers to not only serve records as they tell us to, but also enable them to proxy any A/AAAA/CNAME records through <a href="https://www.cloudflare.com/network">Cloudflare's network</a>. This is similar to how Cloudflare as a primary DNS provider currently works. </p>

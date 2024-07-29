@@ -10,7 +10,7 @@
 	<ul>
 		<li>Root and TLDs: over 2/3’rds of the TLDs are signed</li>
 		<li>Most DNS software is DNSSEC enabled</li>
-		<li>Many Registrars offer their customers DNSSEC support either by signing the customers zones or by adding DS records into the parent zones.</li>
+		<li>Many <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">Registrars</a> offer their customers DNSSEC support either by signing the customers zones or by adding DS records into the parent zones.</li>
 	</ul>
 	<p>What’s missing is having Enterprise zones signed, and turning on validation in resolvers and clients. It’s estimated that <a href="http://stats.labs.apnic.net/dnssec">over 10% of all user DNS answers today are validated</a>, but how much is validated in data centers is unknown.</p>
 	<p>DNSSEC deployment has been what I call <strong>a game of “excuse elimination”</strong>. First it was “com will never be signed”, then “the root will never be signed”, then “the answers will be too big”, and so on. Right now, the main excuse is, “this important domain is not signed”. Getting CDNs to sign is a great step towards getting the important domains signed. This is because <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDNs</a> frequently act as DNS operators for such domains.</p>

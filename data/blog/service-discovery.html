@@ -20,7 +20,7 @@
 	<h3 id="settingitup">Setting it up</h3>
 	<p><a href="https://cloudflare.com/a/sign-up">Sign up for Cloudflare account</a></p>
 	<p>During the signup process, add all your initial services as DNS records in the DNS editor.</p>
-	<p>To finish sign up, move DNS to Cloudflare by logging into your registrar and changing your nameservers to the Cloudflare nameservers assigned to you when you signed up for Cloudflare. If you want traffic to those services to be proxied through Cloudflare, click on the cloud next to each DNS record to make it orange.</p>
+	<p>To finish sign up, move DNS to Cloudflare by logging into your <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar">registrar</a> and changing your nameservers to the Cloudflare nameservers assigned to you when you signed up for Cloudflare. If you want traffic to those services to be proxied through Cloudflare, click on the cloud next to each DNS record to make it orange.</p>
 	<p>Run a script on each node so that:</p>
 	<p>On startup, the node sends a <a href="https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record">POST to the DNS record API</a> to register itself and <a href="https://api.cloudflare.com/#load-balancer-pools-modify-a-pool">PUT to load balancing API</a> to add itself to the origin pool.</p>
 	<p>On shutdown, the node sends a <a href="https://api.cloudflare.com/#dns-records-for-a-zone-delete-dns-record">DELETE to the DNS record API</a> to deregister itself and <a href="https://api.cloudflare.com/#load-balancer-pools-modify-a-pool">PUT to load balancing API</a> to remove itself to the origin pool.</p>
