@@ -17,6 +17,15 @@
 	"account-traffic-analytics": {
 		"enabled": false
 	},
+	"add-site-nav-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variant-a",
+			"variant-b",
+			"variant-c"
+		]
+	},
 	"ai-editor": {
 		"enabled": false
 	},
@@ -733,7 +742,7 @@
 		"enabled": false
 	},
 	"prg-images-checkout-consolidation-experiment": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
