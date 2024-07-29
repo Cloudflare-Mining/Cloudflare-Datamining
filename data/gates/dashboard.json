@@ -17,15 +17,6 @@
 	"account-traffic-analytics": {
 		"enabled": false
 	},
-	"add-site-nav-experiment": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"variant-a",
-			"variant-b",
-			"variant-c"
-		]
-	},
 	"ai-editor": {
 		"enabled": false
 	},
@@ -720,6 +711,15 @@
 	},
 	"pre-clearance-turnstile": {
 		"enabled": true
+	},
+	"prg-add-site-nav-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variant-a",
+			"variant-b",
+			"variant-c"
+		]
 	},
 	"prg-bots-upsell-copy-experiment": {
 		"enabled": true,
