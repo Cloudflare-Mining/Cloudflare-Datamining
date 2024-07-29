@@ -28,32 +28,39 @@
 				"in": "query",
 				"name": "region",
 				"schema": {
-					"description": "A test region.",
-					"enum": [
-						"asia-east1",
-						"asia-northeast1",
-						"asia-northeast2",
-						"asia-south1",
-						"asia-southeast1",
-						"australia-southeast1",
-						"europe-north1",
-						"europe-southwest1",
-						"europe-west1",
-						"europe-west2",
-						"europe-west3",
-						"europe-west4",
-						"europe-west8",
-						"europe-west9",
-						"me-west1",
-						"southamerica-east1",
-						"us-central1",
-						"us-east1",
-						"us-east4",
-						"us-south1",
-						"us-west1"
-					],
-					"example": "us-central1",
-					"type": "string"
+					"allOf": [
+						{
+							"description": "A test region.",
+							"enum": [
+								"asia-east1",
+								"asia-northeast1",
+								"asia-northeast2",
+								"asia-south1",
+								"asia-southeast1",
+								"australia-southeast1",
+								"europe-north1",
+								"europe-southwest1",
+								"europe-west1",
+								"europe-west2",
+								"europe-west3",
+								"europe-west4",
+								"europe-west8",
+								"europe-west9",
+								"me-west1",
+								"southamerica-east1",
+								"us-central1",
+								"us-east1",
+								"us-east4",
+								"us-south1",
+								"us-west1"
+							],
+							"example": "us-central1",
+							"type": "string"
+						},
+						{
+							"default": "us-central1"
+						}
+					]
 				}
 			}
 		],
@@ -283,32 +290,39 @@
 				"in": "query",
 				"name": "region",
 				"schema": {
-					"description": "A test region.",
-					"enum": [
-						"asia-east1",
-						"asia-northeast1",
-						"asia-northeast2",
-						"asia-south1",
-						"asia-southeast1",
-						"australia-southeast1",
-						"europe-north1",
-						"europe-southwest1",
-						"europe-west1",
-						"europe-west2",
-						"europe-west3",
-						"europe-west4",
-						"europe-west8",
-						"europe-west9",
-						"me-west1",
-						"southamerica-east1",
-						"us-central1",
-						"us-east1",
-						"us-east4",
-						"us-south1",
-						"us-west1"
-					],
-					"example": "us-central1",
-					"type": "string"
+					"allOf": [
+						{
+							"description": "A test region.",
+							"enum": [
+								"asia-east1",
+								"asia-northeast1",
+								"asia-northeast2",
+								"asia-south1",
+								"asia-southeast1",
+								"australia-southeast1",
+								"europe-north1",
+								"europe-southwest1",
+								"europe-west1",
+								"europe-west2",
+								"europe-west3",
+								"europe-west4",
+								"europe-west8",
+								"europe-west9",
+								"me-west1",
+								"southamerica-east1",
+								"us-central1",
+								"us-east1",
+								"us-east4",
+								"us-south1",
+								"us-west1"
+							],
+							"example": "us-central1",
+							"type": "string"
+						},
+						{
+							"default": "us-central1"
+						}
+					]
 				}
 			}
 		],
@@ -1390,7 +1404,7 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"example": 1,
+					"default": 1,
 					"type": "integer"
 				}
 			},
@@ -1398,7 +1412,7 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
-					"example": 20,
+					"default": 20,
 					"maximum": 50,
 					"minimum": 5,
 					"type": "integer"
@@ -1408,32 +1422,39 @@
 				"in": "query",
 				"name": "region",
 				"schema": {
-					"description": "A test region.",
-					"enum": [
-						"asia-east1",
-						"asia-northeast1",
-						"asia-northeast2",
-						"asia-south1",
-						"asia-southeast1",
-						"australia-southeast1",
-						"europe-north1",
-						"europe-southwest1",
-						"europe-west1",
-						"europe-west2",
-						"europe-west3",
-						"europe-west4",
-						"europe-west8",
-						"europe-west9",
-						"me-west1",
-						"southamerica-east1",
-						"us-central1",
-						"us-east1",
-						"us-east4",
-						"us-south1",
-						"us-west1"
-					],
-					"example": "us-central1",
-					"type": "string"
+					"allOf": [
+						{
+							"description": "A test region.",
+							"enum": [
+								"asia-east1",
+								"asia-northeast1",
+								"asia-northeast2",
+								"asia-south1",
+								"asia-southeast1",
+								"australia-southeast1",
+								"europe-north1",
+								"europe-southwest1",
+								"europe-west1",
+								"europe-west2",
+								"europe-west3",
+								"europe-west4",
+								"europe-west8",
+								"europe-west9",
+								"me-west1",
+								"southamerica-east1",
+								"us-central1",
+								"us-east1",
+								"us-east4",
+								"us-south1",
+								"us-west1"
+							],
+							"example": "us-central1",
+							"type": "string"
+						},
+						{
+							"default": "us-central1"
+						}
+					]
 				}
 			}
 		],
@@ -2790,32 +2811,39 @@
 				"in": "query",
 				"name": "region",
 				"schema": {
-					"description": "A test region.",
-					"enum": [
-						"asia-east1",
-						"asia-northeast1",
-						"asia-northeast2",
-						"asia-south1",
-						"asia-southeast1",
-						"australia-southeast1",
-						"europe-north1",
-						"europe-southwest1",
-						"europe-west1",
-						"europe-west2",
-						"europe-west3",
-						"europe-west4",
-						"europe-west8",
-						"europe-west9",
-						"me-west1",
-						"southamerica-east1",
-						"us-central1",
-						"us-east1",
-						"us-east4",
-						"us-south1",
-						"us-west1"
-					],
-					"example": "us-central1",
-					"type": "string"
+					"allOf": [
+						{
+							"description": "A test region.",
+							"enum": [
+								"asia-east1",
+								"asia-northeast1",
+								"asia-northeast2",
+								"asia-south1",
+								"asia-southeast1",
+								"australia-southeast1",
+								"europe-north1",
+								"europe-southwest1",
+								"europe-west1",
+								"europe-west2",
+								"europe-west3",
+								"europe-west4",
+								"europe-west8",
+								"europe-west9",
+								"me-west1",
+								"southamerica-east1",
+								"us-central1",
+								"us-east1",
+								"us-east4",
+								"us-south1",
+								"us-west1"
+							],
+							"example": "us-central1",
+							"type": "string"
+						},
+						{
+							"default": "us-central1"
+						}
+					]
 				}
 			}
 		],
@@ -3086,32 +3114,39 @@
 					"schema": {
 						"properties": {
 							"region": {
-								"description": "A test region.",
-								"enum": [
-									"asia-east1",
-									"asia-northeast1",
-									"asia-northeast2",
-									"asia-south1",
-									"asia-southeast1",
-									"australia-southeast1",
-									"europe-north1",
-									"europe-southwest1",
-									"europe-west1",
-									"europe-west2",
-									"europe-west3",
-									"europe-west4",
-									"europe-west8",
-									"europe-west9",
-									"me-west1",
-									"southamerica-east1",
-									"us-central1",
-									"us-east1",
-									"us-east4",
-									"us-south1",
-									"us-west1"
-								],
-								"example": "us-central1",
-								"type": "string"
+								"allOf": [
+									{
+										"description": "A test region.",
+										"enum": [
+											"asia-east1",
+											"asia-northeast1",
+											"asia-northeast2",
+											"asia-south1",
+											"asia-southeast1",
+											"australia-southeast1",
+											"europe-north1",
+											"europe-southwest1",
+											"europe-west1",
+											"europe-west2",
+											"europe-west3",
+											"europe-west4",
+											"europe-west8",
+											"europe-west9",
+											"me-west1",
+											"southamerica-east1",
+											"us-central1",
+											"us-east1",
+											"us-east4",
+											"us-south1",
+											"us-west1"
+										],
+										"example": "us-central1",
+										"type": "string"
+									},
+									{
+										"default": "us-central1"
+									}
+								]
 							}
 						},
 						"type": "object"
@@ -3595,32 +3630,39 @@
 				"in": "query",
 				"name": "region",
 				"schema": {
-					"description": "A test region.",
-					"enum": [
-						"asia-east1",
-						"asia-northeast1",
-						"asia-northeast2",
-						"asia-south1",
-						"asia-southeast1",
-						"australia-southeast1",
-						"europe-north1",
-						"europe-southwest1",
-						"europe-west1",
-						"europe-west2",
-						"europe-west3",
-						"europe-west4",
-						"europe-west8",
-						"europe-west9",
-						"me-west1",
-						"southamerica-east1",
-						"us-central1",
-						"us-east1",
-						"us-east4",
-						"us-south1",
-						"us-west1"
-					],
-					"example": "us-central1",
-					"type": "string"
+					"allOf": [
+						{
+							"description": "A test region.",
+							"enum": [
+								"asia-east1",
+								"asia-northeast1",
+								"asia-northeast2",
+								"asia-south1",
+								"asia-southeast1",
+								"australia-southeast1",
+								"europe-north1",
+								"europe-southwest1",
+								"europe-west1",
+								"europe-west2",
+								"europe-west3",
+								"europe-west4",
+								"europe-west8",
+								"europe-west9",
+								"me-west1",
+								"southamerica-east1",
+								"us-central1",
+								"us-east1",
+								"us-east4",
+								"us-south1",
+								"us-west1"
+							],
+							"example": "us-central1",
+							"type": "string"
+						},
+						{
+							"default": "us-central1"
+						}
+					]
 				}
 			}
 		],
