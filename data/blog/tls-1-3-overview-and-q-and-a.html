@@ -24,7 +24,7 @@
 	<p>The client receives all that, and <em>then</em> generates its own key share, mixes it with the server key share, and thus generates the encryption keys for the session.</p>
 	<p>Finally, the client sends the server its key share, enables encryption and sends a <code>Finished</code> message (which is a hash of a transcript of what happened so far). The server does the same: it mixes the key shares to get the key and sends its own <code>Finished</code> message.</p>
 	<p>At that point we are done, and we can finally send useful data encrypted on the connection.</p>
-	<p>Notice that this takes two round-trips between the client and the server before the HTTP request can be transferred. And round-trips on the Internet can be slow.</p>
+	<p>Notice that this takes two round-trips between the client and the server before the HTTP request can be transferred. And <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">round-trips on the Internet</a> can be slow.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/09/TLS-1.3.006.png" alt="TLS 1.3" loading="lazy"></p>
 	<p>Enter TLS 1.3. While TLS 1.0, 1.1 and 1.2 are not that different, 1.3 is a big jump.</p>
 	<p>Most importantly, establishing a TLS 1.3 connection takes <strong>one less round-trip</strong>.</p>

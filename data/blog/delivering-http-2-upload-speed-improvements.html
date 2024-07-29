@@ -9,7 +9,7 @@
 	<pre><code class="language-shell">% dd if=/dev/urandom of=test.dat bs=1M count=10
 % curl --http1.1 -w '%{speed_upload}\n' -sf -o/dev/null --data-binary @test.dat https://edge/upload-endpoint
 % curl --http2 -w '%{speed_upload}\n' -sf -o/dev/null --data-binary @test.dat https://edge/upload-endpoint</code></pre>
-	<p>Stepping up to uploading a 10MB object over a network which has 200Mbps available bandwidth and 40ms RTT, the result was surprising. Using our production configuration, HTTP/2 upload speed tested at almost half of the same test conditions using HTTP/1.1 (higher is better).</p>
+	<p>Stepping up to uploading a 10MB object over a network which has 200Mbps available bandwidth and 40ms <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT</a>, the result was surprising. Using our production configuration, HTTP/2 upload speed tested at almost half of the same test conditions using HTTP/1.1 (higher is better).</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/Screen-Shot-2020-08-18-at-4.44.56-PM.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The result may differ depending on your network, but the gap is bigger when the network is fast. On a slow network, like my home cable connection (5Mbps upload and 20ms RTT), HTTP/2 upload speed was almost identical to the performance observed with HTTP/1.1.</p>
 	<h3 id="receiver-flow-control">Receiver Flow Control</h3>

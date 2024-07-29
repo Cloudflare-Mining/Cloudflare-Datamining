@@ -36,7 +36,7 @@ while true:
 	<p>We're interested in basic questions:</p>
 	<ul>
 		<li>How much data can fit in the server’s receive buffer? It turns out it's not exactly the same as the default read buffer size on Linux; we'll get there.</li>
-		<li>Assuming infinite bandwidth, what is the minimal time &nbsp;- measured in RTT - for the client to fill the receive buffer?</li>
+		<li>Assuming infinite bandwidth, what is the minimal time &nbsp;- measured in <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT</a> - for the client to fill the receive buffer?</li>
 	</ul>
 	<h3 id="a-bit-of-theory">A bit of theory</h3>
 	<p>Let's start by establishing some common nomenclature. I'll follow the wording used by the <a href="https://man7.org/linux/man-pages/man8/ss.8.html"><code>ss</code> Linux tool from the <code>iproute2</code> package</a>.</p>

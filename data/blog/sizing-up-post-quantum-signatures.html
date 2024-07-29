@@ -76,7 +76,7 @@
 	<p>Considering all this, we would expect to see two effects with larger signatures:</p>
 	<ul>
 		<li><strong>Gentle slope. </strong>Every single packet needs some extra time to transmit, due to limited bandwidth and possible physical-layer retransmissions. This slope isn’t so gentle if your internet connection is slow or spotty.</li>
-		<li><strong>cwnd wall. </strong>Once we fill the congestion window, we have to wait for a whole roundtrip before we can continue. This effect is stronger if the roundtrip time (RTT) is higher.</li>
+		<li><strong>cwnd wall. </strong>Once we fill the congestion window, we have to wait for a whole roundtrip before we can continue. This effect is stronger if the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">roundtrip time (RTT)</a> is higher.</li>
 	</ul>
 	<p>The strength of the two effects can differ. With a fast connection and high RTT we expect to see the graph below on the left. With a slow connection and low RTT, we expect the one on the right.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2.jpg" class="kg-image" alt="illustration of the gentle slope and cwnd wall with different strengths." loading="lazy"></figure>
