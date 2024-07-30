@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 62,
+	"version": "20240730.24",
+	"short_version": "2024.6.474.0",
+	"size": 76919339,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "c3a08ca60aeecac8eb18125d4002e36d",
+	"fingerprint": "c1257e1d14ef3ad270354aa828e752cc",
+	"uploaded_at": "2024-07-30T20:01:41.355Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This release only contains a hotfix from the 2024.6.416.0 release.\n   \n## Notable updates\n- Fixed an issue which could cause alternate network detections to fail for hosts using TLS 1.2 which do not support TLS Extended Master Secret (EMS).\n- Improved the stability of device profile switching based on alternate network detection.\n    \n## Known issues\n- If a user has an MDM file configured to support multiple profiles (for the switch configurations feature), and then changes to an MDM file configured for a single profile, the WARP client may not connect. The workaround is to use the `warp-cli registration delete` command to clear the registration, and then re-register the client.\n- There are certain known limitations preventing the use of the MASQUE tunnel protocol in certain scenarios. Do not use the MASQUE tunnel protocol if:\n  - A Magic WAN integration is on the account and is not yet migrated to the warp_unified_flow. Please check migration status with your account team.\n  - Your account has Regional Services enabled.\n   \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp  \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

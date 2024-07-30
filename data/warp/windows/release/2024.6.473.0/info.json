@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 71,
+	"version": "2024.6.473.0",
+	"short_version": "",
+	"size": 119627776,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "f327c29f2020902a1cca466ffbeae9f4",
+	"fingerprint": "01863c2e21361ad5cb4861ee18567469",
+	"uploaded_at": "2024-07-30T19:55:38.791Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release only contains a hotfix from the 2024.6.415.0 release.\r\n   \r\n## Notable updates\r\n- Fixed an issue which could cause alternate network detections to fail for hosts using TLS 1.2 which do not support TLS Extended Master Secret (EMS).\r\n- Improved the stability of device profile switching based on alternate network detection.\r\n    \r\n## Known issues\r\n- If a user has an MDM file configured to support multiple profiles (for the switch configurations feature), and then changes to an MDM file configured for a single profile, the WARP client may not connect. The workaround is to use the `warp-cli registration delete` command to clear the registration, and then re-register the client.\r\n- There are certain known limitations preventing the use of the MASQUE tunnel protocol in certain scenarios. Do not use the MASQUE tunnel protocol if:\r\n  - A Magic WAN integration is on the account and is not yet migrated to the warp_unified_flow. Please check migration status with your account team.\r\n  - Your account has Regional Services enabled.\r\n   \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp  \r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"a4f9a3d5fc3db5f8d07ab0a25581d039041b2011dcc8a3ea9bc1d14701d070bc"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}
