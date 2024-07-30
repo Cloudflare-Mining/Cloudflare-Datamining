@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "0d77c09b-e59d-5087-9a68-08df40a52575")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "bd4510f6-d041-5ebf-92b8-a1e506230e24")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -894,10 +894,10 @@
 				n.g.build = un({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "75c18967c60e59535b13c32e5fe0963c200df2ba",
-					dashVersion: "25664097",
+					commit: "82810f6289123454d2e22c2cbd23c80c367e7173",
+					dashVersion: "25772240",
 					env: "production",
-					builtAt: 1722011808497,
+					builtAt: 1722375774182,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",
@@ -2843,13 +2843,9 @@
 				}, {
 					entityType: "billingTransactions"
 				}, {
-					entityType: "billingOutstandingTransactions",
-					to: "billingTransactions"
+					entityType: "billingOutstandingTransactions"
 				}, {
-					entityType: "billingBadDebt",
-					nestedProps: {
-						invoices: "billingTransactions"
-					}
+					entityType: "billingBadDebt"
 				}, {
 					entityType: "billingUnpaidInvoices"
 				}, {
@@ -13019,4 +13015,4 @@
 	}
 ]);
 
-//# debugId=0d77c09b-e59d-5087-9a68-08df40a52575
+//# debugId=bd4510f6-d041-5ebf-92b8-a1e506230e24
