@@ -2910,6 +2910,18 @@
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "unparsable-behavior",
+				"schema": {
+					"description": "Behavior for ndjson parse failures.",
+					"enum": [
+						"error",
+						"discard"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -4951,6 +4963,18 @@
 				"schema": {
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "unparsable-behavior",
+				"schema": {
+					"description": "Behavior for ndjson parse failures.",
+					"enum": [
+						"error",
+						"discard"
+					],
 					"type": "string"
 				}
 			}
