@@ -256,6 +256,7 @@
 				"in": "query",
 				"name": "proxied",
 				"schema": {
+					"default": false,
 					"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 					"example": false,
 					"type": "boolean"
@@ -601,6 +602,7 @@
 																		"type": "string"
 																	},
 																	"proxied": {
+																		"default": false,
 																		"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																		"example": false,
 																		"type": "boolean"
@@ -666,6 +668,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -721,6 +724,7 @@
 																		"type": "string"
 																	},
 																	"proxied": {
+																		"default": false,
 																		"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																		"example": false,
 																		"type": "boolean"
@@ -786,6 +790,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -922,6 +927,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -1067,6 +1073,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -1119,6 +1126,7 @@
 																		"type": "string"
 																	},
 																	"proxied": {
+																		"default": false,
 																		"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																		"example": false,
 																		"type": "boolean"
@@ -1184,6 +1192,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -1329,6 +1338,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -1474,6 +1484,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -1611,6 +1622,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -1825,6 +1837,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -1947,6 +1960,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -2098,6 +2112,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -2211,6 +2226,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -2325,6 +2341,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -2470,6 +2487,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -2637,6 +2655,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -2775,6 +2794,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -2912,6 +2932,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -3057,6 +3078,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -3171,6 +3193,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -3310,6 +3333,7 @@
 																		"type": "boolean"
 																	},
 																	"tags": {
+																		"default": [],
 																		"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																		"items": {
 																			"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -3500,6 +3524,7 @@
 																				"type": "string"
 																			},
 																			"proxied": {
+																				"default": false,
 																				"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																				"example": false,
 																				"type": "boolean"
@@ -3565,6 +3590,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -3620,6 +3646,7 @@
 																				"type": "string"
 																			},
 																			"proxied": {
+																				"default": false,
 																				"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																				"example": false,
 																				"type": "boolean"
@@ -3685,6 +3712,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -3821,6 +3849,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -3966,6 +3995,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -4018,6 +4048,7 @@
 																				"type": "string"
 																			},
 																			"proxied": {
+																				"default": false,
 																				"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																				"example": false,
 																				"type": "boolean"
@@ -4083,6 +4114,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -4228,6 +4260,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -4373,6 +4406,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -4510,6 +4544,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -4724,6 +4759,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -4846,6 +4882,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -4997,6 +5034,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -5110,6 +5148,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -5224,6 +5263,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -5369,6 +5409,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -5536,6 +5577,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -5674,6 +5716,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -5811,6 +5854,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -5956,6 +6000,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -6070,6 +6115,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -6209,6 +6255,7 @@
 																				"type": "boolean"
 																			},
 																			"tags": {
+																				"default": [],
 																				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																				"items": {
 																					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -6512,6 +6559,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -6577,6 +6625,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -6632,6 +6681,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -6697,6 +6747,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -6833,6 +6884,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -6978,6 +7030,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -7030,6 +7083,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -7095,6 +7149,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -7240,6 +7295,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -7385,6 +7441,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -7522,6 +7579,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -7736,6 +7794,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -7858,6 +7917,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -8009,6 +8069,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -8122,6 +8183,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -8236,6 +8298,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -8381,6 +8444,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -8548,6 +8612,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -8686,6 +8751,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -8823,6 +8889,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -8968,6 +9035,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -9082,6 +9150,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -9221,6 +9290,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -9388,6 +9458,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -9453,6 +9524,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -9508,6 +9580,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -9573,6 +9646,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -9709,6 +9783,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -9854,6 +9929,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -9906,6 +9982,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -9971,6 +10048,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -10116,6 +10194,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -10261,6 +10340,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -10398,6 +10478,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -10612,6 +10693,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -10734,6 +10816,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -10885,6 +10968,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -10998,6 +11082,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -11112,6 +11197,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -11257,6 +11343,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -11424,6 +11511,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -11562,6 +11650,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -11699,6 +11788,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -11844,6 +11934,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -11958,6 +12049,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -12097,6 +12189,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -12458,6 +12551,7 @@
 												"type": "string"
 											},
 											"proxied": {
+												"default": false,
 												"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 												"example": false,
 												"type": "boolean"
@@ -12523,6 +12617,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -12578,6 +12673,7 @@
 												"type": "string"
 											},
 											"proxied": {
+												"default": false,
 												"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 												"example": false,
 												"type": "boolean"
@@ -12643,6 +12739,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -12779,6 +12876,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -12924,6 +13022,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -12976,6 +13075,7 @@
 												"type": "string"
 											},
 											"proxied": {
+												"default": false,
 												"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 												"example": false,
 												"type": "boolean"
@@ -13041,6 +13141,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -13186,6 +13287,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -13331,6 +13433,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -13468,6 +13571,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -13682,6 +13786,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -13804,6 +13909,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -13955,6 +14061,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -14068,6 +14175,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -14182,6 +14290,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -14327,6 +14436,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -14494,6 +14604,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -14632,6 +14743,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -14769,6 +14881,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -14914,6 +15027,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -15028,6 +15142,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -15167,6 +15282,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -15328,6 +15444,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -15393,6 +15510,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -15448,6 +15566,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -15513,6 +15632,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -15649,6 +15769,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -15794,6 +15915,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -15846,6 +15968,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -15911,6 +16034,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -16056,6 +16180,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -16201,6 +16326,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -16338,6 +16464,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -16552,6 +16679,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -16674,6 +16802,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -16825,6 +16954,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -16938,6 +17068,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -17052,6 +17183,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -17197,6 +17329,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -17364,6 +17497,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -17502,6 +17636,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -17639,6 +17774,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -17784,6 +17920,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -17898,6 +18035,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -18037,6 +18175,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -18204,6 +18343,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -18269,6 +18409,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -18324,6 +18465,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -18389,6 +18531,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -18525,6 +18668,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -18670,6 +18814,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -18722,6 +18867,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -18787,6 +18933,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -18932,6 +19079,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -19077,6 +19225,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -19214,6 +19363,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -19428,6 +19578,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -19550,6 +19701,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -19701,6 +19853,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -19814,6 +19967,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -19928,6 +20082,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -20073,6 +20228,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -20240,6 +20396,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -20378,6 +20535,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -20515,6 +20673,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -20660,6 +20819,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -20774,6 +20934,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -20913,6 +21074,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -21120,6 +21282,7 @@
 												"type": "string"
 											},
 											"proxied": {
+												"default": false,
 												"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 												"example": false,
 												"type": "boolean"
@@ -21185,6 +21348,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -21240,6 +21404,7 @@
 												"type": "string"
 											},
 											"proxied": {
+												"default": false,
 												"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 												"example": false,
 												"type": "boolean"
@@ -21305,6 +21470,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -21441,6 +21607,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -21586,6 +21753,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -21638,6 +21806,7 @@
 												"type": "string"
 											},
 											"proxied": {
+												"default": false,
 												"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 												"example": false,
 												"type": "boolean"
@@ -21703,6 +21872,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -21848,6 +22018,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -21993,6 +22164,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -22130,6 +22302,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -22344,6 +22517,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -22466,6 +22640,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -22617,6 +22792,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -22730,6 +22906,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -22844,6 +23021,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -22989,6 +23167,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -23156,6 +23335,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -23294,6 +23474,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -23431,6 +23612,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -23576,6 +23758,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -23690,6 +23873,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -23829,6 +24013,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -23990,6 +24175,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -24055,6 +24241,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -24110,6 +24297,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -24175,6 +24363,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -24311,6 +24500,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -24456,6 +24646,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -24508,6 +24699,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -24573,6 +24765,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -24718,6 +24911,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -24863,6 +25057,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -25000,6 +25195,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -25214,6 +25410,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -25336,6 +25533,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -25487,6 +25685,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -25600,6 +25799,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -25714,6 +25914,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -25859,6 +26060,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -26026,6 +26228,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -26164,6 +26367,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -26301,6 +26505,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -26446,6 +26651,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -26560,6 +26766,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -26699,6 +26906,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -26866,6 +27074,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -26931,6 +27140,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -26986,6 +27196,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -27051,6 +27262,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -27187,6 +27399,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -27332,6 +27545,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -27384,6 +27598,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -27449,6 +27664,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -27594,6 +27810,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -27739,6 +27956,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -27876,6 +28094,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -28090,6 +28309,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -28212,6 +28432,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -28363,6 +28584,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -28476,6 +28698,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -28590,6 +28813,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -28735,6 +28959,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -28902,6 +29127,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -29040,6 +29266,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -29177,6 +29404,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -29322,6 +29550,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -29436,6 +29665,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -29575,6 +29805,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -30609,6 +30840,7 @@
 												"type": "string"
 											},
 											"proxied": {
+												"default": false,
 												"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 												"example": false,
 												"type": "boolean"
@@ -30674,6 +30906,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -30729,6 +30962,7 @@
 												"type": "string"
 											},
 											"proxied": {
+												"default": false,
 												"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 												"example": false,
 												"type": "boolean"
@@ -30794,6 +31028,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -30930,6 +31165,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -31075,6 +31311,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -31127,6 +31364,7 @@
 												"type": "string"
 											},
 											"proxied": {
+												"default": false,
 												"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 												"example": false,
 												"type": "boolean"
@@ -31192,6 +31430,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -31337,6 +31576,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -31482,6 +31722,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -31619,6 +31860,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -31833,6 +32075,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -31955,6 +32198,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -32106,6 +32350,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -32219,6 +32464,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -32333,6 +32579,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -32478,6 +32725,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -32645,6 +32893,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -32783,6 +33032,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -32920,6 +33170,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -33065,6 +33316,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -33179,6 +33431,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -33318,6 +33571,7 @@
 												"type": "boolean"
 											},
 											"tags": {
+												"default": [],
 												"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 												"items": {
 													"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -33479,6 +33733,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -33544,6 +33799,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -33599,6 +33855,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -33664,6 +33921,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -33800,6 +34058,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -33945,6 +34204,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -33997,6 +34257,7 @@
 																	"type": "string"
 																},
 																"proxied": {
+																	"default": false,
 																	"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																	"example": false,
 																	"type": "boolean"
@@ -34062,6 +34323,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -34207,6 +34469,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -34352,6 +34615,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -34489,6 +34753,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -34703,6 +34968,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -34825,6 +35091,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -34976,6 +35243,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -35089,6 +35357,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -35203,6 +35472,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -35348,6 +35618,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -35515,6 +35786,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -35653,6 +35925,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -35790,6 +36063,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -35935,6 +36209,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -36049,6 +36324,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -36188,6 +36464,7 @@
 																	"type": "boolean"
 																},
 																"tags": {
+																	"default": [],
 																	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																	"items": {
 																		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -36355,6 +36632,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -36420,6 +36698,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -36475,6 +36754,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -36540,6 +36820,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -36676,6 +36957,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -36821,6 +37103,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -36873,6 +37156,7 @@
 																			"type": "string"
 																		},
 																		"proxied": {
+																			"default": false,
 																			"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 																			"example": false,
 																			"type": "boolean"
@@ -36938,6 +37222,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -37083,6 +37368,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -37228,6 +37514,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -37365,6 +37652,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -37579,6 +37867,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -37701,6 +37990,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -37852,6 +38142,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -37965,6 +38256,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -38079,6 +38371,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -38224,6 +38517,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -38391,6 +38685,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -38529,6 +38824,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -38666,6 +38962,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -38811,6 +39108,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -38925,6 +39223,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
@@ -39064,6 +39363,7 @@
 																			"type": "boolean"
 																		},
 																		"tags": {
+																			"default": [],
 																			"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
 																			"items": {
 																				"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",

@@ -51,6 +51,17 @@
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
+										"improved_logs": {
+											"type": "boolean"
+										},
+										"logpush": {
+											"type": "boolean"
+										},
+										"logpush_public_key": {
+											"maxLength": 512,
+											"minLength": 16,
+											"type": "string"
+										},
 										"modified_at": {
 											"format": "date-time",
 											"type": "string"
@@ -81,6 +92,8 @@
 										"collect_logs",
 										"cache_ttl",
 										"cache_invalidate_on_update",
+										"improved_logs",
+										"logpush",
 										"created_at",
 										"modified_at"
 									],
@@ -250,6 +263,17 @@
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 												"type": "string"
 											},
+											"improved_logs": {
+												"type": "boolean"
+											},
+											"logpush": {
+												"type": "boolean"
+											},
+											"logpush_public_key": {
+												"maxLength": 512,
+												"minLength": 16,
+												"type": "string"
+											},
 											"modified_at": {
 												"format": "date-time",
 												"type": "string"
@@ -280,6 +304,8 @@
 											"collect_logs",
 											"cache_ttl",
 											"cache_invalidate_on_update",
+											"improved_logs",
+											"logpush",
 											"created_at",
 											"modified_at"
 										],
@@ -422,6 +448,17 @@
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
+										"improved_logs": {
+											"type": "boolean"
+										},
+										"logpush": {
+											"type": "boolean"
+										},
+										"logpush_public_key": {
+											"maxLength": 512,
+											"minLength": 16,
+											"type": "string"
+										},
 										"modified_at": {
 											"format": "date-time",
 											"type": "string"
@@ -452,6 +489,8 @@
 										"collect_logs",
 										"cache_ttl",
 										"cache_invalidate_on_update",
+										"improved_logs",
+										"logpush",
 										"created_at",
 										"modified_at"
 									],
@@ -654,6 +693,9 @@
 											"cached": {
 												"type": "boolean"
 											},
+											"cost": {
+												"type": "number"
+											},
 											"created_at": {
 												"format": "date-time",
 												"type": "string"
@@ -840,6 +882,17 @@
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 								"type": "string"
 							},
+							"improved_logs": {
+								"type": "boolean"
+							},
+							"logpush": {
+								"type": "boolean"
+							},
+							"logpush_public_key": {
+								"maxLength": 512,
+								"minLength": 16,
+								"type": "string"
+							},
 							"rate_limiting_interval": {
 								"minimum": 0,
 								"nullable": true,
@@ -865,7 +918,9 @@
 							"rate_limiting_technique",
 							"collect_logs",
 							"cache_ttl",
-							"cache_invalidate_on_update"
+							"cache_invalidate_on_update",
+							"improved_logs",
+							"logpush"
 						],
 						"type": "object"
 					}
@@ -905,6 +960,17 @@
 													"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 													"type": "string"
 												},
+												"improved_logs": {
+													"type": "boolean"
+												},
+												"logpush": {
+													"type": "boolean"
+												},
+												"logpush_public_key": {
+													"maxLength": 512,
+													"minLength": 16,
+													"type": "string"
+												},
 												"modified_at": {
 													"format": "date-time",
 													"type": "string"
@@ -935,6 +1001,8 @@
 												"collect_logs",
 												"cache_ttl",
 												"cache_invalidate_on_update",
+												"improved_logs",
+												"logpush",
 												"created_at",
 												"modified_at"
 											],
@@ -1075,6 +1143,17 @@
 							"collect_logs": {
 								"type": "boolean"
 							},
+							"improved_logs": {
+								"type": "boolean"
+							},
+							"logpush": {
+								"type": "boolean"
+							},
+							"logpush_public_key": {
+								"maxLength": 512,
+								"minLength": 16,
+								"type": "string"
+							},
 							"rate_limiting_interval": {
 								"minimum": 0,
 								"nullable": true,
@@ -1099,7 +1178,9 @@
 							"rate_limiting_technique",
 							"collect_logs",
 							"cache_ttl",
-							"cache_invalidate_on_update"
+							"cache_invalidate_on_update",
+							"improved_logs",
+							"logpush"
 						],
 						"type": "object"
 					}
@@ -1137,6 +1218,17 @@
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
+										"improved_logs": {
+											"type": "boolean"
+										},
+										"logpush": {
+											"type": "boolean"
+										},
+										"logpush_public_key": {
+											"maxLength": 512,
+											"minLength": 16,
+											"type": "string"
+										},
 										"modified_at": {
 											"format": "date-time",
 											"type": "string"
@@ -1167,6 +1259,8 @@
 										"collect_logs",
 										"cache_ttl",
 										"cache_invalidate_on_update",
+										"improved_logs",
+										"logpush",
 										"created_at",
 										"modified_at"
 									],
