@@ -486,8 +486,35 @@
 	"AccountCallsStatusAdaptiveOrderBy": {
 		"__description": ""
 	},
+	"AccountCallsTurnUsageAdaptiveGroups": {
+		"__description": "Beta. Aggregated Calls TURN bandwidth usage with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountCallsTurnUsageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"customIdentifier": "The customIdentifier (provided when credential was generated) that generated traffic",
+		"date": "Calls TURN bandwidth metrics date",
+		"datetimeFifteenMinutes": "Calls TURN bandwidth metrics timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Calls TURN bandwidth metrics timestamp, truncated to five minutes",
+		"datetimeHour": "Calls TURN bandwidth metrics timestamp, truncated to the hour",
+		"datetimeMinute": "Calls TURN bandwidth metrics timestamp, truncated to the minute",
+		"keyId": "The credentials created by this keyId that generated traffic",
+		"username": "The username from credential that generated traffic"
+	},
+	"AccountCallsTurnUsageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCallsTurnUsageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCallsTurnUsageAdaptiveGroupsSum": {
+		"__description": "",
+		"egressBytes": "The total bytes sent by Calls TURN, observed over the queried time period",
+		"ingressBytes": "The total bytes received by Calls TURN, observed over the queried time period"
+	},
 	"AccountCallsUsageAdaptiveGroups": {
-		"__description": "Beta. Aggregated Calls bandwidth usage with adaptive sampling",
+		"__description": "Beta. Aggregated Calls SFU bandwidth usage with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -3548,6 +3575,7 @@
 		"browserRenderingEventsAdaptive": "",
 		"browserRenderingEventsAdaptiveGroups": "",
 		"callsStatusAdaptive": "",
+		"callsTurnUsageAdaptiveGroups": "",
 		"callsUsageAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
 		"d1AnalyticsAdaptiveGroups": "",
@@ -4250,6 +4278,8 @@
 		"cacheStatus": "Cache status",
 		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
+		"datetimeFifteenMinutes": "The date and time of the event truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
 		"environmentName": "The name of the script environment",
@@ -4569,6 +4599,36 @@
 		"__description": ""
 	},
 	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroups": {
+		"__description": "Beta. Aggregated count of Session Identifier matches per endpoint",
+		"avg": "",
+		"count": "Number of events per dimension",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroupsDimensions": {
+		"__description": "",
+		"apiGatewayMatchedEndpoint": "Id of the matched API endpoint",
+		"apiGatewayMatchedSessionIdentifier": "Array of observed tuples consisting of session identifier types and names. Possible types are header | cookie | jwt",
+		"date": "",
+		"datetime": "",
+		"datetimeDay": "",
+		"datetimeFifteenMinutes": "",
+		"datetimeFiveMinutes": "",
+		"datetimeHalfOfHour": "",
+		"datetimeHour": "",
+		"datetimeMinute": "",
+		"responseStatusCode": "HTTP status code returned by edge"
+	},
+	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneApiGatewayMatchedSessionIDsPerEndpointAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
 	"ZoneApiRequestSequencesGroups": {
@@ -6068,6 +6128,7 @@
 		"__description": "Access and limitations for a zone",
 		"apiGatewayGraphqlQueryAnalyticsGroups": "",
 		"apiGatewayMatchedSessionIDsAdaptiveGroups": "",
+		"apiGatewayMatchedSessionIDsPerEndpointAdaptiveGroups": "",
 		"apiRequestSequencesGroups": "",
 		"cacheReserveOperationsAdaptiveGroups": "",
 		"cacheReserveRequestsAdaptiveGroups": "",
@@ -6566,7 +6627,8 @@
 		"browserRenderingEventsAdaptive": "Browser Rendering events with adaptive sampling",
 		"browserRenderingEventsAdaptiveGroups": "Aggregated Browser Rendering events with adaptive sampling",
 		"callsStatusAdaptive": "(TESTING ONLY, NOT FOR PRODUCTION) Raw Calls events with adaptive sampling",
-		"callsUsageAdaptiveGroups": "Beta. Aggregated Calls bandwidth usage with adaptive sampling",
+		"callsTurnUsageAdaptiveGroups": "Beta. Aggregated Calls TURN bandwidth usage with adaptive sampling",
+		"callsUsageAdaptiveGroups": "Beta. Aggregated Calls SFU bandwidth usage with adaptive sampling",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
 		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"d1QueriesAdaptiveGroups": "Beta. D1 query metrics with adaptive sampling",
@@ -6700,6 +6762,7 @@
 		"__description": "",
 		"apiGatewayGraphqlQueryAnalyticsGroups": "GraphQL query attributes and trends",
 		"apiGatewayMatchedSessionIDsAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches",
+		"apiGatewayMatchedSessionIDsPerEndpointAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches per endpoint",
 		"apiRequestSequencesGroups": "Sequences of API endpoint operations. Sequences are learned by grouping requests by AuthID. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
 		"cacheReserveOperationsAdaptiveGroups": "Beta. Cache Reserve operations with adaptive sampling",
 		"cacheReserveRequestsAdaptiveGroups": "Cache Reserve HTTP requests data with adaptive sampling",
