@@ -1,5 +1,6 @@
 {
-	"description": "Egress policies specify which IP is used for egress traffic based on identity, IP addresses, network, and geolocation attributes. If no policies are matched, packets will route to the dedicated egress IP closest to the user. Note: Dedicated egress IPs are required to enable traffic egress policies.",
+	"description": "Route different subsets of your outbound traffic to specific dedicated egress IPs. Traffic without a matching policy routes to the IP closest to the user.",
+	"egress_policies_doc_link_label": "Egress policies documentation",
 	"egress_warp_fallback": "Default Cloudflare egress",
 	"empty_state_action_create_bp_1": "Control when either the default Cloudflare egress or your dedicated Cloudflare egress IPs are used. Learn more about <0>egress methods</0>.",
 	"empty_state_action_create_bp_2": "Egress policies will not apply to DNS queries resolved through Gateway or traffic sent to your Zero Trust network by Cloudflare Tunnel or Magic WAN.",
