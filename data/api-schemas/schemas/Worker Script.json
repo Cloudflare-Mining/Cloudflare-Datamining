@@ -3984,78 +3984,90 @@
 										{
 											"properties": {
 												"result": {
-													"properties": {
-														"created_on": {
-															"description": "When the script was created.",
-															"example": "2017-01-01T00:00:00Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"etag": {
-															"description": "Hashed script content, can be used in a If-None-Match header when updating.",
-															"example": "ea95132c15732412d22c1476fa83f27a",
-															"readOnly": true,
-															"type": "string"
-														},
-														"id": {
-															"description": "The id of the script in the Workers system. Usually the script name.",
-															"example": "my-workers-script",
-															"readOnly": true,
-															"type": "string"
-														},
-														"logpush": {
-															"description": "Whether Logpush is turned on for the Worker.",
-															"example": false,
-															"type": "boolean"
-														},
-														"modified_on": {
-															"description": "When the script was last modified.",
-															"example": "2017-01-01T00:00:00Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"placement_mode": {
-															"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
-															"example": "smart",
-															"type": "string"
-														},
-														"tail_consumers": {
-															"description": "List of Workers that will consume logs from the attached Worker.",
-															"items": {
-																"description": "A reference to a script that will consume logs from the attached Worker.",
-																"properties": {
-																	"environment": {
-																		"description": "Optional environment if the Worker utilizes one.",
-																		"example": "production",
-																		"type": "string"
-																	},
-																	"namespace": {
-																		"description": "Optional dispatch namespace the script belongs to.",
-																		"example": "my-namespace",
-																		"type": "string"
-																	},
-																	"service": {
-																		"description": "Name of Worker that is to be the consumer.",
-																		"example": "my-log-consumer",
-																		"type": "string"
-																	}
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "When the script was created.",
+																	"example": "2017-01-01T00:00:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
 																},
-																"required": [
-																	"service"
-																],
-																"type": "object"
-															},
-															"type": "array"
+																"etag": {
+																	"description": "Hashed script content, can be used in a If-None-Match header when updating.",
+																	"example": "ea95132c15732412d22c1476fa83f27a",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"id": {
+																	"description": "The id of the script in the Workers system. Usually the script name.",
+																	"example": "my-workers-script",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"logpush": {
+																	"description": "Whether Logpush is turned on for the Worker.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"modified_on": {
+																	"description": "When the script was last modified.",
+																	"example": "2017-01-01T00:00:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"placement_mode": {
+																	"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
+																	"example": "smart",
+																	"type": "string"
+																},
+																"tail_consumers": {
+																	"description": "List of Workers that will consume logs from the attached Worker.",
+																	"items": {
+																		"description": "A reference to a script that will consume logs from the attached Worker.",
+																		"properties": {
+																			"environment": {
+																				"description": "Optional environment if the Worker utilizes one.",
+																				"example": "production",
+																				"type": "string"
+																			},
+																			"namespace": {
+																				"description": "Optional dispatch namespace the script belongs to.",
+																				"example": "my-namespace",
+																				"type": "string"
+																			},
+																			"service": {
+																				"description": "Name of Worker that is to be the consumer.",
+																				"example": "my-log-consumer",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"service"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"usage_model": {
+																	"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
+																	"example": "unbound",
+																	"pattern": "^(bundled|unbound)$",
+																	"type": "string"
+																}
+															}
 														},
-														"usage_model": {
-															"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
-															"example": "unbound",
-															"pattern": "^(bundled|unbound)$",
-															"type": "string"
+														{
+															"properties": {
+																"startup_time_ms": {
+																	"example": 10,
+																	"type": "integer"
+																}
+															}
 														}
-													}
+													]
 												}
 											},
 											"x-cfLinkErrors": {
@@ -4090,6 +4102,7 @@
 											"logpush": false,
 											"modified_on": "2022-05-20T19:02:56.446492Z",
 											"placement_mode": "smart",
+											"startup_time_ms": 10,
 											"tail_consumers": [
 												{
 													"environment": "production",
