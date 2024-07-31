@@ -11,7 +11,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -23,7 +22,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -127,7 +125,6 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -236,7 +233,6 @@
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"readOnly": true,
 															"type": "string"
 														}
 													},
@@ -373,7 +369,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -753,7 +748,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -765,7 +759,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1090,7 +1083,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1445,7 +1437,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1457,7 +1448,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1561,7 +1551,8 @@
 													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
 													"enum": [
 														"google",
-														"lets_encrypt"
+														"lets_encrypt",
+														"ssl_com"
 													],
 													"example": "lets_encrypt",
 													"type": "string"
@@ -1587,7 +1578,6 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
 													"type": "string"
 												},
 												"status": {
@@ -1752,7 +1742,8 @@
 															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
 															"enum": [
 																"google",
-																"lets_encrypt"
+																"lets_encrypt",
+																"ssl_com"
 															],
 															"example": "lets_encrypt",
 															"type": "string"
@@ -1778,7 +1769,6 @@
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"readOnly": true,
 															"type": "string"
 														},
 														"status": {
@@ -1971,7 +1961,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1985,7 +1974,8 @@
 								"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
 								"enum": [
 									"google",
-									"lets_encrypt"
+									"lets_encrypt",
+									"ssl_com"
 								],
 								"example": "lets_encrypt",
 								"type": "string"
@@ -2142,7 +2132,8 @@
 													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
 													"enum": [
 														"google",
-														"lets_encrypt"
+														"lets_encrypt",
+														"ssl_com"
 													],
 													"example": "lets_encrypt",
 													"type": "string"
@@ -2168,7 +2159,6 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
 													"type": "string"
 												},
 												"status": {
@@ -2333,7 +2323,8 @@
 															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
 															"enum": [
 																"google",
-																"lets_encrypt"
+																"lets_encrypt",
+																"ssl_com"
 															],
 															"example": "lets_encrypt",
 															"type": "string"
@@ -2359,7 +2350,6 @@
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"readOnly": true,
 															"type": "string"
 														},
 														"status": {

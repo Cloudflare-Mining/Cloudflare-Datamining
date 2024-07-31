@@ -11,7 +11,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -109,7 +108,8 @@
 													"description": "The Certificate Authority that Total TLS certificates will be issued through.",
 													"enum": [
 														"google",
-														"lets_encrypt"
+														"lets_encrypt",
+														"ssl_com"
 													],
 													"example": "google",
 													"type": "string"
@@ -119,7 +119,7 @@
 													"example": true,
 													"type": "boolean"
 												},
-												"validity_days": {
+												"validity_period": {
 													"description": "The validity period in days for the certificates ordered via Total TLS.",
 													"enum": [
 														90
@@ -230,7 +230,8 @@
 															"description": "The Certificate Authority that Total TLS certificates will be issued through.",
 															"enum": [
 																"google",
-																"lets_encrypt"
+																"lets_encrypt",
+																"ssl_com"
 															],
 															"example": "google",
 															"type": "string"
@@ -240,7 +241,7 @@
 															"example": true,
 															"type": "boolean"
 														},
-														"validity_days": {
+														"validity_period": {
 															"description": "The validity period in days for the certificates ordered via Total TLS.",
 															"enum": [
 																90
@@ -378,7 +379,6 @@
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -392,7 +392,8 @@
 								"description": "The Certificate Authority that Total TLS certificates will be issued through.",
 								"enum": [
 									"google",
-									"lets_encrypt"
+									"lets_encrypt",
+									"ssl_com"
 								],
 								"example": "google",
 								"type": "string"
@@ -504,7 +505,8 @@
 													"description": "The Certificate Authority that Total TLS certificates will be issued through.",
 													"enum": [
 														"google",
-														"lets_encrypt"
+														"lets_encrypt",
+														"ssl_com"
 													],
 													"example": "google",
 													"type": "string"
@@ -514,7 +516,7 @@
 													"example": true,
 													"type": "boolean"
 												},
-												"validity_days": {
+												"validity_period": {
 													"description": "The validity period in days for the certificates ordered via Total TLS.",
 													"enum": [
 														90
@@ -625,7 +627,8 @@
 															"description": "The Certificate Authority that Total TLS certificates will be issued through.",
 															"enum": [
 																"google",
-																"lets_encrypt"
+																"lets_encrypt",
+																"ssl_com"
 															],
 															"example": "google",
 															"type": "string"
@@ -635,7 +638,7 @@
 															"example": true,
 															"type": "boolean"
 														},
-														"validity_days": {
+														"validity_period": {
 															"description": "The validity period in days for the certificates ordered via Total TLS.",
 															"enum": [
 																90
