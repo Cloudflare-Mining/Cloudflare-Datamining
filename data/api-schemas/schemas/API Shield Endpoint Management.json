@@ -618,45 +618,85 @@
 													{
 														"allOf": [
 															{
-																"properties": {
-																	"endpoint": {
-																		"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
-																		"example": "/api/v1/users/{var1}",
-																		"format": "uri-template",
-																		"maxLength": 4096,
-																		"pattern": "^/.*$",
-																		"type": "string"
-																	},
-																	"host": {
-																		"description": "RFC3986-compliant host.",
-																		"example": "www.example.com",
-																		"format": "hostname",
-																		"maxLength": 255,
-																		"type": "string"
-																	},
-																	"method": {
-																		"description": "The HTTP method used to access the endpoint.",
-																		"enum": [
-																			"GET",
-																			"POST",
-																			"HEAD",
-																			"OPTIONS",
-																			"PUT",
-																			"DELETE",
-																			"CONNECT",
-																			"PATCH",
-																			"TRACE"
+																"allOf": [
+																	{
+																		"properties": {
+																			"endpoint": {
+																				"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+																				"example": "/api/v1/users/{var1}",
+																				"format": "uri-template",
+																				"maxLength": 4096,
+																				"pattern": "^/.*$",
+																				"type": "string"
+																			},
+																			"host": {
+																				"description": "RFC3986-compliant host.",
+																				"example": "www.example.com",
+																				"format": "hostname",
+																				"maxLength": 255,
+																				"type": "string"
+																			},
+																			"method": {
+																				"description": "The HTTP method used to access the endpoint.",
+																				"enum": [
+																					"GET",
+																					"POST",
+																					"HEAD",
+																					"OPTIONS",
+																					"PUT",
+																					"DELETE",
+																					"CONNECT",
+																					"PATCH",
+																					"TRACE"
+																				],
+																				"example": "GET",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"method",
+																			"host",
+																			"endpoint"
 																		],
-																		"example": "GET",
-																		"type": "string"
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"last_updated": {
+																				"allOf": [
+																					{
+																						"example": "2014-01-01T05:20:00.12345Z",
+																						"format": "date-time",
+																						"type": "string"
+																					},
+																					{
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"operation_id": {
+																				"allOf": [
+																					{
+																						"minLength": 36,
+																						"type": "string"
+																					},
+																					{
+																						"description": "UUID",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"maxLength": 36,
+																						"type": "string"
+																					}
+																				]
+																			}
+																		},
+																		"required": [
+																			"operation_id",
+																			"last_updated"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"method",
-																	"host",
-																	"endpoint"
-																],
-																"type": "object"
+																]
 															},
 															{
 																"properties": {
@@ -996,39 +1036,8 @@
 																		],
 																		"readOnly": true,
 																		"type": "object"
-																	},
-																	"last_updated": {
-																		"allOf": [
-																			{
-																				"example": "2014-01-01T05:20:00.12345Z",
-																				"format": "date-time",
-																				"type": "string"
-																			},
-																			{
-																				"readOnly": true,
-																				"type": "string"
-																			}
-																		]
-																	},
-																	"operation_id": {
-																		"allOf": [
-																			{
-																				"minLength": 36,
-																				"type": "string"
-																			},
-																			{
-																				"description": "UUID",
-																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																				"maxLength": 36,
-																				"type": "string"
-																			}
-																		]
 																	}
 																},
-																"required": [
-																	"operation_id",
-																	"last_updated"
-																],
 																"type": "object"
 															}
 														]
@@ -1257,45 +1266,85 @@
 												{
 													"allOf": [
 														{
-															"properties": {
-																"endpoint": {
-																	"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
-																	"example": "/api/v1/users/{var1}",
-																	"format": "uri-template",
-																	"maxLength": 4096,
-																	"pattern": "^/.*$",
-																	"type": "string"
-																},
-																"host": {
-																	"description": "RFC3986-compliant host.",
-																	"example": "www.example.com",
-																	"format": "hostname",
-																	"maxLength": 255,
-																	"type": "string"
-																},
-																"method": {
-																	"description": "The HTTP method used to access the endpoint.",
-																	"enum": [
-																		"GET",
-																		"POST",
-																		"HEAD",
-																		"OPTIONS",
-																		"PUT",
-																		"DELETE",
-																		"CONNECT",
-																		"PATCH",
-																		"TRACE"
+															"allOf": [
+																{
+																	"properties": {
+																		"endpoint": {
+																			"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+																			"example": "/api/v1/users/{var1}",
+																			"format": "uri-template",
+																			"maxLength": 4096,
+																			"pattern": "^/.*$",
+																			"type": "string"
+																		},
+																		"host": {
+																			"description": "RFC3986-compliant host.",
+																			"example": "www.example.com",
+																			"format": "hostname",
+																			"maxLength": 255,
+																			"type": "string"
+																		},
+																		"method": {
+																			"description": "The HTTP method used to access the endpoint.",
+																			"enum": [
+																				"GET",
+																				"POST",
+																				"HEAD",
+																				"OPTIONS",
+																				"PUT",
+																				"DELETE",
+																				"CONNECT",
+																				"PATCH",
+																				"TRACE"
+																			],
+																			"example": "GET",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"method",
+																		"host",
+																		"endpoint"
 																	],
-																	"example": "GET",
-																	"type": "string"
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"last_updated": {
+																			"allOf": [
+																				{
+																					"example": "2014-01-01T05:20:00.12345Z",
+																					"format": "date-time",
+																					"type": "string"
+																				},
+																				{
+																					"readOnly": true,
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"operation_id": {
+																			"allOf": [
+																				{
+																					"minLength": 36,
+																					"type": "string"
+																				},
+																				{
+																					"description": "UUID",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"type": "string"
+																				}
+																			]
+																		}
+																	},
+																	"required": [
+																		"operation_id",
+																		"last_updated"
+																	],
+																	"type": "object"
 																}
-															},
-															"required": [
-																"method",
-																"host",
-																"endpoint"
-															],
-															"type": "object"
+															]
 														},
 														{
 															"properties": {
@@ -1635,39 +1684,8 @@
 																	],
 																	"readOnly": true,
 																	"type": "object"
-																},
-																"last_updated": {
-																	"allOf": [
-																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
-																			"type": "string"
-																		},
-																		{
-																			"readOnly": true,
-																			"type": "string"
-																		}
-																	]
-																},
-																"operation_id": {
-																	"allOf": [
-																		{
-																			"minLength": 36,
-																			"type": "string"
-																		},
-																		{
-																			"description": "UUID",
-																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																			"maxLength": 36,
-																			"type": "string"
-																		}
-																	]
 																}
 															},
-															"required": [
-																"operation_id",
-																"last_updated"
-															],
 															"type": "object"
 														}
 													]
@@ -2188,45 +2206,85 @@
 											"items": {
 												"allOf": [
 													{
-														"properties": {
-															"endpoint": {
-																"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
-																"example": "/api/v1/users/{var1}",
-																"format": "uri-template",
-																"maxLength": 4096,
-																"pattern": "^/.*$",
-																"type": "string"
-															},
-															"host": {
-																"description": "RFC3986-compliant host.",
-																"example": "www.example.com",
-																"format": "hostname",
-																"maxLength": 255,
-																"type": "string"
-															},
-															"method": {
-																"description": "The HTTP method used to access the endpoint.",
-																"enum": [
-																	"GET",
-																	"POST",
-																	"HEAD",
-																	"OPTIONS",
-																	"PUT",
-																	"DELETE",
-																	"CONNECT",
-																	"PATCH",
-																	"TRACE"
+														"allOf": [
+															{
+																"properties": {
+																	"endpoint": {
+																		"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+																		"example": "/api/v1/users/{var1}",
+																		"format": "uri-template",
+																		"maxLength": 4096,
+																		"pattern": "^/.*$",
+																		"type": "string"
+																	},
+																	"host": {
+																		"description": "RFC3986-compliant host.",
+																		"example": "www.example.com",
+																		"format": "hostname",
+																		"maxLength": 255,
+																		"type": "string"
+																	},
+																	"method": {
+																		"description": "The HTTP method used to access the endpoint.",
+																		"enum": [
+																			"GET",
+																			"POST",
+																			"HEAD",
+																			"OPTIONS",
+																			"PUT",
+																			"DELETE",
+																			"CONNECT",
+																			"PATCH",
+																			"TRACE"
+																		],
+																		"example": "GET",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"method",
+																	"host",
+																	"endpoint"
 																],
-																"example": "GET",
-																"type": "string"
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"last_updated": {
+																		"allOf": [
+																			{
+																				"example": "2014-01-01T05:20:00.12345Z",
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			{
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"operation_id": {
+																		"allOf": [
+																			{
+																				"minLength": 36,
+																				"type": "string"
+																			},
+																			{
+																				"description": "UUID",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"maxLength": 36,
+																				"type": "string"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"operation_id",
+																	"last_updated"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"method",
-															"host",
-															"endpoint"
-														],
-														"type": "object"
+														]
 													},
 													{
 														"properties": {
@@ -2566,39 +2624,8 @@
 																],
 																"readOnly": true,
 																"type": "object"
-															},
-															"last_updated": {
-																"allOf": [
-																	{
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	{
-																		"readOnly": true,
-																		"type": "string"
-																	}
-																]
-															},
-															"operation_id": {
-																"allOf": [
-																	{
-																		"minLength": 36,
-																		"type": "string"
-																	},
-																	{
-																		"description": "UUID",
-																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																		"maxLength": 36,
-																		"type": "string"
-																	}
-																]
 															}
 														},
-														"required": [
-															"operation_id",
-															"last_updated"
-														],
 														"type": "object"
 													}
 												]
