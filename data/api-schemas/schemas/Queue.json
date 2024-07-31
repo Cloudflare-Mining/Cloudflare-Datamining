@@ -992,22 +992,28 @@
 											"items": {
 												"properties": {
 													"consumers": {
-														"readOnly": true
+														"readOnly": true,
+														"type": "object"
 													},
 													"consumers_total_count": {
-														"readOnly": true
+														"readOnly": true,
+														"type": "number"
 													},
 													"created_on": {
-														"readOnly": true
+														"readOnly": true,
+														"type": "string"
 													},
 													"modified_on": {
-														"readOnly": true
+														"readOnly": true,
+														"type": "string"
 													},
 													"producers": {
-														"readOnly": true
+														"readOnly": true,
+														"type": "object"
 													},
 													"producers_total_count": {
-														"readOnly": true
+														"readOnly": true,
+														"type": "number"
 													},
 													"queue_id": {
 														"readOnly": true,
@@ -1202,22 +1208,28 @@
 													"items": {
 														"properties": {
 															"consumers": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "object"
 															},
 															"consumers_total_count": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "number"
 															},
 															"created_on": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															},
 															"modified_on": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															},
 															"producers": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "object"
 															},
 															"producers_total_count": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "number"
 															},
 															"queue_id": {
 																"readOnly": true,
@@ -1511,22 +1523,28 @@
 												{
 													"properties": {
 														"consumers": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "object"
 														},
 														"consumers_total_count": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "number"
 														},
 														"created_on": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"modified_on": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"producers": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "object"
 														},
 														"producers_total_count": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "number"
 														},
 														"queue_id": {
 															"readOnly": true,
@@ -1685,22 +1703,28 @@
 														{
 															"properties": {
 																"consumers": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "object"
 																},
 																"consumers_total_count": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "number"
 																},
 																"created_on": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"modified_on": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"producers": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "object"
 																},
 																"producers_total_count": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "number"
 																},
 																"queue_id": {
 																	"readOnly": true,
@@ -2024,16 +2048,20 @@
 											"items": {
 												"properties": {
 													"created_on": {
-														"readOnly": true
+														"readOnly": true,
+														"type": "string"
 													},
 													"environment": {
-														"readOnly": true
+														"readOnly": true,
+														"type": "string"
 													},
 													"queue_name": {
-														"readOnly": true
+														"readOnly": true,
+														"type": "string"
 													},
 													"service": {
-														"readOnly": true
+														"readOnly": true,
+														"type": "string"
 													},
 													"settings": {
 														"properties": {
@@ -2043,6 +2071,7 @@
 																"type": "number"
 															},
 															"max_retries": {
+																"description": "The maximum number of retries",
 																"example": 3,
 																"type": "number"
 															},
@@ -2233,16 +2262,20 @@
 													"items": {
 														"properties": {
 															"created_on": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															},
 															"environment": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															},
 															"queue_name": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															},
 															"service": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															},
 															"settings": {
 																"properties": {
@@ -2252,6 +2285,7 @@
 																		"type": "number"
 																	},
 																	"max_retries": {
+																		"description": "The maximum number of retries",
 																		"example": 3,
 																		"type": "number"
 																	},
@@ -2541,10 +2575,12 @@
 												{
 													"properties": {
 														"created_on": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"modified_on": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"queue_id": {
 															"readOnly": true,
@@ -2703,10 +2739,12 @@
 														{
 															"properties": {
 																"created_on": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"modified_on": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"queue_id": {
 																	"readOnly": true,
@@ -3017,20 +3055,25 @@
 												{
 													"properties": {
 														"created_on": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"dead_letter_queue": {
+															"description": "The name of the dead letter queue",
 															"example": "example-dlq",
 															"type": "string"
 														},
 														"environment": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"queue_name": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"script_name": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"settings": {
 															"properties": {
@@ -3040,6 +3083,7 @@
 																	"type": "number"
 																},
 																"max_retries": {
+																	"description": "The maximum number of retries",
 																	"example": 3,
 																	"type": "number"
 																},
@@ -3200,20 +3244,25 @@
 														{
 															"properties": {
 																"created_on": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"dead_letter_queue": {
+																	"description": "The name of the dead letter queue",
 																	"example": "example-dlq",
 																	"type": "string"
 																},
 																"environment": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"queue_name": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"script_name": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"settings": {
 																	"properties": {
@@ -3223,6 +3272,7 @@
 																			"type": "number"
 																		},
 																		"max_retries": {
+																			"description": "The maximum number of retries",
 																			"example": 3,
 																			"type": "number"
 																		},
@@ -4443,10 +4493,12 @@
 												{
 													"properties": {
 														"created_on": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"modified_on": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"queue_id": {
 															"readOnly": true,
@@ -4605,10 +4657,12 @@
 														{
 															"properties": {
 																"created_on": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"modified_on": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"queue_id": {
 																	"readOnly": true,
@@ -4928,19 +4982,23 @@
 												{
 													"properties": {
 														"created_on": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"dead_letter_queue": {
 															"example": "updated-example-dlq"
 														},
 														"environment": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"queue_name": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"script_name": {
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"settings": {
 															"properties": {
@@ -4949,6 +5007,7 @@
 																	"type": "number"
 																},
 																"max_retries": {
+																	"description": "The maximum number of retries",
 																	"example": 3,
 																	"type": "number"
 																},
@@ -5109,19 +5168,23 @@
 														{
 															"properties": {
 																"created_on": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"dead_letter_queue": {
 																	"example": "updated-example-dlq"
 																},
 																"environment": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"queue_name": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"script_name": {
-																	"readOnly": true
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"settings": {
 																	"properties": {
@@ -5130,6 +5193,7 @@
 																			"type": "number"
 																		},
 																		"max_retries": {
+																			"description": "The maximum number of retries",
 																			"example": 3,
 																			"type": "number"
 																		},
