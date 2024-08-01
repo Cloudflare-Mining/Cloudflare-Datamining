@@ -17,7 +17,7 @@
 							"type": "string"
 						}
 					],
-					"description": "The ID for this profile",
+					"description": "Unique identifier for a DLP profile",
 					"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 				}
 			},
@@ -547,7 +547,7 @@
 																					"type": "string"
 																				}
 																			],
-																			"description": "The ID for this entry",
+																			"description": "Unique identifier for a DLP entry",
 																			"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																		},
 																		"name": {
@@ -556,7 +556,17 @@
 																			"type": "string"
 																		},
 																		"profile_id": {
-																			"description": "ID of the parent profile"
+																			"allOf": [
+																				{
+																					"description": "UUID",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"readOnly": true,
+																					"type": "string"
+																				}
+																			],
+																			"description": "Unique identifier for a DLP profile",
+																			"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																		}
 																	},
 																	"title": "Predefined entry",
@@ -574,7 +584,7 @@
 																		"type": "string"
 																	}
 																],
-																"description": "The ID for this profile",
+																"description": "Unique identifier for a DLP profile",
 																"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 															},
 															"name": {
@@ -672,7 +682,7 @@
 																					"type": "string"
 																				}
 																			],
-																			"description": "The ID for this entry",
+																			"description": "Unique identifier for a DLP entry",
 																			"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																		},
 																		"name": {
@@ -704,7 +714,17 @@
 																			"type": "object"
 																		},
 																		"profile_id": {
-																			"description": "ID of the parent profile"
+																			"allOf": [
+																				{
+																					"description": "UUID",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"readOnly": true,
+																					"type": "string"
+																				}
+																			],
+																			"description": "Unique identifier for a DLP profile",
+																			"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																		},
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
@@ -728,7 +748,7 @@
 																		"type": "string"
 																	}
 																],
-																"description": "The ID for this profile",
+																"description": "Unique identifier for a DLP profile",
 																"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 															},
 															"name": {
@@ -796,7 +816,7 @@
 																					"type": "string"
 																				}
 																			],
-																			"description": "The ID for this entry",
+																			"description": "Unique identifier for a DLP entry",
 																			"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																		},
 																		"name": {
@@ -805,7 +825,17 @@
 																			"type": "string"
 																		},
 																		"profile_id": {
-																			"description": "ID of the parent profile"
+																			"allOf": [
+																				{
+																					"description": "UUID",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"readOnly": true,
+																					"type": "string"
+																				}
+																			],
+																			"description": "Unique identifier for a DLP profile",
+																			"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																		},
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
@@ -829,7 +859,7 @@
 																		"type": "string"
 																	}
 																],
-																"description": "The ID for this profile",
+																"description": "Unique identifier for a DLP profile",
 																"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 															},
 															"name": {
@@ -1050,7 +1080,7 @@
 																							"type": "string"
 																						}
 																					],
-																					"description": "The ID for this entry",
+																					"description": "Unique identifier for a DLP entry",
 																					"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																				},
 																				"name": {
@@ -1059,7 +1089,17 @@
 																					"type": "string"
 																				},
 																				"profile_id": {
-																					"description": "ID of the parent profile"
+																					"allOf": [
+																						{
+																							"description": "UUID",
+																							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																							"maxLength": 36,
+																							"readOnly": true,
+																							"type": "string"
+																						}
+																					],
+																					"description": "Unique identifier for a DLP profile",
+																					"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																				}
 																			},
 																			"title": "Predefined entry",
@@ -1077,7 +1117,7 @@
 																				"type": "string"
 																			}
 																		],
-																		"description": "The ID for this profile",
+																		"description": "Unique identifier for a DLP profile",
 																		"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																	},
 																	"name": {
@@ -1175,7 +1215,7 @@
 																							"type": "string"
 																						}
 																					],
-																					"description": "The ID for this entry",
+																					"description": "Unique identifier for a DLP entry",
 																					"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																				},
 																				"name": {
@@ -1207,7 +1247,17 @@
 																					"type": "object"
 																				},
 																				"profile_id": {
-																					"description": "ID of the parent profile"
+																					"allOf": [
+																						{
+																							"description": "UUID",
+																							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																							"maxLength": 36,
+																							"readOnly": true,
+																							"type": "string"
+																						}
+																					],
+																					"description": "Unique identifier for a DLP profile",
+																					"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																				},
 																				"updated_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
@@ -1231,7 +1281,7 @@
 																				"type": "string"
 																			}
 																		],
-																		"description": "The ID for this profile",
+																		"description": "Unique identifier for a DLP profile",
 																		"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																	},
 																	"name": {
@@ -1299,7 +1349,7 @@
 																							"type": "string"
 																						}
 																					],
-																					"description": "The ID for this entry",
+																					"description": "Unique identifier for a DLP entry",
 																					"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																				},
 																				"name": {
@@ -1308,7 +1358,17 @@
 																					"type": "string"
 																				},
 																				"profile_id": {
-																					"description": "ID of the parent profile"
+																					"allOf": [
+																						{
+																							"description": "UUID",
+																							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																							"maxLength": 36,
+																							"readOnly": true,
+																							"type": "string"
+																						}
+																					],
+																					"description": "Unique identifier for a DLP profile",
+																					"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																				},
 																				"updated_at": {
 																					"example": "2014-01-01T05:20:00.12345Z",
@@ -1332,7 +1392,7 @@
 																				"type": "string"
 																			}
 																		],
-																		"description": "The ID for this profile",
+																		"description": "Unique identifier for a DLP profile",
 																		"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																	},
 																	"name": {
@@ -1487,7 +1547,7 @@
 							"type": "string"
 						}
 					],
-					"description": "The ID for this profile",
+					"description": "Unique identifier for a DLP profile",
 					"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 				}
 			},
@@ -1667,7 +1727,7 @@
 																				"type": "string"
 																			}
 																		],
-																		"description": "The ID for this entry",
+																		"description": "Unique identifier for a DLP entry",
 																		"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																	},
 																	"name": {
@@ -1676,7 +1736,17 @@
 																		"type": "string"
 																	},
 																	"profile_id": {
-																		"description": "ID of the parent profile"
+																		"allOf": [
+																			{
+																				"description": "UUID",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"maxLength": 36,
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		],
+																		"description": "Unique identifier for a DLP profile",
+																		"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																	}
 																},
 																"title": "Predefined entry",
@@ -1694,7 +1764,7 @@
 																	"type": "string"
 																}
 															],
-															"description": "The ID for this profile",
+															"description": "Unique identifier for a DLP profile",
 															"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 														},
 														"name": {
@@ -1792,7 +1862,7 @@
 																				"type": "string"
 																			}
 																		],
-																		"description": "The ID for this entry",
+																		"description": "Unique identifier for a DLP entry",
 																		"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																	},
 																	"name": {
@@ -1824,7 +1894,17 @@
 																		"type": "object"
 																	},
 																	"profile_id": {
-																		"description": "ID of the parent profile"
+																		"allOf": [
+																			{
+																				"description": "UUID",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"maxLength": 36,
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		],
+																		"description": "Unique identifier for a DLP profile",
+																		"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																	},
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
@@ -1848,7 +1928,7 @@
 																	"type": "string"
 																}
 															],
-															"description": "The ID for this profile",
+															"description": "Unique identifier for a DLP profile",
 															"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 														},
 														"name": {
@@ -1916,7 +1996,7 @@
 																				"type": "string"
 																			}
 																		],
-																		"description": "The ID for this entry",
+																		"description": "Unique identifier for a DLP entry",
 																		"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																	},
 																	"name": {
@@ -1925,7 +2005,17 @@
 																		"type": "string"
 																	},
 																	"profile_id": {
-																		"description": "ID of the parent profile"
+																		"allOf": [
+																			{
+																				"description": "UUID",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"maxLength": 36,
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		],
+																		"description": "Unique identifier for a DLP profile",
+																		"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																	},
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
@@ -1949,7 +2039,7 @@
 																	"type": "string"
 																}
 															],
-															"description": "The ID for this profile",
+															"description": "Unique identifier for a DLP profile",
 															"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 														},
 														"name": {
@@ -2149,7 +2239,7 @@
 																						"type": "string"
 																					}
 																				],
-																				"description": "The ID for this entry",
+																				"description": "Unique identifier for a DLP entry",
 																				"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																			},
 																			"name": {
@@ -2158,7 +2248,17 @@
 																				"type": "string"
 																			},
 																			"profile_id": {
-																				"description": "ID of the parent profile"
+																				"allOf": [
+																					{
+																						"description": "UUID",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"maxLength": 36,
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				],
+																				"description": "Unique identifier for a DLP profile",
+																				"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																			}
 																		},
 																		"title": "Predefined entry",
@@ -2176,7 +2276,7 @@
 																			"type": "string"
 																		}
 																	],
-																	"description": "The ID for this profile",
+																	"description": "Unique identifier for a DLP profile",
 																	"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																},
 																"name": {
@@ -2274,7 +2374,7 @@
 																						"type": "string"
 																					}
 																				],
-																				"description": "The ID for this entry",
+																				"description": "Unique identifier for a DLP entry",
 																				"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																			},
 																			"name": {
@@ -2306,7 +2406,17 @@
 																				"type": "object"
 																			},
 																			"profile_id": {
-																				"description": "ID of the parent profile"
+																				"allOf": [
+																					{
+																						"description": "UUID",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"maxLength": 36,
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				],
+																				"description": "Unique identifier for a DLP profile",
+																				"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																			},
 																			"updated_at": {
 																				"example": "2014-01-01T05:20:00.12345Z",
@@ -2330,7 +2440,7 @@
 																			"type": "string"
 																		}
 																	],
-																	"description": "The ID for this profile",
+																	"description": "Unique identifier for a DLP profile",
 																	"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																},
 																"name": {
@@ -2398,7 +2508,7 @@
 																						"type": "string"
 																					}
 																				],
-																				"description": "The ID for this entry",
+																				"description": "Unique identifier for a DLP entry",
 																				"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																			},
 																			"name": {
@@ -2407,7 +2517,17 @@
 																				"type": "string"
 																			},
 																			"profile_id": {
-																				"description": "ID of the parent profile"
+																				"allOf": [
+																					{
+																						"description": "UUID",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"maxLength": 36,
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				],
+																				"description": "Unique identifier for a DLP profile",
+																				"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																			},
 																			"updated_at": {
 																				"example": "2014-01-01T05:20:00.12345Z",
@@ -2431,7 +2551,7 @@
 																			"type": "string"
 																		}
 																	],
-																	"description": "The ID for this profile",
+																	"description": "Unique identifier for a DLP profile",
 																	"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																},
 																"name": {
@@ -2584,7 +2704,7 @@
 							"type": "string"
 						}
 					],
-					"description": "The ID for this profile",
+					"description": "Unique identifier for a DLP profile",
 					"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 				}
 			},
@@ -2781,7 +2901,7 @@
 																				"type": "string"
 																			}
 																		],
-																		"description": "The ID for this entry",
+																		"description": "Unique identifier for a DLP entry",
 																		"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																	},
 																	"name": {
@@ -2813,7 +2933,17 @@
 																		"type": "object"
 																	},
 																	"profile_id": {
-																		"description": "ID of the parent profile"
+																		"allOf": [
+																			{
+																				"description": "UUID",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"maxLength": 36,
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		],
+																		"description": "Unique identifier for a DLP profile",
+																		"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																	},
 																	"updated_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
@@ -2837,7 +2967,7 @@
 																	"type": "string"
 																}
 															],
-															"description": "The ID for this profile",
+															"description": "Unique identifier for a DLP profile",
 															"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 														},
 														"name": {
@@ -3058,7 +3188,7 @@
 																						"type": "string"
 																					}
 																				],
-																				"description": "The ID for this entry",
+																				"description": "Unique identifier for a DLP entry",
 																				"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																			},
 																			"name": {
@@ -3090,7 +3220,17 @@
 																				"type": "object"
 																			},
 																			"profile_id": {
-																				"description": "ID of the parent profile"
+																				"allOf": [
+																					{
+																						"description": "UUID",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"maxLength": 36,
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				],
+																				"description": "Unique identifier for a DLP profile",
+																				"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																			},
 																			"updated_at": {
 																				"example": "2014-01-01T05:20:00.12345Z",
@@ -3114,7 +3254,7 @@
 																			"type": "string"
 																		}
 																	],
-																	"description": "The ID for this profile",
+																	"description": "Unique identifier for a DLP profile",
 																	"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																},
 																"name": {
@@ -3271,7 +3411,7 @@
 							"type": "string"
 						}
 					],
-					"description": "The ID for this profile",
+					"description": "Unique identifier for a DLP profile",
 					"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 				}
 			},
@@ -3451,7 +3591,7 @@
 																				"type": "string"
 																			}
 																		],
-																		"description": "The ID for this entry",
+																		"description": "Unique identifier for a DLP entry",
 																		"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																	},
 																	"name": {
@@ -3460,7 +3600,17 @@
 																		"type": "string"
 																	},
 																	"profile_id": {
-																		"description": "ID of the parent profile"
+																		"allOf": [
+																			{
+																				"description": "UUID",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"maxLength": 36,
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		],
+																		"description": "Unique identifier for a DLP profile",
+																		"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																	}
 																},
 																"title": "Predefined entry",
@@ -3478,7 +3628,7 @@
 																	"type": "string"
 																}
 															],
-															"description": "The ID for this profile",
+															"description": "Unique identifier for a DLP profile",
 															"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 														},
 														"name": {
@@ -3676,7 +3826,7 @@
 																						"type": "string"
 																					}
 																				],
-																				"description": "The ID for this entry",
+																				"description": "Unique identifier for a DLP entry",
 																				"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																			},
 																			"name": {
@@ -3685,7 +3835,17 @@
 																				"type": "string"
 																			},
 																			"profile_id": {
-																				"description": "ID of the parent profile"
+																				"allOf": [
+																					{
+																						"description": "UUID",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"maxLength": 36,
+																						"readOnly": true,
+																						"type": "string"
+																					}
+																				],
+																				"description": "Unique identifier for a DLP profile",
+																				"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																			}
 																		},
 																		"title": "Predefined entry",
@@ -3703,7 +3863,7 @@
 																			"type": "string"
 																		}
 																	],
-																	"description": "The ID for this profile",
+																	"description": "Unique identifier for a DLP profile",
 																	"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																},
 																"name": {
@@ -4174,7 +4334,7 @@
 																			"type": "string"
 																		}
 																	],
-																	"description": "The ID for this entry",
+																	"description": "Unique identifier for a DLP entry",
 																	"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																},
 																"name": {
@@ -4206,7 +4366,17 @@
 																	"type": "object"
 																},
 																"profile_id": {
-																	"description": "ID of the parent profile"
+																	"allOf": [
+																		{
+																			"description": "UUID",
+																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	],
+																	"description": "Unique identifier for a DLP profile",
+																	"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																},
 																"updated_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
@@ -4230,7 +4400,7 @@
 																"type": "string"
 															}
 														],
-														"description": "The ID for this profile",
+														"description": "Unique identifier for a DLP profile",
 														"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 													},
 													"name": {
@@ -4468,7 +4638,7 @@
 																					"type": "string"
 																				}
 																			],
-																			"description": "The ID for this entry",
+																			"description": "Unique identifier for a DLP entry",
 																			"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 																		},
 																		"name": {
@@ -4500,7 +4670,17 @@
 																			"type": "object"
 																		},
 																		"profile_id": {
-																			"description": "ID of the parent profile"
+																			"allOf": [
+																				{
+																					"description": "UUID",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"readOnly": true,
+																					"type": "string"
+																				}
+																			],
+																			"description": "Unique identifier for a DLP profile",
+																			"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 																		},
 																		"updated_at": {
 																			"example": "2014-01-01T05:20:00.12345Z",
@@ -4524,7 +4704,7 @@
 																		"type": "string"
 																	}
 																],
-																"description": "The ID for this profile",
+																"description": "Unique identifier for a DLP profile",
 																"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 															},
 															"name": {
@@ -4681,7 +4861,7 @@
 							"type": "string"
 						}
 					],
-					"description": "The ID for this profile",
+					"description": "Unique identifier for a DLP profile",
 					"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 				}
 			},
@@ -4769,7 +4949,7 @@
 													"type": "string"
 												}
 											],
-											"description": "The ID for this entry",
+											"description": "Unique identifier for a DLP entry",
 											"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 										},
 										"name": {
@@ -4801,7 +4981,17 @@
 											"type": "object"
 										},
 										"profile_id": {
-											"description": "ID of the parent profile"
+											"allOf": [
+												{
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
+												}
+											],
+											"description": "Unique identifier for a DLP profile",
+											"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 										},
 										"updated_at": {
 											"example": "2014-01-01T05:20:00.12345Z",
@@ -4846,7 +5036,7 @@
 															"type": "string"
 														}
 													],
-													"description": "The ID for this entry",
+													"description": "Unique identifier for a DLP entry",
 													"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 												}
 											},
@@ -4870,7 +5060,7 @@
 															"type": "string"
 														}
 													],
-													"description": "The ID for this entry",
+													"description": "Unique identifier for a DLP entry",
 													"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 												}
 											},
@@ -4967,7 +5157,7 @@
 														"type": "string"
 													}
 												],
-												"description": "The ID for this entry",
+												"description": "Unique identifier for a DLP entry",
 												"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 											},
 											"name": {
@@ -4999,7 +5189,17 @@
 												"type": "object"
 											},
 											"profile_id": {
-												"description": "ID of the parent profile"
+												"allOf": [
+													{
+														"description": "UUID",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"readOnly": true,
+														"type": "string"
+													}
+												],
+												"description": "Unique identifier for a DLP profile",
+												"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 											},
 											"updated_at": {
 												"example": "2014-01-01T05:20:00.12345Z",
@@ -5023,7 +5223,7 @@
 											"type": "string"
 										}
 									],
-									"description": "The ID for this profile",
+									"description": "Unique identifier for a DLP profile",
 									"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 								},
 								"name": {
@@ -5136,7 +5336,7 @@
 																"type": "string"
 															}
 														],
-														"description": "The ID for this entry",
+														"description": "Unique identifier for a DLP entry",
 														"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 													},
 													"name": {
@@ -5168,7 +5368,17 @@
 														"type": "object"
 													},
 													"profile_id": {
-														"description": "ID of the parent profile"
+														"allOf": [
+															{
+																"description": "UUID",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"readOnly": true,
+																"type": "string"
+															}
+														],
+														"description": "Unique identifier for a DLP profile",
+														"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 													},
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -5192,7 +5402,7 @@
 													"type": "string"
 												}
 											],
-											"description": "The ID for this profile",
+											"description": "Unique identifier for a DLP profile",
 											"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 										},
 										"name": {
@@ -5343,7 +5553,7 @@
 							"type": "string"
 						}
 					],
-					"description": "The ID for this profile",
+					"description": "Unique identifier for a DLP profile",
 					"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 				}
 			},
@@ -5419,7 +5629,7 @@
 													"type": "string"
 												}
 											],
-											"description": "The ID for this entry",
+											"description": "Unique identifier for a DLP entry",
 											"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 										}
 									}
@@ -5499,7 +5709,7 @@
 														"type": "string"
 													}
 												],
-												"description": "The ID for this entry",
+												"description": "Unique identifier for a DLP entry",
 												"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 											},
 											"name": {
@@ -5508,7 +5718,17 @@
 												"type": "string"
 											},
 											"profile_id": {
-												"description": "ID of the parent profile"
+												"allOf": [
+													{
+														"description": "UUID",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"readOnly": true,
+														"type": "string"
+													}
+												],
+												"description": "Unique identifier for a DLP profile",
+												"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 											}
 										},
 										"title": "Predefined entry",
@@ -5526,7 +5746,7 @@
 											"type": "string"
 										}
 									],
-									"description": "The ID for this profile",
+									"description": "Unique identifier for a DLP profile",
 									"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 								},
 								"name": {
@@ -5616,7 +5836,7 @@
 																"type": "string"
 															}
 														],
-														"description": "The ID for this entry",
+														"description": "Unique identifier for a DLP entry",
 														"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 													},
 													"name": {
@@ -5625,7 +5845,17 @@
 														"type": "string"
 													},
 													"profile_id": {
-														"description": "ID of the parent profile"
+														"allOf": [
+															{
+																"description": "UUID",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"readOnly": true,
+																"type": "string"
+															}
+														],
+														"description": "Unique identifier for a DLP profile",
+														"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 													}
 												},
 												"title": "Predefined entry",
@@ -5643,7 +5873,7 @@
 													"type": "string"
 												}
 											],
-											"description": "The ID for this profile",
+											"description": "Unique identifier for a DLP profile",
 											"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 										},
 										"name": {
