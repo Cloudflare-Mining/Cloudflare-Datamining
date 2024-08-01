@@ -130,6 +130,7 @@
 	"r2.objects.table.column.type.pending_multipart_upload": "Ongoing Multipart Upload",
 	"r2.objects.table.column.actions.download": "Download",
 	"r2.objects.table.column.actions.download_too_large": "Files larger than 1 GB can only be downloaded using the S3 Compatibility API or by using Workers with R2. <0>Learn more about the S3 Compatibility API</0> or <1>View the guide on using R2 from Workers</1>.",
+	"r2.objects.table.column.actions.download_ssec": "Files encrypted with SSE-C can only be downloaded using the S3 Compatibility API or by using Workers with R2. <0>Learn more about the S3 Compatibility API</0> or <1>View the guide on using R2 from Workers</1>.",
 	"r2.objects.table.column.actions.download_failed": "Download failed. Please try again.",
 	"r2.objects.table.column.actions.delete": "Delete",
 	"r2.objects.table.empty_object_key_placeholder": "This object is unnamed",
