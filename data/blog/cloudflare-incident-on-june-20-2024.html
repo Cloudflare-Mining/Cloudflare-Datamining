@@ -6,7 +6,7 @@
 	<p>On Thursday, June 20, 2024, two independent events caused an increase in latency and error rates for Internet properties and Cloudflare services that lasted 114 minutes. During the 30-minute peak of the impact, we saw that 1.4 - 2.1% of HTTP requests to our CDN received a generic error page, and observed a 3x increase for the 99th percentile Time To First Byte (TTFB) latency. </p>
 	<p>These events occurred because:</p>
 	<ol>
-		<li>Automated network monitoring detected performance degradation, re-routing traffic suboptimally and <a href="https://www.cloudflarestatus.com/incidents/k7d4c79c63lq">causing backbone congestion between 17:33 and 17:50 UTC</a></li>
+		<li><a href="https://www.cloudflare.com/network-services/solutions/network-monitoring-tools">Automated network monitoring</a> detected performance degradation, re-routing traffic suboptimally and <a href="https://www.cloudflarestatus.com/incidents/k7d4c79c63lq">causing backbone congestion between 17:33 and 17:50 UTC</a></li>
 		<li>A new Distributed Denial-of-Service (DDoS) mitigation mechanism deployed between 14:14 and 17:06 UTC triggered a latent bug in our rate limiting system that allowed a specific form of HTTP request to cause a process handling it to enter an infinite loop <a href="https://www.cloudflarestatus.com/incidents/p7l6rrbhysck">between 17:47 and 19:27 UTC</a></li>
 	</ol>
 	<p>Impact from these events were observed in many Cloudflare data centers around the world.</p>
