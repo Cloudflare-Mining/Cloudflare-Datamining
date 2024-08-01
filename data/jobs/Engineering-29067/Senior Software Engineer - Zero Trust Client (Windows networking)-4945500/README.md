@@ -5,7 +5,15 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations: Remote in US or Canada (<em>Alberta, British Columbia, Quebec or Ontario</em>)</strong></p>
+<p><strong>Locations: Remote in:</strong></p>
+<ul>
+	<li><strong>US</strong></li>
+	<li><strong>Canada (<em>Alberta, British Columbia, Quebec or Ontario</em>)</strong></li>
+	<li><strong>Germany</strong></li>
+	<li><strong>Netherlands</strong></li>
+	<li><strong>Portugal</strong></li>
+	<li><strong>United Kingdsom</strong></li>
+</ul>
 <h2>What you'll do</h2>
 <p>We’re looking for a Senior Windows Software Engineer to join our <a href="https://www.cloudflare.com/zero-trust/">Zero Trust</a> team. You will be working on the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/">Zero Trust desktop client</a>, which protects corporate devices by securely and privately sending traffic from those devices to Cloudflare’s global network, which can apply advanced web filtering and advanced Zero Trust policies.</p>
 <p>In your role, you will predominantly be using&nbsp;<strong>Rust</strong> along platform-native languages &amp; APIs to implement high-performance networking code that runs on multiple desktop platforms. You’ll be expected to <strong>improve the code quality</strong> and to build solid, <strong>testable, </strong>and<strong> well-documented</strong> foundations. You will be most successful in this role if you have a good understanding of <strong>Windows internals</strong> (virtual memory, multi-threading, process lifecycle, kernel programing, system APIs, etc.) and <strong>networking protocols</strong> (TCP/IP, UDP, DNS, QUIC, H/3, proxying, etc.). You will also have to interact with other languages, such as Swift, C#, C, and python.</p>
