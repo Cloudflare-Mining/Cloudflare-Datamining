@@ -11,7 +11,7 @@
 	],
 	"internal_job_id": 2914050,
 	"location": {
-		"name": "Hybrid or Remote"
+		"name": "Hybrid"
 	},
 	"metadata": [
 		{
@@ -30,13 +30,14 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"US"
+				"Austin, US",
+				"San Francisco, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 6088406,
-	"updated_at": "2024-07-25T16:17:41-04:00",
+	"updated_at": "2024-08-01T09:56:28-04:00",
 	"requisition_id": "MKT_AMER_BF_2024_053",
 	"title": "Sr. Strategy & Planning Manager for Portfolio Marketing and GTM",
 	"departments": [
@@ -49,9 +50,16 @@
 	],
 	"offices": [
 		{
-			"id": 75375,
-			"name": "Remote US",
-			"location": null,
+			"id": 19983,
+			"name": "Austin, TX",
+			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		}

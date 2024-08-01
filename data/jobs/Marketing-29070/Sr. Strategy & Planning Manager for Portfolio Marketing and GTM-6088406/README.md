@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Location: Remote US, Austin, San Francisco</strong></h4>
+<h4><strong>Available Locations -&nbsp;</strong>San Francisco and or Austin, TX area</h4>
 <hr>
 <h4><strong>What we’re looking for</strong></h4>
 <p>We are looking for a Strategy &amp; Planning Manager for the Product &amp; Solutions Marketing team who can lead strategic projects, design and implement scalable programs, and manage tools and processes for GTM-wide goals across marketing in alignment with sales and products teams.. The product &amp; solutions marketing team includes product, solutions, technical and competitive marketing teams, who work closely with products, marketing and sales to bring new products to market and engage with customers to drive business goals for Cloudflare and the customers we serve.</p>
