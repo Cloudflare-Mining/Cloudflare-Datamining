@@ -440,25 +440,32 @@
 				}
 			},
 			{
-				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
-					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"example": "7d",
-					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
-					"type": "string"
+					"items": {
+						"example": "7d",
+						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
-				"description": "Start of the date range (inclusive).",
+				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"description": "Start of the date range (inclusive).",
+					"description": "Array of datetimes to filter the start of a series.",
 					"example": "2023-09-01T11:41:33.782Z",
-					"format": "date-time",
-					"type": "string"
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -468,28 +475,54 @@
 				"schema": {
 					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
-					"format": "date-time",
-					"type": "string"
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
-				"description": "Comma separated list of ASNs.",
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
-					"description": "Comma separated list of ASNs.",
-					"example": "174,7922",
-					"type": "string"
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
-				"description": "Comma separated list of locations.",
+				"description": "Array of locations (alpha-2 country codes).",
 				"in": "query",
 				"name": "location",
 				"schema": {
-					"description": "Comma separated list of locations.",
-					"example": "US,CA",
-					"type": "string"
+					"description": "Array of locations (alpha-2 country codes).",
+					"example": "US",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter for ip version.",
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
@@ -527,25 +560,34 @@
 									"properties": {
 										"meta": {
 											"properties": {
-												"dateRange": {
+												"queries": {
 													"items": {
 														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
+															"dateRange": {
+																"properties": {
+																	"endTime": {
+																		"example": "2024-07-29T13:30:00Z",
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"example": "2024-07-28T13:30:00Z",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"startTime",
+																	"endTime"
+																],
+																"type": "object"
 															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
+															"entity": {
+																"example": "174",
 																"type": "string"
 															}
 														},
 														"required": [
-															"startTime",
-															"endTime"
+															"dateRange",
+															"entity"
 														],
 														"type": "object"
 													},
@@ -553,7 +595,7 @@
 												}
 											},
 											"required": [
-												"dateRange"
+												"queries"
 											],
 											"type": "object"
 										},
@@ -587,43 +629,11 @@
 												"ipv6"
 											],
 											"type": "object"
-										},
-										"serie_cn": {
-											"properties": {
-												"ipv4": {
-													"items": {
-														"example": "4",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"ipv6": {
-													"items": {
-														"example": "6",
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"timestamps": {
-													"items": {
-														"format": "date-time",
-														"type": "string"
-													},
-													"type": "array"
-												}
-											},
-											"required": [
-												"timestamps",
-												"ipv4",
-												"ipv6"
-											],
-											"type": "object"
 										}
 									},
 									"required": [
 										"meta",
-										"serie_174",
-										"serie_cn"
+										"serie_174"
 									],
 									"type": "object"
 								},
