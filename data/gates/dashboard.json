@@ -284,7 +284,7 @@
 		"enabled": true
 	},
 	"control-plane-large-orgs": {
-		"enabled": false
+		"enabled": true
 	},
 	"control-plane-large-orgs-account-mgmt": {
 		"enabled": false
@@ -545,6 +545,13 @@
 		"branches": [
 			"baseline",
 			"experiment"
+		]
+	},
+	"hide-quick-start-guide": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"hide-quick-start-guide"
 		]
 	},
 	"hostname-lists": {
