@@ -3550,6 +3550,7 @@ export type BaseAiSpeechRecognitionModels =
 export type BaseAiImageClassificationModels = "@cf/microsoft/resnet-50";
 export type BaseAiObjectDetectionModels = "@cf/facebook/detr-resnet-50";
 export type BaseAiTextGenerationModels =
+  | "@cf/meta/llama-3.1-8b-instruct"
   | "@cf/meta/llama-3-8b-instruct"
   | "@cf/meta/llama-3-8b-instruct-awq"
   | "@cf/meta/llama-2-7b-chat-int8"
@@ -5097,6 +5098,9 @@ export type VectorizeIndexConfig =
     };
 /**
  * Metadata about an existing index.
+ *
+ * This type is exclusively for the Vectorize **beta** and will be deprecated once Vectorize RC is released.
+ * See {@link VectorizeIndexInfo} for its post-beta equivalent.
  */
 export interface VectorizeIndexDetails {
   /** The unique ID of the index */
@@ -5109,6 +5113,19 @@ export interface VectorizeIndexDetails {
   config: VectorizeIndexConfig;
   /** The number of records containing vectors within the index. */
   vectorsCount: number;
+}
+/**
+ * Metadata about an existing index.
+ */
+export interface VectorizeIndexInfo {
+  /** The number of records containing vectors within the index. */
+  vectorsCount: number;
+  /** Number of dimensions the index has been configured for. */
+  dimensions: number;
+  /** ISO 8601 datetime of the last processed mutation on in the index. All changes before this mutation will be reflected in the index state. */
+  processedUpToDatetime: number;
+  /** UUIDv4 of the last mutation processed by the index. All changes before this mutation will be reflected in the index state. */
+  processedUpToMutation: number;
 }
 /**
  * Represents a single vector value set along with its associated metadata.
@@ -5216,7 +5233,7 @@ export declare abstract class Vectorize {
    * Get information about the currently bound index.
    * @returns A promise that resolves with information about the current index.
    */
-  public describe(): Promise<VectorizeIndexDetails>;
+  public describe(): Promise<VectorizeIndexInfo>;
   /**
    * Use the provided vector to perform a similarity search across the index.
    * @param vector Input vector that will be used to drive the similarity search.
