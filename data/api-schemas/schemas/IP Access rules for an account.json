@@ -7,13 +7,24 @@
 				"in": "path",
 				"name": "identifier",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "The unique identifier of the resource.",
+					"example": "de677e5818985db1285d0e80225f06e5",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
 			},
 			{
 				"in": "path",
 				"name": "account_identifier",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -356,79 +367,73 @@
 				"in": "path",
 				"name": "account_identifier",
 				"required": true,
-				"schema": {}
-			},
-			{
-				"in": "query",
-				"name": "filters",
 				"schema": {
-					"properties": {
-						"configuration.target": {
-							"description": "The target to search in existing rules.",
-							"enum": [
-								"ip",
-								"ip_range",
-								"asn",
-								"country"
-							],
-							"example": "ip",
-							"type": "string"
-						},
-						"configuration.value": {
-							"description": "The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.\nNotes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.",
-							"example": "198.51.100.4",
-							"type": "string"
-						},
-						"match": {
-							"default": "all",
-							"description": "When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
-							"enum": [
-								"any",
-								"all"
-							],
-							"type": "string"
-						},
-						"mode": {
-							"description": "The action to apply to a matched request.",
-							"enum": [
-								"block",
-								"challenge",
-								"whitelist",
-								"js_challenge",
-								"managed_challenge"
-							],
-							"example": "challenge",
-							"type": "string"
-						},
-						"notes": {
-							"description": "The string to search for in the notes of existing IP Access rules.\nNotes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.",
-							"example": "my note",
-							"type": "string"
-						}
-					},
-					"type": "object"
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
 				"in": "query",
-				"name": "egs-pagination.json",
+				"name": "mode",
 				"schema": {
-					"properties": {
-						"page": {
-							"default": 1,
-							"description": "The page number of paginated results.",
-							"minimum": 1,
-							"type": "number"
-						},
-						"per_page": {
-							"default": 20,
-							"description": "The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`.",
-							"maximum": 1000,
-							"minimum": 1,
-							"type": "number"
-						}
-					},
-					"type": "object"
+					"description": "The action to apply to a matched request.",
+					"enum": [
+						"block",
+						"challenge",
+						"whitelist",
+						"js_challenge",
+						"managed_challenge"
+					],
+					"example": "challenge",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "configuration.target",
+				"schema": {
+					"description": "The target to search in existing rules.",
+					"enum": [
+						"ip",
+						"ip_range",
+						"asn",
+						"country"
+					],
+					"example": "ip",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "configuration.value",
+				"schema": {
+					"description": "The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.\nNotes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.",
+					"example": "198.51.100.4",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "notes",
+				"schema": {
+					"description": "The string to search for in the notes of existing IP Access rules.\nNotes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.",
+					"example": "my note",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "match",
+				"schema": {
+					"default": "all",
+					"description": "When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
+					"enum": [
+						"any",
+						"all"
+					],
+					"type": "string"
 				}
 			},
 			{
@@ -869,13 +874,24 @@
 				"in": "path",
 				"name": "identifier",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "The unique identifier of the resource.",
+					"example": "de677e5818985db1285d0e80225f06e5",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
 			},
 			{
 				"in": "path",
 				"name": "account_identifier",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -1228,13 +1244,24 @@
 				"in": "path",
 				"name": "identifier",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "The unique identifier of the resource.",
+					"example": "de677e5818985db1285d0e80225f06e5",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
 			},
 			{
 				"in": "path",
 				"name": "account_identifier",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -1803,7 +1830,12 @@
 				"in": "path",
 				"name": "account_identifier",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {

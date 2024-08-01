@@ -2184,11 +2184,15 @@
 				"in": "query",
 				"name": "id",
 				"schema": {
-					"description": "The unique identifier of the firewall rule.",
-					"example": "372e67954025e0ba6aaa6d586b9e0b60",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"allOf": [
+						{
+							"description": "The unique identifier of the firewall rule.",
+							"example": "372e67954025e0ba6aaa6d586b9e0b60",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						}
+					]
 				}
 			}
 		],
@@ -3576,9 +3580,19 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"id": {
+								"description": "The unique identifier of the resource.",
+								"example": "de677e5818985db1285d0e80225f06e5",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							}
+						},
 						"required": [
 							"id"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -4287,10 +4301,102 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"action": {
+								"anyOf": [
+									{
+										"properties": {
+											"mode": {
+												"description": "The action to perform.",
+												"enum": [
+													"simulate",
+													"ban",
+													"challenge",
+													"js_challenge",
+													"managed_challenge"
+												],
+												"example": "challenge",
+												"type": "string"
+											},
+											"response": {
+												"anyOf": [
+													{
+														"properties": {
+															"body": {
+																"description": "The response body to return. The value must conform to the configured content type.",
+																"example": "<error>This request has been rate-limited.</error>",
+																"maxLength": 10240,
+																"type": "string"
+															},
+															"content_type": {
+																"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
+																"example": "text/xml",
+																"maxLength": 50,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												],
+												"description": "A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.\nNotes: If you omit this object, Cloudflare will use the default HTML error page. If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone challenge pages and you should not provide the \"response\" object.",
+												"type": "object"
+											},
+											"timeout": {
+												"description": "The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.\nNotes: If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone's Challenge Passage time and you should not provide this value.",
+												"example": 86400,
+												"maximum": 86400,
+												"minimum": 1,
+												"type": "number"
+											}
+										},
+										"type": "object"
+									}
+								],
+								"description": "The action to perform when the threshold of matched traffic within the configured period is exceeded.",
+								"type": "object"
+							},
+							"filter": {
+								"additionalProperties": false,
+								"properties": {
+									"description": {
+										"description": "An informative summary of the filter.",
+										"example": "Restrict access from these browsers on this address range.",
+										"maxLength": 500,
+										"type": "string"
+									},
+									"expression": {
+										"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+										"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+										"type": "string"
+									},
+									"id": {
+										"description": "The unique identifier of the filter.",
+										"example": "372e67954025e0ba6aaa6d586b9e0b61",
+										"maxLength": 32,
+										"minLength": 32,
+										"readOnly": true,
+										"type": "string"
+									},
+									"paused": {
+										"description": "When true, indicates that the filter is currently paused.",
+										"example": false,
+										"type": "boolean"
+									},
+									"ref": {
+										"description": "A short reference tag. Allows you to select related filters.",
+										"example": "FIL-100",
+										"maxLength": 50,
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						},
 						"required": [
 							"filter",
 							"action"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -5722,11 +5828,110 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"action": {
+								"anyOf": [
+									{
+										"properties": {
+											"mode": {
+												"description": "The action to perform.",
+												"enum": [
+													"simulate",
+													"ban",
+													"challenge",
+													"js_challenge",
+													"managed_challenge"
+												],
+												"example": "challenge",
+												"type": "string"
+											},
+											"response": {
+												"anyOf": [
+													{
+														"properties": {
+															"body": {
+																"description": "The response body to return. The value must conform to the configured content type.",
+																"example": "<error>This request has been rate-limited.</error>",
+																"maxLength": 10240,
+																"type": "string"
+															},
+															"content_type": {
+																"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
+																"example": "text/xml",
+																"maxLength": 50,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												],
+												"description": "A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.\nNotes: If you omit this object, Cloudflare will use the default HTML error page. If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone challenge pages and you should not provide the \"response\" object.",
+												"type": "object"
+											},
+											"timeout": {
+												"description": "The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.\nNotes: If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone's Challenge Passage time and you should not provide this value.",
+												"example": 86400,
+												"maximum": 86400,
+												"minimum": 1,
+												"type": "number"
+											}
+										},
+										"type": "object"
+									}
+								],
+								"description": "The action to perform when the threshold of matched traffic within the configured period is exceeded.",
+								"type": "object"
+							},
+							"filter": {
+								"additionalProperties": false,
+								"properties": {
+									"description": {
+										"description": "An informative summary of the filter.",
+										"example": "Restrict access from these browsers on this address range.",
+										"maxLength": 500,
+										"type": "string"
+									},
+									"expression": {
+										"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+										"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+										"type": "string"
+									},
+									"id": {
+										"description": "The unique identifier of the filter.",
+										"example": "372e67954025e0ba6aaa6d586b9e0b61",
+										"maxLength": 32,
+										"minLength": 32,
+										"readOnly": true,
+										"type": "string"
+									},
+									"paused": {
+										"description": "When true, indicates that the filter is currently paused.",
+										"example": false,
+										"type": "boolean"
+									},
+									"ref": {
+										"description": "A short reference tag. Allows you to select related filters.",
+										"example": "FIL-100",
+										"maxLength": 50,
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"id": {
+								"description": "The unique identifier of the resource.",
+								"example": "de677e5818985db1285d0e80225f06e5",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							}
+						},
 						"required": [
 							"id",
 							"filter",
 							"action"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},

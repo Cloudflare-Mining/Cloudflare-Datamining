@@ -441,18 +441,26 @@
 				"in": "query",
 				"name": "description",
 				"schema": {
-					"description": "A string to search for in the description of existing rules.",
-					"example": "abusive",
-					"type": "string"
+					"allOf": [
+						{
+							"description": "A string to search for in the description of existing rules.",
+							"example": "abusive",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
 				"in": "query",
 				"name": "description_search",
 				"schema": {
-					"description": "A string to search for in the description of existing rules.",
-					"example": "abusive",
-					"type": "string"
+					"allOf": [
+						{
+							"description": "A string to search for in the description of existing rules.",
+							"example": "abusive",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
@@ -1344,10 +1352,116 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"configuration": {
+								"description": "The rule configuration.",
+								"oneOf": [
+									{
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
+												"enum": [
+													"ip"
+												],
+												"example": "ip"
+											},
+											"value": {
+												"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
+												"example": "198.51.100.4",
+												"type": "string"
+											}
+										},
+										"title": "An IP address configuration."
+									},
+									{
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
+												"enum": [
+													"ip6"
+												],
+												"example": "ip6"
+											},
+											"value": {
+												"description": "The IPv6 address to match.",
+												"example": "2001:DB8:100::CF",
+												"type": "string"
+											}
+										},
+										"title": "An IPv6 address configuration."
+									},
+									{
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
+												"enum": [
+													"ip_range"
+												],
+												"example": "ip_range"
+											},
+											"value": {
+												"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
+												"example": "198.51.100.4/16",
+												"type": "string"
+											}
+										},
+										"title": "An IP address range configuration."
+									},
+									{
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
+												"enum": [
+													"asn"
+												],
+												"example": "asn"
+											},
+											"value": {
+												"description": "The AS number to match.",
+												"example": "AS12345",
+												"type": "string"
+											}
+										},
+										"title": "An ASN configuration."
+									},
+									{
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
+												"enum": [
+													"country"
+												],
+												"example": "country"
+											},
+											"value": {
+												"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
+												"example": "US",
+												"type": "string"
+											}
+										},
+										"title": "A country configuration."
+									}
+								],
+								"type": "object"
+							},
+							"mode": {
+								"description": "The action to apply to a matched request.",
+								"enum": [
+									"block",
+									"challenge",
+									"whitelist",
+									"js_challenge",
+									"managed_challenge"
+								],
+								"example": "challenge",
+								"type": "string"
+							}
+						},
 						"required": [
 							"mode",
 							"configuration"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -1723,11 +1837,124 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"configuration": {
+								"description": "The rule configuration.",
+								"oneOf": [
+									{
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
+												"enum": [
+													"ip"
+												],
+												"example": "ip"
+											},
+											"value": {
+												"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
+												"example": "198.51.100.4",
+												"type": "string"
+											}
+										},
+										"title": "An IP address configuration."
+									},
+									{
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
+												"enum": [
+													"ip6"
+												],
+												"example": "ip6"
+											},
+											"value": {
+												"description": "The IPv6 address to match.",
+												"example": "2001:DB8:100::CF",
+												"type": "string"
+											}
+										},
+										"title": "An IPv6 address configuration."
+									},
+									{
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
+												"enum": [
+													"ip_range"
+												],
+												"example": "ip_range"
+											},
+											"value": {
+												"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
+												"example": "198.51.100.4/16",
+												"type": "string"
+											}
+										},
+										"title": "An IP address range configuration."
+									},
+									{
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
+												"enum": [
+													"asn"
+												],
+												"example": "asn"
+											},
+											"value": {
+												"description": "The AS number to match.",
+												"example": "AS12345",
+												"type": "string"
+											}
+										},
+										"title": "An ASN configuration."
+									},
+									{
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
+												"enum": [
+													"country"
+												],
+												"example": "country"
+											},
+											"value": {
+												"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
+												"example": "US",
+												"type": "string"
+											}
+										},
+										"title": "A country configuration."
+									}
+								],
+								"type": "object"
+							},
+							"id": {
+								"description": "The unique identifier of the resource.",
+								"example": "de677e5818985db1285d0e80225f06e5",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							},
+							"mode": {
+								"description": "The action to apply to a matched request.",
+								"enum": [
+									"block",
+									"challenge",
+									"whitelist",
+									"js_challenge",
+									"managed_challenge"
+								],
+								"example": "challenge",
+								"type": "string"
+							}
+						},
 						"required": [
 							"id",
 							"mode",
 							"configuration"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},

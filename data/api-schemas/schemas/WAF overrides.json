@@ -401,10 +401,24 @@
 																		]
 																	},
 																	"challenge": {
-																		"example": "block"
+																		"description": "The WAF rule action to apply.",
+																		"enum": [
+																			"challenge",
+																			"block",
+																			"simulate",
+																			"disable",
+																			"default"
+																		]
 																	},
 																	"default": {
-																		"example": "block"
+																		"description": "The WAF rule action to apply.",
+																		"enum": [
+																			"challenge",
+																			"block",
+																			"simulate",
+																			"disable",
+																			"default"
+																		]
 																	},
 																	"disable": {
 																		"description": "The WAF rule action to apply.",
@@ -417,7 +431,14 @@
 																		]
 																	},
 																	"simulate": {
-																		"example": "disable"
+																		"description": "The WAF rule action to apply.",
+																		"enum": [
+																			"challenge",
+																			"block",
+																			"simulate",
+																			"disable",
+																			"default"
+																		]
 																	}
 																},
 																"type": "object"
@@ -654,10 +675,24 @@
 																				]
 																			},
 																			"challenge": {
-																				"example": "block"
+																				"description": "The WAF rule action to apply.",
+																				"enum": [
+																					"challenge",
+																					"block",
+																					"simulate",
+																					"disable",
+																					"default"
+																				]
 																			},
 																			"default": {
-																				"example": "block"
+																				"description": "The WAF rule action to apply.",
+																				"enum": [
+																					"challenge",
+																					"block",
+																					"simulate",
+																					"disable",
+																					"default"
+																				]
 																			},
 																			"disable": {
 																				"description": "The WAF rule action to apply.",
@@ -670,7 +705,14 @@
 																				]
 																			},
 																			"simulate": {
-																				"example": "disable"
+																				"description": "The WAF rule action to apply.",
+																				"enum": [
+																					"challenge",
+																					"block",
+																					"simulate",
+																					"disable",
+																					"default"
+																				]
 																			}
 																		},
 																		"type": "object"
@@ -1019,10 +1061,24 @@
 															]
 														},
 														"challenge": {
-															"example": "block"
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
 														},
 														"default": {
-															"example": "block"
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
 														},
 														"disable": {
 															"description": "The WAF rule action to apply.",
@@ -1035,7 +1091,14 @@
 															]
 														},
 														"simulate": {
-															"example": "disable"
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
 														}
 													},
 													"type": "object"
@@ -1238,10 +1301,24 @@
 																	]
 																},
 																"challenge": {
-																	"example": "block"
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
 																},
 																"default": {
-																	"example": "block"
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
 																},
 																"disable": {
 																	"description": "The WAF rule action to apply.",
@@ -1254,7 +1331,14 @@
 																	]
 																},
 																"simulate": {
-																	"example": "disable"
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
 																}
 															},
 															"type": "object"
@@ -1429,9 +1513,20 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"urls": {
+								"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+								"items": {
+									"example": "shop.example.com/*",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
 						"required": [
 							"urls"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -1590,10 +1685,24 @@
 															]
 														},
 														"challenge": {
-															"example": "block"
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
 														},
 														"default": {
-															"example": "block"
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
 														},
 														"disable": {
 															"description": "The WAF rule action to apply.",
@@ -1606,7 +1715,14 @@
 															]
 														},
 														"simulate": {
-															"example": "disable"
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
 														}
 													},
 													"type": "object"
@@ -1809,10 +1925,24 @@
 																	]
 																},
 																"challenge": {
-																	"example": "block"
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
 																},
 																"default": {
-																	"example": "block"
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
 																},
 																"disable": {
 																	"description": "The WAF rule action to apply.",
@@ -1825,7 +1955,14 @@
 																	]
 																},
 																"simulate": {
-																	"example": "disable"
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
 																}
 															},
 															"type": "object"
@@ -2012,12 +2149,108 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"id": {
+								"description": "Identifier",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							},
+							"rewrite_action": {
+								"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
+								"properties": {
+									"block": {
+										"description": "The WAF rule action to apply.",
+										"enum": [
+											"challenge",
+											"block",
+											"simulate",
+											"disable",
+											"default"
+										]
+									},
+									"challenge": {
+										"description": "The WAF rule action to apply.",
+										"enum": [
+											"challenge",
+											"block",
+											"simulate",
+											"disable",
+											"default"
+										]
+									},
+									"default": {
+										"description": "The WAF rule action to apply.",
+										"enum": [
+											"challenge",
+											"block",
+											"simulate",
+											"disable",
+											"default"
+										]
+									},
+									"disable": {
+										"description": "The WAF rule action to apply.",
+										"enum": [
+											"challenge",
+											"block",
+											"simulate",
+											"disable",
+											"default"
+										]
+									},
+									"simulate": {
+										"description": "The WAF rule action to apply.",
+										"enum": [
+											"challenge",
+											"block",
+											"simulate",
+											"disable",
+											"default"
+										]
+									}
+								},
+								"type": "object"
+							},
+							"rules": {
+								"additionalProperties": {
+									"allOf": [
+										{
+											"description": "The WAF rule action to apply.",
+											"enum": [
+												"challenge",
+												"block",
+												"simulate",
+												"disable",
+												"default"
+											]
+										}
+									],
+									"example": "default"
+								},
+								"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+								"example": {
+									"100015": "disable"
+								},
+								"type": "object"
+							},
+							"urls": {
+								"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+								"items": {
+									"example": "shop.example.com/*",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
 						"required": [
 							"id",
 							"urls",
 							"rules",
 							"rewrite_action"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -2176,10 +2409,24 @@
 															]
 														},
 														"challenge": {
-															"example": "block"
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
 														},
 														"default": {
-															"example": "block"
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
 														},
 														"disable": {
 															"description": "The WAF rule action to apply.",
@@ -2192,7 +2439,14 @@
 															]
 														},
 														"simulate": {
-															"example": "disable"
+															"description": "The WAF rule action to apply.",
+															"enum": [
+																"challenge",
+																"block",
+																"simulate",
+																"disable",
+																"default"
+															]
 														}
 													},
 													"type": "object"
@@ -2395,10 +2649,24 @@
 																	]
 																},
 																"challenge": {
-																	"example": "block"
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
 																},
 																"default": {
-																	"example": "block"
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
 																},
 																"disable": {
 																	"description": "The WAF rule action to apply.",
@@ -2411,7 +2679,14 @@
 																	]
 																},
 																"simulate": {
-																	"example": "disable"
+																	"description": "The WAF rule action to apply.",
+																	"enum": [
+																		"challenge",
+																		"block",
+																		"simulate",
+																		"disable",
+																		"default"
+																	]
 																}
 															},
 															"type": "object"

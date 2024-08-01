@@ -992,9 +992,13 @@
 				"in": "query",
 				"name": "paused",
 				"schema": {
-					"description": "When true, indicates that the filter is currently paused.",
-					"example": false,
-					"type": "boolean"
+					"oneOf": [
+						{
+							"description": "When true, indicates that the filter is currently paused.",
+							"example": false,
+							"type": "boolean"
+						}
+					]
 				}
 			},
 			{
@@ -1989,9 +1993,17 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"expression": {
+								"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+								"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+								"type": "string"
+							}
+						},
 						"required": [
 							"expression"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -2006,172 +2018,176 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
 															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
 															"type": "array"
 														},
-														{
-															"type": "string"
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
 													],
-													"example": true,
-													"type": "boolean"
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											}
-										}
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"items": {
-												"allOf": [
-													{
-														"additionalProperties": false,
-														"properties": {
-															"description": {
-																"description": "An informative summary of the filter.",
-																"example": "Restrict access from these browsers on this address range.",
-																"maxLength": 500,
-																"type": "string"
+													"items": {
+														"allOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"description": {
+																		"description": "An informative summary of the filter.",
+																		"example": "Restrict access from these browsers on this address range.",
+																		"maxLength": 500,
+																		"type": "string"
+																	},
+																	"expression": {
+																		"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
+																		"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The unique identifier of the filter.",
+																		"example": "372e67954025e0ba6aaa6d586b9e0b61",
+																		"maxLength": 32,
+																		"minLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"paused": {
+																		"description": "When true, indicates that the filter is currently paused.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"ref": {
+																		"description": "A short reference tag. Allows you to select related filters.",
+																		"example": "FIL-100",
+																		"maxLength": 50,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															},
-															"expression": {
-																"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).",
-																"example": "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
-																"type": "string"
-															},
-															"id": {
-																"description": "The unique identifier of the filter.",
-																"example": "372e67954025e0ba6aaa6d586b9e0b61",
-																"maxLength": 32,
-																"minLength": 32,
-																"readOnly": true,
-																"type": "string"
-															},
-															"paused": {
-																"description": "When true, indicates that the filter is currently paused.",
-																"example": false,
-																"type": "boolean"
-															},
-															"ref": {
-																"description": "A short reference tag. Allows you to select related filters.",
-																"example": "FIL-100",
-																"maxLength": 50,
-																"type": "string"
+															{
+																"required": [
+																	"id",
+																	"expression",
+																	"paused"
+																],
+																"type": "object"
 															}
-														},
-														"type": "object"
+														]
 													},
-													{
-														"required": [
-															"id",
-															"expression",
-															"paused"
-														],
-														"type": "object"
-													}
-												]
+													"type": "array"
+												}
 											},
-											"type": "array"
+											"type": "object"
 										}
-									},
-									"type": "object"
+									]
 								}
 							]
 						}
@@ -2488,9 +2504,19 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"id": {
+								"description": "The unique identifier of the resource.",
+								"example": "de677e5818985db1285d0e80225f06e5",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							}
+						},
 						"required": [
 							"id"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},

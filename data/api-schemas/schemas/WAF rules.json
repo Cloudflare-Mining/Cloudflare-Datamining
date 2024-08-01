@@ -47,11 +47,15 @@
 				"in": "query",
 				"name": "group_id",
 				"schema": {
-					"description": "The unique identifier of the rule group.",
-					"example": "de677e5818985db1285d0e80225f06e5",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"allOf": [
+						{
+							"description": "The unique identifier of the rule group.",
+							"example": "de677e5818985db1285d0e80225f06e5",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
