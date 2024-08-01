@@ -1188,7 +1188,8 @@
 		"__description": "Aggregated Firewall events with adaptive sampling",
 		"avg": "The average value used for sample interval",
 		"count": "The sum of sample interval values",
-		"dimensions": "List of dimensions to group by"
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
 	},
 	"AccountFirewallEventsAdaptiveGroupsAvg": {
 		"__description": "",
@@ -1261,6 +1262,13 @@
 	},
 	"AccountFirewallEventsAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountFirewallEventsAdaptiveGroupsSum": {
+		"__description": "",
+		"botDetectionIdArray": "Array of bot management detection ids",
+		"botDetectionIdCountArray": "Count array of bot management detection ids. Elements in this array correspond to elements in botDetectionIdArray by index.",
+		"botDetectionTagArray": "Array of bot management detection tags",
+		"botDetectionTagCountArray": "Count array of bot management detection tags. Elements in this array correspond to elements in botDetectionTagArray by index."
 	},
 	"AccountFirewallEventsAdaptiveJa4SignalsElem": {
 		"__description": "",
@@ -2125,6 +2133,10 @@
 	},
 	"AccountHttpRequestsAdaptiveGroupsSum": {
 		"__description": "",
+		"botDetectionIdArray": "Array of bot management detection ids",
+		"botDetectionIdCountArray": "Count array of bot management detection ids. Elements in this array correspond to elements in botDetectionIdArray by index.",
+		"botDetectionTagArray": "Array of bot management detection tags",
+		"botDetectionTagCountArray": "Count array of bot management detection tags. Elements in this array correspond to elements in botDetectionTagArray by index.",
 		"crossZoneSubrequests": "The number of requests that were inititiated by a Cloudflare Worker on another zone",
 		"edgeDnsResponseTimeMs": "",
 		"edgeResponseBytes": "",
@@ -2941,6 +2953,7 @@
 		"datetimeHour": "Date and time that the packet was received, rounded to the start of the nearest hour",
 		"datetimeMinute": "Date and time that the packet was received, rounded to the start of the nearest minute",
 		"datetimeTenSeconds": "Date and time that the packet was received, rounded to the start of the nearest ten seconds",
+		"destinationAS": "Autonomous System to which the data is directed. Corresponds to DstAS field in the packet",
 		"destinationAddress": "IP to which the data was sent",
 		"destinationPort": "Value of the Destination Port header field in the packet",
 		"ethertype": "Value of the Ethertype header field in the Ethernet packet (2048 for IPv4; 34525 for IPv6)",
@@ -2948,6 +2961,7 @@
 		"protocolString": "Human-readable string representation of the protocol",
 		"routerAddress": "IP of the router that sampled the flows",
 		"ruleIDs": "List of flow matching rules",
+		"sourceAS": "Autonomous System from which the data was sent. Corresponds to SrcAS field in the packet",
 		"sourceAddress": "IP from which the data was sent",
 		"sourcePort": "Value of the Source Port header field in the packet",
 		"tcpFlags": "Value of the Flags header field in the TCP packet",
@@ -5066,7 +5080,8 @@
 		"__description": "Aggregated Firewall events with adaptive sampling grouped by time",
 		"avg": "The average value used for sample interval",
 		"count": "The sum of sample interval values",
-		"dimensions": "List of dimensions to group by"
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
 	},
 	"ZoneFirewallEventsAdaptiveByTimeGroupsAvg": {
 		"__description": "",
@@ -5104,6 +5119,13 @@
 	"ZoneFirewallEventsAdaptiveByTimeGroupsOrderBy": {
 		"__description": ""
 	},
+	"ZoneFirewallEventsAdaptiveByTimeGroupsSum": {
+		"__description": "",
+		"botDetectionIdArray": "Array of bot management detection ids",
+		"botDetectionIdCountArray": "Count array of bot management detection ids. Elements in this array correspond to elements in botDetectionIdArray by index.",
+		"botDetectionTagArray": "Array of bot management detection tags",
+		"botDetectionTagCountArray": "Count array of bot management detection tags. Elements in this array correspond to elements in botDetectionTagArray by index."
+	},
 	"ZoneFirewallEventsAdaptiveFilter_InputObject": {
 		"__description": ""
 	},
@@ -5111,7 +5133,8 @@
 		"__description": "Aggregated Firewall events with adaptive sampling",
 		"avg": "The average value used for sample interval",
 		"count": "The sum of sample interval values",
-		"dimensions": "List of dimensions to group by"
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
 	},
 	"ZoneFirewallEventsAdaptiveGroupsAvg": {
 		"__description": "",
@@ -5183,6 +5206,13 @@
 	},
 	"ZoneFirewallEventsAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"ZoneFirewallEventsAdaptiveGroupsSum": {
+		"__description": "",
+		"botDetectionIdArray": "Array of bot management detection ids",
+		"botDetectionIdCountArray": "Count array of bot management detection ids. Elements in this array correspond to elements in botDetectionIdArray by index.",
+		"botDetectionTagArray": "Array of bot management detection tags",
+		"botDetectionTagCountArray": "Count array of bot management detection tags. Elements in this array correspond to elements in botDetectionTagArray by index."
 	},
 	"ZoneFirewallEventsAdaptiveJa4SignalsElem": {
 		"__description": "",
@@ -5823,6 +5853,10 @@
 	},
 	"ZoneHttpRequestsAdaptiveGroupsSum": {
 		"__description": "",
+		"botDetectionIdArray": "Array of bot management detection ids",
+		"botDetectionIdCountArray": "Count array of bot management detection ids. Elements in this array correspond to elements in botDetectionIdArray by index.",
+		"botDetectionTagArray": "Array of bot management detection tags",
+		"botDetectionTagCountArray": "Count array of bot management detection tags. Elements in this array correspond to elements in botDetectionTagArray by index.",
 		"crossZoneSubrequests": "The number of requests that were inititiated by a Cloudflare Worker on another zone",
 		"edgeDnsResponseTimeMs": "",
 		"edgeResponseBytes": "",
