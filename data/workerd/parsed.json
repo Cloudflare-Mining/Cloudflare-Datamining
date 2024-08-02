@@ -2596,6 +2596,13 @@
 						"compatEnableFlag": "allow_custom_ports",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "increaseWebsocketMessageSize",
+					"annotations": {
+						"compatEnableFlag": "increase_websocket_message_size",
+						"experimental": "true"
+					}
 				}
 			]
 		},
