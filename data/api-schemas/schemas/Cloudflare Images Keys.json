@@ -10,7 +10,8 @@
 				"schema": {
 					"example": "someKey",
 					"maxLength": 20,
-					"pattern": "^[a-zA-Z0-9]$"
+					"pattern": "^[a-zA-Z0-9]$",
+					"type": "string"
 				}
 			},
 			{
@@ -722,7 +723,8 @@
 				"schema": {
 					"example": "someKey",
 					"maxLength": 20,
-					"pattern": "^[a-zA-Z0-9]$"
+					"pattern": "^[a-zA-Z0-9]$",
+					"type": "string"
 				}
 			},
 			{
