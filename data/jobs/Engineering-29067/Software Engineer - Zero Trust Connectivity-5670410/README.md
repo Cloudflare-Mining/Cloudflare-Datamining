@@ -6,33 +6,28 @@
 	</div>
 </div>
 <p><strong>About the team</strong></p>
-<p>Cloudflare is redefining the way networks are run at scale. Our Network Services product suite puts the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure and private networks, providing a single pane of glass for network connectivity, visibility, and operating network functions like DoS mitigation, Next-Gen Firewall, IDS/IPS, WAN optimization, and more. We are a team of engineers and product managers who obsess over quickly building products that solve real customer problems using innovative technologies and techniques which leverage Cloudflare’s unique architecture and global network footprint.</p>
-<p><strong>About the role</strong></p>
-<p>We are hiring engineers of all experience levels across many of our teams. Some of the things our teams work on include:</p>
+<p>The Zero Trust Connectivity team builds the hub that connects Cloudflare One and Zero Trust products such as Magic WAN, WARP, Cloudflare Tunnels and Gateway. Powering this hub is a set of Rust-based services operating on every one of the data-centers that Cloudflare runs. These services route all of Cloudflare One traffic end to end. By leveraging Cloudflare’s incredible infrastructure and programming languages such as Rust, this critical service is safe, performant and secure.</p>
+<p>&nbsp;</p>
+<p>We are a team of engineers who obsess over building reliable services which leverage Cloudflare’s unique architecture and global network footprint.</p>
+<p>&nbsp;</p>
+<p>You can read more about what we work on here:</p>
 <ul>
-	<li>A Linux kernel-based networking dataplane which ingests and forwards traffic from some of the largest networks in the world</li>
-	<li>A userspace networking service which acts as a hub between our Network Services and Zero Trust systems, enabling every customer to access every product</li>
-	<li>Network software running on a hardware appliance that provides zero touch connectivity to the Cloudflare network and SD-WAN functions</li>
-	<li>Next-generation firewall functions implemented across Linux netfilter, eBPF, and userspace packet processing</li>
-	<li>Flow and log collection, correlation, and analytics systems to provide customers with unparalleled visibility into their own networks</li>
-	<li>Control plane systems which allow customers to simply express complex network configurations<br><br></li>
+	<li><a href="https://blog.cloudflare.com/introducing-cloudflare-one/">https://blog.cloudflare.com/introducing-cloudflare-one/</a></li>
+	<li><a href="https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework/">https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework/</a></li>
 </ul>
-<p>As a Software Engineer on our team, you will work across a wide range of technologies and systems to deliver new features, improve performance, and increase the scalability of our Network Services products. You’ll build, deploy, and operate your team’s systems on top of one of the largest edge networks in the world. You’ll partner with some of the best engineers and product managers to solve big problems that have a meaningful impact in the lives of our customers and users.</p>
-<p>We’re looking for curious, empathetic engineers who are excited to join us in changing the way networking is done!</p>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p><strong>About the role</strong></p>
+<p>As a software engineer on the Zero Trust Connectivity team, you will contribute across a wide range of technologies and systems to deliver new solutions that connect Cloudflare One products together. You will build connectivity in a user-space service that can identify and route flows across our global network. This work requires close collaboration with other teams while leveraging powerful frameworks and libraries that power many Cloudflare products. Our technology stack includes Rust, Docker, Linux networking, Clickhouse, SaltStack and Prometheus. We're looking for determined, curious, empathetic engineers to join our team!</p>
+<p><strong>Desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Experience building and shipping large-scale, reliable, highly distributed systems</li>
-	<li>Systems-level programming experience, especially in Rust and/or Go</li>
-	<li>Expertise in L2, L3, and/or L4 networking protocols</li>
-	<li>Experience building on top of Linux kernel networking primitives – netfilter, nftables, eBPF, tc, network namespaces, etc</li>
-	<li>Experience designing and integrating RESTful APIs and backend systems</li>
-	<li>Experience with large-scale distributed data pipelines, from data structuring to efficient querying to data analysis</li>
-	<li>Excellent debugging and optimization skills</li>
+	<li>Programming experience in Rust</li>
+	<li>Familiar with Layer 3 and Layer 4 Networking</li>
+	<li>Systems-level programming experience in Linux</li>
+	<li>Experience building large-scale, reliable, highly distributed systems</li>
 	<li>Attention to detail and ability to solve complex customer problems</li>
 	<li>Own solutions end-to-end and driving the design, development, and deployment process</li>
 	<li>Able to work across teams and level common, sustainable solutions</li>
 	<li>Creative, open-minded, collaborative problem solver</li>
-	<li>Focus on clarity in written and verbal communication</li>
+	<li>Focus on clarity in written and verbal communication<br><br></li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location. There are multiple levels open on the team, both mid &amp; senior level.<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:137000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))"><br></span></p>
