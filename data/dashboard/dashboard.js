@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "798012b9-f24f-5aff-939c-259c172b8e4c")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "7cced372-33bf-5d17-ae3b-cf8223034169")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -894,10 +894,10 @@
 				n.g.build = un({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "bdb153c4963efff3b532744e0b2bae0ee9918330",
-					dashVersion: "25887485",
+					commit: "adb90c4610b1bb8bc1cbf3f9eb6153c86899dc9c",
+					dashVersion: "25889007",
 					env: "production",
-					builtAt: 1722628945548,
+					builtAt: 1722631835415,
 					versions: {
 						"@cloudflare/app-dash": "25.161.22",
 						node: "20.10.0",
@@ -11305,7 +11305,7 @@
 			}, s = () => window.location.hostname.includes("dash.staging.cloudflare") || window.location.hostname.includes("dash.cloudflare"), E = D => `/${D.replace(i,"").replace(/^\//,"")}`, f = D => U("add-site", D), S = D => U("billing", D), U = (D, q) => q ? `/${q}${D?`/${D}`:""}` : `/?to=/:account/${D}`, M = () => {
 				const D = location ? location.pathname.match(/^\/([0-9a-f]{32})/) || location.pathname.match(/^\/a\/([0-9a-f]{32})/) : null;
 				return D ? D[1] : null
-			}, x = (D, q) => o().stringify(p({}, o().parse(D), q)), k = (D = "") => D.toString().replace(/([\/]{1,})$/, ""), L = ["/login", "/sign-up", "/two-factor", "/forgot-password", "/forgot-email", "/login-help", "/profile", "/zones", "/organizations"], te = /^\/(\w*)\/(([^./]*\.[^./]*))+(\/.*)?/, X = /^\/(\w{32,})(\/[^.]*)?/, Q = D => L.includes(D), H = D => !Q(D), V = D => !Q(D) && X.test(D), G = D => !Q(D) && te.test(D), j = D => te.exec(D), Y = D => {
+			}, x = (D, q) => o().stringify(p({}, o().parse(D), q)), k = (D = "") => D.toString().replace(/([\/]{1,})$/, ""), L = ["/login", "/sign-up", "/two-factor", "/forgot-password", "/password-reset", "/forgot-email", "/login-help", "/profile", "/zones", "/organizations"], te = /^\/(\w*)\/(([^./]*\.[^./]*))+(\/.*)?/, X = /^\/(\w{32,})(\/[^.]*)?/, Q = D => L.includes(D), H = D => !Q(D), V = D => !Q(D) && X.test(D), G = D => !Q(D) && te.test(D), j = D => te.exec(D), Y = D => {
 				if (G(D)) return D.split("/").filter(q => q.length > 0)[1]
 			}, C = D => X.exec(D), $ = D => {
 				if (V(D)) {
@@ -13535,4 +13535,4 @@
 	}
 ]);
 
-//# debugId=798012b9-f24f-5aff-939c-259c172b8e4c
+//# debugId=7cced372-33bf-5d17-ae3b-cf8223034169

@@ -1175,10 +1175,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: w.G,
-	signUp: [{
-		url: "/sign-up",
-		title: "common.sign_up",
-		iconType: "add"
-	}]
+	support: w.G
 }
