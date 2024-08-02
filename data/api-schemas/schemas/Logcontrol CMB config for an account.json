@@ -90,7 +90,9 @@
 								{
 									"properties": {
 										"result": {
-											"example": {},
+											"enum": [
+												null
+											],
 											"nullable": true,
 											"type": "object"
 										}
@@ -107,79 +109,6 @@
 					"application/json": {
 						"schema": {
 							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"example": {},
-													"nullable": true,
-													"type": "object"
-												}
-											}
-										}
-									]
-								},
 								{
 									"properties": {
 										"errors": {
