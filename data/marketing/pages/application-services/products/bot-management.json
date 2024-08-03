@@ -366,7 +366,20 @@
 						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
-						"buttonOne": null,
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2Q9gxL9GDRT8OKRmrsOzp3",
+							"elementName": "Bot Management - CTA - Watch webinar",
+							"standardText": null,
+							"text": "Watch the webinar",
+							"url": "https://gateway.on24.com/wcc/eh/2153307/lp/4335273/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
 						"buttonTwo": null,
 						"sectionPadding": "tile--no-top-padding",
 						"eyebrow": null
@@ -906,6 +919,42 @@
 								"description": "An estimated 40-50% of total Internet traffic is bot-driven. Learn how to avoid negative business outcomes when these bots turn malicious.\n",
 								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/dcJkF99J0ySDG2Ph9bhHX/0725c673db87fed8a29d97de0f985270/4_Strategies_for_Managing_Malicious_Bots.pdf",
 								"learnMoreText": "Get the solution brief",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
+										},
+										"description": "Resources card - Thin top orange line  - image"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "25JHPhAf2mIz7BlusefLYC",
+								"title": "Better defenses against modern bots",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "43.8% of the traffic flowing through Cloudflare is automated, but just 4.5% is from good bots. See these and other insights in our write-up on defending against bot attacks.",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hAcTvteThken5z8VtpeRq/ceb6109cdc9009504eee4315addd4bf0/Best_practices_in_bot_protection_.pdf",
+								"learnMoreText": "Read the report",
 								"displayBorder": false,
 								"openLinkInNewTab": true,
 								"removeCardBorder": false,
