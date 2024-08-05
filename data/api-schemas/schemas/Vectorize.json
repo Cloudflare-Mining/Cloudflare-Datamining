@@ -497,7 +497,9 @@
 													"created_on": {
 														"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
 														"example": "2022-11-15T18:25:44.442097Z",
-														"readOnly": true
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
 													},
 													"description": {
 														"description": "Specifies the description of the index.",
@@ -507,7 +509,9 @@
 													"modified_on": {
 														"description": "Specifies the timestamp the resource was modified as an ISO8601 string.",
 														"example": "2022-11-15T18:25:44.442097Z",
-														"readOnly": true
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
 													},
 													"name": {
 														"example": "example-index",
@@ -912,7 +916,9 @@
 												"created_on": {
 													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
 													"example": "2022-11-15T18:25:44.442097Z",
-													"readOnly": true
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"description": {
 													"description": "Specifies the description of the index.",
@@ -922,7 +928,9 @@
 												"modified_on": {
 													"description": "Specifies the timestamp the resource was modified as an ISO8601 string.",
 													"example": "2022-11-15T18:25:44.442097Z",
-													"readOnly": true
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"name": {
 													"example": "example-index",
@@ -1305,8 +1313,9 @@
 													"type": "integer"
 												},
 												"processedUpToDatetime": {
-													"description": "Specifies the timestamp the last mutation batch was processed.",
+													"description": "Specifies the timestamp the last mutation batch was processed as an ISO8601 string.",
 													"example": "2024-07-22T18:25:44.442097Z",
+													"format": "date-time",
 													"nullable": true,
 													"readOnly": true,
 													"type": "string"
@@ -1787,7 +1796,9 @@
 												"created_on": {
 													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
 													"example": "2022-11-15T18:25:44.442097Z",
-													"readOnly": true
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"description": {
 													"description": "Specifies the description of the index.",
@@ -1797,7 +1808,9 @@
 												"modified_on": {
 													"description": "Specifies the timestamp the resource was modified as an ISO8601 string.",
 													"example": "2022-11-15T18:25:44.442097Z",
-													"readOnly": true
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"name": {
 													"example": "example-index",
@@ -3838,7 +3851,13 @@
 								{
 									"properties": {
 										"result": {
-											"nullable": true,
+											"properties": {
+												"mutationId": {
+													"description": "The unique identifier for the async mutation operation containing the changeset.",
+													"example": "0000aaaa-11bb-22cc-33dd-444444eeeeee",
+													"maxLength": 36
+												}
+											},
 											"type": "object"
 										}
 									}
