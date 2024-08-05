@@ -60,7 +60,9 @@
 								"sort": {
 									"default": "[]",
 									"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending).",
-									"items": {},
+									"items": {
+										"type": "string"
+									},
 									"type": "array"
 								},
 								"until": {
@@ -193,9 +195,21 @@
 														"data": {
 															"items": {
 																"properties": {
+																	"dimensions": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"metrics": {
 																		"description": "List of metrics returned by the query.",
-																		"items": {},
+																		"items": {
+																			"items": {
+																				"format": "float",
+																				"type": "number"
+																			},
+																			"type": "array"
+																		},
 																		"type": "array"
 																	}
 																},
@@ -214,10 +228,18 @@
 															"type": "number"
 														},
 														"max": {
-															"description": "Maximum results for each metric."
+															"additionalProperties": {
+																"type": "number"
+															},
+															"description": "Maximum results for each metric.",
+															"type": "object"
 														},
 														"min": {
-															"description": "Minimum results for each metric."
+															"additionalProperties": {
+																"type": "number"
+															},
+															"description": "Minimum results for each metric.",
+															"type": "object"
 														},
 														"query": {
 															"description": "For specifying result metrics.",
@@ -259,7 +281,9 @@
 																"sort": {
 																	"default": "[]",
 																	"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending).",
-																	"items": {},
+																	"items": {
+																		"type": "string"
+																	},
 																	"type": "array"
 																},
 																"until": {
@@ -278,8 +302,26 @@
 															"minimum": 0,
 															"type": "number"
 														},
+														"time_intervals": {
+															"description": "Time interval buckets by beginning and ending",
+															"items": {
+																"items": {
+																	"example": "2019-01-02T02:20:00Z",
+																	"format": "date-time",
+																	"maxItems": 2,
+																	"minItems": 2,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"type": "array"
+														},
 														"totals": {
-															"description": "Total results for metrics across all data."
+															"additionalProperties": {
+																"type": "number"
+															},
+															"description": "Total results for metrics across all data.",
+															"type": "object"
 														}
 													},
 													"required": [
@@ -363,7 +405,9 @@
 																"sort": {
 																	"default": "[]",
 																	"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending).",
-																	"items": {},
+																	"items": {
+																		"type": "string"
+																	},
 																	"type": "array"
 																},
 																"until": {
@@ -470,9 +514,21 @@
 														"data": {
 															"items": {
 																"properties": {
+																	"dimensions": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"metrics": {
 																		"description": "List of metrics returned by the query.",
-																		"items": {},
+																		"items": {
+																			"items": {
+																				"format": "float",
+																				"type": "number"
+																			},
+																			"type": "array"
+																		},
 																		"type": "array"
 																	}
 																},
@@ -491,10 +547,18 @@
 															"type": "number"
 														},
 														"max": {
-															"description": "Maximum results for each metric."
+															"additionalProperties": {
+																"type": "number"
+															},
+															"description": "Maximum results for each metric.",
+															"type": "object"
 														},
 														"min": {
-															"description": "Minimum results for each metric."
+															"additionalProperties": {
+																"type": "number"
+															},
+															"description": "Minimum results for each metric.",
+															"type": "object"
 														},
 														"query": {
 															"description": "For specifying result metrics.",
@@ -536,7 +600,9 @@
 																"sort": {
 																	"default": "[]",
 																	"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending).",
-																	"items": {},
+																	"items": {
+																		"type": "string"
+																	},
 																	"type": "array"
 																},
 																"until": {
@@ -555,8 +621,26 @@
 															"minimum": 0,
 															"type": "number"
 														},
+														"time_intervals": {
+															"description": "Time interval buckets by beginning and ending",
+															"items": {
+																"items": {
+																	"example": "2019-01-02T02:20:00Z",
+																	"format": "date-time",
+																	"maxItems": 2,
+																	"minItems": 2,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"type": "array"
+														},
 														"totals": {
-															"description": "Total results for metrics across all data."
+															"additionalProperties": {
+																"type": "number"
+															},
+															"description": "Total results for metrics across all data.",
+															"type": "object"
 														}
 													},
 													"required": [
