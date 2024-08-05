@@ -74,7 +74,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -301,11 +303,25 @@
 																"properties": {
 																	"accept_foa": {
 																		"description": "Form of authorization has been accepted by the registrant.",
-																		"example": "needed"
+																		"enum": [
+																			"needed",
+																			"ok"
+																		],
+																		"example": "needed",
+																		"type": "string"
 																	},
 																	"approve_transfer": {
 																		"description": "Shows transfer status with the registry.",
-																		"example": "unknown"
+																		"enum": [
+																			"needed",
+																			"ok",
+																			"pending",
+																			"trying",
+																			"rejected",
+																			"unknown"
+																		],
+																		"example": "unknown",
+																		"type": "string"
 																	},
 																	"can_cancel_transfer": {
 																		"description": "Indicates if cancellation is still possible.",
@@ -313,14 +329,38 @@
 																		"type": "boolean"
 																	},
 																	"disable_privacy": {
-																		"description": "Privacy guards are disabled at the foreign registrar."
+																		"description": "Privacy guards are disabled at the foreign registrar.",
+																		"enum": [
+																			"needed",
+																			"ok",
+																			"unknown"
+																		],
+																		"example": "ok",
+																		"type": "string"
 																	},
 																	"enter_auth_code": {
 																		"description": "Auth code has been entered and verified.",
-																		"example": "needed"
+																		"enum": [
+																			"needed",
+																			"ok",
+																			"pending",
+																			"trying",
+																			"rejected"
+																		],
+																		"example": "needed",
+																		"type": "string"
 																	},
 																	"unlock_domain": {
-																		"description": "Domain is unlocked at the foreign registrar."
+																		"description": "Domain is unlocked at the foreign registrar.",
+																		"enum": [
+																			"needed",
+																			"ok",
+																			"pending",
+																			"trying",
+																			"unknown"
+																		],
+																		"example": "ok",
+																		"type": "string"
 																	}
 																}
 															},
@@ -405,7 +445,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -632,11 +674,25 @@
 																		"properties": {
 																			"accept_foa": {
 																				"description": "Form of authorization has been accepted by the registrant.",
-																				"example": "needed"
+																				"enum": [
+																					"needed",
+																					"ok"
+																				],
+																				"example": "needed",
+																				"type": "string"
 																			},
 																			"approve_transfer": {
 																				"description": "Shows transfer status with the registry.",
-																				"example": "unknown"
+																				"enum": [
+																					"needed",
+																					"ok",
+																					"pending",
+																					"trying",
+																					"rejected",
+																					"unknown"
+																				],
+																				"example": "unknown",
+																				"type": "string"
 																			},
 																			"can_cancel_transfer": {
 																				"description": "Indicates if cancellation is still possible.",
@@ -644,14 +700,38 @@
 																				"type": "boolean"
 																			},
 																			"disable_privacy": {
-																				"description": "Privacy guards are disabled at the foreign registrar."
+																				"description": "Privacy guards are disabled at the foreign registrar.",
+																				"enum": [
+																					"needed",
+																					"ok",
+																					"unknown"
+																				],
+																				"example": "ok",
+																				"type": "string"
 																			},
 																			"enter_auth_code": {
 																				"description": "Auth code has been entered and verified.",
-																				"example": "needed"
+																				"enum": [
+																					"needed",
+																					"ok",
+																					"pending",
+																					"trying",
+																					"rejected"
+																				],
+																				"example": "needed",
+																				"type": "string"
 																			},
 																			"unlock_domain": {
-																				"description": "Domain is unlocked at the foreign registrar."
+																				"description": "Domain is unlocked at the foreign registrar.",
+																				"enum": [
+																					"needed",
+																					"ok",
+																					"pending",
+																					"trying",
+																					"unknown"
+																				],
+																				"example": "ok",
+																				"type": "string"
 																			}
 																		}
 																	},
@@ -861,7 +941,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -969,7 +1051,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
@@ -1233,7 +1317,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1341,7 +1427,9 @@
 																	"type": "object"
 																},
 																{
-																	"items": {},
+																	"items": {
+																		"type": "object"
+																	},
 																	"type": "array"
 																},
 																{
