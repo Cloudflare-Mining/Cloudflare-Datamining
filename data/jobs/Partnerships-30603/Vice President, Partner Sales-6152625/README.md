@@ -5,36 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: Remote, Mexico</h4>
-<h4>About the role</h4>
-<p>Our focus is getting the best people to work at Cloudflare and then allowing them to do their best work. We are looking for an energetic and motivated People Services Representative who’s ready to help a rapidly growing organization scale with efficiency and operational excellence.&nbsp; The main function of this role is to create and deliver a seamless and positive employee experience across the entire hire to retire lifecycle. You’ll deliver world-class employee inquiry support as you help answer People and Payroll questions directly from employees. This role also executes critical People and Payroll transactions to ensure that the data we manage is clean, in compliance and up to date. Along the way you will also have opportunities to help design and improve our existing processes as we align and scale across multiple regions.</p>
-<h4>What you'll do</h4>
+<p><strong>Location: Remote, United States</strong></p>
+<p><strong>Job Title: Vice President, Partner Sales</strong></p>
+<p><strong>About the Role:</strong></p>
+<p>As the Vice President, Partner Sales, you will lead a dynamic team responsible for developing and executing the channel sales strategy to drive revenue growth, expand market share, and enhance partner relationships. This role involves managing the partner team responsible for driving partner business in the Americas.&nbsp;&nbsp;</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Process global employee lifecycle transactions such as onboarding, transfers, organizational changes, and offboarding.&nbsp;&nbsp;</li>
-	<li>Maintain people data across People/Payroll systems and implement steps to ensure 100% data integrity, performing regular and ad hoc data audits.</li>
-	<li>Receive and respond to global employee inquiries regarding People and Payroll activities.&nbsp; Escalate issues to tier 2 subject matter experts as needed.</li>
-	<li>Act as a liaison on behalf of the employee and the People/Payroll departments to resolve issues.</li>
-	<li>Utilize a professional and quality-focused approach to handle inquiries, ensuring confidentiality and protection of sensitive employee information.</li>
-	<li>Create and manage employee files and People/Payroll records, ensure all necessary documentation is captured and held in the appropriate places.</li>
-	<li>Help implement any necessary process changes and records administration to support compliance regulations.</li>
-	<li>Support seasonal People/Payroll programmatic activities such as Benefits open enrollment and year end Payroll preparation.</li>
-	<li>As this position provides global employee support, you may be required to work non-traditional work hours for coverage.</li>
+	<li>Develop and implement a comprehensive channel sales strategy that aligns with the company's business objectives.</li>
+	<li>Cultivate and nurture executive relationships with strategic partners.</li>
+	<li>Identify and pursue new channel opportunities and partnerships to expand market presence.</li>
+	<li>Build and maintain strong relationships with key channel partners, distributors, and resellers.</li>
+	<li>Oversee the performance of channel partners, ensuring they meet sales targets and adhere to company standards.</li>
+	<li>Lead, mentor, and manage the channel sales team, providing guidance and support to achieve individual and team goals.</li>
+	<li>Foster a collaborative and high-performance culture within the team.</li>
+	<li>Establish and track key performance indicators (KPIs) to measure the effectiveness of channel sales initiatives.</li>
+	<li>Work closely with cross-functional teams, including marketing, product management, and customer support, to align channel strategies with overall business goals.</li>
+	<li>Coordinate with the direct sales team to ensure a cohesive approach to the market.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Qualifications:</strong></p>
 <ul>
-	<li>Experience managing HR records&nbsp;</li>
-	<li>Highly detailed and process oriented</li>
-	<li>Comfortable with large data sets and strong Excel/Google Sheets skills</li>
-	<li>Strong customer focus</li>
-	<li>Strong oral and written communication skills, effectively presenting information and responding to cross-region and cross-functional customer questions&nbsp;</li>
-	<li>Ability and willingness to work within constantly changing priorities</li>
-	<li>Strong organizational, problem-solving and time management skills</li>
-	<li>Adaptability in a dynamic, fast-paced environment</li>
+	<li>15+ years of proven success in sales, channel/alliances, partner management, and/or distribution relationship management, demonstrating increasing levels of responsibility.&nbsp;&nbsp;</li>
+	<li>8+ years of experience managing a team of Channel Account Managers in the Americas.&nbsp;</li>
+	<li>Experience recruiting, developing, and managing both 1-tier and 2-tier channels.</li>
+	<li>Strong knowledge of the North American partner landscape, including VARs, MSPs, GSIs and VADs, with familiarity with modern enterprise security products.</li>
+	<li>Proficiency in enterprise and sales efficiency technologies (e.g., G Suite, Office 365, Zoom).</li>
+	<li>Exceptional partner sales, written, and oral communication skills; must be persuasive and excel at presenting.</li>
+	<li>Strong sales management and partner operational skills, with a track record of achieving strategic objectives.</li>
+	<li>Proven ability to prioritize, develop strategic plans, and drive successful sales outcomes.</li>
+	<li>Ability to thrive under pressure in a fast-paced environment, and manage multiple projects simultaneously.</li>
+	<li>Ability to cultivate business relationships through networking.</li>
+	<li>Willingness to travel (approx 50%+ of the time).</li>
 </ul>
-<p></p>
-<p><span style="text-decoration: underline;"><em><strong>***Please submit resume in English only.&nbsp;</strong></em></span></p>
-<p><span style="text-decoration: underline;"><em><strong>**This position is based in&nbsp;Mexico and is applicable only to Mexican Citizens**</strong></em></span></p>
-<p></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
