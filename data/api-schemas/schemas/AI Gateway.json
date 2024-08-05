@@ -58,7 +58,7 @@
 											"type": "boolean"
 										},
 										"logpush_public_key": {
-											"maxLength": 512,
+											"maxLength": 1024,
 											"minLength": 16,
 											"nullable": true,
 											"type": "string"
@@ -269,7 +269,7 @@
 												"type": "boolean"
 											},
 											"logpush_public_key": {
-												"maxLength": 512,
+												"maxLength": 1024,
 												"minLength": 16,
 												"nullable": true,
 												"type": "string"
@@ -453,7 +453,7 @@
 											"type": "boolean"
 										},
 										"logpush_public_key": {
-											"maxLength": 512,
+											"maxLength": 1024,
 											"minLength": 16,
 											"nullable": true,
 											"type": "string"
@@ -888,7 +888,7 @@
 								"type": "boolean"
 							},
 							"logpush_public_key": {
-								"maxLength": 512,
+								"maxLength": 1024,
 								"minLength": 16,
 								"nullable": true,
 								"type": "string"
@@ -965,7 +965,7 @@
 													"type": "boolean"
 												},
 												"logpush_public_key": {
-													"maxLength": 512,
+													"maxLength": 1024,
 													"minLength": 16,
 													"nullable": true,
 													"type": "string"
@@ -1147,7 +1147,7 @@
 								"type": "boolean"
 							},
 							"logpush_public_key": {
-								"maxLength": 512,
+								"maxLength": 1024,
 								"minLength": 16,
 								"nullable": true,
 								"type": "string"
@@ -1221,7 +1221,7 @@
 											"type": "boolean"
 										},
 										"logpush_public_key": {
-											"maxLength": 512,
+											"maxLength": 1024,
 											"minLength": 16,
 											"nullable": true,
 											"type": "string"
