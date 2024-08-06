@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/logs/control/cmb/config": {
 		"description": "Deletes CMB config.",
-		"operationId": "delete-accounts-account_identifier-logs-control-cmb-config",
+		"operationId": "delete-accounts-account_id-logs-control-cmb-config",
 		"parameters": [
 			{
 				"in": "path",
@@ -203,7 +203,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete CMB config",
@@ -218,7 +219,7 @@
 	},
 	"GET /accounts/{account_id}/logs/control/cmb/config": {
 		"description": "Gets CMB config.",
-		"operationId": "get-accounts-account_identifier-logs-control-cmb-config",
+		"operationId": "get-accounts-account_id-logs-control-cmb-config",
 		"parameters": [
 			{
 				"in": "path",
@@ -439,7 +440,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get CMB config",
@@ -448,13 +450,14 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#logs:edit"
+				"#logs:read",
+				"#analytics:read"
 			]
 		}
 	},
 	"POST /accounts/{account_id}/logs/control/cmb/config": {
 		"description": "Updates CMB config.",
-		"operationId": "put-accounts-account_identifier-logs-control-cmb-config",
+		"operationId": "post-accounts-account_id-logs-control-cmb-config",
 		"parameters": [
 			{
 				"in": "path",
@@ -695,7 +698,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update CMB config",
