@@ -619,10 +619,31 @@
 															"type": "string"
 														},
 														"quotasPerPlan": {
-															"additionalProperties": {
-																"type": "number"
-															},
 															"description": "The number of tests available per plan.",
+															"properties": {
+																"value": {
+																	"description": "Counts per account plan.",
+																	"properties": {
+																		"business": {
+																			"example": 1,
+																			"type": "integer"
+																		},
+																		"enterprise": {
+																			"example": 1,
+																			"type": "integer"
+																		},
+																		"free": {
+																			"example": 1,
+																			"type": "integer"
+																		},
+																		"pro": {
+																			"example": 1,
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
 															"type": "object"
 														},
 														"remainingSchedules": {
@@ -636,10 +657,31 @@
 															"type": "number"
 														},
 														"scheduleQuotasPerPlan": {
-															"additionalProperties": {
-																"type": "number"
-															},
 															"description": "The number of schedules available per plan.",
+															"properties": {
+																"value": {
+																	"description": "Counts per account plan.",
+																	"properties": {
+																		"business": {
+																			"example": 1,
+																			"type": "integer"
+																		},
+																		"enterprise": {
+																			"example": 1,
+																			"type": "integer"
+																		},
+																		"free": {
+																			"example": 1,
+																			"type": "integer"
+																		},
+																		"pro": {
+																			"example": 1,
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
 															"type": "object"
 														}
 													},
@@ -687,48 +729,174 @@
 													"type": "array"
 												},
 												"regionsPerPlan": {
-													"additionalProperties": {
-														"description": "Available regions.",
-														"items": {
-															"description": "A test region with a label.",
-															"properties": {
-																"label": {
-																	"example": "Iowa, USA",
-																	"type": "string"
+													"description": "Available regions.",
+													"properties": {
+														"business": {
+															"items": {
+																"description": "A test region with a label.",
+																"properties": {
+																	"label": {
+																		"example": "Iowa, USA",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "A test region.",
+																		"enum": [
+																			"asia-east1",
+																			"asia-northeast1",
+																			"asia-northeast2",
+																			"asia-south1",
+																			"asia-southeast1",
+																			"australia-southeast1",
+																			"europe-north1",
+																			"europe-southwest1",
+																			"europe-west1",
+																			"europe-west2",
+																			"europe-west3",
+																			"europe-west4",
+																			"europe-west8",
+																			"europe-west9",
+																			"me-west1",
+																			"southamerica-east1",
+																			"us-central1",
+																			"us-east1",
+																			"us-east4",
+																			"us-south1",
+																			"us-west1"
+																		],
+																		"example": "us-central1",
+																		"type": "string"
+																	}
 																},
-																"value": {
-																	"description": "A test region.",
-																	"enum": [
-																		"asia-east1",
-																		"asia-northeast1",
-																		"asia-northeast2",
-																		"asia-south1",
-																		"asia-southeast1",
-																		"australia-southeast1",
-																		"europe-north1",
-																		"europe-southwest1",
-																		"europe-west1",
-																		"europe-west2",
-																		"europe-west3",
-																		"europe-west4",
-																		"europe-west8",
-																		"europe-west9",
-																		"me-west1",
-																		"southamerica-east1",
-																		"us-central1",
-																		"us-east1",
-																		"us-east4",
-																		"us-south1",
-																		"us-west1"
-																	],
-																	"example": "us-central1",
-																	"type": "string"
-																}
+																"type": "object"
 															},
-															"type": "object"
+															"type": "array"
 														},
-														"type": "array"
-													}
+														"enterprise": {
+															"items": {
+																"description": "A test region with a label.",
+																"properties": {
+																	"label": {
+																		"example": "Iowa, USA",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "A test region.",
+																		"enum": [
+																			"asia-east1",
+																			"asia-northeast1",
+																			"asia-northeast2",
+																			"asia-south1",
+																			"asia-southeast1",
+																			"australia-southeast1",
+																			"europe-north1",
+																			"europe-southwest1",
+																			"europe-west1",
+																			"europe-west2",
+																			"europe-west3",
+																			"europe-west4",
+																			"europe-west8",
+																			"europe-west9",
+																			"me-west1",
+																			"southamerica-east1",
+																			"us-central1",
+																			"us-east1",
+																			"us-east4",
+																			"us-south1",
+																			"us-west1"
+																		],
+																		"example": "us-central1",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"free": {
+															"items": {
+																"description": "A test region with a label.",
+																"properties": {
+																	"label": {
+																		"example": "Iowa, USA",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "A test region.",
+																		"enum": [
+																			"asia-east1",
+																			"asia-northeast1",
+																			"asia-northeast2",
+																			"asia-south1",
+																			"asia-southeast1",
+																			"australia-southeast1",
+																			"europe-north1",
+																			"europe-southwest1",
+																			"europe-west1",
+																			"europe-west2",
+																			"europe-west3",
+																			"europe-west4",
+																			"europe-west8",
+																			"europe-west9",
+																			"me-west1",
+																			"southamerica-east1",
+																			"us-central1",
+																			"us-east1",
+																			"us-east4",
+																			"us-south1",
+																			"us-west1"
+																		],
+																		"example": "us-central1",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"pro": {
+															"items": {
+																"description": "A test region with a label.",
+																"properties": {
+																	"label": {
+																		"example": "Iowa, USA",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "A test region.",
+																		"enum": [
+																			"asia-east1",
+																			"asia-northeast1",
+																			"asia-northeast2",
+																			"asia-south1",
+																			"asia-southeast1",
+																			"australia-southeast1",
+																			"europe-north1",
+																			"europe-southwest1",
+																			"europe-west1",
+																			"europe-west2",
+																			"europe-west3",
+																			"europe-west4",
+																			"europe-west8",
+																			"europe-west9",
+																			"me-west1",
+																			"southamerica-east1",
+																			"us-central1",
+																			"us-east1",
+																			"us-east4",
+																			"us-south1",
+																			"us-west1"
+																		],
+																		"example": "us-central1",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
