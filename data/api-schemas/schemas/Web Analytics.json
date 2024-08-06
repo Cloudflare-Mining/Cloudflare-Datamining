@@ -33,64 +33,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -267,64 +262,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -492,64 +482,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -831,64 +816,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -1183,64 +1163,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -1465,64 +1440,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -1704,64 +1674,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -1953,64 +1918,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -2306,64 +2266,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -2621,64 +2576,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -2941,64 +2891,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -3304,64 +3249,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},

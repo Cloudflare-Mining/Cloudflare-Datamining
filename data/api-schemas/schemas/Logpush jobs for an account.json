@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/logpush/jobs/{job_id}": {
 		"description": "Deletes a Logpush job.",
-		"operationId": "delete-accounts-account_identifier-logpush-jobs-job_identifier",
+		"operationId": "delete-accounts-account_id-logpush-jobs-job_id",
 		"parameters": [
 			{
 				"in": "path",
@@ -216,7 +216,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete Logpush job",
@@ -237,7 +238,7 @@
 	},
 	"GET /accounts/{account_id}/logpush/datasets/{dataset_id}/fields": {
 		"description": "Lists all fields available for a dataset. The response result is an object with key-value pairs, where keys are field names, and values are descriptions.",
-		"operationId": "get-accounts-account_identifier-logpush-datasets-dataset-fields",
+		"operationId": "get-accounts-account_id-logpush-datasets-dataset_id-fields",
 		"parameters": [
 			{
 				"example": "gateway_dns",
@@ -453,7 +454,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List fields",
@@ -474,7 +476,7 @@
 	},
 	"GET /accounts/{account_id}/logpush/datasets/{dataset_id}/jobs": {
 		"description": "Lists Logpush jobs for an account for a dataset.",
-		"operationId": "get-accounts-account_identifier-logpush-datasets-dataset-jobs",
+		"operationId": "get-accounts-account_id-logpush-datasets-dataset_id-jobs",
 		"parameters": [
 			{
 				"example": "gateway_dns",
@@ -929,7 +931,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Logpush jobs for a dataset",
@@ -950,7 +953,7 @@
 	},
 	"GET /accounts/{account_id}/logpush/jobs": {
 		"description": "Lists Logpush jobs for an account.",
-		"operationId": "get-accounts-account_identifier-logpush-jobs",
+		"operationId": "get-accounts-account_id-logpush-jobs",
 		"parameters": [
 			{
 				"in": "path",
@@ -1391,7 +1394,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Logpush jobs",
@@ -1412,7 +1416,7 @@
 	},
 	"GET /accounts/{account_id}/logpush/jobs/{job_id}": {
 		"description": "Gets the details of a Logpush job.",
-		"operationId": "get-accounts-account_identifier-logpush-jobs-job_identifier",
+		"operationId": "get-accounts-account_id-logpush-jobs-job_id",
 		"parameters": [
 			{
 				"in": "path",
@@ -1877,7 +1881,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get Logpush job details",
@@ -1898,7 +1903,7 @@
 	},
 	"POST /accounts/{account_id}/logpush/jobs": {
 		"description": "Creates a new Logpush job for an account.",
-		"operationId": "post-accounts-account_identifier-logpush-jobs",
+		"operationId": "post-accounts-account_id-logpush-jobs",
 		"parameters": [
 			{
 				"in": "path",
@@ -2584,7 +2589,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create Logpush job",
@@ -2605,7 +2611,7 @@
 	},
 	"POST /accounts/{account_id}/logpush/ownership": {
 		"description": "Gets a new ownership challenge sent to your destination.",
-		"operationId": "post-accounts-account_identifier-logpush-ownership",
+		"operationId": "post-accounts-account_id-logpush-ownership",
 		"parameters": [
 			{
 				"in": "path",
@@ -2833,7 +2839,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get ownership challenge",
@@ -2854,7 +2861,7 @@
 	},
 	"POST /accounts/{account_id}/logpush/ownership/validate": {
 		"description": "Validates ownership challenge of the destination.",
-		"operationId": "post-accounts-account_identifier-logpush-ownership-validate",
+		"operationId": "post-accounts-account_id-logpush-ownership-validate",
 		"parameters": [
 			{
 				"in": "path",
@@ -3082,7 +3089,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Validate ownership challenge",
@@ -3103,7 +3111,7 @@
 	},
 	"POST /accounts/{account_id}/logpush/validate/destination/exists": {
 		"description": "Checks if there is an existing job with a destination.",
-		"operationId": "delete-accounts-account_identifier-logpush-validate-destination-exists",
+		"operationId": "delete-accounts-account_id-logpush-validate-destination-exists",
 		"parameters": [
 			{
 				"in": "path",
@@ -3323,7 +3331,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Check destination exists",
@@ -3344,7 +3353,7 @@
 	},
 	"POST /accounts/{account_id}/logpush/validate/origin": {
 		"description": "Validates logpull origin with logpull_options.",
-		"operationId": "post-accounts-account_identifier-logpush-validate-origin",
+		"operationId": "post-accounts-account_id-logpush-validate-origin",
 		"parameters": [
 			{
 				"in": "path",
@@ -3570,7 +3579,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Validate origin",
@@ -3591,7 +3601,7 @@
 	},
 	"PUT /accounts/{account_id}/logpush/jobs/{job_id}": {
 		"description": "Updates a Logpush job.",
-		"operationId": "put-accounts-account_identifier-logpush-jobs-job_identifier",
+		"operationId": "put-accounts-account_id-logpush-jobs-job_id",
 		"parameters": [
 			{
 				"in": "path",
@@ -4266,7 +4276,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update Logpush job",

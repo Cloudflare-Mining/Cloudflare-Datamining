@@ -1,7 +1,7 @@
 {
 	"GET /zones/{zone_id}/logpush/edge": {
 		"description": "Lists Instant Logs jobs for a zone.",
-		"operationId": "get-zones-zone_identifier-logpush-edge-jobs",
+		"operationId": "get-zones-zone_id-logpush-edge-jobs",
 		"parameters": [
 			{
 				"in": "path",
@@ -330,7 +330,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Instant Logs jobs",
@@ -351,7 +352,7 @@
 	},
 	"POST /zones/{zone_id}/logpush/edge": {
 		"description": "Creates a new Instant Logs job for a zone.",
-		"operationId": "post-zones-zone_identifier-logpush-edge-jobs",
+		"operationId": "post-zones-zone_id-logpush-edge-jobs",
 		"parameters": [
 			{
 				"in": "path",
@@ -738,7 +739,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create Instant Logs job",

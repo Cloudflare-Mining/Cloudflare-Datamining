@@ -1,7 +1,7 @@
 {
 	"DELETE /zones/{zone_id}/logpush/jobs/{job_id}": {
 		"description": "Deletes a Logpush job.",
-		"operationId": "delete-zones-zone_identifier-logpush-jobs-job_identifier",
+		"operationId": "delete-zones-zone_id-logpush-jobs-job_id",
 		"parameters": [
 			{
 				"in": "path",
@@ -216,7 +216,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete Logpush job",
@@ -237,7 +238,7 @@
 	},
 	"GET /zones/{zone_id}/logpush/datasets/{dataset_id}/fields": {
 		"description": "Lists all fields available for a dataset. The response result is an object with key-value pairs, where keys are field names, and values are descriptions.",
-		"operationId": "get-zones-zone_identifier-logpush-datasets-dataset-fields",
+		"operationId": "get-zones-zone_id-logpush-datasets-dataset_id-fields",
 		"parameters": [
 			{
 				"in": "path",
@@ -452,7 +453,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List fields",
@@ -473,7 +475,7 @@
 	},
 	"GET /zones/{zone_id}/logpush/datasets/{dataset_id}/jobs": {
 		"description": "Lists Logpush jobs for a zone for a dataset.",
-		"operationId": "get-zones-zone_identifier-logpush-datasets-dataset-jobs",
+		"operationId": "get-zones-zone_id-logpush-datasets-dataset_id-jobs",
 		"parameters": [
 			{
 				"in": "path",
@@ -927,7 +929,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Logpush jobs for a dataset",
@@ -948,7 +951,7 @@
 	},
 	"GET /zones/{zone_id}/logpush/jobs": {
 		"description": "Lists Logpush jobs for a zone.",
-		"operationId": "get-zones-zone_identifier-logpush-jobs",
+		"operationId": "get-zones-zone_id-logpush-jobs",
 		"parameters": [
 			{
 				"in": "path",
@@ -1389,7 +1392,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Logpush jobs",
@@ -1410,7 +1414,7 @@
 	},
 	"GET /zones/{zone_id}/logpush/jobs/{job_id}": {
 		"description": "Gets the details of a Logpush job.",
-		"operationId": "get-zones-zone_identifier-logpush-jobs-job_identifier",
+		"operationId": "get-zones-zone_id-logpush-jobs-job_id",
 		"parameters": [
 			{
 				"in": "path",
@@ -1875,7 +1879,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get Logpush job details",
@@ -1896,7 +1901,7 @@
 	},
 	"POST /zones/{zone_id}/logpush/jobs": {
 		"description": "Creates a new Logpush job for a zone.",
-		"operationId": "post-zones-zone_identifier-logpush-jobs",
+		"operationId": "post-zones-zone_id-logpush-jobs",
 		"parameters": [
 			{
 				"in": "path",
@@ -2582,7 +2587,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create Logpush job",
@@ -2603,7 +2609,7 @@
 	},
 	"POST /zones/{zone_id}/logpush/ownership": {
 		"description": "Gets a new ownership challenge sent to your destination.",
-		"operationId": "post-zones-zone_identifier-logpush-ownership",
+		"operationId": "post-zones-zone_id-logpush-ownership",
 		"parameters": [
 			{
 				"in": "path",
@@ -2831,7 +2837,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get ownership challenge",
@@ -2852,7 +2859,7 @@
 	},
 	"POST /zones/{zone_id}/logpush/ownership/validate": {
 		"description": "Validates ownership challenge of the destination.",
-		"operationId": "post-zones-zone_identifier-logpush-ownership-validate",
+		"operationId": "post-zones-zone_id-logpush-ownership-validate",
 		"parameters": [
 			{
 				"in": "path",
@@ -3080,7 +3087,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Validate ownership challenge",
@@ -3101,7 +3109,7 @@
 	},
 	"POST /zones/{zone_id}/logpush/validate/destination/exists": {
 		"description": "Checks if there is an existing job with a destination.",
-		"operationId": "post-zones-zone_identifier-logpush-validate-destination-exists",
+		"operationId": "post-zones-zone_id-logpush-validate-destination-exists",
 		"parameters": [
 			{
 				"in": "path",
@@ -3321,7 +3329,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Check destination exists",
@@ -3342,7 +3351,7 @@
 	},
 	"POST /zones/{zone_id}/logpush/validate/origin": {
 		"description": "Validates logpull origin with logpull_options.",
-		"operationId": "post-zones-zone_identifier-logpush-validate-origin",
+		"operationId": "post-zones-zone_id-logpush-validate-origin",
 		"parameters": [
 			{
 				"in": "path",
@@ -3568,7 +3577,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Validate origin",
@@ -3589,7 +3599,7 @@
 	},
 	"PUT /zones/{zone_id}/logpush/jobs/{job_id}": {
 		"description": "Updates a Logpush job.",
-		"operationId": "put-zones-zone_identifier-logpush-jobs-job_identifier",
+		"operationId": "put-zones-zone_id-logpush-jobs-job_id",
 		"parameters": [
 			{
 				"in": "path",
@@ -4264,7 +4274,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update Logpush job",
