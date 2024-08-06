@@ -1,0 +1,31 @@
+{
+	"name": "@cloudflare/workers-shared",
+	"dist-tags": {
+		"latest": "0.1.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.1.0",
+			"devDependencies": {
+				"concurrently": "^8.2.2",
+				"esbuild": "0.17.19",
+				"rimraf": "^6.0.1",
+				"typescript": "^5.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-SyD4iw6jM4anZaG+ujgVETV4fulF2KHBOW31eavbVN7TNpk2l4aJgwY1YSPK00IKSWsoQuH2TigR446KuT5lqQ==",
+				"shasum": "1af7d2ffbb61ca27f37e4cbc6c4713adc7223900",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.1.0.tgz",
+				"fileCount": 10,
+				"unpackedSize": 4328,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCOsjDuj5l8+69W8+JFgfFpMPT1cyBaYVIP1DV/4LYiVQIhAMHwXsVTty2ZBb9gRqY4B3GScPCCAQPQ9wKhMM6/Tay8"
+					}
+				]
+			}
+		}
+	}
+}
