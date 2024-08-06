@@ -6,8 +6,8 @@
 	</div>
 </div>
 <p><strong>Available Location: Singapore, Sydney (Australia) or Melbourne (Australia)<br></strong></p>
-<p>We are seeking a highly skilled and experienced Regional Senior Marketing Operations Manager to join our dynamic team in the Asia-Pacific (APJC) region. In this role, you will be responsible for leading and managing marketing operations across the APJC region. You will be the strategic partner and work closely with the regional marketing team, as well as cross-functional teams including BDRs to ensure the successful execution of marketing campaigns and as well as provide the regional perspective to global initiatives.</p>
-<p>This Senior Marketing Operations Manager will play a crucial role in ensuring the success of our strategic go-to-market systems architecture and holistic marketing initiatives by developing strategies, implementing best practices, and collaborating with teams across the organization.</p>
+<p>We are seeking a highly skilled and experienced Marketing Operations Manager to join our dynamic team in the Asia-Pacific (APJC) region. In this role, you will be responsible for leading and managing marketing operations across the APJC region. You will be the strategic partner and work closely with the regional marketing team, as well as cross-functional teams including BDRs to ensure the successful execution of marketing campaigns and as well as provide the regional perspective to global initiatives.</p>
+<p>This Marketing Operations Manager, APJC will play a crucial role in ensuring the success of our strategic go-to-market systems architecture and holistic marketing initiatives by developing strategies, implementing best practices, and collaborating with teams across the organization.</p>
 <p><strong>Technical Skill Set:</strong></p>
 <ul>
 	<li>Extensive experience with marketing automation platforms, specifically Marketo with system architecture experience</li>
