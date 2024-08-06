@@ -51,18 +51,6 @@
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
-										"improved_logs": {
-											"type": "boolean"
-										},
-										"logpush": {
-											"type": "boolean"
-										},
-										"logpush_public_key": {
-											"maxLength": 1024,
-											"minLength": 16,
-											"nullable": true,
-											"type": "string"
-										},
 										"modified_at": {
 											"format": "date-time",
 											"type": "string"
@@ -262,18 +250,6 @@
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 												"type": "string"
 											},
-											"improved_logs": {
-												"type": "boolean"
-											},
-											"logpush": {
-												"type": "boolean"
-											},
-											"logpush_public_key": {
-												"maxLength": 1024,
-												"minLength": 16,
-												"nullable": true,
-												"type": "string"
-											},
 											"modified_at": {
 												"format": "date-time",
 												"type": "string"
@@ -444,18 +420,6 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
-										},
-										"improved_logs": {
-											"type": "boolean"
-										},
-										"logpush": {
-											"type": "boolean"
-										},
-										"logpush_public_key": {
-											"maxLength": 1024,
-											"minLength": 16,
-											"nullable": true,
 											"type": "string"
 										},
 										"modified_at": {
@@ -881,18 +845,6 @@
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 								"type": "string"
 							},
-							"improved_logs": {
-								"type": "boolean"
-							},
-							"logpush": {
-								"type": "boolean"
-							},
-							"logpush_public_key": {
-								"maxLength": 1024,
-								"minLength": 16,
-								"nullable": true,
-								"type": "string"
-							},
 							"rate_limiting_interval": {
 								"minimum": 0,
 								"nullable": true,
@@ -933,81 +885,61 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"task": {
-											"properties": {
-												"cache_invalidate_on_update": {
-													"type": "boolean"
-												},
-												"cache_ttl": {
-													"minimum": 0,
-													"nullable": true,
-													"type": "integer"
-												},
-												"collect_logs": {
-													"type": "boolean"
-												},
-												"created_at": {
-													"format": "date-time",
-													"type": "string"
-												},
-												"id": {
-													"description": "gateway id",
-													"example": "my-gateway",
-													"maxLength": 64,
-													"minLength": 1,
-													"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-													"type": "string"
-												},
-												"improved_logs": {
-													"type": "boolean"
-												},
-												"logpush": {
-													"type": "boolean"
-												},
-												"logpush_public_key": {
-													"maxLength": 1024,
-													"minLength": 16,
-													"nullable": true,
-													"type": "string"
-												},
-												"modified_at": {
-													"format": "date-time",
-													"type": "string"
-												},
-												"rate_limiting_interval": {
-													"minimum": 0,
-													"nullable": true,
-													"type": "integer"
-												},
-												"rate_limiting_limit": {
-													"minimum": 0,
-													"nullable": true,
-													"type": "integer"
-												},
-												"rate_limiting_technique": {
-													"enum": [
-														"fixed",
-														"sliding"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"id",
-												"rate_limiting_interval",
-												"rate_limiting_limit",
-												"rate_limiting_technique",
-												"collect_logs",
-												"cache_ttl",
-												"cache_invalidate_on_update",
-												"created_at",
-												"modified_at"
+										"cache_invalidate_on_update": {
+											"type": "boolean"
+										},
+										"cache_ttl": {
+											"minimum": 0,
+											"nullable": true,
+											"type": "integer"
+										},
+										"collect_logs": {
+											"type": "boolean"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"id": {
+											"description": "gateway id",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"rate_limiting_interval": {
+											"minimum": 0,
+											"nullable": true,
+											"type": "integer"
+										},
+										"rate_limiting_limit": {
+											"minimum": 0,
+											"nullable": true,
+											"type": "integer"
+										},
+										"rate_limiting_technique": {
+											"enum": [
+												"fixed",
+												"sliding"
 											],
-											"type": "object"
+											"type": "string"
 										}
 									},
 									"required": [
-										"task"
+										"id",
+										"rate_limiting_interval",
+										"rate_limiting_limit",
+										"rate_limiting_technique",
+										"collect_logs",
+										"cache_ttl",
+										"cache_invalidate_on_update",
+										"created_at",
+										"modified_at"
 									],
 									"type": "object"
 								},
@@ -1140,18 +1072,6 @@
 							"collect_logs": {
 								"type": "boolean"
 							},
-							"improved_logs": {
-								"type": "boolean"
-							},
-							"logpush": {
-								"type": "boolean"
-							},
-							"logpush_public_key": {
-								"maxLength": 1024,
-								"minLength": 16,
-								"nullable": true,
-								"type": "string"
-							},
 							"rate_limiting_interval": {
 								"minimum": 0,
 								"nullable": true,
@@ -1212,18 +1132,6 @@
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
-										},
-										"improved_logs": {
-											"type": "boolean"
-										},
-										"logpush": {
-											"type": "boolean"
-										},
-										"logpush_public_key": {
-											"maxLength": 1024,
-											"minLength": 16,
-											"nullable": true,
 											"type": "string"
 										},
 										"modified_at": {
