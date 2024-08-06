@@ -1348,7 +1348,7 @@
 						"properties": {
 							"condition": {
 								"properties": {
-									"request_ip": {
+									"request.ip": {
 										"description": "Client IP restrictions.",
 										"example": {
 											"in": [
@@ -1851,7 +1851,7 @@
 								"properties": {
 									"condition": {
 										"properties": {
-											"request_ip": {
+											"request.ip": {
 												"description": "Client IP restrictions.",
 												"example": {
 													"in": [
