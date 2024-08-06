@@ -32,9 +32,9 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual On Target Earnings of $135,000 - $216,000.</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires:): Estimated annual On Target Earnings of $145,000 - $224,000</li>
-	<li>For Bay Area-based hires: Estimated annual On Target Earnings of of $152,000 - $237,000.</li>
+	<li>For Colorado-based hires: Estimated annual On Target Earnings of $123,000 - $201,000.</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires:): Estimated annual On Target Earnings of $138,000 - $209,000</li>
+	<li>For Bay Area-based hires: Estimated annual On Target Earnings of of $145,000 - $220,000.</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
