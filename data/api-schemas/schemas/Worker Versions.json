@@ -798,7 +798,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/versions": {
-		"description": "Upload a Worker Version without deploying to Cloudflare's network.",
+		"description": "Upload a Worker Version without deploying to Cloudflare's network. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/.",
 		"operationId": "worker-versions-upload-version",
 		"parameters": [
 			{

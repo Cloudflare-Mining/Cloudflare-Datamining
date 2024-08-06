@@ -4641,7 +4641,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
-		"description": "Upload a worker module to a Workers for Platforms namespace. You can find an example of the metadata on our docs: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/metadata/",
+		"description": "Upload a worker module to a Workers for Platforms namespace. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/.",
 		"operationId": "namespace-worker-script-upload-worker-module",
 		"parameters": [
 			{
