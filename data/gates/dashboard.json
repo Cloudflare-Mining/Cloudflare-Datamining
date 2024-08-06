@@ -2,6 +2,13 @@
 	"1535d-show-zones-in-tableview-instead-of-cards": {
 		"enabled": false
 	},
+	"1565-d-improve-dns-onboarding": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"2022-improved-dev-tools": {
 		"enabled": true
 	},
@@ -834,6 +841,9 @@
 	},
 	"queues-http-pull-consumer-config": {
 		"enabled": true
+	},
+	"queues-message-expiration": {
+		"enabled": false
 	},
 	"queues-send-from-dash": {
 		"enabled": true
