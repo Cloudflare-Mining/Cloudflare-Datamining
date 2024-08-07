@@ -140,7 +140,10 @@
 								{
 									"properties": {
 										"result": {
-											"items": {},
+											"items": {
+												"description": "Unused",
+												"type": "string"
+											},
 											"maxItems": 0,
 											"type": "array"
 										}
@@ -262,7 +265,10 @@
 										{
 											"properties": {
 												"result": {
-													"items": {},
+													"items": {
+														"description": "Unused",
+														"type": "string"
+													},
 													"maxItems": 0,
 													"type": "array"
 												}
@@ -563,7 +569,6 @@
 														"description": "Identifier",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
 														"type": "string"
 													}
 												},
@@ -749,7 +754,6 @@
 																"description": "Identifier",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
-																"readOnly": true,
 																"type": "string"
 															}
 														},
@@ -1445,7 +1449,6 @@
 													"description": "Identifier",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -1608,7 +1611,6 @@
 															"description": "Identifier",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"readOnly": true,
 															"type": "string"
 														}
 													},
