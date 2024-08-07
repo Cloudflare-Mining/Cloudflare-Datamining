@@ -1,12 +1,12 @@
 {
-	"GET /accounts/{account_identifier}/billing/profile": {
+	"GET /accounts/{account_id}/billing/profile": {
 		"deprecated": true,
 		"description": "Gets the current billing profile for the account.",
 		"operationId": "account-billing-profile-(-deprecated)-billing-profile-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {}
 			}

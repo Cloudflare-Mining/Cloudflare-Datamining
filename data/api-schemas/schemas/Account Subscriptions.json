@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/subscriptions/{subscription_identifier}": {
+	"DELETE /accounts/{account_id}/subscriptions/{subscription_identifier}": {
 		"description": "Deletes an account's subscription.",
 		"operationId": "account-subscriptions-delete-subscription",
 		"parameters": [
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -387,13 +387,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/subscriptions": {
+	"GET /accounts/{account_id}/subscriptions": {
 		"description": "Lists all of an account's subscriptions.",
 		"operationId": "account-subscriptions-list-subscriptions",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1123,13 +1123,13 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_identifier}/subscriptions": {
+	"POST /accounts/{account_id}/subscriptions": {
 		"description": "Creates an account subscription.",
 		"operationId": "account-subscriptions-create-subscription",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1656,7 +1656,7 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{account_identifier}/subscriptions/{subscription_identifier}": {
+	"PUT /accounts/{account_id}/subscriptions/{subscription_identifier}": {
 		"description": "Updates an account subscription.",
 		"operationId": "account-subscriptions-update-subscription",
 		"parameters": [
@@ -1674,7 +1674,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
