@@ -6,13 +6,6 @@
 			"add-products"
 		]
 	},
-	"1565-d-improve-dns-onboarding": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"2022-improved-dev-tools": {
 		"enabled": true
 	},
@@ -288,6 +281,13 @@
 	"cloudflare-calls": {
 		"enabled": false
 	},
+	"combined-add-site-page-with-dns-transfer-options": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"compression-rules": {
 		"enabled": true
 	},
@@ -425,6 +425,13 @@
 	},
 	"dx-full-zone-nameserver-instructions": {
 		"enabled": true,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
+	"dx-improve-dns-onboarding": {
+		"enabled": false,
 		"branches": [
 			"baseline",
 			"experiment"
