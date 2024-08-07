@@ -5,28 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Lisbon, Portugal</strong></h3>
-<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3 id="SeniorSoftwareEngineerD1-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>We announced Cloudflare Workers in 2017 &nbsp;— since then it’s played a key role in Cloudflare’s strategy for entering the developer platform market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support. Workers has allowed Cloudflare to add programmability to the edge such that developers could have access to writing logic on the edge in their preferred way — through code. Over the past few years, Workers has grown from a simple functions-as-a-service option into a fully blown full-stack platform. With any application, however, in addition to serverless compute, you need to be able to manage state. In 2022, Cloudflare released D1 — built on Durable Objects, D1 is Cloudflare’s first serverless database.&nbsp; In this role, you’ll be helping define and building the future of D1 to enable developers to build full stack applications.&nbsp;</p>
-<h3 id="SeniorSoftwareEngineerD1-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h3>Location: Remote, UK | Remote, Portugal</h3>
+<h3><strong>Description:</strong></h3>
+<p>We are looking for a leader with prior experience in Technical Account Management and value-added support services. The ideal candidate will lead a team of Technical Account Managers, who are responsible for managing the service delivery experience of our Premium customers. Partnering with the Head of TAM Services to drive the development and execution of a Global TAM strategy, ensuring an exceptional service experience that is metrics-driven and solution-oriented. You will be responsible for managing, mentoring, and coaching team members, while also overseeing career development planning and guidance. Additionally, you will play a pivotal role in hiring, onboarding, and training new team members. Your role will require effective cross-team communication between Support, Product/Engineering, and Sales, fostering collaboration among Support managers and teams. Furthermore, you will closely collaborate with Account Management Teams, such as Solution Consulting, Account Executives, Professional Services, and Partners, to guarantee a seamless customer experience.</p>
+<h3><strong>Responsibilities:</strong></h3>
 <ul>
-	<li>5+ years experience building full-stack web applications.</li>
-	<li>Knowledge of Javascript, preferably Typescript, for both frontend and backend application development.</li>
-	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Java, C#, Rust, or C++.</li>
-	<li>Experience operating high volume Software-as-a-Service (SaaS) applications.</li>
-	<li>Experience designing and building library and REST APIs</li>
-	<li>A solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Collaborate with the Head of TAM Services to develop and execute the Global TAM strategy.</li>
+	<li>&nbsp;Maintain a metrics-driven and solution-oriented approach to deliver a world-class service experience.</li>
+	<li>Lead, mentor, and coach team members to achieve their full potential.</li>
+	<li>Provide guidance for career development within the team.</li>
+	<li>Handle the recruitment, onboarding, and training of new team members.</li>
+	<li>Foster cross-team communication between Support, Product/Engineering, and Sales.</li>
+	<li>Promote team collaboration with other Support managers and teams.</li>
+	<li>Partner closely with Account Management Teams to ensure a seamless customer experience.</li>
+	<li>Facilitate the implementation of new processes to enhance customer support.</li>
+	<li>Cultivate and strengthen the collaborative culture within Cloudflare Support.</li>
+	<li>Address critical customer escalations and manage stakeholder expectations, providing senior management with resolution plans.</li>
+	<li>Collect and analyze support metrics to drive continuous improvements.</li>
+	<li>Ensure proactive and high-quality ticket and incident management.</li>
+	<li>Responsible for weekly reporting, including team metrics, customer trends, issues, and requests.</li>
+	<li>Contact customers proactively to ensure the highest level of service satisfaction and develop and implement a corrective action plan, to avoid potential churn</li>
 </ul>
-<h3 id="SeniorSoftwareEngineerD1-BonusPoints"><strong>Bonus Points</strong></h3>
+<h3><strong>Requirements:</strong></h3>
 <ul>
-	<li>A thorough understanding of database internals such as SQLite and Postgres.</li>
-	<li>A thorough understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly.</li>
-	<li>Experience building developer platforms and/or tooling.</li>
-	<li>Experience developing on open source software projects.</li>
+	<li>5 to 8 years of technical leadership experience, preferably in SaaS or Network/General Cyber Security.</li>
+	<li>Previous experience leading a regionally distributed team connected to a 24/7 Follow-the-sun service delivery model.</li>
+	<li>Experience in scaling and operationalizing new/existing TAM offerings for large enterprise customers.</li>
+	<li>Prior experience with paid support services, including observability (Security/Network Operations Center).</li>
+	<li>Direct experience in the hiring process, including candidate review, interviewing, and collaborative decision-making.</li>
+	<li>Strong written and oral communication skills.</li>
+	<li>Excellent problem-solving abilities.</li>
+	<li>Enthusiasm for working directly with customers.</li>
+	<li>A proven track record of building and leading world-class Technical Support teams, ideally in an infrastructure, platform, or SaaS business.</li>
+	<li>Passion for creating and promoting best support practices.</li>
+	<li>Willingness to be available during weekends and holidays as needed.</li>
 </ul>
-<h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-Whatyou'lldo"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
