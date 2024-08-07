@@ -9,7 +9,8 @@
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -18,7 +19,8 @@
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -119,7 +121,8 @@
 											"properties": {
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -224,7 +227,8 @@
 													"properties": {
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -357,7 +361,8 @@
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -473,7 +478,8 @@
 												"properties": {
 													"id": {
 														"example": "23ff594956f20c2a721606e94745a8aa",
-														"readOnly": true
+														"readOnly": true,
+														"type": "string"
 													},
 													"ip_range": {
 														"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
@@ -616,7 +622,8 @@
 														"properties": {
 															"id": {
 																"example": "23ff594956f20c2a721606e94745a8aa",
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															},
 															"ip_range": {
 																"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
@@ -765,7 +772,8 @@
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -774,7 +782,8 @@
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -869,7 +878,8 @@
 											"properties": {
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												},
 												"ip_range": {
 													"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
@@ -989,7 +999,8 @@
 													"properties": {
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"ip_range": {
 															"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
@@ -1136,7 +1147,8 @@
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -1144,10 +1156,23 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"ip_range": {
+								"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
+								"example": "192.0.2.53/28",
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the acl.",
+								"example": "my-acl-1",
+								"type": "string"
+							}
+						},
 						"required": [
 							"name",
 							"ip_range"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -1244,7 +1269,8 @@
 											"properties": {
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												},
 												"ip_range": {
 													"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
@@ -1364,7 +1390,8 @@
 													"properties": {
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"ip_range": {
 															"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
@@ -1512,7 +1539,8 @@
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -1521,7 +1549,8 @@
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -1532,7 +1561,8 @@
 						"properties": {
 							"id": {
 								"example": "23ff594956f20c2a721606e94745a8aa",
-								"readOnly": true
+								"readOnly": true,
+								"type": "string"
 							},
 							"ip_range": {
 								"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
@@ -1647,7 +1677,8 @@
 											"properties": {
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												},
 												"ip_range": {
 													"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
@@ -1767,7 +1798,8 @@
 													"properties": {
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"ip_range": {
 															"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",

@@ -9,7 +9,8 @@
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -110,7 +111,8 @@
 											"properties": {
 												"id": {
 													"example": "269d8f4853475ca241c4e730be286b20",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -215,7 +217,8 @@
 													"properties": {
 														"id": {
 															"example": "269d8f4853475ca241c4e730be286b20",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -347,7 +350,8 @@
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -457,7 +461,8 @@
 												},
 												"id": {
 													"example": "269d8f4853475ca241c4e730be286b20",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												},
 												"modified_time": {
 													"description": "The time for a specific event.",
@@ -475,7 +480,11 @@
 														"23ff594956f20c2a721606e94745a8aa",
 														"00920f38ce07c2e2f4df50b1f61d4194"
 													],
-													"items": {},
+													"items": {
+														"example": "269d8f4853475ca241c4e730be286b20",
+														"readOnly": true,
+														"type": "string"
+													},
 													"type": "array"
 												},
 												"soa_serial": {
@@ -601,7 +610,8 @@
 														},
 														"id": {
 															"example": "269d8f4853475ca241c4e730be286b20",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"modified_time": {
 															"description": "The time for a specific event.",
@@ -619,7 +629,11 @@
 																"23ff594956f20c2a721606e94745a8aa",
 																"00920f38ce07c2e2f4df50b1f61d4194"
 															],
-															"items": {},
+															"items": {
+																"example": "269d8f4853475ca241c4e730be286b20",
+																"readOnly": true,
+																"type": "string"
+															},
 															"type": "array"
 														},
 														"soa_serial": {
@@ -757,7 +771,8 @@
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -1087,7 +1102,8 @@
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -1103,7 +1119,8 @@
 							},
 							"id": {
 								"example": "269d8f4853475ca241c4e730be286b20",
-								"readOnly": true
+								"readOnly": true,
+								"type": "string"
 							},
 							"name": {
 								"description": "Zone name.",
@@ -1116,7 +1133,11 @@
 									"23ff594956f20c2a721606e94745a8aa",
 									"00920f38ce07c2e2f4df50b1f61d4194"
 								],
-								"items": {},
+								"items": {
+									"example": "269d8f4853475ca241c4e730be286b20",
+									"readOnly": true,
+									"type": "string"
+								},
 								"type": "array"
 							}
 						},
@@ -1238,7 +1259,8 @@
 												},
 												"id": {
 													"example": "269d8f4853475ca241c4e730be286b20",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												},
 												"modified_time": {
 													"description": "The time for a specific event.",
@@ -1256,7 +1278,11 @@
 														"23ff594956f20c2a721606e94745a8aa",
 														"00920f38ce07c2e2f4df50b1f61d4194"
 													],
-													"items": {},
+													"items": {
+														"example": "269d8f4853475ca241c4e730be286b20",
+														"readOnly": true,
+														"type": "string"
+													},
 													"type": "array"
 												},
 												"soa_serial": {
@@ -1382,7 +1408,8 @@
 														},
 														"id": {
 															"example": "269d8f4853475ca241c4e730be286b20",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"modified_time": {
 															"description": "The time for a specific event.",
@@ -1400,7 +1427,11 @@
 																"23ff594956f20c2a721606e94745a8aa",
 																"00920f38ce07c2e2f4df50b1f61d4194"
 															],
-															"items": {},
+															"items": {
+																"example": "269d8f4853475ca241c4e730be286b20",
+																"readOnly": true,
+																"type": "string"
+															},
 															"type": "array"
 														},
 														"soa_serial": {
@@ -1538,7 +1569,8 @@
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -1554,7 +1586,8 @@
 							},
 							"id": {
 								"example": "269d8f4853475ca241c4e730be286b20",
-								"readOnly": true
+								"readOnly": true,
+								"type": "string"
 							},
 							"name": {
 								"description": "Zone name.",
@@ -1567,7 +1600,11 @@
 									"23ff594956f20c2a721606e94745a8aa",
 									"00920f38ce07c2e2f4df50b1f61d4194"
 								],
-								"items": {},
+								"items": {
+									"example": "269d8f4853475ca241c4e730be286b20",
+									"readOnly": true,
+									"type": "string"
+								},
 								"type": "array"
 							}
 						},
@@ -1689,7 +1726,8 @@
 												},
 												"id": {
 													"example": "269d8f4853475ca241c4e730be286b20",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												},
 												"modified_time": {
 													"description": "The time for a specific event.",
@@ -1707,7 +1745,11 @@
 														"23ff594956f20c2a721606e94745a8aa",
 														"00920f38ce07c2e2f4df50b1f61d4194"
 													],
-													"items": {},
+													"items": {
+														"example": "269d8f4853475ca241c4e730be286b20",
+														"readOnly": true,
+														"type": "string"
+													},
 													"type": "array"
 												},
 												"soa_serial": {
@@ -1833,7 +1875,8 @@
 														},
 														"id": {
 															"example": "269d8f4853475ca241c4e730be286b20",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"modified_time": {
 															"description": "The time for a specific event.",
@@ -1851,7 +1894,11 @@
 																"23ff594956f20c2a721606e94745a8aa",
 																"00920f38ce07c2e2f4df50b1f61d4194"
 															],
-															"items": {},
+															"items": {
+																"example": "269d8f4853475ca241c4e730be286b20",
+																"readOnly": true,
+																"type": "string"
+															},
 															"type": "array"
 														},
 														"soa_serial": {

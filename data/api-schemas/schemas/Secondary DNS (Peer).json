@@ -9,7 +9,8 @@
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -18,7 +19,8 @@
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -119,7 +121,8 @@
 											"properties": {
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -224,7 +227,8 @@
 													"properties": {
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -357,7 +361,8 @@
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -473,7 +478,8 @@
 												"properties": {
 													"id": {
 														"example": "23ff594956f20c2a721606e94745a8aa",
-														"readOnly": true
+														"readOnly": true,
+														"type": "string"
 													},
 													"ip": {
 														"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
@@ -630,7 +636,8 @@
 														"properties": {
 															"id": {
 																"example": "23ff594956f20c2a721606e94745a8aa",
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															},
 															"ip": {
 																"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
@@ -794,7 +801,8 @@
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -803,7 +811,8 @@
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -898,7 +907,8 @@
 											"properties": {
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												},
 												"ip": {
 													"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
@@ -1032,7 +1042,8 @@
 													"properties": {
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"ip": {
 															"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
@@ -1194,7 +1205,8 @@
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -1202,6 +1214,13 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"name": {
+								"description": "The name of the peer.",
+								"example": "my-peer-1",
+								"type": "string"
+							}
+						},
 						"required": [
 							"name"
 						]
@@ -1301,7 +1320,8 @@
 											"properties": {
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												},
 												"ip": {
 													"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
@@ -1435,7 +1455,8 @@
 													"properties": {
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"ip": {
 															"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
@@ -1597,7 +1618,8 @@
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			{
@@ -1606,7 +1628,8 @@
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -1617,7 +1640,8 @@
 						"properties": {
 							"id": {
 								"example": "23ff594956f20c2a721606e94745a8aa",
-								"readOnly": true
+								"readOnly": true,
+								"type": "string"
 							},
 							"ip": {
 								"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
@@ -1746,7 +1770,8 @@
 											"properties": {
 												"id": {
 													"example": "23ff594956f20c2a721606e94745a8aa",
-													"readOnly": true
+													"readOnly": true,
+													"type": "string"
 												},
 												"ip": {
 													"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
@@ -1880,7 +1905,8 @@
 													"properties": {
 														"id": {
 															"example": "23ff594956f20c2a721606e94745a8aa",
-															"readOnly": true
+															"readOnly": true,
+															"type": "string"
 														},
 														"ip": {
 															"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
