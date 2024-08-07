@@ -5,32 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3></h3>
-<h3><strong>About the role</strong></h3>
-<p>Cloudflare is looking for a PR Executive/Specialist, Asia Pacific to assist the head of PR, Asia Pacific, in scaling our PR program internally and externally. In this role you’ll get to work with a wide range of Cloudflare executives across technical, legal/policy, marketing, and regional teams. The ideal candidate should have at least 3-5 years of regional tech PR experience, supporting and executing PR programs in Southeast Asia/Asia Pacific. You’ll be a key member of our award-winning in-house communications team, and will work with a wide range of executives and teams to support execution, develop messaging, and report results from concept to completion.&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>Responsibilities:&nbsp;</strong></p>
+<h4><strong>About the team</strong></h4>
+<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for a Software Engineer to join our Lisbon team to scale our development efforts on network availability insights initiatives. You will work on building full stack data applications which empowers our Product and Engineering team. As all the applications we build are self initiated by the team, you will have the opportunity to get involved from designing features all the way to implementation. In addition, you will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, and Clickhouse.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Assist the PR Director, APAC in managing PR operations including editorial calendar, content, execution, reporting, and agency coordination</li>
-	<li>Write press releases, blog posts, and other materials to support regional and local communications initiatives</li>
-	<li>Help manage day-to-day execution for APAC PR programs</li>
-	<li>Maintain strong media relationships across all types of media outlets, develop story ideas, and manage stories</li>
-	<li>Organize media briefings, interviews, and PR-focused events</li>
-	<li>Support and help manage key executive spokespeople</li>
+	<li>Design and implement key features of our internal applications</li>
+	<li>Work closely with a cross functional team to design features and solutions that solve critical business problems</li>
+	<li>Contribute in improving an evolving platform architecture for scalability, observability and reliability</li>
+	<li>Continuously involved in knowledge sharing and mentorship</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Requirements:&nbsp;</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>BA/BS in Communications, Journalism, Public Relations or Marketing preferred</li>
-	<li>3-5 years’ experience in regional (APAC) tech PR, either in-house B2B or agency&nbsp;</li>
-	<li>Ability to operate independently and as a team in “the trenches”—we’re a dynamic team and everyone pitches in to get the job done</li>
-	<li>Excellent communication and writing skills&nbsp;</li>
-	<li>Creative, hardworking, and flexible, with the ability to thrive in a fast-paced and changing environment</li>
-	<li>Strong project management and attention to detail</li>
-	<li>Ability to multitask, manage deadlines, and communicate priorities</li>
-	<li>Ability to understand and operate in a highly technical environment</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</li>
+	<li>Experience working with Go, Python, Java, or equivalent programming languages</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
+	<li>Experience with Javascript, Typescript, and React</li>
+	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
+	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
 </ul>
-<h3></h3>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
+	<li>Familiarity with Google Cloud Platform or something similar</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

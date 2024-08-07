@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5804849?gh_jid=5804849",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/6042331?gh_jid=6042331",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -9,9 +9,9 @@
 			"retention_period": null
 		}
 	],
-	"internal_job_id": 2826084,
+	"internal_job_id": 2900934,
 	"location": {
-		"name": "Hybrid or Remote"
+		"name": "Remote"
 	},
 	"metadata": [
 		{
@@ -23,26 +23,31 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "6310 - Business Intelligence",
+			"value": "4300 - Systems Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Portugal"
+				"Alberta, Canada",
+				"British Columbia, Canada",
+				"Lisbon, Portugal",
+				"Ontario, Canada",
+				"Quebec, Canada",
+				"US"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 5804849,
-	"updated_at": "2024-08-05T09:52:30-04:00",
+	"id": 6042331,
+	"updated_at": "2024-08-07T06:25:30-04:00",
 	"requisition_id": null,
-	"title": "Software Engineer - Data Applications",
+	"title": "Manual QA Engineer, Zero Trust Client ",
 	"departments": [
 		{
-			"id": 57769,
-			"name": "Business Intelligence",
+			"id": 29067,
+			"name": "Engineering",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -54,6 +59,26 @@
 			"location": "Lisboa, Lisboa, Portugal",
 			"child_ids": [],
 			"parent_id": 74843
+		},
+		{
+			"id": 75375,
+			"name": "Remote US",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 75883,
+			"name": "Canada",
+			"location": null,
+			"child_ids": [
+				73335,
+				75596,
+				75884,
+				75885,
+				75886
+			],
+			"parent_id": 48752
 		}
 	]
 }
