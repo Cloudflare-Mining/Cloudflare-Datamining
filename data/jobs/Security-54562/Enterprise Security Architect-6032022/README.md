@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal, Mexico City, Mexico or Washington, DC or Remote US&nbsp;</strong></p>
+<p><strong>Available Locations: Austin, Texas, San Francisco, USA, DC, USA, London, UK, Lisbon, Portugal</strong></p>
 <p><strong>About the role&nbsp;</strong></p>
 <p>As an Enterprise Security Architect you will play a key role in effectively designing defensible network architectures, defensible builds &amp; configurations, security platforms and automation, assisting in secure tool and product development, and will help establish security standards and guidelines across the enterprise. This role will lead security project work with technology peers for successful delivery and coach technology staff on appropriate security standards, processes, protocols and needs as they implement new technology into the organization.</p>
 <p><strong>What You’ll Do</strong></p>
@@ -23,9 +23,9 @@
 	<li>Exercises judgment in selecting methods, techniques and evaluation criteria for obtaining results.</li>
 	<li>Ensures an organization's security strategy is aligned with companies business goals.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>15+ years of experience in an IT/Security related field, 7 of which as a security architect.</li>
+	<li>15+ years of experience in an IT/Security related field, 5 years of which as a security architect (Required).</li>
 	<li>In-depth understanding of security concepts.</li>
 	<li>Understand how business, engineering, IT, and security processes align, and how to research, test, and implement solutions to complex objectives.</li>
 	<li>Able to anticipate challenges and steer the company towards growth.</li>
@@ -43,6 +43,50 @@
 		<li>Security reviews, identify gaps in security architecture, and develop a security risk management plan.</li>
 		<li>Container-based architectures and implementations such as Kubernetes, Docker, etc.</li>
 		<li>Security controls and countermeasures including practical experience with identity management, cyber-security, and IT processes and solutions</li>
+		<li>Analyzing network data and systems to select the most appropriate control mechanism for the security required.</li>
+		<li>Network and security concepts and protocols</li>
+		<ul>
+			<li>Network Elements: Network nodes (computers, routers, etc.), communications protocols (TCP/IP, HTTP, DNS, etc.), connection media (wired, wireless), and topologies (bus, star, mesh, etc.)</li>
+			<li>Security Elements: Cybersecurity devices and software, secure communications protocols (e.g. IPsec VPN and TLS), and data privacy technologies (classification, encryption, key management, etc.).</li>
+		</ul>
+		<li>Network Security Frameworks&nbsp;</li>
+		<ul>
+			<li>Zero Trust</li>
+			<li>NIST Cybersecurity Framework (CSF)</li>
+			<li>Etc.</li>
+		</ul>
+		<li>Analyzing and fixing errors in software and applications, designing new programs, and providing support to existing software applications.</li>
+		<li>Making application security part of the overall design and architecture of an application rather than introducing security later in testing</li>
+		<li>Secure Software Development Lifecycle Requirements</li>
+		<ul>
+			<li>Using a secure software development lifecycle at all stages of development</li>
+			<li>Identify threats, facilitate appropriate risk responses, plan for countermeasures, and guide security testing for each sprint planning or design change with threat modeling</li>
+			<li>Ensure all user stories and features include functional security constraints</li>
+			<li>Verify justification and documentation of all application components, trust boundaries, and significant data flows</li>
+			<li>Define application’s high-level architecture and each remote service connected and verify security analysis</li>
+			<li>Verify implementation of centralized, reusable, secure, simply designed, and vetted security controls to avoid duplicate, ineffective, missing, or insecure controls.</li>
+			<li>Verify security requirements, guidelines, coding checklist, or policy is available to all developers and testers</li>
+		</ul>
+		<li>Access Control Architectural Requirements</li>
+		<li>Input and Output Architectural Requirements</li>
+		<li>Cryptographic Architecture Standards</li>
+		<li>Errors, Logging, and Auditing Architecture</li>
+		<li>Communications Architecture</li>
+		<li>Business Logic Architecture</li>
+		<li>Malicious Software Architecture</li>
+		<li>Database security concepts and practices</li>
+		<li>Securing data in transit, at rest and access</li>
+		<li>Cyber attacks (i.e. SQL/NoSQL injections, buffer overflow, etc.),&nbsp;</li>
+		<li>Data types and what and how they need to be protected</li>
+		<li>Defining data flows</li>
+		<li>Applicable regulatory compliance requirements</li>
+		<li>Discovering and classifying data and databases</li>
+		<li>Designing, creating, and maintaining data storage systems</li>
+		<li>Developing application programming interfaces (APIs)&nbsp;</li>
+		<li>Structured query language (SQL) and the like</li>
+		<li>Data structures, modeling, integration, security, optimization, etc</li>
+		<li>Data warehouse / lakes</li>
+		<li>NIST Frameworks</li>
 	</ul>
 </ul>
 <div class="content-conclusion">
