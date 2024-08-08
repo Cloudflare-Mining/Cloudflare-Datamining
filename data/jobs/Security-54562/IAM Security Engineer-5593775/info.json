@@ -30,13 +30,16 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"US"
+				"Austin, US",
+				"Mexico City, Mexico",
+				"San Francisco, US",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 5593775,
-	"updated_at": "2024-08-05T09:52:30-04:00",
+	"updated_at": "2024-08-08T15:29:54-04:00",
 	"requisition_id": null,
 	"title": "IAM Security Engineer",
 	"departments": [
@@ -49,11 +52,32 @@
 	],
 	"offices": [
 		{
-			"id": 75375,
-			"name": "Remote US",
-			"location": null,
+			"id": 19983,
+			"name": "Austin, TX",
+			"location": "Austin, TX, United States",
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 112096,
+			"name": "Mexico City, MX",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 87170
 		}
 	]
 }

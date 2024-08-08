@@ -26,7 +26,7 @@
 <p><strong>Qualifications</strong></p>
 <p><strong>What We’re Looking For In You</strong></p>
 <ul>
-	<li>10+ years of relevant work experience (or 5+ years post-MBA or equivalent higher degree), preferably in technology strategy/ops, and program management functions. 5+ years working in Marketing, Products and/or Sales organizations.</li>
+	<li>7-10 years of relevant work experience (or 5+ years post-MBA or equivalent higher degree), preferably in technology strategy/ops, and program management functions. 5+ years working in Marketing, Products and/or Sales organizations.</li>
 	<li>Strong leadership, execution, partnering, and influence abilities.</li>
 	<li>PMP Certification is a plus. Proven experience on project management/plan development.</li>
 	<li>Top-notch business process and financial understanding, data analytics and problem-solving skills, with an ability to synthesize disparate information and data into actionable recommendations.</li>
