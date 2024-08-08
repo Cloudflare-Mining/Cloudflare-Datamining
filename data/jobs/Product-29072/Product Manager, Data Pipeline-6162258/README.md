@@ -5,36 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Job Locations: Remote, Mexico City, MX</strong></h4>
-<h4><strong>To the attention of candidates (Mexico City):&nbsp;</strong></h4>
-<h4><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Sun-Thursday” or “Tues-Sat” 5-day working week schedule. &nbsp;Candidates MUST have right-to-work in Mexico.&nbsp; Visa sponsorship is NOT provided for this position.</strong></h4>
-<h4>About the Department</h4>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h4>What You’ll Do</h4>
-<p><span style="font-weight: 400;">Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for our Content Delivery products: Workers, Speed, Images, Stream, CDN and others.</span></p>
-<h4>Examples of desirable skills, knowledge and experience</h4>
+<p><strong>Available Locations:</strong> Hybrid - San Francisco, CA or Austin, Texas or New York City, New York or Seattle, Washington, or London, UK, or Lisbon, Portugal</p>
+<h2>About Product Management at Cloudflare</h2>
+<p>As a Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
+<p>Specifically, the Data product team is a growing, tight-knit team of empowered PMs with deep technical knowledge about data, analytics, and logs. We are a highly empathetic team who care deeply about our business, our customers, and our team members.</p>
+<h2>About the role</h2>
+<p>As the Product Manager for the Data Pipeline, your primary goal is to support and grow the backend data platform at Cloudflare, which allows us to expose powerful Analytics and Logs products to customers. You’ll work closely with a strong team of Engineers on data problems at unparalleled scale. In short, this job is about understanding the data needs of our internal and external customers and the business, and partnering with your team to deliver solutions that are valuable and viable.</p>
+<h2>&nbsp;</h2>
+<p>&nbsp;Among other things you’ll be responsible for:</p>
 <ul>
-	<li><span style="font-weight: 400;">You have worked as part of a team in a customer-facing role and want to progress your career as a support professional</span></li>
-	<li><span style="font-weight: 400;">You have solved issues from the network to the application layer</span></li>
-	<li><span style="font-weight: 400;">You have resolved front-end dashboard and API issues</span></li>
-	<li><span style="font-weight: 400;">You have analyzed and tuned website performance issues</span></li>
-	<li><span style="font-weight: 400;">You understand Javascript or other scripting languages&nbsp;</span></li>
-	<li><span style="font-weight: 400;">You have developed or maintained internet applications</span></li>
-	<li><span style="font-weight: 400;">You have experience with video encoding and streaming solutions</span></li>
-	<li><span style="font-weight: 400;">You have worked with SQLite or other database servers</span></li>
-	<li><span style="font-weight: 400;">You are comfortable communicating through various support channels and always put the customer first</span></li>
-	<li><span style="font-weight: 400;">You are a motivated self-starter and always looking to expand your existing skill set</span></li>
+	<li>The resilience of our data infrastructure, ensuring that our data systems scale reliably with the growth of our data volume.</li>
+	<li>The quality of the data that flows through our systems, ensuring good governance and hygiene across all systems.</li>
+	<li>Working cross-functionally to understand the data growth needs of our internal customers, and collaborate with our engineering team on the best ways to meet those needs.</li>
 </ul>
-<h4>Bonus Points</h4>
+<h2>Key Competencies</h2>
 <ul>
-	<li><span style="font-weight: 400;">You are fluent in Portuguese, Spanish, German, Japanese, French or Mandarin</span></li>
-	<li><span style="font-weight: 400;">You are familiar with Cloudflare and have a site actively using our platform</span></li>
-	<li><span style="font-weight: 400;">You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump) and developer tools (git/wrangler/npm)</span></li>
-	<li><span style="font-weight: 400;">You are familiar with Nginx, Apache, IIS or any other web servers</span></li>
-	<li><span style="font-weight: 400;">You are committed to gaining a deeper understanding of the following technologies: DNS /&nbsp; SSL / CDN - Cache / Cloudflare Workers</span></li>
-	<li><span style="font-weight: 400;">You have experience with Cloudflare Workers&nbsp;&nbsp;</span></li>
+	<li>Deep technical expertise with data products at scale: For this role we need someone who has a technical background in data warehousing and data pipelines at scale. You are comfortable with accessing and querying large data sets directly. You have built and grown pipelines where data throughput growth is upwards of 70% YoY.</li>
+	<li>Customer Engagement: Engage directly with customers (internal and external) to deeply understand their needs. You will be the voice of the customer within Cloudflare, ensuring that our data and analytics products are continuously evolving to meet their needs.</li>
+	<li>Market Understanding: Keep up to date on industry trends and competitor activities to ensure Cloudflare remains a leader in cloud connectivity and security.</li>
+	<li>Product Strategy and Vision: Define and drive the strategic direction for Cloudflare's data pipeline products, aligning with broader company objectives and customer needs.</li>
+	<li>Cross-Functional Partnership: Collaborate with engineering, design, marketing, sales, and support teams to understand user and business needs, and deliver a product experience that is valuable and viable.</li>
+	<li>Data-Informed Decision Making: Use data analytics to inform product decisions and measure the impact of new features and improvements.</li>
 </ul>
-<p>&nbsp;</p>
+<h2>&nbsp;</h2>
+<h2>Bonus Points</h2>
+<ul>
+	<li>Understanding the modern UX stack with enough fidelity to hold your own with engineers will be highly beneficial. An engineering background would be helpful. An alternate source of credibility on this front might come from having developed a web property yourself.</li>
+	<li>Data-fluency. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
+</ul>
+<h2><br><br></h2>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
