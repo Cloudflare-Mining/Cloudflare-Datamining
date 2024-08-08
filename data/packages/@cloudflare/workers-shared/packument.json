@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workers-shared",
 	"dist-tags": {
 		"latest": "0.1.0",
-		"beta": "0.0.0-19b1e698"
+		"beta": "0.0.0-09b50927"
 	},
 	"versions": {
 		"0.1.0": {
@@ -61,6 +61,35 @@
 			"name": "@cloudflare/workers-shared",
 			"version": "0.0.0-19b1e698",
 			"devDependencies": {
+				"rimraf": "^6.0.1",
+				"esbuild": "0.17.19",
+				"typescript": "^5.5.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20240806.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "8033e5a89f5abaea01794dd7574d110d13b836c1",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-19b1e698.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-r4MoPsbe00waARgaLYX56WLLQyh/L0sZYYZhTEkzfqfX+KmZdPtHzbQ8RRAQOZ1hCeGNf3o7fclYGaORqCRDnQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCGUomxMnZ8tOpa/KI9lgEFWq8C6KEZ7khDXVLB7cFGVwIhALh21rl23Pt7Owlnw6ZERyVdi1WK6kzbzpIdrHdFylYR",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2750
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-09b50927": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-09b50927",
+			"devDependencies": {
 				"@cloudflare/workers-types": "^4.20240806.0",
 				"concurrently": "^8.2.2",
 				"esbuild": "0.17.19",
@@ -70,15 +99,15 @@
 				"@cloudflare/eslint-config-worker": "1.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-r4MoPsbe00waARgaLYX56WLLQyh/L0sZYYZhTEkzfqfX+KmZdPtHzbQ8RRAQOZ1hCeGNf3o7fclYGaORqCRDnQ==",
-				"shasum": "8033e5a89f5abaea01794dd7574d110d13b836c1",
-				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-19b1e698.tgz",
+				"integrity": "sha512-MlnRygzEznqbGmBIj8PsR9LAeF//S/uOeNgfox5CYQBjZiFbuoCeCTIgTgJGFsiRzEI4OqvvJi+wduKwtZWNNg==",
+				"shasum": "91ab2fc3265d39c82919800067d2e4facd68ed94",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-09b50927.tgz",
 				"fileCount": 4,
 				"unpackedSize": 2750,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCGUomxMnZ8tOpa/KI9lgEFWq8C6KEZ7khDXVLB7cFGVwIhALh21rl23Pt7Owlnw6ZERyVdi1WK6kzbzpIdrHdFylYR"
+						"sig": "MEUCIQCgqux4v+zHr4/r+gw0K8EUDarIvA90NsFxxQTFaYR7WwIgFo+MhW7+iNar1AuYBLUZ7ReiMlMxqBsBoNu5Nj7y6ro="
 					}
 				]
 			},
