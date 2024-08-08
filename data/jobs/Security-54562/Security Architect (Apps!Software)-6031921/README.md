@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal, Mexico City, Mexico or Washington, DC or Remote US&nbsp;</strong></p>
+<p><strong>Available Locations: Austin, Texas, San Francisco, USA, DC, USA, London, UK, Lisbon, Portugal</strong></p>
 <p><strong>About the role&nbsp;</strong></p>
 <p>As an Enterprise Security Architect you will play a key role in effectively designing defensible network architectures, defensible builds &amp; configurations, security platforms and automation, assisting in secure tool and product development, and will help establish security standards and guidelines across the enterprise. This role will lead security project work with technology peers for successful delivery and coach technology staff on appropriate security standards, processes, protocols and needs as they implement new technology into the organization.</p>
 <p><strong>What You’ll Do</strong></p>

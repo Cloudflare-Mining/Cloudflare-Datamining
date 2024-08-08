@@ -5,52 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Texas, San Francisco, USA, DC, USA, London, UK, Lisbon, Portugal</strong></p>
-<p><strong>About the role&nbsp;</strong></p>
-<p>As an Enterprise Security Architect you will play a key role in effectively designing defensible network architectures, defensible builds &amp; configurations, security platforms and automation, assisting in secure tool and product development, and will help establish security standards and guidelines across the enterprise. This role will lead security project work with technology peers for successful delivery and coach technology staff on appropriate security standards, processes, protocols and needs as they implement new technology into the organization.</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Please note this is a Fixed Term 11-month contract role.</strong></p>
+<p><strong>Position Summary:</strong></p>
+<p>We are seeking a highly organized and detail-oriented Partner Marketing Operations Coordinator to join our dynamic marketing team. This role is pivotal in managing our Market Development Funds (MDF) program, processing requests and claims globally, collaborating with Finance and Regional Partner Marketing teams, and supporting partner events coordination. The ideal candidate will help build a robust operational framework, ensure seamless lead uploading and reporting, and maintain accurate records for auditing purposes. Additionally, this role will serve as the primary point of contact for all partner inquiries related to MDF.</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Works out and designs complex security solutions.</li>
-	<li>Leads projects to implement secure enterprise systems and identifies issues that could compromise data integrity or security.</li>
-	<li>Develops security policies, procedures, and guidelines and recommends necessary changes to a given project team to ensure the company’s systems are fully compliant with all applicable regulatory requirements and privacy laws.</li>
-	<li>Creating and implementing enterprise security architecture models</li>
-	<li>Utilizes open communication and managerial courage to ensure the standards, expectations and goals of the organization are respected and upheld.</li>
-	<li>Serving as an advisor to engineering and development teams in security best practices and design.</li>
-	<li>Leads security-related projects from inception to successful completion and is capable of effectively coaching technology staff on appropriate security protocols and needs as they implement new technology into the organization.</li>
-	<li>Works on complex issues where analysis of situations or data requires an in-depth evaluation of variable factors.&nbsp;</li>
-	<li>Determines methods and procedures on new assignments and may coordinate activities of other personnel.</li>
-	<li>Having wide-ranging experience, uses professional concepts and company objectives to resolve complex issues in creative and effective ways</li>
-	<li>Exercises judgment in selecting methods, techniques and evaluation criteria for obtaining results.</li>
-	<li>Ensures an organization's security strategy is aligned with companies business goals.</li>
-	<li>Document and address organization's information security, cybersecurity architecture, and systems security engineering requirements throughout the acquisition life cycle.</li>
-	<li>Evaluate security architectures and designs to determine the adequacy of security design and architecture proposed</li>
-	<li>Determine the protection needs (i.e., security controls) for the information system(s) and network(s) and document appropriately.</li>
+	<li>Manage the global MDF program, including processing requests and claims.</li>
+	<li>Ensure compliance with MDF guidelines and policies.</li>
+	<li>Collaborate with Finance and Regional Partner Marketing teams to facilitate timely approvals and payments.</li>
+	<li>Follow up on outstanding payments and resolve any issues or discrepancies.</li>
+	<li>Act as the primary point of contact for all partner inquiries related to MDF.</li>
+	<li>Provide timely and accurate information to partners regarding MDF processes, status updates, and requirements.</li>
+	<li>Develop and maintain tools and systems for efficient MDF management and auditing purposes.</li>
+	<li>Maintain database, campaign trackers, budget sheet and SFDC with all partner marketing activity, including post event lead list uploads and ROI tracking/reporting for the channel and sales team.</li>
+	<li>Upload and manage leads in the CRM system, ensuring accuracy and completeness.</li>
+	<li>Generate regular reports on MDF utilization, lead metrics, and other key performance indicators.</li>
+	<li>Provide insights and recommendations based on data analysis.</li>
+	<li>Document processes, best practices, and standard operating procedures.</li>
+	<li>Support the coordination of partner events, including logistics, vendor management, and communication.</li>
+	<li>Manage event budgets and track expenses.</li>
+	<li>Provide training and support to partners on MDF processes and tools.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p>Qualifications:</p>
 <ul>
-	<li>10+ years of experience in an IT/Security related field, 5 of which as a security architect.</li>
-	<li>In-depth understanding of security concepts.</li>
-	<li>Understand how business, engineering, IT, and security processes align, and how to research, test, and implement solutions to complex objectives.</li>
-	<li>Able to anticipate challenges and steer the company towards growth.</li>
-	<li>In depth knowledge of the following:</li>
-	<ul>
-		<li>Analyzing network data and systems to select the most appropriate control mechanism for the security required.</li>
-		<li>Network and security concepts and protocols</li>
-		<ul>
-			<li>Network Elements: Network nodes (computers, routers, etc.), communications protocols (TCP/IP, HTTP, DNS, etc.), connection media (wired, wireless), and topologies (bus, star, mesh, etc.)</li>
-			<li>Security Elements: Cybersecurity devices and software, secure communications protocols (e.g. IPsec VPN and TLS), and data privacy technologies (classification, encryption, key management, etc.).</li>
-		</ul>
-		<li>Network Security Frameworks&nbsp;</li>
-		<ul>
-			<li>Zero Trust</li>
-			<li>NIST Cybersecurity Framework (CSF)</li>
-			<li>Etc.</li>
-		</ul>
-		<li>Network security principles and best practices.</li>
-		<li>Designing and managing secure network architectures.</li>
-		<li>Secure configuration management processes</li>
-		<li>Security reviews, identifying gaps in security architecture, and developing security risk management plans</li>
-	</ul>
+	<li>Bachelor’s degree in Marketing, Business Administration, or a related field.</li>
+	<li>2-4 years of experience in marketing operations, partner marketing, or a similar role.</li>
+	<li>Strong understanding of MDF programs and partner marketing dynamics is preferred.</li>
+	<li>Proficient in CRM systems, lead management, and reporting tools.</li>
+	<li>Excellent organizational skills and attention to detail.</li>
+	<li>Strong analytical skills with the ability to interpret data and provide actionable insights.</li>
+	<li>Effective communication and interpersonal skills.</li>
+	<li>Ability to manage multiple tasks and meet deadlines in a fast-paced environment.</li>
+	<li>Experience in event coordination is a plus.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

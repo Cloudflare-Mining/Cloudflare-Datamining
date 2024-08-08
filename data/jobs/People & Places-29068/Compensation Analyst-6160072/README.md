@@ -5,53 +5,69 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Texas, San Francisco, USA, DC, USA, London, UK, Lisbon, Portugal</strong></p>
-<p><strong>About the role&nbsp;</strong></p>
-<p>As an Enterprise Security Architect you will play a key role in effectively designing defensible network architectures, defensible builds &amp; configurations, security platforms and automation, assisting in secure tool and product development, and will help establish security standards and guidelines across the enterprise. This role will lead security project work with technology peers for successful delivery and coach technology staff on appropriate security standards, processes, protocols and needs as they implement new technology into the organization.</p>
-<p><strong>What You’ll Do</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>We are growing our Total Rewards team and looking for someone with a background in compensation, who is passionate about developing meaningful rewards programs, guiding organizations in making pay decisions, and building knowledge and trust in our compensation programs.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Works out and designs complex security solutions.</li>
-	<li>Leads projects to implement secure enterprise systems and identifies issues that could compromise data integrity or security.</li>
-	<li>Develops security policies, procedures, and guidelines and recommends necessary changes to a given project team to ensure the company’s systems are fully compliant with all applicable regulatory requirements and privacy laws.</li>
-	<li>Creating and implementing enterprise security architecture models</li>
-	<li>Utilizes open communication and managerial courage to ensure the standards, expectations and goals of the organization are respected and upheld.</li>
-	<li>Serving as an advisor to engineering and development teams in security best practices and design.</li>
-	<li>Leads security-related projects from inception to successful completion and is capable of effectively coaching technology staff on appropriate security protocols and needs as they implement new technology into the organization.</li>
-	<li>Works on complex issues where analysis of situations or data requires an in-depth evaluation of variable factors.&nbsp;</li>
-	<li>Determines methods and procedures on new assignments and may coordinate activities of other personnel.</li>
-	<li>Having wide-ranging experience, uses professional concepts and company objectives to resolve complex issues in creative and effective ways</li>
-	<li>Exercises judgment in selecting methods, techniques and evaluation criteria for obtaining results.</li>
-	<li>Ensures an organization's security strategy is aligned with companies business goals.</li>
-	<li>Document and address organization's information security, cybersecurity architecture, and systems security engineering requirements throughout the acquisition life cycle.</li>
-	<li>Evaluate security architectures and designs to determine the adequacy of security design and architecture proposed</li>
-	<li>Determine the protection needs (i.e., security controls) for the information system(s) and network(s) and document appropriately.</li>
+	<li>Participate in compensation surveys and analyze market data&nbsp;&nbsp;</li>
+	<li>Audit, maintain, enhance and refresh compensation databases and systems</li>
+	<li>Support day to day ad hoc analytical data analysis</li>
+	<li>Work with data to develop compensation models in order to derive useful compensation insights that will drive our decision making&nbsp;</li>
+	<li>Partner with recruiters to create fair and competitive compensation decisions and offers</li>
+	<li>Partner with the People Operations and Systems team to configure and administer compensation systems, including Workday for compensation planning&nbsp;</li>
+	<li>Help with the implementation and administration of compensation policies and programs&nbsp;&nbsp;</li>
+	<li>Assist with development of total compensation communications, including training, compensation statements, videos and other material</li>
+	<li>Support the administration of the Company’s compensation cycles&nbsp;&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>10+ years of experience in an IT/Security related field, 5 of which as a security architect.</li>
-	<li>In-depth understanding of security concepts.</li>
-	<li>Understand how business, engineering, IT, and security processes align, and how to research, test, and implement solutions to complex objectives.</li>
-	<li>Able to anticipate challenges and steer the company towards growth.</li>
-	<li>In depth knowledge of the following:</li>
-	<ul>
-		<li>Analyzing network data and systems to select the most appropriate control mechanism for the security required.</li>
-		<li>Network and security concepts and protocols</li>
-		<ul>
-			<li>Network Elements: Network nodes (computers, routers, etc.), communications protocols (TCP/IP, HTTP, DNS, etc.), connection media (wired, wireless), and topologies (bus, star, mesh, etc.)</li>
-			<li>Security Elements: Cybersecurity devices and software, secure communications protocols (e.g. IPsec VPN and TLS), and data privacy technologies (classification, encryption, key management, etc.).</li>
-		</ul>
-		<li>Network Security Frameworks&nbsp;</li>
-		<ul>
-			<li>Zero Trust</li>
-			<li>NIST Cybersecurity Framework (CSF)</li>
-			<li>Etc.</li>
-		</ul>
-		<li>Network security principles and best practices.</li>
-		<li>Designing and managing secure network architectures.</li>
-		<li>Secure configuration management processes</li>
-		<li>Security reviews, identifying gaps in security architecture, and developing security risk management plans</li>
-	</ul>
+	<li>5+ years of Compensation experience</li>
+	<li>Experience with salary structure design and market pricing</li>
+	<li>Exposure to with equity program administration</li>
+	<li>Knowledge of Radford survey benchmark jobs and database</li>
+	<li>Strong analytical skills; the ability to synthesize data and develop insights</li>
+	<li>Ability to work independently as well as work collaboratively</li>
+	<li>Exceptional communication skills both written and oral</li>
+	<li>Microsoft Excel and Google sheets guru, proficient in PowerPoint and presentation software</li>
+	<li>Working knowledge of Workday, especially for Compensation Planning</li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Colorado-based hires: Estimated annual salary of $</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $</li>
+	<li>For Bay Area-based hires: Estimated annual salary of $</li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
