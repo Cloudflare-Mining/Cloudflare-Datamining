@@ -545,11 +545,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -1117,7 +1112,8 @@
 															{
 																"properties": {
 																	"content": {
-																		"description": "A valid hostname. Must not match the record's name."
+																		"description": "A valid hostname. Must not match the record's name.",
+																		"type": "string"
 																	},
 																	"name": {
 																		"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -2157,7 +2153,8 @@
 																"properties": {
 																	"content": {
 																		"description": "A valid name server host name.",
-																		"example": "ns1.example.com"
+																		"example": "ns1.example.com",
+																		"type": "string"
 																	},
 																	"name": {
 																		"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -3467,11 +3464,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -4039,7 +4031,8 @@
 																	{
 																		"properties": {
 																			"content": {
-																				"description": "A valid hostname. Must not match the record's name."
+																				"description": "A valid hostname. Must not match the record's name.",
+																				"type": "string"
 																			},
 																			"name": {
 																				"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -5079,7 +5072,8 @@
 																		"properties": {
 																			"content": {
 																				"description": "A valid name server host name.",
-																				"example": "ns1.example.com"
+																				"example": "ns1.example.com",
+																				"type": "string"
 																			},
 																			"name": {
 																				"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -6520,20 +6514,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -7074,7 +7054,8 @@
 														{
 															"properties": {
 																"content": {
-																	"description": "A valid hostname. Must not match the record's name."
+																	"description": "A valid hostname. Must not match the record's name.",
+																	"type": "string"
 																},
 																"name": {
 																	"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -8114,7 +8095,8 @@
 															"properties": {
 																"content": {
 																	"description": "A valid name server host name.",
-																	"example": "ns1.example.com"
+																	"example": "ns1.example.com",
+																	"type": "string"
 																},
 																"name": {
 																	"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -9419,20 +9401,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -9973,7 +9941,8 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid hostname. Must not match the record's name."
+																			"description": "A valid hostname. Must not match the record's name.",
+																			"type": "string"
 																		},
 																		"name": {
 																			"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -11013,7 +10982,8 @@
 																	"properties": {
 																		"content": {
 																			"description": "A valid name server host name.",
-																			"example": "ns1.example.com"
+																			"example": "ns1.example.com",
+																			"type": "string"
 																		},
 																		"name": {
 																			"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -13066,7 +13036,8 @@
 									{
 										"properties": {
 											"content": {
-												"description": "A valid hostname. Must not match the record's name."
+												"description": "A valid hostname. Must not match the record's name.",
+												"type": "string"
 											},
 											"name": {
 												"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -14106,7 +14077,8 @@
 										"properties": {
 											"content": {
 												"description": "A valid name server host name.",
-												"example": "ns1.example.com"
+												"example": "ns1.example.com",
+												"type": "string"
 											},
 											"name": {
 												"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -15405,20 +15377,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -15959,7 +15917,8 @@
 														{
 															"properties": {
 																"content": {
-																	"description": "A valid hostname. Must not match the record's name."
+																	"description": "A valid hostname. Must not match the record's name.",
+																	"type": "string"
 																},
 																"name": {
 																	"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -16999,7 +16958,8 @@
 															"properties": {
 																"content": {
 																	"description": "A valid name server host name.",
-																	"example": "ns1.example.com"
+																	"example": "ns1.example.com",
+																	"type": "string"
 																},
 																"name": {
 																	"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -18304,20 +18264,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -18858,7 +18804,8 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid hostname. Must not match the record's name."
+																			"description": "A valid hostname. Must not match the record's name.",
+																			"type": "string"
 																		},
 																		"name": {
 																			"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -19898,7 +19845,8 @@
 																	"properties": {
 																		"content": {
 																			"description": "A valid name server host name.",
-																			"example": "ns1.example.com"
+																			"example": "ns1.example.com",
+																			"type": "string"
 																		},
 																		"name": {
 																			"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -21797,7 +21745,8 @@
 									{
 										"properties": {
 											"content": {
-												"description": "A valid hostname. Must not match the record's name."
+												"description": "A valid hostname. Must not match the record's name.",
+												"type": "string"
 											},
 											"name": {
 												"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -22837,7 +22786,8 @@
 										"properties": {
 											"content": {
 												"description": "A valid name server host name.",
-												"example": "ns1.example.com"
+												"example": "ns1.example.com",
+												"type": "string"
 											},
 											"name": {
 												"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -24136,20 +24086,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -24690,7 +24626,8 @@
 														{
 															"properties": {
 																"content": {
-																	"description": "A valid hostname. Must not match the record's name."
+																	"description": "A valid hostname. Must not match the record's name.",
+																	"type": "string"
 																},
 																"name": {
 																	"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -25730,7 +25667,8 @@
 															"properties": {
 																"content": {
 																	"description": "A valid name server host name.",
-																	"example": "ns1.example.com"
+																	"example": "ns1.example.com",
+																	"type": "string"
 																},
 																"name": {
 																	"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -27035,20 +26973,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -27589,7 +27513,8 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid hostname. Must not match the record's name."
+																			"description": "A valid hostname. Must not match the record's name.",
+																			"type": "string"
 																		},
 																		"name": {
 																			"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -28629,7 +28554,8 @@
 																	"properties": {
 																		"content": {
 																			"description": "A valid name server host name.",
-																			"example": "ns1.example.com"
+																			"example": "ns1.example.com",
+																			"type": "string"
 																		},
 																		"name": {
 																			"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -30084,20 +30010,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -30218,20 +30130,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -30482,20 +30380,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -30616,20 +30500,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -31355,7 +31225,8 @@
 									{
 										"properties": {
 											"content": {
-												"description": "A valid hostname. Must not match the record's name."
+												"description": "A valid hostname. Must not match the record's name.",
+												"type": "string"
 											},
 											"name": {
 												"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -32395,7 +32266,8 @@
 										"properties": {
 											"content": {
 												"description": "A valid name server host name.",
-												"example": "ns1.example.com"
+												"example": "ns1.example.com",
+												"type": "string"
 											},
 											"name": {
 												"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -33694,20 +33566,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -34248,7 +34106,8 @@
 														{
 															"properties": {
 																"content": {
-																	"description": "A valid hostname. Must not match the record's name."
+																	"description": "A valid hostname. Must not match the record's name.",
+																	"type": "string"
 																},
 																"name": {
 																	"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -35288,7 +35147,8 @@
 															"properties": {
 																"content": {
 																	"description": "A valid name server host name.",
-																	"example": "ns1.example.com"
+																	"example": "ns1.example.com",
+																	"type": "string"
 																},
 																"name": {
 																	"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -36593,20 +36453,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -37147,7 +36993,8 @@
 																{
 																	"properties": {
 																		"content": {
-																			"description": "A valid hostname. Must not match the record's name."
+																			"description": "A valid hostname. Must not match the record's name.",
+																			"type": "string"
 																		},
 																		"name": {
 																			"description": "DNS record name (or @ for the zone apex) in Punycode.",
@@ -38187,7 +38034,8 @@
 																	"properties": {
 																		"content": {
 																			"description": "A valid name server host name.",
-																			"example": "ns1.example.com"
+																			"example": "ns1.example.com",
+																			"type": "string"
 																		},
 																		"name": {
 																			"description": "DNS record name (or @ for the zone apex) in Punycode.",
