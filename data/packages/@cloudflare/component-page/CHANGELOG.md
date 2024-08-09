@@ -1,5 +1,13 @@
 # Change Log
 
+## 9.2.13
+
+### Patch Changes
+
+- 0b80625bc2: Pass through additional props to the Main Component from Page Component
+
+  This enable a user to provide props that override the default props used with the <Main /> component inside Page.tsx.
+
 ## 9.2.12
 
 ### Patch Changes
