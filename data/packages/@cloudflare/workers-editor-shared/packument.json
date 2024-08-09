@@ -1,0 +1,50 @@
+{
+	"name": "@cloudflare/workers-editor-shared",
+	"dist-tags": {
+		"latest": "0.1.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@cloudflare/workers-editor-shared",
+			"version": "0.1.0",
+			"dependencies": {
+				"react-split-pane": "^0.1.92"
+			},
+			"devDependencies": {
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/style-container": "7.12.2",
+				"@types/react": "^18.3.3",
+				"@typescript-eslint/eslint-plugin": "^6.9.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"@vitejs/plugin-react": "^4.0.1",
+				"eslint": "^8.49.0",
+				"react": "^18.3.1",
+				"react-dom": "^18.3.1",
+				"vite": "^5.0.12",
+				"vite-plugin-dts": "^4.0.1",
+				"vite-plugin-rewrite-all": "^1.0.1",
+				"@cloudflare/eslint-config-worker": "1.1.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"peerDependencies": {
+				"@cloudflare/style-const": "^5.7.2",
+				"@cloudflare/style-container": "^7.12.1",
+				"react": "^17.0.2 || ^18.2.21",
+				"react-dom": "^17.0.2 || ^18.2.21"
+			},
+			"dist": {
+				"integrity": "sha512-1saUERD7LYIwIF6iDtS49qKFU/slDZdAmxotpTzmOF0MYZy4DsmND1AKjzHRACazCo9xM/uhxtKHZh0tiWuMfg==",
+				"shasum": "c8ddd217310a8066126362e08ef2135d78f03c68",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-editor-shared/-/workers-editor-shared-0.1.0.tgz",
+				"fileCount": 10,
+				"unpackedSize": 103736,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFNsLmXQj2OxWC4ldtTkLwUbccGtdZEz+UAmQI2oKzfMAiB2m5rgcy2CZnw0SXePKUfjRGB1J0fJJqzF5Nq3VMnkHA=="
+					}
+				]
+			}
+		}
+	}
+}
