@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="color: rgb(230, 126, 35);"><strong>Location: Austin, Texas </strong><em>(Relocation Assistance Available)</em></span></p>
+<p><span style="color: rgb(230, 126, 35);"><strong>Location: Hybrid role located in Austin, Texas </strong><em>(Relocation Assistance Available)</em></span></p>
 <p><strong>About the Team</strong></p>
 <p>The BDR program has two goals—generate qualified pipeline opportunities and develop business development representatives’ careers. We care deeply about both goals.</p>
 <p>We have worked purposefully over the last 2 years to increase the percentage of our new business revenue that comes from the outbound BDR team by partnering closely with our internal customers, Account Executives, to generate high quality pipeline opportunities. During that time we have also helped many BDRs grow into Account Executive and Customer Success roles. As we scale, BDRs are also starting to find homes in other roles across the Sales Engineering, Sales Operations, Marketing, and Partner teams.</p>
