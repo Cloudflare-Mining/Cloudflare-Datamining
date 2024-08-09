@@ -8,7 +8,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -79,20 +80,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -201,20 +188,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -362,7 +335,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -458,20 +432,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -580,20 +540,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"

@@ -8,7 +8,8 @@
 				"name": "proxy_endpoint_id",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086"
+					"example": "ed35569b41ce4d1facfe683550f54086",
+					"type": "string"
 				}
 			},
 			{
@@ -16,7 +17,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -93,20 +95,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -192,20 +180,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -330,7 +304,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -401,20 +376,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -429,7 +390,8 @@
 													"type": "string"
 												},
 												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086"
+													"example": "ed35569b41ce4d1facfe683550f54086",
+													"type": "string"
 												},
 												"ips": {
 													"description": "A list of CIDRs to restrict ingress connections.",
@@ -534,20 +496,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -562,7 +510,8 @@
 															"type": "string"
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086"
+															"example": "ed35569b41ce4d1facfe683550f54086",
+															"type": "string"
 														},
 														"ips": {
 															"description": "A list of CIDRs to restrict ingress connections.",
@@ -706,7 +655,8 @@
 				"name": "proxy_endpoint_id",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086"
+					"example": "ed35569b41ce4d1facfe683550f54086",
+					"type": "string"
 				}
 			},
 			{
@@ -714,7 +664,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -788,11 +739,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -834,7 +780,8 @@
 														"type": "string"
 													},
 													"id": {
-														"example": "ed35569b41ce4d1facfe683550f54086"
+														"example": "ed35569b41ce4d1facfe683550f54086",
+														"type": "string"
 													},
 													"ips": {
 														"description": "A list of CIDRs to restrict ingress connections.",
@@ -944,11 +891,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -990,7 +932,8 @@
 																"type": "string"
 															},
 															"id": {
-																"example": "ed35569b41ce4d1facfe683550f54086"
+																"example": "ed35569b41ce4d1facfe683550f54086",
+																"type": "string"
 															},
 															"ips": {
 																"description": "A list of CIDRs to restrict ingress connections.",
@@ -1136,7 +1079,8 @@
 				"name": "proxy_endpoint_id",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086"
+					"example": "ed35569b41ce4d1facfe683550f54086",
+					"type": "string"
 				}
 			},
 			{
@@ -1144,7 +1088,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -1240,20 +1185,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1268,7 +1199,8 @@
 													"type": "string"
 												},
 												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086"
+													"example": "ed35569b41ce4d1facfe683550f54086",
+													"type": "string"
 												},
 												"ips": {
 													"description": "A list of CIDRs to restrict ingress connections.",
@@ -1373,20 +1305,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -1401,7 +1319,8 @@
 															"type": "string"
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086"
+															"example": "ed35569b41ce4d1facfe683550f54086",
+															"type": "string"
 														},
 														"ips": {
 															"description": "A list of CIDRs to restrict ingress connections.",
@@ -1545,7 +1464,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -1645,20 +1565,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1673,7 +1579,8 @@
 													"type": "string"
 												},
 												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086"
+													"example": "ed35569b41ce4d1facfe683550f54086",
+													"type": "string"
 												},
 												"ips": {
 													"description": "A list of CIDRs to restrict ingress connections.",
@@ -1778,20 +1685,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -1806,7 +1699,8 @@
 															"type": "string"
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086"
+															"example": "ed35569b41ce4d1facfe683550f54086",
+															"type": "string"
 														},
 														"ips": {
 															"description": "A list of CIDRs to restrict ingress connections.",

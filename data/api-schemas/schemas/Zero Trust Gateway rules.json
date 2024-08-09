@@ -19,7 +19,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -96,20 +97,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -195,20 +182,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -333,7 +306,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -407,11 +381,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -538,6 +507,9 @@
 														"description": "Additional settings that modify the rule's action.",
 														"properties": {
 															"add_headers": {
+																"additionalProperties": {
+																	"type": "string"
+																},
 																"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
 																"example": {
 																	"My-Next-Header": [
@@ -963,11 +935,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -1094,6 +1061,9 @@
 																"description": "Additional settings that modify the rule's action.",
 																"properties": {
 																	"add_headers": {
+																		"additionalProperties": {
+																			"type": "string"
+																		},
 																		"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
 																		"example": {
 																			"My-Next-Header": [
@@ -1566,7 +1536,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -1637,20 +1608,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1750,6 +1707,9 @@
 													"description": "Additional settings that modify the rule's action.",
 													"properties": {
 														"add_headers": {
+															"additionalProperties": {
+																"type": "string"
+															},
 															"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
 															"example": {
 																"My-Next-Header": [
@@ -2170,20 +2130,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -2283,6 +2229,9 @@
 															"description": "Additional settings that modify the rule's action.",
 															"properties": {
 																"add_headers": {
+																	"additionalProperties": {
+																		"type": "string"
+																	},
 																	"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
 																	"example": {
 																		"My-Next-Header": [
@@ -2742,7 +2691,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -2824,6 +2774,9 @@
 								"description": "Additional settings that modify the rule's action.",
 								"properties": {
 									"add_headers": {
+										"additionalProperties": {
+											"type": "string"
+										},
 										"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
 										"example": {
 											"My-Next-Header": [
@@ -3237,20 +3190,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -3350,6 +3289,9 @@
 													"description": "Additional settings that modify the rule's action.",
 													"properties": {
 														"add_headers": {
+															"additionalProperties": {
+																"type": "string"
+															},
 															"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
 															"example": {
 																"My-Next-Header": [
@@ -3770,20 +3712,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -3883,6 +3811,9 @@
 															"description": "Additional settings that modify the rule's action.",
 															"properties": {
 																"add_headers": {
+																	"additionalProperties": {
+																		"type": "string"
+																	},
 																	"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
 																	"example": {
 																		"My-Next-Header": [
@@ -4353,7 +4284,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252"
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
 				}
 			}
 		],
@@ -4435,6 +4367,9 @@
 								"description": "Additional settings that modify the rule's action.",
 								"properties": {
 									"add_headers": {
+										"additionalProperties": {
+											"type": "string"
+										},
 										"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
 										"example": {
 											"My-Next-Header": [
@@ -4848,20 +4783,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -4961,6 +4882,9 @@
 													"description": "Additional settings that modify the rule's action.",
 													"properties": {
 														"add_headers": {
+															"additionalProperties": {
+																"type": "string"
+															},
 															"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
 															"example": {
 																"My-Next-Header": [
@@ -5381,20 +5305,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -5494,6 +5404,9 @@
 															"description": "Additional settings that modify the rule's action.",
 															"properties": {
 																"add_headers": {
+																	"additionalProperties": {
+																		"type": "string"
+																	},
 																	"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
 																	"example": {
 																		"My-Next-Header": [
