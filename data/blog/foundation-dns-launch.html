@@ -50,7 +50,7 @@ christian.ns.cloudflare.com. 86353 IN   A       162.159.44.247
 christian.ns.cloudflare.com. 86353 IN   A       172.64.35.247
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>There are six total IP addresses for the two nameservers. As it turns out, this is all DNS resolvers actually care about when querying authoritative nameservers. DNS resolvers usually don’t track the actual domain names of authoritative servers; they simply maintain an unordered list of IP addresses that they can use to resolve queries for a given domain. So with our standard authoritative nameservers, we give resolvers six IP addresses to use to resolve DNS queries. Now, let's look at the IP addresses for our Foundation DNS advanced nameservers:</p><!--kg-card-begin: markdown-->
+	<p>There are six total IP addresses for the two nameservers. As it turns out, this is all DNS resolvers actually care about when querying authoritative nameservers. DNS resolvers usually don’t track the actual <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain names</a> of authoritative servers; they simply maintain an unordered list of IP addresses that they can use to resolve queries for a given domain. So with our standard authoritative nameservers, we give resolvers six IP addresses to use to resolve DNS queries. Now, let's look at the IP addresses for our Foundation DNS advanced nameservers:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig blue.foundationdns.com. +noall +answer
 blue.foundationdns.com. 300     IN      A       108.162.198.1
 blue.foundationdns.com. 300     IN      A       162.159.60.1
