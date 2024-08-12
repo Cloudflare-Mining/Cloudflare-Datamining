@@ -54,7 +54,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-11-30T00:01:52.147Z",
-					"updatedAt": "2024-08-10T03:24:58.549Z"
+					"updatedAt": "2024-08-12T17:38:18.813Z"
 				},
 				"contentfulId": "7DFz0nPLXiy8COGuE4MwsU",
 				"contentTypeId": "page",
@@ -87,13 +87,9 @@
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": true,
+						"includeVideo": false,
 						"streamVideoId": "16915c4f78a4f9f222a6e91bffd437d0",
-						"streamOptions": [
-							"muted",
-							"autoplay",
-							"controls"
-						],
+						"streamOptions": null,
 						"streamCaptions": "none",
 						"popupStreamId": null,
 						"popupText": null,
@@ -113,7 +109,12 @@
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xxHKrzap7Uq8hx3JQNcAk/5d6d52353fd1e23f4c20ed36a725fcea/BDES-6258_CF-for-SaaS-Hero-Illustration.png"
+							},
+							"description": "BDES-6258 SaaS"
+						},
 						"imageAssetFile": null
 					},
 					{
@@ -499,21 +500,18 @@
 							"description": null
 						},
 						"imageAssetFile": {
-							"id": "27262135-f945-5149-a3e8-a9fed7f159f5",
-							"altText": "Cdn http3 spot illustration",
-							"title": "Cdn http3 spot illustration",
-							"activeAsset": "Brandfolder Asset",
+							"id": "7a246bc3-5f38-5fdc-a18f-9b32ea9b134d",
+							"altText": "CDN HTTP3 Spot Illustration",
+							"title": "CDN HTTP3 Spot Illustration",
+							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 4624,
-								"height": 2962,
-								"width": 3999,
-								"filename": "cdn-http3-spot-illustration.svg",
+							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/cdn-http3-spot-illustration.svg"
-								}
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7gfjpePYwHGwrVGWngMvqw/08a6b417f75a20156542d770922038bc/cdn-http3-spot-illustration.png"
+								},
+								"description": "CDN HTTP3 Spot Illustration"
 							},
+							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
