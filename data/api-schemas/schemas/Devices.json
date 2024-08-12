@@ -244,7 +244,11 @@
 																},
 																"dns_server": {
 																	"description": "A list of IP addresses to handle domain resolution.",
-																	"items": {},
+																	"items": {
+																		"description": "IPv4 or IPv6 address.",
+																		"example": "1.1.1.1",
+																		"type": "string"
+																	},
 																	"type": "array"
 																},
 																"suffix": {
@@ -600,7 +604,11 @@
 																		},
 																		"dns_server": {
 																			"description": "A list of IP addresses to handle domain resolution.",
-																			"items": {},
+																			"items": {
+																				"description": "IPv4 or IPv6 address.",
+																				"example": "1.1.1.1",
+																				"type": "string"
+																			},
 																			"type": "array"
 																		},
 																		"suffix": {
@@ -2508,7 +2516,11 @@
 																},
 																"dns_server": {
 																	"description": "A list of IP addresses to handle domain resolution.",
-																	"items": {},
+																	"items": {
+																		"description": "IPv4 or IPv6 address.",
+																		"example": "1.1.1.1",
+																		"type": "string"
+																	},
 																	"type": "array"
 																},
 																"suffix": {
@@ -2864,7 +2876,11 @@
 																		},
 																		"dns_server": {
 																			"description": "A list of IP addresses to handle domain resolution.",
-																			"items": {},
+																			"items": {
+																				"description": "IPv4 or IPv6 address.",
+																				"example": "1.1.1.1",
+																				"type": "string"
+																			},
 																			"type": "array"
 																		},
 																		"suffix": {
@@ -3323,7 +3339,11 @@
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
-																"items": {},
+																"items": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
 																"type": "array"
 															},
 															"suffix": {
@@ -3621,7 +3641,11 @@
 																	},
 																	"dns_server": {
 																		"description": "A list of IP addresses to handle domain resolution.",
-																		"items": {},
+																		"items": {
+																			"description": "IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		},
 																		"type": "array"
 																	},
 																	"suffix": {
@@ -4046,7 +4070,11 @@
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
-																"items": {},
+																"items": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
 																"type": "array"
 															},
 															"suffix": {
@@ -4399,7 +4427,11 @@
 																	},
 																	"dns_server": {
 																		"description": "A list of IP addresses to handle domain resolution.",
-																		"items": {},
+																		"items": {
+																			"description": "IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		},
 																		"type": "array"
 																	},
 																	"suffix": {
@@ -5231,7 +5263,11 @@
 													},
 													"dns_server": {
 														"description": "A list of IP addresses to handle domain resolution.",
-														"items": {},
+														"items": {
+															"description": "IPv4 or IPv6 address.",
+															"example": "1.1.1.1",
+															"type": "string"
+														},
 														"type": "array"
 													},
 													"suffix": {
@@ -5389,7 +5425,11 @@
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
-																"items": {},
+																"items": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
 																"type": "array"
 															},
 															"suffix": {
@@ -6524,7 +6564,11 @@
 													},
 													"dns_server": {
 														"description": "A list of IP addresses to handle domain resolution.",
-														"items": {},
+														"items": {
+															"description": "IPv4 or IPv6 address.",
+															"example": "1.1.1.1",
+															"type": "string"
+														},
 														"type": "array"
 													},
 													"suffix": {
@@ -6682,7 +6726,11 @@
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
-																"items": {},
+																"items": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
 																"type": "array"
 															},
 															"suffix": {
@@ -7529,7 +7577,11 @@
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
-																"items": {},
+																"items": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
 																"type": "array"
 															},
 															"suffix": {
@@ -7827,7 +7879,11 @@
 																	},
 																	"dns_server": {
 																		"description": "A list of IP addresses to handle domain resolution.",
-																		"items": {},
+																		"items": {
+																			"description": "IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		},
 																		"type": "array"
 																	},
 																	"suffix": {
@@ -8356,7 +8412,11 @@
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
-																"items": {},
+																"items": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
 																"type": "array"
 															},
 															"suffix": {
@@ -8709,7 +8769,11 @@
 																	},
 																	"dns_server": {
 																		"description": "A list of IP addresses to handle domain resolution.",
-																		"items": {},
+																		"items": {
+																			"description": "IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		},
 																		"type": "array"
 																	},
 																	"suffix": {
@@ -9291,7 +9355,11 @@
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
-																"items": {},
+																"items": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
 																"type": "array"
 															},
 															"suffix": {
@@ -9644,7 +9712,11 @@
 																	},
 																	"dns_server": {
 																		"description": "A list of IP addresses to handle domain resolution.",
-																		"items": {},
+																		"items": {
+																			"description": "IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		},
 																		"type": "array"
 																	},
 																	"suffix": {
@@ -11068,7 +11140,11 @@
 								},
 								"dns_server": {
 									"description": "A list of IP addresses to handle domain resolution.",
-									"items": {},
+									"items": {
+										"description": "IPv4 or IPv6 address.",
+										"example": "1.1.1.1",
+										"type": "string"
+									},
 									"type": "array"
 								},
 								"suffix": {
@@ -11221,7 +11297,11 @@
 													},
 													"dns_server": {
 														"description": "A list of IP addresses to handle domain resolution.",
-														"items": {},
+														"items": {
+															"description": "IPv4 or IPv6 address.",
+															"example": "1.1.1.1",
+															"type": "string"
+														},
 														"type": "array"
 													},
 													"suffix": {
@@ -11379,7 +11459,11 @@
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
-																"items": {},
+																"items": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
 																"type": "array"
 															},
 															"suffix": {
@@ -12465,7 +12549,11 @@
 								},
 								"dns_server": {
 									"description": "A list of IP addresses to handle domain resolution.",
-									"items": {},
+									"items": {
+										"description": "IPv4 or IPv6 address.",
+										"example": "1.1.1.1",
+										"type": "string"
+									},
 									"type": "array"
 								},
 								"suffix": {
@@ -12618,7 +12706,11 @@
 													},
 													"dns_server": {
 														"description": "A list of IP addresses to handle domain resolution.",
-														"items": {},
+														"items": {
+															"description": "IPv4 or IPv6 address.",
+															"example": "1.1.1.1",
+															"type": "string"
+														},
 														"type": "array"
 													},
 													"suffix": {
@@ -12776,7 +12868,11 @@
 															},
 															"dns_server": {
 																"description": "A list of IP addresses to handle domain resolution.",
-																"items": {},
+																"items": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
 																"type": "array"
 															},
 															"suffix": {

@@ -118,6 +118,10 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"disable_for_time": {
+													"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
+													"type": "number"
+												},
 												"gateway_proxy_enabled": {
 													"description": "Enable gateway proxy filtering on TCP.",
 													"example": true,
@@ -257,6 +261,10 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"disable_for_time": {
+															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
+															"type": "number"
+														},
 														"gateway_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on TCP.",
 															"example": true,
@@ -1812,6 +1820,438 @@
 			"Zero Trust accounts"
 		]
 	},
+	"PATCH /accounts/{account_id}/devices/settings": {
+		"description": "Patches the current device settings for a Zero Trust account.",
+		"operationId": "zero-trust-accounts-patch-device-settings-for-the-zero-trust-account",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"disable_for_time": {
+								"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
+								"type": "number"
+							},
+							"gateway_proxy_enabled": {
+								"description": "Enable gateway proxy filtering on TCP.",
+								"example": true,
+								"type": "boolean"
+							},
+							"gateway_udp_proxy_enabled": {
+								"description": "Enable gateway proxy filtering on UDP.",
+								"example": true,
+								"type": "boolean"
+							},
+							"root_certificate_installation_enabled": {
+								"description": "Enable installation of cloudflare managed root certificate.",
+								"example": true,
+								"type": "boolean"
+							},
+							"use_zt_virtual_ip": {
+								"description": "Enable using CGNAT virtual IPv4.",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true,
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"disable_for_time": {
+													"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
+													"type": "number"
+												},
+												"gateway_proxy_enabled": {
+													"description": "Enable gateway proxy filtering on TCP.",
+													"example": true,
+													"type": "boolean"
+												},
+												"gateway_udp_proxy_enabled": {
+													"description": "Enable gateway proxy filtering on UDP.",
+													"example": true,
+													"type": "boolean"
+												},
+												"root_certificate_installation_enabled": {
+													"description": "Enable installation of cloudflare managed root certificate.",
+													"example": true,
+													"type": "boolean"
+												},
+												"use_zt_virtual_ip": {
+													"description": "Enable using CGNAT virtual IPv4.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Patch device settings for a Zero Trust account response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true,
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"disable_for_time": {
+															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
+															"type": "number"
+														},
+														"gateway_proxy_enabled": {
+															"description": "Enable gateway proxy filtering on TCP.",
+															"example": true,
+															"type": "boolean"
+														},
+														"gateway_udp_proxy_enabled": {
+															"description": "Enable gateway proxy filtering on UDP.",
+															"example": true,
+															"type": "boolean"
+														},
+														"root_certificate_installation_enabled": {
+															"description": "Enable installation of cloudflare managed root certificate.",
+															"example": true,
+															"type": "boolean"
+														},
+														"use_zt_virtual_ip": {
+															"description": "Enable using CGNAT virtual IPv4.",
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch device settings for a Zero Trust account response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch device settings for a Zero Trust account",
+		"tags": [
+			"Zero Trust accounts"
+		]
+	},
 	"PATCH /accounts/{account_id}/gateway/configuration": {
 		"description": "Patches the current Zero Trust account configuration. This endpoint can update a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, or `certificate`, without updating the entire configuration object. Returns an error if any collection of settings is not properly configured.",
 		"operationId": "zero-trust-accounts-patch-zero-trust-account-configuration",
@@ -3157,6 +3597,10 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"disable_for_time": {
+								"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
+								"type": "number"
+							},
 							"gateway_proxy_enabled": {
 								"description": "Enable gateway proxy filtering on TCP.",
 								"example": true,
@@ -3290,6 +3734,10 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"disable_for_time": {
+													"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
+													"type": "number"
+												},
 												"gateway_proxy_enabled": {
 													"description": "Enable gateway proxy filtering on TCP.",
 													"example": true,
@@ -3429,6 +3877,10 @@
 											"properties": {
 												"result": {
 													"properties": {
+														"disable_for_time": {
+															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
+															"type": "number"
+														},
 														"gateway_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on TCP.",
 															"example": true,
