@@ -5,36 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: Remote, United States</strong></p>
-<p><strong>Job Title: Vice President, Partner Sales</strong></p>
-<p><strong>About the Role:</strong></p>
-<p>As the Vice President, Partner Sales, you will lead a dynamic team responsible for developing and executing the channel sales strategy to drive revenue growth, expand market share, and enhance partner relationships. This role involves managing the partner team responsible for driving partner business in the Americas.&nbsp;&nbsp;</p>
-<p><strong>Key Responsibilities:</strong></p>
+<h4>Available Locations - Austin, TX/Texas Highly preferred. Open to Remote US</h4>
+<h4>About the department</h4>
+<p><span style="font-weight: 400;">The BI team builds and operates the cloud data analytics platform for Cloudflare. We are responsible for building a centralized cloud data analytics platform using open source technologies that will be used by our internal Business Partners and Machine Learning teams. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics self-service tools to fuel existing and new business critical initiatives.</span></p>
 <ul>
-	<li>Develop and implement a comprehensive channel sales strategy that aligns with the company's business objectives.</li>
-	<li>Cultivate and nurture executive relationships with strategic partners.</li>
-	<li>Identify and pursue new channel opportunities and partnerships to expand market presence.</li>
-	<li>Build and maintain strong relationships with key channel partners, distributors, and resellers.</li>
-	<li>Oversee the performance of channel partners, ensuring they meet sales targets and adhere to company standards.</li>
-	<li>Lead, mentor, and manage the channel sales team, providing guidance and support to achieve individual and team goals.</li>
-	<li>Foster a collaborative and high-performance culture within the team.</li>
-	<li>Establish and track key performance indicators (KPIs) to measure the effectiveness of channel sales initiatives.</li>
-	<li>Work closely with cross-functional teams, including marketing, product management, and customer support, to align channel strategies with overall business goals.</li>
-	<li>Coordinate with the direct sales team to ensure a cohesive approach to the market.</li>
+	<li>Deploy, manage &amp; support ML Applications &amp; Services on Kubernetes</li>
+	<li>Understand MLOps landscape i.e tooling, tech stack, source systems etc. and work on introducing new tools and solutions for ML &amp; AI initiatives.</li>
+	<li>Partner and align with Data Scientists, Data Engineers and internal teams to deliver ML solutions in a globally distributed environment.</li>
+	<li>Lead development of efficiencies to boost model training to deployment lead times</li>
+	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.</li>
+	<li>Leverage Cloudflare products and services for AI &amp; ML initiatives and applications</li>
+	<li>Use software engineering best practices to publish model scores/insights/learnings at scale within the company.</li>
 </ul>
-<p><strong>Qualifications:</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>15+ years of proven success in sales, channel/alliances, partner management, and/or distribution relationship management, demonstrating increasing levels of responsibility.&nbsp;&nbsp;</li>
-	<li>8+ years of experience managing a team of Channel Account Managers in the Americas.&nbsp;</li>
-	<li>Experience recruiting, developing, and managing both 1-tier and 2-tier channels.</li>
-	<li>Strong knowledge of the North American partner landscape, including VARs, MSPs, GSIs and VADs, with familiarity with modern enterprise security products.</li>
-	<li>Proficiency in enterprise and sales efficiency technologies (e.g., G Suite, Office 365, Zoom).</li>
-	<li>Exceptional partner sales, written, and oral communication skills; must be persuasive and excel at presenting.</li>
-	<li>Strong sales management and partner operational skills, with a track record of achieving strategic objectives.</li>
-	<li>Proven ability to prioritize, develop strategic plans, and drive successful sales outcomes.</li>
-	<li>Ability to thrive under pressure in a fast-paced environment, and manage multiple projects simultaneously.</li>
-	<li>Ability to cultivate business relationships through networking.</li>
-	<li>Willingness to travel (approx 50%+ of the time).</li>
+	<li>M.S or Ph.D in Computer Science, Statistics, Mathematics, or other quantitative fields.</li>
+	<li>3+ years of ML Engineering experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams)&nbsp;</li>
+	<li>Strong experience in scientific computing using Python with Scikit-Learn &amp; PyTorch or Tensorflow.</li>
+	<li>Strong experience working with Docker &amp; Kubernetes to build and deploy applications and systems.&nbsp;</li>
+	<li>Experience working with ML Platform tools (AirFlow, Argo Workflows, ArgoCD) preferred.</li>
+	<li>Experience working with Data Scientists to deploy Machine Learning applications systems for training, inference and observability.</li>
+	<li>Experience with Full-stack Web technologies and languages (FastAPI, Streamlit, JavaScript/TypeScript, Cloudflare Workers, etc.) preferred.</li>
+	<li>Experience with Terraform, Google Cloud Platform (or any other public cloud equivalent), On-Premise GPUs, etc.</li>
+	<li>Experience working with CI/CD systems, version control (Git, Bitbucket, etc.) and DevOps tools.&nbsp;&nbsp;</li>
+	<li>Experience with Databases such as BigQuery, Postgres, SQLite and ETL/ELT practices</li>
+	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.</li>
+	<li>Proficiency in leveraging large language models, fine-tuning and the frameworks (Langchain, Llamaindex, CrewAI, etc.) necessary for implementing GenAI applications, such as chatbots and related use cases.</li>
+	<li>Strong communication and presentation skills catered to different audiences within the company.</li>
+	<li>Capable of working closely with business, engineering, and product teams to ensure data initiatives are aligned with business needs.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
