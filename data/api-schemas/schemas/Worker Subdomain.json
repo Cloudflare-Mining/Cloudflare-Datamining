@@ -85,8 +85,9 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"name": {
-													"readOnly": true
+												"subdomain": {
+													"example": "example-subdomain",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -170,8 +171,9 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"name": {
-															"readOnly": true
+														"subdomain": {
+															"example": "example-subdomain",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -310,7 +312,13 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"example": "{'subdomain': 'example-subdomain'}"
+						"properties": {
+							"subdomain": {
+								"example": "example-subdomain",
+								"type": "string"
+							}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -386,8 +394,9 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"name": {
-													"readOnly": true
+												"subdomain": {
+													"example": "example-subdomain",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -471,8 +480,9 @@
 											"properties": {
 												"result": {
 													"properties": {
-														"name": {
-															"readOnly": true
+														"subdomain": {
+															"example": "example-subdomain",
+															"type": "string"
 														}
 													},
 													"type": "object"

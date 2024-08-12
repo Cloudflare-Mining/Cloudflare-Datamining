@@ -86,10 +86,10 @@
 										"result": {
 											"properties": {
 												"default_usage_model": {
-													"readOnly": true
+													"type": "string"
 												},
 												"green_compute": {
-													"readOnly": true
+													"type": "boolean"
 												}
 											},
 											"type": "object"
@@ -174,10 +174,10 @@
 												"result": {
 													"properties": {
 														"default_usage_model": {
-															"readOnly": true
+															"type": "string"
 														},
 														"green_compute": {
-															"readOnly": true
+															"type": "boolean"
 														}
 													},
 													"type": "object"
@@ -316,7 +316,15 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"example": "{'default_usage_model': 'unbound'}"
+						"properties": {
+							"default_usage_model": {
+								"type": "string"
+							},
+							"green_compute": {
+								"type": "boolean"
+							}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -393,10 +401,10 @@
 										"result": {
 											"properties": {
 												"default_usage_model": {
-													"readOnly": true
+													"type": "string"
 												},
 												"green_compute": {
-													"readOnly": true
+													"type": "boolean"
 												}
 											},
 											"type": "object"
@@ -481,10 +489,10 @@
 												"result": {
 													"properties": {
 														"default_usage_model": {
-															"readOnly": true
+															"type": "string"
 														},
 														"green_compute": {
-															"readOnly": true
+															"type": "boolean"
 														}
 													},
 													"type": "object"

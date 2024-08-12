@@ -121,7 +121,32 @@
 															"number": 1
 														}
 													],
-													"items": {},
+													"items": {
+														"properties": {
+															"id": {
+																"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
+																"readOnly": true,
+																"type": "string"
+															},
+															"metadata": {
+																"example": {
+																	"author_email": "user@example.com",
+																	"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																	"created_on": "2022-11-08T17:19:29.176266Z",
+																	"modified_on": "2022-11-08T17:19:29.176266Z",
+																	"source": "api"
+																},
+																"readOnly": true,
+																"type": "object"
+															},
+															"number": {
+																"example": 1,
+																"readOnly": true,
+																"type": "number"
+															}
+														},
+														"type": "object"
+													},
 													"type": "array"
 												},
 												"latest": {
@@ -264,7 +289,32 @@
 																	"number": 1
 																}
 															],
-															"items": {},
+															"items": {
+																"properties": {
+																	"id": {
+																		"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"metadata": {
+																		"example": {
+																			"author_email": "user@example.com",
+																			"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+																			"created_on": "2022-11-08T17:19:29.176266Z",
+																			"modified_on": "2022-11-08T17:19:29.176266Z",
+																			"source": "api"
+																		},
+																		"readOnly": true,
+																		"type": "object"
+																	},
+																	"number": {
+																		"example": 1,
+																		"readOnly": true,
+																		"type": "number"
+																	}
+																},
+																"type": "object"
+															},
 															"type": "array"
 														},
 														"latest": {

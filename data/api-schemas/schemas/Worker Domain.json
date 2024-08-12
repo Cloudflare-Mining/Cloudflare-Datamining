@@ -9,7 +9,8 @@
 				"required": true,
 				"schema": {
 					"description": "Identifer of the Worker Domain.",
-					"example": "dbe10b4bc17c295377eabd600e1787fd"
+					"example": "dbe10b4bc17c295377eabd600e1787fd",
+					"type": "string"
 				}
 			},
 			{
@@ -17,7 +18,9 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "9a7806061c88ada191ed06f989cc3dac"
+					"description": "Identifer of the account.",
+					"example": "9a7806061c88ada191ed06f989cc3dac",
+					"type": "string"
 				}
 			}
 		],
@@ -69,7 +72,9 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "9a7806061c88ada191ed06f989cc3dac"
+					"description": "Identifer of the account.",
+					"example": "9a7806061c88ada191ed06f989cc3dac",
+					"type": "string"
 				}
 			},
 			{
@@ -95,7 +100,8 @@
 				"name": "zone_id",
 				"schema": {
 					"description": "Identifier of the zone.",
-					"example": "593c9c94de529bbbfaac7c53ced0447d"
+					"example": "593c9c94de529bbbfaac7c53ced0447d",
+					"type": "string"
 				}
 			},
 			{
@@ -200,7 +206,8 @@
 													},
 													"id": {
 														"description": "Identifer of the Worker Domain.",
-														"example": "dbe10b4bc17c295377eabd600e1787fd"
+														"example": "dbe10b4bc17c295377eabd600e1787fd",
+														"type": "string"
 													},
 													"service": {
 														"description": "Worker service associated with the zone and hostname.",
@@ -209,7 +216,8 @@
 													},
 													"zone_id": {
 														"description": "Identifier of the zone.",
-														"example": "593c9c94de529bbbfaac7c53ced0447d"
+														"example": "593c9c94de529bbbfaac7c53ced0447d",
+														"type": "string"
 													},
 													"zone_name": {
 														"description": "Name of the zone.",
@@ -314,7 +322,8 @@
 															},
 															"id": {
 																"description": "Identifer of the Worker Domain.",
-																"example": "dbe10b4bc17c295377eabd600e1787fd"
+																"example": "dbe10b4bc17c295377eabd600e1787fd",
+																"type": "string"
 															},
 															"service": {
 																"description": "Worker service associated with the zone and hostname.",
@@ -323,7 +332,8 @@
 															},
 															"zone_id": {
 																"description": "Identifier of the zone.",
-																"example": "593c9c94de529bbbfaac7c53ced0447d"
+																"example": "593c9c94de529bbbfaac7c53ced0447d",
+																"type": "string"
 															},
 															"zone_name": {
 																"description": "Name of the zone.",
@@ -460,7 +470,8 @@
 				"required": true,
 				"schema": {
 					"description": "Identifer of the Worker Domain.",
-					"example": "dbe10b4bc17c295377eabd600e1787fd"
+					"example": "dbe10b4bc17c295377eabd600e1787fd",
+					"type": "string"
 				}
 			},
 			{
@@ -468,7 +479,9 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "9a7806061c88ada191ed06f989cc3dac"
+					"description": "Identifer of the account.",
+					"example": "9a7806061c88ada191ed06f989cc3dac",
+					"type": "string"
 				}
 			}
 		],
@@ -554,7 +567,8 @@
 												},
 												"id": {
 													"description": "Identifer of the Worker Domain.",
-													"example": "dbe10b4bc17c295377eabd600e1787fd"
+													"example": "dbe10b4bc17c295377eabd600e1787fd",
+													"type": "string"
 												},
 												"service": {
 													"description": "Worker service associated with the zone and hostname.",
@@ -563,7 +577,8 @@
 												},
 												"zone_id": {
 													"description": "Identifier of the zone.",
-													"example": "593c9c94de529bbbfaac7c53ced0447d"
+													"example": "593c9c94de529bbbfaac7c53ced0447d",
+													"type": "string"
 												},
 												"zone_name": {
 													"description": "Name of the zone.",
@@ -665,7 +680,8 @@
 														},
 														"id": {
 															"description": "Identifer of the Worker Domain.",
-															"example": "dbe10b4bc17c295377eabd600e1787fd"
+															"example": "dbe10b4bc17c295377eabd600e1787fd",
+															"type": "string"
 														},
 														"service": {
 															"description": "Worker service associated with the zone and hostname.",
@@ -674,7 +690,8 @@
 														},
 														"zone_id": {
 															"description": "Identifier of the zone.",
-															"example": "593c9c94de529bbbfaac7c53ced0447d"
+															"example": "593c9c94de529bbbfaac7c53ced0447d",
+															"type": "string"
 														},
 														"zone_name": {
 															"description": "Name of the zone.",
@@ -808,7 +825,9 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "9a7806061c88ada191ed06f989cc3dac"
+					"description": "Identifer of the account.",
+					"example": "9a7806061c88ada191ed06f989cc3dac",
+					"type": "string"
 				}
 			}
 		],
@@ -834,7 +853,8 @@
 							},
 							"zone_id": {
 								"description": "Identifier of the zone.",
-								"example": "593c9c94de529bbbfaac7c53ced0447d"
+								"example": "593c9c94de529bbbfaac7c53ced0447d",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -931,7 +951,8 @@
 												},
 												"id": {
 													"description": "Identifer of the Worker Domain.",
-													"example": "dbe10b4bc17c295377eabd600e1787fd"
+													"example": "dbe10b4bc17c295377eabd600e1787fd",
+													"type": "string"
 												},
 												"service": {
 													"description": "Worker service associated with the zone and hostname.",
@@ -940,7 +961,8 @@
 												},
 												"zone_id": {
 													"description": "Identifier of the zone.",
-													"example": "593c9c94de529bbbfaac7c53ced0447d"
+													"example": "593c9c94de529bbbfaac7c53ced0447d",
+													"type": "string"
 												},
 												"zone_name": {
 													"description": "Name of the zone.",
@@ -1042,7 +1064,8 @@
 														},
 														"id": {
 															"description": "Identifer of the Worker Domain.",
-															"example": "dbe10b4bc17c295377eabd600e1787fd"
+															"example": "dbe10b4bc17c295377eabd600e1787fd",
+															"type": "string"
 														},
 														"service": {
 															"description": "Worker service associated with the zone and hostname.",
@@ -1051,7 +1074,8 @@
 														},
 														"zone_id": {
 															"description": "Identifier of the zone.",
-															"example": "593c9c94de529bbbfaac7c53ced0447d"
+															"example": "593c9c94de529bbbfaac7c53ced0447d",
+															"type": "string"
 														},
 														"zone_name": {
 															"description": "Name of the zone.",

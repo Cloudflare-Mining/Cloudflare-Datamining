@@ -100,15 +100,19 @@
 													"items": {
 														"properties": {
 															"created_on": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															},
 															"cron": {
-																"readOnly": true
+																"example": "*/30 * * * *",
+																"type": "string"
 															},
 															"modified_on": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -198,15 +202,19 @@
 															"items": {
 																"properties": {
 																	"created_on": {
-																		"readOnly": true
+																		"readOnly": true,
+																		"type": "string"
 																	},
 																	"cron": {
-																		"readOnly": true
+																		"example": "*/30 * * * *",
+																		"type": "string"
 																	},
 																	"modified_on": {
-																		"readOnly": true
+																		"readOnly": true,
+																		"type": "string"
 																	}
-																}
+																},
+																"type": "object"
 															},
 															"type": "array"
 														}
@@ -358,7 +366,24 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"example": "[{'cron': '*/30 * * * *'}]"
+						"items": {
+							"properties": {
+								"created_on": {
+									"readOnly": true,
+									"type": "string"
+								},
+								"cron": {
+									"example": "*/30 * * * *",
+									"type": "string"
+								},
+								"modified_on": {
+									"readOnly": true,
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"type": "array"
 					}
 				}
 			},
@@ -438,15 +463,19 @@
 													"items": {
 														"properties": {
 															"created_on": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															},
 															"cron": {
-																"readOnly": true
+																"example": "*/30 * * * *",
+																"type": "string"
 															},
 															"modified_on": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -536,15 +565,19 @@
 															"items": {
 																"properties": {
 																	"created_on": {
-																		"readOnly": true
+																		"readOnly": true,
+																		"type": "string"
 																	},
 																	"cron": {
-																		"readOnly": true
+																		"example": "*/30 * * * *",
+																		"type": "string"
 																	},
 																	"modified_on": {
-																		"readOnly": true
+																		"readOnly": true,
+																		"type": "string"
 																	}
-																}
+																},
+																"type": "object"
 															},
 															"type": "array"
 														}

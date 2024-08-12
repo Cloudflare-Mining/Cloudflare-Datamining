@@ -121,16 +121,17 @@
 											"items": {
 												"properties": {
 													"class": {
-														"readOnly": true
+														"type": "string"
 													},
 													"id": {
-														"readOnly": true
+														"readOnly": true,
+														"type": "string"
 													},
 													"name": {
-														"readOnly": true
+														"type": "string"
 													},
 													"script": {
-														"readOnly": true
+														"type": "string"
 													}
 												},
 												"type": "object"
@@ -253,16 +254,17 @@
 													"items": {
 														"properties": {
 															"class": {
-																"readOnly": true
+																"type": "string"
 															},
 															"id": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															},
 															"name": {
-																"readOnly": true
+																"type": "string"
 															},
 															"script": {
-																"readOnly": true
+																"type": "string"
 															}
 														},
 														"type": "object"

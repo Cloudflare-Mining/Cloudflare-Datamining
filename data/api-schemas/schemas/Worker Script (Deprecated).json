@@ -134,7 +134,8 @@
 			"content": {
 				"application/javascript": {
 					"schema": {
-						"example": "addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })"
+						"example": "addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })",
+						"type": "string"
 					}
 				}
 			},
