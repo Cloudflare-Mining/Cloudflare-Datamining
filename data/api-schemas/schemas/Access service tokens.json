@@ -93,20 +93,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -129,6 +115,11 @@
 													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
+													"type": "string"
+												},
+												"expires_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
 													"type": "string"
 												},
 												"id": {
@@ -354,11 +345,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -408,6 +394,11 @@
 														"default": "8760h",
 														"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 														"example": "60m",
+														"type": "string"
+													},
+													"expires_at": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
 														"type": "string"
 													},
 													"id": {
@@ -643,20 +634,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -679,6 +656,11 @@
 													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
+													"type": "string"
+												},
+												"expires_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
 													"type": "string"
 												},
 												"id": {
@@ -926,20 +908,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1190,20 +1158,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1226,6 +1180,11 @@
 													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
+													"type": "string"
+												},
+												"expires_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
 													"type": "string"
 												},
 												"id": {
@@ -1459,20 +1418,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1745,20 +1690,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1781,6 +1712,11 @@
 													"default": "8760h",
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"example": "60m",
+													"type": "string"
+												},
+												"expires_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
 													"type": "string"
 												},
 												"id": {
