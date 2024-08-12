@@ -1905,8 +1905,8 @@
 		}
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
-		"description": "Fetch secrets from a script uploaded to a Workers for Platforms namespace.",
-		"operationId": "namespace-worker-get-script-secrets",
+		"description": "List secrets from a script uploaded to a Workers for Platforms namespace.",
+		"operationId": "namespace-worker-list-script-secrets",
 		"parameters": [
 			{
 				"in": "path",
@@ -2014,12 +2014,12 @@
 											"items": {
 												"properties": {
 													"name": {
-														"description": "The name of this secret, this is what will be to access it inside the Worker.",
+														"description": "The name of this secret, this is what will be used to access it inside the Worker.",
 														"example": "MY_SECRET",
 														"type": "string"
 													},
 													"type": {
-														"description": "The type of secret to put.",
+														"description": "The type of secret.",
 														"enum": [
 															"secret_text"
 														],
@@ -2037,7 +2037,7 @@
 						}
 					}
 				},
-				"description": "Fetch script secrets"
+				"description": "List script secrets"
 			},
 			"4XX": {
 				"content": {
@@ -2104,7 +2104,7 @@
 						}
 					}
 				},
-				"description": "Fetch script secrets failure"
+				"description": "List script secrets failure"
 			}
 		},
 		"security": [
@@ -2116,7 +2116,237 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Script Secrets",
+		"summary": "List Script Secrets",
+		"tags": [
+			"Workers for Platforms"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.read"
+			]
+		}
+	},
+	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
+		"description": "Get secret from a script uploaded to a Workers for Platforms namespace.",
+		"operationId": "namespace-worker-get-script-secres",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dispatch_namespace",
+				"required": true,
+				"schema": {
+					"description": "Name of the Workers for Platforms dispatch namespace.",
+					"example": "my-dispatch-namespace",
+					"pattern": "^.+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "secret_name",
+				"required": true,
+				"schema": {
+					"description": "A JavaScript variable name for the secret binding.",
+					"example": "mySecret",
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"name": {
+													"description": "The name of this secret, this is what will be used to access it inside the Worker.",
+													"example": "MY_SECRET",
+													"type": "string"
+												},
+												"type": {
+													"description": "The type of secret.",
+													"enum": [
+														"secret_text"
+													],
+													"example": "secret_text",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get script secret"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get script secret failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Script Secret",
 		"tags": [
 			"Workers for Platforms"
 		],
@@ -5747,7 +5977,7 @@
 					"schema": {
 						"properties": {
 							"name": {
-								"description": "The name of this secret, this is what will be to access it inside the Worker.",
+								"description": "The name of this secret, this is what will be used to access it inside the Worker.",
 								"example": "MY_SECRET",
 								"type": "string"
 							},
@@ -5842,12 +6072,12 @@
 										"result": {
 											"properties": {
 												"name": {
-													"description": "The name of this secret, this is what will be to access it inside the Worker.",
+													"description": "The name of this secret, this is what will be used to access it inside the Worker.",
 													"example": "MY_SECRET",
 													"type": "string"
 												},
 												"type": {
-													"description": "The type of secret to put.",
+													"description": "The type of secret.",
 													"enum": [
 														"secret_text"
 													],

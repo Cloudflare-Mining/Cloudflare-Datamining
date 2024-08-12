@@ -992,8 +992,48 @@
 											"items": {
 												"properties": {
 													"consumers": {
+														"items": {
+															"properties": {
+																"created_on": {
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"environment": {
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"queue_name": {
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"service": {
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"settings": {
+																	"properties": {
+																		"batch_size": {
+																			"description": "The maximum number of messages to include in a batch.",
+																			"example": 10,
+																			"type": "number"
+																		},
+																		"max_retries": {
+																			"description": "The maximum number of retries",
+																			"example": 3,
+																			"type": "number"
+																		},
+																		"max_wait_time_ms": {
+																			"example": 5000,
+																			"type": "number"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
 														"readOnly": true,
-														"type": "object"
+														"type": "array"
 													},
 													"consumers_total_count": {
 														"readOnly": true,
@@ -1008,8 +1048,11 @@
 														"type": "string"
 													},
 													"producers": {
+														"items": {
+															"type": "object"
+														},
 														"readOnly": true,
-														"type": "object"
+														"type": "array"
 													},
 													"producers_total_count": {
 														"readOnly": true,
@@ -1208,8 +1251,48 @@
 													"items": {
 														"properties": {
 															"consumers": {
+																"items": {
+																	"properties": {
+																		"created_on": {
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"environment": {
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"queue_name": {
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"service": {
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"settings": {
+																			"properties": {
+																				"batch_size": {
+																					"description": "The maximum number of messages to include in a batch.",
+																					"example": 10,
+																					"type": "number"
+																				},
+																				"max_retries": {
+																					"description": "The maximum number of retries",
+																					"example": 3,
+																					"type": "number"
+																				},
+																				"max_wait_time_ms": {
+																					"example": 5000,
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
 																"readOnly": true,
-																"type": "object"
+																"type": "array"
 															},
 															"consumers_total_count": {
 																"readOnly": true,
@@ -1224,8 +1307,11 @@
 																"type": "string"
 															},
 															"producers": {
+																"items": {
+																	"type": "object"
+																},
 																"readOnly": true,
-																"type": "object"
+																"type": "array"
 															},
 															"producers_total_count": {
 																"readOnly": true,
@@ -1523,8 +1609,48 @@
 												{
 													"properties": {
 														"consumers": {
+															"items": {
+																"properties": {
+																	"created_on": {
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"environment": {
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"queue_name": {
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"service": {
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"settings": {
+																		"properties": {
+																			"batch_size": {
+																				"description": "The maximum number of messages to include in a batch.",
+																				"example": 10,
+																				"type": "number"
+																			},
+																			"max_retries": {
+																				"description": "The maximum number of retries",
+																				"example": 3,
+																				"type": "number"
+																			},
+																			"max_wait_time_ms": {
+																				"example": 5000,
+																				"type": "number"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
+															},
 															"readOnly": true,
-															"type": "object"
+															"type": "array"
 														},
 														"consumers_total_count": {
 															"readOnly": true,
@@ -1539,8 +1665,11 @@
 															"type": "string"
 														},
 														"producers": {
+															"items": {
+																"type": "object"
+															},
 															"readOnly": true,
-															"type": "object"
+															"type": "array"
 														},
 														"producers_total_count": {
 															"readOnly": true,
@@ -1703,8 +1832,48 @@
 														{
 															"properties": {
 																"consumers": {
+																	"items": {
+																		"properties": {
+																			"created_on": {
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"environment": {
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"queue_name": {
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"service": {
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"settings": {
+																				"properties": {
+																					"batch_size": {
+																						"description": "The maximum number of messages to include in a batch.",
+																						"example": 10,
+																						"type": "number"
+																					},
+																					"max_retries": {
+																						"description": "The maximum number of retries",
+																						"example": 3,
+																						"type": "number"
+																					},
+																					"max_wait_time_ms": {
+																						"example": 5000,
+																						"type": "number"
+																					}
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"type": "object"
+																	},
 																	"readOnly": true,
-																	"type": "object"
+																	"type": "array"
 																},
 																"consumers_total_count": {
 																	"readOnly": true,
@@ -1719,8 +1888,11 @@
 																	"type": "string"
 																},
 																"producers": {
+																	"items": {
+																		"type": "object"
+																	},
 																	"readOnly": true,
-																	"type": "object"
+																	"type": "array"
 																},
 																"producers_total_count": {
 																	"readOnly": true,
@@ -2440,11 +2612,11 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"example": {
+							"queue_name": "example-queue"
+						},
 						"properties": {
 							"queue_name": {
-								"example": {
-									"queue_name": "example-queue"
-								},
 								"type": "string"
 							}
 						},
