@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.8
+
+### Patch Changes
+
+- 2f733758cb: Prevent crashing when time dropdown is open and a key is pressed
+
 ## 2.1.7
 
 ## 2.1.6

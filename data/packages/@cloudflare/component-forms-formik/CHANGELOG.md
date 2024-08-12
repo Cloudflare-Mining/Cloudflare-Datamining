@@ -1,5 +1,13 @@
 # Change Log
 
+## 7.0.26
+
+### Patch Changes
+
+- Updated dependencies [2f733758cb]
+  - @cloudflare/component-listbox@2.1.8
+  - @cloudflare/component-forms@6.1.14
+
 ## 7.0.25
 
 ### Patch Changes

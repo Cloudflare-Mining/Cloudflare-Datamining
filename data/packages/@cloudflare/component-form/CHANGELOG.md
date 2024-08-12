@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.0.39
+
+### Patch Changes
+
+- Updated dependencies [2f733758cb]
+  - @cloudflare/component-listbox@2.1.8
+
 ## 5.0.38
 
 ### Patch Changes
