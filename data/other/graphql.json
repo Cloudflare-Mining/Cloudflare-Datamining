@@ -1200,6 +1200,8 @@
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"botDetectionIds": "Array of detections ids that matched this request",
+		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
 		"clientASNDescription": "The ASN of the visitor as string",
@@ -2044,6 +2046,8 @@
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"botDetectionIds": "Array of detections ids that matched this request",
+		"botDetectionTags": "Array of detections tags that matched this request",
 		"botManagementDecision": "Judgement of the bot management system",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
@@ -3648,6 +3652,7 @@
 		"rumWebVitalsEventsAdaptiveGroups": "",
 		"sinkholeRequestLogsAdaptive": "",
 		"sinkholeRequestLogsAdaptiveGroups": "",
+		"sippyOperationsAdaptiveGroups": "",
 		"spectrumNetworkAnalyticsAdaptiveGroups": "",
 		"storageTraces": "",
 		"streamMinutesViewedAdaptiveGroups": "",
@@ -3718,6 +3723,36 @@
 	},
 	"AccountSinkholeRequestLogsAdaptiveOrderBy": {
 		"__description": ""
+	},
+	"AccountSippyOperationsAdaptiveGroups": {
+		"__description": "Sippy operations with adaptive sampling",
+		"count": "Total number of Sippy operations",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountSippyOperationsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"action": "Operation's name",
+		"bucket": "Name of the R2 bucket",
+		"date": "Operation timestamp, truncated to start of a day",
+		"datetime": "Operation timestamp",
+		"datetimeHour": "Operation timestamp, truncated to start of an hour",
+		"datetimeMinute": "Operation timestamp, truncated to start of an minute",
+		"initiator": "Operation's initiator (eyeball / Sippy)",
+		"object": "Object key the operation was made for",
+		"size": "Number of bytes transferred as part of the operation",
+		"status": "Operation's response HTTP code",
+		"target": "Operation's target (upstream / R2)"
+	},
+	"AccountSippyOperationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountSippyOperationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountSippyOperationsAdaptiveGroupsSum": {
+		"__description": "",
+		"size": "Total bytes transferred"
 	},
 	"AccountSpectrumNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Spectrum traffic",
@@ -4098,7 +4133,8 @@
 		"requestDurationBucketMin": "Bucket of request duration rounded down to nearest 10*2^n",
 		"requestDurationBucketMin100ms": "Bucket of request duration rounded down to nearest 100ms",
 		"scriptName": "The script name",
-		"scriptTag": "The unique tag of the script"
+		"scriptTag": "The unique tag of the script",
+		"scriptVersion": "The script version"
 	},
 	"AccountWorkerPlacementAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -5091,6 +5127,8 @@
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"botDetectionIds": "Array of detections ids that matched this request",
+		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
 		"date": "The date the event occurred at the edge",
@@ -5145,6 +5183,8 @@
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"botDetectionIds": "Array of detections ids that matched this request",
+		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
 		"clientASNDescription": "The ASN of the visitor as string",
@@ -5765,6 +5805,8 @@
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
+		"botDetectionIds": "Array of detections ids that matched this request",
+		"botDetectionTags": "Array of detections tags that matched this request",
 		"botManagementDecision": "Judgement of the bot management system",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
@@ -6425,10 +6467,13 @@
 	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroups": {
 		"__description": "Zaraz Analytics Tracks ordered per session",
 		"count": "Number of processed Zaraz Track requests",
-		"dimensions": "List of dimensions to group by"
+		"dimensions": "List of dimensions to group by",
+		"uniq": ""
 	},
 	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroupsDimensions": {
 		"__description": "",
+		"browserName": "User Agent browser name",
+		"cityRegion": "City and region",
 		"clientId": "Client ID",
 		"colors": "Colors",
 		"country": "Country",
@@ -6437,18 +6482,26 @@
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
+		"deviceModel": "User Agent device model",
+		"deviceType": "User Agent device type",
+		"deviceVendor": "User Agent device vendor",
 		"ip": "IP",
 		"language": "Language",
-		"orderInClient": "Track order number for its clientId",
-		"orderInSession": "Track reverse order number within its session (last track having orderInSession 1)",
+		"orderInClient": "Track's order number for its clientId",
+		"orderInSession": "Track's reverse order number within its session (last track having orderInSession 1)",
+		"osName": "User Agent OS name",
+		"osVersion": "User Agent OS version",
+		"other": "Other data in the JSON format: language code, color depth, device viewport, timezone offset",
 		"pageTitle": "Page Title",
 		"resolution": "Screen Resolution",
+		"reverseOrderInClient": "Track's reverse order number for its clientId",
 		"sessionId": "Session ID",
 		"timezoneOffset": "Timezone Offset",
 		"trackData": "Track Data",
 		"trackName": "Track Name",
 		"trafficSrc": "Traffic source",
-		"ua": "User Agent",
+		"ua": "User Agent string",
+		"uaObj": "User Agent stringified object",
 		"urlPath": "URL Path",
 		"viewport": "Viewport"
 	},
@@ -6458,6 +6511,11 @@
 	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroupsUniq": {
+		"__description": "",
+		"clientIdCount": "Minimum number of distinct client IDs",
+		"sessionIdCount": "Minimum number of distinct session IDs"
+	},
 	"ZoneZarazAnalyticsTrackAdaptiveGroups": {
 		"__description": "Zaraz Analytics Track - counts zaraz.track calls",
 		"count": "Number of processed Zaraz Track requests",
@@ -6466,6 +6524,8 @@
 	},
 	"ZoneZarazAnalyticsTrackAdaptiveGroupsDimensions": {
 		"__description": "",
+		"browserName": "User Agent browser name",
+		"cityRegion": "City and region",
 		"clientId": "Client ID",
 		"colors": "Colors",
 		"country": "Country",
@@ -6474,8 +6534,14 @@
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
+		"deviceModel": "User Agent device model",
+		"deviceType": "User Agent device type",
+		"deviceVendor": "User Agent device vendor",
 		"ip": "IP",
 		"language": "Language",
+		"osName": "User Agent OS name",
+		"osVersion": "User Agent OS version",
+		"other": "Other data in the JSON format: language code, color depth, device viewport, timezone offset",
 		"pageTitle": "Page Title",
 		"resolution": "Screen Resolution",
 		"sessionId": "Session ID",
@@ -6483,7 +6549,8 @@
 		"trackData": "Track Data",
 		"trackName": "Track Name",
 		"trafficSrc": "Traffic source",
-		"ua": "User Agent",
+		"ua": "User Agent string",
+		"uaObj": "User Agent stringified object",
 		"urlPath": "URL Path",
 		"viewport": "Viewport"
 	},
@@ -6495,18 +6562,24 @@
 	},
 	"ZoneZarazAnalyticsTrackAdaptiveGroupsUniq": {
 		"__description": "",
-		"clientIdCount": "Number of distinct client IDs",
-		"sessionIdCount": "Number of distinct session IDs"
+		"clientIdCount": "Minimum number of distinct client IDs",
+		"sessionIdCount": "Minimum number of distinct session IDs"
 	},
 	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroups": {
 		"__description": "Zaraz Analytics Track Traffic Sources",
+		"avg": "",
 		"count": "Number of unique sessions",
 		"dimensions": "List of dimensions to group by",
 		"uniq": ""
 	},
+	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroupsAvg": {
+		"__description": "",
+		"sessionDuration": "Average session duration"
+	},
 	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"clientId": "Client ID",
+		"duration": "Session duration (seconds)",
 		"exitPage": "URL Path at session end",
 		"firstTrafficSrc": "Referrer at session start",
 		"landingPage": "URL Path at session start",
@@ -6541,6 +6614,8 @@
 	},
 	"ZoneZarazAnalyticsTriggersAdaptiveGroupsDimensions": {
 		"__description": "",
+		"browserName": "User Agent browser name",
+		"cityRegion": "City and region",
 		"clientId": "Client ID",
 		"colors": "Colors",
 		"country": "Country",
@@ -6549,15 +6624,22 @@
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
+		"deviceModel": "User Agent device model",
+		"deviceType": "User Agent device type",
+		"deviceVendor": "User Agent device vendor",
 		"ip": "IP",
 		"language": "Language",
+		"osName": "User Agent OS name",
+		"osVersion": "User Agent OS version",
+		"other": "Other data in the JSON format: language code, color depth, device viewport, timezone offset",
 		"pageTitle": "Page Title",
 		"resolution": "Screen Resolution",
 		"sessionId": "Session ID",
 		"timezoneOffset": "Timezone Offset",
 		"trafficSrc": "Traffic Source",
 		"triggerName": "Trigger Name",
-		"ua": "User Agent",
+		"ua": "User Agent string",
+		"uaObj": "User Agent stringified object",
 		"urlPath": "URL Path",
 		"viewport": "Viewport"
 	},
@@ -6569,8 +6651,8 @@
 	},
 	"ZoneZarazAnalyticsTriggersAdaptiveGroupsUniq": {
 		"__description": "",
-		"clientIdCount": "Number of distinct client IDs",
-		"sessionIdCount": "Number of distinct session IDs"
+		"clientIdCount": "Minimum number of distinct client IDs",
+		"sessionIdCount": "Minimum number of distinct session IDs"
 	},
 	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroups": {
 		"__description": "Zaraz Analytics Triggers Traffic Sources",
@@ -6721,6 +6803,7 @@
 		"settings": "",
 		"sinkholeRequestLogsAdaptive": "Sinkhole Request Logs",
 		"sinkholeRequestLogsAdaptiveGroups": "Sinkhole Request Logs",
+		"sippyOperationsAdaptiveGroups": "Sippy operations with adaptive sampling",
 		"spectrumNetworkAnalyticsAdaptiveGroups": "Network analytics data for Spectrum traffic",
 		"storageTraces": "Storage Tracing Information",
 		"streamMinutesViewedAdaptiveGroups": "A high-level summary of Cloudflare Stream minutes viewed.",
