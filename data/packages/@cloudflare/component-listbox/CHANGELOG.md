@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.9
+
+### Patch Changes
+
+- 7ac2c60c9b: Undo last change - it caused test errors in stratus
+
 ## 2.1.8
 
 ### Patch Changes
