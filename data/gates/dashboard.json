@@ -441,7 +441,7 @@
 		]
 	},
 	"dx-improve-dns-onboarding": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
@@ -689,6 +689,9 @@
 	},
 	"onboarding-domain-registration": {
 		"enabled": true
+	},
+	"onboarding-nameserver-direction-page-updates": {
+		"enabled": false
 	},
 	"opaque-staging-experiment": {
 		"enabled": false
