@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workers-shared",
 	"dist-tags": {
 		"latest": "0.1.0",
-		"beta": "0.0.0-d86abb2c"
+		"beta": "0.0.0-a2a144ca"
 	},
 	"versions": {
 		"0.1.0": {
@@ -409,6 +409,35 @@
 			"name": "@cloudflare/workers-shared",
 			"version": "0.0.0-d86abb2c",
 			"devDependencies": {
+				"rimraf": "^6.0.1",
+				"esbuild": "0.17.19",
+				"typescript": "^5.5.4",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-types": "^4.20240806.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/eslint-config-worker": "1.1.0"
+			},
+			"dist": {
+				"shasum": "e57e0d7b283e38c848b61e004655f9763d1c7b08",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-d86abb2c.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-s2E00rnorbTIot1CUd3s9ZqKbxR8g2SNHNjPHBqX0wtEvQ6zADvInz18QD8PL94s7jBYsQN4k6yIOLFSuK6Cjw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDp78mVav+81cZ1rpqlQjAJQK9JUl549t5WTJ0Y/OAj8QIhAJmXGmBRfWsszPd/blBJ37jD1PoC+AbO76qtIU2aV6N0",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 2750
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.0-a2a144ca": {
+			"name": "@cloudflare/workers-shared",
+			"version": "0.0.0-a2a144ca",
+			"devDependencies": {
 				"@cloudflare/workers-types": "^4.20240806.0",
 				"concurrently": "^8.2.2",
 				"esbuild": "0.17.19",
@@ -418,15 +447,15 @@
 				"@cloudflare/eslint-config-worker": "1.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-s2E00rnorbTIot1CUd3s9ZqKbxR8g2SNHNjPHBqX0wtEvQ6zADvInz18QD8PL94s7jBYsQN4k6yIOLFSuK6Cjw==",
-				"shasum": "e57e0d7b283e38c848b61e004655f9763d1c7b08",
-				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-d86abb2c.tgz",
+				"integrity": "sha512-LVFEUf2fCTv8HGtm8XTQdygfs/lDVmTX50cZxNknLqSV9q65JwVsBkyYkUalPsMabGwlNTXuekRMHoAHhUIcNw==",
+				"shasum": "74b27bac818bd9f8af50b563bafed7bb556a6778",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-shared/-/workers-shared-0.0.0-a2a144ca.tgz",
 				"fileCount": 4,
 				"unpackedSize": 2750,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDp78mVav+81cZ1rpqlQjAJQK9JUl549t5WTJ0Y/OAj8QIhAJmXGmBRfWsszPd/blBJ37jD1PoC+AbO76qtIU2aV6N0"
+						"sig": "MEYCIQDkUb4kL1zBN/rR0l8NouH/uiWdr7GaE+cCORuSfmfbqAIhALxqK8Z39mVWVgXdrtbbnsod/HCYj+ynBmU6rTdv6HoE"
 					}
 				]
 			},
