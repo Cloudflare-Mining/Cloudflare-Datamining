@@ -674,6 +674,15 @@
 					"hasPermission": null
 				},
 				{
+					"title": "navigation.account.shared_configurations",
+					"url": "/shared-configurations",
+					"testId": "shared-config-link",
+					"labels": [
+						"alpha"
+					],
+					"hasPermission": null
+				},
+				{
 					"title": "navigation.account.mcn",
 					"url": "/mcn",
 					"labels": [
@@ -1097,6 +1106,15 @@
 				{
 					"title": "navigation.zone.caching.cache_rules",
 					"url": "/rules/cache-rules",
+					"navigationType": "version",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.zone.rules.cloud_connector",
+					"labels": [
+						"beta"
+					],
+					"url": "/rules/cloud-connector",
 					"navigationType": "version",
 					"hasPermission": null
 				},

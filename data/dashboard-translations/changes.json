@@ -6,5 +6,8 @@
 	"changes.2.starred_zones.title": "Star a domain",
 	"changes.2.starred_zones.description": "Star a domain for quick access to its configurations and analytics. Starring is tied to you, and not to other members of this account.",
 	"changes.3.new_account_home.title": "Welcome to the new home page",
-	"changes.3.new_account_home.description": "Access starred domains, recently visited pages, product news, and Cloudflare status. Find the old account home under <0>Websites</0>."
+	"changes.3.new_account_home.description": "Access starred domains, recently visited pages, product news, and Cloudflare status. Find the old account home under <0>Websites</0>.",
+	"changes.ssl_migration.title": "Upcoming SSL/TLS setting migration",
+	"changes.ssl_migration.description": "<0>Encryption mode</0> and\n <1>SSL/TLS recommender</1> are merging.\n\n %{zoneName} will migrate to the new <2>automatic SSL/TLS</2> setting on %{date}.\n\n To opt out and use a custom setting, turn off the SSL/\nTLS Recommender now.",
+	"changes.ssl_migration.dismiss": "Continue to SSL/TLS configuration"
 }
