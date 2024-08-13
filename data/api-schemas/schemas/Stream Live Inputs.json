@@ -518,6 +518,7 @@
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
 													"example": {
+														"hideLiveViewerCount": false,
 														"mode": "off",
 														"requireSignedURLs": false,
 														"timeoutSeconds": 0
@@ -532,6 +533,12 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"hideLiveViewerCount": {
+															"default": false,
+															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+															"example": true,
+															"type": "boolean"
 														},
 														"mode": {
 															"default": "off",
@@ -1067,6 +1074,7 @@
 							"recording": {
 								"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
 								"example": {
+									"hideLiveViewerCount": false,
 									"mode": "off",
 									"requireSignedURLs": false,
 									"timeoutSeconds": 0
@@ -1081,6 +1089,12 @@
 											"type": "string"
 										},
 										"type": "array"
+									},
+									"hideLiveViewerCount": {
+										"default": false,
+										"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+										"example": true,
+										"type": "boolean"
 									},
 									"mode": {
 										"default": "off",
@@ -1216,6 +1230,7 @@
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
 													"example": {
+														"hideLiveViewerCount": false,
 														"mode": "off",
 														"requireSignedURLs": false,
 														"timeoutSeconds": 0
@@ -1230,6 +1245,12 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"hideLiveViewerCount": {
+															"default": false,
+															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+															"example": true,
+															"type": "boolean"
 														},
 														"mode": {
 															"default": "off",
@@ -1809,6 +1830,7 @@
 							"recording": {
 								"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
 								"example": {
+									"hideLiveViewerCount": false,
 									"mode": "off",
 									"requireSignedURLs": false,
 									"timeoutSeconds": 0
@@ -1823,6 +1845,12 @@
 											"type": "string"
 										},
 										"type": "array"
+									},
+									"hideLiveViewerCount": {
+										"default": false,
+										"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+										"example": true,
+										"type": "boolean"
 									},
 									"mode": {
 										"default": "off",
@@ -1958,6 +1986,7 @@
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
 													"example": {
+														"hideLiveViewerCount": false,
 														"mode": "off",
 														"requireSignedURLs": false,
 														"timeoutSeconds": 0
@@ -1972,6 +2001,12 @@
 																"type": "string"
 															},
 															"type": "array"
+														},
+														"hideLiveViewerCount": {
+															"default": false,
+															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+															"example": true,
+															"type": "boolean"
 														},
 														"mode": {
 															"default": "off",
