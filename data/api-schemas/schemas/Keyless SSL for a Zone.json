@@ -98,20 +98,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -205,20 +191,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -439,11 +411,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -528,7 +495,9 @@
 																	"#ssl:read",
 																	"#ssl:edit"
 																],
-																"items": {},
+																"items": {
+																	"type": "string"
+																},
 																"readOnly": true,
 																"type": "array"
 															},
@@ -667,11 +636,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -756,7 +720,9 @@
 																			"#ssl:read",
 																			"#ssl:edit"
 																		],
-																		"items": {},
+																		"items": {
+																			"type": "string"
+																		},
 																		"readOnly": true,
 																		"type": "array"
 																	},
@@ -1027,20 +993,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1098,7 +1050,9 @@
 																"#ssl:read",
 																"#ssl:edit"
 															],
-															"items": {},
+															"items": {
+																"type": "string"
+															},
 															"readOnly": true,
 															"type": "array"
 														},
@@ -1232,20 +1186,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -1303,7 +1243,9 @@
 																		"#ssl:read",
 																		"#ssl:edit"
 																	],
-																	"items": {},
+																	"items": {
+																		"type": "string"
+																	},
 																	"readOnly": true,
 																	"type": "array"
 																},
@@ -1630,20 +1572,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1701,7 +1629,9 @@
 																"#ssl:read",
 																"#ssl:edit"
 															],
-															"items": {},
+															"items": {
+																"type": "string"
+															},
 															"readOnly": true,
 															"type": "array"
 														},
@@ -1835,20 +1765,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -1906,7 +1822,9 @@
 																		"#ssl:read",
 																		"#ssl:edit"
 																	],
-																	"items": {},
+																	"items": {
+																		"type": "string"
+																	},
 																	"readOnly": true,
 																	"type": "array"
 																},
@@ -2236,20 +2154,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -2307,7 +2211,9 @@
 																"#ssl:read",
 																"#ssl:edit"
 															],
-															"items": {},
+															"items": {
+																"type": "string"
+															},
 															"readOnly": true,
 															"type": "array"
 														},
@@ -2441,20 +2347,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -2512,7 +2404,9 @@
 																		"#ssl:read",
 																		"#ssl:edit"
 																	],
-																	"items": {},
+																	"items": {
+																		"type": "string"
+																	},
 																	"readOnly": true,
 																	"type": "array"
 																},

@@ -344,11 +344,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -534,7 +529,9 @@
 																					"app.example.com",
 																					"*.app.example.com"
 																				],
-																				"items": {},
+																				"items": {
+																					"type": "string"
+																				},
 																				"type": "array"
 																			},
 																			"id": {
@@ -686,7 +683,9 @@
 																								"administrator@example.com",
 																								"webmaster@example.com"
 																							],
-																							"items": {},
+																							"items": {
+																								"type": "string"
+																							},
 																							"type": "array"
 																						},
 																						"http_body": {
@@ -752,7 +751,9 @@
 																"example": [
 																	"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found."
 																],
-																"items": {},
+																"items": {
+																	"type": "string"
+																},
 																"type": "array"
 															}
 														}
@@ -826,7 +827,9 @@
 																			"app.example.com",
 																			"*.app.example.com"
 																		],
-																		"items": {},
+																		"items": {
+																			"type": "string"
+																		},
 																		"type": "array"
 																	},
 																	"id": {
@@ -978,7 +981,9 @@
 																						"administrator@example.com",
 																						"webmaster@example.com"
 																					],
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"type": "array"
 																				},
 																				"http_body": {
@@ -1106,11 +1111,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -1296,7 +1296,9 @@
 																							"app.example.com",
 																							"*.app.example.com"
 																						],
-																						"items": {},
+																						"items": {
+																							"type": "string"
+																						},
 																						"type": "array"
 																					},
 																					"id": {
@@ -1448,7 +1450,9 @@
 																										"administrator@example.com",
 																										"webmaster@example.com"
 																									],
-																									"items": {},
+																									"items": {
+																										"type": "string"
+																									},
 																									"type": "array"
 																								},
 																								"http_body": {
@@ -1514,7 +1518,9 @@
 																		"example": [
 																			"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found."
 																		],
-																		"items": {},
+																		"items": {
+																			"type": "string"
+																		},
 																		"type": "array"
 																	}
 																}
@@ -1588,7 +1594,9 @@
 																					"app.example.com",
 																					"*.app.example.com"
 																				],
-																				"items": {},
+																				"items": {
+																					"type": "string"
+																				},
 																				"type": "array"
 																			},
 																			"id": {
@@ -1740,7 +1748,9 @@
 																								"administrator@example.com",
 																								"webmaster@example.com"
 																							],
-																							"items": {},
+																							"items": {
+																								"type": "string"
+																							},
 																							"type": "array"
 																						},
 																						"http_body": {
@@ -1999,20 +2009,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -2173,7 +2169,9 @@
 																						"app.example.com",
 																						"*.app.example.com"
 																					],
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"type": "array"
 																				},
 																				"id": {
@@ -2325,7 +2323,9 @@
 																									"administrator@example.com",
 																									"webmaster@example.com"
 																								],
-																								"items": {},
+																								"items": {
+																									"type": "string"
+																								},
 																								"type": "array"
 																							},
 																							"http_body": {
@@ -2391,7 +2391,9 @@
 																	"example": [
 																		"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found."
 																	],
-																	"items": {},
+																	"items": {
+																		"type": "string"
+																	},
 																	"type": "array"
 																}
 															}
@@ -2465,7 +2467,9 @@
 																				"app.example.com",
 																				"*.app.example.com"
 																			],
-																			"items": {},
+																			"items": {
+																				"type": "string"
+																			},
 																			"type": "array"
 																		},
 																		"id": {
@@ -2617,7 +2621,9 @@
 																							"administrator@example.com",
 																							"webmaster@example.com"
 																						],
-																						"items": {},
+																						"items": {
+																							"type": "string"
+																						},
 																						"type": "array"
 																					},
 																					"http_body": {
@@ -2743,20 +2749,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -2917,7 +2909,9 @@
 																								"app.example.com",
 																								"*.app.example.com"
 																							],
-																							"items": {},
+																							"items": {
+																								"type": "string"
+																							},
 																							"type": "array"
 																						},
 																						"id": {
@@ -3069,7 +3063,9 @@
 																											"administrator@example.com",
 																											"webmaster@example.com"
 																										],
-																										"items": {},
+																										"items": {
+																											"type": "string"
+																										},
 																										"type": "array"
 																									},
 																									"http_body": {
@@ -3135,7 +3131,9 @@
 																			"example": [
 																				"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found."
 																			],
-																			"items": {},
+																			"items": {
+																				"type": "string"
+																			},
 																			"type": "array"
 																		}
 																	}
@@ -3209,7 +3207,9 @@
 																						"app.example.com",
 																						"*.app.example.com"
 																					],
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"type": "array"
 																				},
 																				"id": {
@@ -3361,7 +3361,9 @@
 																									"administrator@example.com",
 																									"webmaster@example.com"
 																								],
-																								"items": {},
+																								"items": {
+																									"type": "string"
+																								},
 																								"type": "array"
 																							},
 																							"http_body": {
@@ -3776,20 +3778,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -3950,7 +3938,9 @@
 																						"app.example.com",
 																						"*.app.example.com"
 																					],
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"type": "array"
 																				},
 																				"id": {
@@ -4102,7 +4092,9 @@
 																									"administrator@example.com",
 																									"webmaster@example.com"
 																								],
-																								"items": {},
+																								"items": {
+																									"type": "string"
+																								},
 																								"type": "array"
 																							},
 																							"http_body": {
@@ -4168,7 +4160,9 @@
 																	"example": [
 																		"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found."
 																	],
-																	"items": {},
+																	"items": {
+																		"type": "string"
+																	},
 																	"type": "array"
 																}
 															}
@@ -4242,7 +4236,9 @@
 																				"app.example.com",
 																				"*.app.example.com"
 																			],
-																			"items": {},
+																			"items": {
+																				"type": "string"
+																			},
 																			"type": "array"
 																		},
 																		"id": {
@@ -4394,7 +4390,9 @@
 																							"administrator@example.com",
 																							"webmaster@example.com"
 																						],
-																						"items": {},
+																						"items": {
+																							"type": "string"
+																						},
 																						"type": "array"
 																					},
 																					"http_body": {
@@ -4520,20 +4518,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -4694,7 +4678,9 @@
 																								"app.example.com",
 																								"*.app.example.com"
 																							],
-																							"items": {},
+																							"items": {
+																								"type": "string"
+																							},
 																							"type": "array"
 																						},
 																						"id": {
@@ -4846,7 +4832,9 @@
 																											"administrator@example.com",
 																											"webmaster@example.com"
 																										],
-																										"items": {},
+																										"items": {
+																											"type": "string"
+																										},
 																										"type": "array"
 																									},
 																									"http_body": {
@@ -4912,7 +4900,9 @@
 																			"example": [
 																				"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found."
 																			],
-																			"items": {},
+																			"items": {
+																				"type": "string"
+																			},
 																			"type": "array"
 																		}
 																	}
@@ -4986,7 +4976,9 @@
 																						"app.example.com",
 																						"*.app.example.com"
 																					],
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"type": "array"
 																				},
 																				"id": {
@@ -5138,7 +5130,9 @@
 																									"administrator@example.com",
 																									"webmaster@example.com"
 																								],
-																								"items": {},
+																								"items": {
+																									"type": "string"
+																								},
 																								"type": "array"
 																							},
 																							"http_body": {
@@ -5542,20 +5536,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -5716,7 +5696,9 @@
 																						"app.example.com",
 																						"*.app.example.com"
 																					],
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"type": "array"
 																				},
 																				"id": {
@@ -5868,7 +5850,9 @@
 																									"administrator@example.com",
 																									"webmaster@example.com"
 																								],
-																								"items": {},
+																								"items": {
+																									"type": "string"
+																								},
 																								"type": "array"
 																							},
 																							"http_body": {
@@ -5934,7 +5918,9 @@
 																	"example": [
 																		"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found."
 																	],
-																	"items": {},
+																	"items": {
+																		"type": "string"
+																	},
 																	"type": "array"
 																}
 															}
@@ -6008,7 +5994,9 @@
 																				"app.example.com",
 																				"*.app.example.com"
 																			],
-																			"items": {},
+																			"items": {
+																				"type": "string"
+																			},
 																			"type": "array"
 																		},
 																		"id": {
@@ -6160,7 +6148,9 @@
 																							"administrator@example.com",
 																							"webmaster@example.com"
 																						],
-																						"items": {},
+																						"items": {
+																							"type": "string"
+																						},
 																						"type": "array"
 																					},
 																					"http_body": {
@@ -6286,20 +6276,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -6460,7 +6436,9 @@
 																								"app.example.com",
 																								"*.app.example.com"
 																							],
-																							"items": {},
+																							"items": {
+																								"type": "string"
+																							},
 																							"type": "array"
 																						},
 																						"id": {
@@ -6612,7 +6590,9 @@
 																											"administrator@example.com",
 																											"webmaster@example.com"
 																										],
-																										"items": {},
+																										"items": {
+																											"type": "string"
+																										},
 																										"type": "array"
 																									},
 																									"http_body": {
@@ -6678,7 +6658,9 @@
 																			"example": [
 																				"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found."
 																			],
-																			"items": {},
+																			"items": {
+																				"type": "string"
+																			},
 																			"type": "array"
 																		}
 																	}
@@ -6752,7 +6734,9 @@
 																						"app.example.com",
 																						"*.app.example.com"
 																					],
-																					"items": {},
+																					"items": {
+																						"type": "string"
+																					},
 																					"type": "array"
 																				},
 																				"id": {
@@ -6904,7 +6888,9 @@
 																									"administrator@example.com",
 																									"webmaster@example.com"
 																								],
-																								"items": {},
+																								"items": {
+																									"type": "string"
+																								},
 																								"type": "array"
 																							},
 																							"http_body": {

@@ -106,20 +106,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -142,7 +128,9 @@
 															"type": "string"
 														},
 														"status": {
-															"example": "pending_deletion"
+															"description": "Deployment status for the given tls setting.",
+															"example": "pending_deployment",
+															"type": "string"
 														},
 														"updated_at": {
 															"description": "This is the time the tls setting was updated.",
@@ -151,7 +139,25 @@
 															"type": "string"
 														},
 														"value": {
-															"example": ""
+															"description": "The tls setting value.",
+															"example": [
+																"ECDHE-RSA-AES128-GCM-SHA256",
+																"AES128-GCM-SHA256"
+															],
+															"oneOf": [
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "string"
+																},
+																{
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															]
 														}
 													}
 												}
@@ -234,20 +240,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -270,7 +262,9 @@
 																	"type": "string"
 																},
 																"status": {
-																	"example": "pending_deletion"
+																	"description": "Deployment status for the given tls setting.",
+																	"example": "pending_deployment",
+																	"type": "string"
 																},
 																"updated_at": {
 																	"description": "This is the time the tls setting was updated.",
@@ -279,7 +273,25 @@
 																	"type": "string"
 																},
 																"value": {
-																	"example": ""
+																	"description": "The tls setting value.",
+																	"example": [
+																		"ECDHE-RSA-AES128-GCM-SHA256",
+																		"AES128-GCM-SHA256"
+																	],
+																	"oneOf": [
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	]
 																}
 															}
 														}
@@ -503,11 +515,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -695,11 +702,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -1068,20 +1070,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1216,20 +1204,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"

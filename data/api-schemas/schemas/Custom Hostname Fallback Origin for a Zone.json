@@ -87,20 +87,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -108,7 +94,48 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object"
+											"properties": {
+												"created_at": {
+													"description": "This is the time the fallback origin was created.",
+													"example": "2019-10-28T18:11:23.37411Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"errors": {
+													"description": "These are errors that were encountered while trying to activate a fallback origin.",
+													"example": [
+														"DNS records are not setup correctly. Origin should be a proxied A/AAAA/CNAME dns record"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"origin": {
+													"description": "Your origin hostname that requests to your custom hostnames will be sent to.",
+													"example": "fallback.example.com",
+													"maxLength": 255,
+													"type": "string"
+												},
+												"status": {
+													"description": "Status of the fallback origin's activation.",
+													"enum": [
+														"initializing",
+														"pending_deployment",
+														"pending_deletion",
+														"active",
+														"deployment_timed_out",
+														"deletion_timed_out"
+													],
+													"example": "pending_deployment"
+												},
+												"updated_at": {
+													"description": "This is the time the fallback origin was updated.",
+													"example": "2020-03-16T18:11:23.531995Z",
+													"format": "date-time",
+													"type": "string"
+												}
+											}
 										}
 									}
 								}
@@ -186,20 +213,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -207,7 +220,48 @@
 										{
 											"properties": {
 												"result": {
-													"type": "object"
+													"properties": {
+														"created_at": {
+															"description": "This is the time the fallback origin was created.",
+															"example": "2019-10-28T18:11:23.37411Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"errors": {
+															"description": "These are errors that were encountered while trying to activate a fallback origin.",
+															"example": [
+																"DNS records are not setup correctly. Origin should be a proxied A/AAAA/CNAME dns record"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"origin": {
+															"description": "Your origin hostname that requests to your custom hostnames will be sent to.",
+															"example": "fallback.example.com",
+															"maxLength": 255,
+															"type": "string"
+														},
+														"status": {
+															"description": "Status of the fallback origin's activation.",
+															"enum": [
+																"initializing",
+																"pending_deployment",
+																"pending_deletion",
+																"active",
+																"deployment_timed_out",
+																"deletion_timed_out"
+															],
+															"example": "pending_deployment"
+														},
+														"updated_at": {
+															"description": "This is the time the fallback origin was updated.",
+															"example": "2020-03-16T18:11:23.531995Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													}
 												}
 											}
 										}
@@ -408,20 +462,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -429,7 +469,48 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object"
+											"properties": {
+												"created_at": {
+													"description": "This is the time the fallback origin was created.",
+													"example": "2019-10-28T18:11:23.37411Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"errors": {
+													"description": "These are errors that were encountered while trying to activate a fallback origin.",
+													"example": [
+														"DNS records are not setup correctly. Origin should be a proxied A/AAAA/CNAME dns record"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"origin": {
+													"description": "Your origin hostname that requests to your custom hostnames will be sent to.",
+													"example": "fallback.example.com",
+													"maxLength": 255,
+													"type": "string"
+												},
+												"status": {
+													"description": "Status of the fallback origin's activation.",
+													"enum": [
+														"initializing",
+														"pending_deployment",
+														"pending_deletion",
+														"active",
+														"deployment_timed_out",
+														"deletion_timed_out"
+													],
+													"example": "pending_deployment"
+												},
+												"updated_at": {
+													"description": "This is the time the fallback origin was updated.",
+													"example": "2020-03-16T18:11:23.531995Z",
+													"format": "date-time",
+													"type": "string"
+												}
+											}
 										}
 									}
 								}
@@ -507,20 +588,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -528,7 +595,48 @@
 										{
 											"properties": {
 												"result": {
-													"type": "object"
+													"properties": {
+														"created_at": {
+															"description": "This is the time the fallback origin was created.",
+															"example": "2019-10-28T18:11:23.37411Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"errors": {
+															"description": "These are errors that were encountered while trying to activate a fallback origin.",
+															"example": [
+																"DNS records are not setup correctly. Origin should be a proxied A/AAAA/CNAME dns record"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"origin": {
+															"description": "Your origin hostname that requests to your custom hostnames will be sent to.",
+															"example": "fallback.example.com",
+															"maxLength": 255,
+															"type": "string"
+														},
+														"status": {
+															"description": "Status of the fallback origin's activation.",
+															"enum": [
+																"initializing",
+																"pending_deployment",
+																"pending_deletion",
+																"active",
+																"deployment_timed_out",
+																"deletion_timed_out"
+															],
+															"example": "pending_deployment"
+														},
+														"updated_at": {
+															"description": "This is the time the fallback origin was updated.",
+															"example": "2020-03-16T18:11:23.531995Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													}
 												}
 											}
 										}
@@ -750,20 +858,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -771,7 +865,48 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object"
+											"properties": {
+												"created_at": {
+													"description": "This is the time the fallback origin was created.",
+													"example": "2019-10-28T18:11:23.37411Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"errors": {
+													"description": "These are errors that were encountered while trying to activate a fallback origin.",
+													"example": [
+														"DNS records are not setup correctly. Origin should be a proxied A/AAAA/CNAME dns record"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"origin": {
+													"description": "Your origin hostname that requests to your custom hostnames will be sent to.",
+													"example": "fallback.example.com",
+													"maxLength": 255,
+													"type": "string"
+												},
+												"status": {
+													"description": "Status of the fallback origin's activation.",
+													"enum": [
+														"initializing",
+														"pending_deployment",
+														"pending_deletion",
+														"active",
+														"deployment_timed_out",
+														"deletion_timed_out"
+													],
+													"example": "pending_deployment"
+												},
+												"updated_at": {
+													"description": "This is the time the fallback origin was updated.",
+													"example": "2020-03-16T18:11:23.531995Z",
+													"format": "date-time",
+													"type": "string"
+												}
+											}
 										}
 									}
 								}
@@ -849,20 +984,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -870,7 +991,48 @@
 										{
 											"properties": {
 												"result": {
-													"type": "object"
+													"properties": {
+														"created_at": {
+															"description": "This is the time the fallback origin was created.",
+															"example": "2019-10-28T18:11:23.37411Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"errors": {
+															"description": "These are errors that were encountered while trying to activate a fallback origin.",
+															"example": [
+																"DNS records are not setup correctly. Origin should be a proxied A/AAAA/CNAME dns record"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"origin": {
+															"description": "Your origin hostname that requests to your custom hostnames will be sent to.",
+															"example": "fallback.example.com",
+															"maxLength": 255,
+															"type": "string"
+														},
+														"status": {
+															"description": "Status of the fallback origin's activation.",
+															"enum": [
+																"initializing",
+																"pending_deployment",
+																"pending_deletion",
+																"active",
+																"deployment_timed_out",
+																"deletion_timed_out"
+															],
+															"example": "pending_deployment"
+														},
+														"updated_at": {
+															"description": "This is the time the fallback origin was updated.",
+															"example": "2020-03-16T18:11:23.531995Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													}
 												}
 											}
 										}
