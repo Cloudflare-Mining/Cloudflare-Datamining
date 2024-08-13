@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.6
+
+### Patch Changes
+
+- 774ff70edb: feat: add duration prop to customise the chart transition duration. This allows disabling, shortening or longening the animations.
+
 ## 5.1.5
 
 ## 5.1.4
