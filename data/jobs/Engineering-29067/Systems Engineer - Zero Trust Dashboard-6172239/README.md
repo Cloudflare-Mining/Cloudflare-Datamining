@@ -5,38 +5,17 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Mexico City, Mexico, or Austin, Texas, or Washington, DC&nbsp;</strong></p>
-<p><strong>About the role&nbsp;</strong></p>
-<p>As an Identity and Access Management (IAM) Security Analyst you will play a key role in efficiently managing user identities and access across the enterprise. You will be responsible for implementing technologies and designing processes to ensure users have authorized access to resources and systems.&nbsp;&nbsp;&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
-<ul>
-	<li>Automate user provisioning and deprovisioning processes to enhance efficiency.</li>
-	<li>Design, implement, and manage Identity Access &amp; Governance policies and procedures.</li>
-	<li>Conduct access certifications and enforce access controls based on organizational policies.</li>
-	<li>Define and enforce privileged access management (PAM) policies to secure sensitive systems and data.</li>
-	<li>Manage user onboarding, offboarding, and role changes, ensuring adherence to security policies and compliance requirements.</li>
-	<li>Define and enforce access control policies, including, but not limited to, role-based access control (RBAC), least privilege principle, and segregation of duties (SoD).</li>
-	<li>Conduct periodic access reviews and audits to maintain compliance.</li>
-	<li>Collaborate with cross-functional teams, including IT, security, and compliance, to ensure IAM aligns with business goals.</li>
-	<li>Communicate IAM-related updates and recommendations to stakeholders.</li>
-	<li>Maintain comprehensive documentation of IAM policies, processes, and configurations.</li>
-	<li>Generate reports and metrics related to IAM activities and security posture.</li>
-	<li>Stay current with industry best practices, regulations, and compliance standards related to IAM, such as FedRamp, SOX, GDPR, PCI, and NIST.</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
-<ul>
-	<li>In-depth understanding of IAM concepts, technologies, standards, and best practices.</li>
-	<li>Experience in Identity and Access Governance performing policy enforcement, role management, and access certifications</li>
-	<li>Experience implementing privileged access management (PAM)</li>
-	<li>Experience drafting IAM security standards and policies</li>
-	<li>Preferred background in scripting and/or application development to automate identity and access management processes.</li>
-</ul>
+<h3><span style="font-size: 12pt;"><strong>Available Locations:&nbsp;</strong>Austin Texas - US</span></h3>
+<p><strong>About the team</strong></p>
+<p>Cloudflare Zero Trust is one of our fastest growing products within Cloudflare, and its Dashboard is one of<br>the most pivotal tools in creating a great user experience and providing seamless integrations with<br>various backend APIs. Our engineering team builds and maintains new features, functionality and scaling<br>our existing software for our growing product suite.</p>
+<p><strong>What you'll do</strong></p>
+<p>We’re looking to grow our front-end product team with highly motivated individuals who are excited to<br>work with product owners, designers, and systems engineers to build new and, in some cases, rebuild<br>existing products and features. You should have experience working with large-scale JavaScript<br>applications and a track record of building great products. You must care deeply not only about the quality<br>of your and the team&amp;#39;s code, but also the product functionality and user experience. We believe that great<br>design is at the heart of any successful product. You will work closely with our design/UX team and must<br>be comfortable seeking feedback from non-technical sources. We work iteratively and deploy often. We<br>build and maintain the Cloudflare Zero Trust Dashboard with TypeScript, React, Jest, RTL, Cypress,<br>useSWR, and more.</p>
+<p><strong>Desirable skills, knowledge and experience</strong></p>
+<p>● Minimum of 2+ years experience building product<br>● Strong knowledge of HTML, CSS, and TypeScript<br>● Strong knowledge of React.js<br>● Experience with JS frameworks and writing reusable/modular code<br>● Track record of building great interfaces and being detail oriented<br>● Ability to work in cross-functional teams<br>● Mentoring other team members to help bring out their best work<br>● Willingness to dive deep and understand product internals<br>● Excellent debugging skills<br>● Unit/integration testing experience</p>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p>Compensation may be adjusted depending on work location and level.</p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $123,000 - $151,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $139,000 - $169,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $146,000 -&nbsp; $178,000</li>
+	<li>Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:137000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">115,000</span> - $167,000 USD</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
@@ -65,7 +44,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

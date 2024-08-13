@@ -5,67 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Mexico City, Mexico, or Austin, Texas, or Washington, DC&nbsp;</strong></p>
-<p><strong>About the role&nbsp;</strong></p>
-<p>As an Identity and Access Management (IAM) Security Analyst you will play a key role in efficiently managing user identities and access across the enterprise. You will be responsible for implementing technologies and designing processes to ensure users have authorized access to resources and systems.&nbsp;&nbsp;&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<h4><strong></strong></h4>
+<h4><strong>Locations: London or Lisbon</strong></h4>
+<h4><strong>About the team</strong></h4>
+<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for an experienced Data Analyst to join our Austin or Lisbon teams to scale our product insights initiatives. You will work with a wide array of datasets to analyze and build interactive reports and self-serve dashboards which will influence our critical business initiatives and will provide actionable insights to Sales, Marketing and Product teams.</p>
+<p>Success in this role comes from marrying a strong data background with acute product and business acumen to deliver highly strategic and compelling insights that accelerate our business growth and influence our product decisions within Cloudflare.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Automate user provisioning and deprovisioning processes to enhance efficiency.</li>
-	<li>Design, implement, and manage Identity Access &amp; Governance policies and procedures.</li>
-	<li>Conduct access certifications and enforce access controls based on organizational policies.</li>
-	<li>Define and enforce privileged access management (PAM) policies to secure sensitive systems and data.</li>
-	<li>Manage user onboarding, offboarding, and role changes, ensuring adherence to security policies and compliance requirements.</li>
-	<li>Define and enforce access control policies, including, but not limited to, role-based access control (RBAC), least privilege principle, and segregation of duties (SoD).</li>
-	<li>Conduct periodic access reviews and audits to maintain compliance.</li>
-	<li>Collaborate with cross-functional teams, including IT, security, and compliance, to ensure IAM aligns with business goals.</li>
-	<li>Communicate IAM-related updates and recommendations to stakeholders.</li>
-	<li>Maintain comprehensive documentation of IAM policies, processes, and configurations.</li>
-	<li>Generate reports and metrics related to IAM activities and security posture.</li>
-	<li>Stay current with industry best practices, regulations, and compliance standards related to IAM, such as FedRamp, SOX, GDPR, PCI, and NIST.</li>
+	<li>Provide quantitative support, market understanding and a strategic perspective to our partners throughout the organization</li>
+	<li>Partner and align with data engineers, data analysts, data scientists, business leaders, stakeholders, product managers and internal teams to enable data driven solutions to key business problems</li>
+	<li>Take initiative and ask questions to iteratively define, build, and maintain new business metrics</li>
+	<li>Develop and automate reports and iteratively build and prototype dashboards to provide insights at scale</li>
+	<li>Weave stories with data to help stakeholders understand analytic insights</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>In-depth understanding of IAM concepts, technologies, standards, and best practices.</li>
-	<li>Experience in Identity and Access Governance performing policy enforcement, role management, and access certifications</li>
-	<li>Experience implementing privileged access management (PAM)</li>
-	<li>Experience drafting IAM security standards and policies</li>
-	<li>Preferred background in scripting and/or application development to automate identity and access management processes.</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>3+ years of experience with data visualization tools such as Tableau, Google Data Studio etc.&nbsp;</li>
+	<li>Experience in writing advanced SQL queries</li>
+	<li>Experience in translating analysis results into business recommendations and business questions into an analysis framework</li>
+	<li>Knowledge of data management, data modeling and data warehousing fundamentals</li>
+	<li>Experience in presenting analysis findings to business stakeholders</li>
+	<li>Experience with statistical analysis programming languages (R, Python, etc)</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $123,000 - $151,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $139,000 - $169,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $146,000 -&nbsp; $178,000</li>
+	<li>Experience in front-end development, JavaScript, and/or other scripting languages is a plus</li>
+	<li>Experience with a fast-growing SaaS business based company preferred</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
