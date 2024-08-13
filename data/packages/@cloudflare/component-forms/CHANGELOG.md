@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.1.17
+
+### Patch Changes
+
+- Updated dependencies [fd96e75f6e]
+  - @cloudflare/component-search@8.1.0
+
 ## 6.1.16
 
 ### Patch Changes
