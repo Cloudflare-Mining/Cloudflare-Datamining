@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "76aabd82-e586-5543-9ad5-99a5992147cf")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "e374d250-48ed-580e-9830-0a3d5a35a5a9")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -129,10 +129,10 @@
 						n.g.build = Z({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "20bc96ca220d892e9296911a8b8b9a8e85c8a21c",
-							dashVersion: "26170712",
+							commit: "4e62c1bdba5170117eea9bb4783894c514498029",
+							dashVersion: "26195686",
 							env: "production",
-							builtAt: 1723500616493,
+							builtAt: 1723562739554,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								node: "20.10.0",
@@ -2645,6 +2645,8 @@
 					to: "zoneSubscription"
 				}, {
 					entityType: "accountSubscription"
+				}, {
+					entityType: "billingFreeTrial"
 				}, {
 					entityType: "accountSubscriptionCancelDowngrade"
 				}, {
@@ -6150,7 +6152,7 @@
 			var je = n("../react/app/components/Persistence/index.tsx"),
 				Ne = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				Be = n("../react/app/components/LoadingSuspense.tsx");
-			const Fe = o().lazy(() => Promise.all([n.e(11240), n.e(2480), n.e(10008), n.e(57921), n.e(57518), n.e(94012), n.e(72019), n.e(24970), n.e(5668), n.e(78176), n.e(7484), n.e(39760), n.e(94684), n.e(82465), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Fe = o().lazy(() => Promise.all([n.e(11240), n.e(2480), n.e(10008), n.e(57921), n.e(57518), n.e(94012), n.e(72019), n.e(18188), n.e(5668), n.e(78176), n.e(7484), n.e(39760), n.e(94684), n.e(82465), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var xe = () => o().createElement(Be.Z, null, o().createElement(Fe, null)),
 				Le = n("../libs/init/loading.ts");
 			const ne = () => (e.useEffect(() => Le.s, []), null);
@@ -6212,7 +6214,7 @@
 						devPanelEnabled: q
 					}
 				},
-				Se = o().lazy(() => Promise.all([n.e(11240), n.e(2480), n.e(10008), n.e(57921), n.e(57518), n.e(94012), n.e(72019), n.e(24970), n.e(14696), n.e(15148), n.e(78176), n.e(7484), n.e(39760), n.e(94684), n.e(82465), n.e(72193), n.e(91984), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				Se = o().lazy(() => Promise.all([n.e(11240), n.e(2480), n.e(10008), n.e(57921), n.e(57518), n.e(94012), n.e(72019), n.e(18188), n.e(14696), n.e(48902), n.e(78176), n.e(7484), n.e(39760), n.e(94684), n.e(82465), n.e(32209), n.e(91984), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				Ue = o().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(11240), n.e(57518), n.e(14696), n.e(26337), n.e(94684), n.e(69088), n.e(91984), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var We = ({
 					userIsAuthed: b
@@ -8812,7 +8814,7 @@
 					deletion: {
 						isDeletable: I == null || (_t = I.deletion) === null || _t === void 0 ? void 0 : _t.is_deletable
 					},
-					premiumType: I == null ? void 0 : I.premiumType,
+					premiumType: I == null ? void 0 : I.premium_type,
 					fees: I == null ? void 0 : I.fees
 				}
 			}
@@ -8985,12 +8987,13 @@
 					authCodeStatus: r.BJ.Pending,
 					transferApiCallStatus: r.Yh.Pending,
 					transferConditions: s({
+						eligible: !0,
 						exists: !0,
-						supported_tld: !0,
+						not_premium: !0,
 						not_secure: !0,
-						not_waiting: !0,
 						not_started: !0,
-						not_premium: !0
+						not_waiting: !0,
+						supported_tld: !0
 					}, g.transferConditions || {}),
 					transferIn: s({
 						unlock_domain: r.lW.UNKNOWN,
@@ -9098,7 +9101,7 @@
 				if (T(g)) return [!1, t.keys.cannot_transfer_domain_transfer_in_progress];
 				let ae;
 				for (ae in g.transferConditions)
-					if (!g.transferConditions[ae]) return [!1, t.keys.cannot_transfer_domain_transfer_conditions];
+					if (ae !== "not_premium" && !g.transferConditions[ae]) return [!1, t.keys.cannot_transfer_domain_transfer_conditions];
 				if (D(g.name)) return [!1, t.keys.cannot_transfer_domain_tld_not_supported];
 				const [de, be] = J(g);
 				return de && be ? [!1, t.keys.cannot_transfer_domain_registry_status[be]] : [!0, ""]
@@ -14579,4 +14582,4 @@
 	}
 ]);
 
-//# debugId=76aabd82-e586-5543-9ad5-99a5992147cf
+//# debugId=e374d250-48ed-580e-9830-0a3d5a35a5a9
