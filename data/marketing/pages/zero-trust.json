@@ -3030,7 +3030,46 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Cloudflare's connectivity cloud delivers SSE services from a %{DataCenterCount}-city network that's close to users everywhere, letting you:",
+																	"value": "Cloudflare's ",
+																	"marks": [
+																		{
+																			"type": "italic"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/connectivity-cloud/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "connectivity cloud",
+																			"marks": [
+																				{
+																					"type": "italic"
+																				}
+																			],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " delivers SSE services from a %{DataCenterCount}-city network that's close to users everywhere, letting you:",
 																	"marks": [
 																		{
 																			"type": "italic"
@@ -3758,7 +3797,7 @@
 																						"target": null,
 																						"uri": null
 																					},
-																					"value": "Every Cloudflare service sits within 50 ms of 95% of global Internet users",
+																					"value": "Every Cloudflare service sits within %{OperationMilliseconds}ms of %{GlobalInternetConnectedPercent}% of global Internet users",
 																					"marks": [],
 																					"content": null
 																				}
