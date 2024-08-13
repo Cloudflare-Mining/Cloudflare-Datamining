@@ -24,6 +24,7 @@ import CaseStudy from './CaseStudy';
 import Certificate from './Certificate';
 import Chart from './Chart';
 import Clipboard from './Clipboard';
+import CloudInternetSolid from './CloudInternetSolid';
 import CloudInternet from './CloudInternet';
 import CloudMulti from './CloudMulti';
 import CloudflareAccess from './CloudflareAccess';
@@ -199,6 +200,7 @@ export default {
   certificate: Certificate,
   chart: Chart,
   clipboard: Clipboard,
+  'cloud-internet-solid': CloudInternetSolid,
   'cloud-internet': CloudInternet,
   'cloud-multi': CloudMulti,
   'cloudflare-access': CloudflareAccess,

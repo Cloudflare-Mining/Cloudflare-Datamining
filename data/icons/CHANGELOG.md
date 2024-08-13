@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.13.0
+
+### Minor Changes
+
+- eab7f7a6df: Add the cloud-internet-solid icon
+
 ## 12.12.1
 
 ### Patch Changes
