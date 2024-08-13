@@ -2194,25 +2194,6 @@
 				"name": "string"
 			}
 		},
-		"CONSTELLATION_BINDING": {
-			"fetcher": {
-				"connect": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string"
-				},
-				"fetch": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string"
-				}
-			},
-			"lastRequestId": {},
-			"logs": {},
-			"options": {}
-		},
 		"D1_BINDING": {
 			"fetcher": {
 				"connect": {
@@ -2456,6 +2437,20 @@
 				"__type": "string"
 			},
 			"indexVersion": {
+				"__proto": "object",
+				"__type": "string"
+			}
+		},
+		"VERSION_METADATA_BINDING": {
+			"id": {
+				"__proto": "object",
+				"__type": "string"
+			},
+			"tag": {
+				"__proto": "object",
+				"__type": "string"
+			},
+			"timestamp": {
 				"__proto": "object",
 				"__type": "string"
 			}
@@ -11006,6 +11001,15 @@
 				"_prototype": {}
 			},
 			"transferableAbortSignal": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			}
+		},
+		"zlib": {
+			"crc32": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
