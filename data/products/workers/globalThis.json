@@ -2441,6 +2441,30 @@
 				"__type": "string"
 			}
 		},
+		"VECTORIZE_V2_BINDING": {
+			"fetcher": {
+				"connect": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"fetch": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				}
+			},
+			"indexId": {
+				"__proto": "object",
+				"__type": "string"
+			},
+			"indexVersion": {
+				"__proto": "object",
+				"__type": "string"
+			}
+		},
 		"VERSION_METADATA_BINDING": {
 			"id": {
 				"__proto": "object",
