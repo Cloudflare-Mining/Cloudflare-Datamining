@@ -5,70 +5,19 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations: Austin, TX or San Francisco, CA&nbsp;</strong></p>
-<p><strong>About the Department</strong></p>
-<p>Because of the scope, complexity, and diversity of the company’s work, we need a world-class legal team to help the company avoid distractions, and guide company leadership around obstacles.&nbsp; Our legal team is made up of very accomplished lawyers and staff who comprise a flexible, talented, and very cohesive team.&nbsp;</p>
-<p><strong>About the Role</strong></p>
-<p>In this role, you’ll be a valued member of Cloudflare’s commercial legal team.&nbsp; You will also collaborate and work cross-functionally with other internal groups, across the sales, customer success finance, and partnerships teams.&nbsp; The position is based in Austin, TX or San Francisco, CA&nbsp; and frequent communication with our other offices will be required.</p>
-<p><strong>What You’ll Be Doing</strong></p>
+<p>In this role you will implement, manage and maintain ongoing accounting operations. You'll be responsible for month end close activities including but not limited to: coordinating teams, journal entry review, account analysis review and review of reconciliations of all GL Accounts. You will oversee the management of core GL accounting processes as well as manage payroll operations and interface with accounts payable. On our team, we work with various cross-functional teams (e.g. Sales, Operations, HR, FP&amp;A, etc ) to ensure accurate and timely accounting and financial reporting. You'll champion process improvement efforts to drive efficiency and effectiveness over corporate accounting and general ledger activities. On occasion, there will be other special projects involving accounting systems, data integrity, general ledger reporting and optimization, and other compliance issues, etc that you may be asked to assist with. As a team leader, you will be responsible for the professional growth of team members by providing mentorship and guidance.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Assist with the intake management of all contracts via internal systems and conduct correspondence with all stakeholders regarding the status of contract requests</li>
-	<li>Manage busy contract queue and prioritize urgent requests as necessary prior to legal counsel review</li>
-	<li>Conduct initial review of contracts in relation to risks stemming from contract language, internal legal thresholds, and other criteria</li>
-	<li>Assist with commercial negotiations, including NDAs, and MSAs, and any other general commercial terms and conditions</li>
-	<li>Serve as first point of contact to internal business units to answer contract-related inquiries and escalate as appropriate to senior legal colleagues</li>
-	<li>Manage contract lifecycles from providing forms through contract execution and maintenance</li>
-	<li>Assist with legal department analytics by pulling key performance indicators from various tools including SFDC and Ironclad</li>
-	<li>Maintain a library of form documents, contract clauses, templates, and historical documents, and add or revise material as needed</li>
-	<li>Provide input into the formulation, development, and/or revision of operating policies, procedures, and strategies for the commercial legal function, as appropriate&nbsp;</li>
-</ul>
-<p><strong>Requirements:</strong>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</p>
-<ul>
-	<li>B.A. or B.S. degree; paralegal certification a plus but not required</li>
-	<li>3+ years relevant business or legal experience&nbsp;</li>
-	<li>Ability to meet the needs of a high-growth, fast-paced Internet company</li>
-	<li>Customer service oriented while maintaining acute attention to detail</li>
-	<li>Great organizational skills and ability to prioritize workloads</li>
-	<li>Possess excellent problem-solving capabilities, judgment, negotiation, communication (written and verbal) and interpersonal skills</li>
-	<li>Proven ability to manage high-volume workloads, multiple stakeholder demands and ever-shifting priorities all while instilling confidence</li>
-	<li>Ability to operate autonomously while being a team player who brings a positive attitude to the workplace&nbsp;</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience in a legal setting (law firm or in-house)</li>
-	<li>Experience using administrative management systems such Salesforce, Apttus, DocuSign, Ironclad and/or JIRA</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $125,000 - $153,000.</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>5-8 years experience working in a fast-growing environment, preferably in public accounting.</li>
+	<li>Strong problem-solving skills, ability to develop, organize and complete large-scale projects, passion for continuous process improvements</li>
+	<li>Experience in coordinating diverse teams to achieve large group goals.</li>
+	<li>Experience with Accounts Receivable, Accounts Payable and cash management</li>
+	<li>Strong technology skills including proficiency in NetSuite; experience with alteryx is preferred.</li>
+	<li>Experience leader and mentor to team</li>
+	<li>Ability to deal sensitively with confidential material</li>
+	<li>Ability to communicate with various levels of management</li>
+	<li>Decision-making, problem-solving, and analytical skills</li>
+	<li>CPA preferred.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
