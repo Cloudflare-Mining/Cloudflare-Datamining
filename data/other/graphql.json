@@ -2310,14 +2310,14 @@
 	},
 	"AccountKvOperationsAdaptiveGroupsDimensions": {
 		"__description": "",
-		"action": "The type of the action (GET,PUT,DELETE,LIST,CREATE_NAMESPACE)",
+		"actionType": "The type of the action (read, write, delete, list)",
 		"date": "Message operation timestamp, truncated to start of a day",
 		"datetime": "Message operation timestamp",
 		"datetimeHour": "Message operation timestamp, truncated to start of an hour",
 		"datetimeMinute": "Message operation timestamp, truncated to start of an minute",
 		"namespaceId": "The hexa-encoded namespace id",
 		"responseStatusCode": "The http status code of the response.",
-		"result": "The result of the action (HIT,MISS,READ_FROM_STORAGE,DELETED,UPLOADED,NAMESPACE_CREATED,ERROR,NOT_FOUND,UNDEFINED,UNKNOWN)"
+		"result": "The result of the action (hot_read, cold_read, deleted, uploaded, error, not_found)"
 	},
 	"AccountKvOperationsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -2939,6 +2939,20 @@
 		"bitRateHour": "Sum of bits received, divided by 3600 seconds, providing a per-second bit rate when grouped by datetimeHour",
 		"bitRateMinute": "Sum of bits received, divided by 60 seconds, providing a per-second bit rate when grouped by datetimeMinute",
 		"bitRateTenSeconds": "Sum of bits received, divided by 10 seconds, providing a per-second bit rate when grouped by datetimeTenSeconds",
+		"egressBitRate": "Sum of egress bits received, divided by 1 second, providing a per-second egress bit rate when grouped by datetime",
+		"egressBitRateDay": "Sum of egress bits received, divided by 86400 seconds, providing a per-second egress bit rate when grouped by date",
+		"egressBitRateFifteenMinutes": "Sum of egress bits received, divided by 900 seconds, providing a per-second egress bit rate when grouped by datetimeFifteenMinutes",
+		"egressBitRateFiveMinutes": "Sum of egress bits received, divided by 300 seconds, providing a per-second egress bit rate when grouped by datetimeFiveMinutes",
+		"egressBitRateHour": "Sum of egress bits received, divided by 3600 seconds, providing a per-second egress bit rate when grouped by datetimeHour",
+		"egressBitRateMinute": "Sum of egress bits received, divided by 60 seconds, providing a per-second egress bit rate when grouped by datetimeMinute",
+		"egressBitRateTenSeconds": "Sum of egress bits received, divided by 10 seconds, providing a per-second egress bit rate when grouped by datetimeTenSeconds",
+		"egressPacketRate": "Sum of egress packets received, divided by 1 second, providing a per-second egress packet rate when grouped by datetime",
+		"egressPacketRateDay": "Sum of egress packets received, divided by 86400 seconds, providing a per-second egress packet rate when grouped by date",
+		"egressPacketRateFifteenMinutes": "Sum of egress packets received, divided by 900 seconds, providing a per-second egress packet rate when grouped by datetimeFifteenMinutes",
+		"egressPacketRateFiveMinutes": "Sum of egress packets received, divided by 300 seconds, providing a per-second egress packet rate when grouped by datetimeFiveMinutes",
+		"egressPacketRateHour": "Sum of egress packets received, divided by 3600 seconds, providing a per-second egress packet rate when grouped by datetimeHour",
+		"egressPacketRateMinute": "Sum of egress packets received, divided by 60 seconds, providing a per-second egress packet rate when grouped by datetimeMinute",
+		"egressPacketRateTenSeconds": "Sum of egress packets received, divided by 10 seconds, providing a per-second egress packet rate when grouped by datetimeTenSeconds",
 		"packetRate": "Sum of packets received, divided by 1 second, providing a per-second packet rate when grouped by datetime",
 		"packetRateDay": "Sum of packets received, divided by 86400 seconds, providing a per-second packet rate when grouped by date",
 		"packetRateFifteenMinutes": "Sum of packets received, divided by 900 seconds, providing a per-second packet rate when grouped by datetimeFifteenMinutes",
@@ -2981,6 +2995,8 @@
 	"AccountMnmFlowDataAdaptiveGroupsSum": {
 		"__description": "",
 		"bits": "Sum of bits",
+		"egressBits": "Sum of egress bits",
+		"egressPackets": "Sum of egress packets",
 		"packets": "Sum of packets"
 	},
 	"AccountNelReportsAdaptiveGroups": {
@@ -4125,6 +4141,8 @@
 		"__description": "",
 		"date": "Request timestamp, truncated to start of a day",
 		"datetime": "Request timestamp",
+		"datetimeFifteenMinutes": "Request timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Request timestamp, truncated to five minutes",
 		"datetimeHour": "Request timestamp, truncated to start of an hour",
 		"datetimeMinute": "Request timestamp, truncated to start of an minute",
 		"httpStatus": "Response status of worker",
@@ -6240,6 +6258,7 @@
 		"workersZoneSubrequestsAdaptiveGroups": "",
 		"zarazActionsAdaptiveGroups": "",
 		"zarazAnalyticsIdentitiesAdaptiveGroups": "",
+		"zarazAnalyticsOrderedTrackAdaptive": "",
 		"zarazAnalyticsOrderedTrackAdaptiveGroups": "",
 		"zarazAnalyticsTrackAdaptiveGroups": "",
 		"zarazAnalyticsTrackTrafficSourcesAdaptiveGroups": "",
@@ -6256,6 +6275,7 @@
 		"newUsersPerMinuteConfig": "Configured value of new users per minute",
 		"sampleInterval": "ABR sample interval",
 		"sessionDuration": "Configured value of session duration",
+		"sessionsRevoked": "Actual value of sessions revoked",
 		"timeBetweenRefreshesP50": "50th percentile of the time between session refreshes in seconds",
 		"timeBetweenRefreshesP75": "75th percentile of the time between session refreshes in seconds",
 		"timeBetweenRefreshesP90": "90th percentile of the time between session refreshes in seconds",
@@ -6297,6 +6317,7 @@
 		"newUsersPerMinuteConfig": "Configured value of new users per minute. A negative number means no data",
 		"sampleInterval": "Average sample interval",
 		"sessionDuration": "Configured value of session duration. A negative number means no data",
+		"sessionsRevoked": "Average rate of sessions revoked. A negative number means no data",
 		"totalActiveUsers": "Average rate of total active users. A negative number means no data",
 		"totalActiveUsersConfig": "Configured value of total active users. A negative number means no data",
 		"totalQueuedUsers": "Average of total queued users"
@@ -6340,6 +6361,7 @@
 		"newUsersPerMinute": "The maximum value of the actual new users per minute. A negative number means no data",
 		"newUsersPerMinuteConfig": "The maximum value of the configured new users per minute. A negative number means no data",
 		"sessionDuration": "The maximum value of the configured session duration configuration. A negative number means no data",
+		"sessionsRevoked": "The maximum value of the actual sessions revoked. A negative number means no data",
 		"totalActiveUsers": "The maximum value of the actual total active users. A negative number means no data",
 		"totalActiveUsersConfig": "The maximum value of the configured total active users. A negative number means no data",
 		"totalQueuedUsers": "The maximum value of total number of queued users. A negative number means no data"
@@ -6350,6 +6372,7 @@
 		"newUsersPerMinute": "The minimum value of the actual new users per minute. A negative number means no data",
 		"newUsersPerMinuteConfig": "The minimum value of the configured new users per minute. A negative number means either Waiting Room is in passthrough or no data",
 		"sessionDuration": "The minimum value of the configured session duration configuration. A negative number means no data",
+		"sessionsRevoked": "The minimum value of the actual sessions revoked. A negative number means no data",
 		"totalActiveUsers": "The minimum value of the actual total active users. A negative number means no data",
 		"totalActiveUsersConfig": "The minimum value of the configured total active users. A negative number means either Waiting Room is in passthrough or no data",
 		"totalQueuedUsers": "The minimum value of total number of queued users. A negative number means no data"
@@ -6359,7 +6382,8 @@
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsSum": {
 		"__description": "",
-		"newUsersPerMinute": "Sum of new users per minute. A negative number means no data"
+		"newUsersPerMinute": "Sum of new users per minute. A negative number means no data",
+		"sessionsRevoked": "Sum of sessions revoked. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveOrderBy": {
 		"__description": ""
@@ -6464,6 +6488,46 @@
 	"ZoneZarazAnalyticsIdentitiesAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"ZoneZarazAnalyticsOrderedTrackAdaptive": {
+		"__description": "Zaraz Analytics Tracks ordered per session",
+		"browserName": "User Agent browser name",
+		"cityRegion": "City and region",
+		"clientId": "Client ID",
+		"colors": "Colors",
+		"country": "Country",
+		"date": "Date when track was called",
+		"datetime": "Date & time when track was called",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"deviceModel": "User Agent device model",
+		"deviceType": "User Agent device type",
+		"deviceVendor": "User Agent device vendor",
+		"ip": "IP",
+		"language": "Language",
+		"orderInClient": "Track's order number for its clientId",
+		"orderInSession": "Track's reverse order number within its session (last track having orderInSession 1)",
+		"osName": "User Agent OS name",
+		"osVersion": "User Agent OS version",
+		"other": "Other data in the JSON format: language code, color depth, device viewport, timezone offset",
+		"pageTitle": "Page Title",
+		"resolution": "Screen Resolution",
+		"reverseOrderInClient": "Track's reverse order number for its clientId",
+		"sampleInterval": "ABR sample interval",
+		"sessionId": "Session ID",
+		"timezoneOffset": "Timezone Offset",
+		"trackData": "Track Data",
+		"trackName": "Track Name",
+		"trafficSrc": "Traffic source",
+		"ua": "User Agent string",
+		"uaObj": "User Agent stringified object",
+		"urlPath": "URL Path",
+		"viewport": "Viewport"
+	},
+	"ZoneZarazAnalyticsOrderedTrackAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroups": {
 		"__description": "Zaraz Analytics Tracks ordered per session",
 		"count": "Number of processed Zaraz Track requests",
@@ -6515,6 +6579,9 @@
 		"__description": "",
 		"clientIdCount": "Minimum number of distinct client IDs",
 		"sessionIdCount": "Minimum number of distinct session IDs"
+	},
+	"ZoneZarazAnalyticsOrderedTrackAdaptiveOrderBy": {
+		"__description": ""
 	},
 	"ZoneZarazAnalyticsTrackAdaptiveGroups": {
 		"__description": "Zaraz Analytics Track - counts zaraz.track calls",
@@ -6916,6 +6983,7 @@
 		"workersZoneSubrequestsAdaptiveGroups": "Workers subrequests with adaptive sampling",
 		"zarazActionsAdaptiveGroups": "Zaraz Actions Analytics",
 		"zarazAnalyticsIdentitiesAdaptiveGroups": "Zaraz Analytics Identities - zaraz.identify calls",
+		"zarazAnalyticsOrderedTrackAdaptive": "Zaraz Analytics Tracks ordered per session",
 		"zarazAnalyticsOrderedTrackAdaptiveGroups": "Zaraz Analytics Tracks ordered per session",
 		"zarazAnalyticsTrackAdaptiveGroups": "Zaraz Analytics Track - counts zaraz.track calls",
 		"zarazAnalyticsTrackTrafficSourcesAdaptiveGroups": "Zaraz Analytics Track Traffic Sources",
