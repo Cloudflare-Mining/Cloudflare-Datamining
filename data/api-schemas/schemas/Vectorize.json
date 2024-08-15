@@ -4542,9 +4542,14 @@
 								"type": "object"
 							},
 							"returnMetadata": {
-								"default": false,
-								"description": "Whether to return the metadata associated with the closest vectors.",
-								"type": "boolean"
+								"default": "none",
+								"description": "Whether to return no metadata, indexed metadata or all metadata associated with the closest vectors.",
+								"enum": [
+									"none",
+									"indexed",
+									"all"
+								],
+								"type": "string"
 							},
 							"returnValues": {
 								"default": false,

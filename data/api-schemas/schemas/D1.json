@@ -886,10 +886,19 @@
 													"readOnly": true,
 													"type": "string"
 												},
+												"file_size": {
+													"description": "The D1 database's size, in bytes.",
+													"example": 12,
+													"type": "number"
+												},
 												"name": {
 													"example": "my-database",
 													"pattern": "^[a-z0-9][a-z0-9-_]*$",
 													"type": "string"
+												},
+												"num_tables": {
+													"example": 12,
+													"type": "number"
 												},
 												"uuid": {
 													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",

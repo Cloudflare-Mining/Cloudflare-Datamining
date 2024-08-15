@@ -32,21 +32,10 @@
 					"description": "Field to order billing history by.",
 					"enum": [
 						"type",
-						"occured_at",
+						"occurred_at",
 						"action"
 					],
-					"example": "occured_at",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "occured_at",
-				"schema": {
-					"description": "When the billing item was created.",
-					"example": "2014-03-01T12:21:59.3456Z",
-					"format": "date-time",
-					"readOnly": true,
+					"example": "occurred_at",
 					"type": "string"
 				}
 			},
@@ -259,7 +248,8 @@
 													"zone": {
 														"properties": {
 															"name": {
-																"readOnly": true
+																"readOnly": true,
+																"type": "string"
 															}
 														},
 														"type": "object"
@@ -463,7 +453,8 @@
 															"zone": {
 																"properties": {
 																	"name": {
-																		"readOnly": true
+																		"readOnly": true,
+																		"type": "string"
 																	}
 																},
 																"type": "object"

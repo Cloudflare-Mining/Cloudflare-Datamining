@@ -8,8 +8,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID",
-					"example": "699d98642c564d2e855e9661899b7252",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -30,100 +30,6 @@
 		],
 		"responses": {
 			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"type": "object"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Get configuration response"
-			},
-			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -174,20 +80,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -200,106 +92,384 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
-										},
-										{
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Cloudflare Tunnel configuration",
 											"properties": {
-												"result": {
+												"account_id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"config": {
+													"description": "The tunnel configuration and ingress rules.",
+													"properties": {
+														"ingress": {
+															"description": "List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.",
+															"items": {
+																"description": "Public hostname",
+																"properties": {
+																	"hostname": {
+																		"description": "Public hostname for this service.",
+																		"example": "tunnel.example.com",
+																		"type": "string"
+																	},
+																	"originRequest": {
+																		"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+																		"properties": {
+																			"access": {
+																				"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+																				"properties": {
+																					"audTag": {
+																						"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"required": {
+																						"default": false,
+																						"description": "Deny traffic that has not fulfilled Access authorization.",
+																						"type": "boolean"
+																					},
+																					"teamName": {
+																						"default": "Your Zero Trust organization name.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"audTag",
+																					"teamName"
+																				],
+																				"type": "object"
+																			},
+																			"caPool": {
+																				"default": "",
+																				"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
+																				"type": "string"
+																			},
+																			"connectTimeout": {
+																				"default": 10,
+																				"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+																				"type": "integer"
+																			},
+																			"disableChunkedEncoding": {
+																				"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
+																				"type": "boolean"
+																			},
+																			"http2Origin": {
+																				"description": "Attempt to connect to origin using HTTP2. Origin must be configured as https.",
+																				"type": "boolean"
+																			},
+																			"httpHostHeader": {
+																				"description": "Sets the HTTP Host header on requests sent to the local service.",
+																				"type": "string"
+																			},
+																			"keepAliveConnections": {
+																				"default": 100,
+																				"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+																				"type": "integer"
+																			},
+																			"keepAliveTimeout": {
+																				"default": 90,
+																				"description": "Timeout after which an idle keepalive connection can be discarded.",
+																				"type": "integer"
+																			},
+																			"noHappyEyeballs": {
+																				"default": false,
+																				"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
+																				"type": "boolean"
+																			},
+																			"noTLSVerify": {
+																				"default": false,
+																				"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+																				"type": "boolean"
+																			},
+																			"originServerName": {
+																				"default": "",
+																				"description": "Hostname that cloudflared should expect from your origin server certificate.",
+																				"type": "string"
+																			},
+																			"proxyType": {
+																				"default": "",
+																				"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
+																				"type": "string"
+																			},
+																			"tcpKeepAlive": {
+																				"default": 30,
+																				"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+																				"type": "integer"
+																			},
+																			"tlsTimeout": {
+																				"default": 10,
+																				"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"path": {
+																		"default": "",
+																		"description": "Requests with this path route to this public hostname.",
+																		"example": "subpath",
+																		"type": "string"
+																	},
+																	"service": {
+																		"description": "Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http_status:[code] e.g. 'http_status:404'.\n",
+																		"example": "https://localhost:8001",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"hostname",
+																	"service"
+																],
+																"type": "object"
+															},
+															"minItems": 1,
+															"type": "array"
+														},
+														"originRequest": {
+															"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+															"properties": {
+																"access": {
+																	"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+																	"properties": {
+																		"audTag": {
+																			"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"required": {
+																			"default": false,
+																			"description": "Deny traffic that has not fulfilled Access authorization.",
+																			"type": "boolean"
+																		},
+																		"teamName": {
+																			"default": "Your Zero Trust organization name.",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"audTag",
+																		"teamName"
+																	],
+																	"type": "object"
+																},
+																"caPool": {
+																	"default": "",
+																	"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
+																	"type": "string"
+																},
+																"connectTimeout": {
+																	"default": 10,
+																	"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+																	"type": "integer"
+																},
+																"disableChunkedEncoding": {
+																	"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
+																	"type": "boolean"
+																},
+																"http2Origin": {
+																	"description": "Attempt to connect to origin using HTTP2. Origin must be configured as https.",
+																	"type": "boolean"
+																},
+																"httpHostHeader": {
+																	"description": "Sets the HTTP Host header on requests sent to the local service.",
+																	"type": "string"
+																},
+																"keepAliveConnections": {
+																	"default": 100,
+																	"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+																	"type": "integer"
+																},
+																"keepAliveTimeout": {
+																	"default": 90,
+																	"description": "Timeout after which an idle keepalive connection can be discarded.",
+																	"type": "integer"
+																},
+																"noHappyEyeballs": {
+																	"default": false,
+																	"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
+																	"type": "boolean"
+																},
+																"noTLSVerify": {
+																	"default": false,
+																	"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+																	"type": "boolean"
+																},
+																"originServerName": {
+																	"default": "",
+																	"description": "Hostname that cloudflared should expect from your origin server certificate.",
+																	"type": "string"
+																},
+																"proxyType": {
+																	"default": "",
+																	"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
+																	"type": "string"
+																},
+																"tcpKeepAlive": {
+																	"default": 30,
+																	"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+																	"type": "integer"
+																},
+																"tlsTimeout": {
+																	"default": 10,
+																	"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"warp-routing": {
+															"description": "Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.",
+															"properties": {
+																"enabled": {
+																	"default": false,
+																	"type": "boolean"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														}
+													},
 													"type": "object"
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"source": {
+													"default": "local",
+													"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.",
+													"enum": [
+														"local",
+														"cloudflare"
+													],
+													"example": "cloudflare",
+													"type": "string"
+												},
+												"tunnel_id": {
+													"description": "UUID of the tunnel.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
+												},
+												"version": {
+													"description": "The version of the Tunnel Configuration.",
+													"type": "integer"
 												}
 											},
 											"type": "object"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
+									}
 								}
 							]
+						}
+					}
+				},
+				"description": "Get configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -332,8 +502,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Cloudflare account ID",
-					"example": "699d98642c564d2e855e9661899b7252",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"type": "string"
 				}
@@ -361,7 +531,7 @@
 								"description": "The tunnel configuration and ingress rules.",
 								"properties": {
 									"ingress": {
-										"description": "List of public hostname definitions",
+										"description": "List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.",
 										"items": {
 											"description": "Public hostname",
 											"properties": {
@@ -389,7 +559,7 @@
 																	"type": "boolean"
 																},
 																"teamName": {
-																	"default": "Your Zero Trust authentication domain.",
+																	"default": "Your Zero Trust organization name.",
 																	"type": "string"
 																}
 															},
@@ -482,6 +652,7 @@
 											],
 											"type": "object"
 										},
+										"minItems": 1,
 										"type": "array"
 									},
 									"originRequest": {
@@ -503,7 +674,7 @@
 														"type": "boolean"
 													},
 													"teamName": {
-														"default": "Your Zero Trust authentication domain.",
+														"default": "Your Zero Trust organization name.",
 														"type": "string"
 													}
 												},
@@ -579,13 +750,14 @@
 										"type": "object"
 									},
 									"warp-routing": {
-										"description": "Enable private network access from WARP users to private network routes",
+										"description": "Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.",
 										"properties": {
 											"enabled": {
 												"default": false,
 												"type": "boolean"
 											}
 										},
+										"readOnly": true,
 										"type": "object"
 									}
 								},
@@ -600,100 +772,6 @@
 		},
 		"responses": {
 			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"type": "object"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Put configuration response"
-			},
-			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -744,20 +822,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -770,106 +834,384 @@
 											"required": [
 												"success",
 												"errors",
-												"messages",
-												"result"
+												"messages"
 											],
 											"type": "object"
-										},
-										{
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Cloudflare Tunnel configuration",
 											"properties": {
-												"result": {
+												"account_id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
+												},
+												"config": {
+													"description": "The tunnel configuration and ingress rules.",
+													"properties": {
+														"ingress": {
+															"description": "List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.",
+															"items": {
+																"description": "Public hostname",
+																"properties": {
+																	"hostname": {
+																		"description": "Public hostname for this service.",
+																		"example": "tunnel.example.com",
+																		"type": "string"
+																	},
+																	"originRequest": {
+																		"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+																		"properties": {
+																			"access": {
+																				"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+																				"properties": {
+																					"audTag": {
+																						"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"required": {
+																						"default": false,
+																						"description": "Deny traffic that has not fulfilled Access authorization.",
+																						"type": "boolean"
+																					},
+																					"teamName": {
+																						"default": "Your Zero Trust organization name.",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"audTag",
+																					"teamName"
+																				],
+																				"type": "object"
+																			},
+																			"caPool": {
+																				"default": "",
+																				"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
+																				"type": "string"
+																			},
+																			"connectTimeout": {
+																				"default": 10,
+																				"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+																				"type": "integer"
+																			},
+																			"disableChunkedEncoding": {
+																				"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
+																				"type": "boolean"
+																			},
+																			"http2Origin": {
+																				"description": "Attempt to connect to origin using HTTP2. Origin must be configured as https.",
+																				"type": "boolean"
+																			},
+																			"httpHostHeader": {
+																				"description": "Sets the HTTP Host header on requests sent to the local service.",
+																				"type": "string"
+																			},
+																			"keepAliveConnections": {
+																				"default": 100,
+																				"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+																				"type": "integer"
+																			},
+																			"keepAliveTimeout": {
+																				"default": 90,
+																				"description": "Timeout after which an idle keepalive connection can be discarded.",
+																				"type": "integer"
+																			},
+																			"noHappyEyeballs": {
+																				"default": false,
+																				"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
+																				"type": "boolean"
+																			},
+																			"noTLSVerify": {
+																				"default": false,
+																				"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+																				"type": "boolean"
+																			},
+																			"originServerName": {
+																				"default": "",
+																				"description": "Hostname that cloudflared should expect from your origin server certificate.",
+																				"type": "string"
+																			},
+																			"proxyType": {
+																				"default": "",
+																				"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
+																				"type": "string"
+																			},
+																			"tcpKeepAlive": {
+																				"default": 30,
+																				"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+																				"type": "integer"
+																			},
+																			"tlsTimeout": {
+																				"default": 10,
+																				"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"path": {
+																		"default": "",
+																		"description": "Requests with this path route to this public hostname.",
+																		"example": "subpath",
+																		"type": "string"
+																	},
+																	"service": {
+																		"description": "Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http_status:[code] e.g. 'http_status:404'.\n",
+																		"example": "https://localhost:8001",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"hostname",
+																	"service"
+																],
+																"type": "object"
+															},
+															"minItems": 1,
+															"type": "array"
+														},
+														"originRequest": {
+															"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+															"properties": {
+																"access": {
+																	"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+																	"properties": {
+																		"audTag": {
+																			"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"required": {
+																			"default": false,
+																			"description": "Deny traffic that has not fulfilled Access authorization.",
+																			"type": "boolean"
+																		},
+																		"teamName": {
+																			"default": "Your Zero Trust organization name.",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"audTag",
+																		"teamName"
+																	],
+																	"type": "object"
+																},
+																"caPool": {
+																	"default": "",
+																	"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
+																	"type": "string"
+																},
+																"connectTimeout": {
+																	"default": 10,
+																	"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
+																	"type": "integer"
+																},
+																"disableChunkedEncoding": {
+																	"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
+																	"type": "boolean"
+																},
+																"http2Origin": {
+																	"description": "Attempt to connect to origin using HTTP2. Origin must be configured as https.",
+																	"type": "boolean"
+																},
+																"httpHostHeader": {
+																	"description": "Sets the HTTP Host header on requests sent to the local service.",
+																	"type": "string"
+																},
+																"keepAliveConnections": {
+																	"default": 100,
+																	"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
+																	"type": "integer"
+																},
+																"keepAliveTimeout": {
+																	"default": 90,
+																	"description": "Timeout after which an idle keepalive connection can be discarded.",
+																	"type": "integer"
+																},
+																"noHappyEyeballs": {
+																	"default": false,
+																	"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
+																	"type": "boolean"
+																},
+																"noTLSVerify": {
+																	"default": false,
+																	"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
+																	"type": "boolean"
+																},
+																"originServerName": {
+																	"default": "",
+																	"description": "Hostname that cloudflared should expect from your origin server certificate.",
+																	"type": "string"
+																},
+																"proxyType": {
+																	"default": "",
+																	"description": "cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: \"\" for the regular proxy and \"socks\" for a SOCKS5 proxy.\n",
+																	"type": "string"
+																},
+																"tcpKeepAlive": {
+																	"default": 30,
+																	"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
+																	"type": "integer"
+																},
+																"tlsTimeout": {
+																	"default": 10,
+																	"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"warp-routing": {
+															"description": "Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.",
+															"properties": {
+																"enabled": {
+																	"default": false,
+																	"type": "boolean"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														}
+													},
 													"type": "object"
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"source": {
+													"default": "local",
+													"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.",
+													"enum": [
+														"local",
+														"cloudflare"
+													],
+													"example": "cloudflare",
+													"type": "string"
+												},
+												"tunnel_id": {
+													"description": "UUID of the tunnel.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
+												},
+												"version": {
+													"description": "The version of the Tunnel Configuration.",
+													"type": "integer"
 												}
 											},
 											"type": "object"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
+									}
 								}
 							]
+						}
+					}
+				},
+				"description": "Put configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},

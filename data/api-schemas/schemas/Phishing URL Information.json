@@ -15,24 +15,38 @@
 				}
 			},
 			{
+				"description": "Submission ID(s) to filter submission results by.",
+				"example": [
+					100,
+					200
+				],
+				"explode": true,
 				"in": "query",
-				"name": "url_id_param",
+				"name": "url_id",
 				"schema": {
-					"properties": {
-						"url_id": {
-							"description": "Submission ID(s) to filter submission results by.",
-							"type": "integer"
-						}
+					"items": {
+						"type": "integer"
 					},
-					"type": "object"
-				}
+					"type": "array"
+				},
+				"style": "form"
 			},
 			{
+				"description": "Submission URL(s) to filter submission results by.",
+				"example": [
+					"https://foo.com",
+					"https://bar.com"
+				],
+				"explode": true,
 				"in": "query",
 				"name": "url",
 				"schema": {
-					"type": "string"
-				}
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"style": "form"
 			}
 		],
 		"responses": {
@@ -102,20 +116,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -303,20 +303,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"

@@ -49,12 +49,79 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"example": {
-								"errors": [],
-								"messages": [],
-								"result": null,
-								"success": true
-							}
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false,
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
 						}
 					}
 				},
@@ -250,23 +317,10 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
+												false,
 												true
 											],
 											"example": true,
@@ -286,26 +340,140 @@
 										"result_info": {
 											"properties": {
 												"count": {
-													"example": 1
+													"description": "The number of items on the current page.",
+													"example": 1,
+													"type": "integer"
 												},
 												"page": {
-													"example": 1
+													"description": "The page currently being requested.",
+													"example": 1,
+													"type": "integer"
 												},
 												"per_page": {
-													"example": 100
+													"description": "The number of items per page being returned.",
+													"example": 100,
+													"type": "integer"
 												},
 												"total_count": {
-													"example": 1
+													"description": "The total count of items.",
+													"example": 1,
+													"type": "integer"
+												},
+												"total_pages": {
+													"description": "The total count of pages.",
+													"example": 1,
+													"type": "integer"
 												}
 											},
+											"required": [
+												"page",
+												"per_page",
+												"count",
+												"total_count"
+											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
+												"properties": {
+													"certificate_authority": {
+														"enum": [
+															"google",
+															"lets_encrypt"
+														],
+														"example": "lets_encrypt",
+														"readOnly": true,
+														"type": "string"
+													},
+													"created_on": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"domain_id": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"id": {
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"example": "example.com",
+														"type": "string"
+													},
+													"status": {
+														"enum": [
+															"initializing",
+															"pending",
+															"active",
+															"deactivated",
+															"blocked",
+															"error"
+														],
+														"readOnly": true,
+														"type": "string"
+													},
+													"validation_data": {
+														"properties": {
+															"error_message": {
+																"type": "string"
+															},
+															"method": {
+																"enum": [
+																	"http",
+																	"txt"
+																],
+																"type": "string"
+															},
+															"status": {
+																"enum": [
+																	"initializing",
+																	"pending",
+																	"active",
+																	"deactivated",
+																	"error"
+																],
+																"type": "string"
+															},
+															"txt_name": {
+																"type": "string"
+															},
+															"txt_value": {
+																"type": "string"
+															}
+														},
+														"readOnly": true,
+														"type": "object"
+													},
+													"verification_data": {
+														"properties": {
+															"error_message": {
+																"type": "string"
+															},
+															"status": {
+																"enum": [
+																	"pending",
+																	"active",
+																	"deactivated",
+																	"blocked",
+																	"error"
+																],
+																"type": "string"
+															}
+														},
+														"readOnly": true,
+														"type": "object"
+													},
+													"zone_tag": {
+														"readOnly": true,
+														"type": "string"
+													}
+												},
 												"type": "object"
 											},
 											"type": "array"
@@ -369,23 +537,10 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
+														false,
 														true
 													],
 													"example": true,
@@ -405,26 +560,140 @@
 												"result_info": {
 													"properties": {
 														"count": {
-															"example": 1
+															"description": "The number of items on the current page.",
+															"example": 1,
+															"type": "integer"
 														},
 														"page": {
-															"example": 1
+															"description": "The page currently being requested.",
+															"example": 1,
+															"type": "integer"
 														},
 														"per_page": {
-															"example": 100
+															"description": "The number of items per page being returned.",
+															"example": 100,
+															"type": "integer"
 														},
 														"total_count": {
-															"example": 1
+															"description": "The total count of items.",
+															"example": 1,
+															"type": "integer"
+														},
+														"total_pages": {
+															"description": "The total count of pages.",
+															"example": 1,
+															"type": "integer"
 														}
 													},
+													"required": [
+														"page",
+														"per_page",
+														"count",
+														"total_count"
+													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
+														"properties": {
+															"certificate_authority": {
+																"enum": [
+																	"google",
+																	"lets_encrypt"
+																],
+																"example": "lets_encrypt",
+																"readOnly": true,
+																"type": "string"
+															},
+															"created_on": {
+																"readOnly": true,
+																"type": "string"
+															},
+															"domain_id": {
+																"readOnly": true,
+																"type": "string"
+															},
+															"id": {
+																"readOnly": true,
+																"type": "string"
+															},
+															"name": {
+																"example": "example.com",
+																"type": "string"
+															},
+															"status": {
+																"enum": [
+																	"initializing",
+																	"pending",
+																	"active",
+																	"deactivated",
+																	"blocked",
+																	"error"
+																],
+																"readOnly": true,
+																"type": "string"
+															},
+															"validation_data": {
+																"properties": {
+																	"error_message": {
+																		"type": "string"
+																	},
+																	"method": {
+																		"enum": [
+																			"http",
+																			"txt"
+																		],
+																		"type": "string"
+																	},
+																	"status": {
+																		"enum": [
+																			"initializing",
+																			"pending",
+																			"active",
+																			"deactivated",
+																			"error"
+																		],
+																		"type": "string"
+																	},
+																	"txt_name": {
+																		"type": "string"
+																	},
+																	"txt_value": {
+																		"type": "string"
+																	}
+																},
+																"readOnly": true,
+																"type": "object"
+															},
+															"verification_data": {
+																"properties": {
+																	"error_message": {
+																		"type": "string"
+																	},
+																	"status": {
+																		"enum": [
+																			"pending",
+																			"active",
+																			"deactivated",
+																			"blocked",
+																			"error"
+																		],
+																		"type": "string"
+																	}
+																},
+																"readOnly": true,
+																"type": "object"
+															},
+															"zone_tag": {
+																"readOnly": true,
+																"type": "string"
+															}
+														},
 														"type": "object"
 													},
 													"type": "array"
@@ -623,23 +892,10 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
+														false,
 														true
 													],
 													"example": true,
@@ -668,6 +924,100 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"certificate_authority": {
+													"enum": [
+														"google",
+														"lets_encrypt"
+													],
+													"example": "lets_encrypt",
+													"readOnly": true,
+													"type": "string"
+												},
+												"created_on": {
+													"readOnly": true,
+													"type": "string"
+												},
+												"domain_id": {
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"example": "example.com",
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"initializing",
+														"pending",
+														"active",
+														"deactivated",
+														"blocked",
+														"error"
+													],
+													"readOnly": true,
+													"type": "string"
+												},
+												"validation_data": {
+													"properties": {
+														"error_message": {
+															"type": "string"
+														},
+														"method": {
+															"enum": [
+																"http",
+																"txt"
+															],
+															"type": "string"
+														},
+														"status": {
+															"enum": [
+																"initializing",
+																"pending",
+																"active",
+																"deactivated",
+																"error"
+															],
+															"type": "string"
+														},
+														"txt_name": {
+															"type": "string"
+														},
+														"txt_value": {
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"verification_data": {
+													"properties": {
+														"error_message": {
+															"type": "string"
+														},
+														"status": {
+															"enum": [
+																"pending",
+																"active",
+																"deactivated",
+																"blocked",
+																"error"
+															],
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"zone_tag": {
+													"readOnly": true,
+													"type": "string"
+												}
+											},
 											"type": "object"
 										}
 									}
@@ -731,23 +1081,10 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
+																false,
 																true
 															],
 															"example": true,
@@ -776,6 +1113,100 @@
 										{
 											"properties": {
 												"result": {
+													"properties": {
+														"certificate_authority": {
+															"enum": [
+																"google",
+																"lets_encrypt"
+															],
+															"example": "lets_encrypt",
+															"readOnly": true,
+															"type": "string"
+														},
+														"created_on": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"domain_id": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"example": "example.com",
+															"type": "string"
+														},
+														"status": {
+															"enum": [
+																"initializing",
+																"pending",
+																"active",
+																"deactivated",
+																"blocked",
+																"error"
+															],
+															"readOnly": true,
+															"type": "string"
+														},
+														"validation_data": {
+															"properties": {
+																"error_message": {
+																	"type": "string"
+																},
+																"method": {
+																	"enum": [
+																		"http",
+																		"txt"
+																	],
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"initializing",
+																		"pending",
+																		"active",
+																		"deactivated",
+																		"error"
+																	],
+																	"type": "string"
+																},
+																"txt_name": {
+																	"type": "string"
+																},
+																"txt_value": {
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"verification_data": {
+															"properties": {
+																"error_message": {
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"pending",
+																		"active",
+																		"deactivated",
+																		"blocked",
+																		"error"
+																	],
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"zone_tag": {
+															"readOnly": true,
+															"type": "string"
+														}
+													},
 													"type": "object"
 												}
 											}
@@ -978,23 +1409,10 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
+														false,
 														true
 													],
 													"example": true,
@@ -1023,6 +1441,100 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"certificate_authority": {
+													"enum": [
+														"google",
+														"lets_encrypt"
+													],
+													"example": "lets_encrypt",
+													"readOnly": true,
+													"type": "string"
+												},
+												"created_on": {
+													"readOnly": true,
+													"type": "string"
+												},
+												"domain_id": {
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"example": "example.com",
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"initializing",
+														"pending",
+														"active",
+														"deactivated",
+														"blocked",
+														"error"
+													],
+													"readOnly": true,
+													"type": "string"
+												},
+												"validation_data": {
+													"properties": {
+														"error_message": {
+															"type": "string"
+														},
+														"method": {
+															"enum": [
+																"http",
+																"txt"
+															],
+															"type": "string"
+														},
+														"status": {
+															"enum": [
+																"initializing",
+																"pending",
+																"active",
+																"deactivated",
+																"error"
+															],
+															"type": "string"
+														},
+														"txt_name": {
+															"type": "string"
+														},
+														"txt_value": {
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"verification_data": {
+													"properties": {
+														"error_message": {
+															"type": "string"
+														},
+														"status": {
+															"enum": [
+																"pending",
+																"active",
+																"deactivated",
+																"blocked",
+																"error"
+															],
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"zone_tag": {
+													"readOnly": true,
+													"type": "string"
+												}
+											},
 											"type": "object"
 										}
 									}
@@ -1086,23 +1598,10 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
+																false,
 																true
 															],
 															"example": true,
@@ -1131,6 +1630,100 @@
 										{
 											"properties": {
 												"result": {
+													"properties": {
+														"certificate_authority": {
+															"enum": [
+																"google",
+																"lets_encrypt"
+															],
+															"example": "lets_encrypt",
+															"readOnly": true,
+															"type": "string"
+														},
+														"created_on": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"domain_id": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"example": "example.com",
+															"type": "string"
+														},
+														"status": {
+															"enum": [
+																"initializing",
+																"pending",
+																"active",
+																"deactivated",
+																"blocked",
+																"error"
+															],
+															"readOnly": true,
+															"type": "string"
+														},
+														"validation_data": {
+															"properties": {
+																"error_message": {
+																	"type": "string"
+																},
+																"method": {
+																	"enum": [
+																		"http",
+																		"txt"
+																	],
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"initializing",
+																		"pending",
+																		"active",
+																		"deactivated",
+																		"error"
+																	],
+																	"type": "string"
+																},
+																"txt_name": {
+																	"type": "string"
+																},
+																"txt_value": {
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"verification_data": {
+															"properties": {
+																"error_message": {
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"pending",
+																		"active",
+																		"deactivated",
+																		"blocked",
+																		"error"
+																	],
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"zone_tag": {
+															"readOnly": true,
+															"type": "string"
+														}
+													},
 													"type": "object"
 												}
 											}
@@ -1268,9 +1861,13 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"example": {
-							"name": "example.com"
-						}
+						"properties": {
+							"name": {
+								"example": "example.com",
+								"type": "string"
+							}
+						},
+						"type": "object"
 					}
 				}
 			},
@@ -1328,23 +1925,10 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
+														false,
 														true
 													],
 													"example": true,
@@ -1373,6 +1957,100 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"certificate_authority": {
+													"enum": [
+														"google",
+														"lets_encrypt"
+													],
+													"example": "lets_encrypt",
+													"readOnly": true,
+													"type": "string"
+												},
+												"created_on": {
+													"readOnly": true,
+													"type": "string"
+												},
+												"domain_id": {
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"example": "example.com",
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"initializing",
+														"pending",
+														"active",
+														"deactivated",
+														"blocked",
+														"error"
+													],
+													"readOnly": true,
+													"type": "string"
+												},
+												"validation_data": {
+													"properties": {
+														"error_message": {
+															"type": "string"
+														},
+														"method": {
+															"enum": [
+																"http",
+																"txt"
+															],
+															"type": "string"
+														},
+														"status": {
+															"enum": [
+																"initializing",
+																"pending",
+																"active",
+																"deactivated",
+																"error"
+															],
+															"type": "string"
+														},
+														"txt_name": {
+															"type": "string"
+														},
+														"txt_value": {
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"verification_data": {
+													"properties": {
+														"error_message": {
+															"type": "string"
+														},
+														"status": {
+															"enum": [
+																"pending",
+																"active",
+																"deactivated",
+																"blocked",
+																"error"
+															],
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"zone_tag": {
+													"readOnly": true,
+													"type": "string"
+												}
+											},
 											"type": "object"
 										}
 									}
@@ -1436,23 +2114,10 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
+																false,
 																true
 															],
 															"example": true,
@@ -1481,6 +2146,100 @@
 										{
 											"properties": {
 												"result": {
+													"properties": {
+														"certificate_authority": {
+															"enum": [
+																"google",
+																"lets_encrypt"
+															],
+															"example": "lets_encrypt",
+															"readOnly": true,
+															"type": "string"
+														},
+														"created_on": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"domain_id": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"example": "example.com",
+															"type": "string"
+														},
+														"status": {
+															"enum": [
+																"initializing",
+																"pending",
+																"active",
+																"deactivated",
+																"blocked",
+																"error"
+															],
+															"readOnly": true,
+															"type": "string"
+														},
+														"validation_data": {
+															"properties": {
+																"error_message": {
+																	"type": "string"
+																},
+																"method": {
+																	"enum": [
+																		"http",
+																		"txt"
+																	],
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"initializing",
+																		"pending",
+																		"active",
+																		"deactivated",
+																		"error"
+																	],
+																	"type": "string"
+																},
+																"txt_name": {
+																	"type": "string"
+																},
+																"txt_value": {
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"verification_data": {
+															"properties": {
+																"error_message": {
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"pending",
+																		"active",
+																		"deactivated",
+																		"blocked",
+																		"error"
+																	],
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"zone_tag": {
+															"readOnly": true,
+															"type": "string"
+														}
+													},
 													"type": "object"
 												}
 											}

@@ -302,7 +302,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -310,6 +339,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -684,7 +716,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -692,6 +753,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -1066,7 +1130,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -1074,6 +1167,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -1448,7 +1544,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -1456,6 +1581,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -1830,7 +1958,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -1838,6 +1995,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -2212,7 +2372,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -2220,6 +2409,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -2594,7 +2786,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -2602,6 +2823,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -2976,7 +3200,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -2984,6 +3237,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -3358,7 +3614,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -3366,6 +3651,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -3740,7 +4028,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -3748,6 +4065,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -3804,6 +4124,834 @@
 			}
 		],
 		"summary": "Execute @cf/meta/llama-3.1-8b-instruct model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3.1-8b-instruct-awq": {
+		"operationId": "workers-ai-post-run-cf-meta-llama-3-1-8b-instruct-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"frequency_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"lora": {
+										"type": "string"
+									},
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"presence_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"prompt": {
+										"maxLength": 131072,
+										"minLength": 1,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"repetition_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"seed": {
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.6,
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"top_k": {
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"frequency_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"functions": {
+										"items": {
+											"properties": {
+												"code": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"code"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 131072,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"presence_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"repetition_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"seed": {
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.6,
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"tools": {
+										"items": {
+											"oneOf": [
+												{
+													"properties": {
+														"description": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														},
+														"parameters": {
+															"properties": {
+																"properties": {
+																	"additionalProperties": {
+																		"properties": {
+																			"description": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"description"
+																		],
+																		"type": "object"
+																	},
+																	"type": "object"
+																},
+																"required": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"properties"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"description",
+														"parameters"
+													]
+												},
+												{
+													"properties": {
+														"function": {
+															"properties": {
+																"description": {
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"parameters": {
+																	"properties": {
+																		"properties": {
+																			"additionalProperties": {
+																				"properties": {
+																					"description": {
+																						"type": "string"
+																					},
+																					"type": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"description"
+																				],
+																				"type": "object"
+																			},
+																			"type": "object"
+																		},
+																		"required": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"type": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"properties"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"name",
+																"description",
+																"parameters"
+															],
+															"type": "object"
+														},
+														"type": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"function"
+													]
+												}
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"top_k": {
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/meta/llama-3.1-8b-instruct-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3.1-8b-instruct-fp8": {
+		"operationId": "workers-ai-post-run-cf-meta-llama-3-1-8b-instruct-fp8",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"frequency_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"lora": {
+										"type": "string"
+									},
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"presence_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"prompt": {
+										"maxLength": 131072,
+										"minLength": 1,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"repetition_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"seed": {
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.6,
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"top_k": {
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"frequency_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"functions": {
+										"items": {
+											"properties": {
+												"code": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"code"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 131072,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"presence_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"repetition_penalty": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"seed": {
+										"maximum": 9999999999,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									},
+									"temperature": {
+										"default": 0.6,
+										"maximum": 5,
+										"minimum": 0,
+										"type": "number"
+									},
+									"tools": {
+										"items": {
+											"oneOf": [
+												{
+													"properties": {
+														"description": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														},
+														"parameters": {
+															"properties": {
+																"properties": {
+																	"additionalProperties": {
+																		"properties": {
+																			"description": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"description"
+																		],
+																		"type": "object"
+																	},
+																	"type": "object"
+																},
+																"required": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"properties"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"description",
+														"parameters"
+													]
+												},
+												{
+													"properties": {
+														"function": {
+															"properties": {
+																"description": {
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"parameters": {
+																	"properties": {
+																		"properties": {
+																			"additionalProperties": {
+																				"properties": {
+																					"description": {
+																						"type": "string"
+																					},
+																					"type": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"description"
+																				],
+																				"type": "object"
+																			},
+																			"type": "object"
+																		},
+																		"required": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"type": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"properties"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"name",
+																"description",
+																"parameters"
+															],
+															"type": "object"
+														},
+														"type": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"function"
+													]
+												}
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"top_k": {
+										"maximum": 50,
+										"minimum": 1,
+										"type": "integer"
+									},
+									"top_p": {
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/meta/llama-3.1-8b-instruct-fp8 model.",
 		"tags": [
 			"Workers AI Text Generation"
 		],
@@ -4122,7 +5270,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -4130,6 +5307,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -4504,7 +5684,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -4512,6 +5721,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -4886,7 +6098,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -4894,6 +6135,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -5268,7 +6512,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -5276,6 +6549,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -5650,7 +6926,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -5658,6 +6963,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -6032,7 +7340,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -6040,6 +7377,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -6414,7 +7754,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -6422,6 +7791,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -6796,7 +8168,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -6804,6 +8205,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -7178,7 +8582,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -7186,6 +8619,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -7560,7 +8996,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -7568,6 +9033,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -7942,7 +9410,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -7950,6 +9447,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -8324,7 +9824,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -8332,6 +9861,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -8706,7 +10238,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -8714,6 +10275,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -9088,7 +10652,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -9096,6 +10689,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -9470,7 +11066,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -9478,6 +11103,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -9852,7 +11480,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -9860,6 +11517,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -10234,7 +11894,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -10242,6 +11931,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -10616,7 +12308,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -10624,6 +12345,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -10998,7 +12722,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -11006,6 +12759,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -11380,7 +13136,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -11388,6 +13173,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -11762,7 +13550,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -11770,6 +13587,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"
@@ -12144,7 +13964,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -12152,6 +14001,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"

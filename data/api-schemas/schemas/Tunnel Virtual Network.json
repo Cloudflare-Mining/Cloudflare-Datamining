@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
 		"description": "Deletes an existing virtual network.",
-		"operationId": "tunnel-virtual-network-delete-a-virtual-network",
+		"operationId": "tunnel-virtual-network-delete",
 		"parameters": [
 			{
 				"in": "path",
@@ -934,9 +934,448 @@
 			"Tunnel Virtual Network"
 		]
 	},
+	"GET /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
+		"description": "Get a virtual network.",
+		"operationId": "tunnel-virtual-network-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "virtual_network_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the virtual network.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"comment": {
+								"description": "Optional remark describing the virtual network.",
+								"example": "Staging VPC for data science",
+								"maxLength": 256,
+								"type": "string"
+							},
+							"is_default_network": {
+								"description": "If `true`, this virtual network is the default for the account.",
+								"example": true,
+								"type": "boolean"
+							},
+							"name": {
+								"description": "A user-friendly name for the virtual network.",
+								"example": "us-east-1-vpc",
+								"maxLength": 256,
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"comment": {
+													"description": "Optional remark describing the virtual network.",
+													"example": "Staging VPC for data science",
+													"maxLength": 256,
+													"type": "string"
+												},
+												"created_at": {
+													"description": "Timestamp of when the resource was created.",
+													"example": "2021-01-25T18:22:34.317854Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+													"example": "2009-11-10T23:00:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "UUID of the virtual network.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string"
+												},
+												"is_default_network": {
+													"description": "If `true`, this virtual network is the default for the account.",
+													"example": true,
+													"type": "boolean"
+												},
+												"name": {
+													"description": "A user-friendly name for the virtual network.",
+													"example": "us-east-1-vpc",
+													"maxLength": 256,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"is_default_network",
+												"comment",
+												"created_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "A virtual network response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"comment": {
+															"description": "Optional remark describing the virtual network.",
+															"example": "Staging VPC for data science",
+															"maxLength": 256,
+															"type": "string"
+														},
+														"created_at": {
+															"description": "Timestamp of when the resource was created.",
+															"example": "2021-01-25T18:22:34.317854Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
+															"example": "2009-11-10T23:00:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"id": {
+															"description": "UUID of the virtual network.",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"format": "uuid",
+															"type": "string"
+														},
+														"is_default_network": {
+															"description": "If `true`, this virtual network is the default for the account.",
+															"example": true,
+															"type": "boolean"
+														},
+														"name": {
+															"description": "A user-friendly name for the virtual network.",
+															"example": "us-east-1-vpc",
+															"maxLength": 256,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"is_default_network",
+														"comment",
+														"created_at"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "A virtual network response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "Get a virtual network",
+		"tags": [
+			"Tunnel Virtual Network"
+		]
+	},
 	"PATCH /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
 		"description": "Updates an existing virtual network.",
-		"operationId": "tunnel-virtual-network-update-a-virtual-network",
+		"operationId": "tunnel-virtual-network-update",
 		"parameters": [
 			{
 				"in": "path",

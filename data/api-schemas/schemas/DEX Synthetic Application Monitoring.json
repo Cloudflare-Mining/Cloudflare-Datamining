@@ -118,11 +118,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -158,29 +153,29 @@
 										"result": {
 											"description": "array of colos.",
 											"items": {
-												"properties": {
-													"airportCode": {
-														"description": "Airport code",
-														"example": "SFO",
-														"type": "string"
-													},
-													"city": {
-														"description": "City",
-														"example": "San Francisco",
-														"type": "string"
-													},
-													"countryCode": {
-														"description": "Country code",
-														"example": "US",
-														"type": "string"
-													}
-												},
 												"required": [
 													"airportCode",
 													"countryCode",
 													"city"
 												],
 												"type": "object"
+											},
+											"properties": {
+												"airportCode": {
+													"description": "Airport code",
+													"example": "SFO",
+													"type": "string"
+												},
+												"city": {
+													"description": "City",
+													"example": "San Francisco",
+													"type": "string"
+												},
+												"countryCode": {
+													"description": "Country code",
+													"example": "US",
+													"type": "string"
+												}
 											},
 											"type": "array"
 										}
@@ -290,8 +285,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "List Cloudflare colos",
@@ -310,6 +307,7 @@
 		"operationId": "dex-fleet-status-devices",
 		"parameters": [
 			{
+				"description": "Unique identifier for account",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -321,6 +319,7 @@
 				}
 			},
 			{
+				"description": "Time range end in ISO format",
 				"in": "query",
 				"name": "to",
 				"required": true,
@@ -331,6 +330,7 @@
 				}
 			},
 			{
+				"description": "Time range beginning in ISO format",
 				"in": "query",
 				"name": "from",
 				"required": true,
@@ -341,6 +341,7 @@
 				}
 			},
 			{
+				"description": "Page number",
 				"in": "query",
 				"name": "page",
 				"required": true,
@@ -353,6 +354,7 @@
 				}
 			},
 			{
+				"description": "Number of results per page",
 				"in": "query",
 				"name": "per_page",
 				"required": true,
@@ -365,6 +367,7 @@
 				}
 			},
 			{
+				"description": "Dimension to sort results by",
 				"in": "query",
 				"name": "sort_by",
 				"schema": {
@@ -383,6 +386,7 @@
 				}
 			},
 			{
+				"description": "Cloudflare colo",
 				"in": "query",
 				"name": "colo",
 				"schema": {
@@ -392,6 +396,7 @@
 				}
 			},
 			{
+				"description": "Device-specific ID, given as UUID v4",
 				"in": "query",
 				"name": "device_id",
 				"schema": {
@@ -401,6 +406,7 @@
 				}
 			},
 			{
+				"description": "The mode under which the WARP client is run",
 				"in": "query",
 				"name": "mode",
 				"schema": {
@@ -410,6 +416,7 @@
 				}
 			},
 			{
+				"description": "Network status",
 				"in": "query",
 				"name": "status",
 				"schema": {
@@ -419,6 +426,7 @@
 				}
 			},
 			{
+				"description": "Operating system",
 				"in": "query",
 				"name": "platform",
 				"schema": {
@@ -428,6 +436,7 @@
 				}
 			},
 			{
+				"description": "WARP client version",
 				"in": "query",
 				"name": "version",
 				"schema": {
@@ -440,7 +449,6 @@
 				"description": "Source:\n  * `hourly` - device details aggregated hourly, up to 7 days prior\n  * `last_seen` - device details, up to 24 hours prior\n  * `raw` - device details, up to 7 days prior\n",
 				"in": "query",
 				"name": "source",
-				"required": true,
 				"schema": {
 					"default": "last_seen",
 					"description": "Specifies fleet status details source",
@@ -524,11 +532,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -619,7 +622,7 @@
 				},
 				"description": "List devices response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -685,20 +688,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -800,8 +789,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "List fleet status devices",
@@ -820,6 +811,7 @@
 		"operationId": "dex-fleet-status-live",
 		"parameters": [
 			{
+				"description": "Unique identifier for account",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -831,6 +823,7 @@
 				}
 			},
 			{
+				"description": "Number of minutes before current time",
 				"in": "query",
 				"name": "since_minutes",
 				"required": true,
@@ -911,20 +904,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1034,7 +1013,7 @@
 				},
 				"description": "List device details (live) response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1100,20 +1079,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1215,8 +1180,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "List fleet status details by dimension",
@@ -1235,6 +1202,7 @@
 		"operationId": "dex-fleet-status-over-time",
 		"parameters": [
 			{
+				"description": "Unique identifier for account",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -1246,6 +1214,7 @@
 				}
 			},
 			{
+				"description": "Time range end in ISO format",
 				"in": "query",
 				"name": "to",
 				"required": true,
@@ -1256,6 +1225,7 @@
 				}
 			},
 			{
+				"description": "Time range beginning in ISO format",
 				"in": "query",
 				"name": "from",
 				"required": true,
@@ -1266,6 +1236,7 @@
 				}
 			},
 			{
+				"description": "Cloudflare colo",
 				"in": "query",
 				"name": "colo",
 				"schema": {
@@ -1275,6 +1246,7 @@
 				}
 			},
 			{
+				"description": "Device-specific ID, given as UUID v4",
 				"in": "query",
 				"name": "device_id",
 				"schema": {
@@ -1288,7 +1260,7 @@
 			"200": {
 				"description": "List DEX devices response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1354,20 +1326,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1469,8 +1427,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "List fleet status aggregate details by dimension",
@@ -1632,20 +1592,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -2266,8 +2212,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Get details and aggregate metrics for an http test",
@@ -2416,20 +2364,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -2622,8 +2556,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Get percentiles for an http test",
@@ -2769,20 +2705,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -3496,8 +3418,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "List DEX test analytics",
@@ -3614,20 +3538,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -3752,8 +3662,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Get count of devices targeted",
@@ -3863,20 +3775,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -4086,8 +3984,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Get details for a specific traceroute test run",
@@ -4249,20 +4149,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -4828,8 +4714,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Get details and aggregate metrics for a traceroute test",
@@ -4981,20 +4869,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -5215,8 +5089,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Get network path breakdown for a traceroute test",
@@ -5365,20 +5241,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -5571,8 +5433,10 @@
 				"api_key": []
 			},
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
+			},
+			{
+				"user_service_key": []
 			}
 		],
 		"summary": "Get percentiles for a traceroute test",

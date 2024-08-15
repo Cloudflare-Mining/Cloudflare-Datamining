@@ -394,7 +394,8 @@
 																	},
 																	"id": {
 																		"description": "The ID of the rate plan.",
-																		"example": "free"
+																		"example": "free",
+																		"type": "string"
 																	},
 																	"is_contract": {
 																		"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
@@ -699,7 +700,8 @@
 																			},
 																			"id": {
 																				"description": "The ID of the rate plan.",
-																				"example": "free"
+																				"example": "free",
+																				"type": "string"
 																			},
 																			"is_contract": {
 																				"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
@@ -1002,7 +1004,8 @@
 									},
 									"id": {
 										"description": "The ID of the rate plan.",
-										"example": "free"
+										"example": "free",
+										"type": "string"
 									},
 									"is_contract": {
 										"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",

@@ -28,7 +28,36 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"result": {},
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												},
+												"tool_calls": {
+													"items": {
+														"properties": {
+															"arguments": {
+																"type": "object"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
 								"success": {
 									"default": "true",
 									"type": "boolean"
@@ -36,6 +65,9 @@
 							},
 							"type": "object"
 						}
+					},
+					"text/event-stream": {
+						"schema": {}
 					}
 				},
 				"description": "Successful response"

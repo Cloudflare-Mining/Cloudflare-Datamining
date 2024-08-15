@@ -50,12 +50,79 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"example": {
-								"errors": [],
-								"messages": [],
-								"result": null,
-								"success": true
-							}
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false,
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
 						}
 					}
 				},
@@ -264,23 +331,10 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
+												false,
 												true
 											],
 											"example": true,
@@ -325,9 +379,16 @@
 													"type": "integer"
 												}
 											},
+											"required": [
+												"page",
+												"per_page",
+												"count",
+												"total_count"
+											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -339,13 +400,54 @@
 														"example": [
 															"https://branchname.projectname.pages.dev"
 														],
-														"items": {},
+														"items": {
+															"type": "string"
+														},
 														"nullable": true,
 														"readOnly": true,
 														"type": "array"
 													},
 													"build_config": {
-														"readOnly": true
+														"description": "Configs for the project build process.",
+														"properties": {
+															"build_caching": {
+																"description": "Enable build caching for the project.",
+																"example": true,
+																"nullable": true,
+																"type": "boolean"
+															},
+															"build_command": {
+																"description": "Command used to build project.",
+																"example": "npm run build",
+																"nullable": true,
+																"type": "string"
+															},
+															"destination_dir": {
+																"description": "Output directory of the build.",
+																"example": "build",
+																"nullable": true,
+																"type": "string"
+															},
+															"root_dir": {
+																"description": "Directory to run the command.",
+																"example": "/",
+																"nullable": true,
+																"type": "string"
+															},
+															"web_analytics_tag": {
+																"description": "The classifying tag for analytics.",
+																"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+																"nullable": true,
+																"type": "string"
+															},
+															"web_analytics_token": {
+																"description": "The auth token for analytics.",
+																"example": "021e1057c18547eca7b79f2516f06o7x",
+																"nullable": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
 													},
 													"created_on": {
 														"description": "When the deployment was created.",
@@ -425,7 +527,40 @@
 														"type": "boolean"
 													},
 													"latest_stage": {
-														"readOnly": true
+														"description": "The status of the deployment.",
+														"properties": {
+															"ended_on": {
+																"description": "When the stage ended.",
+																"example": "2021-03-09T00:58:59.045655",
+																"format": "date-time",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "The current build stage.",
+																"example": "deploy",
+																"pattern": "queued|initialize|clone_repo|build|deploy",
+																"type": "string"
+															},
+															"started_on": {
+																"description": "When the stage started.",
+																"example": "2021-03-09T00:55:03.923456Z",
+																"format": "date-time",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"status": {
+																"description": "State of the current stage.",
+																"example": "success",
+																"pattern": "success|idle|active|failure|canceled",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"readOnly": true,
+														"type": "object"
 													},
 													"modified_on": {
 														"description": "When the deployment was last modified.",
@@ -453,7 +588,68 @@
 														"type": "string"
 													},
 													"source": {
-														"readOnly": true
+														"properties": {
+															"config": {
+																"properties": {
+																	"deployments_enabled": {
+																		"type": "boolean"
+																	},
+																	"owner": {
+																		"type": "string"
+																	},
+																	"path_excludes": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"path_includes": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"pr_comments_enabled": {
+																		"type": "boolean"
+																	},
+																	"preview_branch_excludes": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"preview_branch_includes": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"preview_deployment_setting": {
+																		"enum": [
+																			"all",
+																			"none",
+																			"custom"
+																		],
+																		"type": "string"
+																	},
+																	"production_branch": {
+																		"type": "string"
+																	},
+																	"production_deployments_enabled": {
+																		"type": "boolean"
+																	},
+																	"repo_name": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"readOnly": true,
+														"type": "object"
 													},
 													"stages": {
 														"description": "List of past stages.",
@@ -598,23 +794,10 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
+														false,
 														true
 													],
 													"example": true,
@@ -659,9 +842,16 @@
 															"type": "integer"
 														}
 													},
+													"required": [
+														"page",
+														"per_page",
+														"count",
+														"total_count"
+													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -673,13 +863,54 @@
 																"example": [
 																	"https://branchname.projectname.pages.dev"
 																],
-																"items": {},
+																"items": {
+																	"type": "string"
+																},
 																"nullable": true,
 																"readOnly": true,
 																"type": "array"
 															},
 															"build_config": {
-																"readOnly": true
+																"description": "Configs for the project build process.",
+																"properties": {
+																	"build_caching": {
+																		"description": "Enable build caching for the project.",
+																		"example": true,
+																		"nullable": true,
+																		"type": "boolean"
+																	},
+																	"build_command": {
+																		"description": "Command used to build project.",
+																		"example": "npm run build",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"destination_dir": {
+																		"description": "Output directory of the build.",
+																		"example": "build",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"root_dir": {
+																		"description": "Directory to run the command.",
+																		"example": "/",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"web_analytics_tag": {
+																		"description": "The classifying tag for analytics.",
+																		"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"web_analytics_token": {
+																		"description": "The auth token for analytics.",
+																		"example": "021e1057c18547eca7b79f2516f06o7x",
+																		"nullable": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															},
 															"created_on": {
 																"description": "When the deployment was created.",
@@ -759,7 +990,40 @@
 																"type": "boolean"
 															},
 															"latest_stage": {
-																"readOnly": true
+																"description": "The status of the deployment.",
+																"properties": {
+																	"ended_on": {
+																		"description": "When the stage ended.",
+																		"example": "2021-03-09T00:58:59.045655",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "The current build stage.",
+																		"example": "deploy",
+																		"pattern": "queued|initialize|clone_repo|build|deploy",
+																		"type": "string"
+																	},
+																	"started_on": {
+																		"description": "When the stage started.",
+																		"example": "2021-03-09T00:55:03.923456Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"status": {
+																		"description": "State of the current stage.",
+																		"example": "success",
+																		"pattern": "success|idle|active|failure|canceled",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"readOnly": true,
+																"type": "object"
 															},
 															"modified_on": {
 																"description": "When the deployment was last modified.",
@@ -787,7 +1051,68 @@
 																"type": "string"
 															},
 															"source": {
-																"readOnly": true
+																"properties": {
+																	"config": {
+																		"properties": {
+																			"deployments_enabled": {
+																				"type": "boolean"
+																			},
+																			"owner": {
+																				"type": "string"
+																			},
+																			"path_excludes": {
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"path_includes": {
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"pr_comments_enabled": {
+																				"type": "boolean"
+																			},
+																			"preview_branch_excludes": {
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"preview_branch_includes": {
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"preview_deployment_setting": {
+																				"enum": [
+																					"all",
+																					"none",
+																					"custom"
+																				],
+																				"type": "string"
+																			},
+																			"production_branch": {
+																				"type": "string"
+																			},
+																			"production_deployments_enabled": {
+																				"type": "boolean"
+																			},
+																			"repo_name": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"type": "string"
+																	}
+																},
+																"readOnly": true,
+																"type": "object"
 															},
 															"stages": {
 																"description": "List of past stages.",
@@ -1066,23 +1391,10 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
+												false,
 												true
 											],
 											"example": true,
@@ -1106,13 +1418,54 @@
 													"example": [
 														"https://branchname.projectname.pages.dev"
 													],
-													"items": {},
+													"items": {
+														"type": "string"
+													},
 													"nullable": true,
 													"readOnly": true,
 													"type": "array"
 												},
 												"build_config": {
-													"readOnly": true
+													"description": "Configs for the project build process.",
+													"properties": {
+														"build_caching": {
+															"description": "Enable build caching for the project.",
+															"example": true,
+															"nullable": true,
+															"type": "boolean"
+														},
+														"build_command": {
+															"description": "Command used to build project.",
+															"example": "npm run build",
+															"nullable": true,
+															"type": "string"
+														},
+														"destination_dir": {
+															"description": "Output directory of the build.",
+															"example": "build",
+															"nullable": true,
+															"type": "string"
+														},
+														"root_dir": {
+															"description": "Directory to run the command.",
+															"example": "/",
+															"nullable": true,
+															"type": "string"
+														},
+														"web_analytics_tag": {
+															"description": "The classifying tag for analytics.",
+															"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+															"nullable": true,
+															"type": "string"
+														},
+														"web_analytics_token": {
+															"description": "The auth token for analytics.",
+															"example": "021e1057c18547eca7b79f2516f06o7x",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
 												"created_on": {
 													"description": "When the deployment was created.",
@@ -1192,7 +1545,40 @@
 													"type": "boolean"
 												},
 												"latest_stage": {
-													"readOnly": true
+													"description": "The status of the deployment.",
+													"properties": {
+														"ended_on": {
+															"description": "When the stage ended.",
+															"example": "2021-03-09T00:58:59.045655",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "The current build stage.",
+															"example": "deploy",
+															"pattern": "queued|initialize|clone_repo|build|deploy",
+															"type": "string"
+														},
+														"started_on": {
+															"description": "When the stage started.",
+															"example": "2021-03-09T00:55:03.923456Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"status": {
+															"description": "State of the current stage.",
+															"example": "success",
+															"pattern": "success|idle|active|failure|canceled",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
 												},
 												"modified_on": {
 													"description": "When the deployment was last modified.",
@@ -1220,7 +1606,68 @@
 													"type": "string"
 												},
 												"source": {
-													"readOnly": true
+													"properties": {
+														"config": {
+															"properties": {
+																"deployments_enabled": {
+																	"type": "boolean"
+																},
+																"owner": {
+																	"type": "string"
+																},
+																"path_excludes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"path_includes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"pr_comments_enabled": {
+																	"type": "boolean"
+																},
+																"preview_branch_excludes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"preview_branch_includes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"preview_deployment_setting": {
+																	"enum": [
+																		"all",
+																		"none",
+																		"custom"
+																	],
+																	"type": "string"
+																},
+																"production_branch": {
+																	"type": "string"
+																},
+																"production_deployments_enabled": {
+																	"type": "boolean"
+																},
+																"repo_name": {
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": {
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
 												},
 												"stages": {
 													"description": "List of past stages.",
@@ -1363,23 +1810,10 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
+														false,
 														true
 													],
 													"example": true,
@@ -1403,13 +1837,54 @@
 															"example": [
 																"https://branchname.projectname.pages.dev"
 															],
-															"items": {},
+															"items": {
+																"type": "string"
+															},
 															"nullable": true,
 															"readOnly": true,
 															"type": "array"
 														},
 														"build_config": {
-															"readOnly": true
+															"description": "Configs for the project build process.",
+															"properties": {
+																"build_caching": {
+																	"description": "Enable build caching for the project.",
+																	"example": true,
+																	"nullable": true,
+																	"type": "boolean"
+																},
+																"build_command": {
+																	"description": "Command used to build project.",
+																	"example": "npm run build",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"destination_dir": {
+																	"description": "Output directory of the build.",
+																	"example": "build",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"root_dir": {
+																	"description": "Directory to run the command.",
+																	"example": "/",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"web_analytics_tag": {
+																	"description": "The classifying tag for analytics.",
+																	"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"web_analytics_token": {
+																	"description": "The auth token for analytics.",
+																	"example": "021e1057c18547eca7b79f2516f06o7x",
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														},
 														"created_on": {
 															"description": "When the deployment was created.",
@@ -1489,7 +1964,40 @@
 															"type": "boolean"
 														},
 														"latest_stage": {
-															"readOnly": true
+															"description": "The status of the deployment.",
+															"properties": {
+																"ended_on": {
+																	"description": "When the stage ended.",
+																	"example": "2021-03-09T00:58:59.045655",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The current build stage.",
+																	"example": "deploy",
+																	"pattern": "queued|initialize|clone_repo|build|deploy",
+																	"type": "string"
+																},
+																"started_on": {
+																	"description": "When the stage started.",
+																	"example": "2021-03-09T00:55:03.923456Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"status": {
+																	"description": "State of the current stage.",
+																	"example": "success",
+																	"pattern": "success|idle|active|failure|canceled",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
 														},
 														"modified_on": {
 															"description": "When the deployment was last modified.",
@@ -1517,7 +2025,68 @@
 															"type": "string"
 														},
 														"source": {
-															"readOnly": true
+															"properties": {
+																"config": {
+																	"properties": {
+																		"deployments_enabled": {
+																			"type": "boolean"
+																		},
+																		"owner": {
+																			"type": "string"
+																		},
+																		"path_excludes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"path_includes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"pr_comments_enabled": {
+																			"type": "boolean"
+																		},
+																		"preview_branch_excludes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"preview_branch_includes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"preview_deployment_setting": {
+																			"enum": [
+																				"all",
+																				"none",
+																				"custom"
+																			],
+																			"type": "string"
+																		},
+																		"production_branch": {
+																			"type": "string"
+																		},
+																		"production_deployments_enabled": {
+																			"type": "boolean"
+																		},
+																		"repo_name": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
 														},
 														"stages": {
 															"description": "List of past stages.",
@@ -1794,23 +2363,10 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
+												false,
 												true
 											],
 											"example": true,
@@ -1954,9 +2510,36 @@
 												"includes_container_logs": true,
 												"total": 30
 											},
+											"properties": {
+												"data": {
+													"items": {
+														"properties": {
+															"line": {
+																"readOnly": true,
+																"type": "string"
+															},
+															"ts": {
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"includes_container_logs": {
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"total": {
+													"readOnly": true,
+													"type": "integer"
+												}
+											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2015,23 +2598,10 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
+														false,
 														true
 													],
 													"example": true,
@@ -2175,9 +2745,36 @@
 														"includes_container_logs": true,
 														"total": 30
 													},
+													"properties": {
+														"data": {
+															"items": {
+																"properties": {
+																	"line": {
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"ts": {
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"includes_container_logs": {
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"total": {
+															"readOnly": true,
+															"type": "integer"
+														}
+													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2375,23 +2972,10 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
+												false,
 												true
 											],
 											"example": true,
@@ -2415,13 +2999,54 @@
 													"example": [
 														"https://branchname.projectname.pages.dev"
 													],
-													"items": {},
+													"items": {
+														"type": "string"
+													},
 													"nullable": true,
 													"readOnly": true,
 													"type": "array"
 												},
 												"build_config": {
-													"readOnly": true
+													"description": "Configs for the project build process.",
+													"properties": {
+														"build_caching": {
+															"description": "Enable build caching for the project.",
+															"example": true,
+															"nullable": true,
+															"type": "boolean"
+														},
+														"build_command": {
+															"description": "Command used to build project.",
+															"example": "npm run build",
+															"nullable": true,
+															"type": "string"
+														},
+														"destination_dir": {
+															"description": "Output directory of the build.",
+															"example": "build",
+															"nullable": true,
+															"type": "string"
+														},
+														"root_dir": {
+															"description": "Directory to run the command.",
+															"example": "/",
+															"nullable": true,
+															"type": "string"
+														},
+														"web_analytics_tag": {
+															"description": "The classifying tag for analytics.",
+															"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+															"nullable": true,
+															"type": "string"
+														},
+														"web_analytics_token": {
+															"description": "The auth token for analytics.",
+															"example": "021e1057c18547eca7b79f2516f06o7x",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
 												"created_on": {
 													"description": "When the deployment was created.",
@@ -2501,7 +3126,40 @@
 													"type": "boolean"
 												},
 												"latest_stage": {
-													"readOnly": true
+													"description": "The status of the deployment.",
+													"properties": {
+														"ended_on": {
+															"description": "When the stage ended.",
+															"example": "2021-03-09T00:58:59.045655",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "The current build stage.",
+															"example": "deploy",
+															"pattern": "queued|initialize|clone_repo|build|deploy",
+															"type": "string"
+														},
+														"started_on": {
+															"description": "When the stage started.",
+															"example": "2021-03-09T00:55:03.923456Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"status": {
+															"description": "State of the current stage.",
+															"example": "success",
+															"pattern": "success|idle|active|failure|canceled",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
 												},
 												"modified_on": {
 													"description": "When the deployment was last modified.",
@@ -2529,7 +3187,68 @@
 													"type": "string"
 												},
 												"source": {
-													"readOnly": true
+													"properties": {
+														"config": {
+															"properties": {
+																"deployments_enabled": {
+																	"type": "boolean"
+																},
+																"owner": {
+																	"type": "string"
+																},
+																"path_excludes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"path_includes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"pr_comments_enabled": {
+																	"type": "boolean"
+																},
+																"preview_branch_excludes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"preview_branch_includes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"preview_deployment_setting": {
+																	"enum": [
+																		"all",
+																		"none",
+																		"custom"
+																	],
+																	"type": "string"
+																},
+																"production_branch": {
+																	"type": "string"
+																},
+																"production_deployments_enabled": {
+																	"type": "boolean"
+																},
+																"repo_name": {
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": {
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
 												},
 												"stages": {
 													"description": "List of past stages.",
@@ -2672,23 +3391,10 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
+														false,
 														true
 													],
 													"example": true,
@@ -2712,13 +3418,54 @@
 															"example": [
 																"https://branchname.projectname.pages.dev"
 															],
-															"items": {},
+															"items": {
+																"type": "string"
+															},
 															"nullable": true,
 															"readOnly": true,
 															"type": "array"
 														},
 														"build_config": {
-															"readOnly": true
+															"description": "Configs for the project build process.",
+															"properties": {
+																"build_caching": {
+																	"description": "Enable build caching for the project.",
+																	"example": true,
+																	"nullable": true,
+																	"type": "boolean"
+																},
+																"build_command": {
+																	"description": "Command used to build project.",
+																	"example": "npm run build",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"destination_dir": {
+																	"description": "Output directory of the build.",
+																	"example": "build",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"root_dir": {
+																	"description": "Directory to run the command.",
+																	"example": "/",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"web_analytics_tag": {
+																	"description": "The classifying tag for analytics.",
+																	"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"web_analytics_token": {
+																	"description": "The auth token for analytics.",
+																	"example": "021e1057c18547eca7b79f2516f06o7x",
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														},
 														"created_on": {
 															"description": "When the deployment was created.",
@@ -2798,7 +3545,40 @@
 															"type": "boolean"
 														},
 														"latest_stage": {
-															"readOnly": true
+															"description": "The status of the deployment.",
+															"properties": {
+																"ended_on": {
+																	"description": "When the stage ended.",
+																	"example": "2021-03-09T00:58:59.045655",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The current build stage.",
+																	"example": "deploy",
+																	"pattern": "queued|initialize|clone_repo|build|deploy",
+																	"type": "string"
+																},
+																"started_on": {
+																	"description": "When the stage started.",
+																	"example": "2021-03-09T00:55:03.923456Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"status": {
+																	"description": "State of the current stage.",
+																	"example": "success",
+																	"pattern": "success|idle|active|failure|canceled",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
 														},
 														"modified_on": {
 															"description": "When the deployment was last modified.",
@@ -2826,7 +3606,68 @@
 															"type": "string"
 														},
 														"source": {
-															"readOnly": true
+															"properties": {
+																"config": {
+																	"properties": {
+																		"deployments_enabled": {
+																			"type": "boolean"
+																		},
+																		"owner": {
+																			"type": "string"
+																		},
+																		"path_excludes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"path_includes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"pr_comments_enabled": {
+																			"type": "boolean"
+																		},
+																		"preview_branch_excludes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"preview_branch_includes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"preview_deployment_setting": {
+																			"enum": [
+																				"all",
+																				"none",
+																				"custom"
+																			],
+																			"type": "string"
+																		},
+																		"production_branch": {
+																			"type": "string"
+																		},
+																		"production_deployments_enabled": {
+																			"type": "boolean"
+																		},
+																		"repo_name": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
 														},
 														"stages": {
 															"description": "List of past stages.",
@@ -3109,23 +3950,10 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
+												false,
 												true
 											],
 											"example": true,
@@ -3149,13 +3977,54 @@
 													"example": [
 														"https://branchname.projectname.pages.dev"
 													],
-													"items": {},
+													"items": {
+														"type": "string"
+													},
 													"nullable": true,
 													"readOnly": true,
 													"type": "array"
 												},
 												"build_config": {
-													"readOnly": true
+													"description": "Configs for the project build process.",
+													"properties": {
+														"build_caching": {
+															"description": "Enable build caching for the project.",
+															"example": true,
+															"nullable": true,
+															"type": "boolean"
+														},
+														"build_command": {
+															"description": "Command used to build project.",
+															"example": "npm run build",
+															"nullable": true,
+															"type": "string"
+														},
+														"destination_dir": {
+															"description": "Output directory of the build.",
+															"example": "build",
+															"nullable": true,
+															"type": "string"
+														},
+														"root_dir": {
+															"description": "Directory to run the command.",
+															"example": "/",
+															"nullable": true,
+															"type": "string"
+														},
+														"web_analytics_tag": {
+															"description": "The classifying tag for analytics.",
+															"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+															"nullable": true,
+															"type": "string"
+														},
+														"web_analytics_token": {
+															"description": "The auth token for analytics.",
+															"example": "021e1057c18547eca7b79f2516f06o7x",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
 												"created_on": {
 													"description": "When the deployment was created.",
@@ -3235,7 +4104,40 @@
 													"type": "boolean"
 												},
 												"latest_stage": {
-													"readOnly": true
+													"description": "The status of the deployment.",
+													"properties": {
+														"ended_on": {
+															"description": "When the stage ended.",
+															"example": "2021-03-09T00:58:59.045655",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "The current build stage.",
+															"example": "deploy",
+															"pattern": "queued|initialize|clone_repo|build|deploy",
+															"type": "string"
+														},
+														"started_on": {
+															"description": "When the stage started.",
+															"example": "2021-03-09T00:55:03.923456Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"status": {
+															"description": "State of the current stage.",
+															"example": "success",
+															"pattern": "success|idle|active|failure|canceled",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
 												},
 												"modified_on": {
 													"description": "When the deployment was last modified.",
@@ -3263,7 +4165,68 @@
 													"type": "string"
 												},
 												"source": {
-													"readOnly": true
+													"properties": {
+														"config": {
+															"properties": {
+																"deployments_enabled": {
+																	"type": "boolean"
+																},
+																"owner": {
+																	"type": "string"
+																},
+																"path_excludes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"path_includes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"pr_comments_enabled": {
+																	"type": "boolean"
+																},
+																"preview_branch_excludes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"preview_branch_includes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"preview_deployment_setting": {
+																	"enum": [
+																		"all",
+																		"none",
+																		"custom"
+																	],
+																	"type": "string"
+																},
+																"production_branch": {
+																	"type": "string"
+																},
+																"production_deployments_enabled": {
+																	"type": "boolean"
+																},
+																"repo_name": {
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": {
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
 												},
 												"stages": {
 													"description": "List of past stages.",
@@ -3406,23 +4369,10 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
+														false,
 														true
 													],
 													"example": true,
@@ -3446,13 +4396,54 @@
 															"example": [
 																"https://branchname.projectname.pages.dev"
 															],
-															"items": {},
+															"items": {
+																"type": "string"
+															},
 															"nullable": true,
 															"readOnly": true,
 															"type": "array"
 														},
 														"build_config": {
-															"readOnly": true
+															"description": "Configs for the project build process.",
+															"properties": {
+																"build_caching": {
+																	"description": "Enable build caching for the project.",
+																	"example": true,
+																	"nullable": true,
+																	"type": "boolean"
+																},
+																"build_command": {
+																	"description": "Command used to build project.",
+																	"example": "npm run build",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"destination_dir": {
+																	"description": "Output directory of the build.",
+																	"example": "build",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"root_dir": {
+																	"description": "Directory to run the command.",
+																	"example": "/",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"web_analytics_tag": {
+																	"description": "The classifying tag for analytics.",
+																	"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"web_analytics_token": {
+																	"description": "The auth token for analytics.",
+																	"example": "021e1057c18547eca7b79f2516f06o7x",
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														},
 														"created_on": {
 															"description": "When the deployment was created.",
@@ -3532,7 +4523,40 @@
 															"type": "boolean"
 														},
 														"latest_stage": {
-															"readOnly": true
+															"description": "The status of the deployment.",
+															"properties": {
+																"ended_on": {
+																	"description": "When the stage ended.",
+																	"example": "2021-03-09T00:58:59.045655",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The current build stage.",
+																	"example": "deploy",
+																	"pattern": "queued|initialize|clone_repo|build|deploy",
+																	"type": "string"
+																},
+																"started_on": {
+																	"description": "When the stage started.",
+																	"example": "2021-03-09T00:55:03.923456Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"status": {
+																	"description": "State of the current stage.",
+																	"example": "success",
+																	"pattern": "success|idle|active|failure|canceled",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
 														},
 														"modified_on": {
 															"description": "When the deployment was last modified.",
@@ -3560,7 +4584,68 @@
 															"type": "string"
 														},
 														"source": {
-															"readOnly": true
+															"properties": {
+																"config": {
+																	"properties": {
+																		"deployments_enabled": {
+																			"type": "boolean"
+																		},
+																		"owner": {
+																			"type": "string"
+																		},
+																		"path_excludes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"path_includes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"pr_comments_enabled": {
+																			"type": "boolean"
+																		},
+																		"preview_branch_excludes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"preview_branch_includes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"preview_deployment_setting": {
+																			"enum": [
+																				"all",
+																				"none",
+																				"custom"
+																			],
+																			"type": "string"
+																		},
+																		"production_branch": {
+																			"type": "string"
+																		},
+																		"production_deployments_enabled": {
+																			"type": "boolean"
+																		},
+																		"repo_name": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
 														},
 														"stages": {
 															"description": "List of past stages.",
@@ -3843,23 +4928,10 @@
 											},
 											"type": "array"
 										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
+												false,
 												true
 											],
 											"example": true,
@@ -3883,13 +4955,54 @@
 													"example": [
 														"https://branchname.projectname.pages.dev"
 													],
-													"items": {},
+													"items": {
+														"type": "string"
+													},
 													"nullable": true,
 													"readOnly": true,
 													"type": "array"
 												},
 												"build_config": {
-													"readOnly": true
+													"description": "Configs for the project build process.",
+													"properties": {
+														"build_caching": {
+															"description": "Enable build caching for the project.",
+															"example": true,
+															"nullable": true,
+															"type": "boolean"
+														},
+														"build_command": {
+															"description": "Command used to build project.",
+															"example": "npm run build",
+															"nullable": true,
+															"type": "string"
+														},
+														"destination_dir": {
+															"description": "Output directory of the build.",
+															"example": "build",
+															"nullable": true,
+															"type": "string"
+														},
+														"root_dir": {
+															"description": "Directory to run the command.",
+															"example": "/",
+															"nullable": true,
+															"type": "string"
+														},
+														"web_analytics_tag": {
+															"description": "The classifying tag for analytics.",
+															"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+															"nullable": true,
+															"type": "string"
+														},
+														"web_analytics_token": {
+															"description": "The auth token for analytics.",
+															"example": "021e1057c18547eca7b79f2516f06o7x",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
 												"created_on": {
 													"description": "When the deployment was created.",
@@ -3969,7 +5082,40 @@
 													"type": "boolean"
 												},
 												"latest_stage": {
-													"readOnly": true
+													"description": "The status of the deployment.",
+													"properties": {
+														"ended_on": {
+															"description": "When the stage ended.",
+															"example": "2021-03-09T00:58:59.045655",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "The current build stage.",
+															"example": "deploy",
+															"pattern": "queued|initialize|clone_repo|build|deploy",
+															"type": "string"
+														},
+														"started_on": {
+															"description": "When the stage started.",
+															"example": "2021-03-09T00:55:03.923456Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"status": {
+															"description": "State of the current stage.",
+															"example": "success",
+															"pattern": "success|idle|active|failure|canceled",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
 												},
 												"modified_on": {
 													"description": "When the deployment was last modified.",
@@ -3997,7 +5143,68 @@
 													"type": "string"
 												},
 												"source": {
-													"readOnly": true
+													"properties": {
+														"config": {
+															"properties": {
+																"deployments_enabled": {
+																	"type": "boolean"
+																},
+																"owner": {
+																	"type": "string"
+																},
+																"path_excludes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"path_includes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"pr_comments_enabled": {
+																	"type": "boolean"
+																},
+																"preview_branch_excludes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"preview_branch_includes": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"preview_deployment_setting": {
+																	"enum": [
+																		"all",
+																		"none",
+																		"custom"
+																	],
+																	"type": "string"
+																},
+																"production_branch": {
+																	"type": "string"
+																},
+																"production_deployments_enabled": {
+																	"type": "boolean"
+																},
+																"repo_name": {
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": {
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
 												},
 												"stages": {
 													"description": "List of past stages.",
@@ -4140,23 +5347,10 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
+														false,
 														true
 													],
 													"example": true,
@@ -4180,13 +5374,54 @@
 															"example": [
 																"https://branchname.projectname.pages.dev"
 															],
-															"items": {},
+															"items": {
+																"type": "string"
+															},
 															"nullable": true,
 															"readOnly": true,
 															"type": "array"
 														},
 														"build_config": {
-															"readOnly": true
+															"description": "Configs for the project build process.",
+															"properties": {
+																"build_caching": {
+																	"description": "Enable build caching for the project.",
+																	"example": true,
+																	"nullable": true,
+																	"type": "boolean"
+																},
+																"build_command": {
+																	"description": "Command used to build project.",
+																	"example": "npm run build",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"destination_dir": {
+																	"description": "Output directory of the build.",
+																	"example": "build",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"root_dir": {
+																	"description": "Directory to run the command.",
+																	"example": "/",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"web_analytics_tag": {
+																	"description": "The classifying tag for analytics.",
+																	"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"web_analytics_token": {
+																	"description": "The auth token for analytics.",
+																	"example": "021e1057c18547eca7b79f2516f06o7x",
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														},
 														"created_on": {
 															"description": "When the deployment was created.",
@@ -4266,7 +5501,40 @@
 															"type": "boolean"
 														},
 														"latest_stage": {
-															"readOnly": true
+															"description": "The status of the deployment.",
+															"properties": {
+																"ended_on": {
+																	"description": "When the stage ended.",
+																	"example": "2021-03-09T00:58:59.045655",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The current build stage.",
+																	"example": "deploy",
+																	"pattern": "queued|initialize|clone_repo|build|deploy",
+																	"type": "string"
+																},
+																"started_on": {
+																	"description": "When the stage started.",
+																	"example": "2021-03-09T00:55:03.923456Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"status": {
+																	"description": "State of the current stage.",
+																	"example": "success",
+																	"pattern": "success|idle|active|failure|canceled",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
 														},
 														"modified_on": {
 															"description": "When the deployment was last modified.",
@@ -4294,7 +5562,68 @@
 															"type": "string"
 														},
 														"source": {
-															"readOnly": true
+															"properties": {
+																"config": {
+																	"properties": {
+																		"deployments_enabled": {
+																			"type": "boolean"
+																		},
+																		"owner": {
+																			"type": "string"
+																		},
+																		"path_excludes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"path_includes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"pr_comments_enabled": {
+																			"type": "boolean"
+																		},
+																		"preview_branch_excludes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"preview_branch_includes": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"preview_deployment_setting": {
+																			"enum": [
+																				"all",
+																				"none",
+																				"custom"
+																			],
+																			"type": "string"
+																		},
+																		"production_branch": {
+																			"type": "string"
+																		},
+																		"production_deployments_enabled": {
+																			"type": "boolean"
+																		},
+																		"repo_name": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
 														},
 														"stages": {
 															"description": "List of past stages.",

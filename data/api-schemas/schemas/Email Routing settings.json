@@ -1,4 +1,202 @@
 {
+	"DELETE /zones/{zone_identifier}/email/routing/dns": {
+		"description": "Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work.",
+		"operationId": "email-routing-settings-disable-email-routing-dns",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created": {
+															"description": "The date and time the settings have been created.",
+															"example": "2014-01-02T02:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"enabled": {
+															"default": true,
+															"description": "State of the zone settings for Email Routing.",
+															"enum": [
+																true,
+																false
+															],
+															"example": true,
+															"type": "boolean"
+														},
+														"id": {
+															"description": "Email Routing settings identifier.",
+															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified": {
+															"description": "The date and time the settings have been modified.",
+															"example": "2014-01-02T02:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "Domain of your zone.",
+															"example": "example.net",
+															"readOnly": true,
+															"type": "string"
+														},
+														"skip_wizard": {
+															"default": true,
+															"description": "Flag to check if the user skipped the configuration wizard.",
+															"enum": [
+																true,
+																false
+															],
+															"example": true,
+															"type": "boolean"
+														},
+														"status": {
+															"description": "Show the state of your account, and the type or configuration error.",
+															"enum": [
+																"ready",
+																"unconfigured",
+																"misconfigured",
+																"misconfigured/locked",
+																"unlocked"
+															],
+															"example": "ready",
+															"readOnly": true,
+															"type": "string"
+														},
+														"tag": {
+															"deprecated": true,
+															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
+															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Disable Email Routing response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Disable Email Routing",
+		"tags": [
+			"Email Routing settings"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.config.update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /zones/{zone_identifier}/email/routing": {
 		"description": "Get information about the settings for your Email Routing zone.",
 		"operationId": "email-routing-settings-get-email-routing-settings",
@@ -82,20 +280,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -297,11 +481,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -437,7 +616,206 @@
 			"pro": true
 		}
 	},
+	"PATCH /zones/{zone_identifier}/email/routing/dns": {
+		"description": "Unlock MX Records previously locked by Email Routing.",
+		"operationId": "email-routing-settings-unlock-email-routing-dns",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created": {
+															"description": "The date and time the settings have been created.",
+															"example": "2014-01-02T02:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"enabled": {
+															"default": true,
+															"description": "State of the zone settings for Email Routing.",
+															"enum": [
+																true,
+																false
+															],
+															"example": true,
+															"type": "boolean"
+														},
+														"id": {
+															"description": "Email Routing settings identifier.",
+															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified": {
+															"description": "The date and time the settings have been modified.",
+															"example": "2014-01-02T02:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "Domain of your zone.",
+															"example": "example.net",
+															"readOnly": true,
+															"type": "string"
+														},
+														"skip_wizard": {
+															"default": true,
+															"description": "Flag to check if the user skipped the configuration wizard.",
+															"enum": [
+																true,
+																false
+															],
+															"example": true,
+															"type": "boolean"
+														},
+														"status": {
+															"description": "Show the state of your account, and the type or configuration error.",
+															"enum": [
+																"ready",
+																"unconfigured",
+																"misconfigured",
+																"misconfigured/locked",
+																"unlocked"
+															],
+															"example": "ready",
+															"readOnly": true,
+															"type": "string"
+														},
+														"tag": {
+															"deprecated": true,
+															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
+															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Unlock Email Routing MX records"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Unlock Email Routing",
+		"tags": [
+			"Email Routing settings"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.config.update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /zones/{zone_identifier}/email/routing/disable": {
+		"deprecated": true,
 		"description": "Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work.",
 		"operationId": "email-routing-settings-disable-email-routing",
 		"parameters": [
@@ -526,20 +904,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -655,7 +1019,206 @@
 			"pro": true
 		}
 	},
+	"POST /zones/{zone_identifier}/email/routing/dns": {
+		"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
+		"operationId": "email-routing-settings-enable-email-routing-dns",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created": {
+															"description": "The date and time the settings have been created.",
+															"example": "2014-01-02T02:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"enabled": {
+															"default": true,
+															"description": "State of the zone settings for Email Routing.",
+															"enum": [
+																true,
+																false
+															],
+															"example": true,
+															"type": "boolean"
+														},
+														"id": {
+															"description": "Email Routing settings identifier.",
+															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified": {
+															"description": "The date and time the settings have been modified.",
+															"example": "2014-01-02T02:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "Domain of your zone.",
+															"example": "example.net",
+															"readOnly": true,
+															"type": "string"
+														},
+														"skip_wizard": {
+															"default": true,
+															"description": "Flag to check if the user skipped the configuration wizard.",
+															"enum": [
+																true,
+																false
+															],
+															"example": true,
+															"type": "boolean"
+														},
+														"status": {
+															"description": "Show the state of your account, and the type or configuration error.",
+															"enum": [
+																"ready",
+																"unconfigured",
+																"misconfigured",
+																"misconfigured/locked",
+																"unlocked"
+															],
+															"example": "ready",
+															"readOnly": true,
+															"type": "string"
+														},
+														"tag": {
+															"deprecated": true,
+															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
+															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Enable Email Routing response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Enable Email Routing",
+		"tags": [
+			"Email Routing settings"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.config.update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /zones/{zone_identifier}/email/routing/enable": {
+		"deprecated": true,
 		"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
 		"operationId": "email-routing-settings-enable-email-routing",
 		"parameters": [
@@ -744,20 +1307,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"

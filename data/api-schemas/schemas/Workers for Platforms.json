@@ -2128,7 +2128,7 @@
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
 		"description": "Get secret from a script uploaded to a Workers for Platforms namespace.",
-		"operationId": "namespace-worker-get-script-secres",
+		"operationId": "namespace-worker-get-script-secrets",
 		"parameters": [
 			{
 				"in": "path",
