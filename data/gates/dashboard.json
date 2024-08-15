@@ -151,6 +151,9 @@
 	"asn-lists": {
 		"enabled": true
 	},
+	"auto-minify-card-gate": {
+		"enabled": false
+	},
 	"bad-debt-banner": {
 		"enabled": false
 	},
@@ -288,7 +291,7 @@
 		"enabled": false
 	},
 	"combined-add-site-page-with-dns-transfer-options": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
