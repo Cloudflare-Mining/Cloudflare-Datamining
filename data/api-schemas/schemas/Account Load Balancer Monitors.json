@@ -83,20 +83,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -204,20 +190,6 @@
 																"uniqueItems": true
 															},
 															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
 														},
 														"success": {
 															"description": "Whether the API call was successful",
@@ -442,20 +414,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -475,11 +433,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -556,6 +509,12 @@
 																"type": "boolean"
 															},
 															"header": {
+																"additionalProperties": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 																"example": {
 																	"Host": [
@@ -707,20 +666,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -740,11 +685,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -821,6 +761,12 @@
 																		"type": "boolean"
 																	},
 																	"header": {
+																		"additionalProperties": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 																		"example": {
 																			"Host": [
@@ -1096,20 +1042,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -1191,6 +1123,12 @@
 															"type": "boolean"
 														},
 														"header": {
+															"additionalProperties": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": {
 																"Host": [
@@ -1340,20 +1278,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -1435,6 +1359,12 @@
 																	"type": "boolean"
 																},
 																"header": {
+																	"additionalProperties": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": {
 																		"Host": [
@@ -1708,20 +1638,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -1741,11 +1657,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -1873,20 +1784,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -1906,11 +1803,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -2093,7 +1985,8 @@
 				"name": "preview_id",
 				"required": true,
 				"schema": {
-					"example": "p1aba936b94213e5b8dca0c0dbf1f9cc"
+					"example": "p1aba936b94213e5b8dca0c0dbf1f9cc",
+					"type": "string"
 				}
 			},
 			{
@@ -2160,20 +2053,6 @@
 														"uniqueItems": true
 													},
 													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
 												},
 												"success": {
 													"description": "Whether the API call was successful",
@@ -2332,20 +2211,6 @@
 																"uniqueItems": true
 															},
 															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
 														},
 														"success": {
 															"description": "Whether the API call was successful",
@@ -2623,6 +2488,12 @@
 										"type": "boolean"
 									},
 									"header": {
+										"additionalProperties": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
 										"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": {
 											"Host": [
@@ -2751,20 +2622,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -2846,6 +2703,12 @@
 															"type": "boolean"
 														},
 														"header": {
+															"additionalProperties": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": {
 																"Host": [
@@ -2995,20 +2858,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -3090,6 +2939,12 @@
 																	"type": "boolean"
 																},
 																"header": {
+																	"additionalProperties": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": {
 																		"Host": [
@@ -3348,6 +3203,12 @@
 										"type": "boolean"
 									},
 									"header": {
+										"additionalProperties": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
 										"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": {
 											"Host": [
@@ -3476,20 +3337,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -3571,6 +3418,12 @@
 															"type": "boolean"
 														},
 														"header": {
+															"additionalProperties": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": {
 																"Host": [
@@ -3720,20 +3573,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -3815,6 +3654,12 @@
 																	"type": "boolean"
 																},
 																"header": {
+																	"additionalProperties": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": {
 																		"Host": [
@@ -4082,6 +3927,12 @@
 										"type": "boolean"
 									},
 									"header": {
+										"additionalProperties": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
 										"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": {
 											"Host": [
@@ -4210,20 +4061,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -4343,20 +4180,6 @@
 																"uniqueItems": true
 															},
 															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
 														},
 														"success": {
 															"description": "Whether the API call was successful",
@@ -4596,6 +4419,12 @@
 										"type": "boolean"
 									},
 									"header": {
+										"additionalProperties": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
 										"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": {
 											"Host": [
@@ -4724,20 +4553,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -4819,6 +4634,12 @@
 															"type": "boolean"
 														},
 														"header": {
+															"additionalProperties": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 															"example": {
 																"Host": [
@@ -4968,20 +4789,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -5063,6 +4870,12 @@
 																	"type": "boolean"
 																},
 																"header": {
+																	"additionalProperties": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 																	"example": {
 																		"Host": [

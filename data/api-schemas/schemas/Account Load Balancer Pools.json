@@ -83,20 +83,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -204,20 +190,6 @@
 																"uniqueItems": true
 															},
 															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
 														},
 														"success": {
 															"description": "Whether the API call was successful",
@@ -393,7 +365,8 @@
 				"in": "query",
 				"name": "monitor",
 				"schema": {
-					"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+					"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+					"type": "string"
 				}
 			}
 		],
@@ -449,20 +422,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -482,11 +441,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -635,7 +589,8 @@
 														"type": "string"
 													},
 													"monitor": {
-														"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+														"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+														"type": "string"
 													},
 													"name": {
 														"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -838,20 +793,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -871,11 +812,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -1024,7 +960,8 @@
 																"type": "string"
 															},
 															"monitor": {
-																"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+																"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+																"type": "string"
 															},
 															"name": {
 																"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -1351,20 +1288,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -1518,7 +1441,8 @@
 													"type": "string"
 												},
 												"monitor": {
-													"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+													"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+													"type": "string"
 												},
 												"name": {
 													"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -1719,20 +1643,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -1886,7 +1796,8 @@
 															"type": "string"
 														},
 														"monitor": {
-															"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+															"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+															"type": "string"
 														},
 														"name": {
 															"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -2211,20 +2122,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -2281,6 +2178,57 @@
 															}
 														]
 													}
+												}
+											},
+											"properties": {
+												"pool_id": {
+													"description": "Pool ID",
+													"example": "17b5962d775c646f3f9725cbc7a53df4",
+													"type": "string"
+												},
+												"pop_health": {
+													"description": "List of regions and associated health status.",
+													"properties": {
+														"healthy": {
+															"description": "Whether health check in region is healthy.",
+															"example": true,
+															"type": "boolean"
+														},
+														"origins": {
+															"items": {
+																"properties": {
+																	"ip": {
+																		"properties": {
+																			"failure_reason": {
+																				"description": "Failure reason.",
+																				"example": "No failure reasons",
+																				"type": "string"
+																			},
+																			"healthy": {
+																				"description": "Origin health status.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"response_code": {
+																				"description": "Response code from origin health check.",
+																				"example": 200,
+																				"type": "number"
+																			},
+																			"rtt": {
+																				"description": "Origin RTT (Round Trip Time) response.",
+																				"example": "201.5ms",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -2346,20 +2294,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -2416,6 +2350,57 @@
 																	}
 																]
 															}
+														}
+													},
+													"properties": {
+														"pool_id": {
+															"description": "Pool ID",
+															"example": "17b5962d775c646f3f9725cbc7a53df4",
+															"type": "string"
+														},
+														"pop_health": {
+															"description": "List of regions and associated health status.",
+															"properties": {
+																"healthy": {
+																	"description": "Whether health check in region is healthy.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"origins": {
+																	"items": {
+																		"properties": {
+																			"ip": {
+																				"properties": {
+																					"failure_reason": {
+																						"description": "Failure reason.",
+																						"example": "No failure reasons",
+																						"type": "string"
+																					},
+																					"healthy": {
+																						"description": "Origin health status.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"response_code": {
+																						"description": "Response code from origin health check.",
+																						"example": 200,
+																						"type": "number"
+																					},
+																					"rtt": {
+																						"description": "Origin RTT (Round Trip Time) response.",
+																						"example": "201.5ms",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
 														}
 													},
 													"type": "object"
@@ -2605,20 +2590,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -2638,11 +2609,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -2776,20 +2742,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -2809,11 +2761,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -3081,20 +3028,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -3114,11 +3047,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -3267,7 +3195,8 @@
 														"type": "string"
 													},
 													"monitor": {
-														"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+														"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+														"type": "string"
 													},
 													"name": {
 														"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -3470,20 +3399,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -3503,11 +3418,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -3656,7 +3566,8 @@
 																"type": "string"
 															},
 															"monitor": {
-																"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+																"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+																"type": "string"
 															},
 															"name": {
 																"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -4033,7 +3944,8 @@
 								"type": "integer"
 							},
 							"monitor": {
-								"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+								"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+								"type": "string"
 							},
 							"name": {
 								"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -4228,20 +4140,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -4395,7 +4293,8 @@
 													"type": "string"
 												},
 												"monitor": {
-													"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+													"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+													"type": "string"
 												},
 												"name": {
 													"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -4596,20 +4495,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -4763,7 +4648,8 @@
 															"type": "string"
 														},
 														"monitor": {
-															"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+															"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+															"type": "string"
 														},
 														"name": {
 															"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -5094,7 +4980,8 @@
 								"type": "integer"
 							},
 							"monitor": {
-								"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+								"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+								"type": "string"
 							},
 							"name": {
 								"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -5293,20 +5180,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -5460,7 +5333,8 @@
 													"type": "string"
 												},
 												"monitor": {
-													"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+													"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+													"type": "string"
 												},
 												"name": {
 													"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -5661,20 +5535,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -5828,7 +5688,8 @@
 															"type": "string"
 														},
 														"monitor": {
-															"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+															"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+															"type": "string"
 														},
 														"name": {
 															"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -6147,6 +6008,12 @@
 										"type": "boolean"
 									},
 									"header": {
+										"additionalProperties": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
 										"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
 										"example": {
 											"Host": [
@@ -6275,20 +6142,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -6408,20 +6261,6 @@
 																"uniqueItems": true
 															},
 															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
 														},
 														"success": {
 															"description": "Whether the API call was successful",
@@ -6717,7 +6556,8 @@
 								"type": "integer"
 							},
 							"monitor": {
-								"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+								"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+								"type": "string"
 							},
 							"name": {
 								"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -6916,20 +6756,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -7083,7 +6909,8 @@
 													"type": "string"
 												},
 												"monitor": {
-													"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+													"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+													"type": "string"
 												},
 												"name": {
 													"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
@@ -7284,20 +7111,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -7451,7 +7264,8 @@
 															"type": "string"
 														},
 														"monitor": {
-															"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+															"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
+															"type": "string"
 														},
 														"name": {
 															"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",

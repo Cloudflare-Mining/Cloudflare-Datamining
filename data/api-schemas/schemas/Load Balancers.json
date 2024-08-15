@@ -80,20 +80,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -201,20 +187,6 @@
 																"uniqueItems": true
 															},
 															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
 														},
 														"success": {
 															"description": "Whether the API call was successful",
@@ -436,20 +408,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -469,11 +427,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -532,6 +485,15 @@
 																"00920f38ce07c2e2f4df50b1f61d4194"
 															]
 														},
+														"properties": {
+															"country_code": {
+																"items": {
+																	"description": "List of Pool IDs",
+																	"type": "string"
+																},
+																"type": "array"
+															}
+														},
 														"type": "object"
 													},
 													"created_on": {
@@ -565,7 +527,8 @@
 														"type": "boolean"
 													},
 													"fallback_pool": {
-														"description": "The pool ID to use when all other pools are detected as unhealthy."
+														"description": "The pool ID to use when all other pools are detected as unhealthy.",
+														"type": "string"
 													},
 													"id": {
 														"example": "699d98642c564d2e855e9661899b7252",
@@ -625,6 +588,15 @@
 																"00920f38ce07c2e2f4df50b1f61d4194"
 															]
 														},
+														"properties": {
+															"pop": {
+																"items": {
+																	"description": "List of Pool IDs",
+																	"type": "string"
+																},
+																"type": "array"
+															}
+														},
 														"type": "object"
 													},
 													"proxied": {
@@ -651,6 +623,16 @@
 																	"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																	"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																},
+																"properties": {
+																	"key": {
+																		"description": "Pool ID",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Weight",
+																		"type": "number"
+																	}
+																},
 																"type": "object"
 															}
 														},
@@ -666,6 +648,15 @@
 																"de90f38ced07c2e2f4df50b1f61d4194",
 																"9290f38c5d07c2e2f4df57b1f61d4196"
 															]
+														},
+														"properties": {
+															"region_code": {
+																"items": {
+																	"description": "List of Pool IDs",
+																	"type": "string"
+																},
+																"type": "array"
+															}
 														},
 														"type": "object"
 													},
@@ -745,6 +736,15 @@
 																					"00920f38ce07c2e2f4df50b1f61d4194"
 																				]
 																			},
+																			"properties": {
+																				"country_code": {
+																					"items": {
+																						"description": "List of Pool IDs",
+																						"type": "string"
+																					},
+																					"type": "array"
+																				}
+																			},
 																			"type": "object"
 																		},
 																		"default_pools": {
@@ -761,7 +761,8 @@
 																			"type": "array"
 																		},
 																		"fallback_pool": {
-																			"description": "The pool ID to use when all other pools are detected as unhealthy."
+																			"description": "The pool ID to use when all other pools are detected as unhealthy.",
+																			"type": "string"
 																		},
 																		"location_strategy": {
 																			"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -806,6 +807,15 @@
 																					"00920f38ce07c2e2f4df50b1f61d4194"
 																				]
 																			},
+																			"properties": {
+																				"pop": {
+																					"items": {
+																						"description": "List of Pool IDs",
+																						"type": "string"
+																					},
+																					"type": "array"
+																				}
+																			},
 																			"type": "object"
 																		},
 																		"random_steering": {
@@ -826,6 +836,16 @@
 																						"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																						"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																					},
+																					"properties": {
+																						"key": {
+																							"description": "Pool ID",
+																							"type": "string"
+																						},
+																						"value": {
+																							"description": "Weight",
+																							"type": "number"
+																						}
+																					},
 																					"type": "object"
 																				}
 																			},
@@ -841,6 +861,15 @@
 																					"de90f38ced07c2e2f4df50b1f61d4194",
 																					"9290f38c5d07c2e2f4df57b1f61d4196"
 																				]
+																			},
+																			"properties": {
+																				"region_code": {
+																					"items": {
+																						"description": "List of Pool IDs",
+																						"type": "string"
+																					},
+																					"type": "array"
+																				}
 																			},
 																			"type": "object"
 																		},
@@ -1133,20 +1162,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -1166,11 +1181,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -1229,6 +1239,15 @@
 																		"00920f38ce07c2e2f4df50b1f61d4194"
 																	]
 																},
+																"properties": {
+																	"country_code": {
+																		"items": {
+																			"description": "List of Pool IDs",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
 																"type": "object"
 															},
 															"created_on": {
@@ -1262,7 +1281,8 @@
 																"type": "boolean"
 															},
 															"fallback_pool": {
-																"description": "The pool ID to use when all other pools are detected as unhealthy."
+																"description": "The pool ID to use when all other pools are detected as unhealthy.",
+																"type": "string"
 															},
 															"id": {
 																"example": "699d98642c564d2e855e9661899b7252",
@@ -1322,6 +1342,15 @@
 																		"00920f38ce07c2e2f4df50b1f61d4194"
 																	]
 																},
+																"properties": {
+																	"pop": {
+																		"items": {
+																			"description": "List of Pool IDs",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
 																"type": "object"
 															},
 															"proxied": {
@@ -1348,6 +1377,16 @@
 																			"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																			"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																		},
+																		"properties": {
+																			"key": {
+																				"description": "Pool ID",
+																				"type": "string"
+																			},
+																			"value": {
+																				"description": "Weight",
+																				"type": "number"
+																			}
+																		},
 																		"type": "object"
 																	}
 																},
@@ -1363,6 +1402,15 @@
 																		"de90f38ced07c2e2f4df50b1f61d4194",
 																		"9290f38c5d07c2e2f4df57b1f61d4196"
 																	]
+																},
+																"properties": {
+																	"region_code": {
+																		"items": {
+																			"description": "List of Pool IDs",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
 																},
 																"type": "object"
 															},
@@ -1442,6 +1490,15 @@
 																							"00920f38ce07c2e2f4df50b1f61d4194"
 																						]
 																					},
+																					"properties": {
+																						"country_code": {
+																							"items": {
+																								"description": "List of Pool IDs",
+																								"type": "string"
+																							},
+																							"type": "array"
+																						}
+																					},
 																					"type": "object"
 																				},
 																				"default_pools": {
@@ -1458,7 +1515,8 @@
 																					"type": "array"
 																				},
 																				"fallback_pool": {
-																					"description": "The pool ID to use when all other pools are detected as unhealthy."
+																					"description": "The pool ID to use when all other pools are detected as unhealthy.",
+																					"type": "string"
 																				},
 																				"location_strategy": {
 																					"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -1503,6 +1561,15 @@
 																							"00920f38ce07c2e2f4df50b1f61d4194"
 																						]
 																					},
+																					"properties": {
+																						"pop": {
+																							"items": {
+																								"description": "List of Pool IDs",
+																								"type": "string"
+																							},
+																							"type": "array"
+																						}
+																					},
 																					"type": "object"
 																				},
 																				"random_steering": {
@@ -1523,6 +1590,16 @@
 																								"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																								"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																							},
+																							"properties": {
+																								"key": {
+																									"description": "Pool ID",
+																									"type": "string"
+																								},
+																								"value": {
+																									"description": "Weight",
+																									"type": "number"
+																								}
+																							},
 																							"type": "object"
 																						}
 																					},
@@ -1538,6 +1615,15 @@
 																							"de90f38ced07c2e2f4df50b1f61d4194",
 																							"9290f38c5d07c2e2f4df57b1f61d4196"
 																						]
+																					},
+																					"properties": {
+																						"region_code": {
+																							"items": {
+																								"description": "List of Pool IDs",
+																								"type": "string"
+																							},
+																							"type": "array"
+																						}
 																					},
 																					"type": "object"
 																				},
@@ -1951,20 +2037,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -2028,6 +2100,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"country_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"created_on": {
@@ -2061,7 +2142,8 @@
 													"type": "boolean"
 												},
 												"fallback_pool": {
-													"description": "The pool ID to use when all other pools are detected as unhealthy."
+													"description": "The pool ID to use when all other pools are detected as unhealthy.",
+													"type": "string"
 												},
 												"id": {
 													"example": "699d98642c564d2e855e9661899b7252",
@@ -2121,6 +2203,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"pop": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"proxied": {
@@ -2147,6 +2238,16 @@
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 															},
+															"properties": {
+																"key": {
+																	"description": "Pool ID",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Weight",
+																	"type": "number"
+																}
+															},
 															"type": "object"
 														}
 													},
@@ -2162,6 +2263,15 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
+													},
+													"properties": {
+														"region_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
 													"type": "object"
 												},
@@ -2241,6 +2351,15 @@
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
 																		},
+																		"properties": {
+																			"country_code": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"default_pools": {
@@ -2257,7 +2376,8 @@
 																		"type": "array"
 																	},
 																	"fallback_pool": {
-																		"description": "The pool ID to use when all other pools are detected as unhealthy."
+																		"description": "The pool ID to use when all other pools are detected as unhealthy.",
+																		"type": "string"
 																	},
 																	"location_strategy": {
 																		"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -2302,6 +2422,15 @@
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
 																		},
+																		"properties": {
+																			"pop": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"random_steering": {
@@ -2322,6 +2451,16 @@
 																					"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																					"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																				},
+																				"properties": {
+																					"key": {
+																						"description": "Pool ID",
+																						"type": "string"
+																					},
+																					"value": {
+																						"description": "Weight",
+																						"type": "number"
+																					}
+																				},
 																				"type": "object"
 																			}
 																		},
@@ -2337,6 +2476,15 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"9290f38c5d07c2e2f4df57b1f61d4196"
 																			]
+																		},
+																		"properties": {
+																			"region_code": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
 																		},
 																		"type": "object"
 																	},
@@ -2627,20 +2775,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -2704,6 +2838,15 @@
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
 															},
+															"properties": {
+																"country_code": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
 															"type": "object"
 														},
 														"created_on": {
@@ -2737,7 +2880,8 @@
 															"type": "boolean"
 														},
 														"fallback_pool": {
-															"description": "The pool ID to use when all other pools are detected as unhealthy."
+															"description": "The pool ID to use when all other pools are detected as unhealthy.",
+															"type": "string"
 														},
 														"id": {
 															"example": "699d98642c564d2e855e9661899b7252",
@@ -2797,6 +2941,15 @@
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
 															},
+															"properties": {
+																"pop": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
 															"type": "object"
 														},
 														"proxied": {
@@ -2823,6 +2976,16 @@
 																		"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																		"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																	},
+																	"properties": {
+																		"key": {
+																			"description": "Pool ID",
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Weight",
+																			"type": "number"
+																		}
+																	},
 																	"type": "object"
 																}
 															},
@@ -2838,6 +3001,15 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"9290f38c5d07c2e2f4df57b1f61d4196"
 																]
+															},
+															"properties": {
+																"region_code": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
 															},
 															"type": "object"
 														},
@@ -2917,6 +3089,15 @@
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
 																				},
+																				"properties": {
+																					"country_code": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
+																				},
 																				"type": "object"
 																			},
 																			"default_pools": {
@@ -2933,7 +3114,8 @@
 																				"type": "array"
 																			},
 																			"fallback_pool": {
-																				"description": "The pool ID to use when all other pools are detected as unhealthy."
+																				"description": "The pool ID to use when all other pools are detected as unhealthy.",
+																				"type": "string"
 																			},
 																			"location_strategy": {
 																				"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -2978,6 +3160,15 @@
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
 																				},
+																				"properties": {
+																					"pop": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
+																				},
 																				"type": "object"
 																			},
 																			"random_steering": {
@@ -2998,6 +3189,16 @@
 																							"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																							"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																						},
+																						"properties": {
+																							"key": {
+																								"description": "Pool ID",
+																								"type": "string"
+																							},
+																							"value": {
+																								"description": "Weight",
+																								"type": "number"
+																							}
+																						},
 																						"type": "object"
 																					}
 																				},
@@ -3013,6 +3214,15 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"9290f38c5d07c2e2f4df57b1f61d4196"
 																					]
+																				},
+																				"properties": {
+																					"region_code": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
 																				},
 																				"type": "object"
 																			},
@@ -3400,6 +3610,15 @@
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
 								},
+								"properties": {
+									"country_code": {
+										"items": {
+											"description": "List of Pool IDs",
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
 								"type": "object"
 							},
 							"default_pools": {
@@ -3427,7 +3646,8 @@
 								"type": "boolean"
 							},
 							"fallback_pool": {
-								"description": "The pool ID to use when all other pools are detected as unhealthy."
+								"description": "The pool ID to use when all other pools are detected as unhealthy.",
+								"type": "string"
 							},
 							"location_strategy": {
 								"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -3477,6 +3697,15 @@
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
 								},
+								"properties": {
+									"pop": {
+										"items": {
+											"description": "List of Pool IDs",
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
 								"type": "object"
 							},
 							"proxied": {
@@ -3503,6 +3732,16 @@
 											"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 											"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 										},
+										"properties": {
+											"key": {
+												"description": "Pool ID",
+												"type": "string"
+											},
+											"value": {
+												"description": "Weight",
+												"type": "number"
+											}
+										},
 										"type": "object"
 									}
 								},
@@ -3518,6 +3757,15 @@
 										"de90f38ced07c2e2f4df50b1f61d4194",
 										"9290f38c5d07c2e2f4df57b1f61d4196"
 									]
+								},
+								"properties": {
+									"region_code": {
+										"items": {
+											"description": "List of Pool IDs",
+											"type": "string"
+										},
+										"type": "array"
+									}
 								},
 								"type": "object"
 							},
@@ -3597,6 +3845,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"country_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"default_pools": {
@@ -3613,7 +3870,8 @@
 													"type": "array"
 												},
 												"fallback_pool": {
-													"description": "The pool ID to use when all other pools are detected as unhealthy."
+													"description": "The pool ID to use when all other pools are detected as unhealthy.",
+													"type": "string"
 												},
 												"location_strategy": {
 													"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -3658,6 +3916,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"pop": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"random_steering": {
@@ -3678,6 +3945,16 @@
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 															},
+															"properties": {
+																"key": {
+																	"description": "Pool ID",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Weight",
+																	"type": "number"
+																}
+															},
 															"type": "object"
 														}
 													},
@@ -3693,6 +3970,15 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
+													},
+													"properties": {
+														"region_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
 													"type": "object"
 												},
@@ -3977,20 +4263,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -4054,6 +4326,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"country_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"created_on": {
@@ -4087,7 +4368,8 @@
 													"type": "boolean"
 												},
 												"fallback_pool": {
-													"description": "The pool ID to use when all other pools are detected as unhealthy."
+													"description": "The pool ID to use when all other pools are detected as unhealthy.",
+													"type": "string"
 												},
 												"id": {
 													"example": "699d98642c564d2e855e9661899b7252",
@@ -4147,6 +4429,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"pop": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"proxied": {
@@ -4173,6 +4464,16 @@
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 															},
+															"properties": {
+																"key": {
+																	"description": "Pool ID",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Weight",
+																	"type": "number"
+																}
+															},
 															"type": "object"
 														}
 													},
@@ -4188,6 +4489,15 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
+													},
+													"properties": {
+														"region_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
 													"type": "object"
 												},
@@ -4267,6 +4577,15 @@
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
 																		},
+																		"properties": {
+																			"country_code": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"default_pools": {
@@ -4283,7 +4602,8 @@
 																		"type": "array"
 																	},
 																	"fallback_pool": {
-																		"description": "The pool ID to use when all other pools are detected as unhealthy."
+																		"description": "The pool ID to use when all other pools are detected as unhealthy.",
+																		"type": "string"
 																	},
 																	"location_strategy": {
 																		"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -4328,6 +4648,15 @@
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
 																		},
+																		"properties": {
+																			"pop": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"random_steering": {
@@ -4348,6 +4677,16 @@
 																					"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																					"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																				},
+																				"properties": {
+																					"key": {
+																						"description": "Pool ID",
+																						"type": "string"
+																					},
+																					"value": {
+																						"description": "Weight",
+																						"type": "number"
+																					}
+																				},
 																				"type": "object"
 																			}
 																		},
@@ -4363,6 +4702,15 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"9290f38c5d07c2e2f4df57b1f61d4196"
 																			]
+																		},
+																		"properties": {
+																			"region_code": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
 																		},
 																		"type": "object"
 																	},
@@ -4653,20 +5001,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -4730,6 +5064,15 @@
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
 															},
+															"properties": {
+																"country_code": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
 															"type": "object"
 														},
 														"created_on": {
@@ -4763,7 +5106,8 @@
 															"type": "boolean"
 														},
 														"fallback_pool": {
-															"description": "The pool ID to use when all other pools are detected as unhealthy."
+															"description": "The pool ID to use when all other pools are detected as unhealthy.",
+															"type": "string"
 														},
 														"id": {
 															"example": "699d98642c564d2e855e9661899b7252",
@@ -4823,6 +5167,15 @@
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
 															},
+															"properties": {
+																"pop": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
 															"type": "object"
 														},
 														"proxied": {
@@ -4849,6 +5202,16 @@
 																		"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																		"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																	},
+																	"properties": {
+																		"key": {
+																			"description": "Pool ID",
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Weight",
+																			"type": "number"
+																		}
+																	},
 																	"type": "object"
 																}
 															},
@@ -4864,6 +5227,15 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"9290f38c5d07c2e2f4df57b1f61d4196"
 																]
+															},
+															"properties": {
+																"region_code": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
 															},
 															"type": "object"
 														},
@@ -4943,6 +5315,15 @@
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
 																				},
+																				"properties": {
+																					"country_code": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
+																				},
 																				"type": "object"
 																			},
 																			"default_pools": {
@@ -4959,7 +5340,8 @@
 																				"type": "array"
 																			},
 																			"fallback_pool": {
-																				"description": "The pool ID to use when all other pools are detected as unhealthy."
+																				"description": "The pool ID to use when all other pools are detected as unhealthy.",
+																				"type": "string"
 																			},
 																			"location_strategy": {
 																				"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -5004,6 +5386,15 @@
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
 																				},
+																				"properties": {
+																					"pop": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
+																				},
 																				"type": "object"
 																			},
 																			"random_steering": {
@@ -5024,6 +5415,16 @@
 																							"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																							"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																						},
+																						"properties": {
+																							"key": {
+																								"description": "Pool ID",
+																								"type": "string"
+																							},
+																							"value": {
+																								"description": "Weight",
+																								"type": "number"
+																							}
+																						},
 																						"type": "object"
 																					}
 																				},
@@ -5039,6 +5440,15 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"9290f38c5d07c2e2f4df57b1f61d4196"
 																					]
+																				},
+																				"properties": {
+																					"region_code": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
 																				},
 																				"type": "object"
 																			},
@@ -5417,6 +5827,15 @@
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
 								},
+								"properties": {
+									"country_code": {
+										"items": {
+											"description": "List of Pool IDs",
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
 								"type": "object"
 							},
 							"default_pools": {
@@ -5438,7 +5857,8 @@
 								"type": "string"
 							},
 							"fallback_pool": {
-								"description": "The pool ID to use when all other pools are detected as unhealthy."
+								"description": "The pool ID to use when all other pools are detected as unhealthy.",
+								"type": "string"
 							},
 							"location_strategy": {
 								"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -5488,6 +5908,15 @@
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
 								},
+								"properties": {
+									"pop": {
+										"items": {
+											"description": "List of Pool IDs",
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
 								"type": "object"
 							},
 							"proxied": {
@@ -5514,6 +5943,16 @@
 											"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 											"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 										},
+										"properties": {
+											"key": {
+												"description": "Pool ID",
+												"type": "string"
+											},
+											"value": {
+												"description": "Weight",
+												"type": "number"
+											}
+										},
 										"type": "object"
 									}
 								},
@@ -5529,6 +5968,15 @@
 										"de90f38ced07c2e2f4df50b1f61d4194",
 										"9290f38c5d07c2e2f4df57b1f61d4196"
 									]
+								},
+								"properties": {
+									"region_code": {
+										"items": {
+											"description": "List of Pool IDs",
+											"type": "string"
+										},
+										"type": "array"
+									}
 								},
 								"type": "object"
 							},
@@ -5608,6 +6056,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"country_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"default_pools": {
@@ -5624,7 +6081,8 @@
 													"type": "array"
 												},
 												"fallback_pool": {
-													"description": "The pool ID to use when all other pools are detected as unhealthy."
+													"description": "The pool ID to use when all other pools are detected as unhealthy.",
+													"type": "string"
 												},
 												"location_strategy": {
 													"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -5669,6 +6127,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"pop": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"random_steering": {
@@ -5689,6 +6156,16 @@
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 															},
+															"properties": {
+																"key": {
+																	"description": "Pool ID",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Weight",
+																	"type": "number"
+																}
+															},
 															"type": "object"
 														}
 													},
@@ -5704,6 +6181,15 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
+													},
+													"properties": {
+														"region_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
 													"type": "object"
 												},
@@ -5993,20 +6479,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -6070,6 +6542,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"country_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"created_on": {
@@ -6103,7 +6584,8 @@
 													"type": "boolean"
 												},
 												"fallback_pool": {
-													"description": "The pool ID to use when all other pools are detected as unhealthy."
+													"description": "The pool ID to use when all other pools are detected as unhealthy.",
+													"type": "string"
 												},
 												"id": {
 													"example": "699d98642c564d2e855e9661899b7252",
@@ -6163,6 +6645,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"pop": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"proxied": {
@@ -6189,6 +6680,16 @@
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 															},
+															"properties": {
+																"key": {
+																	"description": "Pool ID",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Weight",
+																	"type": "number"
+																}
+															},
 															"type": "object"
 														}
 													},
@@ -6204,6 +6705,15 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
+													},
+													"properties": {
+														"region_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
 													"type": "object"
 												},
@@ -6283,6 +6793,15 @@
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
 																		},
+																		"properties": {
+																			"country_code": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"default_pools": {
@@ -6299,7 +6818,8 @@
 																		"type": "array"
 																	},
 																	"fallback_pool": {
-																		"description": "The pool ID to use when all other pools are detected as unhealthy."
+																		"description": "The pool ID to use when all other pools are detected as unhealthy.",
+																		"type": "string"
 																	},
 																	"location_strategy": {
 																		"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -6344,6 +6864,15 @@
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
 																		},
+																		"properties": {
+																			"pop": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"random_steering": {
@@ -6364,6 +6893,16 @@
 																					"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																					"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																				},
+																				"properties": {
+																					"key": {
+																						"description": "Pool ID",
+																						"type": "string"
+																					},
+																					"value": {
+																						"description": "Weight",
+																						"type": "number"
+																					}
+																				},
 																				"type": "object"
 																			}
 																		},
@@ -6379,6 +6918,15 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"9290f38c5d07c2e2f4df57b1f61d4196"
 																			]
+																		},
+																		"properties": {
+																			"region_code": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
 																		},
 																		"type": "object"
 																	},
@@ -6669,20 +7217,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -6746,6 +7280,15 @@
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
 															},
+															"properties": {
+																"country_code": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
 															"type": "object"
 														},
 														"created_on": {
@@ -6779,7 +7322,8 @@
 															"type": "boolean"
 														},
 														"fallback_pool": {
-															"description": "The pool ID to use when all other pools are detected as unhealthy."
+															"description": "The pool ID to use when all other pools are detected as unhealthy.",
+															"type": "string"
 														},
 														"id": {
 															"example": "699d98642c564d2e855e9661899b7252",
@@ -6839,6 +7383,15 @@
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
 															},
+															"properties": {
+																"pop": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
 															"type": "object"
 														},
 														"proxied": {
@@ -6865,6 +7418,16 @@
 																		"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																		"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																	},
+																	"properties": {
+																		"key": {
+																			"description": "Pool ID",
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Weight",
+																			"type": "number"
+																		}
+																	},
 																	"type": "object"
 																}
 															},
@@ -6880,6 +7443,15 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"9290f38c5d07c2e2f4df57b1f61d4196"
 																]
+															},
+															"properties": {
+																"region_code": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
 															},
 															"type": "object"
 														},
@@ -6959,6 +7531,15 @@
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
 																				},
+																				"properties": {
+																					"country_code": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
+																				},
 																				"type": "object"
 																			},
 																			"default_pools": {
@@ -6975,7 +7556,8 @@
 																				"type": "array"
 																			},
 																			"fallback_pool": {
-																				"description": "The pool ID to use when all other pools are detected as unhealthy."
+																				"description": "The pool ID to use when all other pools are detected as unhealthy.",
+																				"type": "string"
 																			},
 																			"location_strategy": {
 																				"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -7020,6 +7602,15 @@
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
 																				},
+																				"properties": {
+																					"pop": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
+																				},
 																				"type": "object"
 																			},
 																			"random_steering": {
@@ -7040,6 +7631,16 @@
 																							"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																							"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																						},
+																						"properties": {
+																							"key": {
+																								"description": "Pool ID",
+																								"type": "string"
+																							},
+																							"value": {
+																								"description": "Weight",
+																								"type": "number"
+																							}
+																						},
 																						"type": "object"
 																					}
 																				},
@@ -7055,6 +7656,15 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"9290f38c5d07c2e2f4df57b1f61d4196"
 																					]
+																				},
+																				"properties": {
+																					"region_code": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
 																				},
 																				"type": "object"
 																			},
@@ -7442,6 +8052,15 @@
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
 								},
+								"properties": {
+									"country_code": {
+										"items": {
+											"description": "List of Pool IDs",
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
 								"type": "object"
 							},
 							"default_pools": {
@@ -7469,7 +8088,8 @@
 								"type": "boolean"
 							},
 							"fallback_pool": {
-								"description": "The pool ID to use when all other pools are detected as unhealthy."
+								"description": "The pool ID to use when all other pools are detected as unhealthy.",
+								"type": "string"
 							},
 							"location_strategy": {
 								"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -7519,6 +8139,15 @@
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
 								},
+								"properties": {
+									"pop": {
+										"items": {
+											"description": "List of Pool IDs",
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
 								"type": "object"
 							},
 							"proxied": {
@@ -7545,6 +8174,16 @@
 											"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 											"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 										},
+										"properties": {
+											"key": {
+												"description": "Pool ID",
+												"type": "string"
+											},
+											"value": {
+												"description": "Weight",
+												"type": "number"
+											}
+										},
 										"type": "object"
 									}
 								},
@@ -7560,6 +8199,15 @@
 										"de90f38ced07c2e2f4df50b1f61d4194",
 										"9290f38c5d07c2e2f4df57b1f61d4196"
 									]
+								},
+								"properties": {
+									"region_code": {
+										"items": {
+											"description": "List of Pool IDs",
+											"type": "string"
+										},
+										"type": "array"
+									}
 								},
 								"type": "object"
 							},
@@ -7639,6 +8287,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"country_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"default_pools": {
@@ -7655,7 +8312,8 @@
 													"type": "array"
 												},
 												"fallback_pool": {
-													"description": "The pool ID to use when all other pools are detected as unhealthy."
+													"description": "The pool ID to use when all other pools are detected as unhealthy.",
+													"type": "string"
 												},
 												"location_strategy": {
 													"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -7700,6 +8358,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"pop": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"random_steering": {
@@ -7720,6 +8387,16 @@
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 															},
+															"properties": {
+																"key": {
+																	"description": "Pool ID",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Weight",
+																	"type": "number"
+																}
+															},
 															"type": "object"
 														}
 													},
@@ -7735,6 +8412,15 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
+													},
+													"properties": {
+														"region_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
 													"type": "object"
 												},
@@ -8024,20 +8710,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -8101,6 +8773,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"country_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"created_on": {
@@ -8134,7 +8815,8 @@
 													"type": "boolean"
 												},
 												"fallback_pool": {
-													"description": "The pool ID to use when all other pools are detected as unhealthy."
+													"description": "The pool ID to use when all other pools are detected as unhealthy.",
+													"type": "string"
 												},
 												"id": {
 													"example": "699d98642c564d2e855e9661899b7252",
@@ -8194,6 +8876,15 @@
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
 													},
+													"properties": {
+														"pop": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
 													"type": "object"
 												},
 												"proxied": {
@@ -8220,6 +8911,16 @@
 																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 															},
+															"properties": {
+																"key": {
+																	"description": "Pool ID",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Weight",
+																	"type": "number"
+																}
+															},
 															"type": "object"
 														}
 													},
@@ -8235,6 +8936,15 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
+													},
+													"properties": {
+														"region_code": {
+															"items": {
+																"description": "List of Pool IDs",
+																"type": "string"
+															},
+															"type": "array"
+														}
 													},
 													"type": "object"
 												},
@@ -8314,6 +9024,15 @@
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
 																		},
+																		"properties": {
+																			"country_code": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"default_pools": {
@@ -8330,7 +9049,8 @@
 																		"type": "array"
 																	},
 																	"fallback_pool": {
-																		"description": "The pool ID to use when all other pools are detected as unhealthy."
+																		"description": "The pool ID to use when all other pools are detected as unhealthy.",
+																		"type": "string"
 																	},
 																	"location_strategy": {
 																		"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -8375,6 +9095,15 @@
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
 																		},
+																		"properties": {
+																			"pop": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"random_steering": {
@@ -8395,6 +9124,16 @@
 																					"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																					"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																				},
+																				"properties": {
+																					"key": {
+																						"description": "Pool ID",
+																						"type": "string"
+																					},
+																					"value": {
+																						"description": "Weight",
+																						"type": "number"
+																					}
+																				},
 																				"type": "object"
 																			}
 																		},
@@ -8410,6 +9149,15 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"9290f38c5d07c2e2f4df57b1f61d4196"
 																			]
+																		},
+																		"properties": {
+																			"region_code": {
+																				"items": {
+																					"description": "List of Pool IDs",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
 																		},
 																		"type": "object"
 																	},
@@ -8700,20 +9448,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -8777,6 +9511,15 @@
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
 															},
+															"properties": {
+																"country_code": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
 															"type": "object"
 														},
 														"created_on": {
@@ -8810,7 +9553,8 @@
 															"type": "boolean"
 														},
 														"fallback_pool": {
-															"description": "The pool ID to use when all other pools are detected as unhealthy."
+															"description": "The pool ID to use when all other pools are detected as unhealthy.",
+															"type": "string"
 														},
 														"id": {
 															"example": "699d98642c564d2e855e9661899b7252",
@@ -8870,6 +9614,15 @@
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
 															},
+															"properties": {
+																"pop": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
 															"type": "object"
 														},
 														"proxied": {
@@ -8896,6 +9649,16 @@
 																		"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																		"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																	},
+																	"properties": {
+																		"key": {
+																			"description": "Pool ID",
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Weight",
+																			"type": "number"
+																		}
+																	},
 																	"type": "object"
 																}
 															},
@@ -8911,6 +9674,15 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"9290f38c5d07c2e2f4df57b1f61d4196"
 																]
+															},
+															"properties": {
+																"region_code": {
+																	"items": {
+																		"description": "List of Pool IDs",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
 															},
 															"type": "object"
 														},
@@ -8990,6 +9762,15 @@
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
 																				},
+																				"properties": {
+																					"country_code": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
+																				},
 																				"type": "object"
 																			},
 																			"default_pools": {
@@ -9006,7 +9787,8 @@
 																				"type": "array"
 																			},
 																			"fallback_pool": {
-																				"description": "The pool ID to use when all other pools are detected as unhealthy."
+																				"description": "The pool ID to use when all other pools are detected as unhealthy.",
+																				"type": "string"
 																			},
 																			"location_strategy": {
 																				"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
@@ -9051,6 +9833,15 @@
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
 																				},
+																				"properties": {
+																					"pop": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
+																				},
 																				"type": "object"
 																			},
 																			"random_steering": {
@@ -9071,6 +9862,16 @@
 																							"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 																							"de90f38ced07c2e2f4df50b1f61d4194": 0.3
 																						},
+																						"properties": {
+																							"key": {
+																								"description": "Pool ID",
+																								"type": "string"
+																							},
+																							"value": {
+																								"description": "Weight",
+																								"type": "number"
+																							}
+																						},
 																						"type": "object"
 																					}
 																				},
@@ -9086,6 +9887,15 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"9290f38c5d07c2e2f4df57b1f61d4196"
 																					]
+																				},
+																				"properties": {
+																					"region_code": {
+																						"items": {
+																							"description": "List of Pool IDs",
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
 																				},
 																				"type": "object"
 																			},

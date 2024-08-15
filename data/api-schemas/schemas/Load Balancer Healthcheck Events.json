@@ -122,20 +122,6 @@
 													},
 													"type": "array"
 												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
-														}
-													]
-												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
@@ -155,11 +141,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -211,7 +192,47 @@
 																"name": "some-origin"
 															}
 														],
-														"items": {},
+														"items": {
+															"properties": {
+																"address": {
+																	"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
+																	"example": "0.0.0.0",
+																	"type": "string"
+																},
+																"changed": {
+																	"description": "Whether the origin has changed health status.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"enabled": {
+																	"default": true,
+																	"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"failure_reason": {
+																	"description": "Failure reason for un-healthy origin health check.",
+																	"example": "No failures",
+																	"type": "string"
+																},
+																"healthy": {
+																	"description": "Whether the origin is reported as healthy.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"ip": {
+																	"description": "The IP address (IPv4 or IPv6) of the origin.",
+																	"example": "198.51.100.4",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "A human-identifiable name for the origin.",
+																	"example": "app-server-1",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
 														"type": "array"
 													},
 													"pool": {
@@ -295,20 +316,6 @@
 															},
 															"type": "array"
 														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
 														"success": {
 															"description": "Whether the API call was successful",
 															"enum": [
@@ -328,11 +335,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -384,7 +386,47 @@
 																		"name": "some-origin"
 																	}
 																],
-																"items": {},
+																"items": {
+																	"properties": {
+																		"address": {
+																			"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
+																			"example": "0.0.0.0",
+																			"type": "string"
+																		},
+																		"changed": {
+																			"description": "Whether the origin has changed health status.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"enabled": {
+																			"default": true,
+																			"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"failure_reason": {
+																			"description": "Failure reason for un-healthy origin health check.",
+																			"example": "No failures",
+																			"type": "string"
+																		},
+																		"healthy": {
+																			"description": "Whether the origin is reported as healthy.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"ip": {
+																			"description": "The IP address (IPv4 or IPv6) of the origin.",
+																			"example": "198.51.100.4",
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "A human-identifiable name for the origin.",
+																			"example": "app-server-1",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
 																"type": "array"
 															},
 															"pool": {
