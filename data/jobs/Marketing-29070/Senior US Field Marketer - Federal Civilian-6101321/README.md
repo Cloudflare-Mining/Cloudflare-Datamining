@@ -6,27 +6,23 @@
 	</div>
 </div>
 <p><strong>About the Role</strong></p>
-<p>Cloudflare’s Americas Marketing Team is searching for a Sr. Manager, US Field Marketer for Federal and DOD, to team with our sales leaders, partner ecosystem, campaign, and product marketing organizations to design &amp; drive high-impact pipeline generation programs leading to closed-won bookings.</p>
-<p>The Sr. Manager for Federal &amp; DOD will be a part of a growing team aligned to sales, utilizing data and historical performance to inform quarterly plans &amp; strategies.</p>
-<p>This key individual will report to our Director, US Public Sector marketing and be responsible for coordinating and managing programs across a comprehensive marketing mix for Federal and DOD.&nbsp; This may include Field Marketing &amp; Events, thought leadership, web, content, social media, and more.</p>
+<p>Cloudflare’s Americas Marketing Team is searching for a Senior Manager, US Field Marketer for Federal Civilian to team with our sales leaders, partner ecosystem, campaign, and product marketing organizations to design &amp; deliver high-impact pipeline generation programs leading to closed-won bookings.</p>
+<p>The Senior Manager for Federal Civilian will build creative, integrated marketing campaigns to increase brand awareness and drive demand.&nbsp; This key individual will report to our Director, US Public Sector marketing and be responsible for establishing the marketing strategy and managing program execution which may include ABM, digital, social, webinars, events, advertising, PR and more.</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Planning &amp; execution: demonstrable skill working with teams to build &amp; execute quarterly and yearly plans including budget management and projection of results</li>
-	<li>Performance monitoring &amp; management: proven track record using enterprise analytics to monitor and optimize program performance, including investment rationalization, based on past performance and results</li>
+	<li>Planning &amp; execution: Highly skilled at building and executing integrated multi-touch programs in collaboration with sales, SMEs and partners. Managing within budget and projecting results.&nbsp;</li>
+	<li>Performance monitoring &amp; management: proven track record using analytics to monitor and optimize program performance, including investment rationalization, based on past performance and results. Ability to be nimble and adjust strategy, messaging or tactics mid-stream to hit projected targets.&nbsp;</li>
 	<li>Sales alignment &amp; partnership: experience working in partnership with sales leaders, including BDR leadership, to enable sellers with account engagement programs leading to opportunity discovery and pipeline generation.</li>
-	<li>Opportunity &amp; Market Development: responsible for coordinating with business development, partner ecosystem and strategic capture teams for market presence and customer engagement</li>
+	<li>Opportunity &amp; Market Development: responsible for coordinating with business development, partner ecosystem and strategic capture teams for market presence and customer engagement.</li>
 </ul>
 <p><strong>Your Qualifications</strong></p>
 <ul>
-	<li>7-10 years in Federal &amp; DOD marketing role in $1B+ BtoB technology organization in cybersecurity or networking</li>
-	<li>Direct experience in DOD and Federal, including field programs, Federal cybersecurity events, paid &amp; earned media, web-site strategy, campaign planning &amp; management, and event marketing.</li>
-	<li>Knowledge of predominant public-sector focused resellers, distributors, and systems integrators.</li>
-	<li>Proven results achieving quantifiable contribution metrics such as qualified leads, pipeline, closed business</li>
-	<li>Hands on experience with predominant sales and marketing systems such as budget management.&nbsp;</li>
-	<li>Able to be effective working across organizational boundaries and building relationships to accomplish objectives</li>
-	<li>Thorough knowledge and understanding of enterprise lead-management processes and marketing attribution approaches</li>
-	<li>Experience designing and building field-focused marketing programs across digital, first &amp; third party events, and partner ecosystem including resellers, tech partners, and GSIs</li>
-	<li>BA/BS in Marketing, Business, Communications, Engineering or other related fields.&nbsp; MBA a plus</li>
+	<li>7-10 years in Federal Civilian marketing role in $1B+ BtoB technology organization in cybersecurity or networking.</li>
+	<li>Direct experience in executing paid and earned media, campaign planning and management, ABM programs, and event marketing.</li>
+	<li>Knowledge public-sector focused resellers, distributors, and systems integrators.</li>
+	<li>Proven results achieving quantifiable contribution metrics such as qualified leads, pipeline, closed business.</li>
+	<li>Able to be effective working across organizational boundaries and building relationships to accomplish objectives.</li>
+	<li>BA/BS in Marketing, Business, Communications, Engineering or other related fields.&nbsp; MBA a plus.</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
