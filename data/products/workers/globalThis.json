@@ -1095,6 +1095,7 @@
 		"race": "function",
 		"reject": "function",
 		"resolve": "function",
+		"try": "function",
 		"withResolvers": "function"
 	},
 	"PromiseRejectionEvent": {
@@ -2743,7 +2744,8 @@
 					"race": "undefined",
 					"resolve": "undefined",
 					"reject": "undefined",
-					"withResolvers": "undefined"
+					"withResolvers": "undefined",
+					"try": "undefined"
 				}
 			},
 			"doesNotThrow": {
@@ -2858,7 +2860,8 @@
 					"race": "undefined",
 					"resolve": "undefined",
 					"reject": "undefined",
-					"withResolvers": "undefined"
+					"withResolvers": "undefined",
+					"try": "undefined"
 				}
 			},
 			"strict": {
@@ -4612,8 +4615,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -4627,8 +4630,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -4653,8 +4656,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					}
 				},
@@ -4698,7 +4701,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					},
 					"finished": {
@@ -4716,7 +4720,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					}
 				},
@@ -5296,8 +5301,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -5311,8 +5316,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -5337,8 +5342,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					}
 				},
@@ -5382,7 +5387,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					},
 					"finished": {
@@ -5400,7 +5406,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					}
 				},
@@ -5465,8 +5472,8 @@
 					"prototype": "undefined",
 					"isArray": "undefined",
 					"from": "undefined",
-					"of": "undefined",
-					"fromAsync": "undefined"
+					"fromAsync": "undefined",
+					"of": "undefined"
 				}
 			},
 			"hkdf": {
@@ -5541,8 +5548,8 @@
 					"prototype": "undefined",
 					"isArray": "undefined",
 					"from": "undefined",
-					"of": "undefined",
-					"fromAsync": "undefined"
+					"fromAsync": "undefined",
+					"of": "undefined"
 				}
 			},
 			"getCurves": {
@@ -5560,8 +5567,8 @@
 					"prototype": "undefined",
 					"isArray": "undefined",
 					"from": "undefined",
-					"of": "undefined",
-					"fromAsync": "undefined"
+					"fromAsync": "undefined",
+					"of": "undefined"
 				}
 			},
 			"secureHeapUsed": {
@@ -6083,8 +6090,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -6098,8 +6105,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -6124,8 +6131,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"length": "undefined",
@@ -6263,8 +6270,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -6278,8 +6285,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -6304,8 +6311,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"length": "undefined",
@@ -6578,8 +6585,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -6593,8 +6600,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -6619,8 +6626,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"length": "undefined",
@@ -6683,7 +6690,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					},
 					"finished": {
@@ -6701,7 +6709,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					}
 				},
@@ -7025,8 +7034,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -7040,8 +7049,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -7066,8 +7075,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"_writableState": "object",
@@ -7115,7 +7124,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					},
 					"finished": {
@@ -7133,7 +7143,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					}
 				},
@@ -7631,8 +7642,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -7646,8 +7657,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -7672,8 +7683,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"_readableState": "object",
@@ -7726,7 +7737,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					},
 					"finished": {
@@ -7744,7 +7756,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					}
 				},
@@ -8285,8 +8298,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -8300,8 +8313,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -8326,8 +8339,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"_readableState": "object",
@@ -8380,7 +8393,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					},
 					"finished": {
@@ -8398,7 +8412,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					}
 				},
@@ -8957,8 +8972,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -8972,8 +8987,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -8998,8 +9013,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"_readableState": "object",
@@ -9049,7 +9064,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					},
 					"finished": {
@@ -9067,7 +9083,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					}
 				},
@@ -9626,8 +9643,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -9641,8 +9658,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -9667,8 +9684,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"_readableState": "object",
@@ -9718,7 +9735,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					},
 					"finished": {
@@ -9736,7 +9754,8 @@
 							"race": "undefined",
 							"resolve": "undefined",
 							"reject": "undefined",
-							"withResolvers": "undefined"
+							"withResolvers": "undefined",
+							"try": "undefined"
 						}
 					}
 				},
@@ -9775,7 +9794,8 @@
 						"race": "undefined",
 						"resolve": "undefined",
 						"reject": "undefined",
-						"withResolvers": "undefined"
+						"withResolvers": "undefined",
+						"try": "undefined"
 					}
 				},
 				"finished": {
@@ -9793,7 +9813,8 @@
 						"race": "undefined",
 						"resolve": "undefined",
 						"reject": "undefined",
-						"withResolvers": "undefined"
+						"withResolvers": "undefined",
+						"try": "undefined"
 					}
 				}
 			},
@@ -9980,8 +10001,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -9995,8 +10016,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -10021,8 +10042,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"length": "undefined",
@@ -10160,8 +10181,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"rawListeners": {
@@ -10175,8 +10196,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"listenerCount": {
@@ -10201,8 +10222,8 @@
 							"prototype": "undefined",
 							"isArray": "undefined",
 							"from": "undefined",
-							"of": "undefined",
-							"fromAsync": "undefined"
+							"fromAsync": "undefined",
+							"of": "undefined"
 						}
 					},
 					"length": "undefined",
