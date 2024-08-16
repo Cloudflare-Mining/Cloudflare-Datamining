@@ -585,6 +585,42 @@
 		"label": "chinanetwork_steering_write"
 	},
 	{
+		"id": "0661ff47aa3a4786beab3b8128e0cd24",
+		"name": "Cloud Connector Read",
+		"description": "Grants read access to Cloud Connector",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "cloud_connector_read"
+	},
+	{
+		"id": "eafd71286d0e4fdca404a7b4d203c5c9",
+		"name": "Cloud Connector Write",
+		"description": "Grants write access to Cloud Connector",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "cloud_connector_write"
+	},
+	{
+		"id": "9e5a9912439940fca5898b5b8dc6d1a5",
+		"name": "Cloud Email Security: Read",
+		"description": "Grants read access to Cloudflare Cloud Email Security",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "cloud_email_security_read"
+	},
+	{
+		"id": "a3567c13e074447fb101babac3463566",
+		"name": "Cloud Email Security: Write",
+		"description": "Grants write access to Cloudflare Cloud Email Security",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "cloud_email_security_write"
+	},
+	{
 		"id": "65ec50cbde3d4c838bbe7500024d5745",
 		"name": "Cloudchamber Read",
 		"description": "Grants read access to Cloudchamber deployments",
@@ -700,6 +736,33 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "teams_connector_cloudflared_write"
+	},
+	{
+		"id": "f5d857f67f144e3c8bacea88c17d4a13",
+		"name": "Cloudflare Zero Trust PII Read",
+		"description": "Can access Cloudflare Zero Trust PII.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "teams_pii_read"
+	},
+	{
+		"id": "cf9353ed7978436e8fb20c03fce26449",
+		"name": "Cloudforce One Read",
+		"description": "Grants read access to Cloudforce One",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "cloudforce_one_read"
+	},
+	{
+		"id": "677767156f294485b497a8f103172e7d",
+		"name": "Cloudforce One Write",
+		"description": "Grants read access to Cloudforce One",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "cloudforce_one_write"
 	},
 	{
 		"id": "20e5ea084b2f491c86b8d8d90abff905",
@@ -1188,6 +1251,15 @@
 		"label": "images_write"
 	},
 	{
+		"id": "c6f97eeee13345db8cc00af0953a42de",
+		"name": "Integration Write",
+		"description": "Grants write access to integrations",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "integration_write"
+	},
+	{
 		"id": "df1577df30ee46268f9470952d7b0cdf",
 		"name": "Intel Read",
 		"description": "Grants read access to Intel API",
@@ -1530,6 +1602,24 @@
 		"label": "page_write"
 	},
 	{
+		"id": "14b9cf2f410f4c0c9a16bb10a81c0e0b",
+		"name": "Pipelines Read",
+		"description": "Grants read access to Cloudflare Pipelines",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "pipelines_read"
+	},
+	{
+		"id": "e34111af393449539859485aa5ddd5bd",
+		"name": "Pipelines Write",
+		"description": "Grants write access to Cloudflare Pipelines",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "pipelines_write"
+	},
+	{
 		"id": "fd7f886c75a244389e892c4c3c068292",
 		"name": "Pubsub Configuration Read",
 		"description": "Grants read access to Pubsub Configurations\n",
@@ -1861,6 +1951,24 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "ai_write"
+	},
+	{
+		"id": "ad99c5ae555e45c4bef5bdf2678388ba",
+		"name": "Workers CI Read",
+		"description": "Grants read access to Workers CI",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "workers_ci_read"
+	},
+	{
+		"id": "2e095cf436e2455fa62c9a9c2e18c478",
+		"name": "Workers CI Write",
+		"description": "Grants write access to Workers CI",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "workers_ci_write"
 	},
 	{
 		"id": "8b47d2786a534c08a1f94ee8f9f599ef",

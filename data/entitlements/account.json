@@ -492,6 +492,18 @@
 		}
 	},
 	{
+		"id": "casb.fedramp_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 1598,
+			"key": "casb.fedramp_enabled",
+			"name": "CASB - FedRAMP Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "cfone.briefings_enabled",
 		"feature": {
 			"feature_set": "cfone",
@@ -561,6 +573,18 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "challenge_widgets.invisible_widget",
+		"feature": {
+			"feature_set": "challenge_widgets",
+			"id": 1586,
+			"key": "challenge_widgets.invisible_widget",
+			"name": "Challenge Widgets Invisible Widget Type"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
@@ -873,6 +897,18 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "custom_pages.max_assets",
+		"feature": {
+			"feature_set": "custom_pages",
+			"id": 1489,
+			"key": "custom_pages.max_assets",
+			"name": "Custom assets - Allowed assets"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
@@ -2136,6 +2172,18 @@
 		}
 	},
 	{
+		"id": "rulesets.custom_errors_max_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1018,
+			"key": "rulesets.custom_errors_max_rules",
+			"name": "Rulesets - Custom Errors Rules Max"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "rulesets.ddos_l4_sensitivity_limit",
 		"feature": {
 			"feature_set": "rulesets",
@@ -2154,6 +2202,18 @@
 			"id": 1048,
 			"key": "rulesets.ddos_l7_expressions_allowed",
 			"name": "Rulesets - Allowed to use expressions in DDoS L7 rulesets"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.ddos_l7_override_all_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1589,
+			"key": "rulesets.ddos_l7_override_all_allowed",
+			"name": "Rulesets - Restricted Entitlement - Allowed to override all DDoS L7 Managed Rules"
 		},
 		"allocation": {
 			"type": "bool"
@@ -2418,6 +2478,30 @@
 			"id": 902,
 			"key": "rulesets.max_ddos_l7_rules",
 			"name": "Rulesets - Maximum number of rules allowed per DDoS L7 ruleset"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.max_magic_transit_ratelimiting_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1600,
+			"key": "rulesets.max_magic_transit_ratelimiting_rules",
+			"name": "Rulesets - Max Magic Transit Ratelimiting Rules"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.max_magic_transit_ratelimiting_rules_per_colo",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1601,
+			"key": "rulesets.max_magic_transit_ratelimiting_rules_per_colo",
+			"name": "Rulesets - Max Magic Transit Ratelimiting Rules Per Colo"
 		},
 		"allocation": {
 			"type": "max_count"
