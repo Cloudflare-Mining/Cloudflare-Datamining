@@ -1,6 +1,5 @@
 {
 	"DELETE /accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}": {
-		"description": "Delete a risk score integration.",
 		"operationId": "dlp-zt-risk-score-integration-delete",
 		"parameters": [
 			{
@@ -121,7 +120,10 @@
 								},
 								{
 									"properties": {
-										"result": {}
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
 									},
 									"type": "object"
 								}
@@ -209,7 +211,6 @@
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations": {
-		"description": "List all risk score integrations for the account.",
 		"operationId": "dlp-zt-risk-score-integration-list",
 		"parameters": [
 			{
@@ -462,7 +463,6 @@
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}": {
-		"description": "Get risk score integration by id.",
 		"operationId": "dlp-zt-risk-score-integration-get",
 		"parameters": [
 			{
@@ -721,7 +721,6 @@
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations/reference_id/{reference_id}": {
-		"description": "Get risk score integration by reference id.",
 		"operationId": "dlp-zt-risk-score-integration-get-by-reference-id",
 		"parameters": [
 			{
@@ -979,7 +978,6 @@
 		]
 	},
 	"POST /accounts/{account_id}/zt_risk_scoring/integrations": {
-		"description": "Create new risk score integration.",
 		"operationId": "dlp-zt-risk-score-integration-create",
 		"parameters": [
 			{
@@ -1261,7 +1259,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}": {
-		"description": "Update a risk score integration.\n\nOverwrite the reference_id, tenant_url, and active values with the ones provided",
+		"description": "Overwrite the reference_id, tenant_url, and active values with the ones provided",
 		"operationId": "dlp-zt-risk-score-integration-update",
 		"parameters": [
 			{
