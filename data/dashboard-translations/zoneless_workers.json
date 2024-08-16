@@ -290,6 +290,7 @@
 	"zoneless_workers.worker_details.metrics": "Metrics",
 	"zoneless_workers.worker_details.logs": "Logs",
 	"zoneless_workers.worker_details.logs.menu_text": "Real time logs",
+	"zoneless_workers.worker_details.logs.menu_search": "Persistent logs",
 	"zoneless_workers.worker_details.triggers.subtitle": "Configure your Worker to be executed through triggers such as Route Triggers and Cron Triggers. A Worker script must include an event listener associated with the trigger.",
 	"zoneless_workers.worker_details.logs.description": "View the console.log output and errors from the latest version of your Worker.",
 	"zoneless_workers.worker_details.logs.use_cli": "For advanced filters use <0>Wrangler CLI</0> with the command",
@@ -526,7 +527,7 @@
 	"zoneless_workers.worker_details.version.modal.save_changes.button.save_and_deploy": "Save & Deploy",
 	"zoneless_workers.worker_details.version.history_table.header.version": "Version ID",
 	"zoneless_workers.worker_details.version.history_table.header.created_by": "Created",
-	"zoneless_workers.worker_details.version.history_table.header.version_message": "Version Message",
+	"zoneless_workers.worker_details.version.history_table.header.version_message": "Version & Git Message",
 	"zoneless_workers.worker_details.version.history_table.header.source": "Source",
 	"zoneless_workers.worker_details.version.label.latest": "Latest",
 	"zoneless_workers.worker_details.version.source_by_author": "%{source} by %{author}",
@@ -1433,5 +1434,12 @@
 	"zoneless_workers.analytics_engine.get_started.description": "Analytics Engine provides time series analytics for you and for your customers. To set up Analytics Engine, youu2019ll need to specify which events youu2019d like to be logged and displayed.",
 	"zoneless_workers.analytics_engine.get_started.description_continued": "Read the <0>Analytics Engine documentation</0> to get started. Once the Analytics Engine binding is configured for your Workers, logged events will be displayed here.",
 	"zoneless_workers.analytics_engine.get_started.documentation": "Read documentation",
-	"zoneless_workers.standard.deprecation-announcement": "All your Workers and Pages Functions have been automatically migrated to the Standard usage model. This may impact your billing. <0>Read the documentation to learn more.</0>"
+	"zoneless_workers.standard.deprecation-announcement": "All your Workers and Pages Functions have been automatically migrated to the Standard usage model. This may impact your billing. <0>Read the documentation to learn more.</0>",
+	"zoneless_workers.workers_observability.inputs.filter.title": "Add filter",
+	"zoneless_workers.workers_observability.inputs.filter.button": "Filter",
+	"zoneless_workers.workers_observability.inputs.search.placeholder": "Full-text log search",
+	"zoneless_workers.workers_observability.charts.bar.label": "Count",
+	"zoneless_workers.workers_observability.table.headers.time": "Timestamp (UTC)",
+	"zoneless_workers.workers_observability.table.headers.summary": "Summary",
+	"zoneless_workers.workers_observability.table.pagination": "Load more"
 }
