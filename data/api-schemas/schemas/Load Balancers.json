@@ -475,6 +475,13 @@
 														"type": "object"
 													},
 													"country_pools": {
+														"additionalProperties": {
+															"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 														"example": {
 															"GB": [
@@ -484,15 +491,6 @@
 																"de90f38ced07c2e2f4df50b1f61d4194",
 																"00920f38ce07c2e2f4df50b1f61d4194"
 															]
-														},
-														"properties": {
-															"country_code": {
-																"items": {
-																	"description": "List of Pool IDs",
-																	"type": "string"
-																},
-																"type": "array"
-															}
 														},
 														"type": "object"
 													},
@@ -574,6 +572,13 @@
 														"type": "string"
 													},
 													"pop_pools": {
+														"additionalProperties": {
+															"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 														"example": {
 															"LAX": [
@@ -587,15 +592,6 @@
 															"SJC": [
 																"00920f38ce07c2e2f4df50b1f61d4194"
 															]
-														},
-														"properties": {
-															"pop": {
-																"items": {
-																	"description": "List of Pool IDs",
-																	"type": "string"
-																},
-																"type": "array"
-															}
 														},
 														"type": "object"
 													},
@@ -639,6 +635,13 @@
 														"type": "object"
 													},
 													"region_pools": {
+														"additionalProperties": {
+															"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 														"example": {
 															"ENAM": [
@@ -648,15 +651,6 @@
 																"de90f38ced07c2e2f4df50b1f61d4194",
 																"9290f38c5d07c2e2f4df57b1f61d4196"
 															]
-														},
-														"properties": {
-															"region_code": {
-																"items": {
-																	"description": "List of Pool IDs",
-																	"type": "string"
-																},
-																"type": "array"
-															}
 														},
 														"type": "object"
 													},
@@ -726,6 +720,13 @@
 																			"type": "object"
 																		},
 																		"country_pools": {
+																			"additionalProperties": {
+																				"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
 																			"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 																			"example": {
 																				"GB": [
@@ -735,15 +736,6 @@
 																					"de90f38ced07c2e2f4df50b1f61d4194",
 																					"00920f38ce07c2e2f4df50b1f61d4194"
 																				]
-																			},
-																			"properties": {
-																				"country_code": {
-																					"items": {
-																						"description": "List of Pool IDs",
-																						"type": "string"
-																					},
-																					"type": "array"
-																				}
 																			},
 																			"type": "object"
 																		},
@@ -793,6 +785,13 @@
 																			"type": "object"
 																		},
 																		"pop_pools": {
+																			"additionalProperties": {
+																				"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
 																			"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 																			"example": {
 																				"LAX": [
@@ -806,15 +805,6 @@
 																				"SJC": [
 																					"00920f38ce07c2e2f4df50b1f61d4194"
 																				]
-																			},
-																			"properties": {
-																				"pop": {
-																					"items": {
-																						"description": "List of Pool IDs",
-																						"type": "string"
-																					},
-																					"type": "array"
-																				}
 																			},
 																			"type": "object"
 																		},
@@ -852,6 +842,13 @@
 																			"type": "object"
 																		},
 																		"region_pools": {
+																			"additionalProperties": {
+																				"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
 																			"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 																			"example": {
 																				"ENAM": [
@@ -861,15 +858,6 @@
 																					"de90f38ced07c2e2f4df50b1f61d4194",
 																					"9290f38c5d07c2e2f4df57b1f61d4196"
 																				]
-																			},
-																			"properties": {
-																				"region_code": {
-																					"items": {
-																						"description": "List of Pool IDs",
-																						"type": "string"
-																					},
-																					"type": "array"
-																				}
 																			},
 																			"type": "object"
 																		},
@@ -1229,6 +1217,13 @@
 																"type": "object"
 															},
 															"country_pools": {
+																"additionalProperties": {
+																	"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 																"example": {
 																	"GB": [
@@ -1238,15 +1233,6 @@
 																		"de90f38ced07c2e2f4df50b1f61d4194",
 																		"00920f38ce07c2e2f4df50b1f61d4194"
 																	]
-																},
-																"properties": {
-																	"country_code": {
-																		"items": {
-																			"description": "List of Pool IDs",
-																			"type": "string"
-																		},
-																		"type": "array"
-																	}
 																},
 																"type": "object"
 															},
@@ -1328,6 +1314,13 @@
 																"type": "string"
 															},
 															"pop_pools": {
+																"additionalProperties": {
+																	"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 																"example": {
 																	"LAX": [
@@ -1341,15 +1334,6 @@
 																	"SJC": [
 																		"00920f38ce07c2e2f4df50b1f61d4194"
 																	]
-																},
-																"properties": {
-																	"pop": {
-																		"items": {
-																			"description": "List of Pool IDs",
-																			"type": "string"
-																		},
-																		"type": "array"
-																	}
 																},
 																"type": "object"
 															},
@@ -1393,6 +1377,13 @@
 																"type": "object"
 															},
 															"region_pools": {
+																"additionalProperties": {
+																	"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 																"example": {
 																	"ENAM": [
@@ -1402,15 +1393,6 @@
 																		"de90f38ced07c2e2f4df50b1f61d4194",
 																		"9290f38c5d07c2e2f4df57b1f61d4196"
 																	]
-																},
-																"properties": {
-																	"region_code": {
-																		"items": {
-																			"description": "List of Pool IDs",
-																			"type": "string"
-																		},
-																		"type": "array"
-																	}
 																},
 																"type": "object"
 															},
@@ -1480,6 +1462,13 @@
 																					"type": "object"
 																				},
 																				"country_pools": {
+																					"additionalProperties": {
+																						"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
 																					"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 																					"example": {
 																						"GB": [
@@ -1489,15 +1478,6 @@
 																							"de90f38ced07c2e2f4df50b1f61d4194",
 																							"00920f38ce07c2e2f4df50b1f61d4194"
 																						]
-																					},
-																					"properties": {
-																						"country_code": {
-																							"items": {
-																								"description": "List of Pool IDs",
-																								"type": "string"
-																							},
-																							"type": "array"
-																						}
 																					},
 																					"type": "object"
 																				},
@@ -1547,6 +1527,13 @@
 																					"type": "object"
 																				},
 																				"pop_pools": {
+																					"additionalProperties": {
+																						"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
 																					"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 																					"example": {
 																						"LAX": [
@@ -1560,15 +1547,6 @@
 																						"SJC": [
 																							"00920f38ce07c2e2f4df50b1f61d4194"
 																						]
-																					},
-																					"properties": {
-																						"pop": {
-																							"items": {
-																								"description": "List of Pool IDs",
-																								"type": "string"
-																							},
-																							"type": "array"
-																						}
 																					},
 																					"type": "object"
 																				},
@@ -1606,6 +1584,13 @@
 																					"type": "object"
 																				},
 																				"region_pools": {
+																					"additionalProperties": {
+																						"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
 																					"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 																					"example": {
 																						"ENAM": [
@@ -1615,15 +1600,6 @@
 																							"de90f38ced07c2e2f4df50b1f61d4194",
 																							"9290f38c5d07c2e2f4df57b1f61d4196"
 																						]
-																					},
-																					"properties": {
-																						"region_code": {
-																							"items": {
-																								"description": "List of Pool IDs",
-																								"type": "string"
-																							},
-																							"type": "array"
-																						}
 																					},
 																					"type": "object"
 																				},
@@ -2090,6 +2066,13 @@
 													"type": "object"
 												},
 												"country_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"GB": [
@@ -2099,15 +2082,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"country_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -2189,6 +2163,13 @@
 													"type": "string"
 												},
 												"pop_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"LAX": [
@@ -2202,15 +2183,6 @@
 														"SJC": [
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"pop": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -2254,6 +2226,13 @@
 													"type": "object"
 												},
 												"region_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 													"example": {
 														"ENAM": [
@@ -2263,15 +2242,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
-													},
-													"properties": {
-														"region_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -2341,6 +2311,13 @@
 																		"type": "object"
 																	},
 																	"country_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 																		"example": {
 																			"GB": [
@@ -2350,15 +2327,6 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
-																		},
-																		"properties": {
-																			"country_code": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -2408,6 +2376,13 @@
 																		"type": "object"
 																	},
 																	"pop_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 																		"example": {
 																			"LAX": [
@@ -2421,15 +2396,6 @@
 																			"SJC": [
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
-																		},
-																		"properties": {
-																			"pop": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -2467,6 +2433,13 @@
 																		"type": "object"
 																	},
 																	"region_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 																		"example": {
 																			"ENAM": [
@@ -2476,15 +2449,6 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"9290f38c5d07c2e2f4df57b1f61d4196"
 																			]
-																		},
-																		"properties": {
-																			"region_code": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -2828,6 +2792,13 @@
 															"type": "object"
 														},
 														"country_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 															"example": {
 																"GB": [
@@ -2837,15 +2808,6 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
-															},
-															"properties": {
-																"country_code": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -2927,6 +2889,13 @@
 															"type": "string"
 														},
 														"pop_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 															"example": {
 																"LAX": [
@@ -2940,15 +2909,6 @@
 																"SJC": [
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
-															},
-															"properties": {
-																"pop": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -2992,6 +2952,13 @@
 															"type": "object"
 														},
 														"region_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 															"example": {
 																"ENAM": [
@@ -3001,15 +2968,6 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"9290f38c5d07c2e2f4df57b1f61d4196"
 																]
-															},
-															"properties": {
-																"region_code": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -3079,6 +3037,13 @@
 																				"type": "object"
 																			},
 																			"country_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 																				"example": {
 																					"GB": [
@@ -3088,15 +3053,6 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
-																				},
-																				"properties": {
-																					"country_code": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
@@ -3146,6 +3102,13 @@
 																				"type": "object"
 																			},
 																			"pop_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 																				"example": {
 																					"LAX": [
@@ -3159,15 +3122,6 @@
 																					"SJC": [
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
-																				},
-																				"properties": {
-																					"pop": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
@@ -3205,6 +3159,13 @@
 																				"type": "object"
 																			},
 																			"region_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 																				"example": {
 																					"ENAM": [
@@ -3214,15 +3175,6 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"9290f38c5d07c2e2f4df57b1f61d4196"
 																					]
-																				},
-																				"properties": {
-																					"region_code": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
@@ -3600,6 +3552,13 @@
 								"type": "object"
 							},
 							"country_pools": {
+								"additionalProperties": {
+									"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 								"example": {
 									"GB": [
@@ -3609,15 +3568,6 @@
 										"de90f38ced07c2e2f4df50b1f61d4194",
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
-								},
-								"properties": {
-									"country_code": {
-										"items": {
-											"description": "List of Pool IDs",
-											"type": "string"
-										},
-										"type": "array"
-									}
 								},
 								"type": "object"
 							},
@@ -3683,6 +3633,13 @@
 								"type": "string"
 							},
 							"pop_pools": {
+								"additionalProperties": {
+									"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 								"example": {
 									"LAX": [
@@ -3696,15 +3653,6 @@
 									"SJC": [
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
-								},
-								"properties": {
-									"pop": {
-										"items": {
-											"description": "List of Pool IDs",
-											"type": "string"
-										},
-										"type": "array"
-									}
 								},
 								"type": "object"
 							},
@@ -3748,6 +3696,13 @@
 								"type": "object"
 							},
 							"region_pools": {
+								"additionalProperties": {
+									"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 								"example": {
 									"ENAM": [
@@ -3757,15 +3712,6 @@
 										"de90f38ced07c2e2f4df50b1f61d4194",
 										"9290f38c5d07c2e2f4df57b1f61d4196"
 									]
-								},
-								"properties": {
-									"region_code": {
-										"items": {
-											"description": "List of Pool IDs",
-											"type": "string"
-										},
-										"type": "array"
-									}
 								},
 								"type": "object"
 							},
@@ -3835,6 +3781,13 @@
 													"type": "object"
 												},
 												"country_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"GB": [
@@ -3844,15 +3797,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"country_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -3902,6 +3846,13 @@
 													"type": "object"
 												},
 												"pop_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"LAX": [
@@ -3915,15 +3866,6 @@
 														"SJC": [
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"pop": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -3961,6 +3903,13 @@
 													"type": "object"
 												},
 												"region_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 													"example": {
 														"ENAM": [
@@ -3970,15 +3919,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
-													},
-													"properties": {
-														"region_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -4316,6 +4256,13 @@
 													"type": "object"
 												},
 												"country_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"GB": [
@@ -4325,15 +4272,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"country_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -4415,6 +4353,13 @@
 													"type": "string"
 												},
 												"pop_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"LAX": [
@@ -4428,15 +4373,6 @@
 														"SJC": [
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"pop": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -4480,6 +4416,13 @@
 													"type": "object"
 												},
 												"region_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 													"example": {
 														"ENAM": [
@@ -4489,15 +4432,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
-													},
-													"properties": {
-														"region_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -4567,6 +4501,13 @@
 																		"type": "object"
 																	},
 																	"country_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 																		"example": {
 																			"GB": [
@@ -4576,15 +4517,6 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
-																		},
-																		"properties": {
-																			"country_code": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -4634,6 +4566,13 @@
 																		"type": "object"
 																	},
 																	"pop_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 																		"example": {
 																			"LAX": [
@@ -4647,15 +4586,6 @@
 																			"SJC": [
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
-																		},
-																		"properties": {
-																			"pop": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -4693,6 +4623,13 @@
 																		"type": "object"
 																	},
 																	"region_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 																		"example": {
 																			"ENAM": [
@@ -4702,15 +4639,6 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"9290f38c5d07c2e2f4df57b1f61d4196"
 																			]
-																		},
-																		"properties": {
-																			"region_code": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -5054,6 +4982,13 @@
 															"type": "object"
 														},
 														"country_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 															"example": {
 																"GB": [
@@ -5063,15 +4998,6 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
-															},
-															"properties": {
-																"country_code": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -5153,6 +5079,13 @@
 															"type": "string"
 														},
 														"pop_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 															"example": {
 																"LAX": [
@@ -5166,15 +5099,6 @@
 																"SJC": [
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
-															},
-															"properties": {
-																"pop": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -5218,6 +5142,13 @@
 															"type": "object"
 														},
 														"region_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 															"example": {
 																"ENAM": [
@@ -5227,15 +5158,6 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"9290f38c5d07c2e2f4df57b1f61d4196"
 																]
-															},
-															"properties": {
-																"region_code": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -5305,6 +5227,13 @@
 																				"type": "object"
 																			},
 																			"country_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 																				"example": {
 																					"GB": [
@@ -5314,15 +5243,6 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
-																				},
-																				"properties": {
-																					"country_code": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
@@ -5372,6 +5292,13 @@
 																				"type": "object"
 																			},
 																			"pop_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 																				"example": {
 																					"LAX": [
@@ -5385,15 +5312,6 @@
 																					"SJC": [
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
-																				},
-																				"properties": {
-																					"pop": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
@@ -5431,6 +5349,13 @@
 																				"type": "object"
 																			},
 																			"region_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 																				"example": {
 																					"ENAM": [
@@ -5440,15 +5365,6 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"9290f38c5d07c2e2f4df57b1f61d4196"
 																					]
-																				},
-																				"properties": {
-																					"region_code": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
@@ -5817,6 +5733,13 @@
 								"type": "object"
 							},
 							"country_pools": {
+								"additionalProperties": {
+									"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 								"example": {
 									"GB": [
@@ -5826,15 +5749,6 @@
 										"de90f38ced07c2e2f4df50b1f61d4194",
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
-								},
-								"properties": {
-									"country_code": {
-										"items": {
-											"description": "List of Pool IDs",
-											"type": "string"
-										},
-										"type": "array"
-									}
 								},
 								"type": "object"
 							},
@@ -5894,6 +5808,13 @@
 								"type": "string"
 							},
 							"pop_pools": {
+								"additionalProperties": {
+									"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 								"example": {
 									"LAX": [
@@ -5907,15 +5828,6 @@
 									"SJC": [
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
-								},
-								"properties": {
-									"pop": {
-										"items": {
-											"description": "List of Pool IDs",
-											"type": "string"
-										},
-										"type": "array"
-									}
 								},
 								"type": "object"
 							},
@@ -5959,6 +5871,13 @@
 								"type": "object"
 							},
 							"region_pools": {
+								"additionalProperties": {
+									"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 								"example": {
 									"ENAM": [
@@ -5968,15 +5887,6 @@
 										"de90f38ced07c2e2f4df50b1f61d4194",
 										"9290f38c5d07c2e2f4df57b1f61d4196"
 									]
-								},
-								"properties": {
-									"region_code": {
-										"items": {
-											"description": "List of Pool IDs",
-											"type": "string"
-										},
-										"type": "array"
-									}
 								},
 								"type": "object"
 							},
@@ -6046,6 +5956,13 @@
 													"type": "object"
 												},
 												"country_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"GB": [
@@ -6055,15 +5972,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"country_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -6113,6 +6021,13 @@
 													"type": "object"
 												},
 												"pop_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"LAX": [
@@ -6126,15 +6041,6 @@
 														"SJC": [
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"pop": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -6172,6 +6078,13 @@
 													"type": "object"
 												},
 												"region_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 													"example": {
 														"ENAM": [
@@ -6181,15 +6094,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
-													},
-													"properties": {
-														"region_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -6532,6 +6436,13 @@
 													"type": "object"
 												},
 												"country_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"GB": [
@@ -6541,15 +6452,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"country_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -6631,6 +6533,13 @@
 													"type": "string"
 												},
 												"pop_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"LAX": [
@@ -6644,15 +6553,6 @@
 														"SJC": [
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"pop": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -6696,6 +6596,13 @@
 													"type": "object"
 												},
 												"region_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 													"example": {
 														"ENAM": [
@@ -6705,15 +6612,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
-													},
-													"properties": {
-														"region_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -6783,6 +6681,13 @@
 																		"type": "object"
 																	},
 																	"country_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 																		"example": {
 																			"GB": [
@@ -6792,15 +6697,6 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
-																		},
-																		"properties": {
-																			"country_code": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -6850,6 +6746,13 @@
 																		"type": "object"
 																	},
 																	"pop_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 																		"example": {
 																			"LAX": [
@@ -6863,15 +6766,6 @@
 																			"SJC": [
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
-																		},
-																		"properties": {
-																			"pop": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -6909,6 +6803,13 @@
 																		"type": "object"
 																	},
 																	"region_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 																		"example": {
 																			"ENAM": [
@@ -6918,15 +6819,6 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"9290f38c5d07c2e2f4df57b1f61d4196"
 																			]
-																		},
-																		"properties": {
-																			"region_code": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -7270,6 +7162,13 @@
 															"type": "object"
 														},
 														"country_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 															"example": {
 																"GB": [
@@ -7279,15 +7178,6 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
-															},
-															"properties": {
-																"country_code": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -7369,6 +7259,13 @@
 															"type": "string"
 														},
 														"pop_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 															"example": {
 																"LAX": [
@@ -7382,15 +7279,6 @@
 																"SJC": [
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
-															},
-															"properties": {
-																"pop": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -7434,6 +7322,13 @@
 															"type": "object"
 														},
 														"region_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 															"example": {
 																"ENAM": [
@@ -7443,15 +7338,6 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"9290f38c5d07c2e2f4df57b1f61d4196"
 																]
-															},
-															"properties": {
-																"region_code": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -7521,6 +7407,13 @@
 																				"type": "object"
 																			},
 																			"country_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 																				"example": {
 																					"GB": [
@@ -7530,15 +7423,6 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
-																				},
-																				"properties": {
-																					"country_code": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
@@ -7588,6 +7472,13 @@
 																				"type": "object"
 																			},
 																			"pop_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 																				"example": {
 																					"LAX": [
@@ -7601,15 +7492,6 @@
 																					"SJC": [
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
-																				},
-																				"properties": {
-																					"pop": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
@@ -7647,6 +7529,13 @@
 																				"type": "object"
 																			},
 																			"region_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 																				"example": {
 																					"ENAM": [
@@ -7656,15 +7545,6 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"9290f38c5d07c2e2f4df57b1f61d4196"
 																					]
-																				},
-																				"properties": {
-																					"region_code": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
@@ -8042,6 +7922,13 @@
 								"type": "object"
 							},
 							"country_pools": {
+								"additionalProperties": {
+									"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 								"example": {
 									"GB": [
@@ -8051,15 +7938,6 @@
 										"de90f38ced07c2e2f4df50b1f61d4194",
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
-								},
-								"properties": {
-									"country_code": {
-										"items": {
-											"description": "List of Pool IDs",
-											"type": "string"
-										},
-										"type": "array"
-									}
 								},
 								"type": "object"
 							},
@@ -8125,6 +8003,13 @@
 								"type": "string"
 							},
 							"pop_pools": {
+								"additionalProperties": {
+									"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 								"example": {
 									"LAX": [
@@ -8138,15 +8023,6 @@
 									"SJC": [
 										"00920f38ce07c2e2f4df50b1f61d4194"
 									]
-								},
-								"properties": {
-									"pop": {
-										"items": {
-											"description": "List of Pool IDs",
-											"type": "string"
-										},
-										"type": "array"
-									}
 								},
 								"type": "object"
 							},
@@ -8190,6 +8066,13 @@
 								"type": "object"
 							},
 							"region_pools": {
+								"additionalProperties": {
+									"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
 								"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 								"example": {
 									"ENAM": [
@@ -8199,15 +8082,6 @@
 										"de90f38ced07c2e2f4df50b1f61d4194",
 										"9290f38c5d07c2e2f4df57b1f61d4196"
 									]
-								},
-								"properties": {
-									"region_code": {
-										"items": {
-											"description": "List of Pool IDs",
-											"type": "string"
-										},
-										"type": "array"
-									}
 								},
 								"type": "object"
 							},
@@ -8277,6 +8151,13 @@
 													"type": "object"
 												},
 												"country_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"GB": [
@@ -8286,15 +8167,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"country_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -8344,6 +8216,13 @@
 													"type": "object"
 												},
 												"pop_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"LAX": [
@@ -8357,15 +8236,6 @@
 														"SJC": [
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"pop": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -8403,6 +8273,13 @@
 													"type": "object"
 												},
 												"region_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 													"example": {
 														"ENAM": [
@@ -8412,15 +8289,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
-													},
-													"properties": {
-														"region_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -8763,6 +8631,13 @@
 													"type": "object"
 												},
 												"country_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"GB": [
@@ -8772,15 +8647,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"country_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -8862,6 +8728,13 @@
 													"type": "string"
 												},
 												"pop_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 													"example": {
 														"LAX": [
@@ -8875,15 +8748,6 @@
 														"SJC": [
 															"00920f38ce07c2e2f4df50b1f61d4194"
 														]
-													},
-													"properties": {
-														"pop": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -8927,6 +8791,13 @@
 													"type": "object"
 												},
 												"region_pools": {
+													"additionalProperties": {
+														"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 													"example": {
 														"ENAM": [
@@ -8936,15 +8807,6 @@
 															"de90f38ced07c2e2f4df50b1f61d4194",
 															"9290f38c5d07c2e2f4df57b1f61d4196"
 														]
-													},
-													"properties": {
-														"region_code": {
-															"items": {
-																"description": "List of Pool IDs",
-																"type": "string"
-															},
-															"type": "array"
-														}
 													},
 													"type": "object"
 												},
@@ -9014,6 +8876,13 @@
 																		"type": "object"
 																	},
 																	"country_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 																		"example": {
 																			"GB": [
@@ -9023,15 +8892,6 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
-																		},
-																		"properties": {
-																			"country_code": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -9081,6 +8941,13 @@
 																		"type": "object"
 																	},
 																	"pop_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 																		"example": {
 																			"LAX": [
@@ -9094,15 +8961,6 @@
 																			"SJC": [
 																				"00920f38ce07c2e2f4df50b1f61d4194"
 																			]
-																		},
-																		"properties": {
-																			"pop": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -9140,6 +8998,13 @@
 																		"type": "object"
 																	},
 																	"region_pools": {
+																		"additionalProperties": {
+																			"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 																		"example": {
 																			"ENAM": [
@@ -9149,15 +9014,6 @@
 																				"de90f38ced07c2e2f4df50b1f61d4194",
 																				"9290f38c5d07c2e2f4df57b1f61d4196"
 																			]
-																		},
-																		"properties": {
-																			"region_code": {
-																				"items": {
-																					"description": "List of Pool IDs",
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
 																		},
 																		"type": "object"
 																	},
@@ -9501,6 +9357,13 @@
 															"type": "object"
 														},
 														"country_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 															"example": {
 																"GB": [
@@ -9510,15 +9373,6 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
-															},
-															"properties": {
-																"country_code": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -9600,6 +9454,13 @@
 															"type": "string"
 														},
 														"pop_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 															"example": {
 																"LAX": [
@@ -9613,15 +9474,6 @@
 																"SJC": [
 																	"00920f38ce07c2e2f4df50b1f61d4194"
 																]
-															},
-															"properties": {
-																"pop": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -9665,6 +9517,13 @@
 															"type": "object"
 														},
 														"region_pools": {
+															"additionalProperties": {
+																"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 															"example": {
 																"ENAM": [
@@ -9674,15 +9533,6 @@
 																	"de90f38ced07c2e2f4df50b1f61d4194",
 																	"9290f38c5d07c2e2f4df57b1f61d4196"
 																]
-															},
-															"properties": {
-																"region_code": {
-																	"items": {
-																		"description": "List of Pool IDs",
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
 															},
 															"type": "object"
 														},
@@ -9752,6 +9602,13 @@
 																				"type": "object"
 																			},
 																			"country_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. Country code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
 																				"example": {
 																					"GB": [
@@ -9761,15 +9618,6 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
-																				},
-																				"properties": {
-																					"country_code": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
@@ -9819,6 +9667,13 @@
 																				"type": "object"
 																			},
 																			"pop_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 																				"example": {
 																					"LAX": [
@@ -9832,15 +9687,6 @@
 																					"SJC": [
 																						"00920f38ce07c2e2f4df50b1f61d4194"
 																					]
-																				},
-																				"properties": {
-																					"pop": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
@@ -9878,6 +9724,13 @@
 																				"type": "object"
 																			},
 																			"region_pools": {
+																				"additionalProperties": {
+																					"description": "A `string:[string]` object of key-values. Region code maps to list of pool IDs.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
 																				"example": {
 																					"ENAM": [
@@ -9887,15 +9740,6 @@
 																						"de90f38ced07c2e2f4df50b1f61d4194",
 																						"9290f38c5d07c2e2f4df57b1f61d4196"
 																					]
-																				},
-																				"properties": {
-																					"region_code": {
-																						"items": {
-																							"description": "List of Pool IDs",
-																							"type": "string"
-																						},
-																						"type": "array"
-																					}
 																				},
 																				"type": "object"
 																			},
