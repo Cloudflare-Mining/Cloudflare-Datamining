@@ -7,7 +7,13 @@
 				"in": "path",
 				"name": "token_id",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "Token identifier tag.",
+					"example": "ed17574386854bf78a67040be0a770b0",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -459,6 +465,200 @@
 									"properties": {
 										"result": {
 											"items": {
+												"properties": {
+													"condition": {
+														"properties": {
+															"request.ip": {
+																"description": "Client IP restrictions.",
+																"example": {
+																	"in": [
+																		"123.123.123.0/24",
+																		"2606:4700::/32"
+																	],
+																	"not_in": [
+																		"123.123.123.100/24",
+																		"2606:4700:4700::/48"
+																	]
+																},
+																"properties": {
+																	"in": {
+																		"description": "List of IPv4/IPv6 CIDR addresses.",
+																		"example": [
+																			"199.27.128.0/21",
+																			"2400:cb00::/32"
+																		],
+																		"items": {
+																			"description": "IPv4/IPv6 CIDR.",
+																			"example": "199.27.128.0/21",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"not_in": {
+																		"description": "List of IPv4/IPv6 CIDR addresses.",
+																		"example": [
+																			"199.27.128.0/21",
+																			"2400:cb00::/32"
+																		],
+																		"items": {
+																			"description": "IPv4/IPv6 CIDR.",
+																			"example": "199.27.128.0/21",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"expires_on": {
+														"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
+														"example": "2020-01-01T00:00:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"id": {
+														"description": "Token identifier tag.",
+														"example": "ed17574386854bf78a67040be0a770b0",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"issued_on": {
+														"description": "The time on which the token was created.",
+														"example": "2018-07-01T05:20:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"last_used_on": {
+														"description": "Last time the token was used.",
+														"example": "2020-01-02T12:34:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"modified_on": {
+														"description": "Last time the token was modified.",
+														"example": "2018-07-02T05:20:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"description": "Token name.",
+														"example": "readonly token",
+														"maxLength": 120,
+														"type": "string"
+													},
+													"not_before": {
+														"description": "The time before which the token MUST NOT be accepted for processing.",
+														"example": "2018-07-01T05:20:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"policies": {
+														"description": "List of access policies assigned to the token.",
+														"items": {
+															"properties": {
+																"effect": {
+																	"description": "Allow or deny operations against the resources.",
+																	"enum": [
+																		"allow",
+																		"deny"
+																	],
+																	"example": "allow",
+																	"type": "string"
+																},
+																"id": {
+																	"description": "Policy identifier.",
+																	"example": "f267e341f3dd4697bd3b9f71dd96247f",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"permission_groups": {
+																	"description": "A set of permission groups that are specified to the policy.",
+																	"example": [
+																		{
+																			"id": "c8fed203ed3043cba015a93ad1616f1f",
+																			"meta": {
+																				"label": "load_balancer_admin",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"name": "Zone Read"
+																		},
+																		{
+																			"id": "82e64a83756745bbbb1c9c2701bf816b",
+																			"meta": {
+																				"label": "fbm_user",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"name": "Magic Network Monitoring"
+																		}
+																	],
+																	"items": {
+																		"description": "A named group of permissions that map to a group of operations against resources.",
+																		"properties": {
+																			"id": {
+																				"description": "Identifier of the group.",
+																				"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"meta": {
+																				"description": "Attributes associated to the permission group.",
+																				"example": {
+																					"label": "load_balancer_admin",
+																					"scopes": "com.cloudflare.api.account"
+																				},
+																				"type": "object"
+																			},
+																			"name": {
+																				"description": "Name of the group.",
+																				"example": "Load Balancer",
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"resources": {
+																	"description": "A list of resource names that the policy applies to.",
+																	"example": {
+																		"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
+																		"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+																	},
+																	"type": "object"
+																}
+															},
+															"required": [
+																"id",
+																"effect",
+																"permission_groups",
+																"resources"
+															],
+															"title": "Policy with Permission Groups and Resources"
+														},
+														"type": "array"
+													},
+													"status": {
+														"description": "Status of the token.",
+														"enum": [
+															"active",
+															"disabled",
+															"expired"
+														],
+														"example": "active",
+														"type": "string"
+													}
+												},
 												"type": "object"
 											},
 											"type": "array"
@@ -466,7 +666,8 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"title": "List of Tokens"
 						}
 					}
 				},
@@ -711,7 +912,13 @@
 				"in": "path",
 				"name": "token_id",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "Token identifier tag.",
+					"example": "ed17574386854bf78a67040be0a770b0",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -781,6 +988,40 @@
 												"messages"
 											],
 											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
 										}
 									],
 									"type": "object"
@@ -788,12 +1029,207 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"condition": {
+													"properties": {
+														"request.ip": {
+															"description": "Client IP restrictions.",
+															"example": {
+																"in": [
+																	"123.123.123.0/24",
+																	"2606:4700::/32"
+																],
+																"not_in": [
+																	"123.123.123.100/24",
+																	"2606:4700:4700::/48"
+																]
+															},
+															"properties": {
+																"in": {
+																	"description": "List of IPv4/IPv6 CIDR addresses.",
+																	"example": [
+																		"199.27.128.0/21",
+																		"2400:cb00::/32"
+																	],
+																	"items": {
+																		"description": "IPv4/IPv6 CIDR.",
+																		"example": "199.27.128.0/21",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"not_in": {
+																	"description": "List of IPv4/IPv6 CIDR addresses.",
+																	"example": [
+																		"199.27.128.0/21",
+																		"2400:cb00::/32"
+																	],
+																	"items": {
+																		"description": "IPv4/IPv6 CIDR.",
+																		"example": "199.27.128.0/21",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"expires_on": {
+													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
+													"example": "2020-01-01T00:00:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Token identifier tag.",
+													"example": "ed17574386854bf78a67040be0a770b0",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"issued_on": {
+													"description": "The time on which the token was created.",
+													"example": "2018-07-01T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"last_used_on": {
+													"description": "Last time the token was used.",
+													"example": "2020-01-02T12:34:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "Last time the token was modified.",
+													"example": "2018-07-02T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "Token name.",
+													"example": "readonly token",
+													"maxLength": 120,
+													"type": "string"
+												},
+												"not_before": {
+													"description": "The time before which the token MUST NOT be accepted for processing.",
+													"example": "2018-07-01T05:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"policies": {
+													"description": "List of access policies assigned to the token.",
+													"items": {
+														"properties": {
+															"effect": {
+																"description": "Allow or deny operations against the resources.",
+																"enum": [
+																	"allow",
+																	"deny"
+																],
+																"example": "allow",
+																"type": "string"
+															},
+															"id": {
+																"description": "Policy identifier.",
+																"example": "f267e341f3dd4697bd3b9f71dd96247f",
+																"readOnly": true,
+																"type": "string"
+															},
+															"permission_groups": {
+																"description": "A set of permission groups that are specified to the policy.",
+																"example": [
+																	{
+																		"id": "c8fed203ed3043cba015a93ad1616f1f",
+																		"meta": {
+																			"label": "load_balancer_admin",
+																			"scopes": "com.cloudflare.api.account"
+																		},
+																		"name": "Zone Read"
+																	},
+																	{
+																		"id": "82e64a83756745bbbb1c9c2701bf816b",
+																		"meta": {
+																			"label": "fbm_user",
+																			"scopes": "com.cloudflare.api.account"
+																		},
+																		"name": "Magic Network Monitoring"
+																	}
+																],
+																"items": {
+																	"description": "A named group of permissions that map to a group of operations against resources.",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the group.",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the permission group.",
+																			"example": {
+																				"label": "load_balancer_admin",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"type": "object"
+																		},
+																		"name": {
+																			"description": "Name of the group.",
+																			"example": "Load Balancer",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"resources": {
+																"description": "A list of resource names that the policy applies to.",
+																"example": {
+																	"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
+																	"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"id",
+															"effect",
+															"permission_groups",
+															"resources"
+														],
+														"title": "Policy with Permission Groups and Resources"
+													},
+													"type": "array"
+												},
+												"status": {
+													"description": "Status of the token.",
+													"enum": [
+														"active",
+														"disabled",
+														"expired"
+													],
+													"example": "active",
+													"type": "string"
+												}
+											},
 											"type": "object"
 										}
 									},
 									"type": "object"
 								}
-							]
+							],
+							"title": "Single Token"
 						}
 					}
 				},
@@ -1414,94 +1850,89 @@
 							"policies": {
 								"description": "List of access policies assigned to the token.",
 								"items": {
-									"oneOf": [
-										{
-											"properties": {
-												"effect": {
-													"description": "Allow or deny operations against the resources.",
-													"enum": [
-														"allow",
-														"deny"
-													],
-													"example": "allow",
-													"type": "string"
+									"properties": {
+										"effect": {
+											"description": "Allow or deny operations against the resources.",
+											"enum": [
+												"allow",
+												"deny"
+											],
+											"example": "allow",
+											"type": "string"
+										},
+										"id": {
+											"description": "Policy identifier.",
+											"example": "f267e341f3dd4697bd3b9f71dd96247f",
+											"readOnly": true,
+											"type": "string"
+										},
+										"permission_groups": {
+											"description": "A set of permission groups that are specified to the policy.",
+											"example": [
+												{
+													"id": "c8fed203ed3043cba015a93ad1616f1f",
+													"meta": {
+														"label": "load_balancer_admin",
+														"scopes": "com.cloudflare.api.account"
+													},
+													"name": "Zone Read"
 												},
-												"id": {
-													"description": "Policy identifier.",
-													"example": "f267e341f3dd4697bd3b9f71dd96247f",
-													"readOnly": true,
-													"type": "string"
-												},
-												"permission_groups": {
-													"description": "A set of permission groups that are specified to the policy.",
-													"example": [
-														{
-															"id": "c8fed203ed3043cba015a93ad1616f1f",
-															"meta": {
-																"label": "load_balancer_admin",
-																"scopes": "com.cloudflare.api.account"
-															},
-															"name": "Zone Read"
+												{
+													"id": "82e64a83756745bbbb1c9c2701bf816b",
+													"meta": {
+														"label": "fbm_user",
+														"scopes": "com.cloudflare.api.account"
+													},
+													"name": "Magic Network Monitoring"
+												}
+											],
+											"items": {
+												"description": "A named group of permissions that map to a group of operations against resources.",
+												"properties": {
+													"id": {
+														"description": "Identifier of the group.",
+														"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+														"readOnly": true,
+														"type": "string"
+													},
+													"meta": {
+														"description": "Attributes associated to the permission group.",
+														"example": {
+															"label": "load_balancer_admin",
+															"scopes": "com.cloudflare.api.account"
 														},
-														{
-															"id": "82e64a83756745bbbb1c9c2701bf816b",
-															"meta": {
-																"label": "fbm_user",
-																"scopes": "com.cloudflare.api.account"
-															},
-															"name": "Magic Network Monitoring"
-														}
-													],
-													"items": {
-														"description": "A named group of permissions that map to a group of operations against resources.",
-														"properties": {
-															"id": {
-																"description": "Identifier of the group.",
-																"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																"readOnly": true,
-																"type": "string"
-															},
-															"meta": {
-																"description": "Attributes associated to the permission group.",
-																"example": {
-																	"label": "load_balancer_admin",
-																	"scopes": "com.cloudflare.api.account"
-																},
-																"type": "object"
-															},
-															"name": {
-																"description": "Name of the group.",
-																"example": "Load Balancer",
-																"readOnly": true,
-																"type": "string"
-															}
-														},
-														"required": [
-															"id"
-														],
 														"type": "object"
 													},
-													"type": "array"
+													"name": {
+														"description": "Name of the group.",
+														"example": "Load Balancer",
+														"readOnly": true,
+														"type": "string"
+													}
 												},
-												"resources": {
-													"description": "A list of resource names that the policy applies to.",
-													"example": {
-														"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
-														"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
-													},
-													"type": "object"
-												}
+												"required": [
+													"id"
+												],
+												"type": "object"
 											},
-											"required": [
-												"id",
-												"effect",
-												"permission_groups",
-												"resources"
-											],
-											"title": "policy_with_permission_groups_and_resources"
+											"type": "array"
+										},
+										"resources": {
+											"description": "A list of resource names that the policy applies to.",
+											"example": {
+												"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
+												"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+											},
+											"type": "object"
 										}
+									},
+									"required": [
+										"id",
+										"effect",
+										"permission_groups",
+										"resources"
 									],
-									"type": "object"
+									"title": "Policy with Permission Groups and Resources"
 								},
 								"type": "array"
 							}
@@ -1583,6 +2014,40 @@
 												"messages"
 											],
 											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
 										}
 									],
 									"type": "object"
@@ -1592,6 +2057,200 @@
 										"result": {
 											"allOf": [
 												{
+													"properties": {
+														"condition": {
+															"properties": {
+																"request.ip": {
+																	"description": "Client IP restrictions.",
+																	"example": {
+																		"in": [
+																			"123.123.123.0/24",
+																			"2606:4700::/32"
+																		],
+																		"not_in": [
+																			"123.123.123.100/24",
+																			"2606:4700:4700::/48"
+																		]
+																	},
+																	"properties": {
+																		"in": {
+																			"description": "List of IPv4/IPv6 CIDR addresses.",
+																			"example": [
+																				"199.27.128.0/21",
+																				"2400:cb00::/32"
+																			],
+																			"items": {
+																				"description": "IPv4/IPv6 CIDR.",
+																				"example": "199.27.128.0/21",
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"not_in": {
+																			"description": "List of IPv4/IPv6 CIDR addresses.",
+																			"example": [
+																				"199.27.128.0/21",
+																				"2400:cb00::/32"
+																			],
+																			"items": {
+																				"description": "IPv4/IPv6 CIDR.",
+																				"example": "199.27.128.0/21",
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"expires_on": {
+															"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
+															"example": "2020-01-01T00:00:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"id": {
+															"description": "Token identifier tag.",
+															"example": "ed17574386854bf78a67040be0a770b0",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"issued_on": {
+															"description": "The time on which the token was created.",
+															"example": "2018-07-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"last_used_on": {
+															"description": "Last time the token was used.",
+															"example": "2020-01-02T12:34:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "Last time the token was modified.",
+															"example": "2018-07-02T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "Token name.",
+															"example": "readonly token",
+															"maxLength": 120,
+															"type": "string"
+														},
+														"not_before": {
+															"description": "The time before which the token MUST NOT be accepted for processing.",
+															"example": "2018-07-01T05:20:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"policies": {
+															"description": "List of access policies assigned to the token.",
+															"items": {
+																"properties": {
+																	"effect": {
+																		"description": "Allow or deny operations against the resources.",
+																		"enum": [
+																			"allow",
+																			"deny"
+																		],
+																		"example": "allow",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "Policy identifier.",
+																		"example": "f267e341f3dd4697bd3b9f71dd96247f",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"permission_groups": {
+																		"description": "A set of permission groups that are specified to the policy.",
+																		"example": [
+																			{
+																				"id": "c8fed203ed3043cba015a93ad1616f1f",
+																				"meta": {
+																					"label": "load_balancer_admin",
+																					"scopes": "com.cloudflare.api.account"
+																				},
+																				"name": "Zone Read"
+																			},
+																			{
+																				"id": "82e64a83756745bbbb1c9c2701bf816b",
+																				"meta": {
+																					"label": "fbm_user",
+																					"scopes": "com.cloudflare.api.account"
+																				},
+																				"name": "Magic Network Monitoring"
+																			}
+																		],
+																		"items": {
+																			"description": "A named group of permissions that map to a group of operations against resources.",
+																			"properties": {
+																				"id": {
+																					"description": "Identifier of the group.",
+																					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"meta": {
+																					"description": "Attributes associated to the permission group.",
+																					"example": {
+																						"label": "load_balancer_admin",
+																						"scopes": "com.cloudflare.api.account"
+																					},
+																					"type": "object"
+																				},
+																				"name": {
+																					"description": "Name of the group.",
+																					"example": "Load Balancer",
+																					"readOnly": true,
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"resources": {
+																		"description": "A list of resource names that the policy applies to.",
+																		"example": {
+																			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
+																			"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+																		},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"id",
+																	"effect",
+																	"permission_groups",
+																	"resources"
+																],
+																"title": "Policy with Permission Groups and Resources"
+															},
+															"type": "array"
+														},
+														"status": {
+															"description": "Status of the token.",
+															"enum": [
+																"active",
+																"disabled",
+																"expired"
+															],
+															"example": "active",
+															"type": "string"
+														}
+													},
 													"type": "object"
 												},
 												{
@@ -1605,15 +2264,16 @@
 															"type": "string",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											]
+											],
+											"title": "Create token response, with the token value"
 										}
 									},
 									"type": "object"
 								}
-							]
+							],
+							"title": "Single Token"
 						}
 					}
 				},
@@ -1839,7 +2499,13 @@
 				"in": "path",
 				"name": "token_id",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "Token identifier tag.",
+					"example": "ed17574386854bf78a67040be0a770b0",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -1916,6 +2582,13 @@
 										"readOnly": true,
 										"type": "string"
 									},
+									"last_used_on": {
+										"description": "Last time the token was used.",
+										"example": "2020-01-02T12:34:00Z",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string"
+									},
 									"modified_on": {
 										"description": "Last time the token was modified.",
 										"example": "2018-07-02T05:20:00Z",
@@ -1938,94 +2611,89 @@
 									"policies": {
 										"description": "List of access policies assigned to the token.",
 										"items": {
-											"oneOf": [
-												{
-													"properties": {
-														"effect": {
-															"description": "Allow or deny operations against the resources.",
-															"enum": [
-																"allow",
-																"deny"
-															],
-															"example": "allow",
-															"type": "string"
+											"properties": {
+												"effect": {
+													"description": "Allow or deny operations against the resources.",
+													"enum": [
+														"allow",
+														"deny"
+													],
+													"example": "allow",
+													"type": "string"
+												},
+												"id": {
+													"description": "Policy identifier.",
+													"example": "f267e341f3dd4697bd3b9f71dd96247f",
+													"readOnly": true,
+													"type": "string"
+												},
+												"permission_groups": {
+													"description": "A set of permission groups that are specified to the policy.",
+													"example": [
+														{
+															"id": "c8fed203ed3043cba015a93ad1616f1f",
+															"meta": {
+																"label": "load_balancer_admin",
+																"scopes": "com.cloudflare.api.account"
+															},
+															"name": "Zone Read"
 														},
-														"id": {
-															"description": "Policy identifier.",
-															"example": "f267e341f3dd4697bd3b9f71dd96247f",
-															"readOnly": true,
-															"type": "string"
-														},
-														"permission_groups": {
-															"description": "A set of permission groups that are specified to the policy.",
-															"example": [
-																{
-																	"id": "c8fed203ed3043cba015a93ad1616f1f",
-																	"meta": {
-																		"label": "load_balancer_admin",
-																		"scopes": "com.cloudflare.api.account"
-																	},
-																	"name": "Zone Read"
+														{
+															"id": "82e64a83756745bbbb1c9c2701bf816b",
+															"meta": {
+																"label": "fbm_user",
+																"scopes": "com.cloudflare.api.account"
+															},
+															"name": "Magic Network Monitoring"
+														}
+													],
+													"items": {
+														"description": "A named group of permissions that map to a group of operations against resources.",
+														"properties": {
+															"id": {
+																"description": "Identifier of the group.",
+																"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																"readOnly": true,
+																"type": "string"
+															},
+															"meta": {
+																"description": "Attributes associated to the permission group.",
+																"example": {
+																	"label": "load_balancer_admin",
+																	"scopes": "com.cloudflare.api.account"
 																},
-																{
-																	"id": "82e64a83756745bbbb1c9c2701bf816b",
-																	"meta": {
-																		"label": "fbm_user",
-																		"scopes": "com.cloudflare.api.account"
-																	},
-																	"name": "Magic Network Monitoring"
-																}
-															],
-															"items": {
-																"description": "A named group of permissions that map to a group of operations against resources.",
-																"properties": {
-																	"id": {
-																		"description": "Identifier of the group.",
-																		"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"meta": {
-																		"description": "Attributes associated to the permission group.",
-																		"example": {
-																			"label": "load_balancer_admin",
-																			"scopes": "com.cloudflare.api.account"
-																		},
-																		"type": "object"
-																	},
-																	"name": {
-																		"description": "Name of the group.",
-																		"example": "Load Balancer",
-																		"readOnly": true,
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"id"
-																],
 																"type": "object"
 															},
-															"type": "array"
+															"name": {
+																"description": "Name of the group.",
+																"example": "Load Balancer",
+																"readOnly": true,
+																"type": "string"
+															}
 														},
-														"resources": {
-															"description": "A list of resource names that the policy applies to.",
-															"example": {
-																"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
-																"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
-															},
-															"type": "object"
-														}
+														"required": [
+															"id"
+														],
+														"type": "object"
 													},
-													"required": [
-														"id",
-														"effect",
-														"permission_groups",
-														"resources"
-													],
-													"title": "policy_with_permission_groups_and_resources"
+													"type": "array"
+												},
+												"resources": {
+													"description": "A list of resource names that the policy applies to.",
+													"example": {
+														"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
+														"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+													},
+													"type": "object"
 												}
+											},
+											"required": [
+												"id",
+												"effect",
+												"permission_groups",
+												"resources"
 											],
-											"type": "object"
+											"title": "Policy with Permission Groups and Resources"
 										},
 										"type": "array"
 									},
@@ -2040,15 +2708,20 @@
 										"type": "string"
 									}
 								},
+								"type": "object"
+							},
+							{
+								"type": "object"
+							},
+							{
 								"required": [
-									"id",
 									"name",
 									"status",
 									"policies"
-								],
-								"type": "object"
+								]
 							}
-						]
+						],
+						"title": "Token defined in a request body"
 					}
 				}
 			},
@@ -2121,6 +2794,40 @@
 												"messages"
 											],
 											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
 										}
 									],
 									"type": "object"
@@ -2128,12 +2835,207 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"condition": {
+													"properties": {
+														"request.ip": {
+															"description": "Client IP restrictions.",
+															"example": {
+																"in": [
+																	"123.123.123.0/24",
+																	"2606:4700::/32"
+																],
+																"not_in": [
+																	"123.123.123.100/24",
+																	"2606:4700:4700::/48"
+																]
+															},
+															"properties": {
+																"in": {
+																	"description": "List of IPv4/IPv6 CIDR addresses.",
+																	"example": [
+																		"199.27.128.0/21",
+																		"2400:cb00::/32"
+																	],
+																	"items": {
+																		"description": "IPv4/IPv6 CIDR.",
+																		"example": "199.27.128.0/21",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"not_in": {
+																	"description": "List of IPv4/IPv6 CIDR addresses.",
+																	"example": [
+																		"199.27.128.0/21",
+																		"2400:cb00::/32"
+																	],
+																	"items": {
+																		"description": "IPv4/IPv6 CIDR.",
+																		"example": "199.27.128.0/21",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"expires_on": {
+													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
+													"example": "2020-01-01T00:00:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"id": {
+													"description": "Token identifier tag.",
+													"example": "ed17574386854bf78a67040be0a770b0",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"issued_on": {
+													"description": "The time on which the token was created.",
+													"example": "2018-07-01T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"last_used_on": {
+													"description": "Last time the token was used.",
+													"example": "2020-01-02T12:34:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "Last time the token was modified.",
+													"example": "2018-07-02T05:20:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "Token name.",
+													"example": "readonly token",
+													"maxLength": 120,
+													"type": "string"
+												},
+												"not_before": {
+													"description": "The time before which the token MUST NOT be accepted for processing.",
+													"example": "2018-07-01T05:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"policies": {
+													"description": "List of access policies assigned to the token.",
+													"items": {
+														"properties": {
+															"effect": {
+																"description": "Allow or deny operations against the resources.",
+																"enum": [
+																	"allow",
+																	"deny"
+																],
+																"example": "allow",
+																"type": "string"
+															},
+															"id": {
+																"description": "Policy identifier.",
+																"example": "f267e341f3dd4697bd3b9f71dd96247f",
+																"readOnly": true,
+																"type": "string"
+															},
+															"permission_groups": {
+																"description": "A set of permission groups that are specified to the policy.",
+																"example": [
+																	{
+																		"id": "c8fed203ed3043cba015a93ad1616f1f",
+																		"meta": {
+																			"label": "load_balancer_admin",
+																			"scopes": "com.cloudflare.api.account"
+																		},
+																		"name": "Zone Read"
+																	},
+																	{
+																		"id": "82e64a83756745bbbb1c9c2701bf816b",
+																		"meta": {
+																			"label": "fbm_user",
+																			"scopes": "com.cloudflare.api.account"
+																		},
+																		"name": "Magic Network Monitoring"
+																	}
+																],
+																"items": {
+																	"description": "A named group of permissions that map to a group of operations against resources.",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the group.",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the permission group.",
+																			"example": {
+																				"label": "load_balancer_admin",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"type": "object"
+																		},
+																		"name": {
+																			"description": "Name of the group.",
+																			"example": "Load Balancer",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"resources": {
+																"description": "A list of resource names that the policy applies to.",
+																"example": {
+																	"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
+																	"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"id",
+															"effect",
+															"permission_groups",
+															"resources"
+														],
+														"title": "Policy with Permission Groups and Resources"
+													},
+													"type": "array"
+												},
+												"status": {
+													"description": "Status of the token.",
+													"enum": [
+														"active",
+														"disabled",
+														"expired"
+													],
+													"example": "active",
+													"type": "string"
+												}
+											},
 											"type": "object"
 										}
 									},
 									"type": "object"
 								}
-							]
+							],
+							"title": "Single Token"
 						}
 					}
 				},
@@ -2341,7 +3243,13 @@
 				"in": "path",
 				"name": "token_id",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "Token identifier tag.",
+					"example": "ed17574386854bf78a67040be0a770b0",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {

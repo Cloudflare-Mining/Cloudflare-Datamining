@@ -409,7 +409,12 @@
 				"in": "path",
 				"name": "role_id",
 				"required": true,
-				"schema": {}
+				"schema": {
+					"description": "Role identifier tag.",
+					"example": "3536bcfad5faccb999b47003c79917fb",
+					"maxLength": 32,
+					"type": "string"
+				}
 			},
 			{
 				"in": "path",
