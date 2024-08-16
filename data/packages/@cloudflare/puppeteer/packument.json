@@ -1,7 +1,8 @@
 {
 	"name": "@cloudflare/puppeteer",
 	"dist-tags": {
-		"latest": "0.0.12"
+		"latest": "0.0.12",
+		"next": "0.0.13"
 	},
 	"versions": {
 		"0.0.0-alpha.1": {
@@ -1077,6 +1078,39 @@
 			"name": "@cloudflare/puppeteer",
 			"version": "0.0.12",
 			"dependencies": {
+				"ws": "8.13.0",
+				"debug": "4.3.4",
+				"cross-fetch": "4.0.0",
+				"chromium-bidi": "0.4.20",
+				"devtools-protocol": "0.0.1159816",
+				"@puppeteer/browsers": "1.7.0"
+			},
+			"devDependencies": {
+				"mitt": "3.0.0",
+				"rxjs": "7.8.1",
+				"parsel-js": "1.1.0"
+			},
+			"dist": {
+				"shasum": "330644f246821630504673df70936c06c46a2492",
+				"tarball": "https://registry.npmjs.org/@cloudflare/puppeteer/-/puppeteer-0.0.12.tgz",
+				"fileCount": 1317,
+				"integrity": "sha512-gnaDkNC9V/QXIL1eEhvRt09Iahtyf1GAYUd7I/g4p2rNYjvCpl+5+j/HcDoiOaAwSQCboe0x8UztjoGtAQBGFA==",
+				"signatures": [
+					{
+						"sig": "MEQCIDvCK5Djylf7JOGUwcQ1tmTobPYA7dfnxJe/7vXTVTpmAiBYG9LMnS6FQjTEP1+7HFkQqZvVFEPqPADtjyG893c1iw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 5536983
+			},
+			"engines": {
+				"node": ">=16.3.0"
+			}
+		},
+		"0.0.13": {
+			"name": "@cloudflare/puppeteer",
+			"version": "0.0.13",
+			"dependencies": {
 				"chromium-bidi": "0.4.20",
 				"cross-fetch": "4.0.0",
 				"debug": "4.3.4",
@@ -1090,15 +1124,15 @@
 				"parsel-js": "1.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-gnaDkNC9V/QXIL1eEhvRt09Iahtyf1GAYUd7I/g4p2rNYjvCpl+5+j/HcDoiOaAwSQCboe0x8UztjoGtAQBGFA==",
-				"shasum": "330644f246821630504673df70936c06c46a2492",
-				"tarball": "https://registry.npmjs.org/@cloudflare/puppeteer/-/puppeteer-0.0.12.tgz",
-				"fileCount": 1317,
-				"unpackedSize": 5536983,
+				"integrity": "sha512-9JTAjeHDcpS1acLv7TmBQABFTscOqegx9WGWxQ8b7KI5rN8Xl2OuPpSuw+yTw7aspSxfYDqNrdNejiQuCzQJjQ==",
+				"shasum": "fb15f19f89dd6f00051e0d751065a99e5941c1f0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/puppeteer/-/puppeteer-0.0.13.tgz",
+				"fileCount": 1326,
+				"unpackedSize": 5536890,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIDvCK5Djylf7JOGUwcQ1tmTobPYA7dfnxJe/7vXTVTpmAiBYG9LMnS6FQjTEP1+7HFkQqZvVFEPqPADtjyG893c1iw=="
+						"sig": "MEUCIQCANvQ05jwPxkcXK83avYsp95j8XVapWKWwtg9RRa0JMQIgNehGuUx2iibfDZpXisWTCWGFsSvqQakD6EoBM5AL5Fo="
 					}
 				]
 			},
