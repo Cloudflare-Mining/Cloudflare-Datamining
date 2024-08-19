@@ -5,69 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: US Remote, Austin, TX or San Francisco, CA preferred</h4>
-<p><strong>Job Summary</strong></p>
-<p>Do you love thinking analytically? Are you passionate about using your financial knowledge to navigate complex challenges? If your answer to both questions above is “yes”, we might have an amazing opportunity for you.</p>
-<p>We are seeking a motivated self-starter to join the Cloudflare Treasury team. As our newest Treasury team member, you will join a team that is responsible for global treasury operations, direct forecasting and free cash flow management, investment portfolio oversight, foreign currency risk management, and debt related activities. Strong analytical background, project management skills, and deep passion to push for clarity and drive results will be keys to your success. At the same time, this is an amazing opportunity to work for a high growth tech company that will consistently expose you to a dynamic and challenging environment.</p>
-<p>This is an ideal opportunity for a finance professional that is looking for the next step in their career. There will be opportunities to interact with senior business leaders and work with cross-functional teams on strategic projects.&nbsp;</p>
-<p><strong>Key Responsibilities&nbsp;</strong></p>
-<ul>
-	<li>Manage global cash management activities including payments, cash positioning, funding, and interest income forecasting</li>
-	<li>Lead M&amp;A integration related activities from a treasury perspective</li>
-	<li>Generate monthly and quarterly reporting, including fulfilling internal and external audit requirements</li>
-	<li>Improve benchmarking of external asset managers and develop strategies to optimize investment performance</li>
-	<li>Drive the implementation, streamlining and documentation of various treasury operations and procedures, considering compliance and business needs</li>
-	<li>Assist with roll out of global FX program, including leading FX forecasting, execution, and reporting</li>
-	<li>Become subject matter expert on treasury management system with oversight on cash management, financial transaction accounting, and payment related modules&nbsp;</li>
-	<li>Partner with Head of Treasury to lead process enhancement and automation initiatives collaborating with finance &amp; IT stakeholders</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>8+ years work experience in treasury or banking, ideally in an international public corporation</li>
-	<li>Bachelor’s degree (BA/BS in Finance, Accounting, Economics or quantitative field preferred)</li>
-	<li>Strong analytical, problem solving and communication skills</li>
-	<li>Flexible, inventive, and eager to learn</li>
-	<li>Strong desire to automate treasury processes leveraging treasury technology</li>
-	<li>Experience with Kyriba, Clearwater, Chatham a plus</li>
-	<li>MBA, CTP, CPA or CFA preferred</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado-based hires: Estimated annual salary of $166,000 - $202,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $226,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $ 194,000 -$238,000</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<div><span style="color: #000000; font-family: tahoma, sans-serif;"><strong>About Us</strong><br><br>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.<br><br>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp; &nbsp;<br></span></div>
+<div>
+	<div><span style="color: #000000; font-family: tahoma, sans-serif;">&nbsp;</span></div>
+	<strong><span style="color: #000000; font-family: tahoma, sans-serif;">About the Role</span></strong>
+</div>
+<div><span style="color: #000000; font-family: tahoma, sans-serif;"><strong>&nbsp;<br></strong>Cloudflare’s Corporate Procurement Specialist is responsible for administering our procurement policies and processes, as well as purchasing vital goods and services at optimal pricing. We are seeking an experienced professional to handle the tactical execution of the end-to-end procurement process and conduct supplier management activities. This role will serve as the internal point of contact for key business functions.</span></div>
+<div><span style="color: #000000; font-family: tahoma, sans-serif;">&nbsp;</span></div>
+<div><span style="color: #000000; font-family: tahoma, sans-serif;">An effective Procurement Specialist develops efficient procurement solutions and supports senior management in the development and implementation of sourcing strategies. This role requires excellent communication skills, strong analytical abilities, and a deep understanding of the company’s Enterprise Resource Planning (ERP) system, particularly Coupa.&nbsp;</span></div>
+<div><span style="color: #000000; font-family: tahoma, sans-serif;">&nbsp;</span></div>
+<div><strong><span style="color: #000000; font-family: tahoma, sans-serif;">What You'll Do<br></span></strong>
+	<ul>
+		<li><span style="color: #000000; font-family: tahoma, sans-serif;">Facilitate the creation of Purchase Requisitions and Purchase Orders within Coupa.<br></span></li>
+		<li><span style="color: #000000; font-family: tahoma, sans-serif;">Maintains vendor relations by resolving problems with orders.<br></span></li>
+		<li>Establishing and maintaining strong relationships with stakeholders.&nbsp;</li>
+		<li>Lead procurement administration efforts, with a strong focus on Coupa.</li>
+		<li>Partner with Legal and Security teams during new vendor onboarding to ensure business requirements are met from the outset.</li>
+	</ul>
+	<strong><span style="color: #000000; font-family: tahoma, sans-serif;">Requirements</span></strong><br>
+	<ul>
+		<li><span style="color: #000000; font-family: tahoma, sans-serif;">Bachelor’s Degree with a minimum of 2+ years of experience in a Procurement function.</span></li>
+		<li><span style="color: #000000; font-family: tahoma, sans-serif;">Strong analytical skills, with the ability to develop and implement efficient procurement solutions.</span></li>
+		<li><span style="color: #000000; font-family: tahoma, sans-serif;">Excellent communication skills and the ability to operate independently.</span></li>
+		<li>Excellent interpersonal and communication skills to articulate contractual, technical, financial and value points. Self-directed and self-motivated; excellent communicator and ability to build trust with both internal and external stakeholders.&nbsp;</li>
+		<li>Proficiency in Coupa software.</li>
+	</ul>
+</div>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
