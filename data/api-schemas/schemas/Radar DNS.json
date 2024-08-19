@@ -2878,10 +2878,6 @@
 										},
 										"summary_0": {
 											"properties": {
-												"FORMERR": {
-													"example": "5",
-													"type": "string"
-												},
 												"NOERROR": {
 													"example": "70",
 													"type": "string"
@@ -2908,8 +2904,7 @@
 												"NXDOMAIN",
 												"SERVFAIL",
 												"REFUSED",
-												"NOTIMP",
-												"FORMERR"
+												"NOTIMP"
 											],
 											"type": "object"
 										}
@@ -6008,13 +6003,6 @@
 										},
 										"serie_0": {
 											"properties": {
-												"FORMERR": {
-													"items": {
-														"example": "5",
-														"type": "string"
-													},
-													"type": "array"
-												},
 												"NOERROR": {
 													"items": {
 														"example": "70",
@@ -6056,8 +6044,7 @@
 												"NXDOMAIN",
 												"SERVFAIL",
 												"REFUSED",
-												"NOTIMP",
-												"FORMERR"
+												"NOTIMP"
 											],
 											"type": "object"
 										}
