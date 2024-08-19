@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Hybrid - Austin, San Francisco Bay Area and New York City. Two days in our Austin office.</p>
+<p><strong>Available Locations:</strong> Hybrid - Austin, San Francisco Bay Area and New York City. Two days in our office.</p>
 <h4><strong>About our team</strong></h4>
 <p>The Product Experience team is a diverse group of creative people that love to learn, collaborate, solve large-scale problems, and grow together. We're looking for a curious, user-focused, and action-oriented Senior Product Designer that is driven to design the best product experiences for the Developer Platform.</p>
 <p>The Developer Platform is a part of the Emerging Technologies &amp; Incubation (ETI) organization where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers.&nbsp;</p>

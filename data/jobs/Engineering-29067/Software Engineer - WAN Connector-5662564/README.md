@@ -6,22 +6,22 @@
 	</div>
 </div>
 <p><strong>About the team</strong></p>
-<p>Cloudflare is redefining the way networks are run at scale. Our Network Services product suite puts the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure and private networks. Our team works with Rust, Go, Linux, and cloud technologies to simultaneously build complex on-prem clients and distributed cloud backends. We are looking for engineers who are just as interested in building their own Linux-based OS as they are in cloud architecture, and just as interested in Rust as they are in Go.</p>
+<p>Cloudflare is redefining the way networks are run at scale. Our Network Services product suite puts the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure and private networks. Our team works with Rust, Go, Linux, and cloud technologies to simultaneously build on-prem operating systems and distributed cloud backends. We are looking for engineers who are just as interested in building their own Linux-based OS as they are in cloud architecture, and just as interested in Rust as they are in Go.</p>
 <p><strong>Magic WAN Connector</strong></p>
 <p>The Magic WAN Connector is a lightweight network appliance providing zero touch connectivity to the Cloudflare network, extending the power of the Cloudflare global network to customer locations, and providing local network access to Cloudflare’s cloud-native networking services at the Edge. Connectors are deployed worldwide to customer locations and are managed via a cloud backend.</p>
 <p><strong>About the role</strong></p>
 <p>We’re looking for curious and empathetic engineers who are excited to join us in changing the way networking is done. Some of the things our team works on include:</p>
 <ul>
-	<li>A lightweight linux distro with custom networking software written in Rust, deployed via physical devices and virtual machines</li>
+	<li>A lightweight linux OS, with networking software written in Rust, deployed via physical devices and virtual machines</li>
 	<li>A distributed cloud backend using Go, Kubernetes, and PostgreSQL</li>
 	<li>Debugging packet flows and IPsec tunnels that span the globally distributed Cloudflare network and globally distributed customer networks, often involving debugging of Linux kernel networking primitives – netfilter, nftables, eBPF, tc, network namespaces, etc</li>
-	<li>Release/Deployment systems for applications across Cloudflare and on-prem locations</li>
+	<li>Release/Deployment systems for various applications including operating systems and backend APIs</li>
 	<li>Partnering with some of the best engineers and product managers to solve big problems</li>
 </ul>
 <p><strong>Desired skills, knowledge, and experience</strong></p>
 <ul>
 	<li><strong>Rust</strong> and/or <strong>Go</strong> programming</li>
-	<li>Broad <strong>networking</strong> expertise across <strong>L2-L7</strong> networking flows and protocols</li>
+	<li>Broad <strong>networking</strong> expertise across <strong>L3-L7</strong> networking flows and protocols</li>
 	<li>Experience designing and integrating <strong>RESTful APIs</strong> and backend systems</li>
 	<li>Experience building on top of Linux kernel networking primitives – <strong>netfilter, nftables, eBPF, tc, network namespaces</strong>, etc</li>
 	<li>Experience building and shipping <strong>highly distributed systems with best SRE practices</strong></li>
