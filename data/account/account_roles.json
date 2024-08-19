@@ -1080,6 +1080,10 @@
 				"read": true,
 				"edit": true
 			},
+			"worker": {
+				"read": true,
+				"edit": true
+			},
 			"billing": {
 				"read": true,
 				"edit": true
@@ -1166,10 +1170,6 @@
 			"analytics": {
 				"read": true,
 				"edit": false
-			},
-			"worker": {
-				"read": true,
-				"edit": true
 			},
 			"zone_versioning": {
 				"read": true,
@@ -1469,6 +1469,10 @@
 		"name": "Cloudflare Workers Admin",
 		"description": "Can edit Cloudflare Workers.",
 		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": true
+			},
 			"organization": {
 				"read": true,
 				"edit": true
@@ -1493,10 +1497,6 @@
 			"analytics": {
 				"read": true,
 				"edit": false
-			},
-			"worker": {
-				"read": true,
-				"edit": true
 			},
 			"r2_bucket": {
 				"read": true,
@@ -1696,6 +1696,10 @@
 				"read": true,
 				"edit": false
 			},
+			"worker": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": false,
@@ -1788,10 +1792,6 @@
 				"read": true,
 				"edit": false
 			},
-			"worker": {
-				"read": true,
-				"edit": false
-			},
 			"fbm": {
 				"read": true,
 				"edit": false
@@ -1868,6 +1868,10 @@
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
 			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"worker": {
 				"read": true,
 				"edit": true
 			},
@@ -1956,10 +1960,6 @@
 			"analytics": {
 				"read": true,
 				"edit": false
-			},
-			"worker": {
-				"read": true,
-				"edit": true
 			},
 			"zone_versioning": {
 				"read": true,
