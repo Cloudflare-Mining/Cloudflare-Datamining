@@ -119,177 +119,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"id": {
-															"description": "Membership identifier tag.",
-															"example": "4536bcfad5faccb111b47003c79917fa",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1303,6 +1214,14 @@
 																							"label": "load_balancer_admin",
 																							"scopes": "com.cloudflare.api.account"
 																						},
+																						"properties": {
+																							"key": {
+																								"type": "string"
+																							},
+																							"value": {
+																								"type": "string"
+																							}
+																						},
 																						"type": "object"
 																					},
 																					"name": {
@@ -1334,6 +1253,14 @@
 																						"description": "Attributes associated to the resource group.",
 																						"example": {
 																							"editable": "false"
+																						},
+																						"properties": {
+																							"key": {
+																								"type": "string"
+																							},
+																							"value": {
+																								"type": "string"
+																							}
 																						},
 																						"type": "object"
 																					},
@@ -1435,532 +1362,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"properties": {
-															"account": {
-																"allOf": [
-																	{
-																		"properties": {
-																			"created_on": {
-																				"description": "Timestamp for the creation of the account",
-																				"example": "2014-03-01T12:21:02.0000Z",
-																				"format": "date-time",
-																				"readOnly": true,
-																				"type": "string"
-																			},
-																			"id": {
-																				"description": "Identifier",
-																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"type": "string"
-																			},
-																			"name": {
-																				"description": "Account name",
-																				"example": "Demo Account",
-																				"maxLength": 100,
-																				"type": "string"
-																			},
-																			"settings": {
-																				"description": "Account settings",
-																				"properties": {
-																					"abuse_contact_email": {
-																						"description": "Sets an abuse contact email to notify for abuse reports.",
-																						"type": "string"
-																					},
-																					"default_nameservers": {
-																						"default": "cloudflare.standard",
-																						"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.",
-																						"enum": [
-																							"cloudflare.standard",
-																							"custom.account",
-																							"custom.tenant"
-																						],
-																						"type": "string"
-																					},
-																					"enforce_twofactor": {
-																						"default": false,
-																						"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
-																						"type": "boolean"
-																					},
-																					"use_account_custom_ns_by_default": {
-																						"default": false,
-																						"deprecated": true,
-																						"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of `default_nameservers`.",
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"id",
-																			"name"
-																		],
-																		"type": "object"
-																	}
-																],
-																"readOnly": true
-															},
-															"api_access_enabled": {
-																"description": "Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account.",
-																"example": true,
-																"nullable": true,
-																"type": "boolean"
-															},
-															"id": {
-																"description": "Membership identifier tag.",
-																"example": "4536bcfad5faccb111b47003c79917fa",
-																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
-															},
-															"permissions": {
-																"allOf": [
-																	{
-																		"example": {
-																			"analytics": {
-																				"read": true,
-																				"write": false
-																			},
-																			"zones": {
-																				"read": true,
-																				"write": true
-																			}
-																		},
-																		"properties": {
-																			"analytics": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"billing": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"cache_purge": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"dns": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"dns_records": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"lb": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"logs": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"organization": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"ssl": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"waf": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"zone_settings": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"zones": {
-																				"example": {
-																					"read": true,
-																					"write": false
-																				},
-																				"properties": {
-																					"read": {
-																						"example": true,
-																						"type": "boolean"
-																					},
-																					"write": {
-																						"example": true,
-																						"type": "boolean"
-																					}
-																				},
-																				"type": "object"
-																			}
-																		},
-																		"type": "object"
-																	}
-																],
-																"description": "All access permissions for the user at the account.",
-																"readOnly": true
-															},
-															"roles": {
-																"description": "List of role names for the user at the account.",
-																"items": {
-																	"example": "Account Administrator",
-																	"maxLength": 120,
-																	"type": "string"
-																},
-																"readOnly": true,
-																"type": "array"
-															},
-															"status": {
-																"description": "Status of this membership.",
-																"enum": [
-																	"accepted",
-																	"pending",
-																	"rejected"
-																],
-																"example": "accepted",
-																"type": "string"
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
 										}
 									],
-									"title": "memberships_with_roles"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2427,6 +1910,14 @@
 																				"label": "load_balancer_admin",
 																				"scopes": "com.cloudflare.api.account"
 																			},
+																			"properties": {
+																				"key": {
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
+																			},
 																			"type": "object"
 																		},
 																		"name": {
@@ -2458,6 +1949,14 @@
 																			"description": "Attributes associated to the resource group.",
 																			"example": {
 																				"editable": "false"
+																			},
+																			"properties": {
+																				"key": {
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
 																			},
 																			"type": "object"
 																		},
@@ -2555,495 +2054,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"account": {
-															"allOf": [
-																{
-																	"properties": {
-																		"created_on": {
-																			"description": "Timestamp for the creation of the account",
-																			"example": "2014-03-01T12:21:02.0000Z",
-																			"format": "date-time",
-																			"readOnly": true,
-																			"type": "string"
-																		},
-																		"id": {
-																			"description": "Identifier",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"type": "string"
-																		},
-																		"name": {
-																			"description": "Account name",
-																			"example": "Demo Account",
-																			"maxLength": 100,
-																			"type": "string"
-																		},
-																		"settings": {
-																			"description": "Account settings",
-																			"properties": {
-																				"abuse_contact_email": {
-																					"description": "Sets an abuse contact email to notify for abuse reports.",
-																					"type": "string"
-																				},
-																				"default_nameservers": {
-																					"default": "cloudflare.standard",
-																					"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.",
-																					"enum": [
-																						"cloudflare.standard",
-																						"custom.account",
-																						"custom.tenant"
-																					],
-																					"type": "string"
-																				},
-																				"enforce_twofactor": {
-																					"default": false,
-																					"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
-																					"type": "boolean"
-																				},
-																				"use_account_custom_ns_by_default": {
-																					"default": false,
-																					"deprecated": true,
-																					"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of `default_nameservers`.",
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		}
-																	},
-																	"required": [
-																		"id",
-																		"name"
-																	],
-																	"type": "object"
-																}
-															],
-															"readOnly": true
-														},
-														"api_access_enabled": {
-															"description": "Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account.",
-															"example": true,
-															"nullable": true,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Membership identifier tag.",
-															"example": "4536bcfad5faccb111b47003c79917fa",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"permissions": {
-															"allOf": [
-																{
-																	"example": {
-																		"analytics": {
-																			"read": true,
-																			"write": false
-																		},
-																		"zones": {
-																			"read": true,
-																			"write": true
-																		}
-																	},
-																	"properties": {
-																		"analytics": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"billing": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"cache_purge": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"dns": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"dns_records": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"lb": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"logs": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"organization": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"ssl": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"waf": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"zone_settings": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"zones": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		}
-																	},
-																	"type": "object"
-																}
-															],
-															"description": "All access permissions for the user at the account.",
-															"readOnly": true
-														},
-														"roles": {
-															"description": "List of role names for the user at the account.",
-															"items": {
-																"example": "Account Administrator",
-																"maxLength": 120,
-																"type": "string"
-															},
-															"readOnly": true,
-															"type": "array"
-														},
-														"status": {
-															"description": "Status of this membership.",
-															"enum": [
-																"accepted",
-																"pending",
-																"rejected"
-															],
-															"example": "accepted",
-															"type": "string"
-														}
-													},
-													"type": "object"
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
 										}
 									],
-									"title": "response_with_roles"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -3532,6 +2624,14 @@
 																				"label": "load_balancer_admin",
 																				"scopes": "com.cloudflare.api.account"
 																			},
+																			"properties": {
+																				"key": {
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
+																			},
 																			"type": "object"
 																		},
 																		"name": {
@@ -3563,6 +2663,14 @@
 																			"description": "Attributes associated to the resource group.",
 																			"example": {
 																				"editable": "false"
+																			},
+																			"properties": {
+																				"key": {
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
 																			},
 																			"type": "object"
 																		},
@@ -3660,495 +2768,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													],
-													"type": "object"
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"account": {
-															"allOf": [
-																{
-																	"properties": {
-																		"created_on": {
-																			"description": "Timestamp for the creation of the account",
-																			"example": "2014-03-01T12:21:02.0000Z",
-																			"format": "date-time",
-																			"readOnly": true,
-																			"type": "string"
-																		},
-																		"id": {
-																			"description": "Identifier",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"type": "string"
-																		},
-																		"name": {
-																			"description": "Account name",
-																			"example": "Demo Account",
-																			"maxLength": 100,
-																			"type": "string"
-																		},
-																		"settings": {
-																			"description": "Account settings",
-																			"properties": {
-																				"abuse_contact_email": {
-																					"description": "Sets an abuse contact email to notify for abuse reports.",
-																					"type": "string"
-																				},
-																				"default_nameservers": {
-																					"default": "cloudflare.standard",
-																					"description": "Specifies the default nameservers to be used for new zones added to this account.\n\n- `cloudflare.standard` for Cloudflare-branded nameservers\n- `custom.account` for account custom nameservers\n- `custom.tenant` for tenant custom nameservers\n\nSee [Custom Nameservers](https://developers.cloudflare.com/dns/additional-options/custom-nameservers/)\nfor more information.",
-																					"enum": [
-																						"cloudflare.standard",
-																						"custom.account",
-																						"custom.tenant"
-																					],
-																					"type": "string"
-																				},
-																				"enforce_twofactor": {
-																					"default": false,
-																					"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
-																					"type": "boolean"
-																				},
-																				"use_account_custom_ns_by_default": {
-																					"default": false,
-																					"deprecated": true,
-																					"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of `default_nameservers`.",
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		}
-																	},
-																	"required": [
-																		"id",
-																		"name"
-																	],
-																	"type": "object"
-																}
-															],
-															"readOnly": true
-														},
-														"api_access_enabled": {
-															"description": "Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account.",
-															"example": true,
-															"nullable": true,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Membership identifier tag.",
-															"example": "4536bcfad5faccb111b47003c79917fa",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"permissions": {
-															"allOf": [
-																{
-																	"example": {
-																		"analytics": {
-																			"read": true,
-																			"write": false
-																		},
-																		"zones": {
-																			"read": true,
-																			"write": true
-																		}
-																	},
-																	"properties": {
-																		"analytics": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"billing": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"cache_purge": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"dns": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"dns_records": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"lb": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"logs": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"organization": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"ssl": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"waf": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"zone_settings": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"zones": {
-																			"example": {
-																				"read": true,
-																				"write": false
-																			},
-																			"properties": {
-																				"read": {
-																					"example": true,
-																					"type": "boolean"
-																				},
-																				"write": {
-																					"example": true,
-																					"type": "boolean"
-																				}
-																			},
-																			"type": "object"
-																		}
-																	},
-																	"type": "object"
-																}
-															],
-															"description": "All access permissions for the user at the account.",
-															"readOnly": true
-														},
-														"roles": {
-															"description": "List of role names for the user at the account.",
-															"items": {
-																"example": "Account Administrator",
-																"maxLength": 120,
-																"type": "string"
-															},
-															"readOnly": true,
-															"type": "array"
-														},
-														"status": {
-															"description": "Status of this membership.",
-															"enum": [
-																"accepted",
-																"pending",
-																"rejected"
-															],
-															"example": "accepted",
-															"type": "string"
-														}
-													},
-													"type": "object"
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
 										}
 									],
-									"title": "response_with_roles"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
