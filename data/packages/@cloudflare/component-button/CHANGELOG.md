@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.4.0
+
+### Minor Changes
+
+- 6d443c5193: Update icon package version
+
 ## 8.3.15
 
 ## 8.3.14
