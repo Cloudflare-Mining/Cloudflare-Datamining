@@ -986,7 +986,8 @@
 				"name": "page",
 				"schema": {
 					"default": 1,
-					"minimum": 1
+					"minimum": 1,
+					"type": "number"
 				}
 			},
 			{
@@ -996,7 +997,8 @@
 				"schema": {
 					"default": 25,
 					"maximum": 1000,
-					"minimum": 5
+					"minimum": 5,
+					"type": "number"
 				}
 			}
 		],
@@ -1207,6 +1209,18 @@
 														"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
 														"example": false,
 														"type": "boolean"
+													},
+													"enabled_origin_commands": {
+														"default": [],
+														"description": "A list of enabled origin commands.",
+														"items": {
+															"enum": [
+																"revoke"
+															],
+															"type": "string",
+															"uniqueItems": true
+														},
+														"type": "array"
 													},
 													"host": {
 														"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
@@ -1526,6 +1540,18 @@
 																"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
 																"example": false,
 																"type": "boolean"
+															},
+															"enabled_origin_commands": {
+																"default": [],
+																"description": "A list of enabled origin commands.",
+																"items": {
+																	"enum": [
+																		"revoke"
+																	],
+																	"type": "string",
+																	"uniqueItems": true
+																},
+																"type": "array"
 															},
 															"host": {
 																"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
@@ -1910,6 +1936,18 @@
 													"example": false,
 													"type": "boolean"
 												},
+												"enabled_origin_commands": {
+													"default": [],
+													"description": "A list of enabled origin commands.",
+													"items": {
+														"enum": [
+															"revoke"
+														],
+														"type": "string",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
 												"host": {
 													"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
 													"example": "shop.example.com",
@@ -2160,6 +2198,18 @@
 															"example": false,
 															"type": "boolean"
 														},
+														"enabled_origin_commands": {
+															"default": [],
+															"description": "A list of enabled origin commands.",
+															"items": {
+																"enum": [
+																	"revoke"
+																],
+																"type": "string",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
 														"host": {
 															"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
 															"example": "shop.example.com",
@@ -2405,7 +2455,8 @@
 				"name": "page",
 				"schema": {
 					"default": 1,
-					"minimum": 1
+					"minimum": 1,
+					"type": "number"
 				}
 			},
 			{
@@ -2415,7 +2466,8 @@
 				"schema": {
 					"default": 25,
 					"maximum": 1000,
-					"minimum": 5
+					"minimum": 5,
+					"type": "number"
 				}
 			}
 		],
@@ -4853,6 +4905,18 @@
 								"example": false,
 								"type": "boolean"
 							},
+							"enabled_origin_commands": {
+								"default": [],
+								"description": "A list of enabled origin commands.",
+								"items": {
+									"enum": [
+										"revoke"
+									],
+									"type": "string",
+									"uniqueItems": true
+								},
+								"type": "array"
+							},
 							"host": {
 								"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
 								"example": "shop.example.com",
@@ -5081,6 +5145,18 @@
 													"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
 													"example": false,
 													"type": "boolean"
+												},
+												"enabled_origin_commands": {
+													"default": [],
+													"description": "A list of enabled origin commands.",
+													"items": {
+														"enum": [
+															"revoke"
+														],
+														"type": "string",
+														"uniqueItems": true
+													},
+													"type": "array"
 												},
 												"host": {
 													"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
@@ -5331,6 +5407,18 @@
 															"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
 															"example": false,
 															"type": "boolean"
+														},
+														"enabled_origin_commands": {
+															"default": [],
+															"description": "A list of enabled origin commands.",
+															"items": {
+																"enum": [
+																	"revoke"
+																],
+																"type": "string",
+																"uniqueItems": true
+															},
+															"type": "array"
 														},
 														"host": {
 															"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
@@ -6978,6 +7066,18 @@
 								"example": false,
 								"type": "boolean"
 							},
+							"enabled_origin_commands": {
+								"default": [],
+								"description": "A list of enabled origin commands.",
+								"items": {
+									"enum": [
+										"revoke"
+									],
+									"type": "string",
+									"uniqueItems": true
+								},
+								"type": "array"
+							},
 							"host": {
 								"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
 								"example": "shop.example.com",
@@ -7206,6 +7306,18 @@
 													"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
 													"example": false,
 													"type": "boolean"
+												},
+												"enabled_origin_commands": {
+													"default": [],
+													"description": "A list of enabled origin commands.",
+													"items": {
+														"enum": [
+															"revoke"
+														],
+														"type": "string",
+														"uniqueItems": true
+													},
+													"type": "array"
 												},
 												"host": {
 													"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
@@ -7456,6 +7568,18 @@
 															"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
 															"example": false,
 															"type": "boolean"
+														},
+														"enabled_origin_commands": {
+															"default": [],
+															"description": "A list of enabled origin commands.",
+															"items": {
+																"enum": [
+																	"revoke"
+																],
+																"type": "string",
+																"uniqueItems": true
+															},
+															"type": "array"
 														},
 														"host": {
 															"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
@@ -9048,6 +9172,18 @@
 								"example": false,
 								"type": "boolean"
 							},
+							"enabled_origin_commands": {
+								"default": [],
+								"description": "A list of enabled origin commands.",
+								"items": {
+									"enum": [
+										"revoke"
+									],
+									"type": "string",
+									"uniqueItems": true
+								},
+								"type": "array"
+							},
 							"host": {
 								"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
 								"example": "shop.example.com",
@@ -9276,6 +9412,18 @@
 													"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
 													"example": false,
 													"type": "boolean"
+												},
+												"enabled_origin_commands": {
+													"default": [],
+													"description": "A list of enabled origin commands.",
+													"items": {
+														"enum": [
+															"revoke"
+														],
+														"type": "string",
+														"uniqueItems": true
+													},
+													"type": "array"
 												},
 												"host": {
 													"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
@@ -9526,6 +9674,18 @@
 															"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
 															"example": false,
 															"type": "boolean"
+														},
+														"enabled_origin_commands": {
+															"default": [],
+															"description": "A list of enabled origin commands.",
+															"items": {
+																"enum": [
+																	"revoke"
+																],
+																"type": "string",
+																"uniqueItems": true
+															},
+															"type": "array"
 														},
 														"host": {
 															"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
