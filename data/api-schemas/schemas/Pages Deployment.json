@@ -495,6 +495,24 @@
 														"type": "object"
 													},
 													"env_vars": {
+														"additionalProperties": {
+															"description": "Environment variable.",
+															"nullable": true,
+															"properties": {
+																"type": {
+																	"description": "The type of environment variable.",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Environment variable value.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"value"
+															],
+															"type": "object"
+														},
 														"description": "A dict of env variables to build this deploy.",
 														"example": {
 															"BUILD_VERSION": {
@@ -958,6 +976,24 @@
 																"type": "object"
 															},
 															"env_vars": {
+																"additionalProperties": {
+																	"description": "Environment variable.",
+																	"nullable": true,
+																	"properties": {
+																		"type": {
+																			"description": "The type of environment variable.",
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Environment variable value.",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"value"
+																	],
+																	"type": "object"
+																},
 																"description": "A dict of env variables to build this deploy.",
 																"example": {
 																	"BUILD_VERSION": {
@@ -1513,6 +1549,24 @@
 													"type": "object"
 												},
 												"env_vars": {
+													"additionalProperties": {
+														"description": "Environment variable.",
+														"nullable": true,
+														"properties": {
+															"type": {
+																"description": "The type of environment variable.",
+																"type": "string"
+															},
+															"value": {
+																"description": "Environment variable value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"value"
+														],
+														"type": "object"
+													},
 													"description": "A dict of env variables to build this deploy.",
 													"example": {
 														"BUILD_VERSION": {
@@ -1932,6 +1986,24 @@
 															"type": "object"
 														},
 														"env_vars": {
+															"additionalProperties": {
+																"description": "Environment variable.",
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"description": "The type of environment variable.",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Environment variable value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"value"
+																],
+																"type": "object"
+															},
 															"description": "A dict of env variables to build this deploy.",
 															"example": {
 																"BUILD_VERSION": {
@@ -3094,6 +3166,24 @@
 													"type": "object"
 												},
 												"env_vars": {
+													"additionalProperties": {
+														"description": "Environment variable.",
+														"nullable": true,
+														"properties": {
+															"type": {
+																"description": "The type of environment variable.",
+																"type": "string"
+															},
+															"value": {
+																"description": "Environment variable value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"value"
+														],
+														"type": "object"
+													},
 													"description": "A dict of env variables to build this deploy.",
 													"example": {
 														"BUILD_VERSION": {
@@ -3513,6 +3603,24 @@
 															"type": "object"
 														},
 														"env_vars": {
+															"additionalProperties": {
+																"description": "Environment variable.",
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"description": "The type of environment variable.",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Environment variable value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"value"
+																],
+																"type": "object"
+															},
 															"description": "A dict of env variables to build this deploy.",
 															"example": {
 																"BUILD_VERSION": {
@@ -4072,6 +4180,24 @@
 													"type": "object"
 												},
 												"env_vars": {
+													"additionalProperties": {
+														"description": "Environment variable.",
+														"nullable": true,
+														"properties": {
+															"type": {
+																"description": "The type of environment variable.",
+																"type": "string"
+															},
+															"value": {
+																"description": "Environment variable value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"value"
+														],
+														"type": "object"
+													},
 													"description": "A dict of env variables to build this deploy.",
 													"example": {
 														"BUILD_VERSION": {
@@ -4491,6 +4617,24 @@
 															"type": "object"
 														},
 														"env_vars": {
+															"additionalProperties": {
+																"description": "Environment variable.",
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"description": "The type of environment variable.",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Environment variable value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"value"
+																],
+																"type": "object"
+															},
 															"description": "A dict of env variables to build this deploy.",
 															"example": {
 																"BUILD_VERSION": {
@@ -5050,6 +5194,24 @@
 													"type": "object"
 												},
 												"env_vars": {
+													"additionalProperties": {
+														"description": "Environment variable.",
+														"nullable": true,
+														"properties": {
+															"type": {
+																"description": "The type of environment variable.",
+																"type": "string"
+															},
+															"value": {
+																"description": "Environment variable value.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"value"
+														],
+														"type": "object"
+													},
 													"description": "A dict of env variables to build this deploy.",
 													"example": {
 														"BUILD_VERSION": {
@@ -5469,6 +5631,24 @@
 															"type": "object"
 														},
 														"env_vars": {
+															"additionalProperties": {
+																"description": "Environment variable.",
+																"nullable": true,
+																"properties": {
+																	"type": {
+																		"description": "The type of environment variable.",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Environment variable value.",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"value"
+																],
+																"type": "object"
+															},
 															"description": "A dict of env variables to build this deploy.",
 															"example": {
 																"BUILD_VERSION": {

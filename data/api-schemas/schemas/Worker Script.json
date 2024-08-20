@@ -3612,6 +3612,19 @@
 													}
 												],
 												"items": {
+													"additionalProperties": {
+														"x-stainless-any": true
+													},
+													"properties": {
+														"name": {
+															"description": "Name of the binding variable.",
+															"type": "string"
+														},
+														"type": {
+															"description": "Type of binding. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.",
+															"type": "string"
+														}
+													},
 													"type": "object"
 												},
 												"type": "array"
@@ -3863,6 +3876,9 @@
 												"type": "string"
 											},
 											"version_tags": {
+												"additionalProperties": {
+													"type": "string"
+												},
 												"description": "Key-value pairs to use as tags for this version of this Worker",
 												"type": "object"
 											}
