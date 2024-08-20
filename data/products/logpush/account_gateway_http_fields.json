@@ -16,6 +16,7 @@
 	"DownloadedFileNames": "array[string]; List of files downloaded in the HTTP request.",
 	"Email": "string; Email used to authenticate the client.",
 	"FileInfo": "object; Information about files detected within the HTTP request.",
+	"ForensicCopyStatus": "string; Status of any associated forensic copies that may have been captured during the request.",
 	"HTTPHost": "string; Content of the host header in the HTTP request.",
 	"HTTPMethod": "string; HTTP request method.",
 	"HTTPStatusCode": "int; HTTP status code gateway returned to the user. Zero if nothing was returned (for example, client disconnected).",
