@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "095c4828-d9d1-5d01-80a8-a7d906f4270e")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "f9b26c26-bd52-576b-9604-5a9e69b051be")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -129,10 +129,10 @@
 						n.g.build = Z({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "8f28a6a210cc9fee795c2ded7a59102786d429c7",
-							dashVersion: "26413298",
+							commit: "a49f17c6078bb2de4304a6d61cc36f92a33b7c58",
+							dashVersion: "26421245",
 							env: "production",
-							builtAt: 1724172700711,
+							builtAt: 1724184952064,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								node: "20.10.0",
@@ -3134,6 +3134,8 @@
 				}, {
 					entityType: "h2Prioritization"
 				}, {
+					entityType: "speculation"
+				}, {
 					entityType: "firstPartyFonts"
 				}, {
 					entityType: "imageResizing"
@@ -6080,7 +6082,7 @@
 			var je = n("../react/app/components/Persistence/index.tsx"),
 				Ne = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				Be = n("../react/app/components/LoadingSuspense.tsx");
-			const Fe = o().lazy(() => Promise.all([n.e(64277), n.e(2480), n.e(10008), n.e(56310), n.e(36967), n.e(48155), n.e(94012), n.e(72019), n.e(24719), n.e(5668), n.e(35650), n.e(7484), n.e(39760), n.e(94684), n.e(82465), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Fe = o().lazy(() => Promise.all([n.e(78042), n.e(2480), n.e(10008), n.e(56310), n.e(80496), n.e(48155), n.e(94012), n.e(72019), n.e(6464), n.e(5668), n.e(35650), n.e(7484), n.e(39760), n.e(94684), n.e(82465), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var $e = () => o().createElement(Be.Z, null, o().createElement(Fe, null)),
 				we = n("../libs/init/loading.ts");
 			const ne = () => (e.useEffect(() => we.s, []), null);
@@ -6142,8 +6144,8 @@
 						devPanelEnabled: Y
 					}
 				},
-				Ie = o().lazy(() => Promise.all([n.e(64277), n.e(2480), n.e(10008), n.e(56310), n.e(36967), n.e(48155), n.e(94012), n.e(72019), n.e(24719), n.e(14696), n.e(48902), n.e(35650), n.e(7484), n.e(39760), n.e(94684), n.e(82465), n.e(32209), n.e(91984), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
-				Ue = o().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(64277), n.e(48155), n.e(14696), n.e(26337), n.e(94684), n.e(69088), n.e(91984), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
+				Ie = o().lazy(() => Promise.all([n.e(78042), n.e(2480), n.e(10008), n.e(56310), n.e(80496), n.e(48155), n.e(94012), n.e(72019), n.e(6464), n.e(14696), n.e(88650), n.e(35650), n.e(7484), n.e(39760), n.e(94684), n.e(82465), n.e(32209), n.e(91984), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				Ue = o().lazy(() => Promise.all([n.e(83741), n.e(65447), n.e(78042), n.e(48155), n.e(14696), n.e(26337), n.e(94684), n.e(69088), n.e(91984), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var We = ({
 					userIsAuthed: h
 				}) => {
@@ -9127,7 +9129,7 @@
 				}
 			});
 			let e = function(o) {
-				return o.TOGGLE_TCP_PROTECTION = "toggle advanced tcp protection", o.GET_TCP_PROTECTION_PREFIXES = "view tcp protection prefixes list", o.CREATE_TCP_PROTECTION_PREFIXES = "bulk create tcp protection prefixes", o.CREATE_TCP_PROTECTION_PREFIX = "create tcp protection prefix", o.UPDATE_TCP_PROTECTION_PREFIX = "update tcp protection prefix", o.DELETE_TCP_PROTECTION_PREFIX = "delete tcp protection prefix", o.DELETE_TCP_PROTECTION_PREFIXES = "bulk delete tcp protection prefixes", o.GET_TCP_PROTECTION_ALLOWLIST = "view prefixes in tcp protection allowlist", o.CREATE_TCP_PROTECTION_ALLOWLIST = "add prefix to tcp protection allowlist", o.UPDATE_TCP_PROTECTION_ALLOWLIST = "update tcp protection allowlist", o.DELETE_PREFIX_TCP_PROTECTION_ALLOWLIST = "delete prefix from tcp protection allowlist", o.DELETE_TCP_PROTECTION_ALLOWLIST = "delete all prefixes from tcp protection allowlist", o.GET_SYN_PROTECTION_RULE = "view syn protection rules list", o.GET_SYN_PROTECTION_RULES = "view syn protection rule", o.CREATE_SYN_PROTECTION_RULE = "create syn protection rule", o.UPDATE_SYN_PROTECTION_RULE = "update syn protection rule", o.DELETE_SYN_PROTECTION_RULE = "delete syn protection rule", o.GET_SYN_PROTECTION_FILTERS = "view syn protection filter list", o.GET_SYN_PROTECTION_FILTER = "view syn protection filter", o.CREATE_SYN_PROTECTION_FILTER = "create syn protection filter", o.UPDATE_SYN_PROTECTION_FILTER = "update syn protection filter", o.DELETE_SYN_PROTECTION_FILTER = "delete syn protection filter", o.GET_TCP_FLOW_PROTECTION_RULES = "view tcp flow protection rules list", o.GET_TCP_FLOW_PROTECTION_RULE = "view tcp flow protection rule", o.CREATE_TCP_FLOW_PROTECTION_RULE = "create tcp flow protection rule", o.UPDATE_TCP_FLOW_PROTECTION_RULE = "update tcp flow protection rule", o.DELETE_TCP_FLOW_PROTECTION_RULE = "delete tcp flow protection rule", o.GET_TCP_FLOW_PROTECTION_FILTERS = "view tcp flow protection filters list", o.GET_TCP_FLOW_PROTECTION_FILTER = "view tcp flow protection filter", o.CREATE_TCP_FLOW_PROTECTION_FILTER = "create tcp flow protection filter", o.UPDATE_TCP_FLOW_PROTECTION_FILTER = "update tcp flow protection filter", o.DELETE_TCP_FLOW_PROTECTION_FILTER = "delete tcp flow protection filter", o.GET_DNS_PROTECTION_RULES = "view dns protection rules list", o.GET_DNS_PROTECTION_RULE = "view dns protection rule", o.CREATE_DNS_PROTECTION_RULE = "create dns protection rule", o.UPDATE_DNS_PROTECTION_RULE = "update dns protection rule", o.DELETE_DNS_PROTECTION_RULE = "update dns protection rule", o
+				return o.TOGGLE_TCP_PROTECTION = "toggle advanced tcp protection", o.GET_TCP_PROTECTION_PREFIXES = "view tcp protection prefixes list", o.CREATE_TCP_PROTECTION_PREFIXES = "bulk create tcp protection prefixes", o.CREATE_TCP_PROTECTION_PREFIX = "create tcp protection prefix", o.UPDATE_TCP_PROTECTION_PREFIX = "update tcp protection prefix", o.DELETE_TCP_PROTECTION_PREFIX = "delete tcp protection prefix", o.DELETE_TCP_PROTECTION_PREFIXES = "bulk delete tcp protection prefixes", o.GET_TCP_PROTECTION_ALLOWLIST = "view prefixes in tcp protection allowlist", o.CREATE_TCP_PROTECTION_ALLOWLIST = "add prefix to tcp protection allowlist", o.UPDATE_TCP_PROTECTION_ALLOWLIST = "update tcp protection allowlist", o.DELETE_PREFIX_TCP_PROTECTION_ALLOWLIST = "delete prefix from tcp protection allowlist", o.DELETE_TCP_PROTECTION_ALLOWLIST = "delete all prefixes from tcp protection allowlist", o.GET_SYN_PROTECTION_RULE = "view syn protection rules list", o.GET_SYN_PROTECTION_RULES = "view syn protection rule", o.CREATE_SYN_PROTECTION_RULE = "create syn protection rule", o.UPDATE_SYN_PROTECTION_RULE = "update syn protection rule", o.DELETE_SYN_PROTECTION_RULE = "delete syn protection rule", o.GET_SYN_PROTECTION_FILTERS = "view syn protection filter list", o.GET_SYN_PROTECTION_FILTER = "view syn protection filter", o.CREATE_SYN_PROTECTION_FILTER = "create syn protection filter", o.UPDATE_SYN_PROTECTION_FILTER = "update syn protection filter", o.DELETE_SYN_PROTECTION_FILTER = "delete syn protection filter", o.GET_TCP_FLOW_PROTECTION_RULES = "view tcp flow protection rules list", o.GET_TCP_FLOW_PROTECTION_RULE = "view tcp flow protection rule", o.CREATE_TCP_FLOW_PROTECTION_RULE = "create tcp flow protection rule", o.UPDATE_TCP_FLOW_PROTECTION_RULE = "update tcp flow protection rule", o.DELETE_TCP_FLOW_PROTECTION_RULE = "delete tcp flow protection rule", o.GET_TCP_FLOW_PROTECTION_FILTERS = "view tcp flow protection filters list", o.GET_TCP_FLOW_PROTECTION_FILTER = "view tcp flow protection filter", o.CREATE_TCP_FLOW_PROTECTION_FILTER = "create tcp flow protection filter", o.UPDATE_TCP_FLOW_PROTECTION_FILTER = "update tcp flow protection filter", o.DELETE_TCP_FLOW_PROTECTION_FILTER = "delete tcp flow protection filter", o.GET_DNS_PROTECTION_RULES = "view dns protection rules list", o.GET_DNS_PROTECTION_RULE = "view dns protection rule", o.CREATE_DNS_PROTECTION_RULE = "create dns protection rule", o.UPDATE_DNS_PROTECTION_RULE = "update dns protection rule", o.DELETE_DNS_PROTECTION_RULE = "delete dns protection rule", o
 			}({})
 		},
 		"../react/pages/hyperdrive/tracking.ts": function(F, _, n) {
@@ -11868,6 +11870,7 @@
 					".wiki": t.eg.any.optional,
 					".wtf": t.eg.any.optional,
 					".xyz": t.eg.any.optional,
+					_ga: t.eg.any.optional,
 					_lpchecked: t.eg.any.optional,
 					a: t.eg.any.optional,
 					absolute: t.eg.any.optional,
@@ -11932,6 +11935,7 @@
 					currentPerPage: t.eg.any.optional,
 					currentPage: t.eg.any.optional,
 					d: t.eg.any.optional,
+					dashVersion: t.eg.any.optional,
 					"data-children-count": t.eg.any.optional,
 					"data-tracking-name": t.eg.any.optional,
 					"data-tracking-id": t.eg.any.optional,
@@ -13535,4 +13539,4 @@
 	}
 ]);
 
-//# debugId=095c4828-d9d1-5d01-80a8-a7d906f4270e
+//# debugId=f9b26c26-bd52-576b-9604-5a9e69b051be
