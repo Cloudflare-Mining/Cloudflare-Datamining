@@ -25,6 +25,7 @@
 	<li>Experience with a continuous integration workflow and using source control (we use git)Solid Linux experienceFluent in analyses of data sets such as logsDesigning and building APIs</li>
 	<li>A desire for continuous learning and improvement</li>
 </ul>
+<p><strong>Available Locations</strong>: Austin. Texas or London</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

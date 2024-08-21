@@ -5,36 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: Remote, Mexico</h4>
-<h4>About the role</h4>
-<p>Our focus is getting the best people to work at Cloudflare and then allowing them to do their best work. We are looking for an energetic and motivated People Services Representative who’s ready to help a rapidly growing organization scale with efficiency and operational excellence.&nbsp; The main function of this role is to create and deliver a seamless and positive employee experience across the entire hire to retire lifecycle. You’ll deliver world-class employee inquiry support as you help answer People and Payroll questions directly from employees. This role also executes critical People and Payroll transactions to ensure that the data we manage is clean, in compliance and up to date. Along the way you will also have opportunities to help design and improve our existing processes as we align and scale across multiple regions.</p>
-<h4>What you'll do</h4>
+<p><strong>Available locations<br></strong>Hybrid - Austin, TX or San Francisco, CA or New York, NY</p>
+<hr>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!</p>
+<p><strong>Available locations</strong>: Austin, TX, San Francisco, CA</p>
+<p><strong>About the department</strong></p>
+<p>You’ll be joining the Developer Marketing team sitting in the Product and Solution marketing organization. Developer Marketing works cross functionally with field marketing, demand generation, and emerging technology and incubation to drive go-to-market activities for our developer solutions. The primary focus of this role will be on either Cloudflare’s compute or storage and data solutions.&nbsp;</p>
+<p>In this role, you’ll create impactful narratives that tell the story of our products. This is an opportunity to develop all aspects of product marketing for our growing developer platform.&nbsp;</p>
+<p><strong>What you’ll do</strong></p>
+<p>We’re looking for a&nbsp; product marketing manager with experience in developer tools and services. You’ll work closely with cross-functional teams to develop effective marketing strategies to grow developer awareness and adoption of Cloudflare’s offerings.&nbsp;</p>
+<p>You will have a drive to understand developer needs and craft messaging for multiple initiatives. A successful candidate in this role enjoys working with innovative technologies on fast-paced teams.&nbsp;</p>
 <ul>
-	<li>Process global employee lifecycle transactions such as onboarding, transfers, organizational changes, and offboarding.&nbsp;&nbsp;</li>
-	<li>Maintain people data across People/Payroll systems and implement steps to ensure 100% data integrity, performing regular and ad hoc data audits.</li>
-	<li>Receive and respond to global employee inquiries regarding People and Payroll activities.&nbsp; Escalate issues to tier 2 subject matter experts as needed.</li>
-	<li>Act as a liaison on behalf of the employee and the People/Payroll departments to resolve issues.</li>
-	<li>Utilize a professional and quality-focused approach to handle inquiries, ensuring confidentiality and protection of sensitive employee information.</li>
-	<li>Create and manage employee files and People/Payroll records, ensure all necessary documentation is captured and held in the appropriate places.</li>
-	<li>Help implement any necessary process changes and records administration to support compliance regulations.</li>
-	<li>Support seasonal People/Payroll programmatic activities such as Benefits open enrollment and year end Payroll preparation.</li>
-	<li>As this position provides global employee support, you may be required to work non-traditional work hours for coverage.</li>
+	<li>Develop product and solution messaging for our compute, media, storage and data solutions targeted to developers and engineering leadership based on market, customer, and competitive research.</li>
+	<li>Align solutions with c-level initiatives and the broader Cloudflare portfolio within enterprise accounts.</li>
+	<li>Support product and feature launches and company-wide innovation weeks. Cloudflare ships a lot of stuff, especially with our emerging products!</li>
+	<li>Collaborate with a cross-functional marketing and product team to create and execute campaigns to ensure success of the GTM execution, driving developer sign-ups, product adoption, and pipeline. We are growing at over 50% YoY. Everyone needs to be aligned as we grow!</li>
+	<li>Continuously gather feedback from customers and empathize with their needs.</li>
+	<li>Represent the company externally, including attendance at sponsored and hosted conferences, analyst briefings, customer meetings and more.</li>
+	<li>Write copy and content derived from messaging frameworks for landing pages, web copy, social media, and blogs to drive adoption and growth.&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>Desirable Skills, Knowledge And Experience</p>
+<p>The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment. You have outstanding communication and collaboration skills and are able to work with a distributed and diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</p>
 <ul>
-	<li>Experience managing HR records&nbsp;</li>
-	<li>Highly detailed and process oriented</li>
-	<li>Comfortable with large data sets and strong Excel/Google Sheets skills</li>
-	<li>Strong customer focus</li>
-	<li>Strong oral and written communication skills, effectively presenting information and responding to cross-region and cross-functional customer questions&nbsp;</li>
-	<li>Ability and willingness to work within constantly changing priorities</li>
-	<li>Strong organizational, problem-solving and time management skills</li>
-	<li>Adaptability in a dynamic, fast-paced environment</li>
+	<li>5+ years professional experience in a product marketing or related role for developer-facing products.&nbsp;</li>
+	<li>Proven track record of developing a product marketing strategy and key metrics to prove what’s working and what’s not.</li>
+	<li>Strong technical curiosity – you are familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view.</li>
+	<li>Strong user and stakeholder empathy –&nbsp; you must be not only the voice of the user, but at various times the voice of product management, finance, engineering, support and ops. You must be able to channel many points of view.</li>
+	<li>Project management skills with ability to manage multiple projects and priorities simultaneously.&nbsp;</li>
 </ul>
-<p></p>
-<p><span style="text-decoration: underline;"><em><strong>***Please submit resume in English only.&nbsp;</strong></em></span></p>
-<p><span style="text-decoration: underline;"><em><strong>**This position is based in&nbsp;Mexico and is applicable only to Mexican Citizens**</strong></em></span></p>
-<p></p>
+<p>If you are a self-starter who thrives in a fast-paced innovative environment and has a passion for developer tools, we encourage you to apply for this Product Marketing Manager opportunity at Cloudflare.&nbsp;</p>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

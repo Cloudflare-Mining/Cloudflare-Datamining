@@ -5,28 +5,54 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>This is a Remote-Based role located in the United States</strong></p>
-<p><strong>About the Department</strong></p>
-<p>The Special Projects team at Cloudflare is responsible for our corporate strategy, corporate development, and strategic partnership efforts. We are involved at all levels of driving the company’s growth ranging from helping Cloudflare expand into new markets, to accelerating our product roadmap and commercial strategy, to helping solve complex cross-functional strategic and operational challenges.</p>
+<p><strong>Available Locations: </strong>Lisbon, Portugal</p>
 <p><strong>About the Role</strong></p>
-<p>We are looking for a talented individual who thrives in fast-paced, high-growth environments to join the M&amp;A and Strategy team within our Special Projects organization. On the M&amp;A front, this person will help drive sourcing and execution of potential acquisitions and partner closely with M&amp;A integration leaders to ensure post-merger success. This team also leads cross-functional strategic initiatives to develop solutions to thorny business challenges identified by Cloudflare’s leadership or to explore new areas of opportunity.&nbsp;</p>
-<p>In order to succeed in this role, candidates should demonstrate strong financial analysis and M&amp;A execution capabilities, ability to proactively drive initiatives end-to-end with limited oversight, proven ability to partner with cross-functional teams, and a strong interest in Cloudflare’s technology and the markets we compete in.</p>
-<p><strong>Responsibilities</strong></p>
-<p>Serve as a key member of Cloudflare’s corporate strategy and development team</p>
-<p>Corporate development: Play a key role on all phases of M&amp;A from ideation through execution; partner with the Special Projects M&amp;A integration team.</p>
-<p>Partner with cross-functional leaders to research and identify Cloudflare’s M&amp;A priorities</p>
-<p>Help support deal sourcing efforts and growth of Cloudflare’s M&amp;A pipeline</p>
-<p>Work with cross-functional teams (ex. product, engineering, finance, human resources, legal, etc.) to both lead and support various deal execution efforts</p>
-<p>Own valuation and financial analysis workstreams</p>
-<p>Corporate strategy: independently find and communicate thoughtful, well-informed solutions to complex operational challenges, and help jumpstart new initiatives that further Cloudflare’s mission to help build a better Internet.</p>
-<p><strong>Requirements</strong></p>
-<p>4-7 years of work experience, including some combination of top-tier performance in investment banking, private equity / venture capital, and operational roles at high-growth B2B technology companies. Prior corporate development experience is a bonus.</p>
-<p>Bachelor’s degree in a technical/quantitative or business-related field or equivalent practical experience. Degree in an engineering field is a bonus.</p>
-<p>Interest in and knowledge of the internet infrastructure landscape and business models. Prior experience in cybersecurity, infrastructure, developer tools, and other B2B SaaS businesses is a bonus.</p>
-<p>Exceptionally high levels of curiosity, empathy, and accountability.</p>
-<p>Experience executing on high-visibility, time-sensitive strategic initiatives.</p>
-<p>Willingness to roll up your sleeves and take on tasks no matter how big or small.</p>
-<p>Excellent interpersonal and communication skills to articulate contractual, technical, financial and value points.Self-directed and self-motivated; excellent communicator and ability to build trust with both internal and external stakeholders.</p>
+<p>We’re looking for an IT Client Platform Engineer focusing on platform integrations to enable enterprise level service integrations for our corporate teams.&nbsp; You will solve complex system integration issues and streamline workflows between critical systems, bridging the gap between IT Operations, Enterprise Security and IT Client Platform Engineering teams.&nbsp; This role will provide critical integration, development, and automation capabilities to our Client Platform deployment.&nbsp; This role reports to the Manager of IT Client Platform Engineering.</p>
+<p><strong>About the Team</strong></p>
+<p>You will join a team of Client Platform Engineers that provide enterprise level Client Platform services, development, support, and client enablement for end users around the globe.&nbsp; We strive to provide highly resilient and observable services to our teams, and reduce manual toil wherever possible.&nbsp; We’re focused on providing a positive customer service and user experience.</p>
+<p><strong>What You'll Do</strong></p>
+<ul>
+	<li>Solve complex integration problems</li>
+	<li>Provide design, implementation and operational support for built integrations</li>
+	<li>Seek guidance from the team when needed</li>
+	<li>Be flexible and available for after hours support</li>
+	<li>Assist the team with macOS, Windows, and Linux platform management</li>
+	<li>Provide thoughtful feedback on asks and requirements for new integrations</li>
+	<li>Work collaboratively across geographical and team boundaries to solve problems</li>
+	<li>Work in a team environment</li>
+	<li>Create and update technical documentation</li>
+	<li>Help make your team and cohort teams lives better</li>
+</ul>
+<p><strong>What You'll Bring</strong></p>
+<ul>
+	<li>2+ years of proven work experience in a systems administration role</li>
+	<li>2+ years of proven work experience in a systems integration role</li>
+	<li>Hands-on experience with Windows/Linux/Mac OS management platforms</li>
+	<li>Hands-on experience with scripting languages such as Python, Golang, and/or Rust</li>
+	<li>Good understanding of computer systems, mobile devices management platforms and software development best practices</li>
+	<li>Ability to perform root cause analysis on integration failures and implement solutions</li>
+	<li>Familiarity serverless application development, observation, and deployment methods</li>
+	<li>Familiarity with Continuous Integration/Continuous Deployment, DevOps, and Agile methodologies</li>
+	<li>Excellent problem-solving and communication skills</li>
+	<li>Ability to provide step-by-step technical guidance, both written and verbal</li>
+	<li>BS degree in Information Technology, Computer Science or relevant field or equivalent experience</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Experience with Jamf Pro and Microsoft Intune</li>
+	<li>Experience with Ansible and Linux system administration</li>
+	<li>Experience working in the technology industry</li>
+	<li>Experience working in a Service Desk, Help Desk, or Call Center environment</li>
+	<li>AWS Technical Certifications</li>
+	<li>Microsoft Azure Technical Certifications</li>
+	<li>Google Cloud Technical Certifications</li>
+	<li>Agile Certification</li>
+	<li>Microsoft Support Certification</li>
+	<li>Apple Support Certification</li>
+	<li>ITIL Foundations</li>
+	<li>HDI Support Center Agent</li>
+	<li>CompTIA A+ Certified</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
