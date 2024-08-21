@@ -5284,13 +5284,11 @@ export type VectorizeDistanceMetric = "euclidean" | "cosine" | "dot-product";
  * @property none     No indexed metadata will be returned.
  */
 export type VectorizeMetadataRetrievalLevel = "all" | "indexed" | "none";
-export interface VectorizeQueryOptions<
-  MetadataReturn extends boolean | VectorizeMetadataRetrievalLevel = boolean,
-> {
+export interface VectorizeQueryOptions {
   topK?: number;
   namespace?: string;
   returnValues?: boolean;
-  returnMetadata?: MetadataReturn;
+  returnMetadata?: boolean | VectorizeMetadataRetrievalLevel;
   filter?: VectorizeVectorMetadataFilter;
 }
 /**
@@ -5404,7 +5402,7 @@ export declare abstract class VectorizeIndex {
    */
   public query(
     vector: VectorFloatArray | number[],
-    options: VectorizeQueryOptions,
+    options?: VectorizeQueryOptions,
   ): Promise<VectorizeMatches>;
   /**
    * Insert a list of vectors into the index dataset. If a provided id exists, an error will be thrown.
@@ -5450,7 +5448,7 @@ export declare abstract class Vectorize {
    */
   public query(
     vector: VectorFloatArray | number[],
-    options: VectorizeQueryOptions<VectorizeMetadataRetrievalLevel>,
+    options?: VectorizeQueryOptions,
   ): Promise<VectorizeMatches>;
   /**
    * Insert a list of vectors into the index dataset. If a provided id exists, an error will be thrown.

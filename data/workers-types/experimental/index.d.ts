@@ -5263,7 +5263,7 @@ declare module "cloudflare:workers" {
     ): void | Promise<void>;
     webSocketError?(ws: WebSocket, error: unknown): void | Promise<void>;
   }
-  export type DurationLabel =
+  export type WorkflowDurationLabel =
     | "second"
     | "minute"
     | "hour"
@@ -5271,13 +5271,28 @@ declare module "cloudflare:workers" {
     | "week"
     | "month"
     | "year";
-  export type SleepDuration = `${number} ${DurationLabel}${"s" | ""}` | number;
-  type WorkflowStep = {
+  export type WorkflowSleepDuration =
+    | `${number} ${WorkflowDurationLabel}${"s" | ""}`
+    | number;
+  export type WorkflowBackoff = "constant" | "linear" | "exponential";
+  export type WorkflowStepConfig = {
+    retries?: {
+      limit: number;
+      delay: string | number;
+      backoff?: WorkflowBackoff;
+    };
+    timeout?: string | number;
+  };
+  export type WorkflowStep = {
     do: <T extends Rpc.Serializable>(
       name: string,
-      callback: () => T,
-    ) => T | Promise<T>;
-    sleep: (name: string, duration: SleepDuration) => void | Promise<void>;
+      callback: () => Promise<T>,
+      config?: WorkflowStepConfig,
+    ) => Promise<T>;
+    sleep: (
+      name: string,
+      duration: WorkflowSleepDuration,
+    ) => void | Promise<void>;
   };
   export abstract class Workflow<
     Env = unknown,
@@ -5293,7 +5308,7 @@ declare module "cloudflare:workers" {
         timestamp: Date;
       }>,
       step: WorkflowStep,
-    ): unknown | Promise<unknown>;
+    ): Promise<unknown>;
   }
 }
 declare module "cloudflare:sockets" {
@@ -5356,13 +5371,11 @@ type VectorizeDistanceMetric = "euclidean" | "cosine" | "dot-product";
  * @property none     No indexed metadata will be returned.
  */
 type VectorizeMetadataRetrievalLevel = "all" | "indexed" | "none";
-interface VectorizeQueryOptions<
-  MetadataReturn extends boolean | VectorizeMetadataRetrievalLevel = boolean,
-> {
+interface VectorizeQueryOptions {
   topK?: number;
   namespace?: string;
   returnValues?: boolean;
-  returnMetadata?: MetadataReturn;
+  returnMetadata?: boolean | VectorizeMetadataRetrievalLevel;
   filter?: VectorizeVectorMetadataFilter;
 }
 /**
@@ -5476,7 +5489,7 @@ declare abstract class VectorizeIndex {
    */
   public query(
     vector: VectorFloatArray | number[],
-    options: VectorizeQueryOptions,
+    options?: VectorizeQueryOptions,
   ): Promise<VectorizeMatches>;
   /**
    * Insert a list of vectors into the index dataset. If a provided id exists, an error will be thrown.
@@ -5522,7 +5535,7 @@ declare abstract class Vectorize {
    */
   public query(
     vector: VectorFloatArray | number[],
-    options: VectorizeQueryOptions<VectorizeMetadataRetrievalLevel>,
+    options?: VectorizeQueryOptions,
   ): Promise<VectorizeMatches>;
   /**
    * Insert a list of vectors into the index dataset. If a provided id exists, an error will be thrown.
