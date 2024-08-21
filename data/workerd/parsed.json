@@ -2522,6 +2522,7 @@
 					"name": "pythonWorkers",
 					"annotations": {
 						"compatEnableFlag": "python_workers",
+						"impliedByAfterDate": "unhandled type",
 						"pythonSnapshotRelease": "unhandled type"
 					}
 				},
@@ -2634,6 +2635,14 @@
 						"compatDisableFlag": "internal_writable_stream_abort_does_not_clear_queue",
 						"compatEnableDate": "2024-09-02",
 						"compatEnableFlag": "internal_writable_stream_abort_clears_queue"
+					}
+				},
+				{
+					"name": "pythonWorkersDevPyodide",
+					"annotations": {
+						"compatEnableFlag": "python_workers_development",
+						"experimental": "true",
+						"pythonSnapshotRelease": "unhandled type"
 					}
 				}
 			]
