@@ -795,7 +795,8 @@
 				"name": "page",
 				"schema": {
 					"default": 1,
-					"minimum": 1
+					"minimum": 1,
+					"type": "number"
 				}
 			},
 			{
@@ -805,7 +806,8 @@
 				"schema": {
 					"default": 25,
 					"maximum": 1000,
-					"minimum": 5
+					"minimum": 5,
+					"type": "number"
 				}
 			}
 		],
