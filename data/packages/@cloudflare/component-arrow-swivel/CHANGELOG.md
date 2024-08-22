@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.1.0
+
+### Minor Changes
+
+- 1f68b52c85: Update prop types to allow children
+
 ## 8.0.20
 
 ## 8.0.19

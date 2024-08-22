@@ -1,5 +1,17 @@
 # Change Log
 
+## 8.1.0
+
+### Minor Changes
+
+- 1f68b52c85: Update prop types to allow children
+
+### Patch Changes
+
+- Updated dependencies [1f68b52c85]
+  - @cloudflare/component-arrow-swivel@8.1.0
+  - @cloudflare/component-button@8.5.0
+
 ## 8.0.27
 
 ### Patch Changes
