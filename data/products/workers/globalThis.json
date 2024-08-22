@@ -3022,8 +3022,8 @@
 					"arguments": "undefined",
 					"caller": "undefined",
 					"prototype": "undefined",
-					"type": "string",
 					"size": "number",
+					"type": "string",
 					"slice": "function",
 					"arrayBuffer": "function",
 					"bytes": "function",
@@ -11016,9 +11016,9 @@
 					"arguments": "undefined",
 					"caller": "undefined",
 					"prototype": "undefined",
-					"encoding": "string",
 					"encode": "function",
-					"encodeInto": "function"
+					"encodeInto": "function",
+					"encoding": "string"
 				}
 			},
 			"TextDecoder": {
@@ -11032,10 +11032,10 @@
 					"arguments": "undefined",
 					"caller": "undefined",
 					"prototype": "undefined",
-					"ignoreBOM": "boolean",
-					"fatal": "boolean",
+					"decode": "function",
 					"encoding": "string",
-					"decode": "function"
+					"fatal": "boolean",
+					"ignoreBOM": "boolean"
 				}
 			},
 			"parseArgs": {
