@@ -27,94 +27,67 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"result_info": {
-											"allOf": [
-												{
-													"properties": {
-														"count": {
-															"description": "total number of pages",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"page": {
-															"description": "current page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"per_page": {
-															"description": "number of items per page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"total_count": {
-															"description": "total number of items",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														}
-													},
-													"required": [
-														"page",
-														"per_page",
-														"count",
-														"total_count"
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
 													],
-													"type": "object"
+													"example": true,
+													"type": "boolean"
 												}
-											]
-										},
-										"success": {
-											"type": "boolean"
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
 									],
 									"type": "object"
 								},
@@ -139,57 +112,84 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
 								},
 								"result": {
+									"enum": [
+										null
+									],
 									"nullable": true,
 									"type": "object"
 								},
 								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
@@ -229,94 +229,67 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"result_info": {
-											"allOf": [
-												{
-													"properties": {
-														"count": {
-															"description": "total number of pages",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"page": {
-															"description": "current page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"per_page": {
-															"description": "number of items per page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"total_count": {
-															"description": "total number of items",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														}
-													},
-													"required": [
-														"page",
-														"per_page",
-														"count",
-														"total_count"
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
 													],
-													"type": "object"
+													"example": true,
+													"type": "boolean"
 												}
-											]
-										},
-										"success": {
-											"type": "boolean"
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
 									],
 									"type": "object"
 								},
@@ -391,57 +364,84 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
 								},
 								"result": {
+									"enum": [
+										null
+									],
 									"nullable": true,
 									"type": "object"
 								},
 								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
@@ -490,94 +490,67 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"result_info": {
-											"allOf": [
-												{
-													"properties": {
-														"count": {
-															"description": "total number of pages",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"page": {
-															"description": "current page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"per_page": {
-															"description": "number of items per page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"total_count": {
-															"description": "total number of items",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														}
-													},
-													"required": [
-														"page",
-														"per_page",
-														"count",
-														"total_count"
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
 													],
-													"type": "object"
+													"example": true,
+													"type": "boolean"
 												}
-											]
-										},
-										"success": {
-											"type": "boolean"
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
 									],
 									"type": "object"
 								},
@@ -649,57 +622,84 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
 								},
 								"result": {
+									"enum": [
+										null
+									],
 									"nullable": true,
 									"type": "object"
 								},
 								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
@@ -747,94 +747,67 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"result_info": {
-											"allOf": [
-												{
-													"properties": {
-														"count": {
-															"description": "total number of pages",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"page": {
-															"description": "current page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"per_page": {
-															"description": "number of items per page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"total_count": {
-															"description": "total number of items",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														}
-													},
-													"required": [
-														"page",
-														"per_page",
-														"count",
-														"total_count"
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
 													],
-													"type": "object"
+													"example": true,
+													"type": "boolean"
 												}
-											]
-										},
-										"success": {
-											"type": "boolean"
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
 									],
 									"type": "object"
 								},
@@ -906,57 +879,84 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
 								},
 								"result": {
+									"enum": [
+										null
+									],
 									"nullable": true,
 									"type": "object"
 								},
 								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
@@ -1028,94 +1028,67 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"result_info": {
-											"allOf": [
-												{
-													"properties": {
-														"count": {
-															"description": "total number of pages",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"page": {
-															"description": "current page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"per_page": {
-															"description": "number of items per page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"total_count": {
-															"description": "total number of items",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														}
-													},
-													"required": [
-														"page",
-														"per_page",
-														"count",
-														"total_count"
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
 													],
-													"type": "object"
+													"example": true,
+													"type": "boolean"
 												}
-											]
-										},
-										"success": {
-											"type": "boolean"
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
 									],
 									"type": "object"
 								},
@@ -1187,57 +1160,84 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
 								},
 								"result": {
+									"enum": [
+										null
+									],
 									"nullable": true,
 									"type": "object"
 								},
 								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
@@ -1317,94 +1317,67 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"result_info": {
-											"allOf": [
-												{
-													"properties": {
-														"count": {
-															"description": "total number of pages",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"page": {
-															"description": "current page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"per_page": {
-															"description": "number of items per page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"total_count": {
-															"description": "total number of items",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														}
-													},
-													"required": [
-														"page",
-														"per_page",
-														"count",
-														"total_count"
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
 													],
-													"type": "object"
+													"example": true,
+													"type": "boolean"
 												}
-											]
-										},
-										"success": {
-											"type": "boolean"
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
 									],
 									"type": "object"
 								},
@@ -1476,57 +1449,84 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
 								},
 								"result": {
+									"enum": [
+										null
+									],
 									"nullable": true,
 									"type": "object"
 								},
 								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}

@@ -25,74 +25,177 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"email": {
-									"type": "string"
-								},
-								"events": {
-									"items": {
-										"properties": {
-											"event_details": {},
-											"id": {
-												"type": "string"
-											},
-											"name": {
-												"type": "string"
-											},
-											"risk_level": {
-												"enum": [
-													"low",
-													"medium",
-													"high"
-												],
-												"type": "string"
-											},
-											"timestamp": {
-												"format": "date-time",
-												"type": "string"
-											}
-										},
-										"required": [
-											"id",
-											"risk_level",
-											"name",
-											"timestamp"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"last_reset_time": {
-									"format": "date-time",
-									"nullable": true,
-									"type": "string"
-								},
-								"name": {
-									"type": "string"
-								},
-								"risk_level": {
+							"allOf": [
+								{
 									"allOf": [
 										{
-											"enum": [
-												"low",
-												"medium",
-												"high"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
 											],
-											"type": "string"
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
 										}
-									]
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"email": {
+													"type": "string"
+												},
+												"events": {
+													"items": {
+														"properties": {
+															"event_details": {},
+															"id": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"risk_level": {
+																"enum": [
+																	"low",
+																	"medium",
+																	"high"
+																],
+																"type": "string"
+															},
+															"timestamp": {
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"risk_level",
+															"name",
+															"timestamp"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"last_reset_time": {
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"risk_level": {
+													"allOf": [
+														{
+															"enum": [
+																"low",
+																"medium",
+																"high"
+															],
+															"type": "string"
+														}
+													]
+												}
+											},
+											"required": [
+												"name",
+												"email",
+												"events"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
 								}
-							},
-							"required": [
-								"name",
-								"email",
-								"events"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Validation response"
+				"description": "Risk events"
 			},
 			"4XX": {
 				"content": {
@@ -100,63 +203,90 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
 								},
 								"result": {
+									"enum": [
+										null
+									],
 									"nullable": true,
 									"type": "object"
 								},
 								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Failed to validate"
+				"description": "Failed to get risk events"
 			}
 		},
 		"security": [
@@ -188,47 +318,121 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"behaviors": {
-									"additionalProperties": {
-										"properties": {
-											"description": {
-												"type": "string"
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
 											},
-											"enabled": {
-												"type": "boolean"
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"behaviors": {
+													"additionalProperties": {
+														"properties": {
+															"description": {
+																"type": "string"
+															},
+															"enabled": {
+																"type": "boolean"
+															},
+															"name": {
+																"type": "string"
+															},
+															"risk_level": {
+																"enum": [
+																	"low",
+																	"medium",
+																	"high"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"description",
+															"risk_level",
+															"enabled"
+														],
+														"type": "object"
+													},
+													"type": "object"
+												}
 											},
-											"name": {
-												"type": "string"
-											},
-											"risk_level": {
-												"enum": [
-													"low",
-													"medium",
-													"high"
-												],
-												"type": "string"
-											}
-										},
-										"required": [
-											"name",
-											"description",
-											"risk_level",
-											"enabled"
-										],
-										"type": "object"
+											"required": [
+												"behaviors"
+											],
+											"type": "object"
+										}
 									},
 									"type": "object"
 								}
-							},
-							"required": [
-								"behaviors"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Validation response"
+				"description": "Risk scoring behaviors"
 			},
 			"4XX": {
 				"content": {
@@ -236,63 +440,90 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
 								},
 								"result": {
+									"enum": [
+										null
+									],
 									"nullable": true,
 									"type": "object"
 								},
 								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Failed to validate"
+				"description": "Failed to get risk scoring behaviors"
 			}
 		},
 		"security": [
@@ -324,58 +555,161 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"users": {
-									"items": {
-										"properties": {
-											"email": {
-												"type": "string"
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
 											},
-											"event_count": {
-												"minimum": 0,
-												"type": "integer"
-											},
-											"last_event": {
-												"format": "date-time",
-												"type": "string"
-											},
-											"max_risk_level": {
-												"enum": [
-													"low",
-													"medium",
-													"high"
-												],
-												"type": "string"
-											},
-											"name": {
-												"type": "string"
-											},
-											"user_id": {
-												"format": "uuid",
-												"type": "string"
-											}
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
 										},
-										"required": [
-											"user_id",
-											"name",
-											"email",
-											"max_risk_level",
-											"event_count",
-											"last_event"
-										],
-										"type": "object"
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"users": {
+													"items": {
+														"properties": {
+															"email": {
+																"type": "string"
+															},
+															"event_count": {
+																"minimum": 0,
+																"type": "integer"
+															},
+															"last_event": {
+																"format": "date-time",
+																"type": "string"
+															},
+															"max_risk_level": {
+																"enum": [
+																	"low",
+																	"medium",
+																	"high"
+																],
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"user_id": {
+																"format": "uuid",
+																"type": "string"
+															}
+														},
+														"required": [
+															"user_id",
+															"name",
+															"email",
+															"max_risk_level",
+															"event_count",
+															"last_event"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"users"
+											],
+											"type": "object"
+										}
 									},
-									"type": "array"
+									"type": "object"
 								}
-							},
-							"required": [
-								"users"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
-				"description": "Validation response"
+				"description": "Risk score for all users in the account"
 			},
 			"4XX": {
 				"content": {
@@ -383,63 +717,90 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
 								},
 								"result": {
+									"enum": [
+										null
+									],
 									"nullable": true,
 									"type": "object"
 								},
 								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Failed to validate"
+				"description": "Failed to get risk scores"
 			}
 		},
 		"security": [
@@ -482,94 +843,67 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"items": {
-												"properties": {
-													"code": {
-														"format": "int32",
-														"minimum": 1000,
-														"type": "integer"
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										},
-										"result_info": {
-											"allOf": [
-												{
-													"properties": {
-														"count": {
-															"description": "total number of pages",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"page": {
-															"description": "current page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"per_page": {
-															"description": "number of items per page",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														},
-														"total_count": {
-															"description": "total number of items",
-															"format": "int32",
-															"minimum": 0,
-															"type": "integer"
-														}
-													},
-													"required": [
-														"page",
-														"per_page",
-														"count",
-														"total_count"
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
 													],
-													"type": "object"
+													"example": true,
+													"type": "boolean"
 												}
-											]
-										},
-										"success": {
-											"type": "boolean"
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
 									],
 									"type": "object"
 								},
@@ -594,57 +928,84 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
 								},
 								"result": {
+									"enum": [
+										null
+									],
 									"nullable": true,
 									"type": "object"
 								},
 								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
@@ -722,35 +1083,109 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"behaviors": {
-									"additionalProperties": {
-										"properties": {
-											"enabled": {
-												"type": "boolean"
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
 											},
-											"risk_level": {
-												"enum": [
-													"low",
-													"medium",
-													"high"
-												],
-												"type": "string"
-											}
-										},
-										"required": [
-											"risk_level",
-											"enabled"
-										],
-										"type": "object"
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"behaviors": {
+													"additionalProperties": {
+														"properties": {
+															"enabled": {
+																"type": "boolean"
+															},
+															"risk_level": {
+																"enum": [
+																	"low",
+																	"medium",
+																	"high"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"risk_level",
+															"enabled"
+														],
+														"type": "object"
+													},
+													"type": "object"
+												}
+											},
+											"required": [
+												"behaviors"
+											],
+											"type": "object"
+										}
 									},
 									"type": "object"
 								}
-							},
-							"required": [
-								"behaviors"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -762,57 +1197,84 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"items": {
-										"properties": {
-											"code": {
-												"format": "int32",
-												"minimum": 1000,
-												"type": "integer"
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+											"type": "array"
+										}
+									],
+									"example": []
 								},
 								"result": {
+									"enum": [
+										null
+									],
 									"nullable": true,
 									"type": "object"
 								},
 								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
 								"errors",
-								"messages"
+								"messages",
+								"result"
 							],
 							"type": "object"
 						}
