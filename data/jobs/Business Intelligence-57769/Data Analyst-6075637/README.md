@@ -5,19 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>In this role you will implement, manage and maintain ongoing accounting operations. You'll be responsible for month end close activities including but not limited to: coordinating teams, journal entry review, account analysis review and review of reconciliations of all GL Accounts. You will oversee the management of core GL accounting processes as well as manage payroll operations and interface with accounts payable. On our team, we work with various cross-functional teams (e.g. Sales, Operations, HR, FP&amp;A, etc ) to ensure accurate and timely accounting and financial reporting. You'll champion process improvement efforts to drive efficiency and effectiveness over corporate accounting and general ledger activities. On occasion, there will be other special projects involving accounting systems, data integrity, general ledger reporting and optimization, and other compliance issues, etc that you may be asked to assist with. As a team leader, you will be responsible for the professional growth of team members by providing mentorship and guidance.</p>
+<h4><strong>Available location - </strong>Austin, TX must be willing to relocate.&nbsp;</h4>
+<hr>
+<h4><strong>About the team</strong></h4>
+<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for an experienced Data Analyst to join our Austin or Lisbon teams to scale our product analytics initiatives. You will work with a wide array of datasets to analyze and build interactive reports and self-serve dashboards which will influence our critical business initiatives and will provide actionable insights to Product and Finance teams.</p>
+<p>Success in this role comes from marrying a strong data background with acute product and business acumen to deliver highly strategic and compelling insights that accelerate our business growth and influence our product decisions within Cloudflare.</p>
+<p><strong>What you'll do</strong></p>
+<ul>
+	<li>Provide quantitative support, market understanding and a strategic perspective to our partners throughout the organization</li>
+	<li>Partner and align with data engineers, data analysts, data scientists, business stakeholders, product managers and internal teams to enable data driven solutions to key business problems</li>
+	<li>Take initiative and ask questions to iteratively define, build, and maintain new business metrics</li>
+	<li>Develop and automate reports and iteratively build and prototype dashboards to provide insights at scale</li>
+	<li>Weave stories with data to help stakeholders understand analytic insights</li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>5-8 years experience working in a fast-growing environment, preferably in public accounting.</li>
-	<li>Strong problem-solving skills, ability to develop, organize and complete large-scale projects, passion for continuous process improvements</li>
-	<li>Experience in coordinating diverse teams to achieve large group goals.</li>
-	<li>Experience with Accounts Receivable, Accounts Payable and cash management</li>
-	<li>Strong technology skills including proficiency in NetSuite; experience with alteryx is preferred.</li>
-	<li>Experience leader and mentor to team</li>
-	<li>Ability to deal sensitively with confidential material</li>
-	<li>Ability to communicate with various levels of management</li>
-	<li>Decision-making, problem-solving, and analytical skills</li>
-	<li>CPA preferred.</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>Ability to perform impact analysis of metric definition changes to connected data processes&nbsp;</li>
+	<li>Experience with data visualization tools such as Tableau, Google Data Studio etc.&nbsp;</li>
+	<li>Strong expertise in writing advanced SQL queries</li>
+	<li>Experience in translating analysis results into business recommendations and business questions into an analysis framework</li>
+	<li>Knowledge of data management, data modeling and data warehousing fundamentals</li>
+	<li>Experience in presenting analysis findings to business stakeholders</li>
+	<li>Experience with statistical analysis programming languages (Python, etc)</li>
+</ul>
+<p><strong>Bonus points</strong></p>
+<ul>
+	<li>Experience in front-end development, JavaScript, and/or other scripting languages is a plus</li>
+	<li>Experience with a fast-growing SaaS business based company preferred</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
