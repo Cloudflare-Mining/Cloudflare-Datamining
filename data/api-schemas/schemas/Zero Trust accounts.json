@@ -1487,6 +1487,197 @@
 			"Zero Trust accounts"
 		]
 	},
+	"GET /accounts/{account_id}/gateway/configuration/custom_certificate": {
+		"description": "Fetches the current Zero Trust certificate configuration.",
+		"operationId": "zero-trust-accounts-get-zero-trust-certificate-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"deprecated": true,
+							"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+							"properties": {
+								"binding_status": {
+									"description": "Certificate status (internal).",
+									"example": "pending_deployment",
+									"readOnly": true,
+									"type": "string"
+								},
+								"enabled": {
+									"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+									"example": true,
+									"type": "boolean"
+								},
+								"id": {
+									"description": "UUID of certificate (ID from MTLS certificate store).",
+									"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+									"type": "string"
+								},
+								"updated_at": {
+									"format": "date-time",
+									"readOnly": true,
+									"type": "string"
+								}
+							},
+							"required": [
+								"enabled"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Zero Trust account configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"deprecated": true,
+									"description": "Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)",
+									"properties": {
+										"binding_status": {
+											"description": "Certificate status (internal).",
+											"example": "pending_deployment",
+											"readOnly": true,
+											"type": "string"
+										},
+										"enabled": {
+											"description": "Enable use of custom certificate authority for signing Gateway traffic.",
+											"example": true,
+											"type": "boolean"
+										},
+										"id": {
+											"description": "UUID of certificate (ID from MTLS certificate store).",
+											"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+											"type": "string"
+										},
+										"updated_at": {
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										}
+									},
+									"required": [
+										"enabled"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Zero Trust account configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Zero Trust certificate configuration",
+		"tags": [
+			"Zero Trust accounts"
+		]
+	},
 	"GET /accounts/{account_id}/gateway/logging": {
 		"description": "Fetches the current logging settings for Zero Trust account.",
 		"operationId": "zero-trust-accounts-get-logging-settings-for-the-zero-trust-account",
