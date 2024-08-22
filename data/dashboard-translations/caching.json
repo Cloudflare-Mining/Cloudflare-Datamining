@@ -367,7 +367,7 @@
 	"caching.cache_rules.rules.form.cache_status.bypass_cache": "Bypass cache",
 	"caching.cache_rules.rules.form.cache_status.eligible_for_cache": "Eligible for cache",
 	"caching.cache_rules.rules.form.override_origin.edge": "Ignore cache-control header and use this TTL",
-	"caching.cache_rules.rules.form.respect_origin.edge": "Use cache-control header if present, use default Cloudflare caching behavior if not",
+	"caching.cache_rules.rules.form.respect_origin.edge": "Use cache-control header if present, cache request with Cloudflare's default TTL for the response status if not",
 	"caching.cache_rules.rules.form.bypass_by_default.edge": "Use cache-control header if present, bypass cache if not",
 	"caching.cache_rules.rules.form.override_origin": "Override origin and use this TTL",
 	"caching.cache_rules.rules.form.respect_origin": "Respect origin TTL",

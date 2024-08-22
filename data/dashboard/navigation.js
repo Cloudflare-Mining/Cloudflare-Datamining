@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: O => (0, e.z1)(h.Mr)(O) && (0, F.z7)(O) && !!(0, F.z$)(O).length
+		hasPermission: O => (0, e.z1)(h.Mr)(O) && (0, Z.z7)(O) && !!(0, Z.z$)(O).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -179,7 +179,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: U.T
+		hasPermission: F.T
 	}, {
 		title: "account.home",
 		url: "/",
@@ -605,7 +605,7 @@ const navigation = {
 			url: "/analytics/log-explorer",
 			labels: ["beta"],
 			navigationType: "global-settings",
-			hasPermission: O => !!(0, ue.V)(O)
+			hasPermission: O => !!(0, ce.V)(O)
 		}]
 	}, {
 		title: "navigation.zone.zone_versioning",
@@ -635,8 +635,8 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: O => {
 				const w = (0, _.nA)(O),
-					B = (w == null ? void 0 : w.type) === me.K.PARTIAL;
-				return !!(0, e.z1)("foundation-dns-enabled")(O) && !B && ((0, s.$f)(O, "foundation_dns.advanced_nameservers_allowed") || (0, s.du)(O, "foundation_dns.advanced_nameservers_allowed"))
+					k = (w == null ? void 0 : w.type) === me.K.PARTIAL;
+				return !!(0, e.z1)("foundation-dns-enabled")(O) && !k && ((0, s.$f)(O, "foundation_dns.advanced_nameservers_allowed") || (0, s.du)(O, "foundation_dns.advanced_nameservers_allowed"))
 			}
 		}, {
 			title: "navigation.zone.dns.settings",
@@ -676,10 +676,10 @@ const navigation = {
 		hasPermission: O => {
 			const w = (0, _.nA)(O);
 			if ((0, s.yD)(O) || !(0, r.wB)(O, "zone_settings", "spectrum.app") || !w) return !1;
-			const B = !!((0, u.l8)(O) || (0, _.DQ)(O)),
+			const k = !!((0, u.l8)(O) || (0, _.DQ)(O)),
 				ee = !!(0, _.ZB)(O, "spectrum", "enabled"),
 				G = !!(0, _.Ns)(w);
-			return ee || B || !G
+			return ee || k || !G
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
