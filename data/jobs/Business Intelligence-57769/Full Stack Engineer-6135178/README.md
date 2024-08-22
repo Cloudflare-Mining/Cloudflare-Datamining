@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations Available - Austin, TX, this position is eligible for being remote in Austin Texas only. May consider surrounding areas like Dallas, Houston and or San Antonio</strong></p>
+<p><strong>Locations Available - Austin, TX, this position is eligible for being remote in Austin Texas only. If you are not located in Austin, Texas, you MUST be open to relocation.&nbsp;</strong></p>
 <hr>
 <h4><strong>About the team</strong></h4>
 <p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
