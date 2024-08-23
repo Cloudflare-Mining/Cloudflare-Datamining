@@ -22,7 +22,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -221,7 +220,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -428,7 +426,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -522,7 +519,6 @@
 													"description": "UUID",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
 													"type": "string"
 												},
 												"message_tokens": {
@@ -1661,7 +1657,6 @@
 														"description": "UUID",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"readOnly": true,
 														"type": "string"
 													},
 													"message_tokens": {
@@ -1887,7 +1882,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -2228,7 +2222,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -2642,7 +2635,6 @@
 													"description": "UUID",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
 													"type": "string"
 												},
 												"message_tokens": {
@@ -2855,7 +2847,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -2994,7 +2985,6 @@
 													"description": "UUID",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
 													"type": "string"
 												},
 												"message_tokens": {
@@ -3206,7 +3196,6 @@
 					"description": "UUID",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -3399,7 +3388,7 @@
 						}
 					}
 				},
-				"description": "Update a request messeage response"
+				"description": "Update a request message response"
 			},
 			"4XX": {
 				"content": {
