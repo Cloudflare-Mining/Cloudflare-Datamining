@@ -1,7 +1,7 @@
 {
 	"name": "chanfana",
 	"dist-tags": {
-		"latest": "2.0.2"
+		"latest": "2.0.3"
 	},
 	"versions": {
 		"2.0.0": {
@@ -107,6 +107,51 @@
 			"name": "chanfana",
 			"version": "2.0.2",
 			"dependencies": {
+				"zod": "^3.23.8",
+				"js-yaml": "^4.1.0",
+				"openapi3-ts": "^4.3.2",
+				"@asteasolutions/zod-to-openapi": "^7.1.1"
+			},
+			"devDependencies": {
+				"jest": "^29.0.0",
+				"tsup": "^8.1.0",
+				"husky": "^7.0.2",
+				"eslint": "^8.43.0",
+				"ts-jest": "^29.1.0",
+				"prettier": "^3.1.0",
+				"wrangler": "^3.60.1",
+				"typescript": "^5.1.3",
+				"@types/jest": "^29.0.0",
+				"@types/node": "^20.3.1",
+				"itty-router": "^5.0.17",
+				"jest-openapi": "^0.14.2",
+				"@types/js-yaml": "^4.0.9",
+				"@changesets/cli": "^2.27.5",
+				"isomorphic-fetch": "^3.0.0",
+				"eslint-config-prettier": "^8.8.0",
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@typescript-eslint/parser": "^5.60.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"@typescript-eslint/eslint-plugin": "^5.60.0"
+			},
+			"dist": {
+				"shasum": "a0c905bbdb58be5e01d065f5a7bcc9dca3345950",
+				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-2.0.2.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-HuYjj+tIXHvKJ8FobeWOcshg35kYK15uqNQdZy22pF2DMyySW5DlnYK8jcAyoLQiCwPplQdKZonFLfP/sCFMBg==",
+				"signatures": [
+					{
+						"sig": "MEUCIF+i53HoM7UNUV17wkSdfZ5gVYLW2PYR1tmnaPR3xvExAiEAxoxdTwpp0N/urCXuyC59Pc5/eeN3c7rHiuhREujgW/M=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 74311
+			}
+		},
+		"2.0.3": {
+			"name": "chanfana",
+			"version": "2.0.3",
+			"dependencies": {
 				"@asteasolutions/zod-to-openapi": "^7.1.1",
 				"js-yaml": "^4.1.0",
 				"openapi3-ts": "^4.3.2",
@@ -123,6 +168,7 @@
 				"@typescript-eslint/parser": "^5.60.0",
 				"eslint": "^8.43.0",
 				"eslint-config-prettier": "^8.8.0",
+				"hono": "^4.4.6",
 				"husky": "^7.0.2",
 				"isomorphic-fetch": "^3.0.0",
 				"itty-router": "^5.0.17",
@@ -135,15 +181,15 @@
 				"wrangler": "^3.60.1"
 			},
 			"dist": {
-				"integrity": "sha512-HuYjj+tIXHvKJ8FobeWOcshg35kYK15uqNQdZy22pF2DMyySW5DlnYK8jcAyoLQiCwPplQdKZonFLfP/sCFMBg==",
-				"shasum": "a0c905bbdb58be5e01d065f5a7bcc9dca3345950",
-				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-2.0.2.tgz",
+				"integrity": "sha512-7GAgOG/yIAtKUUoVkopyGhVxwYD8+VxONJC0uBk3Fxqiuk8fQNVuvfv99TCv4ScuqZx1dG1LG3rznssGwZue3w==",
+				"shasum": "005912f0a82affcf08cf94dcd711f52395151b8d",
+				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-2.0.3.tgz",
 				"fileCount": 7,
-				"unpackedSize": 74311,
+				"unpackedSize": 75293,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIF+i53HoM7UNUV17wkSdfZ5gVYLW2PYR1tmnaPR3xvExAiEAxoxdTwpp0N/urCXuyC59Pc5/eeN3c7rHiuhREujgW/M="
+						"sig": "MEUCICoo7lr2X3ZdNZ3z0YiG33BKbzm8EP1/3pOFT0C4lThTAiEA4RvPwRIBn1R1YSwJDNmQyuYNuMsCEsd8VKjLc4D1XYs="
 					}
 				]
 			}
