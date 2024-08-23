@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.3.1
+
+### Patch Changes
+
+- 002c1fad19: Patched `fela-plugin-multiple-selectors` to resolve an issue with relative selector lists being parsed incorrectly. See https://github.com/robinweser/fela/pull/921 for more details. This patch should be removed once the aforementioned PR has been merged and released.
+
 ## 3.3.0
 
 ### Minor Changes

@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.1.20
+
+### Patch Changes
+
+- @cloudflare/component-listbox@2.1.11
+- @cloudflare/component-time-period-picker@6.0.24
+
 ## 6.1.19
 
 ### Patch Changes
