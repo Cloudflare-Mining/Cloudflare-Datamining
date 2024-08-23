@@ -23,6 +23,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>Looking for someone with 2+ years of experience working in data analytics.&nbsp;</li>
 	<li>Ability to perform impact analysis of metric definition changes to connected data processes&nbsp;</li>
 	<li>Experience with data visualization tools such as Tableau, Google Data Studio etc.&nbsp;</li>
 	<li>Strong expertise in writing advanced SQL queries</li>
