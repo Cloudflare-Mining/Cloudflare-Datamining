@@ -36,6 +36,7 @@
 	"network.grpc.join_beta": "Join the beta",
 	"network.http2_to_origin.title": "HTTP/2 to Origin",
 	"network.http2_to_origin.description": "Allow HTTP/2 requests between Cloudflare's edge and your origin",
+	"network.http2_to_origin.no_access": "Your membership configuration doesn't have to access this feature",
 	"network.http2_to_origin.help": "[Developer documentation](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin)",
 	"network.ip_geo.description": "Include the country code of the visitor location with all requests to your website.\n\n**Note:** You must retrieve the IP Geolocation information from the CF-IPCountry HTTP header.",
 	"network.ip_geo.help": "#### What is IP Geolocation?\nCloudflare can geolocate visitors to your website and pass the country code on to you. Once enabled, we will then add an HTTP header named \"CF-IPCountry\" to all requests we make to your website.\n\n**Note:** Cloudflare uses a GeoIP database to map IP addresses to countries. u201CXXu201D means that we found no record in our geolocation database for an IP address.",
