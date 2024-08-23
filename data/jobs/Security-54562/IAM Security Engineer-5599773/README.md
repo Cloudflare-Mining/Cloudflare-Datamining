@@ -6,27 +6,32 @@
 	</div>
 </div>
 <p><strong>Available Locations: </strong>Lisbon, Portugal.</p>
-<p><strong>About the Department</strong><strong><br></strong>The Identity and Access Management (IAM) team is dedicated to ensuring the secure and efficient management of user identities, access privileges, and authentication mechanisms across all company systems, applications, and data. Our mission is to safeguard the organization against unauthorized access, protect sensitive information, and enable seamless user experiences while adhering to industry best practices and compliance standards.</p>
+<p><strong>About the Department</strong><strong><br></strong>The Identity and Access Management (IAM) team is dedicated to ensuring the secure and efficient management of user identities, access privileges, and authentication mechanisms across internal systems, applications, and data. Our mission is to safeguard the organization against unauthorized access, protect sensitive information, and enable seamless user experiences while adhering to industry best practices and compliance standards.</p>
 <h4><strong>About the Role</strong></h4>
-<p>As an Identity and Access Management (IAM) Security Engineer, you will play a crucial role in designing, implementing, and managing identity and access management solutions. You will be responsible for safeguarding our systems, applications, and data by ensuring secure user access, authentication, and authorization mechanisms.</p>
-<p>A Security engineers work may include reviewing reports from various sources (automated scanners, employee reports, logs, etc.), managing and configuring automated tooling (Terraform, Open Policy Agent, Workers, etc.), building controls to enforce policy (two factor authentication requirements, role based access, etc), creating tools, reports or platforms to support the team's goals.&nbsp;</p>
+<p>As an Identity and Access Management (IAM) Security Engineer, you will play a crucial role in designing, implementing, and scaling identity and access management solutions for Cloudflare’s internal workforce and workloads. You will be responsible for safeguarding our systems, applications, and data by ensuring secure user access, authentication, and authorization mechanisms.</p>
+<p><strong>What You’ll Do</strong></p>
+<ul>
+	<li>Design, build, test, and deploy IAM solutions across authentication, authorization, and accounting&nbsp;</li>
+	<li>Leverage Cloudflare products to secure our identities</li>
+	<li>Build SSO integrations leveraging SAML, OIDC, OAuth, and SCIM</li>
+	<li>Build and manage the Identity Governance and Administration platform</li>
+	<li>Develop automated roles leveraging RBAC and ABAC</li>
+	<li>Build and manage an access certification platform&nbsp;</li>
+	<li>Build and manage a Priviliged Accss Management (PAM) platform</li>
+	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
+</ul>
 <p><strong>Desirable skills, knowledge and experience</strong></p>
 <p>Security engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
 <ul>
 	<li>Strong understanding of identity federation (SAML, OAuth, OpenID Connect, etc.)</li>
-	<li>Experience with Identity and Access Management policy application and enforcement</li>
-	<li>Experience designing, implementing, and managing IAM solutions</li>
-	<li>Experience working with Open Policy Agent</li>
-	<li>Experience working in DevOps / DevSecOps&nbsp;</li>
-	<li>Experience working with configuration management tools like Terraform, Ansible, etc.</li>
-	<li>Experience working with Information Technology platforms and systems</li>
-	<li>Experience with SaaS security (Google Workspace, Salesforce, Workday, Atlassian, etc.)</li>
-	<li>Experience in configuration, troubleshooting and maintenance of network security infrastructure (Web content filtering, Firewall, IDS and DLP controls)</li>
-	<li>Experience with API gateways and API security</li>
-	<li>Experience with Zero Trust security</li>
-	<li>Experience in secure configuration of cloud-based storage and data management systems</li>
+	<li>Experience implementing Identity Governance and Administration (IGA) solutions including lifecycle management, SCIM, birthright access (RBAC, ABAC), and access certifications</li>
 	<li>Experience with secure configuration of containerized application platforms (e.g. Kubernetes)</li>
-	<li>Advanced programming experience (Python, TypeScript, Bash, etc.)</li>
+	<li>Advanced scripting experience (Python, TypeScript, Bash, etc.)</li>
+	<li>Experience implementing Zero Trust controls</li>
+	<li>Experience integrating with applications and SaaS solutions&nbsp;</li>
+	<li>Experience with Identity and Access Management policy application and enforcement</li>
+	<li>Experience working with Identity Threat Detection &amp; Response (ITDR)</li>
+	<li>Experience working with infrastructure as code and configuration management tools like Terraform, Ansible, etc.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
