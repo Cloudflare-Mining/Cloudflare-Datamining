@@ -5,30 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon, Portugal or Mexico City, Mexico</p>
+<p><strong>Available Locations: Hybrid from Austin, Washington DC, San Francisco, Lisbon, or Mexico City</strong></p>
 <p><strong>About the role&nbsp;</strong></p>
 <p>As an Identity and Access Management (IAM) Security Analyst you will play a key role in efficiently managing user identities and access across the enterprise. You will be responsible for implementing technologies and designing processes to ensure users have authorized access to resources and systems.&nbsp;&nbsp;&nbsp;</p>
 <p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Automate user provisioning and deprovisioning processes to enhance efficiency.</li>
+	<li>Establish and execute access governance programs and policies</li>
+	<li>Define and enforce access control policies, including role-based access control (RBAC), attribute based access control (ABAC), and policy based access controls (PBAC)</li>
+	<li>Ensure access adhere to the principle of least privilege and segregation of duties (SoD).</li>
+	<li>Develop and execute an access certification program and scale to all systems&nbsp;</li>
 	<li>Design, implement, and manage Identity Access &amp; Governance policies and procedures.</li>
-	<li>Conduct access certifications and enforce access controls based on organizational policies.</li>
 	<li>Define and enforce privileged access management (PAM) policies to secure sensitive systems and data.</li>
 	<li>Manage user onboarding, offboarding, and role changes, ensuring adherence to security policies and compliance requirements.</li>
-	<li>Define and enforce access control policies, including, but not limited to, role-based access control (RBAC), least privilege principle, and segregation of duties (SoD).</li>
-	<li>Conduct periodic access reviews and audits to maintain compliance.</li>
 	<li>Collaborate with cross-functional teams, including IT, security, and compliance, to ensure IAM aligns with business goals.</li>
 	<li>Communicate IAM-related updates and recommendations to stakeholders.</li>
 	<li>Maintain comprehensive documentation of IAM policies, processes, and configurations.</li>
 	<li>Generate reports and metrics related to IAM activities and security posture.</li>
 	<li>Stay current with industry best practices, regulations, and compliance standards related to IAM, such as FedRamp, SOX, GDPR, PCI, and NIST.</li>
+	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li>In-depth understanding of IAM concepts, technologies, standards, and best practices.</li>
-	<li>Experience in Identity and Access Governance performing policy enforcement, role management, and access certifications</li>
+	<li>In-depth understanding of access governance&nbsp;</li>
+	<li>Experience in Identity Governance &amp; Administration (IGA) solutions</li>
+	<li>Performing policy enforcement, role management, and access certifications</li>
 	<li>Experience implementing privileged access management (PAM)</li>
-	<li>Experience drafting IAM security standards and policies</li>
+	<li>Experience developing IAM security standards and policies</li>
 	<li>Preferred background in scripting and/or application development to automate identity and access management processes.</li>
 </ul>
 <div class="content-conclusion">
