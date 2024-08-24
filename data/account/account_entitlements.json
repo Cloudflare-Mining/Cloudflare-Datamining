@@ -1,69 +1,5 @@
 [
 	{
-		"id": "rate_limiting.enabled",
-		"feature": {
-			"feature_set": "rate_limiting",
-			"id": 19,
-			"key": "rate_limiting.enabled",
-			"name": "rate_limiting.enabled"
-		},
-		"allocation": {
-			"value": true,
-			"type": "bool"
-		},
-		"created_date": "2022-09-27T23:24:03.000000",
-		"edited_date": "2022-09-27T23:24:03.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "stream.video_storage_capacity",
-		"feature": {
-			"feature_set": "stream",
-			"id": 447,
-			"key": "stream.video_storage_capacity",
-			"name": "Stream - Video Storage Capacity"
-		},
-		"allocation": {
-			"value": 99999,
-			"type": "max_count"
-		},
-		"created_date": "2022-09-20T23:44:28.000000",
-		"edited_date": "2022-09-20T23:44:28.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "filters.max_lists",
-		"feature": {
-			"feature_set": "filters",
-			"id": 731,
-			"key": "filters.max_lists",
-			"name": "Filters - Max Lists"
-		},
-		"allocation": {
-			"value": 1,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:48:05.000000",
-		"edited_date": "2022-08-16T17:57:54.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "logpush.audit_log_events.max_jobs_allowed",
-		"feature": {
-			"feature_set": "logpush",
-			"id": 904,
-			"key": "logpush.audit_log_events.max_jobs_allowed",
-			"name": "Logpush - Audit Logs - Max Jobs"
-		},
-		"allocation": {
-			"value": 2,
-			"type": "max_count"
-		},
-		"created_date": "2022-08-16T17:51:10.000000",
-		"edited_date": "2022-08-16T17:51:10.000000",
-		"deleted_date": ""
-	},
-	{
 		"id": "filters.mass_redirects_max_lists",
 		"feature": {
 			"feature_set": "filters",
@@ -112,22 +48,6 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "r2.enabled",
-		"feature": {
-			"feature_set": "r2",
-			"id": 1001,
-			"key": "r2.enabled",
-			"name": "R2 - Enabled"
-		},
-		"allocation": {
-			"value": true,
-			"type": "bool"
-		},
-		"created_date": "2022-09-27T22:35:47.000000",
-		"edited_date": "2022-09-27T22:35:47.000000",
-		"deleted_date": ""
-	},
-	{
 		"id": "analytics_engine.not_older_than",
 		"feature": {
 			"feature_set": "analytics_engine",
@@ -144,35 +64,19 @@
 		"deleted_date": ""
 	},
 	{
-		"id": "custom_pages.enabled",
+		"id": "r2.enabled",
 		"feature": {
-			"feature_set": "custom_pages",
-			"id": 1104,
-			"key": "custom_pages.enabled",
-			"name": "Custom Pages enabled"
-		},
-		"allocation": {
-			"value": false,
-			"type": "bool"
-		},
-		"created_date": "2024-07-23T16:10:15.000000",
-		"edited_date": "2024-07-23T16:10:15.000000",
-		"deleted_date": ""
-	},
-	{
-		"id": "notifications.webhooks_enabled",
-		"feature": {
-			"feature_set": "notifications",
-			"id": 1153,
-			"key": "notifications.webhooks_enabled",
-			"name": "Notifications - Webhooks Enabled"
+			"feature_set": "r2",
+			"id": 1001,
+			"key": "r2.enabled",
+			"name": "R2 - Enabled"
 		},
 		"allocation": {
 			"value": true,
 			"type": "bool"
 		},
-		"created_date": "2024-05-24T13:38:12.000000",
-		"edited_date": "2024-05-24T13:38:12.000000",
+		"created_date": "2022-09-27T22:35:47.000000",
+		"edited_date": "2022-09-27T22:35:47.000000",
 		"deleted_date": ""
 	},
 	{
@@ -221,6 +125,22 @@
 		},
 		"created_date": "2024-05-24T13:38:09.000000",
 		"edited_date": "2024-05-24T13:38:09.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "notifications.webhooks_enabled",
+		"feature": {
+			"feature_set": "notifications",
+			"id": 1153,
+			"key": "notifications.webhooks_enabled",
+			"name": "Notifications - Webhooks Enabled"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2024-05-24T13:38:12.000000",
+		"edited_date": "2024-05-24T13:38:12.000000",
 		"deleted_date": ""
 	},
 	{
@@ -284,6 +204,86 @@
 			"type": "bool"
 		},
 		"created_date": "2024-05-24T13:38:09.000000",
+		"edited_date": "2024-07-23T16:10:15.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "logpush.audit_log_events.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 904,
+			"key": "logpush.audit_log_events.max_jobs_allowed",
+			"name": "Logpush - Audit Logs - Max Jobs"
+		},
+		"allocation": {
+			"value": 2,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:51:10.000000",
+		"edited_date": "2022-08-16T17:51:10.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "filters.max_lists",
+		"feature": {
+			"feature_set": "filters",
+			"id": 731,
+			"key": "filters.max_lists",
+			"name": "Filters - Max Lists"
+		},
+		"allocation": {
+			"value": 1,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:05.000000",
+		"edited_date": "2022-08-16T17:57:54.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rate_limiting.enabled",
+		"feature": {
+			"feature_set": "rate_limiting",
+			"id": 19,
+			"key": "rate_limiting.enabled",
+			"name": "rate_limiting.enabled"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-27T23:24:03.000000",
+		"edited_date": "2022-09-27T23:24:03.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "stream.video_storage_capacity",
+		"feature": {
+			"feature_set": "stream",
+			"id": 447,
+			"key": "stream.video_storage_capacity",
+			"name": "Stream - Video Storage Capacity"
+		},
+		"allocation": {
+			"value": 99999,
+			"type": "max_count"
+		},
+		"created_date": "2022-09-20T23:44:28.000000",
+		"edited_date": "2022-09-20T23:44:28.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "custom_pages.enabled",
+		"feature": {
+			"feature_set": "custom_pages",
+			"id": 1104,
+			"key": "custom_pages.enabled",
+			"name": "Custom Pages enabled"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2024-07-23T16:10:15.000000",
 		"edited_date": "2024-07-23T16:10:15.000000",
 		"deleted_date": ""
 	}
