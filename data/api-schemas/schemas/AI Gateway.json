@@ -206,6 +206,20 @@
 				}
 			},
 			{
+				"description": "Order By Direction",
+				"in": "query",
+				"name": "order_by_direction",
+				"schema": {
+					"default": "ASC",
+					"description": "Order By Direction",
+					"enum": [
+						"ASC",
+						"DESC"
+					],
+					"type": "string"
+				}
+			},
+			{
 				"in": "query",
 				"name": "id",
 				"schema": {
