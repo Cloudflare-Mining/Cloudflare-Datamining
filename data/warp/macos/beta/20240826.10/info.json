@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 3424,
+	"version": "20240826.10",
+	"short_version": "2024.8.309.1",
+	"size": 77067797,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "6dc9ec90ef8055cbe560a7b374de57a6",
+	"fingerprint": "0e3240eb0521a2a3fd475b914ccf5d5c",
+	"uploaded_at": "2024-08-26T17:18:31.086Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This is a release focused on fixes and improvements.\n\n## Changes and improvements\n- Added the ability to customize PCAP options in the warp-cli.\n- Added a list of installed applications in warp-diag.\n- Added a summary of warp-dex traceroute results in its JSON output.\n- Improved the performance of firewall operations when enforcing split tunnel configuration.\n- Fixed an issue where the DNS logs were not being cleared when the user switched configurations.\n- Fixed a Known Issue which required users to re-register when an older single configuration MDM file was deployed after deploying the newer, multiple configuration format.\n- Fixed an issue which prevented the use of private IP ranges that overlapped with end user's home networks.\n- Deprecated warp-cli commands have been removed. If you have any workflows that use the deprecated commands, please update to the new commands where necessary.\n      \n## Known issues\n- Using MASQUE as the tunnel protocol may be incompatible if your organization has either of the following conditions:\n    - Magic WAN is enabled but not the latest packet flow path for WARP. Please check the migration status with your account team.\n    - Regional Services enabled.\n      \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp  \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
