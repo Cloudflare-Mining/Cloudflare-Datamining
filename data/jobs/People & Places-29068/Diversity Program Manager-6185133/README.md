@@ -14,7 +14,7 @@
 <p>We have been recognized as a Great Place to Work with regards to diversity and inclusion, including 100% on the Human Rights’ Campaign Corporate Equality Index.</p>
 <p>…and we are just getting started.</p>
 <h4><strong>What's Next</strong></h4>
-<p>We are ready to build on this strong foundation. Our next phase will have a focus on embedding DEIB best practices in all aspects of the employee experience and employee life cycle. The Director of DEIB will work cross-functionally across all teams, in all geographies with leaders at all levels. With an aim to solidify DEIB efforts and best practices into how we operate at the company, day-to-day, this will not be siloed work.</p>
+<p>We are ready to build on this strong foundation. Our next phase will have a focus on embedding DEIB best practices in all aspects of the employee experience and employee life cycle. The Diversity Program Manager will work cross-functionally across all teams, in all geographies with leaders at all levels. With an aim to solidify DEIB efforts and best practices into how we operate at the company, day-to-day, this will not be siloed work.</p>
 <h4><strong>What you'll do</strong></h4>
 <ul>
 	<li>Shape our global DEIB strategy, embedding best practices to create a culture of inclusiveness where everyone can do their best work</li>
