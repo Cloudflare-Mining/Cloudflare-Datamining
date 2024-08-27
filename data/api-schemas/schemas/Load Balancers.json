@@ -571,6 +571,17 @@
 														"example": "www.example.com",
 														"type": "string"
 													},
+													"networks": {
+														"description": "List of networks where Load Balancer or Pool is enabled.",
+														"items": {
+															"example": [
+																"cloudflare",
+																"jdcloud"
+															],
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"pop_pools": {
 														"additionalProperties": {
 															"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
@@ -1312,6 +1323,17 @@
 																"description": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.",
 																"example": "www.example.com",
 																"type": "string"
+															},
+															"networks": {
+																"description": "List of networks where Load Balancer or Pool is enabled.",
+																"items": {
+																	"example": [
+																		"cloudflare",
+																		"jdcloud"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
 															},
 															"pop_pools": {
 																"additionalProperties": {
@@ -2162,6 +2184,17 @@
 													"example": "www.example.com",
 													"type": "string"
 												},
+												"networks": {
+													"description": "List of networks where Load Balancer or Pool is enabled.",
+													"items": {
+														"example": [
+															"cloudflare",
+															"jdcloud"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
 												"pop_pools": {
 													"additionalProperties": {
 														"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
@@ -2887,6 +2920,17 @@
 															"description": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.",
 															"example": "www.example.com",
 															"type": "string"
+														},
+														"networks": {
+															"description": "List of networks where Load Balancer or Pool is enabled.",
+															"items": {
+																"example": [
+																	"cloudflare",
+																	"jdcloud"
+																],
+																"type": "string"
+															},
+															"type": "array"
 														},
 														"pop_pools": {
 															"additionalProperties": {
@@ -4352,6 +4396,17 @@
 													"example": "www.example.com",
 													"type": "string"
 												},
+												"networks": {
+													"description": "List of networks where Load Balancer or Pool is enabled.",
+													"items": {
+														"example": [
+															"cloudflare",
+															"jdcloud"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
 												"pop_pools": {
 													"additionalProperties": {
 														"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
@@ -5077,6 +5132,17 @@
 															"description": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.",
 															"example": "www.example.com",
 															"type": "string"
+														},
+														"networks": {
+															"description": "List of networks where Load Balancer or Pool is enabled.",
+															"items": {
+																"example": [
+																	"cloudflare",
+																	"jdcloud"
+																],
+																"type": "string"
+															},
+															"type": "array"
 														},
 														"pop_pools": {
 															"additionalProperties": {
@@ -6532,6 +6598,17 @@
 													"example": "www.example.com",
 													"type": "string"
 												},
+												"networks": {
+													"description": "List of networks where Load Balancer or Pool is enabled.",
+													"items": {
+														"example": [
+															"cloudflare",
+															"jdcloud"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
 												"pop_pools": {
 													"additionalProperties": {
 														"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
@@ -7257,6 +7334,17 @@
 															"description": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.",
 															"example": "www.example.com",
 															"type": "string"
+														},
+														"networks": {
+															"description": "List of networks where Load Balancer or Pool is enabled.",
+															"items": {
+																"example": [
+																	"cloudflare",
+																	"jdcloud"
+																],
+																"type": "string"
+															},
+															"type": "array"
 														},
 														"pop_pools": {
 															"additionalProperties": {
@@ -8727,6 +8815,17 @@
 													"example": "www.example.com",
 													"type": "string"
 												},
+												"networks": {
+													"description": "List of networks where Load Balancer or Pool is enabled.",
+													"items": {
+														"example": [
+															"cloudflare",
+															"jdcloud"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
 												"pop_pools": {
 													"additionalProperties": {
 														"description": "A `string:[string]` object of key-values. PoP code maps to list of pool IDs.",
@@ -9452,6 +9551,17 @@
 															"description": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.",
 															"example": "www.example.com",
 															"type": "string"
+														},
+														"networks": {
+															"description": "List of networks where Load Balancer or Pool is enabled.",
+															"items": {
+																"example": [
+																	"cloudflare",
+																	"jdcloud"
+																],
+																"type": "string"
+															},
+															"type": "array"
 														},
 														"pop_pools": {
 															"additionalProperties": {
