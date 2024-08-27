@@ -831,6 +831,13 @@
 			"experiment"
 		]
 	},
+	"prg-no-zone-redirect-to-welcome": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"prg-persistent-cta-upgrade-experiment": {
 		"enabled": true,
 		"branches": [
@@ -984,6 +991,9 @@
 		"enabled": true
 	},
 	"rm-19161-create-application-workflow": {
+		"enabled": false
+	},
+	"rule-builder-ai-assistant": {
 		"enabled": false
 	},
 	"saas-dns-info": {
