@@ -2530,6 +2530,127 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
+	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": {
+		"__description": "Network analytics data for Magic Firewall Ratelimiting",
+		"avg": "The average of values for a metric per dimension",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
+		"bitRate": "Sum of bits received, divided by 1 second, providing a per-second bit rate when grouped by datetime",
+		"bitRateDay": "Sum of bits received, divided by 86400 seconds, providing a per-second bit rate when grouped by date",
+		"bitRateFifteenMinutes": "Sum of bits received, divided by 900 seconds, providing a per-second bit rate when grouped by datetimeFifteenMinutes",
+		"bitRateFiveMinutes": "Sum of bits received, divided by 300 seconds, providing a per-second bit rate when grouped by datetimeFiveMinutes",
+		"bitRateHour": "Sum of bits received, divided by 3600 seconds, providing a per-second bit rate when grouped by datetimeHour",
+		"bitRateMinute": "Sum of bits received, divided by 60 seconds, providing a per-second bit rate when grouped by datetimeMinute",
+		"bitRateTenSeconds": "Sum of bits received, divided by 10 seconds, providing a per-second bit rate when grouped by datetimeTenSeconds",
+		"packetRate": "Sum of packets received, divided by 1 second, providing a per-second packet rate when grouped by datetime",
+		"packetRateDay": "Sum of packets received, divided by 86400 seconds, providing a per-second packet rate when grouped by date",
+		"packetRateFifteenMinutes": "Sum of packets received, divided by 900 seconds, providing a per-second packet rate when grouped by datetimeFifteenMinutes",
+		"packetRateFiveMinutes": "Sum of packets received, divided by 300 seconds, providing a per-second packet rate when grouped by datetimeFiveMinutes",
+		"packetRateHour": "Sum of packets received, divided by 3600 seconds, providing a per-second packet rate when grouped by datetimeHour",
+		"packetRateMinute": "Sum of packets received, divided by 60 seconds, providing a per-second packet rate when grouped by datetimeMinute",
+		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
+	},
+	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"applicationTag": "Application tag associated with the packet",
+		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
+		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
+		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
+		"coloGeohash": "Latitude and longitude where the Cloudflare datacenter that received the packet is located (Geohash encoding)",
+		"coloName": "Cloudflare datacenter that received the packet (unique site identifier)",
+		"date": "Date that the packet was received",
+		"datetime": "Date and time that the packet was received",
+		"datetimeFifteenMinutes": "Date and time that the packet was received, rounded to the start of the nearest fifteen minutes",
+		"datetimeFiveMinutes": "Date and time that the packet was received, rounded to the start of the nearest five minutes",
+		"datetimeHour": "Date and time that the packet was received, rounded to the start of the nearest hour",
+		"datetimeMinute": "Date and time that the packet was received, rounded to the start of the nearest minute",
+		"datetimeTenSeconds": "Date and time that the packet was received, rounded to the start of the nearest ten seconds",
+		"destinationAsn": "ASN associated with the destination IP of the packet, or 0 if there was no mapping available",
+		"destinationAsnName": "Name of ASN associated with the destination IP of the packet, if available",
+		"destinationCountry": "Country where the destination IP of the packet is located (ISO 3166-1 alpha-2)",
+		"destinationDeviceTag": "Device tag associated with the destination IP of the packet",
+		"destinationGeohash": "Latitude and longitude where the destination IP of the packet is located (Geohash encoding)",
+		"destinationPort": "Value of the Destination Port header field in the TCP or UDP packet",
+		"direction": "Direction of the packet relative to the customer network (possible values: inbound, outbound, lateral)",
+		"ethertype": "Value of the Ethertype header field in the Ethernet packet (2048 for IPv4; 34525 for IPv6)",
+		"greChecksum": "Value of the Checkusm header field in the GRE packet",
+		"greEthertype": "Value of the Ethertype header field in the GRE packet",
+		"greHeaderLength": "Length of the GRE packet header, in bytes",
+		"greKey": "Value of the Key header field in the GRE packet",
+		"greSequenceNumber": "Value of the Sequence Number header field in the GRE packet",
+		"greVersion": "Value of the Version header field in the GRE packet",
+		"icmpChecksum": "Value of the Checkusm header field in the ICMP packet",
+		"icmpCode": "Value of the Code header field in the ICMP packet",
+		"icmpType": "Value of the Type header field in the ICMP packet",
+		"ipDestinationAddress": "Value of the Destination Address header field in the IPv4 or IPv6 packet",
+		"ipDestinationSubnet": "Computed subnet of the Destination Address header field in the IPv4 or IPv6 packet (/24 for IPv4; /64 for IPv6)",
+		"ipFragmentOffset": "Value of the Fragment Offset header field in the IPv4 or IPv6 packet",
+		"ipHeaderLength": "Length of the IPv4 or IPv6 packet header, in bytes",
+		"ipMoreFragments": "Value of the More Fragments header field in the IPv4 or IPv6 packet",
+		"ipProtocol": "Value of the Protocol header field in the IPv4 or IPv6 packet",
+		"ipProtocolName": "Name of the protocol specified by the Protocol header field in the IPv4 or IPv6 packet",
+		"ipSourceAddress": "Value of the Source Address header field in the IPv4 or IPv6 packet",
+		"ipSourceSubnet": "Computed subnet of the Source Address header field in the IPv4 or IPv6 packet (/24 for IPv4; /64 for IPv6)",
+		"ipTotalLength": "Total length of the IPv4 or IPv6 packet, in bytes",
+		"ipTotalLengthBuckets": "Total length of the IPv4 or IPv6 packet, in bytes, with the last two digits truncated",
+		"ipTtl": "Value of the TTL header field in the IPv4 packet or the Hop Limit header field in the IPv6 packet",
+		"ipTtlBuckets": "Value of the TTL header field in the IPv4 packet or the Hop Limit header field in the IPv6 packet, with the last digit truncated",
+		"ipv4Checksum": "Value of the Checksum header field in the IPv4 packet",
+		"ipv4DontFragment": "Value of the Don't Fragment header field in the IPv4 packet",
+		"ipv4Dscp": "Value of the Differentiated Services Code Point header field in the IPv4 packet",
+		"ipv4Ecn": "Value of the Explicit Congestion Notification header field in the IPv4 packet",
+		"ipv4Identification": "Value of the Identification header field in the IPv4 packet",
+		"ipv4Options": "List of Options numbers included in the IPv4 packet header",
+		"ipv6Dscp": "Value of the Differentiated Services Code Point header field in the IPv6 packet",
+		"ipv6Ecn": "Value of the Explicit Congestion Notification header field in the IPv6 packet",
+		"ipv6ExtensionHeaders": "List of Extension Header numbers included in the IPv6 packet header",
+		"ipv6FlowLabel": "Value of the Flow Label header field in the IPv6 packet",
+		"ipv6Identification": "Value of the Identification extension header field in the IPv6 packet",
+		"leaseTag": "IP lease tag associated with the packet",
+		"outcome": "The action that was taken on the packet (possible values: pass, drop)",
+		"prefixTag": "IP prefix tag associated with the packet",
+		"ruleId": "Unique identifier of the rule that matched the packet, if any",
+		"rulesetId": "Unique identifier of the ruleset containing the rule that matched the packet, if any",
+		"sampleInterval": "ABR sample interval",
+		"sourceAsn": "ASN associated with the source IP of the packet, or 0 if there was no mapping available",
+		"sourceAsnName": "Name of ASN associated with the source IP of the packet, if available",
+		"sourceCountry": "Country where the source IP of the packet is located (ISO 3166-1 alpha-2)",
+		"sourceDeviceTag": "Device tag associated with the source IP of the packet",
+		"sourceGeohash": "Latitude and longitude where the source IP of the packet is located (Geohash encoding)",
+		"sourcePort": "Value of the Source Port header field in the TCP or UDP packet",
+		"tcpAcknowledgementNumber": "Value of the Acknowledgement Number header field in the TCP packet",
+		"tcpChecksum": "Value of the Checkusm header field in the TCP packet",
+		"tcpDataOffset": "Value of the Data Offset header field in the TCP packet",
+		"tcpFlags": "Value of the Flags header field in the TCP packet",
+		"tcpFlagsString": "Human-readable string representation of the Flags header field in the TCP packet",
+		"tcpMss": "Value of the MSS option header field in the TCP packet",
+		"tcpOptions": "List of Options numbers included in the TCP packet header",
+		"tcpSackBlocks": "Value of the SACK Blocks option header field in the TCP packet",
+		"tcpSackPermitted": "Value of the SACK Permitted option header field in the TCP packet",
+		"tcpSequenceNumber": "Value of the Sequence Number header field in the TCP packet",
+		"tcpTimestampEcr": "Value of the Timestamp Echo Reply option header field in the TCP packet",
+		"tcpTimestampValue": "Value of the Timestamp option header field in the TCP packet",
+		"tcpUrgentPointer": "Value of the Urgent Pointer header field in the TCP packet",
+		"tcpWindowScale": "Value of the Window Scale option header field in the TCP packet",
+		"tcpWindowSize": "Value of the Window Size header field in the TCP packet",
+		"udpChecksum": "Value of the Checkusm header field in the UDP packet",
+		"udpPayloadLength": "Value of the Payload Length header field in the UDP packet",
+		"verdict": "The action that Cloudflare thinks should be taken on the packet (possible values: pass, drop)"
+	},
+	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMagicFirewallRateLimitNetworkAnalyticsAdaptiveGroupsSum": {
+		"__description": "",
+		"bits": "Sum of bits received",
+		"packets": "Sum of packets received"
+	},
 	"AccountMagicFirewallSamplesAdaptiveGroups": {
 		"__description": "Data to visualize traffic allowed and blocked by Magic Firewall rules",
 		"dimensions": "List of dimensions to group by",
@@ -3120,6 +3241,7 @@
 	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroupsSum": {
 		"__description": "",
+		"clientDisconnects": "Sum of client disconnects",
 		"duration": "Sum of Duration - GB*s",
 		"errors": "Sum of Errors",
 		"requests": "Sum of Requests",
@@ -3646,6 +3768,7 @@
 		"kvStorageAdaptiveGroups": "",
 		"logpushHealthAdaptiveGroups": "",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "",
+		"magicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": "",
 		"magicFirewallSamplesAdaptiveGroups": "",
 		"magicIDPSNetworkAnalyticsAdaptiveGroups": "",
 		"magicTransitNetworkAnalyticsAdaptiveGroups": "",
@@ -6476,7 +6599,7 @@
 	"ZoneZarazAnalyticsIdentitiesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"clientId": "Client ID",
-		"date": "Date when track was called",
+		"date": "Date when zaraz.identify() method was called",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
@@ -6492,9 +6615,9 @@
 	"ZoneZarazAnalyticsOrderedTrackAdaptive": {
 		"__description": "Zaraz Analytics Tracks ordered per session",
 		"browserName": "User Agent browser name",
-		"cityRegion": "City and region",
+		"cityRegion": "City, region",
 		"clientId": "Client ID",
-		"colors": "Colors",
+		"colors": "Color depth",
 		"country": "Country",
 		"date": "Date when track was called",
 		"datetime": "Date & time when track was called",
@@ -6511,20 +6634,19 @@
 		"orderInSession": "Track's reverse order number within its session (last track having orderInSession 1)",
 		"osName": "User Agent OS name",
 		"osVersion": "User Agent OS version",
-		"other": "Other data in the JSON format: language code, color depth, device viewport, timezone offset",
 		"pageTitle": "Page Title",
-		"resolution": "Screen Resolution",
+		"resolution": "Screen resolution, cantor paired width & heigh",
 		"reverseOrderInClient": "Track's reverse order number for its clientId",
 		"sampleInterval": "ABR sample interval",
 		"sessionId": "Session ID",
 		"timezoneOffset": "Timezone Offset",
 		"trackData": "Track Data",
 		"trackName": "Track Name",
-		"trafficSrc": "Traffic source",
+		"trafficSrc": "Traffic Source",
 		"ua": "User Agent string",
 		"uaObj": "User Agent stringified object",
 		"urlPath": "URL Path",
-		"viewport": "Viewport"
+		"viewport": "Viewport, cantor paired width & heigh"
 	},
 	"ZoneZarazAnalyticsOrderedTrackAdaptiveFilter_InputObject": {
 		"__description": ""
@@ -6538,9 +6660,9 @@
 	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroupsDimensions": {
 		"__description": "",
 		"browserName": "User Agent browser name",
-		"cityRegion": "City and region",
+		"cityRegion": "City, region",
 		"clientId": "Client ID",
-		"colors": "Colors",
+		"colors": "Color depth",
 		"country": "Country",
 		"date": "Date when track was called",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
@@ -6556,19 +6678,18 @@
 		"orderInSession": "Track's reverse order number within its session (last track having orderInSession 1)",
 		"osName": "User Agent OS name",
 		"osVersion": "User Agent OS version",
-		"other": "Other data in the JSON format: language code, color depth, device viewport, timezone offset",
 		"pageTitle": "Page Title",
-		"resolution": "Screen Resolution",
+		"resolution": "Screen resolution, cantor paired width & heigh",
 		"reverseOrderInClient": "Track's reverse order number for its clientId",
 		"sessionId": "Session ID",
 		"timezoneOffset": "Timezone Offset",
 		"trackData": "Track Data",
 		"trackName": "Track Name",
-		"trafficSrc": "Traffic source",
+		"trafficSrc": "Traffic Source",
 		"ua": "User Agent string",
 		"uaObj": "User Agent stringified object",
 		"urlPath": "URL Path",
-		"viewport": "Viewport"
+		"viewport": "Viewport, cantor paired width & heigh"
 	},
 	"ZoneZarazAnalyticsOrderedTrackAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -6593,9 +6714,9 @@
 	"ZoneZarazAnalyticsTrackAdaptiveGroupsDimensions": {
 		"__description": "",
 		"browserName": "User Agent browser name",
-		"cityRegion": "City and region",
+		"cityRegion": "City, region",
 		"clientId": "Client ID",
-		"colors": "Colors",
+		"colors": "Color depth",
 		"country": "Country",
 		"date": "Date when track was called",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
@@ -6609,18 +6730,17 @@
 		"language": "Language",
 		"osName": "User Agent OS name",
 		"osVersion": "User Agent OS version",
-		"other": "Other data in the JSON format: language code, color depth, device viewport, timezone offset",
 		"pageTitle": "Page Title",
-		"resolution": "Screen Resolution",
+		"resolution": "Screen resolution, cantor paired width & heigh",
 		"sessionId": "Session ID",
 		"timezoneOffset": "Timezone Offset",
 		"trackData": "Track Data",
 		"trackName": "Track Name",
-		"trafficSrc": "Traffic source",
+		"trafficSrc": "Traffic Source",
 		"ua": "User Agent string",
 		"uaObj": "User Agent stringified object",
 		"urlPath": "URL Path",
-		"viewport": "Viewport"
+		"viewport": "Viewport, cantor paired width & heigh"
 	},
 	"ZoneZarazAnalyticsTrackAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -6649,7 +6769,7 @@
 		"clientId": "Client ID",
 		"duration": "Session duration (seconds)",
 		"exitPage": "URL Path at session end",
-		"firstTrafficSrc": "Referrer at session start",
+		"firstTrafficSrc": "Traffic source at session start",
 		"landingPage": "URL Path at session start",
 		"sessionEnd": "Date when the session ended",
 		"sessionEndFifteenMinutes": "The date and time truncated to fifteen minutes",
@@ -6672,7 +6792,8 @@
 	},
 	"ZoneZarazAnalyticsTrackTrafficSourcesAdaptiveGroupsUniq": {
 		"__description": "",
-		"clientIdCount": "Number of distinct client IDs"
+		"clientIdCount": "Minimum number of distinct client IDs",
+		"sessionIdCount": "Minimum number of distinct session IDs"
 	},
 	"ZoneZarazAnalyticsTriggersAdaptiveGroups": {
 		"__description": "Zaraz Analytics Triggers (a trigger is a set of rules that can trigger a zaraz action)",
@@ -6683,9 +6804,9 @@
 	"ZoneZarazAnalyticsTriggersAdaptiveGroupsDimensions": {
 		"__description": "",
 		"browserName": "User Agent browser name",
-		"cityRegion": "City and region",
+		"cityRegion": "City, region",
 		"clientId": "Client ID",
-		"colors": "Colors",
+		"colors": "Color depth",
 		"country": "Country",
 		"date": "The date when trigger was triggerd",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
@@ -6699,9 +6820,8 @@
 		"language": "Language",
 		"osName": "User Agent OS name",
 		"osVersion": "User Agent OS version",
-		"other": "Other data in the JSON format: language code, color depth, device viewport, timezone offset",
 		"pageTitle": "Page Title",
-		"resolution": "Screen Resolution",
+		"resolution": "Screen resolution, cantor paired width & heigh",
 		"sessionId": "Session ID",
 		"timezoneOffset": "Timezone Offset",
 		"trafficSrc": "Traffic Source",
@@ -6709,7 +6829,7 @@
 		"ua": "User Agent string",
 		"uaObj": "User Agent stringified object",
 		"urlPath": "URL Path",
-		"viewport": "Viewport"
+		"viewport": "Viewport, cantor paired width & heigh"
 	},
 	"ZoneZarazAnalyticsTriggersAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -6731,7 +6851,7 @@
 	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroupsDimensions": {
 		"__description": "",
 		"clientId": "Client ID",
-		"firstTrafficSrc": "Referrer at session start",
+		"firstTrafficSrc": "Traffic source at session start",
 		"sessionEnd": "Date when the session ended",
 		"sessionEndFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"sessionEndFiveMinutes": "The date and time truncated to five minutes",
@@ -6753,7 +6873,8 @@
 	},
 	"ZoneZarazAnalyticsTriggersTrafficSourcesAdaptiveGroupsUniq": {
 		"__description": "",
-		"clientIdCount": "Number of distinct client IDs"
+		"clientIdCount": "Minimum number of distinct client IDs",
+		"sessionIdCount": "Minimum number of distinct session IDs"
 	},
 	"ZoneZarazTrackAdaptiveGroups": {
 		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
@@ -6848,6 +6969,7 @@
 		"kvStorageAdaptiveGroups": "KV stored data with adaptive sampling",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall",
+		"magicFirewallRateLimitNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall Ratelimiting",
 		"magicFirewallSamplesAdaptiveGroups": "Data to visualize traffic allowed and blocked by Magic Firewall rules",
 		"magicIDPSNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic IDS",
 		"magicTransitNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Transit traffic",
@@ -6908,6 +7030,9 @@
 	},
 	"int16": {
 		"__description": "Scalar type int16"
+	},
+	"int32": {
+		"__description": "Scalar type int32"
 	},
 	"int64": {
 		"__description": "Scalar type int64"
