@@ -21,7 +21,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: O => (0, e.z1)(h.Mr)(O) && (0, Z.z7)(O) && !!(0, Z.z$)(O).length
+		hasPermission: O => (0, e.z1)(h.Mr)(O) && (0, G.z7)(O) && !!(0, G.z$)(O).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -179,7 +179,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: F.T
+		hasPermission: Q.T
 	}, {
 		title: "account.home",
 		url: "/",
@@ -384,7 +384,7 @@ const navigation = {
 		url: "/workers-for-platforms",
 		iconType: "workers-for-platforms",
 		testId: "workers-for-platforms",
-		hasPermission: O => (0, r.iY)(O) && (0, V.k)(O)
+		hasPermission: O => (0, r.iY)(O) && (0, J.k)(O)
 	}, {
 		title: "navigation.account.workers.ai",
 		url: "/ai/workers-ai",
@@ -635,8 +635,8 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: O => {
 				const w = (0, _.nA)(O),
-					k = (w == null ? void 0 : w.type) === me.K.PARTIAL;
-				return !!(0, e.z1)("foundation-dns-enabled")(O) && !k && ((0, s.$f)(O, "foundation_dns.advanced_nameservers_allowed") || (0, s.du)(O, "foundation_dns.advanced_nameservers_allowed"))
+					W = (w == null ? void 0 : w.type) === me.K.PARTIAL;
+				return !!(0, e.z1)("foundation-dns-enabled")(O) && !W && ((0, s.$f)(O, "foundation_dns.advanced_nameservers_allowed") || (0, s.du)(O, "foundation_dns.advanced_nameservers_allowed"))
 			}
 		}, {
 			title: "navigation.zone.dns.settings",
@@ -676,10 +676,10 @@ const navigation = {
 		hasPermission: O => {
 			const w = (0, _.nA)(O);
 			if ((0, s.yD)(O) || !(0, r.wB)(O, "zone_settings", "spectrum.app") || !w) return !1;
-			const k = !!((0, u.l8)(O) || (0, _.DQ)(O)),
+			const W = !!((0, u.l8)(O) || (0, _.DQ)(O)),
 				ee = !!(0, _.ZB)(O, "spectrum", "enabled"),
-				G = !!(0, _.Ns)(w);
-			return ee || k || !G
+				$ = !!(0, _.Ns)(w);
+			return ee || W || !$
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -798,7 +798,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: Q.x
+			tabs: V.x
 		}]
 	}, {
 		title: "navigation.zone.caching",
@@ -811,7 +811,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: j
+			tabs: x
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -855,7 +855,7 @@ const navigation = {
 			url: "/rules/snippets",
 			labels: ["alpha"],
 			navigationType: "version",
-			hasPermission: O => (!!(0, R.GM)(O) || !!(0, e.z1)("snippets-enabled")(O)) && (0, r.$n)(O, "waf", "page-rule", "read")
+			hasPermission: O => (!!(0, U.GM)(O) || !!(0, e.z1)("snippets-enabled")(O)) && (0, r.$n)(O, "waf", "page-rule", "read")
 		}, {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
