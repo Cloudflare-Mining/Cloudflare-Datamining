@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Remote Netherlands; London, United Kingdom; Lisbon, Portugal; Paris, France; Munich, Germany&nbsp;</p>
+<p><strong>Available Locations: </strong>Remote Netherlands; London or Remote United Kingdom; Lisbon or Remote Portugal;&nbsp;</p>
 <p><span style="font-weight: 400;">As an engineer on one of our Core platform teams, you'll be building the tools to help engineers deploy and operate the services that make Cloudflare work. Our mission is to provide a reliable, yet flexible, platform to help product teams release new software efficiently and safely. You’ll be building the private cloud that Cloudflare developers leverage to build Cloudflare itself. Core platforms we operate at Cloudflare include:</span></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Kubernetes</span></li>
