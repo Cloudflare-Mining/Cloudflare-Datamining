@@ -32,25 +32,59 @@
 	<li>In-depth understanding of security concepts.</li>
 	<li>Understand how business, engineering, IT, and security processes align, and how to research, test, and implement solutions to complex objectives.</li>
 	<li>Able to anticipate challenges and steer the company towards growth.</li>
-	<li>In depth knowledge of the following:</li>
-	<ul>
-		<li>Analyzing network data and systems to select the most appropriate control mechanism for the security required.</li>
-		<li>Network and security concepts and protocols</li>
+	<li>In depth knowledge of the following:
 		<ul>
 			<li>Network Elements: Network nodes (computers, routers, etc.), communications protocols (TCP/IP, HTTP, DNS, etc.), connection media (wired, wireless), and topologies (bus, star, mesh, etc.)</li>
 			<li>Security Elements: Cybersecurity devices and software, secure communications protocols (e.g. IPsec VPN and TLS), and data privacy technologies (classification, encryption, key management, etc.).</li>
 		</ul>
-		<li>Network Security Frameworks&nbsp;</li>
 		<ul>
 			<li>Zero Trust</li>
 			<li>NIST Cybersecurity Framework (CSF)</li>
 			<li>Etc.</li>
 		</ul>
+	</li>
+	<ul>
+		<li>Analyzing network data and systems to select the most appropriate control mechanism for the security required.</li>
+		<li>Network and security concepts and protocols</li>
+		<li>Network Security Frameworks&nbsp;</li>
 		<li>Network security principles and best practices.</li>
 		<li>Designing and managing secure network architectures.</li>
 		<li>Secure configuration management processes</li>
 		<li>Security reviews, identifying gaps in security architecture, and developing security risk management plans</li>
 	</ul>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $187,000 - $206,000.</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $196,000 - $240,000.</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
