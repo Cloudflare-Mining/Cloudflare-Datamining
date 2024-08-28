@@ -202,6 +202,8 @@
 	"dlp_partial_payload_description": "Surfaces encrypted DLP matches in Gateway activity logs.",
 	"dlp_partial_payload_title": "Log the payload of matched rule",
 	"dlp_scan_label": "Choose a mode for DLP Scan:",
+	"dlp_send_copy_to_storage_description": "When selected, a copy of HTTP request will be sent to storage via LogPush",
+	"dlp_send_copy_to_storage_title": "Send Copy to Storage",
 	"dns_ack_error": "Error acknowledging DNS migration",
 	"dns_legacy_table_title": "Your legacy DNS policies",
 	"dns_migration_banner": "Legacy DNS policies are deprecated. They will soon be removed and automatically migrated to new gateway firewall policies. To manually migate these legacy policies, recreate these policies under Gateway > DNS and remove them from this tab. <a target=\"_blank\" href=\"%{link}\">Learn more about DNS policies</a>",
