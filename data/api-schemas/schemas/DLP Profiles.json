@@ -5502,6 +5502,250 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"profiles": {
+								"items": {
+									"properties": {
+										"allowed_match_count": {
+											"default": 0,
+											"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+											"example": 5,
+											"format": "int32",
+											"maximum": 1000,
+											"minimum": 0,
+											"type": "integer"
+										},
+										"context_awareness": {
+											"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+											"properties": {
+												"enabled": {
+													"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+													"type": "boolean"
+												},
+												"skip": {
+													"description": "Content types to exclude from context analysis and return all matches.",
+													"properties": {
+														"files": {
+															"description": "If the content type is a file, skip context analysis and return all matches.",
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"files"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"enabled",
+												"skip"
+											],
+											"type": "object"
+										},
+										"description": {
+											"description": "The description of the profile",
+											"nullable": true,
+											"type": "string"
+										},
+										"entries": {
+											"items": {
+												"oneOf": [
+													{
+														"properties": {
+															"enabled": {
+																"type": "boolean"
+															},
+															"name": {
+																"type": "string"
+															},
+															"pattern": {
+																"properties": {
+																	"regex": {
+																		"type": "string"
+																	},
+																	"validation": {
+																		"allOf": [
+																			{
+																				"enum": [
+																					"luhn"
+																				],
+																				"type": "string"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"regex"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"name",
+															"pattern",
+															"enabled"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"enabled": {
+																"type": "boolean"
+															},
+															"name": {
+																"type": "string"
+															},
+															"words": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															}
+														},
+														"required": [
+															"name",
+															"words",
+															"enabled"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										},
+										"name": {
+											"type": "string"
+										},
+										"ocr_enabled": {
+											"type": "boolean"
+										},
+										"shared_entries": {
+											"description": "Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).",
+											"items": {
+												"discriminator": {
+													"propertyName": "entry_type"
+												},
+												"oneOf": [
+													{
+														"properties": {
+															"enabled": {
+																"type": "boolean"
+															},
+															"entry_id": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"entry_type": {
+																"enum": [
+																	"custom"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"entry_id",
+															"enabled",
+															"entry_type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"enabled": {
+																"type": "boolean"
+															},
+															"entry_id": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"entry_type": {
+																"enum": [
+																	"predefined"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"entry_id",
+															"enabled",
+															"entry_type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"enabled": {
+																"type": "boolean"
+															},
+															"entry_id": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"entry_type": {
+																"enum": [
+																	"integration"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"entry_id",
+															"enabled",
+															"entry_type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"enabled": {
+																"type": "boolean"
+															},
+															"entry_id": {
+																"format": "uuid",
+																"type": "string"
+															},
+															"entry_type": {
+																"enum": [
+																	"exact_data"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"entry_id",
+															"enabled",
+															"entry_type"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"name",
+										"entries"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"profiles"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "A list of new profiles to create.",
+			"required": true
+		},
 		"responses": {
 			"200": {
 				"content": {
@@ -6824,6 +7068,244 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"allowed_match_count": {
+								"format": "int32",
+								"nullable": true,
+								"type": "integer"
+							},
+							"context_awareness": {
+								"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+								"properties": {
+									"enabled": {
+										"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+										"type": "boolean"
+									},
+									"skip": {
+										"description": "Content types to exclude from context analysis and return all matches.",
+										"properties": {
+											"files": {
+												"description": "If the content type is a file, skip context analysis and return all matches.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"files"
+										],
+										"type": "object"
+									}
+								},
+								"required": [
+									"enabled",
+									"skip"
+								],
+								"type": "object"
+							},
+							"description": {
+								"description": "The description of the profile",
+								"nullable": true,
+								"type": "string"
+							},
+							"entries": {
+								"description": "Custom entries from this profile",
+								"items": {
+									"oneOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"enabled": {
+															"type": "boolean"
+														},
+														"name": {
+															"type": "string"
+														},
+														"pattern": {
+															"properties": {
+																"regex": {
+																	"type": "string"
+																},
+																"validation": {
+																	"allOf": [
+																		{
+																			"enum": [
+																				"luhn"
+																			],
+																			"type": "string"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"regex"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"name",
+														"pattern",
+														"enabled"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"entry_id": {
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"required": [
+														"entry_id"
+													],
+													"type": "object"
+												}
+											]
+										},
+										{
+											"properties": {
+												"enabled": {
+													"type": "boolean"
+												},
+												"name": {
+													"type": "string"
+												},
+												"pattern": {
+													"properties": {
+														"regex": {
+															"type": "string"
+														},
+														"validation": {
+															"allOf": [
+																{
+																	"enum": [
+																		"luhn"
+																	],
+																	"type": "string"
+																}
+															]
+														}
+													},
+													"required": [
+														"regex"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"name",
+												"pattern",
+												"enabled"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"name": {
+								"type": "string"
+							},
+							"ocr_enabled": {
+								"type": "boolean"
+							},
+							"shared_entries": {
+								"description": "Other entries, e.g. predefined or integration.",
+								"items": {
+									"discriminator": {
+										"propertyName": "entry_type"
+									},
+									"oneOf": [
+										{
+											"properties": {
+												"enabled": {
+													"type": "boolean"
+												},
+												"entry_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"entry_type": {
+													"enum": [
+														"predefined"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"entry_id",
+												"enabled",
+												"entry_type"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"enabled": {
+													"type": "boolean"
+												},
+												"entry_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"entry_type": {
+													"enum": [
+														"integration"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"entry_id",
+												"enabled",
+												"entry_type"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"enabled": {
+													"type": "boolean"
+												},
+												"entry_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"entry_type": {
+													"enum": [
+														"exact_data"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"entry_id",
+												"enabled",
+												"entry_type"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"entries"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "The updated parameters for the profile.",
+			"required": true
+		},
 		"responses": {
 			"200": {
 				"content": {
@@ -8143,6 +8625,76 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"allowed_match_count": {
+								"format": "int32",
+								"nullable": true,
+								"type": "integer"
+							},
+							"context_awareness": {
+								"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+								"properties": {
+									"enabled": {
+										"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+										"type": "boolean"
+									},
+									"skip": {
+										"description": "Content types to exclude from context analysis and return all matches.",
+										"properties": {
+											"files": {
+												"description": "If the content type is a file, skip context analysis and return all matches.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"files"
+										],
+										"type": "object"
+									}
+								},
+								"required": [
+									"enabled",
+									"skip"
+								],
+								"type": "object"
+							},
+							"entries": {
+								"items": {
+									"properties": {
+										"enabled": {
+											"type": "boolean"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"ocr_enabled": {
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"entries"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "The updated parameters for the predefined profile.",
+			"required": true
+		},
 		"responses": {
 			"200": {
 				"content": {
