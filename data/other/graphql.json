@@ -1548,6 +1548,7 @@
 		"httpHost": "The destination host for the request",
 		"httpStatusCode": "HTTP status code gateway returned to the user. 0 if nothing was returned(e.g client disconnected)",
 		"isIsolated": "Indicates whether this request was made through an isolated link",
+		"quarantined": "Indicates if the request content was quarantined",
 		"sourceInternalIp": "Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp",
 		"untrustedCertificateAction": "Action taken when an untrusted origin certificate error occurs",
 		"userId": "The ID of the gateway user who made the request"
