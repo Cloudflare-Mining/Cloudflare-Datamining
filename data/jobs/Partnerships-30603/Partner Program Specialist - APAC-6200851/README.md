@@ -8,7 +8,7 @@
 <p><strong>Partner Program Specialist - APAC</strong></p>
 <p><strong>About The Role</strong></p>
 <p>The Cloudflare Global Partner team is focused on accelerating the adoption of Cloudflare solutions by attracting and growing partners who can acquire new customers and make them successful.&nbsp; Our goal is to recognise our partners’ successes as they harness the collective strengths of our organisations to deliver an exceptional experience for our customers.</p>
-<p>Based out of Australia or Singapore, this role will report to the Vice President of Partner Sales, Asia Pacific (APAC). In your role as the APAC Partner Program Specialist you will be the voice for APAC and collaborate closely with the Global Partner Program team to ensure alignment of overall business goals. You will own the PowerUp program, program initiatives, localisation, and with an objective to accelerate engagement of our PowerUp partners.</p>
+<p>Based out of Sydney or Singapore, this role will report to the Vice President of Partner Sales, Asia Pacific (APAC). In your role as the APAC Partner Program Specialist you will be the voice for APAC and collaborate closely with the Global Partner Program team to ensure alignment of overall business goals. You will own the PowerUp program, program initiatives, localisation, and with an objective to accelerate engagement of our PowerUp partners.</p>
 <p>The ideal candidate will have some experience working with partners in the technology sector and can work independently. Some travel may be required within Asia Pacific to support partner meetings, development and enablement.&nbsp;</p>
 <p><br><strong>Responsibilities:</strong></p>
 <ul>
