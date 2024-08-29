@@ -5,18 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Remote - US&nbsp;</p>
+<p><strong>Available Locations: </strong>Austin, San Fracisco, or Remote, US</p>
+<p><strong>About Us</strong></p>
+<p>&nbsp;</p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
+<p>&nbsp;</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us! &nbsp;</p>
+<p>&nbsp;</p>
 <p><strong>About the role:</strong></p>
-<p>We are seeking an&nbsp;<strong>IT Product Manager, GTM Systems</strong> to lead a variety of strategic systems initiatives within Cloudflare. The IT Product Manager will serve as a “trusted advisor,” the strategic interface between a variety of GTM business areas such as Sales, Marketing, Partners/Alliances, and Post-Sales and the Enterprise Applications team with the focus on business technology strategy development, requirements discovery, risk and service management. The IT Product Manager will be the main technology functional expert for all GTM internal business systems, having a holistic view of the end-to-end process from a systems point of view. This means that while the role will primarily be a partner to the GTM teams, it would also have to partner with other functions, like People/Payroll, Finance, Security, and Legal to ensure the overall GTM process operates effectively and cohesively.&nbsp; The PDM will proactively share knowledge of technology risks and opportunities to build competitive advantage and improve efficiency and effectiveness of business units. The candidate will partner with business leadership and other key stakeholders to define opportunities and identify and prioritize projects based on predefined criteria.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p>We are seeking an <strong>IT Product Manager, GTM Systems</strong> to lead a variety of strategic systems initiatives within Cloudflare. The IT Product Manager will serve as a “trusted advisor,” the strategic interface between a variety of GTM business areas such as Sales, Marketing, Partners/Alliances, and Post-Sales and the Enterprise Applications team with the focus on business technology strategy development, requirements discovery, risk and service management. The IT Product Manager will be the main technology functional expert for all GTM internal business systems, having a holistic view of the end-to-end process from a systems point of view. This means that while the role will primarily be a partner to the GTM teams, it would also have to partner with other functions, like People/Payroll, Finance, Security, and Legal to ensure the overall GTM process operates effectively and cohesively.&nbsp; The PDM will proactively share knowledge of technology risks and opportunities to build competitive advantage and improve efficiency and effectiveness of business units. The candidate will partner with business leadership and other key stakeholders to define opportunities and identify and prioritize projects based on predefined criteria.&nbsp;&nbsp;</p>
+<p><br><br></p>
 <p><strong>Responsibilities:</strong></p>
 <ul>
 	<li>Operates as the main point of contact and partner to both the business and the IT Enterprise Application (delivery) team.</li>
 	<li>Gathers and documents business requirements and user stories through in depth stakeholder interviews and subject matter expert (SME) deep dives.&nbsp; Obtains the necessary stakeholder sign-off before and technology reviews prior to transferring projects to delivery teams for execution.</li>
 	<li>Drives and heavily influences the overall GTM business system roadmap ensuring the focus is on business performance and scalability while limiting IT risk.&nbsp;</li>
-	<li>Provides knowledge transfers to technical teams and technical program managers (TPMs) ensuring clean and clear requirements are understood by those responsible for project management of implementation and go-live.</li>
+	<li>Provides knowledge transfers to technical teams and technical program managers (TPMs) ensuring clean and clear requirements are understood by those responsible for project management of implementation through go-live.</li>
 	<li>Contributes value to the GTM portfolio and plots roadmap deliverables using a blend of business priority, end-to-end product strategy, and a holistic consideration of Cloudflare’s techstack.</li>
 	<li>Maintains routine communication with business stakeholders and the IT delivery leads ensuring constant alignment on system roadmap placement and timelines.</li>
 	<li>Track the technology market discovering and staying attuned to newly released GTM applications and/or new product capabilities that align with existing technology in Cloudflare’s techstack.</li>
+	<li>Lead and nurture platform vendor relationships including influencing and understanding vendors’ upcoming roadmap deliverables and sharing with the business to match with the overall business vision and goals.</li>
 	<li>Partner with the TPMs to maintain constant alignment of GTM projects’ health including leading any discussions regarding roadblock removals, risks, and overall keeping momentum on the deliverables.</li>
 	<li>Partners with the Procurement team and helps lead the vendor selection process for onboarding new tech.&nbsp; This includes vendor research, scoring, participating on demos, and presenting recommendations to leadership.</li>
 	<li>Adheres to and instills the IT Planning and Governance structure including running monthly GTM steering committee meetings, meeting with functional leaders on a routine basis, and providing routine alignment between the GTM business and IT teams.</li>
@@ -25,50 +34,14 @@
 <p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
 <ul>
 	<li>BA/BS in Business Administration or Computer Science, or an equivalent combination of education and experience.</li>
-	<li>Minimum of 5 years experience with GTM system experience including complex knowledge and deep understanding of sales operations.&nbsp; Post-sales experience is a plus.</li>
+	<li>Minimum of 7 years experience with GTM system experience including complex knowledge and deep understanding of sales operations.&nbsp; GTM experience is a plus.</li>
+	<li>Experience with GTM systems such as Salesforce Sales Cloud, CPQ, and other sales technologies are required.&nbsp;</li>
+	<li>Business knowledge of GTM sales functions and cycles.</li>
 	<li>Strong sense of urgency, ability to manage priorities and tight deadlines in a fast-paced and ambiguous environment.</li>
+	<li>Strong ability to communicate with executive leadership, think on a strategic level, and communicate the strategy across the various product teams.</li>
 	<li>Highly organized and able to juggle many tasks without losing sight of the highest priority items.</li>
-	<li>Experience in implementing technology to solve business problems.</li>
-	<li>Business knowledge of sales and marketing functions and cycles.</li>
-	<li>Experience with GTM systems such as Salesforce, are required.&nbsp;</li>
-	<li>Strong leadership skills, being success oriented, and having a strategic mindset to bring business benefit and efficiencies through IT systems.</li>
 	<li>Demonstrated ability to communicate clearly to technical and non-technical audiences, and project manage multiple concurrent projects with varying internal stakeholders and demands.</li>
-	<li>Independent self-starter with history of accountability of project timeline and results.</li>
 	<li>Excellent written and verbal communication skills with the ability to communicate effectively and efficiently in a global fragmented environment.</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $140,000 - $172,000.</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $158,000 - $193,000.</span></li>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $166,000 - $202,000.</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,40 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Mexico City, Mexico, or Austin, Texas, or Washington, DC&nbsp;</strong></p>
-<p><strong>About the role&nbsp;</strong></p>
-<p>As an Identity and Access Management (IAM) Security Analyst you will play a key role in efficiently managing user identities and access across the enterprise. You will be responsible for implementing technologies and designing processes to ensure users have authorized access to resources and systems.&nbsp;&nbsp;&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<h4>Available Locations: Austin, TX , San Francisco, CA, New York, NY</h4>
+<h4><strong>What You'll Do</strong></h4>
+<p>The Strategic Finance &amp; Investor Relations Associate will play an important role in helping Cloudflare achieve and exceed its growth and profitability goals. You will work with many facets of the business to provide visibility on all things financial to key stakeholders, performing important analyses, surfacing new insights, and influencing the strategic direction of the company. The ideal candidate is highly analytical, able to communicate financial insights, and recommend appropriate actions. Typical responsibilities include:</p>
 <ul>
-	<li>Establish and execute access governance programs and policies</li>
-	<li>Define and enforce access control policies, including role-based access control (RBAC), attribute based access control (ABAC), and policy based access controls (PBAC)</li>
-	<li>Ensure access adhere to the principle of least privilege and segregation of duties (SoD).</li>
-	<li>Develop and execute an access certification program and scale to all systems&nbsp;</li>
-	<li>Design, implement, and manage Identity Access &amp; Governance policies and procedures.</li>
-	<li>Define and enforce privileged access management (PAM) policies to secure sensitive systems and data.</li>
-	<li>Manage user onboarding, offboarding, and role changes, ensuring adherence to security policies and compliance requirements.</li>
-	<li>Collaborate with cross-functional teams, including IT, security, and compliance, to ensure IAM aligns with business goals.</li>
-	<li>Communicate IAM-related updates and recommendations to stakeholders.</li>
-	<li>Maintain comprehensive documentation of IAM policies, processes, and configurations.</li>
-	<li>Generate reports and metrics related to IAM activities and security posture.</li>
-	<li>Stay current with industry best practices, regulations, and compliance standards related to IAM, such as FedRamp, SOX, GDPR, PCI, and NIST.</li>
-	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
+	<li>Perform financial, strategic, and competitive analyses, including industry and peer benchmarking, market/valuation trends, financial and unit economic modeling and ad-hoc projects to support strategic and financial initiatives</li>
+	<li>Support quarterly earnings process and annual Investor Day, including preparation of earnings press releases, prepared remarks, financial outlook, Q&amp;A prep materials, various financial analyses, and accompanying investor and board presentations</li>
+	<li>Build models and leverage data analysis to develop a robust understanding of key metrics and drivers, understand complex relationships, identify and synthesize key trends</li>
+	<li>Review and analyze sell-side analyst research and models, consensus estimates, analyst and investor perceptions/opinions and market-related trends impacting valuation and market perception</li>
+	<li>Maintain corporate long-term financial model and develop forecasting models to help the company manage long-term growth and opportunity</li>
+	<li>Support the collection and analysis of investor ownership, shareholder movements, and investor targeting along with content management of the investor relations website</li>
+	<li>Partner closely with FP&amp;A, Accounting, Business Intelligence, Legal, Sales Ops, Marketing, Special Projects, and Communications, to understand drivers, trends, opportunities, and to share insights and recommendations</li>
+	<li>This is an individual contributor role reporting to the Director of Strategic Finance &amp; Investor Relations</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
 <ul>
-	<li>In-depth understanding of access governance&nbsp;</li>
-	<li>Experience in Identity Governance &amp; Administration (IGA) solutions</li>
-	<li>Performing policy enforcement, role management, and access certifications</li>
-	<li>Experience implementing privileged access management (PAM)</li>
-	<li>Experience developing IAM security standards and policies</li>
-	<li>Preferred background in scripting and/or application development to automate identity and access management processes.</li>
+	<li>Bachelor’s Degree in Finance, Accounting, or other relevant field</li>
+	<li>5+ years of relevant experience, preferably in equity research, investment banking, at a buy-side investment firm, and/or a strategic finance / investor relations role at a public software/technology company</li>
+	<li>Sophisticated financial and analytical skills with ability to interpret information and financial concepts for executive management, board of directors, and the investment community</li>
+	<li>Strong business acumen with understanding of technology and software business models, with desire and capacity to learn about our industry, products, competitors and other key audiences</li>
+	<li>Excellent proficiency in Excel, PowerPoint, Google Sheets, and Google Slides; experience with financial research tools such as FactSet is a plus</li>
+	<li>Strong intellectual curiosity and high attention to detail with the ability to keep the big picture in mind</li>
+	<li>Highly-motivated, energetic, and resourceful team player who is results-oriented and able to multitask and thrive in a fast-paced, high growth environment</li>
+	<li>Excellent verbal and written communication and interpersonal skills</li>
 </ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $123,000 - $151,000</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $139,000 - $169,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $146,000 -&nbsp; $178,000</li>
+	<li>For Colorado-based hires: Estimated annual salary of $112,000 - $136,000</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $ 125,000- $153,000</li>
+	<li>For Bay Area-based hires: Estimated annual salary of $131,000 - $161,000</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
