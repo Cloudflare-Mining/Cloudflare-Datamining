@@ -1,5 +1,5 @@
 {
-	"DELETE /zones/{zone_identifier}/email/routing/rules/{rule_identifier}": {
+	"DELETE /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
 		"description": "Delete a specific routing rule.",
 		"operationId": "email-routing-routing-rules-delete-routing-rule",
 		"parameters": [
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -248,13 +248,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/email/routing/rules": {
+	"GET /zones/{zone_id}/email/routing/rules": {
 		"description": "Lists existing routing rules.",
 		"operationId": "email-routing-routing-rules-list-routing-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -568,7 +568,7 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/email/routing/rules/{rule_identifier}": {
+	"GET /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
 		"description": "Get information for a specific routing rule already created.",
 		"operationId": "email-routing-routing-rules-get-routing-rule",
 		"parameters": [
@@ -586,7 +586,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -817,13 +817,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/email/routing/rules/catch_all": {
+	"GET /zones/{zone_id}/email/routing/rules/catch_all": {
 		"description": "Get information on the default catch-all routing rule.",
 		"operationId": "email-routing-routing-rules-get-catch-all-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1026,13 +1026,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/email/routing/rules": {
+	"POST /zones/{zone_id}/email/routing/rules": {
 		"description": "Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address).",
 		"operationId": "email-routing-routing-rules-create-routing-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1371,7 +1371,7 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/email/routing/rules/{rule_identifier}": {
+	"PUT /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
 		"description": "Update actions and matches, or enable/disable specific routing rules.",
 		"operationId": "email-routing-routing-rules-update-routing-rule",
 		"parameters": [
@@ -1389,7 +1389,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1728,13 +1728,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/email/routing/rules/catch_all": {
+	"PUT /zones/{zone_id}/email/routing/rules/catch_all": {
 		"description": "Enable or disable catch-all routing rule, or change action to forward to specific destination address.",
 		"operationId": "email-routing-routing-rules-update-catch-all-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

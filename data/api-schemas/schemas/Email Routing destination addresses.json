@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/email/routing/addresses/{destination_address_identifier}": {
+	"DELETE /accounts/{account_id}/email/routing/addresses/{destination_address_identifier}": {
 		"description": "Deletes a specific destination address.",
 		"operationId": "email-routing-destination-addresses-delete-destination-address",
 		"parameters": [
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -183,13 +183,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/email/routing/addresses": {
+	"GET /accounts/{account_id}/email/routing/addresses": {
 		"description": "Lists existing destination addresses.",
 		"operationId": "email-routing-destination-addresses-list-destination-addresses",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -453,7 +453,7 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/email/routing/addresses/{destination_address_identifier}": {
+	"GET /accounts/{account_id}/email/routing/addresses/{destination_address_identifier}": {
 		"description": "Gets information for a specific destination email already created.",
 		"operationId": "email-routing-destination-addresses-get-a-destination-address",
 		"parameters": [
@@ -471,7 +471,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -637,13 +637,13 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_identifier}/email/routing/addresses": {
+	"POST /accounts/{account_id}/email/routing/addresses": {
 		"description": "Create a destination address to forward your emails to. Destination addresses need to be verified before they can be used.",
 		"operationId": "email-routing-destination-addresses-create-a-destination-address",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/email/routing/dns": {
+	"DELETE /zones/{zone_id}/email/routing/dns": {
 		"description": "Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work.",
 		"operationId": "email-routing-settings-disable-email-routing-dns",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -197,13 +197,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/email/routing": {
+	"GET /zones/{zone_id}/email/routing": {
 		"description": "Get information about the settings for your Email Routing zone.",
 		"operationId": "email-routing-settings-get-email-routing-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -395,13 +395,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/email/routing/dns": {
+	"GET /zones/{zone_id}/email/routing/dns": {
 		"description": "Show the DNS records needed to configure your Email Routing zone.",
 		"operationId": "email-routing-settings-email-routing-dns-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -616,13 +616,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/email/routing/dns": {
+	"PATCH /zones/{zone_id}/email/routing/dns": {
 		"description": "Unlock MX Records previously locked by Email Routing.",
 		"operationId": "email-routing-settings-unlock-email-routing-dns",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -814,14 +814,14 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/email/routing/disable": {
+	"POST /zones/{zone_id}/email/routing/disable": {
 		"deprecated": true,
 		"description": "Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work.",
 		"operationId": "email-routing-settings-disable-email-routing",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1019,13 +1019,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/email/routing/dns": {
+	"POST /zones/{zone_id}/email/routing/dns": {
 		"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
 		"operationId": "email-routing-settings-enable-email-routing-dns",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1217,14 +1217,14 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/email/routing/enable": {
+	"POST /zones/{zone_id}/email/routing/enable": {
 		"deprecated": true,
 		"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
 		"operationId": "email-routing-settings-enable-email-routing",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
