@@ -441,8 +441,12 @@
 			"title": "navigation.account.workers_and_pages",
 			"url": "/workers-and-pages",
 			"additionalMatchUrls": [
-				"/workers",
-				"/pages"
+				"/workers/services",
+				"/workers/subdomain",
+				"/workers/analytics-engine",
+				"/workers/compute-setting",
+				"/pages/view",
+				"/pages/new"
 			],
 			"iconType": "workers-pages",
 			"hasPermission": null,
@@ -454,7 +458,8 @@
 				},
 				{
 					"title": "navigation.account.workers.kv",
-					"url": "/workers/kv/namespaces"
+					"url": "/workers/kv/namespaces",
+					"hasPermission": null
 				},
 				{
 					"title": "navigation.account.workers.durable_objects",
@@ -472,7 +477,8 @@
 				},
 				{
 					"title": "navigation.account.workers.d1",
-					"url": "/workers/d1"
+					"url": "/workers/d1",
+					"hasPermission": null
 				},
 				{
 					"title": "navigation.account.workers.constellation",
@@ -506,6 +512,56 @@
 			"hasPermission": null
 		},
 		{
+			"title": "navigation.account.storage_and_databases",
+			"url": "/workers/kv/namespaces",
+			"iconType": "d1",
+			"hasPermission": null,
+			"pages": [
+				{
+					"title": "navigation.account.workers.kv",
+					"url": "/workers/kv/namespaces"
+				},
+				{
+					"title": "navigation.account.workers.d1",
+					"url": "/workers/d1"
+				},
+				{
+					"title": "navigation.account.workers.hyperdrive",
+					"url": "/workers/hyperdrive",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.workers.queues",
+					"url": "/workers/queues",
+					"labels": [
+						"beta"
+					],
+					"hasPermission": null,
+					"testId": "sidenav-queues-link"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.r2",
+			"url": "/r2/overview",
+			"iconType": "r2",
+			"testId": "sidenav-r2-link",
+			"hasPermission": null,
+			"pages": [
+				{
+					"title": "navigation.account.r2.overview",
+					"url": "/r2/overview",
+					"hasPermission": null
+				},
+				{
+					"title": "navigation.account.r2_slurper",
+					"url": "/r2/slurper",
+					"testId": "sidenav-r2Migrator-link",
+					"hasPermission": null
+				}
+			]
+		},
+		{
 			"title": "navigation.account.workers.ai",
 			"url": "/ai/workers-ai",
 			"iconType": "workers-constellation",
@@ -531,26 +587,6 @@
 					"title": "navigation.account.workers.ai.ai-gateway",
 					"url": "/ai/ai-gateway",
 					"testId": "sidenav-ai-gateway-link",
-					"hasPermission": null
-				}
-			]
-		},
-		{
-			"title": "navigation.account.r2",
-			"url": "/r2/overview",
-			"iconType": "r2",
-			"testId": "sidenav-r2-link",
-			"hasPermission": null,
-			"pages": [
-				{
-					"title": "navigation.account.r2.overview",
-					"url": "/r2/overview",
-					"hasPermission": null
-				},
-				{
-					"title": "navigation.account.r2_slurper",
-					"url": "/r2/slurper",
-					"testId": "sidenav-r2Migrator-link",
 					"hasPermission": null
 				}
 			]

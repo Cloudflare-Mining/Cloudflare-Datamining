@@ -811,6 +811,7 @@
 	"logpush.form.destination.sumo.address_description": " Configure a <0>Sumo Logic Hosted Collector</0> with an <1>HTTP Logs & Metrics Source</1>, get the HTTP Source Address (URL), and paste it below. Keep this address private because anyone can use it to send data. ",
 	"logpush.form.destination.azure.description": "A <0>shared access signature (SAS)</0> is used to allow secure, restricted access to your blob storage container. Use the <1>Storage Explorer</1> to navigate to your container and right click to create a signature. Set the signature to expire at least 5 years from now and only provide write permission. Paste the SAS URL below",
 	"logpush.form.destination.splunk.channel_id.description": "A unique channel ID. This is a random GUID that you can generate using <0>guidgenerator.com</0>.",
+	"logpush.form.destination.splunk.auth_token.description": "Example: Splunk 1234EXAMPLEKEY",
 	"logpush.form.destination.new_relic.find_license_key": "<0>Find your New Relic license key</0>",
 	"logpush.form.prove_ownership.ownership_token": "Ownership token",
 	"logpush.form.prove_ownership.description": "As a security measure, we have sent a test file to your destination: %{destination}. Open the file and enter its token to prove ownership.",
