@@ -1,64 +1,64 @@
 {
 	"name": "jest-environment-miniflare",
 	"dist-tags": {
-		"latest": "2.14.2",
 		"next": "2.0.0-rc.5",
 		"d1": "2.8.2-d1.0",
-		"latest-2": "2.14.1"
+		"latest-2": "2.14.1",
+		"latest": "2.14.3"
 	},
 	"versions": {
 		"0.0.1": {
 			"name": "jest-environment-miniflare",
 			"version": "0.0.1",
 			"dist": {
-				"integrity": "sha512-NP5BxE6Ul5k5m3XrPQQkBAd3MSVIfl+8a8HwU4bi8I2rAk38OAXn+7pfadhF41ixaQYZMq7ExyNjg0ErRPHriw==",
 				"shasum": "e18b300a04920aa3a7788b1a98c06e7963147472",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-0.0.1.tgz",
 				"fileCount": 3,
-				"unpackedSize": 155,
+				"integrity": "sha512-NP5BxE6Ul5k5m3XrPQQkBAd3MSVIfl+8a8HwU4bi8I2rAk38OAXn+7pfadhF41ixaQYZMq7ExyNjg0ErRPHriw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCw/SksfW4NutDfxPlw6V3pIOLCy6CHDRoS48z9Egf+EgIhAN8Qf3FQ2ppwPBNq2Ks6+djPvWOy4OmRn4DHpemhvwFr"
+						"sig": "MEYCIQCw/SksfW4NutDfxPlw6V3pIOLCy6CHDRoS48z9Egf+EgIhAN8Qf3FQ2ppwPBNq2Ks6+djPvWOy4OmRn4DHpemhvwFr",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 155
 			}
 		},
 		"2.0.0-rc.1": {
 			"name": "jest-environment-miniflare",
 			"version": "2.0.0-rc.1",
 			"dependencies": {
-				"@miniflare/cache": "2.0.0-rc.1",
-				"@miniflare/core": "2.0.0-rc.1",
-				"@miniflare/durable-objects": "2.0.0-rc.1",
-				"@miniflare/html-rewriter": "2.0.0-rc.1",
+				"miniflare": "2.0.0-rc.1",
 				"@miniflare/kv": "2.0.0-rc.1",
-				"@miniflare/runner-vm": "2.0.0-rc.1",
-				"@miniflare/shared": "2.0.0-rc.1",
+				"@miniflare/core": "2.0.0-rc.1",
+				"@miniflare/cache": "2.0.0-rc.1",
 				"@miniflare/sites": "2.0.0-rc.1",
-				"@miniflare/storage-memory": "2.0.0-rc.1",
+				"@miniflare/shared": "2.0.0-rc.1",
+				"@miniflare/runner-vm": "2.0.0-rc.1",
 				"@miniflare/web-sockets": "2.0.0-rc.1",
-				"miniflare": "2.0.0-rc.1"
+				"@miniflare/html-rewriter": "2.0.0-rc.1",
+				"@miniflare/storage-memory": "2.0.0-rc.1",
+				"@miniflare/durable-objects": "2.0.0-rc.1"
 			},
 			"devDependencies": {
-				"@miniflare/shared-test": "2.0.0-rc.1",
-				"jest": "^27.2.1"
+				"jest": "^27.2.1",
+				"@miniflare/shared-test": "2.0.0-rc.1"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-EM1IJTOx/KLz4uYfEukpewDgc2KTiCrCiXP3ykSJ6T4IIsKi3rOlbIF8MrZvis6pIxhmtBsz4RCordrVni3dIQ==",
 				"shasum": "11a4b22434600b84ad7dddb23f0ca3c429fed1fd",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.0.0-rc.1.tgz",
 				"fileCount": 5,
-				"unpackedSize": 10524,
+				"integrity": "sha512-EM1IJTOx/KLz4uYfEukpewDgc2KTiCrCiXP3ykSJ6T4IIsKi3rOlbIF8MrZvis6pIxhmtBsz4RCordrVni3dIQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCNbymMrKnVM2HIO7ka405kjMCYw7EIcNWa7XOidDwhEwIhAIB6BE9soC2gIyIGLzEYal0L0b/tj8NWwvLeGPHfjxv0"
+						"sig": "MEYCIQCNbymMrKnVM2HIO7ka405kjMCYw7EIcNWa7XOidDwhEwIhAIB6BE9soC2gIyIGLzEYal0L0b/tj8NWwvLeGPHfjxv0",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 10524
 			},
 			"engines": {
 				"node": ">=16.7"
@@ -68,38 +68,38 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.0.0-rc.2",
 			"dependencies": {
-				"@miniflare/cache": "2.0.0-rc.2",
-				"@miniflare/core": "2.0.0-rc.2",
-				"@miniflare/durable-objects": "2.0.0-rc.2",
-				"@miniflare/html-rewriter": "2.0.0-rc.2",
+				"miniflare": "2.0.0-rc.2",
 				"@miniflare/kv": "2.0.0-rc.2",
-				"@miniflare/runner-vm": "2.0.0-rc.2",
-				"@miniflare/shared": "2.0.0-rc.2",
+				"@miniflare/core": "2.0.0-rc.2",
+				"@miniflare/cache": "2.0.0-rc.2",
 				"@miniflare/sites": "2.0.0-rc.2",
-				"@miniflare/storage-memory": "2.0.0-rc.2",
+				"@miniflare/shared": "2.0.0-rc.2",
+				"@miniflare/runner-vm": "2.0.0-rc.2",
 				"@miniflare/web-sockets": "2.0.0-rc.2",
-				"miniflare": "2.0.0-rc.2"
+				"@miniflare/html-rewriter": "2.0.0-rc.2",
+				"@miniflare/storage-memory": "2.0.0-rc.2",
+				"@miniflare/durable-objects": "2.0.0-rc.2"
 			},
 			"devDependencies": {
-				"@miniflare/shared-test": "2.0.0-rc.2",
-				"jest": "^27.2.1"
+				"jest": "^27.2.1",
+				"@miniflare/shared-test": "2.0.0-rc.2"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-h1+R+cyuJ0pNulkFR8UMHGgPHo8B4jZoDeuOePyb4nsYkGT3pE2cMQ5L+JvTdkRRP8kCOodCQm73IilHOzr4nQ==",
 				"shasum": "0cb3cca753415909ec793b331714f47870c95dda",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.0.0-rc.2.tgz",
 				"fileCount": 5,
-				"unpackedSize": 10720,
-				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhmudeCRA9TVsSAnZWagAAgEcP/32Xo+p36k8np2RqLkk6\nSIvgNNq+QFoRihVozDUimpUz4ikmkm2gjJhXzAJlRtRRbUqF035cHBnJek4g\n4Sw3D+d1wP1IplwwXHArCwJf2pZjpjNcrI03mFCVumlf0ZwWk+uj9SBEcXsM\nXtaWoKudhJ/z3rzMyhe1Mwjz7yKQdf7odGmReA+5pBYvK61JlJ//77sNeOY9\neABG5axrtnImC6RdSUoOIf4HxjXoHFnQKiXTLemWw4NXROem+cXxbzKPZWNT\nSefNk1F2/1mRQVbuzRdd4CoHO4Bw/R0kZFInPb/iIwfdcJ4CKAtdwbwrO20D\nfprFQD9vAcZe0+5Bo7hbro7RnGmTqRjL+AXpJVceQ6YCm/ZiQ8VaH7l7iTLj\nmtfEKIbDX43gg5LwCTY/+azu+WBhDYMJ7HmFgqcVdr7IqQ1da9xqvFRO0M0p\n2NpdwscDvSNQzORm/YgkIkgDRYs5fmgePRCAeuE3VlYH4qiAaBWAfPzh9EsW\nJ9iKm6TmDuubod/0AVg5zv2HK9QjUTAe1QANPrlOnDnAnsylQuzYYxdl2BPg\nnP44mzZSQ0/a9VUjw+tLBmOwAeDIPfiv5SayBc/v1skXyq9cHzWPkHGHOknO\n0YCq5TB0fN2H7krPB8e4f4uEt08fk5FNnXCzddO3DNa1SwXT8vqm759HFxql\nu31A\r\n=pBf0\r\n-----END PGP SIGNATURE-----\r\n",
+				"integrity": "sha512-h1+R+cyuJ0pNulkFR8UMHGgPHo8B4jZoDeuOePyb4nsYkGT3pE2cMQ5L+JvTdkRRP8kCOodCQm73IilHOzr4nQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCEhoZJvgpoiPoIAH73xfZALQTvhiom+W1hoZRaukQT+QIhAIGHjKoGMK6UmlO3GcHWnYK1fe0n6B1hY1xh6qe7UZB8"
+						"sig": "MEYCIQCEhoZJvgpoiPoIAH73xfZALQTvhiom+W1hoZRaukQT+QIhAIGHjKoGMK6UmlO3GcHWnYK1fe0n6B1hY1xh6qe7UZB8",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 10720,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhmudeCRA9TVsSAnZWagAAgEcP/32Xo+p36k8np2RqLkk6\nSIvgNNq+QFoRihVozDUimpUz4ikmkm2gjJhXzAJlRtRRbUqF035cHBnJek4g\n4Sw3D+d1wP1IplwwXHArCwJf2pZjpjNcrI03mFCVumlf0ZwWk+uj9SBEcXsM\nXtaWoKudhJ/z3rzMyhe1Mwjz7yKQdf7odGmReA+5pBYvK61JlJ//77sNeOY9\neABG5axrtnImC6RdSUoOIf4HxjXoHFnQKiXTLemWw4NXROem+cXxbzKPZWNT\nSefNk1F2/1mRQVbuzRdd4CoHO4Bw/R0kZFInPb/iIwfdcJ4CKAtdwbwrO20D\nfprFQD9vAcZe0+5Bo7hbro7RnGmTqRjL+AXpJVceQ6YCm/ZiQ8VaH7l7iTLj\nmtfEKIbDX43gg5LwCTY/+azu+WBhDYMJ7HmFgqcVdr7IqQ1da9xqvFRO0M0p\n2NpdwscDvSNQzORm/YgkIkgDRYs5fmgePRCAeuE3VlYH4qiAaBWAfPzh9EsW\nJ9iKm6TmDuubod/0AVg5zv2HK9QjUTAe1QANPrlOnDnAnsylQuzYYxdl2BPg\nnP44mzZSQ0/a9VUjw+tLBmOwAeDIPfiv5SayBc/v1skXyq9cHzWPkHGHOknO\n0YCq5TB0fN2H7krPB8e4f4uEt08fk5FNnXCzddO3DNa1SwXT8vqm759HFxql\nu31A\r\n=pBf0\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
 				"node": ">=16.7"
@@ -109,38 +109,38 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.0.0-rc.3",
 			"dependencies": {
-				"@miniflare/cache": "2.0.0-rc.3",
-				"@miniflare/core": "2.0.0-rc.3",
-				"@miniflare/durable-objects": "2.0.0-rc.3",
-				"@miniflare/html-rewriter": "2.0.0-rc.3",
+				"miniflare": "2.0.0-rc.3",
 				"@miniflare/kv": "2.0.0-rc.3",
-				"@miniflare/runner-vm": "2.0.0-rc.3",
-				"@miniflare/shared": "2.0.0-rc.3",
+				"@miniflare/core": "2.0.0-rc.3",
+				"@miniflare/cache": "2.0.0-rc.3",
 				"@miniflare/sites": "2.0.0-rc.3",
-				"@miniflare/storage-memory": "2.0.0-rc.3",
+				"@miniflare/shared": "2.0.0-rc.3",
+				"@miniflare/runner-vm": "2.0.0-rc.3",
 				"@miniflare/web-sockets": "2.0.0-rc.3",
-				"miniflare": "2.0.0-rc.3"
+				"@miniflare/html-rewriter": "2.0.0-rc.3",
+				"@miniflare/storage-memory": "2.0.0-rc.3",
+				"@miniflare/durable-objects": "2.0.0-rc.3"
 			},
 			"devDependencies": {
-				"@miniflare/shared-test": "2.0.0-rc.3",
-				"jest": "^27.2.1"
+				"jest": "^27.2.1",
+				"@miniflare/shared-test": "2.0.0-rc.3"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-e87vOdk5CnkvZXcBCjsSwwuYV1SDM/nEhSBwFxIjzyYQjomIMAzU2k/dQP2aH2+1R8DPkPvmXqHg6HI9WXiRNg==",
 				"shasum": "e465ed9ec99955e66b3eb017d1578ffb1fd00f72",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.0.0-rc.3.tgz",
 				"fileCount": 5,
-				"unpackedSize": 10720,
-				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhsUYGCRA9TVsSAnZWagAAASsP/0MHoZlU/oFmbceFIh2k\n7i4AIbowTdyt1wD7VSOse1rKt/2fr8mmBCNvTSP8QXTNDtiFxQi/OlNSX8n7\nTNmF6Pqo5BkKfns+b/+xBgG6qygDQVJZHJcq2gui/JYVGd/KzBZhxcirXt1Z\n2S8kSCCHrcZWBgFx3Y8bySIUuZv6tR7XEwx7kKg3QtcxE7xvPfQIoWSnaEtz\n/MzliRnZyaDUjD3qMdih4a7EJvyeO1OBV8e0V2fdJxZutCrjIcEs8+paXpmb\nackQaFn9+ZRe3rhZ6f6Kb7ZsDMCnVqoq1FQRJoIiYHXz62k6Kid7E7L1vEDa\nV1ht7q3bt9kydK/OvkT44ZqdtQGH+NZM/N9IqDy6L8P9MQAHvmLf/dEt7v6u\nJ3ARFZry8mO6oexEh8SurDmZZl8ZtWozszfwkjuPG1kSDqzGgp4duMYWip27\no9XFECPLhKT9xvfEngCWTZtt6XatrQRMgDtvV+WLAZF6zUEQqiHzHNEIxJLv\ndNR11roN2ZbGzMQyppwEE4NdV2VJzPi2JNPXkQQWGpjt34aUHdMDOus97e8R\n/stumhi6QQ8gx2pp6LsLSyLyhI4sHmeb9E3YG0G08Z0v1t9QY2Bj95Dzc2Ga\nxh+FEmhT9jLcsi6jMjCBuKUQxTN3cmE5Xkgf46urm1+YFG1OwFOfYBf8fNv7\n6ZBo\r\n=Wwot\r\n-----END PGP SIGNATURE-----\r\n",
+				"integrity": "sha512-e87vOdk5CnkvZXcBCjsSwwuYV1SDM/nEhSBwFxIjzyYQjomIMAzU2k/dQP2aH2+1R8DPkPvmXqHg6HI9WXiRNg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIA36kDxaE3GZui6J1xi9EIwCILyK+y9C6K7DuZuAaGO1AiAnVcKJdMqlJC8Ak9j3aAp4oLKGq6ml8E0A9i1gaklekg=="
+						"sig": "MEQCIA36kDxaE3GZui6J1xi9EIwCILyK+y9C6K7DuZuAaGO1AiAnVcKJdMqlJC8Ak9j3aAp4oLKGq6ml8E0A9i1gaklekg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 10720,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhsUYGCRA9TVsSAnZWagAAASsP/0MHoZlU/oFmbceFIh2k\n7i4AIbowTdyt1wD7VSOse1rKt/2fr8mmBCNvTSP8QXTNDtiFxQi/OlNSX8n7\nTNmF6Pqo5BkKfns+b/+xBgG6qygDQVJZHJcq2gui/JYVGd/KzBZhxcirXt1Z\n2S8kSCCHrcZWBgFx3Y8bySIUuZv6tR7XEwx7kKg3QtcxE7xvPfQIoWSnaEtz\n/MzliRnZyaDUjD3qMdih4a7EJvyeO1OBV8e0V2fdJxZutCrjIcEs8+paXpmb\nackQaFn9+ZRe3rhZ6f6Kb7ZsDMCnVqoq1FQRJoIiYHXz62k6Kid7E7L1vEDa\nV1ht7q3bt9kydK/OvkT44ZqdtQGH+NZM/N9IqDy6L8P9MQAHvmLf/dEt7v6u\nJ3ARFZry8mO6oexEh8SurDmZZl8ZtWozszfwkjuPG1kSDqzGgp4duMYWip27\no9XFECPLhKT9xvfEngCWTZtt6XatrQRMgDtvV+WLAZF6zUEQqiHzHNEIxJLv\ndNR11roN2ZbGzMQyppwEE4NdV2VJzPi2JNPXkQQWGpjt34aUHdMDOus97e8R\n/stumhi6QQ8gx2pp6LsLSyLyhI4sHmeb9E3YG0G08Z0v1t9QY2Bj95Dzc2Ga\nxh+FEmhT9jLcsi6jMjCBuKUQxTN3cmE5Xkgf46urm1+YFG1OwFOfYBf8fNv7\n6ZBo\r\n=Wwot\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
 				"node": ">=16.7"
@@ -150,38 +150,38 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.0.0-rc.4",
 			"dependencies": {
-				"@miniflare/cache": "2.0.0-rc.4",
-				"@miniflare/core": "2.0.0-rc.4",
-				"@miniflare/durable-objects": "2.0.0-rc.4",
-				"@miniflare/html-rewriter": "2.0.0-rc.4",
+				"miniflare": "2.0.0-rc.4",
 				"@miniflare/kv": "2.0.0-rc.4",
-				"@miniflare/runner-vm": "2.0.0-rc.4",
-				"@miniflare/shared": "2.0.0-rc.4",
+				"@miniflare/core": "2.0.0-rc.4",
+				"@miniflare/cache": "2.0.0-rc.4",
 				"@miniflare/sites": "2.0.0-rc.4",
-				"@miniflare/storage-memory": "2.0.0-rc.4",
+				"@miniflare/shared": "2.0.0-rc.4",
+				"@miniflare/runner-vm": "2.0.0-rc.4",
 				"@miniflare/web-sockets": "2.0.0-rc.4",
-				"miniflare": "2.0.0-rc.4"
+				"@miniflare/html-rewriter": "2.0.0-rc.4",
+				"@miniflare/storage-memory": "2.0.0-rc.4",
+				"@miniflare/durable-objects": "2.0.0-rc.4"
 			},
 			"devDependencies": {
-				"@miniflare/shared-test": "2.0.0-rc.4",
-				"jest": "^27.2.1"
+				"jest": "^27.2.1",
+				"@miniflare/shared-test": "2.0.0-rc.4"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-4G1D5xQm8M5OVnUodSLGBlsOFKrx0OhuuiosRk6q1iazZj37zDyAQYymFpe6rxCJktXGf+chX2RVFBNh1lNmwQ==",
 				"shasum": "a778feea80b45073d0fbfc5fd9afee78630ad7fa",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.0.0-rc.4.tgz",
 				"fileCount": 5,
-				"unpackedSize": 12773,
-				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhvmy3CRA9TVsSAnZWagAAeOUP/Ru3/IthInTWavIV1nVv\nsFpy+abJ/vWCI1LFkwtwBCDEBCaRP8P2afOLp0PHCt+9K4XwXcd/k7k/mUH6\nB2YX5gnliWrJTtwTx9qB6Uc0T67eJTqLncJYj5m/PZVPQGce0zxwb8m4IxOI\nM9vRAUZTis7l3BCWwfLajcZlkM0IfgB6eHhwRwCiTwdsBgx2q3BKeVulhL+R\ngNdkq1tF9ihHahlVDPc5CqP645TZzW4eCnEScs0L4z9Ujoi59K+W3kJ/LP1+\ncvS421F6SW/9QsQAcDJjzQbQyhIYFV/3aVCExO4R+cazEz3YBk+OpU854a0T\n7afslu7zeN29KjV0xB1Az4VBYj5iBOQCKz35eE2wyei0vV/8NBFWEoaQ8/Gh\nDuoFKgDVlus/ORZxE05I220jDk1vdRKN4ABSVK1OLK65qB/6SYVcYGnPuc97\njBM5hTXlsZZOnW2sa9k3hP+q3cr0fpJ/ei3iIDIjxkrMqNut+GV2+yNEzr77\n2vC5uFXIlMWrLVsm+AkPZT5ZyNdFzQgSt3EE2PPNFHgNhiW1VjYoS6LmayGm\nEubYuRhYFYcyhfW7CppY+jh9xK5VGvWL8Prh9aQF0y9MNlnJOfYAw2/r5pX2\nDTAY5N/CpXjizhaKjN+3+HJI8cBHitwSdvMhyBxbvP+CYC19Pr7BQkGr8TfQ\n5Joi\r\n=eiw/\r\n-----END PGP SIGNATURE-----\r\n",
+				"integrity": "sha512-4G1D5xQm8M5OVnUodSLGBlsOFKrx0OhuuiosRk6q1iazZj37zDyAQYymFpe6rxCJktXGf+chX2RVFBNh1lNmwQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDm++1xC4aKiLgLoItNJBjL3Z4sqm68OaLz/Fea+KPvOQIhAKO+Y7c4RVRnNhBxpCs7WNgXndBZ6kPZZlbaLNmSNf1u"
+						"sig": "MEYCIQDm++1xC4aKiLgLoItNJBjL3Z4sqm68OaLz/Fea+KPvOQIhAKO+Y7c4RVRnNhBxpCs7WNgXndBZ6kPZZlbaLNmSNf1u",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 12773,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhvmy3CRA9TVsSAnZWagAAeOUP/Ru3/IthInTWavIV1nVv\nsFpy+abJ/vWCI1LFkwtwBCDEBCaRP8P2afOLp0PHCt+9K4XwXcd/k7k/mUH6\nB2YX5gnliWrJTtwTx9qB6Uc0T67eJTqLncJYj5m/PZVPQGce0zxwb8m4IxOI\nM9vRAUZTis7l3BCWwfLajcZlkM0IfgB6eHhwRwCiTwdsBgx2q3BKeVulhL+R\ngNdkq1tF9ihHahlVDPc5CqP645TZzW4eCnEScs0L4z9Ujoi59K+W3kJ/LP1+\ncvS421F6SW/9QsQAcDJjzQbQyhIYFV/3aVCExO4R+cazEz3YBk+OpU854a0T\n7afslu7zeN29KjV0xB1Az4VBYj5iBOQCKz35eE2wyei0vV/8NBFWEoaQ8/Gh\nDuoFKgDVlus/ORZxE05I220jDk1vdRKN4ABSVK1OLK65qB/6SYVcYGnPuc97\njBM5hTXlsZZOnW2sa9k3hP+q3cr0fpJ/ei3iIDIjxkrMqNut+GV2+yNEzr77\n2vC5uFXIlMWrLVsm+AkPZT5ZyNdFzQgSt3EE2PPNFHgNhiW1VjYoS6LmayGm\nEubYuRhYFYcyhfW7CppY+jh9xK5VGvWL8Prh9aQF0y9MNlnJOfYAw2/r5pX2\nDTAY5N/CpXjizhaKjN+3+HJI8cBHitwSdvMhyBxbvP+CYC19Pr7BQkGr8TfQ\n5Joi\r\n=eiw/\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
 				"node": ">=16.7"
@@ -191,38 +191,38 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.0.0-rc.5",
 			"dependencies": {
-				"@miniflare/cache": "2.0.0-rc.5",
-				"@miniflare/core": "2.0.0-rc.5",
-				"@miniflare/durable-objects": "2.0.0-rc.5",
-				"@miniflare/html-rewriter": "2.0.0-rc.5",
+				"miniflare": "2.0.0-rc.5",
 				"@miniflare/kv": "2.0.0-rc.5",
-				"@miniflare/runner-vm": "2.0.0-rc.5",
-				"@miniflare/shared": "2.0.0-rc.5",
+				"@miniflare/core": "2.0.0-rc.5",
+				"@miniflare/cache": "2.0.0-rc.5",
 				"@miniflare/sites": "2.0.0-rc.5",
-				"@miniflare/storage-memory": "2.0.0-rc.5",
+				"@miniflare/shared": "2.0.0-rc.5",
+				"@miniflare/runner-vm": "2.0.0-rc.5",
 				"@miniflare/web-sockets": "2.0.0-rc.5",
-				"miniflare": "2.0.0-rc.5"
+				"@miniflare/html-rewriter": "2.0.0-rc.5",
+				"@miniflare/storage-memory": "2.0.0-rc.5",
+				"@miniflare/durable-objects": "2.0.0-rc.5"
 			},
 			"devDependencies": {
-				"@miniflare/shared-test": "2.0.0-rc.5",
-				"jest": "^27.2.1"
+				"jest": "^27.2.1",
+				"@miniflare/shared-test": "2.0.0-rc.5"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-ZEB1gZF5N+3qxnVY1Y8EVZVslDb2ohgY/YNvL0oZZhUS5ACVyO4/bD9OJWCnSaUCq7s8XBYguDNqKgCxou7fqQ==",
 				"shasum": "cfea100910f88f890e9bc8803b8182ac2355cc2d",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.0.0-rc.5.tgz",
 				"fileCount": 5,
-				"unpackedSize": 13063,
-				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh0v6MCRA9TVsSAnZWagAAwGcP/RB9kFTh8x1N1HHz5Kve\nJETnoxL3Er5l10/uEU+ZVk4ItOWxxFc1dXKLFut4/8VQyldvnct4HD4AVc6L\nG/ZkRDzLc0b6engbuikCj9TtMvB4U3Zxp06+PRxyIOBmn7v6l+gLwi3RzaIL\n1RhcSK5XK/uTO9olbrVDaPckeQzq8k9HBjZTz/jiQec8kRxz8HdcKd/UjiZV\n/rRquU/pTP0AOgZdS/RCPHGWRVUO2ZFVnO43CwvFTKM8GE4+ypr1FWZiyJJc\nPH33EhGC4iRaXEWfxBiGUmu+uqLSiyYzTcptN6dZfF0wduefr9C83zNX7DpR\n1SgwTQWiPQU20Hr7zgTmxyDruwG/hXb2/CfMF6LGnW2qHdT8p8N1j+e6cD3R\nfSwN2uKmFPC+psd15etiw827DEcnIZ0YtQ9llIl0kZ1R/NTBMEAvO1ybfBOf\nyxeR0cBzLoSgYhQ3G72jXDqt/+wQ3sJFQGMiq+ag0J5iea9it8INC4OmRdKv\nUlNUN7Vi2jd5c3tCfLtsBpJDRsdJgP+8HOU+O8rdxrjH+2chvPdbEUHhTE5I\neKYZMOrBLolNvfOni1qG1dxoXpRFDfxlXFXb1O+KZXyOv3/1QLCizSBlvYlV\n57enKpWPT/uRgXtS+miiY8arqxa/3kPoNn1xKQ3ASm0O2kIP1EAo1rrgdWVL\nsxaU\r\n=HJ7/\r\n-----END PGP SIGNATURE-----\r\n",
+				"integrity": "sha512-ZEB1gZF5N+3qxnVY1Y8EVZVslDb2ohgY/YNvL0oZZhUS5ACVyO4/bD9OJWCnSaUCq7s8XBYguDNqKgCxou7fqQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDY/W2m6DLSF2Dgctzl540UnYoo6MLkV+GevRzEJMgCyAIgK984HXW/Jn3Cw6BABuKFGHA9Gt3UrBGZM588SJIU1VQ="
+						"sig": "MEUCIQDY/W2m6DLSF2Dgctzl540UnYoo6MLkV+GevRzEJMgCyAIgK984HXW/Jn3Cw6BABuKFGHA9Gt3UrBGZM588SJIU1VQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 13063,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh0v6MCRA9TVsSAnZWagAAwGcP/RB9kFTh8x1N1HHz5Kve\nJETnoxL3Er5l10/uEU+ZVk4ItOWxxFc1dXKLFut4/8VQyldvnct4HD4AVc6L\nG/ZkRDzLc0b6engbuikCj9TtMvB4U3Zxp06+PRxyIOBmn7v6l+gLwi3RzaIL\n1RhcSK5XK/uTO9olbrVDaPckeQzq8k9HBjZTz/jiQec8kRxz8HdcKd/UjiZV\n/rRquU/pTP0AOgZdS/RCPHGWRVUO2ZFVnO43CwvFTKM8GE4+ypr1FWZiyJJc\nPH33EhGC4iRaXEWfxBiGUmu+uqLSiyYzTcptN6dZfF0wduefr9C83zNX7DpR\n1SgwTQWiPQU20Hr7zgTmxyDruwG/hXb2/CfMF6LGnW2qHdT8p8N1j+e6cD3R\nfSwN2uKmFPC+psd15etiw827DEcnIZ0YtQ9llIl0kZ1R/NTBMEAvO1ybfBOf\nyxeR0cBzLoSgYhQ3G72jXDqt/+wQ3sJFQGMiq+ag0J5iea9it8INC4OmRdKv\nUlNUN7Vi2jd5c3tCfLtsBpJDRsdJgP+8HOU+O8rdxrjH+2chvPdbEUHhTE5I\neKYZMOrBLolNvfOni1qG1dxoXpRFDfxlXFXb1O+KZXyOv3/1QLCizSBlvYlV\n57enKpWPT/uRgXtS+miiY8arqxa/3kPoNn1xKQ3ASm0O2kIP1EAo1rrgdWVL\nsxaU\r\n=HJ7/\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
 				"node": ">=16.7"
@@ -232,38 +232,38 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.0.0",
 			"dependencies": {
-				"@miniflare/cache": "2.0.0",
-				"@miniflare/core": "2.0.0",
-				"@miniflare/durable-objects": "2.0.0",
-				"@miniflare/html-rewriter": "2.0.0",
+				"miniflare": "2.0.0",
 				"@miniflare/kv": "2.0.0",
-				"@miniflare/runner-vm": "2.0.0",
-				"@miniflare/shared": "2.0.0",
+				"@miniflare/core": "2.0.0",
+				"@miniflare/cache": "2.0.0",
 				"@miniflare/sites": "2.0.0",
-				"@miniflare/storage-memory": "2.0.0",
+				"@miniflare/shared": "2.0.0",
+				"@miniflare/runner-vm": "2.0.0",
 				"@miniflare/web-sockets": "2.0.0",
-				"miniflare": "2.0.0"
+				"@miniflare/html-rewriter": "2.0.0",
+				"@miniflare/storage-memory": "2.0.0",
+				"@miniflare/durable-objects": "2.0.0"
 			},
 			"devDependencies": {
-				"@miniflare/shared-test": "2.0.0",
-				"jest": "^27.2.1"
+				"jest": "^27.2.1",
+				"@miniflare/shared-test": "2.0.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-KvwAQ9/wKVemAmDxHXEXg44+rXpLxH2+V1OJWdAAWPpb1lWQeSEZRNDVQ+21WzFrxslOLGaVBPb6uGD4gz/7yQ==",
 				"shasum": "8acebf0d71e8e9baec2c0a0b406ed6a302017981",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.0.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 12790,
-				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh2EHzCRA9TVsSAnZWagAAtgkP/R10zPjwao+pc30pbRfR\nL/apD427DRqXmr4zlRJUskHVfJEbq9hrkIO6iPRgBPVazB9CloVxQphuFJHz\nVXA1TLk38apBTNbpTYbQ0EGshjEacE4LRzMWmLkqDuC+vbuDIWaIIGUw3SNN\npYd7GcuKjSBSjFyvPYnFS67y51rTYvbArQiwNgljXv0WSyikW3D+EqmpTI3x\npKbuizUWg9OU2uove4611CmwlEhxcgbbAFDzFyTqj8semJ6TodT4WPFtovu6\nCpg9NrVh4naxny9HuxCc8Q9bTBPYIrPxRIXNloEOzW0Xbnm/Un3x2J40xxPb\nh29Afdl18aMp0SJrH/UStcoa/YNUTMVJlso1KMOFE+7MrFa/b/4dPteO5tis\ngAxs8LJo6oSZLz2iENBjS3cvS4Bs/lN6iPl0l9XC1DTdz5xNJIuUV70tb0eb\n27QSu0AGpRnvZh1u6uFDRT7p28LJwFoBf9PRjWU1d9mit9rpMdvM3Jafsr8y\nh/q6Yikd214HiPYkWseucOV0sOUyqFQRJdyn9aNHUEIbdfs5Bx0/n5TVY+jR\n5yZHOJR5d5GQ0lmEOrX6NPFkof1u+F1mYnffGU6l5I/bU/jw658EsAAzJEOS\nExi1iVBgWNkluFM4tvVmii2cZJg9ozPV2+33g5g4C1NGbQWBw0DENByM+Qkk\n7sOO\r\n=rDkq\r\n-----END PGP SIGNATURE-----\r\n",
+				"integrity": "sha512-KvwAQ9/wKVemAmDxHXEXg44+rXpLxH2+V1OJWdAAWPpb1lWQeSEZRNDVQ+21WzFrxslOLGaVBPb6uGD4gz/7yQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDA29V4KYo+rCeKM8yIFNvr+qmidD6j/oVPkap/ovo2swIgX+fWNDbL7IU2PNOfMcQxwvo8yA8NvJ+bA89hebOF7j0="
+						"sig": "MEUCIQDA29V4KYo+rCeKM8yIFNvr+qmidD6j/oVPkap/ovo2swIgX+fWNDbL7IU2PNOfMcQxwvo8yA8NvJ+bA89hebOF7j0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 12790,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh2EHzCRA9TVsSAnZWagAAtgkP/R10zPjwao+pc30pbRfR\nL/apD427DRqXmr4zlRJUskHVfJEbq9hrkIO6iPRgBPVazB9CloVxQphuFJHz\nVXA1TLk38apBTNbpTYbQ0EGshjEacE4LRzMWmLkqDuC+vbuDIWaIIGUw3SNN\npYd7GcuKjSBSjFyvPYnFS67y51rTYvbArQiwNgljXv0WSyikW3D+EqmpTI3x\npKbuizUWg9OU2uove4611CmwlEhxcgbbAFDzFyTqj8semJ6TodT4WPFtovu6\nCpg9NrVh4naxny9HuxCc8Q9bTBPYIrPxRIXNloEOzW0Xbnm/Un3x2J40xxPb\nh29Afdl18aMp0SJrH/UStcoa/YNUTMVJlso1KMOFE+7MrFa/b/4dPteO5tis\ngAxs8LJo6oSZLz2iENBjS3cvS4Bs/lN6iPl0l9XC1DTdz5xNJIuUV70tb0eb\n27QSu0AGpRnvZh1u6uFDRT7p28LJwFoBf9PRjWU1d9mit9rpMdvM3Jafsr8y\nh/q6Yikd214HiPYkWseucOV0sOUyqFQRJdyn9aNHUEIbdfs5Bx0/n5TVY+jR\n5yZHOJR5d5GQ0lmEOrX6NPFkof1u+F1mYnffGU6l5I/bU/jw658EsAAzJEOS\nExi1iVBgWNkluFM4tvVmii2cZJg9ozPV2+33g5g4C1NGbQWBw0DENByM+Qkk\n7sOO\r\n=rDkq\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
 				"node": ">=16.7"
@@ -273,38 +273,38 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.1.0",
 			"dependencies": {
-				"@miniflare/cache": "2.1.0",
-				"@miniflare/core": "2.1.0",
-				"@miniflare/durable-objects": "2.1.0",
-				"@miniflare/html-rewriter": "2.1.0",
+				"miniflare": "2.1.0",
 				"@miniflare/kv": "2.1.0",
-				"@miniflare/runner-vm": "2.1.0",
-				"@miniflare/shared": "2.1.0",
+				"@miniflare/core": "2.1.0",
+				"@miniflare/cache": "2.1.0",
 				"@miniflare/sites": "2.1.0",
-				"@miniflare/storage-memory": "2.1.0",
+				"@miniflare/shared": "2.1.0",
+				"@miniflare/runner-vm": "2.1.0",
 				"@miniflare/web-sockets": "2.1.0",
-				"miniflare": "2.1.0"
+				"@miniflare/html-rewriter": "2.1.0",
+				"@miniflare/storage-memory": "2.1.0",
+				"@miniflare/durable-objects": "2.1.0"
 			},
 			"devDependencies": {
-				"@miniflare/shared-test": "2.1.0",
-				"jest": "^27.2.1"
+				"jest": "^27.2.1",
+				"@miniflare/shared-test": "2.1.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-lCqYhFsGU/6f8UKCjYvqXFaSEoDRDQqHl9ev4+SMi/3RrjQYu2Lio3BIXoI8hbQZLmTVXLefS79Ryveu7v4NWQ==",
 				"shasum": "d64c5d0192074369910179fcb158f9391b355203",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.1.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 12790,
-				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh4fmdCRA9TVsSAnZWagAAo+sP/0eD62cD1jqDVUkqYsw5\nIozcxBE8V43+sIZJayRrG09FUhjaqy8kcszqzoIzYDeeVmbEiAspN5jDM0uJ\n5YYXpsarr2yyQFqLnJxhrpOKg0KRIZMVPblpmStN1e/TtBM5UwKpnlkiRC4f\nz/hN+01vakDLxNuSrQcOYK5/BbwuJ8h2wC+0/+MMLoOjtAFFyBPsjKDN6kCW\nNWOMemx/DV98lUi8FluX8SnHLJL58879YvBzAnIj6cgFsCVDBQGqvLKFxhcj\nmPgSwQiBkwLuYTExYp421WJ9REbaFUtwEtS6LpCVswK5DQXZS+OBiTftfmrb\nEKRYZ6hhH4msK00icUW2VH0nnRG3RzevISNkBti52Ye3eIkYQY1rZS9Zn51Q\nioTneV/YoTDssjqMmRpG5P7VL6uM4aONsOS7OJrEVt0jAcxMRGMvgnPIS1x+\nZ8opPx5cLXZSoWMMETUxD98OgB3hG3pyPhuqfz1ycd24TdzMEECdhUHNmEqw\nO2B5UhY98B96KjWQLGUuqwwok+r4ex/R1avvMfck7j33gZpX8bIvUjJ0L1FR\nkt0gShV9Xup3W8jmvRthirAGUTMV7Ggdl4W1sfDsDXH+V5PSgIL16R8ofIS8\nm1ym19dsP6fvgiK+t24iDm/PxHFL4Ul0+kcX+WuRR5U6VII+yifNWJMZxkSg\n9JK3\r\n=hZO9\r\n-----END PGP SIGNATURE-----\r\n",
+				"integrity": "sha512-lCqYhFsGU/6f8UKCjYvqXFaSEoDRDQqHl9ev4+SMi/3RrjQYu2Lio3BIXoI8hbQZLmTVXLefS79Ryveu7v4NWQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIGcfKbRB+Hm5s6u+IRUdLfKLeJrVo2rAR/btJmvSBaeTAiAn94ibxxPkAVnroeqaJeCMiArPXudGgWG7FnsbOLOJ5w=="
+						"sig": "MEQCIGcfKbRB+Hm5s6u+IRUdLfKLeJrVo2rAR/btJmvSBaeTAiAn94ibxxPkAVnroeqaJeCMiArPXudGgWG7FnsbOLOJ5w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 12790,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh4fmdCRA9TVsSAnZWagAAo+sP/0eD62cD1jqDVUkqYsw5\nIozcxBE8V43+sIZJayRrG09FUhjaqy8kcszqzoIzYDeeVmbEiAspN5jDM0uJ\n5YYXpsarr2yyQFqLnJxhrpOKg0KRIZMVPblpmStN1e/TtBM5UwKpnlkiRC4f\nz/hN+01vakDLxNuSrQcOYK5/BbwuJ8h2wC+0/+MMLoOjtAFFyBPsjKDN6kCW\nNWOMemx/DV98lUi8FluX8SnHLJL58879YvBzAnIj6cgFsCVDBQGqvLKFxhcj\nmPgSwQiBkwLuYTExYp421WJ9REbaFUtwEtS6LpCVswK5DQXZS+OBiTftfmrb\nEKRYZ6hhH4msK00icUW2VH0nnRG3RzevISNkBti52Ye3eIkYQY1rZS9Zn51Q\nioTneV/YoTDssjqMmRpG5P7VL6uM4aONsOS7OJrEVt0jAcxMRGMvgnPIS1x+\nZ8opPx5cLXZSoWMMETUxD98OgB3hG3pyPhuqfz1ycd24TdzMEECdhUHNmEqw\nO2B5UhY98B96KjWQLGUuqwwok+r4ex/R1avvMfck7j33gZpX8bIvUjJ0L1FR\nkt0gShV9Xup3W8jmvRthirAGUTMV7Ggdl4W1sfDsDXH+V5PSgIL16R8ofIS8\nm1ym19dsP6fvgiK+t24iDm/PxHFL4Ul0+kcX+WuRR5U6VII+yifNWJMZxkSg\n9JK3\r\n=hZO9\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
 				"node": ">=16.7"
@@ -314,38 +314,38 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.2.0",
 			"dependencies": {
-				"@miniflare/cache": "2.2.0",
-				"@miniflare/core": "2.2.0",
-				"@miniflare/durable-objects": "2.2.0",
-				"@miniflare/html-rewriter": "2.2.0",
+				"miniflare": "2.2.0",
 				"@miniflare/kv": "2.2.0",
-				"@miniflare/runner-vm": "2.2.0",
-				"@miniflare/shared": "2.2.0",
+				"@miniflare/core": "2.2.0",
+				"@miniflare/cache": "2.2.0",
 				"@miniflare/sites": "2.2.0",
-				"@miniflare/storage-memory": "2.2.0",
+				"@miniflare/shared": "2.2.0",
+				"@miniflare/runner-vm": "2.2.0",
 				"@miniflare/web-sockets": "2.2.0",
-				"miniflare": "2.2.0"
+				"@miniflare/html-rewriter": "2.2.0",
+				"@miniflare/storage-memory": "2.2.0",
+				"@miniflare/durable-objects": "2.2.0"
 			},
 			"devDependencies": {
-				"@miniflare/shared-test": "2.2.0",
-				"jest": "^27.2.1"
+				"jest": "^27.2.1",
+				"@miniflare/shared-test": "2.2.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-cimSQF9g8M+T9kAWEzAtQ3HQpe81rlS4tqzufInfqt0ayEvbjoLc5Znlv9zcCL5+3yXfAa1nvTtZg7AooAUyqg==",
 				"shasum": "2dc534f9c2dfd9597a70d03969079bc0fa159796",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.2.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 12790,
-				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh5zSWCRA9TVsSAnZWagAA9AQQAIXsX6LcNn2kTbWEfCLI\nl9oNmC9ySIZwJavBO3gIaintmYx9w1pFrt3/6d+ynVd78ZN7waVjjXuu5xMm\n+9gLDjsyFwXvh27anvnLsgSsy4gjtwirEOKf3Y3msv8evwa7wBjWiBYNva9Z\nVWKLA0C7VpZ8iQ0tyanyNYA2u7tp2l3x0Li3GPhpjS0z7Ljnpir+7qFteNvr\nC0VHSikjUb1HMhoLEr28HVPVkFyh0Xrj5jxhLUdLlMyuOYcBbkVIA2wHfvcS\neWmUk7Nol3QQljbnpC+jPeEnalo7gRBe4D8mJwR+LRBV2x71dGQ4OmsWWWUk\nc+ywkVh3OpYyxW4wcZyTzxsd5F6puO4A3Bw8a+0RXrGeF96glTphdEshT68M\nRfW/20t2iBZK51kXOVhVssIkH/w6ebHMd7Zrhx7IIGVwVuG+YZ27JOj2M9wt\ntJC3gHU19Kbb+c7GiBaA9Atv3v+H3lwv+3e/uy+WJobFq5TBmdgxILw5Ghi0\nqY7bidsMq9BboRi4imlVyOUN3NLlYjWT0/UwgkxG3q7IYXl+cIfWv6yDguXL\nsf539GrkJmgWBcJ2+aIhFJ5MtfplT/tr36D2Ld3D6PVT98WDLhNKuUBphBTN\nULYJfYDxal75Xt+RAMoG1DzhDgNweVZRpYOAkOKkTXZIcXUTyCzgr621jYaP\noKsj\r\n=iHt+\r\n-----END PGP SIGNATURE-----\r\n",
+				"integrity": "sha512-cimSQF9g8M+T9kAWEzAtQ3HQpe81rlS4tqzufInfqt0ayEvbjoLc5Znlv9zcCL5+3yXfAa1nvTtZg7AooAUyqg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQD3sTBt/R/r3BYjy1AGEoPFDQrv04YoCzobPtjoXpzrsQIgco3tzo2+FHWvNx08pVXsMDVOw6IBYWt8s6jetl6zs7g="
+						"sig": "MEUCIQD3sTBt/R/r3BYjy1AGEoPFDQrv04YoCzobPtjoXpzrsQIgco3tzo2+FHWvNx08pVXsMDVOw6IBYWt8s6jetl6zs7g=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 12790,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh5zSWCRA9TVsSAnZWagAA9AQQAIXsX6LcNn2kTbWEfCLI\nl9oNmC9ySIZwJavBO3gIaintmYx9w1pFrt3/6d+ynVd78ZN7waVjjXuu5xMm\n+9gLDjsyFwXvh27anvnLsgSsy4gjtwirEOKf3Y3msv8evwa7wBjWiBYNva9Z\nVWKLA0C7VpZ8iQ0tyanyNYA2u7tp2l3x0Li3GPhpjS0z7Ljnpir+7qFteNvr\nC0VHSikjUb1HMhoLEr28HVPVkFyh0Xrj5jxhLUdLlMyuOYcBbkVIA2wHfvcS\neWmUk7Nol3QQljbnpC+jPeEnalo7gRBe4D8mJwR+LRBV2x71dGQ4OmsWWWUk\nc+ywkVh3OpYyxW4wcZyTzxsd5F6puO4A3Bw8a+0RXrGeF96glTphdEshT68M\nRfW/20t2iBZK51kXOVhVssIkH/w6ebHMd7Zrhx7IIGVwVuG+YZ27JOj2M9wt\ntJC3gHU19Kbb+c7GiBaA9Atv3v+H3lwv+3e/uy+WJobFq5TBmdgxILw5Ghi0\nqY7bidsMq9BboRi4imlVyOUN3NLlYjWT0/UwgkxG3q7IYXl+cIfWv6yDguXL\nsf539GrkJmgWBcJ2+aIhFJ5MtfplT/tr36D2Ld3D6PVT98WDLhNKuUBphBTN\nULYJfYDxal75Xt+RAMoG1DzhDgNweVZRpYOAkOKkTXZIcXUTyCzgr621jYaP\noKsj\r\n=iHt+\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
 				"node": ">=16.7"
@@ -355,38 +355,38 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.3.0",
 			"dependencies": {
-				"@miniflare/cache": "2.3.0",
-				"@miniflare/core": "2.3.0",
-				"@miniflare/durable-objects": "2.3.0",
-				"@miniflare/html-rewriter": "2.3.0",
+				"miniflare": "2.3.0",
 				"@miniflare/kv": "2.3.0",
-				"@miniflare/runner-vm": "2.3.0",
-				"@miniflare/shared": "2.3.0",
+				"@miniflare/core": "2.3.0",
+				"@miniflare/cache": "2.3.0",
 				"@miniflare/sites": "2.3.0",
-				"@miniflare/storage-memory": "2.3.0",
+				"@miniflare/shared": "2.3.0",
+				"@miniflare/runner-vm": "2.3.0",
 				"@miniflare/web-sockets": "2.3.0",
-				"miniflare": "2.3.0"
+				"@miniflare/html-rewriter": "2.3.0",
+				"@miniflare/storage-memory": "2.3.0",
+				"@miniflare/durable-objects": "2.3.0"
 			},
 			"devDependencies": {
-				"@miniflare/shared-test": "2.3.0",
-				"jest": "^27.2.1"
+				"jest": "^27.2.1",
+				"@miniflare/shared-test": "2.3.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-/VgwMWwEqNoXAHBBC//1rUzkY6gvCfh7WsmOSpzeWXsROIeP1vog4v2gBY4N0ZuSI+5PxGnDZH8hahjYQQVcEg==",
 				"shasum": "5ef98f001047e45230cb54be677aace0bfa7e669",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.3.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 12790,
-				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiAYw+CRA9TVsSAnZWagAAcp4QAJOAJRApj0J+J4jlB+ID\nYIfeHpbZzyw5ObRhQhrmEHHs1B7FOxJTrCoSxLthaeHV9FM7lwjPfZwYrDAK\nVpjQsWdhwcuD0zsyTduYbN1faJiM9E+oJhuQcL525ftW/jWb3f1Fn3RIcI2I\nPflYch6I7/M92qr7KgTIM8cYdeRLIGSDLid5FmMdEOpwoFLA8jfO6+OenJHo\nKXZWRqaOvbnoW2ERuRD8kaIe5gXG7krd8GvgCMfKhlcWsVf6lwwG6R01YfjK\n2s5U0OwjrZwc4vmY0DuCVuGu14+ayStrOZvI1f+JIevX1qM8NvnL/HNIuLAE\nDvan1jT0MLqKS0N1/otGZ1afjGulsI8wrgZNU4A1AzrKLcnAPqqRqK9T6uYt\n/0JqOM3uB8DK3+q5gTPPlTKvJJyRXdISgZ0ht0yz4QHfuQe9RWlIMld5mW4m\nZ7CmNwtM3mDq8buxuRL7VZCSuNMyCJk+p3M5B17AyfaQavsvbehnmNmp6z3P\nDxE945bT6U/nO6sf6yGjqgtmP6+s5YzLuZjdl8+OHrwgHiNWrcHKWpcKI+r7\nKvxUO6AcFBX8WaLVM+FEYxjsPbC4WdM15UUpbzTI0iYF0QyYr2jtFueYFP21\nDr8o/lstajASH/cBdQdIN4p9eLKd0CNj8XZIhmdJl+uDFVOFzCHvrIA6Qcky\n2Bvy\r\n=i7bf\r\n-----END PGP SIGNATURE-----\r\n",
+				"integrity": "sha512-/VgwMWwEqNoXAHBBC//1rUzkY6gvCfh7WsmOSpzeWXsROIeP1vog4v2gBY4N0ZuSI+5PxGnDZH8hahjYQQVcEg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIAY18tj2GAMxfTgPBROOsXory0ksNhNJZRpUhvEad/HfAiB2KlLj7iVNe5YydvdRcc0sHP6h/m+uwBn0c0TRKU7uLw=="
+						"sig": "MEQCIAY18tj2GAMxfTgPBROOsXory0ksNhNJZRpUhvEad/HfAiB2KlLj7iVNe5YydvdRcc0sHP6h/m+uwBn0c0TRKU7uLw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 12790,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiAYw+CRA9TVsSAnZWagAAcp4QAJOAJRApj0J+J4jlB+ID\nYIfeHpbZzyw5ObRhQhrmEHHs1B7FOxJTrCoSxLthaeHV9FM7lwjPfZwYrDAK\nVpjQsWdhwcuD0zsyTduYbN1faJiM9E+oJhuQcL525ftW/jWb3f1Fn3RIcI2I\nPflYch6I7/M92qr7KgTIM8cYdeRLIGSDLid5FmMdEOpwoFLA8jfO6+OenJHo\nKXZWRqaOvbnoW2ERuRD8kaIe5gXG7krd8GvgCMfKhlcWsVf6lwwG6R01YfjK\n2s5U0OwjrZwc4vmY0DuCVuGu14+ayStrOZvI1f+JIevX1qM8NvnL/HNIuLAE\nDvan1jT0MLqKS0N1/otGZ1afjGulsI8wrgZNU4A1AzrKLcnAPqqRqK9T6uYt\n/0JqOM3uB8DK3+q5gTPPlTKvJJyRXdISgZ0ht0yz4QHfuQe9RWlIMld5mW4m\nZ7CmNwtM3mDq8buxuRL7VZCSuNMyCJk+p3M5B17AyfaQavsvbehnmNmp6z3P\nDxE945bT6U/nO6sf6yGjqgtmP6+s5YzLuZjdl8+OHrwgHiNWrcHKWpcKI+r7\nKvxUO6AcFBX8WaLVM+FEYxjsPbC4WdM15UUpbzTI0iYF0QyYr2jtFueYFP21\nDr8o/lstajASH/cBdQdIN4p9eLKd0CNj8XZIhmdJl+uDFVOFzCHvrIA6Qcky\n2Bvy\r\n=i7bf\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
 				"node": ">=16.7"
@@ -396,37 +396,37 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.4.0",
 			"dependencies": {
-				"@miniflare/cache": "2.4.0",
-				"@miniflare/core": "2.4.0",
-				"@miniflare/durable-objects": "2.4.0",
-				"@miniflare/html-rewriter": "2.4.0",
+				"miniflare": "2.4.0",
 				"@miniflare/kv": "2.4.0",
-				"@miniflare/runner-vm": "2.4.0",
-				"@miniflare/shared": "2.4.0",
+				"@miniflare/core": "2.4.0",
+				"@miniflare/cache": "2.4.0",
 				"@miniflare/sites": "2.4.0",
-				"@miniflare/storage-memory": "2.4.0",
+				"@miniflare/shared": "2.4.0",
+				"@miniflare/runner-vm": "2.4.0",
 				"@miniflare/web-sockets": "2.4.0",
-				"miniflare": "2.4.0"
+				"@miniflare/html-rewriter": "2.4.0",
+				"@miniflare/storage-memory": "2.4.0",
+				"@miniflare/durable-objects": "2.4.0"
 			},
 			"devDependencies": {
-				"@miniflare/shared-test": "2.4.0",
-				"jest": "^27.2.1"
+				"jest": "^27.2.1",
+				"@miniflare/shared-test": "2.4.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-WTsUBXrjyX1yNWCnKyzTSNFfBNm3QxT+f4AXaaSBrZEHCjE4/zl08/BE0fSmVQah6Vp/N3pgrM2efYQD6xiaHw==",
 				"shasum": "4f64690a426362e92bbf1b9cc46fdf895fda2886",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.4.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 12790,
+				"integrity": "sha512-WTsUBXrjyX1yNWCnKyzTSNFfBNm3QxT+f4AXaaSBrZEHCjE4/zl08/BE0fSmVQah6Vp/N3pgrM2efYQD6xiaHw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCuzZrcMr5bgC7agt/qG3ajPrVaMMNUB3y/WmTvEdt16wIhAOLDeQUzJcaLX+ghuzd4yakIvP26gWHuH7Tvcxrzf2y+"
+						"sig": "MEYCIQCuzZrcMr5bgC7agt/qG3ajPrVaMMNUB3y/WmTvEdt16wIhAOLDeQUzJcaLX+ghuzd4yakIvP26gWHuH7Tvcxrzf2y+",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 12790,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiSNdtACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqO4Q//VBbLU6qm4zQotnijs4ccN605KibNG7pgB01ijBKGe59RnEqG\r\nADP9oESW2NVL7qboMGN0VeG3ial8TjPcJScPnkLpYwB4cxDvoTAHf70QdJtd\r\nj6Wq8V8JQvEdrEp9auF07YA5ninVqLIGB25K5Tfehj/G78kFkDzEmN4gK1bp\r\nwg8TcHtKR0BypP0Sx44Y0VvZuIon2s4KK8g14mXmlItcwqP9hBZ1yEAARGr/\r\nUGkPOviL3Nf70QuTBCztlnfEcdZj5DAtpaoEgoKPV7xB7VD9D3LSJcqICYif\r\neIgL6+WC0XmdnAu4NlRDkh06w5MLb0CAPI0yp1TRfm8rxwf5Gzpb3BEWguDK\r\nu1zbrJPRbj1Qw1lewS9LlGwJxy/bEswhJ6g0jqABq0pcuB43oCQzC0AtyKmv\r\nphntJYKNm+3a68ixsUPls429qfm9QTozuZYd1WsudalkmT+ilC275snNWCXf\r\nTcsb1a8CQLmqaNqAD/1HU/zG6dhArob6bVIWNCxWqFLEe6fuPVDwiJm6t18b\r\nyRcYowalKDRqL/W4TWunfDliPOMCH4zWTrIRCJXdhEtsui0YQw2wOWoKT2g+\r\nL0ihupcenDXshH1FLHZLvuXuzt0GM6ojkMnZnP/hg11ghZqbojdbMitVu8CL\r\n6O29eMeKc/KXZVuehogE8fYpgcCB0fzrXzQ=\r\n=+JYr\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -437,48 +437,48 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.5.0",
 			"dependencies": {
-				"@miniflare/cache": "2.5.0",
-				"@miniflare/core": "2.5.0",
-				"@miniflare/durable-objects": "2.5.0",
-				"@miniflare/html-rewriter": "2.5.0",
-				"@miniflare/kv": "2.5.0",
-				"@miniflare/runner-vm": "2.5.0",
-				"@miniflare/shared": "2.5.0",
-				"@miniflare/sites": "2.5.0",
-				"@miniflare/storage-memory": "2.5.0",
-				"@miniflare/web-sockets": "2.5.0",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
 				"miniflare": "2.5.0",
+				"@jest/types": ">=27",
+				"@miniflare/kv": "2.5.0",
+				"@miniflare/core": "2.5.0",
+				"@miniflare/cache": "2.5.0",
+				"@miniflare/sites": "2.5.0",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/shared": "2.5.0",
+				"@miniflare/runner-vm": "2.5.0",
+				"@miniflare/web-sockets": "2.5.0",
+				"@miniflare/html-rewriter": "2.5.0",
+				"@miniflare/storage-memory": "2.5.0",
+				"@miniflare/durable-objects": "2.5.0"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.5.0",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.5.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-3OirfOB+kBxVBN5kOsXXQMgGHDUoO0+toulyoqGEWfZRa2kfL48CFCF10jB8A1K63cB5JMblN+uqyWUeZb/SBw==",
 				"shasum": "05ecc0e860e14caef7978f6357d70c0e2a04b3b7",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.5.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 14364,
+				"integrity": "sha512-3OirfOB+kBxVBN5kOsXXQMgGHDUoO0+toulyoqGEWfZRa2kfL48CFCF10jB8A1K63cB5JMblN+uqyWUeZb/SBw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCHKpue8f460THdN0OpiJcvUCvhmhcbu29OXR6JtSui4wIhAL8zks2oZr6moohG7YQTbli9R1jWLtOT6s1PpWIf4Myf"
+						"sig": "MEYCIQCHKpue8f460THdN0OpiJcvUCvhmhcbu29OXR6JtSui4wIhAL8zks2oZr6moohG7YQTbli9R1jWLtOT6s1PpWIf4Myf",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 14364,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJikVNKACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp7ZQ//fzG2XR+qlv6EgGHUYmVYvOeHFqEFhjJ6E+YaQjtcdrU4R87A\r\nFIRpdbzF9cnfNKWTyQ8myHxT3fEqd2bW4vgh94IIBy9oJFotw/9WXeP7leGc\r\ncPbSy9GSV5zep6p9f8IpKUdIukMNsUABFVDtja6xr2s33g5y9FpVxVMFXW+W\r\ngorUyQqd+1qu41LhsxTByI8KtkJuGrOKLyNaZBZaSqwCYzWARduZAb0OaZXB\r\nBi2LemKHI63Y4Q2SrosAXRIciCLjt1nbxm0+KwlAfFdJaxUw3d4pd8WIVkHa\r\n1hEckQhz7ffOI0ZSDL+B0BMgOUczkN8gDazEAhHX/X8VbYawPifF5xGMOfeE\r\nTb0Yaj83QpNNdDVvZ65Ee9PygfUGvMwhkecbWrtRxnSX1BVpaSHpXoV1p818\r\nUwSCumHvTwNO1a69PzUcd369yeI1Xooa9Mmx2QM26ZeZJorZKJVnPvS1Auif\r\ndy8SjQJ9WftSXy2uqyL1VTVMbO0m6EnM4ihENk2TlKfX5IiU0a9qRHypYiU9\r\nSNUH63Ifvqs2iaJ9QegyvC6NGwxHFQYdJ1WZukWUoX+TQC4CxgouB6bIkiEI\r\ndjxe2shFHR2G9tzpaK6df/Tq1ORwCqa6iYLC224PfPzCeWc+Vn08JJOq2ZpP\r\nMx7HFPLyIKtVMgfgRRqwdcsON8N6iwZcUX0=\r\n=CmIK\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -489,48 +489,48 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.5.1",
 			"dependencies": {
-				"@miniflare/cache": "2.5.1",
-				"@miniflare/core": "2.5.1",
-				"@miniflare/durable-objects": "2.5.1",
-				"@miniflare/html-rewriter": "2.5.1",
-				"@miniflare/kv": "2.5.1",
-				"@miniflare/runner-vm": "2.5.1",
-				"@miniflare/shared": "2.5.1",
-				"@miniflare/sites": "2.5.1",
-				"@miniflare/storage-memory": "2.5.1",
-				"@miniflare/web-sockets": "2.5.1",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
 				"miniflare": "2.5.1",
+				"@jest/types": ">=27",
+				"@miniflare/kv": "2.5.1",
+				"@miniflare/core": "2.5.1",
+				"@miniflare/cache": "2.5.1",
+				"@miniflare/sites": "2.5.1",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/shared": "2.5.1",
+				"@miniflare/runner-vm": "2.5.1",
+				"@miniflare/web-sockets": "2.5.1",
+				"@miniflare/html-rewriter": "2.5.1",
+				"@miniflare/storage-memory": "2.5.1",
+				"@miniflare/durable-objects": "2.5.1"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.5.1",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.5.1"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-BQZNE393imnQcHjPXhXpgAYYrb2RAyCTtkveMVeygrpzsrVLZ2uG/qxyrG05HFvWJ4Ca2EyI5AOCrNDGqMgD5g==",
 				"shasum": "9b50c6c6c1f3177ae1d4f3af3fed5b2b70bed193",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.5.1.tgz",
 				"fileCount": 5,
-				"unpackedSize": 14364,
+				"integrity": "sha512-BQZNE393imnQcHjPXhXpgAYYrb2RAyCTtkveMVeygrpzsrVLZ2uG/qxyrG05HFvWJ4Ca2EyI5AOCrNDGqMgD5g==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCddLquHWqNHU01dLz6JxQw7ETF5535GZxw/PkBvdP+iQIgB3X8/p0Thn7PzEu8tJjvn2CGcMb6a92FlKuasDP6kU0="
+						"sig": "MEUCIQCddLquHWqNHU01dLz6JxQw7ETF5535GZxw/PkBvdP+iQIgB3X8/p0Thn7PzEu8tJjvn2CGcMb6a92FlKuasDP6kU0=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 14364,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJirzVRACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqBPQ//cdONZFy5Dg4orfLg9+35u+2Cf4ZM5a23W2w7IS9HyDHWpB8+\r\ny+neF/oK+cMza5slFCqyBr//JSUS0h+hQAoGyhfRLnoW3/u/OxPh8Cc6a+30\r\nNokPc1fBRx0Q+CPVlUZ3khX9dHHDNB4yr5nsqU+S0dKroEzzaPRrCANm1bNx\r\nf5hViO4OyO4UfXKN0c6V5PY8KfyNE05J9lNiQrrm1k528X2naZE6Ztv9LYNq\r\nwLGWYqkerCyc6vqvd3x4bBP7B52jcILRSmgTBedRj7UxbWSq1tKXUK32dJto\r\n1vAoQ9lhnyCTxhMay+WgllkI5H3EIL/M/ajnVsce+1Y/vgJG5khdcLt0qrgi\r\nclc+3vI+MnNG/ZOy1LvA3GqOJdiXzdzDAkPFMzmZXn/g6DcZZ/e9lmu5d7mB\r\n2GLlxLc0BJP5l435Dscc449eyl6cRXbRZ2TYRIunL2/BALlORXp7lDTNQPOY\r\nH//FtXn82EwpWtPgkAKJlnZNfFZs1bEBuwFElp30tdf5wUNpZX6GkuvUHhy2\r\ne336avo6TatN/xHXGE1+lyW3nllV9ZpP+iVlqq9czJ6ahYKD3/WThbEcQs7l\r\nNOzb6OWEVypiRh0018qS1JLtAF+k/zPhQZ/NYQVi2kCS6E0VsQ8BnTFa+2bP\r\nOB3nfAWbwsRwNB70hptkJiMf1g/8x3LrAHQ=\r\n=+moS\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -541,48 +541,48 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.6.0-d1.1",
 			"dependencies": {
-				"@miniflare/cache": "2.6.0-d1.1",
-				"@miniflare/core": "2.6.0-d1.1",
-				"@miniflare/durable-objects": "2.6.0-d1.1",
-				"@miniflare/html-rewriter": "2.6.0-d1.1",
-				"@miniflare/kv": "2.6.0-d1.1",
-				"@miniflare/runner-vm": "2.6.0-d1.1",
-				"@miniflare/shared": "2.6.0-d1.1",
-				"@miniflare/sites": "2.6.0-d1.1",
-				"@miniflare/storage-memory": "2.6.0-d1.1",
-				"@miniflare/web-sockets": "2.6.0-d1.1",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
 				"miniflare": "2.6.0-d1.1",
+				"@jest/types": ">=27",
+				"@miniflare/kv": "2.6.0-d1.1",
+				"@miniflare/core": "2.6.0-d1.1",
+				"@miniflare/cache": "2.6.0-d1.1",
+				"@miniflare/sites": "2.6.0-d1.1",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/shared": "2.6.0-d1.1",
+				"@miniflare/runner-vm": "2.6.0-d1.1",
+				"@miniflare/web-sockets": "2.6.0-d1.1",
+				"@miniflare/html-rewriter": "2.6.0-d1.1",
+				"@miniflare/storage-memory": "2.6.0-d1.1",
+				"@miniflare/durable-objects": "2.6.0-d1.1"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.6.0-d1.1",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.6.0-d1.1"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-bBt1UAx3o5ghwVRSmMfI6BEs7MLxrSPzxj3fcHPmHdVfap6ix/noY5pLGsc9YWxM+4/yJ+NMV3GnfhLHuW7JWA==",
 				"shasum": "7d55195c2dce8e6a39ddbeb5ef982beab1af1d71",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.6.0-d1.1.tgz",
 				"fileCount": 5,
-				"unpackedSize": 14468,
+				"integrity": "sha512-bBt1UAx3o5ghwVRSmMfI6BEs7MLxrSPzxj3fcHPmHdVfap6ix/noY5pLGsc9YWxM+4/yJ+NMV3GnfhLHuW7JWA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDIiEZd2XT5lW9dnnI1hjdfqkTY0CBs9C5tb8zbTjFcdQIgcJZ2NToCRqBZvOv+a4Q/YYqu1dneygq5oFrp7DRIPYs="
+						"sig": "MEUCIQDIiEZd2XT5lW9dnnI1hjdfqkTY0CBs9C5tb8zbTjFcdQIgcJZ2NToCRqBZvOv+a4Q/YYqu1dneygq5oFrp7DRIPYs=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 14468,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJivHQJACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmoiaw/8Cotntv7S5TSHsFItSUsJaJzVx56IL7NclArUIqe3+1S/tPOl\r\nIBxZv/nQ3HBKAXOgljDOf0s5nqMIrMFFCRzzpYuFCRP+HunsXDTUpfypgEs1\r\n9JzrkxgneH3AiOZXrEt0x9LwM+7acRHAM6PXcICemZEmfLx1ukD9ILq8eWEn\r\n3SwBnCzcJkmbPaMYVEtghg9oZPBzR+tQ3AhegBF+XpjlQfDa2OR8NnqAtc9E\r\nVN2xENOdQTvGfgUOBBu76q3BcrG2gu13mTvTxpJTLEpHH3/Gt5kPopkKSO1U\r\nLERTIVZSm/p/XwuqR1rDN+DbkG1+m7QoHydto7WA/gDDARe9AxORFtLGcRhb\r\n/MqJQda3MarJAwLtSoNr99d1Q2oevoDt7aA3srNIrbNiCADtF/8eCk1QHw36\r\ngfn9CoVGfHOR8TRDsD2au6RPdgvJbLiyb12FQGJ/4zR2SKNHGWTXd4ihElIn\r\ni6L6x8QBWuSbTB8rJtavgfp+KzMP8zYANeCL36DjCDkvOVN54sh+SlPhtrq/\r\npfeiCAkY9cEyHfWUxhEviGPFKEaTq40ElsN5Rf4IbsAzhS5CJf8GHRIxbcZ3\r\nUq59HvHhdPezHcRWlSUy0G8rnXn7AT19mAymWKmYtx7EVXGVjcnC/1ilLUH0\r\nH4ohkK+a+sSE/k/c3ATObwyTgoVlsYIoT6U=\r\n=FPQg\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -593,48 +593,48 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.6.0",
 			"dependencies": {
-				"@miniflare/cache": "2.6.0",
-				"@miniflare/core": "2.6.0",
-				"@miniflare/durable-objects": "2.6.0",
-				"@miniflare/html-rewriter": "2.6.0",
-				"@miniflare/kv": "2.6.0",
-				"@miniflare/runner-vm": "2.6.0",
-				"@miniflare/shared": "2.6.0",
-				"@miniflare/sites": "2.6.0",
-				"@miniflare/storage-memory": "2.6.0",
-				"@miniflare/web-sockets": "2.6.0",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
 				"miniflare": "2.6.0",
+				"@jest/types": ">=27",
+				"@miniflare/kv": "2.6.0",
+				"@miniflare/core": "2.6.0",
+				"@miniflare/cache": "2.6.0",
+				"@miniflare/sites": "2.6.0",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/shared": "2.6.0",
+				"@miniflare/runner-vm": "2.6.0",
+				"@miniflare/web-sockets": "2.6.0",
+				"@miniflare/html-rewriter": "2.6.0",
+				"@miniflare/storage-memory": "2.6.0",
+				"@miniflare/durable-objects": "2.6.0"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.6.0",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.6.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-++2jRQZEotttSZkuHEt7ehcvL9zorjF8p/F5vZSjAuOmmo6l4sMLYxGPreQgwMSOA9zhAdROWM6pUTK2SEX9tg==",
 				"shasum": "81142f5c05708e36bb0a4df32dca3e1e613c6916",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.6.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 14403,
+				"integrity": "sha512-++2jRQZEotttSZkuHEt7ehcvL9zorjF8p/F5vZSjAuOmmo6l4sMLYxGPreQgwMSOA9zhAdROWM6pUTK2SEX9tg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQDO0fOFYsZgHkEJ5obexFi0dvbs++qSCTcA+5leZdpWKwIhAOlttqH8eQY7JYnvrlM5t3itkJvA0wcwe0zOx7729Xxr"
+						"sig": "MEYCIQDO0fOFYsZgHkEJ5obexFi0dvbs++qSCTcA+5leZdpWKwIhAOlttqH8eQY7JYnvrlM5t3itkJvA0wcwe0zOx7729Xxr",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 14403,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiyVY0ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr7uA/9F6XsWObXWBtU7KIY8BGLWGJZjehTzjSy/cRl9ZNeX079Pqi0\r\noXK+FVuOwZzC361I901YgaMYyhRPO4L7GHDzpH5UQf7oTXbhgQHLwQe4M3er\r\n9qfGYdNhztJj9E9MN4EvbZK6wo5lO1I6ig8U3IoZirfxCnztdl6Wv6bLmOUe\r\n3kOBnlEctRPJhDvj2AhE0X7lXcF39SSBUT9W44S1omBZN5lJevPwTFDhFx7T\r\n5Z3qWU3X1o5d+qVn3NVr91dNmJSL02YL3Mipsgp2rN3m6J5EcgMIDc1y4Ce2\r\nv/98hX6EhC3aveJIMoo0iukPdZWfr7rN+TBn1aTGYzJ00lEYnkqkGMt3LeWT\r\nMFsyq8C1V9Vk7s0UFc8k7j+8TnAkHhkXcqKNPU6pkBgXxIztgSvhNsy06wYV\r\nAwSJDmhxIKT0kqtE+WdIkwJ7HU8MurxAGVQeybYL74MxjnWm+K0bFEDLXAyv\r\nRiBQ3LBzQddd5K3ZJq9g0ZmduEufgVcWdQ6KB77UQIsOxeBf79fNrzO3jhCJ\r\ng6OFDtYjgRcQny/9uI6ZMEszgXh/XdoMMzTosGm0b5+UZGPULNXS8fXox3Nu\r\n5turuvKmRnYSS9PuEi7pwhNravnIT4lKStN5iwLoGTtmYzir0jPLdhhg7c1a\r\nLSAgCsFGTiJEDRitZjJkdXbgJC6CwK+7M5g=\r\n=cfOM\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -645,48 +645,48 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.6.0-d1.2",
 			"dependencies": {
-				"@miniflare/cache": "2.6.0-d1.2",
-				"@miniflare/core": "2.6.0-d1.2",
-				"@miniflare/durable-objects": "2.6.0-d1.2",
-				"@miniflare/html-rewriter": "2.6.0-d1.2",
-				"@miniflare/kv": "2.6.0-d1.2",
-				"@miniflare/runner-vm": "2.6.0-d1.2",
-				"@miniflare/shared": "2.6.0-d1.2",
-				"@miniflare/sites": "2.6.0-d1.2",
-				"@miniflare/storage-memory": "2.6.0-d1.2",
-				"@miniflare/web-sockets": "2.6.0-d1.2",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
 				"miniflare": "2.6.0-d1.2",
+				"@jest/types": ">=27",
+				"@miniflare/kv": "2.6.0-d1.2",
+				"@miniflare/core": "2.6.0-d1.2",
+				"@miniflare/cache": "2.6.0-d1.2",
+				"@miniflare/sites": "2.6.0-d1.2",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/shared": "2.6.0-d1.2",
+				"@miniflare/runner-vm": "2.6.0-d1.2",
+				"@miniflare/web-sockets": "2.6.0-d1.2",
+				"@miniflare/html-rewriter": "2.6.0-d1.2",
+				"@miniflare/storage-memory": "2.6.0-d1.2",
+				"@miniflare/durable-objects": "2.6.0-d1.2"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.6.0-d1.2",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.6.0-d1.2"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-ZcDteA4dDf2SX8Y3i4nZgswrWxgVOwtxkpYvhTncwbMgiYivRM7X/oMrCIbe7G4wmM0rjwU1D6tGvQh06i3aeg==",
 				"shasum": "dacc138b64a20f18c3995765821d866e4adde686",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.6.0-d1.2.tgz",
 				"fileCount": 5,
-				"unpackedSize": 14577,
+				"integrity": "sha512-ZcDteA4dDf2SX8Y3i4nZgswrWxgVOwtxkpYvhTncwbMgiYivRM7X/oMrCIbe7G4wmM0rjwU1D6tGvQh06i3aeg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIAkIYa7TynOdnaj9WeNxpJLzavZGsXtf1jrlgsuye+81AiAG6BV3mIBoY4ivySoWOn5EKHlR42YE2iTaEadziFXZlg=="
+						"sig": "MEQCIAkIYa7TynOdnaj9WeNxpJLzavZGsXtf1jrlgsuye+81AiAG6BV3mIBoY4ivySoWOn5EKHlR42YE2iTaEadziFXZlg==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 14577,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi47e6ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpybw//ZF9eJqga26tTABEPhqTDCeUxVwvMjiWEgi6H+Ga4GXZqOHOg\r\nS4Q5PZVnTHz+5oOelSfuqdGw2tNuHKymT4jgPfZeOb+FnXJ2xD4D4xYduhMO\r\nDQXvxwdHBCzMCB5K/ENiTa3AXOig1AumMubI/k5Ju8WyL1FJr/Ee8QtIwYMW\r\nR3pOweGmEYCsukYH4/uxcl7TDKY9KCYC0yR9jh8ARitbayc+nV+p3TY1OvlC\r\nCrvHnxTsqwh+2H82hJ+98xTSF3yjmELVhiUYGLXe/7P+QmxbwppKw5G/wE2g\r\nAOKK+oRMb8s49r2VpYBrqOL/ipnD09ehSbKaYBMxwJguYWR2Vq1k3z9EQ5wv\r\nYz6mjoeSk0cEW/d5hU3Av8Hxtyr7S6eGhwJChLZHEWXw3gPYiNsALo8LcXfu\r\noWkaE21uu1qVIO70r9OEVfpwV+84xVvFC7X3nUauvzRCb48NUeQ0r2km13Wt\r\n9lpTRc0YuYwcqxzG7L3Vm9MHjZ+rDuy67ACxLu6IgTy586P2Jidim2ktQCAv\r\negpBdnMCaclXEjJxsyzJRixxQn5/UAL7YE7BPe+YHHNqixDZm9c5mpJkzBrw\r\ntcVh5y6Zk5PYxAjUy/dG5Mfjp0RIX7CLQwt9pxobXZuIvqMGLXrBbrM2x//c\r\nBykB96KQKhNQDftx/edrQ83PhubBoo3yCcI=\r\n=kY0F\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -697,48 +697,48 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.6.0-d1.3",
 			"dependencies": {
-				"@miniflare/cache": "2.6.0-d1.3",
-				"@miniflare/core": "2.6.0-d1.3",
-				"@miniflare/durable-objects": "2.6.0-d1.3",
-				"@miniflare/html-rewriter": "2.6.0-d1.3",
-				"@miniflare/kv": "2.6.0-d1.3",
-				"@miniflare/runner-vm": "2.6.0-d1.3",
-				"@miniflare/shared": "2.6.0-d1.3",
-				"@miniflare/sites": "2.6.0-d1.3",
-				"@miniflare/storage-memory": "2.6.0-d1.3",
-				"@miniflare/web-sockets": "2.6.0-d1.3",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
 				"miniflare": "2.6.0-d1.3",
+				"@jest/types": ">=27",
+				"@miniflare/kv": "2.6.0-d1.3",
+				"@miniflare/core": "2.6.0-d1.3",
+				"@miniflare/cache": "2.6.0-d1.3",
+				"@miniflare/sites": "2.6.0-d1.3",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/shared": "2.6.0-d1.3",
+				"@miniflare/runner-vm": "2.6.0-d1.3",
+				"@miniflare/web-sockets": "2.6.0-d1.3",
+				"@miniflare/html-rewriter": "2.6.0-d1.3",
+				"@miniflare/storage-memory": "2.6.0-d1.3",
+				"@miniflare/durable-objects": "2.6.0-d1.3"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.6.0-d1.3",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.6.0-d1.3"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-ozHvDmQnu2wtrZ90VVUR87wlpLeCaVw5yuQdCxeJZj0s8JjXgTtQP+hc8+LJ6o0YxsEVL4/kV9XOal/SE74wQw==",
 				"shasum": "de9153335daba60499cb2917c08120c660002b50",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.6.0-d1.3.tgz",
 				"fileCount": 5,
-				"unpackedSize": 14577,
+				"integrity": "sha512-ozHvDmQnu2wtrZ90VVUR87wlpLeCaVw5yuQdCxeJZj0s8JjXgTtQP+hc8+LJ6o0YxsEVL4/kV9XOal/SE74wQw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIFJUIRHycBH+UyWmxkRaoW8Y+r94A6XM5BBjp83gAWLKAiAWKUrW5SujcHGi8136U509yBuCVnv/VZL7kT/BF0cMlw=="
+						"sig": "MEQCIFJUIRHycBH+UyWmxkRaoW8Y+r94A6XM5BBjp83gAWLKAiAWKUrW5SujcHGi8136U509yBuCVnv/VZL7kT/BF0cMlw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 14577,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi6+hnACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmohlxAAgP9VDRCtPoa2RhVHWgzb6t5jy1H0/Oc2bSmTuCF9R3i1SuwL\r\nOe2ltwcg9BNymvC+WzNVUCdAv+4RuQOC0d6yy//IKU9PbQOUnOcRWiecnxMK\r\nIuNLR3me5+m5JQ2F8CLSPkcBrArL0SQ85xSKP4Bs0LTBQXv4recd71T4Xn0B\r\nD02ykLe4042nRAqiut5RKXSnFKQxaQo/0sOuDIX2g37Pr5478nGzC66kGVWa\r\nDniBg5iEKVkaU6C0qb2aQp33emIwxcJng3LcsUg7oVSaTQ7h5T0v0sfVEiHR\r\nmsSl9omTVS53G2/hY0utm9XEWo3+NTdtgMCjI184iaBr7Rp4eV0BQjXppZ78\r\nSduldEpjsAa1OkGJa0L8gYS2/Of6Ikp5/l02N0h2b16n2b7XSbhItmbmR+Z+\r\nw7m3E4adAOxWNgsUTwMpzagoKuF0PjaRzcwwxq1vXEizHU/HPQf5lDtZYE6I\r\n/Oi0Sg1MyrYMz/DE/jyACTVJS37rv9SR+otkzE+oiGI7E0c5q89L//l5qJPs\r\n84TtwwfkW61lMuLJFW+G1LPA0c+iinfo+4n3q4OHg7PFpzgejkBVj8/B+TFH\r\nubigl7rV1WmVuUJYU7nQ3XH/U966+foqz+FJv3WwRsxBGmwIgaP8+ELlBD5O\r\nXOc1yn3Qdv8Bv9ncg0J4J6kq2a1rOwzs5Sw=\r\n=Me2y\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -749,48 +749,48 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.6.0-d1.4",
 			"dependencies": {
-				"@miniflare/cache": "2.6.0-d1.4",
-				"@miniflare/core": "2.6.0-d1.4",
-				"@miniflare/durable-objects": "2.6.0-d1.4",
-				"@miniflare/html-rewriter": "2.6.0-d1.4",
-				"@miniflare/kv": "2.6.0-d1.4",
-				"@miniflare/runner-vm": "2.6.0-d1.4",
-				"@miniflare/shared": "2.6.0-d1.4",
-				"@miniflare/sites": "2.6.0-d1.4",
-				"@miniflare/storage-memory": "2.6.0-d1.4",
-				"@miniflare/web-sockets": "2.6.0-d1.4",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
 				"miniflare": "2.6.0-d1.4",
+				"@jest/types": ">=27",
+				"@miniflare/kv": "2.6.0-d1.4",
+				"@miniflare/core": "2.6.0-d1.4",
+				"@miniflare/cache": "2.6.0-d1.4",
+				"@miniflare/sites": "2.6.0-d1.4",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/shared": "2.6.0-d1.4",
+				"@miniflare/runner-vm": "2.6.0-d1.4",
+				"@miniflare/web-sockets": "2.6.0-d1.4",
+				"@miniflare/html-rewriter": "2.6.0-d1.4",
+				"@miniflare/storage-memory": "2.6.0-d1.4",
+				"@miniflare/durable-objects": "2.6.0-d1.4"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.6.0-d1.4",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.6.0-d1.4"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-/9fltAbjxemnCeKUSKYaKbRyYaDNqaTt2xZ2pXFebJsMlRAbHpgFyyH3fl9sLwBrBRN3TzgjyGWyohvFbH+8MA==",
 				"shasum": "ddd21873db3ee3143d17ddf1d1cd78f784dee418",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.6.0-d1.4.tgz",
 				"fileCount": 5,
-				"unpackedSize": 14577,
+				"integrity": "sha512-/9fltAbjxemnCeKUSKYaKbRyYaDNqaTt2xZ2pXFebJsMlRAbHpgFyyH3fl9sLwBrBRN3TzgjyGWyohvFbH+8MA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIA2rBCYySVL5D5zJ0myr9QgvBMvtxS/hHL4vRR1DxxYQAiAgMGXBVLHpsPno+dRfyvMNDOZRL1P5ZY/yy9smppRvYA=="
+						"sig": "MEQCIA2rBCYySVL5D5zJ0myr9QgvBMvtxS/hHL4vRR1DxxYQAiAgMGXBVLHpsPno+dRfyvMNDOZRL1P5ZY/yy9smppRvYA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 14577,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi8kPVACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmreUhAAhl4OSZkiuaXUFibpDQRZX6TMtOf31+TUxN7sSB923L3zLy9L\r\ndtMwP3Wf8sNYuV5ujpJo9Ro+m5F20xLnA1wtVIKZpHNaUUzt9He9Ebt+MQdW\r\nUlmlDc2+BvJWDBPG10k1C74GzBaR80CenaKigWoP3WlFWXMYEcJoKAdjlAC0\r\nPiqfXkpQxx3d6Y2VmRhtqTnMMxZXFY1QXqr5iRrD3hPFPR0uXQER4Zy0j3k6\r\nYrWPi1G0VQQcftlESwsgU6+EPTMjPCf5wgSek/o2FS7ym+cgVLoLYJkRmnR5\r\nTber8osM+66heA7Se+oUsDm2Gm5Yu7lCt/umu2N4yzweHLffkYXH+cZGQaAj\r\npYgtCucCkQpv6Mdh+9zBwwLLbB0Z5d8e0U7TrF/M/1+Z4XBfBY+K9It1j6f7\r\ndvkzRKzCOsPRjRgZUBmDu44cNgvcQTsDZyLYuHtuHF05NmsK98a0WbJnJqPg\r\ndM9SO+1vcEEBAJvwMgbUYTiNDwZAuSNrgBQ05FPN5X1VZqpw4l5wnLUUoXAD\r\ndVrTRtgKJWbaIvnNAMOqJcsskFkFra3JFqdPdaLumigkO83FjH3Po7GaTC32\r\n6aXzqTPjMhTRIkxAz3F79nlp3OcP6MgCyBHrqa/I4KdGYLMQvo1hzUskLJz7\r\nasyx2Vsldm0OvwxDE3lMvzRWh3/yqxYzAPk=\r\n=+JHQ\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -801,48 +801,48 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.6.0-d1.5",
 			"dependencies": {
-				"@miniflare/cache": "2.6.0-d1.5",
-				"@miniflare/core": "2.6.0-d1.5",
-				"@miniflare/durable-objects": "2.6.0-d1.5",
-				"@miniflare/html-rewriter": "2.6.0-d1.5",
-				"@miniflare/kv": "2.6.0-d1.5",
-				"@miniflare/runner-vm": "2.6.0-d1.5",
-				"@miniflare/shared": "2.6.0-d1.5",
-				"@miniflare/sites": "2.6.0-d1.5",
-				"@miniflare/storage-memory": "2.6.0-d1.5",
-				"@miniflare/web-sockets": "2.6.0-d1.5",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
 				"miniflare": "2.6.0-d1.5",
+				"@jest/types": ">=27",
+				"@miniflare/kv": "2.6.0-d1.5",
+				"@miniflare/core": "2.6.0-d1.5",
+				"@miniflare/cache": "2.6.0-d1.5",
+				"@miniflare/sites": "2.6.0-d1.5",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/shared": "2.6.0-d1.5",
+				"@miniflare/runner-vm": "2.6.0-d1.5",
+				"@miniflare/web-sockets": "2.6.0-d1.5",
+				"@miniflare/html-rewriter": "2.6.0-d1.5",
+				"@miniflare/storage-memory": "2.6.0-d1.5",
+				"@miniflare/durable-objects": "2.6.0-d1.5"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.6.0-d1.5",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.6.0-d1.5"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-ZtnF6jL+jbOd5Z4TX9pvjpmvMRyodhFQwsQh8vVMkT8FArZX3UDFNw/R/meUKEP0LpJDQ74EXHMwG26uA0BOdQ==",
 				"shasum": "424dc10ce5d92bbf8de918355802f20161888e75",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.6.0-d1.5.tgz",
 				"fileCount": 5,
-				"unpackedSize": 14577,
+				"integrity": "sha512-ZtnF6jL+jbOd5Z4TX9pvjpmvMRyodhFQwsQh8vVMkT8FArZX3UDFNw/R/meUKEP0LpJDQ74EXHMwG26uA0BOdQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCDNFk6LOPssCuxJx6//Od27PMdEdAG7YXqRhC6K1pZJwIhAKlkFjt+66J19tUpJiIGdVHqd4l16tkY10oED8WuksNH"
+						"sig": "MEYCIQCDNFk6LOPssCuxJx6//Od27PMdEdAG7YXqRhC6K1pZJwIhAKlkFjt+66J19tUpJiIGdVHqd4l16tkY10oED8WuksNH",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 14577,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi9oCCACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpoAQ/7BKH0l+xKYVYEiV/VzKJn8yNm4hFJ9K2FNs0HhzTgtnsc9ze0\r\nGDzhg0J3jjVGhXR8YTuZ792CBSI//aeIHbUpkODNp3IwcGuMVgBH4Zr93e5o\r\n1xjfWedHBV+sWGVOyBNC1Bo7F6MWvQCJ17PGtn8hLsHcXRgZqFHIhoUHBwml\r\nj1At7tHmKSVJ3Nkptpi48o+8BvoyZlnp+m8SstO3/zok+wqLvbWP44029kmx\r\nxBC7/eLCSVvFavvaS0tpATk4nUgOq8ejs2J68ogeYeYiP3MqCRV72v2jWkmV\r\nX5IRSZklPkq6vw8g7sUlidNHMxZEteAlu9Es4SVIxhjqkwVtEWjL0JNSx6Rh\r\nuMO8LGAON/h2QGCta4FnitHki/lFXywPw8QoPsXlugqDkg/1qUtXnnz9GkXO\r\nBEFet4izwbluR2F55VebYMYfpIrGk02Z7+Hs29hGO7OnpvW99vlODdGra6ww\r\nOEnVB6kmRRqQOqzm5gHhcWi3xOazDkuPFq/iQXasfS9Md8IccufDBWgMuPkZ\r\nUwum1EhgjH60ewfHvPTMpXU3BIVqc4KJFAylTB+Y4Crv3Od85PPETr9YZmyf\r\nQvSNEHLpfWVtJRecqlFpOXVTBU1pJfDafeAzeH51BMSYP+grQQcchfKB1me9\r\nXNlLbUzPZXSen549QdEoxW5mM9L6p3buE1A=\r\n=Oyjr\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -853,48 +853,48 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.7.0",
 			"dependencies": {
-				"@miniflare/cache": "2.7.0",
-				"@miniflare/core": "2.7.0",
-				"@miniflare/durable-objects": "2.7.0",
-				"@miniflare/html-rewriter": "2.7.0",
-				"@miniflare/kv": "2.7.0",
-				"@miniflare/runner-vm": "2.7.0",
-				"@miniflare/shared": "2.7.0",
-				"@miniflare/sites": "2.7.0",
-				"@miniflare/storage-memory": "2.7.0",
-				"@miniflare/web-sockets": "2.7.0",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
 				"miniflare": "2.7.0",
+				"@jest/types": ">=27",
+				"@miniflare/kv": "2.7.0",
+				"@miniflare/core": "2.7.0",
+				"@miniflare/cache": "2.7.0",
+				"@miniflare/sites": "2.7.0",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/shared": "2.7.0",
+				"@miniflare/runner-vm": "2.7.0",
+				"@miniflare/web-sockets": "2.7.0",
+				"@miniflare/html-rewriter": "2.7.0",
+				"@miniflare/storage-memory": "2.7.0",
+				"@miniflare/durable-objects": "2.7.0"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.7.0",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.7.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-hbAWZT7ghHxDLtdm4egwjj0KC+Gd0tP8A/Xl9EbZ4JyWBspKuJ6k+LKQOwp9EZVuMjPThUq8A8v1KGMBRp2dGw==",
 				"shasum": "8a84d3acffa7eb2e6c769ccc371f7f5d16be7a5f",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.7.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 15150,
+				"integrity": "sha512-hbAWZT7ghHxDLtdm4egwjj0KC+Gd0tP8A/Xl9EbZ4JyWBspKuJ6k+LKQOwp9EZVuMjPThUq8A8v1KGMBRp2dGw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCsOU/jOepa8hLzz8Gp+fA4J2ntltq/HqCZv7jvle8etQIhAPikFUb2R5/Yx16DDaLoz8AxBjTr1kqoibv4Kz8cNCLI"
+						"sig": "MEYCIQCsOU/jOepa8hLzz8Gp+fA4J2ntltq/HqCZv7jvle8etQIhAPikFUb2R5/Yx16DDaLoz8AxBjTr1kqoibv4Kz8cNCLI",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 15150,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi/8MoACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr0Ew//SdQKO8n3TQUMOg+3KsJ4Rf13eYzC95LcCF++p3qn5KRLgp4N\r\nd326x5NRyqGapvcRCZ4i8KRnD5uGHt6S7JD5cjR0qsg0ElGaRHMvQqIfJUbw\r\n05pUoGojlOPaMjScp74Qc0iLxaAXI6YX9fLwBL7yB9LO3UNgxVcR6UkSwpjZ\r\nvKHlw1sA9FY9oDK0tUsK/7k2A8uaslgWQLx2e8PUV4GZclvi33y0JYuOliq4\r\n3fVK7OpExZ5YT/oxmBJ7tEBtpFoIBsoIkQFXP9wodTlKchC2KTfDv9ZPt3v4\r\nAgclE9jiDnOy4BZD75TV8ZNCSTWEssmQMqgmjltegQrqrDqwtONn7l0MlvcH\r\nFgUir21C+qPtBK+OvshOe64F07x8mwRhrjTFHKtnqspKhb6or4Jmfv8eo8PK\r\nDgrjoM2A9iPgks/J687q+XMPgibRYikKM/VHnYtiwtuq6FWbVJMEhYxtGNTA\r\nV2hxaSim6KzRR6XozbVOUYA596ZwnII+aCoP/QvEEkRHCj5TRfHTzDemrg3e\r\nKVJBQ2f8ByKqwOxfMgyR5szZrmN/e1Ia3RjCn4miyKvpveZpoTVjPdqevbQB\r\n9frc41txLoV7I1WY0gCOSZjlJPl7rYreX7dOBJhifd4KMqgDOnDCw/jlgj7e\r\nHFbWLsYVQzKm1ezRPO6BtxNQOnMFjrnm+V8=\r\n=iaEU\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -905,48 +905,48 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.7.1",
 			"dependencies": {
-				"@miniflare/cache": "2.7.1",
-				"@miniflare/core": "2.7.1",
-				"@miniflare/durable-objects": "2.7.1",
-				"@miniflare/html-rewriter": "2.7.1",
-				"@miniflare/kv": "2.7.1",
-				"@miniflare/runner-vm": "2.7.1",
-				"@miniflare/shared": "2.7.1",
-				"@miniflare/sites": "2.7.1",
-				"@miniflare/storage-memory": "2.7.1",
-				"@miniflare/web-sockets": "2.7.1",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
 				"miniflare": "2.7.1",
+				"@jest/types": ">=27",
+				"@miniflare/kv": "2.7.1",
+				"@miniflare/core": "2.7.1",
+				"@miniflare/cache": "2.7.1",
+				"@miniflare/sites": "2.7.1",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/shared": "2.7.1",
+				"@miniflare/runner-vm": "2.7.1",
+				"@miniflare/web-sockets": "2.7.1",
+				"@miniflare/html-rewriter": "2.7.1",
+				"@miniflare/storage-memory": "2.7.1",
+				"@miniflare/durable-objects": "2.7.1"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.7.1",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.7.1"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-dU2CVp1JTJKj62GQ0cWzXOuZBHC0cCZqTSur3grJdpGoJFCTasfBlN4QOoqYPoRSo0rfua3u7e0xgmrt7ZymyQ==",
 				"shasum": "1d258abc2becaf994827ddc4b45f0b53a183fe5d",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.7.1.tgz",
 				"fileCount": 5,
-				"unpackedSize": 15150,
+				"integrity": "sha512-dU2CVp1JTJKj62GQ0cWzXOuZBHC0cCZqTSur3grJdpGoJFCTasfBlN4QOoqYPoRSo0rfua3u7e0xgmrt7ZymyQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIGyJZP2e2L5/NxJQsCi6mfg7pP920xLCdgXkkVjkba+QAiEAwxKcb6dvuzYCq8SeGG3P+vP1pDAPVfW4Lmm0YdpGV/o="
+						"sig": "MEUCIGyJZP2e2L5/NxJQsCi6mfg7pP920xLCdgXkkVjkba+QAiEAwxKcb6dvuzYCq8SeGG3P+vP1pDAPVfW4Lmm0YdpGV/o=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 15150,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjA65oACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpH6Q/+PuhRbuqhVjQDKADrmBoPM5ojvXEcU+my3eNcip0wLFvgYkSj\r\nGYqDTprijVzYMEwtZvGfy+HYKxzb/G1R5mIzyMOLMdc3VpgpHz4bDf59A8Yk\r\n4tfVnthOGtp70QyUl9ltcLcJC4rTJE3PFCj2w2vKnF512SNY3WGB2qQsgwz4\r\nWyd2EtLxC31+coTN2UcesFZQGajNOVPFgPCV6x9GAdY/U/LYWlrqXFpqRYdV\r\nk8mzATEqk7rTVn4MhBXwyNTGFXzVD1lJBQy7/bf8ZmFkBGbnWqUeMe63/cK5\r\nqfQvawF2nWogES2eN00EEziANoza82emP6ulOM6E+6WNIwvKen/vxdWXeYzO\r\nGuZvfw5NbgHV0kcVNDEWRrPeW32E+iOQl0gxivY7B913usv3ilFc+MKKW5zS\r\nqiFO+Bzo9X7/oTkZA4mlV6ZbER6XVvz/xJO1ga27MQvjfrtl38psxa8GYnNU\r\nNUPZEgSHQ7IYWmTLrOzHPejLcGhCEWzEo5Pxhw45HDwFqrzBJxMkXdZvNiwE\r\nZgaN81iGq3yHjZxytIzm8A7UVk3P5qhP5OPI11pmEAD0MZQ5p5MIuhQSYv6R\r\nzaCYimAP0yM6a/FgxLV/KV2pIqLkgLA/ePs+e2IBwGu+S6HylHPafC4vqoLk\r\nAcTyzAl4fazUmoNA5BDo48cAQQx88c3FsRk=\r\n=Py5B\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -957,41 +957,41 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.8.0",
 			"dependencies": {
-				"@miniflare/runner-vm": "2.8.0",
-				"@miniflare/shared": "2.8.0",
-				"@miniflare/shared-test-environment": "2.8.0",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/shared": "2.8.0",
+				"@miniflare/runner-vm": "2.8.0",
+				"@miniflare/shared-test-environment": "2.8.0"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.8.0",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
 				"miniflare": "2.8.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.8.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-BXNmrquo1s2d9nPkibX8QqM2bg7Pd4pzFLaumQhx3XQDMqkmfPeQLlGDVSyvsofTJJcTY56AexYQoj2bvCzaOg==",
 				"shasum": "82af3cd6f5ad36b05596d9f546ba1bbd03e91f19",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.8.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 10656,
+				"integrity": "sha512-BXNmrquo1s2d9nPkibX8QqM2bg7Pd4pzFLaumQhx3XQDMqkmfPeQLlGDVSyvsofTJJcTY56AexYQoj2bvCzaOg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIFgBiMJIcoozO5JXmPGQIHK0z0rMCDmfM1KSS4cD3jW9AiA2hrgNjHjaaPsYhcxOisPca7xKZ8nGtN9GY8iEgkEgaQ=="
+						"sig": "MEQCIFgBiMJIcoozO5JXmPGQIHK0z0rMCDmfM1KSS4cD3jW9AiA2hrgNjHjaaPsYhcxOisPca7xKZ8nGtN9GY8iEgkEgaQ==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10656,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjGQikACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoLSw/6AkDAxdHUoAuWYJfmgi9WiSLEwJgDG7F0tAfEk1OkSQDuLX5H\r\nFzRk1zFmKoeMtp2Z6nq7DlBdkSgv7LQ6xwnWh+R1C0xMQcSPCi8aF/YVmw57\r\noLz5667Wx5nwi/5eeAhPXni8MvCYnoKhOKh9gXES10bY4OltDR7aNfZViqy6\r\nj9suy9lYSF16mYlAM7PS7veGaj9VF76TfyWs+zI44impeRzMehwCecF4iKBa\r\nTBzY+X/9KEzDMKHuW/dx0W80TthktdweZob7B6xX9hd+XN+70if2ZiQSTJkp\r\nnslDhGLZHvMSMRM+oKUDS4ec7zKUPyHGTjQw+I5UyBxz0JvR+et/SfMUIApY\r\nJewGaFGZpeLmqeA1tQ4LXPxVGTD/NshHtZxdFO2t5+nG+tbMfOJaFuIJ3H7h\r\nRRGrs1UlJUrvopocoSsjKzM9VZVvORT6jXFrQlbsRsb/lmEV7isl+PwMbsmD\r\nfE2Qb9cUPMQD9ESlDe76wvDfK+AX/2DNu9fmQUHv/zz9J4OUoAXZdAFPVRBX\r\nfV6DoUTcNlRZMJybh/xuwSuatylkNt4LCRS+8iBoXW54d8nHZVQ2CIHSOB+c\r\nQbB7gOh0QINjovMnQHkQ+cRcn+JRP1calsjG+6gKEwHjff/XyGKv1qxQi7+v\r\nllvLtsbWos01e236dJqdbYQGWWiTAG2F+C8=\r\n=Hokd\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1002,42 +1002,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.8.1",
 			"dependencies": {
-				"@miniflare/queues": "2.8.1",
-				"@miniflare/runner-vm": "2.8.1",
-				"@miniflare/shared": "2.8.1",
-				"@miniflare/shared-test-environment": "2.8.1",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.8.1",
+				"@miniflare/shared": "2.8.1",
+				"@miniflare/runner-vm": "2.8.1",
+				"@miniflare/shared-test-environment": "2.8.1"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.8.1",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
 				"miniflare": "2.8.1",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.8.1"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-XdRP7CTaPRlt2xosGSjRy+e94nWrto7sn+mcBwJspnI04s10AB80HMUeZI8+dKRjzlnCgmwiTT5ZUaXZU8gIyg==",
 				"shasum": "23a31c6b701a20fedf1bc18fbaa759832d87f610",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.8.1.tgz",
 				"fileCount": 5,
-				"unpackedSize": 10690,
+				"integrity": "sha512-XdRP7CTaPRlt2xosGSjRy+e94nWrto7sn+mcBwJspnI04s10AB80HMUeZI8+dKRjzlnCgmwiTT5ZUaXZU8gIyg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIG3SAoeXYr49qEhr8DHQ+kYjTOsz7orrWcdiUpoUuGtSAiEA3TNFgtxEHavnOsRGwd5XKbcJnXpIaVz2/KUzB7Wq6Ls="
+						"sig": "MEUCIG3SAoeXYr49qEhr8DHQ+kYjTOsz7orrWcdiUpoUuGtSAiEA3TNFgtxEHavnOsRGwd5XKbcJnXpIaVz2/KUzB7Wq6Ls=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10690,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjGbreACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrMVw/+OnWJPyKba75vnw/VN+/+vzf7i/PKKlQc9Ga+9tY91iCzT8mz\r\n1dxCy/V2Qcl880V7jkYffxWl5Cig1rzUMDcVuSxmmhhWsYg9LZJlJtgXnXlG\r\nui/Fpw9et9vGk8RbwL3dQISmjrVgDSEdwgSLm1HRafxe90haxkCIyUL/OYvm\r\nGk21CO2p3pEox+Ni/cvLmYqL/CH18X/KrgJtVVTJ4AclowdV0r6jpcKPX64b\r\nq0vMsHnsj7L7fEMHFG5dtUGl4/e5BWkGIGegC4b2/H3RE20yvjzAHKZDOQPz\r\nVqbCsBQB7yguarCzHPxrDrg3K0XV8bCvkc6IiMFdhz8HIhHWS4butA/Ts1ZV\r\njVXTgXumYlq7Wgzr7+jbL1Yf0t3kE5ff7gsrH8jncI/xQ47+uxVDtQrB7Ccz\r\ntUMocQzzOhlBoCz8WZYAE/fcVlJarzjVuiDXoxJNuo6ZBcEjrJ2oZkg8ffR9\r\nC18btsXi4x2QI3QVZ+pjc6zuxg3CF1UaWFqxctQznhluGG4NmN4q7LG7mpzJ\r\niqJlJNnVWFXjzw2WMYxR8C2AuwjVqgVX5YanWHpwEsOUiCaa1xibQrLcNWlg\r\n9zBQH78sO9xwgeEYApDxPU7uVARhoBvxYEk+CJHVGa/Kmo2thQMYBUq7IXJs\r\n4ThpVf6RLO8aq7mRkKQTnm2cNvdjZgdF59Q=\r\n=W8CW\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1048,42 +1048,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.9.0-next.1",
 			"dependencies": {
-				"@miniflare/queues": "2.9.0-next.1",
-				"@miniflare/runner-vm": "2.9.0-next.1",
-				"@miniflare/shared": "2.9.0-next.1",
-				"@miniflare/shared-test-environment": "2.9.0-next.1",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.9.0-next.1",
+				"@miniflare/shared": "2.9.0-next.1",
+				"@miniflare/runner-vm": "2.9.0-next.1",
+				"@miniflare/shared-test-environment": "2.9.0-next.1"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.9.0-next.1",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
 				"miniflare": "2.9.0-next.1",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.9.0-next.1"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-Z1vuBJmMnbsLupRYeejZRxFfXRHyqZv2UvwCQzEBskoLdmojfpVdBgLn2S8GS14ZlxmNwA8qzm0SkAdUz1xtOg==",
 				"shasum": "8b2d57ec423a1f03ced4eebadad0071b42ebc2ec",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.9.0-next.1.tgz",
 				"fileCount": 5,
-				"unpackedSize": 10739,
+				"integrity": "sha512-Z1vuBJmMnbsLupRYeejZRxFfXRHyqZv2UvwCQzEBskoLdmojfpVdBgLn2S8GS14ZlxmNwA8qzm0SkAdUz1xtOg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQCvZAoOlRr9kfCf6hGsgdFoDmZj4gnFLcvZd3L98FQVBQIgJdOTse6orYvU3HW+D4nlL1ypVjYVTbTXz/QEnXcvn64="
+						"sig": "MEUCIQCvZAoOlRr9kfCf6hGsgdFoDmZj4gnFLcvZd3L98FQVBQIgJdOTse6orYvU3HW+D4nlL1ypVjYVTbTXz/QEnXcvn64=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10739,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjHLzhACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpfLQ/8DumKla9T+cjWpKV6cve7FYbdAipE4w83U5jh9KFnClOQreW4\r\neNd2WRryWFatAHeqO+sIgf2ywnguM97BCYOAWc1/MEx76aDLyW+ROPKW5dMU\r\nvBsTN0KqXk4TcqsWkp6v5KI181tzV04JNtXNmTkBTx611Rh2FhWSinYH9EiT\r\nziJkD9OKtvRJMcJjg2+DlMKzfzr3G2w0EsqlieHRarf2ETYe19U9FhsazxA1\r\nz6mTNTsYpBrtEo8i7/mmc+W9y+swmMX5wcRsJgoAI2FMqTh65wPgO9XvZ+0N\r\ndvAZPFL2Fa9ATuKl4K001O+JDi9JFRU/QvNCEsWLIt2D/SJlGl+yYyJZ/WwQ\r\n3Kw5R0hd3GuJjcV4+Z2AtUSLZ+LL1BPJbDURRNAbUxQ8d50RKEunxuECk5Br\r\n2NwyRK2ImaNyyJFOU5hwtnsJV5IFp7swK8lpXbeDYZhaWiyXyXZyqwOKwRJT\r\njwjgz4IwvNSTevJQWg9V/2ujW8fqgYX1HABPH4NiHT1ItydZtnBHZZI+2FaO\r\ntAcam6FAhuV/JEIGXMqWNkpUJBw7/z6DsGFLt9HOadY9H3yj36M/hIbIJe/B\r\nT1MR3exMdkO9uW7MMG/l6IsimN/3NSF/mnt+bKABsiO1rIPTLtPCV84pUv8U\r\nX4unVYEh7VyGywXyD+H5galzvLrPKYfOwB4=\r\n=DZKJ\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1094,42 +1094,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.8.2",
 			"dependencies": {
-				"@miniflare/queues": "2.8.2",
-				"@miniflare/runner-vm": "2.8.2",
-				"@miniflare/shared": "2.8.2",
-				"@miniflare/shared-test-environment": "2.8.2",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.8.2",
+				"@miniflare/shared": "2.8.2",
+				"@miniflare/runner-vm": "2.8.2",
+				"@miniflare/shared-test-environment": "2.8.2"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.8.2",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
 				"miniflare": "2.8.2",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.8.2"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-Mi8M1c6g3Gyu7XeLDsPejKiSzV2NjWX8dNnopAyzxKFV4jYusST7245G04Lv2G9eBfefzEjbpEpLJTG8bmJKxw==",
 				"shasum": "b0d71abbf29192ebf6b47dffb1b13b3c43ff5f4b",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.8.2.tgz",
 				"fileCount": 5,
-				"unpackedSize": 10690,
+				"integrity": "sha512-Mi8M1c6g3Gyu7XeLDsPejKiSzV2NjWX8dNnopAyzxKFV4jYusST7245G04Lv2G9eBfefzEjbpEpLJTG8bmJKxw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQC5mau1jvdAUFpt2CLIxFnoIGlmgr2TQrQ1THWf3y76EQIgSi2htxNMKpHrdZmjXOD4Ki+XaSj2Bu78spLjMbXlcBE="
+						"sig": "MEUCIQC5mau1jvdAUFpt2CLIxFnoIGlmgr2TQrQ1THWf3y76EQIgSi2htxNMKpHrdZmjXOD4Ki+XaSj2Bu78spLjMbXlcBE=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10690,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjHL8WACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrsQw/+LHn8e14LViPORVfA0HM6XoSslIgMh3rdANYLYaPK1RFNB9qO\r\n7brJxz70cD1yG1W0eJprKFsB7KRpoPhj6mc9/uGiUtQTalB7Go7tPwB7CXcP\r\ngy0b+fWEt1t9LVMQXxqVH5gZrOraAoRy13NJiR3zRZkVnGk8cHejp7IzpyuB\r\nTM66BYHjzZD6Y4E9V2O3j6HE6IwqnP2neWdkvljywoD9zRudR3eN8XvFDA7p\r\nBagaf9LmrsUIrx4eYT3RK10WPkx2UBK6hEKJivCi9jWQKnbyhKTJNY5Ny4bs\r\nbEzOTolimZtGa3jyHHQzDGWELfAG1fTmZMyjzAFwJo5SISWeP33eIqCgBU/P\r\ntSa2WrcvhHamw2pfVPsPGsIrKtDAv/D1xIOaJkW6JolbGZuUKGo66DI89kae\r\npWn0mGKwc2KuVJI5jShapmXxpb3utc/sGEx/O2sIJSh39sYfapmM4tsq0s3b\r\naLkSZSL4nsXB08V6COzryiEyXKQB5n29nKZldL7MmJ22ciSdhky6GciH7w28\r\ne5uDAOmYsovu9UGKg1FkFNwlHZn3oXlsOFxL3OCeL9HxNEVBNURRPYlpDlCB\r\n3qRLC5wK4nrYZdA+3SclHuQuefR120PwZ0vfJ+71iKZxPX6+j8sJqNpRxa50\r\nm978QmLiLpd8qkoVPQuhTicbBeHKR0b1NzU=\r\n=rk6V\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1140,42 +1140,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.8.2-d1.0",
 			"dependencies": {
-				"@miniflare/queues": "2.8.2-d1.0",
-				"@miniflare/runner-vm": "2.8.2-d1.0",
-				"@miniflare/shared": "2.8.2-d1.0",
-				"@miniflare/shared-test-environment": "2.8.2-d1.0",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.8.2-d1.0",
+				"@miniflare/shared": "2.8.2-d1.0",
+				"@miniflare/runner-vm": "2.8.2-d1.0",
+				"@miniflare/shared-test-environment": "2.8.2-d1.0"
 			},
 			"devDependencies": {
-				"@jest/environment": "^28.1.0",
-				"@jest/fake-timers": "^28.1.0",
-				"@jest/types": "^28.1.0",
-				"@miniflare/shared-test": "2.8.2-d1.0",
 				"jest": "^28.1.0",
 				"jest-mock": "^28.1.0",
 				"jest-util": "^28.1.0",
 				"miniflare": "2.8.2-d1.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^28.1.0",
+				"@jest/environment": "^28.1.0",
+				"@jest/fake-timers": "^28.1.0",
+				"@miniflare/shared-test": "2.8.2-d1.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-9JlEUv2C5qvEqqo/gO8pYIQueJGhcAGaAC/lQxyIk2EHq6zBrWtvXfKuT7F8KYqdtHaBn+VSnEnK1mVfRgDKUA==",
 				"shasum": "a69b56b2c4319ea11e89993ff052e4da71ac093f",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.8.2-d1.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 10725,
+				"integrity": "sha512-9JlEUv2C5qvEqqo/gO8pYIQueJGhcAGaAC/lQxyIk2EHq6zBrWtvXfKuT7F8KYqdtHaBn+VSnEnK1mVfRgDKUA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIDLAyYl3BEXVWNc8Ho0vDoYIXsnXuJ/E3ioLTv0sbNrPAiEAyqHrq0K8GzTYu+enJ3e08bAufq+Yjwuo5Fpy4S1AaWw="
+						"sig": "MEUCIDLAyYl3BEXVWNc8Ho0vDoYIXsnXuJ/E3ioLTv0sbNrPAiEAyqHrq0K8GzTYu+enJ3e08bAufq+Yjwuo5Fpy4S1AaWw=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10725,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjHy8KACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqf5g/+LpcUNWM6nkOckrZcsoex0PMbsxY3mudAQFbaAO1IXKguojQB\r\nBCjJHG/QKkck6IHjhwRevzeO4AEiIJLmIexFOU/jtrIpKZooGiQHG4If1HjL\r\nq03GIxTF9qPm/7s70h0q8CFhV+KbJS1uFOR5P7lrpPGDaxR9PrqlrDuWuYOK\r\n/8oiM4c7KIokdPIwaU70FsATiztflsnOCUgYhgAjUnx2d6TkNdwOai9MnFzw\r\nBHC3aQiTjHYsElX89f/JWhbqatbjynlD+odjKtPw7cEbgdw+NfRdRabVwpfC\r\nUUOgjN5i6iBnMG3vvZZc4PDDi4hr5TAav035AbNQgNpatvKead38VZEiv0qx\r\n5bu57ocPg7plFPsBo5zAEE449Jk2IJZIq80z2cgqAPM8HHKTTnFVYYBJQETE\r\n/25Uv7CJ4IgVy7t+Jusp8pshX15sof5ZlUABO07maxkin6DJUbRJBcsIIHjC\r\nbwh9IHoWHsHwTpDN1OhC1evirbrtv4yG3RZDL7jXRoesA6lBSmvnKMNZAfbz\r\nBepT2m8+U4WIOFSlMIAN1JitHYE8/iBB/CVqBaghKnCi9CtXt5IUYT0G4nyY\r\nbKCuH20AdnzRnezUMrtvHu05jg25lh7JoPnkpjqWUJrI0dsXGaiQyX1XfIly\r\ndLundki/49HuaOoPfTBwqIDSjmuDJ7qunuU=\r\n=o9St\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1186,42 +1186,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.9.0",
 			"dependencies": {
-				"@miniflare/queues": "2.9.0",
-				"@miniflare/runner-vm": "2.9.0",
-				"@miniflare/shared": "2.9.0",
-				"@miniflare/shared-test-environment": "2.9.0",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.9.0",
+				"@miniflare/shared": "2.9.0",
+				"@miniflare/runner-vm": "2.9.0",
+				"@miniflare/shared-test-environment": "2.9.0"
 			},
 			"devDependencies": {
-				"@jest/environment": "^29.0.3",
-				"@jest/fake-timers": "^29.0.3",
-				"@jest/types": "^29.0.3",
-				"@miniflare/shared-test": "2.9.0",
 				"jest": "^29.0.3",
 				"jest-mock": "^29.0.3",
 				"jest-util": "^29.0.3",
 				"miniflare": "2.9.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^29.0.3",
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@miniflare/shared-test": "2.9.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-3oASQvjzxhgswevwpkdupN2AnM/jXi2SlAVpCJf8qYwB5h7u4nkvxihi2qxsFSWZ8cBdTMSSSn0hT64w5aw0WQ==",
 				"shasum": "b710c5e8045c45f3532278c2a2e20c57ee62036c",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.9.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 10690,
+				"integrity": "sha512-3oASQvjzxhgswevwpkdupN2AnM/jXi2SlAVpCJf8qYwB5h7u4nkvxihi2qxsFSWZ8cBdTMSSSn0hT64w5aw0WQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCID8r9GduoR83wPyZb62/P2Q2qzuAQrETCA2habmKmkMCAiB93kv2dBV5Jp4sFoXDyXCy3QaH5Rq37/JR5ttzFQi0YA=="
+						"sig": "MEQCID8r9GduoR83wPyZb62/P2Q2qzuAQrETCA2habmKmkMCAiB93kv2dBV5Jp4sFoXDyXCy3QaH5Rq37/JR5ttzFQi0YA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10690,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjJI5TACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqB5Q/9HaqNwWDYV6i21b8KBEZrRcrIpXTl96uBu/bhbpv7W/Ipfjm6\r\n92FyL77l8Mvrhj0D+lySztJ6OloAP0pdWapJ+mC499WXhBJwxmQMkXeKKe6z\r\nk3GOFQldCoANbbhe1PyUiCmWKaOS+LrW+uXjIUJuxKsrp+MT6qtK1siZipmS\r\nvqYrCBT1+ltHdhpyhwGfz562+7Gkva+t86X1RUumxoDT91OuOFfqHFruCFOh\r\nzYlvmYzFCWTyCmCOAhf4Q/7qjTFGASvgFtfdxJ4Jl9UXe2kpdbuVmk2yb3io\r\nStVmj8KPGM47l80pB28dUHxju1v0w6DMxoE1ctqmCjiutNhgrLj00D9C4lsJ\r\nNSAzw4fQlwtK6XRqRsFM0YkY0w9sJ4T9PHs3o8jwGifYrCQPFhYss4VrQK7R\r\nRB7dQhpDHPs5EJdeD/e+c8D+y75hyE7ZPxz83wAnIVOakf5DntstWowDHMHZ\r\nq43RGL8H+UcGdmeQq4KVV3R6FekOnMSThS8ewEtPxhmEY0CI+8go0an09ZxM\r\nY+dY6CnogFgBWaCZac1lF0Gkzu7UI6HuDr2Chp677NKMgr8QN3Hb3I4+/0/n\r\nOFI/s/z+/xO/MVif57pXyDVj+Enix8r78G+MUF9Pl7fUsw4jXYJiW/6gkFbw\r\nqxdKTG0OrL9+J3SjobpLd9wJyhmt1kUrois=\r\n=7tf3\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1232,42 +1232,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.10.0",
 			"dependencies": {
-				"@miniflare/queues": "2.10.0",
-				"@miniflare/runner-vm": "2.10.0",
-				"@miniflare/shared": "2.10.0",
-				"@miniflare/shared-test-environment": "2.10.0",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.10.0",
+				"@miniflare/shared": "2.10.0",
+				"@miniflare/runner-vm": "2.10.0",
+				"@miniflare/shared-test-environment": "2.10.0"
 			},
 			"devDependencies": {
-				"@jest/environment": "^29.0.3",
-				"@jest/fake-timers": "^29.0.3",
-				"@jest/types": "^29.0.3",
-				"@miniflare/shared-test": "2.10.0",
 				"jest": "^29.0.3",
 				"jest-mock": "^29.0.3",
 				"jest-util": "^29.0.3",
 				"miniflare": "2.10.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^29.0.3",
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@miniflare/shared-test": "2.10.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-dfmLo0fQ5IjbfSL3o6gM7PeAUl8qv/oNBXkTTJOvY5a80+zj1jdGrO+suizMSJPjHk2Oe2V3aGgYUBHIEHh+YA==",
 				"shasum": "8a84654a547a57b877be78ce9e416ea85b28de28",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.10.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 10697,
+				"integrity": "sha512-dfmLo0fQ5IjbfSL3o6gM7PeAUl8qv/oNBXkTTJOvY5a80+zj1jdGrO+suizMSJPjHk2Oe2V3aGgYUBHIEHh+YA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIHNaD7XfVveX4y00S0qgKtIVnKdQt2p6G7nbH39at3cuAiBjv0IoflTGbvzPa0S7E2yArKsTyocYMqJRdktCdKSvcA=="
+						"sig": "MEQCIHNaD7XfVveX4y00S0qgKtIVnKdQt2p6G7nbH39at3cuAiBjv0IoflTGbvzPa0S7E2yArKsTyocYMqJRdktCdKSvcA==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10697,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjRTToACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo+Tw//abWUX7D5pAHan+F8G9AJOMSFFFevhzb6q2G43385ktUyNh1f\r\n6WveC5hNLJV7NIfT26X5ZaI130HNoX5E3P8ncmjZ9WrlWDYsiQD2MeeWHGED\r\nUqjHnXtFdu1KZQvBTVQSDBh3TSI160czn2GB/cwCjJFgFR6Jt+yRcjQIFXE2\r\ntmSWPaRI62BerjkCGJP9UzNzoXkrv5yEEVWbIsECVskV5qW4Lgz/2/CMs5f9\r\nltMWfFf7flcnQJ8re8GC3KHrYbfUtAG+8xw24mRFmu5TY6j1tXZuzIVSQYoD\r\n9sEezNN/lJv2BeVniBBfAfGxxgqGfaW4pVQx7/DbG/3hd2COqTaVOarcaZ+/\r\nTrsMypm0jHUgUZy0JTAWBZhabotSWD7J2NsFn8IN9KVbpcGqff+PdlbxW6ME\r\nExMhX9chcgt39KsGLhLLS86W1J7GN28CeS9Fdt0jKUqEmEmai+1KT2yHnCjL\r\nVkDxz7uE7kruvU8qTz3IMlRiYkAbJFLDahhGWQymdTKtHiWOYnCsU5mrwri3\r\n12CnzTtYvL+r4kmoqjaZ/3u2w/8G+3WbnVMfn71MZcdvZfNsIcciQALV59Bm\r\ni+OSX5ZFZFDmeQBXOrcYfQmCUs9z+lLgUj3gbX+ZmUcZ80ve4b2IUS0lEL6Y\r\nRhe8A4RjsPd9CwfYPHh8bAuG/VCUwXxDj7A=\r\n=oiXw\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1278,42 +1278,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.11.0",
 			"dependencies": {
-				"@miniflare/queues": "2.11.0",
-				"@miniflare/runner-vm": "2.11.0",
-				"@miniflare/shared": "2.11.0",
-				"@miniflare/shared-test-environment": "2.11.0",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.11.0",
+				"@miniflare/shared": "2.11.0",
+				"@miniflare/runner-vm": "2.11.0",
+				"@miniflare/shared-test-environment": "2.11.0"
 			},
 			"devDependencies": {
-				"@jest/environment": "^29.0.3",
-				"@jest/fake-timers": "^29.0.3",
-				"@jest/types": "^29.0.3",
-				"@miniflare/shared-test": "2.11.0",
 				"jest": "^29.0.3",
 				"jest-mock": "^29.0.3",
 				"jest-util": "^29.0.3",
 				"miniflare": "2.11.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^29.0.3",
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@miniflare/shared-test": "2.11.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-V/igrGzW39OIKJer8ftbUHBH6X1sl+1lsq86DWgYLhXlj0zkaMCbRf6tzTqrCL0Ecv0hjNb0sNOFyiNKCumpKA==",
 				"shasum": "bfe6422be1a5998245b7e1a21a0e83d17c9bffb8",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.11.0.tgz",
 				"fileCount": 5,
-				"unpackedSize": 10697,
+				"integrity": "sha512-V/igrGzW39OIKJer8ftbUHBH6X1sl+1lsq86DWgYLhXlj0zkaMCbRf6tzTqrCL0Ecv0hjNb0sNOFyiNKCumpKA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIF0WN7o5FTOml1qWWfumqaoQydLeypjSrE3kLgJlwoYzAiAVfoZi8PbASukJj6s8QzGI9gCazAhYXbKHc68ioGzhlw=="
+						"sig": "MEQCIF0WN7o5FTOml1qWWfumqaoQydLeypjSrE3kLgJlwoYzAiAVfoZi8PbASukJj6s8QzGI9gCazAhYXbKHc68ioGzhlw==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10697,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjWrEGACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmprqg//Y7BEhJrJ2JbKr1ZQJc7VFw4fXGT8uOBE2tOQK1TvwBtfTV0i\r\nN4ORSDRmeRbDa6TnX7gpmQ8h31d5doaa6b1zmvVNjIg0RM1YsPxgz83cvrZM\r\nnJ5vwlI34FtxuWNkHO6l80krpPonKEGZcbEPtkDFmslxsC4PHtnEcRR0VwzA\r\nrsDq57bQfuoyh1X/ljJb5Sun/3MUtL84gJv8omKpGfezfYiTnyytP2XBOQm8\r\nI0iimAR6aH8x8Edn/hyI+gmnHv1SUimKVok5kF8XR6GI3gCe/TM+V7iqi4VR\r\nepEv6kJP0vg6cG0lZFdV6DgfnHl00zm0fSM5iaD8tpkxZO679ecREMu5h+4W\r\nkS7v9IKtRqAZPDwqaHs80h55IFIXPO4q91lWaVSLXse6E8ABcONwpTI7IPzy\r\n8KP4BdfVhGve3hSuPEZhZxx/2D3Y2WnQHzd9j2B2bemNw1JrkFbS8+6ZbVH6\r\n8FwfeJ1gh3eYC7LIjEkiYomm7tRHBKZc7uUf2+F4Tbl3Ay5gnt1a2i7JWRGJ\r\nLpp24gG9EO/xKDlF771Na253o8Y3VG/MYYbtxznVAIzbFznwzWzwEWeaDrmp\r\nMmv6vDp1l90loaNEXvL65RJK4y9e4rJ8gs2XhZ4c54KEh6EW7/mg2u10LZLN\r\nAeotf89YwqlttDTMKaUHPoDY2wg/OP91gIE=\r\n=p5U/\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1324,42 +1324,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.12.0",
 			"dependencies": {
-				"@miniflare/queues": "2.12.0",
-				"@miniflare/runner-vm": "2.12.0",
-				"@miniflare/shared": "2.12.0",
-				"@miniflare/shared-test-environment": "2.12.0",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.12.0",
+				"@miniflare/shared": "2.12.0",
+				"@miniflare/runner-vm": "2.12.0",
+				"@miniflare/shared-test-environment": "2.12.0"
 			},
 			"devDependencies": {
-				"@jest/environment": "^29.0.3",
-				"@jest/fake-timers": "^29.0.3",
-				"@jest/types": "^29.0.3",
-				"@miniflare/shared-test": "2.12.0",
 				"jest": "^29.0.3",
 				"jest-mock": "^29.0.3",
 				"jest-util": "^29.0.3",
 				"miniflare": "2.12.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^29.0.3",
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@miniflare/shared-test": "2.12.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-CcZTjGfC/zhYRKjnu39K7XDo+e1L+k7ANWfyxRuYqaNfIExBwiNyB5haKY3T5Bjomq0f4PxAGiWC2T1FMPCSng==",
 				"shasum": "1962f824504fd410ac7035421e9adc94beab55ca",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.12.0.tgz",
 				"fileCount": 6,
-				"unpackedSize": 10792,
+				"integrity": "sha512-CcZTjGfC/zhYRKjnu39K7XDo+e1L+k7ANWfyxRuYqaNfIExBwiNyB5haKY3T5Bjomq0f4PxAGiWC2T1FMPCSng==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEYCIQCDwqJhcmCJBrlirCWtsq5gh44bbU61kgveeEcMVwCoYQIhAJbYdJzElWGH8JfcHtfRRbu7BMa26jIVPIpqRKEGU/+o"
+						"sig": "MEYCIQCDwqJhcmCJBrlirCWtsq5gh44bbU61kgveeEcMVwCoYQIhAJbYdJzElWGH8JfcHtfRRbu7BMa26jIVPIpqRKEGU/+o",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10792,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj63s9ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqEKw/+LJYFk3nbDMXOVrCdPWJ2K/hSUcf+JCrEB3rLVHydMFGsC7/a\r\nDXQ8NJUJ/fXW2soJ/oPXnL7jqjGU/1PWHDSMqQG/oMhx7UeGbNK4X5/b0vNe\r\nDWstbVBpj8dJ9cnknV1IxYg8KRnzhBY2RxTAwbkDgxZyghEiVMsVwReAPv4V\r\nnlnFD7h3ngi05+eKEXh2jYd7NVkxiRU1OHYmvWAzeIdMCJmul+IwdCZNhPTC\r\n+rZvosYa3Udd1PRxRdorlafVbtBvBNyGUor63CoVFmRkRD50KegI1DgPKK6Y\r\nOI94rSpUi9nb88nZUar4bXhLQ5sN1tq5qzFEf4jhZbTFPPp67fQsasUXybF8\r\n+HYTKUojKaJsJWJo1uf02rhsCKjI4yZmwSOSjewfWgtL2N8vLWnSmLkjh4Am\r\nuL4gRQCUY+gzewGRHMPdevS9brxvSomA10iETxUqvkt3XBOL1+ACThim805h\r\n33Q+lwZO3+JkkoKEbOrYRydMSMa9G90s3MhU3ztHTxrcxmndiVo6AX9WmnSk\r\neSA13c6i4qTb7nC+iRa2lcPp83GtqNkB9Lf0lGVHbCKrHyflNHiCH/OeYsgy\r\n5+8+VQ+koKk3MizgxawXj22XdPBZ4DUArfgPmlXhMyiwbUqOpDE1msKFtKff\r\nzPXM37JIrVex/yMClUs0DjOOdvUHfNGZoeU=\r\n=SDZj\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1370,42 +1370,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.12.1",
 			"dependencies": {
-				"@miniflare/queues": "2.12.1",
-				"@miniflare/runner-vm": "2.12.1",
-				"@miniflare/shared": "2.12.1",
-				"@miniflare/shared-test-environment": "2.12.1",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.12.1",
+				"@miniflare/shared": "2.12.1",
+				"@miniflare/runner-vm": "2.12.1",
+				"@miniflare/shared-test-environment": "2.12.1"
 			},
 			"devDependencies": {
-				"@jest/environment": "^29.0.3",
-				"@jest/fake-timers": "^29.0.3",
-				"@jest/types": "^29.0.3",
-				"@miniflare/shared-test": "2.12.1",
 				"jest": "^29.0.3",
 				"jest-mock": "^29.0.3",
 				"jest-util": "^29.0.3",
 				"miniflare": "2.12.1",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^29.0.3",
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@miniflare/shared-test": "2.12.1"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-y/jFslHS7+i618nj8hRRRutLbY7T2lSZ1FKDK6iYVjtegWk7n9SKqa6edjiqjhiBjy7jOKS/4u/898RE+UCpZA==",
 				"shasum": "9c16c6f8c2e895a4f5947ac595deed1e7857aba8",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.12.1.tgz",
 				"fileCount": 6,
-				"unpackedSize": 10792,
+				"integrity": "sha512-y/jFslHS7+i618nj8hRRRutLbY7T2lSZ1FKDK6iYVjtegWk7n9SKqa6edjiqjhiBjy7jOKS/4u/898RE+UCpZA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIFy1jWxTQ3VIHii3cjS5VDgv/zuQUL8nF3nFoaYFnx5IAiB1AY3wwv2U0EDZ2rYCV66mS84DBSt+Wzvomnn0JkBz1w=="
+						"sig": "MEQCIFy1jWxTQ3VIHii3cjS5VDgv/zuQUL8nF3nFoaYFnx5IAiB1AY3wwv2U0EDZ2rYCV66mS84DBSt+Wzvomnn0JkBz1w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10792,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj898IACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpDaw/+P8qTP/95A2KiZILuucoXV8tf9CAmrRPwQSXhXWX7zxk0+E/7\r\nklfbAdBHbHXm26bnSVP+cv0KxP7KXypchEeo204pgNurAHdgtcU2FKhLkuT+\r\nIV0J0SHx8KnytG289fr8EiTCg79B8pXz7UKdQcijmERceJxUIhEsmgu6Bktc\r\nr8g3GDLlpU91AMG/nFj9vXwgJoXphKAgj6zzhrmRxWaAAxPviK+AvIgr/j7Y\r\nmXeFy1vpiUK0d0OTF6rKWh9u3I+BZO1RkxeyzIuSgcmsWBZ+HIEnW0VJFU30\r\nK4nSnlZzl9awgDIQU1gMzszyEHYRvPXWOBH6FnPGIWOWHgqXLv38eWmE/BJ7\r\njdecpMglwcUpZ4ZPB791dpLNk/woffdIGdsCVQnkLn0SDyN0dPQOd5ZIbNbr\r\nZXNeZ8JjAyWBxrdUXSqsZqqnst0K3NNkOwoihUvtQNIWH/lBN/06zDP51Asl\r\ntuQtBKkKQGhzkV9gM35BbUIoxT8jgd0wfqhsMZF7M6mIdv7jNhy8QuN+PnfT\r\n0eVZU/fEu09OzbdS/GjxUziOdT4DTHf9hOhCt5gERXaCVxRbJR/BktIYORvY\r\nlkRugtkcFVIloqvBHLJqRrSBvvd4HsUrXVVvXyWlYJUwYpmDWB8t85H9zRfL\r\nJUfuPn66uXSDKwA/VNrhFHEGP2AQUfOKnSY=\r\n=/M4g\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1416,42 +1416,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.12.2",
 			"dependencies": {
-				"@miniflare/queues": "2.12.2",
-				"@miniflare/runner-vm": "2.12.2",
-				"@miniflare/shared": "2.12.2",
-				"@miniflare/shared-test-environment": "2.12.2",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.12.2",
+				"@miniflare/shared": "2.12.2",
+				"@miniflare/runner-vm": "2.12.2",
+				"@miniflare/shared-test-environment": "2.12.2"
 			},
 			"devDependencies": {
-				"@jest/environment": "^29.0.3",
-				"@jest/fake-timers": "^29.0.3",
-				"@jest/types": "^29.0.3",
-				"@miniflare/shared-test": "2.12.2",
 				"jest": "^29.0.3",
 				"jest-mock": "^29.0.3",
 				"jest-util": "^29.0.3",
 				"miniflare": "2.12.2",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^29.0.3",
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@miniflare/shared-test": "2.12.2"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-6GkV41eDC+j5qGNNgKNUA0iMUi8DZEq+BEfwcLbG4uN+PbMReM28v/H5nLg8nxQ6tBZij8y6L6hGMtm3AlTZeg==",
 				"shasum": "a4f6f68c37a03e39b0b6b9545af25fc5b35eff30",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.12.2.tgz",
 				"fileCount": 6,
-				"unpackedSize": 10792,
+				"integrity": "sha512-6GkV41eDC+j5qGNNgKNUA0iMUi8DZEq+BEfwcLbG4uN+PbMReM28v/H5nLg8nxQ6tBZij8y6L6hGMtm3AlTZeg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDLIbXvSgEtvITMXfQRBbeAoM+Un2t69c8Mgr1lVVynNgIgZ/S+HK/T0j/fE2jskvb7m9N8h2XbOsNNAMfnc+tYcPo="
+						"sig": "MEUCIQDLIbXvSgEtvITMXfQRBbeAoM+Un2t69c8Mgr1lVVynNgIgZ/S+HK/T0j/fE2jskvb7m9N8h2XbOsNNAMfnc+tYcPo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10792,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkGgkkACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmprqw//W5N1XK+DoPd3RUk3FSg5yI9zwMEGk9zmWS454fLscCurxX4i\r\nIp3JK7GAFlWv7hFUE0Z9Hg8gNJOhO1dbeejM4Bpd/yv0z0UQun4el1uUzT1a\r\npUU+Nc4XXl6vEhBzQJzTEtHofkPkodlgKelZm/qhysFAU8VS3+OfXlcvDl8B\r\nCKwnAaDb98BmIJIkoewPvngl52kFbaof7eI7Lcvlz/zbIQfXUZzEf7QOwfF2\r\nTiD0Znk9MeHJcaeSR3xruqxMYdaSL72jYAl0nQfd3jwHtSv/hsg8xB906Mzg\r\nfMEn5imKms5o29p6pODBEy7nbtKYbBOgDEXlk+guvVE1bf7AHYgegAw1IeLG\r\nvU9o16sbkGzqeKlXUvWBWe5Kcrgpx/j64RZXsP+/RT8AFju5Yv3qutP8/ljq\r\nwygbicU5zGRaogkNEXphH3mke6pajpkhwEmlDsjXjD9KPdusQnZ6v/YeThIN\r\nTA9M1aWfO406I8K06GSO2vD7NuzVhxMRDi1/6xf0y6rfFhD2mgckcZyWbCkx\r\nPkKrkoZM8EFMDeA7/izUVmxW3gHj1siLfqNW1Aaz2Vq09gkEUVl/N5lEd3pG\r\nPcUJWg3ptul9XHyAwt0Yjbo93KfwOVROQ3vSz/ZH0Nzq5INTxTxHqPtYEEym\r\nhWpSgUNfI0qJMUKvfrutCziiMClkl1SflRY=\r\n=rRXD\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1462,42 +1462,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.13.0",
 			"dependencies": {
-				"@miniflare/queues": "2.13.0",
-				"@miniflare/runner-vm": "2.13.0",
-				"@miniflare/shared": "2.13.0",
-				"@miniflare/shared-test-environment": "2.13.0",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.13.0",
+				"@miniflare/shared": "2.13.0",
+				"@miniflare/runner-vm": "2.13.0",
+				"@miniflare/shared-test-environment": "2.13.0"
 			},
 			"devDependencies": {
-				"@jest/environment": "^29.0.3",
-				"@jest/fake-timers": "^29.0.3",
-				"@jest/types": "^29.0.3",
-				"@miniflare/shared-test": "2.13.0",
 				"jest": "^29.0.3",
 				"jest-mock": "^29.0.3",
 				"jest-util": "^29.0.3",
 				"miniflare": "2.13.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^29.0.3",
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@miniflare/shared-test": "2.13.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-OEKqr5aok88jVMGV1yd/ywQhrkeNeD3RDG4xzVEt2x1eDOs1hszhZRfEMkytSKWT+Bw7Xu+CeVteut46sEPZBw==",
 				"shasum": "17f564761453d6972a193a06e81babc16f91daac",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.13.0.tgz",
 				"fileCount": 6,
-				"unpackedSize": 10792,
+				"integrity": "sha512-OEKqr5aok88jVMGV1yd/ywQhrkeNeD3RDG4xzVEt2x1eDOs1hszhZRfEMkytSKWT+Bw7Xu+CeVteut46sEPZBw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIQDfsCqhDKS3FFJigdff8NCs+qpRmxzaoilTbXD8k0AitAIgIqacmZc4bYlUpEg/GCsEXNslIdJ6aERSejWKLm5nt0w="
+						"sig": "MEUCIQDfsCqhDKS3FFJigdff8NCs+qpRmxzaoilTbXD8k0AitAIgIqacmZc4bYlUpEg/GCsEXNslIdJ6aERSejWKLm5nt0w=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10792,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkHI88ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqGuA/9Hogs4x0clcNUAyeJ30TBYlbT7hPdN7yaDob7zTmkujSqYFaR\r\n1Zcu8ok3SIlHT+JJPa+RXhjzilAEgNMQn2/GPjNuCxO4bd5Jf8n76YUTP4J3\r\nufFXAdVHyx9UUwX+YbGlWVruGg5VDgUfIYpDEu39R9D8AobzyNtDZ0OxdxFw\r\nkWsHOgr9xRxboAIm8rJ3x8xSSDecppMA9danY03ozAEWemVhEyD+VVFnTat8\r\nLlo4X1XYOb+kVgXFnFUsKYxKNw4NEMXYvlQhTU6bkfD9FNxASsrHJfkrqV1l\r\n13gLNKnRkOtcP7ksPweKJ0JjZwzYcVWO8VTHGbG2bcpFF5BzeeRbiemUWohX\r\n9pNYgyKBFmJjU6tbafMzBU2FMa0cn2yi60pLC1Ly/TYGxpFnb81PiDY3TpO+\r\npSZqytxMs7xdLvjCCNIkHhluREryJ2DDcKnUgGlE31xNZbhnvJldQwedf9BN\r\nunSOaLE0AL9SSehL127I/9oaifgsMEbLRSbmxwG6dx63UhBhA7qwiUVn5ZCV\r\n5DrCPdazR/Qrkto0L2jyTBnoN2frrgruK098FNSvACBvWxX5nK48PRLKqcWg\r\nes5UEG/KusQF93rqk7dc5G6brg+axGA9XJM/rVtYlQmcJTHLB3g0PdXb5S6v\r\nNwVKV/++N7WD01DbfaTFjpPqtueFtsxdSCU=\r\n=Rtg+\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1508,42 +1508,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.14.0",
 			"dependencies": {
-				"@miniflare/queues": "2.14.0",
-				"@miniflare/runner-vm": "2.14.0",
-				"@miniflare/shared": "2.14.0",
-				"@miniflare/shared-test-environment": "2.14.0",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.14.0",
+				"@miniflare/shared": "2.14.0",
+				"@miniflare/runner-vm": "2.14.0",
+				"@miniflare/shared-test-environment": "2.14.0"
 			},
 			"devDependencies": {
-				"@jest/environment": "^29.0.3",
-				"@jest/fake-timers": "^29.0.3",
-				"@jest/types": "^29.0.3",
-				"@miniflare/shared-test": "2.14.0",
 				"jest": "^29.0.3",
 				"jest-mock": "^29.0.3",
 				"jest-util": "^29.0.3",
 				"miniflare": "2.14.0",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^29.0.3",
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@miniflare/shared-test": "2.14.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-fcxoLyFKbK8kNg7xtdkVlLpzp+IAR5JWo49ylR7+HsCUSZGhfrTSZUE83zzleM2u56nFSxJhGfhqkiZkk27MVg==",
 				"shasum": "acf87d2cf63529eae178799a8a391629097b7145",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.14.0.tgz",
 				"fileCount": 6,
-				"unpackedSize": 10792,
+				"integrity": "sha512-fcxoLyFKbK8kNg7xtdkVlLpzp+IAR5JWo49ylR7+HsCUSZGhfrTSZUE83zzleM2u56nFSxJhGfhqkiZkk27MVg==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIDnRBTMD5+RSOgyxJhRBLxi4aAC4g9xUWYDafMqKpVGmAiEA9AIDSihigf9MiSMZFfBs7uFeQZXBZMbTDyJ1AXUtWMo="
+						"sig": "MEUCIDnRBTMD5+RSOgyxJhRBLxi4aAC4g9xUWYDafMqKpVGmAiEA9AIDSihigf9MiSMZFfBs7uFeQZXBZMbTDyJ1AXUtWMo=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
 				],
+				"unpackedSize": 10792,
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVM2+ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoAkA//emG8Em8b4mNZVb/9bBubScVpVpLaVqyfN2XiSlvPcCr91Krg\r\nDIb21RLa7B6ik33Ajq+eP9hIuzIXRivDeMFqyLGQG3TZDka3OTXrZi44t5Si\r\nL6GLKE0njApxKWQn1+xdZD7JpKZkzBQu4wHnzx4t5U4aBoPsuSvyvtFCH0iy\r\nZ8Q1jnfEAcJzG8Cisc0lHng4uLLLM2kRGFx5oRZio+I37g5uVrHBEW37hntT\r\nCohNjznjjzBo3cCbbGiPwVmTM8p5gckAmmmZAsdYm/NEvCLMxUBvOdFfsOJY\r\n/wfQpsA6Z5E64EIJBDpvDL/XoRD4uEsaFBwcLm03K7Q6HouNONw61FwPR3AD\r\n97lhV86G7Kx/vg4KTtkU9jy09e2GpTD+y08UWJAmZOHnj99oPVYFY7yj2euV\r\nKVqeAII76V3oPRXxpXIAncWYlHy2BQzncNmSart3fkDdXDBkukkOVsRtAdAx\r\naU0tfSKSsKtovkunc69+si+duaC3W8nKvsiL/NUQFKwr+7Ig2EQfpJ2fNqZh\r\n42SQQieSZMBbIEqDm63k6oJWtWE7rdEBpPCbPhAnb/Eqdd5eprWV84en6Mjd\r\nXw2tJc9u+P4V3QG1AD7A9wxwrA68Oht+l/emXRzmMpCbUY+Nfb2TwvBvBd9Z\r\nCpinPz75BXsvht5aL9aNIwb5JdqpOC05G2M=\r\n=315j\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
@@ -1554,42 +1554,42 @@
 			"name": "jest-environment-miniflare",
 			"version": "2.14.1",
 			"dependencies": {
-				"@miniflare/queues": "2.14.1",
-				"@miniflare/runner-vm": "2.14.1",
-				"@miniflare/shared": "2.14.1",
-				"@miniflare/shared-test-environment": "2.14.1",
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
 				"@jest/environment": ">=27",
 				"@jest/fake-timers": ">=27",
-				"@jest/types": ">=27",
-				"jest-mock": ">=27",
-				"jest-util": ">=27"
+				"@miniflare/queues": "2.14.1",
+				"@miniflare/shared": "2.14.1",
+				"@miniflare/runner-vm": "2.14.1",
+				"@miniflare/shared-test-environment": "2.14.1"
 			},
 			"devDependencies": {
-				"@jest/environment": "^29.0.3",
-				"@jest/fake-timers": "^29.0.3",
-				"@jest/types": "^29.0.3",
-				"@miniflare/shared-test": "2.14.1",
 				"jest": "^29.0.3",
 				"jest-mock": "^29.0.3",
 				"jest-util": "^29.0.3",
 				"miniflare": "2.14.1",
-				"react-dom": "^18.1.0"
+				"react-dom": "^18.1.0",
+				"@jest/types": "^29.0.3",
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@miniflare/shared-test": "2.14.1"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-IkyCJ7LJCIXE1xJaExPRVHTK+6RxFJYEQjaVnpMCn9gEXSnjZhFwxdD3uFJq3J9QtcuZKRFBKJurnmGFCV4otQ==",
 				"shasum": "45b63dfa00db73695c9760dd33b63545314384bc",
 				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.14.1.tgz",
 				"fileCount": 6,
-				"unpackedSize": 10792,
+				"integrity": "sha512-IkyCJ7LJCIXE1xJaExPRVHTK+6RxFJYEQjaVnpMCn9gEXSnjZhFwxdD3uFJq3J9QtcuZKRFBKJurnmGFCV4otQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEUCIFF0bYNdK8POKWlHvTec0/TNz1QJh22v9ESZk6d8xjODAiEAptsOc9kieahWoEYN4pyxOmrFQB+EgYVeH1XPgmHYTDQ="
+						"sig": "MEUCIFF0bYNdK8POKWlHvTec0/TNz1QJh22v9ESZk6d8xjODAiEAptsOc9kieahWoEYN4pyxOmrFQB+EgYVeH1XPgmHYTDQ=",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
 					}
-				]
+				],
+				"unpackedSize": 10792
 			},
 			"engines": {
 				"node": ">=16.13"
@@ -1598,6 +1598,51 @@
 		"2.14.2": {
 			"name": "jest-environment-miniflare",
 			"version": "2.14.2",
+			"dependencies": {
+				"jest-mock": ">=27",
+				"jest-util": ">=27",
+				"@jest/types": ">=27",
+				"@jest/environment": ">=27",
+				"@jest/fake-timers": ">=27",
+				"@miniflare/queues": "2.14.2",
+				"@miniflare/shared": "2.14.2",
+				"@miniflare/runner-vm": "2.14.2",
+				"@miniflare/shared-test-environment": "2.14.2"
+			},
+			"devDependencies": {
+				"jest": "^29.0.3",
+				"jest-mock": "^29.0.3",
+				"jest-util": "^29.0.3",
+				"miniflare": "2.14.2",
+				"react-dom": "^18.1.0",
+				"@jest/types": "^29.0.3",
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@miniflare/shared-test": "2.14.2"
+			},
+			"peerDependencies": {
+				"jest": ">=27"
+			},
+			"dist": {
+				"shasum": "da6a5f408ce561db50dc5d442f4b9ca07600f5f9",
+				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.14.2.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-ssczII1i1aRUsVRLGAijICq4vmFlrDJyOsnG7dqIkC/N9dQmusXA/A+x7TgEHnBGCVk7+JVS/QyZtJRbiXCUmQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIFbt7NBeHFzTYfhkfXP2+oP4VI9e8z4KJ9vcZuk3Wgd/AiBuhHRkKpJ7ZZXSO//GHsajGFPxVeCH3fyPVEsWsmUE+w==",
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+					}
+				],
+				"unpackedSize": 10792
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.3": {
+			"name": "jest-environment-miniflare",
+			"version": "2.14.3",
 			"dependencies": {
 				"@miniflare/queues": "2.14.2",
 				"@miniflare/runner-vm": "2.14.2",
@@ -1617,22 +1662,22 @@
 				"jest": "^29.0.3",
 				"jest-mock": "^29.0.3",
 				"jest-util": "^29.0.3",
-				"miniflare": "2.14.2",
+				"miniflare": "2.14.3",
 				"react-dom": "^18.1.0"
 			},
 			"peerDependencies": {
 				"jest": ">=27"
 			},
 			"dist": {
-				"integrity": "sha512-ssczII1i1aRUsVRLGAijICq4vmFlrDJyOsnG7dqIkC/N9dQmusXA/A+x7TgEHnBGCVk7+JVS/QyZtJRbiXCUmQ==",
-				"shasum": "da6a5f408ce561db50dc5d442f4b9ca07600f5f9",
-				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.14.2.tgz",
-				"fileCount": 6,
-				"unpackedSize": 10792,
+				"integrity": "sha512-OV5dgkV8R0aTeUii1Ac+r38WflRUe2tU8lTFHZbiJ6jgWKe3AJL99oFe9CdATUe1Jcf/Omp2djnk3qi2MOTDuA==",
+				"shasum": "e21cdce0ddd7281074585c4853922c49a2498423",
+				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.14.3.tgz",
+				"fileCount": 5,
+				"unpackedSize": 9304,
 				"signatures": [
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
-						"sig": "MEQCIFbt7NBeHFzTYfhkfXP2+oP4VI9e8z4KJ9vcZuk3Wgd/AiBuhHRkKpJ7ZZXSO//GHsajGFPxVeCH3fyPVEsWsmUE+w=="
+						"sig": "MEUCIAkaNY3P53HIubM1XlGX+8os6jYh/9k68sr1/KZSttpeAiEA4htkX3IdRLZQDcbmJPtOK0x2I/fCz9v5S1PSf2kJOmU="
 					}
 				]
 			},
