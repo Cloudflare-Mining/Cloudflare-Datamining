@@ -1973,8 +1973,8 @@
 					"schema": {
 						"example": {
 							"domain": "prefix.example-domain.com",
-							"zoneName": "example-domain.com",
-							"zoneTag": "36ca64a6d92827b8a6b90be344bb1bfd"
+							"zoneId": "36ca64a6d92827b8a6b90be344bb1bfd",
+							"zoneName": "example-domain.com"
 						},
 						"properties": {
 							"domain": {
@@ -1988,21 +1988,11 @@
 							"zoneId": {
 								"description": "Zone ID of the custom domain",
 								"type": "string"
-							},
-							"zoneName": {
-								"description": "Zone name of the custom domain. Note that `zoneName` must be a suffix of `domain`.",
-								"type": "string"
-							},
-							"zoneTag": {
-								"description": "Zone tag of the custom domain",
-								"maxLength": 32,
-								"type": "string"
 							}
 						},
 						"required": [
 							"domain",
-							"zoneName",
-							"zoneTag"
+							"zoneId"
 						],
 						"type": "object"
 					}
