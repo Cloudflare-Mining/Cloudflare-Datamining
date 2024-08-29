@@ -1,0 +1,271 @@
+{
+	"GET /radar/robots_txt/top/{directive}": {
+		"description": "Get the top User-Agents on robots.txt files by directive.",
+		"operationId": "radar-get-robots-txt-top-by-directive",
+		"parameters": [
+			{
+				"description": "Robots.txt directive.",
+				"in": "path",
+				"name": "directive",
+				"required": true,
+				"schema": {
+					"description": "Robots.txt directive.",
+					"enum": [
+						"ALLOW",
+						"DISALLOW"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter by user agent category.",
+				"in": "query",
+				"name": "agentCategory",
+				"schema": {
+					"default": "AI",
+					"description": "Filter by user agent category.",
+					"enum": [
+						"AI"
+					],
+					"example": "AI",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Date to filter the ranking.",
+				"in": "query",
+				"name": "date",
+				"schema": {
+					"description": "Date to filter the ranking.",
+					"example": "2024-09-19",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"fully": {
+														"example": 235,
+														"type": "integer"
+													},
+													"partially": {
+														"example": 38,
+														"type": "integer"
+													},
+													"total": {
+														"example": 273,
+														"type": "integer"
+													},
+													"userAgent": {
+														"example": "GPTBot",
+														"type": "string"
+													}
+												},
+												"required": [
+													"userAgent",
+													"fully",
+													"partially",
+													"total"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Top User-Agents by Directive",
+		"tags": [
+			"Radar Robots.txt"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
