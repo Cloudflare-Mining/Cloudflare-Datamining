@@ -1,5 +1,5 @@
 {
-	"DELETE /zones/{zone_identifier}/web3/hostnames/{identifier}": {
+	"DELETE /zones/{zone_id}/web3/hostnames/{identifier}": {
 		"operationId": "web3-hostname-delete-web3-hostname",
 		"parameters": [
 			{
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -354,7 +354,7 @@
 			"pro": true
 		}
 	},
-	"DELETE /zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
+	"DELETE /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
 		"operationId": "web3-hostname-delete-ipfs-universal-path-gateway-content-list-entry",
 		"parameters": [
 			{
@@ -383,7 +383,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -721,12 +721,12 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/web3/hostnames": {
+	"GET /zones/{zone_id}/web3/hostnames": {
 		"operationId": "web3-hostname-list-web3-hostnames",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1236,7 +1236,7 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/web3/hostnames/{identifier}": {
+	"GET /zones/{zone_id}/web3/hostnames/{identifier}": {
 		"operationId": "web3-hostname-web3-hostname-details",
 		"parameters": [
 			{
@@ -1253,7 +1253,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1721,7 +1721,7 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list": {
+	"GET /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list": {
 		"operationId": "web3-hostname-ipfs-universal-path-gateway-content-list-details",
 		"parameters": [
 			{
@@ -1738,7 +1738,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2104,7 +2104,7 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries": {
+	"GET /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries": {
 		"operationId": "web3-hostname-list-ipfs-universal-path-gateway-content-list-entries",
 		"parameters": [
 			{
@@ -2121,7 +2121,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2607,7 +2607,7 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
+	"GET /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
 		"operationId": "web3-hostname-ipfs-universal-path-gateway-content-list-entry-details",
 		"parameters": [
 			{
@@ -2636,7 +2636,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3068,7 +3068,7 @@
 			"pro": false
 		}
 	},
-	"PATCH /zones/{zone_identifier}/web3/hostnames/{identifier}": {
+	"PATCH /zones/{zone_id}/web3/hostnames/{identifier}": {
 		"operationId": "web3-hostname-edit-web3-hostname",
 		"parameters": [
 			{
@@ -3085,7 +3085,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3576,12 +3576,12 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/web3/hostnames": {
+	"POST /zones/{zone_id}/web3/hostnames": {
 		"operationId": "web3-hostname-create-web3-hostname",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4093,7 +4093,7 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries": {
+	"POST /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries": {
 		"operationId": "web3-hostname-create-ipfs-universal-path-gateway-content-list-entry",
 		"parameters": [
 			{
@@ -4110,7 +4110,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4579,7 +4579,7 @@
 			"pro": false
 		}
 	},
-	"PUT /zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list": {
+	"PUT /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list": {
 		"operationId": "web3-hostname-update-ipfs-universal-path-gateway-content-list",
 		"parameters": [
 			{
@@ -4596,7 +4596,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5036,7 +5036,7 @@
 			"pro": false
 		}
 	},
-	"PUT /zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
+	"PUT /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
 		"operationId": "web3-hostname-edit-ipfs-universal-path-gateway-content-list-entry",
 		"parameters": [
 			{
@@ -5065,7 +5065,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
