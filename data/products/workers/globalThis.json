@@ -11068,6 +11068,53 @@
 				"name": "string",
 				"_prototype": {}
 			},
+			"codes": {
+				"0": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"1": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"2": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"Z_OK": "number",
+				"Z_STREAM_END": "number",
+				"Z_NEED_DICT": "number",
+				"Z_ERRNO": "number",
+				"Z_STREAM_ERROR": "number",
+				"Z_DATA_ERROR": "number",
+				"Z_MEM_ERROR": "number",
+				"Z_BUF_ERROR": "number",
+				"Z_VERSION_ERROR": "number",
+				"-1": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"-2": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"-3": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"-4": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"-5": {
+					"__proto": "object",
+					"__type": "string"
+				},
+				"-6": {
+					"__proto": "object",
+					"__type": "string"
+				}
+			},
 			"constants": {
 				"Z_NO_FLUSH": "number",
 				"Z_PARTIAL_FLUSH": "number",
@@ -11176,6 +11223,104 @@
 				"BROTLI_DECODER_ERROR_ALLOC_RING_BUFFER_2": "number",
 				"BROTLI_DECODER_ERROR_ALLOC_BLOCK_TYPE_TREES": "number",
 				"BROTLI_DECODER_ERROR_UNREACHABLE": "number"
+			},
+			"Gzip": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"Gunzip": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"Deflate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"DeflateRaw": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"Inflate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"InflateRaw": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"Unzip": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createGzip": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createGunzip": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createDeflate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createDeflateRaw": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createInflate": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createInflateRaw": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createUnzip": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
 			}
 		}
 	},
