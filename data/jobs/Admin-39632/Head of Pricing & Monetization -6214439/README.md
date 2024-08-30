@@ -5,69 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Hybrid from a Cloudflare US office.</strong></p>
-<p><strong>About the Department</strong><strong><br></strong>The Identity and Access Management (IAM) team is dedicated to ensuring the secure and efficient management of user identities, access privileges, and authentication mechanisms across internal systems, applications, and data. Our mission is to safeguard the organization against unauthorized access, protect sensitive information, and enable seamless user experiences while adhering to industry best practices and compliance standards.</p>
-<h4><strong>About the Role</strong></h4>
-<p>As an Identity and Access Management (IAM) Security Engineer, you will play a crucial role in designing, implementing, and scaling identity and access management solutions for Cloudflare’s internal workforce and workloads. You will be responsible for safeguarding our systems, applications, and data by ensuring secure user access, authentication, and authorization mechanisms.</p>
+<p>Cloudflare is looking for an experienced leader to lead the Pricing &amp; Monetization function at Cloudflare. The VP of Pricing will lead the company’s pricing strategy, manage our deal desk and oversee our monetization initiatives. The ideal candidate will possess deep knowledge of evolving SaaS pricing models, contract structures, and a strategic vision for pricing across multiple product lines in businesses over $1B in revenue. The Pricing team is at the center of how we build and get our products into the market. This is a great opportunity for a seasoned pricing leader to help us scale to the next level.&nbsp;</p>
+<p><strong>Responsibilities include:</strong></p>
+<ol>
+	<li>Strategic Pricing and Monetization Leadership:</li>
+	<ul>
+		<li>Develop and maintain the pricing strategy that aligns with company objectives and adapts to market trends. Be able to innovate on packaging of products to enhance competitive positioning and revenue growth</li>
+		<li>Operationalize pricing changes and market insights in an efficient manner</li>
+		<li>Oversee the global deal desk and ensure operational excellence and market competitiveness</li>
+	</ul>
+	<li>Team Leadership and Performance Management:</li>
+	<ul>
+		<li>Lead the pricing team; set clear priorities and objectives, ensure high-quality deliverables, and foster continuous professional development.</li>
+		<li>Define and evaluate key performance indicators to track pricing performance and enable continuous improvements.</li>
+	</ul>
+	<li>Cross-Functional Team Collaboration and Support:</li>
+	<ul>
+		<li>Partner closely with product managers, product marketing, sales, finance, IT and the executive team to guide monetization decisions</li>
+		<li>Support strategic deal structuring and execution to drive significant sales initiatives.</li>
+	</ul>
+	<li>Research, Analysis, and Benchmarking:</li>
+	<ul>
+		<li>Conduct market research, both qualitative and quantitative, to inform pricing adjustments and new monetization opportunities. Create and maintain benchmarks, leveraging institutional knowledge across the company in a centralized and scalable manner.</li>
+	</ul>
+	<li>Governance and Risk Management:</li>
+	<ul>
+		<li>Oversee and enhance governance in pricing processes to manage risk effectively. Define and implement commercial policies, including segmentation, discount/promotions management, and strategic price agreements, ensuring compliance with relevant laws and regulations.</li>
+	</ul>
+</ol>
+<p><strong>Requirements</strong></p>
+<ul>
+	<li>10+ years of experience in strategy consulting, product management, or corporate strategy, including developing and implementing monetization and pricing strategies with significant experience working with SaaS business models</li>
+	<li>Experience working with bundles and selling multiple product lines to many customer segments, globally</li>
+	<li>Optimize pricing, packaging, and contracting strategies to enhance Cloudflare’s growth, profitability, and competitive positioning</li>
+	<li>High aptitude to learn quickly, provide critical thinking on new and unknown tasks, and work well under pressure with appropriate attention to detail</li>
+	<li>Excellent leadership and communication skills, both written and verbal. Be a great boss to your team while also being a strong leader cross-functionally. You show up to business discussions with a point of view and can quickly iterate on any input</li>
+</ul>
+<p><br><br></p>
 <p>&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
-<ul>
-	<li>Design, build, test, and deploy IAM solutions across authentication, authorization, and accounting&nbsp;</li>
-	<li>Leverage Cloudflare products to secure our identities</li>
-	<li>Build SSO integrations leveraging SAML, OIDC, OAuth, and SCIM</li>
-	<li>Build and manage the Identity Governance and Administration platform</li>
-	<li>Develop automated roles leveraging RBAC and ABAC</li>
-	<li>Build and manage an access certification platform&nbsp;</li>
-	<li>Build and manage a Privileged Access Management (PAM) platform</li>
-	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
-</ul>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
-<p>Security engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
-<ul>
-	<li>Strong understanding of identity federation (SAML, OAuth, OpenID Connect, etc.)</li>
-	<li>Experience implementing Identity Governance and Administration (IGA) solutions including lifecycle management, SCIM, birthright access (RBAC, ABAC), and access certifications</li>
-	<li>Experience with secure configuration of containerized application platforms (e.g. Kubernetes)</li>
-	<li>Advanced scripting experience (Python, TypeScript, Bash, etc.)</li>
-	<li>Experience implementing Zero Trust controls</li>
-	<li>Experience integrating with applications and SaaS solutions&nbsp;</li>
-	<li>Experience with Identity and Access Management policy application and enforcement</li>
-	<li>Experience working with Identity Threat Detection &amp; Response (ITDR)</li>
-	<li>Experience working with infrastructure as code and configuration management tools like Terraform, Ansible, etc.</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $168,000 - $206,000.</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $187,000 - $206,000.</span></li>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $196,000 - $240,000.</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
