@@ -614,6 +614,35 @@
 														},
 														"type": "object"
 													},
+													"paused": {
+														"default": false,
+														"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
+														"readOnly": true,
+														"type": "boolean"
+													},
+													"status": {
+														"description": "The zone status on Cloudflare.",
+														"enum": [
+															"initializing",
+															"pending",
+															"active",
+															"moved"
+														],
+														"example": "active",
+														"readOnly": true,
+														"type": "string"
+													},
+													"type": {
+														"default": "full",
+														"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
+														"enum": [
+															"full",
+															"partial",
+															"secondary"
+														],
+														"example": "full",
+														"type": "string"
+													},
 													"vanity_name_servers": {
 														"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
 														"example": [
@@ -998,6 +1027,35 @@
 														}
 													},
 													"type": "object"
+												},
+												"paused": {
+													"default": false,
+													"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"status": {
+													"description": "The zone status on Cloudflare.",
+													"enum": [
+														"initializing",
+														"pending",
+														"active",
+														"moved"
+													],
+													"example": "active",
+													"readOnly": true,
+													"type": "string"
+												},
+												"type": {
+													"default": "full",
+													"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
+													"enum": [
+														"full",
+														"partial",
+														"secondary"
+													],
+													"example": "full",
+													"type": "string"
 												},
 												"vanity_name_servers": {
 													"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
@@ -1451,6 +1509,35 @@
 													},
 													"type": "object"
 												},
+												"paused": {
+													"default": false,
+													"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"status": {
+													"description": "The zone status on Cloudflare.",
+													"enum": [
+														"initializing",
+														"pending",
+														"active",
+														"moved"
+													],
+													"example": "active",
+													"readOnly": true,
+													"type": "string"
+												},
+												"type": {
+													"default": "full",
+													"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
+													"enum": [
+														"full",
+														"partial",
+														"secondary"
+													],
+													"example": "full",
+													"type": "string"
+												},
 												"vanity_name_servers": {
 													"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
 													"example": [
@@ -1623,6 +1710,7 @@
 								"type": "string"
 							},
 							"type": {
+								"default": "full",
 								"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
 								"enum": [
 									"full",
@@ -1871,6 +1959,35 @@
 														}
 													},
 													"type": "object"
+												},
+												"paused": {
+													"default": false,
+													"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"status": {
+													"description": "The zone status on Cloudflare.",
+													"enum": [
+														"initializing",
+														"pending",
+														"active",
+														"moved"
+													],
+													"example": "active",
+													"readOnly": true,
+													"type": "string"
+												},
+												"type": {
+													"default": "full",
+													"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
+													"enum": [
+														"full",
+														"partial",
+														"secondary"
+													],
+													"example": "full",
+													"type": "string"
 												},
 												"vanity_name_servers": {
 													"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",

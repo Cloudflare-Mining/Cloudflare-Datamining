@@ -332,22 +332,6 @@
 													]
 												},
 												{
-													"id": "minify",
-													"properties": [
-														{
-															"allowEmpty": true,
-															"choices": [
-																"html",
-																"css",
-																"js"
-															],
-															"multiple": true,
-															"name": "value",
-															"type": "select"
-														}
-													]
-												},
-												{
 													"id": "explicit_cache_control",
 													"properties": [
 														{
@@ -734,22 +718,6 @@
 																{
 																	"name": "value",
 																	"type": "toggle"
-																}
-															]
-														},
-														{
-															"id": "minify",
-															"properties": [
-																{
-																	"allowEmpty": true,
-																	"choices": [
-																		"html",
-																		"css",
-																		"js"
-																	],
-																	"multiple": true,
-																	"name": "value",
-																	"type": "select"
 																}
 															]
 														},
