@@ -253,6 +253,59 @@
 						"htmlId": null
 					},
 					{
+						"contentfulId": "vgYUPGhusXuw0hCCg43WD",
+						"title": "Cloudflare optimizes every aspect of website delivery",
+						"copy": "__Diagnose UX issues__<br>\nCloudflare Browser Insights lets you measure performance metrics from the perspective of visitors all over the globe. Our Speed Page tool also generates snapshots of your loading process. And Cloudflare Observatory uses synthetic tests and user data to optimize web performance.\n\n__Speed up content delivery__<br>\nOur industry-leading DNS and content delivery network (CDN) work together automatically to accept requests and serve content from our %{DataCenterCount}-city network. In addition, our Argo Smart Routing uses Cloudflare network intelligence to steer dynamic content over the fastest Internet paths. \n\n__Simplify media delivery and management__<br>\nCloudflare Image Optimization and Stream make media delivery seamless. Create bespoke image variants from primary one, optimize mobile images, and deliver live and on-demand video.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "5a29c0cd-fa9d-5960-92f3-c2f43fd33882",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3dhfe3zdseD2i70plS94kG/a571a9f91f8d9fb2207deccc08380912/BDES-4893_-_optimize-web-image-optimization-spot-illustration.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "How it works",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": "center",
+						"togglesTo": []
+					},
+					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "7ovSiIMrt2B8UErbZHdLso",
 						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nPicsart uses Cloudflare to accelerate image delivery\n</div>",
@@ -2588,6 +2641,67 @@
 								"name": "Image Transformations",
 								"description": "Resize images for a variety of device types and connections from a single-source primary image. Images can be manipulated by dimensions, compression ratios, and format (WebP conversion where supported). Available as a paid add-on with Cloudflare Images.",
 								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "16KPOSmd8tvEvJ8mvGvtpJ",
+										"textValue": "Paid Add-on",
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"monthlyPricingText": "$0/month",
+											"annualPricingText": "$0/month",
+											"billingCycle": "monthly",
+											"customPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Add a Website",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"monthlyPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Add a Website",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											},
+											"annualPricingCta": {
+												"buttonAssetFile": null,
+												"buttonTextLoggedIn": null,
+												"contentTypeId": "button",
+												"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+												"elementName": "Add a website (Free Plan CTA)",
+												"standardText": null,
+												"text": "Add a Website",
+												"url": "https://dash.cloudflare.com/sign-up?pt=f",
+												"loggedInUrl": null,
+												"buttonModal": null,
+												"openInNewTab": false,
+												"locale": "en-US"
+											}
+										}
+									},
 									{
 										"contentTypeId": "planElementFeatureValueText",
 										"contentfulId": "6GOevCR4vKRrZFg1d2lLMk",
