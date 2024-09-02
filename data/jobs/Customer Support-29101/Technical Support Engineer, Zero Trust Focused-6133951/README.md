@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="font-size: 10pt;"><strong>Available Locations: </strong>Lisbon or Remote Portugal&nbsp;</span></p>
+<p><span style="font-size: 10pt;"><strong>Available Locations: </strong>Lisbon or Remote Portugal; London or Remote UK&nbsp;</span></p>
 <p><span style="font-size: 10pt;">Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's technology and gain a deeper understanding of internet technologies.&nbsp;</span></p>
 <p><strong><span style="font-size: 10pt;">Examples of desirable skills, knowledge and experience</span></strong></p>
 <ul>
