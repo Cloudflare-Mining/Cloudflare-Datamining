@@ -99,20 +99,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -205,20 +191,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -459,11 +431,6 @@
 										},
 										{
 											"properties": {
-												"result": {
-													"items": {},
-													"nullable": true,
-													"type": "array"
-												},
 												"result_info": {
 													"properties": {
 														"count": {
@@ -498,154 +465,170 @@
 									"properties": {
 										"result": {
 											"items": {
-												"properties": {
-													"attack_mitigation": {
-														"description": "Attack mitigation settings.",
-														"nullable": true,
+												"allOf": [
+													{
 														"properties": {
-															"enabled": {
-																"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+															"attack_mitigation": {
+																"description": "Attack mitigation settings.",
+																"nullable": true,
+																"properties": {
+																	"enabled": {
+																		"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"only_when_upstream_unhealthy": {
+																		"default": true,
+																		"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																		"example": false,
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															},
+															"deprecate_any_requests": {
+																"description": "Deprecate the response to ANY requests.",
 																"example": true,
 																"type": "boolean"
 															},
-															"only_when_upstream_unhealthy": {
-																"default": true,
-																"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+															"ecs_fallback": {
+																"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
 																"example": false,
 																"type": "boolean"
+															},
+															"maximum_cache_ttl": {
+																"default": 900,
+																"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+																"example": 900,
+																"maximum": 36000,
+																"minimum": 30,
+																"type": "number"
+															},
+															"minimum_cache_ttl": {
+																"default": 60,
+																"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+																"example": 60,
+																"maximum": 36000,
+																"minimum": 30,
+																"type": "number"
+															},
+															"name": {
+																"description": "DNS Firewall Cluster Name.",
+																"example": "My Awesome DNS Firewall cluster",
+																"maxLength": 160,
+																"minLength": 1,
+																"type": "string"
+															},
+															"negative_cache_ttl": {
+																"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+																"example": 900,
+																"maximum": 36000,
+																"minimum": 30,
+																"nullable": true,
+																"type": "number"
+															},
+															"ratelimit": {
+																"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+																"example": 600,
+																"maximum": 1000000000,
+																"minimum": 100,
+																"nullable": true,
+																"type": "number"
+															},
+															"retries": {
+																"default": 2,
+																"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
+																"example": 2,
+																"maximum": 2,
+																"minimum": 0,
+																"type": "number"
+															},
+															"upstream_ips": {
+																"example": [
+																	"192.0.2.1",
+																	"198.51.100.1",
+																	"2001:DB8:100::CF"
+																],
+																"items": {
+																	"anyOf": [
+																		{
+																			"description": "Upstream DNS Server IPv4 Address.",
+																			"example": "192.0.2.1",
+																			"format": "ipv4",
+																			"type": "string"
+																		},
+																		{
+																			"description": "Upstream DNS Server IPv6 Address.",
+																			"example": "2001:DB8:100::CF",
+																			"format": "ipv6",
+																			"type": "string"
+																		}
+																	]
+																},
+																"minLength": 1,
+																"type": "array"
 															}
 														},
 														"type": "object"
 													},
-													"deprecate_any_requests": {
-														"description": "Deprecate the response to ANY requests.",
-														"example": true,
-														"type": "boolean"
-													},
-													"dns_firewall_ips": {
-														"example": [
-															"203.0.113.1",
-															"203.0.113.254",
-															"2001:DB8:AB::CF",
-															"2001:DB8:CD::CF"
-														],
-														"items": {
-															"anyOf": [
-																{
-																	"description": "Cloudflare-assigned DNS IPv4 Address.",
-																	"example": "203.0.113.1",
-																	"format": "ipv4",
-																	"type": "string"
+													{
+														"properties": {
+															"dns_firewall_ips": {
+																"example": [
+																	"203.0.113.1",
+																	"203.0.113.254",
+																	"2001:DB8:AB::CF",
+																	"2001:DB8:CD::CF"
+																],
+																"items": {
+																	"anyOf": [
+																		{
+																			"description": "Cloudflare-assigned DNS IPv4 Address.",
+																			"example": "203.0.113.1",
+																			"format": "ipv4",
+																			"type": "string"
+																		},
+																		{
+																			"description": "Cloudflare-assigned DNS IPv6 Address.",
+																			"example": "2001:DB8:ab::CF",
+																			"format": "ipv6",
+																			"type": "string"
+																		}
+																	]
 																},
-																{
-																	"description": "Cloudflare-assigned DNS IPv6 Address.",
-																	"example": "2001:DB8:ab::CF",
-																	"format": "ipv6",
-																	"type": "string"
-																}
-															]
+																"type": "array"
+															},
+															"id": {
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string"
+															},
+															"modified_on": {
+																"description": "Last modification of DNS Firewall cluster.",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string"
+															}
 														},
-														"type": "array"
-													},
-													"ecs_fallback": {
-														"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
-														"example": false,
-														"type": "boolean"
-													},
-													"id": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
-														"type": "string"
-													},
-													"maximum_cache_ttl": {
-														"default": 900,
-														"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
-														"example": 900,
-														"maximum": 36000,
-														"minimum": 30,
-														"type": "number"
-													},
-													"minimum_cache_ttl": {
-														"default": 60,
-														"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
-														"example": 60,
-														"maximum": 36000,
-														"minimum": 30,
-														"type": "number"
-													},
-													"modified_on": {
-														"description": "Last modification of DNS Firewall cluster.",
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
-													},
-													"name": {
-														"description": "DNS Firewall Cluster Name.",
-														"example": "My Awesome DNS Firewall cluster",
-														"maxLength": 160,
-														"type": "string"
-													},
-													"negative_cache_ttl": {
-														"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
-														"example": 900,
-														"maximum": 36000,
-														"minimum": 30,
-														"nullable": true,
-														"type": "number"
-													},
-													"ratelimit": {
-														"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
-														"example": 600,
-														"maximum": 1000000000,
-														"minimum": 100,
-														"nullable": true,
-														"type": "number"
-													},
-													"retries": {
-														"default": 2,
-														"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
-														"example": 2,
-														"maximum": 2,
-														"minimum": 0,
-														"type": "number"
-													},
-													"upstream_ips": {
-														"example": [
-															"192.0.2.1",
-															"198.51.100.1",
-															"2001:DB8:100::CF"
+														"required": [
+															"id",
+															"dns_firewall_ips",
+															"modified_on"
 														],
-														"items": {
-															"anyOf": [
-																{
-																	"description": "Upstream DNS Server IPv4 Address.",
-																	"example": "192.0.2.1",
-																	"format": "ipv4",
-																	"type": "string"
-																},
-																{
-																	"description": "Upstream DNS Server IPv6 Address.",
-																	"example": "2001:DB8:100::CF",
-																	"format": "ipv6",
-																	"type": "string"
-																}
-															]
-														},
-														"type": "array"
+														"type": "object"
 													}
-												},
+												],
 												"required": [
-													"id",
 													"name",
 													"upstream_ips",
-													"dns_firewall_ips",
 													"minimum_cache_ttl",
 													"maximum_cache_ttl",
+													"negative_cache_ttl",
 													"deprecate_any_requests",
 													"ecs_fallback",
-													"modified_on"
+													"ratelimit",
+													"retries"
 												],
 												"type": "object"
 											},
@@ -730,11 +713,6 @@
 												},
 												{
 													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
 														"result_info": {
 															"properties": {
 																"count": {
@@ -769,154 +747,170 @@
 											"properties": {
 												"result": {
 													"items": {
-														"properties": {
-															"attack_mitigation": {
-																"description": "Attack mitigation settings.",
-																"nullable": true,
+														"allOf": [
+															{
 																"properties": {
-																	"enabled": {
-																		"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																	"attack_mitigation": {
+																		"description": "Attack mitigation settings.",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"only_when_upstream_unhealthy": {
+																				"default": true,
+																				"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																				"example": false,
+																				"type": "boolean"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"deprecate_any_requests": {
+																		"description": "Deprecate the response to ANY requests.",
 																		"example": true,
 																		"type": "boolean"
 																	},
-																	"only_when_upstream_unhealthy": {
-																		"default": true,
-																		"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																	"ecs_fallback": {
+																		"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
 																		"example": false,
 																		"type": "boolean"
+																	},
+																	"maximum_cache_ttl": {
+																		"default": 900,
+																		"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+																		"example": 900,
+																		"maximum": 36000,
+																		"minimum": 30,
+																		"type": "number"
+																	},
+																	"minimum_cache_ttl": {
+																		"default": 60,
+																		"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+																		"example": 60,
+																		"maximum": 36000,
+																		"minimum": 30,
+																		"type": "number"
+																	},
+																	"name": {
+																		"description": "DNS Firewall Cluster Name.",
+																		"example": "My Awesome DNS Firewall cluster",
+																		"maxLength": 160,
+																		"minLength": 1,
+																		"type": "string"
+																	},
+																	"negative_cache_ttl": {
+																		"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+																		"example": 900,
+																		"maximum": 36000,
+																		"minimum": 30,
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"ratelimit": {
+																		"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+																		"example": 600,
+																		"maximum": 1000000000,
+																		"minimum": 100,
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"retries": {
+																		"default": 2,
+																		"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
+																		"example": 2,
+																		"maximum": 2,
+																		"minimum": 0,
+																		"type": "number"
+																	},
+																	"upstream_ips": {
+																		"example": [
+																			"192.0.2.1",
+																			"198.51.100.1",
+																			"2001:DB8:100::CF"
+																		],
+																		"items": {
+																			"anyOf": [
+																				{
+																					"description": "Upstream DNS Server IPv4 Address.",
+																					"example": "192.0.2.1",
+																					"format": "ipv4",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Upstream DNS Server IPv6 Address.",
+																					"example": "2001:DB8:100::CF",
+																					"format": "ipv6",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"minLength": 1,
+																		"type": "array"
 																	}
 																},
 																"type": "object"
 															},
-															"deprecate_any_requests": {
-																"description": "Deprecate the response to ANY requests.",
-																"example": true,
-																"type": "boolean"
-															},
-															"dns_firewall_ips": {
-																"example": [
-																	"203.0.113.1",
-																	"203.0.113.254",
-																	"2001:DB8:AB::CF",
-																	"2001:DB8:CD::CF"
-																],
-																"items": {
-																	"anyOf": [
-																		{
-																			"description": "Cloudflare-assigned DNS IPv4 Address.",
-																			"example": "203.0.113.1",
-																			"format": "ipv4",
-																			"type": "string"
+															{
+																"properties": {
+																	"dns_firewall_ips": {
+																		"example": [
+																			"203.0.113.1",
+																			"203.0.113.254",
+																			"2001:DB8:AB::CF",
+																			"2001:DB8:CD::CF"
+																		],
+																		"items": {
+																			"anyOf": [
+																				{
+																					"description": "Cloudflare-assigned DNS IPv4 Address.",
+																					"example": "203.0.113.1",
+																					"format": "ipv4",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Cloudflare-assigned DNS IPv6 Address.",
+																					"example": "2001:DB8:ab::CF",
+																					"format": "ipv6",
+																					"type": "string"
+																				}
+																			]
 																		},
-																		{
-																			"description": "Cloudflare-assigned DNS IPv6 Address.",
-																			"example": "2001:DB8:ab::CF",
-																			"format": "ipv6",
-																			"type": "string"
-																		}
-																	]
+																		"type": "array"
+																	},
+																	"id": {
+																		"description": "Identifier",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "Last modification of DNS Firewall cluster.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string"
+																	}
 																},
-																"type": "array"
-															},
-															"ecs_fallback": {
-																"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
-																"example": false,
-																"type": "boolean"
-															},
-															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"type": "string"
-															},
-															"maximum_cache_ttl": {
-																"default": 900,
-																"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
-																"example": 900,
-																"maximum": 36000,
-																"minimum": 30,
-																"type": "number"
-															},
-															"minimum_cache_ttl": {
-																"default": 60,
-																"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
-																"example": 60,
-																"maximum": 36000,
-																"minimum": 30,
-																"type": "number"
-															},
-															"modified_on": {
-																"description": "Last modification of DNS Firewall cluster.",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															},
-															"name": {
-																"description": "DNS Firewall Cluster Name.",
-																"example": "My Awesome DNS Firewall cluster",
-																"maxLength": 160,
-																"type": "string"
-															},
-															"negative_cache_ttl": {
-																"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
-																"example": 900,
-																"maximum": 36000,
-																"minimum": 30,
-																"nullable": true,
-																"type": "number"
-															},
-															"ratelimit": {
-																"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
-																"example": 600,
-																"maximum": 1000000000,
-																"minimum": 100,
-																"nullable": true,
-																"type": "number"
-															},
-															"retries": {
-																"default": 2,
-																"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
-																"example": 2,
-																"maximum": 2,
-																"minimum": 0,
-																"type": "number"
-															},
-															"upstream_ips": {
-																"example": [
-																	"192.0.2.1",
-																	"198.51.100.1",
-																	"2001:DB8:100::CF"
+																"required": [
+																	"id",
+																	"dns_firewall_ips",
+																	"modified_on"
 																],
-																"items": {
-																	"anyOf": [
-																		{
-																			"description": "Upstream DNS Server IPv4 Address.",
-																			"example": "192.0.2.1",
-																			"format": "ipv4",
-																			"type": "string"
-																		},
-																		{
-																			"description": "Upstream DNS Server IPv6 Address.",
-																			"example": "2001:DB8:100::CF",
-																			"format": "ipv6",
-																			"type": "string"
-																		}
-																	]
-																},
-																"type": "array"
+																"type": "object"
 															}
-														},
+														],
 														"required": [
-															"id",
 															"name",
 															"upstream_ips",
-															"dns_firewall_ips",
 															"minimum_cache_ttl",
 															"maximum_cache_ttl",
+															"negative_cache_ttl",
 															"deprecate_any_requests",
 															"ecs_fallback",
-															"modified_on"
+															"ratelimit",
+															"retries"
 														],
 														"type": "object"
 													},
@@ -1133,20 +1127,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1154,154 +1134,170 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"attack_mitigation": {
-													"description": "Attack mitigation settings.",
-													"nullable": true,
+											"allOf": [
+												{
 													"properties": {
-														"enabled": {
-															"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+														"attack_mitigation": {
+															"description": "Attack mitigation settings.",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"only_when_upstream_unhealthy": {
+																	"default": true,
+																	"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"deprecate_any_requests": {
+															"description": "Deprecate the response to ANY requests.",
 															"example": true,
 															"type": "boolean"
 														},
-														"only_when_upstream_unhealthy": {
-															"default": true,
-															"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+														"ecs_fallback": {
+															"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
 															"example": false,
 															"type": "boolean"
+														},
+														"maximum_cache_ttl": {
+															"default": 900,
+															"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number"
+														},
+														"minimum_cache_ttl": {
+															"default": 60,
+															"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+															"example": 60,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number"
+														},
+														"name": {
+															"description": "DNS Firewall Cluster Name.",
+															"example": "My Awesome DNS Firewall cluster",
+															"maxLength": 160,
+															"minLength": 1,
+															"type": "string"
+														},
+														"negative_cache_ttl": {
+															"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"nullable": true,
+															"type": "number"
+														},
+														"ratelimit": {
+															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+															"example": 600,
+															"maximum": 1000000000,
+															"minimum": 100,
+															"nullable": true,
+															"type": "number"
+														},
+														"retries": {
+															"default": 2,
+															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
+															"example": 2,
+															"maximum": 2,
+															"minimum": 0,
+															"type": "number"
+														},
+														"upstream_ips": {
+															"example": [
+																"192.0.2.1",
+																"198.51.100.1",
+																"2001:DB8:100::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Upstream DNS Server IPv4 Address.",
+																		"example": "192.0.2.1",
+																		"format": "ipv4",
+																		"type": "string"
+																	},
+																	{
+																		"description": "Upstream DNS Server IPv6 Address.",
+																		"example": "2001:DB8:100::CF",
+																		"format": "ipv6",
+																		"type": "string"
+																	}
+																]
+															},
+															"minLength": 1,
+															"type": "array"
 														}
 													},
 													"type": "object"
 												},
-												"deprecate_any_requests": {
-													"description": "Deprecate the response to ANY requests.",
-													"example": true,
-													"type": "boolean"
-												},
-												"dns_firewall_ips": {
-													"example": [
-														"203.0.113.1",
-														"203.0.113.254",
-														"2001:DB8:AB::CF",
-														"2001:DB8:CD::CF"
-													],
-													"items": {
-														"anyOf": [
-															{
-																"description": "Cloudflare-assigned DNS IPv4 Address.",
-																"example": "203.0.113.1",
-																"format": "ipv4",
-																"type": "string"
+												{
+													"properties": {
+														"dns_firewall_ips": {
+															"example": [
+																"203.0.113.1",
+																"203.0.113.254",
+																"2001:DB8:AB::CF",
+																"2001:DB8:CD::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Cloudflare-assigned DNS IPv4 Address.",
+																		"example": "203.0.113.1",
+																		"format": "ipv4",
+																		"type": "string"
+																	},
+																	{
+																		"description": "Cloudflare-assigned DNS IPv6 Address.",
+																		"example": "2001:DB8:ab::CF",
+																		"format": "ipv6",
+																		"type": "string"
+																	}
+																]
 															},
-															{
-																"description": "Cloudflare-assigned DNS IPv6 Address.",
-																"example": "2001:DB8:ab::CF",
-																"format": "ipv6",
-																"type": "string"
-															}
-														]
+															"type": "array"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "Last modification of DNS Firewall cluster.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														}
 													},
-													"type": "array"
-												},
-												"ecs_fallback": {
-													"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
-													"example": false,
-													"type": "boolean"
-												},
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
-												},
-												"maximum_cache_ttl": {
-													"default": 900,
-													"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
-													"example": 900,
-													"maximum": 36000,
-													"minimum": 30,
-													"type": "number"
-												},
-												"minimum_cache_ttl": {
-													"default": 60,
-													"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
-													"example": 60,
-													"maximum": 36000,
-													"minimum": 30,
-													"type": "number"
-												},
-												"modified_on": {
-													"description": "Last modification of DNS Firewall cluster.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												},
-												"name": {
-													"description": "DNS Firewall Cluster Name.",
-													"example": "My Awesome DNS Firewall cluster",
-													"maxLength": 160,
-													"type": "string"
-												},
-												"negative_cache_ttl": {
-													"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
-													"example": 900,
-													"maximum": 36000,
-													"minimum": 30,
-													"nullable": true,
-													"type": "number"
-												},
-												"ratelimit": {
-													"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
-													"example": 600,
-													"maximum": 1000000000,
-													"minimum": 100,
-													"nullable": true,
-													"type": "number"
-												},
-												"retries": {
-													"default": 2,
-													"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
-													"example": 2,
-													"maximum": 2,
-													"minimum": 0,
-													"type": "number"
-												},
-												"upstream_ips": {
-													"example": [
-														"192.0.2.1",
-														"198.51.100.1",
-														"2001:DB8:100::CF"
+													"required": [
+														"id",
+														"dns_firewall_ips",
+														"modified_on"
 													],
-													"items": {
-														"anyOf": [
-															{
-																"description": "Upstream DNS Server IPv4 Address.",
-																"example": "192.0.2.1",
-																"format": "ipv4",
-																"type": "string"
-															},
-															{
-																"description": "Upstream DNS Server IPv6 Address.",
-																"example": "2001:DB8:100::CF",
-																"format": "ipv6",
-																"type": "string"
-															}
-														]
-													},
-													"type": "array"
+													"type": "object"
 												}
-											},
+											],
 											"required": [
-												"id",
 												"name",
 												"upstream_ips",
-												"dns_firewall_ips",
 												"minimum_cache_ttl",
 												"maximum_cache_ttl",
+												"negative_cache_ttl",
 												"deprecate_any_requests",
 												"ecs_fallback",
-												"modified_on"
+												"ratelimit",
+												"retries"
 											],
 											"type": "object"
 										}
@@ -1381,20 +1377,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -1402,154 +1384,170 @@
 										{
 											"properties": {
 												"result": {
-													"properties": {
-														"attack_mitigation": {
-															"description": "Attack mitigation settings.",
-															"nullable": true,
+													"allOf": [
+														{
 															"properties": {
-																"enabled": {
-																	"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																"attack_mitigation": {
+																	"description": "Attack mitigation settings.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"only_when_upstream_unhealthy": {
+																			"default": true,
+																			"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"deprecate_any_requests": {
+																	"description": "Deprecate the response to ANY requests.",
 																	"example": true,
 																	"type": "boolean"
 																},
-																"only_when_upstream_unhealthy": {
-																	"default": true,
-																	"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																"ecs_fallback": {
+																	"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
 																	"example": false,
 																	"type": "boolean"
+																},
+																"maximum_cache_ttl": {
+																	"default": 900,
+																	"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number"
+																},
+																"minimum_cache_ttl": {
+																	"default": 60,
+																	"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+																	"example": 60,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number"
+																},
+																"name": {
+																	"description": "DNS Firewall Cluster Name.",
+																	"example": "My Awesome DNS Firewall cluster",
+																	"maxLength": 160,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"negative_cache_ttl": {
+																	"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"nullable": true,
+																	"type": "number"
+																},
+																"ratelimit": {
+																	"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+																	"example": 600,
+																	"maximum": 1000000000,
+																	"minimum": 100,
+																	"nullable": true,
+																	"type": "number"
+																},
+																"retries": {
+																	"default": 2,
+																	"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
+																	"example": 2,
+																	"maximum": 2,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"upstream_ips": {
+																	"example": [
+																		"192.0.2.1",
+																		"198.51.100.1",
+																		"2001:DB8:100::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Upstream DNS Server IPv4 Address.",
+																				"example": "192.0.2.1",
+																				"format": "ipv4",
+																				"type": "string"
+																			},
+																			{
+																				"description": "Upstream DNS Server IPv6 Address.",
+																				"example": "2001:DB8:100::CF",
+																				"format": "ipv6",
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"minLength": 1,
+																	"type": "array"
 																}
 															},
 															"type": "object"
 														},
-														"deprecate_any_requests": {
-															"description": "Deprecate the response to ANY requests.",
-															"example": true,
-															"type": "boolean"
-														},
-														"dns_firewall_ips": {
-															"example": [
-																"203.0.113.1",
-																"203.0.113.254",
-																"2001:DB8:AB::CF",
-																"2001:DB8:CD::CF"
-															],
-															"items": {
-																"anyOf": [
-																	{
-																		"description": "Cloudflare-assigned DNS IPv4 Address.",
-																		"example": "203.0.113.1",
-																		"format": "ipv4",
-																		"type": "string"
+														{
+															"properties": {
+																"dns_firewall_ips": {
+																	"example": [
+																		"203.0.113.1",
+																		"203.0.113.254",
+																		"2001:DB8:AB::CF",
+																		"2001:DB8:CD::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Cloudflare-assigned DNS IPv4 Address.",
+																				"example": "203.0.113.1",
+																				"format": "ipv4",
+																				"type": "string"
+																			},
+																			{
+																				"description": "Cloudflare-assigned DNS IPv6 Address.",
+																				"example": "2001:DB8:ab::CF",
+																				"format": "ipv6",
+																				"type": "string"
+																			}
+																		]
 																	},
-																	{
-																		"description": "Cloudflare-assigned DNS IPv6 Address.",
-																		"example": "2001:DB8:ab::CF",
-																		"format": "ipv6",
-																		"type": "string"
-																	}
-																]
+																	"type": "array"
+																},
+																"id": {
+																	"description": "Identifier",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "Last modification of DNS Firewall cluster.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																}
 															},
-															"type": "array"
-														},
-														"ecs_fallback": {
-															"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
-															"example": false,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
-														},
-														"maximum_cache_ttl": {
-															"default": 900,
-															"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
-															"example": 900,
-															"maximum": 36000,
-															"minimum": 30,
-															"type": "number"
-														},
-														"minimum_cache_ttl": {
-															"default": 60,
-															"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
-															"example": 60,
-															"maximum": 36000,
-															"minimum": 30,
-															"type": "number"
-														},
-														"modified_on": {
-															"description": "Last modification of DNS Firewall cluster.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"name": {
-															"description": "DNS Firewall Cluster Name.",
-															"example": "My Awesome DNS Firewall cluster",
-															"maxLength": 160,
-															"type": "string"
-														},
-														"negative_cache_ttl": {
-															"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
-															"example": 900,
-															"maximum": 36000,
-															"minimum": 30,
-															"nullable": true,
-															"type": "number"
-														},
-														"ratelimit": {
-															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
-															"example": 600,
-															"maximum": 1000000000,
-															"minimum": 100,
-															"nullable": true,
-															"type": "number"
-														},
-														"retries": {
-															"default": 2,
-															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
-															"example": 2,
-															"maximum": 2,
-															"minimum": 0,
-															"type": "number"
-														},
-														"upstream_ips": {
-															"example": [
-																"192.0.2.1",
-																"198.51.100.1",
-																"2001:DB8:100::CF"
+															"required": [
+																"id",
+																"dns_firewall_ips",
+																"modified_on"
 															],
-															"items": {
-																"anyOf": [
-																	{
-																		"description": "Upstream DNS Server IPv4 Address.",
-																		"example": "192.0.2.1",
-																		"format": "ipv4",
-																		"type": "string"
-																	},
-																	{
-																		"description": "Upstream DNS Server IPv6 Address.",
-																		"example": "2001:DB8:100::CF",
-																		"format": "ipv6",
-																		"type": "string"
-																	}
-																]
-															},
-															"type": "array"
+															"type": "object"
 														}
-													},
+													],
 													"required": [
-														"id",
 														"name",
 														"upstream_ips",
-														"dns_firewall_ips",
 														"minimum_cache_ttl",
 														"maximum_cache_ttl",
+														"negative_cache_ttl",
 														"deprecate_any_requests",
 														"ecs_fallback",
-														"modified_on"
+														"ratelimit",
+														"retries"
 													],
 													"type": "object"
 												}
@@ -1727,41 +1725,10 @@
 										"example": true,
 										"type": "boolean"
 									},
-									"dns_firewall_ips": {
-										"example": [
-											"203.0.113.1",
-											"203.0.113.254",
-											"2001:DB8:AB::CF",
-											"2001:DB8:CD::CF"
-										],
-										"items": {
-											"anyOf": [
-												{
-													"description": "Cloudflare-assigned DNS IPv4 Address.",
-													"example": "203.0.113.1",
-													"format": "ipv4",
-													"type": "string"
-												},
-												{
-													"description": "Cloudflare-assigned DNS IPv6 Address.",
-													"example": "2001:DB8:ab::CF",
-													"format": "ipv6",
-													"type": "string"
-												}
-											]
-										},
-										"type": "array"
-									},
 									"ecs_fallback": {
 										"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
 										"example": false,
 										"type": "boolean"
-									},
-									"id": {
-										"description": "Identifier",
-										"example": "023e105f4ecef8ad9ca31a8372d0c353",
-										"maxLength": 32,
-										"type": "string"
 									},
 									"maximum_cache_ttl": {
 										"default": 900,
@@ -1779,17 +1746,11 @@
 										"minimum": 30,
 										"type": "number"
 									},
-									"modified_on": {
-										"description": "Last modification of DNS Firewall cluster.",
-										"example": "2014-01-01T05:20:00.12345Z",
-										"format": "date-time",
-										"readOnly": true,
-										"type": "string"
-									},
 									"name": {
 										"description": "DNS Firewall Cluster Name.",
 										"example": "My Awesome DNS Firewall cluster",
 										"maxLength": 160,
+										"minLength": 1,
 										"type": "string"
 									},
 									"negative_cache_ttl": {
@@ -1838,20 +1799,10 @@
 												}
 											]
 										},
+										"minLength": 1,
 										"type": "array"
 									}
 								},
-								"required": [
-									"id",
-									"name",
-									"upstream_ips",
-									"dns_firewall_ips",
-									"minimum_cache_ttl",
-									"maximum_cache_ttl",
-									"deprecate_any_requests",
-									"ecs_fallback",
-									"modified_on"
-								],
 								"type": "object"
 							}
 						],
@@ -1928,20 +1879,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -1949,154 +1886,170 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"attack_mitigation": {
-													"description": "Attack mitigation settings.",
-													"nullable": true,
+											"allOf": [
+												{
 													"properties": {
-														"enabled": {
-															"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+														"attack_mitigation": {
+															"description": "Attack mitigation settings.",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"only_when_upstream_unhealthy": {
+																	"default": true,
+																	"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"deprecate_any_requests": {
+															"description": "Deprecate the response to ANY requests.",
 															"example": true,
 															"type": "boolean"
 														},
-														"only_when_upstream_unhealthy": {
-															"default": true,
-															"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+														"ecs_fallback": {
+															"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
 															"example": false,
 															"type": "boolean"
+														},
+														"maximum_cache_ttl": {
+															"default": 900,
+															"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number"
+														},
+														"minimum_cache_ttl": {
+															"default": 60,
+															"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+															"example": 60,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number"
+														},
+														"name": {
+															"description": "DNS Firewall Cluster Name.",
+															"example": "My Awesome DNS Firewall cluster",
+															"maxLength": 160,
+															"minLength": 1,
+															"type": "string"
+														},
+														"negative_cache_ttl": {
+															"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"nullable": true,
+															"type": "number"
+														},
+														"ratelimit": {
+															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+															"example": 600,
+															"maximum": 1000000000,
+															"minimum": 100,
+															"nullable": true,
+															"type": "number"
+														},
+														"retries": {
+															"default": 2,
+															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
+															"example": 2,
+															"maximum": 2,
+															"minimum": 0,
+															"type": "number"
+														},
+														"upstream_ips": {
+															"example": [
+																"192.0.2.1",
+																"198.51.100.1",
+																"2001:DB8:100::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Upstream DNS Server IPv4 Address.",
+																		"example": "192.0.2.1",
+																		"format": "ipv4",
+																		"type": "string"
+																	},
+																	{
+																		"description": "Upstream DNS Server IPv6 Address.",
+																		"example": "2001:DB8:100::CF",
+																		"format": "ipv6",
+																		"type": "string"
+																	}
+																]
+															},
+															"minLength": 1,
+															"type": "array"
 														}
 													},
 													"type": "object"
 												},
-												"deprecate_any_requests": {
-													"description": "Deprecate the response to ANY requests.",
-													"example": true,
-													"type": "boolean"
-												},
-												"dns_firewall_ips": {
-													"example": [
-														"203.0.113.1",
-														"203.0.113.254",
-														"2001:DB8:AB::CF",
-														"2001:DB8:CD::CF"
-													],
-													"items": {
-														"anyOf": [
-															{
-																"description": "Cloudflare-assigned DNS IPv4 Address.",
-																"example": "203.0.113.1",
-																"format": "ipv4",
-																"type": "string"
+												{
+													"properties": {
+														"dns_firewall_ips": {
+															"example": [
+																"203.0.113.1",
+																"203.0.113.254",
+																"2001:DB8:AB::CF",
+																"2001:DB8:CD::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Cloudflare-assigned DNS IPv4 Address.",
+																		"example": "203.0.113.1",
+																		"format": "ipv4",
+																		"type": "string"
+																	},
+																	{
+																		"description": "Cloudflare-assigned DNS IPv6 Address.",
+																		"example": "2001:DB8:ab::CF",
+																		"format": "ipv6",
+																		"type": "string"
+																	}
+																]
 															},
-															{
-																"description": "Cloudflare-assigned DNS IPv6 Address.",
-																"example": "2001:DB8:ab::CF",
-																"format": "ipv6",
-																"type": "string"
-															}
-														]
+															"type": "array"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "Last modification of DNS Firewall cluster.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														}
 													},
-													"type": "array"
-												},
-												"ecs_fallback": {
-													"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
-													"example": false,
-													"type": "boolean"
-												},
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
-												},
-												"maximum_cache_ttl": {
-													"default": 900,
-													"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
-													"example": 900,
-													"maximum": 36000,
-													"minimum": 30,
-													"type": "number"
-												},
-												"minimum_cache_ttl": {
-													"default": 60,
-													"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
-													"example": 60,
-													"maximum": 36000,
-													"minimum": 30,
-													"type": "number"
-												},
-												"modified_on": {
-													"description": "Last modification of DNS Firewall cluster.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												},
-												"name": {
-													"description": "DNS Firewall Cluster Name.",
-													"example": "My Awesome DNS Firewall cluster",
-													"maxLength": 160,
-													"type": "string"
-												},
-												"negative_cache_ttl": {
-													"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
-													"example": 900,
-													"maximum": 36000,
-													"minimum": 30,
-													"nullable": true,
-													"type": "number"
-												},
-												"ratelimit": {
-													"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
-													"example": 600,
-													"maximum": 1000000000,
-													"minimum": 100,
-													"nullable": true,
-													"type": "number"
-												},
-												"retries": {
-													"default": 2,
-													"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
-													"example": 2,
-													"maximum": 2,
-													"minimum": 0,
-													"type": "number"
-												},
-												"upstream_ips": {
-													"example": [
-														"192.0.2.1",
-														"198.51.100.1",
-														"2001:DB8:100::CF"
+													"required": [
+														"id",
+														"dns_firewall_ips",
+														"modified_on"
 													],
-													"items": {
-														"anyOf": [
-															{
-																"description": "Upstream DNS Server IPv4 Address.",
-																"example": "192.0.2.1",
-																"format": "ipv4",
-																"type": "string"
-															},
-															{
-																"description": "Upstream DNS Server IPv6 Address.",
-																"example": "2001:DB8:100::CF",
-																"format": "ipv6",
-																"type": "string"
-															}
-														]
-													},
-													"type": "array"
+													"type": "object"
 												}
-											},
+											],
 											"required": [
-												"id",
 												"name",
 												"upstream_ips",
-												"dns_firewall_ips",
 												"minimum_cache_ttl",
 												"maximum_cache_ttl",
+												"negative_cache_ttl",
 												"deprecate_any_requests",
 												"ecs_fallback",
-												"modified_on"
+												"ratelimit",
+												"retries"
 											],
 											"type": "object"
 										}
@@ -2176,20 +2129,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -2197,154 +2136,170 @@
 										{
 											"properties": {
 												"result": {
-													"properties": {
-														"attack_mitigation": {
-															"description": "Attack mitigation settings.",
-															"nullable": true,
+													"allOf": [
+														{
 															"properties": {
-																"enabled": {
-																	"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																"attack_mitigation": {
+																	"description": "Attack mitigation settings.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"only_when_upstream_unhealthy": {
+																			"default": true,
+																			"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"deprecate_any_requests": {
+																	"description": "Deprecate the response to ANY requests.",
 																	"example": true,
 																	"type": "boolean"
 																},
-																"only_when_upstream_unhealthy": {
-																	"default": true,
-																	"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																"ecs_fallback": {
+																	"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
 																	"example": false,
 																	"type": "boolean"
+																},
+																"maximum_cache_ttl": {
+																	"default": 900,
+																	"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number"
+																},
+																"minimum_cache_ttl": {
+																	"default": 60,
+																	"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+																	"example": 60,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number"
+																},
+																"name": {
+																	"description": "DNS Firewall Cluster Name.",
+																	"example": "My Awesome DNS Firewall cluster",
+																	"maxLength": 160,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"negative_cache_ttl": {
+																	"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"nullable": true,
+																	"type": "number"
+																},
+																"ratelimit": {
+																	"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+																	"example": 600,
+																	"maximum": 1000000000,
+																	"minimum": 100,
+																	"nullable": true,
+																	"type": "number"
+																},
+																"retries": {
+																	"default": 2,
+																	"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
+																	"example": 2,
+																	"maximum": 2,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"upstream_ips": {
+																	"example": [
+																		"192.0.2.1",
+																		"198.51.100.1",
+																		"2001:DB8:100::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Upstream DNS Server IPv4 Address.",
+																				"example": "192.0.2.1",
+																				"format": "ipv4",
+																				"type": "string"
+																			},
+																			{
+																				"description": "Upstream DNS Server IPv6 Address.",
+																				"example": "2001:DB8:100::CF",
+																				"format": "ipv6",
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"minLength": 1,
+																	"type": "array"
 																}
 															},
 															"type": "object"
 														},
-														"deprecate_any_requests": {
-															"description": "Deprecate the response to ANY requests.",
-															"example": true,
-															"type": "boolean"
-														},
-														"dns_firewall_ips": {
-															"example": [
-																"203.0.113.1",
-																"203.0.113.254",
-																"2001:DB8:AB::CF",
-																"2001:DB8:CD::CF"
-															],
-															"items": {
-																"anyOf": [
-																	{
-																		"description": "Cloudflare-assigned DNS IPv4 Address.",
-																		"example": "203.0.113.1",
-																		"format": "ipv4",
-																		"type": "string"
+														{
+															"properties": {
+																"dns_firewall_ips": {
+																	"example": [
+																		"203.0.113.1",
+																		"203.0.113.254",
+																		"2001:DB8:AB::CF",
+																		"2001:DB8:CD::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Cloudflare-assigned DNS IPv4 Address.",
+																				"example": "203.0.113.1",
+																				"format": "ipv4",
+																				"type": "string"
+																			},
+																			{
+																				"description": "Cloudflare-assigned DNS IPv6 Address.",
+																				"example": "2001:DB8:ab::CF",
+																				"format": "ipv6",
+																				"type": "string"
+																			}
+																		]
 																	},
-																	{
-																		"description": "Cloudflare-assigned DNS IPv6 Address.",
-																		"example": "2001:DB8:ab::CF",
-																		"format": "ipv6",
-																		"type": "string"
-																	}
-																]
+																	"type": "array"
+																},
+																"id": {
+																	"description": "Identifier",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "Last modification of DNS Firewall cluster.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																}
 															},
-															"type": "array"
-														},
-														"ecs_fallback": {
-															"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
-															"example": false,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
-														},
-														"maximum_cache_ttl": {
-															"default": 900,
-															"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
-															"example": 900,
-															"maximum": 36000,
-															"minimum": 30,
-															"type": "number"
-														},
-														"minimum_cache_ttl": {
-															"default": 60,
-															"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
-															"example": 60,
-															"maximum": 36000,
-															"minimum": 30,
-															"type": "number"
-														},
-														"modified_on": {
-															"description": "Last modification of DNS Firewall cluster.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"name": {
-															"description": "DNS Firewall Cluster Name.",
-															"example": "My Awesome DNS Firewall cluster",
-															"maxLength": 160,
-															"type": "string"
-														},
-														"negative_cache_ttl": {
-															"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
-															"example": 900,
-															"maximum": 36000,
-															"minimum": 30,
-															"nullable": true,
-															"type": "number"
-														},
-														"ratelimit": {
-															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
-															"example": 600,
-															"maximum": 1000000000,
-															"minimum": 100,
-															"nullable": true,
-															"type": "number"
-														},
-														"retries": {
-															"default": 2,
-															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
-															"example": 2,
-															"maximum": 2,
-															"minimum": 0,
-															"type": "number"
-														},
-														"upstream_ips": {
-															"example": [
-																"192.0.2.1",
-																"198.51.100.1",
-																"2001:DB8:100::CF"
+															"required": [
+																"id",
+																"dns_firewall_ips",
+																"modified_on"
 															],
-															"items": {
-																"anyOf": [
-																	{
-																		"description": "Upstream DNS Server IPv4 Address.",
-																		"example": "192.0.2.1",
-																		"format": "ipv4",
-																		"type": "string"
-																	},
-																	{
-																		"description": "Upstream DNS Server IPv6 Address.",
-																		"example": "2001:DB8:100::CF",
-																		"format": "ipv6",
-																		"type": "string"
-																	}
-																]
-															},
-															"type": "array"
+															"type": "object"
 														}
-													},
+													],
 													"required": [
-														"id",
 														"name",
 														"upstream_ips",
-														"dns_firewall_ips",
 														"minimum_cache_ttl",
 														"maximum_cache_ttl",
+														"negative_cache_ttl",
 														"deprecate_any_requests",
 														"ecs_fallback",
-														"modified_on"
+														"ratelimit",
+														"retries"
 													],
 													"type": "object"
 												}
@@ -2485,110 +2440,118 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"attack_mitigation": {
-								"description": "Attack mitigation settings.",
-								"nullable": true,
+						"allOf": [
+							{
 								"properties": {
-									"enabled": {
-										"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+									"attack_mitigation": {
+										"description": "Attack mitigation settings.",
+										"nullable": true,
+										"properties": {
+											"enabled": {
+												"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+												"example": true,
+												"type": "boolean"
+											},
+											"only_when_upstream_unhealthy": {
+												"default": true,
+												"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+												"example": false,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"deprecate_any_requests": {
+										"description": "Deprecate the response to ANY requests.",
 										"example": true,
 										"type": "boolean"
 									},
-									"only_when_upstream_unhealthy": {
-										"default": true,
-										"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+									"ecs_fallback": {
+										"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
 										"example": false,
 										"type": "boolean"
+									},
+									"maximum_cache_ttl": {
+										"default": 900,
+										"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+										"example": 900,
+										"maximum": 36000,
+										"minimum": 30,
+										"type": "number"
+									},
+									"minimum_cache_ttl": {
+										"default": 60,
+										"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+										"example": 60,
+										"maximum": 36000,
+										"minimum": 30,
+										"type": "number"
+									},
+									"name": {
+										"description": "DNS Firewall Cluster Name.",
+										"example": "My Awesome DNS Firewall cluster",
+										"maxLength": 160,
+										"minLength": 1,
+										"type": "string"
+									},
+									"negative_cache_ttl": {
+										"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+										"example": 900,
+										"maximum": 36000,
+										"minimum": 30,
+										"nullable": true,
+										"type": "number"
+									},
+									"ratelimit": {
+										"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+										"example": 600,
+										"maximum": 1000000000,
+										"minimum": 100,
+										"nullable": true,
+										"type": "number"
+									},
+									"retries": {
+										"default": 2,
+										"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
+										"example": 2,
+										"maximum": 2,
+										"minimum": 0,
+										"type": "number"
+									},
+									"upstream_ips": {
+										"example": [
+											"192.0.2.1",
+											"198.51.100.1",
+											"2001:DB8:100::CF"
+										],
+										"items": {
+											"anyOf": [
+												{
+													"description": "Upstream DNS Server IPv4 Address.",
+													"example": "192.0.2.1",
+													"format": "ipv4",
+													"type": "string"
+												},
+												{
+													"description": "Upstream DNS Server IPv6 Address.",
+													"example": "2001:DB8:100::CF",
+													"format": "ipv6",
+													"type": "string"
+												}
+											]
+										},
+										"minLength": 1,
+										"type": "array"
 									}
 								},
 								"type": "object"
-							},
-							"deprecate_any_requests": {
-								"description": "Deprecate the response to ANY requests.",
-								"example": true,
-								"type": "boolean"
-							},
-							"ecs_fallback": {
-								"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
-								"example": false,
-								"type": "boolean"
-							},
-							"maximum_cache_ttl": {
-								"default": 900,
-								"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
-								"example": 900,
-								"maximum": 36000,
-								"minimum": 30,
-								"type": "number"
-							},
-							"minimum_cache_ttl": {
-								"default": 60,
-								"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
-								"example": 60,
-								"maximum": 36000,
-								"minimum": 30,
-								"type": "number"
-							},
-							"name": {
-								"description": "DNS Firewall Cluster Name.",
-								"example": "My Awesome DNS Firewall cluster",
-								"maxLength": 160,
-								"type": "string"
-							},
-							"negative_cache_ttl": {
-								"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
-								"example": 900,
-								"maximum": 36000,
-								"minimum": 30,
-								"nullable": true,
-								"type": "number"
-							},
-							"ratelimit": {
-								"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
-								"example": 600,
-								"maximum": 1000000000,
-								"minimum": 100,
-								"nullable": true,
-								"type": "number"
-							},
-							"retries": {
-								"default": 2,
-								"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
-								"example": 2,
-								"maximum": 2,
-								"minimum": 0,
-								"type": "number"
-							},
-							"upstream_ips": {
-								"example": [
-									"192.0.2.1",
-									"198.51.100.1",
-									"2001:DB8:100::CF"
-								],
-								"items": {
-									"anyOf": [
-										{
-											"description": "Upstream DNS Server IPv4 Address.",
-											"example": "192.0.2.1",
-											"format": "ipv4",
-											"type": "string"
-										},
-										{
-											"description": "Upstream DNS Server IPv6 Address.",
-											"example": "2001:DB8:100::CF",
-											"format": "ipv6",
-											"type": "string"
-										}
-									]
-								},
-								"type": "array"
 							}
-						},
+						],
 						"required": [
 							"name",
 							"upstream_ips"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -2661,20 +2624,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													]
-												}
-											}
 										}
 									],
 									"type": "object"
@@ -2682,154 +2631,170 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"attack_mitigation": {
-													"description": "Attack mitigation settings.",
-													"nullable": true,
+											"allOf": [
+												{
 													"properties": {
-														"enabled": {
-															"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+														"attack_mitigation": {
+															"description": "Attack mitigation settings.",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"only_when_upstream_unhealthy": {
+																	"default": true,
+																	"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"deprecate_any_requests": {
+															"description": "Deprecate the response to ANY requests.",
 															"example": true,
 															"type": "boolean"
 														},
-														"only_when_upstream_unhealthy": {
-															"default": true,
-															"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+														"ecs_fallback": {
+															"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
 															"example": false,
 															"type": "boolean"
+														},
+														"maximum_cache_ttl": {
+															"default": 900,
+															"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number"
+														},
+														"minimum_cache_ttl": {
+															"default": 60,
+															"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+															"example": 60,
+															"maximum": 36000,
+															"minimum": 30,
+															"type": "number"
+														},
+														"name": {
+															"description": "DNS Firewall Cluster Name.",
+															"example": "My Awesome DNS Firewall cluster",
+															"maxLength": 160,
+															"minLength": 1,
+															"type": "string"
+														},
+														"negative_cache_ttl": {
+															"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+															"example": 900,
+															"maximum": 36000,
+															"minimum": 30,
+															"nullable": true,
+															"type": "number"
+														},
+														"ratelimit": {
+															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+															"example": 600,
+															"maximum": 1000000000,
+															"minimum": 100,
+															"nullable": true,
+															"type": "number"
+														},
+														"retries": {
+															"default": 2,
+															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
+															"example": 2,
+															"maximum": 2,
+															"minimum": 0,
+															"type": "number"
+														},
+														"upstream_ips": {
+															"example": [
+																"192.0.2.1",
+																"198.51.100.1",
+																"2001:DB8:100::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Upstream DNS Server IPv4 Address.",
+																		"example": "192.0.2.1",
+																		"format": "ipv4",
+																		"type": "string"
+																	},
+																	{
+																		"description": "Upstream DNS Server IPv6 Address.",
+																		"example": "2001:DB8:100::CF",
+																		"format": "ipv6",
+																		"type": "string"
+																	}
+																]
+															},
+															"minLength": 1,
+															"type": "array"
 														}
 													},
 													"type": "object"
 												},
-												"deprecate_any_requests": {
-													"description": "Deprecate the response to ANY requests.",
-													"example": true,
-													"type": "boolean"
-												},
-												"dns_firewall_ips": {
-													"example": [
-														"203.0.113.1",
-														"203.0.113.254",
-														"2001:DB8:AB::CF",
-														"2001:DB8:CD::CF"
-													],
-													"items": {
-														"anyOf": [
-															{
-																"description": "Cloudflare-assigned DNS IPv4 Address.",
-																"example": "203.0.113.1",
-																"format": "ipv4",
-																"type": "string"
+												{
+													"properties": {
+														"dns_firewall_ips": {
+															"example": [
+																"203.0.113.1",
+																"203.0.113.254",
+																"2001:DB8:AB::CF",
+																"2001:DB8:CD::CF"
+															],
+															"items": {
+																"anyOf": [
+																	{
+																		"description": "Cloudflare-assigned DNS IPv4 Address.",
+																		"example": "203.0.113.1",
+																		"format": "ipv4",
+																		"type": "string"
+																	},
+																	{
+																		"description": "Cloudflare-assigned DNS IPv6 Address.",
+																		"example": "2001:DB8:ab::CF",
+																		"format": "ipv6",
+																		"type": "string"
+																	}
+																]
 															},
-															{
-																"description": "Cloudflare-assigned DNS IPv6 Address.",
-																"example": "2001:DB8:ab::CF",
-																"format": "ipv6",
-																"type": "string"
-															}
-														]
+															"type": "array"
+														},
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "Last modification of DNS Firewall cluster.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														}
 													},
-													"type": "array"
-												},
-												"ecs_fallback": {
-													"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
-													"example": false,
-													"type": "boolean"
-												},
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
-												},
-												"maximum_cache_ttl": {
-													"default": 900,
-													"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
-													"example": 900,
-													"maximum": 36000,
-													"minimum": 30,
-													"type": "number"
-												},
-												"minimum_cache_ttl": {
-													"default": 60,
-													"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
-													"example": 60,
-													"maximum": 36000,
-													"minimum": 30,
-													"type": "number"
-												},
-												"modified_on": {
-													"description": "Last modification of DNS Firewall cluster.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												},
-												"name": {
-													"description": "DNS Firewall Cluster Name.",
-													"example": "My Awesome DNS Firewall cluster",
-													"maxLength": 160,
-													"type": "string"
-												},
-												"negative_cache_ttl": {
-													"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
-													"example": 900,
-													"maximum": 36000,
-													"minimum": 30,
-													"nullable": true,
-													"type": "number"
-												},
-												"ratelimit": {
-													"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
-													"example": 600,
-													"maximum": 1000000000,
-													"minimum": 100,
-													"nullable": true,
-													"type": "number"
-												},
-												"retries": {
-													"default": 2,
-													"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
-													"example": 2,
-													"maximum": 2,
-													"minimum": 0,
-													"type": "number"
-												},
-												"upstream_ips": {
-													"example": [
-														"192.0.2.1",
-														"198.51.100.1",
-														"2001:DB8:100::CF"
+													"required": [
+														"id",
+														"dns_firewall_ips",
+														"modified_on"
 													],
-													"items": {
-														"anyOf": [
-															{
-																"description": "Upstream DNS Server IPv4 Address.",
-																"example": "192.0.2.1",
-																"format": "ipv4",
-																"type": "string"
-															},
-															{
-																"description": "Upstream DNS Server IPv6 Address.",
-																"example": "2001:DB8:100::CF",
-																"format": "ipv6",
-																"type": "string"
-															}
-														]
-													},
-													"type": "array"
+													"type": "object"
 												}
-											},
+											],
 											"required": [
-												"id",
 												"name",
 												"upstream_ips",
-												"dns_firewall_ips",
 												"minimum_cache_ttl",
 												"maximum_cache_ttl",
+												"negative_cache_ttl",
 												"deprecate_any_requests",
 												"ecs_fallback",
-												"modified_on"
+												"ratelimit",
+												"retries"
 											],
 											"type": "object"
 										}
@@ -2909,20 +2874,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
-													}
 												}
 											],
 											"type": "object"
@@ -2930,154 +2881,170 @@
 										{
 											"properties": {
 												"result": {
-													"properties": {
-														"attack_mitigation": {
-															"description": "Attack mitigation settings.",
-															"nullable": true,
+													"allOf": [
+														{
 															"properties": {
-																"enabled": {
-																	"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																"attack_mitigation": {
+																	"description": "Attack mitigation settings.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"only_when_upstream_unhealthy": {
+																			"default": true,
+																			"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"deprecate_any_requests": {
+																	"description": "Deprecate the response to ANY requests.",
 																	"example": true,
 																	"type": "boolean"
 																},
-																"only_when_upstream_unhealthy": {
-																	"default": true,
-																	"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+																"ecs_fallback": {
+																	"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
 																	"example": false,
 																	"type": "boolean"
+																},
+																"maximum_cache_ttl": {
+																	"default": 900,
+																	"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number"
+																},
+																"minimum_cache_ttl": {
+																	"default": 60,
+																	"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
+																	"example": 60,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"type": "number"
+																},
+																"name": {
+																	"description": "DNS Firewall Cluster Name.",
+																	"example": "My Awesome DNS Firewall cluster",
+																	"maxLength": 160,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"negative_cache_ttl": {
+																	"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
+																	"example": 900,
+																	"maximum": 36000,
+																	"minimum": 30,
+																	"nullable": true,
+																	"type": "number"
+																},
+																"ratelimit": {
+																	"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+																	"example": 600,
+																	"maximum": 1000000000,
+																	"minimum": 100,
+																	"nullable": true,
+																	"type": "number"
+																},
+																"retries": {
+																	"default": 2,
+																	"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
+																	"example": 2,
+																	"maximum": 2,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"upstream_ips": {
+																	"example": [
+																		"192.0.2.1",
+																		"198.51.100.1",
+																		"2001:DB8:100::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Upstream DNS Server IPv4 Address.",
+																				"example": "192.0.2.1",
+																				"format": "ipv4",
+																				"type": "string"
+																			},
+																			{
+																				"description": "Upstream DNS Server IPv6 Address.",
+																				"example": "2001:DB8:100::CF",
+																				"format": "ipv6",
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"minLength": 1,
+																	"type": "array"
 																}
 															},
 															"type": "object"
 														},
-														"deprecate_any_requests": {
-															"description": "Deprecate the response to ANY requests.",
-															"example": true,
-															"type": "boolean"
-														},
-														"dns_firewall_ips": {
-															"example": [
-																"203.0.113.1",
-																"203.0.113.254",
-																"2001:DB8:AB::CF",
-																"2001:DB8:CD::CF"
-															],
-															"items": {
-																"anyOf": [
-																	{
-																		"description": "Cloudflare-assigned DNS IPv4 Address.",
-																		"example": "203.0.113.1",
-																		"format": "ipv4",
-																		"type": "string"
+														{
+															"properties": {
+																"dns_firewall_ips": {
+																	"example": [
+																		"203.0.113.1",
+																		"203.0.113.254",
+																		"2001:DB8:AB::CF",
+																		"2001:DB8:CD::CF"
+																	],
+																	"items": {
+																		"anyOf": [
+																			{
+																				"description": "Cloudflare-assigned DNS IPv4 Address.",
+																				"example": "203.0.113.1",
+																				"format": "ipv4",
+																				"type": "string"
+																			},
+																			{
+																				"description": "Cloudflare-assigned DNS IPv6 Address.",
+																				"example": "2001:DB8:ab::CF",
+																				"format": "ipv6",
+																				"type": "string"
+																			}
+																		]
 																	},
-																	{
-																		"description": "Cloudflare-assigned DNS IPv6 Address.",
-																		"example": "2001:DB8:ab::CF",
-																		"format": "ipv6",
-																		"type": "string"
-																	}
-																]
+																	"type": "array"
+																},
+																"id": {
+																	"description": "Identifier",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "Last modification of DNS Firewall cluster.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																}
 															},
-															"type": "array"
-														},
-														"ecs_fallback": {
-															"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
-															"example": false,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
-														},
-														"maximum_cache_ttl": {
-															"default": 900,
-															"description": "Maximum DNS cache TTL. This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.",
-															"example": 900,
-															"maximum": 36000,
-															"minimum": 30,
-															"type": "number"
-														},
-														"minimum_cache_ttl": {
-															"default": 60,
-															"description": "Minimum DNS cache TTL. This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.",
-															"example": 60,
-															"maximum": 36000,
-															"minimum": 30,
-															"type": "number"
-														},
-														"modified_on": {
-															"description": "Last modification of DNS Firewall cluster.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"name": {
-															"description": "DNS Firewall Cluster Name.",
-															"example": "My Awesome DNS Firewall cluster",
-															"maxLength": 160,
-															"type": "string"
-														},
-														"negative_cache_ttl": {
-															"description": "Negative DNS cache TTL. This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.",
-															"example": 900,
-															"maximum": 36000,
-															"minimum": 30,
-															"nullable": true,
-															"type": "number"
-														},
-														"ratelimit": {
-															"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
-															"example": 600,
-															"maximum": 1000000000,
-															"minimum": 100,
-															"nullable": true,
-															"type": "number"
-														},
-														"retries": {
-															"default": 2,
-															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
-															"example": 2,
-															"maximum": 2,
-															"minimum": 0,
-															"type": "number"
-														},
-														"upstream_ips": {
-															"example": [
-																"192.0.2.1",
-																"198.51.100.1",
-																"2001:DB8:100::CF"
+															"required": [
+																"id",
+																"dns_firewall_ips",
+																"modified_on"
 															],
-															"items": {
-																"anyOf": [
-																	{
-																		"description": "Upstream DNS Server IPv4 Address.",
-																		"example": "192.0.2.1",
-																		"format": "ipv4",
-																		"type": "string"
-																	},
-																	{
-																		"description": "Upstream DNS Server IPv6 Address.",
-																		"example": "2001:DB8:100::CF",
-																		"format": "ipv6",
-																		"type": "string"
-																	}
-																]
-															},
-															"type": "array"
+															"type": "object"
 														}
-													},
+													],
 													"required": [
-														"id",
 														"name",
 														"upstream_ips",
-														"dns_firewall_ips",
 														"minimum_cache_ttl",
 														"maximum_cache_ttl",
+														"negative_cache_ttl",
 														"deprecate_any_requests",
 														"ecs_fallback",
-														"modified_on"
+														"ratelimit",
+														"retries"
 													],
 													"type": "object"
 												}
