@@ -452,9 +452,7 @@
 				"schema": {
 					"enum": [
 						"asc",
-						"desc",
-						"ASC",
-						"DESC"
+						"desc"
 					],
 					"type": "string"
 				}
@@ -463,12 +461,10 @@
 				"in": "query",
 				"name": "order_by_direction",
 				"schema": {
-					"default": "ASC",
+					"default": "asc",
 					"enum": [
 						"asc",
-						"desc",
-						"ASC",
-						"DESC"
+						"desc"
 					],
 					"type": "string"
 				}
