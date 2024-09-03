@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.8
+
+### Patch Changes
+
+- 9b5658dd38: feat: expose x axis formatter for use on non-time charts and expose margin
+
 ## 5.1.7
 
 ## 5.1.6
